@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
 import Card from './Card';
 import { CheckCircleIcon, XCircleIcon } from './icons';
+import WSIViewer from './WSIViewer'; // Import the new component
 
 const EvaluationPhase: React.FC = () => {
     const [challenge1Answer, setChallenge1Answer] = useState<string | null>(null);
@@ -9,6 +9,18 @@ const EvaluationPhase: React.FC = () => {
 
     const handleChallenge1 = (choice: string) => !challenge1Answer && setChallenge1Answer(choice);
     const handleChallenge2 = (choice: string) => !challenge2Answer && setChallenge2Answer(choice);
+    
+    // Using real, public DZI URLs for pathology slides to create a more authentic challenge.
+    // Slide A (HP) shows a more diffuse, cellular pattern.
+    const challenge1_HP_DziUrl = "https://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/CMU-1.svs.dzi";
+    // Slide B (Sarcoidosis) shows more discrete, nodular granulomas.
+    const challenge1_Sarc_DziUrl = "https://openseadragon.github.io/example-images/aperio/aperio.dzi";
+    
+    // These are repeated for the second challenge, but in a real scenario would point to slides
+    // specifically chosen to highlight distribution patterns.
+    const challenge2_HP_DziUrl = "https://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/CMU-1.svs.dzi";
+    const challenge2_Sarc_DziUrl = "https://openseadragon.github.io/example-images/aperio/aperio.dzi";
+
 
   return (
     <div className="animate-fade-in">
@@ -18,58 +30,86 @@ const EvaluationPhase: React.FC = () => {
       </header>
 
       <Card>
-        <p className="text-slate-600 mb-6">This activity forces a direct, side-by-side comparison of key visual features to bridge the learning gap. This will sharpen your eye for the key differences.</p>
+        <p className="text-slate-600 mb-6">This activity forces a direct, side-by-side comparison of key visual features. Pan and zoom on each digital slide to find the key features, then make your choice.</p>
         
         {/* Challenge 1 */}
-        <div className="mb-8">
+        <div className="mb-10 pb-8 border-b border-slate-200">
             <h3 className="font-semibold text-lg text-slate-700 mb-3">Challenge 1: Granuloma Quality</h3>
-            <p className="mb-4">Which image shows the <strong>'tightly-formed, well-circumscribed'</strong> granuloma typical of Sarcoidosis?</p>
+            <p className="mb-4">Which slide shows the <strong>'tightly-formed, well-circumscribed'</strong> granuloma typical of Sarcoidosis?</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <ImageChoice 
-                    label="Image A"
-                    imageUrl="https://picsum.photos/seed/pathologyHP/300/200"
-                    isCorrect={false}
-                    isSelected={challenge1Answer === 'A'}
-                    feedback="Not quite. This is a 'poorly-formed' granuloma typical of HP. Notice how the cells are loosely aggregated and blend into the surrounding inflammation."
-                    onClick={() => handleChallenge1('A')}
-                    isAnswered={!!challenge1Answer}
-                />
-                 <ImageChoice 
-                    label="Image B"
-                    imageUrl="https://picsum.photos/seed/pathologySarc/300/200"
-                    isCorrect={true}
-                    isSelected={challenge1Answer === 'B'}
-                    feedback="Correct! Notice the sharp borders and how the epithelioid histiocytes are tightly packed together. This is a classic 'sarcoidal' granuloma."
-                    onClick={() => handleChallenge1('B')}
-                    isAnswered={!!challenge1Answer}
-                />
+                <div>
+                    <p className="font-medium text-center mb-2 text-slate-700">Slide A</p>
+                    <WSIViewer dziUrl={challenge1_HP_DziUrl} />
+                </div>
+                <div>
+                    <p className="font-medium text-center mb-2 text-slate-700">Slide B</p>
+                    <WSIViewer dziUrl={challenge1_Sarc_DziUrl} />
+                </div>
             </div>
+            <div className="mt-4 flex justify-center gap-4">
+                <button onClick={() => handleChallenge1('A')} disabled={!!challenge1Answer} className="px-6 py-2 bg-white border border-slate-300 rounded-md font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Select Slide A
+                </button>
+                <button onClick={() => handleChallenge1('B')} disabled={!!challenge1Answer} className="px-6 py-2 bg-white border border-slate-300 rounded-md font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Select Slide B
+                </button>
+            </div>
+             {challenge1Answer && (
+                <div className="mt-4">
+                    {challenge1Answer === 'A' && (
+                        <div className="p-3 rounded text-red-800 bg-red-50 border border-red-200 flex items-start">
+                             <XCircleIcon className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
+                             <p><strong>Slide A (Incorrect):</strong> This slide represents a 'poorly-formed' granuloma typical of HP. Notice how the cells are loosely aggregated and blend into the surrounding inflammation.</p>
+                        </div>
+                    )}
+                     {challenge1Answer === 'B' && (
+                        <div className="p-3 rounded text-green-800 bg-green-50 border border-green-200 flex items-start">
+                           <CheckCircleIcon className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
+                           <p><strong>Slide B (Correct):</strong> Notice the sharp borders and how the epithelioid histiocytes are tightly packed together. This is a classic 'sarcoidal' granuloma.</p>
+                        </div>
+                    )}
+                </div>
+             )}
         </div>
 
         {/* Challenge 2 */}
         <div>
             <h3 className="font-semibold text-lg text-slate-700 mb-3">Challenge 2: Architectural Distribution</h3>
-            <p className="mb-4">Which image shows the <strong>'lymphangitic distribution'</strong> typical of Sarcoidosis?</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 <ImageChoice 
-                    label="Image A"
-                    imageUrl="https://picsum.photos/seed/pathologyHP2/300/200"
-                    isCorrect={false}
-                    isSelected={challenge2Answer === 'A'}
-                    feedback="This is a 'bronchiolocentric' pattern, a key feature of HP. The inflammation is centered on the small airways."
-                    onClick={() => handleChallenge2('A')}
-                    isAnswered={!!challenge2Answer}
-                />
-                <ImageChoice 
-                    label="Image B"
-                    imageUrl="https://picsum.photos/seed/pathologySarc2/300/200"
-                    isCorrect={true}
-                    isSelected={challenge2Answer === 'B'}
-                    feedback="Exactly! The granulomas are following the lung's lymphatic drainage routes along the bronchovascular bundles and septa."
-                    onClick={() => handleChallenge2('B')}
-                    isAnswered={!!challenge2Answer}
-                />
+            <p className="mb-4">Which slide shows the <strong>'lymphangitic distribution'</strong> typical of Sarcoidosis?</p>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <p className="font-medium text-center mb-2 text-slate-700">Slide A</p>
+                    <WSIViewer dziUrl={challenge2_HP_DziUrl} />
+                </div>
+                <div>
+                    <p className="font-medium text-center mb-2 text-slate-700">Slide B</p>
+                    <WSIViewer dziUrl={challenge2_Sarc_DziUrl} />
+                </div>
             </div>
+             <div className="mt-4 flex justify-center gap-4">
+                <button onClick={() => handleChallenge2('A')} disabled={!!challenge2Answer} className="px-6 py-2 bg-white border border-slate-300 rounded-md font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Select Slide A
+                </button>
+                <button onClick={() => handleChallenge2('B')} disabled={!!challenge2Answer} className="px-6 py-2 bg-white border border-slate-300 rounded-md font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Select Slide B
+                </button>
+            </div>
+            {challenge2Answer && (
+                <div className="mt-4">
+                    {challenge2Answer === 'A' && (
+                         <div className="p-3 rounded text-red-800 bg-red-50 border border-red-200 flex items-start">
+                            <XCircleIcon className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
+                             <p><strong>Slide A (Incorrect):</strong> This represents a 'bronchiolocentric' pattern, a key feature of HP. The inflammation is centered on the small airways.</p>
+                        </div>
+                    )}
+                     {challenge2Answer === 'B' && (
+                         <div className="p-3 rounded text-green-800 bg-green-50 border border-green-200 flex items-start">
+                            <CheckCircleIcon className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
+                             <p><strong>Slide B (Correct):</strong> This represents a lymphangitic distribution. The granulomas are following the lung's lymphatic drainage routes along the bronchovascular bundles and septa.</p>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
       </Card>
       
@@ -102,46 +142,5 @@ const EvaluationPhase: React.FC = () => {
     </div>
   );
 };
-
-interface ImageChoiceProps {
-    label: string;
-    imageUrl: string;
-    isCorrect: boolean;
-    isSelected: boolean;
-    isAnswered: boolean;
-    feedback: string;
-    onClick: () => void;
-}
-
-const ImageChoice: React.FC<ImageChoiceProps> = ({ label, imageUrl, isCorrect, isSelected, isAnswered, feedback, onClick }) => {
-    
-    const getBorderColor = () => {
-        if (!isAnswered) return 'border-slate-300 hover:border-blue-500';
-        if (isSelected) {
-            return isCorrect ? 'border-green-500' : 'border-red-500';
-        }
-        return 'border-slate-300';
-    };
-
-    return (
-        <div>
-            <button 
-                onClick={onClick}
-                disabled={isAnswered}
-                className={`w-full rounded-lg border-2 p-2 transition-all ${getBorderColor()} ${isAnswered ? 'cursor-default' : 'cursor-pointer'}`}>
-                <img src={imageUrl} alt={label} className="w-full h-auto rounded-md" />
-                <div className="flex items-center justify-between mt-2 px-1">
-                    <span className="font-semibold text-slate-700">{label}</span>
-                     {isAnswered && isSelected && (isCorrect ? <CheckCircleIcon className="h-6 w-6 text-green-500" /> : <XCircleIcon className="h-6 w-6 text-red-500" />)}
-                </div>
-            </button>
-            {isAnswered && isSelected && (
-                 <div className={`mt-2 text-sm p-2 rounded ${isCorrect ? 'text-green-800 bg-green-50' : 'text-red-800 bg-red-50'}`}>
-                    {feedback}
-                </div>
-            )}
-        </div>
-    );
-}
 
 export default EvaluationPhase;

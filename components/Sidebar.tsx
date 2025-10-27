@@ -1,14 +1,15 @@
-
 import React from 'react';
 import { Section } from '../types';
-import { MicroscopeIcon } from './icons';
+import { MicroscopeIcon, LogoutIcon, UserCircleIcon } from './icons';
 
 interface SidebarProps {
   currentSection: Section;
   onSectionChange: (section: Section) => void;
+  onLogout: () => void;
+  currentUser: string | null;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange }) => {
+const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, onLogout, currentUser }) => {
   const sections = Object.values(Section);
 
   return (
@@ -32,8 +33,23 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange }) =>
           </button>
         ))}
       </nav>
-      <div className="px-4 py-4 border-t border-slate-200 text-xs text-slate-500">
+      <div className="px-4 py-4 border-t border-slate-200">
+          {currentUser && (
+            <div className="flex items-center px-4 py-2.5 mb-2">
+                <UserCircleIcon className="h-6 w-6 mr-3 text-slate-500" />
+                <span className="text-sm font-medium text-slate-600 truncate">{currentUser}</span>
+            </div>
+          )}
+          <button
+            onClick={onLogout}
+            className="w-full text-left flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+          >
+            <LogoutIcon className="h-5 w-5 mr-3" />
+            Logout
+          </button>
+        <div className="mt-4 text-xs text-slate-500">
           <p>&copy; 2024 AI Instructional Design</p>
+        </div>
       </div>
     </aside>
   );

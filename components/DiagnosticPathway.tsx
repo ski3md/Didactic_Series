@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Card from './Card';
 import { CheckCircleIcon, XCircleIcon, LightbulbIcon } from './icons';
 
-type StepId = 'start' | 'evaluateDistribution' | 'refineDifferential' | 'ancillaryTests' | 'finalDx' | 'endEarly';
+type StepId = 
+  | 'q1_sarc_dist' 
+  | 'q2_hp_features'
+  | 'q3_necrotizing_infections'
+  | 'q4_blastomycosis'
+  | 'q5_crypto_op'
+  | 'q6_ntm_hot_tub'
+  | 'q7_gpa_microabscess'
+  | 'q8_berylliosis_mimic'
+  | 'q9_rheumatoid_nodule'
+  | 'q10_pjp_granuloma'
+  | 'compendium';
 
 interface Option {
   id: string;
@@ -18,107 +29,160 @@ interface Step {
   question: string;
   information?: string;
   options?: Option[];
-  conclusion?: string;
+  conclusion?: React.ReactNode;
 }
 
 const pathwayData: Record<StepId, Step> = {
-  start: {
-    id: 'start',
-    title: 'Step 1: Initial Presentation & Morphologic Assessment',
-    information:
-      'You receive a transbronchial biopsy from a 45-year-old patient with bilateral hilar lymphadenopathy. Microscopic examination reveals multiple, well-formed, non-necrotizing granulomas.',
-    question: 'What is the most important *initial* step in your evaluation?',
+  q1_sarc_dist: {
+    id: 'q1_sarc_dist',
+    title: 'Question 1: Sarcoidosis Distribution',
+    question: "The distribution of well-formed, non-necrotizing granulomas in classic pulmonary sarcoidosis is typically described as following the lymphatic routes of the lung parenchyma, a pattern referred to as:",
     options: [
-      {
-        id: 'a',
-        text: 'Immediately sign out as Sarcoidosis based on classic features.',
-        nextStep: 'endEarly',
-        feedback:
-          "This is a common pitfall. While the features are classic for Sarcoidosis, it's a diagnosis of exclusion. A pathologist's primary duty is to rule out mimics, especially infection.",
-        isCorrect: false,
-      },
-      {
-        id: 'b',
-        text: 'Evaluate the architectural distribution of the granulomas.',
-        nextStep: 'evaluateDistribution',
-        feedback:
-          'Excellent choice. Assessing the location of the granulomas (e.g., lymphangitic, bronchiolocentric, or random) is the key next step to narrowing the differential diagnosis.',
-        isCorrect: true,
-      },
-      {
-        id: 'c',
-        text: 'Order GMS and AFB stains immediately.',
-        nextStep: 'evaluateDistribution',
-        feedback:
-          'While ordering these stains is crucial, it should be done in parallel with a complete morphologic assessment. First, analyze the distribution to fully inform your differential.',
-        isCorrect: false,
-      },
+      { id: 'a', text: 'Bronchiolocentric', nextStep: 'q2_hp_features', isCorrect: false, feedback: 'Incorrect. A bronchiolocentric pattern is centered on small airways and is a key feature of Hypersensitivity Pneumonitis, not Sarcoidosis.' },
+      { id: 'b', text: 'Air-space centered', nextStep: 'q2_hp_features', isCorrect: false, feedback: 'Incorrect. An "air-space centered" distribution describes pathology filling the alveolar air spaces, like in bronchopneumonia. Sarcoidosis is an interstitial disease.' },
+      { id: 'c', text: 'Lymphangitic', nextStep: 'q2_hp_features', isCorrect: true, feedback: `Correct. Sarcoidosis is a disease where the granulomas are confined to the interstitium. The granulomas follow the lymphatic routes along the visceral pleura, interlobular septa, and bronchovascular bundles, which is defined as a "lymphangitic distribution".` },
+      { id: 'd', text: 'Panacinar', nextStep: 'q2_hp_features', isCorrect: false, feedback: 'Incorrect. Panacinar describes a pattern of emphysema affecting the entire acinus, not a distribution pattern for granulomas.' },
     ],
   },
-  evaluateDistribution: {
-    id: 'evaluateDistribution',
-    title: 'Step 2: Distribution Analysis',
-    information:
-      'You carefully examine the biopsy at low power and determine the granulomas are tracking along the bronchovascular bundles and interlobular septa.',
-    question: 'This pattern is best described as:',
-    options: [
-      {
-        id: 'a',
-        text: 'Bronchiolocentric distribution',
-        nextStep: 'refineDifferential',
-        feedback:
-          'Incorrect. A bronchiolocentric pattern is centered on small airways and is more typical of Hypersensitivity Pneumonitis.',
-        isCorrect: false,
-      },
-      {
-        id: 'b',
-        text: 'Random (miliary) distribution',
-        nextStep: 'refineDifferential',
-        feedback:
-          'Incorrect. A random or miliary pattern suggests hematogenous spread, often from infections like Tuberculosis or fungi.',
-        isCorrect: false,
-      },
-      {
-        id: 'c',
-        text: 'Lymphangitic distribution',
-        nextStep: 'refineDifferential',
-        feedback: 'Correct. This pattern follows the lung\'s lymphatic pathways and is a hallmark feature of Sarcoidosis.',
-        isCorrect: true,
-      },
-    ],
-  },
-  refineDifferential: {
-      id: 'refineDifferential',
-      title: 'Step 3: Ancillary Testing',
-      information: 'The findings of well-formed, non-necrotizing granulomas in a lymphangitic distribution strongly suggest Sarcoidosis.',
-      question: 'Which ancillary tests are essential to perform to rule out mimics before suggesting Sarcoidosis in your report?',
+  q2_hp_features: {
+      id: 'q2_hp_features',
+      title: 'Question 2: Hypersensitivity Pneumonitis Features',
+      question: 'Histologic confirmation of classic, chronic hypersensitivity pneumonia (HP) relies on identifying which combination of features?',
       options: [
-          {id: 'a', text: 'GMS and AFB stains.', nextStep: 'finalDx', feedback: 'Correct. It is mandatory to rule out fungal and mycobacterial organisms, as they can present with similar granulomatous patterns.', isCorrect: true},
-          {id: 'b', text: 'Congo Red stain.', nextStep: 'finalDx', feedback: 'Incorrect. Congo Red is used to detect amyloid, not to rule out infectious granulomas.', isCorrect: false},
-          {id: 'c', text: 'No stains are needed; the morphology is classic.', nextStep: 'endEarly', feedback: 'Incorrect. Sarcoidosis is a diagnosis of exclusion. Failing to perform stains to rule out infection is a critical error.', isCorrect: false},
+          {id: 'a', text: 'Well-formed, tightly clustered, non-necrotizing granulomas in a lymphangitic distribution.', nextStep: 'q3_necrotizing_infections', isCorrect: false, feedback: 'Incorrect. This describes the classic findings of Sarcoidosis.'},
+          {id: 'b', text: 'Necrotizing granulomas with central bland necrosis and scarce organisms.', nextStep: 'q3_necrotizing_infections', isCorrect: false, feedback: 'Incorrect. This pattern is characteristic of infectious granulomas, like Tuberculosis or Histoplasmosis.'},
+          {id: 'c', text: 'Loose, poorly formed non-necrotizing granulomas centered on the peribronchiolar interstitium.', nextStep: 'q3_necrotizing_infections', isCorrect: true, feedback: 'Correct. HP is characterized by a lymphocyte-rich interstitial infiltrate in a distinctly bronchiolocentric fashion, with associated loosely formed granulomas.'},
+          {id: 'd', text: 'Granulomas predominantly situated within the lumens of distal airways.', nextStep: 'q3_necrotizing_infections', isCorrect: false, feedback: 'Incorrect. This unusual air-space centered granuloma location is a key feature of the MAC infection variant known as "hot-tub lung".'},
       ]
   },
-  finalDx: {
-      id: 'finalDx',
-      title: 'Step 4: Final Diagnosis & Correlation',
-      // FIX: Added missing 'question' property to satisfy the 'Step' interface.
-      question: '',
-      conclusion: 'The GMS and AFB stains are negative for microorganisms. You can now confidently report the findings. \n\n**Diagnosis:** Non-necrotizing granulomatous inflammation, consistent with Sarcoidosis in the appropriate clinical context. \n\n**Comment:** The presence of well-formed, non-necrotizing granulomas with a lymphangitic distribution, combined with negative stains for organisms, are classic features of Sarcoidosis. Clinical and radiologic correlation is recommended.'
+  q3_necrotizing_infections: {
+      id: 'q3_necrotizing_infections',
+      title: 'Question 3: Necrotizing Granulomas',
+      question: 'Necrotizing granulomatous inflammation involving central bland (caseating) necrosis is characteristic of which major group of infectious diseases?',
+      options: [
+          {id: 'a', text: 'Tuberculosis and Endemic Fungal Infections (e.g., Histoplasmosis).', nextStep: 'q4_blastomycosis', isCorrect: true, feedback: 'Correct. Tuberculosis is the classic example of caseating necrosis. Many endemic fungi, like Histoplasmosis, also produce necrotizing granulomas with central bland necrosis.'},
+          {id: 'b', text: 'Classic Granulomatosis with Polyangiitis (GPA).', nextStep: 'q4_blastomycosis', isCorrect: false, feedback: 'Incorrect. The necrosis in GPA is typically "dirty" or suppurative, with neutrophilic debris, not bland.'},
+          {id: 'c', text: 'MAC infection (hot-tub lung variant).', nextStep: 'q4_blastomycosis', isCorrect: false, feedback: 'Incorrect. Hot-tub lung typically features non-necrotizing granulomas within the airways.'},
+          {id: 'd', text: 'Foreign body reaction (Aspiration pneumonia).', nextStep: 'q4_blastomycosis', isCorrect: false, feedback: 'Incorrect. Aspiration can cause granulomas, but caseating necrosis is not a feature.'},
+      ]
   },
-  endEarly: {
-      id: 'endEarly',
-      title: 'Pathway Terminated: A Learning Opportunity',
-      // FIX: Added missing 'question' property to satisfy the 'Step' interface.
+    q4_blastomycosis: {
+    id: 'q4_blastomycosis',
+    title: 'Question 4: Suppurative Granulomas',
+    question: 'A lung biopsy reveals necrotizing granulomatous inflammation with a prominent component of necrotic neutrophils (suppuration). Which endemic fungal organism is classically associated with this histological pattern?',
+    options: [
+      { id: 'a', text: 'Histoplasma capsulatum', nextStep: 'q5_crypto_op', isCorrect: false, feedback: 'Incorrect. Histoplasmosis typically causes bland, caseous-type necrosis, not suppurative inflammation.' },
+      { id: 'b', text: 'Blastomyces dermatitidis', nextStep: 'q5_crypto_op', isCorrect: true, feedback: 'Correct. Blastomycosis is frequently characterized by suppurative granulomatous inflammation, where the central necrosis is rich in neutrophils.' },
+      { id: 'c', text: 'Coccidioides immitis', nextStep: 'q5_crypto_op', isCorrect: false, feedback: 'Incorrect. Coccidioidomycosis causes necrotizing granulomas, but prominent suppuration is the classic feature of Blastomycosis.' },
+      { id: 'd', text: 'Cryptococcus neoformans', nextStep: 'q5_crypto_op', isCorrect: false, feedback: 'Incorrect. Cryptococcus typically forms poorly-formed granulomas and is not associated with a prominent suppurative response.' },
+    ],
+  },
+  q5_crypto_op: {
+    id: 'q5_crypto_op',
+    title: 'Question 5: Cryptococcus & Organizing Pneumonia',
+    question: 'A common manifestation of pulmonary cryptococcosis is organizing pneumonia (OP). This secondary OP is histologically distinguished from cryptogenic organizing pneumonia (COP) by the presence of:',
+    options: [
+      { id: 'a', text: 'Prominent foamy macrophages.', nextStep: 'q6_ntm_hot_tub', isCorrect: false, feedback: 'Incorrect. Foamy macrophages are more characteristic of Pneumocystis Pneumonia.' },
+      { id: 'b', text: 'Diffuse alveolar damage (DAD).', nextStep: 'q6_ntm_hot_tub', isCorrect: false, feedback: 'Incorrect. DAD is a pattern of acute lung injury, not typically seen with OP.' },
+      { id: 'c', text: 'Fibrin thrombi in small arteries.', nextStep: 'q6_ntm_hot_tub', isCorrect: false, feedback: 'Incorrect. This would suggest a vasculitic or thrombotic process.' },
+      { id: 'd', text: 'Associated granulomatous inflammation including loose clusters of epithelioid cells and giant cells.', nextStep: 'q6_ntm_hot_tub', isCorrect: true, feedback: 'Correct. Organizing pneumonia caused by Cryptococcus is distinguished by the presence of associated granulomatous inflammation. The yeast forms can often be found within the inflammatory infiltrate.' },
+    ],
+  },
+  q6_ntm_hot_tub: {
+    id: 'q6_ntm_hot_tub',
+    title: 'Question 6: NTM "Hot-Tub Lung"',
+    question: 'The MAC infection variant known as "hot-tub lung" is notable because the non-necrotizing and focally necrotizing granulomas are situated predominantly within which location?',
+    options: [
+        {id: 'a', text: 'Bronchial wall interstitium (like middle lobe syndrome).', nextStep: 'q7_gpa_microabscess', isCorrect: false, feedback: 'Incorrect. This describes a different pattern of NTM infection.'},
+        {id: 'b', text: 'Visceral pleura (lymphangitic pattern).', nextStep: 'q7_gpa_microabscess', isCorrect: false, feedback: 'Incorrect. This is the pattern for Sarcoidosis.'},
+        {id: 'c', text: 'Lumens of distal airways.', nextStep: 'q7_gpa_microabscess', isCorrect: true, feedback: 'Correct. In "hot-tub lung", the granulomas are uniquely situated within the lumens of distal airways, an unusual air-space centered location distinct from the interstitial location seen in Sarcoidosis or classic HP.'},
+        {id: 'd', text: 'Alveolar septa (interstitial pneumonia).', nextStep: 'q7_gpa_microabscess', isCorrect: false, feedback: 'Incorrect. While there is interstitial inflammation, the defining feature is the intraluminal location of the granulomas.'},
+    ]
+  },
+  q7_gpa_microabscess: {
+      id: 'q7_gpa_microabscess',
+      title: 'Question 7: Granulomatosis with Polyangiitis (GPA)',
+      question: 'Which microscopic feature, characterized by a small focus of necrotic neutrophils surrounded by epithelioid histiocytes and giant cells, is considered an extremely helpful finding in the histologic diagnosis of classic GPA?',
+      options: [
+          {id: 'a', text: 'Central coagulative necrosis surrounded by palisading histiocytes.', nextStep: 'q8_berylliosis_mimic', isCorrect: false, feedback: 'Incorrect. This describes a Rheumatoid Nodule.'},
+          {id: 'b', text: 'Geographic zones of bland necrosis.', nextStep: 'q8_berylliosis_mimic', isCorrect: false, feedback: 'Incorrect. This is more typical for infectious granulomas like TB or Fungi.'},
+          {id: 'c', text: 'Granulomatous microabscess.', nextStep: 'q8_berylliosis_mimic', isCorrect: true, feedback: 'Correct. The granulomatous microabscess is a highly characteristic, though not always present, finding in GPA that helps distinguish it from other necrotizing granulomatous diseases.'},
+          {id: 'd', text: 'Lymphoid aggregates with germinal centers.', nextStep: 'q8_berylliosis_mimic', isCorrect: false, feedback: 'Incorrect. This is a non-specific finding of chronic inflammation.'},
+      ]
+  },
+    q8_berylliosis_mimic: {
+    id: 'q8_berylliosis_mimic',
+    title: 'Question 8: Berylliosis Mimicry',
+    question: 'Chronic beryllium exposure can lead to pulmonary interstitial fibrosis and non-necrotizing granulomas. Histologically, this pneumoconiosis is indistinguishable from which noninfectious diffuse granulomatous lung disease?',
+    options: [
+      { id: 'a', text: 'Hypersensitivity Pneumonitis', nextStep: 'q9_rheumatoid_nodule', isCorrect: false, feedback: 'Incorrect. HP granulomas are typically loose and poorly-formed, unlike the well-formed granulomas of Berylliosis.' },
+      { id: 'b', text: 'Hard Metal Pneumoconiosis', nextStep: 'q9_rheumatoid_nodule', isCorrect: false, feedback: 'Incorrect. Hard metal disease (giant cell interstitial pneumonia) has a different histologic appearance.' },
+      { id: 'c', text: 'Pulmonary Sarcoidosis', nextStep: 'q9_rheumatoid_nodule', isCorrect: true, feedback: 'Correct. Chronic Berylliosis causes well-formed, non-necrotizing granulomas that are histologically identical to those of Sarcoidosis. The distinction depends on clinical history of exposure and specialized testing.' },
+      { id: 'd', text: 'Silicosis', nextStep: 'q9_rheumatoid_nodule', isCorrect: false, feedback: 'Incorrect. Silicotic nodules have a characteristic whorled, hyalinized collagen appearance.' },
+    ],
+  },
+  q9_rheumatoid_nodule: {
+    id: 'q9_rheumatoid_nodule',
+    title: 'Question 9: Rheumatoid Nodule',
+    question: 'In lung pathology, the irregularly shaped granuloma known as the Rheumatoid Nodule is defined by a large geographic area of central coagulative necrosis surrounded by a peripheral layer of:',
+    options: [
+      { id: 'a', text: 'Prominent plasma cells.', nextStep: 'q10_pjp_granuloma', isCorrect: false, feedback: 'Incorrect. While plasma cells may be in the surrounding inflammation, they do not define the border of the necrosis.' },
+      { id: 'b', text: 'Polymorphic lymphocytes.', nextStep: 'q10_pjp_granuloma', isCorrect: false, feedback: 'Incorrect. This is non-specific.' },
+      { id: 'c', text: 'Palisading histiocytes.', nextStep: 'q10_pjp_granuloma', isCorrect: true, feedback: 'Correct. The Rheumatoid Nodule is characterized by central coagulative necrosis surrounded by a distinctive fence-like arrangement of elongated histiocytes, known as palisading.' },
+      { id: 'd', text: 'Eosinophil-rich infiltrate.', nextStep: 'q10_pjp_granuloma', isCorrect: false, feedback: 'Incorrect. A prominent eosinophilic infiltrate would suggest a different diagnosis, such as EGPA.' },
+    ],
+  },
+  q10_pjp_granuloma: {
+    id: 'q10_pjp_granuloma',
+    title: 'Question 10: Pneumocystis Pneumonia (PJP) Granulomas',
+    question: 'While typically presenting with frothy intra-alveolar exudate, Pneumocystis pneumonia may rarely present with granulomatous inflammation. When granulomas are present in PJP, their characteristic location is:',
+    options: [
+      { id: 'a', text: 'Confined to the interlobular septa.', nextStep: 'compendium', isCorrect: false, feedback: 'Incorrect. This describes a lymphangitic pattern.' },
+      { id: 'b', text: 'Centered around the vessel walls (vasculitis).', nextStep: 'compendium', isCorrect: false, feedback: 'Incorrect. This would suggest a primary vasculitis.' },
+      { id: 'c', text: 'In the peribronchiolar interstitium.', nextStep: 'compendium', isCorrect: false, feedback: 'Incorrect. This is the location for HP.' },
+      { id: 'd', text: 'Within the air space.', nextStep: 'compendium', isCorrect: true, feedback: 'Correct. Granulomatous inflammation in PJP, when it occurs, involves poorly formed granulomas located within the air space, accompanying the characteristic frothy exudates.' },
+    ],
+  },
+  compendium: {
+      id: 'compendium',
+      title: 'Diagnostic Compendium: Granulomatous Diseases',
       question: '',
-      conclusion: 'This diagnostic path has been terminated because a critical error was made. Jumping to conclusions or failing to perform necessary ancillary studies can have significant consequences. The primary role of the pathologist in granulomatous disease is to first exclude infection and consider the full differential diagnosis based on a systematic evaluation of all morphologic clues.'
+      conclusion: 'You have completed the diagnostic pathway. Below is a comprehensive summary table of key granulomatous diseases for your reference. This table integrates clinical, radiologic, and histopathologic features to aid in differential diagnosis.'
   }
 };
 
+const compendiumTableData = {
+    headers: ['Disease Entity', 'Clinical/Radiology (HRCT)', 'Histopathology (Granuloma Characteristics)', 'Distribution Pattern', 'Serology/Special Tests', 'Differential Diagnosis Key Features'],
+    rows: [
+        ['Sarcoidosis', 'Young/middle-aged adults. Exquisitely lymphangitic distribution (nodular/linear bands).', 'Well-formed, tightly clustered, non-necrotizing granulomas. Often dense collagen fibrosis. Non-necrotizing granulomatous vasculitis common.', 'Lymphangitic: Interstitium (septa, bronchovascular bundles, pleura).', 'Nonspecific inclusions (Schaumann bodies). Diagnosis of exclusion.', 'Must exclude granulomatous infections. Berylliosis is histologically indistinguishable.'],
+        ['Hypersensitivity Pneumonia (HP)', 'Reaction to inhaled antigens. Ground-glass opacities, centrilobular nodules (early); honeycomb (late).', 'Loosely formed granulomas. Associated chronic bronchiolitis and lymphoplasmacytic infiltrate.', 'Bronchiolocentric: Centered on the peribronchiolar interstitium.', 'Identification of causative antigen is key.', 'Fibrotic HP can mimic UIP. Classic HP differs from "hot-tub lung" (MAC).'],
+        ['Tuberculosis (TB)', 'Reactivation disease. Solitary nodule or miliary lesions.', 'Necrotizing (caseating) granuloma with central bland necrosis. Organisms are scarce.', 'N/A', 'Acid-fast stain shows scarce organisms. Culture or molecular required.', 'Histology shared with NTM; molecular testing required. Exclude endemic fungi.'],
+        ['NTM / MAC Infections', 'Resembles TB. May involve localized bronchiectasis or hot-tub lung syndrome.', 'Varies: Necrotizing granulomas (like TB); Loose, non-necrotizing (airway wall); Non-necrotizing in distal airway lumens (Hot-tub lung).', 'N/A', 'Culture and molecular techniques.', 'Hot-tub lung variant has unique luminal granuloma location.'],
+        ['Histoplasmosis', 'Endemic in Mississippi/Ohio River valleys. Persistent lung nodule.', 'Necrotizing granulomatous inflammation; central necrosis may be concentric/calcified. Acute form may resemble GPA.', 'N/A', 'GMS stain reveals small, uniform, oval-shaped yeasts.', 'Acute form may mimic Lymphomatoid Granulomatosis or GPA.'],
+        ['Blastomycosis', 'Endemic in south/central US.', 'Necrotizing and non-necrotizing granulomas. Characteristically suppurative granulomatous inflammation.', 'N/A', 'Large, rounded yeasts with thick, doubly refractile cell walls and broad-based budding.', 'Distinguished from Cryptococcus (smaller) and Coccidioides.'],
+        ['Cryptococcosis', 'Worldwide distribution. Isolated lung nodules.', 'Poorly formed, loose non-necrotizing and often coexisting necrotizing granulomas. Yeast in giant cells.', 'N/A', 'Yeast has clear halo (capsule). Mucicarmine stain is positive.', 'May present as secondary organizing pneumonia.'],
+        ['Coccidioidomycosis', 'Endemic in southwestern US. Localized lung nodules. Tissue eosinophilia common.', 'Necrotizing granulomatous inflammation is most common.', 'N/A', 'Key feature: Large spherules containing multiple small endospores.', 'N/A'],
+        ['GPA (Classic Type)', 'Systemic vasculitis (upper respiratory, lung, kidney).', 'Necrotizing granulomatous inflammation (geographic dirty necrosis). Granulomatous microabscesses. Necrotizing vasculitis.', 'N/A', 'C-ANCA/PR3 positive (highly specific).', 'Histology may overlap with necrotizing infections. Requires clinical context.'],
+        ['EGPA', 'Occurs in patients with asthma and blood eosinophilia.', 'Necrotizing granulomatous inflammation, eosinophilic pneumonia, and necrotizing vasculitis. Eosinophil-rich.', 'N/A', 'P-ANCA/MPO positive in a minority.', 'Distinguished from GPA by overwhelming eosinophilia.'],
+        ['Rheumatoid Nodule', 'Associated with Rheumatoid Arthritis.', 'Irregularly shaped granuloma with large central coagulative necrosis. Surrounded by peripheral palisading histiocytes.', 'N/A', 'Diagnosis hinges on underlying CTD.', 'Distinguish from infections (no organisms) and vasculitides.'],
+        ['Berylliosis', 'Requires history of beryllium exposure.', 'Interstitial fibrosis with non-necrotizing granulomas. May contain Schaumann bodies.', 'N/A', 'Beryllium Lymphocyte Proliferation Test.', 'Histologically indistinguishable from sarcoidosis.'],
+        ['Langerhans Cell Histiocytosis (LCH)', 'Almost exclusively in smokers. Cysts and nodules, upper lobe predominant.', 'Bronchiolocentric nodules of Langerhans cells, eosinophils, and macrophages; vaguely granulomatous.', 'Bronchiolocentric', 'CD1a+, S-100+. Birbeck granules on EM.', 'N/A'],
+        ['Aspiration Pneumonia', 'Chronic presentation may mimic infection or tumor.', 'Chronic/necrotizing granulomatous inflammation (foreign body reaction) surrounding aspirated material.', 'Bronchiolocentric', 'Identification of foreign material (e.g., vegetable matter).', 'Must find foreign material to distinguish from infection.']
+    ]
+};
+
 const DiagnosticPathway: React.FC = () => {
-  const [currentStepId, setCurrentStepId] = useState<StepId>('start');
+  const [currentStepId, setCurrentStepId] = useState<StepId>('q1_sarc_dist');
   const [history, setHistory] = useState<({step: Step, answerId: string})[]>([]);
+  const activeCardRef = useRef<HTMLDivElement>(null);
 
   const currentStep = pathwayData[currentStepId];
+
+  useEffect(() => {
+    if (activeCardRef.current) {
+        activeCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, [currentStepId]);
 
   const handleSelectOption = (option: Option) => {
     setHistory([...history, {step: currentStep, answerId: option.id}]);
@@ -126,7 +190,7 @@ const DiagnosticPathway: React.FC = () => {
   };
 
   const restartPathway = () => {
-    setCurrentStepId('start');
+    setCurrentStepId('q1_sarc_dist');
     setHistory([]);
   }
 
@@ -164,31 +228,30 @@ const DiagnosticPathway: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">Diagnostic Pathway</h1>
-        <p className="mt-2 text-md text-slate-600">Simulating real-world diagnostic decision-making.</p>
+        <h1 className="text-3xl font-bold text-slate-900">Comprehensive Diagnostic Pathway</h1>
+        <p className="mt-2 text-md text-slate-600">Simulating a multi-stage diagnostic workflow for granulomatous diseases.</p>
       </header>
       
-      {history.map(({step, answerId}, index) => {
-          const answeredOption = step.options?.find(o => o.id === answerId);
-          return (
-               <Card key={index} className="opacity-60">
-                   <h2 className="text-xl font-semibold text-slate-700 mb-2">{step.title}</h2>
-                   {step.information && <p className="bg-slate-50 p-3 rounded-lg border border-slate-200 text-slate-600 mb-4">{step.information}</p>}
-                   <p className="font-semibold text-slate-600 mb-3">{step.question}</p>
-                   <div className="space-y-3">
-                       {step.options?.map(option => renderOption(option, step))}
-                   </div>
-               </Card>
-          )
-      })}
+      {history.map(({step, answerId}, index) => (
+           <Card key={index} className="opacity-70 !shadow-none border-slate-200/60">
+               <h2 className="text-xl font-semibold text-slate-700 mb-2">{step.title}</h2>
+               {step.information && <p className="bg-slate-50 p-3 rounded-lg border border-slate-200 text-slate-600 mb-4">{step.information}</p>}
+               <p className="font-semibold text-slate-600 mb-3">{step.question}</p>
+               <div className="space-y-3">
+                   {step.options?.map(option => renderOption(option, step))}
+               </div>
+           </Card>
+      ))}
 
-      <Card>
+      <Card ref={activeCardRef}>
         <h2 className="text-2xl font-semibold text-slate-800 mb-4">{currentStep.title}</h2>
+        
         {currentStep.information && (
             <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 text-blue-800 space-y-3 mb-6">
                 <p>{currentStep.information}</p>
             </div>
         )}
+        
         {currentStep.question && <p className="font-semibold text-slate-700 mb-4">{currentStep.question}</p>}
         
         {currentStep.options && (
@@ -197,13 +260,32 @@ const DiagnosticPathway: React.FC = () => {
             </div>
         )}
 
-        {currentStep.conclusion && (
-             <div className="mt-4 p-4 bg-slate-50 border border-slate-200 rounded-lg animate-fade-in whitespace-pre-line">
+        {currentStep.id === 'compendium' && (
+             <div className="mt-4 p-4 bg-slate-50 border border-slate-200 rounded-lg animate-fade-in">
                  <div className="flex items-center text-lg font-semibold text-slate-800 mb-3">
                      <LightbulbIcon className="h-6 w-6 text-blue-600 mr-2" />
-                     Conclusion
+                     {currentStep.conclusion}
                  </div>
-                 <p className="text-slate-700 leading-relaxed">{currentStep.conclusion}</p>
+                 <div className="overflow-x-auto mt-4">
+                  <table className="w-full text-sm text-left text-slate-500 border-collapse">
+                    <thead className="text-xs text-slate-700 uppercase bg-slate-100">
+                      <tr>
+                        {compendiumTableData.headers.map(header => (
+                          <th key={header} scope="col" className="px-4 py-3 border border-slate-200">{header}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {compendiumTableData.rows.map((row, rowIndex) => (
+                        <tr key={rowIndex} className="bg-white even:bg-slate-50 border-b">
+                          {row.map((cell, cellIndex) => (
+                            <td key={cellIndex} className="px-4 py-3 border border-slate-200">{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                 </div>
                  <div className="mt-6 text-center">
                     <button 
                         onClick={restartPathway}

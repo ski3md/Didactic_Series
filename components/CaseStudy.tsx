@@ -1,9 +1,13 @@
-
 import React, { useState } from 'react';
 import Card from './Card';
+import WSIViewer from './WSIViewer'; // Import the new component
 
 const CaseStudy: React.FC = () => {
     const [showAnswer, setShowAnswer] = useState(false);
+    
+    // This is a real, public DZI link to a pathology slide from The Cancer Genome Atlas (TCGA).
+    // This is the type of link required for the viewer to work.
+    const wholeSlideImageDziUrl = "https://openseadragon.github.io/example-images/aperio/aperio.dzi";
 
   return (
     <div className="animate-fade-in">
@@ -22,9 +26,17 @@ const CaseStudy: React.FC = () => {
             </div>
              <div>
                 <h3 className="font-bold text-lg text-slate-800 mb-2">Part 2: Histologic Findings</h3>
-                <div className="flex items-start gap-4">
-                     <img src="https://picsum.photos/seed/pathology1/200/150" alt="Histology slide" className="rounded-lg shadow-md mt-1" />
-                    <p className="text-slate-600 flex-1">The biopsy shows a cellular interstitial pneumonia. There are numerous small, poorly-formed granulomas centered on the bronchioles (bronchiolocentric). The granulomas are composed of loose collections of epithelioid histiocytes and multinucleated giant cells. There is no necrosis. The surrounding interstitium is expanded by a dense lymphoplasmacytic infiltrate, and scattered eosinophils are present. You also note foci of organizing pneumonia.</p>
+                 <div className="space-y-3">
+                    <WSIViewer dziUrl={wholeSlideImageDziUrl} />
+                    <div className="bg-blue-50 p-4 rounded-md border border-blue-200 text-sm text-blue-800">
+                      <p><strong>How to Add Your Own Slides:</strong> To display a slide, the viewer needs a direct link to the image's tile source, not a link to a webpage that contains a viewer.</p>
+                      <ul className="list-disc list-inside mt-2 pl-2">
+                        <li><strong>Correct Format:</strong> A URL ending in <strong>`.dzi`</strong> (like the example used here) or a link to an IIIF manifest.</li>
+                        <li><strong>Incorrect Format:</strong> A webpage URL like `https://pathpresenter.net/display/...`.</li>
+                      </ul>
+                      <p className="mt-2">To use slides from a service like PathPresenter, you must check if they provide an API or an export option that gives you a direct tile source URL.</p>
+                    </div>
+                    <p className="text-slate-600 flex-1 pt-2">The biopsy shows a cellular interstitial pneumonia. There are numerous small, poorly-formed granulomas centered on the bronchioles (bronchiolocentric). The granulomas are composed of loose collections of epithelioid histiocytes and multinucleated giant cells. There is no necrosis. The surrounding interstitium is expanded by a dense lymphoplasmacytic infiltrate, and scattered eosinophils are present. You also note foci of organizing pneumonia.</p>
                 </div>
             </div>
              <div>
