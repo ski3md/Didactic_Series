@@ -2,6 +2,8 @@
 
 This is an interactive, all-inclusive didactic educational experience for pathology residents on granulomatous diseases of the lung. The module is built using the ADDIE model of instructional design, providing not only a learning experience on the topic but also a meta-narrative on how the module itself was constructed.
 
+This project has been configured with Vite for a modern, fast development experience and easy deployment.
+
 ## Key Features
 
 -   **Interactive Case Studies**: Explore clinical scenarios with integrated Whole Slide Imaging (WSI) powered by OpenSeadragon.
@@ -13,48 +15,94 @@ This is an interactive, all-inclusive didactic educational experience for pathol
 
 ## Tech Stack
 
--   **Frontend**: [React](https://reactjs.org/) with [TypeScript](https://www.typescriptlang.org/)
+-   **Framework**: [React](https://reactjs.org/) with [TypeScript](https://www.typescriptlang.org/)
+-   **Build Tool**: [Vite](https://vitejs.dev/)
 -   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 -   **AI**: [Google Gemini API](https://ai.google.dev/docs)
 -   **Whole Slide Imaging**: [OpenSeadragon](https://openseadragon.github.io/)
--   **Build/Dev**: No build step needed; runs directly in the browser using ES modules and import maps.
+
+---
 
 ## Getting Started
 
-This project is designed to be run in an environment that supports modern web standards and can provide environment variables.
+Follow these instructions to get the project running locally and to deploy it.
 
-### Prerequisites
-
-You will need a Google Gemini API Key to use the "AI Case Generator" feature.
-
-### Configuration
-
-1.  If running locally or in an environment that supports it, create a `.env` file in the root of the project.
-2.  Add your API key to the `.env` file:
-    ```
-    API_KEY="YOUR_GEMINI_API_KEY_HERE"
-    ```
-3.  Serve the `index.html` file using a simple local web server.
-
-### Running the App
-
-Since this project uses ES modules and an import map directly in `index.html`, there is no complex build step required. You can serve the project directory with any static file server. For example, using Python:
+### 1. Clone the Repository
 
 ```bash
-python -m http.server
+git clone https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>.git
+cd <YOUR_REPO_NAME>
 ```
 
-Then, open your browser to `http://localhost:8000`.
+### 2. Install Dependencies
 
-## Project Structure
+You will need [Node.js](https://nodejs.org/) installed. Then, run:
+```bash
+npm install
+```
 
--   `index.html`: The main entry point of the application.
--   `index.tsx`: The main React render script.
--   `App.tsx`: The root component that handles navigation and layout.
--   `components/`: Contains all the React components.
-    -   `Sidebar.tsx`: The main navigation component.
-    -   `Home.tsx`, `JobAid.tsx`, etc.: Components for each section of the learning module.
-    -   `AnalysisPhase.tsx`, `DesignPhase.tsx`, etc.: Components explaining the ADDIE model.
-    -   `WSIViewer.tsx`: The reusable OpenSeadragon component for viewing whole slide images.
-    -   `AICaseGenerator.tsx`: The component that interacts with the Gemini API.
--   `types.ts`: TypeScript type definitions used across the application.
+### 3. Configure Environment Variables
+
+The AI Case Generator feature requires a Google Gemini API Key.
+
+1.  Create a new file named `.env` in the root of the project.
+2.  Add your API key to this file:
+
+    ```env
+    API_KEY="YOUR_GEMINI_API_KEY_HERE"
+    ```
+
+    _Note: The `.env` file is listed in `.gitignore` and should not be committed to your repository._
+
+### 4. Run the Development Server
+
+```bash
+npm run dev
+```
+
+This will start the Vite development server. Open your browser to the local address provided (usually `http://localhost:5173`).
+
+---
+
+## Deployment to GitHub Pages
+
+This project is pre-configured for easy deployment to GitHub Pages.
+
+### 1. Update Project Configuration
+
+Before deploying, you need to set the correct repository name.
+
+-   **In `package.json`**: Update the `homepage` field to point to your GitHub Pages URL.
+    ```json
+    "homepage": "https://<YOUR_GITHUB_USERNAME>.github.io/<YOUR_REPO_NAME>",
+    ```
+-   **In `vite.config.ts`**: Update the `base` property to match your repository name.
+    ```ts
+    // ...
+    base: '/<YOUR_REPO_NAME>/',
+    // ...
+    ```
+    (This has been pre-filled with `/pathology-learning-module/`. Change it if your repo name is different.)
+
+### 2. Deploy
+
+The project includes the `gh-pages` package to simplify deployment. When you run the deploy script, it will use the `API_KEY` from your local `.env` file and embed it in the static files.
+
+**Important**: For a public repository, be aware that the API key will be visible in the built JavaScript files. For personal or private use, this may be acceptable. For a truly secure public deployment, you would need to implement a server-side component to proxy API requests, which is beyond the scope of a static site deployment.
+
+Run the following command to deploy:
+
+```bash
+npm run deploy
+```
+
+This command will first build the project into a `dist` folder and then push the contents of that folder to a special `gh-pages` branch on your repository.
+
+### 3. Configure GitHub Pages
+
+1.  In your GitHub repository, go to **Settings > Pages**.
+2.  Under **Build and deployment**, set the **Source** to **Deploy from a branch**.
+3.  Set the **Branch** to `gh-pages` and the folder to `/ (root)`.
+4.  Click **Save**.
+
+Your site should be live at the URL specified in your `homepage` field within a few minutes.
