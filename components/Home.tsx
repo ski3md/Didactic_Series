@@ -6,7 +6,7 @@ const Home: React.FC = () => {
   return (
     <div className="space-y-8 animate-fade-in">
       <header className="text-center">
-        <h1 className="text-4xl font-bold text-slate-900 tracking-tight">Granulomatous Diseases of the Lung</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Granulomatous Diseases of the Lung</h1>
         <p className="mt-4 text-lg text-slate-600">An Interactive Learning Module for Pathology Residents</p>
       </header>
 

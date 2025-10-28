@@ -58,7 +58,7 @@ const AnalysisPhase: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">Phase 1: Analysis</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Phase 1: Analysis</h1>
         <p className="mt-2 text-md text-slate-600">Defining the learner, their knowledge gaps, and the context for learning.</p>
       </header>
 
@@ -85,7 +85,7 @@ const AnalysisPhase: React.FC = () => {
 
       <Card>
         <SectionHeader icon={<TargetIcon className="h-7 w-7 text-blue-600" />} title="3. Define the Knowledge Gap" />
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <h3 className="font-semibold text-slate-700 mb-2">Current State (What they can do)</h3>
             <ul className="space-y-2 text-slate-600 list-disc list-inside">

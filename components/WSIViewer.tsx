@@ -43,7 +43,7 @@ const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl }) => {
   return (
     <div 
         ref={viewerRef} 
-        className="w-full h-96 bg-black rounded-lg shadow-md openseadragon-container"
+        className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md openseadragon-container"
         aria-label="Interactive whole slide image viewer"
     >
     </div>

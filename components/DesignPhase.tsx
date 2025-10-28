@@ -6,7 +6,7 @@ const DesignPhase: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">Phase 2: Design</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Phase 2: Design</h1>
         <p className="mt-2 text-md text-slate-600">Creating specific, measurable learning objectives based on the analysis.</p>
       </header>
 

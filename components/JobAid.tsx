@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import Card from './Card';
 
@@ -6,7 +7,7 @@ const JobAid: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">Comparative Table</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Comparative Table</h1>
         <p className="mt-2 text-md text-slate-600">Distinguishing Sarcoidosis vs. Tuberculosis</p>
       </header>
 

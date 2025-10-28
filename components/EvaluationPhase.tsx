@@ -25,7 +25,7 @@ const EvaluationPhase: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">Visual Discrimination Challenge</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Visual Discrimination Challenge</h1>
         <p className="mt-2 text-md text-slate-600">Sharpening your eye for Sarcoidosis vs. Hypersensitivity Pneumonitis.</p>
       </header>
 
@@ -46,7 +46,7 @@ const EvaluationPhase: React.FC = () => {
                     <WSIViewer dziUrl={challenge1_Sarc_DziUrl} />
                 </div>
             </div>
-            <div className="mt-4 flex justify-center gap-4">
+            <div className="mt-4 flex flex-col sm:flex-row justify-center gap-4">
                 <button onClick={() => handleChallenge1('A')} disabled={!!challenge1Answer} className="px-6 py-2 bg-white border border-slate-300 rounded-md font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed">
                     Select Slide A
                 </button>
@@ -86,7 +86,7 @@ const EvaluationPhase: React.FC = () => {
                     <WSIViewer dziUrl={challenge2_Sarc_DziUrl} />
                 </div>
             </div>
-             <div className="mt-4 flex justify-center gap-4">
+             <div className="mt-4 flex flex-col sm:flex-row justify-center gap-4">
                 <button onClick={() => handleChallenge2('A')} disabled={!!challenge2Answer} className="px-6 py-2 bg-white border border-slate-300 rounded-md font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed">
                     Select Slide A
                 </button>

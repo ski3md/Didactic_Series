@@ -12,7 +12,7 @@ const CaseStudy: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">Interactive Case Study</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Interactive Case Study</h1>
         <p className="mt-2 text-md text-slate-600">Applying knowledge to a clinical scenario.</p>
       </header>
 

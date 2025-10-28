@@ -1,4 +1,5 @@
 
+
 import React, { useState } from 'react';
 import Card from './Card';
 import { CheckCircleIcon, XCircleIcon } from './icons';
@@ -75,7 +76,7 @@ const AssessmentPhase: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">Board-Style Question</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Board-Style Question</h1>
         <p className="mt-2 text-md text-slate-600">Measuring your ability to integrate findings and form a diagnosis.</p>
       </header>
       

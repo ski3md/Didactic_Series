@@ -1,4 +1,5 @@
 
+
 import React, { useState } from 'react';
 import Card from './Card';
 
@@ -8,7 +9,7 @@ const DevelopmentPhase: React.FC = () => {
   return (
     <div className="animate-fade-in">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">Phase 3: Development</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Phase 3: Development</h1>
         <p className="mt-2 text-md text-slate-600">Creating the instructional content, media, and activities.</p>
       </header>
 
@@ -60,8 +61,8 @@ const DevelopmentPhase: React.FC = () => {
             </div>
              <div>
                 <h3 className="font-bold text-lg text-slate-800 mb-2">Part 2: Histologic Findings</h3>
-                <div className="flex items-start gap-4">
-                     <img src="https://picsum.photos/seed/pathology1/200/150" alt="Histology slide" className="rounded-lg shadow-md mt-1" />
+                <div className="flex flex-col sm:flex-row items-start gap-4">
+                     <img src="https://picsum.photos/seed/pathology1/200/150" alt="Histology slide" className="rounded-lg shadow-md mt-1 w-full sm:w-48" />
                     <p className="text-slate-600 flex-1">The biopsy shows a cellular interstitial pneumonia. There are numerous small, poorly-formed granulomas centered on the bronchioles (bronchiolocentric). The granulomas are composed of loose collections of epithelioid histiocytes and multinucleated giant cells. There is no necrosis. The surrounding interstitium is expanded by a dense lymphoplasmacytic infiltrate, and scattered eosinophils are present. You also note foci of organizing pneumonia.</p>
                 </div>
             </div>

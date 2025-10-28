@@ -6,27 +6,34 @@ import EvaluationPhase from './components/EvaluationPhase';
 import JobAid from './components/JobAid';
 import CaseStudy from './components/CaseStudy';
 import DiagnosticPathway from './components/DiagnosticPathway';
-import Login from './components/Login';
+import Welcome from './components/Welcome';
+import AnalysisPhase from './components/AnalysisPhase';
+import DesignPhase from './components/DesignPhase';
+import DevelopmentPhase from './components/DevelopmentPhase';
+import AssessmentPhase from './components/AssessmentPhase';
+import MobileHeader from './components/MobileHeader';
+import AICaseGenerator from './components/AICaseGenerator';
 
 const App: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const [currentSection, setCurrentSection] = useState<Section>(Section.HOME);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const handleLogin = (username: string) => {
-    setIsLoggedIn(true);
+  const handleStart = (username: string) => {
+    setHasStarted(true);
     setCurrentUser(username);
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    setHasStarted(false);
     setCurrentUser(null);
-    // Reset to home section on logout
     setCurrentSection(Section.HOME);
+    setIsSidebarOpen(false);
   };
 
-  if (!isLoggedIn) {
-    return <Login onLogin={handleLogin} />;
+  if (!hasStarted) {
+    return <Welcome onStart={handleStart} />;
   }
 
   const renderContent = () => {
@@ -41,24 +48,42 @@ const App: React.FC = () => {
         return <EvaluationPhase />;
       case Section.DIAGNOSTIC_PATHWAY:
         return <DiagnosticPathway />;
+      case Section.AI_CASE_GENERATOR:
+        return <AICaseGenerator />;
+      case Section.ANALYSIS:
+        return <AnalysisPhase />;
+      case Section.DESIGN:
+        return <DesignPhase />;
+      case Section.DEVELOPMENT:
+        return <DevelopmentPhase />;
+      case Section.EVALUATION:
+        return <AssessmentPhase />;
       default:
         return <Home />;
     }
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-100">
-      <Sidebar 
-        currentSection={currentSection} 
-        onSectionChange={setCurrentSection} 
+    <div className="relative min-h-screen md:flex bg-slate-100">
+      <Sidebar
+        currentSection={currentSection}
+        onSectionChange={setCurrentSection}
         onLogout={handleLogout}
         currentUser={currentUser}
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
       />
-      <main className="flex-1 p-4 sm:p-6 lg:p-10">
-        <div className="max-w-4xl mx-auto">
-          {renderContent()}
-        </div>
-      </main>
+      <div className="flex-1 flex flex-col min-w-0 h-screen">
+        <MobileHeader 
+          onMenuClick={() => setIsSidebarOpen(true)} 
+          currentSection={currentSection} 
+        />
+        <main className="flex-1 p-4 sm:p-6 lg:p-10 overflow-y-auto">
+          <div className="max-w-4xl mx-auto pb-12">
+            {renderContent()}
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
