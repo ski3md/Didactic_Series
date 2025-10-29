@@ -1,0 +1,20 @@
+2025-10-29 23:17:44,136 - INFO - Starting Enhanced Bing Granuloma Histopathology Image Scraper with Pathology Synonyms
+2025-10-29 23:17:44,137 - INFO - Created backup: /workspaces/Didactic_Series/bing_granuloma_scraper_2025-10-29_backup.py
+2025-10-29 23:17:44,138 - INFO - Processing disease: sarcoidosis
+2025-10-29 23:17:44,138 - INFO - Using 12 expanded queries for sarcoidosis
+2025-10-29 23:17:44,138 - INFO - Searching for: sarcoidosis noncaseating granulomas lung biopsy H&E
+2025-10-29 23:18:12,356 - INFO - Found 100 potential images for query: sarcoidosis noncaseating granulomas lung biopsy H&E
+2025-10-29 23:18:12,436 - INFO - Downloaded: sarcoidosis_noncaseating_granulomas_06.jpg
+2025-10-29 23:18:15,567 - INFO - Downloaded: sarcoidosis_granulomas_38.jpg
+2025-10-29 23:18:18,122 - INFO - Downloaded: sarcoidosis_granulomas_69.jpg
+2025-10-29 23:18:20,002 - INFO - Downloaded: sarcoidosis_granulomas_70.jpg
+2025-10-29 23:18:22,260 - INFO - Downloaded: sarcoidosis_granulomas_100.jpg
+2025-10-29 23:18:32,202 - INFO - Searching for: sarcoidosis lung histology
+2025-10-29 23:18:42,672 - INFO - Found 100 potential images for query: sarcoidosis lung histology
+2025-10-29 23:18:50,571 - INFO - Searching for: sarcoidosis granulomatous inflammation biopsy
+2025-10-29 23:19:00,644 - INFO - Found 100 potential images for query: sarcoidosis granulomatous inflammation biopsy
+2025-10-29 23:19:06,913 - INFO - Searching for: pulmonary sarcoidosis pathology
+2025-10-29 23:19:21,457 - INFO - Found 100 potential images for query: pulmonary sarcoidosis pathology
+2025-10-29 23:19:26,927 - INFO - Searching for: sarcoidosis nonnecrotizing granulomas lung
+2025-10-29 23:19:34,648 - INFO - Found 100 potential images for query: sarcoidosis nonnecrotizing granulomas lung
+2025-10-29 23:19:40,624 - INFO - Searching for: sarcoidosis Schaumann bodies lung
