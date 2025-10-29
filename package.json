@@ -1,16 +1,15 @@
 {
-  "name": "pathology-learning-module",
+  "name": "Didactic_Series",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "homepage": "https://<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
+  "homepage": "https://ski3md.github.io/Didactic_Series",
+  "scripts": "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "clean": "rm -rf dist"
+},
   "dependencies": {
     "@google/genai": "^1.27.0",
     "react": "^18.2.0",
