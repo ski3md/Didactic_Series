@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     // Replace 'pathology-learning-module' with your repo name if it's different
-    base: '/pathology-learning-module/',
+    base: '/Didactic_Series',
     define: {
       // Expose environment variables to the client
       'process.env.API_KEY': JSON.stringify(env.API_KEY)
