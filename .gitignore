@@ -1,1 +1,29 @@
-node_modules/.bin/openai 2
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+.cache/
+out/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+
+# IDE/editor
+.vscode/
+.idea/
+.DS_Store
+
+# OS/system
+Thumbs.db
+
+# GitHub Pages cache
+node_modules/.cache/gh-pages/
