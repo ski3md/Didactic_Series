@@ -82,7 +82,7 @@ Before deploying, you need to set the correct repository name.
     base: '/<YOUR_REPO_NAME>/',
     // ...
     ```
-    (This has been pre-filled with `/pathology-learning-module/`. Change it if your repo name is different.)
+    (This has been pre-filled with `/Didactic_Series/`. Change it if your repo name is different.)
 
 ### 2. Deploy
 
