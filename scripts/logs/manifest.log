@@ -1,0 +1,30 @@
+[INFO] 2025-10-30T01:31:06.302Z Manifest builder starting (ai=false)
+[WARN] 2025-10-30T01:31:06.310Z metadata_rules.json not found or unreadable - continuing with minimal rules
+[INFO] 2025-10-30T01:31:06.310Z Found 0 image file(s) under src/assets/images/granulomas
+[INFO] 2025-10-30T01:31:06.312Z Validating manifest...
+[INFO] 2025-10-30T01:31:06.343Z Validating manifest: /Users/skim4/Documents/GitHub/FellowshipWorkflows/Didactic_Series/scripts/src/assets/data/image_manifest.json
+[INFO] 2025-10-30T01:31:06.312Z Image manifest written to src/assets/data/image_manifest.json
+[INFO] 2025-10-30T01:31:06.366Z Schema validation passed
+[INFO] 2025-10-30T01:31:06.366Z Validation complete
+[INFO] 2025-10-30T01:31:06.367Z Manifest stats saved to src/assets/data/manifest_stats.json
+[INFO] 2025-10-30T01:31:06.367Z Manifest build complete
+[INFO] 2025-10-30T01:36:35.807Z Manifest builder starting (ai=false)
+[WARN] 2025-10-30T01:36:35.809Z metadata_rules.json not found or unreadable - continuing with minimal rules
+[INFO] 2025-10-30T01:36:35.809Z Found 0 image file(s) under src/assets/images/granulomas
+[INFO] 2025-10-30T01:36:35.811Z Validating manifest...
+[INFO] 2025-10-30T01:36:35.811Z Image manifest written to src/assets/data/image_manifest.json
+[INFO] 2025-10-30T01:36:35.844Z Validating manifest: /Users/skim4/Documents/GitHub/FellowshipWorkflows/Didactic_Series/scripts/src/assets/data/image_manifest.json
+[INFO] 2025-10-30T01:36:35.865Z Schema validation passed
+[INFO] 2025-10-30T01:36:35.865Z Validation complete
+[INFO] 2025-10-30T01:36:35.867Z Manifest stats saved to src/assets/data/manifest_stats.json
+[INFO] 2025-10-30T01:36:35.867Z Manifest build complete
+[INFO] 2025-10-30T01:36:49.413Z Manifest builder starting (ai=true)
+[WARN] 2025-10-30T01:36:49.421Z metadata_rules.json not found or unreadable - continuing with minimal rules
+[INFO] 2025-10-30T01:36:49.421Z Found 0 image file(s) under src/assets/images/granulomas
+[INFO] 2025-10-30T01:36:49.424Z Validating manifest...
+[INFO] 2025-10-30T01:36:49.424Z Image manifest written to src/assets/data/image_manifest.json
+[INFO] 2025-10-30T01:36:49.459Z Validating manifest: /Users/skim4/Documents/GitHub/FellowshipWorkflows/Didactic_Series/scripts/src/assets/data/image_manifest.json
+[INFO] 2025-10-30T01:36:49.482Z Validation complete
+[INFO] 2025-10-30T01:36:49.482Z Schema validation passed
+[INFO] 2025-10-30T01:36:49.484Z Manifest stats saved to src/assets/data/manifest_stats.json
+[INFO] 2025-10-30T01:36:49.484Z Manifest build complete

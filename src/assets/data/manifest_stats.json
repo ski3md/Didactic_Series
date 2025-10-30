@@ -1,0 +1,33 @@
+{
+  "generated": "2025-10-30T01:04:12Z",
+  "totalImages": 474,
+  "categoryCounts": {
+    "infectious": 329,
+    "noninfectious": 145,
+    "autoimmune": 0,
+    "foreign_body": 0,
+    "drug_related": 0,
+    "idiopathic": 0
+  },
+  "entityCounts": {
+    "blastomycosis": 56,
+    "coccidioidomycosis": 54,
+    "histoplasmosis": 117,
+    "tuberculosis": 102,
+    "caseating_granulomas": 2,
+    "cryptococcosis": 26,
+    "foreign_body_granulomas": 5,
+    "noncaseating_granulomas": 4,
+    "sarcoidosis": 107,
+    "scraper_logs": 0,
+    "silicotic_granulomas": 1
+  },
+  "stainCounts": {
+    "GMS": 7,
+    "PAS": 4,
+    "Unclassified": 437,
+    "H&E": 7,
+    "AFB_Ziehl": 2,
+    "Mucicarmine": 17
+  }
+}
