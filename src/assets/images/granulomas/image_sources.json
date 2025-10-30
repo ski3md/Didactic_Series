@@ -3883,5 +3883,113 @@
     "query": "coccidioides fungal granulomas lung",
     "download_date": "2025-10-29T23:57:30.072923",
     "file_hash": "08e226ffff30034232734b95aec24d8b66bbc8a1af17a256fadd928bc0cf8d0a"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/noncaseating_granulomas/Unclassified/noncaseating_granulomas_noncaseatinggranulomas_02.jpg": {
+    "filename": "noncaseating_granulomas_noncaseatinggranulomas_02.jpg",
+    "granuloma_type": "noncaseating_granulomas",
+    "stain": "Unclassified",
+    "source_url": "https://image1.slideserve.com/2329688/pulmonary-granulomas-l.jpg",
+    "title": "PPT - Lab cases PowerPoint Presentation, free download - ID:2329688",
+    "download_date": "2025-10-30T00:11:15.615984",
+    "file_hash": "acf7f36ec34ec08d9b9d4686ddc3e6885899fb71f639d7fc616aa86b0bc678f7"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/noncaseating_granulomas/H&E/noncaseating_granulomas_noncaseatinggranulomas_03.jpg": {
+    "filename": "noncaseating_granulomas_noncaseatinggranulomas_03.jpg",
+    "granuloma_type": "noncaseating_granulomas",
+    "stain": "H&E",
+    "source_url": "https://research.cchmc.org/lungimage/wp-content/uploads/2016/08/2016-06-30_4X_LMH-D034-RLL-8B1.13_003.jpg",
+    "title": "H&E Staining of 6 Month Old Human Lung D034-RLL-8B2.13",
+    "download_date": "2025-10-30T00:11:17.626853",
+    "file_hash": "52a484ffe3f37c152d00514fd6d016dd5785f66c35c2d1a78f3acb279b1f3d22"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/noncaseating_granulomas/H&E/noncaseating_granulomas_noncaseatinggranulomas_04.jpg": {
+    "filename": "noncaseating_granulomas_noncaseatinggranulomas_04.jpg",
+    "granuloma_type": "noncaseating_granulomas",
+    "stain": "H&E",
+    "source_url": "https://research.cchmc.org/lungimage/wp-content/uploads/2016/08/2016-06-30_10X_LMH-D034-RLL-8B1.13_003.jpg",
+    "title": "H&E Staining of 6 Month Old Human Lung D034-RLL-8B2.13",
+    "download_date": "2025-10-30T00:11:19.285192",
+    "file_hash": "4ee0d98606922390d9b4a4dbeeadd461c0a809428a311e3af18cf8331f2b56fd"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/noncaseating_granulomas/H&E/noncaseating_granulomas_noncaseatinggranulomas_05.jpg": {
+    "filename": "noncaseating_granulomas_noncaseatinggranulomas_05.jpg",
+    "granuloma_type": "noncaseating_granulomas",
+    "stain": "H&E",
+    "source_url": "https://research.cchmc.org/lungimage/wp-content/uploads/2016/08/2016-06-30_10X_LMH-D034-RLL-8B1.13_002.jpg",
+    "title": "H&E Staining of 6 Month Old Human Lung D034-RLL-8B2.13",
+    "download_date": "2025-10-30T00:11:21.998497",
+    "file_hash": "d373fe82ccba295fdea3bfd5e49606702e62c509bdc1f657ee50f4424410a822"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/caseating_granulomas/Unclassified/caseating_granulomas_tb_04.jpg": {
+    "filename": "caseating_granulomas_tb_04.jpg",
+    "granuloma_type": "caseating_granulomas",
+    "stain": "Unclassified",
+    "source_url": "https://c8.alamy.com/comp/2R7152K/caseation-of-human-tuberculosis-granuloma-light-micrograph-photo-under-microscope-caseous-necrosis-necrotizing-granulomatous-inflammation-2R7152K.jpg",
+    "title": "Caseation of human tuberculosis granuloma, light micrograph, photo ...",
+    "download_date": "2025-10-30T00:14:16.793706",
+    "file_hash": "ca6b7839cfe5f38c2d3957d6e2bd6727807057d79714f37359e6f9f37f9ddbfd"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/caseating_granulomas/Unclassified/caseating_granulomas_tb_05.jpg": {
+    "filename": "caseating_granulomas_tb_05.jpg",
+    "granuloma_type": "caseating_granulomas",
+    "stain": "Unclassified",
+    "source_url": "https://thumbs.dreamstime.com/z/caseation-human-tuberculosis-granuloma-light-micrograph-photo-under-microscope-caseous-necrosis-necrotizing-granulomatous-139723915.jpg",
+    "title": "Caseation of Human Tuberculosis Granuloma, Light Micrograph Stock Image ...",
+    "download_date": "2025-10-30T00:14:18.514505",
+    "file_hash": "404caccc726fba1768775b06926a5caa7cdd91f34fe316656173c033f68f0a18"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/foreign_body_granulomas/Unclassified/foreign_body_granulomas_foreignbodygranulomas_01.jpg": {
+    "filename": "foreign_body_granulomas_foreignbodygranulomas_01.jpg",
+    "granuloma_type": "foreign_body_granulomas",
+    "stain": "Unclassified",
+    "source_url": "https://4.bp.blogspot.com/-OmdpYPO5mgI/WXmpdJHXJvI/AAAAAAAAAVQ/8p4OtFAqJC8eNr2XROnAs5HkZDiC69xlQCEwYBhgL/s1600/IMG_20170727_132941.jpg",
+    "title": "Histopathology Drawings: Foreign body granuloma",
+    "download_date": "2025-10-30T00:18:08.831355",
+    "file_hash": "ddc55c1184f4963e199e282727f5373682d2fe3bee6218ab9aa46c06e7ccae31"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/foreign_body_granulomas/Unclassified/foreign_body_granulomas_foreignbodygranulomas_02.jpg": {
+    "filename": "foreign_body_granulomas_foreignbodygranulomas_02.jpg",
+    "granuloma_type": "foreign_body_granulomas",
+    "stain": "Unclassified",
+    "source_url": "https://thumbs.dreamstime.com/z/foreign-body-granuloma-light-micrograph-photo-under-microscope-foreign-body-granuloma-122936784.jpg",
+    "title": "Foreign body granuloma stock photo. Image of microphotograph - 122936784",
+    "download_date": "2025-10-30T00:18:10.672744",
+    "file_hash": "9dd0e2baeadc0708f84ac921e53cd0e82b7bf809673d75bef6eaa6ba5aeababa"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/foreign_body_granulomas/Unclassified/foreign_body_granulomas_foreignbodygranulomas_03.jpg": {
+    "filename": "foreign_body_granulomas_foreignbodygranulomas_03.jpg",
+    "granuloma_type": "foreign_body_granulomas",
+    "stain": "Unclassified",
+    "source_url": "https://thumbs.dreamstime.com/z/foreign-body-granuloma-foreign-body-granuloma-light-micrograph-photo-under-microscope-122936273.jpg",
+    "title": "Foreign body granuloma stock image. Image of medical - 122936273",
+    "download_date": "2025-10-30T00:18:12.133362",
+    "file_hash": "f93bc3d78f91c4071f0be537d286b56b4a93d86547c63e13bedd9390d50e9cb8"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/foreign_body_granulomas/Unclassified/foreign_body_granulomas_foreignbodygranulomas_04.jpg": {
+    "filename": "foreign_body_granulomas_foreignbodygranulomas_04.jpg",
+    "granuloma_type": "foreign_body_granulomas",
+    "stain": "Unclassified",
+    "source_url": "https://thumbs.dreamstime.com/z/foreign-body-granuloma-foreign-body-granuloma-light-micrograph-photo-under-microscope-122936614.jpg?w=992",
+    "title": "Foreign body granuloma stock photo. Image of pathohistology - 122936614",
+    "download_date": "2025-10-30T00:18:13.960579",
+    "file_hash": "9a66dbd7d90cb959d0e41d41f279dfdc847ad08babded948c39343b9fbf277c7"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/foreign_body_granulomas/Unclassified/foreign_body_granulomas_foreignbodygranulomas_05.jpg": {
+    "filename": "foreign_body_granulomas_foreignbodygranulomas_05.jpg",
+    "granuloma_type": "foreign_body_granulomas",
+    "stain": "Unclassified",
+    "source_url": "https://thumbs.dreamstime.com/b/foreign-body-granuloma-light-micrograph-photo-under-microscope-122936392.jpg",
+    "title": "Foreign body granuloma stock photo. Image of histology - 122936392",
+    "download_date": "2025-10-30T00:18:15.288734",
+    "file_hash": "fd340b72011b8bac98124b09cbde9a3edb87afb6b304fcea52a53d08b8bc1737"
+  },
+  "/workspaces/Didactic_Series/src/assets/images/granulomas/silicotic_granulomas/Unclassified/silicotic_granulomas_silicoticgranulomas_01.jpg": {
+    "filename": "silicotic_granulomas_silicoticgranulomas_01.jpg",
+    "granuloma_type": "silicotic_granulomas",
+    "stain": "Unclassified",
+    "source_url": "https://library.med.utah.edu/WebPath/jpeg1/LUNG084.jpg",
+    "title": "Pathology Outlines - Silicosis",
+    "download_date": "2025-10-30T00:26:24.099410",
+    "file_hash": "9e12e301aeca0cca8cea19587359682af629b7483139cb2d5cd8300a3c92757a"
   }
 }
