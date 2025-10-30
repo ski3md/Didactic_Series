@@ -2,9 +2,9 @@ import { User } from '../types';
 
 const USERS_KEY = 'pathology_module_users';
 
+// Fix: Removed redundant `email` property, as it's inherited from `User`.
 interface StoredUser extends User {
   passwordHash: string; // In a real app, this would be a proper hash. Here it's stored as plain text for simplicity.
-  email: string;
   resetToken?: string;
   resetTokenExpires?: number;
 }

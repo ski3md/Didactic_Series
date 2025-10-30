@@ -1,10 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from './ui/Card';
 import SectionHeader from './ui/SectionHeader';
 import Alert from './ui/Alert';
+import { StoredImage } from '../types';
+import { findRelevantImage } from '../utils/aiImageSelector';
+import WSIViewer from './WSIViewer';
+
+const LoadingSpinner: React.FC<{ text?: string }> = ({ text = "Loading..." }) => (
+    <div className="flex items-center justify-center h-full my-4">
+        <svg className="animate-spin h-5 w-5 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span className="ml-3 text-slate-600">{text}</span>
+    </div>
+);
 
 const DevelopmentPhase: React.FC = () => {
     const [showAnswer, setShowAnswer] = useState(false);
+    const [caseImage, setCaseImage] = useState<StoredImage | null>(null);
+    const [isFindingImage, setIsFindingImage] = useState(true);
+
+    const caseText = {
+        clinical: "You receive a lung wedge biopsy from a 55-year-old man with a 6-month history of progressive shortness of breath and a dry cough. He is a non-smoker but has kept pigeons in his attic for over 20 years. A chest CT shows diffuse, bilateral ground-glass opacities with centrilobular nodules.",
+        histology: "The biopsy shows a cellular interstitial pneumonia. There are numerous small, poorly-formed granulomas centered on the bronchioles (bronchiolocentric). The granulomas are composed of loose collections of epithelioid histiocytes and multinucleated giant cells. There is no necrosis. The surrounding interstitium is expanded by a dense lymphoplasmacytic infiltrate, and scattered eosinophils are present. You also note foci of organizing pneumonia."
+    };
+
+    useEffect(() => {
+        const fetchImage = async () => {
+            setIsFindingImage(true);
+            const context = `The case is about Hypersensitivity Pneumonitis. ${caseText.clinical} ${caseText.histology}`;
+            const image = await findRelevantImage(context);
+            setCaseImage(image);
+            setIsFindingImage(false);
+        };
+        fetchImage();
+    }, []);
+
 
   return (
     <div className="animate-fade-in">
@@ -57,13 +89,27 @@ const DevelopmentPhase: React.FC = () => {
         <div className="space-y-6">
             <div>
                 <h3 className="font-bold text-lg font-serif text-slate-800 mb-2">Part 1: Clinical & Radiologic Data</h3>
-                <p className="text-slate-600">You receive a lung wedge biopsy from a 55-year-old man with a 6-month history of progressive shortness of breath and a dry cough. He is a non-smoker but has kept pigeons in his attic for over 20 years. A chest CT shows diffuse, bilateral ground-glass opacities with centrilobular nodules.</p>
+                <p className="text-slate-600">{caseText.clinical}</p>
             </div>
              <div>
                 <h3 className="font-bold text-lg font-serif text-slate-800 mb-2">Part 2: Histologic Findings</h3>
-                <div className="flex flex-col sm:flex-row items-start gap-6">
-                     <img src="https://picsum.photos/seed/pathology1/400/300" alt="Histology slide of hypersensitivity pneumonitis" className="rounded-lg shadow-md mt-1 w-full sm:w-48" />
-                    <p className="text-slate-600 flex-1">The biopsy shows a cellular interstitial pneumonia. There are numerous small, poorly-formed granulomas centered on the bronchioles (bronchiolocentric). The granulomas are composed of loose collections of epithelioid histiocytes and multinucleated giant cells. There is no necrosis. The surrounding interstitium is expanded by a dense lymphoplasmacytic infiltrate, and scattered eosinophils are present. You also note foci of organizing pneumonia.</p>
+                <div className="space-y-3">
+                    {isFindingImage ? (
+                         <div className="w-full h-64 sm:h-96 bg-slate-100 rounded-lg shadow-md flex items-center justify-center">
+                            <LoadingSpinner text="Finding relevant image..." />
+                         </div>
+                    ) : (
+                        <WSIViewer 
+                            staticImageUrl={caseImage?.src} 
+                            altText={caseImage?.title || 'AI-selected image for the case study.'} 
+                        />
+                    )}
+                    {caseImage && (
+                         <p className="text-center text-sm text-slate-600 font-semibold italic">
+                            AI-selected image from gallery: "{caseImage.title}"
+                        </p>
+                    )}
+                    <p className="text-slate-600 flex-1 pt-2">{caseText.histology}</p>
                 </div>
             </div>
              <div>

@@ -28,9 +28,9 @@ export const trackEvent = (username: string, section: Section, eventKey: string,
             userData.AICaseGenerator = [];
         }
         userData.AICaseGenerator.push(eventData);
-    } else if (section === Section.ASSESSMENT) {
-        // Assessment is a single object
-        userData.AssessmentPhase = eventData;
+    } else if (section === Section.EVALUATION) {
+        // Evaluation is a single object
+        userData.Evaluation = eventData;
     }
     else {
         // Other quiz-like sections are objects with keys for each interaction

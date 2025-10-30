@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GoogleGenAI, Type } from "@google/genai";
 import Card from './ui/Card';
 import SectionHeader from './ui/SectionHeader';
 import Alert from './ui/Alert';
-import { LightbulbIcon, SparklesIcon, XCircleIcon } from './icons';
-import { User, Section, CaseData } from '../types';
+import { LightbulbIcon, SparklesIcon } from './icons';
+import { User, Section, CaseData, StoredImage } from '../types';
 import { trackEvent } from '../utils/tracking';
+import { findRelevantImage } from '../utils/aiImageSelector';
+import WSIViewer from './WSIViewer';
 
-const LoadingSpinner: React.FC = () => (
+const LoadingSpinner: React.FC<{ text?: string }> = ({ text = "Generating..." }) => (
     <div className="flex items-center justify-center">
         <svg className="animate-spin h-5 w-5 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
-        <span className="ml-3 text-slate-600">Generating...</span>
+        <span className="ml-3 text-slate-600">{text}</span>
     </div>
 );
 
@@ -28,6 +30,22 @@ const AICaseGenerator: React.FC<AICaseGeneratorProps> = ({ user }) => {
     const [isLoadingCase, setIsLoadingCase] = useState(false);
     const [isGettingFeedback, setIsGettingFeedback] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [caseImage, setCaseImage] = useState<StoredImage | null>(null);
+    const [isFindingImage, setIsFindingImage] = useState(false);
+    
+    useEffect(() => {
+        if (caseData) {
+            const fetchImage = async () => {
+                setIsFindingImage(true);
+                const context = `Clinical History: ${caseData.clinicalHistory}. Radiologic Findings: ${caseData.radiologicFindings}. Histologic Description: ${caseData.histologicDescription}. Diagnosis: ${caseData.diagnosis}`;
+                const image = await findRelevantImage(context);
+                setCaseImage(image);
+                setIsFindingImage(false);
+            };
+            fetchImage();
+        }
+    }, [caseData]);
+
 
     const handleGenerateCase = async () => {
         setIsLoadingCase(true);
@@ -35,6 +53,7 @@ const AICaseGenerator: React.FC<AICaseGeneratorProps> = ({ user }) => {
         setCaseData(null);
         setFeedback(null);
         setUserDx('');
+        setCaseImage(null);
 
         try {
             const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
@@ -152,7 +171,7 @@ const AICaseGenerator: React.FC<AICaseGeneratorProps> = ({ user }) => {
                     <button
                         onClick={handleGenerateCase}
                         disabled={isLoadingCase}
-                        className="bg-primary-600 text-white font-semibold py-2.5 px-6 rounded-lg hover:bg-primary-700 transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed flex items-center shadow-sm"
+                        className="bg-primary-600 text-white font-semibold py-2.5 px-6 rounded-lg hover:bg-primary-700 transition-colors disabled:bg-slate-300 disabled:text-slate-600 disabled:cursor-not-allowed flex items-center shadow-sm"
                     >
                         <SparklesIcon className="h-5 w-5 mr-2" />
                         {isLoadingCase ? 'Generating...' : 'Generate New Case Study'}
@@ -177,6 +196,15 @@ const AICaseGenerator: React.FC<AICaseGeneratorProps> = ({ user }) => {
                     </Card>
                     <Card>
                         <h2 className="text-xl font-semibold font-serif text-slate-800 mb-3">Histologic Description</h2>
+                        {isFindingImage && <div className="my-4"><LoadingSpinner text="Finding relevant image..." /></div>}
+                        {caseImage && (
+                             <div className="my-4 space-y-2">
+                                <WSIViewer staticImageUrl={caseImage.src} altText={caseImage.title} />
+                                <p className="text-center text-sm text-slate-600 font-semibold italic">
+                                    AI-selected image from gallery: "{caseImage.title}"
+                                </p>
+                            </div>
+                        )}
                         <p className="text-slate-600 leading-relaxed">{caseData.histologicDescription}</p>
                     </Card>
                     <Card>
@@ -189,7 +217,7 @@ const AICaseGenerator: React.FC<AICaseGeneratorProps> = ({ user }) => {
                             value={userDx}
                             onChange={(e) => setUserDx(e.target.value)}
                             rows={5}
-                            className="w-full p-3 border border-slate-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition shadow-sm"
+                            className="w-full p-3 border border-slate-400 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition shadow-sm"
                             placeholder="e.g., 1. Diagnosis A - because of feature X.&#10;2. Diagnosis B - less likely due to feature Y."
                             aria-labelledby="user-dx-heading"
                         />
@@ -197,12 +225,12 @@ const AICaseGenerator: React.FC<AICaseGeneratorProps> = ({ user }) => {
                             <button
                                 onClick={handleGetFeedback}
                                 disabled={isGettingFeedback || !userDx}
-                                className="bg-green-600 text-white font-semibold py-2.5 px-6 rounded-lg hover:bg-green-700 transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed shadow-sm"
+                                className="bg-green-600 text-white font-semibold py-2.5 px-6 rounded-lg hover:bg-green-700 transition-colors disabled:bg-slate-300 disabled:text-slate-600 disabled:cursor-not-allowed shadow-sm"
                             >
                                 {isGettingFeedback ? 'Getting Feedback...' : 'Submit for Feedback'}
                             </button>
                         </div>
-                         {isGettingFeedback && <div className="mt-4"><LoadingSpinner /></div>}
+                         {isGettingFeedback && <div className="mt-4"><LoadingSpinner text="Getting feedback..."/></div>}
                     </Card>
                 </div>
             )}

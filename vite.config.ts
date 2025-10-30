@@ -1,8 +1,6 @@
-// Fix: Add a triple-slash directive to include Node.js types for `process.cwd()`.
-/// <reference types="node" />
-
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import process from 'process'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -12,7 +10,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     // Replace 'pathology-learning-module' with your repo name if it's different
-    base: '/Didactic_Series',
+    base: '/pathology-learning-module/',
     define: {
       // Expose environment variables to the client
       'process.env.API_KEY': JSON.stringify(env.API_KEY)

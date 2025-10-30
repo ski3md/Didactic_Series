@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "schema": "who-2022-thoracic",
+  "entities": {
+    "tuberculosis": {
+      "category": "infectious",
+      "patterns": [
+        {"keyword": "caseous", "description": "caseating necrosis"},
+        {"keyword": "langhans", "description": "Langhans giant cells"}
+      ],
+      "cells": ["epithelioid histiocytes", "Langhans giant cells", "lymphocytes"],
+      "difficulty": "advanced",
+      "tags": ["mycobacterial", "caseating", "necrosis"],
+      "teachingPoint": "Caseating granulomas with central necrosis suggest mycobacterial infection (e.g., TB).",
+      "caseContext": "Tuberculosis typically shows caseating granulomas with Langhans giant cells. AFB staining may reveal acid-fast bacilli."
+    },
+    "histoplasmosis": {
+      "category": "infectious",
+      "patterns": [
+        {"keyword": "yeast", "description": "intracellular yeast forms"}
+      ],
+      "cells": ["epithelioid histiocytes", "intracellular yeast", "macrophages"],
+      "difficulty": "advanced",
+      "tags": ["fungal", "dimorphic", "yeast"],
+      "teachingPoint": "Small intracellular yeast forms with narrow-based budding are characteristic of histoplasmosis.",
+      "caseContext": "Histoplasmosis granulomas contain small yeast forms within macrophages. GMS or PAS staining highlights the organisms."
+    },
+    "sarcoidosis": {
+      "category": "noninfectious",
+      "patterns": [
+        {"keyword": "noncaseating", "description": "noncaseating granulomas"}
+      ],
+      "cells": ["epithelioid histiocytes", "asteroid bodies (sometimes)", "lymphocytes"],
+      "difficulty": "intermediate",
+      "tags": ["noncaseating", "systemic", "asteroid"],
+      "teachingPoint": "Noncaseating granulomas in the appropriate clinical setting support sarcoidosis.",
+      "caseContext": "Sarcoidosis features well-formed noncaseating granulomas. Asteroid bodies may be seen but are not specific."
+    },
+    "rheumatoid": {
+      "category": "autoimmune",
+      "patterns": [
+        {"keyword": "necrobiotic", "description": "necrobiotic granulomas"}
+      ],
+      "cells": ["histiocytes", "fibroblasts", "lymphocytes"],
+      "difficulty": "intermediate",
+      "tags": ["autoimmune", "necrobiotic", "rheumatoid"],
+      "teachingPoint": "Rheumatoid nodules show central necrobiotic material surrounded by palisading histiocytes.",
+      "caseContext": "Rheumatoid lung nodules demonstrate necrobiotic granulomas with a fibrinoid center and palisading histiocytes."
+    }
+  },
+  "stainRoles": {
+    "H&E": "general morphology",
+    "GMS": "highlight fungal cell walls",
+    "PAS": "highlight fungal cell walls and mucin",
+    "AFB": "highlight mycobacterial organisms",
+    "Polarized": "reveal polarizable foreign material"
+  },
+  "difficultyLevels": {
+    "beginner": "Classic presentations with obvious diagnostic features",
+    "intermediate": "Moderate diagnostic complexity, requires pattern recognition",
+    "advanced": "Subtle findings, mimics, or rare presentations"
+  },
+  "caseTypes": {
+    "classic": "Classic textbook presentation of the disease",
+    "atypical": "Unusual or variant presentation",
+    "mimic": "Presentation that mimics other conditions",
+    "complicated": "Case with additional complications or comorbidities"
+  }
+}

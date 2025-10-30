@@ -96,9 +96,9 @@ const Welcome: React.FC<WelcomeProps> = ({ onLogin, onSignup }) => {
                             <div className="relative">
                                 <label htmlFor="reset-username" className="sr-only">Username</label>
                                 <UserCircleIcon className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4 text-slate-400" />
-                                <input id="reset-username" type="text" value={resetUsername} onChange={e => setResetUsername(e.target.value)} className="w-full py-3 pl-12 pr-4 border border-slate-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition shadow-sm bg-white" placeholder="Username" required />
+                                <input id="reset-username" type="text" value={resetUsername} onChange={e => setResetUsername(e.target.value)} className="w-full py-3 pl-12 pr-4 border border-slate-400 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition shadow-sm bg-white" placeholder="Username" required />
                             </div>
-                            <button type="submit" className="w-full bg-primary-600 text-white font-semibold py-3 px-5 rounded-lg hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500 transition-all duration-200 shadow-sm hover:shadow-md">
+                            <button type="submit" className="w-full bg-primary-300 text-slate-900 font-semibold py-3 px-5 rounded-lg hover:bg-primary-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500 transition-all duration-200 shadow-md hover:shadow-lg">
                                 Get Reset Code
                             </button>
                         </form>
@@ -120,19 +120,19 @@ const Welcome: React.FC<WelcomeProps> = ({ onLogin, onSignup }) => {
                             <div className="relative">
                                 <label htmlFor="reset-token" className="sr-only">Reset Code</label>
                                 <KeyIcon className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4 text-slate-400" />
-                                <input id="reset-token" type="text" value={resetToken} onChange={e => setResetToken(e.target.value)} className="w-full py-3 pl-12 pr-4 border border-slate-300 rounded-lg focus:ring-primary-500 focus:border-primary-500" placeholder="Reset Code" required />
+                                <input id="reset-token" type="text" value={resetToken} onChange={e => setResetToken(e.target.value)} className="w-full py-3 pl-12 pr-4 border border-slate-400 rounded-lg focus:ring-primary-500 focus:border-primary-500" placeholder="Reset Code" required />
                             </div>
                              <div className="relative">
                                 <label htmlFor="new-password" className="sr-only">New Password</label>
                                 <LockClosedIcon className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4 text-slate-400" />
-                                <input id="new-password" type="password" value={resetPassword} onChange={e => setResetPassword(e.target.value)} className="w-full py-3 pl-12 pr-4 border border-slate-300 rounded-lg focus:ring-primary-500 focus:border-primary-500" placeholder="New Password" required />
+                                <input id="new-password" type="password" value={resetPassword} onChange={e => setResetPassword(e.target.value)} className="w-full py-3 pl-12 pr-4 border border-slate-400 rounded-lg focus:ring-primary-500 focus:border-primary-500" placeholder="New Password" required />
                             </div>
                             <div className="relative">
                                 <label htmlFor="confirm-password" className="sr-only">Confirm New Password</label>
                                 <LockClosedIcon className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4 text-slate-400" />
-                                <input id="confirm-password" type="password" value={confirmResetPassword} onChange={e => setConfirmResetPassword(e.target.value)} className="w-full py-3 pl-12 pr-4 border border-slate-300 rounded-lg focus:ring-primary-500 focus:border-primary-500" placeholder="Confirm New Password" required />
+                                <input id="confirm-password" type="password" value={confirmResetPassword} onChange={e => setConfirmResetPassword(e.target.value)} className="w-full py-3 pl-12 pr-4 border border-slate-400 rounded-lg focus:ring-primary-500 focus:border-primary-500" placeholder="Confirm New Password" required />
                             </div>
-                            <button type="submit" className="w-full bg-primary-600 text-white font-semibold py-3 px-5 rounded-lg hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500 transition-all duration-200 shadow-sm hover:shadow-md">
+                            <button type="submit" className="w-full bg-primary-300 text-slate-900 font-semibold py-3 px-5 rounded-lg hover:bg-primary-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500 transition-all duration-200 shadow-md hover:shadow-lg">
                                 Reset Password
                             </button>
                         </form>

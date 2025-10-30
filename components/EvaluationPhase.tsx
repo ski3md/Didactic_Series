@@ -6,11 +6,11 @@ import WSIViewer from './WSIViewer';
 import { User, Section } from '../types';
 import { trackEvent } from '../utils/tracking';
 
-interface EvaluationPhaseProps {
+interface VisualChallengeProps {
   user: User;
 }
 
-const EvaluationPhase: React.FC<EvaluationPhaseProps> = ({ user }) => {
+const VisualChallenge: React.FC<VisualChallengeProps> = ({ user }) => {
     const [challenge1Answer, setChallenge1Answer] = useState<string | null>(null);
     const [challenge2Answer, setChallenge2Answer] = useState<string | null>(null);
 
@@ -172,4 +172,4 @@ const EvaluationPhase: React.FC<EvaluationPhaseProps> = ({ user }) => {
   );
 };
 
-export default EvaluationPhase;
+export default VisualChallenge;

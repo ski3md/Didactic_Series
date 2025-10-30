@@ -32,7 +32,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isLoginView }
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full py-3 pl-12 pr-4 border border-slate-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition shadow-sm bg-white"
+          className="w-full py-3 pl-12 pr-4 border border-slate-400 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition shadow-sm bg-white"
           placeholder="Username"
           autoComplete="username"
           required
@@ -49,7 +49,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isLoginView }
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full py-3 pl-12 pr-4 border border-slate-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition shadow-sm bg-white"
+            className="w-full py-3 pl-12 pr-4 border border-slate-400 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition shadow-sm bg-white"
             placeholder="Email Address"
             autoComplete="email"
             required
@@ -66,7 +66,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isLoginView }
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full py-3 pl-12 pr-4 border border-slate-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition shadow-sm bg-white"
+          className="w-full py-3 pl-12 pr-4 border border-slate-400 rounded-lg focus:ring-primary-500 focus:border-primary-500 transition shadow-sm bg-white"
           placeholder="Password"
           autoComplete={isLoginView ? "current-password" : "new-password"}
           required
@@ -75,7 +75,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isLoginView }
       
       <button
         type="submit"
-        className="w-full bg-primary-600 text-white font-semibold py-3 px-5 rounded-lg hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500 transition-all duration-200 shadow-sm hover:shadow-md"
+        className="w-full bg-primary-300 text-slate-900 font-semibold py-3 px-5 rounded-lg hover:bg-primary-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500 transition-all duration-200 shadow-md hover:shadow-lg"
       >
         {buttonText}
       </button>

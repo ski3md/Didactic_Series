@@ -5,14 +5,17 @@ import React, { useEffect, useRef } from 'react';
 declare var OpenSeadragon: any;
 
 interface WSIViewerProps {
-  dziUrl: string;
+  dziUrl?: string;
+  staticImageUrl?: string;
+  altText?: string;
 }
 
-const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl }) => {
+const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }) => {
   const viewerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let viewer: any = null;
+    // Only initialize OpenSeadragon if a DZI URL is provided
     if (viewerRef.current && dziUrl) {
       viewer = OpenSeadragon({
         element: viewerRef.current,
@@ -40,12 +43,38 @@ const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl }) => {
     };
   }, [dziUrl]);
 
-  return (
-    <div 
+  // Render OpenSeadragon viewer if dziUrl is provided
+  if (dziUrl) {
+    return (
+      <div 
         ref={viewerRef} 
         className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md openseadragon-container"
-        aria-label="Interactive whole slide image viewer"
+        aria-label={altText || "Interactive whole slide image viewer"}
+      >
+      </div>
+    );
+  }
+
+  // Render static image fallback if staticImageUrl is provided
+  if (staticImageUrl) {
+    return (
+      <div className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md flex items-center justify-center overflow-hidden openseadragon-container">
+        <img 
+          src={staticImageUrl} 
+          alt={altText || 'Pathology slide image'} 
+          className="max-w-full max-h-full object-contain"
+        />
+      </div>
+    );
+  }
+
+  // Render a placeholder if neither URL is provided
+  return (
+    <div 
+        className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md flex items-center justify-center openseadragon-container"
+        aria-label="Image viewer placeholder"
     >
+        <p className="text-slate-300">No image available</p>
     </div>
   );
 };

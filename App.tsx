@@ -9,9 +9,12 @@ import MobileHeader from './components/MobileHeader';
 import Home from './components/Home';
 import JobAid from './components/JobAid';
 import CaseStudy from './components/CaseStudy';
-import EvaluationPhase from './components/EvaluationPhase';
+import CaseLibrary from './components/CaseLibrary';
+import VisualChallenge from './components/EvaluationPhase';
 import DiagnosticPathway from './components/DiagnosticPathway';
 import AICaseGenerator from './components/AICaseGenerator';
+// Fix: Import ImageGalleries component
+import ImageGalleries from './components/ImageGalleries';
 import AnalysisPhase from './components/AnalysisPhase';
 import DesignPhase from './components/DesignPhase';
 import DevelopmentPhase from './components/DevelopmentPhase';
@@ -34,14 +37,16 @@ const MainApp: React.FC<{ user: User; onLogout: () => void }> = ({ user, onLogou
       case Section.HOME: return <Home onSectionChange={onSectionSelect} />;
       case Section.JOB_AID: return <JobAid />;
       case Section.CASE_STUDY: return <CaseStudy />;
-      case Section.VISUAL_CHALLENGE: return <EvaluationPhase user={user} />;
+      case Section.CASE_LIBRARY: return <CaseLibrary user={user} />;
+      case Section.VISUAL_CHALLENGE: return <VisualChallenge user={user} />;
       case Section.DIAGNOSTIC_PATHWAY: return <DiagnosticPathway user={user} />;
       case Section.AI_CASE_GENERATOR: return <AICaseGenerator user={user} />;
+      // Fix: Add rendering for ImageGalleries section
+      case Section.IMAGE_GALLERIES: return <ImageGalleries user={user} />;
       case Section.ANALYSIS: return <AnalysisPhase user={user} />;
       case Section.DESIGN: return <DesignPhase />;
       case Section.DEVELOPMENT: return <DevelopmentPhase />;
       case Section.EVALUATION: return <AssessmentPhase user={user} />;
-      case Section.ASSESSMENT: return <AssessmentPhase user={user} />;
       case Section.ADMIN: return <AdminView />;
       default: return <Home onSectionChange={onSectionSelect} />;
     }

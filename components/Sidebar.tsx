@@ -2,7 +2,7 @@ import React from 'react';
 import { Section, User } from '../types';
 import {
   HomeIcon, DocumentTextIcon, MicroscopeIcon, EyeIcon, BeakerIcon, 
-  SparklesIcon, BookOpenIcon, AcademicCapIcon, UserCircleIcon, LogoutIcon, CogIcon, KeyIcon
+  SparklesIcon, BookOpenIcon, AcademicCapIcon, UserCircleIcon, LogoutIcon, CogIcon, KeyIcon, PhotographIcon, CollectionIcon
 } from './icons';
 
 interface SidebarProps {
@@ -26,8 +26,8 @@ const NavLink: React.FC<{
       onClick={() => onClick(section)}
       className={`w-full flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 text-left ${
         isActive
-          ? 'bg-primary-600 text-white font-semibold shadow-md shadow-primary-500/20'
-          : 'text-slate-700 hover:bg-slate-200/70 hover:text-slate-900'
+          ? 'bg-primary-200 text-primary-900 font-bold shadow-lg shadow-primary-500/20'
+          : 'text-slate-600 hover:bg-slate-200 hover:text-slate-900'
       }`}
     >
       <div className="mr-3 flex-shrink-0">{icon}</div>
@@ -40,9 +40,12 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
     const learningSections = [
         { section: Section.JOB_AID, icon: <DocumentTextIcon className="h-5 w-5" /> },
         { section: Section.CASE_STUDY, icon: <MicroscopeIcon className="h-5 w-5" /> },
+        { section: Section.CASE_LIBRARY, icon: <CollectionIcon className="h-5 w-5" /> },
         { section: Section.VISUAL_CHALLENGE, icon: <EyeIcon className="h-5 w-5" /> },
         { section: Section.DIAGNOSTIC_PATHWAY, icon: <BeakerIcon className="h-5 w-5" /> },
         { section: Section.AI_CASE_GENERATOR, icon: <SparklesIcon className="h-5 w-5" /> },
+        // Fix: Add Image Galleries to the sidebar navigation
+        { section: Section.IMAGE_GALLERIES, icon: <PhotographIcon className="h-5 w-5" /> },
     ];
 
     const addieSections = [
@@ -50,7 +53,6 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
         { section: Section.DESIGN, icon: <BookOpenIcon className="h-5 w-5" /> },
         { section: Section.DEVELOPMENT, icon: <BookOpenIcon className="h-5 w-5" /> },
         { section: Section.EVALUATION, icon: <BookOpenIcon className="h-5 w-5" /> },
-        { section: Section.ASSESSMENT, icon: <BookOpenIcon className="h-5 w-5" /> },
     ];
 
   return (

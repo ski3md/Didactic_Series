@@ -3,7 +3,7 @@ import Card from './ui/Card';
 import { Section } from '../types';
 import { 
   DocumentTextIcon, MicroscopeIcon, EyeIcon, BeakerIcon, 
-  SparklesIcon, BookOpenIcon 
+  SparklesIcon, BookOpenIcon, PhotographIcon, CollectionIcon
 } from './icons';
 
 interface HomeProps {
@@ -35,9 +35,12 @@ const Home: React.FC<HomeProps> = ({ onSectionChange }) => {
   const learningSections = [
     { section: Section.JOB_AID, description: "A quick-reference table comparing high-yield features of Sarcoidosis and Tuberculosis.", icon: <DocumentTextIcon className="h-5 w-5" /> },
     { section: Section.CASE_STUDY, description: "Work through a classic case of Hypersensitivity Pneumonitis with an interactive whole-slide image viewer.", icon: <MicroscopeIcon className="h-5 w-5" /> },
+    { section: Section.CASE_LIBRARY, description: "Browse a library of AI-organized case studies with integrated histology.", icon: <CollectionIcon className="h-5 w-5" /> },
     { section: Section.VISUAL_CHALLENGE, description: "Sharpen your morphologic eye by comparing Sarcoidosis and HP side-by-side on digital slides.", icon: <EyeIcon className="h-5 w-5" /> },
     { section: Section.DIAGNOSTIC_PATHWAY, description: "A comprehensive, multi-step quiz that guides you through the differential diagnosis of a wide range of granulomatous diseases.", icon: <BeakerIcon className="h-5 w-5" /> },
     { section: Section.AI_CASE_GENERATOR, description: "Leverage Gemini AI to generate unique, board-style cases and receive instant feedback on your diagnostic skills.", icon: <SparklesIcon className="h-5 w-5" /> },
+    // Fix: Add Image Galleries section to home page
+    { section: Section.IMAGE_GALLERIES, description: "Browse curated official images and contribute your own finds to the community gallery.", icon: <PhotographIcon className="h-5 w-5" /> },
   ];
 
   const addieSections = [
