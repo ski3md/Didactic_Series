@@ -1,8 +1,5 @@
-
-import React, { useEffect, useRef } from 'react';
-
-// Inform TypeScript about the global OpenSeadragon variable from the script tag
-declare var OpenSeadragon: any;
+import React, { useRef, useEffect } from 'react';
+import OpenSeadragon from 'openseadragon';
 
 interface WSIViewerProps {
   dziUrl?: string;
@@ -10,12 +7,18 @@ interface WSIViewerProps {
   altText?: string;
 }
 
+/**
+ * Whole Slide Image (WSI) Viewer Component
+ * - Uses OpenSeadragon for interactive DZI image viewing
+ * - Falls back to static image if DZI not available
+ * - Renders a placeholder if no image is provided
+ */
 const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }) => {
   const viewerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let viewer: any = null;
-    // Only initialize OpenSeadragon if a DZI URL is provided
+    let viewer: OpenSeadragon.Viewer | null = null;
+
     if (viewerRef.current && dziUrl) {
       viewer = OpenSeadragon({
         element: viewerRef.current,
@@ -35,7 +38,6 @@ const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }
       });
     }
 
-    // Cleanup when component unmounts
     return () => {
       if (viewer) {
         viewer.destroy();
@@ -43,38 +45,37 @@ const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }
     };
   }, [dziUrl]);
 
-  // Render OpenSeadragon viewer if dziUrl is provided
+  // Priority 1: DZI interactive viewer
   if (dziUrl) {
     return (
-      <div 
-        ref={viewerRef} 
+      <div
+        ref={viewerRef}
         className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md openseadragon-container"
-        aria-label={altText || "Interactive whole slide image viewer"}
-      >
-      </div>
+        aria-label={altText || 'Interactive whole slide image viewer'}
+      />
     );
   }
 
-  // Render static image fallback if staticImageUrl is provided
+  // Priority 2: Static fallback image
   if (staticImageUrl) {
     return (
       <div className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md flex items-center justify-center overflow-hidden openseadragon-container">
-        <img 
-          src={staticImageUrl} 
-          alt={altText || 'Pathology slide image'} 
-          className="max-w-full max-h-full object-contain"
+        <img
+          src={staticImageUrl}
+          alt={altText || 'Pathology slide image'}
+          className="max-w-full max-h-full object-contain rounded-lg"
         />
       </div>
     );
   }
 
-  // Render a placeholder if neither URL is provided
+  // Priority 3: Placeholder
   return (
-    <div 
-        className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md flex items-center justify-center openseadragon-container"
-        aria-label="Image viewer placeholder"
+    <div
+      className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md flex items-center justify-center openseadragon-container"
+      aria-label="Image viewer placeholder"
     >
-        <p className="text-slate-300">No image available</p>
+      <p className="text-slate-300">No image available</p>
     </div>
   );
 };
