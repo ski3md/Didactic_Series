@@ -1,1 +1,10 @@
-node_modules/.bin/openai 2
+# Build artifacts
+dist/
+node_modules/
+.cache/
+*.log
+
+# Local environment files
+.env
+.env.*
+
