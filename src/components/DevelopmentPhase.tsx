@@ -67,7 +67,12 @@ const DevelopmentPhase: React.FC = () => {
              <div>
                 <h3 className="font-bold text-lg font-serif text-slate-900 mb-2">Part 2: Histologic Findings</h3>
                 <div className="space-y-3">
-                    <div className="w-full h-64 sm:h-96 bg-slate-200 border rounded-lg flex items-center justify-center"><p className="text-slate-500">Image Placeholder</p></div>
+                    <img
+                        src="https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/hypersensitivity_pneumonitis/Unclassified/hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_12.jpg"
+                        alt="Bronchiolocentric granulomas from chronic hypersensitivity pneumonitis."
+                        className="w-full h-64 sm:h-96 object-cover rounded-lg border shadow-sm"
+                        loading="lazy"
+                    />
                     <p className="text-slate-700 flex-1 pt-2">{caseText.histology}</p>
                 </div>
             </div>

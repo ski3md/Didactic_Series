@@ -25,6 +25,9 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Mucicarmine/cryptococcosis_cryptococcosis_05.jpg',
 };
 
+const defaultLectureImage =
+    'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg';
+
 interface LectureProps {
     onComplete: () => void;
 }
@@ -120,16 +123,13 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
       let image: React.ReactNode = null;
 
       if (slide.placeholderId) {
-        image = lectureImageMap[slide.placeholderId] ? (
+        const resolvedSrc = lectureImageMap[slide.placeholderId] ?? defaultLectureImage;
+        image = (
           <img
-            src={lectureImageMap[slide.placeholderId]}
+            src={resolvedSrc}
             alt={slide.title}
-            className="w-full aspect-video object-cover rounded-lg border"
+            className="w-full aspect-video object-cover rounded-lg border shadow-sm"
           />
-        ) : (
-          <div className="w-full aspect-video bg-slate-200 border rounded-lg flex items-center justify-center">
-            <p className="text-slate-500">Image Placeholder</p>
-          </div>
         );
       }
       
@@ -159,17 +159,11 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             const captionText = typeof tile.caption === 'string' ? tile.caption.replace(/<[^>]*>/g, '') : slide.title;
             return (
                 <div key={i} className="text-center">
-                    {tile.placeholderId && lectureImageMap[tile.placeholderId] ? (
-                        <img
-                            src={lectureImageMap[tile.placeholderId]}
-                            alt={captionText}
-                            className="w-full rounded-lg shadow-lg border border-slate-200 mb-2 aspect-[4/3] object-cover"
-                        />
-                    ) : (
-                        <div className="w-full rounded-lg shadow-lg border border-slate-200 mb-2 aspect-[4/3] bg-slate-200 flex items-center justify-center">
-                            <p className="text-slate-500">Image Placeholder</p>
-                        </div>
-                    )}
+                    <img
+                        src={(tile.placeholderId && lectureImageMap[tile.placeholderId]) || defaultLectureImage}
+                        alt={captionText}
+                        className="w-full rounded-lg shadow-lg border border-slate-200 mb-2 aspect-[4/3] object-cover"
+                    />
                     <p className="font-lato text-base text-slate-700" dangerouslySetInnerHTML={{ __html: tile.caption }}></p>
                 </div>
             );

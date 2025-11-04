@@ -58,12 +58,20 @@ export const AdminImagePanel: React.FC = () => {
     );
 };
 
+const adminPlaceholderImage =
+  'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg';
+
 export const ImagePlaceholder: React.FC<{ id: string; className?: string }> = ({ id, className }) => {
   return (
-    <div className={`bg-slate-200 border rounded-lg flex items-center justify-center ${className}`}>
-      <div className="text-center">
-        <p className="text-slate-500">Image Placeholder</p>
-        <p className="text-xs text-slate-400 font-mono">{id}</p>
+    <div className={`relative rounded-lg border overflow-hidden ${className}`}>
+      <img
+        src={adminPlaceholderImage}
+        alt={`Preview for ${id}`}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+      <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs font-mono px-2 py-1">
+        {id}
       </div>
     </div>
   );
