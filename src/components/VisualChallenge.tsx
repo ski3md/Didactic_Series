@@ -10,6 +10,36 @@ interface VisualChallengeProps {
   user: User | null;
 }
 
+const visualFallbackSarcoidosis: StoredImage = {
+    id: 'visual_fallback_sarcoid',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/7/76/Non-caseating_granuloma%2C_sarcoid_type%2C_01.jpg',
+    gcsPath: 'external/sarcoidosis/non_caseating_granuloma.jpg',
+    title: 'Sarcoidosis – Non-caseating granuloma (Wikimedia Commons)',
+    description: 'Representative sarcoidosis histology showing tight, non-caseating granulomas.',
+    uploader: 'wikimedia',
+    timestamp: Date.now(),
+    category: 'official',
+    tags: ['sarcoidosis', 'histopathology'],
+    entity: 'sarcoidosis',
+    difficulty: 'intermediate',
+    cells: []
+};
+
+const visualFallbackHP: StoredImage = {
+    id: 'visual_fallback_hp',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Histology_of_chronic_hypersensitivity_pneumonitis.jpg/1200px-Histology_of_chronic_hypersensitivity_pneumonitis.jpg',
+    gcsPath: 'external/hypersensitivity_pneumonitis/chronic_hp.jpg',
+    title: 'Chronic hypersensitivity pneumonitis (Wikimedia Commons)',
+    description: 'Chronic hypersensitivity pneumonitis with poorly formed peribronchiolar granulomas.',
+    uploader: 'wikimedia',
+    timestamp: Date.now(),
+    category: 'official',
+    tags: ['hypersensitivity pneumonitis', 'histopathology'],
+    entity: 'hypersensitivity_pneumonitis',
+    difficulty: 'intermediate',
+    cells: []
+};
+
 const VisualChallenge: React.FC<VisualChallengeProps> = ({ user }) => {
     const [challenge1Answer, setChallenge1Answer] = useState<string | null>(null);
     const [challenge2Answer, setChallenge2Answer] = useState<string | null>(null);
@@ -45,10 +75,12 @@ const VisualChallenge: React.FC<VisualChallengeProps> = ({ user }) => {
                 const sarcoidosisImage = allImages.find(img => tagMatches(img, sarcoidTagCandidates));
                 const hypersensitivityImage = allImages.find(img => tagMatches(img, hpTagCandidates));
 
-                setSarcImage(sarcoidosisImage || null);
-                setHpImage(hypersensitivityImage || null);
+                setSarcImage(sarcoidosisImage ? { ...sarcoidosisImage } : { ...visualFallbackSarcoidosis });
+                setHpImage(hypersensitivityImage ? { ...hypersensitivityImage } : { ...visualFallbackHP });
             } catch (e) {
                 console.error("Failed to load images for visual challenge", e);
+                setSarcImage({ ...visualFallbackSarcoidosis });
+                setHpImage({ ...visualFallbackHP });
             } finally {
                 setIsLoading(false);
             }
@@ -79,13 +111,6 @@ const VisualChallenge: React.FC<VisualChallengeProps> = ({ user }) => {
         
         {isLoading ? (
             <p className="text-center text-slate-600 py-8">Loading dynamic challenge images...</p>
-        ) : !sarcImage || !hpImage ? (
-             <Alert type="info" title="Content Not Available">
-                <span>
-                    This challenge requires at least one image tagged for Sarcoidosis and one tagged for Hypersensitivity Pneumonitis (for example{' '}
-                    <code>sarcoidosis</code> or <code>hypersensitivity_pneumonitis</code>). Please ask an admin to upload and tag relevant images in the gallery manifest.
-                </span>
-             </Alert>
         ) : (
             <div className="space-y-12">
                 {/* Challenge 1 */}

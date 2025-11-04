@@ -5,7 +5,7 @@ import {
 } from './icons.tsx';
 import Alert from './ui/Alert.tsx';
 
-// Map slide placeholder IDs to actual image URLs hosted on the CDN.
+// Map slide placeholder IDs to actual image URLs hosted on the CDN or reputable open sources.
 // This map allows the lecture component to load real histology images instead of showing gray placeholders.
 const lectureImageMap: Record<string, string> = {
     // Tuberculosis image illustrating well-formed granulomas with central caseous necrosis.
@@ -99,6 +99,36 @@ const defaultLectureImage =
 
 const defaultFallbackImage =
     'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_48.jpg';
+
+const visualFallbackSarcoidosis: StoredImage = {
+    id: 'visual_fallback_sarcoid',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/7/76/Non-caseating_granuloma%2C_sarcoid_type%2C_01.jpg',
+    gcsPath: 'external/sarcoid/wikipedia_non_caseating_granuloma.jpg',
+    title: 'Sarcoidosis – Non-caseating Granuloma (Wikimedia Commons)',
+    description: 'Representative histology of sarcoidosis with a tight, non-caseating granuloma.',
+    uploader: 'wikimedia',
+    timestamp: Date.now(),
+    category: 'official',
+    tags: ['sarcoidosis', 'histopathology', 'granuloma'],
+    entity: 'sarcoidosis',
+    difficulty: 'intermediate',
+    cells: []
+};
+
+const visualFallbackHP: StoredImage = {
+    id: 'visual_fallback_hp',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Histology_of_chronic_hypersensitivity_pneumonitis.jpg/1200px-Histology_of_chronic_hypersensitivity_pneumonitis.jpg',
+    gcsPath: 'external/hp/wikipedia_chronic_hp.jpg',
+    title: 'Chronic Hypersensitivity Pneumonitis (Wikimedia Commons)',
+    description: 'Giant cells and interstitial inflammation highlighting hypersensitivity pneumonitis.',
+    uploader: 'wikimedia',
+    timestamp: Date.now(),
+    category: 'official',
+    tags: ['hypersensitivity pneumonitis', 'granuloma', 'histopathology'],
+    entity: 'hypersensitivity_pneumonitis',
+    difficulty: 'intermediate',
+    cells: []
+};
 
 const getImageSources = (placeholderId?: string) => {
     const primary =
@@ -255,13 +285,10 @@ const slideData = [
         placeholderId: 'lecture_aspiration_image',
     },
     {
-        type: 'bullets',
+        type: 'image_hotspot',
         title: 'Related Condition: Talc Granulomatosis',
-        items: [
-            { icon: <BeakerIcon className="h-6 w-6" />, text: 'A rare condition caused by talc particles lodging in the lungs\' small blood vessels.' },
-            { icon: <MagnifyingGlassChartIcon className="h-6 w-6" />, text: 'Associated with intravenous injection of crushed oral medications (talc is a common filler in pills).' },
-            { icon: <EyeIcon className="h-6 w-6" />, text: 'The talc particles appear as birefringent, plate-like crystals under polarized light, surrounded by a foreign-body granulomatous reaction.' },
-        ],
+        text: '<h3>Histologic Clues:</h3><ul><li><strong>Etiology:</strong> Intravenous injection of crushed oral medications allows talc excipients to embolize pulmonary arterioles.</li><li><strong>Granulomas:</strong> Foreign-body giant cells surround refractile talc plates.</li><li><strong>Polarized Light:</strong> Birefringent rectangular crystals clinch the diagnosis.</li></ul>',
+        placeholderId: 'lecture_talc_image'
     },
     {
         type: 'section_title',
