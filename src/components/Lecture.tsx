@@ -16,13 +16,13 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_06.jpg',
     // Blastomycosis image demonstrating broad-based budding yeast.
     lecture_blasto_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_04.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/4/4e/Blastomycosis%2C_H%26E.jpg',
     // Coccidioidomycosis image featuring large spherules with endospores.
     lecture_cocci_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_05.jpg',
     // Cryptococcus image showing encapsulated yeasts highlighted by mucicarmine stain.
     lecture_crypto_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Mucicarmine/cryptococcosis_cryptococcosis_05.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/8/8b/Cryptococcus_neoformans_mucicarmine.jpg',
     // Sarcoidosis image with well-formed non-caseating granulomas.
     lecture_sarcoid_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg',
@@ -43,7 +43,7 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_06.jpg',
     // Blastomycosis with broad-based budding demonstrated on PAS.
     lecture_blastomycosis_pas_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/PAS/blastomycosis_blastomycosis_35.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/4/4e/Blastomycosis%2C_H%26E.jpg',
     // GPA case highlighting necrotizing vasculitis.
     lecture_gpa_vasculitis_image:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Wegener%27s_granulomatosis_-b-_intermed_mag.jpg/1200px-Wegener%27s_granulomatosis_-b-_intermed_mag.jpg',
@@ -55,7 +55,7 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_95.jpg',
     // Cryptococcosis with mucicarmine-positive capsules.
     lecture_crypto_series_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Mucicarmine/cryptococcosis_cryptococcosis_36.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/8/8b/Cryptococcus_neoformans_mucicarmine.jpg',
 };
 
 // Secondary CDN images to use if primaries fail.
@@ -69,17 +69,17 @@ const lectureFallbackImageMap: Record<string, string> = {
     lecture_histoplasma_gms_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_35.jpg',
     lecture_blasto_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_11.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_04.jpg',
     lecture_blastomycosis_pas_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/PAS/blastomycosis_blastomycosis_55.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/PAS/blastomycosis_blastomycosis_35.jpg',
     lecture_cocci_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_56.jpg',
     lecture_cocci_series_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_81.jpg',
     lecture_crypto_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Unclassified/cryptococcosis_cryptococcosis_96_2.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Mucicarmine/cryptococcosis_cryptococcosis_05.jpg',
     lecture_crypto_series_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Mucicarmine/cryptococcosis_cryptococcosis_02.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Mucicarmine/cryptococcosis_cryptococcosis_36.jpg',
     lecture_sarcoid_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_48.jpg',
     lecture_gpa_image:
