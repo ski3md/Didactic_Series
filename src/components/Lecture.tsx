@@ -49,7 +49,7 @@ const lectureImageMap: Record<string, string> = {
         'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Wegener%27s_granulomatosis_-b-_intermed_mag.jpg/1200px-Wegener%27s_granulomatosis_-b-_intermed_mag.jpg',
     // Talc granulomatosis with birefringent material.
     lecture_talc_image:
-        'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2491654/bin/1477-7517-5-17-4.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/1/1d/Pulmonary_talcosis_low_mag.jpg',
     // Coccidioidomycosis with large spherules.
     lecture_cocci_series_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_95.jpg',
