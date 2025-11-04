@@ -35,6 +35,27 @@ const lectureImageMap: Record<string, string> = {
     // Aspiration pneumonia image showing foreign material with surrounding giant cells.
     lecture_aspiration_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_97.jpg',
+    // AFB stain highlighting slender red bacilli in tuberculosis.
+    lecture_tb_afb_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Unclassified/tuberculosis_tuberculosis_54_2.jpg',
+    // Histoplasmosis with GMS-positive yeast forms.
+    lecture_histoplasma_gms_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_97_2.jpg',
+    // Blastomycosis with broad-based budding demonstrated on PAS.
+    lecture_blastomycosis_pas_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_39.jpg',
+    // GPA case highlighting necrotizing vasculitis.
+    lecture_gpa_vasculitis_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/gpa/Unclassified/gpa_gpa_95.jpg',
+    // Talc granulomatosis with birefringent material.
+    lecture_talc_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_83.jpg',
+    // Coccidioidomycosis with large spherules.
+    lecture_cocci_series_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_95.jpg',
+    // Cryptococcosis with mucicarmine-positive capsules.
+    lecture_crypto_series_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Unclassified/cryptococcosis_cryptococcosis_13_2.jpg',
 };
 
 const defaultLectureImage =
@@ -180,6 +201,214 @@ const slideData = [
         ],
     },
     {
+        type: 'section_title',
+        title: 'Interactive Case Lab',
+        text: 'Apply the framework to case-based challenges with escalating difficulty.',
+    },
+    {
+        type: 'case_series',
+        title: 'Case Challenge 1: Necrotizing Granuloma in an Immunocompromised Host',
+        vignette: 'A 48-year-old kidney transplant recipient on tacrolimus presents with fevers, weight loss, and a cavitary right upper lobe lesion. A wedge biopsy reveals necrotizing granulomas with palisading histiocytes.',
+        pearls: [
+            '<strong>Clinical Clue:</strong> Immunosuppression raises the stakes for rapid organism identification.',
+            '<strong>Histologic Focus:</strong> Clean, eosinophilic necrosis rimmed by palisaded histiocytes prioritizes mycobacterial infection.',
+            '<strong>Next Step:</strong> Confirm an infectious etiology before escalating immunosuppression.'
+        ],
+        placeholderId: 'lecture_tb_afb_image',
+        imageCaption: 'AFB stain demonstrating slender red bacilli hugging the necrotic edge.',
+        questions: [
+            {
+                question: 'Which ancillary study most strongly supports reactivation tuberculosis in this scenario?',
+                options: [
+                    'Negative PAS stain throughout the granulomas',
+                    'Positive Ziehl-Neelsen stain highlighting organisms at the necrotic rim',
+                    'Diffuse CD1a positivity within interstitial histiocytes',
+                    'Positive Prussian blue staining accentuating hemosiderin'
+                ],
+                correctAnswer: 'Positive Ziehl-Neelsen stain highlighting organisms at the necrotic rim',
+                feedback: 'Acid-fast bacilli located at the interface of necrosis and viable tissue are definitive for mycobacterial infection. The other findings suggest alternative processes (Langerhans histiocytosis, siderosis, or non-specific changes).'
+            },
+            {
+                question: 'Which histologic pattern would point away from tuberculosis and toward an ANCA-associated vasculitis?',
+                options: [
+                    'Caseating necrosis bordered by epithelioid histiocytes and scant neutrophils',
+                    'Dirty geographic necrosis with basophilic debris and angiocentric inflammation',
+                    'Loose peribronchiolar granulomas rich in plasma cells and lymphocytes',
+                    'Fibrocaseous nodules with abundant Langhans giant cells'
+                ],
+                correctAnswer: 'Dirty geographic necrosis with basophilic debris and angiocentric inflammation',
+                feedback: 'Dirty geographic necrosis accompanied by vasculitis is classic for GPA. The other options fit infectious granulomas more closely.'
+            }
+        ]
+    },
+    {
+        type: 'case_series',
+        title: 'Case Challenge 2: Disseminated Fungal Mimic',
+        vignette: 'A 32-year-old spelunker from Missouri presents with fevers, hepatosplenomegaly, and diffuse pulmonary nodules. BAL reveals macrophages packed with tiny round organisms.',
+        pearls: [
+            '<strong>Exposure:</strong> Cave exploration or bat guano should raise suspicion for Histoplasma capsulatum.',
+            '<strong>Size Matters:</strong> Yeasts measuring 2–4 µm in macrophages favor Histoplasma over Blastomyces.',
+            '<strong>Systemic Clue:</strong> Dissemination often brings bone marrow suppression and hepatosplenomegaly.'
+        ],
+        placeholderId: 'lecture_histoplasma_gms_image',
+        imageCaption: 'GMS stain highlighting numerous intracellular yeasts within alveolar macrophages.',
+        questions: [
+            {
+                question: 'Which immunologic parameter most often drops in disseminated histoplasmosis and helps monitor therapy?',
+                options: [
+                    'Serum ACE levels',
+                    'Urine Histoplasma antigen titer',
+                    'c-ANCA (PR3) levels',
+                    'Anti-centromere antibodies'
+                ],
+                correctAnswer: 'Urine Histoplasma antigen titer',
+                feedback: 'Antigen detection in urine (and serum) tracks fungal burden and response to therapy in disseminated histoplasmosis.'
+            },
+            {
+                question: 'Which histologic clue would push you toward Blastomyces rather than Histoplasma?',
+                options: [
+                    'Yeasts budding with a narrow base within macrophages',
+                    'Broad-based budding yeasts with thick refractile walls',
+                    'Granulomas lacking necrosis and a lymphangitic distribution',
+                    'Multinucleated giant cells encasing vegetable matter'
+                ],
+                correctAnswer: 'Broad-based budding yeasts with thick refractile walls',
+                feedback: 'Broad-based buds are the signature of Blastomyces. Narrow based budding fits Histoplasma, while the other answers reference different processes.'
+            }
+        ]
+    },
+    {
+        type: 'case_series',
+        title: 'Case Challenge 3: Cavitary Nodule in a Former Smoker',
+        vignette: 'A 61-year-old former smoker presents with hemoptysis and chronic sinusitis. Imaging shows bilateral cavitary nodules and segmental renal infarcts. Biopsy reveals granulomas with central basophilic debris.',
+        pearls: [
+            '<strong>Systemic Context:</strong> ENT involvement plus renal lesions suggest a vasculitic process.',
+            '<strong>Microscopic Tell:</strong> “Dirty” necrosis filled with neutrophils argues for GPA over infection.',
+            '<strong>Serology:</strong> Correlate with c-ANCA (PR3) before making long-term treatment decisions.'
+        ],
+        placeholderId: 'lecture_gpa_vasculitis_image',
+        imageCaption: 'H&E section showing necrotizing vasculitis with palisading histiocytes.',
+        questions: [
+            {
+                question: 'Which clinicopathologic feature most reliably distinguishes GPA from chronic hypersensitivity pneumonitis in this setting?',
+                options: [
+                    'Peribronchiolar accentuation of granulomas',
+                    'Geographic necrosis with neutrophilic karyorrhexis and vasculitis',
+                    'Increased plasma cells within the interstitium',
+                    'Non-necrotizing granulomas with asteroid bodies'
+                ],
+                correctAnswer: 'Geographic necrosis with neutrophilic karyorrhexis and vasculitis',
+                feedback: 'Dirty, geographic necrosis plus vasculitis is characteristic of GPA. The other findings favor hypersensitivity pneumonitis or sarcoidosis.'
+            },
+            {
+                question: 'Which immediate management step best protects organ function in GPA once infection is excluded?',
+                options: [
+                    'High-dose systemic glucocorticoids with a rituximab induction regimen',
+                    'Empiric amphotericin B followed by itraconazole suppressive therapy',
+                    'Nebulized pentamidine prophylaxis',
+                    'Observation with repeat imaging in 6 weeks'
+                ],
+                correctAnswer: 'High-dose systemic glucocorticoids with a rituximab induction regimen',
+                feedback: 'Rapid immunosuppression with steroids plus rituximab (or cyclophosphamide) is standard once infection has been excluded.'
+            }
+        ]
+    },
+    {
+        type: 'section_title',
+        title: 'Lightning Round: Board-Style Stumpers',
+        text: 'Answer each question within 60 seconds. Pattern recognition is your superpower.',
+    },
+    {
+        type: 'quiz_stack',
+        title: 'Lightning Round',
+        intro: 'For every prompt decide which clue best fits. Challenge yourself to justify each distractor before moving on.',
+        questions: [
+            {
+                question: 'Asteroid bodies and laminated Schaumann bodies are most strongly associated with which granulomatous disorder?',
+                options: [
+                    'Sarcoidosis',
+                    'Hypersensitivity pneumonitis',
+                    'GPA',
+                    'Hot tub lung'
+                ],
+                correctAnswer: 'Sarcoidosis',
+                feedback: 'These inclusions are classic but not pathognomonic for sarcoidosis. Hypersensitivity pneumonitis lacks these inclusions, GPA is necrotizing, and hot tub lung is an HP variant.'
+            },
+            {
+                question: 'Which exposure history best aligns with talc granulomatosis?',
+                options: [
+                    'Long-term intravenous injection of crushed analgesic tablets',
+                    'Handling of bird droppings in a pigeon coop',
+                    'Occupational silica exposure in a sandblasting facility',
+                    'Travel to the desert Southwest with dust storms'
+                ],
+                correctAnswer: 'Long-term intravenous injection of crushed analgesic tablets',
+                feedback: 'Intravascular talc from injected tablets embolizes to pulmonary arterioles, provoking a foreign-body granulomatous response.'
+            },
+            {
+                question: 'Large spherules with endospores on H&E that measure up to 80 µm are typical of which organism?',
+                options: [
+                    'Histoplasma capsulatum',
+                    'Blastomyces dermatitidis',
+                    'Coccidioides immitis/posadasii',
+                    'Cryptococcus neoformans'
+                ],
+                correctAnswer: 'Coccidioides immitis/posadasii',
+                feedback: 'Coccidioides forms large spherules with numerous endospores. Histoplasma is tiny, Blastomyces shows broad-based budding, and Cryptococcus has narrow-based budding with mucinous capsule.'
+            },
+            {
+                question: 'Which intervention is most appropriate first-line management for hot tub lung?',
+                options: [
+                    'Remove access to the offending spa environment and improve ventilation',
+                    'Start dual antituberculous therapy immediately',
+                    'Initiate rituximab and prednisone induction',
+                    'Administer lifelong azole prophylaxis'
+                ],
+                correctAnswer: 'Remove access to the offending spa environment and improve ventilation',
+                feedback: 'Hot tub lung is an HP variant from inhaled nontuberculous mycobacteria aerosols. Exposure cessation is the critical first step.'
+            },
+            {
+                question: 'Necrotizing sarcoid granulomatosis is best described as:',
+                options: [
+                    'A sarcoidosis variant with vascular invasion mimicking GPA but lacking ANCAs',
+                    'A hypersensitivity pneumonitis subset driven by mold hyphae',
+                    'another term for necrotizing granulomatous inflammation due to TB',
+                    'A histologic synonym for talc granulomatosis'
+                ],
+                correctAnswer: 'A sarcoidosis variant with vascular invasion mimicking GPA but lacking ANCAs',
+                feedback: 'Necrotizing sarcoid granulomatosis shows sarcoid-like granulomas with vasculitis but typically lacks ANCA seropositivity, making clinicopathologic correlation vital.'
+            }
+        ],
+        footnote: 'Tip: Run the trio—quality, necrosis, distribution—before committing to a diagnosis.'
+    },
+    {
+        type: 'section_title',
+        title: 'Wrap-Up and Reflection',
+        text: 'Consolidate diagnostic heuristics and plan next steps for deliberate practice.',
+    },
+    {
+        type: 'accordion',
+        title: 'Decision Pitfalls & Memory Hooks',
+        items: [
+            {
+                heading: 'When necrosis misleads',
+                content: '<p><strong>Clean</strong> necrosis favors infection, whereas <strong>dirty</strong> necrosis with vasculitis screams GPA. Always ask: are neutrophils littering the necrotic bed?</p>'
+            },
+            {
+                heading: 'Distribution saves the day',
+                content: '<p>Lymphangitic tracking? Think sarcoidosis. Peribronchiolar accentuation with lymphoplasmacytic cuffs? Hypersensitivity pneumonitis jumps up the list.</p>'
+            },
+            {
+                heading: 'Stain smarter, not harder',
+                content: '<p>Order stains in pairs: AFB + GMS for necrotizing granulomas, mucicarmine when capsules are suspected, and use PAS when you need to unmask polysaccharide-rich organisms.</p>'
+            },
+            {
+                heading: 'Clinical cliff notes',
+                content: '<p>Always integrate exposures: spas (hot tub lung), caves (Histoplasma), desert dust (Coccidioides), IV pills (talc). Exposure history often breaks the tie between look-alike slides.</p>'
+            }
+        ]
+    },
+    {
         type: 'launch',
         title: 'Next Steps',
         text: 'You have reviewed the core lecture content.',
@@ -220,6 +449,114 @@ const QuizComponent: React.FC<{
                 })}
             </div>
             {answer && <div className="mt-3"><Alert type={answer === correctAnswer ? 'success' : 'error'}>{feedback}</Alert></div>}
+        </div>
+    );
+};
+
+type CaseQuestion = {
+    question: string;
+    options: string[];
+    correctAnswer: string;
+    feedback: string;
+};
+
+const CaseChallenge: React.FC<{
+    title: string;
+    vignette: string;
+    pearls: string[];
+    placeholderId?: string;
+    imageCaption?: string;
+    questions: CaseQuestion[];
+}> = ({ title, vignette, pearls, placeholderId, imageCaption, questions }) => {
+    const resolvedSrc = placeholderId ? lectureImageMap[placeholderId] ?? defaultLectureImage : null;
+
+    return (
+        <div className="w-full text-left max-w-6xl mx-auto space-y-6">
+            <div className="text-center">
+                <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900">{title}</h2>
+                <p className="mt-2 text-slate-600 max-w-3xl mx-auto">{vignette}</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-white border border-slate-200 rounded-lg shadow-sm p-4 space-y-3">
+                    <h3 className="font-semibold text-slate-800 uppercase tracking-wide text-sm">Diagnostic Pearls</h3>
+                    <ul className="list-disc list-inside space-y-2 text-sm text-slate-700">
+                        {pearls.map((pearl, idx) => (
+                            <li key={idx} dangerouslySetInnerHTML={{ __html: pearl }}></li>
+                        ))}
+                    </ul>
+                </div>
+                {resolvedSrc && (
+                    <figure className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+                        <img src={resolvedSrc} alt={title} className="w-full h-64 object-cover" loading="lazy" />
+                        {imageCaption && (
+                            <figcaption className="p-3 text-xs text-slate-600 bg-slate-100 border-t border-slate-200">
+                                {imageCaption}
+                            </figcaption>
+                        )}
+                    </figure>
+                )}
+            </div>
+            <div className="space-y-6">
+                {questions.map((question, idx) => (
+                    <div key={`${title}-q${idx}`} className="bg-slate-50 border border-slate-200 rounded-lg p-4">
+                        <QuizComponent {...question} />
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+const LightningRound: React.FC<{
+    title: string;
+    intro: string;
+    questions: CaseQuestion[];
+    footnote?: string;
+}> = ({ title, intro, questions, footnote }) => (
+    <div className="w-full text-left max-w-5xl mx-auto space-y-5">
+        <div className="text-center">
+            <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900">{title}</h2>
+            <p className="text-slate-600 mt-2">{intro}</p>
+        </div>
+        <div className="grid grid-cols-1 gap-5">
+            {questions.map((question, idx) => (
+                <div key={`lightning-${idx}`} className="bg-white border border-slate-200 rounded-lg shadow-sm p-4">
+                    <div className="text-xs uppercase tracking-wider text-sky-600 font-semibold mb-2">Question {idx + 1}</div>
+                    <QuizComponent {...question} />
+                </div>
+            ))}
+        </div>
+        {footnote && (
+            <p className="text-sm text-slate-500 italic text-center">{footnote}</p>
+        )}
+    </div>
+);
+
+const InteractiveAccordion: React.FC<{
+    items: { heading: string; content: string }[];
+}> = ({ items }) => {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+    return (
+        <div className="space-y-4">
+            {items.map((item, idx) => {
+                const isOpen = openIndex === idx;
+                return (
+                    <div key={item.heading} className="border border-slate-200 rounded-lg overflow-hidden">
+                        <button
+                            onClick={() => setOpenIndex(isOpen ? null : idx)}
+                            className="w-full flex items-center justify-between px-4 py-3 bg-white hover:bg-slate-50 text-left text-slate-800 font-semibold transition-colors"
+                            aria-expanded={isOpen}
+                        >
+                            <span>{item.heading}</span>
+                            <span className="text-slate-500 text-sm">{isOpen ? 'Hide' : 'Reveal'}</span>
+                        </button>
+                        {isOpen && (
+                            <div className="px-4 py-3 bg-slate-50 border-t border-slate-200 text-sm text-slate-700" dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                        )}
+                    </div>
+                );
+            })}
         </div>
     );
 };
@@ -278,6 +615,9 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
                 </div>
             );
         })}</div></div>
+        case 'case_series': return <CaseChallenge title={slide.title} vignette={slide.vignette} pearls={slide.pearls} placeholderId={slide.placeholderId} imageCaption={slide.imageCaption} questions={slide.questions} />;
+        case 'quiz_stack': return <LightningRound title={slide.title} intro={slide.intro} questions={slide.questions} footnote={slide.footnote} />;
+        case 'accordion': return <div className="w-full text-left max-w-5xl"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 mb-4">{slide.title}</h2><InteractiveAccordion items={slide.items} /></div>;
         case 'launch': return <div className="text-center"><h2 className="font-roboto-slab text-5xl md:text-6xl font-bold text-slate-900">{slide.title}</h2><p className="font-lato text-xl md:text-2xl mt-4 text-slate-700">{slide.text}</p><button onClick={onComplete} className="mt-8 bg-sky-600 text-white font-bold font-roboto-slab text-xl py-4 px-8 rounded-lg hover:bg-sky-700 transition-transform hover:scale-105 shadow-lg flex items-center mx-auto"><ArrowRightToBracketIcon className="h-6 w-6 mr-3"/>{slide.buttonText}</button></div>
         default: return null;
     }
