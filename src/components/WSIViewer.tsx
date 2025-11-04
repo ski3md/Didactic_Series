@@ -1,0 +1,85 @@
+import React, { useEffect, useRef } from 'react';
+
+declare const OpenSeadragon: any;
+
+interface WSIViewerProps {
+  dziUrl?: string;
+  staticImageUrl?: string; // Fallback for simple images
+  altText?: string;
+}
+
+const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }) => {
+  const viewerRef = useRef<HTMLDivElement>(null);
+  const osdViewer = useRef<any>(null);
+
+  useEffect(() => {
+    if ((!dziUrl && !staticImageUrl) || !viewerRef.current) {
+        return;
+    }
+
+    // Destroy previous viewer instance if it exists
+    if (osdViewer.current) {
+        osdViewer.current.destroy();
+    }
+    
+    let tileSources: any;
+
+    if (dziUrl) {
+      tileSources = {
+        type: 'image',
+        url: dziUrl,
+        buildPyramid: false // Assuming DZI is pre-pyramided
+      };
+    } else if (staticImageUrl) {
+      tileSources = {
+        type: 'image',
+        url: staticImageUrl,
+      };
+    }
+
+    osdViewer.current = OpenSeadragon({
+      element: viewerRef.current,
+      prefixUrl: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/images/',
+      tileSources: tileSources,
+      animationTime: 0.5,
+      blendTime: 0.1,
+      constrainDuringPan: true,
+      maxZoomPixelRatio: 2,
+      minZoomImageRatio: 0.9,
+      visibilityRatio: 1,
+      zoomPerScroll: 2,
+      showNavigator: true,
+      navigatorPosition: 'BOTTOM_RIGHT',
+      navigatorSizeRatio: 0.2,
+      springStiffness: 10
+    });
+
+    return () => {
+      if (osdViewer.current) {
+        osdViewer.current.destroy();
+      }
+    };
+  }, [dziUrl, staticImageUrl]);
+
+  // If no image source, show a placeholder.
+  if (!dziUrl && !staticImageUrl) {
+    return (
+        <div 
+            className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md flex items-center justify-center openseadragon-container"
+            aria-label={altText || "Image viewer placeholder"}
+        >
+            <p className="text-slate-300">No Image Available</p>
+        </div>
+    );
+  }
+
+  return (
+    <div 
+        ref={viewerRef}
+        className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md openseadragon-container"
+        aria-label={altText || "Whole Slide Image viewer"}
+    />
+  );
+};
+
+export default WSIViewer;

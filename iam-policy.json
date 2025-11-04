@@ -1,0 +1,12 @@
+{
+  "bindings": [
+    {
+      "role": "roles/storage.objectViewer",
+      "members": ["allUsers"]
+    },
+    {
+      "role": "roles/storage.objectAdmin",
+      "members": ["user:askiatablet@gmail.com"]
+    }
+  ]
+}

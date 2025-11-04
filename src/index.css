@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+body {
+  @apply font-sans antialiased;
+}
+
+/* Custom scrollbar for a modern look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9; /* slate-100 */
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8; /* slate-400 */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b; /* slate-500 */
+}
+
+/* Styles for Lecture Component */
+.slide-container {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateX(100%);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 5rem;
+}
+.slide-container.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 1;
+}
+.slide-container.prev {
+    transform: translateX(-100%);
+    z-index: 0;
+}
