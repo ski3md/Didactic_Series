@@ -1,9 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { 
-    ChevronLeftIcon, ChevronRightIcon, MagnifyingGlassChartIcon, BullseyeIcon, BeakerIcon, 
+import {
+    ChevronLeftIcon, ChevronRightIcon, MagnifyingGlassChartIcon, BullseyeIcon, BeakerIcon,
     ArrowRightToBracketIcon
 } from './icons.tsx';
 import Alert from './ui/Alert.tsx';
+
+// Map slide placeholder IDs to actual image URLs hosted on the CDN.
+// This map allows the lecture component to load real histology images instead of showing gray placeholders.
+const lectureImageMap: Record<string, string> = {
+    // Tuberculosis image illustrating well-formed granulomas with central caseous necrosis.
+    lecture_tb_image:
+        'https://storage.googleapis.com/cdn.didacticseries.com/granulomas/tuberculosis/Unclassified/tuberculosis_tuberculosis_02.jpg',
+    // Histoplasmosis image showing intracellular yeasts within macrophages.
+    lecture_histo_image:
+        'https://storage.googleapis.com/cdn.didacticseries.com/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_06.jpg',
+    // Blastomycosis image demonstrating broad-based budding yeast.
+    lecture_blasto_image:
+        'https://storage.googleapis.com/cdn.didacticseries.com/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_04.jpg',
+    // Coccidioidomycosis image featuring large spherules with endospores.
+    lecture_cocci_image:
+        'https://storage.googleapis.com/cdn.didacticseries.com/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_04.jpg',
+    // Cryptococcus image showing encapsulated yeasts highlighted by mucicarmine stain.
+    lecture_crypto_image:
+        'https://storage.googleapis.com/cdn.didacticseries.com/granulomas/cryptococcus/Unclassified/cryptococcus_cryptococcus_04.jpg',
+};
 
 interface LectureProps {
     onComplete: () => void;
@@ -97,9 +117,21 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
       const content = (
         <div className="font-lato text-slate-800 text-lg prose max-w-none" dangerouslySetInnerHTML={{ __html: slide.text }}></div>
       );
-      const image = slide.placeholderId ? (
-          <div className="w-full aspect-video bg-slate-200 border rounded-lg flex items-center justify-center"><p className="text-slate-500">Image Placeholder</p></div>
-      ) : null;
+      let image: React.ReactNode = null;
+
+      if (slide.placeholderId) {
+        image = lectureImageMap[slide.placeholderId] ? (
+          <img
+            src={lectureImageMap[slide.placeholderId]}
+            alt={slide.title}
+            className="w-full aspect-video object-cover rounded-lg border"
+          />
+        ) : (
+          <div className="w-full aspect-video bg-slate-200 border rounded-lg flex items-center justify-center">
+            <p className="text-slate-500">Image Placeholder</p>
+          </div>
+        );
+      }
       
       const quiz = slide.quiz ? <QuizComponent {...slide.quiz} /> : null;
   
@@ -123,7 +155,25 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
         case 'table': return <div className="w-full text-left max-w-6xl"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 border-b-2 border-sky-400 pb-4 mb-8">{slide.title}</h2><div className="overflow-x-auto"><table className="w-full text-left border-collapse font-lato text-base md:text-lg"><thead><tr className="bg-sky-800 text-white"><th className="p-3">{slide.headers[0]}</th><th className="p-3">{slide.headers[1]}</th><th className="p-3">{slide.headers[2]}</th><th className="p-3">{slide.headers[3]}</th><th className="p-3">{slide.headers[4]}</th></tr></thead><tbody>{slide.rows.map((row, i) => <tr key={i} className="border-b border-slate-200 odd:bg-white even:bg-slate-50">{row.map((cell, j) => <td key={j} className="p-3 text-slate-800" dangerouslySetInnerHTML={{ __html: cell }}></td>)}</tr>)}</tbody></table></div></div>
         case 'quiz': return <div className="w-full max-w-2xl"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 mb-4 text-center">{slide.title}</h2><QuizComponent question={slide.question!} options={slide.options!} correctAnswer={slide.correctAnswer!} feedback={slide.feedback!} /></div>
         case 'image_hotspot': return <div className="w-full text-left max-w-5xl"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 border-b-2 border-sky-400 pb-4 mb-8">{slide.title}</h2>{renderLayout(slide)}</div>
-        case 'three_column_image': return <div className="w-full text-left max-w-6xl"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 border-b-2 border-sky-400 pb-4 mb-8">{slide.title}</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-8">{slide.tiles.map((tile, i) => <div key={i} className="text-center"><div className="w-full rounded-lg shadow-lg border border-slate-200 mb-2 aspect-[4/3] bg-slate-200 flex items-center justify-center"><p className="text-slate-500">Image Placeholder</p></div><p className="font-lato text-base text-slate-700" dangerouslySetInnerHTML={{ __html: tile.caption }}></p></div>)}</div></div>
+        case 'three_column_image': return <div className="w-full text-left max-w-6xl"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 border-b-2 border-sky-400 pb-4 mb-8">{slide.title}</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-8">{slide.tiles.map((tile, i) => {
+            const captionText = typeof tile.caption === 'string' ? tile.caption.replace(/<[^>]*>/g, '') : slide.title;
+            return (
+                <div key={i} className="text-center">
+                    {tile.placeholderId && lectureImageMap[tile.placeholderId] ? (
+                        <img
+                            src={lectureImageMap[tile.placeholderId]}
+                            alt={captionText}
+                            className="w-full rounded-lg shadow-lg border border-slate-200 mb-2 aspect-[4/3] object-cover"
+                        />
+                    ) : (
+                        <div className="w-full rounded-lg shadow-lg border border-slate-200 mb-2 aspect-[4/3] bg-slate-200 flex items-center justify-center">
+                            <p className="text-slate-500">Image Placeholder</p>
+                        </div>
+                    )}
+                    <p className="font-lato text-base text-slate-700" dangerouslySetInnerHTML={{ __html: tile.caption }}></p>
+                </div>
+            );
+        })}</div></div>
         case 'launch': return <div className="text-center"><h2 className="font-roboto-slab text-5xl md:text-6xl font-bold text-slate-900">{slide.title}</h2><p className="font-lato text-xl md:text-2xl mt-4 text-slate-700">{slide.text}</p><button onClick={onComplete} className="mt-8 bg-sky-600 text-white font-bold font-roboto-slab text-xl py-4 px-8 rounded-lg hover:bg-sky-700 transition-transform hover:scale-105 shadow-lg flex items-center mx-auto"><ArrowRightToBracketIcon className="h-6 w-6 mr-3"/>{slide.buttonText}</button></div>
         default: return null;
     }
