@@ -69,7 +69,7 @@ const lectureFallbackImageMap: Record<string, string> = {
     lecture_histoplasma_gms_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_35.jpg',
     lecture_blasto_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_04.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_63.jpg',
     lecture_blastomycosis_pas_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/PAS/blastomycosis_blastomycosis_35.jpg',
     lecture_cocci_image:
