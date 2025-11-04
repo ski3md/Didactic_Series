@@ -1,7 +1,7 @@
 import React from 'react';
-import { CheckCircleIcon, XCircleIcon, LightbulbIcon } from '../icons.tsx';
+import { CheckCircleIcon, XCircleIcon, LightbulbIcon, ShieldExclamationIcon } from '../icons.tsx';
 
-type AlertType = 'success' | 'error' | 'info';
+type AlertType = 'success' | 'error' | 'info' | 'warning';
 
 interface AlertProps {
   type: AlertType;
@@ -22,6 +22,10 @@ const alertConfig = {
   info: {
     icon: <LightbulbIcon className="h-5 w-5" />,
     classes: 'bg-cyan-50 border-cyan-400 text-cyan-800',
+  },
+  warning: {
+    icon: <ShieldExclamationIcon className="h-5 w-5" />,
+    classes: 'bg-amber-50 border-amber-400 text-amber-800',
   },
 };
 
