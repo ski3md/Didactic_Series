@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
     ChevronLeftIcon, ChevronRightIcon, MagnifyingGlassChartIcon, BullseyeIcon, BeakerIcon,
-    ArrowRightToBracketIcon
+    ArrowRightToBracketIcon, ClipboardDocumentListIcon, ShieldExclamationIcon, EyeIcon
 } from './icons.tsx';
 import Alert from './ui/Alert.tsx';
 
@@ -16,13 +16,25 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_06.jpg',
     // Blastomycosis image demonstrating broad-based budding yeast.
     lecture_blasto_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_04.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_06.jpg',
     // Coccidioidomycosis image featuring large spherules with endospores.
     lecture_cocci_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_05.jpg',
     // Cryptococcus image showing encapsulated yeasts highlighted by mucicarmine stain.
     lecture_crypto_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Mucicarmine/cryptococcosis_cryptococcosis_05.jpg',
+    // Sarcoidosis image with well-formed non-caseating granulomas.
+    lecture_sarcoid_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg',
+    // GPA image highlighting vasculitis with dirty necrosis.
+    lecture_gpa_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/gpa/Unclassified/gpa_vasculitis_63.jpg',
+    // Hypersensitivity pneumonitis image with poorly formed peribronchiolar granulomas.
+    lecture_hp_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/hypersensitivity_pneumonitis/Unclassified/hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_13.jpg',
+    // Aspiration pneumonia image showing foreign material with surrounding giant cells.
+    lecture_aspiration_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_97.jpg',
 };
 
 const defaultLectureImage =
@@ -34,47 +46,145 @@ interface LectureProps {
 
 const slideData = [
     { type: 'title', title: 'Granulomatous Lung Disease', subtitle: 'A Diagnostic Approach: The Lecture Component' },
-    { type: 'bullets', title: 'Learning Objectives', items: [
-        { icon: <MagnifyingGlassChartIcon className="h-6 w-6"/>, text: '<strong>Analyze:</strong> Compare and contrast key histologic features, morphology, and location of common granulomatous diseases.' },
-        { icon: <BullseyeIcon className="h-6 w-6"/>, text: '<strong>Apply:</strong> Correctly identify the most likely etiology (Infectious, Autoimmune, Inhalational) from a given histologic pattern.' },
-        { icon: <BeakerIcon className="h-6 w-6"/>, text: '<strong>Evaluate:</strong> Justify the selection of the most appropriate ancillary test (e.g., special stains, serology) to confirm a diagnosis.' },
-    ]},
-    { type: 'section_title', title: 'The Core Framework', text: 'The key is not just <strong>if</strong> there is a granuloma, but its <strong>quality</strong>, <strong>distribution</strong>, and <strong>clinical context</strong>.' },
-    { type: 'table', title: 'Core Differential Diagnosis', headers: ['Feature', 'Sarcoidosis', 'Tuberculosis (TB)', 'Hypersensitivity (HP)', 'GPA (Vasculitis)'], rows: [
-        ['<strong>Granuloma Type</strong>', 'Well-formed, non-caseating', 'Well-formed, caseating', 'Poorly-formed', 'Palisading'],
-        ['<strong>Necrosis</strong>', 'Absent', 'Caseous ("clean")', 'Absent', 'Geographic ("dirty")'],
-        ['<strong>Distribution</strong>', 'Lymphangitic ("Stacks")', 'Apical, cavitary', 'Peribronchiolar ("Hugs")', 'Random, nodular'],
-        ['<strong>Key Test</strong>', 'Diagnosis of Exclusion', 'AFB Stain / PCR', 'Exposure History', 'c-ANCA Serology'],
-    ]},
-    { type: 'quiz', title: 'Knowledge Check: Core Concepts', question: 'A biopsy shows caseating granulomas. Based on the table, which two ancillary tests are non-negotiable to order first?',
-      options: ['c-ANCA and Serum ACE', 'AFB Stain and GMS Stain', 'Exposure History and BeLPT', 'None, it must be sarcoidosis'],
-      correctAnswer: 'AFB Stain and GMS Stain',
-      feedback: 'Correct. Caseating necrosis has a broad differential, but infectious causes (TB and Fungi) must be ruled out first with special stains before considering non-infectious mimics.'
+    {
+        type: 'bullets',
+        title: 'Learning Objectives',
+        items: [
+            { icon: <MagnifyingGlassChartIcon className="h-6 w-6" />, text: '<strong>Analyze:</strong> Compare and contrast key histologic features, morphology, and location of common granulomatous diseases.' },
+            { icon: <BullseyeIcon className="h-6 w-6" />, text: '<strong>Apply:</strong> Correctly identify the most likely etiology (Infectious, Autoimmune, Inhalational) from a given histologic pattern.' },
+            { icon: <BeakerIcon className="h-6 w-6" />, text: '<strong>Evaluate:</strong> Justify the selection of the most appropriate ancillary test (e.g., special stains, serology) to confirm a diagnosis.' },
+        ],
     },
-    { type: 'image_hotspot', title: 'Pattern 1: Infectious - Tuberculosis', text: '<h3>Histologic Clues:</h3><ul><li><strong>Granulomas:</strong> Well-formed, often confluent.</li><li><strong>Necrosis:</strong> Central <strong>caseous necrosis</strong> is the hallmark. It appears "clean" (acellular and eosinophilic).</li><li><strong>Stains:</strong> An Acid-Fast Bacilli (AFB) stain is mandatory to identify the organisms.</li></ul>', 
-      placeholderId: 'lecture_tb_image',
-      quiz: {
-        question: 'Click the feature in the text that best describes the pink, acellular material in the center of the image.',
-        options: ['Well-formed granulomas', 'Caseous necrosis', 'Acid-Fast Bacilli'],
-        correctAnswer: 'Caseous necrosis',
-        feedback: "Excellent. That central, eosinophilic debris is the classic 'caseous' (cheese-like) necrosis of TB."
-      }
+    {
+        type: 'bullets',
+        title: 'The Diagnostic Approach',
+        items: [
+            { icon: <EyeIcon className="h-6 w-6" />, text: 'This lecture is a review on how to approach a diagnosis.' },
+            { icon: <ClipboardDocumentListIcon className="h-6 w-6" />, text: 'Finding granulomas (small clusters of inflammatory cells) in the lung requires a careful <strong>process of elimination</strong>.' },
+            { icon: <ShieldExclamationIcon className="h-6 w-6" />, text: 'We must always start by ruling out the most common (and treatable) causes.' },
+        ],
     },
-    { type: 'image_hotspot', title: 'Infectious Mimic: Histoplasmosis', text: '<h3>Histologic Clues:</h3><ul><li><strong>Mimicry:</strong> Also presents with caseating granulomas, perfectly mimicking TB on H&E.</li><li><strong>Organisms:</strong> The key is finding small (2-5 µm), intracellular yeasts within macrophages.</li><li><strong>Stains:</strong> A Gomori Methenamine-Silver (GMS) stain is required to visualize the fungi.</li></ul>', 
-      placeholderId: 'lecture_histo_image',
-      quiz: {
-          question: 'In this image of Histoplasmosis, what is the key diagnostic finding?',
-          options: ['Broad-based budding', 'Intracellular yeasts', 'Spherules with endospores'],
-          correctAnswer: 'Intracellular yeasts',
-          feedback: "Correct! The tiny dots within the macrophages are the small yeasts of *Histoplasma capsulatum*."
-      }
+    {
+        type: 'section_title',
+        title: 'The Core Framework',
+        text: 'The key is not just <strong>if</strong> there is a granuloma, but its <strong>quality</strong>, <strong>distribution</strong>, and <strong>clinical context</strong>.',
     },
-    { type: 'three_column_image', title: 'Other Key Fungi', tiles: [
-        { placeholderId: 'lecture_blasto_image', caption: '<strong>Blastomycosis:</strong> Large yeasts with broad-based budding.' },
-        { placeholderId: 'lecture_cocci_image', caption: '<strong>Coccidioidomycosis:</strong> Large spherules with internal endospores.' },
-        { placeholderId: 'lecture_crypto_image', caption: '<strong>Cryptococcus:</strong> Encapsulated yeasts, positive with Mucicarmine.' },
-    ]},
-    { type: 'launch', title: 'Next Steps', text: 'You have reviewed the core lecture content.', buttonText: 'Launch Interactive Module' },
+    {
+        type: 'table',
+        title: 'Core Differential Diagnosis',
+        headers: ['Feature', 'Sarcoidosis', 'Tuberculosis (TB)', 'Hypersensitivity (HP)', 'GPA (Vasculitis)'],
+        rows: [
+            ['<strong>Granuloma Type</strong>', 'Well-formed, non-caseating', 'Well-formed, caseating', 'Poorly-formed', 'Palisading'],
+            ['<strong>Necrosis</strong>', 'Absent', 'Caseous ("clean")', 'Absent', 'Geographic ("dirty")'],
+            ['<strong>Distribution</strong>', 'Lymphangitic ("Stacks")', 'Apical, cavitary', 'Peribronchiolar ("Hugs")', 'Random, nodular'],
+            ['<strong>Key Test</strong>', 'Diagnosis of Exclusion', 'AFB Stain / PCR', 'Exposure History', 'c-ANCA Serology'],
+        ],
+    },
+    {
+        type: 'quiz',
+        title: 'Knowledge Check: Core Concepts',
+        question: 'A biopsy shows caseating granulomas. Based on the table, which two ancillary tests are non-negotiable to order first?',
+        options: ['c-ANCA and Serum ACE', 'AFB Stain and GMS Stain', 'Exposure History and BeLPT', 'None, it must be sarcoidosis'],
+        correctAnswer: 'AFB Stain and GMS Stain',
+        feedback: 'Correct. Caseating necrosis has a broad differential, but infectious causes (TB and Fungi) must be ruled out first with special stains before considering non-infectious mimics.',
+    },
+    {
+        type: 'section_title',
+        title: 'Category 1: Infectious Causes',
+        text: 'Most granulomas are caused by infection. A pathologist\'s first job is to rule these out, often using special stains (AFB and GMS) to look for organisms.',
+    },
+    {
+        type: 'image_hotspot',
+        title: 'Pattern 1: Infectious - Tuberculosis',
+        text: '<h3>Histologic Clues:</h3><ul><li><strong>Organism:</strong> <i>Mycobacterium tuberculosis</i> (or Nontuberculous Mycobacteria - NTM).</li><li><strong>Granulomas:</strong> Well-formed, often confluent.</li><li><strong>Necrosis:</strong> Central <strong>caseous necrosis</strong> is the hallmark. It appears "clean" (acellular and eosinophilic).</li><li><strong>Stains:</strong> An Acid-Fast Bacilli (AFB) stain is mandatory to identify the organisms.</li></ul>',
+        placeholderId: 'lecture_tb_image',
+        quiz: {
+            question: 'Click the feature in the text that best describes the pink, acellular material in the center of the image.',
+            options: ['Well-formed granulomas', 'Caseous necrosis', 'Acid-Fast Bacilli'],
+            correctAnswer: 'Caseous necrosis',
+            feedback: "Excellent. That central, eosinophilic debris is the classic 'caseous' (cheese-like) necrosis of TB.",
+        },
+    },
+    {
+        type: 'image_hotspot',
+        title: 'Infectious Mimic: Histoplasmosis',
+        text: '<h3>Histologic Clues:</h3><ul><li><strong>Organism:</strong> <i>Histoplasma capsulatum</i> (often found in areas with bird or bat droppings).</li><li><strong>Mimicry:</strong> Also presents with caseating granulomas, perfectly mimicking TB on H&E.</li><li><strong>Organisms:</strong> The key is finding small (2-5 µm), intracellular yeasts within macrophages.</li><li><strong>Stains:</strong> A Gomori Methenamine-Silver (GMS) stain is required to visualize the fungi.</li></ul>',
+        placeholderId: 'lecture_histo_image',
+        quiz: {
+            question: 'In this image of Histoplasmosis, what is the key diagnostic finding?',
+            options: ['Broad-based budding', 'Intracellular yeasts', 'Spherules with endospores'],
+            correctAnswer: 'Intracellular yeasts',
+            feedback: 'Correct! The tiny dots within the macrophages are the small yeasts of <i>Histoplasma capsulatum</i>.',
+        },
+    },
+    {
+        type: 'three_column_image',
+        title: 'Other Key Fungi',
+        tiles: [
+            { placeholderId: 'lecture_blasto_image', caption: '<strong>Blastomycosis:</strong> Large yeasts with broad-based budding.' },
+            { placeholderId: 'lecture_cocci_image', caption: '<strong>Coccidioidomycosis:</strong> Large spherules with internal endospores.' },
+            { placeholderId: 'lecture_crypto_image', caption: '<strong>Cryptococcus:</strong> Encapsulated yeasts, positive with Mucicarmine.' },
+        ],
+    },
+    {
+        type: 'section_title',
+        title: 'Category 2: Major Non-Infectious Causes',
+        text: 'If no infection is found, the diagnosis then shifts to non-infectious causes.',
+    },
+    {
+        type: 'image_hotspot',
+        title: 'Non-Infectious: Sarcoidosis',
+        text: '<h3>Histologic Clues:</h3><ul><li><strong>Etiology:</strong> An inflammatory disease of unknown cause, classically affecting lungs and lymph nodes.</li><li><strong>Granulomas:</strong> <strong>Well-formed, non-caseating</strong> ("naked" granulomas) are the classic finding. They lack a "cheesy" center.</li><li><strong>Distribution:</strong> Typically lymphangitic (following the lymph channels).</li><li><strong>Diagnosis:</strong> This is a diagnosis of exclusion after infection has been ruled out.</li></ul>',
+        placeholderId: 'lecture_sarcoid_image',
+        quiz: {
+            question: 'What is the key <em>negative</em> finding that defines these granulomas as "non-caseating"?',
+            options: ['Absence of necrosis', 'Absence of giant cells', 'Absence of lymphocytes'],
+            correctAnswer: 'Absence of necrosis',
+            feedback: 'Correct. Sarcoid granulomas are "non-caseating," meaning they lack the central caseous necrosis seen in tuberculosis.',
+        },
+    },
+    {
+        type: 'image_hotspot',
+        title: 'Non-Infectious: GPA (Vasculitis)',
+        text: '<h3>Histologic Clues:</h3><ul><li><strong>Etiology:</strong> Granulomatosis with Polyangiitis (formerly Wegener&#39;s). A small-vessel vasculitis.</li><li><strong>Granulomas:</strong> Often "palisading" (histiocytes lined up) around areas of necrosis.</li><li><strong>Necrosis:</strong> Classic necrosis is <strong>geographic</strong> and "dirty" (contains neutrophils and cellular debris).</li><li><strong>Key Finding:</strong> Look for an associated <strong>vasculitis</strong> (inflammation of blood vessels).</li><li><strong>Key Test:</strong> c-ANCA serology is often positive.</li></ul>',
+        placeholderId: 'lecture_gpa_image',
+    },
+    {
+        type: 'image_hotspot',
+        title: 'Non-Infectious: Hypersensitivity Pneumonitis (HP)',
+        text: '<h3>Histologic Clues:</h3><ul><li><strong>Etiology:</strong> An allergic reaction to an inhaled organic substance (e.g., "Farmer&apos;s Lung" from moldy hay, "Bird Fancier&apos;s Lung" from bird proteins).</li><li><strong>Granulomas:</strong> <strong>Poorly-formed</strong>, loose clusters of histiocytes.</li><li><strong>Distribution:</strong> Classically <strong>peribronchiolar</strong> (centered on the small airways).</li><li><strong>Key Finding:</strong> Often accompanied by a prominent lymphocytic interstitial pneumonia and organizing pneumonia.</li></ul>',
+        placeholderId: 'lecture_hp_image',
+    },
+    {
+        type: 'bullets',
+        title: 'Related Condition: Hot Tub Lung',
+        items: [
+            { icon: <BeakerIcon className="h-6 w-6" />, text: 'This is considered a specific type of hypersensitivity pneumonitis.' },
+            { icon: <ShieldExclamationIcon className="h-6 w-6" />, text: '<strong>It is not an infection.</strong> It is an <i>immune reaction</i> to inhaling aerosolized nontuberculous mycobacteria (<i>Mycobacterium avium</i> complex).' },
+            { icon: <MagnifyingGlassChartIcon className="h-6 w-6" />, text: 'Histology is identical to HP: poorly-formed, peribronchiolar granulomas.' },
+        ],
+    },
+    {
+        type: 'image_hotspot',
+        title: 'Non-Infectious: Aspiration Pneumonia',
+        text: '<h3>Histologic Clues:</h3><ul><li><strong>Etiology:</strong> Inhalation of foreign material into the lungs (e.g., food particles, vegetable matter).</li><li><strong>Granulomas:</strong> A <strong>foreign-body giant cell reaction</strong>. Histiocytes and giant cells surround and "wall off" the foreign material.</li><li><strong>Key Finding:</strong> You must identify the foreign material itself. Vegetable matter (as seen in the image) shows rigid, clear cell walls.</li></ul>',
+        placeholderId: 'lecture_aspiration_image',
+    },
+    {
+        type: 'bullets',
+        title: 'Related Condition: Talc Granulomatosis',
+        items: [
+            { icon: <BeakerIcon className="h-6 w-6" />, text: 'A rare condition caused by talc particles lodging in the lungs\' small blood vessels.' },
+            { icon: <MagnifyingGlassChartIcon className="h-6 w-6" />, text: 'Associated with intravenous injection of crushed oral medications (talc is a common filler in pills).' },
+            { icon: <EyeIcon className="h-6 w-6" />, text: 'The talc particles appear as birefringent, plate-like crystals under polarized light, surrounded by a foreign-body granulomatous reaction.' },
+        ],
+    },
+    {
+        type: 'launch',
+        title: 'Next Steps',
+        text: 'You have reviewed the core lecture content.',
+        buttonText: 'Launch Interactive Module',
+    },
 ];
 
 const QuizComponent: React.FC<{
