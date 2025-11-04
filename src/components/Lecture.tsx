@@ -535,13 +535,13 @@ const CaseChallenge: React.FC<{
     const canShowImage = Boolean(placeholderId);
 
     return (
-        <div className="w-full text-left max-w-6xl mx-auto space-y-6">
+        <div className="w-full text-left max-w-6xl mx-auto space-y-6 px-2 sm:px-0">
             <div className="text-center">
                 <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900">{title}</h2>
                 <p className="mt-2 text-slate-600 max-w-3xl mx-auto">{vignette}</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white border border-slate-200 rounded-lg shadow-sm p-4 space-y-3">
+            <div className="flex flex-col lg:flex-row gap-6">
+                <div className="bg-white border border-slate-200 rounded-lg shadow-sm p-4 space-y-3 lg:max-w-md lg:flex-shrink-0">
                     <h3 className="font-semibold text-slate-800 uppercase tracking-wide text-sm">Diagnostic Pearls</h3>
                     <ul className="list-disc list-inside space-y-2 text-sm text-slate-700">
                         {pearls.map((pearl, idx) => (
@@ -550,7 +550,7 @@ const CaseChallenge: React.FC<{
                     </ul>
                 </div>
                 {canShowImage && (
-                    <figure className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+                    <figure className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden lg:flex-1">
                         <img
                             src={primary}
                             alt={title}
@@ -567,7 +567,7 @@ const CaseChallenge: React.FC<{
                     </figure>
                 )}
             </div>
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
                 {questions.map((question, idx) => (
                     <div key={`${title}-q${idx}`} className="bg-slate-50 border border-slate-200 rounded-lg p-4">
                         <QuizComponent {...question} />
@@ -584,14 +584,14 @@ const LightningRound: React.FC<{
     questions: CaseQuestion[];
     footnote?: string;
 }> = ({ title, intro, questions, footnote }) => (
-    <div className="w-full text-left max-w-5xl mx-auto space-y-5">
+    <div className="w-full text-left max-w-6xl mx-auto space-y-5 px-2 sm:px-0">
         <div className="text-center">
             <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900">{title}</h2>
             <p className="text-slate-600 mt-2">{intro}</p>
         </div>
-        <div className="grid grid-cols-1 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6">
             {questions.map((question, idx) => (
-                <div key={`lightning-${idx}`} className="bg-white border border-slate-200 rounded-lg shadow-sm p-4">
+                <div key={`lightning-${idx}`} className="bg-white border border-slate-200 rounded-lg shadow-sm p-4 flex flex-col h-full">
                     <div className="text-xs uppercase tracking-wider text-sky-600 font-semibold mb-2">Question {idx + 1}</div>
                     <QuizComponent {...question} />
                 </div>
