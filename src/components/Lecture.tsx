@@ -10,7 +10,7 @@ import Alert from './ui/Alert.tsx';
 const lectureImageMap: Record<string, string> = {
     // Tuberculosis image illustrating well-formed granulomas with central caseous necrosis.
     lecture_tb_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/tuberculosis/MycobacteriumTB.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/lungtuberculosisanapath02.jpg',
     // Histoplasmosis image showing intracellular yeasts within macrophages.
     lecture_histo_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_06.jpg',
@@ -22,7 +22,7 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_05.jpg',
     // Cryptococcus image showing encapsulated yeasts highlighted by mucicarmine stain.
     lecture_crypto_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcus/Unclassified/cryptococcus_cryptococcus_05.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Mucicarmine/cryptococcosis_cryptococcosis_05.jpg',
 };
 
 interface LectureProps {
