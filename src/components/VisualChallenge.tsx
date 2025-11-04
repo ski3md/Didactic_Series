@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Card from './ui/Card.tsx';
 import SectionHeader from './ui/SectionHeader.tsx';
 import Alert from './ui/Alert.tsx';
@@ -17,6 +17,24 @@ const VisualChallenge: React.FC<VisualChallengeProps> = ({ user }) => {
     const [hpImage, setHpImage] = useState<StoredImage | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
+    const normalizeTag = (tag: string) =>
+        tag.toLowerCase().replace(/\s+/g, '_').replace(/-/g, '_');
+
+    const tagMatches = (image: StoredImage | null, candidates: string[]) => {
+        if (!image?.tags || image.tags.length === 0) return false;
+        const normalizedImageTags = new Set(image.tags.map(normalizeTag));
+        return candidates.some(candidate => normalizedImageTags.has(normalizeTag(candidate)));
+    };
+
+    const sarcoidTagCandidates = useMemo(
+        () => ['sarcoidosis', 'sarcoid'],
+        []
+    );
+    const hpTagCandidates = useMemo(
+        () => ['hypersensitivity_pneumonitis', 'hypersensitivity-pneumonitis', 'hot_tub_lung', 'hp'],
+        []
+    );
+
     useEffect(() => {
         const loadChallengeImages = async () => {
             setIsLoading(true);
@@ -24,11 +42,11 @@ const VisualChallenge: React.FC<VisualChallengeProps> = ({ user }) => {
                 const allImages = await getGalleryImages();
                 
                 // Find images by tag
-                const sarcoidosisImage = allImages.find(img => img.tags?.includes('sarcoidosis'));
-                const hpImage = allImages.find(img => img.tags?.includes('hypersensitivity-pneumonitis'));
+                const sarcoidosisImage = allImages.find(img => tagMatches(img, sarcoidTagCandidates));
+                const hypersensitivityImage = allImages.find(img => tagMatches(img, hpTagCandidates));
 
                 setSarcImage(sarcoidosisImage || null);
-                setHpImage(hpImage || null);
+                setHpImage(hypersensitivityImage || null);
             } catch (e) {
                 console.error("Failed to load images for visual challenge", e);
             } finally {
@@ -36,7 +54,7 @@ const VisualChallenge: React.FC<VisualChallengeProps> = ({ user }) => {
             }
         };
         loadChallengeImages();
-    }, []);
+    }, [hpTagCandidates, sarcoidTagCandidates]);
 
     const handleChallenge1 = (choice: string) => {
       if (!challenge1Answer) {
@@ -63,7 +81,7 @@ const VisualChallenge: React.FC<VisualChallengeProps> = ({ user }) => {
             <p className="text-center text-slate-600 py-8">Loading dynamic challenge images...</p>
         ) : !sarcImage || !hpImage ? (
              <Alert type="info" title="Content Not Available">
-                This challenge requires at least one image tagged 'sarcoidosis' and one tagged 'hypersensitivity-pneumonitis' in the gallery. Please ask an admin to upload and tag relevant images.
+                This challenge requires at least one image tagged for Sarcoidosis and one tagged for Hypersensitivity Pneumonitis (for example <code>sarcoidosis</code> or <code>hypersensitivity_pneumonitis</code>). Please ask an admin to upload and tag relevant images in the gallery manifest.
              </Alert>
         ) : (
             <div className="space-y-12">
