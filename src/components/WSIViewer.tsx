@@ -41,6 +41,7 @@ const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }
       element: viewerRef.current,
       prefixUrl: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/images/',
       tileSources: tileSources,
+      crossOriginPolicy: 'Anonymous',
       animationTime: 0.5,
       blendTime: 0.1,
       constrainDuringPan: true,

@@ -585,6 +585,8 @@ const CaseChallenge: React.FC<{
                             loading="lazy"
                             data-fallback-applied="false"
                             onError={attachErrorFallback(fallback)}
+                            referrerPolicy="no-referrer"
+                            crossOrigin="anonymous"
                         />
                         {imageCaption && (
                             <figcaption className="p-3 text-xs text-slate-600 bg-slate-100 border-t border-slate-200">
@@ -676,6 +678,8 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             className="w-full aspect-video object-cover rounded-lg border shadow-sm"
             data-fallback-applied="false"
             onError={attachErrorFallback(fallback)}
+            referrerPolicy="no-referrer"
+            crossOrigin="anonymous"
           />
         );
       }
@@ -714,6 +718,8 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
                         data-fallback-applied="false"
                         onError={attachErrorFallback(fallback)}
                         loading="lazy"
+                        referrerPolicy="no-referrer"
+                        crossOrigin="anonymous"
                     />
                     <p className="font-lato text-base text-slate-700" dangerouslySetInnerHTML={{ __html: tile.caption }}></p>
                 </div>
