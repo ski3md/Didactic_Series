@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Image Manifest (WHO thoracic)",
+  "type": "object",
+  "required": ["generated","schema","categories"],
+  "properties": {
+    "generated": { "type": "string", "format": "date-time" },
+    "schema": { "type": "string" },
+    "version": { "type": "string" },
+    "categories": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id","entity","category","stain","path"],
+              "properties": {
+                "id": { "type": "string" },
+                "entity": { "type": "string" },
+                "category": { "type": "string" },
+                "stain": { "type": "string" },
+                "path": { "type": "string" },
+                "difficulty": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

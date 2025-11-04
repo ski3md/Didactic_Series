@@ -4,28 +4,54 @@ import process from 'process'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  // Load env file for the specified mode (e.g. .env.production)
+  // Load environment variables
   const env = loadEnv(mode, process.cwd(), '')
 
   return {
     plugins: [react()],
-    base: '/Didactic_Series/', // GitHub Pages base path
+
+    // ✅ Correct GitHub Pages base path
+    base: '/Didactic_Series/',
+
+    // Define API key for client use (read-only)
     define: {
-      // Safely expose only needed env vars
       'process.env.API_KEY': JSON.stringify(env.API_KEY || ''),
     },
+
+    // Explicit alias for OpenSeadragon (fixes Vite import resolution)
+    resolve: {
+      alias: {
+        openseadragon: 'openseadragon/build/openseadragon/openseadragon.js',
+      },
+    },
+
+    // Ensure dependencies are pre-bundled correctly
+    optimizeDeps: {
+      include: ['openseadragon'],
+      exclude: ['@google/genai'],
+    },
+
     build: {
+      // Raise warning threshold from 500 kB → 1 MB
+      chunkSizeWarningLimit: 1000,
+
       rollupOptions: {
+        // Split vendor libraries into separate chunks automatically
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return id.toString().split('node_modules/')[1].split('/')[0];
+            }
+          },
+        },
+
         // Prevent unresolved imports from breaking build
         external: [
-          '@google/genai',          // ignore the deprecated module
-          '@google/generative-ai'   // optional: if installed separately
+          '@google/genai',
+          '@google/generative-ai',
+          'openseadragon',
         ],
       },
     },
-    optimizeDeps: {
-      // Helps avoid dependency scanning issues
-      exclude: ['@google/genai'],
-    },
-  }
-})
+  };
+});

@@ -1,0 +1,147 @@
+{
+  "version": "1.0.0",
+  "schema": "who-2022-thoracic",
+  "entities": {
+    "sarcoidosis": {
+      "category": "noninfectious",
+      "whoCode": "5A20.1",
+      "patterns": [
+        {
+          "keyword": "noncaseating",
+          "description": "noncaseating granulomas"
+        },
+        {
+          "keyword": "asteroid",
+          "description": "asteroid bodies within giant cells"
+        },
+        {
+          "keyword": "schaumann",
+          "description": "schaumann bodies"
+        }
+      ],
+      "cells": ["epithelioid histiocytes", "Langhans giant cells", "lymphocytes"],
+      "difficulty": "intermediate",
+      "tags": ["noncaseating", "perilymphatic", "systemic", "multi-system"],
+      "teachingPoint": "Noncaseating granulomas with perilymphatic distribution are characteristic of sarcoidosis. Look for asteroid bodies and Schaumann bodies within giant cells.",
+      "abpathRelevance": "high"
+    },
+    "tuberculosis": {
+      "category": "infectious",
+      "whoCode": "1B01.1",
+      "patterns": [
+        {
+          "keyword": "caseating",
+          "description": "caseating granulomas with central necrosis"
+        },
+        {
+          "keyword": "afb",
+          "description": "acid-fast bacilli"
+        }
+      ],
+      "cells": ["epithelioid histiocytes", "Langhans giant cells", "caseous necrosis"],
+      "difficulty": "intermediate",
+      "tags": ["mycobacterial", "caseating", "necrosis", "infectious"],
+      "teachingPoint": "Caseating granulomas with central necrosis are characteristic of tuberculosis. AFB stain may reveal acid-fast bacilli.",
+      "abpathRelevance": "high"
+    },
+    "histoplasmosis": {
+      "category": "infectious",
+      "whoCode": "1B02.2",
+      "patterns": [
+        {
+          "keyword": "yeast",
+          "description": "intracellular yeast forms"
+        },
+        {
+          "keyword": "narrow",
+          "description": "narrow-based budding"
+        }
+      ],
+      "cells": ["epithelioid histiocytes", "intracellular yeast"],
+      "difficulty": "advanced",
+      "tags": ["fungal", "dimorphic", "yeast", "intracellular"],
+      "teachingPoint": "Small intracellular yeast forms with narrow-based budding are characteristic of histoplasmosis. GMS stain highlights the yeast forms.",
+      "abpathRelevance": "medium"
+    },
+    "blastomycosis": {
+      "category": "infectious",
+      "whoCode": "1B02.3",
+      "patterns": [
+        {
+          "keyword": "broad",
+          "description": "broad-based budding yeast"
+        }
+      ],
+      "cells": ["epithelioid histiocytes", "giant cells", "broad-based budding yeast"],
+      "difficulty": "advanced",
+      "tags": ["fungal", "dimorphic", "broad-based budding"],
+      "teachingPoint": "Large yeast with broad-based budding are pathognomonic for blastomycosis. Look for thick refractile walls.",
+      "abpathRelevance": "medium"
+    },
+    "coccidioidomycosis": {
+      "category": "infectious",
+      "whoCode": "1B02.1",
+      "patterns": [
+        {
+          "keyword": "spherule",
+          "description": "spherules with endospores"
+        }
+      ],
+      "cells": ["epithelioid histiocytes", "giant cells", "spherules with endospores"],
+      "difficulty": "advanced",
+      "tags": ["fungal", "dimorphic", "spherule", "endospores"],
+      "teachingPoint": "Spherules containing endospores are pathognomonic for coccidioidomycosis. Don't confuse with Blastomyces.",
+      "abpathRelevance": "medium"
+    },
+    "gpa": {
+      "category": "autoimmune",
+      "whoCode": "2A31.0",
+      "patterns": [
+        {
+          "keyword": "necrotizing",
+          "description": "necrotizing granulomatous inflammation"
+        },
+        {
+          "keyword": "geographic",
+          "description": "geographic necrosis"
+        }
+      ],
+      "cells": ["necrotizing granulomas", "geographic necrosis", "vasculitis"],
+      "difficulty": "advanced",
+      "tags": ["vasculitis", "necrotizing", "autoimmune", "anca"],
+      "teachingPoint": "Necrotizing granulomas with vasculitis are characteristic of granulomatosis with polyangiitis (GPA). Look for geographic necrosis and leukocytoclastic vasculitis.",
+      "abpathRelevance": "high"
+    },
+    "foreign_body": {
+      "category": "foreign_body",
+      "whoCode": "5A60.0",
+      "patterns": [
+        {
+          "keyword": "polarizable",
+          "description": "polarizable foreign material"
+        },
+        {
+          "keyword": "talc",
+          "description": "talc granulomas"
+        }
+      ],
+      "cells": ["foreign body giant cells", "polarizable material"],
+      "difficulty": "intermediate",
+      "tags": ["foreign", "polarizable", "giant cells", "exogenous"],
+      "teachingPoint": "Foreign body granulomas with polarizable material indicate exogenous substance exposure. Look for refractile material under polarized light.",
+      "abpathRelevance": "low"
+    }
+  },
+  "stainRoles": {
+    "H&E": "general morphology",
+    "GMS": "highlight fungal cell walls",
+    "PAS": "highlight fungal cell walls and mucin",
+    "AFB": "highlight mycobacterial organisms",
+    "Polarized": "reveal polarizable foreign material"
+  },
+  "difficultyLevels": {
+    "beginner": "Classic presentations with obvious diagnostic features",
+    "intermediate": "Moderate diagnostic complexity, requires pattern recognition",
+    "advanced": "Subtle findings, mimics, or rare presentations"
+  }
+}

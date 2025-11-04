@@ -22,7 +22,6 @@ This project has been configured with Vite for a modern, fast development experi
 -   **Whole Slide Imaging**: [OpenSeadragon](https://openseadragon.github.io/)
 -   **Backend (Demonstrated)**: A mock API using browser storage ([IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)) to provide a fully offline, standalone experience.
 -   **Backend (Instructional Goal)**: The module includes complete code and instructions for deploying a persistent, multi-user backend using [Google Cloud Functions](https://cloud.google.com/functions), [Cloud Storage](https://cloud.google.com/storage), and [Firestore](https://cloud.google.com/firestore).
-
 ---
 
 ## Getting Started
@@ -32,8 +31,10 @@ Follow these instructions to get the project running locally and to deploy it.
 ### 1. Clone the Repository
 
 ```bash
+
 git clone https://github.com/your-username/pathology-learning-module.git
 cd pathology-learning-module
+
 ```
 
 ### 2. Install Dependencies
@@ -45,11 +46,10 @@ npm install
 
 ### 3. Configure Environment Variables
 
-The application requires a Google Gemini API Key for its AI features.
+The AI Case Generator feature requires a Google Gemini API Key.
 
-1.  Create a new file named `.env` in the root of the project. (You can copy `.env.example`).
-2.  Add your API key to this file.
-
+1.  Create a new file named `.env` in the root of the project.
+2.  Add your API key to this file:
     ```env
     API_KEY="YOUR_GEMINI_API_KEY_HERE"
     ```
@@ -79,9 +79,6 @@ _For full implementation details and backend code, see the `metadata.json` file.
 
 ---
 
-## Deployment to GitHub Pages
-
-This project is pre-configured for easy deployment to GitHub Pages.
 
 ### 1. Update Project Configuration
 
@@ -89,7 +86,8 @@ Before deploying, you need to set the correct repository name.
 
 -   **In `package.json`**: Update the `homepage` field to point to your GitHub Pages URL.
     ```json
-    "homepage": "https://your-username.github.io/pathology-learning-module",
+    "homepage": "https://<YOUR_GITHUB_USERNAME>.github.io/<YOUR_REPO_NAME>",
+
     ```
 -   **In `vite.config.ts`**: Update the `base` property to match your repository name.
     ```ts
@@ -104,6 +102,16 @@ Before deploying, you need to set the correct repository name.
 The project includes the `gh-pages` package to simplify deployment. When you run the deploy script, it will use the environment variables from your local `.env` file and embed them in the static files.
 
 **Important**: For a public repository, be aware that the `API_KEY` will be visible in the built JavaScript files. For personal or private use, this may be acceptable. For a truly secure public deployment, you would need to implement a server-side component to proxy API requests or use a more advanced authentication mechanism, which is beyond the scope of a static site deployment.
+    base: '/<YOUR_REPO_NAME>/',
+    // ...
+    ```
+    (This has been pre-filled with `/Didactic_Series/`. Change it if your repo name is different.)
+
+### 2. Deploy
+
+The project includes the `gh-pages` package to simplify deployment. When you run the deploy script, it will use the `API_KEY` from your local `.env` file and embed it in the static files.
+
+**Important**: For a public repository, be aware that the API key will be visible in the built JavaScript files. For personal or private use, this may be acceptable. For a truly secure public deployment, you would need to implement a server-side component to proxy API requests, which is beyond the scope of a static site deployment.
 
 Run the following command to deploy:
 
