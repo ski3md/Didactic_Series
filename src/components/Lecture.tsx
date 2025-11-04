@@ -58,8 +58,71 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Unclassified/cryptococcosis_cryptococcosis_13_2.jpg',
 };
 
+// Secondary CDN images to use if primaries fail.
+const lectureFallbackImageMap: Record<string, string> = {
+    lecture_tb_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Unclassified/tuberculosis_tuberculosis_11_2.jpg',
+    lecture_tb_afb_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Unclassified/tuberculosis_tuberculosis_43.jpg',
+    lecture_histo_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_69.jpg',
+    lecture_histoplasma_gms_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_41.jpg',
+    lecture_blasto_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_11.jpg',
+    lecture_blastomycosis_pas_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_05.jpg',
+    lecture_cocci_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_56.jpg',
+    lecture_cocci_series_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_81.jpg',
+    lecture_crypto_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Unclassified/cryptococcosis_cryptococcosis_96_2.jpg',
+    lecture_crypto_series_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Unclassified/cryptococcosis_cryptococcosis_37.jpg',
+    lecture_sarcoid_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_48.jpg',
+    lecture_gpa_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/gpa/Unclassified/gpa_gpa_81.jpg',
+    lecture_gpa_vasculitis_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/gpa/Unclassified/gpa_gpa_56.jpg',
+    lecture_hp_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/hypersensitivity_pneumonitis/Unclassified/hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_07.jpg',
+    lecture_aspiration_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_54.jpg',
+    lecture_talc_image:
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_54.jpg',
+};
+
 const defaultLectureImage =
     'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg';
+
+const defaultFallbackImage =
+    'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_48.jpg';
+
+const getImageSources = (placeholderId?: string) => {
+    const primary =
+        (placeholderId && lectureImageMap[placeholderId]) || defaultLectureImage;
+    const fallback =
+        (placeholderId && lectureFallbackImageMap[placeholderId]) || defaultFallbackImage;
+    return { primary, fallback };
+};
+
+const attachErrorFallback = (fallback: string) => (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const img = e.currentTarget;
+    if (img.dataset.fallbackApplied === 'true') {
+        if (img.src !== defaultFallbackImage) {
+            img.src = defaultFallbackImage;
+        }
+        return;
+    }
+    img.dataset.fallbackApplied = 'true';
+    if (img.src !== fallback) {
+        img.src = fallback;
+    } else {
+        img.src = defaultFallbackImage;
+    }
+};
 
 interface LectureProps {
     onComplete: () => void;
@@ -468,7 +531,8 @@ const CaseChallenge: React.FC<{
     imageCaption?: string;
     questions: CaseQuestion[];
 }> = ({ title, vignette, pearls, placeholderId, imageCaption, questions }) => {
-    const resolvedSrc = placeholderId ? lectureImageMap[placeholderId] ?? defaultLectureImage : null;
+    const { primary, fallback } = getImageSources(placeholderId);
+    const canShowImage = Boolean(placeholderId);
 
     return (
         <div className="w-full text-left max-w-6xl mx-auto space-y-6">
@@ -485,9 +549,16 @@ const CaseChallenge: React.FC<{
                         ))}
                     </ul>
                 </div>
-                {resolvedSrc && (
+                {canShowImage && (
                     <figure className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
-                        <img src={resolvedSrc} alt={title} className="w-full h-64 object-cover" loading="lazy" />
+                        <img
+                            src={primary}
+                            alt={title}
+                            className="w-full h-64 object-cover"
+                            loading="lazy"
+                            data-fallback-applied="false"
+                            onError={attachErrorFallback(fallback)}
+                        />
                         {imageCaption && (
                             <figcaption className="p-3 text-xs text-slate-600 bg-slate-100 border-t border-slate-200">
                                 {imageCaption}
@@ -570,12 +641,14 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
       let image: React.ReactNode = null;
 
       if (slide.placeholderId) {
-        const resolvedSrc = lectureImageMap[slide.placeholderId] ?? defaultLectureImage;
+        const { primary, fallback } = getImageSources(slide.placeholderId);
         image = (
           <img
-            src={resolvedSrc}
+            src={primary}
             alt={slide.title}
             className="w-full aspect-video object-cover rounded-lg border shadow-sm"
+            data-fallback-applied="false"
+            onError={attachErrorFallback(fallback)}
           />
         );
       }
@@ -604,12 +677,16 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
         case 'image_hotspot': return <div className="w-full text-left max-w-5xl"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 border-b-2 border-sky-400 pb-4 mb-8">{slide.title}</h2>{renderLayout(slide)}</div>
         case 'three_column_image': return <div className="w-full text-left max-w-6xl"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 border-b-2 border-sky-400 pb-4 mb-8">{slide.title}</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-8">{slide.tiles.map((tile, i) => {
             const captionText = typeof tile.caption === 'string' ? tile.caption.replace(/<[^>]*>/g, '') : slide.title;
+            const { primary, fallback } = getImageSources(tile.placeholderId);
             return (
                 <div key={i} className="text-center">
                     <img
-                        src={(tile.placeholderId && lectureImageMap[tile.placeholderId]) || defaultLectureImage}
+                        src={primary}
                         alt={captionText}
                         className="w-full rounded-lg shadow-lg border border-slate-200 mb-2 aspect-[4/3] object-cover"
+                        data-fallback-applied="false"
+                        onError={attachErrorFallback(fallback)}
+                        loading="lazy"
                     />
                     <p className="font-lato text-base text-slate-700" dangerouslySetInnerHTML={{ __html: tile.caption }}></p>
                 </div>
