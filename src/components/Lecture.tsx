@@ -37,25 +37,25 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_97.jpg',
     // AFB stain highlighting slender red bacilli in tuberculosis.
     lecture_tb_afb_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Mycobacterium_tuberculosis_Ziehl-Neelsen_stain_02.jpg',
+        'https://pathology.or.jp/corepicturesEN/05/c11/04.jpg',
     // Histoplasmosis with GMS-positive yeast forms.
     lecture_histoplasma_gms_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_06.jpg',
     // Blastomycosis with broad-based budding demonstrated on PAS.
     lecture_blastomycosis_pas_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/PAS/blastomycosis_blastomycosis_76.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/PAS/blastomycosis_blastomycosis_35.jpg',
     // GPA case highlighting necrotizing vasculitis.
     lecture_gpa_vasculitis_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/gpa/Unclassified/gpa_gpa_95.jpg',
     // Talc granulomatosis with birefringent material.
     lecture_talc_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_83.jpg',
+        'https://webpath.med.utah.edu/INFLHTML/INFL058.jpg',
     // Coccidioidomycosis with large spherules.
     lecture_cocci_series_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_95.jpg',
     // Cryptococcosis with mucicarmine-positive capsules.
     lecture_crypto_series_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Unclassified/cryptococcosis_cryptococcosis_13_2.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Mucicarmine/cryptococcosis_cryptococcosis_36.jpg',
 };
 
 // Secondary CDN images to use if primaries fail.
@@ -63,15 +63,15 @@ const lectureFallbackImageMap: Record<string, string> = {
     lecture_tb_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Unclassified/tuberculosis_tuberculosis_11_2.jpg',
     lecture_tb_afb_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Ziehl-Neelsen-staining-of-a-tuberculosis-tissue-sample-A-Fine-and-course-positive.png',
+        'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6723956/bin/jcm-08-01180-g002.jpg',
     lecture_histo_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_69.jpg',
     lecture_histoplasma_gms_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_30.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_35.jpg',
     lecture_blasto_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_11.jpg',
     lecture_blastomycosis_pas_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/PAS/blastomycosis_blastomycosis_97.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/PAS/blastomycosis_blastomycosis_55.jpg',
     lecture_cocci_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_56.jpg',
     lecture_cocci_series_image:
@@ -79,7 +79,7 @@ const lectureFallbackImageMap: Record<string, string> = {
     lecture_crypto_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Unclassified/cryptococcosis_cryptococcosis_96_2.jpg',
     lecture_crypto_series_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Unclassified/cryptococcosis_cryptococcosis_37.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcosis/Mucicarmine/cryptococcosis_cryptococcosis_02.jpg',
     lecture_sarcoid_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_48.jpg',
     lecture_gpa_image:
@@ -91,7 +91,7 @@ const lectureFallbackImageMap: Record<string, string> = {
     lecture_aspiration_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_54.jpg',
     lecture_talc_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_54.jpg',
+        'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2491654/bin/1477-7517-5-17-4.jpg',
 };
 
 const defaultLectureImage =
