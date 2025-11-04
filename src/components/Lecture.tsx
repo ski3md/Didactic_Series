@@ -16,7 +16,7 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_06.jpg',
     // Blastomycosis image demonstrating broad-based budding yeast.
     lecture_blasto_image:
-        'https://upload.wikimedia.org/wikipedia/commons/4/4e/Blastomycosis%2C_H%26E.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_63.jpg',
     // Coccidioidomycosis image featuring large spherules with endospores.
     lecture_cocci_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_05.jpg',
@@ -477,6 +477,21 @@ const slideData = [
         text: 'Consolidate diagnostic heuristics and plan next steps for deliberate practice.',
     },
     {
+        type: 'reference',
+        title: 'Reference Spotlight',
+        citationTitle: 'Granulomatous Lung Disease: An Approach to the Differential Diagnosis',
+        authors: 'Mukhopadhyay S, Gal AA',
+        journal: 'Arch Pathol Lab Med. 2010;134(5):667-690.',
+        doi: '10.5858/134.5.667',
+        summary: '<p>This review article outlines a practical diagnostic framework for surgical pathologists evaluating pulmonary granulomas. It underscores that infectious etiologies—especially mycobacteria and dimorphic fungi—dominate the differential, and accurate diagnosis hinges on recognizing the tissue reaction pattern, correlating with clinical exposures, and deploying the appropriate special stains.</p><p>The authors also benchmark core noninfectious mimics—sarcoidosis, granulomatosis with polyangiitis (Wegener), hypersensitivity pneumonitis (including hot tub lung), aspiration pneumonia, and talc granulomatosis—highlighting distinguishing histologic clues for each.</p>',
+        directLink: 'https://meridian.allenpress.com/aplm/article/134/5/667/461054/Granulomatous-Lung-Disease-An-Approach-to-the',
+        takeaways: [
+            'Most pulmonary granulomas are infectious—think mycobacteria first, dimorphic fungi second.',
+            'Pattern analysis (quality of necrosis, granuloma architecture, distribution) guides ancillary testing.',
+            'Noninfectious entities (sarcoid, GPA, HP, hot tub lung, aspiration, talc) demand clinicopathologic correlation.'
+        ]
+    },
+    {
         type: 'accordion',
         title: 'Decision Pitfalls & Memory Hooks',
         items: [
@@ -727,6 +742,32 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
         })}</div></div>
         case 'case_series': return <CaseChallenge title={slide.title} vignette={slide.vignette} pearls={slide.pearls} placeholderId={slide.placeholderId} imageCaption={slide.imageCaption} questions={slide.questions} />;
         case 'quiz_stack': return <LightningRound title={slide.title} intro={slide.intro} questions={slide.questions} footnote={slide.footnote} />;
+        case 'reference': return (
+            <div className="w-full text-left max-w-5xl mx-auto space-y-5">
+                <div>
+                    <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 mb-2">{slide.title}</h2>
+                    <h3 className="font-roboto-slab text-xl md:text-2xl text-slate-800">{slide.citationTitle}</h3>
+                    <p className="text-sm text-slate-600">{slide.authors}</p>
+                    <p className="text-sm text-slate-600">{slide.journal} <span className="font-mono">doi:{' '}{slide.doi}</span></p>
+                </div>
+                <div className="bg-white border border-slate-200 rounded-lg shadow-sm p-5 space-y-4">
+                    <div className="prose max-w-none text-slate-700" dangerouslySetInnerHTML={{ __html: slide.summary }}></div>
+                    <ul className="list-disc list-inside space-y-2 text-slate-700">
+                        {slide.takeaways.map((point: string, idx: number) => (
+                            <li key={idx}>{point}</li>
+                        ))}
+                    </ul>
+                    <a
+                        href={slide.directLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-sky-700 font-semibold hover:text-sky-900 underline"
+                    >
+                        Read the full article
+                    </a>
+                </div>
+            </div>
+        );
         case 'accordion': return <div className="w-full text-left max-w-5xl"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 mb-4">{slide.title}</h2><InteractiveAccordion items={slide.items} /></div>;
         case 'launch': return <div className="text-center"><h2 className="font-roboto-slab text-5xl md:text-6xl font-bold text-slate-900">{slide.title}</h2><p className="font-lato text-xl md:text-2xl mt-4 text-slate-700">{slide.text}</p><button onClick={onComplete} className="mt-8 bg-sky-600 text-white font-bold font-roboto-slab text-xl py-4 px-8 rounded-lg hover:bg-sky-700 transition-transform hover:scale-105 shadow-lg flex items-center mx-auto"><ArrowRightToBracketIcon className="h-6 w-6 mr-3"/>{slide.buttonText}</button></div>
         default: return null;
