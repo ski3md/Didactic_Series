@@ -3,6 +3,7 @@ import {
   LoginHistory, StoredImage
 } from '../types.ts';
 import { getStoreData, setStoreData, deleteStoreData } from '../utils/db.ts';
+import localManifest from './manifest.json';
 
 /* -------------------------------------------------------------------------- */
 /*                            Dynamic Gallery Loader                          */
@@ -14,6 +15,37 @@ const IMAGES_KEY = 'pathology_images';
 /**
  * Fetch manifest.json from CDN or fallback to static sample data.
  */
+const normalizeArray = (value: any): string[] => {
+  if (!value) return [];
+  if (Array.isArray(value)) return value.filter(Boolean);
+  return [value].filter(Boolean);
+};
+
+const normalizeManifestEntries = (data: any[]): StoredImage[] =>
+  data.map((entry: any, i: number) => {
+    const tags = normalizeArray(entry.tags);
+    const cells = normalizeArray(entry.cells);
+    const rawSrc: string = entry.src || '';
+    const normalizedSrc = rawSrc.startsWith('http')
+      ? rawSrc
+      : `https://storage.googleapis.com/granuloma-lecture-bucket/${rawSrc.replace(/^assets\/(?:images\/)?/, '')}`;
+
+    return {
+      id: entry.id || `img_${i}`,
+      src: normalizedSrc,
+      gcsPath: normalizedSrc.replace("https://storage.googleapis.com/", ""),
+      title: entry.title || entry.entity || "Untitled Image",
+      description: entry.description || "",
+      uploader: entry.uploader || "system",
+      timestamp: entry.timestamp || Date.now(),
+      category: entry.category || "official",
+      tags,
+      entity: entry.entity || "",
+      difficulty: entry.difficulty || "intermediate",
+      cells,
+    } as StoredImage;
+  });
+
 const fetchManifest = async (): Promise<StoredImage[]> => {
   try {
     const res = await fetch(MANIFEST_URL, { cache: "no-store" });
@@ -21,24 +53,16 @@ const fetchManifest = async (): Promise<StoredImage[]> => {
     const data = await res.json();
 
     // Normalize manifest entries
-    return data.map((entry: any, i: number) => ({
-      id: entry.id || `img_${i}`,
-      src: entry.src,
-      gcsPath: entry.src.replace("https://storage.googleapis.com/", ""),
-      title: entry.title || "Untitled Image",
-      description: entry.description || "",
-      uploader: entry.uploader || "system",
-      timestamp: entry.timestamp || Date.now(),
-      category: entry.category || "official",
-      tags: entry.tags || [],
-      entity: entry.entity || "",
-      difficulty: entry.difficulty || "intermediate",
-      cells: entry.cells || [],
-    })) as StoredImage[];
+    return normalizeManifestEntries(data);
 
   } catch (err) {
     console.warn("⚠️ Manifest load failed; falling back to static gallery:", err);
-    return getStaticGalleryFallback();
+    try {
+      return normalizeManifestEntries(localManifest as any[]);
+    } catch (innerErr) {
+      console.error("Failed to parse embedded manifest, using static fallback.", innerErr);
+      return getStaticGalleryFallback();
+    }
   }
 };
 
@@ -80,13 +104,25 @@ const getStaticGalleryFallback = (): StoredImage[] => ([
 /*                                   Images                                   */
 /* -------------------------------------------------------------------------- */
 
+const shouldRefreshFromManifest = (images: StoredImage[] | null | undefined) => {
+  if (!images || images.length === 0) return true;
+  return images.some(img =>
+    !img.title ||
+    !img.description ||
+    !img.tags ||
+    img.tags.length === 0 ||
+    img.src.startsWith('assets/')
+  );
+};
+
 const getImagesDB = async (): Promise<StoredImage[]> => {
   let images = await getStoreData<StoredImage[]>(IMAGES_KEY);
-  if (!images || images.length === 0) {
-    images = await fetchManifest();
-    await setStoreData(IMAGES_KEY, images);
+  if (shouldRefreshFromManifest(images)) {
+    const manifestImages = await fetchManifest();
+    await setStoreData(IMAGES_KEY, manifestImages);
+    return manifestImages;
   }
-  return images;
+  return images!;
 };
 
 export const apiGetGalleryImagesMock = async (): Promise<StoredImage[]> => {

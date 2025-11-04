@@ -81,7 +81,10 @@ const VisualChallenge: React.FC<VisualChallengeProps> = ({ user }) => {
             <p className="text-center text-slate-600 py-8">Loading dynamic challenge images...</p>
         ) : !sarcImage || !hpImage ? (
              <Alert type="info" title="Content Not Available">
-                This challenge requires at least one image tagged for Sarcoidosis and one tagged for Hypersensitivity Pneumonitis (for example <code>sarcoidosis</code> or <code>hypersensitivity_pneumonitis</code>). Please ask an admin to upload and tag relevant images in the gallery manifest.
+                <span>
+                    This challenge requires at least one image tagged for Sarcoidosis and one tagged for Hypersensitivity Pneumonitis (for example{' '}
+                    <code>sarcoidosis</code> or <code>hypersensitivity_pneumonitis</code>). Please ask an admin to upload and tag relevant images in the gallery manifest.
+                </span>
              </Alert>
         ) : (
             <div className="space-y-12">
