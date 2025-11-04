@@ -37,13 +37,13 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_97.jpg',
     // AFB stain highlighting slender red bacilli in tuberculosis.
     lecture_tb_afb_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Unclassified/tuberculosis_tuberculosis_54_2.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Mycobacterium_tuberculosis_Ziehl-Neelsen_stain_02.jpg',
     // Histoplasmosis with GMS-positive yeast forms.
     lecture_histoplasma_gms_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_97_2.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_06.jpg',
     // Blastomycosis with broad-based budding demonstrated on PAS.
     lecture_blastomycosis_pas_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_39.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/PAS/blastomycosis_blastomycosis_76.jpg',
     // GPA case highlighting necrotizing vasculitis.
     lecture_gpa_vasculitis_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/gpa/Unclassified/gpa_gpa_95.jpg',
@@ -63,15 +63,15 @@ const lectureFallbackImageMap: Record<string, string> = {
     lecture_tb_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Unclassified/tuberculosis_tuberculosis_11_2.jpg',
     lecture_tb_afb_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Unclassified/tuberculosis_tuberculosis_43.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Ziehl-Neelsen-staining-of-a-tuberculosis-tissue-sample-A-Fine-and-course-positive.png',
     lecture_histo_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_69.jpg',
     lecture_histoplasma_gms_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_41.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_30.jpg',
     lecture_blasto_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_11.jpg',
     lecture_blastomycosis_pas_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_05.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/PAS/blastomycosis_blastomycosis_97.jpg',
     lecture_cocci_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_56.jpg',
     lecture_cocci_series_image:
