@@ -28,13 +28,13 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg',
     // GPA image highlighting vasculitis with dirty necrosis.
     lecture_gpa_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/gpa/Unclassified/gpa_vasculitis_63.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Wegener%27s_granulomatosis_-b-_intermed_mag.jpg/1200px-Wegener%27s_granulomatosis_-b-_intermed_mag.jpg',
     // Hypersensitivity pneumonitis image with poorly formed peribronchiolar granulomas.
     lecture_hp_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/hypersensitivity_pneumonitis/Unclassified/hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_13.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Histology_of_chronic_hypersensitivity_pneumonitis.jpg/1200px-Histology_of_chronic_hypersensitivity_pneumonitis.jpg',
     // Aspiration pneumonia image showing foreign material with surrounding giant cells.
     lecture_aspiration_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_97.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/c/c5/Aspiration_pneumonia_%282%29.jpg',
     // AFB stain highlighting slender red bacilli in tuberculosis.
     lecture_tb_afb_image:
         'https://pathology.or.jp/corepicturesEN/05/c11/04.jpg',
@@ -46,7 +46,7 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/PAS/blastomycosis_blastomycosis_35.jpg',
     // GPA case highlighting necrotizing vasculitis.
     lecture_gpa_vasculitis_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/gpa/Unclassified/gpa_gpa_95.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Wegener%27s_granulomatosis_-b-_intermed_mag.jpg/1200px-Wegener%27s_granulomatosis_-b-_intermed_mag.jpg',
     // Talc granulomatosis with birefringent material.
     lecture_talc_image:
         'https://webpath.med.utah.edu/INFLHTML/INFL058.jpg',
