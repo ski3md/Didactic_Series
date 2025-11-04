@@ -16,7 +16,7 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_06.jpg',
     // Blastomycosis image demonstrating broad-based budding yeast.
     lecture_blasto_image:
-        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_63.jpg',
+        'https://en.wikipedia.org/wiki/Blastomycosis#/media/File:Blastomyces_dermatitidis_GMS.jpeg',
     // Coccidioidomycosis image featuring large spherules with endospores.
     lecture_cocci_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_05.jpg',
