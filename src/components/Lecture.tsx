@@ -37,7 +37,7 @@ const lectureImageMap: Record<string, string> = {
         'https://upload.wikimedia.org/wikipedia/commons/c/c5/Aspiration_pneumonia_%282%29.jpg',
     // AFB stain highlighting slender red bacilli in tuberculosis.
     lecture_tb_afb_image:
-        'https://pathology.or.jp/corepicturesEN/05/c11/04.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/7/71/Acid_fast_bacilli_of_Mycobacterium_tuberculosis.jpg',
     // Histoplasmosis with GMS-positive yeast forms.
     lecture_histoplasma_gms_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_06.jpg',
@@ -49,7 +49,7 @@ const lectureImageMap: Record<string, string> = {
         'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Wegener%27s_granulomatosis_-b-_intermed_mag.jpg/1200px-Wegener%27s_granulomatosis_-b-_intermed_mag.jpg',
     // Talc granulomatosis with birefringent material.
     lecture_talc_image:
-        'https://webpath.med.utah.edu/INFLHTML/INFL058.jpg',
+        'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2491654/bin/1477-7517-5-17-4.jpg',
     // Coccidioidomycosis with large spherules.
     lecture_cocci_series_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_95.jpg',
@@ -91,7 +91,7 @@ const lectureFallbackImageMap: Record<string, string> = {
     lecture_aspiration_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_54.jpg',
     lecture_talc_image:
-        'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2491654/bin/1477-7517-5-17-4.jpg',
+        'https://webpath.med.utah.edu/INFLHTML/INFL058.jpg',
 };
 
 const defaultLectureImage =
