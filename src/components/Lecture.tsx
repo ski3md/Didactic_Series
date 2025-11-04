@@ -10,19 +10,19 @@ import Alert from './ui/Alert.tsx';
 const lectureImageMap: Record<string, string> = {
     // Tuberculosis image illustrating well-formed granulomas with central caseous necrosis.
     lecture_tb_image:
-        'https://storage.googleapis.com/cdn.didacticseries.com/granulomas/tuberculosis/Unclassified/tuberculosis_tuberculosis_02.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/tuberculosis/Unclassified/tuberculosis_tuberculosis_02.jpg',
     // Histoplasmosis image showing intracellular yeasts within macrophages.
     lecture_histo_image:
-        'https://storage.googleapis.com/cdn.didacticseries.com/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_06.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_06.jpg',
     // Blastomycosis image demonstrating broad-based budding yeast.
     lecture_blasto_image:
-        'https://storage.googleapis.com/cdn.didacticseries.com/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_04.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/blastomycosis/Unclassified/blastomycosis_blastomycosis_04.jpg',
     // Coccidioidomycosis image featuring large spherules with endospores.
     lecture_cocci_image:
-        'https://storage.googleapis.com/cdn.didacticseries.com/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_04.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_04.jpg',
     // Cryptococcus image showing encapsulated yeasts highlighted by mucicarmine stain.
     lecture_crypto_image:
-        'https://storage.googleapis.com/cdn.didacticseries.com/granulomas/cryptococcus/Unclassified/cryptococcus_cryptococcus_04.jpg',
+        'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/cryptococcus/Unclassified/cryptococcus_cryptococcus_04.jpg',
 };
 
 interface LectureProps {
