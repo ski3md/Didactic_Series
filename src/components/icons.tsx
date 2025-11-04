@@ -76,6 +76,12 @@ export const MenuIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
+export const ClipboardDocumentListIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75M15.75 18.75H18A2.25 2.25 0 0 0 20.25 16.5V6.108a2.25 2.25 0 0 0-1.976-2.192 23.03 23.03 0 0 0-1.123-.08M11.35 3.836A1.92 1.92 0 0 0 11.25 4.5c0 .414.336.75.75.75h4.5c.414 0 .75-.336.75-.75 0-.232-.035-.455-.1-.664M11.35 3.836A2.57 2.57 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.151 1.586M11.35 3.836a23.1 23.1 0 0 0-1.124-.08 2.25 2.25 0 0 0-2.101 2.352V8.25M8.25 8.25H4.875A1.125 1.125 0 0 0 3.75 9.375v11.25A1.125 1.125 0 0 0 4.875 21.75h9.75a1.125 1.125 0 0 0 1.125-1.125V9.375A1.125 1.125 0 0 0 14.625 8.25H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+    </svg>
+);
+
 export const AcademicCapIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -156,6 +162,12 @@ export const ArrowDownTrayIcon = ({ className }: { className?: string }) => (
 export const ShieldCheckIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286Zm0 13.036h.008v.016h-.008v-.016Z" />
+    </svg>
+);
+
+export const ShieldExclamationIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75M12 2.714A14.944 14.944 0 0 1 3.75 6a5.38 5.38 0 0 1-.152-.001A13.1 13.1 0 0 0 3 9.75C3 15.342 6.824 20.04 12 21.372 17.176 20.04 21 15.342 21 9.75c0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z" />
     </svg>
 );
 
