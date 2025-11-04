@@ -48,7 +48,7 @@ const fetchManifest = async (): Promise<StoredImage[]> => {
 const getStaticGalleryFallback = (): StoredImage[] => ([
   {
     id: "sarcoidosis_sarcoidosis_60",
-    src: "https://storage.googleapis.com/cdn.didacticseries.com/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg",
+    src: "https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg",
     gcsPath: "granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg",
     title: "Sarcoidosis",
     description: "A histology image of Sarcoidosis. Stain: Unclassified.",
@@ -62,7 +62,7 @@ const getStaticGalleryFallback = (): StoredImage[] => ([
   },
   {
     id: "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_12",
-    src: "https://storage.googleapis.com/cdn.didacticseries.com/granulomas/hypersensitivity_pneumonitis/Unclassified/hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_12.jpg",
+    src: "https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/hypersensitivity_pneumonitis/Unclassified/hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_12.jpg",
     gcsPath: "granulomas/hypersensitivity_pneumonitis/Unclassified/hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_12.jpg",
     title: "Hypersensitivity Pneumonitis",
     description: "A histology image of Hypersensitivity Pneumonitis. Stain: Unclassified.",

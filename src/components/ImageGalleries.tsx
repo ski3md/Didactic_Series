@@ -35,7 +35,7 @@ const ImageGrid: React.FC<{
               alt={image.title}
               loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              onError={(e) => (e.currentTarget.src = 'https://storage.googleapis.com/cdn.didacticseries.com/misc/fallback.jpg')}
+              onError={(e) => (e.currentTarget.src = 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_02.jpg')}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute bottom-0 left-0 p-2.5 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-full">
@@ -149,7 +149,7 @@ const ImageDetailsModal: React.FC<{
             alt={image.title}
             loading="lazy"
             className="object-contain w-full h-full max-h-[85vh] rounded"
-            onError={(e) => (e.currentTarget.src = 'https://storage.googleapis.com/cdn.didacticseries.com/misc/fallback.jpg')}
+            onError={(e) => (e.currentTarget.src = 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_02.jpg')}
           />
         </div>
         <div className="w-full sm:w-1/2 space-y-4 flex flex-col">

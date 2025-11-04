@@ -1,5 +1,5 @@
 import { ModuleData } from '../types.ts';
-export const CDN_BASE_URL = "https://storage.googleapis.com/cdn.didacticseries.com";
+export const CDN_BASE_URL = "https://storage.googleapis.com/granuloma-lecture-bucket";
 export const IMAGE_PATHS = {
   granulomas: `${CDN_BASE_URL}/`,
 };
