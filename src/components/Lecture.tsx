@@ -554,6 +554,7 @@ type LayoutTokens = {
     hotspot: {
         layout: string;
         textStackSpacing: string;
+        figureClass: string;
         imageClass: string;
     };
     galleryImageClass: string;
@@ -641,7 +642,8 @@ const layoutByDevice: Record<DeviceType, LayoutTokens> = {
         hotspot: {
             layout: 'grid grid-cols-1 gap-6 items-start',
             textStackSpacing: 'space-y-4',
-            imageClass: 'w-full max-h-72 object-contain rounded-xl',
+            figureClass: 'w-full rounded-xl overflow-hidden border border-slate-200 shadow-lg bg-white',
+            imageClass: 'w-full h-auto max-h-80 object-cover',
         },
         galleryImageClass: 'w-full max-h-60 object-contain rounded-xl',
         caseDeck: {
@@ -690,9 +692,10 @@ const layoutByDevice: Record<DeviceType, LayoutTokens> = {
             optionText: 'text-base',
         },
         hotspot: {
-            layout: 'grid grid-cols-1 xl:grid-cols-12 gap-8 items-start',
+            layout: 'grid grid-cols-1 lg:grid-cols-2 gap-8 items-start',
             textStackSpacing: 'space-y-5',
-            imageClass: 'w-full max-h-[22rem] object-contain rounded-2xl',
+            figureClass: 'w-full rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-white',
+            imageClass: 'w-full h-auto max-h-[24rem] object-cover',
         },
         galleryImageClass: 'w-full max-h-[18rem] object-contain rounded-2xl',
         caseDeck: {
@@ -741,9 +744,10 @@ const layoutByDevice: Record<DeviceType, LayoutTokens> = {
             optionText: 'text-base',
         },
         hotspot: {
-            layout: 'grid grid-cols-1 xl:grid-cols-12 gap-10 items-start',
+            layout: 'grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 items-start',
             textStackSpacing: 'space-y-6',
-            imageClass: 'w-full max-h-[26rem] object-contain rounded-3xl',
+            figureClass: 'w-full rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-white',
+            imageClass: 'w-full h-auto max-h-[28rem] object-cover',
         },
         galleryImageClass: 'w-full max-h-[20rem] object-contain rounded-3xl',
         caseDeck: {
@@ -952,7 +956,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0]; onComplete: () => v
       if (slide.placeholderId) {
         const { primary, fallback } = getImageSources(slide.placeholderId);
         image = (
-          <figure className="relative w-full overflow-hidden bg-white border border-slate-200 shadow-xl shadow-slate-900/10 rounded-2xl sm:rounded-[1.75rem]">
+          <figure className={layout.hotspot.figureClass}>
             <img
               src={primary}
               alt={slide.title}
@@ -970,11 +974,11 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0]; onComplete: () => v
         case 'image_hotspot':
           return (
             <div className={layout.hotspot.layout}>
-              <div className={`lg:col-span-7 ${layout.hotspot.textStackSpacing}`}>
+              <div className={layout.hotspot.textStackSpacing}>
                 {content}
                 {quiz}
               </div>
-              {image && <div className="lg:col-span-5">{image}</div>}
+              {image}
             </div>
           );
         default:
