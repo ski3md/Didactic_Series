@@ -138,6 +138,9 @@ const getImageSources = (placeholderId?: string) => {
     return { primary, fallback };
 };
 
+const LECTURE_SCALE = 0.7;
+const LECTURE_SCALE_WIDTH_PERCENT = `${(1 / LECTURE_SCALE) * 100}%`;
+
 const attachErrorFallback = (fallback: string) => (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const img = e.currentTarget;
     if (img.dataset.fallbackApplied === 'true') {
@@ -962,9 +965,20 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
                         aria-hidden={index !== currentSlide}
                     >
                         <div className="max-w-[min(100%,1320px)] mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-10 lg:py-12">
-                            <div className="rounded-[2.5rem] bg-white/95 shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm">
-                                <div className="p-6 sm:p-8 lg:p-12">
-                                    <SlideContent slide={slide} onComplete={onComplete} />
+                            <div className="flex justify-center">
+                                <div
+                                    className="origin-top transform-gpu"
+                                    style={{
+                                        transform: `scale(${LECTURE_SCALE})`,
+                                        transformOrigin: 'top center',
+                                        width: LECTURE_SCALE_WIDTH_PERCENT,
+                                    }}
+                                >
+                                    <div className="rounded-[2.5rem] bg-white/95 shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm">
+                                        <div className="p-6 sm:p-8 lg:p-12">
+                                            <SlideContent slide={slide} onComplete={onComplete} />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
