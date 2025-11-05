@@ -530,9 +530,9 @@ const QuizComponent: React.FC<{
     const [answer, setAnswer] = useState<string | null>(null);
 
     return (
-        <div className="bg-slate-100 p-4 lg:p-5 rounded-lg border border-slate-300 space-y-3">
-            <p className="font-semibold text-slate-800">{question}</p>
-            <div className="space-y-2">
+        <div className="bg-gradient-to-br from-slate-50 via-white to-slate-50 p-5 lg:p-6 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-900/5 space-y-4 text-left">
+            <p className="font-semibold text-slate-900 text-[clamp(1.05rem,1rem+0.2vw,1.25rem)] leading-snug">{question}</p>
+            <div className="space-y-2 md:space-y-0 md:grid md:grid-cols-2 md:gap-3 xl:gap-4">
                 {options.map(option => {
                     const isAnswered = answer !== null;
                     const isSelected = answer === option;
@@ -547,13 +547,13 @@ const QuizComponent: React.FC<{
                     
                     return (
                         <button key={option} onClick={() => setAnswer(option)} disabled={isAnswered}
-                            className={`w-full text-left p-3 border rounded-md transition-all text-sm md:text-base ${optionClass}`}>
+                            className={`w-full text-left px-4 py-3 border rounded-xl transition-all text-sm md:text-base font-medium ${optionClass}`}>
                             {option}
                         </button>
                     );
                 })}
             </div>
-            {answer && <div className="mt-3"><Alert type={answer === correctAnswer ? 'success' : 'error'}>{feedback}</Alert></div>}
+            {answer && <div className="pt-1"><Alert type={answer === correctAnswer ? 'success' : 'error'}>{feedback}</Alert></div>}
         </div>
     );
 };
@@ -577,26 +577,32 @@ const CaseChallenge: React.FC<{
     const canShowImage = Boolean(placeholderId);
 
     return (
-        <div className="w-full text-left max-w-screen-xl mx-auto space-y-6 lg:space-y-8 px-2 sm:px-0">
-            <div className="text-center space-y-2">
-                <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900">{title}</h2>
-                <p className="text-slate-600 text-base md:text-lg max-w-4xl mx-auto">{vignette}</p>
+        <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-10 px-2 sm:px-0">
+            <div className="text-center space-y-3">
+                <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">
+                    {title}
+                </h2>
+                <p className="text-slate-600 text-[clamp(1.05rem,0.95rem+0.3vw,1.35rem)] max-w-4xl mx-auto leading-relaxed">
+                    {vignette}
+                </p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6 lg:gap-8 xl:gap-10 items-start">
-                <div className="bg-white border border-slate-200 rounded-lg shadow-sm p-4 md:p-5 space-y-3 lg:space-y-4">
-                    <h3 className="font-semibold text-slate-800 uppercase tracking-wide text-xs md:text-sm">Diagnostic Pearls</h3>
-                    <ul className="list-disc list-inside space-y-2 text-sm md:text-base text-slate-700">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-start">
+                <div className="xl:col-span-5 bg-white/90 border border-slate-200 rounded-3xl shadow-lg shadow-slate-900/10 p-5 md:p-6 space-y-4">
+                    <h3 className="font-semibold text-slate-900 uppercase tracking-[0.2em] text-xs md:text-sm">
+                        Diagnostic Pearls
+                    </h3>
+                    <ul className="list-disc list-inside space-y-2.5 text-[clamp(0.95rem,0.9rem+0.2vw,1.15rem)] text-slate-700">
                         {pearls.map((pearl, idx) => (
                             <li key={idx} dangerouslySetInnerHTML={{ __html: pearl }}></li>
                         ))}
                     </ul>
                 </div>
                 {canShowImage && (
-                    <figure className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden w-full">
+                    <figure className="xl:col-span-7 bg-white/90 border border-slate-200 rounded-3xl shadow-xl shadow-slate-900/10 overflow-hidden w-full">
                         <img
                             src={primary}
                             alt={title}
-                            className="w-full h-64 sm:h-72 lg:h-[22rem] xl:h-[26rem] object-cover"
+                            className="w-full h-[clamp(15rem,25vw,24rem)] lg:h-[clamp(18rem,26vw,28rem)] object-cover"
                             loading="lazy"
                             data-fallback-applied="false"
                             onError={attachErrorFallback(fallback)}
@@ -604,16 +610,16 @@ const CaseChallenge: React.FC<{
                             crossOrigin="anonymous"
                         />
                         {imageCaption && (
-                            <figcaption className="p-3 text-xs text-slate-600 bg-slate-100 border-t border-slate-200">
+                            <figcaption className="p-4 text-xs md:text-sm text-slate-600 bg-slate-100/80 border-t border-slate-200">
                                 {imageCaption}
                             </figcaption>
                         )}
                     </figure>
                 )}
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 xl:gap-7">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6 xl:gap-7">
                 {questions.map((question, idx) => (
-                    <div key={`${title}-q${idx}`} className="bg-slate-50 border border-slate-200 rounded-lg p-4 md:p-5">
+                    <div key={`${title}-q${idx}`} className="bg-white/95 border border-slate-200 rounded-3xl shadow-md shadow-slate-900/5 p-4 md:p-5">
                         <QuizComponent {...question} />
                     </div>
                 ))}
@@ -628,15 +634,17 @@ const LightningRound: React.FC<{
     questions: CaseQuestion[];
     footnote?: string;
 }> = ({ title, intro, questions, footnote }) => (
-    <div className="w-full text-left max-w-screen-xl mx-auto space-y-5 lg:space-y-6 px-2 sm:px-0">
-        <div className="text-center space-y-2">
-            <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900">{title}</h2>
-            <p className="text-slate-600 text-base md:text-lg">{intro}</p>
+    <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8 px-2 sm:px-0">
+        <div className="text-center space-y-3">
+            <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">{title}</h2>
+            <p className="text-slate-600 text-[clamp(1rem,0.95rem+0.25vw,1.3rem)] leading-relaxed">{intro}</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6 xl:gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-7 xl:gap-8">
             {questions.map((question, idx) => (
-                <div key={`lightning-${idx}`} className="bg-white border border-slate-200 rounded-lg shadow-sm p-4 md:p-5 flex flex-col h-full space-y-3">
-                    <div className="text-xs uppercase tracking-wider text-sky-600 font-semibold">Question {idx + 1}</div>
+                <div key={`lightning-${idx}`} className="bg-white/95 border border-slate-200 rounded-3xl shadow-lg shadow-slate-900/8 p-5 md:p-6 flex flex-col h-full space-y-4">
+                    <div className="text-[0.7rem] md:text-[0.75rem] uppercase tracking-[0.28em] text-sky-600 font-semibold">
+                        Question {idx + 1}
+                    </div>
                     <QuizComponent {...question} />
                 </div>
             ))}
@@ -653,21 +661,21 @@ const InteractiveAccordion: React.FC<{
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <div className="space-y-3 md:space-y-4">
+        <div className="space-y-4 md:space-y-5">
             {items.map((item, idx) => {
                 const isOpen = openIndex === idx;
                 return (
-                    <div key={item.heading} className="border border-slate-200 rounded-lg overflow-hidden">
+                    <div key={item.heading} className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm shadow-slate-900/5 bg-white/95">
                         <button
                             onClick={() => setOpenIndex(isOpen ? null : idx)}
-                            className="w-full flex items-center justify-between px-4 py-3 bg-white hover:bg-slate-50 text-left text-slate-800 font-semibold transition-colors"
+                            className="w-full flex items-center justify-between px-5 py-4 bg-white/95 hover:bg-slate-50 text-left text-slate-900 font-semibold transition-colors text-[clamp(1rem,0.95rem+0.2vw,1.25rem)]"
                             aria-expanded={isOpen}
                         >
                             <span>{item.heading}</span>
                             <span className="text-slate-500 text-sm">{isOpen ? 'Hide' : 'Reveal'}</span>
                         </button>
                         {isOpen && (
-                            <div className="px-4 py-3 bg-slate-50 border-t border-slate-200 text-sm text-slate-700" dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                            <div className="px-5 py-4 bg-slate-50 border-t border-slate-200 text-[clamp(0.95rem,0.9rem+0.15vw,1.15rem)] leading-relaxed text-slate-700" dangerouslySetInnerHTML={{ __html: item.content }}></div>
                         )}
                     </div>
                 );
@@ -681,7 +689,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
     const renderLayout = (slide: any) => {
       const content = (
         <div
-          className="font-lato text-slate-800 text-base md:text-lg leading-relaxed prose prose-slate max-w-none"
+          className="font-lato text-slate-800 text-[clamp(1rem,0.92rem+0.4vw,1.22rem)] leading-relaxed prose prose-slate max-w-none"
           dangerouslySetInnerHTML={{ __html: slide.text }}
         ></div>
       );
@@ -691,27 +699,29 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
       if (slide.placeholderId) {
         const { primary, fallback } = getImageSources(slide.placeholderId);
         image = (
-          <img
-            src={primary}
-            alt={slide.title}
-            className="w-full aspect-[16/9] lg:aspect-[3/2] xl:aspect-[4/3] object-cover rounded-lg border shadow-sm"
-            data-fallback-applied="false"
-            onError={attachErrorFallback(fallback)}
-            referrerPolicy="no-referrer"
-            crossOrigin="anonymous"
-          />
+          <div className="relative w-full">
+            <img
+              src={primary}
+              alt={slide.title}
+              className="w-full h-[clamp(15rem,24vw,24rem)] xl:h-[clamp(18rem,24vw,26rem)] object-cover rounded-[1.75rem] border border-slate-200 shadow-xl shadow-slate-900/10 ring-1 ring-slate-200/70"
+              data-fallback-applied="false"
+              onError={attachErrorFallback(fallback)}
+              referrerPolicy="no-referrer"
+              crossOrigin="anonymous"
+            />
+          </div>
         );
       }
   
       switch (slide.type) {
         case 'image_hotspot':
           return (
-            <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-6 lg:gap-10 xl:gap-12 items-start">
-              <div className="space-y-6 lg:space-y-8">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 lg:gap-10 xl:gap-12 items-start">
+              <div className="xl:col-span-7 space-y-6 lg:space-y-8">
                 {content}
                 {quiz}
               </div>
-              {image && <div className="w-full">{image}</div>}
+              {image && <div className="xl:col-span-5">{image}</div>}
             </div>
           );
         // Add more layout types here if needed
@@ -721,37 +731,62 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
     };
   
     switch(slide.type) {
-        case 'title': return <div className="text-center"><h1 className="font-roboto-slab text-5xl md:text-7xl font-bold text-slate-900">{slide.title}</h1><p className="font-lato text-xl md:text-2xl mt-4 text-slate-700">{slide.subtitle}</p></div>;
+        case 'title': return (
+            <div className="text-center space-y-4">
+                <h1 className="font-roboto-slab text-[clamp(2.75rem,2.2rem+1.8vw,4.5rem)] font-bold tracking-tight text-slate-900">
+                    {slide.title}
+                </h1>
+                <p className="font-lato text-[clamp(1.25rem,1.05rem+0.6vw,1.9rem)] text-slate-700/90 max-w-3xl mx-auto">
+                    {slide.subtitle}
+                </p>
+            </div>
+        );
         case 'bullets': return (
-            <div className="w-full text-left max-w-screen-lg">
-                <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 border-b-2 border-sky-400 pb-4 mb-8">
+            <div className="w-full text-left max-w-[min(100%,1150px)] mx-auto space-y-10">
+                <h2 className="font-roboto-slab text-[clamp(2rem,1.8rem+0.7vw,2.75rem)] font-bold text-slate-900 tracking-tight">
                     {slide.title}
                 </h2>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 lg:gap-8">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 xl:gap-9">
                     {slide.items.map((item, i) => (
                         <li
                             key={i}
-                            className="flex items-start text-base md:text-lg font-lato text-slate-800 leading-relaxed"
+                            className="flex items-start gap-4 rounded-2xl bg-slate-50/60 p-5 md:p-6 lg:p-7 border border-slate-200/70 shadow-sm shadow-slate-900/5"
                         >
-                            <span className="text-sky-600 mr-4 flex-shrink-0 mt-1">{item.icon}</span>
-                            <span dangerouslySetInnerHTML={{ __html: item.text }} />
+                            <span className="text-sky-600 flex-shrink-0 mt-1">
+                                {item.icon}
+                            </span>
+                            <span
+                                className="font-lato text-[clamp(1rem,0.94rem+0.3vw,1.25rem)] leading-relaxed text-slate-800"
+                                dangerouslySetInnerHTML={{ __html: item.text }}
+                            />
                         </li>
                     ))}
                 </ul>
             </div>
         );
-        case 'section_title': return <div className="text-center"><div className="w-24 h-1 bg-sky-400 mx-auto mb-6"></div><h2 className="font-roboto-slab text-4xl md:text-6xl font-bold text-sky-800 mb-6">{slide.title}</h2><p className="font-lato text-xl md:text-2xl text-slate-700 italic max-w-3xl mx-auto" dangerouslySetInnerHTML={{ __html: slide.text }}></p></div>;
-        case 'table': return (
-            <div className="w-full text-left max-w-screen-xl">
-                <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 border-b-2 border-sky-400 pb-4 mb-8">
+        case 'section_title': return (
+            <div className="text-center space-y-5">
+                <div className="w-24 h-1 bg-gradient-to-r from-sky-400 via-sky-500 to-sky-400 mx-auto rounded-full"></div>
+                <h2 className="font-roboto-slab text-[clamp(2.4rem,2.1rem+1vw,3.6rem)] font-bold text-sky-800 tracking-tight">
                     {slide.title}
                 </h2>
-                <div className="overflow-x-auto">
-                    <table className="w-full text-left border-collapse font-lato text-sm md:text-base lg:text-lg">
+                <p
+                    className="font-lato text-[clamp(1.1rem,1rem+0.4vw,1.6rem)] text-slate-700/90 italic max-w-4xl mx-auto leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: slide.text }}
+                ></p>
+            </div>
+        );
+        case 'table': return (
+            <div className="w-full text-left max-w-[min(100%,1200px)] mx-auto space-y-8">
+                <h2 className="font-roboto-slab text-[clamp(2rem,1.9rem+0.6vw,2.75rem)] font-bold text-slate-900 tracking-tight">
+                    {slide.title}
+                </h2>
+                <div className="overflow-x-auto rounded-3xl border border-slate-200 shadow-inner shadow-slate-900/5">
+                    <table className="w-full text-left border-collapse font-lato text-[clamp(0.95rem,0.9rem+0.2vw,1.15rem)]">
                         <thead>
-                            <tr className="bg-sky-800 text-white">
+                            <tr className="bg-gradient-to-r from-sky-700 to-sky-600 text-white">
                                 {slide.headers.map((header: string, idx: number) => (
-                                    <th key={idx} className="px-3 py-2 md:px-4 md:py-3 text-left">
+                                    <th key={idx} className="px-4 py-3 md:px-5 md:py-4 text-left uppercase tracking-wide text-[0.75rem] md:text-xs">
                                         {header}
                                     </th>
                                 ))}
@@ -759,11 +794,11 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
                         </thead>
                         <tbody>
                             {slide.rows.map((row, i) => (
-                                <tr key={i} className="border-b border-slate-200 odd:bg-white even:bg-slate-50">
+                                <tr key={i} className="border-b border-slate-200/80 odd:bg-white even:bg-slate-50/70">
                                     {row.map((cell, j) => (
                                         <td
                                             key={j}
-                                            className="px-3 py-2 md:px-4 md:py-3 text-slate-800 align-top"
+                                            className="px-4 py-3 md:px-5 md:py-4 text-slate-800 align-top"
                                             dangerouslySetInnerHTML={{ __html: cell }}
                                         ></td>
                                     ))}
@@ -775,8 +810,8 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             </div>
         );
         case 'quiz': return (
-            <div className="w-full max-w-3xl mx-auto space-y-6">
-                <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 text-center">
+            <div className="w-full max-w-[min(100%,820px)] mx-auto space-y-8 text-center">
+                <h2 className="font-roboto-slab text-[clamp(2rem,1.8rem+0.6vw,2.75rem)] font-bold text-slate-900">
                     {slide.title}
                 </h2>
                 <QuizComponent
@@ -787,39 +822,46 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
                 />
             </div>
         );
-        case 'image_hotspot': return <div className="w-full text-left max-w-screen-xl"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 border-b-2 border-sky-400 pb-4 mb-8">{slide.title}</h2>{renderLayout(slide)}</div>
-        case 'three_column_image': return <div className="w-full text-left max-w-screen-xl"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 border-b-2 border-sky-400 pb-4 mb-8">{slide.title}</h2><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">{slide.tiles.map((tile, i) => {
+        case 'image_hotspot': return (
+            <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8">
+                <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">
+                    {slide.title}
+                </h2>
+                {renderLayout(slide)}
+            </div>
+        );
+        case 'three_column_image': return <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8"><h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">{slide.title}</h2><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 xl:gap-10">{slide.tiles.map((tile, i) => {
             const captionText = typeof tile.caption === 'string' ? tile.caption.replace(/<[^>]*>/g, '') : slide.title;
             const { primary, fallback } = getImageSources(tile.placeholderId);
             return (
-                <div key={i} className="text-center space-y-3">
+                <div key={i} className="text-center space-y-4 bg-white/90 rounded-3xl border border-slate-200 shadow-lg shadow-slate-900/10 p-5 md:p-6 lg:p-7">
                     <img
                         src={primary}
                         alt={captionText}
-                        className="w-full rounded-lg shadow-lg border border-slate-200 aspect-[4/3] object-cover"
+                        className="w-full rounded-2xl border border-slate-200/70 shadow-md shadow-slate-900/10 aspect-[4/3] object-cover"
                         data-fallback-applied="false"
                         onError={attachErrorFallback(fallback)}
                         loading="lazy"
                         referrerPolicy="no-referrer"
                         crossOrigin="anonymous"
                     />
-                    <p className="font-lato text-base md:text-lg text-slate-700" dangerouslySetInnerHTML={{ __html: tile.caption }}></p>
+                    <p className="font-lato text-[clamp(1rem,0.96rem+0.25vw,1.25rem)] text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: tile.caption }}></p>
                 </div>
             );
         })}</div></div>
         case 'case_series': return <CaseChallenge title={slide.title} vignette={slide.vignette} pearls={slide.pearls} placeholderId={slide.placeholderId} imageCaption={slide.imageCaption} questions={slide.questions} />;
         case 'quiz_stack': return <LightningRound title={slide.title} intro={slide.intro} questions={slide.questions} footnote={slide.footnote} />;
         case 'reference': return (
-            <div className="w-full text-left max-w-5xl mx-auto space-y-5">
-                <div>
-                    <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 mb-2">{slide.title}</h2>
-                    <h3 className="font-roboto-slab text-xl md:text-2xl text-slate-800">{slide.citationTitle}</h3>
-                    <p className="text-sm text-slate-600">{slide.authors}</p>
-                    <p className="text-sm text-slate-600">{slide.journal} <span className="font-mono">doi:{' '}{slide.doi}</span></p>
+            <div className="w-full text-left max-w-[min(100%,1050px)] mx-auto space-y-6">
+                <div className="space-y-2">
+                    <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900">{slide.title}</h2>
+                    <h3 className="font-roboto-slab text-[clamp(1.45rem,1.3rem+0.4vw,1.95rem)] text-slate-800 tracking-tight">{slide.citationTitle}</h3>
+                    <p className="text-sm md:text-base text-slate-600">{slide.authors}</p>
+                    <p className="text-sm md:text-base text-slate-600">{slide.journal} <span className="font-mono text-xs md:text-sm">doi:{' '}{slide.doi}</span></p>
                 </div>
-                <div className="bg-white border border-slate-200 rounded-lg shadow-sm p-5 space-y-4">
-                    <div className="prose max-w-none text-slate-700" dangerouslySetInnerHTML={{ __html: slide.summary }}></div>
-                    <ul className="list-disc list-inside space-y-2 text-slate-700">
+                <div className="bg-gradient-to-br from-white via-slate-50 to-white border border-slate-200 rounded-3xl shadow-lg shadow-slate-900/10 p-6 md:p-7 space-y-5">
+                    <div className="prose max-w-none text-slate-700 text-[clamp(1rem,0.95rem+0.2vw,1.15rem)] leading-relaxed" dangerouslySetInnerHTML={{ __html: slide.summary }}></div>
+                    <ul className="list-disc list-inside space-y-2.5 text-slate-700 text-[clamp(1rem,0.95rem+0.2vw,1.15rem)]">
                         {slide.takeaways.map((point: string, idx: number) => (
                             <li key={idx}>{point}</li>
                         ))}
@@ -828,15 +870,32 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
                         href={slide.directLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-sky-700 font-semibold hover:text-sky-900 underline"
+                        className="inline-flex items-center gap-2 text-sky-700 font-semibold hover:text-sky-900 text-sm md:text-base"
                     >
+                        <span className="h-2 w-2 rounded-full bg-sky-500"></span>
                         Read the full article
                     </a>
                 </div>
             </div>
         );
-        case 'accordion': return <div className="w-full text-left max-w-screen-lg"><h2 className="font-roboto-slab text-3xl md:text-4xl font-bold text-slate-900 mb-4">{slide.title}</h2><InteractiveAccordion items={slide.items} /></div>;
-        case 'launch': return <div className="text-center"><h2 className="font-roboto-slab text-5xl md:text-6xl font-bold text-slate-900">{slide.title}</h2><p className="font-lato text-xl md:text-2xl mt-4 text-slate-700">{slide.text}</p><button onClick={onComplete} className="mt-8 bg-sky-600 text-white font-bold font-roboto-slab text-xl py-4 px-8 rounded-lg hover:bg-sky-700 transition-transform hover:scale-105 shadow-lg flex items-center mx-auto"><ArrowRightToBracketIcon className="h-6 w-6 mr-3"/>{slide.buttonText}</button></div>
+        case 'accordion': return <div className="w-full text-left max-w-[min(100%,1050px)] mx-auto space-y-6"><h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900">{slide.title}</h2><InteractiveAccordion items={slide.items} /></div>;
+        case 'launch': return (
+            <div className="text-center space-y-5">
+                <h2 className="font-roboto-slab text-[clamp(2.5rem,2.1rem+1.2vw,3.8rem)] font-bold text-slate-900 tracking-tight">
+                    {slide.title}
+                </h2>
+                <p className="font-lato text-[clamp(1.15rem,1.05rem+0.3vw,1.6rem)] text-slate-700 max-w-3xl mx-auto leading-relaxed">
+                    {slide.text}
+                </p>
+                <button
+                    onClick={onComplete}
+                    className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-sky-600 to-sky-500 text-white font-roboto-slab text-lg md:text-xl font-semibold shadow-lg shadow-sky-600/30 hover:shadow-xl hover:shadow-sky-600/35 transition-all duration-200"
+                >
+                    <ArrowRightToBracketIcon className="h-6 w-6" />
+                    {slide.buttonText}
+                </button>
+            </div>
+        );
         default: return null;
     }
 }
@@ -902,8 +961,12 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
                         className={`slide-container ${index === currentSlide ? 'active' : ''} ${index < currentSlide ? 'prev' : ''}`}
                         aria-hidden={index !== currentSlide}
                     >
-                        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-10 lg:py-12">
-                            <SlideContent slide={slide} onComplete={onComplete} />
+                        <div className="max-w-[min(100%,1320px)] mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-10 lg:py-12">
+                            <div className="rounded-[2.5rem] bg-white/95 shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm">
+                                <div className="p-6 sm:p-8 lg:p-12">
+                                    <SlideContent slide={slide} onComplete={onComplete} />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 ))}

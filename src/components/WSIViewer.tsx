@@ -66,10 +66,10 @@ const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }
   if (!dziUrl && !staticImageUrl) {
     return (
         <div 
-            className="w-full h-[18rem] sm:h-[22rem] lg:h-[28rem] xl:h-[32rem] bg-black rounded-lg shadow-md flex items-center justify-center openseadragon-container"
+            className="w-full h-[clamp(16rem,24vw,26rem)] lg:h-[clamp(20rem,26vw,32rem)] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl shadow-2xl shadow-slate-900/40 ring-1 ring-slate-700/40 flex items-center justify-center openseadragon-container"
             aria-label={altText || "Image viewer placeholder"}
         >
-            <p className="text-slate-300">No Image Available</p>
+            <p className="text-slate-200 text-[clamp(1rem,0.95rem+0.2vw,1.2rem)]">No Image Available</p>
         </div>
     );
   }
@@ -77,7 +77,7 @@ const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }
     return (
         <div 
             ref={viewerRef}
-            className="w-full h-[18rem] sm:h-[22rem] lg:h-[28rem] xl:h-[32rem] bg-black rounded-lg shadow-md openseadragon-container"
+            className="w-full h-[clamp(16rem,24vw,26rem)] lg:h-[clamp(20rem,26vw,32rem)] bg-black rounded-3xl shadow-2xl shadow-slate-900/40 ring-1 ring-slate-800/60 overflow-hidden openseadragon-container"
             aria-label={altText || "Whole Slide Image viewer"}
         />
   );
