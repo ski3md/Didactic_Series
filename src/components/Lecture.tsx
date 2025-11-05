@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import {
     ChevronLeftIcon, ChevronRightIcon, MagnifyingGlassChartIcon, BullseyeIcon, BeakerIcon,
     ArrowRightToBracketIcon, ClipboardDocumentListIcon, ShieldExclamationIcon, EyeIcon
@@ -138,8 +138,6 @@ const getImageSources = (placeholderId?: string) => {
     return { primary, fallback };
 };
 
-const LECTURE_SCALE = 0.7;
-
 const attachErrorFallback = (fallback: string) => (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const img = e.currentTarget;
     if (img.dataset.fallbackApplied === 'true') {
@@ -159,6 +157,56 @@ const attachErrorFallback = (fallback: string) => (e: React.SyntheticEvent<HTMLI
 interface LectureProps {
     onComplete: () => void;
 }
+
+const LECTURE_SCALE = 0.7;
+
+const ScaledSlideFrame: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const innerRef = useRef<HTMLDivElement | null>(null);
+    const [scaledHeight, setScaledHeight] = useState<number | null>(null);
+
+    const measureHeight = useCallback(() => {
+        const el = innerRef.current;
+        if (!el) return;
+        const naturalHeight = el.offsetHeight;
+        const scaled = naturalHeight * LECTURE_SCALE;
+        setScaledHeight(prev =>
+            prev === null || Math.abs(prev - scaled) > 0.5 ? scaled : prev
+        );
+    }, []);
+
+    useLayoutEffect(() => {
+        measureHeight();
+    }, [measureHeight, children]);
+
+    useEffect(() => {
+        window.addEventListener('resize', measureHeight);
+        return () => window.removeEventListener('resize', measureHeight);
+    }, [measureHeight]);
+
+    return (
+        <div className="max-w-[min(100%,1320px)] mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-10 lg:py-12">
+            <div
+                className="relative flex justify-center overflow-hidden"
+                style={{ height: scaledHeight !== null ? `${scaledHeight}px` : 'auto' }}
+            >
+                <div
+                    ref={innerRef}
+                    className="origin-top transform-gpu w-full"
+                    style={{
+                        transform: `scale(${LECTURE_SCALE})`,
+                        transformOrigin: 'top center',
+                    }}
+                >
+                    <div className="rounded-[2.5rem] bg-white/95 shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm">
+                        <div className="p-6 sm:p-8 lg:p-12">
+                            {children}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const slideData = [
     { type: 'title', title: 'Granulomatous Lung Disease', subtitle: 'A Diagnostic Approach: The Lecture Component' },
@@ -963,24 +1011,9 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
                         className={`slide-container ${index === currentSlide ? 'active' : ''} ${index < currentSlide ? 'prev' : ''}`}
                         aria-hidden={index !== currentSlide}
                     >
-                        <div className="max-w-[min(100%,1320px)] mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-10 lg:py-12">
-                            <div className="flex justify-center">
-                                <div
-                                    className="origin-top transform-gpu"
-                                    style={{
-                                        transform: `scale(${LECTURE_SCALE})`,
-                                        transformOrigin: 'top center',
-                                        width: '100%',
-                                    }}
-                                >
-                                    <div className="rounded-[2.5rem] bg-white/95 shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm">
-                                        <div className="p-6 sm:p-8 lg:p-12">
-                                            <SlideContent slide={slide} onComplete={onComplete} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <ScaledSlideFrame>
+                            <SlideContent slide={slide} onComplete={onComplete} />
+                        </ScaledSlideFrame>
                     </div>
                 ))}
             </div>
