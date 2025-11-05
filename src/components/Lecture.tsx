@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
     ChevronLeftIcon, ChevronRightIcon, MagnifyingGlassChartIcon, BullseyeIcon, BeakerIcon,
     ArrowRightToBracketIcon, ClipboardDocumentListIcon, ShieldExclamationIcon, EyeIcon
@@ -530,9 +530,9 @@ const QuizComponent: React.FC<{
     const [answer, setAnswer] = useState<string | null>(null);
 
     return (
-        <div className="bg-gradient-to-br from-slate-50 via-white to-slate-50 p-5 lg:p-6 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-900/5 space-y-4 text-left">
+        <div className="bg-gradient-to-br from-slate-50 via-white to-slate-50 p-5 lg:p-6 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-900/5 space-y-4 text-left" role="radiogroup" aria-label={question}>
             <p className="font-semibold text-slate-900 text-[clamp(1.05rem,1rem+0.2vw,1.25rem)] leading-snug">{question}</p>
-            <div className="space-y-2 md:space-y-0 md:grid md:grid-cols-2 md:gap-3 xl:gap-4">
+            <div className="flex flex-col gap-2 md:grid md:grid-cols-2 md:gap-3 xl:gap-4">
                 {options.map(option => {
                     const isAnswered = answer !== null;
                     const isSelected = answer === option;
@@ -546,8 +546,14 @@ const QuizComponent: React.FC<{
                     }
                     
                     return (
-                        <button key={option} onClick={() => setAnswer(option)} disabled={isAnswered}
-                            className={`w-full text-left px-4 py-3 border rounded-xl transition-all text-sm md:text-base font-medium ${optionClass}`}>
+                        <button
+                            key={option}
+                            onClick={() => setAnswer(option)}
+                            disabled={isAnswered}
+                            className={`w-full text-left px-4 py-3 border rounded-xl transition-all text-sm md:text-base font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 ${optionClass}`}
+                            role="radio"
+                            aria-checked={isSelected}
+                        >
                             {option}
                         </button>
                     );
@@ -599,18 +605,16 @@ const CaseChallenge: React.FC<{
                 </div>
                 {canShowImage && (
                     <figure className="lg:col-span-7 bg-white/90 border border-slate-200 rounded-3xl shadow-xl shadow-slate-900/10 overflow-hidden w-full">
-                        <div className="relative w-full h-[clamp(14rem,45vw,24rem)] sm:h-[clamp(16rem,34vw,26rem)] lg:h-[clamp(18rem,28vw,28rem)] overflow-hidden">
-                            <img
-                                src={primary}
-                                alt={title}
-                                className="w-full h-full object-cover"
-                                loading="lazy"
-                                data-fallback-applied="false"
-                                onError={attachErrorFallback(fallback)}
-                                referrerPolicy="no-referrer"
-                                crossOrigin="anonymous"
-                            />
-                        </div>
+                        <img
+                            src={primary}
+                            alt={title}
+                            className="w-full h-auto max-h-[70vh] object-contain sm:object-cover sm:max-h-[65vh]"
+                            loading="lazy"
+                            data-fallback-applied="false"
+                            onError={attachErrorFallback(fallback)}
+                            referrerPolicy="no-referrer"
+                            crossOrigin="anonymous"
+                        />
                         {imageCaption && (
                             <figcaption className="p-4 text-xs md:text-sm text-slate-600 bg-slate-100/80 border-t border-slate-200">
                                 {imageCaption}
@@ -701,17 +705,17 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
       if (slide.placeholderId) {
         const { primary, fallback } = getImageSources(slide.placeholderId);
         image = (
-          <div className="relative w-full overflow-hidden rounded-2xl sm:rounded-[1.75rem] shadow-xl shadow-slate-900/10 ring-1 ring-slate-200/70">
+          <figure className="relative w-full overflow-hidden rounded-2xl sm:rounded-[1.75rem] shadow-xl shadow-slate-900/10 ring-1 ring-slate-200/70 bg-white">
             <img
               src={primary}
               alt={slide.title}
-              className="w-full h-[clamp(14rem,40vw,22rem)] sm:h-[clamp(16rem,30vw,24rem)] xl:h-[clamp(18rem,26vw,26rem)] object-cover"
+              className="w-full h-auto max-h-[70vh] object-contain"
               data-fallback-applied="false"
               onError={attachErrorFallback(fallback)}
               referrerPolicy="no-referrer"
               crossOrigin="anonymous"
             />
-          </div>
+          </figure>
         );
       }
   
@@ -837,16 +841,18 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             const { primary, fallback } = getImageSources(tile.placeholderId);
             return (
                 <div key={i} className="text-center space-y-4 bg-white/90 rounded-3xl border border-slate-200 shadow-lg shadow-slate-900/10 p-5 md:p-6 lg:p-7">
-                    <img
-                        src={primary}
-                        alt={captionText}
-                        className="w-full rounded-2xl border border-slate-200/70 shadow-md shadow-slate-900/10 aspect-[4/3] object-cover"
-                        data-fallback-applied="false"
-                        onError={attachErrorFallback(fallback)}
-                        loading="lazy"
-                        referrerPolicy="no-referrer"
-                        crossOrigin="anonymous"
-                    />
+                    <div className="relative w-full">
+                        <img
+                            src={primary}
+                            alt={captionText}
+                            className="w-full h-auto max-h-[18rem] lg:max-h-[20rem] rounded-2xl border border-slate-200/70 shadow-md shadow-slate-900/10 object-contain bg-white"
+                            data-fallback-applied="false"
+                            onError={attachErrorFallback(fallback)}
+                            loading="lazy"
+                            referrerPolicy="no-referrer"
+                            crossOrigin="anonymous"
+                        />
+                    </div>
                     <p className="font-lato text-[clamp(1rem,0.96rem+0.25vw,1.25rem)] text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: tile.caption }}></p>
                 </div>
             );
@@ -906,6 +912,8 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [touchStart, setTouchStart] = useState<number | null>(null);
     const [touchEnd, setTouchEnd] = useState<number | null>(null);
+    const slideRefs = useRef<Array<HTMLDivElement | null>>([]);
+    const [announcement, setAnnouncement] = useState('');
     const minSwipeDistance = 50;
 
     const nextSlide = () => setCurrentSlide(prev => Math.min(prev + 1, slideData.length - 1));
@@ -949,9 +957,17 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [currentSlide]);
 
+    useEffect(() => {
+        const instance = slideRefs.current[currentSlide];
+        instance?.focus();
+        const slide = slideData[currentSlide];
+        const label = (slide as any)?.title || `Slide ${currentSlide + 1}`;
+        setAnnouncement(`Slide ${currentSlide + 1} of ${slideData.length}: ${label}`);
+    }, [currentSlide]);
+
     return (
         <div 
-            className="w-full h-full bg-slate-50 relative overflow-hidden flex flex-col"
+            className="w-full h-full bg-slate-50 relative overflow-x-hidden overflow-y-auto flex flex-col"
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
@@ -962,6 +978,12 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
                         key={index} 
                         className={`slide-container ${index === currentSlide ? 'active' : ''} ${index < currentSlide ? 'prev' : ''}`}
                         aria-hidden={index !== currentSlide}
+                        role="group"
+                        aria-roledescription="Slide"
+                        aria-label={`${(slide as any).title || `Slide ${index + 1}`} (${index + 1} of ${slideData.length})`}
+                        tabIndex={index === currentSlide ? 0 : -1}
+                        ref={el => { slideRefs.current[index] = el; }}
+                        id={`slide-${index}`}
                     >
                         <div className="max-w-[min(100%,1320px)] mx-auto px-3 sm:px-6 lg:px-10 py-6 sm:py-10 lg:py-12">
                             <div className="rounded-2xl sm:rounded-[2.5rem] bg-white/95 shadow-xl sm:shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm">
@@ -975,12 +997,26 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
             </div>
 
             <div className="absolute top-1/2 left-5 transform -translate-y-1/2 z-10">
-              <button onClick={prevSlide} disabled={currentSlide === 0} className="bg-black/30 text-white rounded-full p-2 hover:bg-black/50 disabled:opacity-30 disabled:cursor-not-allowed transition-all" aria-label="Previous slide">
+              <button
+                  onClick={prevSlide}
+                  disabled={currentSlide === 0}
+                  className="bg-black/30 text-white rounded-full p-2 hover:bg-black/50 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                  aria-label="Previous slide"
+                  aria-controls={`slide-${Math.max(currentSlide - 1, 0)}`}
+                  aria-disabled={currentSlide === 0}
+              >
                   <ChevronLeftIcon className="h-8 w-8"/>
               </button>
             </div>
             <div className="absolute top-1/2 right-5 transform -translate-y-1/2 z-10">
-              <button onClick={nextSlide} disabled={currentSlide === slideData.length - 1 || slideData[currentSlide].type === 'launch'} className="bg-black/30 text-white rounded-full p-2 hover:bg-black/50 disabled:opacity-30 disabled:cursor-not-allowed transition-all" aria-label="Next slide">
+              <button
+                  onClick={nextSlide}
+                  disabled={currentSlide === slideData.length - 1 || slideData[currentSlide].type === 'launch'}
+                  className="bg-black/30 text-white rounded-full p-2 hover:bg-black/50 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                  aria-label="Next slide"
+                  aria-controls={`slide-${Math.min(currentSlide + 1, slideData.length - 1)}`}
+                  aria-disabled={currentSlide === slideData.length - 1 || slideData[currentSlide].type === 'launch'}
+              >
                   <ChevronRightIcon className="h-8 w-8"/>
               </button>
             </div>
@@ -991,8 +1027,12 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
                         onClick={() => goToSlide(index)} 
                         className={`w-3 h-3 rounded-full transition-colors ${index === currentSlide ? 'bg-sky-600' : 'bg-slate-300 hover:bg-slate-400'}`}
                         aria-label={`Go to slide ${index + 1}`}
+                        aria-current={index === currentSlide ? 'step' : undefined}
                     />
                 ))}
+            </div>
+            <div aria-live="polite" role="status" className="sr-only">
+                {announcement}
             </div>
         </div>
     );
