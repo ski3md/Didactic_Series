@@ -577,7 +577,7 @@ const CaseChallenge: React.FC<{
     const canShowImage = Boolean(placeholderId);
 
     return (
-        <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-10 px-2 sm:px-0">
+        <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-10 px-3 sm:px-4 lg:px-0">
             <div className="text-center space-y-3">
                 <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">
                     {title}
@@ -586,8 +586,8 @@ const CaseChallenge: React.FC<{
                     {vignette}
                 </p>
             </div>
-            <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-start">
-                <div className="xl:col-span-5 bg-white/90 border border-slate-200 rounded-3xl shadow-lg shadow-slate-900/10 p-5 md:p-6 space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-start">
+                <div className="lg:col-span-5 bg-white/90 border border-slate-200 rounded-3xl shadow-lg shadow-slate-900/10 p-5 md:p-6 space-y-4">
                     <h3 className="font-semibold text-slate-900 uppercase tracking-[0.2em] text-xs md:text-sm">
                         Diagnostic Pearls
                     </h3>
@@ -598,17 +598,19 @@ const CaseChallenge: React.FC<{
                     </ul>
                 </div>
                 {canShowImage && (
-                    <figure className="xl:col-span-7 bg-white/90 border border-slate-200 rounded-3xl shadow-xl shadow-slate-900/10 overflow-hidden w-full">
-                        <img
-                            src={primary}
-                            alt={title}
-                            className="w-full h-[clamp(15rem,25vw,24rem)] lg:h-[clamp(18rem,26vw,28rem)] object-cover"
-                            loading="lazy"
-                            data-fallback-applied="false"
-                            onError={attachErrorFallback(fallback)}
-                            referrerPolicy="no-referrer"
-                            crossOrigin="anonymous"
-                        />
+                    <figure className="lg:col-span-7 bg-white/90 border border-slate-200 rounded-3xl shadow-xl shadow-slate-900/10 overflow-hidden w-full">
+                        <div className="relative w-full h-[clamp(14rem,45vw,24rem)] sm:h-[clamp(16rem,34vw,26rem)] lg:h-[clamp(18rem,28vw,28rem)] overflow-hidden">
+                            <img
+                                src={primary}
+                                alt={title}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                                data-fallback-applied="false"
+                                onError={attachErrorFallback(fallback)}
+                                referrerPolicy="no-referrer"
+                                crossOrigin="anonymous"
+                            />
+                        </div>
                         {imageCaption && (
                             <figcaption className="p-4 text-xs md:text-sm text-slate-600 bg-slate-100/80 border-t border-slate-200">
                                 {imageCaption}
@@ -634,7 +636,7 @@ const LightningRound: React.FC<{
     questions: CaseQuestion[];
     footnote?: string;
 }> = ({ title, intro, questions, footnote }) => (
-    <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8 px-2 sm:px-0">
+    <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8 px-3 sm:px-4 lg:px-0">
         <div className="text-center space-y-3">
             <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">{title}</h2>
             <p className="text-slate-600 text-[clamp(1rem,0.95rem+0.25vw,1.3rem)] leading-relaxed">{intro}</p>
@@ -699,11 +701,11 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
       if (slide.placeholderId) {
         const { primary, fallback } = getImageSources(slide.placeholderId);
         image = (
-          <div className="relative w-full">
+          <div className="relative w-full overflow-hidden rounded-2xl sm:rounded-[1.75rem] shadow-xl shadow-slate-900/10 ring-1 ring-slate-200/70">
             <img
               src={primary}
               alt={slide.title}
-              className="w-full h-[clamp(15rem,24vw,24rem)] xl:h-[clamp(18rem,24vw,26rem)] object-cover rounded-[1.75rem] border border-slate-200 shadow-xl shadow-slate-900/10 ring-1 ring-slate-200/70"
+              className="w-full h-[clamp(14rem,40vw,22rem)] sm:h-[clamp(16rem,30vw,24rem)] xl:h-[clamp(18rem,26vw,26rem)] object-cover"
               data-fallback-applied="false"
               onError={attachErrorFallback(fallback)}
               referrerPolicy="no-referrer"
@@ -716,12 +718,12 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
       switch (slide.type) {
         case 'image_hotspot':
           return (
-            <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 lg:gap-10 xl:gap-12 items-start">
-              <div className="xl:col-span-7 space-y-6 lg:space-y-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-12 items-start">
+              <div className="lg:col-span-7 space-y-6 lg:space-y-8">
                 {content}
                 {quiz}
               </div>
-              {image && <div className="xl:col-span-5">{image}</div>}
+              {image && <div className="lg:col-span-5">{image}</div>}
             </div>
           );
         // Add more layout types here if needed
@@ -732,7 +734,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
   
     switch(slide.type) {
         case 'title': return (
-            <div className="text-center space-y-4">
+            <div className="text-center space-y-4 px-3 sm:px-4 lg:px-0">
                 <h1 className="font-roboto-slab text-[clamp(2.75rem,2.2rem+1.8vw,4.5rem)] font-bold tracking-tight text-slate-900">
                     {slide.title}
                 </h1>
@@ -742,7 +744,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             </div>
         );
         case 'bullets': return (
-            <div className="w-full text-left max-w-[min(100%,1150px)] mx-auto space-y-10">
+            <div className="w-full text-left max-w-[min(100%,1150px)] mx-auto space-y-10 px-3 sm:px-4 lg:px-0">
                 <h2 className="font-roboto-slab text-[clamp(2rem,1.8rem+0.7vw,2.75rem)] font-bold text-slate-900 tracking-tight">
                     {slide.title}
                 </h2>
@@ -765,7 +767,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             </div>
         );
         case 'section_title': return (
-            <div className="text-center space-y-5">
+            <div className="text-center space-y-5 px-3 sm:px-4 lg:px-0">
                 <div className="w-24 h-1 bg-gradient-to-r from-sky-400 via-sky-500 to-sky-400 mx-auto rounded-full"></div>
                 <h2 className="font-roboto-slab text-[clamp(2.4rem,2.1rem+1vw,3.6rem)] font-bold text-sky-800 tracking-tight">
                     {slide.title}
@@ -777,7 +779,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             </div>
         );
         case 'table': return (
-            <div className="w-full text-left max-w-[min(100%,1200px)] mx-auto space-y-8">
+            <div className="w-full text-left max-w-[min(100%,1200px)] mx-auto space-y-8 px-3 sm:px-4 lg:px-0">
                 <h2 className="font-roboto-slab text-[clamp(2rem,1.9rem+0.6vw,2.75rem)] font-bold text-slate-900 tracking-tight">
                     {slide.title}
                 </h2>
@@ -810,7 +812,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             </div>
         );
         case 'quiz': return (
-            <div className="w-full max-w-[min(100%,820px)] mx-auto space-y-8 text-center">
+            <div className="w-full max-w-[min(100%,820px)] mx-auto space-y-8 text-center px-3 sm:px-4 lg:px-0">
                 <h2 className="font-roboto-slab text-[clamp(2rem,1.8rem+0.6vw,2.75rem)] font-bold text-slate-900">
                     {slide.title}
                 </h2>
@@ -823,14 +825,14 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             </div>
         );
         case 'image_hotspot': return (
-            <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8">
+            <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8 px-3 sm:px-4 lg:px-0">
                 <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">
                     {slide.title}
                 </h2>
                 {renderLayout(slide)}
             </div>
         );
-        case 'three_column_image': return <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8"><h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">{slide.title}</h2><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 xl:gap-10">{slide.tiles.map((tile, i) => {
+        case 'three_column_image': return <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8 px-3 sm:px-4 lg:px-0"><h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">{slide.title}</h2><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 xl:gap-10">{slide.tiles.map((tile, i) => {
             const captionText = typeof tile.caption === 'string' ? tile.caption.replace(/<[^>]*>/g, '') : slide.title;
             const { primary, fallback } = getImageSources(tile.placeholderId);
             return (
@@ -852,7 +854,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
         case 'case_series': return <CaseChallenge title={slide.title} vignette={slide.vignette} pearls={slide.pearls} placeholderId={slide.placeholderId} imageCaption={slide.imageCaption} questions={slide.questions} />;
         case 'quiz_stack': return <LightningRound title={slide.title} intro={slide.intro} questions={slide.questions} footnote={slide.footnote} />;
         case 'reference': return (
-            <div className="w-full text-left max-w-[min(100%,1050px)] mx-auto space-y-6">
+            <div className="w-full text-left max-w-[min(100%,1050px)] mx-auto space-y-6 px-3 sm:px-4 lg:px-0">
                 <div className="space-y-2">
                     <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900">{slide.title}</h2>
                     <h3 className="font-roboto-slab text-[clamp(1.45rem,1.3rem+0.4vw,1.95rem)] text-slate-800 tracking-tight">{slide.citationTitle}</h3>
@@ -878,9 +880,9 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
                 </div>
             </div>
         );
-        case 'accordion': return <div className="w-full text-left max-w-[min(100%,1050px)] mx-auto space-y-6"><h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900">{slide.title}</h2><InteractiveAccordion items={slide.items} /></div>;
+        case 'accordion': return <div className="w-full text-left max-w-[min(100%,1050px)] mx-auto space-y-6 px-3 sm:px-4 lg:px-0"><h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900">{slide.title}</h2><InteractiveAccordion items={slide.items} /></div>;
         case 'launch': return (
-            <div className="text-center space-y-5">
+            <div className="text-center space-y-5 px-3 sm:px-4 lg:px-0">
                 <h2 className="font-roboto-slab text-[clamp(2.5rem,2.1rem+1.2vw,3.8rem)] font-bold text-slate-900 tracking-tight">
                     {slide.title}
                 </h2>
@@ -961,9 +963,9 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
                         className={`slide-container ${index === currentSlide ? 'active' : ''} ${index < currentSlide ? 'prev' : ''}`}
                         aria-hidden={index !== currentSlide}
                     >
-                        <div className="max-w-[min(100%,1320px)] mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-10 lg:py-12">
-                            <div className="rounded-[2.5rem] bg-white/95 shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm">
-                                <div className="p-6 sm:p-8 lg:p-12">
+                        <div className="max-w-[min(100%,1320px)] mx-auto px-3 sm:px-6 lg:px-10 py-6 sm:py-10 lg:py-12">
+                            <div className="rounded-2xl sm:rounded-[2.5rem] bg-white/95 shadow-xl sm:shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm">
+                                <div className="p-4 sm:p-6 lg:p-10">
                                     <SlideContent slide={slide} onComplete={onComplete} />
                                 </div>
                             </div>
