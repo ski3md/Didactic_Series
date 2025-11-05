@@ -139,7 +139,6 @@ const getImageSources = (placeholderId?: string) => {
 };
 
 const LECTURE_SCALE = 0.7;
-const LECTURE_SCALE_WIDTH_PERCENT = `${(1 / LECTURE_SCALE) * 100}%`;
 
 const attachErrorFallback = (fallback: string) => (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const img = e.currentTarget;
@@ -971,7 +970,7 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
                                     style={{
                                         transform: `scale(${LECTURE_SCALE})`,
                                         transformOrigin: 'top center',
-                                        width: LECTURE_SCALE_WIDTH_PERCENT,
+                                        width: '100%',
                                     }}
                                 >
                                     <div className="rounded-[2.5rem] bg-white/95 shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm">
