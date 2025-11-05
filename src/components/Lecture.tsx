@@ -16,13 +16,13 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/Unclassified/histoplasmosis_histoplasmosis_06.jpg',
     // Blastomycosis image demonstrating broad-based budding yeast.
     lecture_blasto_image:
-        'https://upload.wikimedia.org/wikipedia/commons/e/ee/Blastomyces_dermatitidis_GMS.jpeg',
+        'https://en.wikipedia.org/wiki/Blastomycosis#/media/File:Blastomyces_dermatitidis_GMS.jpeg',
     // Coccidioidomycosis image featuring large spherules with endospores.
     lecture_cocci_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_05.jpg',
     // Cryptococcus image showing encapsulated yeasts highlighted by mucicarmine stain.
     lecture_crypto_image:
-        'https://upload.wikimedia.org/wikipedia/commons/d/d9/Cryptococcosis_of_lung_in_patient_with_AIDS._Mucicarmine_stain_962_lores.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/8/8b/Cryptococcus_neoformans_mucicarmine.jpg',
     // Sarcoidosis image with well-formed non-caseating granulomas.
     lecture_sarcoid_image:
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg',
@@ -55,7 +55,7 @@ const lectureImageMap: Record<string, string> = {
         'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/coccidioidomycosis/Unclassified/coccidioidomycosis_coccidioidomycosis_95.jpg',
     // Cryptococcosis with mucicarmine-positive capsules.
     lecture_crypto_series_image:
-        'https://upload.wikimedia.org/wikipedia/commons/d/d9/Cryptococcosis_of_lung_in_patient_with_AIDS._Mucicarmine_stain_962_lores.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/8/8b/Cryptococcus_neoformans_mucicarmine.jpg',
 };
 
 // Secondary CDN images to use if primaries fail.
