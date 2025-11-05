@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import {
     ChevronLeftIcon, ChevronRightIcon, MagnifyingGlassChartIcon, BullseyeIcon, BeakerIcon,
     ArrowRightToBracketIcon, ClipboardDocumentListIcon, ShieldExclamationIcon, EyeIcon
@@ -521,17 +521,262 @@ const slideData = [
     },
 ];
 
+type DeviceType = 'mobile' | 'tablet' | 'desktop';
+
+type LayoutTokens = {
+    frame: {
+        containerWidth: string;
+        outerPadding: string;
+        verticalPadding: string;
+        radius: string;
+        innerPadding: string;
+    };
+    typeScale: {
+        heading: string;
+        subtitle: string;
+        sectionHeading: string;
+        body: string;
+        smallBody: string;
+    };
+    bullet: {
+        grid: string;
+        gap: string;
+        itemPadding: string;
+    };
+    table: {
+        textSize: string;
+    };
+    quiz: {
+        cardPadding: string;
+        optionPadding: string;
+        optionText: string;
+    };
+    hotspot: {
+        layout: string;
+        textStackSpacing: string;
+        imageClass: string;
+    };
+    galleryImageClass: string;
+    caseDeck: {
+        layout: string;
+        infoPadding: string;
+        questionGrid: string;
+        imageClass: string;
+    };
+    lightning: {
+        grid: string;
+        cardPadding: string;
+    };
+    reference: {
+        cardPadding: string;
+    };
+    accordion: {
+        spacing: string;
+    };
+};
+
+const useDeviceType = (): DeviceType => {
+    const getType = (width: number): DeviceType => {
+        if (width < 640) return 'mobile';
+        if (width < 1024) return 'tablet';
+        return 'desktop';
+    };
+
+    const [device, setDevice] = useState<DeviceType>(() => {
+        if (typeof window === 'undefined') return 'desktop';
+        return getType(window.innerWidth);
+    });
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+
+        let frame: number | null = null;
+        const handleResize = () => {
+            if (frame) cancelAnimationFrame(frame);
+            frame = window.requestAnimationFrame(() => {
+                const next = getType(window.innerWidth);
+                setDevice(prev => (prev === next ? prev : next));
+            });
+        };
+
+        window.addEventListener('resize', handleResize, { passive: true });
+        return () => {
+            if (frame) cancelAnimationFrame(frame);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    return device;
+};
+
+const layoutByDevice: Record<DeviceType, LayoutTokens> = {
+    mobile: {
+        frame: {
+            containerWidth: 'max-w-screen-md',
+            outerPadding: 'px-4',
+            verticalPadding: 'py-8',
+            radius: 'rounded-2xl',
+            innerPadding: 'p-5',
+        },
+        typeScale: {
+            heading: 'text-3xl',
+            subtitle: 'text-lg',
+            sectionHeading: 'text-3xl',
+            body: 'text-base leading-relaxed',
+            smallBody: 'text-sm leading-relaxed',
+        },
+        bullet: {
+            grid: 'grid-cols-1',
+            gap: 'gap-4',
+            itemPadding: 'p-4',
+        },
+        table: {
+            textSize: 'text-sm',
+        },
+        quiz: {
+            cardPadding: 'p-4',
+            optionPadding: 'px-3 py-3',
+            optionText: 'text-sm',
+        },
+        hotspot: {
+            layout: 'grid grid-cols-1 gap-6 items-start',
+            textStackSpacing: 'space-y-4',
+            imageClass: 'w-full max-h-72 object-contain rounded-xl',
+        },
+        galleryImageClass: 'w-full max-h-60 object-contain rounded-xl',
+        caseDeck: {
+            layout: 'grid grid-cols-1 gap-6 items-start',
+            infoPadding: 'p-4',
+            questionGrid: 'grid grid-cols-1 gap-4',
+            imageClass: 'w-full max-h-80 object-contain rounded-xl',
+        },
+        lightning: {
+            grid: 'grid grid-cols-1 gap-5',
+            cardPadding: 'p-4',
+        },
+        reference: {
+            cardPadding: 'p-5',
+        },
+        accordion: {
+            spacing: 'space-y-4',
+        },
+    },
+    tablet: {
+        frame: {
+            containerWidth: 'max-w-screen-lg',
+            outerPadding: 'px-6',
+            verticalPadding: 'py-10',
+            radius: 'rounded-[2rem]',
+            innerPadding: 'p-8',
+        },
+        typeScale: {
+            heading: 'text-4xl',
+            subtitle: 'text-xl',
+            sectionHeading: 'text-4xl',
+            body: 'text-lg leading-relaxed',
+            smallBody: 'text-base leading-relaxed',
+        },
+        bullet: {
+            grid: 'grid-cols-1 md:grid-cols-2',
+            gap: 'gap-6',
+            itemPadding: 'p-6',
+        },
+        table: {
+            textSize: 'text-base',
+        },
+        quiz: {
+            cardPadding: 'p-5',
+            optionPadding: 'px-4 py-3',
+            optionText: 'text-base',
+        },
+        hotspot: {
+            layout: 'grid grid-cols-1 xl:grid-cols-12 gap-8 items-start',
+            textStackSpacing: 'space-y-5',
+            imageClass: 'w-full max-h-[22rem] object-contain rounded-2xl',
+        },
+        galleryImageClass: 'w-full max-h-[18rem] object-contain rounded-2xl',
+        caseDeck: {
+            layout: 'grid grid-cols-1 xl:grid-cols-12 gap-8 items-start',
+            infoPadding: 'p-5',
+            questionGrid: 'grid grid-cols-1 md:grid-cols-2 gap-5',
+            imageClass: 'w-full max-h-[22rem] object-contain rounded-2xl',
+        },
+        lightning: {
+            grid: 'grid grid-cols-1 md:grid-cols-2 gap-6',
+            cardPadding: 'p-5',
+        },
+        reference: {
+            cardPadding: 'p-6',
+        },
+        accordion: {
+            spacing: 'space-y-4',
+        },
+    },
+    desktop: {
+        frame: {
+            containerWidth: 'max-w-screen-xl',
+            outerPadding: 'px-10',
+            verticalPadding: 'py-12',
+            radius: 'rounded-[2.5rem]',
+            innerPadding: 'p-10',
+        },
+        typeScale: {
+            heading: 'text-5xl',
+            subtitle: 'text-2xl',
+            sectionHeading: 'text-4xl',
+            body: 'text-lg leading-relaxed',
+            smallBody: 'text-base leading-relaxed',
+        },
+        bullet: {
+            grid: 'grid-cols-1 md:grid-cols-2',
+            gap: 'gap-8',
+            itemPadding: 'p-7',
+        },
+        table: {
+            textSize: 'text-lg',
+        },
+        quiz: {
+            cardPadding: 'p-6',
+            optionPadding: 'px-5 py-3',
+            optionText: 'text-base',
+        },
+        hotspot: {
+            layout: 'grid grid-cols-1 xl:grid-cols-12 gap-10 items-start',
+            textStackSpacing: 'space-y-6',
+            imageClass: 'w-full max-h-[26rem] object-contain rounded-3xl',
+        },
+        galleryImageClass: 'w-full max-h-[20rem] object-contain rounded-3xl',
+        caseDeck: {
+            layout: 'grid grid-cols-1 xl:grid-cols-12 gap-10 items-start',
+            infoPadding: 'p-6',
+            questionGrid: 'grid grid-cols-1 md:grid-cols-2 gap-6',
+            imageClass: 'w-full max-h-[24rem] object-contain rounded-3xl',
+        },
+        lightning: {
+            grid: 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6',
+            cardPadding: 'p-6',
+        },
+        reference: {
+            cardPadding: 'p-7',
+        },
+        accordion: {
+            spacing: 'space-y-5',
+        },
+    },
+};
+
 const QuizComponent: React.FC<{
   question: string;
   options: string[];
   correctAnswer: string;
   feedback: string;
-}> = ({ question, options, correctAnswer, feedback }) => {
+  layout: LayoutTokens;
+}> = ({ question, options, correctAnswer, feedback, layout }) => {
     const [answer, setAnswer] = useState<string | null>(null);
 
     return (
-        <div className="bg-gradient-to-br from-slate-50 via-white to-slate-50 p-5 lg:p-6 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-900/5 space-y-4 text-left" role="radiogroup" aria-label={question}>
-            <p className="font-semibold text-slate-900 text-[clamp(1.05rem,1rem+0.2vw,1.25rem)] leading-snug">{question}</p>
+        <div className={`bg-gradient-to-br from-slate-50 via-white to-slate-50 rounded-2xl border border-slate-200/80 shadow-md shadow-slate-900/5 space-y-4 text-left ${layout.quiz.cardPadding}`} role="radiogroup" aria-label={question}>
+            <p className={`font-semibold text-slate-900 ${layout.typeScale.body}`}>{question}</p>
             <div className="flex flex-col gap-2 md:grid md:grid-cols-2 md:gap-3 xl:gap-4">
                 {options.map(option => {
                     const isAnswered = answer !== null;
@@ -550,7 +795,7 @@ const QuizComponent: React.FC<{
                             key={option}
                             onClick={() => setAnswer(option)}
                             disabled={isAnswered}
-                            className={`w-full text-left px-4 py-3 border rounded-xl transition-all text-sm md:text-base font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 ${optionClass}`}
+                            className={`w-full text-left border rounded-xl transition-all font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 ${layout.quiz.optionPadding} ${layout.quiz.optionText} ${optionClass}`}
                             role="radio"
                             aria-checked={isSelected}
                         >
@@ -578,37 +823,38 @@ const CaseChallenge: React.FC<{
     placeholderId?: string;
     imageCaption?: string;
     questions: CaseQuestion[];
-}> = ({ title, vignette, pearls, placeholderId, imageCaption, questions }) => {
+    layout: LayoutTokens;
+}> = ({ title, vignette, pearls, placeholderId, imageCaption, questions, layout }) => {
     const { primary, fallback } = getImageSources(placeholderId);
     const canShowImage = Boolean(placeholderId);
 
     return (
-        <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-10 px-3 sm:px-4 lg:px-0">
+        <div className="w-full text-left space-y-8">
             <div className="text-center space-y-3">
-                <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">
+                <h2 className={`font-roboto-slab font-bold text-slate-900 tracking-tight ${layout.typeScale.sectionHeading}`}>
                     {title}
                 </h2>
-                <p className="text-slate-600 text-[clamp(1.05rem,0.95rem+0.3vw,1.35rem)] max-w-4xl mx-auto leading-relaxed">
+                <p className={`text-slate-600 max-w-4xl mx-auto ${layout.typeScale.body}`}>
                     {vignette}
                 </p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-start">
-                <div className="lg:col-span-5 bg-white/90 border border-slate-200 rounded-3xl shadow-lg shadow-slate-900/10 p-5 md:p-6 space-y-4">
-                    <h3 className="font-semibold text-slate-900 uppercase tracking-[0.2em] text-xs md:text-sm">
+            <div className={layout.caseDeck.layout}>
+                <div className={`bg-white/90 border border-slate-200 rounded-3xl shadow-lg shadow-slate-900/10 space-y-4 ${layout.caseDeck.infoPadding} xl:col-span-5`}>
+                    <h3 className="font-semibold text-slate-900 uppercase tracking-[0.18em] text-xs md:text-sm">
                         Diagnostic Pearls
                     </h3>
-                    <ul className="list-disc list-inside space-y-2.5 text-[clamp(0.95rem,0.9rem+0.2vw,1.15rem)] text-slate-700">
+                    <ul className={`list-disc list-inside space-y-2.5 text-slate-700 ${layout.typeScale.smallBody}`}>
                         {pearls.map((pearl, idx) => (
                             <li key={idx} dangerouslySetInnerHTML={{ __html: pearl }}></li>
                         ))}
                     </ul>
                 </div>
                 {canShowImage && (
-                    <figure className="lg:col-span-7 bg-white/90 border border-slate-200 rounded-3xl shadow-xl shadow-slate-900/10 overflow-hidden w-full">
+                    <figure className="bg-white/90 border border-slate-200 shadow-xl shadow-slate-900/10 overflow-hidden w-full rounded-3xl xl:col-span-7">
                         <img
                             src={primary}
                             alt={title}
-                            className="w-full h-auto max-h-[70vh] object-contain sm:object-cover sm:max-h-[65vh]"
+                            className={layout.caseDeck.imageClass}
                             loading="lazy"
                             data-fallback-applied="false"
                             onError={attachErrorFallback(fallback)}
@@ -623,10 +869,10 @@ const CaseChallenge: React.FC<{
                     </figure>
                 )}
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6 xl:gap-7">
+            <div className={layout.caseDeck.questionGrid}>
                 {questions.map((question, idx) => (
-                    <div key={`${title}-q${idx}`} className="bg-white/95 border border-slate-200 rounded-3xl shadow-md shadow-slate-900/5 p-4 md:p-5">
-                        <QuizComponent {...question} />
+                    <div key={`${title}-q${idx}`} className={`bg-white/95 border border-slate-200 rounded-3xl shadow-md shadow-slate-900/5 ${layout.lightning.cardPadding}`}>
+                        <QuizComponent layout={layout} {...question} />
                     </div>
                 ))}
             </div>
@@ -639,19 +885,20 @@ const LightningRound: React.FC<{
     intro: string;
     questions: CaseQuestion[];
     footnote?: string;
-}> = ({ title, intro, questions, footnote }) => (
-    <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8 px-3 sm:px-4 lg:px-0">
+    layout: LayoutTokens;
+}> = ({ title, intro, questions, footnote, layout }) => (
+    <div className="w-full text-left space-y-6">
         <div className="text-center space-y-3">
-            <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">{title}</h2>
-            <p className="text-slate-600 text-[clamp(1rem,0.95rem+0.25vw,1.3rem)] leading-relaxed">{intro}</p>
+            <h2 className={`font-roboto-slab font-bold text-slate-900 tracking-tight ${layout.typeScale.sectionHeading}`}>{title}</h2>
+            <p className={`text-slate-600 ${layout.typeScale.body}`}>{intro}</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-7 xl:gap-8">
+        <div className={layout.lightning.grid}>
             {questions.map((question, idx) => (
-                <div key={`lightning-${idx}`} className="bg-white/95 border border-slate-200 rounded-3xl shadow-lg shadow-slate-900/8 p-5 md:p-6 flex flex-col h-full space-y-4">
-                    <div className="text-[0.7rem] md:text-[0.75rem] uppercase tracking-[0.28em] text-sky-600 font-semibold">
+                <div key={`lightning-${idx}`} className={`bg-white/95 border border-slate-200 rounded-3xl shadow-lg shadow-slate-900/8 flex flex-col h-full space-y-4 ${layout.lightning.cardPadding}`}>
+                    <div className="text-[0.7rem] uppercase tracking-[0.28em] text-sky-600 font-semibold">
                         Question {idx + 1}
                     </div>
-                    <QuizComponent {...question} />
+                    <QuizComponent layout={layout} {...question} />
                 </div>
             ))}
         </div>
@@ -663,11 +910,12 @@ const LightningRound: React.FC<{
 
 const InteractiveAccordion: React.FC<{
     items: { heading: string; content: string }[];
-}> = ({ items }) => {
+    layout: LayoutTokens;
+}> = ({ items, layout }) => {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <div className="space-y-4 md:space-y-5">
+        <div className={layout.accordion.spacing}>
             {items.map((item, idx) => {
                 const isOpen = openIndex === idx;
                 return (
@@ -690,26 +938,25 @@ const InteractiveAccordion: React.FC<{
     );
 };
 
-const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => void }> = ({ slide, onComplete }) => {
-    // A simplified layout engine for lecture slides
+const SlideContent: React.FC<{ slide: (typeof slideData)[0]; onComplete: () => void; layout: LayoutTokens; }> = ({ slide, onComplete, layout }) => {
     const renderLayout = (slide: any) => {
       const content = (
         <div
-          className="font-lato text-slate-800 text-[clamp(1rem,0.92rem+0.4vw,1.22rem)] leading-relaxed prose prose-slate max-w-none"
+          className={`font-lato text-slate-800 prose prose-slate max-w-none ${layout.typeScale.body}`}
           dangerouslySetInnerHTML={{ __html: slide.text }}
         ></div>
       );
-      const quiz = slide.quiz ? <QuizComponent {...slide.quiz} /> : null;
+      const quiz = slide.quiz ? <QuizComponent layout={layout} {...slide.quiz} /> : null;
       let image: React.ReactNode = null;
 
       if (slide.placeholderId) {
         const { primary, fallback } = getImageSources(slide.placeholderId);
         image = (
-          <figure className="relative w-full overflow-hidden rounded-2xl sm:rounded-[1.75rem] shadow-xl shadow-slate-900/10 ring-1 ring-slate-200/70 bg-white">
+          <figure className="relative w-full overflow-hidden bg-white border border-slate-200 shadow-xl shadow-slate-900/10 rounded-2xl sm:rounded-[1.75rem]">
             <img
               src={primary}
               alt={slide.title}
-              className="w-full h-auto max-h-[70vh] object-contain"
+              className={layout.hotspot.imageClass}
               data-fallback-applied="false"
               onError={attachErrorFallback(fallback)}
               referrerPolicy="no-referrer"
@@ -722,15 +969,14 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
       switch (slide.type) {
         case 'image_hotspot':
           return (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-12 items-start">
-              <div className="lg:col-span-7 space-y-6 lg:space-y-8">
+            <div className={layout.hotspot.layout}>
+              <div className={`lg:col-span-7 ${layout.hotspot.textStackSpacing}`}>
                 {content}
                 {quiz}
               </div>
               {image && <div className="lg:col-span-5">{image}</div>}
             </div>
           );
-        // Add more layout types here if needed
         default:
           return null;
       }
@@ -738,31 +984,31 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
   
     switch(slide.type) {
         case 'title': return (
-            <div className="text-center space-y-4 px-3 sm:px-4 lg:px-0">
-                <h1 className="font-roboto-slab text-[clamp(2.75rem,2.2rem+1.8vw,4.5rem)] font-bold tracking-tight text-slate-900">
+            <div className="text-center space-y-4">
+                <h1 className={`font-roboto-slab font-bold tracking-tight text-slate-900 ${layout.typeScale.heading}`}>
                     {slide.title}
                 </h1>
-                <p className="font-lato text-[clamp(1.25rem,1.05rem+0.6vw,1.9rem)] text-slate-700/90 max-w-3xl mx-auto">
+                <p className={`font-lato text-slate-700/90 max-w-3xl mx-auto ${layout.typeScale.subtitle}`}>
                     {slide.subtitle}
                 </p>
             </div>
         );
         case 'bullets': return (
-            <div className="w-full text-left max-w-[min(100%,1150px)] mx-auto space-y-10 px-3 sm:px-4 lg:px-0">
-                <h2 className="font-roboto-slab text-[clamp(2rem,1.8rem+0.7vw,2.75rem)] font-bold text-slate-900 tracking-tight">
+            <div className="w-full text-left space-y-6">
+                <h2 className={`font-roboto-slab font-bold text-slate-900 tracking-tight ${layout.typeScale.sectionHeading}`}>
                     {slide.title}
                 </h2>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 xl:gap-9">
+                <ul className={`grid ${layout.bullet.grid} ${layout.bullet.gap}`}>
                     {slide.items.map((item, i) => (
                         <li
                             key={i}
-                            className="flex items-start gap-4 rounded-2xl bg-slate-50/60 p-5 md:p-6 lg:p-7 border border-slate-200/70 shadow-sm shadow-slate-900/5"
+                            className={`flex items-start gap-4 rounded-2xl bg-slate-50/60 border border-slate-200 shadow-sm shadow-slate-900/5 ${layout.bullet.itemPadding}`}
                         >
                             <span className="text-sky-600 flex-shrink-0 mt-1">
                                 {item.icon}
                             </span>
                             <span
-                                className="font-lato text-[clamp(1rem,0.94rem+0.3vw,1.25rem)] leading-relaxed text-slate-800"
+                                className={`font-lato text-slate-800 ${layout.typeScale.body}`}
                                 dangerouslySetInnerHTML={{ __html: item.text }}
                             />
                         </li>
@@ -771,24 +1017,24 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             </div>
         );
         case 'section_title': return (
-            <div className="text-center space-y-5 px-3 sm:px-4 lg:px-0">
+            <div className="text-center space-y-5">
                 <div className="w-24 h-1 bg-gradient-to-r from-sky-400 via-sky-500 to-sky-400 mx-auto rounded-full"></div>
-                <h2 className="font-roboto-slab text-[clamp(2.4rem,2.1rem+1vw,3.6rem)] font-bold text-sky-800 tracking-tight">
+                <h2 className={`font-roboto-slab font-bold text-sky-800 tracking-tight ${layout.typeScale.sectionHeading}`}>
                     {slide.title}
                 </h2>
                 <p
-                    className="font-lato text-[clamp(1.1rem,1rem+0.4vw,1.6rem)] text-slate-700/90 italic max-w-4xl mx-auto leading-relaxed"
+                    className={`font-lato text-slate-700/90 italic max-w-4xl mx-auto ${layout.typeScale.body}`}
                     dangerouslySetInnerHTML={{ __html: slide.text }}
                 ></p>
             </div>
         );
         case 'table': return (
-            <div className="w-full text-left max-w-[min(100%,1200px)] mx-auto space-y-8 px-3 sm:px-4 lg:px-0">
-                <h2 className="font-roboto-slab text-[clamp(2rem,1.9rem+0.6vw,2.75rem)] font-bold text-slate-900 tracking-tight">
+            <div className="w-full text-left space-y-6">
+                <h2 className={`font-roboto-slab font-bold text-slate-900 tracking-tight ${layout.typeScale.sectionHeading}`}>
                     {slide.title}
                 </h2>
                 <div className="overflow-x-auto rounded-3xl border border-slate-200 shadow-inner shadow-slate-900/5">
-                    <table className="w-full text-left border-collapse font-lato text-[clamp(0.95rem,0.9rem+0.2vw,1.15rem)]">
+                    <table className={`w-full text-left border-collapse font-lato ${layout.table.textSize}`}>
                         <thead>
                             <tr className="bg-gradient-to-r from-sky-700 to-sky-600 text-white">
                                 {slide.headers.map((header: string, idx: number) => (
@@ -816,11 +1062,12 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             </div>
         );
         case 'quiz': return (
-            <div className="w-full max-w-[min(100%,820px)] mx-auto space-y-8 text-center px-3 sm:px-4 lg:px-0">
-                <h2 className="font-roboto-slab text-[clamp(2rem,1.8rem+0.6vw,2.75rem)] font-bold text-slate-900">
+            <div className="w-full max-w-[min(100%,820px)] mx-auto space-y-6 text-center">
+                <h2 className={`font-roboto-slab font-bold text-slate-900 ${layout.typeScale.sectionHeading}`}>
                     {slide.title}
                 </h2>
                 <QuizComponent
+                    layout={layout}
                     question={slide.question!}
                     options={slide.options!}
                     correctAnswer={slide.correctAnswer!}
@@ -829,47 +1076,52 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
             </div>
         );
         case 'image_hotspot': return (
-            <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8 px-3 sm:px-4 lg:px-0">
-                <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">
+            <div className="w-full text-left space-y-6">
+                <h2 className={`font-roboto-slab font-bold text-slate-900 tracking-tight ${layout.typeScale.sectionHeading}`}>
                     {slide.title}
                 </h2>
                 {renderLayout(slide)}
             </div>
         );
-        case 'three_column_image': return <div className="w-full text-left max-w-[min(100%,1250px)] mx-auto space-y-8 px-3 sm:px-4 lg:px-0"><h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900 tracking-tight">{slide.title}</h2><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 xl:gap-10">{slide.tiles.map((tile, i) => {
-            const captionText = typeof tile.caption === 'string' ? tile.caption.replace(/<[^>]*>/g, '') : slide.title;
-            const { primary, fallback } = getImageSources(tile.placeholderId);
-            return (
-                <div key={i} className="text-center space-y-4 bg-white/90 rounded-3xl border border-slate-200 shadow-lg shadow-slate-900/10 p-5 md:p-6 lg:p-7">
-                    <div className="relative w-full">
-                        <img
-                            src={primary}
-                            alt={captionText}
-                            className="w-full h-auto max-h-[18rem] lg:max-h-[20rem] rounded-2xl border border-slate-200/70 shadow-md shadow-slate-900/10 object-contain bg-white"
-                            data-fallback-applied="false"
-                            onError={attachErrorFallback(fallback)}
-                            loading="lazy"
-                            referrerPolicy="no-referrer"
-                            crossOrigin="anonymous"
-                        />
-                    </div>
-                    <p className="font-lato text-[clamp(1rem,0.96rem+0.25vw,1.25rem)] text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: tile.caption }}></p>
+        case 'three_column_image': return (
+            <div className="w-full text-left space-y-6">
+                <h2 className={`font-roboto-slab font-bold text-slate-900 tracking-tight ${layout.typeScale.sectionHeading}`}>{slide.title}</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {slide.tiles.map((tile, i) => {
+                        const captionText = typeof tile.caption === 'string' ? tile.caption.replace(/<[^>]*>/g, '') : slide.title;
+                        const { primary, fallback } = getImageSources(tile.placeholderId);
+                        return (
+                            <div key={i} className="text-center space-y-4 bg-white/90 rounded-3xl border border-slate-200 shadow-lg shadow-slate-900/10 p-5">
+                                <img
+                                    src={primary}
+                                    alt={captionText}
+                                    className={layout.galleryImageClass}
+                                    data-fallback-applied="false"
+                                    onError={attachErrorFallback(fallback)}
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer"
+                                    crossOrigin="anonymous"
+                                />
+                                <p className={`font-lato text-slate-700 ${layout.typeScale.body}`} dangerouslySetInnerHTML={{ __html: tile.caption }}></p>
+                            </div>
+                        );
+                    })}
                 </div>
-            );
-        })}</div></div>
-        case 'case_series': return <CaseChallenge title={slide.title} vignette={slide.vignette} pearls={slide.pearls} placeholderId={slide.placeholderId} imageCaption={slide.imageCaption} questions={slide.questions} />;
-        case 'quiz_stack': return <LightningRound title={slide.title} intro={slide.intro} questions={slide.questions} footnote={slide.footnote} />;
+            </div>
+        );
+        case 'case_series': return <CaseChallenge layout={layout} title={slide.title} vignette={slide.vignette} pearls={slide.pearls} placeholderId={slide.placeholderId} imageCaption={slide.imageCaption} questions={slide.questions} />;
+        case 'quiz_stack': return <LightningRound layout={layout} title={slide.title} intro={slide.intro} questions={slide.questions} footnote={slide.footnote} />;
         case 'reference': return (
-            <div className="w-full text-left max-w-[min(100%,1050px)] mx-auto space-y-6 px-3 sm:px-4 lg:px-0">
+            <div className="w-full text-left space-y-6">
                 <div className="space-y-2">
-                    <h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900">{slide.title}</h2>
-                    <h3 className="font-roboto-slab text-[clamp(1.45rem,1.3rem+0.4vw,1.95rem)] text-slate-800 tracking-tight">{slide.citationTitle}</h3>
-                    <p className="text-sm md:text-base text-slate-600">{slide.authors}</p>
-                    <p className="text-sm md:text-base text-slate-600">{slide.journal} <span className="font-mono text-xs md:text-sm">doi:{' '}{slide.doi}</span></p>
+                    <h2 className={`font-roboto-slab font-bold text-slate-900 ${layout.typeScale.sectionHeading}`}>{slide.title}</h2>
+                    <h3 className={`font-roboto-slab text-slate-800 tracking-tight ${layout.typeScale.body}`}>{slide.citationTitle}</h3>
+                    <p className={`text-slate-600 ${layout.typeScale.smallBody}`}>{slide.authors}</p>
+                    <p className={`text-slate-600 ${layout.typeScale.smallBody}`}>{slide.journal} <span className="font-mono text-xs md:text-sm">doi:{' '}{slide.doi}</span></p>
                 </div>
-                <div className="bg-gradient-to-br from-white via-slate-50 to-white border border-slate-200 rounded-3xl shadow-lg shadow-slate-900/10 p-6 md:p-7 space-y-5">
-                    <div className="prose max-w-none text-slate-700 text-[clamp(1rem,0.95rem+0.2vw,1.15rem)] leading-relaxed" dangerouslySetInnerHTML={{ __html: slide.summary }}></div>
-                    <ul className="list-disc list-inside space-y-2.5 text-slate-700 text-[clamp(1rem,0.95rem+0.2vw,1.15rem)]">
+                <div className={`bg-gradient-to-br from-white via-slate-50 to-white border border-slate-200 rounded-3xl shadow-lg shadow-slate-900/10 space-y-5 ${layout.reference.cardPadding}`}>
+                    <div className={`prose max-w-none text-slate-700 ${layout.typeScale.body}`} dangerouslySetInnerHTML={{ __html: slide.summary }}></div>
+                    <ul className={`list-disc list-inside space-y-2.5 text-slate-700 ${layout.typeScale.body}`}>
                         {slide.takeaways.map((point: string, idx: number) => (
                             <li key={idx}>{point}</li>
                         ))}
@@ -886,13 +1138,18 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0], onComplete: () => v
                 </div>
             </div>
         );
-        case 'accordion': return <div className="w-full text-left max-w-[min(100%,1050px)] mx-auto space-y-6 px-3 sm:px-4 lg:px-0"><h2 className="font-roboto-slab text-[clamp(2rem,1.85rem+0.7vw,2.9rem)] font-bold text-slate-900">{slide.title}</h2><InteractiveAccordion items={slide.items} /></div>;
+        case 'accordion': return (
+            <div className="w-full text-left space-y-6">
+                <h2 className={`font-roboto-slab font-bold text-slate-900 ${layout.typeScale.sectionHeading}`}>{slide.title}</h2>
+                <InteractiveAccordion layout={layout} items={slide.items} />
+            </div>
+        );
         case 'launch': return (
-            <div className="text-center space-y-5 px-3 sm:px-4 lg:px-0">
-                <h2 className="font-roboto-slab text-[clamp(2.5rem,2.1rem+1.2vw,3.8rem)] font-bold text-slate-900 tracking-tight">
+            <div className="text-center space-y-5">
+                <h2 className={`font-roboto-slab font-bold text-slate-900 tracking-tight ${layout.typeScale.heading}`}>
                     {slide.title}
                 </h2>
-                <p className="font-lato text-[clamp(1.15rem,1.05rem+0.3vw,1.6rem)] text-slate-700 max-w-3xl mx-auto leading-relaxed">
+                <p className={`font-lato text-slate-700 max-w-3xl mx-auto ${layout.typeScale.body}`}>
                     {slide.text}
                 </p>
                 <button
@@ -915,6 +1172,8 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
     const slideRefs = useRef<Array<HTMLDivElement | null>>([]);
     const [announcement, setAnnouncement] = useState('');
     const minSwipeDistance = 50;
+    const deviceType = useDeviceType();
+    const layout = useMemo(() => layoutByDevice[deviceType], [deviceType]);
 
     const nextSlide = () => setCurrentSlide(prev => Math.min(prev + 1, slideData.length - 1));
     const prevSlide = () => setCurrentSlide(prev => Math.max(prev - 1, 0));
@@ -985,10 +1244,10 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
                         ref={el => { slideRefs.current[index] = el; }}
                         id={`slide-${index}`}
                     >
-                        <div className="max-w-[min(100%,1320px)] mx-auto px-3 sm:px-6 lg:px-10 py-6 sm:py-10 lg:py-12">
-                            <div className="rounded-2xl sm:rounded-[2.5rem] bg-white/95 shadow-xl sm:shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm">
-                                <div className="p-4 sm:p-6 lg:p-10">
-                                    <SlideContent slide={slide} onComplete={onComplete} />
+                        <div className={`mx-auto ${layout.frame.containerWidth} ${layout.frame.outerPadding} ${layout.frame.verticalPadding}`}>
+                            <div className={`${layout.frame.radius} bg-white/95 shadow-xl sm:shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm`}>
+                                <div className={layout.frame.innerPadding}>
+                                    <SlideContent layout={layout} slide={slide} onComplete={onComplete} />
                                 </div>
                             </div>
                         </div>
