@@ -66,7 +66,7 @@ const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }
   if (!dziUrl && !staticImageUrl) {
     return (
         <div 
-            className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md flex items-center justify-center openseadragon-container"
+            className="w-full h-[18rem] sm:h-[22rem] lg:h-[28rem] xl:h-[32rem] bg-black rounded-lg shadow-md flex items-center justify-center openseadragon-container"
             aria-label={altText || "Image viewer placeholder"}
         >
             <p className="text-slate-300">No Image Available</p>
@@ -74,12 +74,12 @@ const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }
     );
   }
 
-  return (
-    <div 
-        ref={viewerRef}
-        className="w-full h-64 sm:h-96 bg-black rounded-lg shadow-md openseadragon-container"
-        aria-label={altText || "Whole Slide Image viewer"}
-    />
+    return (
+        <div 
+            ref={viewerRef}
+            className="w-full h-[18rem] sm:h-[22rem] lg:h-[28rem] xl:h-[32rem] bg-black rounded-lg shadow-md openseadragon-container"
+            aria-label={altText || "Whole Slide Image viewer"}
+        />
   );
 };
 
