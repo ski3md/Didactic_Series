@@ -530,6 +530,7 @@ type LayoutTokens = {
         verticalPadding: string;
         radius: string;
         innerPadding: string;
+        contentWidth: string;
     };
     typeScale: {
         heading: string;
@@ -618,6 +619,7 @@ const layoutByDevice: Record<DeviceType, LayoutTokens> = {
             verticalPadding: 'py-8',
             radius: 'rounded-2xl',
             innerPadding: 'p-5',
+            contentWidth: 'max-w-3xl',
         },
         typeScale: {
             heading: 'text-3xl',
@@ -670,6 +672,7 @@ const layoutByDevice: Record<DeviceType, LayoutTokens> = {
             verticalPadding: 'py-10',
             radius: 'rounded-[2rem]',
             innerPadding: 'p-8',
+            contentWidth: 'max-w-4xl',
         },
         typeScale: {
             heading: 'text-4xl',
@@ -722,6 +725,7 @@ const layoutByDevice: Record<DeviceType, LayoutTokens> = {
             verticalPadding: 'py-12',
             radius: 'rounded-[2.5rem]',
             innerPadding: 'p-10',
+            contentWidth: 'max-w-5xl',
         },
         typeScale: {
             heading: 'text-5xl',
@@ -1249,9 +1253,13 @@ const Lecture: React.FC<LectureProps> = ({ onComplete }) => {
                         id={`slide-${index}`}
                     >
                         <div className={`mx-auto ${layout.frame.containerWidth} ${layout.frame.outerPadding} ${layout.frame.verticalPadding}`}>
-                            <div className={`${layout.frame.radius} bg-white/95 shadow-xl sm:shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm`}>
-                                <div className={layout.frame.innerPadding}>
-                                    <SlideContent layout={layout} slide={slide} onComplete={onComplete} />
+                            <div className="flex justify-center">
+                                <div className={`w-full ${layout.frame.contentWidth}`}>
+                                    <div className={`${layout.frame.radius} bg-white/95 shadow-xl sm:shadow-2xl shadow-slate-900/10 ring-1 ring-slate-200/70 backdrop-blur-sm`}>
+                                        <div className={layout.frame.innerPadding}>
+                                            <SlideContent layout={layout} slide={slide} onComplete={onComplete} />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
