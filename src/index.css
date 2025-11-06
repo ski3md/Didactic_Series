@@ -36,22 +36,25 @@ body {
 
 /* Styles for Lecture Component */
 .slide-container {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    transform: translateX(100%);
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2.5rem 5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease-in-out;
 }
+
 .slide-container.active {
     opacity: 1;
-    transform: translateX(0);
+    pointer-events: auto;
     z-index: 1;
 }
+
 .slide-container.prev {
-    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
     z-index: 0;
 }
