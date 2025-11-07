@@ -16,24 +16,6 @@ const ancillaryTests = [
     { id: 'p-anca', name: 'p-ANCA (Serology)', resultText: 'Serology result: p-ANCA (anti-MPO) is negative.' },
 ];
 
-const histologyImageMap: Record<string, { src: string; alt: string; caption: string }> = {
-    'Granulomatosis with Polyangiitis (GPA)': {
-        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Wegener%27s_granulomatosis_-b-_intermed_mag.jpg/1200px-Wegener%27s_granulomatosis_-b-_intermed_mag.jpg',
-        alt: 'Granulomatosis with Polyangiitis showing necrotizing vasculitis and dirty necrosis',
-        caption: 'Granulomatosis with Polyangiitis – necrotizing granulomatous inflammation with vasculitis.'
-    },
-    Histoplasmosis: {
-        src: 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_06.jpg',
-        alt: 'Histoplasmosis demonstrating GMS-positive intracellular yeasts',
-        caption: 'Histoplasmosis – GMS stain highlighting clustered 2–5 µm intracellular yeasts.'
-    },
-    'Chronic Beryllium Disease': {
-        src: 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg',
-        alt: 'Chronic Beryllium Disease with non-caseating granulomas mimicking sarcoidosis',
-        caption: 'Chronic Beryllium Disease – tight non-caseating granulomas indistinguishable from sarcoidosis.'
-    },
-};
-
 const defaultHistologyImage = {
     src: 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_granulomas_05.jpg',
     alt: 'Representative granulomatous lung histology',
@@ -200,7 +182,7 @@ const SignOutSimulator: React.FC<{ user: User | null }> = ({ user }) => {
                     {currentState !== 'clinical' && (
                         <StepCard title="2. Histologic Examination" isCompleted={currentState !== 'histology'}>
                             {(() => {
-                                const histologyImage = histologyImageMap[caseData.topic] ?? defaultHistologyImage;
+                                const histologyImage = caseData.case_tutorial.histologyImage ?? defaultHistologyImage;
                                 return (
                                     <figure className="w-full bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
                                         <img

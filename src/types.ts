@@ -144,6 +144,11 @@ export interface CaseTutorial {
   caseDiscussion: string;
   teachingPoints: string[];
   references: string[];
+  histologyImage?: {
+    src: string;
+    alt: string;
+    caption: string;
+  };
   // Add a gold standard report for the simulator
   goldStandardReport: {
     finalDiagnosis: string;

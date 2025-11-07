@@ -26,6 +26,11 @@ export const modules: ModuleData[] = [
         "American College of Rheumatology (ACR) Guidelines for Vasculitis",
         "Henry's Clinical Diagnosis and Management by Laboratory Methods, 24th Ed."
       ],
+      histologyImage: {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Wegener%27s_granulomatosis_-b-_intermed_mag.jpg/1200px-Wegener%27s_granulomatosis_-b-_intermed_mag.jpg',
+        alt: 'Granulomatosis with Polyangiitis showing necrotizing vasculitis and geographic dirty necrosis',
+        caption: 'Granulomatosis with Polyangiitis – necrotizing granulomatous inflammation with vasculitis.'
+      },
       goldStandardReport: {
         finalDiagnosis: "LUNG, WEDGE BIOPSY:\n- NECROTIZING GRANULOMATOUS INFLAMMATION WITH VASCULITIS, CONSISTENT WITH GRANULOMATOSIS WITH POLYANGIITIS (GPA).\n- NEGATIVE FOR FUNGAL ORGANISMS (GMS STAIN).\n- NEGATIVE FOR ACID-FAST BACILLI (AFB STAIN).",
         microscopicDescription: "Sections show lung parenchyma with geographic, basophilic necrosis containing abundant neutrophilic debris and karyorrhexis ('dirty necrosis'). The necrosis is surrounded by palisading histiocytes and associated with a mixed inflammatory infiltrate including lymphocytes, plasma cells, and neutrophils. A necrotizing vasculitis involving small to medium-sized vessels is identified. No viral inclusions, fungal organisms, or mycobacteria are seen on special stains.",
@@ -68,6 +73,11 @@ export const modules: ModuleData[] = [
         "Geographic history (Ohio/Mississippi River Valleys) or exposure history (caves, bird/bat guano) is a critical clinical clue."
       ],
       references: ["Robbins Pathologic Basis of Disease, 10th Ed.", "Centers for Disease Control and Prevention (CDC): Fungal Diseases - Histoplasmosis"],
+      histologyImage: {
+        src: 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_06.jpg',
+        alt: 'Histoplasmosis demonstrating numerous GMS-positive intracellular yeasts within macrophages',
+        caption: 'Histoplasmosis – GMS stain highlighting clustered 2–5 µm intracellular yeasts.'
+      },
       goldStandardReport: {
         finalDiagnosis: "LUNG, TRANSBRONCHIAL BIOPSY:\n- NECROTIZING GRANULOMATOUS INFLAMMATION.\n- GMS STAIN IS POSITIVE FOR NUMEROUS SMALL, BUDDING YEASTS, MORPHOLOGICALLY CONSISTENT WITH HISTOPLASMA SPECIES.\n- AFB STAIN IS NEGATIVE FOR ACID-FAST BACILLI.",
         microscopicDescription: "Sections show fragments of lung parenchyma with multiple well-formed granulomas with central caseous-type necrosis. Within the cytoplasm of histiocytes and giant cells, there are numerous small (2-5 micron), oval yeast forms. These organisms are highlighted by the GMS special stain.",
@@ -93,7 +103,12 @@ export const modules: ModuleData[] = [
       caseDiscussion: "The presentation of non-caseating granulomas with hilar adenopathy is the classic picture for sarcoidosis, which is a diagnosis of exclusion. However, the patient's occupational history in aerospace engineering is a critical piece of data that demands a workup for CBD. CBD is a Type IV (T-cell mediated) hypersensitivity reaction to beryllium exposure. Histologically and radiologically, it is a perfect mimic of sarcoidosis. The gold standard is the Beryllium Lymphocyte Proliferation Test (BeLPT), which challenges the patient's lymphocytes with beryllium salts in vitro. A positive proliferation response confirms sensitization and, in this clinical context, diagnoses CBD.",
       teachingPoints: ["Chronic Beryllium Disease (CBD) is histologically and radiologically *indistinguishable* from sarcoidosis.", "The diagnosis is entirely dependent on 1) A history of beryllium exposure (aerospace, electronics) and 2) A positive Beryllium Lymphocyte Proliferation Test (BeLPT).", "CBD is a cell-mediated (Type IV) hypersensitivity, not a pneumoconiosis in the traditional sense.", "Standard stains (AFB, GMS) are crucial to rule out infectious mimics."],
       references: ["Robbins Pathologic Basis of Disease, 10th Ed.", "American Thoracic Society (ATS) Clinical Practice Guideline: Diagnosis and Management of Beryllium Sensitivity and Chronic Beryllium Disease."],
-       goldStandardReport: {
+      histologyImage: {
+        src: 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg',
+        alt: 'Chronic Beryllium Disease with well-formed non-necrotizing granulomas',
+        caption: 'Chronic Beryllium Disease – tight non-caseating granulomas indistinguishable from sarcoidosis.'
+      },
+      goldStandardReport: {
         finalDiagnosis: "LUNG, TRANSBRONCHIAL BIOPSY:\n- NON-NECROTIZING GRANULOMATOUS INFLAMMATION.\n- NEGATIVE FOR FUNGAL ORGANISMS (GMS STAIN).\n- NEGATIVE FOR ACID-FAST BACILLI (AFB STAIN).",
         microscopicDescription: "Sections show multiple, well-circumscribed, non-necrotizing granulomas composed of epithelioid histiocytes, multinucleated giant cells, and a rim of lymphocytes. There is no evidence of necrosis. Special stains for microorganisms are negative.",
         comment: "The histologic findings are those of non-necrotizing granulomatous inflammation. The differential diagnosis includes sarcoidosis and chronic beryllium disease. Given the patient's occupational history in the aerospace industry, correlation with a Beryllium Lymphocyte Proliferation Test (BeLPT) is required to differentiate these two entities. Sarcoidosis remains a diagnosis of exclusion."
