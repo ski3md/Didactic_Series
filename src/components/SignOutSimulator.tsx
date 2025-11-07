@@ -16,6 +16,30 @@ const ancillaryTests = [
     { id: 'p-anca', name: 'p-ANCA (Serology)', resultText: 'Serology result: p-ANCA (anti-MPO) is negative.' },
 ];
 
+const histologyImageMap: Record<string, { src: string; alt: string; caption: string }> = {
+    'Granulomatosis with Polyangiitis (GPA)': {
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Wegener%27s_granulomatosis_-b-_intermed_mag.jpg/1200px-Wegener%27s_granulomatosis_-b-_intermed_mag.jpg',
+        alt: 'Granulomatosis with Polyangiitis showing necrotizing vasculitis and dirty necrosis',
+        caption: 'Granulomatosis with Polyangiitis – necrotizing granulomatous inflammation with vasculitis.'
+    },
+    Histoplasmosis: {
+        src: 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/histoplasmosis/GMS/histoplasmosis_histoplasmosis_06.jpg',
+        alt: 'Histoplasmosis demonstrating GMS-positive intracellular yeasts',
+        caption: 'Histoplasmosis – GMS stain highlighting clustered 2–5 µm intracellular yeasts.'
+    },
+    'Chronic Beryllium Disease': {
+        src: 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_60.jpg',
+        alt: 'Chronic Beryllium Disease with non-caseating granulomas mimicking sarcoidosis',
+        caption: 'Chronic Beryllium Disease – tight non-caseating granulomas indistinguishable from sarcoidosis.'
+    },
+};
+
+const defaultHistologyImage = {
+    src: 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_granulomas_05.jpg',
+    alt: 'Representative granulomatous lung histology',
+    caption: 'Representative granulomatous inflammation.'
+};
+
 const LoadingSpinner: React.FC<{ text?: string }> = ({ text = "Loading..." }) => (
     <div className="flex items-center justify-center h-full my-4">
         <svg className="animate-spin h-5 w-5 text-sky-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24" stroke="currentColor">
@@ -175,7 +199,25 @@ const SignOutSimulator: React.FC<{ user: User | null }> = ({ user }) => {
                     
                     {currentState !== 'clinical' && (
                         <StepCard title="2. Histologic Examination" isCompleted={currentState !== 'histology'}>
-                            <WSIViewer />
+                            {(() => {
+                                const histologyImage = histologyImageMap[caseData.topic] ?? defaultHistologyImage;
+                                return (
+                                    <figure className="w-full bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                                        <img
+                                            src={histologyImage.src}
+                                            alt={histologyImage.alt}
+                                            className="w-full h-72 object-cover"
+                                            loading="lazy"
+                                        />
+                                        <figcaption className="text-sm text-slate-600 px-4 py-2 bg-white border-t border-slate-200">
+                                            {histologyImage.caption}
+                                        </figcaption>
+                                    </figure>
+                                );
+                            })()}
+                            <div className="mt-4">
+                                <WSIViewer />
+                            </div>
                             <p className="text-slate-700 mt-4">{caseData.case_tutorial.caseDiscussion}</p>
                              {currentState === 'histology' && (
                                 <div className="text-center mt-6">
