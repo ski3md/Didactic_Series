@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Card from './ui/Card.tsx';
 import SectionHeader from './ui/SectionHeader.tsx';
 import Alert from './ui/Alert.tsx';
-import WSIViewer from './WSIViewer.tsx';
 import { User, StoredImage } from '../types.ts';
 import { getGalleryImages } from '../utils/imageStore.ts';
 
@@ -120,14 +119,20 @@ const VisualChallenge: React.FC<VisualChallengeProps> = ({ user }) => {
                         <p className="text-slate-600 mt-1">Which slide shows the <strong>'tightly-formed, well-circumscribed'</strong> granuloma typical of Sarcoidosis?</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <p className="font-medium text-center mb-2 text-slate-800">Slide A (HP)</p>
-                            <WSIViewer staticImageUrl={hpImage.src} altText={hpImage.title}/>
-                        </div>
-                        <div>
-                            <p className="font-medium text-center mb-2 text-slate-800">Slide B (Sarcoidosis)</p>
-                            <WSIViewer staticImageUrl={sarcImage.src} altText={sarcImage.title} />
-                        </div>
+                        {[{label:'Slide A (HP)', data: hpImage}, {label:'Slide B (Sarcoidosis)', data: sarcImage}].map(slide => (
+                            <figure key={slide.label} className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+                                <p className="font-medium text-center py-2 text-slate-800 bg-slate-50">{slide.label}</p>
+                                <img
+                                    src={slide.data?.src || visualFallbackSarcoidosis.src}
+                                    alt={slide.data?.alt || 'Histology image'}
+                                    className="w-full h-64 object-cover"
+                                    loading="lazy"
+                                />
+                                <figcaption className="text-xs text-slate-600 px-4 py-2 bg-slate-50 border-t border-slate-200">
+                                    {slide.data?.description || slide.data?.title}
+                                </figcaption>
+                            </figure>
+                        ))}
                     </div>
                     <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
                         <button onClick={() => handleChallenge1('A')} disabled={!!challenge1Answer} className="px-6 py-2 bg-white border border-slate-300 rounded-lg font-semibold text-slate-800 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
@@ -160,14 +165,20 @@ const VisualChallenge: React.FC<VisualChallengeProps> = ({ user }) => {
                         <p className="text-slate-600 mt-1">Which slide shows the <strong>'lymphangitic distribution'</strong> typical of Sarcoidosis?</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                         <div>
-                            <p className="font-medium text-center mb-2 text-slate-800">Slide A (HP)</p>
-                            <WSIViewer staticImageUrl={hpImage.src} altText={hpImage.title} />
-                        </div>
-                        <div>
-                            <p className="font-medium text-center mb-2 text-slate-800">Slide B (Sarcoidosis)</p>
-                            <WSIViewer staticImageUrl={sarcImage.src} altText={sarcImage.title} />
-                        </div>
+                        {[{label:'Slide A (HP)', data: hpImage}, {label:'Slide B (Sarcoidosis)', data: sarcImage}].map(slide => (
+                            <figure key={`${slide.label}-dist`} className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+                                <p className="font-medium text-center py-2 text-slate-800 bg-slate-50">{slide.label}</p>
+                                <img
+                                    src={slide.data?.src || visualFallbackSarcoidosis.src}
+                                    alt={slide.data?.alt || 'Histology image'}
+                                    className="w-full h-64 object-cover"
+                                    loading="lazy"
+                                />
+                                <figcaption className="text-xs text-slate-600 px-4 py-2 bg-slate-50 border-t border-slate-200">
+                                    {slide.data?.description || slide.data?.title}
+                                </figcaption>
+                            </figure>
+                        ))}
                     </div>
                     <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
                         <button onClick={() => handleChallenge2('A')} disabled={!!challenge2Answer} className="px-6 py-2 bg-white border border-slate-300 rounded-lg font-semibold text-slate-800 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
