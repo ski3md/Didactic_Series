@@ -11,7 +11,7 @@ interface VisualChallengeProps {
 
 const visualFallbackSarcoidosis: StoredImage = {
     id: 'visual_fallback_sarcoid',
-    src: 'https://upload.wikimedia.org/wikipedia/commons/d/d7/Sarcoidosis_-_Non-necrotizing_granuloma_(6201136149).jpg',
+    src: 'https://www.researchgate.net/publication/379027158/figure/fig3/AS:11431281229911746@1710678895381/Biopsy-from-lung-showing-non-caseating-granuloma.png,
     gcsPath: 'external/sarcoidosis/non_caseating_granuloma.jpg',
     title: 'Sarcoidosis – Non-necrotizing (non-caseating) granuloma (Wikimedia Commons)',
     description: 'Representative histology of sarcoidosis: tight non-necrotizing epithelioid granulomas with lymphocytic rim.',
