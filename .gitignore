@@ -65,3 +65,4 @@ Thumbs.db
 # GitHub Pages cache
 node_modules/.cache/gh-pages/
 
+*.code-workspace
