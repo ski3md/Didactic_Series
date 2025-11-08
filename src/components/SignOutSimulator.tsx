@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { User, ModuleData } from '../types.ts';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI as GoogleGenAI } from '@google/generative-ai';
 import { modules } from '../data/modules.ts';
 import Card from './ui/Card.tsx';
 import SectionHeader from './ui/SectionHeader.tsx';
@@ -101,7 +101,7 @@ const SignOutSimulator: React.FC<{ user: User | null }> = ({ user }) => {
         setFeedback(null);
         
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY });
             const goldStandard = caseData.case_tutorial.goldStandardReport;
             const feedbackPrompt = `
                 You are a senior pathology attending providing feedback to a resident on their diagnostic report.

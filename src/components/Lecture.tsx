@@ -4,6 +4,7 @@ import {
     ArrowRightToBracketIcon, ClipboardDocumentListIcon, ShieldExclamationIcon, EyeIcon
 } from './icons.tsx';
 import Alert from './ui/Alert.tsx';
+import { StoredImage, CaseQuestion } from './types';
 
 // Map slide placeholder IDs to actual image URLs hosted on the CDN or reputable open sources.
 // This map allows the lecture component to load real histology images instead of showing gray placeholders.
@@ -101,18 +102,9 @@ const defaultFallbackImage =
     'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_48.jpg';
 
 const visualFallbackSarcoidosis: StoredImage = {
-    id: 'visual_fallback_sarcoid',
     src: 'https://upload.wikimedia.org/wikipedia/commons/7/76/Non-caseating_granuloma%2C_sarcoid_type%2C_01.jpg',
     gcsPath: 'external/sarcoid/wikipedia_non_caseating_granuloma.jpg',
-    title: 'Sarcoidosis – Non-caseating Granuloma (Wikimedia Commons)',
-    description: 'Representative histology of sarcoidosis with a tight, non-caseating granuloma.',
-    uploader: 'wikimedia',
-    timestamp: Date.now(),
-    category: 'official',
-    tags: ['sarcoidosis', 'histopathology', 'granuloma'],
-    entity: 'sarcoidosis',
-    difficulty: 'intermediate',
-    cells: []
+    alt: 'Sarcoidosis Image'
 };
 
 const visualFallbackHP: StoredImage = {
@@ -817,13 +809,6 @@ const QuizComponent: React.FC<{
     );
 };
 
-type CaseQuestion = {
-    question: string;
-    options: string[];
-    correctAnswer: string;
-    feedback: string;
-};
-
 const CaseChallenge: React.FC<{
     title: string;
     vignette: string;
@@ -951,7 +936,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0]; onComplete: () => v
       const content = (
         <div
           className={`font-lato text-slate-800 prose prose-slate max-w-none ${layout.typeScale.body}`}
-          dangerouslySetInnerHTML={{ __html: slide.text }}
+          dangerouslySetInnerHTML={{ __html: slide.text || '' }}
         ></div>
       );
       const quiz = slide.quiz ? <QuizComponent layout={layout} {...slide.quiz} /> : null;
@@ -1007,13 +992,13 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0]; onComplete: () => v
                     {slide.title}
                 </h2>
                 <ul className={`grid ${layout.bullet.grid} ${layout.bullet.gap}`}>
-                    {slide.items.map((item, i) => (
+                    {slide.items?.map((item, i) => (
                         <li
                             key={i}
                             className={`flex items-start gap-4 rounded-2xl bg-slate-50/60 border border-slate-200 shadow-sm shadow-slate-900/5 ${layout.bullet.itemPadding}`}
                         >
                             <span className="text-sky-600 flex-shrink-0 mt-1">
-                                {item.icon}
+                                {('icon' in item) ? item.icon : null}
                             </span>
                             <span
                                 className={`font-lato text-slate-800 ${layout.typeScale.body}`}
@@ -1045,7 +1030,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0]; onComplete: () => v
                     <table className={`w-full text-left border-collapse font-lato ${layout.table.textSize}`}>
                         <thead>
                             <tr className="bg-gradient-to-r from-sky-700 to-sky-600 text-white">
-                                {slide.headers.map((header: string, idx: number) => (
+                                {slide.headers?.map((header: string, idx: number) => (
                                     <th key={idx} className="px-4 py-3 md:px-5 md:py-4 text-left uppercase tracking-wide text-[0.75rem] md:text-xs">
                                         {header}
                                     </th>
@@ -1053,7 +1038,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0]; onComplete: () => v
                             </tr>
                         </thead>
                         <tbody>
-                            {slide.rows.map((row, i) => (
+                            {slide.rows?.map((row, i) => (
                                 <tr key={i} className="border-b border-slate-200/80 odd:bg-white even:bg-slate-50/70">
                                     {row.map((cell, j) => (
                                         <td
@@ -1095,7 +1080,7 @@ const SlideContent: React.FC<{ slide: (typeof slideData)[0]; onComplete: () => v
             <div className="w-full text-left space-y-6">
                 <h2 className={`font-roboto-slab font-bold text-slate-900 tracking-tight ${layout.typeScale.sectionHeading}`}>{slide.title}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {slide.tiles.map((tile, i) => {
+                    {slide.tiles?.map((tile, i) => {
                         const captionText = typeof tile.caption === 'string' ? tile.caption.replace(/<[^>]*>/g, '') : slide.title;
                         const { primary, fallback } = getImageSources(tile.placeholderId);
                         return (
