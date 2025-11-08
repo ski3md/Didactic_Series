@@ -10,30 +10,30 @@ interface VisualChallengeProps {
 }
 
 const visualFallbackSarcoidosis: StoredImage = {
-    id: 'visual_fallback_sarcoid',
-    src: 'https://www.researchgate.net/publication/379027158/figure/fig3/AS:11431281229911746@1710678895381/Biopsy-from-lung-showing-non-caseating-granuloma.png,
-    gcsPath: 'external/sarcoidosis/non_caseating_granuloma.jpg',
-    title: 'Sarcoidosis – Non-necrotizing (non-caseating) granuloma (Wikimedia Commons)',
-    description: 'Representative histology of sarcoidosis: tight non-necrotizing epithelioid granulomas with lymphocytic rim.',
-    uploader: 'wikimedia',
+    id: 'sarcoidosis_sarcoidosis_48',
+    src: 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_48.jpg',
+    gcsPath: 'granulomas/sarcoidosis/Unclassified/sarcoidosis_sarcoidosis_48.jpg',
+    title: 'Sarcoidosis',
+    description: 'Histopathologic image from sarcoidosis.',
+    uploader: 'manifest',
     timestamp: Date.now(),
     category: 'official',
-    tags: ['sarcoidosis','histopathology','non-caseating granuloma'],
+    tags: ['sarcoidosis', 'histopathology'],
     entity: 'sarcoidosis',
     difficulty: 'intermediate',
     cells: []
 };
 
 const visualFallbackHP: StoredImage = {
-    id: 'visual_fallback_hp',
-    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Histology_of_chronic_hypersensitivity_pneumonitis.jpg/1200px-Histology_of_chronic_hypersensitivity_pneumonitis.jpg',
-    gcsPath: 'external/hypersensitivity_pneumonitis/chronic_hp.jpg',
-    title: 'Chronic hypersensitivity pneumonitis (Wikimedia Commons)',
-    description: 'Chronic hypersensitivity pneumonitis with poorly formed peribronchiolar granulomas.',
-    uploader: 'wikimedia',
+    id: 'hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_12',
+    src: 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/hypersensitivity_pneumonitis/Unclassified/hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_12.jpg',
+    gcsPath: 'granulomas/hypersensitivity_pneumonitis/Unclassified/hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_12.jpg',
+    title: 'Hypersensitivity Pneumonitis',
+    description: 'Histopathologic image from hypersensitivity pneumonitis.',
+    uploader: 'manifest',
     timestamp: Date.now(),
     category: 'official',
-    tags: ['hypersensitivity pneumonitis', 'histopathology'],
+    tags: ['hypersensitivity_pneumonitis', 'histopathology'],
     entity: 'hypersensitivity_pneumonitis',
     difficulty: 'intermediate',
     cells: []

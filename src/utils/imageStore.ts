@@ -6,13 +6,36 @@ import {
     apiUploadImageMock,
 } from '../api/mockApi.ts';
 
-export const getGalleryImages = async (): Promise<StoredImage[]> => {
-    try {
-        return await apiGetGalleryImagesMock();
-    } catch (e) {
-        console.error("Failed to get gallery images from mock API:", e);
-        return [];
+let cachedImages: StoredImage[] | null = null;
+let inflightRequest: Promise<StoredImage[]> | null = null;
+
+export const clearGalleryCache = () => {
+    cachedImages = null;
+};
+
+export const getGalleryImages = async (forceRefresh = false): Promise<StoredImage[]> => {
+    if (!forceRefresh && cachedImages) {
+        return cachedImages;
     }
+
+    if (!forceRefresh && inflightRequest) {
+        return inflightRequest;
+    }
+
+    inflightRequest = apiGetGalleryImagesMock()
+        .then(images => {
+            cachedImages = images;
+            return images;
+        })
+        .catch(e => {
+            console.error("Failed to get gallery images from mock API:", e);
+            return [];
+        })
+        .finally(() => {
+            inflightRequest = null;
+        });
+
+    return inflightRequest;
 };
 
 export const getOfficialImages = async (): Promise<StoredImage[]> => {
@@ -27,10 +50,12 @@ export const getCommunityImages = async (): Promise<StoredImage[]> => {
 
 export const updateImageMetadata = async (updatedImage: StoredImage): Promise<void> => {
     await apiUpdateImageMetadataMock(updatedImage);
+    clearGalleryCache();
 };
 
 export const deleteImage = async (image: StoredImage): Promise<void> => {
     await apiDeleteImageMock(image);
+    clearGalleryCache();
 };
 
 export const uploadImage = async (
@@ -40,5 +65,7 @@ export const uploadImage = async (
     uploader: string,
     category: 'official' | 'community'
 ): Promise<StoredImage> => {
-    return await apiUploadImageMock(file, title, description, uploader, category);
+    const created = await apiUploadImageMock(file, title, description, uploader, category);
+    clearGalleryCache();
+    return created;
 };

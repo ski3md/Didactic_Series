@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 
-declare const OpenSeadragon: any;
-
 interface WSIViewerProps {
   dziUrl?: string;
   staticImageUrl?: string; // Fallback for simple images
@@ -13,52 +11,66 @@ const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }
   const osdViewer = useRef<any>(null);
 
   useEffect(() => {
-    if ((!dziUrl && !staticImageUrl) || !viewerRef.current) {
-        return;
-    }
+    let isCancelled = false;
 
-    // Destroy previous viewer instance if it exists
-    if (osdViewer.current) {
-        osdViewer.current.destroy();
-    }
-    
-    let tileSources: any;
+    const initViewer = async () => {
+        if ((!dziUrl && !staticImageUrl) || !viewerRef.current) {
+            return;
+        }
 
-    if (dziUrl) {
-      tileSources = {
-        type: 'image',
-        url: dziUrl,
-        buildPyramid: false // Assuming DZI is pre-pyramided
-      };
-    } else if (staticImageUrl) {
-      tileSources = {
-        type: 'image',
-        url: staticImageUrl,
-      };
-    }
+        if (osdViewer.current) {
+            osdViewer.current.destroy();
+            osdViewer.current = null;
+        }
 
-    osdViewer.current = OpenSeadragon({
-      element: viewerRef.current,
-      prefixUrl: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/images/',
-      tileSources: tileSources,
-      crossOriginPolicy: 'Anonymous',
-      animationTime: 0.5,
-      blendTime: 0.1,
-      constrainDuringPan: true,
-      maxZoomPixelRatio: 2,
-      minZoomImageRatio: 0.9,
-      visibilityRatio: 1,
-      zoomPerScroll: 2,
-      showNavigator: true,
-      navigatorPosition: 'BOTTOM_RIGHT',
-      navigatorSizeRatio: 0.2,
-      springStiffness: 10
-    });
+        try {
+            const { default: OpenSeadragon } = await import('openseadragon');
+            if (isCancelled || !viewerRef.current) return;
+
+            let tileSources: any;
+            if (dziUrl) {
+                tileSources = {
+                    type: 'image',
+                    url: dziUrl,
+                    buildPyramid: false
+                };
+            } else if (staticImageUrl) {
+                tileSources = {
+                    type: 'image',
+                    url: staticImageUrl,
+                };
+            }
+
+            osdViewer.current = OpenSeadragon({
+                element: viewerRef.current,
+                prefixUrl: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/images/',
+                tileSources,
+                crossOriginPolicy: 'Anonymous',
+                animationTime: 0.5,
+                blendTime: 0.1,
+                constrainDuringPan: true,
+                maxZoomPixelRatio: 2,
+                minZoomImageRatio: 0.9,
+                visibilityRatio: 1,
+                zoomPerScroll: 2,
+                showNavigator: true,
+                navigatorPosition: 'BOTTOM_RIGHT',
+                navigatorSizeRatio: 0.2,
+                springStiffness: 10
+            });
+        } catch (error) {
+            console.error('Failed to initialize OpenSeadragon viewer', error);
+        }
+    };
+
+    initViewer();
 
     return () => {
-      if (osdViewer.current) {
-        osdViewer.current.destroy();
-      }
+        isCancelled = true;
+        if (osdViewer.current) {
+            osdViewer.current.destroy();
+            osdViewer.current = null;
+        }
     };
   }, [dziUrl, staticImageUrl]);
 

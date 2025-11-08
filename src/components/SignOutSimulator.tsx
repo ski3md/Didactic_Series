@@ -33,10 +33,28 @@ const LoadingSpinner: React.FC<{ text?: string }> = ({ text = "Loading..." }) =>
 );
 
 const renderMarkdown = (text: string) => {
-    const html = text
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\n/g, '<br />');
-    return <div className="prose prose-sm max-w-none prose-slate" dangerouslySetInnerHTML={{ __html: html }} />;
+    const renderLine = (line: string, key: number) => {
+        const parts = line.split(/(\*\*[^*]+\*\*)/g).filter(Boolean);
+        return (
+            <p key={`line-${key}`} className="text-slate-800 leading-relaxed">
+                {parts.map((part, idx) => {
+                    const isBold = part.startsWith('**') && part.endsWith('**');
+                    const content = isBold ? part.slice(2, -2) : part;
+                    return isBold ? (
+                        <strong key={`segment-${key}-${idx}`}>{content}</strong>
+                    ) : (
+                        <React.Fragment key={`segment-${key}-${idx}`}>{content}</React.Fragment>
+                    );
+                })}
+            </p>
+        );
+    };
+
+    return (
+        <div className="space-y-3">
+            {text.split(/\n+/).map((line, idx) => renderLine(line, idx))}
+        </div>
+    );
 };
 
 const Stepper: React.FC<{ steps: string[], currentStepIndex: number }> = ({ steps, currentStepIndex }) => (
@@ -71,6 +89,16 @@ const Stepper: React.FC<{ steps: string[], currentStepIndex: number }> = ({ step
     </nav>
 );
 
+const GEMINI_MODEL_ID = 'gemini-2.5-flash';
+const getGeminiClient = () => {
+    const apiKey = import.meta.env?.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+        console.warn('VITE_GEMINI_API_KEY is not set; AI feedback disabled.');
+        return null;
+    }
+    return new GoogleGenAI({ apiKey });
+};
+
 const SignOutSimulator: React.FC<{ user: User | null }> = ({ user }) => {
     const [caseData, setCaseData] = useState<ModuleData | null>(null);
     const [currentState, setCurrentState] = useState<SimulatorState>('intro');
@@ -101,7 +129,11 @@ const SignOutSimulator: React.FC<{ user: User | null }> = ({ user }) => {
         setFeedback(null);
         
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY });
+            const ai = getGeminiClient();
+            if (!ai) {
+                setFeedback("AI feedback is temporarily unavailable. Please notify the team or try again later.");
+                return;
+            }
             const goldStandard = caseData.case_tutorial.goldStandardReport;
             const feedbackPrompt = `
                 You are a senior pathology attending providing feedback to a resident on their diagnostic report.
@@ -120,7 +152,7 @@ const SignOutSimulator: React.FC<{ user: User | null }> = ({ user }) => {
             `;
 
             const response = await ai.models.generateContent({
-                model: 'gemini-2.5-flash',
+                model: GEMINI_MODEL_ID,
                 contents: feedbackPrompt,
             });
             const feedbackText = response.text.trim();
