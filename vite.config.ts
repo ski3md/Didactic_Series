@@ -48,8 +48,6 @@ export default defineConfig(({ mode }) => {
         // Prevent unresolved imports from breaking build
         external: [
           '@google/genai',
-          '@google/generative-ai',
-          'openseadragon',
         ],
       },
     },
