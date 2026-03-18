@@ -1,0 +1,261 @@
+{
+  "generatedAt": "2026-03-18T18:31:55.352Z",
+  "outputs": [
+    {
+      "source": "src/content/staging/stainbrain_printable/services/lectureData.ts",
+      "exportName": "LECTURES",
+      "target": "src/content/derived/stainbrain_printable/lectures.from_service.json",
+      "summary": {
+        "lectureCount": 2
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain_printable/services/algorithmData.ts",
+      "exportName": "ALGORITHMS",
+      "target": "src/content/derived/stainbrain_printable/algorithms.from_service.json",
+      "summary": {
+        "algorithmCount": 8
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain_printable/services/tutorialContent.ts",
+      "exportName": "tutorialSections",
+      "target": "src/content/derived/stainbrain_printable/tutorial_sections.from_service.json",
+      "summary": {
+        "tutorialSectionCount": 15
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain_printable/services/networkData.ts",
+      "exportName": "RAW_NODES",
+      "target": "src/content/derived/stainbrain_printable/network_nodes.from_service.json",
+      "summary": {
+        "nodeCount": 433
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain_printable/services/networkData.ts",
+      "exportName": "RAW_LINKS",
+      "target": "src/content/derived/stainbrain_printable/network_links.from_service.json",
+      "summary": {
+        "linkCount": 56
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain_printable/services/networkData.ts",
+      "exportName": "EXTENDED_DATA",
+      "target": "src/content/derived/stainbrain_printable/network_extended.from_service.json",
+      "summary": {
+        "extendedRecordCount": 219
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain_printable/services/histologyImageService.ts",
+      "exportName": "HISTOLOGY_IMAGES",
+      "target": "src/content/derived/stainbrain_printable/histology_images.from_service.json",
+      "summary": {
+        "histologyImageCount": 67
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain_printable/services/histologyImageService.ts",
+      "exportName": "HISTOLOGY_IMAGE_DATA",
+      "target": "src/content/derived/stainbrain_printable/histology_image_buckets.from_service.json",
+      "summary": {
+        "histologyBucketCount": 35
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain_printable/services/histologyImageService.ts",
+      "exportName": "SEARCH_TERM_OVERRIDES",
+      "target": "src/content/derived/stainbrain_printable/histology_search_overrides.from_service.json",
+      "summary": {
+        "searchOverrideCount": 16
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/tutorialContent.ts",
+      "exportName": "tutorialSections",
+      "target": "src/content/derived/stainbrain/tutorial_sections.from_service.json",
+      "summary": {
+        "tutorialSectionCount": 15
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/algorithmData.ts",
+      "exportName": "ALGORITHMS",
+      "target": "src/content/derived/stainbrain/algorithms.from_service.json",
+      "summary": {
+        "algorithmCount": 27
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/algorithmDatav2.ts",
+      "exportName": "ALGORITHMS",
+      "target": "src/content/derived/stainbrain/algorithms_v2.from_service.json",
+      "summary": {
+        "algorithmCount": 27
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/networkData.ts",
+      "exportName": "RAW_NODES",
+      "target": "src/content/derived/stainbrain/network_nodes.from_service.json",
+      "summary": {
+        "nodeCount": 398
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/networkData.ts",
+      "exportName": "RAW_LINKS",
+      "target": "src/content/derived/stainbrain/network_links.from_service.json",
+      "summary": {
+        "linkCount": 35
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/networkData.ts",
+      "exportName": "EXTENDED_DATA",
+      "target": "src/content/derived/stainbrain/network_extended.from_service.json",
+      "summary": {
+        "extendedRecordCount": 219
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/histologyImageService.ts",
+      "exportName": "HISTOLOGY_IMAGE_DATA",
+      "target": "src/content/derived/stainbrain/histology_image_buckets.from_service.json",
+      "summary": {
+        "histologyBucketCount": 36
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/educationalCases.ts",
+      "exportName": "educationalCases",
+      "target": "src/content/derived/stainbrain/educational_cases.from_service.json",
+      "summary": {
+        "educationalCaseCount": 9
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseTutorData.ts",
+      "exportName": "BONE_PATHOLOGY_ENTITIES",
+      "target": "src/content/derived/stainbrain/case_tutor_entities_bone.from_service.json",
+      "summary": {
+        "entityCount": 27
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseTutorData.ts",
+      "exportName": "SOFT_TISSUE_PATHOLOGY_ENTITIES",
+      "target": "src/content/derived/stainbrain/case_tutor_entities_soft_tissue.from_service.json",
+      "summary": {
+        "entityCount": 32
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseTutorData.ts",
+      "exportName": "SKIN_PATHOLOGY_ENTITIES",
+      "target": "src/content/derived/stainbrain/case_tutor_entities_skin.from_service.json",
+      "summary": {
+        "entityCount": 31
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseTutorData.ts",
+      "exportName": "GYN_PATHOLOGY_ENTITIES",
+      "target": "src/content/derived/stainbrain/case_tutor_entities_gyn.from_service.json",
+      "summary": {
+        "entityCount": 112
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseTutorData.ts",
+      "exportName": "BREAST_PATHOLOGY_ENTITIES",
+      "target": "src/content/derived/stainbrain/case_tutor_entities_breast.from_service.json",
+      "summary": {
+        "entityCount": 25
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseTutorData.ts",
+      "exportName": "GU_PATHOLOGY_ENTITIES",
+      "target": "src/content/derived/stainbrain/case_tutor_entities_gu.from_service.json",
+      "summary": {
+        "entityCount": 37
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseTutorData.ts",
+      "exportName": "THORACIC_PATHOLOGY_ENTITIES",
+      "target": "src/content/derived/stainbrain/case_tutor_entities_thoracic.from_service.json",
+      "summary": {
+        "entityCount": 16
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseTutorData.ts",
+      "exportName": "GI_PATHOLOGY_ENTITIES",
+      "target": "src/content/derived/stainbrain/case_tutor_entities_gi.from_service.json",
+      "summary": {
+        "entityCount": 29
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseTutorData.ts",
+      "exportName": "NEURO_PATHOLOGY_ENTITIES",
+      "target": "src/content/derived/stainbrain/case_tutor_entities_neuro.from_service.json",
+      "summary": {
+        "entityCount": 13
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseTutorData.ts",
+      "exportName": "HEADNECK_PATHOLOGY_ENTITIES",
+      "target": "src/content/derived/stainbrain/case_tutor_entities_headneck.from_service.json",
+      "summary": {
+        "entityCount": 18
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseGeneratorData.ts",
+      "exportName": "BST_GENERATOR_DATA",
+      "target": "src/content/derived/stainbrain/generator_data_bst.from_service.json",
+      "summary": {
+        "profileCount": 5
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseGeneratorData.ts",
+      "exportName": "DERMPATH_GENERATOR_DATA",
+      "target": "src/content/derived/stainbrain/generator_data_dermpath.from_service.json",
+      "summary": {
+        "profileCount": 5
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/caseGeneratorData.ts",
+      "exportName": "GYN_GENERATOR_DATA",
+      "target": "src/content/derived/stainbrain/generator_data_gyn.from_service.json",
+      "summary": {
+        "profileCount": 4
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/differentialDiagnosisData.ts",
+      "exportName": "DIFFERENTIAL_DIAGNOSIS_MAP",
+      "target": "src/content/derived/stainbrain/differential_diagnosis_map.from_service.json",
+      "summary": {
+        "familyCount": 11
+      }
+    },
+    {
+      "source": "src/content/staging/stainbrain/services/whoClassificationService.ts",
+      "exportName": "WHO_CLASSIFICATION_DATA",
+      "target": "src/content/derived/stainbrain/who_classification.from_service.json",
+      "summary": {
+        "familyCount": 51
+      }
+    }
+  ]
+}

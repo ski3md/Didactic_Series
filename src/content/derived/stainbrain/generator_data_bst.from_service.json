@@ -1,0 +1,180 @@
+{
+  "wdlps": {
+    "name": "Well-Differentiated Liposarcoma",
+    "histologicFamily": "adipocytic",
+    "specimenType": "Soft tissue, excision/resection",
+    "primarySite": "Retroperitoneum",
+    "ageRange": [
+      50,
+      80
+    ],
+    "sizeRange": [
+      10,
+      30
+    ],
+    "commonSites": [
+      "retroperitoneum",
+      "thigh",
+      "inguinal region"
+    ],
+    "ihc": {
+      "positive": [
+        "MDM2",
+        "CDK4",
+        "p16"
+      ],
+      "negative": [
+        "CD34 (variable)",
+        "S100 (in stromal cells)"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Well-differentiated_liposarcoma_with_lipoblasts_and_hyperchromatic_stromal_cells.jpg/1024px-Well-differentiated_liposarcoma_with_lipoblasts_and_hyperchromatic_stromal_cells.jpg"
+      ]
+    }
+  },
+  "sft": {
+    "name": "Solitary Fibrous Tumor",
+    "histologicFamily": "sft",
+    "specimenType": "Soft tissue, excision/resection",
+    "primarySite": "Extremity/Trunk",
+    "ageRange": [
+      40,
+      70
+    ],
+    "sizeRange": [
+      3,
+      15
+    ],
+    "commonSites": [
+      "thigh",
+      "pleura",
+      "head/neck"
+    ],
+    "ihc": {
+      "positive": [
+        "STAT6 (nuclear)",
+        "CD34",
+        "BCL2",
+        "CD99"
+      ],
+      "negative": [
+        "S100",
+        "Desmin",
+        "Keratin"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Solitary_fibrous_tumour_--_high_mag.jpg/1024px-Solitary_fibrous_tumour_--_high_mag.jpg"
+      ]
+    }
+  },
+  "ups": {
+    "name": "Undifferentiated Pleomorphic Sarcoma",
+    "histologicFamily": "fibrohistiocytic",
+    "specimenType": "Soft tissue, excision/resection",
+    "primarySite": "Extremity/Trunk",
+    "ageRange": [
+      60,
+      85
+    ],
+    "sizeRange": [
+      5,
+      20
+    ],
+    "commonSites": [
+      "thigh",
+      "buttock",
+      "retroperitoneum"
+    ],
+    "ihc": {
+      "positive": [
+        "Vimentin",
+        "CD68 (non-specific)",
+        "SMA (focal)"
+      ],
+      "negative": [
+        "Pan-Keratin",
+        "S100",
+        "Desmin",
+        "MDM2 (amplification)"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Undifferentiated_pleomorphic_sarcoma_1_--_high_mag.jpg/1024px-Undifferentiated_pleomorphic_sarcoma_1_--_high_mag.jpg"
+      ]
+    }
+  },
+  "myxoid_lps": {
+    "name": "Myxoid Liposarcoma",
+    "histologicFamily": "adipocytic",
+    "specimenType": "Soft tissue, excision/resection",
+    "primarySite": "Extremity/Trunk",
+    "ageRange": [
+      30,
+      60
+    ],
+    "sizeRange": [
+      5,
+      15
+    ],
+    "commonSites": [
+      "thigh",
+      "popliteal fossa"
+    ],
+    "ihc": {
+      "positive": [
+        "S100 (lipoblasts)",
+        "NY-ESO-1"
+      ],
+      "negative": [
+        "MDM2",
+        "CDK4"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Myxoid_liposarcoma_2_--_high_mag.jpg/1024px-Myxoid_liposarcoma_2_--_high_mag.jpg"
+      ]
+    }
+  },
+  "synovial_sarcoma": {
+    "name": "Synovial Sarcoma",
+    "histologicFamily": "uncertain",
+    "specimenType": "Soft tissue, excision/resection",
+    "primarySite": "Extremity/Trunk",
+    "ageRange": [
+      15,
+      40
+    ],
+    "sizeRange": [
+      4,
+      12
+    ],
+    "commonSites": [
+      "knee",
+      "ankle",
+      "foot"
+    ],
+    "ihc": {
+      "positive": [
+        "TLE1 (nuclear)",
+        "Keratin (focal)",
+        "EMA (focal)",
+        "CD99"
+      ],
+      "negative": [
+        "S100",
+        "CD34"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Synovial_sarcoma_1_--_high_mag.jpg/1024px-Synovial_sarcoma_1_--_high_mag.jpg"
+      ]
+    }
+  }
+}

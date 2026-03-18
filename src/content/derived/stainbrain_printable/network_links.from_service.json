@@ -1,0 +1,228 @@
+[
+  {
+    "source": "Medullary Carcinoma",
+    "target": "Triple Negative"
+  },
+  {
+    "source": "Secretory Carcinoma",
+    "target": "ETV6-NTRK3"
+  },
+  {
+    "source": "LCIS",
+    "target": "E-Cadherin"
+  },
+  {
+    "source": "ADH",
+    "target": "DCIS"
+  },
+  {
+    "source": "FEA",
+    "target": "ADH"
+  },
+  {
+    "source": "Radial Scar",
+    "target": "Benign"
+  },
+  {
+    "source": "Nipple Adenoma",
+    "target": "Syringomatous"
+  },
+  {
+    "source": "Inflammatory Carcinoma",
+    "target": "Dermal Lymphatics"
+  },
+  {
+    "source": "Metanephric Adenoma",
+    "target": "WT1"
+  },
+  {
+    "source": "Clear Cell Sarcoma of Kidney",
+    "target": "BCOR"
+  },
+  {
+    "source": "Rhabdoid Tumor (Kidney)",
+    "target": "INI1"
+  },
+  {
+    "source": "Xanthogranulomatous Pyelonephritis",
+    "target": "Foamy Histiocytes"
+  },
+  {
+    "source": "Malakoplakia (Kidney)",
+    "target": "Michaelis-Gutmann Bodies"
+  },
+  {
+    "source": "Inverted Papilloma",
+    "target": "Benign"
+  },
+  {
+    "source": "Nephrogenic Adenoma",
+    "target": "PAX8"
+  },
+  {
+    "source": "Large Cell Neuroendocrine Ca (Lung)",
+    "target": "Neuroendocrine Markers"
+  },
+  {
+    "source": "Hamartoma (Lung)",
+    "target": "Cartilage"
+  },
+  {
+    "source": "Solitary Fibrous Tumor (Pleura)",
+    "target": "STAT6"
+  },
+  {
+    "source": "Organizing Pneumonia",
+    "target": "Masson Bodies"
+  },
+  {
+    "source": "Sarcoidosis",
+    "target": "Granuloma"
+  },
+  {
+    "source": "Mediastinal Germ Cell Tumor",
+    "target": "SALL4"
+  },
+  {
+    "source": "Chronic Gastritis",
+    "target": "H. pylori"
+  },
+  {
+    "source": "Fundic Gland Polyp",
+    "target": "PPI"
+  },
+  {
+    "source": "Neuroendocrine Tumor (GI)",
+    "target": "Chromogranin"
+  },
+  {
+    "source": "IPMN",
+    "target": "Mucin"
+  },
+  {
+    "source": "Serous Cystadenoma",
+    "target": "Glycogen"
+  },
+  {
+    "source": "Mucinous Cystic Neoplasm",
+    "target": "Ovarian Stroma"
+  },
+  {
+    "source": "Astrocytoma",
+    "target": "IDH1"
+  },
+  {
+    "source": "Schwannoma (CNS)",
+    "target": "S100"
+  },
+  {
+    "source": "Primary CNS Lymphoma",
+    "target": "CD20"
+  },
+  {
+    "source": "Salivary Duct Carcinoma",
+    "target": "Androgen Receptor"
+  },
+  {
+    "source": "Follicular Adenoma",
+    "target": "Capsule"
+  },
+  {
+    "source": "Hashimoto Thyroiditis",
+    "target": "Hurthle Cells"
+  },
+  {
+    "source": "Olfactory Neuroblastoma",
+    "target": "Synaptophysin"
+  },
+  {
+    "source": "Paraganglioma",
+    "target": "S100"
+  },
+  {
+    "source": "HGSC",
+    "target": "WT1"
+  },
+  {
+    "source": "HGSC",
+    "target": "p53"
+  },
+  {
+    "source": "HGSC",
+    "target": "PAX8"
+  },
+  {
+    "source": "HGSC",
+    "target": "STIC",
+    "label": "Precursor",
+    "type": "bridge"
+  },
+  {
+    "source": "Endometrioid Carcinoma",
+    "target": "ER"
+  },
+  {
+    "source": "Endometrioid Carcinoma",
+    "target": "Vimentin"
+  },
+  {
+    "source": "Endometrioid Carcinoma",
+    "target": "PAX8"
+  },
+  {
+    "source": "Clear Cell Carcinoma",
+    "target": "Napsin A"
+  },
+  {
+    "source": "Clear Cell Carcinoma",
+    "target": "HNF1B"
+  },
+  {
+    "source": "Clear Cell Renal Cell Carcinoma",
+    "target": "CA9"
+  },
+  {
+    "source": "Clear Cell Renal Cell Carcinoma",
+    "target": "CD10"
+  },
+  {
+    "source": "Clear Cell Renal Cell Carcinoma",
+    "target": "PAX8"
+  },
+  {
+    "source": "Seminoma",
+    "target": "SALL4"
+  },
+  {
+    "source": "Seminoma",
+    "target": "OCT4"
+  },
+  {
+    "source": "Seminoma",
+    "target": "CD117"
+  },
+  {
+    "source": "Embryonal Carcinoma",
+    "target": "CD30"
+  },
+  {
+    "source": "Embryonal Carcinoma",
+    "target": "OCT4"
+  },
+  {
+    "source": "Lung Adenocarcinoma",
+    "target": "TTF1"
+  },
+  {
+    "source": "Lung Adenocarcinoma",
+    "target": "Napsin A"
+  },
+  {
+    "source": "SCC",
+    "target": "p40"
+  },
+  {
+    "source": "SCC",
+    "target": "CK5/6"
+  }
+]

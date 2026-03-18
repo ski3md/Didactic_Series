@@ -1,0 +1,186 @@
+{
+  "bcc": {
+    "name": "Basal Cell Carcinoma",
+    "histologicFamily": "basaloid",
+    "specimenType": "Skin, excision",
+    "primarySite": "Head/Neck",
+    "ageRange": [
+      40,
+      80
+    ],
+    "sizeRange": [
+      0.5,
+      3
+    ],
+    "commonSites": [
+      "face",
+      "nose",
+      "ear"
+    ],
+    "ihc": {
+      "positive": [
+        "Ber-EP4",
+        "Bcl-2",
+        "p63"
+      ],
+      "negative": [
+        "EMA",
+        "CK20"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Basal_cell_carcinoma_--_high_mag.jpg/1024px-Basal_cell_carcinoma_--_high_mag.jpg"
+      ]
+    }
+  },
+  "scc": {
+    "name": "Squamous Cell Carcinoma",
+    "histologicFamily": "squamous",
+    "specimenType": "Skin, excision",
+    "primarySite": "Head/Neck",
+    "ageRange": [
+      50,
+      90
+    ],
+    "sizeRange": [
+      1,
+      5
+    ],
+    "commonSites": [
+      "hand",
+      "scalp",
+      "face"
+    ],
+    "ihc": {
+      "positive": [
+        "p40",
+        "p63",
+        "CK5/6",
+        "EMA"
+      ],
+      "negative": [
+        "Ber-EP4",
+        "S100",
+        "CD10"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Squamous_cell_carcinoma_of_the_skin_-_high_mag.jpg/1024px-Squamous_cell_carcinoma_of_the_skin_-_high_mag.jpg"
+      ]
+    }
+  },
+  "melanoma": {
+    "name": "Malignant Melanoma",
+    "histologicFamily": "melanocytic",
+    "specimenType": "Skin, excision",
+    "primarySite": "Extremity/Trunk",
+    "ageRange": [
+      30,
+      80
+    ],
+    "sizeRange": [
+      0.5,
+      4
+    ],
+    "commonSites": [
+      "back",
+      "leg",
+      "arm"
+    ],
+    "ihc": {
+      "positive": [
+        "S100",
+        "SOX10",
+        "Melan-A",
+        "HMB-45",
+        "PRAME"
+      ],
+      "negative": [
+        "Keratin",
+        "CD45",
+        "Desmin"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Nodular_melanoma_-_high_mag.jpg/1024px-Nodular_melanoma_-_high_mag.jpg"
+      ]
+    }
+  },
+  "afx": {
+    "name": "Atypical Fibroxanthoma",
+    "histologicFamily": "histiocytic_dendritic",
+    "specimenType": "Skin, excision",
+    "primarySite": "Head/Neck",
+    "ageRange": [
+      70,
+      95
+    ],
+    "sizeRange": [
+      1,
+      3
+    ],
+    "commonSites": [
+      "scalp",
+      "ear",
+      "face"
+    ],
+    "ihc": {
+      "positive": [
+        "CD10",
+        "Procollagen-1",
+        "CD68"
+      ],
+      "negative": [
+        "p63",
+        "S100",
+        "Desmin",
+        "Pan-Keratin"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Atypical_fibroxanthoma_--_high_mag.jpg/1024px-Atypical_fibroxanthoma_--_high_mag.jpg"
+      ]
+    }
+  },
+  "merkel": {
+    "name": "Merkel Cell Carcinoma",
+    "histologicFamily": "neuroendocrine",
+    "specimenType": "Skin, excision",
+    "primarySite": "Head/Neck",
+    "ageRange": [
+      65,
+      90
+    ],
+    "sizeRange": [
+      1,
+      4
+    ],
+    "commonSites": [
+      "head",
+      "neck",
+      "arm"
+    ],
+    "ihc": {
+      "positive": [
+        "CK20 (dot-like)",
+        "Synaptophysin",
+        "Chromogranin",
+        "INSM1"
+      ],
+      "negative": [
+        "TTF-1",
+        "LCA",
+        "CK7"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Merkel_cell_carcinoma_--_very_high_mag.jpg/1024px-Merkel_cell_carcinoma_--_very_high_mag.jpg"
+      ]
+    }
+  }
+}

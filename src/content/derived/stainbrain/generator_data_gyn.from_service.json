@@ -1,0 +1,139 @@
+{
+  "hgsc": {
+    "name": "High-Grade Serous Carcinoma",
+    "histologicFamily": "epithelial_gyn",
+    "specimenType": "Ovary, biopsy/resection",
+    "primarySite": "Visceral",
+    "ageRange": [
+      50,
+      75
+    ],
+    "sizeRange": [
+      5,
+      15
+    ],
+    "commonSites": [
+      "ovary",
+      "omentum",
+      "fallopian tube"
+    ],
+    "ihc": {
+      "positive": [
+        "PAX8",
+        "WT1",
+        "p53 (mutant pattern)",
+        "p16 (block)"
+      ],
+      "negative": [
+        "ER (variable)",
+        "Napsin A"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/High-grade_serous_carcinoma_of_the_ovary_-_high_mag.jpg/1024px-High-grade_serous_carcinoma_of_the_ovary_-_high_mag.jpg"
+      ]
+    }
+  },
+  "endometrioid_ca": {
+    "name": "Endometrioid Adenocarcinoma (FIGO Grade 1)",
+    "histologicFamily": "epithelial_gyn",
+    "specimenType": "Uterus, biopsy/curettage",
+    "primarySite": "Visceral",
+    "ageRange": [
+      45,
+      65
+    ],
+    "sizeRange": [
+      2,
+      8
+    ],
+    "commonSites": [
+      "endometrium"
+    ],
+    "ihc": {
+      "positive": [
+        "PAX8",
+        "ER",
+        "PR",
+        "Vimentin"
+      ],
+      "negative": [
+        "p16 (patchy)",
+        "CEA"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Endometrioid_adenocarcinoma_of_endometrium_--_high_mag.jpg/1024px-Endometrioid_adenocarcinoma_of_endometrium_--_high_mag.jpg"
+      ]
+    }
+  },
+  "leiomyosarcoma_gyn": {
+    "name": "Uterine Leiomyosarcoma",
+    "histologicFamily": "mesenchymal_gyn",
+    "specimenType": "Uterus, hysterectomy",
+    "primarySite": "Visceral",
+    "ageRange": [
+      45,
+      65
+    ],
+    "sizeRange": [
+      8,
+      15
+    ],
+    "commonSites": [
+      "uterus"
+    ],
+    "ihc": {
+      "positive": [
+        "SMA",
+        "Desmin",
+        "p16 (diffuse)",
+        "p53 (mutant)"
+      ],
+      "negative": [
+        "ER (often negative)",
+        "PR"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Leiomyosarcoma_1_--_high_mag.jpg/1024px-Leiomyosarcoma_1_--_high_mag.jpg"
+      ]
+    }
+  },
+  "granulosa_cell": {
+    "name": "Adult Granulosa Cell Tumor",
+    "histologicFamily": "sex_cord",
+    "specimenType": "Ovary, biopsy/resection",
+    "primarySite": "Visceral",
+    "ageRange": [
+      40,
+      60
+    ],
+    "sizeRange": [
+      5,
+      12
+    ],
+    "commonSites": [
+      "ovary"
+    ],
+    "ihc": {
+      "positive": [
+        "Inhibin",
+        "Calretinin",
+        "FOXL2"
+      ],
+      "negative": [
+        "EMA",
+        "CK7"
+      ]
+    },
+    "images": {
+      "histologyHE": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Adult_granulosa_cell_tumor_-_high_mag.jpg/1024px-Adult_granulosa_cell_tumor_-_high_mag.jpg"
+      ]
+    }
+  }
+}

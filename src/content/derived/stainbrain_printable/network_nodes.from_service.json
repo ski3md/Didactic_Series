@@ -1,0 +1,3278 @@
+[
+  {
+    "id": "SFT",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Extremities",
+      "Pleura",
+      "Orbit"
+    ]
+  },
+  {
+    "id": "Solitary Fibrous Tumor",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Extremities",
+      "Pleura",
+      "Orbit"
+    ]
+  },
+  {
+    "id": "Myxofibrosarcoma",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Extremities",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "LGFMS",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Extremities",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "Low-grade Fibromyxoid Sarcoma",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Extremities",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "Desmoid Fibromatosis",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Abdominal Wall",
+      "Extremities",
+      "Intra-abdominal"
+    ]
+  },
+  {
+    "id": "WDLPS",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Retroperitoneum",
+      "Extremities"
+    ]
+  },
+  {
+    "id": "Well-differentiated Liposarcoma",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Retroperitoneum",
+      "Extremities"
+    ]
+  },
+  {
+    "id": "DDLPS",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Retroperitoneum"
+    ]
+  },
+  {
+    "id": "Dedifferentiated Liposarcoma",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Retroperitoneum"
+    ]
+  },
+  {
+    "id": "Myxoid Liposarcoma",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Extremities"
+    ]
+  },
+  {
+    "id": "Pleomorphic Liposarcoma",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Extremities"
+    ]
+  },
+  {
+    "id": "MPNST",
+    "type": "entity",
+    "group": "Nerve Sheath",
+    "locations": [
+      "Extremities",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "Schwannoma",
+    "type": "entity",
+    "group": "Nerve Sheath",
+    "locations": [
+      "Any"
+    ]
+  },
+  {
+    "id": "Neurofibroma",
+    "type": "entity",
+    "group": "Nerve Sheath",
+    "locations": [
+      "Skin",
+      "Soft Tissue"
+    ]
+  },
+  {
+    "id": "Granular Cell Tumor",
+    "type": "entity",
+    "group": "Nerve Sheath",
+    "locations": [
+      "Skin",
+      "Tongue",
+      "Soft Tissue"
+    ]
+  },
+  {
+    "id": "Synovial Sarcoma",
+    "type": "entity",
+    "group": "Uncertain",
+    "locations": [
+      "Extremities (Deep)"
+    ]
+  },
+  {
+    "id": "Epithelioid Sarcoma",
+    "type": "entity",
+    "group": "Uncertain",
+    "locations": [
+      "Distal Extremities",
+      "Proximally"
+    ]
+  },
+  {
+    "id": "Alveolar Soft Part Sarcoma",
+    "type": "entity",
+    "group": "Uncertain",
+    "locations": [
+      "Extremities (Deep)",
+      "Head & Neck"
+    ]
+  },
+  {
+    "id": "Clear Cell Sarcoma",
+    "type": "entity",
+    "group": "Uncertain",
+    "locations": [
+      "Extremities (Tendons)"
+    ]
+  },
+  {
+    "id": "Angiosarcoma",
+    "type": "entity",
+    "group": "Vascular",
+    "locations": [
+      "Skin",
+      "Soft Tissue",
+      "Breast",
+      "Liver"
+    ]
+  },
+  {
+    "id": "Kaposi Sarcoma",
+    "type": "entity",
+    "group": "Vascular",
+    "locations": [
+      "Skin",
+      "Visceral"
+    ]
+  },
+  {
+    "id": "EHE",
+    "type": "entity",
+    "group": "Vascular",
+    "locations": [
+      "Soft Tissue",
+      "Bone",
+      "Liver",
+      "Lung"
+    ]
+  },
+  {
+    "id": "Leiomyosarcoma",
+    "type": "entity",
+    "group": "Smooth Muscle",
+    "locations": [
+      "Retroperitoneum",
+      "Uterus",
+      "Vascular"
+    ]
+  },
+  {
+    "id": "Rhabdomyosarcoma",
+    "type": "entity",
+    "group": "Skeletal Muscle",
+    "locations": [
+      "Head & Neck",
+      "GU",
+      "Extremities"
+    ]
+  },
+  {
+    "id": "GIST",
+    "type": "entity",
+    "group": "Gastrointestinal",
+    "locations": [
+      "GI Tract",
+      "Abdomen"
+    ]
+  },
+  {
+    "id": "Ewing Sarcoma",
+    "type": "entity",
+    "group": "Undifferentiated",
+    "locations": [
+      "Bone",
+      "Soft Tissue"
+    ]
+  },
+  {
+    "id": "UPS",
+    "type": "entity",
+    "group": "Undifferentiated",
+    "locations": [
+      "Extremities",
+      "Retroperitoneum"
+    ]
+  },
+  {
+    "id": "Undifferentiated Pleomorphic Sarcoma",
+    "type": "entity",
+    "group": "Undifferentiated",
+    "locations": [
+      "Extremities",
+      "Retroperitoneum"
+    ]
+  },
+  {
+    "id": "Osteosarcoma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Bone"
+    ]
+  },
+  {
+    "id": "Chondrosarcoma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Bone"
+    ]
+  },
+  {
+    "id": "Chordoma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Axial Skeleton"
+    ]
+  },
+  {
+    "id": "Giant Cell Tumor",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Epiphysis"
+    ]
+  },
+  {
+    "id": "Giant Cell Tumor of Bone",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Epiphysis"
+    ]
+  },
+  {
+    "id": "LCH",
+    "type": "entity",
+    "group": "Histiocytic",
+    "locations": [
+      "Bone",
+      "Skin"
+    ]
+  },
+  {
+    "id": "SFT",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Extremities",
+      "Pleura",
+      "Orbit"
+    ]
+  },
+  {
+    "id": "Myxofibrosarcoma",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Extremities",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "LGFMS",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Extremities",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "Desmoid Fibromatosis",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Abdominal Wall",
+      "Extremities",
+      "Intra-abdominal"
+    ]
+  },
+  {
+    "id": "WDLPS",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Retroperitoneum",
+      "Extremities"
+    ]
+  },
+  {
+    "id": "DDLPS",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Retroperitoneum"
+    ]
+  },
+  {
+    "id": "Myxoid Liposarcoma",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Extremities"
+    ]
+  },
+  {
+    "id": "Pleomorphic Liposarcoma",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Extremities"
+    ]
+  },
+  {
+    "id": "MPNST",
+    "type": "entity",
+    "group": "Nerve Sheath",
+    "locations": [
+      "Extremities",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "Schwannoma",
+    "type": "entity",
+    "group": "Nerve Sheath",
+    "locations": [
+      "Any"
+    ]
+  },
+  {
+    "id": "Neurofibroma",
+    "type": "entity",
+    "group": "Nerve Sheath",
+    "locations": [
+      "Skin",
+      "Soft Tissue"
+    ]
+  },
+  {
+    "id": "Granular Cell Tumor",
+    "type": "entity",
+    "group": "Nerve Sheath",
+    "locations": [
+      "Skin",
+      "Tongue",
+      "Soft Tissue"
+    ]
+  },
+  {
+    "id": "Synovial Sarcoma",
+    "type": "entity",
+    "group": "Uncertain",
+    "locations": [
+      "Extremities (Deep)"
+    ]
+  },
+  {
+    "id": "Epithelioid Sarcoma",
+    "type": "entity",
+    "group": "Uncertain",
+    "locations": [
+      "Distal Extremities",
+      "Proximally"
+    ]
+  },
+  {
+    "id": "Alveolar Soft Part Sarcoma",
+    "type": "entity",
+    "group": "Uncertain",
+    "locations": [
+      "Extremities (Deep)",
+      "Head & Neck"
+    ]
+  },
+  {
+    "id": "Clear Cell Sarcoma",
+    "type": "entity",
+    "group": "Uncertain",
+    "locations": [
+      "Extremities (Tendons)"
+    ]
+  },
+  {
+    "id": "Angiosarcoma",
+    "type": "entity",
+    "group": "Vascular",
+    "locations": [
+      "Skin",
+      "Soft Tissue",
+      "Breast",
+      "Liver"
+    ]
+  },
+  {
+    "id": "Kaposi Sarcoma",
+    "type": "entity",
+    "group": "Vascular",
+    "locations": [
+      "Skin",
+      "Visceral"
+    ]
+  },
+  {
+    "id": "EHE",
+    "type": "entity",
+    "group": "Vascular",
+    "locations": [
+      "Soft Tissue",
+      "Bone",
+      "Liver",
+      "Lung"
+    ]
+  },
+  {
+    "id": "Leiomyosarcoma",
+    "type": "entity",
+    "group": "Smooth Muscle",
+    "locations": [
+      "Retroperitoneum",
+      "Uterus",
+      "Vascular"
+    ]
+  },
+  {
+    "id": "Rhabdomyosarcoma",
+    "type": "entity",
+    "group": "Skeletal Muscle",
+    "locations": [
+      "Head & Neck",
+      "GU",
+      "Extremities"
+    ]
+  },
+  {
+    "id": "GIST",
+    "type": "entity",
+    "group": "Gastrointestinal",
+    "locations": [
+      "GI Tract",
+      "Abdomen"
+    ]
+  },
+  {
+    "id": "Ewing Sarcoma",
+    "type": "entity",
+    "group": "Undifferentiated",
+    "locations": [
+      "Bone",
+      "Soft Tissue"
+    ]
+  },
+  {
+    "id": "UPS",
+    "type": "entity",
+    "group": "Undifferentiated",
+    "locations": [
+      "Extremities",
+      "Retroperitoneum"
+    ]
+  },
+  {
+    "id": "Osteosarcoma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Bone"
+    ]
+  },
+  {
+    "id": "Chondrosarcoma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Bone"
+    ]
+  },
+  {
+    "id": "Chordoma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Axial Skeleton"
+    ]
+  },
+  {
+    "id": "Giant Cell Tumor",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Epiphysis"
+    ]
+  },
+  {
+    "id": "LCH",
+    "type": "entity",
+    "group": "Histiocytic",
+    "locations": [
+      "Bone",
+      "Skin"
+    ]
+  },
+  {
+    "id": "Osteochondroma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Metaphysis"
+    ]
+  },
+  {
+    "id": "Enchondroma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Hands",
+      "Feet"
+    ]
+  },
+  {
+    "id": "NOF",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Knee"
+    ]
+  },
+  {
+    "id": "Plasma Cell Myeloma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Axial Skeleton"
+    ]
+  },
+  {
+    "id": "TGCT",
+    "type": "entity",
+    "group": "Fibrohistiocytic",
+    "locations": [
+      "Joints",
+      "Fingers"
+    ]
+  },
+  {
+    "id": "Nodular Fasciitis",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Forearm",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "Intramuscular Myxoma",
+    "type": "entity",
+    "group": "Myxoid",
+    "locations": [
+      "Thigh",
+      "Shoulder"
+    ]
+  },
+  {
+    "id": "Angiolipoma",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Forearm",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "Glomus Tumor",
+    "type": "entity",
+    "group": "Pericytic",
+    "locations": [
+      "Fingers"
+    ]
+  },
+  {
+    "id": "Osteoid Osteoma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Femur",
+      "Tibia"
+    ]
+  },
+  {
+    "id": "Osteoblastoma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Vertebra",
+      "Long Bones"
+    ]
+  },
+  {
+    "id": "Chondromyxoid Fibroma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Metaphysis"
+    ]
+  },
+  {
+    "id": "ABC",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Metaphysis"
+    ]
+  },
+  {
+    "id": "UBC",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Humerus",
+      "Femur"
+    ]
+  },
+  {
+    "id": "Fibrous Dysplasia",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Rib",
+      "Femur",
+      "Craniofacial"
+    ]
+  },
+  {
+    "id": "Adamantinoma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Tibia"
+    ]
+  },
+  {
+    "id": "Metastatic Carcinoma",
+    "type": "entity",
+    "group": "Bone",
+    "locations": [
+      "Axial Skeleton",
+      "Ribs"
+    ]
+  },
+  {
+    "id": "Lipoma",
+    "type": "entity",
+    "group": "Adipocytic",
+    "locations": [
+      "Subcutis",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "Angioleiomyoma",
+    "type": "entity",
+    "group": "Pericytic",
+    "locations": [
+      "Leg",
+      "Ankle"
+    ]
+  },
+  {
+    "id": "Elastofibroma",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Back",
+      "Subscapular"
+    ]
+  },
+  {
+    "id": "EMC",
+    "type": "entity",
+    "group": "Chondro-osseous",
+    "locations": [
+      "Thigh",
+      "Knee"
+    ]
+  },
+  {
+    "id": "Melanoma",
+    "type": "entity",
+    "group": "Melanocytic",
+    "locations": [
+      "Skin"
+    ]
+  },
+  {
+    "id": "Nevus",
+    "type": "entity",
+    "group": "Melanocytic",
+    "locations": [
+      "Skin"
+    ]
+  },
+  {
+    "id": "Spitz Nevus",
+    "type": "entity",
+    "group": "Melanocytic",
+    "locations": [
+      "Skin"
+    ]
+  },
+  {
+    "id": "Blue Nevus",
+    "type": "entity",
+    "group": "Melanocytic",
+    "locations": [
+      "Skin"
+    ]
+  },
+  {
+    "id": "BCC",
+    "type": "entity",
+    "group": "Basaloid",
+    "locations": [
+      "Skin (Sun-exposed)"
+    ]
+  },
+  {
+    "id": "SCC",
+    "type": "entity",
+    "group": "Squamous",
+    "locations": [
+      "Skin (Sun-exposed)"
+    ]
+  },
+  {
+    "id": "Merkel Cell Ca",
+    "type": "entity",
+    "group": "Neuroendocrine",
+    "locations": [
+      "Skin"
+    ]
+  },
+  {
+    "id": "DFSP",
+    "type": "entity",
+    "group": "Fibroblastic",
+    "locations": [
+      "Skin",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "AFX",
+    "type": "entity",
+    "group": "Fibrohistiocytic",
+    "locations": [
+      "Skin (Sun-exposed)"
+    ]
+  },
+  {
+    "id": "Sebaceous Ca",
+    "type": "entity",
+    "group": "Adnexal",
+    "locations": [
+      "Head & Neck"
+    ]
+  },
+  {
+    "id": "Dermatofibroma",
+    "type": "entity",
+    "group": "Fibrohistiocytic",
+    "locations": [
+      "Legs",
+      "Arms"
+    ]
+  },
+  {
+    "id": "Seborrheic Keratosis",
+    "type": "entity",
+    "group": "Basaloid",
+    "locations": [
+      "Skin"
+    ]
+  },
+  {
+    "id": "Pyogenic Granuloma",
+    "type": "entity",
+    "group": "Vascular",
+    "locations": [
+      "Fingers",
+      "Face"
+    ]
+  },
+  {
+    "id": "Neurofibroma (Skin)",
+    "type": "entity",
+    "group": "Nerve Sheath",
+    "locations": [
+      "Skin"
+    ]
+  },
+  {
+    "id": "Mycosis Fungoides",
+    "type": "entity",
+    "group": "Lymphoid",
+    "locations": [
+      "Skin"
+    ]
+  },
+  {
+    "id": "Keratoacanthoma",
+    "type": "entity",
+    "group": "Squamous",
+    "locations": [
+      "Skin (Sun-exposed)"
+    ]
+  },
+  {
+    "id": "Epidermal Inclusion Cyst",
+    "type": "entity",
+    "group": "Cystic",
+    "locations": [
+      "Back",
+      "Face"
+    ]
+  },
+  {
+    "id": "Verruca Vulgaris",
+    "type": "entity",
+    "group": "Squamous",
+    "locations": [
+      "Hands",
+      "Feet"
+    ]
+  },
+  {
+    "id": "Actinic Keratosis",
+    "type": "entity",
+    "group": "Squamous",
+    "locations": [
+      "Face",
+      "Hands"
+    ]
+  },
+  {
+    "id": "Pilomatricoma",
+    "type": "entity",
+    "group": "Adnexal",
+    "locations": [
+      "Head & Neck",
+      "Arm"
+    ]
+  },
+  {
+    "id": "Trichoepithelioma",
+    "type": "entity",
+    "group": "Adnexal",
+    "locations": [
+      "Face"
+    ]
+  },
+  {
+    "id": "Sebaceous Adenoma",
+    "type": "entity",
+    "group": "Adnexal",
+    "locations": [
+      "Face",
+      "Trunk"
+    ]
+  },
+  {
+    "id": "Endometrioid Carcinoma",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Uterus",
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Serous Carcinoma",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Uterus",
+      "Ovary",
+      "Fallopian Tube"
+    ]
+  },
+  {
+    "id": "Clear Cell Carcinoma",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Uterus",
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Mucinous Carcinoma",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Ovary",
+      "Uterus (rare)"
+    ]
+  },
+  {
+    "id": "HGSC",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Ovary",
+      "Fallopian Tube",
+      "Peritoneum"
+    ]
+  },
+  {
+    "id": "LGSC",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Borderline Tumor",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Uterine Leiomyosarcoma",
+    "type": "entity",
+    "group": "Mesenchymal GYN",
+    "locations": [
+      "Uterus"
+    ]
+  },
+  {
+    "id": "Endometrial Stromal Sarcoma (LG)",
+    "type": "entity",
+    "group": "Mesenchymal GYN",
+    "locations": [
+      "Uterus"
+    ]
+  },
+  {
+    "id": "High-grade Endometrial Stromal Sarcoma",
+    "type": "entity",
+    "group": "Mesenchymal GYN",
+    "locations": [
+      "Uterus"
+    ]
+  },
+  {
+    "id": "Adenosarcoma",
+    "type": "entity",
+    "group": "Mesenchymal GYN",
+    "locations": [
+      "Uterus",
+      "Ovary"
+    ]
+  },
+  {
+    "id": "STUMP",
+    "type": "entity",
+    "group": "Mesenchymal GYN",
+    "locations": [
+      "Uterus"
+    ]
+  },
+  {
+    "id": "PEComa (GYN)",
+    "type": "entity",
+    "group": "Mesenchymal GYN",
+    "locations": [
+      "Uterus"
+    ]
+  },
+  {
+    "id": "Adult Granulosa Cell Tumor",
+    "type": "entity",
+    "group": "Sex Cord",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Sertoli-Leydig Cell Tumor",
+    "type": "entity",
+    "group": "Sex Cord",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Fibroma/Thecoma",
+    "type": "entity",
+    "group": "Sex Cord",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Dysgerminoma",
+    "type": "entity",
+    "group": "Germ Cell",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Yolk Sac Tumor",
+    "type": "entity",
+    "group": "Germ Cell",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Vulvar SCC",
+    "type": "entity",
+    "group": "Squamous",
+    "locations": [
+      "Vulva"
+    ]
+  },
+  {
+    "id": "Extramammary Paget Disease",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Vulva"
+    ]
+  },
+  {
+    "id": "STIC",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Fallopian Tube"
+    ]
+  },
+  {
+    "id": "SCCOHT",
+    "type": "entity",
+    "group": "Rare GYN",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "FATWO",
+    "type": "entity",
+    "group": "Rare GYN",
+    "locations": [
+      "Adnexa",
+      "Broad Ligament"
+    ]
+  },
+  {
+    "id": "Aggressive Angiomyxoma",
+    "type": "entity",
+    "group": "Mesenchymal GYN",
+    "locations": [
+      "Vulva",
+      "Perineum",
+      "Pelvis"
+    ]
+  },
+  {
+    "id": "PSTT",
+    "type": "entity",
+    "group": "Trophoblastic",
+    "locations": [
+      "Uterus"
+    ]
+  },
+  {
+    "id": "ETT",
+    "type": "entity",
+    "group": "Trophoblastic",
+    "locations": [
+      "Uterus",
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Struma Ovarii",
+    "type": "entity",
+    "group": "Germ Cell",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Gonadoblastoma",
+    "type": "entity",
+    "group": "Germ Cell",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "UTROSCT",
+    "type": "entity",
+    "group": "Sex Cord",
+    "locations": [
+      "Uterus"
+    ]
+  },
+  {
+    "id": "LAMN",
+    "type": "entity",
+    "group": "GI/Metastatic",
+    "locations": [
+      "Appendix",
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Cervical SCC",
+    "type": "entity",
+    "group": "Cervical",
+    "locations": [
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Endocervical Adeno HPV+",
+    "type": "entity",
+    "group": "Cervical",
+    "locations": [
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Gastric-type Adeno",
+    "type": "entity",
+    "group": "Cervical",
+    "locations": [
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Adenoid Cystic Ca",
+    "type": "entity",
+    "group": "Cervical",
+    "locations": [
+      "Cervix",
+      "Vulva"
+    ]
+  },
+  {
+    "id": "Mesonephric-like Adeno",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Uterus",
+      "Ovary"
+    ]
+  },
+  {
+    "id": "HSIL",
+    "type": "entity",
+    "group": "Cervical",
+    "locations": [
+      "Cervix"
+    ]
+  },
+  {
+    "id": "dVIN",
+    "type": "entity",
+    "group": "Vulvar",
+    "locations": [
+      "Vulva"
+    ]
+  },
+  {
+    "id": "Steroid Cell Tumor",
+    "type": "entity",
+    "group": "Sex Cord",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Leydig Cell Tumor",
+    "type": "entity",
+    "group": "Sex Cord",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Sertoli Cell Tumor",
+    "type": "entity",
+    "group": "Sex Cord",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Endometriosis",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Ovary",
+      "Peritoneum",
+      "Uterus"
+    ]
+  },
+  {
+    "id": "Adenomyosis",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Uterus"
+    ]
+  },
+  {
+    "id": "Massive Ovarian Edema",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Luteoma of Pregnancy",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Hyperreactio Luteinalis",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Placental Site Nodule",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Uterus"
+    ]
+  },
+  {
+    "id": "Lichen Sclerosus",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Vulva"
+    ]
+  },
+  {
+    "id": "Tubo-Ovarian Abscess",
+    "type": "entity",
+    "group": "Infectious",
+    "locations": [
+      "Adnexa"
+    ]
+  },
+  {
+    "id": "Hydrosalpinx",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Fallopian Tube"
+    ]
+  },
+  {
+    "id": "Decidualized Endometrioma",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "MGH",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Tunneled Clusters",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Endocervical Polyp",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Nabothian Cyst",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Condyloma",
+    "type": "entity",
+    "group": "Infectious",
+    "locations": [
+      "Vulva",
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Lichen Planus",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Vulva"
+    ]
+  },
+  {
+    "id": "Lichen Simplex Chronicus",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Vulva"
+    ]
+  },
+  {
+    "id": "Arias-Stella",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Cervix",
+      "Endometrium"
+    ]
+  },
+  {
+    "id": "Tubal Metaplasia",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Cervix",
+      "Endometrium"
+    ]
+  },
+  {
+    "id": "Walthard Cell Rest",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Fallopian Tube"
+    ]
+  },
+  {
+    "id": "VAIN",
+    "type": "entity",
+    "group": "Vaginal",
+    "locations": [
+      "Vagina"
+    ]
+  },
+  {
+    "id": "Vaginal SCC",
+    "type": "entity",
+    "group": "Vaginal",
+    "locations": [
+      "Vagina"
+    ]
+  },
+  {
+    "id": "Vaginal Adenosis",
+    "type": "entity",
+    "group": "Vaginal",
+    "locations": [
+      "Vagina"
+    ]
+  },
+  {
+    "id": "Clear Cell Ca (Vagina)",
+    "type": "entity",
+    "group": "Vaginal",
+    "locations": [
+      "Vagina"
+    ]
+  },
+  {
+    "id": "Vaginal Melanoma",
+    "type": "entity",
+    "group": "Vaginal",
+    "locations": [
+      "Vagina"
+    ]
+  },
+  {
+    "id": "Botryoid RMS",
+    "type": "entity",
+    "group": "Vaginal",
+    "locations": [
+      "Vagina",
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Fibroepithelial Polyp",
+    "type": "entity",
+    "group": "Vaginal",
+    "locations": [
+      "Vagina",
+      "Vulva"
+    ]
+  },
+  {
+    "id": "Spindle Cell Epithelioma",
+    "type": "entity",
+    "group": "Vaginal",
+    "locations": [
+      "Vagina"
+    ]
+  },
+  {
+    "id": "Yolk Sac Tumor (Vagina)",
+    "type": "entity",
+    "group": "Vaginal",
+    "locations": [
+      "Vagina"
+    ]
+  },
+  {
+    "id": "Adenomatoid Tumor",
+    "type": "entity",
+    "group": "Mesothelial",
+    "locations": [
+      "Uterus",
+      "Fallopian Tube"
+    ]
+  },
+  {
+    "id": "Cotyledonoid Dissecting Leiomyoma",
+    "type": "entity",
+    "group": "Mesenchymal GYN",
+    "locations": [
+      "Uterus",
+      "Pelvis"
+    ]
+  },
+  {
+    "id": "Intravenous Leiomyomatosis",
+    "type": "entity",
+    "group": "Mesenchymal GYN",
+    "locations": [
+      "Uterus",
+      "Pelvic Veins",
+      "Heart"
+    ]
+  },
+  {
+    "id": "Sclerosing Stromal Tumor",
+    "type": "entity",
+    "group": "Sex Cord",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Papillary Hidradenoma",
+    "type": "entity",
+    "group": "Adnexal",
+    "locations": [
+      "Vulva",
+      "Labia"
+    ]
+  },
+  {
+    "id": "Brenner Tumor",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Endometrial Stromal Nodule",
+    "type": "entity",
+    "group": "Mesenchymal GYN",
+    "locations": [
+      "Uterus"
+    ]
+  },
+  {
+    "id": "Seromucinous Borderline Tumor",
+    "type": "entity",
+    "group": "Epithelial GYN",
+    "locations": [
+      "Ovary"
+    ]
+  },
+  {
+    "id": "Malignant PEComa",
+    "type": "entity",
+    "group": "Mesenchymal GYN",
+    "locations": [
+      "Uterus"
+    ]
+  },
+  {
+    "id": "Large Cell Neuroendocrine Ca",
+    "type": "entity",
+    "group": "Cervical",
+    "locations": [
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Endosalpingiosis",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Peritoneum",
+      "Lymph Node"
+    ]
+  },
+  {
+    "id": "Mesothelial Hyperplasia",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Peritoneum",
+      "Hernia Sac"
+    ]
+  },
+  {
+    "id": "Postoperative Spindle Cell Nodule",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Vagina",
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Ligneous Cervicitis",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Malakoplakia",
+    "type": "entity",
+    "group": "Infectious",
+    "locations": [
+      "Vagina",
+      "Cervix",
+      "Endometrium"
+    ]
+  },
+  {
+    "id": "Xanthogranulomatous Inflammation",
+    "type": "entity",
+    "group": "Inflammatory",
+    "locations": [
+      "Endometrium",
+      "Fallopian Tube"
+    ]
+  },
+  {
+    "id": "Zoon's Vulvitis",
+    "type": "entity",
+    "group": "Inflammatory",
+    "locations": [
+      "Vulva"
+    ]
+  },
+  {
+    "id": "Mesonephric Remnants",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Cervix",
+      "Broad Ligament"
+    ]
+  },
+  {
+    "id": "Amputation Neuroma",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Cervix",
+      "Vagina"
+    ]
+  },
+  {
+    "id": "Cervical Deciduosis",
+    "type": "entity",
+    "group": "Non-Neoplastic",
+    "locations": [
+      "Cervix"
+    ]
+  },
+  {
+    "id": "Fat Necrosis (Breast)",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Granulomatous Mastitis",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Fibroadenoma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Phyllodes Tumor",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "DCIS",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Invasive Ductal Carcinoma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Invasive Lobular Carcinoma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Tubular Carcinoma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Mucinous Carcinoma (Breast)",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Metaplastic Carcinoma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "PASH",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Medullary Carcinoma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Secretory Carcinoma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "LCIS",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "ADH",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "FEA",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Radial Scar",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Lactating Adenoma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Nipple Adenoma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Nipple"
+    ]
+  },
+  {
+    "id": "Inflammatory Carcinoma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast",
+      "Skin"
+    ]
+  },
+  {
+    "id": "Encapsulated Papillary Carcinoma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Intraductal Papilloma",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Breast"
+    ]
+  },
+  {
+    "id": "Paget Disease (Breast)",
+    "type": "entity",
+    "group": "Breast",
+    "locations": [
+      "Nipple",
+      "Breast"
+    ]
+  },
+  {
+    "id": "Clear Cell RCC",
+    "type": "entity",
+    "group": "Kidney",
+    "locations": [
+      "Kidney"
+    ]
+  },
+  {
+    "id": "Papillary RCC",
+    "type": "entity",
+    "group": "Kidney",
+    "locations": [
+      "Kidney"
+    ]
+  },
+  {
+    "id": "Chromophobe RCC",
+    "type": "entity",
+    "group": "Kidney",
+    "locations": [
+      "Kidney"
+    ]
+  },
+  {
+    "id": "Oncocytoma",
+    "type": "entity",
+    "group": "Kidney",
+    "locations": [
+      "Kidney"
+    ]
+  },
+  {
+    "id": "Angiomyolipoma",
+    "type": "entity",
+    "group": "Kidney",
+    "locations": [
+      "Kidney"
+    ]
+  },
+  {
+    "id": "Wilms Tumor",
+    "type": "entity",
+    "group": "Kidney",
+    "locations": [
+      "Kidney"
+    ]
+  },
+  {
+    "id": "Metanephric Adenoma",
+    "type": "entity",
+    "group": "Kidney",
+    "locations": [
+      "Kidney"
+    ]
+  },
+  {
+    "id": "Clear Cell Sarcoma of Kidney",
+    "type": "entity",
+    "group": "Kidney",
+    "locations": [
+      "Kidney"
+    ]
+  },
+  {
+    "id": "Rhabdoid Tumor (Kidney)",
+    "type": "entity",
+    "group": "Kidney",
+    "locations": [
+      "Kidney"
+    ]
+  },
+  {
+    "id": "Xanthogranulomatous Pyelonephritis",
+    "type": "entity",
+    "group": "Kidney",
+    "locations": [
+      "Kidney"
+    ]
+  },
+  {
+    "id": "Malakoplakia (Kidney)",
+    "type": "entity",
+    "group": "Kidney",
+    "locations": [
+      "Kidney",
+      "Bladder"
+    ]
+  },
+  {
+    "id": "Urothelial Carcinoma",
+    "type": "entity",
+    "group": "Bladder",
+    "locations": [
+      "Bladder",
+      "Ureter",
+      "Renal Pelvis"
+    ]
+  },
+  {
+    "id": "Urothelial CIS",
+    "type": "entity",
+    "group": "Bladder",
+    "locations": [
+      "Bladder"
+    ]
+  },
+  {
+    "id": "Squamous Cell Ca (Bladder)",
+    "type": "entity",
+    "group": "Bladder",
+    "locations": [
+      "Bladder"
+    ]
+  },
+  {
+    "id": "Inverted Papilloma",
+    "type": "entity",
+    "group": "Bladder",
+    "locations": [
+      "Bladder"
+    ]
+  },
+  {
+    "id": "Nephrogenic Adenoma",
+    "type": "entity",
+    "group": "Bladder",
+    "locations": [
+      "Bladder",
+      "Ureter"
+    ]
+  },
+  {
+    "id": "Cystitis Cystica",
+    "type": "entity",
+    "group": "Bladder",
+    "locations": [
+      "Bladder"
+    ]
+  },
+  {
+    "id": "Prostate Adenocarcinoma",
+    "type": "entity",
+    "group": "Prostate",
+    "locations": [
+      "Prostate"
+    ]
+  },
+  {
+    "id": "Prostatic Duct Adeno",
+    "type": "entity",
+    "group": "Prostate",
+    "locations": [
+      "Prostate"
+    ]
+  },
+  {
+    "id": "PIN",
+    "type": "entity",
+    "group": "Prostate",
+    "locations": [
+      "Prostate"
+    ]
+  },
+  {
+    "id": "ASAP",
+    "type": "entity",
+    "group": "Prostate",
+    "locations": [
+      "Prostate"
+    ]
+  },
+  {
+    "id": "Basal Cell Hyperplasia",
+    "type": "entity",
+    "group": "Prostate",
+    "locations": [
+      "Prostate"
+    ]
+  },
+  {
+    "id": "Seminoma",
+    "type": "entity",
+    "group": "Testis",
+    "locations": [
+      "Testis"
+    ]
+  },
+  {
+    "id": "Embryonal Carcinoma (Testis)",
+    "type": "entity",
+    "group": "Testis",
+    "locations": [
+      "Testis"
+    ]
+  },
+  {
+    "id": "Yolk Sac Tumor (Testis)",
+    "type": "entity",
+    "group": "Testis",
+    "locations": [
+      "Testis"
+    ]
+  },
+  {
+    "id": "Leydig Cell Tumor (Testis)",
+    "type": "entity",
+    "group": "Testis",
+    "locations": [
+      "Testis"
+    ]
+  },
+  {
+    "id": "Spermatocytic Tumor",
+    "type": "entity",
+    "group": "Testis",
+    "locations": [
+      "Testis"
+    ]
+  },
+  {
+    "id": "Teratoma (Testis)",
+    "type": "entity",
+    "group": "Testis",
+    "locations": [
+      "Testis"
+    ]
+  },
+  {
+    "id": "Sertoli Cell Tumor (Testis)",
+    "type": "entity",
+    "group": "Testis",
+    "locations": [
+      "Testis"
+    ]
+  },
+  {
+    "id": "Adenomatoid Tumor (Epididymis)",
+    "type": "entity",
+    "group": "Testis",
+    "locations": [
+      "Testis",
+      "Paratesticular"
+    ]
+  },
+  {
+    "id": "Lung Adenocarcinoma",
+    "type": "entity",
+    "group": "Lung",
+    "locations": [
+      "Lung"
+    ]
+  },
+  {
+    "id": "Lung Squamous Cell Ca",
+    "type": "entity",
+    "group": "Lung",
+    "locations": [
+      "Lung"
+    ]
+  },
+  {
+    "id": "Small Cell Lung Ca",
+    "type": "entity",
+    "group": "Lung",
+    "locations": [
+      "Lung"
+    ]
+  },
+  {
+    "id": "Large Cell Neuroendocrine Ca (Lung)",
+    "type": "entity",
+    "group": "Lung",
+    "locations": [
+      "Lung"
+    ]
+  },
+  {
+    "id": "Lung Carcinoid",
+    "type": "entity",
+    "group": "Lung",
+    "locations": [
+      "Lung"
+    ]
+  },
+  {
+    "id": "Hamartoma (Lung)",
+    "type": "entity",
+    "group": "Lung",
+    "locations": [
+      "Lung"
+    ]
+  },
+  {
+    "id": "Solitary Fibrous Tumor (Pleura)",
+    "type": "entity",
+    "group": "Pleura",
+    "locations": [
+      "Pleura"
+    ]
+  },
+  {
+    "id": "Organizing Pneumonia",
+    "type": "entity",
+    "group": "Lung",
+    "locations": [
+      "Lung"
+    ]
+  },
+  {
+    "id": "UIP",
+    "type": "entity",
+    "group": "Lung",
+    "locations": [
+      "Lung"
+    ]
+  },
+  {
+    "id": "Sarcoidosis",
+    "type": "entity",
+    "group": "Lung",
+    "locations": [
+      "Lung",
+      "Mediastinum"
+    ]
+  },
+  {
+    "id": "Thymoma",
+    "type": "entity",
+    "group": "Mediastinum",
+    "locations": [
+      "Mediastinum"
+    ]
+  },
+  {
+    "id": "Thymic Carcinoma",
+    "type": "entity",
+    "group": "Mediastinum",
+    "locations": [
+      "Mediastinum"
+    ]
+  },
+  {
+    "id": "Mediastinal Germ Cell Tumor",
+    "type": "entity",
+    "group": "Mediastinum",
+    "locations": [
+      "Mediastinum"
+    ]
+  },
+  {
+    "id": "Mediastinal Lymphoma",
+    "type": "entity",
+    "group": "Mediastinum",
+    "locations": [
+      "Mediastinum"
+    ]
+  },
+  {
+    "id": "Mesothelioma",
+    "type": "entity",
+    "group": "Pleura",
+    "locations": [
+      "Pleura"
+    ]
+  },
+  {
+    "id": "Barrett Esophagus",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Esophagus"
+    ]
+  },
+  {
+    "id": "Esophageal Adenocarcinoma",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Esophagus"
+    ]
+  },
+  {
+    "id": "Gastric Adenocarcinoma",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Stomach"
+    ]
+  },
+  {
+    "id": "Chronic Gastritis",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Stomach"
+    ]
+  },
+  {
+    "id": "Fundic Gland Polyp",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Stomach"
+    ]
+  },
+  {
+    "id": "Hyperplastic Polyp",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Stomach",
+      "Colon"
+    ]
+  },
+  {
+    "id": "Gastric Neuroendocrine Tumor",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Stomach"
+    ]
+  },
+  {
+    "id": "Colonic Adenocarcinoma",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Colon",
+      "Rectum"
+    ]
+  },
+  {
+    "id": "Sessile Serrated Lesion",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Colon"
+    ]
+  },
+  {
+    "id": "Tubular Adenoma",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Colon"
+    ]
+  },
+  {
+    "id": "Tubulovillous Adenoma",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Colon"
+    ]
+  },
+  {
+    "id": "Neuroendocrine Tumor (GI)",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Stomach",
+      "Colon",
+      "Small Bowel"
+    ]
+  },
+  {
+    "id": "IBD",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Colon",
+      "Small Bowel"
+    ]
+  },
+  {
+    "id": "Peutz-Jeghers Polyp",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Small Bowel",
+      "Colon"
+    ]
+  },
+  {
+    "id": "Juvenile Polyp",
+    "type": "entity",
+    "group": "GI",
+    "locations": [
+      "Colon"
+    ]
+  },
+  {
+    "id": "Hepatocellular Carcinoma",
+    "type": "entity",
+    "group": "Liver",
+    "locations": [
+      "Liver"
+    ]
+  },
+  {
+    "id": "Cholangiocarcinoma",
+    "type": "entity",
+    "group": "Liver",
+    "locations": [
+      "Liver",
+      "Bile Duct"
+    ]
+  },
+  {
+    "id": "Hepatic Adenoma",
+    "type": "entity",
+    "group": "Liver",
+    "locations": [
+      "Liver"
+    ]
+  },
+  {
+    "id": "Focal Nodular Hyperplasia",
+    "type": "entity",
+    "group": "Liver",
+    "locations": [
+      "Liver"
+    ]
+  },
+  {
+    "id": "Metastatic Carcinoma to Liver",
+    "type": "entity",
+    "group": "Liver",
+    "locations": [
+      "Liver"
+    ]
+  },
+  {
+    "id": "Pancreatic Ductal Adeno",
+    "type": "entity",
+    "group": "Pancreas",
+    "locations": [
+      "Pancreas"
+    ]
+  },
+  {
+    "id": "Pancreatic Neuroendocrine",
+    "type": "entity",
+    "group": "Pancreas",
+    "locations": [
+      "Pancreas"
+    ]
+  },
+  {
+    "id": "Solid Pseudopapillary Neoplasm",
+    "type": "entity",
+    "group": "Pancreas",
+    "locations": [
+      "Pancreas"
+    ]
+  },
+  {
+    "id": "Acinar Cell Carcinoma",
+    "type": "entity",
+    "group": "Pancreas",
+    "locations": [
+      "Pancreas"
+    ]
+  },
+  {
+    "id": "IPMN",
+    "type": "entity",
+    "group": "Pancreas",
+    "locations": [
+      "Pancreas"
+    ]
+  },
+  {
+    "id": "Serous Cystadenoma",
+    "type": "entity",
+    "group": "Pancreas",
+    "locations": [
+      "Pancreas"
+    ]
+  },
+  {
+    "id": "Mucinous Cystic Neoplasm",
+    "type": "entity",
+    "group": "Pancreas",
+    "locations": [
+      "Pancreas"
+    ]
+  },
+  {
+    "id": "Glioblastoma",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain"
+    ]
+  },
+  {
+    "id": "Meningioma",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain",
+      "Spine"
+    ]
+  },
+  {
+    "id": "Oligodendroglioma",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain"
+    ]
+  },
+  {
+    "id": "Ependymoma",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain",
+      "Spine"
+    ]
+  },
+  {
+    "id": "Medulloblastoma",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain"
+    ]
+  },
+  {
+    "id": "Pilocytic Astrocytoma",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain"
+    ]
+  },
+  {
+    "id": "Astrocytoma",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain",
+      "Spine"
+    ]
+  },
+  {
+    "id": "Schwannoma (CNS)",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain",
+      "Spine"
+    ]
+  },
+  {
+    "id": "Hemangioblastoma",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain",
+      "Spine"
+    ]
+  },
+  {
+    "id": "Craniopharyngioma",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain"
+    ]
+  },
+  {
+    "id": "Pituitary Adenoma",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain"
+    ]
+  },
+  {
+    "id": "Metastatic Carcinoma to Brain",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain"
+    ]
+  },
+  {
+    "id": "Primary CNS Lymphoma",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain"
+    ]
+  },
+  {
+    "id": "PCNSL",
+    "type": "entity",
+    "group": "CNS",
+    "locations": [
+      "Brain"
+    ]
+  },
+  {
+    "id": "Pleomorphic Adenoma",
+    "type": "entity",
+    "group": "Salivary",
+    "locations": [
+      "Parotid",
+      "Salivary Gland"
+    ]
+  },
+  {
+    "id": "Warthin Tumor",
+    "type": "entity",
+    "group": "Salivary",
+    "locations": [
+      "Parotid"
+    ]
+  },
+  {
+    "id": "Mucoepidermoid Carcinoma",
+    "type": "entity",
+    "group": "Salivary",
+    "locations": [
+      "Salivary Gland"
+    ]
+  },
+  {
+    "id": "Adenoid Cystic Ca (Salivary)",
+    "type": "entity",
+    "group": "Salivary",
+    "locations": [
+      "Salivary Gland"
+    ]
+  },
+  {
+    "id": "Acinic Cell Carcinoma",
+    "type": "entity",
+    "group": "Salivary",
+    "locations": [
+      "Salivary Gland"
+    ]
+  },
+  {
+    "id": "Salivary Duct Carcinoma",
+    "type": "entity",
+    "group": "Salivary",
+    "locations": [
+      "Salivary Gland"
+    ]
+  },
+  {
+    "id": "Papillary Thyroid Ca",
+    "type": "entity",
+    "group": "Thyroid",
+    "locations": [
+      "Thyroid"
+    ]
+  },
+  {
+    "id": "Follicular Thyroid Ca",
+    "type": "entity",
+    "group": "Thyroid",
+    "locations": [
+      "Thyroid"
+    ]
+  },
+  {
+    "id": "Medullary Thyroid Ca",
+    "type": "entity",
+    "group": "Thyroid",
+    "locations": [
+      "Thyroid"
+    ]
+  },
+  {
+    "id": "Anaplastic Thyroid Ca",
+    "type": "entity",
+    "group": "Thyroid",
+    "locations": [
+      "Thyroid"
+    ]
+  },
+  {
+    "id": "Follicular Adenoma",
+    "type": "entity",
+    "group": "Thyroid",
+    "locations": [
+      "Thyroid"
+    ]
+  },
+  {
+    "id": "Hashimoto Thyroiditis",
+    "type": "entity",
+    "group": "Thyroid",
+    "locations": [
+      "Thyroid"
+    ]
+  },
+  {
+    "id": "Graves Disease",
+    "type": "entity",
+    "group": "Thyroid",
+    "locations": [
+      "Thyroid"
+    ]
+  },
+  {
+    "id": "Nasopharyngeal Carcinoma",
+    "type": "entity",
+    "group": "Head & Neck",
+    "locations": [
+      "Nasopharynx"
+    ]
+  },
+  {
+    "id": "Sinonasal Papilloma",
+    "type": "entity",
+    "group": "Head & Neck",
+    "locations": [
+      "Sinonasal"
+    ]
+  },
+  {
+    "id": "Olfactory Neuroblastoma",
+    "type": "entity",
+    "group": "Head & Neck",
+    "locations": [
+      "Sinonasal"
+    ]
+  },
+  {
+    "id": "Paraganglioma",
+    "type": "entity",
+    "group": "Head & Neck",
+    "locations": [
+      "Neck",
+      "Carotid Body"
+    ]
+  },
+  {
+    "id": "Squamous Cell Ca (Head & Neck)",
+    "type": "entity",
+    "group": "Head & Neck",
+    "locations": [
+      "Oral Cavity",
+      "Larynx"
+    ]
+  },
+  {
+    "id": "CD34",
+    "type": "ihc",
+    "desc": "Vascular/Fibroblastic"
+  },
+  {
+    "id": "S100",
+    "type": "ihc",
+    "desc": "Neural/Melanocytic"
+  },
+  {
+    "id": "SOX10",
+    "type": "ihc",
+    "desc": "Neural/Melanocytic"
+  },
+  {
+    "id": "SMA",
+    "type": "ihc",
+    "desc": "Smooth Muscle/Myofibroblastic"
+  },
+  {
+    "id": "Desmin",
+    "type": "ihc",
+    "desc": "Muscle"
+  },
+  {
+    "id": "Myogenin",
+    "type": "ihc",
+    "desc": "Skeletal Muscle"
+  },
+  {
+    "id": "Keratin",
+    "type": "ihc",
+    "desc": "Epithelial"
+  },
+  {
+    "id": "MDM2",
+    "type": "molecular",
+    "desc": "Amplified in WDLPS/DDLPS"
+  },
+  {
+    "id": "CDK4",
+    "type": "ihc",
+    "desc": "Amplified in WDLPS/DDLPS"
+  },
+  {
+    "id": "STAT6",
+    "type": "ihc",
+    "desc": "Nuclear in SFT"
+  },
+  {
+    "id": "TLE1",
+    "type": "ihc",
+    "desc": "Synovial Sarcoma"
+  },
+  {
+    "id": "H3K27me3",
+    "type": "ihc",
+    "desc": "Loss in MPNST"
+  },
+  {
+    "id": "Beta-Catenin",
+    "type": "ihc",
+    "desc": "Nuclear in Desmoid"
+  },
+  {
+    "id": "MUC4",
+    "type": "ihc",
+    "desc": "LGFMS/SEF"
+  },
+  {
+    "id": "ERG",
+    "type": "ihc",
+    "desc": "Vascular"
+  },
+  {
+    "id": "HHV8",
+    "type": "ihc",
+    "desc": "Kaposi Sarcoma"
+  },
+  {
+    "id": "KIT",
+    "type": "ihc",
+    "desc": "GIST/Melanoma"
+  },
+  {
+    "id": "DOG1",
+    "type": "ihc",
+    "desc": "GIST"
+  },
+  {
+    "id": "Brachyury",
+    "type": "ihc",
+    "desc": "Chordoma"
+  },
+  {
+    "id": "CD99",
+    "type": "ihc",
+    "desc": "Ewing/Synovial"
+  },
+  {
+    "id": "NKX2.2",
+    "type": "ihc",
+    "desc": "Ewing Sarcoma"
+  },
+  {
+    "id": "Melan-A",
+    "type": "ihc",
+    "desc": "Melanocytic"
+  },
+  {
+    "id": "HMB45",
+    "type": "ihc",
+    "desc": "Melanocytic/PEComa"
+  },
+  {
+    "id": "PRAME",
+    "type": "ihc",
+    "desc": "Melanoma"
+  },
+  {
+    "id": "Ber-EP4",
+    "type": "ihc",
+    "desc": "BCC"
+  },
+  {
+    "id": "CK20",
+    "type": "ihc",
+    "desc": "Below Diaphragm/Merkel"
+  },
+  {
+    "id": "INSM1",
+    "type": "ihc",
+    "desc": "Neuroendocrine"
+  },
+  {
+    "id": "Staghorn Vessels",
+    "type": "morph",
+    "desc": "Branching vasculature"
+  },
+  {
+    "id": "Herringbone",
+    "type": "morph",
+    "desc": "Pattern"
+  },
+  {
+    "id": "Storiform",
+    "type": "morph",
+    "desc": "Pattern"
+  },
+  {
+    "id": "Spindle Cell",
+    "type": "morph",
+    "desc": "Cell shape"
+  },
+  {
+    "id": "Epithelioid",
+    "type": "morph",
+    "desc": "Cell shape"
+  },
+  {
+    "id": "Myxoid",
+    "type": "morph",
+    "desc": "Stroma"
+  },
+  {
+    "id": "Small Round Blue",
+    "type": "morph",
+    "desc": "Cell type"
+  },
+  {
+    "id": "Lipoblast",
+    "type": "morph",
+    "desc": "Adipocytic differentiation"
+  },
+  {
+    "id": "PAX8",
+    "type": "ihc",
+    "desc": "Mullerian/Renal"
+  },
+  {
+    "id": "WT1",
+    "type": "ihc",
+    "desc": "Serous/Mesothelial"
+  },
+  {
+    "id": "p53",
+    "type": "ihc",
+    "desc": "Mutant in HGSC/Leiomyosarcoma"
+  },
+  {
+    "id": "p16",
+    "type": "ihc",
+    "desc": "Block pos in HPV/LMS"
+  },
+  {
+    "id": "Inhibin",
+    "type": "ihc",
+    "desc": "Sex Cord"
+  },
+  {
+    "id": "SALL4",
+    "type": "ihc",
+    "desc": "Germ Cell"
+  },
+  {
+    "id": "OCT4",
+    "type": "ihc",
+    "desc": "Germ Cell"
+  },
+  {
+    "id": "HCG",
+    "type": "ihc",
+    "desc": "Choriocarcinoma"
+  },
+  {
+    "id": "Michaelis-Gutmann Bodies",
+    "type": "morph",
+    "desc": "Targetoid calcifications"
+  },
+  {
+    "id": "Psammoma Bodies",
+    "type": "morph",
+    "desc": "Calcified spherules"
+  },
+  {
+    "id": "Reinke Crystals",
+    "type": "morph",
+    "desc": "Eosinophilic rods"
+  },
+  {
+    "id": "Hydropic Change",
+    "type": "morph",
+    "desc": "Edema/Watery"
+  },
+  {
+    "id": "Walthard Rests",
+    "type": "morph",
+    "desc": "Transitional nests"
+  },
+  {
+    "id": "D2-40",
+    "type": "ihc",
+    "desc": "Lymphatic/Mesothelial"
+  },
+  {
+    "id": "Calretinin",
+    "type": "ihc",
+    "desc": "Mesothelial/Sex Cord"
+  },
+  {
+    "id": "Plasminogen",
+    "type": "molecular",
+    "desc": "Deficiency in Ligneous"
+  },
+  {
+    "id": "GATA3",
+    "type": "ihc",
+    "desc": "Breast/Urothelial"
+  },
+  {
+    "id": "JAZF1-SUZ12",
+    "type": "molecular",
+    "desc": "ESS Fusion"
+  },
+  {
+    "id": "Nidus",
+    "type": "morph",
+    "desc": "Central reactive zone"
+  },
+  {
+    "id": "Chinese Characters",
+    "type": "morph",
+    "desc": "Curvilinear bone trabeculae"
+  },
+  {
+    "id": "Ghost Cells",
+    "type": "morph",
+    "desc": "Anucleate keratinized cells"
+  },
+  {
+    "id": "Fluid-Fluid Levels",
+    "type": "morph",
+    "desc": "MRI finding in ABC"
+  },
+  {
+    "id": "GNAS",
+    "type": "molecular",
+    "desc": "Fibrous Dysplasia mutation"
+  },
+  {
+    "id": "USP6",
+    "type": "molecular",
+    "desc": "Nodular Fasciitis / ABC"
+  },
+  {
+    "id": "NR4A3",
+    "type": "molecular",
+    "desc": "EMC Fusion"
+  },
+  {
+    "id": "HMGA2",
+    "type": "molecular",
+    "desc": "Lipoma"
+  },
+  {
+    "id": "BCL2",
+    "type": "ihc",
+    "desc": "SFT/Trichoepithelioma"
+  },
+  {
+    "id": "CD68",
+    "type": "ihc",
+    "desc": "Histiocytic/Granular"
+  },
+  {
+    "id": "CD1a",
+    "type": "ihc",
+    "desc": "Langerhans Cell"
+  },
+  {
+    "id": "Langerin",
+    "type": "ihc",
+    "desc": "Langerhans Cell"
+  },
+  {
+    "id": "TTF1",
+    "type": "ihc",
+    "desc": "Lung/Thyroid"
+  },
+  {
+    "id": "PSA",
+    "type": "ihc",
+    "desc": "Prostate"
+  },
+  {
+    "id": "NKX3.1",
+    "type": "ihc",
+    "desc": "Prostate"
+  },
+  {
+    "id": "ER",
+    "type": "ihc",
+    "desc": "Breast/GYN"
+  },
+  {
+    "id": "PR",
+    "type": "ihc",
+    "desc": "Breast/GYN"
+  },
+  {
+    "id": "HER2",
+    "type": "ihc",
+    "desc": "Breast/Gastric"
+  },
+  {
+    "id": "CDX2",
+    "type": "ihc",
+    "desc": "GI"
+  },
+  {
+    "id": "CK7",
+    "type": "ihc",
+    "desc": "Above Diaphragm"
+  },
+  {
+    "id": "Chromogranin",
+    "type": "ihc",
+    "desc": "Neuroendocrine"
+  },
+  {
+    "id": "Synaptophysin",
+    "type": "ihc",
+    "desc": "Neuroendocrine"
+  },
+  {
+    "id": "GFAP",
+    "type": "ihc",
+    "desc": "Glial"
+  },
+  {
+    "id": "Olig2",
+    "type": "ihc",
+    "desc": "Glial"
+  },
+  {
+    "id": "HepPar1",
+    "type": "ihc",
+    "desc": "Hepatocellular"
+  },
+  {
+    "id": "Arginase-1",
+    "type": "ihc",
+    "desc": "Hepatocellular"
+  },
+  {
+    "id": "E-Cadherin",
+    "type": "ihc",
+    "desc": "Loss in Lobular Ca"
+  },
+  {
+    "id": "VHL",
+    "type": "molecular",
+    "desc": "Clear Cell RCC"
+  },
+  {
+    "id": "IDH1",
+    "type": "molecular",
+    "desc": "Glioma/Chondrosarcoma"
+  },
+  {
+    "id": "1p/19q",
+    "type": "molecular",
+    "desc": "Oligodendroglioma"
+  },
+  {
+    "id": "BRAF",
+    "type": "molecular",
+    "desc": "Melanoma/Thyroid/Colon"
+  },
+  {
+    "id": "KRAS",
+    "type": "molecular",
+    "desc": "Lung/Colon/Pancreas"
+  },
+  {
+    "id": "EGFR",
+    "type": "molecular",
+    "desc": "Lung/Glioblastoma"
+  },
+  {
+    "id": "ALK",
+    "type": "molecular",
+    "desc": "Lung/IMT"
+  },
+  {
+    "id": "MSI",
+    "type": "molecular",
+    "desc": "Lynch Syndrome"
+  },
+  {
+    "id": "EBER",
+    "type": "molecular",
+    "desc": "EBV (Nasopharyngeal)"
+  },
+  {
+    "id": "Triple Negative",
+    "type": "molecular",
+    "desc": "ER/PR/HER2 neg"
+  },
+  {
+    "id": "ETV6-NTRK3",
+    "type": "molecular",
+    "desc": "Secretory Ca"
+  },
+  {
+    "id": "Benign",
+    "type": "morph",
+    "desc": "Benign Behavior"
+  },
+  {
+    "id": "Syringomatous",
+    "type": "morph",
+    "desc": "Sweat gland diff"
+  },
+  {
+    "id": "Dermal Lymphatics",
+    "type": "morph",
+    "desc": "Invasion site"
+  },
+  {
+    "id": "BCOR",
+    "type": "molecular",
+    "desc": "CCSK/Sarcoma"
+  },
+  {
+    "id": "INI1",
+    "type": "ihc",
+    "desc": "Loss in Rhabdoid/Epithelioid Sarc"
+  },
+  {
+    "id": "Foamy Histiocytes",
+    "type": "morph",
+    "desc": "Xanthoma cells"
+  },
+  {
+    "id": "Neuroendocrine Markers",
+    "type": "ihc",
+    "desc": "Synapto/Chromo/INSM1"
+  },
+  {
+    "id": "Cartilage",
+    "type": "morph",
+    "desc": "Chondroid matrix"
+  },
+  {
+    "id": "Masson Bodies",
+    "type": "morph",
+    "desc": "Fibroblast plugs"
+  },
+  {
+    "id": "Granuloma",
+    "type": "morph",
+    "desc": "Histiocytic aggregate"
+  },
+  {
+    "id": "H. pylori",
+    "type": "molecular",
+    "desc": "Bacteria"
+  },
+  {
+    "id": "PPI",
+    "type": "morph",
+    "desc": "Proton Pump Inhibitor effect"
+  },
+  {
+    "id": "Mucin",
+    "type": "morph",
+    "desc": "Mucinous content"
+  },
+  {
+    "id": "Glycogen",
+    "type": "morph",
+    "desc": "Clear cytoplasm"
+  },
+  {
+    "id": "Ovarian Stroma",
+    "type": "morph",
+    "desc": "Spindle cell stroma"
+  },
+  {
+    "id": "CD20",
+    "type": "ihc",
+    "desc": "B-cell"
+  },
+  {
+    "id": "Androgen Receptor",
+    "type": "ihc",
+    "desc": "Salivary Duct/Sebaceous"
+  },
+  {
+    "id": "Capsule",
+    "type": "morph",
+    "desc": "Fibrous rim"
+  },
+  {
+    "id": "Hurthle Cells",
+    "type": "morph",
+    "desc": "Oncocytic metaplasia"
+  }
+]

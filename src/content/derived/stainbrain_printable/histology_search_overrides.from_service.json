@@ -1,0 +1,18 @@
+{
+  "OCT4": "Seminoma OCT4 immunohistochemistry",
+  "SALL4": "Seminoma SALL4 immunohistochemistry",
+  "CD117": "Seminoma KIT immunohistochemistry",
+  "CD30": "Embryonal Carcinoma CD30 immunohistochemistry",
+  "PLAP": "Seminoma PLAP immunohistochemistry",
+  "Glypican-3": "Yolk Sac Tumor Glypican-3 immunohistochemistry",
+  "Inhibin": "Granulosa Cell Tumor Inhibin immunohistochemistry",
+  "Calretinin": "Mesothelioma Calretinin immunohistochemistry",
+  "AFP (Serum/Tissue)": "Yolk Sac Tumor AFP immunohistochemistry",
+  "hCG (Serum/Tissue)": "Choriocarcinoma hCG immunohistochemistry",
+  "i(12p)": "Isochromosome 12p FISH",
+  "Melan-A": "Melanoma Melan-A immunohistochemistry",
+  "HMB45": "Melanoma HMB45 immunohistochemistry",
+  "CD45": "Lymphoma CD45 immunohistochemistry",
+  "S100": "Melanoma S100 immunohistochemistry",
+  "SOX10": "Melanoma SOX10 immunohistochemistry"
+}
