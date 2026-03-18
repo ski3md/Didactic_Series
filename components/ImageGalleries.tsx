@@ -3,6 +3,7 @@ import { StoredImage, User } from '../types';
 import SectionHeader from './ui/SectionHeader';
 import Card from './ui/Card';
 import { getOfficialImages, saveOfficialImages, getCommunityImages, saveCommunityImages } from '../utils/imageStore';
+import { getCuratedAtlasFamilies, getCuratedAtlasImages } from '../utils/curatedHistologyAtlas';
 import { XCircleIcon, PhotographIcon, CloudArrowUpIcon, ArrowDownTrayIcon, ShieldCheckIcon, EyeIcon, GlobeAltIcon } from './icons';
 import ImageUploadForm from './ImageUploadForm';
 import Alert from './ui/Alert';
@@ -13,9 +14,10 @@ const ImageGrid: React.FC<{
   onDelete?: (imageId: string) => void;
   currentUser?: User;
   isModerationView?: boolean;
-}> = ({ images, onImageClick, onDelete, currentUser, isModerationView = false }) => {
+  emptyMessage?: string;
+}> = ({ images, onImageClick, onDelete, currentUser, isModerationView = false, emptyMessage = 'No images have been submitted to this gallery yet.' }) => {
   if (images.length === 0) {
-    return <p className="text-center text-slate-500 py-8">No images have been submitted to this gallery yet.</p>;
+    return <p className="text-center text-slate-500 py-8">{emptyMessage}</p>;
   }
 
   return (
@@ -75,7 +77,26 @@ const ImageModal: React.FC<{ image: StoredImage; onClose: () => void }> = ({ ima
             <div className="pt-4 px-2 flex-shrink-0">
                 <h2 id="image-modal-title" className="text-lg font-bold text-slate-800">{image.title}</h2>
                 <p className="text-sm text-slate-600 mt-1">{image.description}</p>
+                {(image.family || image.stain || image.magnification) && (
+                    <p className="text-xs text-slate-500 mt-2">
+                        {[
+                            image.family ? `Family: ${image.family}` : null,
+                            image.stain ? `Stain: ${image.stain}` : null,
+                            image.magnification ? `Magnification: ${image.magnification.replace(/_/g, ' ')}` : null,
+                        ].filter(Boolean).join(' | ')}
+                    </p>
+                )}
                 <p className="text-xs text-slate-400 mt-2">Uploaded by: {image.uploader}</p>
+                {image.sourceUrl && (
+                    <a
+                        href={image.sourceUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-block text-xs text-primary-700 hover:text-primary-900 underline mt-2"
+                    >
+                        View source attribution
+                    </a>
+                )}
             </div>
             <button
             onClick={onClose}
@@ -96,18 +117,41 @@ interface ImageGalleriesProps {
 
 const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
   const [view, setView] = useState<'browse' | 'upload' | 'moderate'>('browse');
+  const [curatedImages, setCuratedImages] = useState<StoredImage[]>([]);
   const [officialImages, setOfficialImages] = useState<StoredImage[]>([]);
   const [communityImages, setCommunityImages] = useState<StoredImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<StoredImage | null>(null);
   const [message, setMessage] = useState<{type: 'success' | 'error', text: string} | null>(null);
   const [githubUrl, setGithubUrl] = useState('');
   const [isLoadingFromUrl, setIsLoadingFromUrl] = useState(false);
+  const [curatedSearch, setCuratedSearch] = useState('');
+  const [curatedFamilyFilter, setCuratedFamilyFilter] = useState('all');
   const importFileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    setCuratedImages(getCuratedAtlasImages());
     setOfficialImages(getOfficialImages());
     setCommunityImages(getCommunityImages());
   }, []);
+
+  const curatedFamilies = getCuratedAtlasFamilies();
+  const filteredCuratedImages = curatedImages.filter((image) => {
+    const matchesFamily = curatedFamilyFilter === 'all' || image.family === curatedFamilyFilter;
+    const searchableText = [
+      image.title,
+      image.description,
+      image.entity,
+      image.family,
+      image.stain,
+    ]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+    const matchesSearch =
+      curatedSearch.trim() === '' || searchableText.includes(curatedSearch.trim().toLowerCase());
+
+    return matchesFamily && matchesSearch;
+  });
 
   const handleUpload = (imageData: Omit<StoredImage, 'id' | 'uploader' | 'timestamp'>, targetGallery: 'official' | 'community') => {
     const newImage: StoredImage = {
@@ -219,7 +263,7 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
     <div className="animate-fade-in space-y-8">
       <SectionHeader 
         title="Image Galleries"
-        subtitle="Browse curated images or contribute to the community collection."
+        subtitle="Browse the migrated curated atlas, manage local official images, or contribute to the community collection."
         icon={<PhotographIcon className="h-10 w-10"/>}
       />
       
@@ -293,7 +337,49 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
         {view === 'browse' && (
             <div className="space-y-8">
                 <Card className="!shadow-none border-dashed border-2 bg-slate-50/50">
-                    <h3 className="text-xl font-semibold font-serif text-slate-800 mb-4">Official Atlas</h3>
+                    <div className="flex flex-col gap-4 mb-4">
+                        <div>
+                            <h3 className="text-xl font-semibold font-serif text-slate-800">Curated Histology Atlas</h3>
+                            <p className="text-sm text-slate-600 mt-1">
+                                Imported read-only histology material from the migrated curriculum sources, with source attribution preserved.
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <input
+                                type="search"
+                                value={curatedSearch}
+                                onChange={(e) => setCuratedSearch(e.target.value)}
+                                className="w-full border border-slate-300 rounded-md shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm p-2"
+                                placeholder="Search entity, family, stain, or title"
+                            />
+                            <select
+                                value={curatedFamilyFilter}
+                                onChange={(e) => setCuratedFamilyFilter(e.target.value)}
+                                className="w-full border border-slate-300 rounded-md shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm p-2 bg-white"
+                            >
+                                <option value="all">All families ({curatedFamilies.length})</option>
+                                {curatedFamilies.map((family) => (
+                                    <option key={family} value={family}>
+                                        {family}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <p className="text-xs text-slate-500">
+                            Showing {filteredCuratedImages.length} of {curatedImages.length} curated images across {curatedFamilies.length} families.
+                        </p>
+                    </div>
+                    <ImageGrid
+                      images={filteredCuratedImages}
+                      onImageClick={setSelectedImage}
+                      emptyMessage="No curated atlas images match the current search and family filters."
+                    />
+                </Card>
+                <Card className="!shadow-none border-dashed border-2 bg-slate-50/50">
+                    <h3 className="text-xl font-semibold font-serif text-slate-800 mb-2">Local Official Atlas</h3>
+                    <p className="text-sm text-slate-600 mb-4">
+                        Admin-managed local images and imported gallery sync data remain editable here.
+                    </p>
                     <ImageGrid images={officialImages} onImageClick={setSelectedImage} />
                 </Card>
                 <Card className="!shadow-none border-dashed border-2 bg-slate-50/50">

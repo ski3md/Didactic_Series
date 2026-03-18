@@ -1,0 +1,44 @@
+{
+  "sourceProject": "frozens-dashboard",
+  "sourcePath": "/Users/skim4/Downloads/frozens-dashboard",
+  "markers": [
+    "constants.ts contains the main tutorial-style knowledge base data: 3 chapters in modulesData, plus on-call schedules, conferences, surgical cases, and changelog data.",
+    "iocData.ts contains 15 IOC caseArchitect entries across 2 surgical service lines, with histologic descriptions and sketch text for each case.",
+    "components/KnowledgeBase.tsx and components/IOCGuidedModals.tsx render the tutorial content from constants.ts and iocData.ts.",
+    "No standalone lecture corpus, algorithm lesson set, or local educational image asset folder was found.",
+    "The only image file hits are third-party package assets under node_modules, which are not source content."
+  ],
+  "summary": {
+    "candidateCounts": {
+      "algorithms": 0,
+      "lectures": 0,
+      "images": 0,
+      "tutorials": 2
+    },
+    "notes": "This project is primarily an operational dashboard. The reusable educational payload lives in TypeScript data files rather than in separate lecture or image repositories."
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [],
+    "tutorials": [
+      {
+        "path": "constants.ts",
+        "kind": "knowledge base and reference manual data",
+        "evidence": "Defines modulesData with 3 chapters plus content strings for frozen-section guidance."
+      },
+      {
+        "path": "iocData.ts",
+        "kind": "IOC guided tutorial cases",
+        "evidence": "Defines 15 caseArchitect tutorial entries across 2 service lines, including histologic descriptions and sketch annotations."
+      }
+    ]
+  },
+  "dependencies": [
+    "App.tsx wires the tutorial surfaces into the dashboard and routes to KnowledgeBase and IOC views.",
+    "components/KnowledgeBase.tsx consumes modulesData and passes IOC content to components/IOCGuidedModals.tsx.",
+    "components/IOCGuidedModals.tsx depends on iocData.ts for case/tutorial rendering.",
+    "services/predictionService.ts reads modulesData to influence consult-likelihood scoring, but it is an algorithmic workflow dependency rather than content itself."
+  ],
+  "recommendation": "Migrate constants.ts and iocData.ts first if you want reusable tutorial content; there is no separate lecture set or local image corpus to stage from this repo."
+}

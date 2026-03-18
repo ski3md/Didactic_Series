@@ -1,0 +1,65 @@
+{
+  "sourceProject": "frozens-dashboard-2",
+  "sourcePath": "/Users/skim4/Downloads/frozens-dashboard-2",
+  "markers": [
+    "interactive pathology dashboard",
+    "knowledge base",
+    "IOC guided modals",
+    "decision trees",
+    "learning objectives",
+    "clinical vignettes",
+    "chapter-based reference manual",
+    "case and procedure workflow UI"
+  ],
+  "summary": "This source is primarily an application shell for intraoperative pathology workflow, but it contains reusable educational content embedded in structured TypeScript data. The strongest migratable material is the knowledge-base chapter content in frontend/constants.ts and the guided intraoperative consultation taxonomy in frontend/data/iocData.ts. Images are limited to branding and UI assets.",
+  "candidates": {
+    "algorithms": [
+      {
+        "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/data/iocData.ts",
+        "note": "Decision trees and consult pathways for IOC guidance"
+      }
+    ],
+    "lectures": [
+      {
+        "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/constants.ts",
+        "note": "Chapter-style knowledge modules with goals and reference text"
+      }
+    ],
+    "images": [
+      {
+        "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/public/login_background_1769514821647.png",
+        "note": "UI/background image; not instructional"
+      },
+      {
+        "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/public/favicon.ico",
+        "note": "App icon; not instructional"
+      }
+    ],
+    "tutorials": [
+      {
+        "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/data/iocData.ts",
+        "note": "Guided case walkthroughs with learning objectives, vignettes, pitfalls, and reporting language"
+      },
+      {
+        "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/components/KnowledgeBase.tsx",
+        "note": "Presentation shell for the reference manual and guided IOC content"
+      },
+      {
+        "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/components/IntraoperativeConsultsModal.tsx",
+        "note": "Interactive educational workflow UI tied to the IOC taxonomy"
+      }
+    ]
+  },
+  "dependencies": [
+    "React 18",
+    "Vite",
+    "TypeScript",
+    "Zustand",
+    "Supabase client",
+    "pdfjs-dist",
+    "xlsx",
+    "papaparse",
+    "lucide-react"
+  ],
+  "recommendation": "Migrate frontend/constants.ts and frontend/data/iocData.ts first. The rest of the repo is mostly workflow UI and infrastructure, with no separate lecture or algorithm corpus beyond those structured data modules."
+}

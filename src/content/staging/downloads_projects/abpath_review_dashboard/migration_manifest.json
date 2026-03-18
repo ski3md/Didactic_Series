@@ -1,0 +1,31 @@
+{
+  "sourceProject": "ABPath_Review_Dashboard",
+  "sourcePath": "/Users/skim4/Downloads/ABPath_Review_Dashboard",
+  "markers": [
+    "Next.js app shell with React dashboard UI",
+    "prisma database and node_modules present",
+    "public image assets limited to logo/favicon-style files",
+    "no dedicated educational content directory found"
+  ],
+  "summary": "No migratable algorithms, lectures, or tutorials were found. The repo is mostly dashboard/application code and dependency noise, with only a small public image asset available as a possible image candidate.",
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [
+      "/Users/skim4/Downloads/ABPath_Review_Dashboard/public/logo.svg"
+    ],
+    "tutorials": []
+  },
+  "dependencies": [
+    "next",
+    "react",
+    "react-dom",
+    "@prisma/client",
+    "prisma",
+    "react-markdown",
+    "sharp",
+    "socket.io",
+    "openai not declared in package.json"
+  ],
+  "recommendation": "Do not stage payloads from this repo yet. If migration remains relevant, inspect the runtime routes and database seed paths for generated study content rather than expecting static curriculum files."
+}

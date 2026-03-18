@@ -1,0 +1,79 @@
+{
+  "sourceProject": "workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)",
+  "sourcePath": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)",
+  "markers": [
+    "src/app/page.tsx",
+    "src/components/simulators/BloodGroupCompatibilitySimulator.tsx",
+    "src/components/simulators/AntibodyIdentificationSimulator.tsx",
+    "src/components/simulators/HDFNRiskCalculator.tsx",
+    "src/components/simulators/ComponentTherapyCalculator.tsx",
+    "src/components/simulators/TransfusionReactionDecisionTree.tsx",
+    "public/logo.svg",
+    "README.md"
+  ],
+  "summary": {
+    "contentAssessment": "The source is a blood-bank / transfusion-medicine educational dashboard with dense inline teaching content and several interactive learning simulators.",
+    "categoryCoverage": {
+      "algorithms": "candidate found",
+      "lectures": "none found",
+      "images": "none found",
+      "tutorials": "candidate found"
+    },
+    "notes": [
+      "The root page contains a large structured knowledge base of transfusion topics, HDFN, component therapy, donor screening, and related pearls.",
+      "The simulator components provide the main interactive teaching workflows.",
+      "No standalone local educational image assets were found; only a branding SVG exists."
+    ]
+  },
+  "candidates": {
+    "algorithms": [
+      {
+        "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/components/simulators/TransfusionReactionDecisionTree.tsx",
+        "reason": "Interactive reaction decision tree with branching diagnostic logic."
+      },
+      {
+        "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/components/simulators/HDFNRiskCalculator.tsx",
+        "reason": "Risk scoring and decision logic for hemolytic disease of the fetus and newborn."
+      },
+      {
+        "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/components/simulators/ComponentTherapyCalculator.tsx",
+        "reason": "Component ordering calculator with rule-based dosing logic."
+      }
+    ],
+    "lectures": [],
+    "images": [],
+    "tutorials": [
+      {
+        "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/app/page.tsx",
+        "reason": "Primary educational dashboard with a large curated transfusion-medicine topic set."
+      },
+      {
+        "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/components/simulators/BloodGroupCompatibilitySimulator.tsx",
+        "reason": "Interactive compatibility teaching module."
+      },
+      {
+        "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/components/simulators/AntibodyIdentificationSimulator.tsx",
+        "reason": "Interactive antibody panel interpretation teaching module."
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/app/layout.tsx",
+      "role": "Next.js app shell and metadata only."
+    },
+    {
+      "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/server.ts",
+      "role": "Socket.IO / Next.js server wrapper; not content."
+    },
+    {
+      "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/lib/db.ts",
+      "role": "Prisma client bootstrap; not content."
+    },
+    {
+      "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/lib/socket.ts",
+      "role": "Realtime infrastructure dependency for the app shell."
+    }
+  ],
+  "recommendation": "Migrate the dashboard content in src/app/page.tsx and the simulator components first, since that is where the teaching material lives. Treat the rest of the project as framework and runtime scaffolding. Do not expect a separate lecture deck or standalone image library in this repository."
+}

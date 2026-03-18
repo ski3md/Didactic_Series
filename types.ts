@@ -5,6 +5,7 @@ export enum Section {
   CASE_LIBRARY = 'Case Library',
   LECTURES = 'Lectures',
   TUTORIALS = 'Tutorials',
+  DOWNLOADS_LIBRARY = 'Downloads Library',
   SYLLABUS_EXPLORER = 'Syllabus Explorer',
   VISUAL_CHALLENGE = 'Visual Challenge',
   DIAGNOSTIC_PATHWAY = 'Diagnostic Pathway',
@@ -37,6 +38,12 @@ export interface StoredImage {
   description: string;
   uploader: string;
   timestamp: number;
+  family?: string;
+  stain?: string;
+  magnification?: string;
+  sourceUrl?: string;
+  collection?: 'curated' | 'official' | 'community';
+  readOnly?: boolean;
   // Optional enriched data
   entity?: string;
   difficulty?: 'beginner' | 'intermediate' | 'advanced';
@@ -122,6 +129,7 @@ export type ImportedContentType =
   | 'lecture'
   | 'tutorial'
   | 'algorithm'
+  | 'image'
   | 'syllabus-topic'
   | 'syllabus-tree'
   | 'syllabus-source'

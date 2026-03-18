@@ -1,0 +1,60 @@
+{
+  "sourceProject": "brseducationaldashboard",
+  "sourcePath": "/Users/skim4/Downloads/brseducationaldashboard",
+  "markers": [
+    "public/script.js",
+    "public/logo.svg",
+    "src/app/page.tsx",
+    "src/lib/db.ts",
+    "public/script.js:contentViews",
+    "public/script.js:slideBoxContent",
+    "public/script.js:caseSimData",
+    "public/script.js:flashcards",
+    "public/script.js:quizQuestions"
+  ],
+  "summary": {
+    "contentAssessment": "The source is a Next.js educational dashboard with its curriculum embedded in a single large public/script.js payload rather than separate lecture, algorithm, or tutorial data files.",
+    "categoryCoverage": {
+      "algorithms": "none found",
+      "lectures": "none found",
+      "images": "candidate found",
+      "tutorials": "candidate found"
+    },
+    "notes": [
+      "The app content is breast-pathology / HER2 focused.",
+      "Most educational material is mixed into one script: guidelines, slide box, case simulation, scenarios, biomarkers, reports, discussion, progress, and images.",
+      "The only standalone local asset outside the script is a small SVG logo."
+    ]
+  },
+  "candidates": {
+    "tutorials": [
+      {
+        "path": "/Users/skim4/Downloads/brseducationaldashboard/public/script.js",
+        "reason": "Contains the main educational curriculum and tutorial-like views, including guidelines, cases, scenarios, flashcards, and quiz content."
+      }
+    ],
+    "images": [
+      {
+        "path": "/Users/skim4/Downloads/brseducationaldashboard/public/script.js",
+        "reason": "Contains embedded image-backed educational content and image library references."
+      },
+      {
+        "path": "/Users/skim4/Downloads/brseducationaldashboard/public/logo.svg",
+        "reason": "Only standalone local image asset found; likely branding, not core curriculum."
+      }
+    ],
+    "lectures": [],
+    "algorithms": []
+  },
+  "dependencies": [
+    {
+      "path": "/Users/skim4/Downloads/brseducationaldashboard/src/app/page.tsx",
+      "role": "App entry that consumes the public content payload."
+    },
+    {
+      "path": "/Users/skim4/Downloads/brseducationaldashboard/src/lib/db.ts",
+      "role": "Data access layer used by the app shell."
+    }
+  ],
+  "recommendation": "Migrate public/script.js first and normalize it into structured tutorial/content records. Do not expect separate lecture or algorithm source files in this project. Treat images as mostly embedded/remote references and extract them only after the text curriculum is staged."
+}

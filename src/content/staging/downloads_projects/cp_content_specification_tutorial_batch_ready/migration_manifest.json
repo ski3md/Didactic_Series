@@ -1,0 +1,48 @@
+{
+  "sourceProject": "cp-content-specification-tutorial-batch-ready",
+  "sourcePath": "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready",
+  "markers": [
+    "tutorial-board-prep generator app",
+    "pre-generated tutorial/MCQ/flashcard corpus",
+    "batch prompt files for OpenAI generation",
+    "atlas-style components reference imageKey values but no raw image payloads"
+  ],
+  "summary": {
+    "status": "usable",
+    "tutorialCorpus": "present",
+    "lectureCorpus": "absent",
+    "algorithmCorpus": "absent",
+    "imagePayloads": "absent"
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [],
+    "tutorials": [
+      "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/pregeneratedData.ts",
+      "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/constants.ts",
+      "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/metadata.json",
+      "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/batches/batch_input.jsonl",
+      "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/scripts/prepare_batch_jsonl.ts",
+      "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/scripts/download_results.ts",
+      "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/scripts/export_converters.ts"
+    ]
+  },
+  "dependencies": [
+    "@google/genai",
+    "chalk",
+    "dotenv",
+    "idb-keyval",
+    "jq",
+    "openai",
+    "react",
+    "react-dom",
+    "recharts",
+    "three",
+    "@vitejs/plugin-react",
+    "ts-node",
+    "typescript",
+    "vite"
+  ],
+  "recommendation": "Stage pregeneratedData.ts and batch artifacts first, then normalize tutorial content into structured JSON before considering any image extraction or lecture/algorithm migration."
+}

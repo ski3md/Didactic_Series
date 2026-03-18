@@ -1,0 +1,71 @@
+{
+  "sourceProject": "pathology-learning-module_-granulomatous-diseases (3)",
+  "sourcePath": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)",
+  "markers": [
+    "Lecture slide deck embedded in `components/Lecture.tsx`",
+    "Diagnostic pathway question set embedded in `components/DiagnosticPathway.tsx`",
+    "Tutorial/case module bank in `data/modules.ts`",
+    "Histology gallery metadata in `data/gallery.json` with official and community image records"
+  ],
+  "summary": {
+    "overall": "This is a pathology learning module for granulomatous lung disease with substantial educational content embedded in React components and JSON data. The most migratable payloads are the lecture slide deck, the diagnostic pathway, the tutorial/case bank, and the image gallery metadata.",
+    "counts": {
+      "lectureSlides": 1,
+      "pathwayQuestions": 4,
+      "tutorialModules": 3,
+      "galleryCollections": 2,
+      "officialImages": 216,
+      "communityImages": 0
+    }
+  },
+  "candidates": {
+    "algorithms": {
+      "files": [
+        "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/components/DiagnosticPathway.tsx",
+        "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/src/data/caseMetadataRules.json"
+      ],
+      "note": "Stepwise diagnostic pathway content plus rule metadata that drives granuloma classification."
+    },
+    "lectures": {
+      "files": [
+        "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/components/Lecture.tsx"
+      ],
+      "note": "Self-contained lecture deck with slide content, quiz, and image-based teaching slides."
+    },
+    "images": {
+      "files": [
+        "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/data/gallery.json"
+      ],
+      "note": "Image gallery index only; image binaries are external GCS URLs referenced from metadata."
+    },
+    "tutorials": {
+      "files": [
+        "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/data/modules.ts"
+      ],
+      "note": "Three granulomatous-disease tutorial modules with case tutorials, MCQs, and flashcards."
+    }
+  },
+  "dependencies": {
+    "runtime": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "react-konva",
+      "konva",
+      "use-image",
+      "zustand"
+    ],
+    "externalServices": [
+      "Google Gemini API",
+      "Google Cloud Storage CDN URLs in gallery metadata",
+      "OpenSeadragon-based WSI workflow referenced in docs",
+      "Browser storage / mock API for local persistence"
+    ],
+    "notes": [
+      "The module is already tightly coupled to its app shell; the content is embedded rather than separated into dedicated content files.",
+      "The image gallery metadata is the key source for histology assets, but no local image binaries were found in the repo."
+    ]
+  },
+  "recommendation": "Migrate the embedded lecture, pathway, tutorial, and gallery metadata first, then decide whether to extract them into standalone content files in the target project. Preserve the external image URLs and treat the React/Vite app as delivery infrastructure."
+}

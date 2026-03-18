@@ -1,0 +1,123 @@
+{
+  "sourceProject": "pathology-learning-module_-granulomatous-diseases",
+  "sourcePath": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases",
+  "markers": [
+    "metadata.json",
+    "README.md",
+    "App.tsx",
+    "components/Home.tsx",
+    "components/JobAid.tsx",
+    "components/CaseStudy.tsx",
+    "components/DiagnosticPathway.tsx",
+    "components/AnalysisPhase.tsx",
+    "components/DesignPhase.tsx",
+    "components/DevelopmentPhase.tsx",
+    "components/AssessmentPhase.tsx",
+    "components/EvaluationPhase.tsx",
+    "components/WSIViewer.tsx",
+    "components/AICaseGenerator.tsx"
+  ],
+  "summary": {
+    "contentAssessment": "The source is a self-contained didactic pathology module on granulomatous lung disease with a strong tutorial core, a stepwise diagnostic pathway, ADDIE lecture-style sections, and slide-viewer dependencies.",
+    "categoryCoverage": {
+      "algorithms": "candidate found",
+      "lectures": "candidate found",
+      "images": "candidate found",
+      "tutorials": "candidate found"
+    },
+    "notes": [
+      "No standalone local image files were found; image content is embedded through remote DZI slide sources and a single inline JPEG example.",
+      "The ADDIE sections are pedagogical lecture/meta-narrative content rather than app scaffolding.",
+      "The WSI viewer is a dependency for image-based learning but is not itself a content payload."
+    ]
+  },
+  "candidates": {
+    "algorithms": [
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/DiagnosticPathway.tsx",
+        "reason": "Implements the interactive decision-tree diagnostic pathway and compendium table."
+      }
+    ],
+    "lectures": [
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/AnalysisPhase.tsx",
+        "reason": "ADDIE lecture-style analysis content with embedded knowledge checks."
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/DesignPhase.tsx",
+        "reason": "ADDIE design lecture content covering learning objectives and Bloom's levels."
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/DevelopmentPhase.tsx",
+        "reason": "ADDIE development narrative plus worked instructional examples."
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/EvaluationPhase.tsx",
+        "reason": "ADDIE evaluation content with a board-style question and explanatory feedback."
+      }
+    ],
+    "images": [
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/CaseStudy.tsx",
+        "reason": "Contains an embedded WSI example and an image-backed case workflow."
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/EvaluationPhase.tsx",
+        "reason": "Uses two WSI slide sources for visual discrimination challenges."
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/DevelopmentPhase.tsx",
+        "reason": "Uses an inline histology image URL as part of the worked case."
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/WSIViewer.tsx",
+        "reason": "Image-viewer dependency for whole-slide imaging content."
+      }
+    ],
+    "tutorials": [
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/Home.tsx",
+        "reason": "Introduces the learning module and navigation to the didactic activities."
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/JobAid.tsx",
+        "reason": "Reference-style quick aid comparing sarcoidosis and tuberculosis."
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/CaseStudy.tsx",
+        "reason": "Guided case-based tutorial with clinical reasoning and reveal-answer flow."
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/AssessmentPhase.tsx",
+        "reason": "Board-style tutorial question with interactive feedback."
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/AICaseGenerator.tsx",
+        "reason": "Interactive tutorial workflow for generating and critiquing new cases."
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/App.tsx",
+      "role": "Root navigation and section composition for the module."
+    },
+    {
+      "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/Sidebar.tsx",
+      "role": "Navigation shell used by the learning module."
+    },
+    {
+      "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/Card.tsx",
+      "role": "Shared presentation wrapper used across content sections."
+    },
+    {
+      "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/icons.tsx",
+      "role": "Shared UI icon set used by educational views."
+    },
+    {
+      "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/WSIViewer.tsx",
+      "role": "Viewer dependency required for slide-based content."
+    }
+  ],
+  "recommendation": "Migrate the tutorial, lecture, and algorithm sections as structured content first, then normalize the image-linked case material separately. Do not expect local image assets; the module depends on remote WSI tile sources and one inline example image."
+}

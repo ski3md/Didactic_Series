@@ -1,0 +1,27 @@
+{
+  "sourceProject": "workspace-722b3264-636d-4869-afa6-c8b0a38be36f",
+  "sourcePath": "/Users/skim4/Downloads/workspace-722b3264-636d-4869-afa6-c8b0a38be36f",
+  "markers": [
+    "Next.js scaffold",
+    "single logo landing page",
+    "Prisma starter schema",
+    "empty SQLite tables",
+    "no educational corpus"
+  ],
+  "summary": "This source project is an application scaffold with no migratable educational content. The page renders only a logo, the database contains only empty starter tables, and there are no lecture, tutorial, algorithm, or image datasets beyond branding assets.",
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [],
+    "tutorials": []
+  },
+  "dependencies": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Prisma",
+    "SQLite"
+  ],
+  "recommendation": "Do not migrate content from this repo. If needed, only the generic app shell or branding could be reused, but there is no educational payload worth importing."
+}

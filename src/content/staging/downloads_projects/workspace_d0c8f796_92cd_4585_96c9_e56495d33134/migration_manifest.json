@@ -1,0 +1,60 @@
+{
+  "sourceProject": "workspace-d0c8f796-92cd-4585-96c9-e56495d33134",
+  "sourcePath": "/Users/skim4/Downloads/workspace-d0c8f796-92cd-4585-96c9-e56495d33134",
+  "markers": [
+    "surgical schedule dashboard validation harness",
+    "test-suite.js, simulation-script.js, and demo-script.js are the main runnable artifacts",
+    "no lecture or tutorial corpus found",
+    "single direct asset candidate: public/logo.svg"
+  ],
+  "summary": {
+    "status": "mostly-empty",
+    "tutorialCorpus": "absent",
+    "lectureCorpus": "absent",
+    "algorithmCorpus": "absent",
+    "imagePayloads": "minimal"
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [
+      "/Users/skim4/Downloads/workspace-d0c8f796-92cd-4585-96c9-e56495d33134/public/logo.svg"
+    ],
+    "tutorials": []
+  },
+  "dependencies": [
+    "@dnd-kit/core",
+    "@dnd-kit/sortable",
+    "@dnd-kit/utilities",
+    "@hookform/resolvers",
+    "@mdxeditor/editor",
+    "@prisma/client",
+    "@radix-ui/react-*",
+    "@reactuses/core",
+    "@tanstack/react-query",
+    "@tanstack/react-table",
+    "axios",
+    "date-fns",
+    "framer-motion",
+    "lucide-react",
+    "next",
+    "next-auth",
+    "next-intl",
+    "next-themes",
+    "react",
+    "react-dom",
+    "react-hook-form",
+    "react-markdown",
+    "recharts",
+    "sharp",
+    "socket.io",
+    "socket.io-client",
+    "sonner",
+    "tailwindcss",
+    "typescript",
+    "z-ai-web-dev-sdk",
+    "zod",
+    "zustand"
+  ],
+  "recommendation": "Do not migrate payloads from this repo for the requested categories; it is primarily a test and simulation workspace. If anything is staged later, start with the logo asset only."
+}

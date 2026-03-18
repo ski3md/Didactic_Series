@@ -1,3 +1,9 @@
-requests
-beautifulsoup4
-lxml
+Pillow
+aiofiles
+openai
+psutil
+backoff
+PyYAML
+sentry-sdk
+prometheus-client
+tqdm

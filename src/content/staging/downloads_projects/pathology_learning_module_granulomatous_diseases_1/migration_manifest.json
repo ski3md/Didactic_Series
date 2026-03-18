@@ -1,0 +1,94 @@
+{
+  "sourceProject": "pathology-learning-module_-granulomatous-diseases (1)",
+  "sourcePath": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (1)",
+  "markers": [
+    "components/CaseStudy.tsx contains a complete board-style case study with an embedded whole-slide image viewer and answer reveal.",
+    "components/DiagnosticPathway.tsx contains a 10-step diagnostic decision tree plus a compendium table covering sarcoidosis, HP, TB, endemic fungi, vasculitis, and mimics.",
+    "components/AnalysisPhase.tsx, components/DesignPhase.tsx, and components/DevelopmentPhase.tsx implement ADDIE instructional-design lessons with structured educational text.",
+    "components/EvaluationPhase.tsx compares two pathology slides using OpenSeadragon DZI URLs for side-by-side visual discrimination.",
+    "components/AICaseGenerator.tsx generates additional granulomatous-disease cases via Google Gemini at runtime.",
+    "No local lecture dataset, algorithm JSON, or image asset folder was found; visual content is driven by remote slide URLs and inline instructional content."
+  ],
+  "summary": {
+    "candidateCounts": {
+      "algorithms": 1,
+      "lectures": 3,
+      "images": 3,
+      "tutorials": 4
+    },
+    "notes": "This module is an authored learning experience rather than a content repository. The migration candidates are mostly React screens with embedded instructional text and remote slide references."
+  },
+  "candidates": {
+    "algorithms": [
+      {
+        "path": "components/DiagnosticPathway.tsx",
+        "kind": "multi-step diagnostic workflow / decision-tree content",
+        "evidence": "Defines q1..q10 pathwayData plus a compendium table for granulomatous disease differentials."
+      }
+    ],
+    "lectures": [
+      {
+        "path": "components/AnalysisPhase.tsx",
+        "kind": "ADDIE analysis lesson",
+        "evidence": "Defines learner profile, knowledge-gap analysis, and instructional goals with embedded knowledge check."
+      },
+      {
+        "path": "components/DesignPhase.tsx",
+        "kind": "ADDIE design lesson",
+        "evidence": "Defines Bloom's taxonomy framing and three learning objectives."
+      },
+      {
+        "path": "components/DevelopmentPhase.tsx",
+        "kind": "ADDIE development lesson",
+        "evidence": "Contains a comparative job aid and a worked case narrative with expert answer."
+      }
+    ],
+    "images": [
+      {
+        "path": "components/CaseStudy.tsx",
+        "kind": "single whole-slide-image case study",
+        "evidence": "Embeds WSIViewer with a DZI pathology slide and explanatory text for HP vs sarcoidosis."
+      },
+      {
+        "path": "components/EvaluationPhase.tsx",
+        "kind": "side-by-side slide comparison exercise",
+        "evidence": "Uses two OpenSeadragon DZI slide URLs to compare granuloma quality and distribution."
+      },
+      {
+        "path": "components/DevelopmentPhase.tsx",
+        "kind": "inline image-supported case vignette",
+        "evidence": "Includes an img tag with a pathology image placeholder for the hypersensitivity pneumonitis case."
+      }
+    ],
+    "tutorials": [
+      {
+        "path": "components/CaseStudy.tsx",
+        "kind": "authored case tutorial",
+        "evidence": "Presents clinical, radiologic, histologic, and diagnostic-task sections with expert answer."
+      },
+      {
+        "path": "components/DiagnosticPathway.tsx",
+        "kind": "guided tutorial / quiz pathway",
+        "evidence": "Walks the learner through a branching differential diagnosis and a summary compendium."
+      },
+      {
+        "path": "components/AICaseGenerator.tsx",
+        "kind": "AI-generated case tutorial workflow",
+        "evidence": "Creates new case studies and feedback loops via Google GenAI prompts."
+      },
+      {
+        "path": "components/AssessmentPhase.tsx",
+        "kind": "board-style assessment tutorial",
+        "evidence": "Contains a full stem, answer options, and explanations for the final diagnosis."
+      }
+    ]
+  },
+  "dependencies": [
+    "App.tsx is the screen router that wires these tutorial and lecture phases into the module.",
+    "components/CaseStudy.tsx and components/EvaluationPhase.tsx depend on components/WSIViewer.tsx, which requires OpenSeadragon and remote DZI tile sources.",
+    "components/AICaseGenerator.tsx depends on @google/genai and a runtime API key.",
+    "components/DiagnosticPathway.tsx and components/AssessmentPhase.tsx depend on the shared tracking utility for quiz-event logging.",
+    "There are no local binary image assets to stage; the visual learning content depends on remote slide/image URLs."
+  ],
+  "recommendation": "Stage the authored React content files first, starting with the diagnostic pathway, case study, and ADDIE lesson screens. There is no standalone lecture archive or image asset bundle to migrate from this repo."
+}

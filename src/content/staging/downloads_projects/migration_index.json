@@ -1,0 +1,1756 @@
+{
+  "generatedAt": "2026-03-18T19:06:11.703316+00:00",
+  "sourceRoot": "/Users/skim4/Downloads",
+  "projectCount": 33,
+  "totals": {
+    "algorithms": 12,
+    "lectures": 11,
+    "images": 39,
+    "tutorials": 85
+  },
+  "priorityProjects": [
+    {
+      "slug": "batch_project",
+      "sourceProject": "batch_project",
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 13
+      },
+      "recommendation": "Treat this repo as a batch factory. Migrate the JSONL topic lists and any validated batch outputs first; do not expect standalone lecture or algorithm assets here. If instructional structure is needed, derive it from the generated outputs rather than the pipeline scripts."
+    },
+    {
+      "slug": "pathology_learning_module_granulomatous_diseases",
+      "sourceProject": "pathology-learning-module_-granulomatous-diseases",
+      "candidateCounts": {
+        "algorithms": 1,
+        "lectures": 4,
+        "images": 4,
+        "tutorials": 5
+      },
+      "recommendation": "Migrate the tutorial, lecture, and algorithm sections as structured content first, then normalize the image-linked case material separately. Do not expect local image assets; the module depends on remote WSI tile sources and one inline example image."
+    },
+    {
+      "slug": "pathology_learning_module_granulomatous_diseases_1",
+      "sourceProject": "pathology-learning-module_-granulomatous-diseases (1)",
+      "candidateCounts": {
+        "algorithms": 1,
+        "lectures": 3,
+        "images": 3,
+        "tutorials": 4
+      },
+      "recommendation": "Stage the authored React content files first, starting with the diagnostic pathway, case study, and ADDIE lesson screens. There is no standalone lecture archive or image asset bundle to migrate from this repo."
+    },
+    {
+      "slug": "cp_content_specification_tutorial_batch_ready",
+      "sourceProject": "cp-content-specification-tutorial-batch-ready",
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 7
+      },
+      "recommendation": "Stage pregeneratedData.ts and batch artifacts first, then normalize tutorial content into structured JSON before considering any image extraction or lecture/algorithm migration."
+    },
+    {
+      "slug": "workspace_23eae586_0c4b_44f9_83bd_cef625ab43de_1",
+      "sourceProject": "workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)",
+      "candidateCounts": {
+        "algorithms": 3,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 3
+      },
+      "recommendation": "Migrate the dashboard content in src/app/page.tsx and the simulator components first, since that is where the teaching material lives. Treat the rest of the project as framework and runtime scaffolding. Do not expect a separate lecture deck or standalone image library in this repository."
+    },
+    {
+      "slug": "brseducationaldashboard_2",
+      "sourceProject": "brseducationaldashboard 2",
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 2,
+        "tutorials": 5
+      },
+      "recommendation": "Migrate the tutorial/question subsystem first. Treat lectures and algorithms as absent unless future inspection finds hidden structured files outside the current app shell. Copying the branding images is optional and low value."
+    },
+    {
+      "slug": "dashboard1",
+      "sourceProject": "dashboard1",
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 5
+      },
+      "recommendation": "Stage the five backend JSON datasets first as tutorial content. Treat the frontend as renderers only, and do not look for independent lecture, algorithm, or image sources in this project unless a new asset directory is added later."
+    },
+    {
+      "slug": "pathology_learning_module_granulomatous_diseases_2",
+      "sourceProject": "pathology-learning-module_-granulomatous-diseases (2)",
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 5
+      },
+      "recommendation": "Migrate the structured case metadata and embedded case-study content first; there are no raw image assets to copy, so image migration can be deferred until the source repo gains a durable media store."
+    },
+    {
+      "slug": "frozens_dashboard_2",
+      "sourceProject": "frozens-dashboard-2",
+      "candidateCounts": {
+        "algorithms": 1,
+        "lectures": 1,
+        "images": 2,
+        "tutorials": 3
+      },
+      "recommendation": "Migrate frontend/constants.ts and frontend/data/iocData.ts first. The rest of the repo is mostly workflow UI and infrastructure, with no separate lecture or algorithm corpus beyond those structured data modules."
+    },
+    {
+      "slug": "abpath_clinical_pathology_comprehensive_review",
+      "sourceProject": "ABPath Clinical Pathology Comprehensive Review",
+      "candidateCounts": {
+        "algorithms": 2,
+        "lectures": 1,
+        "images": 1,
+        "tutorials": 2
+      },
+      "recommendation": "Treat this as an inline-content migration candidate, not a corpus import. If you proceed, first extract the hard-coded study content from `src/app/page.tsx` into structured content files; otherwise there is very little standalone educational payload to migrate."
+    },
+    {
+      "slug": "clinical_pathology_review",
+      "sourceProject": "/Users/skim4/Downloads/clinical-pathology-review",
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 4,
+        "tutorials": 4
+      },
+      "recommendation": "Do not copy payloads yet. If migration proceeds, extract the embedded MCQ/tutorial content from src/App.jsx and the generator script into a normalized content schema first. No standalone lecture or algorithm corpus was found."
+    },
+    {
+      "slug": "abpath_cp_compreview",
+      "sourceProject": "/Users/skim4/Downloads/ABPath_CP_CompReview",
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 2,
+        "tutorials": 4
+      },
+      "recommendation": "If migration continues, stage the tutorial/question subsystem first: `src/app/page.tsx`, `src/app/api/questions/route.ts`, `src/app/api/upload/route.ts`, and `src/lib/anki-parser.ts`. Do not spend time on lectures or algorithms for this repo unless new source data appears, because no separate lecture or algorithm corpus exists here."
+    },
+    {
+      "slug": "virtual_mycology_simulator",
+      "sourceProject": "virtual-mycology-simulator",
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 2,
+        "tutorials": 4
+      },
+      "recommendation": "Stage the AI workflow and renderer components together if you want to preserve the simulator behavior. There is no standalone lecture archive, algorithm dataset, or local image corpus to migrate from this repo."
+    },
+    {
+      "slug": "pathology_learning_module_granulomatous_diseases_3",
+      "sourceProject": "pathology-learning-module_-granulomatous-diseases (3)",
+      "candidateCounts": {
+        "algorithms": 2,
+        "lectures": 1,
+        "images": 1,
+        "tutorials": 1
+      },
+      "recommendation": "Migrate the embedded lecture, pathway, tutorial, and gallery metadata first, then decide whether to extract them into standalone content files in the target project. Preserve the external image URLs and treat the React/Vite app as delivery infrastructure."
+    },
+    {
+      "slug": "workspace_3418f879_7689_4224_9717_636b27130563",
+      "sourceProject": "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563",
+      "candidateCounts": {
+        "algorithms": 1,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 2
+      },
+      "recommendation": "Stage bacterial_algorithm_data.py first, then normalize the README/IMPLEMENTATION_SUMMARY instructional text if tutorial content needs to be migrated. No lecture corpus is present."
+    }
+  ],
+  "projects": [
+    {
+      "slug": "abpath_advanced_board_prep_platform_3",
+      "sourceProject": "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)",
+      "sourcePath": "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)",
+      "markers": [
+        "abpath_export_1766721402593.json",
+        "metadata.json",
+        "README.md",
+        "App.tsx",
+        "pregeneratedData.ts",
+        "style-enforcement-agent/public/*.png|*.svg|*.jpg"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 2
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/style-enforcement-agent/public/*.png|*.svg|*.jpg"
+        ],
+        "tutorials": [
+          "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/abpath_export_1766721402593.json",
+          "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/metadata.json"
+        ]
+      },
+      "recommendation": "Migrate only the export JSON first. There is no separate lecture or algorithm corpus to lift from this project, and the image files are not educational assets. The next step should be parsing the export into the target schema and deciding whether any of the histology-marked tutorial records should be split into a dedicated image-backed subset.",
+      "summary": {
+        "contentRecords": 239,
+        "tutorial-likeRecords": 239,
+        "lectureRecords": 0,
+        "algorithmRecords": 0,
+        "imageAssetFiles": 7,
+        "imageDrivenTutorialRecords": 239
+      }
+    },
+    {
+      "slug": "abpath_clinical_pathology_comprehensive_review",
+      "sourceProject": "ABPath Clinical Pathology Comprehensive Review",
+      "sourcePath": "/Users/skim4/Downloads/ABPath Clinical Pathology Comprehensive Review",
+      "markers": [
+        "src/app/page.tsx contains the primary study UI, including embedded flashcards, question sets, progress metrics, and topic tabs.",
+        "src/app/api/questions/route.ts generates board-review questions through `z-ai-web-dev-sdk`.",
+        "public/logo.svg is the only standalone image asset found in the inspected source tree.",
+        "No dedicated lecture, algorithm, or tutorial data directory was found; relevant educational content is inline in application code."
+      ],
+      "candidateCounts": {
+        "algorithms": 2,
+        "lectures": 1,
+        "images": 1,
+        "tutorials": 2
+      },
+      "pathsByCategory": {
+        "algorithms": [
+          {
+            "file": "src/app/page.tsx",
+            "reason": "Contains the study card flows, category logic, and question/answer content used by the app."
+          },
+          {
+            "file": "src/app/api/questions/route.ts",
+            "reason": "Generates algorithm-like board-review questions from category/type input."
+          }
+        ],
+        "lectures": [
+          {
+            "file": "src/app/page.tsx",
+            "reason": "No standalone lecture files were found; any lecture-like educational material is embedded in the app page."
+          }
+        ],
+        "images": [
+          {
+            "file": "public/logo.svg",
+            "reason": "Only standalone image asset discovered in the source project."
+          }
+        ],
+        "tutorials": [
+          {
+            "file": "src/app/page.tsx",
+            "reason": "Contains flashcards, topic sections, and learning tabs that function as tutorial content."
+          },
+          {
+            "file": "src/app/api/questions/route.ts",
+            "reason": "Supports tutorial-style question generation for the study flow."
+          }
+        ]
+      },
+      "recommendation": "Treat this as an inline-content migration candidate, not a corpus import. If you proceed, first extract the hard-coded study content from `src/app/page.tsx` into structured content files; otherwise there is very little standalone educational payload to migrate.",
+      "summary": "This project is mostly a Next.js study dashboard with hard-coded board-review content and AI-generated questions, not a separate content corpus. The only clear migratable educational assets are the inline study/question blocks in `src/app/page.tsx`, the question-generation API route, and the branding image."
+    },
+    {
+      "slug": "abpath_clinical_pathology_comprehensive_review_redownload",
+      "sourceProject": "ABPath Clinical Pathology Comprehensive Review_redownload",
+      "sourcePath": "/Users/skim4/Downloads/ABPath Clinical Pathology Comprehensive Review_redownload",
+      "markers": [
+        "src/app/page.tsx contains an embedded flashcard bank of 15 study cards and the main study-dashboard UI.",
+        "src/app/api/questions/route.ts generates review questions through z-ai-web-dev-sdk rather than reading a local lecture corpus.",
+        "src/app/api/upload/route.ts accepts .apkg uploads and falls back to mock Anki cards for demo study content.",
+        "No standalone lecture, algorithm, tutorial, or educational image dataset files were found outside the app shell."
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 1
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [],
+        "tutorials": [
+          {
+            "path": "src/app/page.tsx",
+            "kind": "embedded flashcard/study dashboard content",
+            "evidence": "Lines 49-80 handle generated study questions, lines 90-145 handle Anki uploads, and lines 1442-1571 define the flashcard bank."
+          }
+        ]
+      },
+      "recommendation": "Migrate only the embedded study-card workflow if you want reusable review content; otherwise there is no standalone lectures, algorithms, or image corpus to stage from this repo.",
+      "summary": {
+        "candidateCounts": {
+          "algorithms": 0,
+          "lectures": 0,
+          "images": 0,
+          "tutorials": 1
+        },
+        "notes": "This repository is primarily a Next.js scaffold with one embedded study deck, not a content repository organized around separate curriculum files."
+      }
+    },
+    {
+      "slug": "abpath_cp_compreview",
+      "sourceProject": "/Users/skim4/Downloads/ABPath_CP_CompReview",
+      "sourcePath": "/Users/skim4/Downloads/ABPath_CP_CompReview",
+      "markers": [
+        "clinical pathology board review",
+        "Generate 5 ${category} questions",
+        "Anki upload / flashcard parsing",
+        "studyModalities",
+        "generatedQuestions",
+        "CP Board Review Dashboard"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 2,
+        "tutorials": 4
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          {
+            "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/public/logo.svg",
+            "note": "Branding asset only; not instructional content."
+          },
+          {
+            "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/src/app/favicon.ico",
+            "note": "App icon only; not instructional content."
+          }
+        ],
+        "tutorials": [
+          {
+            "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/src/app/page.tsx",
+            "note": "Primary tutorial surface: flashcards, generated questions, question modes, study session UI, and embedded sample clinical-pathology review content."
+          },
+          {
+            "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/src/app/api/questions/route.ts",
+            "note": "Generates board-review questions and study modalities."
+          },
+          {
+            "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/src/app/api/upload/route.ts",
+            "note": "Anki upload path with sample flashcards and category tagging."
+          },
+          {
+            "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/src/lib/anki-parser.ts",
+            "note": "Parses flashcards and cloze deletions; classifies study cards by tag."
+          }
+        ]
+      },
+      "recommendation": "If migration continues, stage the tutorial/question subsystem first: `src/app/page.tsx`, `src/app/api/questions/route.ts`, `src/app/api/upload/route.ts`, and `src/lib/anki-parser.ts`. Do not spend time on lectures or algorithms for this repo unless new source data appears, because no separate lecture or algorithm corpus exists here.",
+      "summary": "Next.js clinical pathology review app with embedded tutorial/question content and Anki-flashcard tooling. No standalone lecture or algorithm dataset was found; the educational material is concentrated in the app page, AI question route, and Anki parser."
+    },
+    {
+      "slug": "abpath_reactpwa_workspace",
+      "sourceProject": "ABPath_ReactPWA_Workspace",
+      "sourcePath": "/Users/skim4/Downloads/ABPath_ReactPWA_Workspace",
+      "markers": [
+        "small React/Vite PWA shell",
+        "board-prep study app language in README",
+        "no content/data directories under src or public beyond favicon",
+        "service worker and HTTPS dev setup present"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 0
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          "/Users/skim4/Downloads/ABPath_ReactPWA_Workspace/public/favicon.svg"
+        ],
+        "tutorials": []
+      },
+      "recommendation": "Do not copy payloads from this repo yet. If migration is still desired, the next useful step is to inspect the app logic for hard-coded study flows rather than content assets.",
+      "summary": "No migratable educational payload was found for algorithms, lectures, or tutorials. The only image-like asset present is the app favicon. The repo is primarily UI scaffolding and runtime configuration."
+    },
+    {
+      "slug": "abpath_review_dashboard",
+      "sourceProject": "ABPath_Review_Dashboard",
+      "sourcePath": "/Users/skim4/Downloads/ABPath_Review_Dashboard",
+      "markers": [
+        "Next.js app shell with React dashboard UI",
+        "prisma database and node_modules present",
+        "public image assets limited to logo/favicon-style files",
+        "no dedicated educational content directory found"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 0
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          "/Users/skim4/Downloads/ABPath_Review_Dashboard/public/logo.svg"
+        ],
+        "tutorials": []
+      },
+      "recommendation": "Do not stage payloads from this repo yet. If migration remains relevant, inspect the runtime routes and database seed paths for generated study content rather than expecting static curriculum files.",
+      "summary": "No migratable algorithms, lectures, or tutorials were found. The repo is mostly dashboard/application code and dependency noise, with only a small public image asset available as a possible image candidate."
+    },
+    {
+      "slug": "abpath_smart_qbank",
+      "sourceProject": "abpath-smart-qbank",
+      "sourcePath": "/Users/skim4/Downloads/abpath-smart-qbank",
+      "markers": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          "components/VisualModels.tsx"
+        ],
+        "tutorials": [
+          "data/syllabus.ts",
+          "services/geminiService.ts"
+        ]
+      },
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 2
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          "/Users/skim4/Downloads/abpath-smart-qbank/components/VisualModels.tsx"
+        ],
+        "tutorials": [
+          "/Users/skim4/Downloads/abpath-smart-qbank/data/syllabus.ts",
+          "/Users/skim4/Downloads/abpath-smart-qbank/services/geminiService.ts"
+        ]
+      },
+      "recommendation": "Do not copy payloads yet. If migration is needed, extract or regenerate tutorial content from data/syllabus.ts and geminiService.ts first. There are no standalone lecture or algorithm assets to migrate, and no image library beyond synthetic UI visualizations.",
+      "summary": "The repository is primarily an AI-driven qbank application, not a source repository of static lecture, image, or algorithm content. The only content-adjacent syllabus payload is the AP/CP topic taxonomy in data/syllabus.ts, while VisualModels.tsx provides synthetic educational visualizations rather than stored media assets."
+    },
+    {
+      "slug": "batch_project",
+      "sourceProject": "batch_project",
+      "sourcePath": "/Users/skim4/Downloads/batch_project",
+      "markers": [
+        "Batch orchestration scripts: `batch_pipeline.py` and `batch_dashboard.py`",
+        "Topic-driven educational JSONL inputs: `extended_batch.jsonl`, `extended_batch_part_*.jsonl`, `remaining_topics.jsonl`",
+        "Generated outputs and failures: `merged_output.jsonl`, `batch_results/*.jsonl`, `logs/errors/*.json`",
+        "No standalone lecture, algorithm, or tutorial library directory found; content is embedded as batch prompts/results"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 13
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          "/Users/skim4/Downloads/batch_project/public/logo.svg"
+        ],
+        "tutorials": [
+          "/Users/skim4/Downloads/batch_project/extended_batch.jsonl",
+          "/Users/skim4/Downloads/batch_project/extended_batch_part_1.jsonl",
+          "/Users/skim4/Downloads/batch_project/extended_batch_part_2.jsonl",
+          "/Users/skim4/Downloads/batch_project/extended_batch_part_3.jsonl",
+          "/Users/skim4/Downloads/batch_project/extended_batch_part_4.jsonl",
+          "/Users/skim4/Downloads/batch_project/extended_batch_part_5.jsonl",
+          "/Users/skim4/Downloads/batch_project/extended_batch_part_6.jsonl",
+          "/Users/skim4/Downloads/batch_project/extended_batch_part_7.jsonl",
+          "/Users/skim4/Downloads/batch_project/extended_batch_part_8.jsonl",
+          "/Users/skim4/Downloads/batch_project/extended_batch_part_9.jsonl",
+          "/Users/skim4/Downloads/batch_project/extended_batch_part_10.jsonl",
+          "/Users/skim4/Downloads/batch_project/remaining_topics.jsonl",
+          "/Users/skim4/Downloads/batch_project/merged_output.jsonl"
+        ]
+      },
+      "recommendation": "Treat this repo as a batch factory. Migrate the JSONL topic lists and any validated batch outputs first; do not expect standalone lecture or algorithm assets here. If instructional structure is needed, derive it from the generated outputs rather than the pipeline scripts.",
+      "summary": {
+        "overall": "This repository is a batch-generation workspace for educational content, not a canonical content source. The usable migratable material is the topic/request JSONL set plus generated outputs; there is no dedicated lecture or algorithm corpus and no histology/image collection beyond a logo asset.",
+        "counts": {
+          "topicInputFiles": 12,
+          "resultFiles": 10,
+          "errorFiles": 10
+        }
+      }
+    },
+    {
+      "slug": "brseducationaldashboard",
+      "sourceProject": "brseducationaldashboard",
+      "sourcePath": "/Users/skim4/Downloads/brseducationaldashboard",
+      "markers": [
+        "public/script.js",
+        "public/logo.svg",
+        "src/app/page.tsx",
+        "src/lib/db.ts",
+        "public/script.js:contentViews",
+        "public/script.js:slideBoxContent",
+        "public/script.js:caseSimData",
+        "public/script.js:flashcards",
+        "public/script.js:quizQuestions"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 2,
+        "tutorials": 1
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          {
+            "path": "/Users/skim4/Downloads/brseducationaldashboard/public/script.js",
+            "reason": "Contains embedded image-backed educational content and image library references."
+          },
+          {
+            "path": "/Users/skim4/Downloads/brseducationaldashboard/public/logo.svg",
+            "reason": "Only standalone local image asset found; likely branding, not core curriculum."
+          }
+        ],
+        "tutorials": [
+          {
+            "path": "/Users/skim4/Downloads/brseducationaldashboard/public/script.js",
+            "reason": "Contains the main educational curriculum and tutorial-like views, including guidelines, cases, scenarios, flashcards, and quiz content."
+          }
+        ]
+      },
+      "recommendation": "Migrate public/script.js first and normalize it into structured tutorial/content records. Do not expect separate lecture or algorithm source files in this project. Treat images as mostly embedded/remote references and extract them only after the text curriculum is staged.",
+      "summary": {
+        "contentAssessment": "The source is a Next.js educational dashboard with its curriculum embedded in a single large public/script.js payload rather than separate lecture, algorithm, or tutorial data files.",
+        "categoryCoverage": {
+          "algorithms": "none found",
+          "lectures": "none found",
+          "images": "candidate found",
+          "tutorials": "candidate found"
+        },
+        "notes": [
+          "The app content is breast-pathology / HER2 focused.",
+          "Most educational material is mixed into one script: guidelines, slide box, case simulation, scenarios, biomarkers, reports, discussion, progress, and images.",
+          "The only standalone local asset outside the script is a small SVG logo."
+        ]
+      }
+    },
+    {
+      "slug": "brseducationaldashboard_2",
+      "sourceProject": "brseducationaldashboard 2",
+      "sourcePath": "/Users/skim4/Downloads/brseducationaldashboard 2",
+      "markers": [
+        "Next.js app shell with embedded educational content",
+        "clinical pathology board review",
+        "flashcards",
+        "Anki upload/parsing",
+        "generated questions",
+        "case simulator",
+        "image library",
+        "study modalities"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 2,
+        "tutorials": 5
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          {
+            "path": "/Users/skim4/Downloads/brseducationaldashboard 2/public/logo.svg",
+            "note": "Branding only; not instructional content"
+          },
+          {
+            "path": "/Users/skim4/Downloads/brseducationaldashboard 2/src/app/favicon.ico",
+            "note": "App icon; not instructional content"
+          }
+        ],
+        "tutorials": [
+          {
+            "path": "/Users/skim4/Downloads/brseducationaldashboard 2/public/script.js",
+            "note": "Largest embedded study module; includes flashcards, cases, guideline content, image-library metadata, and board-review workflows"
+          },
+          {
+            "path": "/Users/skim4/Downloads/brseducationaldashboard 2/src/app/page.tsx",
+            "note": "Dashboard UI with generated questions, flashcards, study content, and sample educational data"
+          },
+          {
+            "path": "/Users/skim4/Downloads/brseducationaldashboard 2/src/app/api/questions/route.ts",
+            "note": "Question-generation endpoint for board review practice"
+          },
+          {
+            "path": "/Users/skim4/Downloads/brseducationaldashboard 2/src/app/api/upload/route.ts",
+            "note": "Anki upload/parser workflow with fallback educational cards"
+          },
+          {
+            "path": "/Users/skim4/Downloads/brseducationaldashboard 2/src/lib/anki-parser.ts",
+            "note": "Card parsing and category tagging logic"
+          }
+        ]
+      },
+      "recommendation": "Migrate the tutorial/question subsystem first. Treat lectures and algorithms as absent unless future inspection finds hidden structured files outside the current app shell. Copying the branding images is optional and low value.",
+      "summary": "This source project is primarily an application scaffold, but it contains reusable educational payload embedded in the dashboard UI and supporting API/parser code. No standalone lecture corpus or algorithm library was found. The strongest migratable material is tutorial/question content plus a small set of branding images."
+    },
+    {
+      "slug": "clinical_pathology_review",
+      "sourceProject": "/Users/skim4/Downloads/clinical-pathology-review",
+      "sourcePath": "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review",
+      "markers": [
+        "Embedded high-yield MCQ bank in src/App.jsx",
+        "Duplicate generated content in CP_CoreReview2.jsx and setup-clinical-pathology-app.sh",
+        "Help/tutorial copy in src/components/HelpModal.js",
+        "Static branding images only; no dedicated clinical image dataset found"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 4,
+        "tutorials": 4
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/public/favicon.ico",
+          "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/public/logo192.png",
+          "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/public/logo512.png",
+          "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/src/logo.svg"
+        ],
+        "tutorials": [
+          "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/src/App.jsx",
+          "/Users/skim4/Downloads/clinical-pathology-review/CP_CoreReview2.jsx",
+          "/Users/skim4/Downloads/clinical-pathology-review/setup-clinical-pathology-app.sh",
+          "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/src/components/HelpModal.js"
+        ]
+      },
+      "recommendation": "Do not copy payloads yet. If migration proceeds, extract the embedded MCQ/tutorial content from src/App.jsx and the generator script into a normalized content schema first. No standalone lecture or algorithm corpus was found.",
+      "summary": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 4,
+        "tutorials": 4,
+        "notes": "This project is an interactive CRA app with educational review content embedded in code rather than as standalone content files."
+      }
+    },
+    {
+      "slug": "cp_content_specification_tutorial_11_11_25",
+      "sourceProject": "cp-content-specification-tutorial_11.11.25",
+      "sourcePath": "/Users/skim4/Downloads/cp-content-specification-tutorial_11.11.25",
+      "markers": [
+        "constants.ts contains the primary educational dataset: 5 case tutorials in TUTORIAL_DATA, 15 MCQs in MCQS, and 30 flashcards in FLASHCARDS.",
+        "constants.ts also defines PARASITOLOGY_DATA and BACTERIA_DATA with imageKey-driven educational content.",
+        "components/BacterialIdAtlas.tsx and components/ParasitologyAtlas.tsx define inline SVG illustrations rather than referencing external image files.",
+        "components/InfectionMappingAtlas.tsx contains additional case-based study content with generated images/sketches and quiz logic.",
+        "No standalone lecture corpus or algorithm-only dataset was found outside the app/data layer."
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 3,
+        "tutorials": 2
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          {
+            "path": "components/BacterialIdAtlas.tsx",
+            "kind": "inline SVG bacterial illustrations",
+            "evidence": "Defines the Illustrations map and renders bacteria-driven art from BACTERIA_DATA.imageKey."
+          },
+          {
+            "path": "components/ParasitologyAtlas.tsx",
+            "kind": "inline SVG parasite illustrations",
+            "evidence": "Defines the Illustrations map and renders parasite art from PARASITOLOGY_DATA.imageKey."
+          },
+          {
+            "path": "components/InfectionMappingAtlas.tsx",
+            "kind": "study atlas with canvas/sketch and image-backed case cards",
+            "evidence": "Renders case cards with image keys, canvas sketches, and study visuals for vectors/parasites/treatments."
+          }
+        ],
+        "tutorials": [
+          {
+            "path": "constants.ts",
+            "kind": "case tutorials / MCQs / flashcards dataset",
+            "evidence": "Contains TUTORIAL_DATA, MCQS, and FLASHCARDS used by the topic detail view."
+          },
+          {
+            "path": "App.tsx",
+            "kind": "tutorial navigation and topic detail assembly",
+            "evidence": "Selects tutorials by topic, attaches MCQs and flashcards, and renders the case-study workflow."
+          }
+        ]
+      },
+      "recommendation": "Migrate the tutorial dataset first by staging constants.ts and the atlas components; there is no separate lecture or algorithm corpus to extract, and image content is implemented as inline SVG/canvas code rather than binary assets.",
+      "summary": {
+        "candidateCounts": {
+          "algorithms": 0,
+          "lectures": 0,
+          "images": 3,
+          "tutorials": 2
+        },
+        "notes": "This project is a self-contained tutorial/study platform. The actionable payload is embedded in TypeScript data modules and atlas components, not in separate content files."
+      }
+    },
+    {
+      "slug": "cp_content_specification_tutorial_batch_ready",
+      "sourceProject": "cp-content-specification-tutorial-batch-ready",
+      "sourcePath": "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready",
+      "markers": [
+        "tutorial-board-prep generator app",
+        "pre-generated tutorial/MCQ/flashcard corpus",
+        "batch prompt files for OpenAI generation",
+        "atlas-style components reference imageKey values but no raw image payloads"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 7
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [],
+        "tutorials": [
+          "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/pregeneratedData.ts",
+          "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/constants.ts",
+          "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/metadata.json",
+          "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/batches/batch_input.jsonl",
+          "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/scripts/prepare_batch_jsonl.ts",
+          "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/scripts/download_results.ts",
+          "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/scripts/export_converters.ts"
+        ]
+      },
+      "recommendation": "Stage pregeneratedData.ts and batch artifacts first, then normalize tutorial content into structured JSON before considering any image extraction or lecture/algorithm migration.",
+      "summary": {
+        "status": "usable",
+        "tutorialCorpus": "present",
+        "lectureCorpus": "absent",
+        "algorithmCorpus": "absent",
+        "imagePayloads": "absent"
+      }
+    },
+    {
+      "slug": "cp_study_tool_bundle",
+      "sourceProject": "cp_study_tool_bundle",
+      "sourcePath": "/Users/skim4/Downloads/cp_study_tool_bundle",
+      "markers": [
+        "cp_study_tool/data/abpath_cp_blueprint.json",
+        "cp_study_tool/core/prompts.py",
+        "cp_study_tool/agents/taskgen_agent.py",
+        "cp_study_tool/ui/app_streamlit.py",
+        "cp_study_tool/docs/architecture.md"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 1
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [],
+        "tutorials": [
+          {
+            "path": "/Users/skim4/Downloads/cp_study_tool_bundle/cp_study_tool/data/abpath_cp_blueprint.json",
+            "reason": "Contains the domain/objective blueprint that drives study-question generation and is the only direct educational content artifact."
+          }
+        ]
+      },
+      "recommendation": "Migrate the blueprint file first if you want reusable study content; do not expect independent lecture, algorithm, or image datasets in this bundle. Normalize the blueprint into target tutorial records before attempting broader extraction.",
+      "summary": {
+        "contentAssessment": "The source is a CP study-question generator scaffold rather than a library of standalone lectures, algorithms, or images.",
+        "categoryCoverage": {
+          "algorithms": "none found",
+          "lectures": "none found",
+          "images": "none found",
+          "tutorials": "candidate found"
+        },
+        "notes": [
+          "The only explicit curriculum-like payload is the ABPath CP blueprint used to seed question generation.",
+          "The rest of the project is application logic, UI, and supporting schema/prompt code.",
+          "No standalone media or lecture assets were identified outside dependency content in the Python environment."
+        ]
+      }
+    },
+    {
+      "slug": "cp_study_tool_bundle_2",
+      "sourceProject": "cp_study_tool_bundle 2",
+      "sourcePath": "/Users/skim4/Downloads/cp_study_tool_bundle 2",
+      "markers": [
+        "Offline question bank at `cp_study_tool/data/questions.json`",
+        "CLI and Streamlit study workflow in `cp_study_tool/controller/cli.py` and `cp_study_tool/ui/app.py`",
+        "Agent pipeline modules for task generation, explanation, visualization, dashboarding, and evaluation",
+        "No standalone lecture repository, algorithm library, or educational image corpus found"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 1
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [],
+        "tutorials": [
+          "/Users/skim4/Downloads/cp_study_tool_bundle 2/cp_study_tool/data/questions.json"
+        ]
+      },
+      "recommendation": "Migrate `cp_study_tool/data/questions.json` first if you want reusable study content. Treat the rest of the repo as application scaffolding unless you intentionally want to port the CLI/UI and agent pipeline.",
+      "summary": {
+        "overall": "This is an ABPath Clinical Pathology study application with a small built-in question bank and supporting runtime code. It does not contain separate lecture or algorithm content collections; the only direct educational payload is the offline multiple-choice question set.",
+        "counts": {
+          "questionBankFiles": 1,
+          "questions": 5,
+          "topicDomains": 5
+        }
+      }
+    },
+    {
+      "slug": "cytopathology_service",
+      "sourceProject": "/Users/skim4/Downloads/cytopathology-service",
+      "sourcePath": "/Users/skim4/Downloads/cytopathology-service/src",
+      "markers": [
+        "Embedded cytopathology case bank in src/CytopathologyService.js",
+        "Clinical criteria, specimen types, IHC panels, and management rules are data-driven in code",
+        "No standalone lecture or algorithm corpus found",
+        "Only static branding images found in public/ and src/logo.svg"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 4,
+        "tutorials": 1
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          "/Users/skim4/Downloads/cytopathology-service/public/favicon.ico",
+          "/Users/skim4/Downloads/cytopathology-service/public/logo192.png",
+          "/Users/skim4/Downloads/cytopathology-service/public/logo512.png",
+          "/Users/skim4/Downloads/cytopathology-service/src/logo.svg"
+        ],
+        "tutorials": [
+          "/Users/skim4/Downloads/cytopathology-service/src/CytopathologyService.js"
+        ]
+      },
+      "recommendation": "Stage the tutorial/case data by extracting it from src/CytopathologyService.js into a normalized content format before copying anything larger. Do not expect separate lecture or algorithm files from this repo.",
+      "summary": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 4,
+        "tutorials": 1,
+        "notes": "This is a React application with migratable educational content embedded in a single service component rather than in separate content files."
+      }
+    },
+    {
+      "slug": "dashboard1",
+      "sourceProject": "dashboard1",
+      "sourcePath": "/Users/skim4/Downloads/dashboard1",
+      "markers": [
+        "backend/data/hematology_entities.json",
+        "backend/data/coag_factors.json",
+        "backend/data/chemistry_cases.json",
+        "backend/data/transfusion_antibodies.json",
+        "backend/data/immunology_nodes.json",
+        "backend/server.js",
+        "frontend/src/App.jsx",
+        "frontend/src/components/CascadeDiagram.js",
+        "frontend/src/components/ChemistryDiagram.js",
+        "frontend/src/components/AntibodyPanel.js",
+        "frontend/src/components/HemeFlowCytometry.js",
+        "frontend/src/components/ImmunologySwitching.js"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 5
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [],
+        "tutorials": [
+          {
+            "path": "/Users/skim4/Downloads/dashboard1/backend/data/hematology_entities.json",
+            "reason": "Educational hematology facts and pearls."
+          },
+          {
+            "path": "/Users/skim4/Downloads/dashboard1/backend/data/coag_factors.json",
+            "reason": "Coagulation factor study content with disease associations and teaching pearls."
+          },
+          {
+            "path": "/Users/skim4/Downloads/dashboard1/backend/data/chemistry_cases.json",
+            "reason": "Lab-medicine case vignettes with pearls and linked conditions."
+          },
+          {
+            "path": "/Users/skim4/Downloads/dashboard1/backend/data/transfusion_antibodies.json",
+            "reason": "Transfusion antibody teaching dataset."
+          },
+          {
+            "path": "/Users/skim4/Downloads/dashboard1/backend/data/immunology_nodes.json",
+            "reason": "Immunology class-switching teaching dataset."
+          }
+        ]
+      },
+      "recommendation": "Stage the five backend JSON datasets first as tutorial content. Treat the frontend as renderers only, and do not look for independent lecture, algorithm, or image sources in this project unless a new asset directory is added later.",
+      "summary": {
+        "contentAssessment": "The source is an educational CP dashboard with five small backend JSON datasets that hold the core study content and a frontend that renders them as diagrams and panels.",
+        "categoryCoverage": {
+          "algorithms": "none found",
+          "lectures": "none found",
+          "images": "none found",
+          "tutorials": "candidate found"
+        },
+        "notes": [
+          "The content is organized by topic: hematology, coagulation, chemistry, transfusion, and immunology.",
+          "The frontend components are presentation layers, not content payloads.",
+          "No standalone local image assets were present outside node_modules."
+        ]
+      }
+    },
+    {
+      "slug": "didactic_series_working_copy",
+      "sourceProject": "didactic-series-working-copy",
+      "sourcePath": "/Users/skim4/Downloads/didactic-series-working-copy",
+      "markers": [
+        "Vite + React + TypeScript app scaffold",
+        "OpenAI chat client example in src/App.tsx",
+        "no standalone educational corpus found",
+        "only clear image asset is public/favicon.svg"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 0
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          "/Users/skim4/Downloads/didactic-series-working-copy/public/favicon.svg"
+        ],
+        "tutorials": []
+      },
+      "recommendation": "Do not stage payload migration from this repo yet; it should be treated as a scaffold unless additional content directories are added later.",
+      "summary": {
+        "status": "mostly-empty",
+        "tutorialCorpus": "absent",
+        "lectureCorpus": "absent",
+        "algorithmCorpus": "absent",
+        "imagePayloads": "minimal"
+      }
+    },
+    {
+      "slug": "frozens_dashboard",
+      "sourceProject": "frozens-dashboard",
+      "sourcePath": "/Users/skim4/Downloads/frozens-dashboard",
+      "markers": [
+        "constants.ts contains the main tutorial-style knowledge base data: 3 chapters in modulesData, plus on-call schedules, conferences, surgical cases, and changelog data.",
+        "iocData.ts contains 15 IOC caseArchitect entries across 2 surgical service lines, with histologic descriptions and sketch text for each case.",
+        "components/KnowledgeBase.tsx and components/IOCGuidedModals.tsx render the tutorial content from constants.ts and iocData.ts.",
+        "No standalone lecture corpus, algorithm lesson set, or local educational image asset folder was found.",
+        "The only image file hits are third-party package assets under node_modules, which are not source content."
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 2
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [],
+        "tutorials": [
+          {
+            "path": "constants.ts",
+            "kind": "knowledge base and reference manual data",
+            "evidence": "Defines modulesData with 3 chapters plus content strings for frozen-section guidance."
+          },
+          {
+            "path": "iocData.ts",
+            "kind": "IOC guided tutorial cases",
+            "evidence": "Defines 15 caseArchitect tutorial entries across 2 service lines, including histologic descriptions and sketch annotations."
+          }
+        ]
+      },
+      "recommendation": "Migrate constants.ts and iocData.ts first if you want reusable tutorial content; there is no separate lecture set or local image corpus to stage from this repo.",
+      "summary": {
+        "candidateCounts": {
+          "algorithms": 0,
+          "lectures": 0,
+          "images": 0,
+          "tutorials": 2
+        },
+        "notes": "This project is primarily an operational dashboard. The reusable educational payload lives in TypeScript data files rather than in separate lecture or image repositories."
+      }
+    },
+    {
+      "slug": "frozens_dashboard_2",
+      "sourceProject": "frozens-dashboard-2",
+      "sourcePath": "/Users/skim4/Downloads/frozens-dashboard-2",
+      "markers": [
+        "interactive pathology dashboard",
+        "knowledge base",
+        "IOC guided modals",
+        "decision trees",
+        "learning objectives",
+        "clinical vignettes",
+        "chapter-based reference manual",
+        "case and procedure workflow UI"
+      ],
+      "candidateCounts": {
+        "algorithms": 1,
+        "lectures": 1,
+        "images": 2,
+        "tutorials": 3
+      },
+      "pathsByCategory": {
+        "algorithms": [
+          {
+            "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/data/iocData.ts",
+            "note": "Decision trees and consult pathways for IOC guidance"
+          }
+        ],
+        "lectures": [
+          {
+            "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/constants.ts",
+            "note": "Chapter-style knowledge modules with goals and reference text"
+          }
+        ],
+        "images": [
+          {
+            "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/public/login_background_1769514821647.png",
+            "note": "UI/background image; not instructional"
+          },
+          {
+            "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/public/favicon.ico",
+            "note": "App icon; not instructional"
+          }
+        ],
+        "tutorials": [
+          {
+            "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/data/iocData.ts",
+            "note": "Guided case walkthroughs with learning objectives, vignettes, pitfalls, and reporting language"
+          },
+          {
+            "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/components/KnowledgeBase.tsx",
+            "note": "Presentation shell for the reference manual and guided IOC content"
+          },
+          {
+            "path": "/Users/skim4/Downloads/frozens-dashboard-2/frontend/components/IntraoperativeConsultsModal.tsx",
+            "note": "Interactive educational workflow UI tied to the IOC taxonomy"
+          }
+        ]
+      },
+      "recommendation": "Migrate frontend/constants.ts and frontend/data/iocData.ts first. The rest of the repo is mostly workflow UI and infrastructure, with no separate lecture or algorithm corpus beyond those structured data modules.",
+      "summary": "This source is primarily an application shell for intraoperative pathology workflow, but it contains reusable educational content embedded in structured TypeScript data. The strongest migratable material is the knowledge-base chapter content in frontend/constants.ts and the guided intraoperative consultation taxonomy in frontend/data/iocData.ts. Images are limited to branding and UI assets."
+    },
+    {
+      "slug": "ioc_next_app",
+      "sourceProject": "ioc-next-app",
+      "sourcePath": "/Users/skim4/Downloads/ioc-next-app",
+      "markers": [
+        "Lecture-style IOC overviews in `ioc-modal-complete-upgrade/data/overview/*.json`",
+        "Tutorial-style histology teaching modals in `ioc-modal-complete-upgrade/data/entity/*.json`",
+        "Navigation index in `ioc-modal-complete-upgrade/data/service-lines.json`",
+        "Content is served through `components/IOCModalApp.js` and the IOC API routes"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 1,
+        "images": 0,
+        "tutorials": 1
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [
+          "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/*.json"
+        ],
+        "images": [],
+        "tutorials": [
+          "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/entity/*.json"
+        ]
+      },
+      "recommendation": "Migrate the JSON data folders first and treat the React/Express shell as presentation infrastructure. If the target project needs lecture/tutor content, the overview files are the strongest lecture candidates and the entity files are the strongest tutorial candidates.",
+      "summary": {
+        "overall": "This is an IOC teaching app centered on surgical service-line overviews and histologic-pattern teaching modals. The migratable educational payload is concentrated in JSON data files; there is no standalone algorithm library and no project-owned image corpus.",
+        "counts": {
+          "lectureFiles": 9,
+          "tutorialFiles": 26,
+          "serviceLineIndexFiles": 1,
+          "imageAssets": 0
+        }
+      }
+    },
+    {
+      "slug": "micro_tutor_4",
+      "sourceProject": "micro_tutor_4",
+      "sourcePath": "/Users/skim4/Downloads/micro_tutor_4",
+      "markers": [
+        "Next.js tutoring app scaffold",
+        "embedded demo question in src/app/page.tsx",
+        "AI generation prompt and fallback question in src/app/api/generate-question/route.ts",
+        "one static image asset in public/logo.svg"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 2
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          "/Users/skim4/Downloads/micro_tutor_4/public/logo.svg"
+        ],
+        "tutorials": [
+          {
+            "path": "/Users/skim4/Downloads/micro_tutor_4/src/app/page.tsx",
+            "note": "contains the embedded initialQuestion demo content"
+          },
+          {
+            "path": "/Users/skim4/Downloads/micro_tutor_4/src/app/api/generate-question/route.ts",
+            "note": "contains the tutorial/question generation prompt and fallbackQuestion template"
+          }
+        ]
+      },
+      "recommendation": "Stage the embedded demo question and generation prompt only if you need seed content; otherwise treat this repo as an app scaffold with minimal reusable educational payload.",
+      "summary": {
+        "status": "partial",
+        "tutorialCorpus": "embedded-only",
+        "lectureCorpus": "absent",
+        "algorithmCorpus": "absent",
+        "imagePayloads": "minimal"
+      }
+    },
+    {
+      "slug": "microdx_revamped",
+      "sourceProject": "/Users/skim4/Downloads/microdx_revamped",
+      "sourcePath": "/Users/skim4/Downloads/microdx_revamped",
+      "markers": [
+        "ABPath_MicroDx_Clean.md contains the main educational case bank, algorithm steps, and diagnostic explanations",
+        "app_revamped.py is a Streamlit shell that renders the markdown content and navigation",
+        "No standalone lecture deck or image asset library was found",
+        "Playwright tests exist for keyboard navigation, but they are not educational source content"
+      ],
+      "candidateCounts": {
+        "algorithms": 1,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 2
+      },
+      "pathsByCategory": {
+        "algorithms": [
+          "/Users/skim4/Downloads/microdx_revamped/ABPath_MicroDx_Clean.md"
+        ],
+        "lectures": [],
+        "images": [],
+        "tutorials": [
+          "/Users/skim4/Downloads/microdx_revamped/ABPath_MicroDx_Clean.md",
+          "/Users/skim4/Downloads/microdx_revamped/app_revamped.py"
+        ]
+      },
+      "recommendation": "Stage the markdown knowledge file first, then separate the case-bank algorithms from the wrapper app during normalization. No lecture or image corpus is present to migrate.",
+      "summary": {
+        "algorithms": 1,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 2,
+        "notes": "The repository is a Streamlit microbiology review app with a single large markdown knowledge file and a lightweight UI wrapper."
+      }
+    },
+    {
+      "slug": "pathology_learning_module_granulomatous_diseases",
+      "sourceProject": "pathology-learning-module_-granulomatous-diseases",
+      "sourcePath": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases",
+      "markers": [
+        "metadata.json",
+        "README.md",
+        "App.tsx",
+        "components/Home.tsx",
+        "components/JobAid.tsx",
+        "components/CaseStudy.tsx",
+        "components/DiagnosticPathway.tsx",
+        "components/AnalysisPhase.tsx",
+        "components/DesignPhase.tsx",
+        "components/DevelopmentPhase.tsx",
+        "components/AssessmentPhase.tsx",
+        "components/EvaluationPhase.tsx",
+        "components/WSIViewer.tsx",
+        "components/AICaseGenerator.tsx"
+      ],
+      "candidateCounts": {
+        "algorithms": 1,
+        "lectures": 4,
+        "images": 4,
+        "tutorials": 5
+      },
+      "pathsByCategory": {
+        "algorithms": [
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/DiagnosticPathway.tsx",
+            "reason": "Implements the interactive decision-tree diagnostic pathway and compendium table."
+          }
+        ],
+        "lectures": [
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/AnalysisPhase.tsx",
+            "reason": "ADDIE lecture-style analysis content with embedded knowledge checks."
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/DesignPhase.tsx",
+            "reason": "ADDIE design lecture content covering learning objectives and Bloom's levels."
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/DevelopmentPhase.tsx",
+            "reason": "ADDIE development narrative plus worked instructional examples."
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/EvaluationPhase.tsx",
+            "reason": "ADDIE evaluation content with a board-style question and explanatory feedback."
+          }
+        ],
+        "images": [
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/CaseStudy.tsx",
+            "reason": "Contains an embedded WSI example and an image-backed case workflow."
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/EvaluationPhase.tsx",
+            "reason": "Uses two WSI slide sources for visual discrimination challenges."
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/DevelopmentPhase.tsx",
+            "reason": "Uses an inline histology image URL as part of the worked case."
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/WSIViewer.tsx",
+            "reason": "Image-viewer dependency for whole-slide imaging content."
+          }
+        ],
+        "tutorials": [
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/Home.tsx",
+            "reason": "Introduces the learning module and navigation to the didactic activities."
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/JobAid.tsx",
+            "reason": "Reference-style quick aid comparing sarcoidosis and tuberculosis."
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/CaseStudy.tsx",
+            "reason": "Guided case-based tutorial with clinical reasoning and reveal-answer flow."
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/AssessmentPhase.tsx",
+            "reason": "Board-style tutorial question with interactive feedback."
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases/components/AICaseGenerator.tsx",
+            "reason": "Interactive tutorial workflow for generating and critiquing new cases."
+          }
+        ]
+      },
+      "recommendation": "Migrate the tutorial, lecture, and algorithm sections as structured content first, then normalize the image-linked case material separately. Do not expect local image assets; the module depends on remote WSI tile sources and one inline example image.",
+      "summary": {
+        "contentAssessment": "The source is a self-contained didactic pathology module on granulomatous lung disease with a strong tutorial core, a stepwise diagnostic pathway, ADDIE lecture-style sections, and slide-viewer dependencies.",
+        "categoryCoverage": {
+          "algorithms": "candidate found",
+          "lectures": "candidate found",
+          "images": "candidate found",
+          "tutorials": "candidate found"
+        },
+        "notes": [
+          "No standalone local image files were found; image content is embedded through remote DZI slide sources and a single inline JPEG example.",
+          "The ADDIE sections are pedagogical lecture/meta-narrative content rather than app scaffolding.",
+          "The WSI viewer is a dependency for image-based learning but is not itself a content payload."
+        ]
+      }
+    },
+    {
+      "slug": "pathology_learning_module_granulomatous_diseases_1",
+      "sourceProject": "pathology-learning-module_-granulomatous-diseases (1)",
+      "sourcePath": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (1)",
+      "markers": [
+        "components/CaseStudy.tsx contains a complete board-style case study with an embedded whole-slide image viewer and answer reveal.",
+        "components/DiagnosticPathway.tsx contains a 10-step diagnostic decision tree plus a compendium table covering sarcoidosis, HP, TB, endemic fungi, vasculitis, and mimics.",
+        "components/AnalysisPhase.tsx, components/DesignPhase.tsx, and components/DevelopmentPhase.tsx implement ADDIE instructional-design lessons with structured educational text.",
+        "components/EvaluationPhase.tsx compares two pathology slides using OpenSeadragon DZI URLs for side-by-side visual discrimination.",
+        "components/AICaseGenerator.tsx generates additional granulomatous-disease cases via Google Gemini at runtime.",
+        "No local lecture dataset, algorithm JSON, or image asset folder was found; visual content is driven by remote slide URLs and inline instructional content."
+      ],
+      "candidateCounts": {
+        "algorithms": 1,
+        "lectures": 3,
+        "images": 3,
+        "tutorials": 4
+      },
+      "pathsByCategory": {
+        "algorithms": [
+          {
+            "path": "components/DiagnosticPathway.tsx",
+            "kind": "multi-step diagnostic workflow / decision-tree content",
+            "evidence": "Defines q1..q10 pathwayData plus a compendium table for granulomatous disease differentials."
+          }
+        ],
+        "lectures": [
+          {
+            "path": "components/AnalysisPhase.tsx",
+            "kind": "ADDIE analysis lesson",
+            "evidence": "Defines learner profile, knowledge-gap analysis, and instructional goals with embedded knowledge check."
+          },
+          {
+            "path": "components/DesignPhase.tsx",
+            "kind": "ADDIE design lesson",
+            "evidence": "Defines Bloom's taxonomy framing and three learning objectives."
+          },
+          {
+            "path": "components/DevelopmentPhase.tsx",
+            "kind": "ADDIE development lesson",
+            "evidence": "Contains a comparative job aid and a worked case narrative with expert answer."
+          }
+        ],
+        "images": [
+          {
+            "path": "components/CaseStudy.tsx",
+            "kind": "single whole-slide-image case study",
+            "evidence": "Embeds WSIViewer with a DZI pathology slide and explanatory text for HP vs sarcoidosis."
+          },
+          {
+            "path": "components/EvaluationPhase.tsx",
+            "kind": "side-by-side slide comparison exercise",
+            "evidence": "Uses two OpenSeadragon DZI slide URLs to compare granuloma quality and distribution."
+          },
+          {
+            "path": "components/DevelopmentPhase.tsx",
+            "kind": "inline image-supported case vignette",
+            "evidence": "Includes an img tag with a pathology image placeholder for the hypersensitivity pneumonitis case."
+          }
+        ],
+        "tutorials": [
+          {
+            "path": "components/CaseStudy.tsx",
+            "kind": "authored case tutorial",
+            "evidence": "Presents clinical, radiologic, histologic, and diagnostic-task sections with expert answer."
+          },
+          {
+            "path": "components/DiagnosticPathway.tsx",
+            "kind": "guided tutorial / quiz pathway",
+            "evidence": "Walks the learner through a branching differential diagnosis and a summary compendium."
+          },
+          {
+            "path": "components/AICaseGenerator.tsx",
+            "kind": "AI-generated case tutorial workflow",
+            "evidence": "Creates new case studies and feedback loops via Google GenAI prompts."
+          },
+          {
+            "path": "components/AssessmentPhase.tsx",
+            "kind": "board-style assessment tutorial",
+            "evidence": "Contains a full stem, answer options, and explanations for the final diagnosis."
+          }
+        ]
+      },
+      "recommendation": "Stage the authored React content files first, starting with the diagnostic pathway, case study, and ADDIE lesson screens. There is no standalone lecture archive or image asset bundle to migrate from this repo.",
+      "summary": {
+        "candidateCounts": {
+          "algorithms": 1,
+          "lectures": 3,
+          "images": 3,
+          "tutorials": 4
+        },
+        "notes": "This module is an authored learning experience rather than a content repository. The migration candidates are mostly React screens with embedded instructional text and remote slide references."
+      }
+    },
+    {
+      "slug": "pathology_learning_module_granulomatous_diseases_2",
+      "sourceProject": "pathology-learning-module_-granulomatous-diseases (2)",
+      "sourcePath": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)",
+      "markers": [
+        "ADDIE-based pathology learning module",
+        "case-driven granulomatous disease curriculum",
+        "structured case metadata in src/data/caseMetadataRules.json",
+        "AI case generator and image-gallery workflow",
+        "no standalone image files under public/"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 5
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [],
+        "tutorials": [
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)/src/data/caseMetadataRules.json",
+            "note": "structured disease taxonomy, teaching points, and case contexts"
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)/components/CaseStudy.tsx",
+            "note": "embedded instructional case flow with granulomatous disease narrative"
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)/components/DevelopmentPhase.tsx",
+            "note": "instructional content and example case text used in the module"
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)/components/AICaseGenerator.tsx",
+            "note": "prompt template for generating board-style pathology cases"
+          },
+          {
+            "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)/utils/caseGenerator.ts",
+            "note": "case-generation logic that encodes disease-specific metadata and learning objectives"
+          }
+        ]
+      },
+      "recommendation": "Migrate the structured case metadata and embedded case-study content first; there are no raw image assets to copy, so image migration can be deferred until the source repo gains a durable media store.",
+      "summary": {
+        "status": "content-rich-without-raw-images",
+        "tutorialCorpus": "present",
+        "lectureCorpus": "absent",
+        "algorithmCorpus": "absent",
+        "imagePayloads": "absent"
+      }
+    },
+    {
+      "slug": "pathology_learning_module_granulomatous_diseases_3",
+      "sourceProject": "pathology-learning-module_-granulomatous-diseases (3)",
+      "sourcePath": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)",
+      "markers": [
+        "Lecture slide deck embedded in `components/Lecture.tsx`",
+        "Diagnostic pathway question set embedded in `components/DiagnosticPathway.tsx`",
+        "Tutorial/case module bank in `data/modules.ts`",
+        "Histology gallery metadata in `data/gallery.json` with official and community image records"
+      ],
+      "candidateCounts": {
+        "algorithms": 2,
+        "lectures": 1,
+        "images": 1,
+        "tutorials": 1
+      },
+      "pathsByCategory": {
+        "algorithms": [
+          "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/components/DiagnosticPathway.tsx",
+          "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/src/data/caseMetadataRules.json"
+        ],
+        "lectures": [
+          "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/components/Lecture.tsx"
+        ],
+        "images": [
+          "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/data/gallery.json"
+        ],
+        "tutorials": [
+          "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/data/modules.ts"
+        ]
+      },
+      "recommendation": "Migrate the embedded lecture, pathway, tutorial, and gallery metadata first, then decide whether to extract them into standalone content files in the target project. Preserve the external image URLs and treat the React/Vite app as delivery infrastructure.",
+      "summary": {
+        "overall": "This is a pathology learning module for granulomatous lung disease with substantial educational content embedded in React components and JSON data. The most migratable payloads are the lecture slide deck, the diagnostic pathway, the tutorial/case bank, and the image gallery metadata.",
+        "counts": {
+          "lectureSlides": 1,
+          "pathwayQuestions": 4,
+          "tutorialModules": 3,
+          "galleryCollections": 2,
+          "officialImages": 216,
+          "communityImages": 0
+        }
+      }
+    },
+    {
+      "slug": "regeneration_dashboard",
+      "sourceProject": "/Users/skim4/Downloads/regeneration-dashboard",
+      "sourcePath": "/Users/skim4/Downloads/regeneration-dashboard/src",
+      "markers": [
+        "src/AdvancedRegenerationDashboard.js is a placeholder dashboard shell",
+        "src/OrganRegenerationSimulator.js is a placeholder simulator shell",
+        "No standalone educational content files, data packs, or image sets found",
+        "Project appears to be scaffolded UI code rather than a content repository"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 0
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [],
+        "tutorials": []
+      },
+      "recommendation": "Do not migrate payloads from this repo. If this project is meant to contain educational content later, it will need explicit source files or a content schema added first.",
+      "summary": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 0,
+        "notes": "No migratable educational content was found in this repository."
+      }
+    },
+    {
+      "slug": "virtual_mycology_simulator",
+      "sourceProject": "virtual-mycology-simulator",
+      "sourcePath": "/Users/skim4/Downloads/virtual-mycology-simulator",
+      "markers": [
+        "App.tsx orchestrates an education flow with home, study, quiz, and comparison modes.",
+        "services/geminiService.ts generates the fungi list, fungus details, quiz questions, shared features, and distinguishing annotations at runtime via Gemini.",
+        "components/StudyMode.tsx and components/ComparisonMode.tsx render AI-generated fungal images and study content.",
+        "components/QuizMode.tsx presents generated quiz questions with answer selection and scoring.",
+        "No local lecture corpus, algorithm dataset, or curated image asset folder was found; the simulator is AI-generated and API-driven."
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 2,
+        "tutorials": 4
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          {
+            "path": "services/geminiService.ts",
+            "kind": "runtime fungus image generation",
+            "evidence": "generateFungusImage() calls Imagen and falls back to a placeholder URL if generation fails."
+          },
+          {
+            "path": "components/StudyMode.tsx",
+            "kind": "fungus image display",
+            "evidence": "Renders fungus.imageUrl as the main study image for each organism."
+          }
+        ],
+        "tutorials": [
+          {
+            "path": "App.tsx",
+            "kind": "top-level learning flow",
+            "evidence": "Controls welcome, selection, study, quiz, and comparison modes."
+          },
+          {
+            "path": "components/StudyMode.tsx",
+            "kind": "fungus study lesson",
+            "evidence": "Presents overview, clinical features, and laboratory features for the selected fungus."
+          },
+          {
+            "path": "components/QuizMode.tsx",
+            "kind": "quiz/tutorial reinforcement",
+            "evidence": "Displays generated multiple-choice questions and tracks progress through the quiz."
+          },
+          {
+            "path": "components/ComparisonMode.tsx",
+            "kind": "feature-comparison tutorial",
+            "evidence": "Compares fungi sharing a common feature and highlights distinguishing annotations."
+          }
+        ]
+      },
+      "recommendation": "Stage the AI workflow and renderer components together if you want to preserve the simulator behavior. There is no standalone lecture archive, algorithm dataset, or local image corpus to migrate from this repo.",
+      "summary": {
+        "candidateCounts": {
+          "algorithms": 0,
+          "lectures": 0,
+          "images": 2,
+          "tutorials": 4
+        },
+        "notes": "The repository contains a complete mycology learning workflow, but the actual educational content is generated at runtime rather than stored as static source payloads."
+      }
+    },
+    {
+      "slug": "workspace_23eae586_0c4b_44f9_83bd_cef625ab43de_1",
+      "sourceProject": "workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)",
+      "sourcePath": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)",
+      "markers": [
+        "src/app/page.tsx",
+        "src/components/simulators/BloodGroupCompatibilitySimulator.tsx",
+        "src/components/simulators/AntibodyIdentificationSimulator.tsx",
+        "src/components/simulators/HDFNRiskCalculator.tsx",
+        "src/components/simulators/ComponentTherapyCalculator.tsx",
+        "src/components/simulators/TransfusionReactionDecisionTree.tsx",
+        "public/logo.svg",
+        "README.md"
+      ],
+      "candidateCounts": {
+        "algorithms": 3,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 3
+      },
+      "pathsByCategory": {
+        "algorithms": [
+          {
+            "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/components/simulators/TransfusionReactionDecisionTree.tsx",
+            "reason": "Interactive reaction decision tree with branching diagnostic logic."
+          },
+          {
+            "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/components/simulators/HDFNRiskCalculator.tsx",
+            "reason": "Risk scoring and decision logic for hemolytic disease of the fetus and newborn."
+          },
+          {
+            "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/components/simulators/ComponentTherapyCalculator.tsx",
+            "reason": "Component ordering calculator with rule-based dosing logic."
+          }
+        ],
+        "lectures": [],
+        "images": [],
+        "tutorials": [
+          {
+            "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/app/page.tsx",
+            "reason": "Primary educational dashboard with a large curated transfusion-medicine topic set."
+          },
+          {
+            "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/components/simulators/BloodGroupCompatibilitySimulator.tsx",
+            "reason": "Interactive compatibility teaching module."
+          },
+          {
+            "path": "/Users/skim4/Downloads/workspace-23eae586-0c4b-44f9-83bd-cef625ab43de (1)/src/components/simulators/AntibodyIdentificationSimulator.tsx",
+            "reason": "Interactive antibody panel interpretation teaching module."
+          }
+        ]
+      },
+      "recommendation": "Migrate the dashboard content in src/app/page.tsx and the simulator components first, since that is where the teaching material lives. Treat the rest of the project as framework and runtime scaffolding. Do not expect a separate lecture deck or standalone image library in this repository.",
+      "summary": {
+        "contentAssessment": "The source is a blood-bank / transfusion-medicine educational dashboard with dense inline teaching content and several interactive learning simulators.",
+        "categoryCoverage": {
+          "algorithms": "candidate found",
+          "lectures": "none found",
+          "images": "none found",
+          "tutorials": "candidate found"
+        },
+        "notes": [
+          "The root page contains a large structured knowledge base of transfusion topics, HDFN, component therapy, donor screening, and related pearls.",
+          "The simulator components provide the main interactive teaching workflows.",
+          "No standalone local educational image assets were found; only a branding SVG exists."
+        ]
+      }
+    },
+    {
+      "slug": "workspace_3418f879_7689_4224_9717_636b27130563",
+      "sourceProject": "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563",
+      "sourcePath": "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563",
+      "markers": [
+        "bacterial_algorithm_data.py contains the full decision-tree content",
+        "README.md and IMPLEMENTATION_SUMMARY.md describe the educational workflow and usage",
+        "bacterial_diagnostic_app.py is the runtime wrapper around the content",
+        "Only a single branding image asset was found in public/logo.svg"
+      ],
+      "candidateCounts": {
+        "algorithms": 1,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 2
+      },
+      "pathsByCategory": {
+        "algorithms": [
+          "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563/bacterial_algorithm_data.py"
+        ],
+        "lectures": [],
+        "images": [
+          "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563/public/logo.svg"
+        ],
+        "tutorials": [
+          "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563/README.md",
+          "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563/IMPLEMENTATION_SUMMARY.md"
+        ]
+      },
+      "recommendation": "Stage bacterial_algorithm_data.py first, then normalize the README/IMPLEMENTATION_SUMMARY instructional text if tutorial content needs to be migrated. No lecture corpus is present.",
+      "summary": {
+        "algorithms": 1,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 2,
+        "notes": "This repository is a bacterial diagnosis training app with one structured algorithm dataset and documentation, not a lecture archive."
+      }
+    },
+    {
+      "slug": "workspace_722b3264_636d_4869_afa6_c8b0a38be36f",
+      "sourceProject": "workspace-722b3264-636d-4869-afa6-c8b0a38be36f",
+      "sourcePath": "/Users/skim4/Downloads/workspace-722b3264-636d-4869-afa6-c8b0a38be36f",
+      "markers": [
+        "Next.js scaffold",
+        "single logo landing page",
+        "Prisma starter schema",
+        "empty SQLite tables",
+        "no educational corpus"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 0,
+        "tutorials": 0
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [],
+        "tutorials": []
+      },
+      "recommendation": "Do not migrate content from this repo. If needed, only the generic app shell or branding could be reused, but there is no educational payload worth importing.",
+      "summary": "This source project is an application scaffold with no migratable educational content. The page renders only a logo, the database contains only empty starter tables, and there are no lecture, tutorial, algorithm, or image datasets beyond branding assets."
+    },
+    {
+      "slug": "workspace_d0c8f796_92cd_4585_96c9_e56495d33134",
+      "sourceProject": "workspace-d0c8f796-92cd-4585-96c9-e56495d33134",
+      "sourcePath": "/Users/skim4/Downloads/workspace-d0c8f796-92cd-4585-96c9-e56495d33134",
+      "markers": [
+        "surgical schedule dashboard validation harness",
+        "test-suite.js, simulation-script.js, and demo-script.js are the main runnable artifacts",
+        "no lecture or tutorial corpus found",
+        "single direct asset candidate: public/logo.svg"
+      ],
+      "candidateCounts": {
+        "algorithms": 0,
+        "lectures": 0,
+        "images": 1,
+        "tutorials": 0
+      },
+      "pathsByCategory": {
+        "algorithms": [],
+        "lectures": [],
+        "images": [
+          "/Users/skim4/Downloads/workspace-d0c8f796-92cd-4585-96c9-e56495d33134/public/logo.svg"
+        ],
+        "tutorials": []
+      },
+      "recommendation": "Do not migrate payloads from this repo for the requested categories; it is primarily a test and simulation workspace. If anything is staged later, start with the logo asset only.",
+      "summary": {
+        "status": "mostly-empty",
+        "tutorialCorpus": "absent",
+        "lectureCorpus": "absent",
+        "algorithmCorpus": "absent",
+        "imagePayloads": "minimal"
+      }
+    }
+  ]
+}

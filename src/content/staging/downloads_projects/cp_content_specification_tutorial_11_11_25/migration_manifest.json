@@ -1,0 +1,61 @@
+{
+  "sourceProject": "cp-content-specification-tutorial_11.11.25",
+  "sourcePath": "/Users/skim4/Downloads/cp-content-specification-tutorial_11.11.25",
+  "markers": [
+    "constants.ts contains the primary educational dataset: 5 case tutorials in TUTORIAL_DATA, 15 MCQs in MCQS, and 30 flashcards in FLASHCARDS.",
+    "constants.ts also defines PARASITOLOGY_DATA and BACTERIA_DATA with imageKey-driven educational content.",
+    "components/BacterialIdAtlas.tsx and components/ParasitologyAtlas.tsx define inline SVG illustrations rather than referencing external image files.",
+    "components/InfectionMappingAtlas.tsx contains additional case-based study content with generated images/sketches and quiz logic.",
+    "No standalone lecture corpus or algorithm-only dataset was found outside the app/data layer."
+  ],
+  "summary": {
+    "candidateCounts": {
+      "algorithms": 0,
+      "lectures": 0,
+      "images": 3,
+      "tutorials": 2
+    },
+    "notes": "This project is a self-contained tutorial/study platform. The actionable payload is embedded in TypeScript data modules and atlas components, not in separate content files."
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [
+      {
+        "path": "components/BacterialIdAtlas.tsx",
+        "kind": "inline SVG bacterial illustrations",
+        "evidence": "Defines the Illustrations map and renders bacteria-driven art from BACTERIA_DATA.imageKey."
+      },
+      {
+        "path": "components/ParasitologyAtlas.tsx",
+        "kind": "inline SVG parasite illustrations",
+        "evidence": "Defines the Illustrations map and renders parasite art from PARASITOLOGY_DATA.imageKey."
+      },
+      {
+        "path": "components/InfectionMappingAtlas.tsx",
+        "kind": "study atlas with canvas/sketch and image-backed case cards",
+        "evidence": "Renders case cards with image keys, canvas sketches, and study visuals for vectors/parasites/treatments."
+      }
+    ],
+    "tutorials": [
+      {
+        "path": "constants.ts",
+        "kind": "case tutorials / MCQs / flashcards dataset",
+        "evidence": "Contains TUTORIAL_DATA, MCQS, and FLASHCARDS used by the topic detail view."
+      },
+      {
+        "path": "App.tsx",
+        "kind": "tutorial navigation and topic detail assembly",
+        "evidence": "Selects tutorials by topic, attaches MCQs and flashcards, and renders the case-study workflow."
+      }
+    ]
+  },
+  "dependencies": [
+    "App.tsx depends on constants.ts plus Header, ThreeScene, StudyTools, InfectionMappingAtlas, BacterialIdAtlas, ParasitologyAtlas, LinkedText, DeepDiveModal, and LabReport.",
+    "components/BacterialIdAtlas.tsx depends on BACTERIA_DATA and BACTERIA_CATEGORIES from constants.ts plus local CSS.",
+    "components/ParasitologyAtlas.tsx depends on PARASITOLOGY_DATA from constants.ts plus local CSS.",
+    "components/InfectionMappingAtlas.tsx depends on idb-keyval, Chart.js being available globally, and local CSS.",
+    "No separate lecture or algorithm source dependency was identified."
+  ],
+  "recommendation": "Migrate the tutorial dataset first by staging constants.ts and the atlas components; there is no separate lecture or algorithm corpus to extract, and image content is implemented as inline SVG/canvas code rather than binary assets."
+}

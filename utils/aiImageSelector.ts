@@ -1,6 +1,6 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { StoredImage } from '../types';
-import { getOfficialImages, getCommunityImages } from './imageStore';
+import { getAllSelectableImages } from './imageStore';
 
 /**
  * Uses the Gemini API to find the most relevant image from the available galleries
@@ -10,9 +10,7 @@ import { getOfficialImages, getCommunityImages } from './imageStore';
  * @returns A promise that resolves to the most relevant StoredImage object or null if none is found.
  */
 export const findRelevantImage = async (contextText: string): Promise<StoredImage | null> => {
-  const officialImages = getOfficialImages();
-  const communityImages = getCommunityImages();
-  const allImages = [...officialImages, ...communityImages];
+  const allImages = getAllSelectableImages();
 
   if (allImages.length === 0 || !contextText) {
     return null;

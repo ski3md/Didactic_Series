@@ -1,0 +1,63 @@
+{
+  "sourceProject": "brseducationaldashboard 2",
+  "sourcePath": "/Users/skim4/Downloads/brseducationaldashboard 2",
+  "markers": [
+    "Next.js app shell with embedded educational content",
+    "clinical pathology board review",
+    "flashcards",
+    "Anki upload/parsing",
+    "generated questions",
+    "case simulator",
+    "image library",
+    "study modalities"
+  ],
+  "summary": "This source project is primarily an application scaffold, but it contains reusable educational payload embedded in the dashboard UI and supporting API/parser code. No standalone lecture corpus or algorithm library was found. The strongest migratable material is tutorial/question content plus a small set of branding images.",
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [
+      {
+        "path": "/Users/skim4/Downloads/brseducationaldashboard 2/public/logo.svg",
+        "note": "Branding only; not instructional content"
+      },
+      {
+        "path": "/Users/skim4/Downloads/brseducationaldashboard 2/src/app/favicon.ico",
+        "note": "App icon; not instructional content"
+      }
+    ],
+    "tutorials": [
+      {
+        "path": "/Users/skim4/Downloads/brseducationaldashboard 2/public/script.js",
+        "note": "Largest embedded study module; includes flashcards, cases, guideline content, image-library metadata, and board-review workflows"
+      },
+      {
+        "path": "/Users/skim4/Downloads/brseducationaldashboard 2/src/app/page.tsx",
+        "note": "Dashboard UI with generated questions, flashcards, study content, and sample educational data"
+      },
+      {
+        "path": "/Users/skim4/Downloads/brseducationaldashboard 2/src/app/api/questions/route.ts",
+        "note": "Question-generation endpoint for board review practice"
+      },
+      {
+        "path": "/Users/skim4/Downloads/brseducationaldashboard 2/src/app/api/upload/route.ts",
+        "note": "Anki upload/parser workflow with fallback educational cards"
+      },
+      {
+        "path": "/Users/skim4/Downloads/brseducationaldashboard 2/src/lib/anki-parser.ts",
+        "note": "Card parsing and category tagging logic"
+      }
+    ]
+  },
+  "dependencies": [
+    "Next.js App Router",
+    "React 19 + TypeScript",
+    "Tailwind CSS",
+    "Prisma/SQLite starter data model",
+    "z-ai-web-dev-sdk",
+    "react-markdown",
+    "socket.io",
+    "axios",
+    "fs/path/os/child_process/unzip-based server-side processing"
+  ],
+  "recommendation": "Migrate the tutorial/question subsystem first. Treat lectures and algorithms as absent unless future inspection finds hidden structured files outside the current app shell. Copying the branding images is optional and low value."
+}

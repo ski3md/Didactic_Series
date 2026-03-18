@@ -1,0 +1,38 @@
+{
+  "sourceProject": "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563",
+  "sourcePath": "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563",
+  "markers": [
+    "bacterial_algorithm_data.py contains the full decision-tree content",
+    "README.md and IMPLEMENTATION_SUMMARY.md describe the educational workflow and usage",
+    "bacterial_diagnostic_app.py is the runtime wrapper around the content",
+    "Only a single branding image asset was found in public/logo.svg"
+  ],
+  "summary": {
+    "algorithms": 1,
+    "lectures": 0,
+    "images": 1,
+    "tutorials": 2,
+    "notes": "This repository is a bacterial diagnosis training app with one structured algorithm dataset and documentation, not a lecture archive."
+  },
+  "candidates": {
+    "algorithms": [
+      "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563/bacterial_algorithm_data.py"
+    ],
+    "lectures": [],
+    "images": [
+      "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563/public/logo.svg"
+    ],
+    "tutorials": [
+      "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563/README.md",
+      "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563/IMPLEMENTATION_SUMMARY.md"
+    ]
+  },
+  "dependencies": [
+    "tkinter",
+    "matplotlib",
+    "networkx",
+    "python",
+    "BacterialDiagnosticApp runtime in bacterial_diagnostic_app.py"
+  ],
+  "recommendation": "Stage bacterial_algorithm_data.py first, then normalize the README/IMPLEMENTATION_SUMMARY instructional text if tutorial content needs to be migrated. No lecture corpus is present."
+}

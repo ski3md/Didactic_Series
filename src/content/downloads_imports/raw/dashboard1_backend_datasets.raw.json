@@ -1,0 +1,117 @@
+{
+  "hematology_entities.json": [
+    {
+      "id": "PNH",
+      "markers": [
+        "CD55",
+        "CD59"
+      ],
+      "diagnosis": "Loss of GPI-anchored proteins on flow cytometry.",
+      "pearls": "Triad = hemolysis, cytopenias, thrombosis.",
+      "conditions": [
+        "Aplastic anemia overlap",
+        "Unusual-site thrombosis"
+      ]
+    },
+    {
+      "id": "Sickle Cell Disease",
+      "mutation": "β-globin E6V",
+      "diagnosis": "HbS polymerization → sickled RBCs.",
+      "pearls": "Vaso-occlusion, splenic infarction.",
+      "conditions": [
+        "Acute chest syndrome",
+        "Stroke risk"
+      ]
+    }
+  ],
+  "coag_factors.json": [
+    {
+      "id": "VII",
+      "halfLife": "6h",
+      "diseases": [
+        "Congenital deficiency",
+        "Vitamin K deficiency",
+        "Liver disease"
+      ],
+      "anticoagulants": [
+        "warfarin"
+      ],
+      "pearl": "Isolated prolonged PT"
+    },
+    {
+      "id": "VIII",
+      "halfLife": "12h",
+      "diseases": [
+        "Hemophilia A",
+        "von Willebrand disease"
+      ],
+      "anticoagulants": [],
+      "pearl": "Prolonged aPTT"
+    }
+  ],
+  "chemistry_cases.json": [
+    {
+      "id": "DKA",
+      "lab": {
+        "glucose": ">250 mg/dL",
+        "pH": "<7.3",
+        "HCO3": "<18"
+      },
+      "pearls": "Treat with fluids first, then insulin. Monitor potassium closely.",
+      "conditions": [
+        "Anion gap metabolic acidosis"
+      ]
+    },
+    {
+      "id": "SIADH",
+      "lab": {
+        "Na": "<135",
+        "Serum Osm": "<275",
+        "Urine Osm": ">100"
+      },
+      "pearls": "Inappropriately concentrated urine with hyponatremia.",
+      "conditions": [
+        "Small cell carcinoma",
+        "SSRIs"
+      ]
+    }
+  ],
+  "transfusion_antibodies.json": [
+    {
+      "id": "Anti-K",
+      "type": "IgG",
+      "dosage": "No",
+      "pearls": "Highly immunogenic, HDFN risk.",
+      "clinicalSignificance": "Yes"
+    },
+    {
+      "id": "Anti-Jka",
+      "type": "IgG",
+      "dosage": "Yes",
+      "pearls": "Dosage effect, evanescent, delayed HTR.",
+      "clinicalSignificance": "Yes"
+    }
+  ],
+  "immunology_nodes.json": [
+    {
+      "id": "IgM",
+      "switchesTo": [
+        "IgG",
+        "IgA",
+        "IgE"
+      ],
+      "pearls": "First antibody produced in infection.",
+      "conditions": [
+        "Hyper-IgM syndrome if switching fails"
+      ]
+    },
+    {
+      "id": "IgG",
+      "cytokine": "IFN-γ",
+      "pearls": "Main opsonizing antibody, crosses placenta.",
+      "conditions": [
+        "IgG subclass deficiency"
+      ]
+    }
+  ]
+}

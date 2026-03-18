@@ -1,0 +1,35 @@
+{
+  "sourceProject": "/Users/skim4/Downloads/microdx_revamped",
+  "sourcePath": "/Users/skim4/Downloads/microdx_revamped",
+  "markers": [
+    "ABPath_MicroDx_Clean.md contains the main educational case bank, algorithm steps, and diagnostic explanations",
+    "app_revamped.py is a Streamlit shell that renders the markdown content and navigation",
+    "No standalone lecture deck or image asset library was found",
+    "Playwright tests exist for keyboard navigation, but they are not educational source content"
+  ],
+  "summary": {
+    "algorithms": 1,
+    "lectures": 0,
+    "images": 0,
+    "tutorials": 2,
+    "notes": "The repository is a Streamlit microbiology review app with a single large markdown knowledge file and a lightweight UI wrapper."
+  },
+  "candidates": {
+    "algorithms": [
+      "/Users/skim4/Downloads/microdx_revamped/ABPath_MicroDx_Clean.md"
+    ],
+    "lectures": [],
+    "images": [],
+    "tutorials": [
+      "/Users/skim4/Downloads/microdx_revamped/ABPath_MicroDx_Clean.md",
+      "/Users/skim4/Downloads/microdx_revamped/app_revamped.py"
+    ]
+  },
+  "dependencies": [
+    "streamlit",
+    "streamlit-hotkeys",
+    "sentry-sdk",
+    "@playwright/test"
+  ],
+  "recommendation": "Stage the markdown knowledge file first, then separate the case-bank algorithms from the wrapper app during normalization. No lecture or image corpus is present to migrate."
+}

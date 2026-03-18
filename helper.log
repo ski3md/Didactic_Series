@@ -1,0 +1,8 @@
+2025-11-01 20:24:57,265 - INFO - ==================================================
+2025-11-01 20:24:57,265 - INFO - 🔍 Starting Intelligent Pipeline Helper
+2025-11-01 20:24:57,265 - INFO - ==================================================
+2025-11-01 20:24:57,269 - INFO - 🗺️  Mapping directory structure at /Users/skim4/Downloads/Didactic_Series/assets/images
+2025-11-01 20:24:57,271 - INFO - 📸 Found 216 image(s) in 14 folder(s).
+2025-11-01 20:24:57,271 - INFO - 📝 Image map saved to: /Users/skim4/Downloads/Didactic_Series/assets/images/image_map.json
+2025-11-01 20:24:57,271 - INFO - 🚀 Running annotation pipeline...
+2025-11-01 20:24:57,271 - INFO - 🧠 Executing: /Applications/Xcode.app/Contents/Developer/usr/bin/python3 /Users/skim4/Downloads/Didactic_Series/research_pipeline.py --root-dir /Users/skim4/Downloads/Didactic_Series/assets/images --output-dir /Users/skim4/Downloads/Didactic_Series/assets/images/annotated_images --log-level INFO

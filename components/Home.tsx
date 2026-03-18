@@ -38,6 +38,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange }) => {
     { section: Section.CASE_LIBRARY, description: "Browse a library of AI-organized case studies with integrated histology.", icon: <CollectionIcon className="h-5 w-5" /> },
     { section: Section.LECTURES, description: "Read imported lecture transcripts, slide outlines, and companion algorithms from curated pathology projects.", icon: <BookOpenIcon className="h-5 w-5" /> },
     { section: Section.TUTORIALS, description: "Study imported board-style tutorials with markdown lessons, MCQs, and flashcards.", icon: <CollectionIcon className="h-5 w-5" /> },
+    { section: Section.DOWNLOADS_LIBRARY, description: "Review the separate Downloads-derived staging library with imported lectures, tutorials, algorithms, and histology images.", icon: <DocumentTextIcon className="h-5 w-5" /> },
     { section: Section.SYLLABUS_EXPLORER, description: "Search the imported parsed syllabus topic index across the canonical curriculum backbone.", icon: <DocumentTextIcon className="h-5 w-5" /> },
     { section: Section.VISUAL_CHALLENGE, description: "Sharpen your morphologic eye by comparing Sarcoidosis and HP side-by-side on digital slides.", icon: <EyeIcon className="h-5 w-5" /> },
     { section: Section.DIAGNOSTIC_PATHWAY, description: "A comprehensive, multi-step quiz that guides you through the differential diagnosis of a wide range of granulomatous diseases.", icon: <BeakerIcon className="h-5 w-5" /> },

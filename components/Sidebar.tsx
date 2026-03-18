@@ -43,6 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
         { section: Section.CASE_LIBRARY, icon: <CollectionIcon className="h-5 w-5" /> },
         { section: Section.LECTURES, icon: <AcademicCapIcon className="h-5 w-5" /> },
         { section: Section.TUTORIALS, icon: <CollectionIcon className="h-5 w-5" /> },
+        { section: Section.DOWNLOADS_LIBRARY, icon: <DocumentTextIcon className="h-5 w-5" /> },
         { section: Section.SYLLABUS_EXPLORER, icon: <BookOpenIcon className="h-5 w-5" /> },
         { section: Section.VISUAL_CHALLENGE, icon: <EyeIcon className="h-5 w-5" /> },
         { section: Section.DIAGNOSTIC_PATHWAY, icon: <BeakerIcon className="h-5 w-5" /> },

@@ -1,0 +1,40 @@
+{
+  "sourceProject": "/Users/skim4/Downloads/cytopathology-service",
+  "sourcePath": "/Users/skim4/Downloads/cytopathology-service/src",
+  "markers": [
+    "Embedded cytopathology case bank in src/CytopathologyService.js",
+    "Clinical criteria, specimen types, IHC panels, and management rules are data-driven in code",
+    "No standalone lecture or algorithm corpus found",
+    "Only static branding images found in public/ and src/logo.svg"
+  ],
+  "summary": {
+    "algorithms": 0,
+    "lectures": 0,
+    "images": 4,
+    "tutorials": 1,
+    "notes": "This is a React application with migratable educational content embedded in a single service component rather than in separate content files."
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [
+      "/Users/skim4/Downloads/cytopathology-service/public/favicon.ico",
+      "/Users/skim4/Downloads/cytopathology-service/public/logo192.png",
+      "/Users/skim4/Downloads/cytopathology-service/public/logo512.png",
+      "/Users/skim4/Downloads/cytopathology-service/src/logo.svg"
+    ],
+    "tutorials": [
+      "/Users/skim4/Downloads/cytopathology-service/src/CytopathologyService.js"
+    ]
+  },
+  "dependencies": [
+    "react",
+    "react-dom",
+    "react-scripts",
+    "@radix-ui/react-dialog",
+    "@radix-ui/react-select",
+    "@radix-ui/react-tabs",
+    "lucide-react"
+  ],
+  "recommendation": "Stage the tutorial/case data by extracting it from src/CytopathologyService.js into a normalized content format before copying anything larger. Do not expect separate lecture or algorithm files from this repo."
+}

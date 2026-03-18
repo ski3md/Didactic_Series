@@ -1,0 +1,71 @@
+{
+  "sourceProject": "batch_project",
+  "sourcePath": "/Users/skim4/Downloads/batch_project",
+  "markers": [
+    "Batch orchestration scripts: `batch_pipeline.py` and `batch_dashboard.py`",
+    "Topic-driven educational JSONL inputs: `extended_batch.jsonl`, `extended_batch_part_*.jsonl`, `remaining_topics.jsonl`",
+    "Generated outputs and failures: `merged_output.jsonl`, `batch_results/*.jsonl`, `logs/errors/*.json`",
+    "No standalone lecture, algorithm, or tutorial library directory found; content is embedded as batch prompts/results"
+  ],
+  "summary": {
+    "overall": "This repository is a batch-generation workspace for educational content, not a canonical content source. The usable migratable material is the topic/request JSONL set plus generated outputs; there is no dedicated lecture or algorithm corpus and no histology/image collection beyond a logo asset.",
+    "counts": {
+      "topicInputFiles": 12,
+      "resultFiles": 10,
+      "errorFiles": 10
+    }
+  },
+  "candidates": {
+    "algorithms": {
+      "files": [],
+      "note": "No standalone algorithm dataset found."
+    },
+    "lectures": {
+      "files": [],
+      "note": "No standalone lecture dataset found."
+    },
+    "images": {
+      "files": [
+        "/Users/skim4/Downloads/batch_project/public/logo.svg"
+      ],
+      "note": "Branding asset only; no educational image set found."
+    },
+    "tutorials": {
+      "files": [
+        "/Users/skim4/Downloads/batch_project/extended_batch.jsonl",
+        "/Users/skim4/Downloads/batch_project/extended_batch_part_1.jsonl",
+        "/Users/skim4/Downloads/batch_project/extended_batch_part_2.jsonl",
+        "/Users/skim4/Downloads/batch_project/extended_batch_part_3.jsonl",
+        "/Users/skim4/Downloads/batch_project/extended_batch_part_4.jsonl",
+        "/Users/skim4/Downloads/batch_project/extended_batch_part_5.jsonl",
+        "/Users/skim4/Downloads/batch_project/extended_batch_part_6.jsonl",
+        "/Users/skim4/Downloads/batch_project/extended_batch_part_7.jsonl",
+        "/Users/skim4/Downloads/batch_project/extended_batch_part_8.jsonl",
+        "/Users/skim4/Downloads/batch_project/extended_batch_part_9.jsonl",
+        "/Users/skim4/Downloads/batch_project/extended_batch_part_10.jsonl",
+        "/Users/skim4/Downloads/batch_project/remaining_topics.jsonl",
+        "/Users/skim4/Downloads/batch_project/merged_output.jsonl"
+      ],
+      "note": "Topic prompts and batch outputs are the only substantive educational payloads."
+    }
+  },
+  "dependencies": {
+    "runtime": [
+      "Python 3.9+",
+      "requests",
+      "pandas"
+    ],
+    "externalServices": [
+      "OpenAI Batches API",
+      "OpenAI Chat Completions API",
+      "OPENAI_API_KEY environment variable"
+    ],
+    "utilities": [
+      "curl",
+      "zip",
+      "jq",
+      "pip"
+    ]
+  },
+  "recommendation": "Treat this repo as a batch factory. Migrate the JSONL topic lists and any validated batch outputs first; do not expect standalone lecture or algorithm assets here. If instructional structure is needed, derive it from the generated outputs rather than the pipeline scripts."
+}

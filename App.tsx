@@ -14,6 +14,7 @@ const CaseStudy = lazy(() => import('./components/CaseStudy'));
 const CaseLibrary = lazy(() => import('./components/CaseLibrary'));
 const LecturesView = lazy(() => import('./components/LecturesView'));
 const TutorialsView = lazy(() => import('./components/TutorialsView'));
+const DownloadsLibraryView = lazy(() => import('./components/DownloadsLibraryView'));
 const SyllabusExplorer = lazy(() => import('./components/SyllabusExplorer'));
 const VisualChallenge = lazy(() => import('./components/EvaluationPhase'));
 const DiagnosticPathway = lazy(() => import('./components/DiagnosticPathway'));
@@ -51,6 +52,7 @@ const MainApp: React.FC<{ user: User; onLogout: () => void }> = ({ user, onLogou
       case Section.CASE_LIBRARY: return <CaseLibrary user={user} />;
       case Section.LECTURES: return <LecturesView />;
       case Section.TUTORIALS: return <TutorialsView />;
+      case Section.DOWNLOADS_LIBRARY: return <DownloadsLibraryView />;
       case Section.SYLLABUS_EXPLORER: return <SyllabusExplorer />;
       case Section.VISUAL_CHALLENGE: return <VisualChallenge user={user} />;
       case Section.DIAGNOSTIC_PATHWAY: return <DiagnosticPathway user={user} />;

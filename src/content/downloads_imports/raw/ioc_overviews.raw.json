@@ -1,0 +1,335 @@
+[
+  {
+    "serviceLine": "Breast Surgery",
+    "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/Breast%20Surgery.json",
+    "payload": {
+      "overview": {
+        "title": "Breast IOC: Core Principles",
+        "key_points": [
+          {
+            "label": "Surgeon's Question",
+            "text": "Is the lesion malignant, what is the histologic type, and are the margins clear?"
+          },
+          {
+            "label": "Primary Role",
+            "text": "Evaluate lumpectomy margins and sentinel lymph nodes; distinguish invasive carcinoma from benign mimickers."
+          },
+          {
+            "label": "Cardinal Rule",
+            "text": "Complex sclerosing lesions and radial scars may mimic invasive carcinoma; correlation with permanent sections and immunostains may be necessary."
+          },
+          {
+            "label": "Common Specimens",
+            "text": "Lumpectomy margins, core needle biopsies, sentinel lymph nodes."
+          }
+        ],
+        "triad_summary": [
+          "Tubular",
+          "Sclerosing",
+          "Cribriform"
+        ]
+      },
+      "triad": [
+        "Tubular",
+        "Sclerosing",
+        "Cribriform"
+      ]
+    }
+  },
+  {
+    "serviceLine": "Endocrine Surgery",
+    "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/Endocrine%20Surgery.json",
+    "payload": {
+      "overview": {
+        "title": "Thyroid IOC: Core Principles",
+        "key_points": [
+          {
+            "label": "Surgeon's Question",
+            "text": "Is this thyroid nodule malignant and, if so, should a total thyroidectomy be performed?"
+          },
+          {
+            "label": "Primary Role",
+            "text": "Triage thyroid lesions into papillary, follicular‑patterned and other categories; recognize that follicular carcinoma cannot be diagnosed on frozen section."
+          },
+          {
+            "label": "Cardinal Rule",
+            "text": "Follicular carcinoma requires capsular and/or vascular invasion on permanent sections; never overcall invasion on frozen."
+          },
+          {
+            "label": "Common Specimens",
+            "text": "Lobectomy, isthmusectomy, subtotal or completion thyroidectomy."
+          }
+        ],
+        "triad_summary": [
+          "Papillary",
+          "Follicular",
+          "SolidSpindle"
+        ]
+      },
+      "triad": [
+        "Papillary",
+        "Follicular",
+        "SolidSpindle"
+      ]
+    }
+  },
+  {
+    "serviceLine": "Gynecologic Oncology",
+    "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/Gynecologic%20Oncology.json",
+    "payload": {
+      "overview": {
+        "title": "Gynecologic IOC: Core Principles",
+        "key_points": [
+          {
+            "label": "Surgeon's Question",
+            "text": "Is the adnexal or uterine mass benign, borderline, or malignant, and does it require staging?"
+          },
+          {
+            "label": "Primary Role",
+            "text": "Classify ovarian and endometrial tumors into major histologic categories; determine need for comprehensive staging or debulking."
+          },
+          {
+            "label": "Cardinal Rule",
+            "text": "Borderline serous tumors can be difficult to distinguish from invasive carcinoma on frozen; deferral may be prudent."
+          },
+          {
+            "label": "Common Specimens",
+            "text": "Oophorectomy, salpingo‑oophorectomy, hysterectomy, omentectomy."
+          }
+        ],
+        "triad_summary": [
+          "Serous",
+          "Mucinous",
+          "Endometrioid"
+        ]
+      },
+      "triad": [
+        "Serous",
+        "Mucinous",
+        "Endometrioid"
+      ]
+    }
+  },
+  {
+    "serviceLine": "Head & Neck Surgery",
+    "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/Head%20&%20Neck%20Surgery.json",
+    "payload": {
+      "overview": {
+        "title": "Head & Neck IOC: Core Principles",
+        "key_points": [
+          {
+            "label": "Surgeon's Question",
+            "text": "Is this head and neck lesion malignant and what is its histologic type? Are margins clear?"
+          },
+          {
+            "label": "Primary Role",
+            "text": "Distinguish squamous cell carcinoma from benign/inflammatory lesions, recognize papillary thyroid carcinoma metastases and lymphomas in lymph nodes."
+          },
+          {
+            "label": "Cardinal Rule",
+            "text": "Reactive squamous atypia and cystic changes can mimic carcinoma; correlation with clinical and radiologic findings is essential."
+          },
+          {
+            "label": "Common Specimens",
+            "text": "Mucosal margins, neck dissection lymph nodes, thyroid lobectomy frozen sections."
+          }
+        ],
+        "triad_summary": [
+          "SquamousHN",
+          "PapillaryThyroid",
+          "Lymphoma"
+        ]
+      },
+      "triad": [
+        "SquamousHN",
+        "PapillaryThyroid",
+        "Lymphoma"
+      ]
+    }
+  },
+  {
+    "serviceLine": "Hepatobiliary Surgery",
+    "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/Hepatobiliary%20Surgery.json",
+    "payload": {
+      "overview": {
+        "title": "Liver/Biliary IOC: Core Principles",
+        "key_points": [
+          {
+            "label": "Surgeon's Question",
+            "text": "Is this hepatic or bile duct lesion malignant and are surgical margins free of tumor?"
+          },
+          {
+            "label": "Primary Role",
+            "text": "Differentiate primary hepatocellular patterns from metastatic tumors and benign regenerative nodules; assess bile duct lesions for malignancy."
+          },
+          {
+            "label": "Cardinal Rule",
+            "text": "Poorly differentiated hepatocellular carcinoma may mimic cholangiocarcinoma; correlation with radiology and immunostains on permanents is essential."
+          },
+          {
+            "label": "Common Specimens",
+            "text": "Segmental hepatectomy margins, wedge biopsies of hepatic nodules, bile duct excisions."
+          }
+        ],
+        "triad_summary": [
+          "Hepatocellular",
+          "Cholangiocarcinoma",
+          "MetastaticLiver"
+        ]
+      },
+      "triad": [
+        "Hepatocellular",
+        "Cholangiocarcinoma",
+        "MetastaticLiver"
+      ]
+    }
+  },
+  {
+    "serviceLine": "Neuropathology",
+    "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/Neuropathology.json",
+    "payload": {
+      "overview": {
+        "title": "Neurosurgical IOC: Core Principles",
+        "key_points": [
+          {
+            "label": "Surgeon's Question",
+            "text": "What is the nature of this central nervous system lesion and does it require further resection?"
+          },
+          {
+            "label": "Primary Role",
+            "text": "Provide rapid classification of CNS lesions into glioma, metastatic tumor, or meningioma to guide extent of surgery."
+          },
+          {
+            "label": "Cardinal Rule",
+            "text": "Frozen sections distort brain tissue; cytologic crush preparations may be more reliable for grading glial tumors."
+          },
+          {
+            "label": "Common Specimens",
+            "text": "Stereotactic biopsies, intraoperative tumor debulking specimens."
+          }
+        ],
+        "triad_summary": [
+          "Glioma",
+          "MetastasisCNS",
+          "Meningioma"
+        ]
+      },
+      "triad": [
+        "Glioma",
+        "MetastasisCNS",
+        "Meningioma"
+      ]
+    }
+  },
+  {
+    "serviceLine": "Pancreatic Surgery",
+    "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/Pancreatic%20Surgery.json",
+    "payload": {
+      "overview": {
+        "title": "Pancreas IOC: Core Principles",
+        "key_points": [
+          {
+            "label": "Surgeon's Question",
+            "text": "Is the pancreatic resection margin free of invasive carcinoma and is this lesion malignant or benign?"
+          },
+          {
+            "label": "Primary Role",
+            "text": "Distinguish inflammation and benign cystic lesions from invasive carcinoma; evaluate margins for tumor."
+          },
+          {
+            "label": "Cardinal Rule",
+            "text": "Desmoplastic stroma can mimic chronic pancreatitis on frozen; caution with diagnosing adenocarcinoma without definitive glands invading stroma."
+          },
+          {
+            "label": "Common Specimens",
+            "text": "Pancreatic neck margin from Whipple procedure, distal pancreatectomy margins, enucleation of cystic lesions."
+          }
+        ],
+        "triad_summary": [
+          "Glandular",
+          "Ductal",
+          "Desmoplastic"
+        ]
+      },
+      "triad": [
+        "Glandular",
+        "Ductal",
+        "Desmoplastic"
+      ]
+    }
+  },
+  {
+    "serviceLine": "Thoracic Surgery",
+    "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/Thoracic%20Surgery.json",
+    "payload": {
+      "overview": {
+        "title": "Lung IOC: Core Principles",
+        "key_points": [
+          {
+            "label": "Surgeon's Question",
+            "text": "Is this lung lesion malignant and, if so, should more lung tissue be resected?"
+          },
+          {
+            "label": "Primary Role",
+            "text": "Provide rapid triage for malignancy versus benign/reactive lesions; do not overinterpret frozen artifacts."
+          },
+          {
+            "label": "Cardinal Rule",
+            "text": "Many subtle adenocarcinoma patterns (e.g. lepidic) are under‑diagnosed on frozen; deferral may be appropriate."
+          },
+          {
+            "label": "Common Specimens",
+            "text": "Wedge resections for peripheral nodules, mediastinal lymph node biopsies, lobectomies."
+          }
+        ],
+        "triad_summary": [
+          "Adenocarcinoma",
+          "Squamous",
+          "SmallCell"
+        ]
+      },
+      "triad": [
+        "Adenocarcinoma",
+        "Squamous",
+        "SmallCell"
+      ]
+    }
+  },
+  {
+    "serviceLine": "Urologic Oncology",
+    "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/Urologic%20Oncology.json",
+    "payload": {
+      "overview": {
+        "title": "Renal IOC: Core Principles",
+        "key_points": [
+          {
+            "label": "Surgeon's Question",
+            "text": "Is the renal mass malignant, and if so, what subtype is it; are margins free of tumor?"
+          },
+          {
+            "label": "Primary Role",
+            "text": "Distinguish clear cell renal cell carcinoma from oncocytoma and other benign lesions; evaluate partial nephrectomy margins."
+          },
+          {
+            "label": "Cardinal Rule",
+            "text": "Papillary and chromophobe renal tumors may appear deceptively bland; rely on architectural patterns more than cytology alone."
+          },
+          {
+            "label": "Common Specimens",
+            "text": "Partial nephrectomy margins, radical nephrectomy sampling, ureteral margins."
+          }
+        ],
+        "triad_summary": [
+          "ClearCell",
+          "PapillaryKidney",
+          "Chromophobe"
+        ]
+      },
+      "triad": [
+        "ClearCell",
+        "PapillaryKidney",
+        "Chromophobe"
+      ]
+    }
+  }
+]

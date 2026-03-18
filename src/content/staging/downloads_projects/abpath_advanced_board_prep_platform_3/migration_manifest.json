@@ -1,0 +1,54 @@
+{
+  "sourceProject": "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)",
+  "sourcePath": "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)",
+  "markers": [
+    "abpath_export_1766721402593.json",
+    "metadata.json",
+    "README.md",
+    "App.tsx",
+    "pregeneratedData.ts",
+    "style-enforcement-agent/public/*.png|*.svg|*.jpg"
+  ],
+  "summary": {
+    "contentRecords": 239,
+    "tutorial-likeRecords": 239,
+    "lectureRecords": 0,
+    "algorithmRecords": 0,
+    "imageAssetFiles": 7,
+    "imageDrivenTutorialRecords": 239
+  },
+  "candidates": [
+    {
+      "path": "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/abpath_export_1766721402593.json",
+      "category": "tutorials",
+      "reason": "Primary content export; contains 239 tutorial entries with `tutorial` payloads and embedded `visualType` metadata.",
+      "recordCount": 239,
+      "visualTypeBreakdown": {
+        "smear": 214,
+        "histology": 21,
+        "gross_pathology": 1,
+        "echocardiography": 1,
+        "Histology": 1,
+        "molecular_structure": 1
+      }
+    },
+    {
+      "path": "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/metadata.json",
+      "category": "tutorials",
+      "reason": "Describes the platform as board-prep content with an interactive syllabus, question generation, case tutorials, and learning modules."
+    },
+    {
+      "path": "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/style-enforcement-agent/public/*.png|*.svg|*.jpg",
+      "category": "images",
+      "reason": "Only obvious image files found in the project tree; these are UI/static placeholders rather than educational histology assets."
+    }
+  ],
+  "dependencies": [
+    "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/App.tsx",
+    "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/pregeneratedData.ts",
+    "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/components/ClinicalVisualizer.tsx",
+    "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/components/MarkdownRenderer.tsx",
+    "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/components/FlashcardPlayer.tsx"
+  ],
+  "recommendation": "Migrate only the export JSON first. There is no separate lecture or algorithm corpus to lift from this project, and the image files are not educational assets. The next step should be parsing the export into the target schema and deciding whether any of the histology-marked tutorial records should be split into a dedicated image-backed subset."
+}

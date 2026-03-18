@@ -1,0 +1,51 @@
+{
+  "sourceProject": "abpath-smart-qbank",
+  "sourcePath": "/Users/skim4/Downloads/abpath-smart-qbank",
+  "markers": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [
+      "components/VisualModels.tsx"
+    ],
+    "tutorials": [
+      "data/syllabus.ts",
+      "services/geminiService.ts"
+    ]
+  },
+  "summary": "The repository is primarily an AI-driven qbank application, not a source repository of static lecture, image, or algorithm content. The only content-adjacent syllabus payload is the AP/CP topic taxonomy in data/syllabus.ts, while VisualModels.tsx provides synthetic educational visualizations rather than stored media assets.",
+  "candidates": [
+    {
+      "category": "tutorials",
+      "path": "/Users/skim4/Downloads/abpath-smart-qbank/data/syllabus.ts",
+      "reason": "Canonical AP/CP syllabus tree used to drive question generation and topic selection.",
+      "confidence": "medium"
+    },
+    {
+      "category": "images",
+      "path": "/Users/skim4/Downloads/abpath-smart-qbank/components/VisualModels.tsx",
+      "reason": "Contains educational visual simulators (canvas and D3), but no standalone image files or image dataset.",
+      "confidence": "low"
+    },
+    {
+      "category": "tutorials",
+      "path": "/Users/skim4/Downloads/abpath-smart-qbank/services/geminiService.ts",
+      "reason": "LLM prompt templates and generation logic for board-style questions, deep dives, and image-based questions.",
+      "confidence": "medium"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "/Users/skim4/Downloads/abpath-smart-qbank/types.ts",
+      "note": "Defines the Syllabus and Question schemas consumed by the content-adjacent files."
+    },
+    {
+      "path": "/Users/skim4/Downloads/abpath-smart-qbank/App.tsx",
+      "note": "Consumes generated questions and syllabus structure in the main quiz UI."
+    },
+    {
+      "path": "/Users/skim4/Downloads/abpath-smart-qbank/components/MentorMode.tsx",
+      "note": "Uses generated questions and case data for mentor-style exploration."
+    }
+  ],
+  "recommendation": "Do not copy payloads yet. If migration is needed, extract or regenerate tutorial content from data/syllabus.ts and geminiService.ts first. There are no standalone lecture or algorithm assets to migrate, and no image library beyond synthetic UI visualizations."
+}

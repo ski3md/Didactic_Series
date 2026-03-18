@@ -1,0 +1,53 @@
+{
+  "sourceProject": "/Users/skim4/Downloads/ABPath_CP_CompReview",
+  "sourcePath": "/Users/skim4/Downloads/ABPath_CP_CompReview",
+  "markers": [
+    "clinical pathology board review",
+    "Generate 5 ${category} questions",
+    "Anki upload / flashcard parsing",
+    "studyModalities",
+    "generatedQuestions",
+    "CP Board Review Dashboard"
+  ],
+  "summary": "Next.js clinical pathology review app with embedded tutorial/question content and Anki-flashcard tooling. No standalone lecture or algorithm dataset was found; the educational material is concentrated in the app page, AI question route, and Anki parser.",
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [
+      {
+        "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/public/logo.svg",
+        "note": "Branding asset only; not instructional content."
+      },
+      {
+        "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/src/app/favicon.ico",
+        "note": "App icon only; not instructional content."
+      }
+    ],
+    "tutorials": [
+      {
+        "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/src/app/page.tsx",
+        "note": "Primary tutorial surface: flashcards, generated questions, question modes, study session UI, and embedded sample clinical-pathology review content."
+      },
+      {
+        "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/src/app/api/questions/route.ts",
+        "note": "Generates board-review questions and study modalities."
+      },
+      {
+        "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/src/app/api/upload/route.ts",
+        "note": "Anki upload path with sample flashcards and category tagging."
+      },
+      {
+        "path": "/Users/skim4/Downloads/ABPath_CP_CompReview/src/lib/anki-parser.ts",
+        "note": "Parses flashcards and cloze deletions; classifies study cards by tag."
+      }
+    ]
+  },
+  "dependencies": [
+    "Next.js App Router",
+    "React / TypeScript",
+    "z-ai-web-dev-sdk",
+    "Prisma / SQLite shell only",
+    "Node fs, path, os, child_process unzip for upload processing"
+  ],
+  "recommendation": "If migration continues, stage the tutorial/question subsystem first: `src/app/page.tsx`, `src/app/api/questions/route.ts`, `src/app/api/upload/route.ts`, and `src/lib/anki-parser.ts`. Do not spend time on lectures or algorithms for this repo unless new source data appears, because no separate lecture or algorithm corpus exists here."
+}

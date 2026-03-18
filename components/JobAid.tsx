@@ -4,6 +4,7 @@ import SectionHeader from './ui/SectionHeader';
 import { XCircleIcon, SparklesIcon } from './icons';
 import { findRelevantImage } from '../utils/aiImageSelector';
 import { StoredImage } from '../types';
+import { getCuratedAtlasFamilies, getCuratedAtlasImages } from '../utils/curatedHistologyAtlas';
 
 const atlasData = [
   {
@@ -96,7 +97,7 @@ const atlasData = [
   }
 ];
 
-const ImageModal: React.FC<{ imageUrl: string; imageName: string; onClose: () => void }> = ({ imageUrl, imageName, onClose }) => {
+const ImageModal: React.FC<{ image: StoredImage; onClose: () => void }> = ({ image, onClose }) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -118,8 +119,30 @@ const ImageModal: React.FC<{ imageUrl: string; imageName: string; onClose: () =>
       aria-labelledby="image-modal-title"
     >
       <div className="relative p-2 bg-white rounded-lg shadow-xl max-w-4xl max-h-[90vh] w-auto" onClick={(e) => e.stopPropagation()}>
-        <img src={imageUrl} alt={`Histology of ${imageName}`} className="object-contain max-w-full max-h-[85vh] rounded" />
-        <h2 id="image-modal-title" className="sr-only">Histology image of {imageName}</h2>
+        <img src={image.src} alt={image.title} className="object-contain max-w-full max-h-[85vh] rounded" />
+        <div className="px-2 pt-3 pb-1">
+          <h2 id="image-modal-title" className="text-lg font-semibold text-slate-900">{image.title}</h2>
+          {image.description && <p className="text-sm text-slate-600 mt-1">{image.description}</p>}
+          {(image.family || image.stain || image.magnification) && (
+            <p className="text-xs text-slate-500 mt-2">
+              {[
+                image.family ? `Family: ${image.family}` : null,
+                image.stain ? `Stain: ${image.stain}` : null,
+                image.magnification ? `Magnification: ${image.magnification.replace(/_/g, ' ')}` : null,
+              ].filter(Boolean).join(' | ')}
+            </p>
+          )}
+          {image.sourceUrl && (
+            <a
+              href={image.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block text-xs text-primary-700 hover:text-primary-900 underline mt-2"
+            >
+              View source attribution
+            </a>
+          )}
+        </div>
         <button
           onClick={onClose}
           className="absolute -top-4 -right-4 bg-white rounded-full p-1 shadow-lg text-slate-600 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors"
@@ -135,9 +158,25 @@ const ImageModal: React.FC<{ imageUrl: string; imageName: string; onClose: () =>
 
 const JobAid: React.FC = () => {
   const [openCategories, setOpenCategories] = useState<string[]>([atlasData[0].category]);
-  const [modalImage, setModalImage] = useState<{url: string, name: string} | null>(null);
+  const [modalImage, setModalImage] = useState<StoredImage | null>(null);
   const [aiImages, setAiImages] = useState<Record<string, StoredImage | null>>({});
   const [loadingImage, setLoadingImage] = useState<string | null>(null);
+  const [curatedSearch, setCuratedSearch] = useState('');
+  const [curatedFamily, setCuratedFamily] = useState('all');
+
+  const curatedImages = getCuratedAtlasImages();
+  const curatedFamilies = getCuratedAtlasFamilies();
+  const filteredCuratedImages = curatedImages.filter((image) => {
+    const matchesFamily = curatedFamily === 'all' || image.family === curatedFamily;
+    const searchableText = [image.title, image.entity, image.family, image.stain, image.description]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+    const matchesSearch =
+      curatedSearch.trim() === '' || searchableText.includes(curatedSearch.trim().toLowerCase());
+
+    return matchesFamily && matchesSearch;
+  });
 
 
   const toggleCategory = (category: string) => {
@@ -194,7 +233,24 @@ const JobAid: React.FC = () => {
                                   {displayImage && (
                                        <div className="flex-shrink-0 text-center w-32">
                                           <button
-                                              onClick={() => setModalImage({url: displayImage, name: disease.name})}
+                                              onClick={() =>
+                                                setModalImage({
+                                                  id: `legacy_${disease.name}`,
+                                                  src: displayImage,
+                                                  title: aiImages[disease.name]?.title ?? disease.name,
+                                                  description: isAiImage
+                                                    ? aiImages[disease.name]?.description || `AI-selected gallery image for ${disease.name}.`
+                                                    : `Reference image for ${disease.name}.`,
+                                                  uploader: isAiImage ? aiImages[disease.name]?.uploader || 'AI-selected gallery' : 'External Atlas',
+                                                  timestamp: 0,
+                                                  family: aiImages[disease.name]?.family,
+                                                  stain: aiImages[disease.name]?.stain,
+                                                  magnification: aiImages[disease.name]?.magnification,
+                                                  sourceUrl: aiImages[disease.name]?.sourceUrl ?? disease.links[0]?.url,
+                                                  collection: aiImages[disease.name]?.collection,
+                                                  readOnly: true,
+                                                })
+                                              }
                                               className="group relative w-32 h-32 rounded-md overflow-hidden border-2 border-slate-200 hover:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all duration-200"
                                               aria-label={`View histology image for ${disease.name}`}
                                           >
@@ -254,7 +310,81 @@ const JobAid: React.FC = () => {
           );
         })}
       </div>
-      {modalImage && <ImageModal imageUrl={modalImage.url} imageName={modalImage.name} onClose={() => setModalImage(null)} />}
+
+      <Card className="mt-10 border-primary-200 bg-gradient-to-br from-white via-primary-50/40 to-slate-50">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-6">
+          <div>
+            <h2 className="text-2xl font-semibold font-serif text-slate-900">Supplemental Migrated Atlas</h2>
+            <p className="text-sm text-slate-600 mt-2 max-w-3xl">
+              This imported atlas comes from the migrated curriculum projects and is best used as a morphology-first reference set.
+              It complements the granulomatous link-out atlas above rather than serving as a one-to-one disease map.
+            </p>
+          </div>
+          <p className="text-xs text-slate-500">
+            {filteredCuratedImages.length} of {curatedImages.length} curated images shown across {curatedFamilies.length} imported families
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_220px] gap-3 mb-6">
+          <input
+            type="search"
+            value={curatedSearch}
+            onChange={(event) => setCuratedSearch(event.target.value)}
+            className="w-full border border-slate-300 rounded-md shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm p-2"
+            placeholder="Search migrated atlas by entity, family, stain, or title"
+          />
+          <select
+            value={curatedFamily}
+            onChange={(event) => setCuratedFamily(event.target.value)}
+            className="w-full border border-slate-300 rounded-md shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm p-2 bg-white"
+          >
+            <option value="all">All families</option>
+            {curatedFamilies.map((family) => (
+              <option key={family} value={family}>
+                {family}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {filteredCuratedImages.length === 0 ? (
+          <p className="text-center text-slate-500 py-8">
+            No migrated atlas images match the current entity and family filters.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            {filteredCuratedImages.map((image) => (
+              <button
+                key={image.id}
+                onClick={() => setModalImage(image)}
+                className="text-left rounded-xl border border-slate-200 bg-white shadow-sm hover:shadow-md hover:border-primary-300 transition-all overflow-hidden focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              >
+                <div className="aspect-[4/3] bg-slate-100 overflow-hidden">
+                  <img src={image.src} alt={image.title} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="font-semibold text-slate-900 leading-tight">{image.title}</h3>
+                    <span className="shrink-0 rounded-full bg-primary-100 text-primary-800 px-2 py-1 text-[11px] font-medium">
+                      {image.family || 'unclassified'}
+                    </span>
+                  </div>
+                  <p className="text-sm text-slate-600 mt-2">
+                    {image.entity || 'Imported migrated atlas image'}
+                  </p>
+                  <p className="text-xs text-slate-500 mt-3">
+                    {[image.stain, image.magnification ? image.magnification.replace(/_/g, ' ') : null]
+                      .filter(Boolean)
+                      .join(' | ') || 'Histology reference'}
+                  </p>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+      </Card>
+
+      {modalImage && <ImageModal image={modalImage} onClose={() => setModalImage(null)} />}
     </div>
   );
 };

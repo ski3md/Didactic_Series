@@ -1,4 +1,5 @@
 import { StoredImage } from '../types';
+import { getCuratedAtlasImages } from './curatedHistologyAtlas';
 
 const OFFICIAL_IMAGES_KEY = 'pathology_module_official_images';
 const COMMUNITY_IMAGES_KEY = 'pathology_module_community_images';
@@ -42,3 +43,9 @@ export const saveCommunityImages = (images: StoredImage[]): void => {
     console.error("Failed to save community images to localStorage:", error);
   }
 };
+
+export const getAllSelectableImages = (): StoredImage[] => [
+  ...getCuratedAtlasImages(),
+  ...getOfficialImages(),
+  ...getCommunityImages(),
+];

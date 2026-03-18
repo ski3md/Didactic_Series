@@ -1,0 +1,90 @@
+{
+  "sourceProject": "dashboard1",
+  "sourcePath": "/Users/skim4/Downloads/dashboard1",
+  "markers": [
+    "backend/data/hematology_entities.json",
+    "backend/data/coag_factors.json",
+    "backend/data/chemistry_cases.json",
+    "backend/data/transfusion_antibodies.json",
+    "backend/data/immunology_nodes.json",
+    "backend/server.js",
+    "frontend/src/App.jsx",
+    "frontend/src/components/CascadeDiagram.js",
+    "frontend/src/components/ChemistryDiagram.js",
+    "frontend/src/components/AntibodyPanel.js",
+    "frontend/src/components/HemeFlowCytometry.js",
+    "frontend/src/components/ImmunologySwitching.js"
+  ],
+  "summary": {
+    "contentAssessment": "The source is an educational CP dashboard with five small backend JSON datasets that hold the core study content and a frontend that renders them as diagrams and panels.",
+    "categoryCoverage": {
+      "algorithms": "none found",
+      "lectures": "none found",
+      "images": "none found",
+      "tutorials": "candidate found"
+    },
+    "notes": [
+      "The content is organized by topic: hematology, coagulation, chemistry, transfusion, and immunology.",
+      "The frontend components are presentation layers, not content payloads.",
+      "No standalone local image assets were present outside node_modules."
+    ]
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [],
+    "tutorials": [
+      {
+        "path": "/Users/skim4/Downloads/dashboard1/backend/data/hematology_entities.json",
+        "reason": "Educational hematology facts and pearls."
+      },
+      {
+        "path": "/Users/skim4/Downloads/dashboard1/backend/data/coag_factors.json",
+        "reason": "Coagulation factor study content with disease associations and teaching pearls."
+      },
+      {
+        "path": "/Users/skim4/Downloads/dashboard1/backend/data/chemistry_cases.json",
+        "reason": "Lab-medicine case vignettes with pearls and linked conditions."
+      },
+      {
+        "path": "/Users/skim4/Downloads/dashboard1/backend/data/transfusion_antibodies.json",
+        "reason": "Transfusion antibody teaching dataset."
+      },
+      {
+        "path": "/Users/skim4/Downloads/dashboard1/backend/data/immunology_nodes.json",
+        "reason": "Immunology class-switching teaching dataset."
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "path": "/Users/skim4/Downloads/dashboard1/backend/server.js",
+      "role": "Serves the educational JSON datasets over API routes."
+    },
+    {
+      "path": "/Users/skim4/Downloads/dashboard1/frontend/src/App.jsx",
+      "role": "Composes the teaching visualizations and data panels."
+    },
+    {
+      "path": "/Users/skim4/Downloads/dashboard1/frontend/src/components/AntibodyPanel.js",
+      "role": "Consumes transfusion API data."
+    },
+    {
+      "path": "/Users/skim4/Downloads/dashboard1/frontend/src/components/HemeFlowCytometry.js",
+      "role": "Consumes hematology API data."
+    },
+    {
+      "path": "/Users/skim4/Downloads/dashboard1/frontend/src/components/ChemistryDiagram.js",
+      "role": "Interactive visualization component; no separate content payload."
+    },
+    {
+      "path": "/Users/skim4/Downloads/dashboard1/frontend/src/components/CascadeDiagram.js",
+      "role": "Interactive visualization component; no separate content payload."
+    },
+    {
+      "path": "/Users/skim4/Downloads/dashboard1/frontend/src/components/ImmunologySwitching.js",
+      "role": "Consumes immunology API data."
+    }
+  ],
+  "recommendation": "Stage the five backend JSON datasets first as tutorial content. Treat the frontend as renderers only, and do not look for independent lecture, algorithm, or image sources in this project unless a new asset directory is added later."
+}

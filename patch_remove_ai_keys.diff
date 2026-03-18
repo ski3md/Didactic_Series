@@ -1,0 +1,81 @@
+diff --git a/vite.config.ts b/vite.config.ts
+index e1844f6..0000000 100644
+--- a/vite.config.ts
++++ b/vite.config.ts
+@@ -10,8 +10,6 @@ import { defineConfig, loadEnv } from 'vite';
+ export default defineConfig(({ mode }) => {
+   const env = loadEnv(mode, process.cwd(), '');
+   return {
+-    define: {
+-      'process.env.API_KEY': JSON.stringify(env.API_KEY),
+-    },
++    // Removed API key injection — no secrets bundled in client build
+     base: '/Didactic_Series/',
+     plugins: [react()],
+   };
+diff --git a/components/AICaseGenerator.tsx b/components/AICaseGenerator.tsx
+index abc1234..0000000 100644
+--- a/components/AICaseGenerator.tsx
++++ b/components/AICaseGenerator.tsx
+@@ -1,10 +1,13 @@
+-import { GoogleGenAI } from "@google/genai";
+-
+-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+-
+-export async function generateCaseStudy(prompt: string) {
+-  const result = await ai.generateContent(prompt);
+-  return result.output_text;
+-}
++// AI integration removed for security and privacy
++console.warn("Google AI Studio integration has been disabled.");
++
++export async function generateCaseStudy(prompt: string) {
++  console.info("AI Case Generator is disabled in this build.");
++  return {
++    message: "AI Case Generator is currently disabled. This module is placeholder-only.",
++    prompt,
++  };
++}
+diff --git a/utils/caseGenerator.ts b/utils/caseGenerator.ts
+index def5678..0000000 100644
+--- a/utils/caseGenerator.ts
++++ b/utils/caseGenerator.ts
+@@ -1,7 +1,10 @@
+-import { GoogleGenAI } from "@google/genai";
+-
+-export async function generateCase(prompt: string) {
+-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+-  const res = await ai.generateContent(prompt);
+-  return res.output_text;
+-}
++// Removed Gemini API dependency for security
++export async function generateCase(prompt: string) {
++  console.info("AI case generation disabled.");
++  return {
++    title: "AI Disabled Mode",
++    casePrompt: prompt,
++    note: "This feature previously used Gemini API but has been deactivated for security compliance.",
++  };
++}
+diff --git a/utils/aiImageSelector.ts b/utils/aiImageSelector.ts
+index 123abcd..0000000 100644
+--- a/utils/aiImageSelector.ts
++++ b/utils/aiImageSelector.ts
+@@ -1,9 +1,11 @@
+-import { GoogleGenAI } from "@google/genai";
+-
+-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+-
+-export async function suggestImageForDiagnosis(text: string) {
+-  const result = await ai.generateContent(`Find an image for: ${text}`);
+-  return result.output_image_url;
+-}
++// Removed Gemini image generation logic — replaced with stub
++console.warn("AI image suggestion disabled (Gemini integration removed).");
++
++export async function suggestImageForDiagnosis(text: string) {
++  return {
++    note: "AI-based image suggestion is disabled in this version.",
++    searchHint: `Try manual search for histologic patterns related to: ${text}`,
++  };
++}

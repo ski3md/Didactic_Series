@@ -1,0 +1,59 @@
+{
+  "sourceProject": "pathology-learning-module_-granulomatous-diseases (2)",
+  "sourcePath": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)",
+  "markers": [
+    "ADDIE-based pathology learning module",
+    "case-driven granulomatous disease curriculum",
+    "structured case metadata in src/data/caseMetadataRules.json",
+    "AI case generator and image-gallery workflow",
+    "no standalone image files under public/"
+  ],
+  "summary": {
+    "status": "content-rich-without-raw-images",
+    "tutorialCorpus": "present",
+    "lectureCorpus": "absent",
+    "algorithmCorpus": "absent",
+    "imagePayloads": "absent"
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [],
+    "tutorials": [
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)/src/data/caseMetadataRules.json",
+        "note": "structured disease taxonomy, teaching points, and case contexts"
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)/components/CaseStudy.tsx",
+        "note": "embedded instructional case flow with granulomatous disease narrative"
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)/components/DevelopmentPhase.tsx",
+        "note": "instructional content and example case text used in the module"
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)/components/AICaseGenerator.tsx",
+        "note": "prompt template for generating board-style pathology cases"
+      },
+      {
+        "path": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (2)/utils/caseGenerator.ts",
+        "note": "case-generation logic that encodes disease-specific metadata and learning objectives"
+      }
+    ]
+  },
+  "dependencies": [
+    "@google/genai",
+    "react",
+    "react-dom",
+    "@vitejs/plugin-react",
+    "autoprefixer",
+    "dotenv",
+    "gh-pages",
+    "postcss",
+    "tailwindcss",
+    "typescript",
+    "vite"
+  ],
+  "recommendation": "Migrate the structured case metadata and embedded case-study content first; there are no raw image assets to copy, so image migration can be deferred until the source repo gains a durable media store."
+}

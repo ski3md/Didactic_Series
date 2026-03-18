@@ -1,0 +1,45 @@
+{
+  "sourceProject": "didactic-series-working-copy",
+  "sourcePath": "/Users/skim4/Downloads/didactic-series-working-copy",
+  "markers": [
+    "Vite + React + TypeScript app scaffold",
+    "OpenAI chat client example in src/App.tsx",
+    "no standalone educational corpus found",
+    "only clear image asset is public/favicon.svg"
+  ],
+  "summary": {
+    "status": "mostly-empty",
+    "tutorialCorpus": "absent",
+    "lectureCorpus": "absent",
+    "algorithmCorpus": "absent",
+    "imagePayloads": "minimal"
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [
+      "/Users/skim4/Downloads/didactic-series-working-copy/public/favicon.svg"
+    ],
+    "tutorials": []
+  },
+  "dependencies": [
+    "@headlessui/react",
+    "@heroicons/react",
+    "axios",
+    "classnames",
+    "clsx",
+    "react",
+    "react-dom",
+    "react-router-dom",
+    "@types/react",
+    "@types/react-dom",
+    "@vitejs/plugin-react",
+    "gh-pages",
+    "postcss",
+    "prettier",
+    "tailwindcss",
+    "typescript",
+    "vite"
+  ],
+  "recommendation": "Do not stage payload migration from this repo yet; it should be treated as a scaffold unless additional content directories are added later."
+}

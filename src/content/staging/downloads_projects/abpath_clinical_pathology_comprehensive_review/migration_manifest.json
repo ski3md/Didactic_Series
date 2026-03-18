@@ -1,0 +1,52 @@
+{
+  "sourceProject": "ABPath Clinical Pathology Comprehensive Review",
+  "sourcePath": "/Users/skim4/Downloads/ABPath Clinical Pathology Comprehensive Review",
+  "markers": [
+    "src/app/page.tsx contains the primary study UI, including embedded flashcards, question sets, progress metrics, and topic tabs.",
+    "src/app/api/questions/route.ts generates board-review questions through `z-ai-web-dev-sdk`.",
+    "public/logo.svg is the only standalone image asset found in the inspected source tree.",
+    "No dedicated lecture, algorithm, or tutorial data directory was found; relevant educational content is inline in application code."
+  ],
+  "summary": "This project is mostly a Next.js study dashboard with hard-coded board-review content and AI-generated questions, not a separate content corpus. The only clear migratable educational assets are the inline study/question blocks in `src/app/page.tsx`, the question-generation API route, and the branding image.",
+  "candidates": {
+    "algorithms": [
+      {
+        "file": "src/app/page.tsx",
+        "reason": "Contains the study card flows, category logic, and question/answer content used by the app."
+      },
+      {
+        "file": "src/app/api/questions/route.ts",
+        "reason": "Generates algorithm-like board-review questions from category/type input."
+      }
+    ],
+    "lectures": [
+      {
+        "file": "src/app/page.tsx",
+        "reason": "No standalone lecture files were found; any lecture-like educational material is embedded in the app page."
+      }
+    ],
+    "images": [
+      {
+        "file": "public/logo.svg",
+        "reason": "Only standalone image asset discovered in the source project."
+      }
+    ],
+    "tutorials": [
+      {
+        "file": "src/app/page.tsx",
+        "reason": "Contains flashcards, topic sections, and learning tabs that function as tutorial content."
+      },
+      {
+        "file": "src/app/api/questions/route.ts",
+        "reason": "Supports tutorial-style question generation for the study flow."
+      }
+    ]
+  },
+  "dependencies": [
+    "Next.js App Router in `src/app`",
+    "React client state and inline scripting in `src/app/page.tsx`",
+    "`z-ai-web-dev-sdk` in `src/app/api/questions/route.ts`",
+    "Tailwind-based UI components from `src/components/ui`"
+  ],
+  "recommendation": "Treat this as an inline-content migration candidate, not a corpus import. If you proceed, first extract the hard-coded study content from `src/app/page.tsx` into structured content files; otherwise there is very little standalone educational payload to migrate."
+}

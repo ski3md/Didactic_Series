@@ -1,0 +1,26 @@
+{
+  "sourceProject": "ABPath_ReactPWA_Workspace",
+  "sourcePath": "/Users/skim4/Downloads/ABPath_ReactPWA_Workspace",
+  "markers": [
+    "small React/Vite PWA shell",
+    "board-prep study app language in README",
+    "no content/data directories under src or public beyond favicon",
+    "service worker and HTTPS dev setup present"
+  ],
+  "summary": "No migratable educational payload was found for algorithms, lectures, or tutorials. The only image-like asset present is the app favicon. The repo is primarily UI scaffolding and runtime configuration.",
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [
+      "/Users/skim4/Downloads/ABPath_ReactPWA_Workspace/public/favicon.svg"
+    ],
+    "tutorials": []
+  },
+  "dependencies": [
+    "openai",
+    "@vitejs/plugin-react",
+    "vite",
+    "react runtime implied by source files"
+  ],
+  "recommendation": "Do not copy payloads from this repo yet. If migration is still desired, the next useful step is to inspect the app logic for hard-coded study flows rather than content assets."
+}

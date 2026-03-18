@@ -1,0 +1,55 @@
+{
+  "sourceProject": "cp_study_tool_bundle",
+  "sourcePath": "/Users/skim4/Downloads/cp_study_tool_bundle",
+  "markers": [
+    "cp_study_tool/data/abpath_cp_blueprint.json",
+    "cp_study_tool/core/prompts.py",
+    "cp_study_tool/agents/taskgen_agent.py",
+    "cp_study_tool/ui/app_streamlit.py",
+    "cp_study_tool/docs/architecture.md"
+  ],
+  "summary": {
+    "contentAssessment": "The source is a CP study-question generator scaffold rather than a library of standalone lectures, algorithms, or images.",
+    "categoryCoverage": {
+      "algorithms": "none found",
+      "lectures": "none found",
+      "images": "none found",
+      "tutorials": "candidate found"
+    },
+    "notes": [
+      "The only explicit curriculum-like payload is the ABPath CP blueprint used to seed question generation.",
+      "The rest of the project is application logic, UI, and supporting schema/prompt code.",
+      "No standalone media or lecture assets were identified outside dependency content in the Python environment."
+    ]
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [],
+    "tutorials": [
+      {
+        "path": "/Users/skim4/Downloads/cp_study_tool_bundle/cp_study_tool/data/abpath_cp_blueprint.json",
+        "reason": "Contains the domain/objective blueprint that drives study-question generation and is the only direct educational content artifact."
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "path": "/Users/skim4/Downloads/cp_study_tool_bundle/cp_study_tool/agents/taskgen_agent.py",
+      "role": "Consumes the blueprint to generate questions."
+    },
+    {
+      "path": "/Users/skim4/Downloads/cp_study_tool_bundle/cp_study_tool/core/prompts.py",
+      "role": "Defines the topic/objective taxonomy and question templates."
+    },
+    {
+      "path": "/Users/skim4/Downloads/cp_study_tool_bundle/cp_study_tool/ui/app_streamlit.py",
+      "role": "UI entry point for the study workflow."
+    },
+    {
+      "path": "/Users/skim4/Downloads/cp_study_tool_bundle/cp_study_tool/core/schemas.py",
+      "role": "Data models for generated study content."
+    }
+  ],
+  "recommendation": "Migrate the blueprint file first if you want reusable study content; do not expect independent lecture, algorithm, or image datasets in this bundle. Normalize the blueprint into target tutorial records before attempting broader extraction."
+}

@@ -1,0 +1,84 @@
+{
+  "sources": [
+    {
+      "sourceRepo": "ioc-next-app",
+      "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview",
+      "targetPath": "src/content/downloads_imports/raw/ioc_overviews.raw.json",
+      "description": "IOC overview JSON records from the modal upgrade data directory.",
+      "sha256": "f7912cbf948948a02135280245883b2df5ad6a0f7f8c4aa88fac3e30204f4009",
+      "recordCount": 9
+    },
+    {
+      "sourceRepo": "ioc-next-app",
+      "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/entity",
+      "targetPath": "src/content/downloads_imports/raw/ioc_entities.raw.json",
+      "description": "IOC entity modal JSON records from the modal upgrade data directory.",
+      "sha256": "3d1136f42149c2d1f171fb25419914d3bffe9677a48da10f25c74b5990d19809",
+      "recordCount": 26
+    },
+    {
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "sourcePath": "/Users/skim4/Downloads/abpath-advanced-board-prep-platform (3)/abpath_export_1766721402593.json",
+      "targetPath": "src/content/downloads_imports/raw/abpath_advanced_board_prep_export.raw.json",
+      "description": "Primary advanced board prep tutorial export.",
+      "sha256": "cfee6f759f640ae99903f6d87d3cd237181d1855daef6c1834276d86a81055df",
+      "recordCount": 239
+    },
+    {
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "sourcePath": "/Users/skim4/Downloads/cp-content-specification-tutorial-batch-ready/pregeneratedData.ts",
+      "targetPath": "src/content/downloads_imports/raw/cp_content_specification_batch_ready.raw.json",
+      "description": "Pre-generated case tutorials, MCQs, and flashcards.",
+      "sha256": "2d756c6b24c0b91a33e81dfaecd0aa59ef04a808b85f19585118d72d8e718117",
+      "recordCount": 18
+    },
+    {
+      "sourceRepo": "cp-content-specification-tutorial_11.11.25",
+      "sourcePath": "/Users/skim4/Downloads/cp-content-specification-tutorial_11.11.25/constants.ts",
+      "targetPath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "description": "Tutorial, syllabus, MCQ, and flashcard constants bundle.",
+      "sha256": "54e18960aa9ab2dcb5e50240993452de1e32483d94607a0c454cf4b4638afc91",
+      "recordCount": 4
+    },
+    {
+      "sourceRepo": "dashboard1",
+      "sourcePath": "/Users/skim4/Downloads/dashboard1/backend/data",
+      "targetPath": "src/content/downloads_imports/raw/dashboard1_backend_datasets.raw.json",
+      "description": "Backend educational JSON datasets for hematology, coagulation, chemistry, transfusion, and immunology.",
+      "sha256": "4d9325065580749011808c1aa8e686d571a7b132fac417cdb0458c5cffb13e3e",
+      "recordCount": 5
+    },
+    {
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "sourcePath": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/data/modules.ts",
+      "targetPath": "src/content/downloads_imports/raw/granulomatous_modules.raw.json",
+      "description": "Granulomatous disease tutorial modules.",
+      "sha256": "b3b3fb8949140bac8671cbe224f38826a4dea50700191994248460de8256ebe8",
+      "recordCount": 3
+    },
+    {
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "sourcePath": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/data/gallery.json",
+      "targetPath": "src/content/downloads_imports/raw/granulomatous_gallery.raw.json",
+      "description": "Granulomatous disease gallery metadata with remote image URLs.",
+      "sha256": "2baae7ce34c34090d35565a3d3538d4e9e238c5bd852b1f25c746a1c3ab349da",
+      "recordCount": 2
+    },
+    {
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "sourcePath": "/Users/skim4/Downloads/pathology-learning-module_-granulomatous-diseases (3)/src/data/caseMetadataRules.json",
+      "targetPath": "src/content/downloads_imports/raw/granulomatous_case_metadata_rules.raw.json",
+      "description": "Granulomatous disease case metadata rules.",
+      "sha256": "c9897c7d3f3a5d29f3e7c6b51f5d6556912971228cdd50ad25595cffa558db8c",
+      "recordCount": 6
+    },
+    {
+      "sourceRepo": "workspace-3418f879-7689-4224-9717-636b27130563",
+      "sourcePath": "/Users/skim4/Downloads/workspace-3418f879-7689-4224-9717-636b27130563/bacterial_algorithm_data.py",
+      "targetPath": "src/content/downloads_imports/raw/bacterial_algorithm_data.raw.json",
+      "description": "Microbiology bacterial diagnosis decision tree.",
+      "sha256": "012e4824aed39975d7bb184b8485f77cc94d3c4692d837c38af8eda7c3ecb9e2",
+      "recordCount": 81
+    }
+  ]
+}

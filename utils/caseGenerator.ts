@@ -1,6 +1,6 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { StoredImage, Case, CaseStudy, CaseMetadataRules } from '../types';
-import { getOfficialImages, getCommunityImages } from './imageStore';
+import { getAllSelectableImages } from './imageStore';
 import { getCases, saveCases, getCaseStudies, saveCaseStudies } from './caseStore';
 
 // The JSON file import was removed and its content is now inlined below to prevent module resolution errors.
@@ -137,7 +137,7 @@ export async function generateCaseMappings() {
     // 1. Load data
     let casesStore = getCases();
     let caseStudiesStore = getCaseStudies();
-    const allImages = [...getOfficialImages(), ...getCommunityImages()];
+    const allImages = getAllSelectableImages();
 
     // 2. Enrich images with metadata
     const enrichedImages = await Promise.all(

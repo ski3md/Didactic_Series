@@ -1,0 +1,55 @@
+{
+  "sourceProject": "cp_study_tool_bundle 2",
+  "sourcePath": "/Users/skim4/Downloads/cp_study_tool_bundle 2",
+  "markers": [
+    "Offline question bank at `cp_study_tool/data/questions.json`",
+    "CLI and Streamlit study workflow in `cp_study_tool/controller/cli.py` and `cp_study_tool/ui/app.py`",
+    "Agent pipeline modules for task generation, explanation, visualization, dashboarding, and evaluation",
+    "No standalone lecture repository, algorithm library, or educational image corpus found"
+  ],
+  "summary": {
+    "overall": "This is an ABPath Clinical Pathology study application with a small built-in question bank and supporting runtime code. It does not contain separate lecture or algorithm content collections; the only direct educational payload is the offline multiple-choice question set.",
+    "counts": {
+      "questionBankFiles": 1,
+      "questions": 5,
+      "topicDomains": 5
+    }
+  },
+  "candidates": {
+    "algorithms": {
+      "files": [],
+      "note": "No migratable algorithm content found as a standalone file set."
+    },
+    "lectures": {
+      "files": [],
+      "note": "No migratable lecture content found as a standalone file set."
+    },
+    "images": {
+      "files": [],
+      "note": "No project-owned educational image assets found."
+    },
+    "tutorials": {
+      "files": [
+        "/Users/skim4/Downloads/cp_study_tool_bundle 2/cp_study_tool/data/questions.json"
+      ],
+      "note": "Small offline MCQ bank covering transfusion medicine, chemistry, hematology, microbiology, and immunology."
+    }
+  },
+  "dependencies": {
+    "runtime": [
+      "Python 3.8+",
+      "click",
+      "streamlit",
+      "matplotlib",
+      "pandas"
+    ],
+    "externalServices": [
+      "OpenAI API via `OPENAI_API_KEY` for optional LLM-backed generation"
+    ],
+    "notes": [
+      "Local SQLite state at `~/.cpstudy/cpstudy.sqlite3` unless overridden by `CPSTUDY_DB_PATH`",
+      "Custom adapter loading via `CPSTUDY_ADAPTER_PATH`"
+    ]
+  },
+  "recommendation": "Migrate `cp_study_tool/data/questions.json` first if you want reusable study content. Treat the rest of the repo as application scaffolding unless you intentionally want to port the CLI/UI and agent pipeline."
+}

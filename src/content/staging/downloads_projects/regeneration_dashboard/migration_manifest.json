@@ -1,0 +1,35 @@
+{
+  "sourceProject": "/Users/skim4/Downloads/regeneration-dashboard",
+  "sourcePath": "/Users/skim4/Downloads/regeneration-dashboard/src",
+  "markers": [
+    "src/AdvancedRegenerationDashboard.js is a placeholder dashboard shell",
+    "src/OrganRegenerationSimulator.js is a placeholder simulator shell",
+    "No standalone educational content files, data packs, or image sets found",
+    "Project appears to be scaffolded UI code rather than a content repository"
+  ],
+  "summary": {
+    "algorithms": 0,
+    "lectures": 0,
+    "images": 0,
+    "tutorials": 0,
+    "notes": "No migratable educational content was found in this repository."
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [],
+    "tutorials": []
+  },
+  "dependencies": [
+    "react",
+    "react-dom",
+    "react-scripts",
+    "framer-motion",
+    "@react-three/fiber",
+    "@react-three/drei",
+    "recharts",
+    "three",
+    "brain.js"
+  ],
+  "recommendation": "Do not migrate payloads from this repo. If this project is meant to contain educational content later, it will need explicit source files or a content schema added first."
+}

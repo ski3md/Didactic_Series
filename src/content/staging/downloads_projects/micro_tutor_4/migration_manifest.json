@@ -1,0 +1,49 @@
+{
+  "sourceProject": "micro_tutor_4",
+  "sourcePath": "/Users/skim4/Downloads/micro_tutor_4",
+  "markers": [
+    "Next.js tutoring app scaffold",
+    "embedded demo question in src/app/page.tsx",
+    "AI generation prompt and fallback question in src/app/api/generate-question/route.ts",
+    "one static image asset in public/logo.svg"
+  ],
+  "summary": {
+    "status": "partial",
+    "tutorialCorpus": "embedded-only",
+    "lectureCorpus": "absent",
+    "algorithmCorpus": "absent",
+    "imagePayloads": "minimal"
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [
+      "/Users/skim4/Downloads/micro_tutor_4/public/logo.svg"
+    ],
+    "tutorials": [
+      {
+        "path": "/Users/skim4/Downloads/micro_tutor_4/src/app/page.tsx",
+        "note": "contains the embedded initialQuestion demo content"
+      },
+      {
+        "path": "/Users/skim4/Downloads/micro_tutor_4/src/app/api/generate-question/route.ts",
+        "note": "contains the tutorial/question generation prompt and fallbackQuestion template"
+      }
+    ]
+  },
+  "dependencies": [
+    "next",
+    "react",
+    "react-dom",
+    "lucide-react",
+    "z-ai-web-dev-sdk",
+    "@radix-ui/react-*",
+    "sonner",
+    "recharts",
+    "prisma",
+    "tailwindcss",
+    "typescript",
+    "eslint"
+  ],
+  "recommendation": "Stage the embedded demo question and generation prompt only if you need seed content; otherwise treat this repo as an app scaffold with minimal reusable educational payload."
+}

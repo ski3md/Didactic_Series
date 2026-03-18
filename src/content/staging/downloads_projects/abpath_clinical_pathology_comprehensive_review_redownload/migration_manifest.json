@@ -1,0 +1,37 @@
+{
+  "sourceProject": "ABPath Clinical Pathology Comprehensive Review_redownload",
+  "sourcePath": "/Users/skim4/Downloads/ABPath Clinical Pathology Comprehensive Review_redownload",
+  "markers": [
+    "src/app/page.tsx contains an embedded flashcard bank of 15 study cards and the main study-dashboard UI.",
+    "src/app/api/questions/route.ts generates review questions through z-ai-web-dev-sdk rather than reading a local lecture corpus.",
+    "src/app/api/upload/route.ts accepts .apkg uploads and falls back to mock Anki cards for demo study content.",
+    "No standalone lecture, algorithm, tutorial, or educational image dataset files were found outside the app shell."
+  ],
+  "summary": {
+    "candidateCounts": {
+      "algorithms": 0,
+      "lectures": 0,
+      "images": 0,
+      "tutorials": 1
+    },
+    "notes": "This repository is primarily a Next.js scaffold with one embedded study deck, not a content repository organized around separate curriculum files."
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [],
+    "tutorials": [
+      {
+        "path": "src/app/page.tsx",
+        "kind": "embedded flashcard/study dashboard content",
+        "evidence": "Lines 49-80 handle generated study questions, lines 90-145 handle Anki uploads, and lines 1442-1571 define the flashcard bank."
+      }
+    ]
+  },
+  "dependencies": [
+    "src/app/api/questions/route.ts depends on z-ai-web-dev-sdk and network access for question generation.",
+    "src/app/api/upload/route.ts depends on unzip and uploaded .apkg files; it does not contain a source curriculum payload.",
+    "src/lib/anki-parser.ts is a processing dependency for uploaded cards, not source educational content."
+  ],
+  "recommendation": "Migrate only the embedded study-card workflow if you want reusable review content; otherwise there is no standalone lectures, algorithms, or image corpus to stage from this repo."
+}

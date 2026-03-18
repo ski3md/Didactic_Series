@@ -1,0 +1,1693 @@
+{
+  "initial_assessment": {
+    "question": "Clinical Specimen Received: Perform Gram Stain",
+    "information": "Gram staining is the first step in bacterial identification. It divides bacteria into Gram-positive (purple) and Gram-negative (pink) groups based on cell wall characteristics.",
+    "tests": [
+      "Gram Stain: A differential staining technique that categorizes bacteria based on cell wall composition. Gram-positive bacteria retain crystal violet dye due to thick peptidoglycan layer, while Gram-negative bacteria are counterstained pink by safranin."
+    ],
+    "options": [
+      {
+        "text": "Gram Positive (Purple/Blue)",
+        "next": "gram_positive"
+      },
+      {
+        "text": "Gram Negative (Pink/Red)",
+        "next": "gram_negative"
+      },
+      {
+        "text": "Gram Variable / Poor Staining",
+        "next": "miscellaneous"
+      },
+      {
+        "text": "No Organisms Seen / Mixed Flora",
+        "next": "no_organisms"
+      }
+    ]
+  },
+  "gram_positive": {
+    "question": "Gram Positive Bacteria: What is the morphology?",
+    "information": "Gram-positive bacteria have a thick peptidoglycan layer that retains the crystal violet dye. They can be classified based on their morphology (cocci, rods, or filamentous).",
+    "tests": [
+      "Gram Stain Confirmation: Verify Gram-positive reaction",
+      "Morphology Assessment: Examine shape and arrangement under microscope"
+    ],
+    "options": [
+      {
+        "text": "Cocci (spherical)",
+        "next": "gram_positive_cocci"
+      },
+      {
+        "text": "Rods (bacilli)",
+        "next": "gram_positive_rods"
+      },
+      {
+        "text": "Filamentous",
+        "next": "gram_positive_filamentous"
+      }
+    ]
+  },
+  "gram_negative": {
+    "question": "Gram Negative Bacteria: What is the morphology?",
+    "information": "Gram-negative bacteria have a thinner peptidoglycan layer and an outer membrane. They appear pink after Gram staining due to the safranin counterstain.",
+    "tests": [
+      "Gram Stain Confirmation: Verify Gram-negative reaction",
+      "Morphology Assessment: Examine shape and arrangement under microscope"
+    ],
+    "options": [
+      {
+        "text": "Cocci/Diplococci",
+        "next": "gram_negative_cocci"
+      },
+      {
+        "text": "Rods (bacilli)",
+        "next": "gram_negative_rods"
+      },
+      {
+        "text": "Curved Rods",
+        "next": "gram_negative_curved"
+      }
+    ]
+  },
+  "gram_positive_cocci": {
+    "question": "Gram Positive Cocci: Perform Catalase Test",
+    "information": "The catalase test differentiates catalase-positive Staphylococci from catalase-negative Streptococci and Enterococci. Catalase breaks down hydrogen peroxide into water and oxygen.",
+    "tests": [
+      "Catalase Test: Add 3% hydrogen peroxide to colony. Bubbles indicate catalase production. This test is crucial for differentiating Staphylococcus (catalase-positive) from Streptococcus (catalase-negative)."
+    ],
+    "options": [
+      {
+        "text": "Catalase Positive (Bubbles)",
+        "next": "staphylococcus"
+      },
+      {
+        "text": "Catalase Negative (No Bubbles)",
+        "next": "streptococcus_enterococcus"
+      }
+    ]
+  },
+  "staphylococcus": {
+    "question": "Staphylococcus: Perform Coagulase Test",
+    "information": "The coagulase test differentiates Staphylococcus aureus (coagulase-positive) from coagulase-negative staphylococci (CoNS). Coagulase is an enzyme that clots plasma.",
+    "tests": [
+      "Coagulase Test: Tube and slide tests to detect coagulase enzyme. Tube coagulase is more specific, while slide coagulase detects bound coagulase."
+    ],
+    "options": [
+      {
+        "text": "Coagulase Positive (Tube & Slide)",
+        "next": "staphylococcus_aureus"
+      },
+      {
+        "text": "Coagulase Slide Positive Only",
+        "next": "staphylococcus_lugdunensis"
+      },
+      {
+        "text": "Coagulase Negative",
+        "next": "cons"
+      }
+    ]
+  },
+  "staphylococcus_aureus": {
+    "question": "Identification: Staphylococcus aureus",
+    "information": "Staphylococcus aureus is a major human pathogen causing skin infections, pneumonia, endocarditis, and toxic shock syndrome. It is often resistant to multiple antibiotics.",
+    "tests": [
+      "Coagulase Test: Positive (tube and slide)",
+      "DNase Test: Positive (degrades DNA)",
+      "Mannitol Fermentation: Positive (yellow colonies on MSA)",
+      "Latex Agglutination: Detects protein A and clumping factor"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_staphylococcus_aureus"
+      }
+    ]
+  },
+  "staphylococcus_lugdunensis": {
+    "question": "Identification: Staphylococcus lugdunensis",
+    "information": "Staphylococcus lugdunensis is a coagulase-negative staphylococcus that is slide coagulase-positive but tube coagulase-negative. It is more virulent than other CoNS.",
+    "tests": [
+      "Coagulase Test: Slide positive, tube negative",
+      "PYR Test: Positive (hydrolyzes pyrrolidonyl-β-naphthylamide)",
+      "Ornithine Decarboxylase: Positive"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_staphylococcus_lugdunensis"
+      }
+    ]
+  },
+  "cons": {
+    "question": "Coagulase Negative Staphylococci: Perform Novobiocin Test",
+    "information": "Coagulase-negative staphylococci are common skin flora but can cause infections in immunocompromised patients or with medical devices. The novobiocin test helps differentiate species.",
+    "tests": [
+      "Novobiocin Susceptibility Test: Disk diffusion test with novobiocin antibiotic (5μg disk). Zone of inhibition ≤16mm indicates resistance."
+    ],
+    "options": [
+      {
+        "text": "Novobiocin Susceptible",
+        "next": "staphylococcus_epidermidis"
+      },
+      {
+        "text": "Novobiocin Resistant",
+        "next": "staphylococcus_saprophyticus"
+      },
+      {
+        "text": "Other CoNS Species",
+        "next": "other_cons"
+      }
+    ]
+  },
+  "staphylococcus_epidermidis": {
+    "question": "Identification: Staphylococcus epidermidis",
+    "information": "Staphylococcus epidermidis is a common commensal of human skin and mucous membranes. It is a leading cause of infections associated with indwelling medical devices.",
+    "tests": [
+      "Novobiocin Susceptibility: Susceptible (zone >16mm)",
+      "Biofilm Production: Positive (slime production)",
+      "TSI: Alkaline slant, alkaline butt"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_staphylococcus_epidermidis"
+      }
+    ]
+  },
+  "staphylococcus_saprophyticus": {
+    "question": "Identification: Staphylococcus saprophyticus",
+    "information": "Staphylococcus saprophyticus is a common cause of urinary tract infections, particularly in sexually active young women ('honeymoon cystitis').",
+    "tests": [
+      "Novobiocin Resistance: Resistant (zone ≤16mm)",
+      "Urease Production: Positive",
+      "TSI: Alkaline slant, acid butt"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_staphylococcus_saprophyticus"
+      }
+    ]
+  },
+  "other_cons": {
+    "question": "Other Coagulase Negative Staphylococci",
+    "information": "Other coagulase-negative staphylococci include S. haemolyticus, S. hominis, S. capitis, and others. These are typically skin flora but can cause opportunistic infections.",
+    "tests": [
+      "Biochemical Tests: Various sugar fermentations",
+      "Antibiotic Susceptibility: Variable patterns",
+      "Molecular Methods: Species-specific PCR or sequencing"
+    ],
+    "options": [
+      {
+        "text": "S. haemolyticus",
+        "next": "organism_staphylococcus_haemolyticus"
+      },
+      {
+        "text": "S. hominis",
+        "next": "organism_staphylococcus_hominis"
+      },
+      {
+        "text": "S. capitis",
+        "next": "organism_staphylococcus_capitis"
+      }
+    ]
+  },
+  "streptococcus_enterococcus": {
+    "question": "Streptococcus/Enterococcus: Observe Hemolysis Pattern",
+    "information": "Hemolysis patterns on blood agar help differentiate streptococci: beta-hemolysis (complete lysis), alpha-hemolysis (partial lysis), or gamma-hemolysis (no hemolysis).",
+    "tests": [
+      "Blood Agar Plate: Observe zone of hemolysis around colonies. Beta-hemolysis shows clear zones, alpha-hemolysis shows greenish zones, gamma-hemolysis shows no change."
+    ],
+    "options": [
+      {
+        "text": "Beta-Hemolysis (Complete)",
+        "next": "beta_hemolytic_strep"
+      },
+      {
+        "text": "Alpha-Hemolysis (Partial)",
+        "next": "alpha_hemolytic_strep"
+      },
+      {
+        "text": "Gamma-Hemolysis (None)",
+        "next": "gamma_hemolytic_strep"
+      }
+    ]
+  },
+  "beta_hemolytic_strep": {
+    "question": "Beta-Hemolytic Streptococci: Perform Differentiation Tests",
+    "information": "Beta-hemolytic streptococci include important pathogens like S. pyogenes (Group A) and S. agalactiae (Group B). Various tests help differentiate these species.",
+    "tests": [
+      "Bacitracin Susceptibility: A disk test for Group A strep",
+      "PYR Test: For S. pyogenes and S. agalactiae",
+      "CAMP Test: For S. agalactiae",
+      "Lancefield Grouping: Serological grouping"
+    ],
+    "options": [
+      {
+        "text": "Bacitracin Susceptible & PYR+",
+        "next": "streptococcus_pyogenes"
+      },
+      {
+        "text": "Bacitracin Resistant & CAMP Positive & PYR-",
+        "next": "streptococcus_agalactiae"
+      },
+      {
+        "text": "CAMP Negative & PYR-",
+        "next": "streptococcus_dysgalactiae"
+      },
+      {
+        "text": "Beta-hemolytic with caramel odor",
+        "next": "streptococcus_anginosus_group"
+      }
+    ]
+  },
+  "streptococcus_pyogenes": {
+    "question": "Identification: Streptococcus pyogenes (Group A Strep)",
+    "information": "Streptococcus pyogenes is a major human pathogen causing pharyngitis, skin infections, scarlet fever, and rheumatic fever. It produces several virulence factors.",
+    "tests": [
+      "Bacitracin Susceptibility: Susceptible (A disk)",
+      "PYR Test: Positive",
+      "Lancefield Group: Group A",
+      "Hemolysis: Strong, wide beta-hemolysis"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_streptococcus_pyogenes"
+      }
+    ]
+  },
+  "streptococcus_agalactiae": {
+    "question": "Identification: Streptococcus agalactiae (Group B Strep)",
+    "information": "Streptococcus agalactiae is an important cause of neonatal sepsis, pneumonia, and meningitis. It also causes infections in pregnant women and immunocompromised adults.",
+    "tests": [
+      "Bacitracin Resistance: Resistant",
+      "CAMP Test: Positive (enhanced hemolysis with S. aureus)",
+      "PYR Test: Negative",
+      "Lancefield Group: Group B",
+      "Hippurate Hydrolysis: Positive"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_streptococcus_agalactiae"
+      }
+    ]
+  },
+  "streptococcus_dysgalactiae": {
+    "question": "Identification: Streptococcus dysgalactiae",
+    "information": "Streptococcus dysgalactiae can be either Group C or Group G. It causes cellulitis, bacteremia, and other infections, particularly in animals and occasionally in humans.",
+    "tests": [
+      "Bacitracin Resistance: Resistant",
+      "CAMP Test: Negative",
+      "PYR Test: Negative",
+      "Lancefield Group: Group C or G"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_streptococcus_dysgalactiae"
+      }
+    ]
+  },
+  "streptococcus_anginosus_group": {
+    "question": "Identification: Streptococcus anginosus group",
+    "information": "The S. anginosus group (S. anginosus, S. constellatus, S. intermedius) are part of normal oral and gastrointestinal flora. They are associated with abscess formation.",
+    "tests": [
+      "Colony Morphology: Tiny colonies with caramel/butterscotch odor",
+      "Hemolysis: Can be beta-hemolytic",
+      "PYR Test: Positive",
+      "VP Test: Positive"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_streptococcus_anginosus_group"
+      }
+    ]
+  },
+  "alpha_hemolytic_strep": {
+    "question": "Alpha-Hemolytic Streptococci: Perform Optochin and Bile Solubility Tests",
+    "information": "Alpha-hemolytic streptococci include S. pneumoniae and viridans group streptococci. Optochin susceptibility and bile solubility help differentiate S. pneumoniae from other alpha-hemolytic streptococci.",
+    "tests": [
+      "Optochin Test (P disk): Susceptibility indicates S. pneumoniae",
+      "Bile Solubility Test: Solubility in bile salts indicates S. pneumoniae",
+      "Bile Esculin Test: For differentiation of enterococci"
+    ],
+    "options": [
+      {
+        "text": "Optochin Susceptible & Bile Soluble",
+        "next": "streptococcus_pneumoniae"
+      },
+      {
+        "text": "Optochin Resistant & Bile Insoluble",
+        "next": "viridans_streptococci"
+      }
+    ]
+  },
+  "streptococcus_pneumoniae": {
+    "question": "Identification: Streptococcus pneumoniae",
+    "information": "Streptococcus pneumoniae is a leading cause of pneumonia, meningitis, otitis media, and sinusitis. It is characterized by its lancet-shaped diplococci morphology and capsule.",
+    "tests": [
+      "Optochin Susceptibility: Susceptible (zone ≥14mm)",
+      "Bile Solubility: Positive",
+      "Morphology: Lancet-shaped diplococci",
+      "Capsule: Quellung reaction positive",
+      "Autolysis: Produces autolysin"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_streptococcus_pneumoniae"
+      }
+    ]
+  },
+  "viridans_streptococci": {
+    "question": "Identification: Viridans Group Streptococci",
+    "information": "Viridans group streptococci are normal oral flora and include S. mitis, S. mutans, S. sanguinis, and others. They can cause endocarditis and dental caries.",
+    "tests": [
+      "Optochin Resistance: Resistant (zone <14mm)",
+      "Bile Insolubility: Insoluble",
+      "Various Biochemical Tests: For species differentiation"
+    ],
+    "options": [
+      {
+        "text": "S. mutans",
+        "next": "organism_streptococcus_mutans"
+      },
+      {
+        "text": "S. mitis",
+        "next": "organism_streptococcus_mitis"
+      },
+      {
+        "text": "S. sanguinis",
+        "next": "organism_streptococcus_sanguinis"
+      }
+    ]
+  },
+  "gamma_hemolytic_strep": {
+    "question": "Gamma-Hemolytic Streptococci: Perform Bile Esculin and Salt Tolerance Tests",
+    "information": "Gamma-hemolytic streptococci include enterococci and some streptococci. Bile esculin hydrolysis and growth in 6.5% NaCl help differentiate enterococci.",
+    "tests": [
+      "Bile Esculin Test: Blackening indicates hydrolysis",
+      "6.5% NaCl Growth: Growth indicates salt tolerance",
+      "PYR Test: For differentiation"
+    ],
+    "options": [
+      {
+        "text": "Bile Esculin Positive & 6.5% NaCl Growth & PYR+",
+        "next": "enterococcus_species"
+      },
+      {
+        "text": "Bile Esculin Positive & No 6.5% NaCl Growth & PYR-",
+        "next": "streptococcus_gallolyticus"
+      },
+      {
+        "text": "Other Gamma-hemolytic Streptococci",
+        "next": "other_gamma_streptococci"
+      }
+    ]
+  },
+  "enterococcus_species": {
+    "question": "Identification: Enterococcus species",
+    "information": "Enterococci are normal GI flora that can cause UTIs, bacteremia, endocarditis, and other infections. They are intrinsically resistant to many antibiotics.",
+    "tests": [
+      "Bile Esculin: Positive",
+      "6.5% NaCl Growth: Positive",
+      "PYR Test: Positive",
+      "Growth at 45°C: Positive",
+      "Vancomycin Resistance: Variable (VRE)"
+    ],
+    "options": [
+      {
+        "text": "E. faecalis",
+        "next": "organism_enterococcus_faecalis"
+      },
+      {
+        "text": "E. faecium",
+        "next": "organism_enterococcus_faecium"
+      }
+    ]
+  },
+  "streptococcus_gallolyticus": {
+    "question": "Identification: Streptococcus gallolyticus (formerly S. bovis)",
+    "information": "Streptococcus gallolyticus is associated with colonic neoplasia and can cause bacteremia, endocarditis, and meningitis. It is bile esculin positive but does not grow in 6.5% NaCl.",
+    "tests": [
+      "Bile Esculin: Positive",
+      "6.5% NaCl Growth: Negative",
+      "PYR Test: Negative",
+      "Association: Often associated with colon cancer"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_streptococcus_gallolyticus"
+      }
+    ]
+  },
+  "gram_positive_rods": {
+    "question": "Gram Positive Rods: Spore-forming ability?",
+    "information": "Gram-positive rods can be differentiated based on their ability to form spores, which are resistant structures that allow survival in harsh conditions.",
+    "tests": [
+      "Spore Stain: Malachite green and safranin staining to visualize spores. Spores appear green, vegetative cells pink."
+    ],
+    "options": [
+      {
+        "text": "Spore-forming",
+        "next": "spore_forming_rods"
+      },
+      {
+        "text": "Non-Spore-forming",
+        "next": "non_spore_forming_rods"
+      }
+    ]
+  },
+  "spore_forming_rods": {
+    "question": "Spore-forming Gram Positive Rods: Oxygen requirement?",
+    "information": "Spore-forming Gram-positive rods can be classified based on their oxygen requirements: aerobic (Bacillus) or anaerobic (Clostridium).",
+    "tests": [
+      "Oxygen Requirement Test: Growth in aerobic vs anaerobic conditions",
+      "Catalase Test: Most Bacillus are catalase-positive, Clostridium are catalase-negative"
+    ],
+    "options": [
+      {
+        "text": "Aerobic",
+        "next": "bacillus_species"
+      },
+      {
+        "text": "Anaerobic",
+        "next": "clostridium_species"
+      }
+    ]
+  },
+  "bacillus_species": {
+    "question": "Bacillus species: Assess Motility and Hemolysis",
+    "information": "Bacillus species are aerobic spore-formers that can be differentiated based on motility, hemolysis patterns, and other characteristics.",
+    "tests": [
+      "Motility Test: Hanging drop or motility agar",
+      "Hemolysis Test: On blood agar",
+      "Colony Morphology: Size, shape, texture"
+    ],
+    "options": [
+      {
+        "text": "Motile & Beta-Hemolytic",
+        "next": "bacillus_cereus"
+      },
+      {
+        "text": "Nonmotile & Non-Hemolytic",
+        "next": "bacillus_anthracis"
+      },
+      {
+        "text": "Other Bacillus species",
+        "next": "other_bacillus"
+      }
+    ]
+  },
+  "bacillus_cereus": {
+    "question": "Identification: Bacillus cereus",
+    "information": "Bacillus cereus causes food poisoning (emetic and diarrheal forms) and other infections. It is motile and beta-hemolytic.",
+    "tests": [
+      "Motility: Positive",
+      "Hemolysis: Beta-hemolytic",
+      "Morphology: Short chains on Gram stain",
+      "Toxin Production: Enterotoxins and emetic toxin"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_bacillus_cereus"
+      }
+    ]
+  },
+  "bacillus_anthracis": {
+    "question": "Identification: Bacillus anthracis",
+    "information": "Bacillus anthracis is the causative agent of anthrax. It is nonmotile, nonhemolytic, and a potential bioterrorism agent.",
+    "tests": [
+      "Motility: Nonmotile",
+      "Hemolysis: Non-hemolytic",
+      "Colony Morphology: Tenacious colonies (stand up like egg whites)",
+      "Capsule: Poly-D-glutamate capsule",
+      "Spore Location: Central/subterminal spores"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_bacillus_anthracis"
+      }
+    ]
+  },
+  "clostridium_species": {
+    "question": "Clostridium species: Evaluate clinical context and characteristics",
+    "information": "Clostridium species are anaerobic spore-formers that cause various diseases. They can be differentiated based on toxin production, spore location, and other characteristics.",
+    "tests": [
+      "Toxin Tests: For specific toxins",
+      "Spore Location: Terminal, subterminal, or central",
+      "Colony Morphology: On specialized media",
+      "Biochemical Tests: Various fermentation patterns"
+    ],
+    "options": [
+      {
+        "text": "Double Zone Hemolysis & Lecithinase+",
+        "next": "clostridium_perfringens"
+      },
+      {
+        "text": "Terminal Spore ('Tennis Racket')",
+        "next": "clostridium_tetani"
+      },
+      {
+        "text": "Subterminal Spore",
+        "next": "clostridium_botulinum"
+      },
+      {
+        "text": "Swarming 'Medusa Head' Colonies",
+        "next": "clostridium_septicum"
+      },
+      {
+        "text": "Other Clostridium species",
+        "next": "other_clostridium"
+      }
+    ]
+  },
+  "clostridium_perfringens": {
+    "question": "Identification: Clostridium perfringens",
+    "information": "Clostridium perfringens causes gas gangrene, food poisoning, and other infections. It is characterized by double zone hemolysis and lecithinase production.",
+    "tests": [
+      "Hemolysis: Double zone hemolysis",
+      "Lecithinase (Nagler Test): Positive",
+      "Spore Production: Rare (spores are rarely seen)",
+      "Reverse CAMP Test: Positive ('butterfly' hemolysis)"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_clostridium_perfringens"
+      }
+    ]
+  },
+  "clostridium_tetani": {
+    "question": "Identification: Clostridium tetani",
+    "information": "Clostridium tetani causes tetanus through the production of tetanospasmin neurotoxin. It is characterized by terminal spores resembling tennis rackets.",
+    "tests": [
+      "Spore Location: Terminal spore ('tennis racket' appearance)",
+      "Motility: Motile with peritrichous flagella",
+      "Toxin Production: Tetanospasmin",
+      "Clinical Diagnosis: Based on symptoms (no good lab test)"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_clostridium_tetani"
+      }
+    ]
+  },
+  "clostridium_botulinum": {
+    "question": "Identification: Clostridium botulinum",
+    "information": "Clostridium botulinum produces botulinum neurotoxin causing flaccid paralysis. It is associated with food poisoning and infant botulism.",
+    "tests": [
+      "Spore Location: Subterminal spores",
+      "Toxin Production: Botulinum neurotoxin (types A-G)",
+      "Metabolism: Proteolytic or non-proteolytic strains",
+      "Clinical Presentation: Descending paralysis"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_clostridium_botulinum"
+      }
+    ]
+  },
+  "clostridium_septicum": {
+    "question": "Identification: Clostridium septicum",
+    "information": "Clostridium septicum causes spontaneous gas gangrene and is associated with colorectal cancer and other malignancies. It has characteristic swarming colonies.",
+    "tests": [
+      "Colony Morphology: Swarming 'medusa head' colonies",
+      "Motility: Motile",
+      "Association: Often associated with bowel wall defects",
+      "Virulence: High mortality rate"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_clostridium_septicum"
+      }
+    ]
+  },
+  "non_spore_forming_rods": {
+    "question": "Non-Spore-forming Gram Positive Rods: Oxygen requirement?",
+    "information": "Non-spore-forming Gram-positive rods include various genera that can be classified based on their oxygen requirements and other characteristics.",
+    "tests": [
+      "Oxygen Requirement: Aerobic, microaerophilic, or anaerobic",
+      "Catalase Test: For differentiation",
+      "Motility Test: For some species"
+    ],
+    "options": [
+      {
+        "text": "Aerobic/Microaerophilic",
+        "next": "aerobic_non_spore_rods"
+      },
+      {
+        "text": "Anaerobic",
+        "next": "anaerobic_non_spore_rods"
+      }
+    ]
+  },
+  "aerobic_non_spore_rods": {
+    "question": "Aerobic Non-Spore-forming Rods: Identify characteristics",
+    "information": "Aerobic non-spore-forming rods include Listeria, Corynebacterium, Erysipelothrix, and others. They have distinctive characteristics for identification.",
+    "tests": [
+      "Motility Test: Tumbling motility for Listeria",
+      "Catalase Test: Most are catalase-positive",
+      "Hemolysis: Variable patterns",
+      "Special Tests: CAMP test, urease, etc."
+    ],
+    "options": [
+      {
+        "text": "Tumbling motility, umbrella motility, narrow β-hemolysis, grows at 4°C, CAMP+",
+        "next": "listeria_monocytogenes"
+      },
+      {
+        "text": "Coryneform (club-shaped), 'picket fence' arrangement",
+        "next": "corynebacterium_species"
+      },
+      {
+        "text": "H2S producing, 'pipe cleaner' growth, vancomycin resistant",
+        "next": "erysipelothrix_rhusiopathiae"
+      }
+    ]
+  },
+  "listeria_monocytogenes": {
+    "question": "Identification: Listeria monocytogenes",
+    "information": "Listeria monocytogenes causes listeriosis, particularly in pregnant women, neonates, and immunocompromised individuals. It has characteristic tumbling motility.",
+    "tests": [
+      "Motility: Tumbling motility at 25°C, umbrella motility in tube",
+      "Hemolysis: Narrow beta-hemolysis",
+      "Growth at 4°C: Positive",
+      "CAMP Test: Positive (like Group B Strep)",
+      "Catalase: Positive"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_listeria_monocytogenes"
+      }
+    ]
+  },
+  "corynebacterium_species": {
+    "question": "Corynebacterium species: Identify species",
+    "information": "Corynebacterium species are club-shaped rods often in 'picket fence' arrangements. They include both pathogens and commensals.",
+    "tests": [
+      "Metachromatic Granules: On Loeffler's medium",
+      "Tellurite Media: Black colonies for C. diphtheriae",
+      "Elek Test: For toxin production",
+      "Biochemical Tests: For species differentiation"
+    ],
+    "options": [
+      {
+        "text": "Metachromatic granules, black colonies on tellurite, Elek+",
+        "next": "corynebacterium_diphtheriae"
+      },
+      {
+        "text": "Lipophilic, hospital-associated",
+        "next": "corynebacterium_jeikeium"
+      },
+      {
+        "text": "Lipophilic, urease positive",
+        "next": "corynebacterium_urealyticum"
+      },
+      {
+        "text": "Causes mastitis",
+        "next": "corynebacterium_kroppenstedtii"
+      }
+    ]
+  },
+  "corynebacterium_diphtheriae": {
+    "question": "Identification: Corynebacterium diphtheriae",
+    "information": "Corynebacterium diphtheriae causes diphtheria through the production of diphtheria toxin. It is characterized by metachromatic granules and black colonies on tellurite media.",
+    "tests": [
+      "Metachromatic Granules: Positive on Loeffler's medium",
+      "Tellurite Media: Black colonies",
+      "Elek Test: Positive for toxin production",
+      "Morphology: Club-shaped rods in 'picket fence' arrangement"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_corynebacterium_diphtheriae"
+      }
+    ]
+  },
+  "erysipelothrix_rhusiopathiae": {
+    "question": "Identification: Erysipelothrix rhusiopathiae",
+    "information": "Erysipelothrix rhusiopathiae causes erysipeloid ('fish handler's disease'). It is characterized by H2S production and intrinsic vancomycin resistance.",
+    "tests": [
+      "H2S Production: Positive on TSI",
+      "Growth Pattern: 'Pipe cleaner' growth in broth",
+      "Vancomycin Resistance: Intrinsically resistant",
+      "Hemolysis: Alpha-hemolysis"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_erysipelothrix_rhusiopathiae"
+      }
+    ]
+  },
+  "anaerobic_non_spore_rods": {
+    "question": "Anaerobic Non-Spore-forming Rods: Identify characteristics",
+    "information": "Anaerobic non-spore-forming rods include important pathogens like C. difficile and commensals like Lactobacillus and Actinomyces.",
+    "tests": [
+      "Gram Stain: Confirm Gram-positive rods",
+      "Special Stains: Modified acid-fast for some species",
+      "Biochemical Tests: Various enzymatic activities",
+      "Culture Requirements: Strict anaerobiosis"
+    ],
+    "options": [
+      {
+        "text": "GDH+, Toxin A/B+",
+        "next": "clostridioides_difficile"
+      },
+      {
+        "text": "Very large, tetrad clusters in gastric biopsies",
+        "next": "sarcina_ventriculi"
+      },
+      {
+        "text": "Long chains with coils, normal flora",
+        "next": "lactobacillus_species"
+      },
+      {
+        "text": "Filamentous, 'crushed spiders' in liquid media",
+        "next": "cutibacterium_acnes"
+      }
+    ]
+  },
+  "clostridioides_difficile": {
+    "question": "Identification: Clostridioides difficile",
+    "information": "Clostridioides difficile causes pseudomembranous colitis and antibiotic-associated diarrhea. It produces toxins A and B that cause disease.",
+    "tests": [
+      "GDH (Glutamate Dehydrogenase): Positive (screening test)",
+      "Toxin A/B Detection: EIA or PCR for toxin genes",
+      "Culture: Requires selective media (CCFA)",
+      "Gram Stain: Gram-positive rods, subterminal spores"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_clostridioides_difficile"
+      }
+    ]
+  },
+  "gram_positive_filamentous": {
+    "question": "Gram Positive Filamentous Rods: Perform Modified Acid-Fast Stain",
+    "information": "Gram-positive filamentous rods include Nocardia and Actinomyces. The modified acid-fast stain helps differentiate these genera.",
+    "tests": [
+      "Modified Acid-Fast Stain: Nocardia are partially acid-fast, Actinomyces are not",
+      "Aerobic vs Anaerobic Growth: Nocardia are aerobic, Actinomyces are anaerobic",
+      "Colony Morphology: Both can form granules in tissue"
+    ],
+    "options": [
+      {
+        "text": "Modified Acid-Fast Positive",
+        "next": "nocardia_species"
+      },
+      {
+        "text": "Modified Acid-Fast Negative",
+        "next": "actinomyces_species"
+      }
+    ]
+  },
+  "nocardia_species": {
+    "question": "Identification: Nocardia species",
+    "information": "Nocardia species are aerobic, partially acid-fast filamentous bacteria that cause nocardiosis, particularly in immunocompromised individuals.",
+    "tests": [
+      "Modified Acid-Fast Stain: Partially acid-fast (beaded appearance)",
+      "Aerobic Growth: Strict aerobes",
+      "Colony Morphology: Chalky, wrinkled colonies",
+      "Growth Rate: Slow-growing (3-5 days)"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_nocardia_species"
+      }
+    ]
+  },
+  "actinomyces_species": {
+    "question": "Identification: Actinomyces species",
+    "information": "Actinomyces species are anaerobic filamentous bacteria that cause actinomycosis. They are normal flora of the oral cavity.",
+    "tests": [
+      "Modified Acid-Fast Stain: Negative",
+      "Anaerobic Growth: Strict anaerobes",
+      "Sulfur Granules: Yellow granules in tissue",
+      "Gram Stain: Filamentous Gram-positive rods"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_actinomyces_species"
+      }
+    ]
+  },
+  "gram_negative_cocci": {
+    "question": "Gram Negative Cocci: Identify morphology",
+    "information": "Gram-negative cocci are typically fastidious organisms requiring special media for growth. They include important pathogens like Neisseria and Moraxella.",
+    "tests": [
+      "Oxidase Test: Most are oxidase-positive",
+      "Catalase Test: Most are catalase-positive",
+      "Sugar Fermentation: For species differentiation",
+      "Growth Requirements: Fastidious, need enriched media"
+    ],
+    "options": [
+      {
+        "text": "Kidney Bean Shaped Diplococci",
+        "next": "neisseria_species"
+      },
+      {
+        "text": "More Elongated, 'Hockey Puck' Colonies",
+        "next": "moraxella_catarrhalis"
+      }
+    ]
+  },
+  "neisseria_species": {
+    "question": "Neisseria species: Perform Sugar Fermentation Tests",
+    "information": "Neisseria species can be differentiated based on their sugar fermentation patterns. N. meningitidis ferments maltose and glucose, while N. gonorrhoeae ferments only glucose.",
+    "tests": [
+      "Sugar Fermentation Tests: Maltose, glucose, sucrose, lactose",
+      "Oxidase Test: Positive",
+      "Catalase Test: Positive",
+      "Growth on Chocolate Agar: Required for growth"
+    ],
+    "options": [
+      {
+        "text": "Maltose Fermenter (only)",
+        "next": "neisseria_meningitidis"
+      },
+      {
+        "text": "Glucose Fermenter (and Maltose)",
+        "next": "neisseria_gonorrhoeae"
+      },
+      {
+        "text": "Sucrose Fermenter (and Maltose, Glucose)",
+        "next": "neisseria_sicca"
+      },
+      {
+        "text": "Lactose Fermenter (and others)",
+        "next": "neisseria_lactamica"
+      }
+    ]
+  },
+  "neisseria_meningitidis": {
+    "question": "Identification: Neisseria meningitidis",
+    "information": "Neisseria meningitidis causes meningitis and septicemia. It is characterized by maltose fermentation and serogrouping based on capsule.",
+    "tests": [
+      "Sugar Fermentation: Maltose positive, glucose positive",
+      "Oxidase: Positive",
+      "Catalase: Positive",
+      "Serogrouping: A, B, C, W135, Y, etc."
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_neisseria_meningitidis"
+      }
+    ]
+  },
+  "neisseria_gonorrhoeae": {
+    "question": "Identification: Neisseria gonorrhoeae",
+    "information": "Neisseria gonorrhoeae causes gonorrhea and related infections. It ferments glucose but not maltose and is fastidious in growth requirements.",
+    "tests": [
+      "Sugar Fermentation: Glucose positive, maltose negative",
+      "Oxidase: Positive",
+      "Catalase: Positive",
+      "Growth on Selective Media: Thayer-Martin agar"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_neisseria_gonorrhoeae"
+      }
+    ]
+  },
+  "moraxella_catarrhalis": {
+    "question": "Identification: Moraxella catarrhalis",
+    "information": "Moraxella catarrhalis causes otitis media in children and respiratory infections in COPD patients. It is characterized by 'hockey puck' colonies and beta-lactamase production.",
+    "tests": [
+      "Colony Morphology: 'Hockey puck' colonies",
+      "Oxidase: Positive",
+      "Catalase: Positive",
+      "Beta-lactamase: Positive (intrinsically resistant to penicillin)",
+      "DNase: Positive",
+      "Sugar Fermentation: Does not ferment glucose, maltose, or lactose"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_moraxella_catarrhalis"
+      }
+    ]
+  },
+  "gram_negative_rods": {
+    "question": "Gram Negative Rods: Perform Oxidase Test",
+    "information": "The oxidase test differentiates between oxidase-positive non-fermenters and oxidase-negative enteric bacteria. It detects the presence of cytochrome c oxidase.",
+    "tests": [
+      "Oxidase Test: Use oxidase reagent (tetramethyl-p-phenylenediamine). Blue color within 10-30 seconds indicates positive reaction."
+    ],
+    "options": [
+      {
+        "text": "Oxidase Positive",
+        "next": "oxidase_positive_gnr"
+      },
+      {
+        "text": "Oxidase Negative",
+        "next": "oxidase_negative_gnr"
+      }
+    ]
+  },
+  "oxidase_negative_gnr": {
+    "question": "Oxidase Negative GNR: Enterobacteriaceae (Enterics)",
+    "information": "Oxidase-negative Gram-negative rods are typically Enterobacteriaceae (enterics). They reduce nitrate to nitrite and ferment glucose.",
+    "tests": [
+      "Nitrate Reduction: Positive (reduces nitrate to nitrite)",
+      "Glucose Fermentation: Positive",
+      "Oxidase: Negative",
+      "Catalase: Most are positive"
+    ],
+    "options": [
+      {
+        "text": "Lactose Fermenters",
+        "next": "lactose_fermenters"
+      },
+      {
+        "text": "Non-Lactose Fermenters",
+        "next": "non_lactose_fermenters"
+      }
+    ]
+  },
+  "lactose_fermenters": {
+    "question": "Lactose Fermenting Enterics: Identify species",
+    "information": "Lactose-fermenting enterics appear pink on MacConkey agar. Common species include E. coli, Klebsiella, Enterobacter, and Citrobacter.",
+    "tests": [
+      "Lactose Fermentation: Positive (pink on MacConkey)",
+      "Indole Test: For E. coli differentiation",
+      "Motility Test: For Klebsiella (nonmotile)",
+      "Citrate Utilization: For Enterobacter and Citrobacter"
+    ],
+    "options": [
+      {
+        "text": "E. coli",
+        "next": "escherichia_coli"
+      },
+      {
+        "text": "Klebsiella pneumoniae",
+        "next": "klebsiella_pneumoniae"
+      },
+      {
+        "text": "Enterobacter cloacae",
+        "next": "enterobacter_cloacae"
+      },
+      {
+        "text": "Citrobacter freundii",
+        "next": "citrobacter_freundii"
+      }
+    ]
+  },
+  "escherichia_coli": {
+    "question": "Identification: Escherichia coli",
+    "information": "Escherichia coli is the most common cause of UTIs and is also associated with gastroenteritis, sepsis, and other infections. Some strains produce Shiga toxin.",
+    "tests": [
+      "Lactose Fermentation: Positive (pink on MacConkey)",
+      "Indole: Positive",
+      "Motility: Positive",
+      "Lysine Decarboxylase: Positive",
+      "Special Tests: For pathogenic strains (STEC/EHEC O157:H7)"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_escherichia_coli"
+      }
+    ]
+  },
+  "klebsiella_pneumoniae": {
+    "question": "Identification: Klebsiella pneumoniae",
+    "information": "Klebsiella pneumoniae causes pneumonia, UTIs, and other infections. It is characterized by large mucoid colonies due to polysaccharide capsule.",
+    "tests": [
+      "Lactose Fermentation: Positive",
+      "Motility: Nonmotile",
+      "Indole: Negative (K. oxytoca is indole positive)",
+      "Capsule: Large polysaccharide capsule",
+      "Colony Morphology: Large, mucoid, 'currant jelly' sputum"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_klebsiella_pneumoniae"
+      }
+    ]
+  },
+  "non_lactose_fermenters": {
+    "question": "Non-Lactose Fermenting Enterics: H2S Production?",
+    "information": "Non-lactose fermenting enterics appear colorless on MacConkey agar. They can be differentiated based on H2S production and other characteristics.",
+    "tests": [
+      "H2S Production: Blackening on TSI or Hektoen agar",
+      "Motility Test: Most are motile",
+      "Urease Test: For Proteus species",
+      "Biochemical Tests: For species differentiation"
+    ],
+    "options": [
+      {
+        "text": "H2S Producers",
+        "next": "h2s_producers"
+      },
+      {
+        "text": "Non-H2S Producers",
+        "next": "non_h2s_producers"
+      }
+    ]
+  },
+  "h2s_producers": {
+    "question": "H2S Producing Non-Lactose Fermenters: Identify species",
+    "information": "H2S-producing non-lactose fermenters include Salmonella and Proteus species. They can be differentiated based on motility, urease production, and other tests.",
+    "tests": [
+      "H2S Production: Positive (black on TSI/Hektoen)",
+      "Motility Test: Salmonella motile, some Proteus swarming",
+      "Urease Test: Proteus positive, Salmonella negative",
+      "Biochemical Tests: For species differentiation"
+    ],
+    "options": [
+      {
+        "text": "Salmonella species",
+        "next": "salmonella_species"
+      },
+      {
+        "text": "Proteus species",
+        "next": "proteus_species"
+      }
+    ]
+  },
+  "salmonella_species": {
+    "question": "Identification: Salmonella species",
+    "information": "Salmonella species cause gastroenteritis, enteric fever, and other infections. S. enterica affects humans and animals, while S. Typhi causes typhoid fever.",
+    "tests": [
+      "H2S Production: Positive",
+      "Motility: Motile",
+      "Lactose/Sucrose: Non-fermenters",
+      "Citrate: Positive",
+      "Lysine/Ornithine Decarboxylase: Positive",
+      "Urease: Negative"
+    ],
+    "options": [
+      {
+        "text": "S. enterica (non-typhoidal)",
+        "next": "organism_salmonella_enterica"
+      },
+      {
+        "text": "S. Typhi (typhoid fever)",
+        "next": "organism_salmonella_typhi"
+      }
+    ]
+  },
+  "proteus_species": {
+    "question": "Identification: Proteus species",
+    "information": "Proteus species cause UTIs and other infections. They are characterized by swarming motility on agar and urease production.",
+    "tests": [
+      "Swarming Motility: Positive on non-inhibitory agar",
+      "Urease: Positive (produces struvite stones)",
+      "H2S Production: Positive",
+      "Indole Test: P. mirabilis negative, P. vulgaris positive"
+    ],
+    "options": [
+      {
+        "text": "P. mirabilis (Indole-)",
+        "next": "organism_proteus_mirabilis"
+      },
+      {
+        "text": "P. vulgaris (Indole+)",
+        "next": "organism_proteus_vulgaris"
+      }
+    ]
+  },
+  "non_h2s_producers": {
+    "question": "Non-H2S Producing Non-Lactose Fermenters: Identify species",
+    "information": "Non-H2S producing non-lactose fermenters include Shigella, Yersinia, and others. They can be differentiated based on motility, biochemical tests, and clinical presentation.",
+    "tests": [
+      "Motility Test: Shigella nonmotile, Yersinia variable",
+      "Biochemical Tests: Various enzymatic activities",
+      "Growth Characteristics: Temperature requirements",
+      "Serological Tests: For species differentiation"
+    ],
+    "options": [
+      {
+        "text": "Shigella species",
+        "next": "shigella_species"
+      },
+      {
+        "text": "Yersinia species",
+        "next": "yersinia_species"
+      }
+    ]
+  },
+  "shigella_species": {
+    "question": "Identification: Shigella species",
+    "information": "Shigella species cause bacillary dysentery with bloody diarrhea, fever, and abdominal pain. They are nonmotile and do not ferment lactose.",
+    "tests": [
+      "Motility: Nonmotile",
+      "Lactose Fermentation: Negative",
+      "Indole: Variable by species",
+      "Lysine Decarboxylase: Negative",
+      "Shiga Toxin: S. dysenteriae produces"
+    ],
+    "options": [
+      {
+        "text": "S. dysenteriae (most severe)",
+        "next": "organism_shigella_dysenteriae"
+      },
+      {
+        "text": "S. flexneri",
+        "next": "organism_shigella_flexneri"
+      },
+      {
+        "text": "S. boydii",
+        "next": "organism_shigella_boydii"
+      },
+      {
+        "text": "S. sonnei",
+        "next": "organism_shigella_sonnei"
+      }
+    ]
+  },
+  "yersinia_species": {
+    "question": "Identification: Yersinia species",
+    "information": "Yersinia species include Y. pestis (plague), Y. enterocolitica (gastroenteritis), and Y. pseudotuberculosis. They have distinctive growth characteristics.",
+    "tests": [
+      "Motility: Variable (Y. pestis nonmotile, Y. enterocolitica motile at 25°C)",
+      "Growth at 25°C vs 37°C: Different patterns",
+      "Urease: Y. enterocolitica positive",
+      "Biochemical Tests: For species differentiation"
+    ],
+    "options": [
+      {
+        "text": "Y. pestis (plague)",
+        "next": "yersinia_pestis"
+      },
+      {
+        "text": "Y. enterocolitica (gastroenteritis)",
+        "next": "yersinia_enterocolitica"
+      },
+      {
+        "text": "Y. pseudotuberculosis",
+        "next": "yersinia_pseudotuberculosis"
+      }
+    ]
+  },
+  "oxidase_positive_gnr": {
+    "question": "Oxidase Positive GNR: Fermentation capability?",
+    "information": "Oxidase-positive Gram-negative rods can be classified based on their ability to ferment carbohydrates. Non-fermenters are typically environmental organisms, while fastidious rods require special growth conditions.",
+    "tests": [
+      "Oxidase Test: Positive",
+      "Fermentation Tests: Glucose, lactose, etc.",
+      "Growth on MacConkey: Non-fermenters don't grow or grow poorly",
+      "Special Media Requirements: For fastidious organisms"
+    ],
+    "options": [
+      {
+        "text": "Non-fermenters (environmental)",
+        "next": "non_fermenters"
+      },
+      {
+        "text": "Fastidious rods (picky growers)",
+        "next": "fastidious_rods"
+      }
+    ]
+  },
+  "non_fermenters": {
+    "question": "Non-fermenting GNR: Identify species",
+    "information": "Non-fermenting Gram-negative rods are hardy environmental organisms that are often intrinsically resistant to multiple antibiotics. Common genera include Pseudomonas, Burkholderia, and Stenotrophomonas.",
+    "tests": [
+      "Pigment Production: Pyocyanin (blue-green), pyoverdine (yellow-green)",
+      "Growth at 42°C: P. aeruginosa grows",
+      "Antibiotic Resistance Patterns: Intrinsic resistance profiles",
+      "Biochemical Tests: For species differentiation"
+    ],
+    "options": [
+      {
+        "text": "Pseudomonas aeruginosa",
+        "next": "pseudomonas_aeruginosa"
+      },
+      {
+        "text": "Burkholderia cepacia",
+        "next": "burkholderia_cepacia"
+      },
+      {
+        "text": "Stenotrophomonas maltophilia",
+        "next": "stenotrophomonas_maltophilia"
+      }
+    ]
+  },
+  "pseudomonas_aeruginosa": {
+    "question": "Identification: Pseudomonas aeruginosa",
+    "information": "Pseudomonas aeruginosa is a major opportunistic pathogen causing various infections, particularly in immunocompromised patients and those with cystic fibrosis.",
+    "tests": [
+      "Pigment Production: Pyocyanin (blue-green), pyoverdine (yellow-green)",
+      "Growth at 42°C: Positive",
+      "Oxidase: Positive",
+      "Catalase: Positive",
+      "Characteristic Odor: Grape-like or corn tortilla-like",
+      "Intrinsic Resistance: Resistant to many antibiotics"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_pseudomonas_aeruginosa"
+      }
+    ]
+  },
+  "fastidious_rods": {
+    "question": "Fastidious GNR: Identify species",
+    "information": "Fastidious Gram-negative rods require special growth conditions and include the HACEK group, Bordetella, Pasteurella, Brucella, Francisella, and Legionella.",
+    "tests": [
+      "Growth Requirements: Special media (chocolate agar, BCYE, etc.)",
+      "Biochemical Tests: Various enzymatic activities",
+      "Serological Tests: For species differentiation",
+      "Molecular Methods: PCR or sequencing for identification"
+    ],
+    "options": [
+      {
+        "text": "HACEK organisms",
+        "next": "hacek_organisms"
+      },
+      {
+        "text": "Bordetella pertussis",
+        "next": "bordetella_pertussis"
+      },
+      {
+        "text": "Pasteurella multocida",
+        "next": "pasteurella_multocida"
+      },
+      {
+        "text": "Brucella species",
+        "next": "brucella_species"
+      },
+      {
+        "text": "Francisella tularensis",
+        "next": "francisella_tularensis"
+      },
+      {
+        "text": "Legionella pneumophila",
+        "next": "legionella_pneumophila"
+      }
+    ]
+  },
+  "hacek_organisms": {
+    "question": "Identification: HACEK organisms",
+    "information": "HACEK organisms (Haemophilus, Aggregatibacter, Cardiobacterium, Eikenella, Kingella) are fastidious Gram-negative rods that are normal oral flora and can cause endocarditis.",
+    "tests": [
+      "Growth Requirements: Need enriched media (chocolate agar) and CO2",
+      "Biochemical Tests: For genus differentiation",
+      "Satellite Phenomenon: Some require factors from other bacteria",
+      "Clinical Association: Endocarditis, other infections"
+    ],
+    "options": [
+      {
+        "text": "Haemophilus influenzae",
+        "next": "haemophilus_influenzae"
+      },
+      {
+        "text": "Aggregatibacter aphrophilus",
+        "next": "aggregatibacter_aphrophilus"
+      },
+      {
+        "text": "Cardiobacterium hominis",
+        "next": "cardiobacterium_hominis"
+      },
+      {
+        "text": "Eikenella corrodens",
+        "next": "eikenella_corrodens"
+      },
+      {
+        "text": "Kingella kingae",
+        "next": "kingella_kingae"
+      }
+    ]
+  },
+  "haemophilus_influenzae": {
+    "question": "Identification: Haemophilus influenzae",
+    "information": "Haemophilus influenzae causes meningitis, epiglottitis, pneumonia, and other infections. It requires both Factor X (hemin) and Factor V (NAD) for growth.",
+    "tests": [
+      "Growth Requirements: Requires Factors X and V (grows only on chocolate agar)",
+      "Satellite Test: Growth around S. aureus streak",
+      "Capsule: Type b strains are most pathogenic",
+      "Biochemical Tests: For species differentiation"
+    ],
+    "options": [
+      {
+        "text": "Confirm Identification",
+        "next": "organism_haemophilus_influenzae"
+      }
+    ]
+  },
+  "gram_negative_curved": {
+    "question": "Gram Negative Curved Rods: Identify growth conditions",
+    "information": "Gram-negative curved rods include important pathogens like Campylobacter, Vibrio, and Helicobacter. They can be differentiated based on growth conditions and biochemical tests.",
+    "tests": [
+      "Growth Conditions: Temperature, oxygen requirements, special media",
+      "Biochemical Tests: Oxidase, catalase, urease, etc.",
+      "Morphology: Curved, comma-shaped, or spiral forms",
+      "Special Tests: For species differentiation"
+    ],
+    "options": [
+      {
+        "text": "Microaerophilic growth at 42°C",
+        "next": "campylobacter_species"
+      },
+      {
+        "text": "Growth in alkaline conditions (TCBS)",
+        "next": "vibrio_species"
+      },
+      {
+        "text": "Urease positive",
+        "next": "helicobacter_species"
+      }
+    ]
+  },
+  "campylobacter_species": {
+    "question": "Identification: Campylobacter species",
+    "information": "Campylobacter species cause gastroenteritis and other infections. C. jejuni is the most common cause of bacterial diarrhea in developed countries.",
+    "tests": [
+      "Growth at 42°C: Positive (C. jejuni)",
+      "Morphology: S-shaped or gull-wing shaped",
+      "Oxidase: Positive",
+      "Catalase: Positive (most species)",
+      "Hippurate Hydrolysis: C. jejuni positive"
+    ],
+    "options": [
+      {
+        "text": "C. jejuni (hippurate+)",
+        "next": "organism_campylobacter_jejuni"
+      },
+      {
+        "text": "C. fetus (hippurate-)",
+        "next": "organism_campylobacter_fetus"
+      }
+    ]
+  },
+  "vibrio_species": {
+    "question": "Identification: Vibrio species",
+    "information": "Vibrio species are found in aquatic environments and cause various infections including cholera and wound infections. They grow well on TCBS agar.",
+    "tests": [
+      "Growth on TCBS: Variable colors (yellow for V. cholerae, green for V. vulnificus)",
+      "Oxidase: Positive",
+      "Fermentation Tests: For species differentiation",
+      "Salt Tolerance: Variable requirements"
+    ],
+    "options": [
+      {
+        "text": "V. cholerae (yellow on TCBS)",
+        "next": "organism_vibrio_cholerae"
+      },
+      {
+        "text": "V. vulnificus (green on TCBS)",
+        "next": "organism_vibrio_vulnificus"
+      },
+      {
+        "text": "V. parahaemolyticus",
+        "next": "organism_vibrio_parahaemolyticus"
+      }
+    ]
+  },
+  "helicobacter_species": {
+    "question": "Identification: Helicobacter species",
+    "information": "Helicobacter species are curved or spiral bacteria that colonize the stomach. H. pylori is associated with gastritis, ulcers, and gastric cancer.",
+    "tests": [
+      "Urease Test: Strong positive (used in rapid urease test)",
+      "Morphology: Spiral or curved rods",
+      "Growth Requirements: Microaerophilic, needs special media",
+      "Clinical Tests: Urea breath test, stool antigen, serology"
+    ],
+    "options": [
+      {
+        "text": "H. pylori",
+        "next": "organism_helicobacter_pylori"
+      },
+      {
+        "text": "H. heilmannii",
+        "next": "organism_helicobacter_heilmannii"
+      }
+    ]
+  },
+  "miscellaneous": {
+    "question": "Miscellaneous/Specialized Organisms: Identify type",
+    "information": "These organisms have unique characteristics that make them difficult to classify by standard Gram staining. They include spirochetes, mycoplasmas, and obligate intracellular bacteria.",
+    "tests": [
+      "Special Stains: Warthin-Starry, Giemsa, etc.",
+      "Molecular Methods: PCR, sequencing",
+      "Serological Tests: Antibody detection",
+      "Culture Methods: Special requirements"
+    ],
+    "options": [
+      {
+        "text": "Spirochetes",
+        "next": "spirochetes"
+      },
+      {
+        "text": "Mollicutes (No Cell Wall)",
+        "next": "mollicutes"
+      },
+      {
+        "text": "Obligate Intracellular",
+        "next": "obligate_intracellular"
+      },
+      {
+        "text": "Mycobacteria",
+        "next": "mycobacteria"
+      }
+    ]
+  },
+  "spirochetes": {
+    "question": "Spirochetes: Identify genus",
+    "information": "Spirochetes are spiral-shaped bacteria with axial filaments. They include Treponema, Borrelia, and Leptospira, which cause various diseases.",
+    "tests": [
+      "Special Stains: Warthin-Starry, dark-field microscopy",
+      "Serological Tests: For specific diseases",
+      "Molecular Methods: PCR detection",
+      "Culture Methods: Difficult, special media"
+    ],
+    "options": [
+      {
+        "text": "Treponema species",
+        "next": "treponema_species"
+      },
+      {
+        "text": "Borrelia species",
+        "next": "borrelia_species"
+      },
+      {
+        "text": "Leptospira species",
+        "next": "leptospira_species"
+      }
+    ]
+  },
+  "treponema_species": {
+    "question": "Identification: Treponema species",
+    "information": "Treponema species cause diseases including syphilis (T. pallidum), yaws (T. pertenue), bejel (T. endemicum), and pinta (T. carateum).",
+    "tests": [
+      "Dark-Field Microscopy: Spiral morphology",
+      "Serological Tests: Non-treponemal (RPR, VDRL) and treponemal (FTA-ABS, TP-PA)",
+      "Molecular Methods: PCR detection",
+      "Clinical Presentation: Disease-specific manifestations"
+    ],
+    "options": [
+      {
+        "text": "T. pallidum (syphilis)",
+        "next": "organism_treponema_pallidum"
+      },
+      {
+        "text": "T. pertenue (yaws)",
+        "next": "organism_treponema_pertenue"
+      },
+      {
+        "text": "T. endemicum (bejel)",
+        "next": "organism_treponema_endemicum"
+      },
+      {
+        "text": "T. carateum (pinta)",
+        "next": "organism_treponema_carateum"
+      }
+    ]
+  },
+  "mollicutes": {
+    "question": "Identification: Mollicutes (No Cell Wall)",
+    "information": "Mollicutes lack a cell wall and are resistant to beta-lactam antibiotics. They include Mycoplasma and Ureaplasma species.",
+    "tests": [
+      "Gram Stain: Cannot be performed (no cell wall)",
+      "Culture: Special media with sterols",
+      "Biochemical Tests: For species differentiation",
+      "Molecular Methods: PCR detection"
+    ],
+    "options": [
+      {
+        "text": "Mycoplasma pneumoniae",
+        "next": "organism_mycoplasma_pneumoniae"
+      },
+      {
+        "text": "Mycoplasma genitalium",
+        "next": "organism_mycoplasma_genitalium"
+      },
+      {
+        "text": "Ureaplasma urealyticum",
+        "next": "organism_ureaplasma_urealyticum"
+      }
+    ]
+  },
+  "obligate_intracellular": {
+    "question": "Obligate Intracellular Bacteria: Identify family",
+    "information": "Obligate intracellular bacteria cannot reproduce outside host cells. They include Chlamydia, Rickettsia, Coxiella, and others.",
+    "tests": [
+      "Special Stains: Giemsa, Macchiavello, etc.",
+      "Serological Tests: Antibody detection",
+      "Molecular Methods: PCR detection",
+      "Culture Methods: Cell culture required"
+    ],
+    "options": [
+      {
+        "text": "Chlamydia species",
+        "next": "chlamydia_species"
+      },
+      {
+        "text": "Rickettsia species",
+        "next": "rickettsia_species"
+      },
+      {
+        "text": "Coxiella burnetii",
+        "next": "coxiella_burnetii"
+      },
+      {
+        "text": "Ehrlichia/Anaplasma",
+        "next": "ehrlichia_anaplasma"
+      }
+    ]
+  },
+  "chlamydia_species": {
+    "question": "Identification: Chlamydia species",
+    "information": "Chlamydia species have a unique developmental cycle with elementary and reticulate bodies. They cause various infections including trachoma, sexually transmitted diseases, and pneumonia.",
+    "tests": [
+      "Cell Culture: McCoy cells with cycloheximide",
+      "Direct Fluorescent Antibody (DFA): Detects elementary bodies",
+      "Nucleic Acid Amplification: PCR, TMA, SDA",
+      "Serology: Complement fixation, microimmunofluorescence"
+    ],
+    "options": [
+      {
+        "text": "C. trachomatis",
+        "next": "organism_chlamydia_trachomatis"
+      },
+      {
+        "text": "C. pneumoniae",
+        "next": "organism_chlamydia_pneumoniae"
+      },
+      {
+        "text": "C. psittaci",
+        "next": "organism_chlamydia_psittaci"
+      }
+    ]
+  },
+  "mycobacteria": {
+    "question": "Mycobacteria: Perform Acid-Fast Stain",
+    "information": "Mycobacteria have a waxy cell wall rich in mycolic acids, making them acid-fast. They include M. tuberculosis complex and non-tuberculous mycobacteria (NTM).",
+    "tests": [
+      "Acid-Fast Stain: Ziehl-Neelsen or Kinyoun methods",
+      "Fluorochrome Stain: Auramine-O or Auramine-Rhodamine",
+      "Culture: Special media (Lowenstein-Jensen, Middlebrook)",
+      "Molecular Methods: PCR for M. tuberculosis complex"
+    ],
+    "options": [
+      {
+        "text": "Acid-Fast Positive",
+        "next": "acid_fast_positive"
+      },
+      {
+        "text": "Acid-Fast Negative",
+        "next": "acid_fast_negative"
+      }
+    ]
+  },
+  "acid_fast_positive": {
+    "question": "Acid-Fast Positive: Identify species",
+    "information": "Acid-fast positive mycobacteria include M. tuberculosis complex and various non-tuberculous mycobacteria (NTM). They can be differentiated based on growth rate, pigmentation, and biochemical tests.",
+    "tests": [
+      "Growth Rate: Rapid (<7 days) vs slow (>7 days)",
+      "Pigmentation: Photochromogens, scotochromogens, non-chromogens",
+      "Biochemical Tests: Niacin, nitrate reduction, catalase",
+      "Molecular Methods: Species identification"
+    ],
+    "options": [
+      {
+        "text": "M. tuberculosis complex",
+        "next": "mycobacterium_tuberculosis_complex"
+      },
+      {
+        "text": "M. avium complex (MAC)",
+        "next": "mycobacterium_avium_complex"
+      },
+      {
+        "text": "Rapid Growers",
+        "next": "rapid_growing_mycobacteria"
+      },
+      {
+        "text": "Other NTM",
+        "next": "other_ntm"
+      }
+    ]
+  },
+  "mycobacterium_tuberculosis_complex": {
+    "question": "Identification: Mycobacterium tuberculosis complex",
+    "information": "M. tuberculosis complex includes M. tuberculosis, M. bovis, M. africanum, and M. microti. They cause tuberculosis and related diseases.",
+    "tests": [
+      "Niacin Accumulation: Positive (M. tuberculosis)",
+      "Nitrate Reduction: Positive (M. tuberculosis)",
+      "Growth on TCH: Resistant (M. tuberculosis), sensitive (M. bovis)",
+      "Cord Factor: Serpentine cording in liquid media",
+      "Molecular Tests: M. tuberculosis complex specific"
+    ],
+    "options": [
+      {
+        "text": "M. tuberculosis",
+        "next": "organism_mycobacterium_tuberculosis"
+      },
+      {
+        "text": "M. bovis/M. bovis BCG",
+        "next": "organism_mycobacterium_bovis"
+      },
+      {
+        "text": "M. africanum",
+        "next": "organism_mycobacterium_africanum"
+      }
+    ]
+  },
+  "no_organisms": {
+    "question": "No Organisms Seen: Next steps",
+    "information": "When no organisms are seen on Gram stain, consider viral or fungal etiology, or the need for specialized culture techniques or molecular methods.",
+    "tests": [
+      "Special Culture Methods: For fungi, viruses, fastidious bacteria",
+      "Molecular Testing: PCR, 16S rRNA sequencing",
+      "Serological Testing: Antibody detection",
+      "Antigen Testing: Direct antigen detection"
+    ],
+    "options": [
+      {
+        "text": "Consider Fungal Infection",
+        "next": "fungal_workup"
+      },
+      {
+        "text": "Consider Viral Infection",
+        "next": "viral_workup"
+      },
+      {
+        "text": "Molecular Testing",
+        "next": "molecular_testing"
+      },
+      {
+        "text": "Special Culture Methods",
+        "next": "special_culture"
+      }
+    ]
+  }
+}

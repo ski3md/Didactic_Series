@@ -1,0 +1,61 @@
+{
+  "sourceProject": "ioc-next-app",
+  "sourcePath": "/Users/skim4/Downloads/ioc-next-app",
+  "markers": [
+    "Lecture-style IOC overviews in `ioc-modal-complete-upgrade/data/overview/*.json`",
+    "Tutorial-style histology teaching modals in `ioc-modal-complete-upgrade/data/entity/*.json`",
+    "Navigation index in `ioc-modal-complete-upgrade/data/service-lines.json`",
+    "Content is served through `components/IOCModalApp.js` and the IOC API routes"
+  ],
+  "summary": {
+    "overall": "This is an IOC teaching app centered on surgical service-line overviews and histologic-pattern teaching modals. The migratable educational payload is concentrated in JSON data files; there is no standalone algorithm library and no project-owned image corpus.",
+    "counts": {
+      "lectureFiles": 9,
+      "tutorialFiles": 26,
+      "serviceLineIndexFiles": 1,
+      "imageAssets": 0
+    }
+  },
+  "candidates": {
+    "algorithms": {
+      "files": [],
+      "note": "No standalone algorithm content found."
+    },
+    "lectures": {
+      "files": [
+        "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/*.json"
+      ],
+      "count": 9,
+      "note": "High-level IOC overviews with principles, key points, and triad summaries."
+    },
+    "images": {
+      "files": [],
+      "note": "No project-owned educational image assets found."
+    },
+    "tutorials": {
+      "files": [
+        "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/entity/*.json"
+      ],
+      "count": 26,
+      "note": "Detailed teaching modals for histologic patterns, including case points, sketch guidance, pitfalls, and actions."
+    }
+  },
+  "dependencies": {
+    "runtime": [
+      "Next.js",
+      "React",
+      "Axios",
+      "Tailwind CSS"
+    ],
+    "serviceDependencies": [
+      "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/service-lines.json",
+      "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/server.js",
+      "/Users/skim4/Downloads/ioc-next-app/components/IOCModalApp.js"
+    ],
+    "notes": [
+      "The root app and bundled upgrade both expose IOC modal flows, but the content lives in the `data/overview` and `data/entity` folders.",
+      "No image directory or standalone media set was present outside generated build artifacts and dependencies."
+    ]
+  },
+  "recommendation": "Migrate the JSON data folders first and treat the React/Express shell as presentation infrastructure. If the target project needs lecture/tutor content, the overview files are the strongest lecture candidates and the entity files are the strongest tutorial candidates."
+}

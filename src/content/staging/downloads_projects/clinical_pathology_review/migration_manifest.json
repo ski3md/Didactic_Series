@@ -1,0 +1,41 @@
+{
+  "sourceProject": "/Users/skim4/Downloads/clinical-pathology-review",
+  "sourcePath": "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review",
+  "markers": [
+    "Embedded high-yield MCQ bank in src/App.jsx",
+    "Duplicate generated content in CP_CoreReview2.jsx and setup-clinical-pathology-app.sh",
+    "Help/tutorial copy in src/components/HelpModal.js",
+    "Static branding images only; no dedicated clinical image dataset found"
+  ],
+  "summary": {
+    "algorithms": 0,
+    "lectures": 0,
+    "images": 4,
+    "tutorials": 4,
+    "notes": "This project is an interactive CRA app with educational review content embedded in code rather than as standalone content files."
+  },
+  "candidates": {
+    "algorithms": [],
+    "lectures": [],
+    "images": [
+      "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/public/favicon.ico",
+      "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/public/logo192.png",
+      "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/public/logo512.png",
+      "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/src/logo.svg"
+    ],
+    "tutorials": [
+      "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/src/App.jsx",
+      "/Users/skim4/Downloads/clinical-pathology-review/CP_CoreReview2.jsx",
+      "/Users/skim4/Downloads/clinical-pathology-review/setup-clinical-pathology-app.sh",
+      "/Users/skim4/Downloads/clinical-pathology-review/clinical-pathology-review/src/components/HelpModal.js"
+    ]
+  },
+  "dependencies": [
+    "react",
+    "react-dom",
+    "react-scripts",
+    "recharts",
+    "lucide-react"
+  ],
+  "recommendation": "Do not copy payloads yet. If migration proceeds, extract the embedded MCQ/tutorial content from src/App.jsx and the generator script into a normalized content schema first. No standalone lecture or algorithm corpus was found."
+}

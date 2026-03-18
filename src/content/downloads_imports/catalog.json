@@ -1,0 +1,35 @@
+{
+  "counts": {
+    "lectures": 9,
+    "tutorials": 290,
+    "algorithms": 1,
+    "images": 216
+  },
+  "sources": [
+    "ioc-next-app",
+    "abpath-advanced-board-prep-platform (3)",
+    "cp-content-specification-tutorial-batch-ready",
+    "cp-content-specification-tutorial_11.11.25",
+    "dashboard1",
+    "pathology-learning-module_-granulomatous-diseases (3)",
+    "workspace-3418f879-7689-4224-9717-636b27130563"
+  ],
+  "normalizedOutputs": {
+    "lectures": "src/content/downloads_imports/normalized/lectures.normalized.json",
+    "tutorials": "src/content/downloads_imports/normalized/tutorials.normalized.json",
+    "algorithms": "src/content/downloads_imports/normalized/algorithms.normalized.json",
+    "images": "src/content/downloads_imports/normalized/images.normalized.json"
+  },
+  "rawPayloads": [
+    "src/content/downloads_imports/raw/ioc_overviews.raw.json",
+    "src/content/downloads_imports/raw/ioc_entities.raw.json",
+    "src/content/downloads_imports/raw/abpath_advanced_board_prep_export.raw.json",
+    "src/content/downloads_imports/raw/cp_content_specification_batch_ready.raw.json",
+    "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+    "src/content/downloads_imports/raw/dashboard1_backend_datasets.raw.json",
+    "src/content/downloads_imports/raw/granulomatous_modules.raw.json",
+    "src/content/downloads_imports/raw/granulomatous_gallery.raw.json",
+    "src/content/downloads_imports/raw/granulomatous_case_metadata_rules.raw.json",
+    "src/content/downloads_imports/raw/bacterial_algorithm_data.raw.json"
+  ]
+}

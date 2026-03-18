@@ -1,0 +1,107 @@
+2025-11-01 19:28:35,582 - INFO - Starting Enhanced Bing Granuloma Histopathology Image Scraper with Pathology Synonyms
+2025-11-01 19:28:35,582 - INFO - Created backup: /Users/skim4/Downloads/Didactic_Series/bing_granuloma_scraper_2025-11-01_backup.py
+2025-11-01 19:28:35,582 - INFO - Processing disease: sarcoidosis
+2025-11-01 19:28:35,582 - INFO - Using 12 expanded queries for sarcoidosis
+2025-11-01 19:28:35,582 - INFO - Searching for: sarcoidosis noncaseating granulomas lung biopsy H&E
+2025-11-01 19:29:00,415 - INFO - Found 100 potential images for query: sarcoidosis noncaseating granulomas lung biopsy H&E
+2025-11-01 19:29:00,880 - WARNING - Retry 1/3 for https://www.heartandlung.org/cms/10.1016/j.hrtlng.2011.09.010/asset/df18e2c0-bd5b-47c7-a6fe-6166af1de1dc/main.assets/gr4_lrg.jpg: 403 Client Error: Forbidden for url: https://www.heartandlung.org/cms/10.1016/j.hrtlng.2011.09.010/asset/df18e2c0-bd5b-47c7-a6fe-6166af1de1dc/main.assets/gr4_lrg.jpg
+2025-11-01 19:29:06,185 - WARNING - Retry 2/3 for https://www.heartandlung.org/cms/10.1016/j.hrtlng.2011.09.010/asset/df18e2c0-bd5b-47c7-a6fe-6166af1de1dc/main.assets/gr4_lrg.jpg: 403 Client Error: Forbidden for url: https://www.heartandlung.org/cms/10.1016/j.hrtlng.2011.09.010/asset/df18e2c0-bd5b-47c7-a6fe-6166af1de1dc/main.assets/gr4_lrg.jpg
+2025-11-01 19:29:13,095 - ERROR - Failed to download https://www.heartandlung.org/cms/10.1016/j.hrtlng.2011.09.010/asset/df18e2c0-bd5b-47c7-a6fe-6166af1de1dc/main.assets/gr4_lrg.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://www.heartandlung.org/cms/10.1016/j.hrtlng.2011.09.010/asset/df18e2c0-bd5b-47c7-a6fe-6166af1de1dc/main.assets/gr4_lrg.jpg
+2025-11-01 19:29:15,854 - INFO - Downloaded: sarcoidosis_sarcoidosis_02.jpg
+2025-11-01 19:29:18,466 - WARNING - Retry 1/3 for https://www.ahajournals.org/cms/asset/69ca9cfe-f9b8-4529-8742-8694cadb2fe5/e137fig01.jpg: 403 Client Error: Forbidden for url: https://www.ahajournals.org/cms/asset/69ca9cfe-f9b8-4529-8742-8694cadb2fe5/e137fig01.jpg
+2025-11-01 19:29:25,275 - WARNING - Retry 2/3 for https://www.ahajournals.org/cms/asset/69ca9cfe-f9b8-4529-8742-8694cadb2fe5/e137fig01.jpg: 403 Client Error: Forbidden for url: https://www.ahajournals.org/cms/asset/69ca9cfe-f9b8-4529-8742-8694cadb2fe5/e137fig01.jpg
+2025-11-01 19:29:30,817 - ERROR - Failed to download https://www.ahajournals.org/cms/asset/69ca9cfe-f9b8-4529-8742-8694cadb2fe5/e137fig01.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://www.ahajournals.org/cms/asset/69ca9cfe-f9b8-4529-8742-8694cadb2fe5/e137fig01.jpg
+2025-11-01 19:29:33,713 - WARNING - Skipping non-image content: https://d3i71xaburhd42.cloudfront.net/3af72329b234df38ac399356923264e7d7da7e96/3-Figure5-1.png (Content-Type: binary/octet-stream)
+2025-11-01 19:29:37,148 - INFO - Downloaded: sarcoidosis_granulomas_05.jpg
+2025-11-01 19:29:39,820 - INFO - Downloaded: sarcoidosis_sarcoidosis_06.jpg
+2025-11-01 19:29:43,420 - INFO - Downloaded: sarcoidosis_sarcoidosis_07.jpg
+2025-11-01 19:29:46,712 - INFO - Downloaded: sarcoidosis_sarcoidosis_08.jpg
+2025-11-01 19:29:49,694 - INFO - Downloaded: sarcoidosis_sarcoidosis_09.jpg
+2025-11-01 19:29:52,636 - INFO - Downloaded: sarcoidosis_sarcoidosis_10.jpg
+2025-11-01 19:29:56,157 - INFO - Downloaded: sarcoidosis_granulomas_11.jpg
+2025-11-01 19:29:59,903 - INFO - Downloaded: sarcoidosis_sarcoidosis_12.jpg
+2025-11-01 19:30:02,309 - INFO - Downloaded: sarcoidosis_sarcoidosis_13.jpg
+2025-11-01 19:30:05,104 - WARNING - Retry 1/3 for https://www.jni-journal.com/cms/asset/8df8121c-688d-4fb3-93cb-3dd640619fcc/ga1.jpg: 403 Client Error: Forbidden for url: https://www.jni-journal.com/cms/asset/8df8121c-688d-4fb3-93cb-3dd640619fcc/ga1.jpg
+2025-11-01 19:30:11,842 - WARNING - Retry 2/3 for https://www.jni-journal.com/cms/asset/8df8121c-688d-4fb3-93cb-3dd640619fcc/ga1.jpg: 403 Client Error: Forbidden for url: https://www.jni-journal.com/cms/asset/8df8121c-688d-4fb3-93cb-3dd640619fcc/ga1.jpg
+2025-11-01 19:30:18,758 - ERROR - Failed to download https://www.jni-journal.com/cms/asset/8df8121c-688d-4fb3-93cb-3dd640619fcc/ga1.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://www.jni-journal.com/cms/asset/8df8121c-688d-4fb3-93cb-3dd640619fcc/ga1.jpg
+2025-11-01 19:30:21,845 - INFO - Downloaded: sarcoidosis_granulomas_15.jpg
+2025-11-01 19:30:23,637 - WARNING - Retry 1/3 for https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/16f181b4-48ea-4b9b-bab8-e9ff7a9a82e4/gr4_lrg.jpg: 403 Client Error: Forbidden for url: https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/16f181b4-48ea-4b9b-bab8-e9ff7a9a82e4/gr4_lrg.jpg
+2025-11-01 19:30:28,339 - WARNING - Retry 2/3 for https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/16f181b4-48ea-4b9b-bab8-e9ff7a9a82e4/gr4_lrg.jpg: 403 Client Error: Forbidden for url: https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/16f181b4-48ea-4b9b-bab8-e9ff7a9a82e4/gr4_lrg.jpg
+2025-11-01 19:30:34,893 - ERROR - Failed to download https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/16f181b4-48ea-4b9b-bab8-e9ff7a9a82e4/gr4_lrg.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/16f181b4-48ea-4b9b-bab8-e9ff7a9a82e4/gr4_lrg.jpg
+2025-11-01 19:30:39,126 - INFO - Downloaded: sarcoidosis_sarcoidosis_18.jpg
+2025-11-01 19:30:41,701 - INFO - Downloaded: sarcoidosis_sarcoidosis_19.jpg
+2025-11-01 19:30:44,743 - WARNING - Retry 1/3 for https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/0d3d2f4d-1eda-4aaa-9d00-090276e1cd73/gr3_lrg.jpg: 403 Client Error: Forbidden for url: https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/0d3d2f4d-1eda-4aaa-9d00-090276e1cd73/gr3_lrg.jpg
+2025-11-01 19:30:49,589 - WARNING - Retry 2/3 for https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/0d3d2f4d-1eda-4aaa-9d00-090276e1cd73/gr3_lrg.jpg: 403 Client Error: Forbidden for url: https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/0d3d2f4d-1eda-4aaa-9d00-090276e1cd73/gr3_lrg.jpg
+2025-11-01 19:30:56,634 - ERROR - Failed to download https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/0d3d2f4d-1eda-4aaa-9d00-090276e1cd73/gr3_lrg.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/0d3d2f4d-1eda-4aaa-9d00-090276e1cd73/gr3_lrg.jpg
+2025-11-01 19:31:00,015 - WARNING - Retry 1/3 for https://www.mdpi.com/microorganisms/microorganisms-11-00829/article_deploy/html/images/microorganisms-11-00829-g001-550.jpg: 403 Client Error: Forbidden for url: https://www.mdpi.com/microorganisms/microorganisms-11-00829/article_deploy/html/images/microorganisms-11-00829-g001-550.jpg
+2025-11-01 19:31:05,434 - WARNING - Retry 2/3 for https://www.mdpi.com/microorganisms/microorganisms-11-00829/article_deploy/html/images/microorganisms-11-00829-g001-550.jpg: 403 Client Error: Forbidden for url: https://www.mdpi.com/microorganisms/microorganisms-11-00829/article_deploy/html/images/microorganisms-11-00829-g001-550.jpg
+2025-11-01 19:31:11,491 - ERROR - Failed to download https://www.mdpi.com/microorganisms/microorganisms-11-00829/article_deploy/html/images/microorganisms-11-00829-g001-550.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://www.mdpi.com/microorganisms/microorganisms-11-00829/article_deploy/html/images/microorganisms-11-00829-g001-550.jpg
+2025-11-01 19:31:14,669 - INFO - Downloaded: sarcoidosis_granulomas_22.jpg
+2025-11-01 19:31:17,274 - WARNING - Retry 1/3 for https://pubs.rsna.org/cms/10.1148/rg.230098/asset/images/medium/rg.230098.fig6.gif: 403 Client Error: Forbidden for url: https://pubs.rsna.org/cms/10.1148/rg.230098/asset/images/medium/rg.230098.fig6.gif
+2025-11-01 19:31:21,551 - WARNING - Retry 2/3 for https://pubs.rsna.org/cms/10.1148/rg.230098/asset/images/medium/rg.230098.fig6.gif: 403 Client Error: Forbidden for url: https://pubs.rsna.org/cms/10.1148/rg.230098/asset/images/medium/rg.230098.fig6.gif
+2025-11-01 19:31:28,561 - ERROR - Failed to download https://pubs.rsna.org/cms/10.1148/rg.230098/asset/images/medium/rg.230098.fig6.gif after 3 attempts: 403 Client Error: Forbidden for url: https://pubs.rsna.org/cms/10.1148/rg.230098/asset/images/medium/rg.230098.fig6.gif
+2025-11-01 19:31:30,885 - INFO - Downloaded: sarcoidosis_sarcoidosis_24.jpg
+2025-11-01 19:31:34,414 - INFO - Downloaded: sarcoidosis_sarcoidosis_25.jpg
+2025-11-01 19:31:37,393 - WARNING - Retry 1/3 for https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/40a3e07e-4856-4bbd-8da5-a11321f2f8ed/gr1_lrg.jpg: 403 Client Error: Forbidden for url: https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/40a3e07e-4856-4bbd-8da5-a11321f2f8ed/gr1_lrg.jpg
+2025-11-01 19:31:42,674 - WARNING - Retry 2/3 for https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/40a3e07e-4856-4bbd-8da5-a11321f2f8ed/gr1_lrg.jpg: 403 Client Error: Forbidden for url: https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/40a3e07e-4856-4bbd-8da5-a11321f2f8ed/gr1_lrg.jpg
+2025-11-01 19:31:49,888 - ERROR - Failed to download https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/40a3e07e-4856-4bbd-8da5-a11321f2f8ed/gr1_lrg.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/40a3e07e-4856-4bbd-8da5-a11321f2f8ed/gr1_lrg.jpg
+2025-11-01 19:31:52,869 - WARNING - Retry 1/3 for https://www.tandfonline.com/cms/asset/9ad60fdd-f3d8-407f-a8bc-2316381818b9/ioii_a_805786_f0003_b.jpg: 403 Client Error: Forbidden for url: https://www.tandfonline.com/cms/asset/9ad60fdd-f3d8-407f-a8bc-2316381818b9/ioii_a_805786_f0003_b.jpg
+2025-11-01 19:31:58,133 - WARNING - Retry 2/3 for https://www.tandfonline.com/cms/asset/9ad60fdd-f3d8-407f-a8bc-2316381818b9/ioii_a_805786_f0003_b.jpg: 403 Client Error: Forbidden for url: https://www.tandfonline.com/cms/asset/9ad60fdd-f3d8-407f-a8bc-2316381818b9/ioii_a_805786_f0003_b.jpg
+2025-11-01 19:32:04,534 - ERROR - Failed to download https://www.tandfonline.com/cms/asset/9ad60fdd-f3d8-407f-a8bc-2316381818b9/ioii_a_805786_f0003_b.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://www.tandfonline.com/cms/asset/9ad60fdd-f3d8-407f-a8bc-2316381818b9/ioii_a_805786_f0003_b.jpg
+2025-11-01 19:32:06,980 - INFO - Downloaded: sarcoidosis_sarcoidosis_28.jpg
+2025-11-01 19:32:09,663 - INFO - Downloaded: sarcoidosis_sarcoidosis_29.jpg
+2025-11-01 19:32:15,431 - WARNING - Skipping non-image content: https://cdnintech.com/media/chapter/71952/1512345123/media/F11.png (Content-Type: application/octet-stream)
+2025-11-01 19:32:17,702 - INFO - Downloaded: sarcoidosis_sarcoidosis_32.jpg
+2025-11-01 19:32:20,943 - WARNING - Skipping non-image content: https://cdnintech.com/media/chapter/71952/1512345123/media/F10.png (Content-Type: application/octet-stream)
+2025-11-01 19:32:25,310 - INFO - Downloaded: sarcoidosis_sarcoidosis_34.jpg
+2025-11-01 19:32:29,802 - INFO - Downloaded: sarcoidosis_sarcoidosis_35.jpg
+2025-11-01 19:32:41,460 - INFO - Downloaded: sarcoidosis_sarcoidosis_36.jpg
+2025-11-01 19:32:44,697 - WARNING - Retry 1/3 for https://www.jaad.org/cms/10.1067/mjd.2001.114596/asset/f41ff19a-dba5-4949-9315-efd0d5a63b8a/main.assets/gr15_lrg.jpg: 403 Client Error: Forbidden for url: https://www.jaad.org/cms/10.1067/mjd.2001.114596/asset/f41ff19a-dba5-4949-9315-efd0d5a63b8a/main.assets/gr15_lrg.jpg
+2025-11-01 19:32:51,904 - WARNING - Retry 2/3 for https://www.jaad.org/cms/10.1067/mjd.2001.114596/asset/f41ff19a-dba5-4949-9315-efd0d5a63b8a/main.assets/gr15_lrg.jpg: 403 Client Error: Forbidden for url: https://www.jaad.org/cms/10.1067/mjd.2001.114596/asset/f41ff19a-dba5-4949-9315-efd0d5a63b8a/main.assets/gr15_lrg.jpg
+2025-11-01 19:32:57,555 - ERROR - Failed to download https://www.jaad.org/cms/10.1067/mjd.2001.114596/asset/f41ff19a-dba5-4949-9315-efd0d5a63b8a/main.assets/gr15_lrg.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://www.jaad.org/cms/10.1067/mjd.2001.114596/asset/f41ff19a-dba5-4949-9315-efd0d5a63b8a/main.assets/gr15_lrg.jpg
+2025-11-01 19:33:01,024 - INFO - Downloaded: sarcoidosis_sarcoidosis_38.jpg
+2025-11-01 19:33:03,749 - WARNING - Skipping non-image content: https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/3af72329b234df38ac399356923264e7d7da7e96/1-Figure1-1.png (Content-Type: binary/octet-stream)
+2025-11-01 19:33:11,939 - WARNING - Skipping non-image content: https://d3i71xaburhd42.cloudfront.net/2a1a4fbea962958e8788c8f4e86f14cf5ee1d9fa/2-Figure1-1.png (Content-Type: binary/octet-stream)
+2025-11-01 19:33:14,990 - WARNING - Skipping non-image content: https://cdnintech.com/media/chapter/71952/1512345123/media/F4.png (Content-Type: application/octet-stream)
+2025-11-01 19:33:17,606 - WARNING - Skipping non-image content: https://slideplayer.com/slide/12644066/76/images/26/Granuloma+Giant+cell+Sarcoidosis.jpg (Content-Type: text/html)
+2025-11-01 19:33:19,716 - WARNING - Retry 1/3 for https://www.mdpi.com/cardiogenetics/cardiogenetics-14-00009/article_deploy/html/images/cardiogenetics-14-00009-g003-550.jpg: 403 Client Error: Forbidden for url: https://www.mdpi.com/cardiogenetics/cardiogenetics-14-00009/article_deploy/html/images/cardiogenetics-14-00009-g003-550.jpg
+2025-11-01 19:33:24,179 - WARNING - Retry 2/3 for https://www.mdpi.com/cardiogenetics/cardiogenetics-14-00009/article_deploy/html/images/cardiogenetics-14-00009-g003-550.jpg: 403 Client Error: Forbidden for url: https://www.mdpi.com/cardiogenetics/cardiogenetics-14-00009/article_deploy/html/images/cardiogenetics-14-00009-g003-550.jpg
+2025-11-01 19:33:29,118 - ERROR - Failed to download https://www.mdpi.com/cardiogenetics/cardiogenetics-14-00009/article_deploy/html/images/cardiogenetics-14-00009-g003-550.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://www.mdpi.com/cardiogenetics/cardiogenetics-14-00009/article_deploy/html/images/cardiogenetics-14-00009-g003-550.jpg
+2025-11-01 19:33:31,897 - INFO - Downloaded: sarcoidosis_sarcoidosis_45.jpg
+2025-11-01 19:33:34,781 - INFO - Downloaded: sarcoidosis_sarcoidosis_46.jpg
+2025-11-01 19:33:37,998 - INFO - Downloaded: sarcoidosis_sarcoidosis_47.jpg
+2025-11-01 19:33:55,294 - WARNING - Retry 1/3 for https://dom.pitt.edu/wp-content/uploads/2018/10/Gibsonfigure2.jpg: HTTPSConnectionPool(host='dom.pitt.edu', port=443): Read timed out. (read timeout=15)
+2025-11-01 19:34:06,306 - WARNING - Retry 1/3 for https://pubs.rsna.org/cms/10.1148/rg.2020190180/asset/images/large/rg.2020190180.fig11a.jpeg: 403 Client Error: Forbidden for url: https://pubs.rsna.org/cms/10.1148/rg.2020190180/asset/images/large/rg.2020190180.fig11a.jpeg
+2025-11-01 19:34:11,850 - WARNING - Retry 2/3 for https://pubs.rsna.org/cms/10.1148/rg.2020190180/asset/images/large/rg.2020190180.fig11a.jpeg: 403 Client Error: Forbidden for url: https://pubs.rsna.org/cms/10.1148/rg.2020190180/asset/images/large/rg.2020190180.fig11a.jpeg
+2025-11-01 19:34:18,679 - ERROR - Failed to download https://pubs.rsna.org/cms/10.1148/rg.2020190180/asset/images/large/rg.2020190180.fig11a.jpeg after 3 attempts: 403 Client Error: Forbidden for url: https://pubs.rsna.org/cms/10.1148/rg.2020190180/asset/images/large/rg.2020190180.fig11a.jpeg
+2025-11-01 19:34:24,015 - WARNING - Retry 1/3 for https://librepathology.org/w/images/thumb/c/ca/Sarcoidosis_(1)_lymph_node_biopsy.jpg/450px-Sarcoidosis_(1)_lymph_node_biopsy.jpg: HTTPSConnectionPool(host='librepathology.org', port=443): Max retries exceeded with url: /w/images/thumb/c/ca/Sarcoidosis_(1)_lymph_node_biopsy.jpg/450px-Sarcoidosis_(1)_lymph_node_biopsy.jpg (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+2025-11-01 19:34:32,157 - WARNING - Retry 2/3 for https://librepathology.org/w/images/thumb/c/ca/Sarcoidosis_(1)_lymph_node_biopsy.jpg/450px-Sarcoidosis_(1)_lymph_node_biopsy.jpg: HTTPSConnectionPool(host='librepathology.org', port=443): Max retries exceeded with url: /w/images/thumb/c/ca/Sarcoidosis_(1)_lymph_node_biopsy.jpg/450px-Sarcoidosis_(1)_lymph_node_biopsy.jpg (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+2025-11-01 19:34:39,696 - ERROR - Failed to download https://librepathology.org/w/images/thumb/c/ca/Sarcoidosis_(1)_lymph_node_biopsy.jpg/450px-Sarcoidosis_(1)_lymph_node_biopsy.jpg after 3 attempts: HTTPSConnectionPool(host='librepathology.org', port=443): Max retries exceeded with url: /w/images/thumb/c/ca/Sarcoidosis_(1)_lymph_node_biopsy.jpg/450px-Sarcoidosis_(1)_lymph_node_biopsy.jpg (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+2025-11-01 19:34:44,596 - INFO - Downloaded: sarcoidosis_sarcoidosis_51.jpg
+2025-11-01 19:34:48,201 - INFO - Downloaded: sarcoidosis_sarcoidosis_52.jpg
+2025-11-01 19:34:52,287 - INFO - Downloaded: sarcoidosis_sarcoidosis_53.jpg
+2025-11-01 19:34:55,386 - INFO - Downloaded: sarcoidosis_sarcoidosis_54.jpg
+2025-11-01 19:34:58,738 - INFO - Downloaded: sarcoidosis_sarcoidosis_55.jpg
+2025-11-01 19:35:02,619 - INFO - Downloaded: sarcoidosis_sarcoidosis_56.jpg
+2025-11-01 19:35:06,944 - INFO - Downloaded: sarcoidosis_sarcoidosis_57.jpg
+2025-11-01 19:35:08,898 - WARNING - Retry 1/3 for https://www.mdpi.com/cells/cells-11-00059/article_deploy/html/images/cells-11-00059-g005-550.jpg: 403 Client Error: Forbidden for url: https://www.mdpi.com/cells/cells-11-00059/article_deploy/html/images/cells-11-00059-g005-550.jpg
+2025-11-01 19:35:14,061 - WARNING - Retry 2/3 for https://www.mdpi.com/cells/cells-11-00059/article_deploy/html/images/cells-11-00059-g005-550.jpg: 403 Client Error: Forbidden for url: https://www.mdpi.com/cells/cells-11-00059/article_deploy/html/images/cells-11-00059-g005-550.jpg
+2025-11-01 19:35:20,519 - ERROR - Failed to download https://www.mdpi.com/cells/cells-11-00059/article_deploy/html/images/cells-11-00059-g005-550.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://www.mdpi.com/cells/cells-11-00059/article_deploy/html/images/cells-11-00059-g005-550.jpg
+2025-11-01 19:35:23,661 - INFO - Downloaded: sarcoidosis_sarcoidosis_59.jpg
+2025-11-01 19:35:28,540 - INFO - Downloaded: sarcoidosis_sarcoidosis_60.jpg
+2025-11-01 19:35:31,372 - INFO - Downloaded: sarcoidosis_sarcoidosis_61.jpg
+2025-11-01 19:35:33,712 - INFO - Downloaded: sarcoidosis_sarcoidosis_62.jpg
+2025-11-01 19:35:51,139 - WARNING - Retry 1/3 for https://i.ytimg.com/vi/ifi1YAUZAKQ/hqdefault.jpg: HTTPSConnectionPool(host='i.ytimg.com', port=443): Read timed out. (read timeout=15)
+2025-11-01 19:36:10,530 - WARNING - Retry 2/3 for https://i.ytimg.com/vi/ifi1YAUZAKQ/hqdefault.jpg: HTTPSConnectionPool(host='i.ytimg.com', port=443): Read timed out. (read timeout=15)
+2025-11-01 19:36:30,743 - ERROR - Failed to download https://i.ytimg.com/vi/ifi1YAUZAKQ/hqdefault.jpg after 3 attempts: HTTPSConnectionPool(host='i.ytimg.com', port=443): Read timed out. (read timeout=15)
+2025-11-01 19:36:47,560 - WARNING - Retry 1/3 for https://storage.googleapis.com/dl.dentistrykey.com/clinical/LiverinSystemicDisease/5_3s20B9780702082283000156.jpg: HTTPSConnectionPool(host='storage.googleapis.com', port=443): Read timed out. (read timeout=15)
+2025-11-01 19:37:07,450 - WARNING - Retry 2/3 for https://storage.googleapis.com/dl.dentistrykey.com/clinical/LiverinSystemicDisease/5_3s20B9780702082283000156.jpg: HTTPSConnectionPool(host='storage.googleapis.com', port=443): Read timed out. (read timeout=15)
+2025-11-01 19:37:28,000 - ERROR - Failed to download https://storage.googleapis.com/dl.dentistrykey.com/clinical/LiverinSystemicDisease/5_3s20B9780702082283000156.jpg after 3 attempts: HTTPSConnectionPool(host='storage.googleapis.com', port=443): Read timed out. (read timeout=15)
+2025-11-01 19:37:45,736 - WARNING - Retry 1/3 for https://o.quizlet.com/lw9wj66b1bx1FmCyKFuXVA.jpg: HTTPSConnectionPool(host='o.quizlet.com', port=443): Read timed out. (read timeout=15)
+2025-11-01 19:37:52,523 - WARNING - Retry 2/3 for https://o.quizlet.com/lw9wj66b1bx1FmCyKFuXVA.jpg: 403 Client Error: Forbidden for url: https://o.quizlet.com/lw9wj66b1bx1FmCyKFuXVA.jpg
+2025-11-01 19:37:58,888 - ERROR - Failed to download https://o.quizlet.com/lw9wj66b1bx1FmCyKFuXVA.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://o.quizlet.com/lw9wj66b1bx1FmCyKFuXVA.jpg
+2025-11-01 19:38:01,562 - INFO - Downloaded: sarcoidosis_sarcoidosis_66.jpg
+2025-11-01 19:38:04,481 - INFO - Downloaded: sarcoidosis_granulomas_67.jpg
+2025-11-01 19:38:06,955 - WARNING - Retry 1/3 for https://journal.chestnet.org/cms/attachment/f3c2ab29-f9bb-4aca-a73d-ce77972e2d2e/gr1_lrg.jpg: 403 Client Error: Forbidden for url: https://journal.chestnet.org/cms/attachment/f3c2ab29-f9bb-4aca-a73d-ce77972e2d2e/gr1_lrg.jpg
+2025-11-01 19:38:13,363 - WARNING - Retry 2/3 for https://journal.chestnet.org/cms/attachment/f3c2ab29-f9bb-4aca-a73d-ce77972e2d2e/gr1_lrg.jpg: 403 Client Error: Forbidden for url: https://journal.chestnet.org/cms/attachment/f3c2ab29-f9bb-4aca-a73d-ce77972e2d2e/gr1_lrg.jpg
+2025-11-01 19:38:18,000 - ERROR - Failed to download https://journal.chestnet.org/cms/attachment/f3c2ab29-f9bb-4aca-a73d-ce77972e2d2e/gr1_lrg.jpg after 3 attempts: 403 Client Error: Forbidden for url: https://journal.chestnet.org/cms/attachment/f3c2ab29-f9bb-4aca-a73d-ce77972e2d2e/gr1_lrg.jpg
