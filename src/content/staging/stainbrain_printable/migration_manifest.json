@@ -1,0 +1,60 @@
+{
+  "sourceRepo": "/Users/skim4/Documents/GitHub/stainbrain printable",
+  "targetStagingDir": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/stainbrain_printable",
+  "categories": {
+    "lectures": {
+      "count": 2,
+      "titles": [
+        "Renal Mass Evaluation",
+        "Testicular Mass Evaluation"
+      ],
+      "stagedFiles": [
+        "public/data/lectures.json",
+        "services/lectureData.ts"
+      ]
+    },
+    "algorithms": {
+      "count": 2,
+      "titles": [
+        "Spindle Cell Tumor Workup (Soft Tissue)",
+        "Lytic Bone Lesion: Giant Cell-Rich Differential"
+      ],
+      "stagedFiles": [
+        "public/data/algorithms.json",
+        "public/algorithms.json",
+        "services/algorithmData.ts"
+      ]
+    },
+    "network": {
+      "nodes": 433,
+      "links": 56,
+      "extendedEntries": 0,
+      "stagedFiles": [
+        "public/data/network.json",
+        "services/networkData.ts"
+      ]
+    },
+    "tutorials_board_prep": {
+      "sectionCount": 15,
+      "stagedFiles": [
+        "services/tutorialContent.ts"
+      ]
+    },
+    "histology": {
+      "imageCount": 68,
+      "stagedFiles": [
+        "services/histologyImageService.ts"
+      ]
+    }
+  },
+  "dependencies": [
+    "Lecture and algorithm services import shared types from `../types`.",
+    "Tutorial content is embedded as HTML-rich section definitions in `services/tutorialContent.ts`.",
+    "Histology content is embedded as a typed image manifest in `services/histologyImageService.ts`.",
+    "The root `public/algorithms.json` and `public/data/algorithms.json` are both present and were both staged because they are not byte-identical artifacts."
+  ],
+  "gaps": [
+    "No separate histology JSON corpus exists in this repo; the histology payload is authored inline in TypeScript.",
+    "The raw network JSON does not expose an `extended` array in the staged file, so extended graph content is not represented there."
+  ]
+}

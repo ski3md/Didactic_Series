@@ -1,0 +1,287 @@
+import type { EducationalCase } from '../types';
+
+export const educationalCases: EducationalCase[] = [
+    {
+        id: 'cotw-009-merkel',
+        caseData: {
+            serviceLine: 'DermPath', caseMode: 'Primary (in-house)', refDx: 'Small round blue cell tumor of skin',
+            hxAge: '78', hxSex: 'Male', hxLocation: 'Sun-exposed scalp', sizeCm: '2.0',
+            notes: 'Sheets and nests of small round blue cells in the dermis with scant cytoplasm, "peppered" chromatin, and brisk mitotic/apoptotic activity.',
+            images: {
+                histologyHE: ["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Merkel_cell_carcinoma_--_very_high_mag.jpg/1024px-Merkel_cell_carcinoma_--_very_high_mag.jpg"]
+            },
+            priority: 'Routine', specType: 'Skin, excision', site: 'Head/Neck', histFamily: 'neuroendocrine', refFacility: '', refAccession: 'EDU-24-009', refDate: '', hxNF1: 'Unknown', hxRT: 'No', hxPriorSarcoma: 'No', hxImaging: '', stains: [], attachName: '', margins: 'Negative', ancillaryOrders: [], reconStatus: {}, gDiff: '1', gMitoses: '1', gNecrosis: '0', stsSite: 'Extremity/Trunk', stsN: 'N0', stsM: 'M0', boneSkip: 'No', boneN: 'N0', boneM: 'M0', dpBreslow: '', dpUlceration: 'Unknown', dpMitoses: '', dpLVI: 'Unknown', dpPNI: 'Unknown', dpRegression: 'Unknown', dpSatellites: 'Unknown', dpVerticalGrowth: 'Unknown', melanomaN: 'N0', melanomaM: 'M0', isGuidedMode: false
+        },
+        solution: {
+            diagnosis: 'Merkel Cell Carcinoma',
+            keyTakeaway: 'Merkel Cell Carcinoma is an aggressive neuroendocrine carcinoma of the skin. The diagnosis is confirmed by its characteristic IHC profile, particularly the perinuclear "dot-like" positivity for CK20.',
+            keyMorphologicFeatures: ["small round blue cells", "scant cytoplasm", "peppered chromatin", "brisk mitoses", "apoptotic bodies", "sheets and nests"],
+            differentialDiagnosis: ["Metastatic Small Cell Lung Carcinoma", "Cutaneous Lymphoma", "Melanoma", "Ewing Sarcoma"],
+            ihcPanel: [
+                { marker: "CK20", result: "Positive (perinuclear dot-like)" },
+                { marker: "Synaptophysin", result: "Positive" },
+                { marker: "INSM1", result: "Positive" },
+                { marker: "TTF1", result: "Negative" },
+                { marker: "LCA (CD45)", result: "Negative" },
+            ],
+            molecularFindings: ["Merkel Cell Polyoma Virus association (in most cases)."]
+        },
+        hints: [
+            "This tumor is common in older, sun-exposed individuals.",
+            "It is a neuroendocrine neoplasm and will express neuroendocrine markers.",
+            "A specific cytokeratin stain shows a highly characteristic perinuclear dot-like pattern."
+        ]
+    },
+    {
+        id: 'cotw-003-ups',
+        caseData: {
+            serviceLine: 'BST',
+            caseMode: 'Primary (in-house)',
+            refDx: 'High-grade pleomorphic sarcoma',
+            hxAge: '72',
+            hxSex: 'Male',
+            hxLocation: 'Thigh',
+            sizeCm: '12.5',
+            notes: 'Large, pleomorphic spindle and epithelioid cells with numerous atypical mitoses and areas of necrosis. No specific line of differentiation identified by IHC.',
+            images: {
+                histologyHE: [
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Undifferentiated_pleomorphic_sarcoma_1_--_high_mag.jpg/1024px-Undifferentiated_pleomorphic_sarcoma_1_--_high_mag.jpg",
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Undifferentiated_pleomorphic_sarcoma_3_--_high_mag.jpg/1024px-Undifferentiated_pleomorphic_sarcoma_3_--_high_mag.jpg"
+                ]
+            },
+            // The rest of CaseState can be defaults as it's not used in the challenge UI
+            priority: 'Routine', specType: 'Soft tissue, excision/resection', site: 'Extremity/Trunk', histFamily: 'fibrohistiocytic', refFacility: '', refAccession: 'EDU-24-003', refDate: '', hxNF1: 'Unknown', hxRT: 'No', hxPriorSarcoma: 'No', hxImaging: '', stains: [], attachName: '', margins: 'Negative', ancillaryOrders: [], reconStatus: {}, gDiff: '1', gMitoses: '1', gNecrosis: '0', stsSite: 'Extremity/Trunk', stsN: 'N0', stsM: 'M0', boneSkip: 'No', boneN: 'N0', boneM: 'M0', dpBreslow: '', dpUlceration: 'Unknown', dpMitoses: '', dpLVI: 'Unknown', dpPNI: 'Unknown', dpRegression: 'Unknown', dpSatellites: 'Unknown', dpVerticalGrowth: 'Unknown', melanomaN: 'N0', melanomaM: 'M0', isGuidedMode: false
+        },
+        solution: {
+            diagnosis: 'Undifferentiated Pleomorphic Sarcoma (UPS)',
+            keyTakeaway: 'UPS is a diagnosis of exclusion for high-grade sarcomas that lack a specific line of differentiation. It is characterized by marked pleomorphism, high mitotic activity, and necrosis. The IHC workup is crucial to rule out other high-grade mimics.',
+            keyMorphologicFeatures: ["marked pleomorphism", "spindle cells", "epithelioid cells", "atypical mitoses", "necrosis", "storiform architecture"],
+            differentialDiagnosis: ["Dedifferentiated Liposarcoma", "Pleomorphic Leiomyosarcoma", "Pleomorphic Rhabdomyosarcoma", "Spindle Cell Melanoma"],
+            ihcPanel: [
+                { marker: "Pan-Keratin", result: "Negative" },
+                { marker: "S100/SOX10", result: "Negative" },
+                { marker: "Desmin", result: "Negative" },
+                { marker: "MDM2", result: "Negative (non-amplified)" },
+            ],
+            molecularFindings: ["Complex, unbalanced karyotype", "Absence of specific translocations"]
+        },
+        hints: [
+            "This is a high-grade sarcoma common in older adults, often in the deep soft tissues of the extremities.",
+            "The diagnosis is one of exclusion. An extensive IHC panel is required.",
+            "The morphology is highly variable, often showing a 'storiform' or 'patternless' pattern."
+        ]
+    },
+    {
+        id: 'cotw-006-chordoma',
+        caseData: {
+            serviceLine: 'BST', caseMode: 'Primary (in-house)', refDx: 'Myxoid neoplasm of sacrum',
+            hxAge: '65', hxSex: 'Male', hxLocation: 'Sacrum', sizeCm: '7.0',
+            notes: 'Lobulated neoplasm composed of nests and cords of large epithelioid cells with abundant eosinophilic, vacuolated ("bubbly") cytoplasm, set in a myxoid stroma.',
+            images: {
+                histologyHE: ["https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Chordoma_-_high_mag.jpg/1024px-Chordoma_-_high_mag.jpg"]
+            },
+            priority: 'Routine', specType: 'Bone, resection', site: 'Retroperitoneum', histFamily: 'bone_other', refFacility: '', refAccession: 'EDU-24-006', refDate: '', hxNF1: 'Unknown', hxRT: 'No', hxPriorSarcoma: 'No', hxImaging: '', stains: [], attachName: '', margins: 'Negative', ancillaryOrders: [], reconStatus: {}, gDiff: '1', gMitoses: '1', gNecrosis: '0', stsSite: 'Extremity/Trunk', stsN: 'N0', stsM: 'M0', boneSkip: 'No', boneN: 'N0', boneM: 'M0', dpBreslow: '', dpUlceration: 'Unknown', dpMitoses: '', dpLVI: 'Unknown', dpPNI: 'Unknown', dpRegression: 'Unknown', dpSatellites: 'Unknown', dpVerticalGrowth: 'Unknown', melanomaN: 'N0', melanomaM: 'M0', isGuidedMode: false
+        },
+        solution: {
+            diagnosis: 'Chordoma',
+            keyTakeaway: 'Chordoma is a malignant tumor of notochordal origin, arising in the axial skeleton. The "physaliphorous" cells and myxoid stroma are classic. Diagnosis is confirmed by nuclear positivity for Brachyury.',
+            keyMorphologicFeatures: ["physaliphorous cells", "vacuolated cytoplasm", "myxoid stroma", "epithelioid cells", "cords and nests"],
+            differentialDiagnosis: ["Metastatic Renal Cell Carcinoma", "Myxopapillary Ependymoma", "Chondrosarcoma"],
+            ihcPanel: [
+                { marker: "Brachyury", result: "Positive (nuclear)" },
+                { marker: "Pan-Keratin (AE1/AE3)", result: "Positive" },
+                { marker: "S100", result: "Positive" },
+                { marker: "PAX8", result: "Negative" },
+            ],
+            molecularFindings: ["No specific recurrent translocation."]
+        },
+        hints: [
+            "This tumor arises exclusively along the axial skeleton (skull base, spine, sacrum).",
+            "The classic cell type is large with bubbly, vacuolated cytoplasm.",
+            "There is a highly specific nuclear transcription factor that confirms notochordal differentiation."
+        ]
+    },
+    {
+        id: 'cotw-007-asps',
+        caseData: {
+            serviceLine: 'BST', caseMode: 'Primary (in-house)', refDx: 'Epithelioid neoplasm',
+            hxAge: '24', hxSex: 'Female', hxLocation: 'Deep thigh', sizeCm: '6.5',
+            notes: 'The tumor shows a prominent nested or "alveolar" growth pattern. The cells are large, polygonal, with abundant granular eosinophilic cytoplasm and round nuclei with prominent nucleoli.',
+            images: {
+                histologyHE: ["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Alveolar_soft_part_sarcoma_-_high_mag.jpg/1024px-Alveolar_soft_part_sarcoma_-_high_mag.jpg"]
+            },
+            priority: 'Routine', specType: 'Soft tissue, excision/resection', site: 'Extremity/Trunk', histFamily: 'uncertain', refFacility: '', refAccession: 'EDU-24-007', refDate: '', hxNF1: 'Unknown', hxRT: 'No', hxPriorSarcoma: 'No', hxImaging: '', stains: [], attachName: '', margins: 'Negative', ancillaryOrders: [], reconStatus: {}, gDiff: '1', gMitoses: '1', gNecrosis: '0', stsSite: 'Extremity/Trunk', stsN: 'N0', stsM: 'M0', boneSkip: 'No', boneN: 'N0', boneM: 'M0', dpBreslow: '', dpUlceration: 'Unknown', dpMitoses: '', dpLVI: 'Unknown', dpPNI: 'Unknown', dpRegression: 'Unknown', dpSatellites: 'Unknown', dpVerticalGrowth: 'Unknown', melanomaN: 'N0', melanomaM: 'M0', isGuidedMode: false
+        },
+        solution: {
+            diagnosis: 'Alveolar Soft Part Sarcoma (ASPS)',
+            keyTakeaway: 'ASPS is a rare sarcoma affecting young adults, characterized by a unique ASPL-TFE3 fusion. The histology is classic, with a nested pattern of large cells with granular cytoplasm. Strong nuclear TFE3 staining by IHC is pathognomonic.',
+            keyMorphologicFeatures: ["alveolar pattern", "nested architecture", "large polygonal cells", "granular eosinophilic cytoplasm", "prominent nucleoli"],
+            differentialDiagnosis: ["Metastatic Renal Cell Carcinoma", "Paraganglioma", "Granular Cell Tumor", "Melanoma"],
+            ihcPanel: [
+                { marker: "TFE3", result: "Positive (strong nuclear)" },
+                { marker: "PAS-D", result: "Positive (intracytoplasmic crystals)" },
+                { marker: "Pan-Keratin", result: "Negative" },
+                { marker: "S100/SOX10", result: "Negative" },
+                { marker: "Synaptophysin/Chromogranin", result: "Negative" },
+            ],
+            molecularFindings: ["Unbalanced translocation t(X;17)(p11;q25), resulting in ASPL-TFE3 fusion."]
+        },
+        hints: [
+            "This tumor typically occurs in the deep soft tissues of the extremities in adolescents and young adults.",
+            "Look for PAS-positive, diastase-resistant rhomboid crystals in the cytoplasm.",
+            "The diagnosis can be confirmed by a nuclear IHC stain for a specific transcription factor."
+        ]
+    },
+     {
+        id: 'cotw-008-dsrct',
+        caseData: {
+            serviceLine: 'BST', caseMode: 'Primary (in-house)', refDx: 'Small round blue cell tumor',
+            hxAge: '19', hxSex: 'Male', hxLocation: 'Abdominal cavity', sizeCm: '15.0',
+            notes: 'Nests of uniform small round cells are embedded in a prominent desmoplastic stroma.',
+            images: {
+                histologyHE: ["https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Desmoplastic_small-round-cell_tumor_-_high_mag.jpg/1024px-Desmoplastic_small-round-cell_tumor_-_high_mag.jpg"]
+            },
+            priority: 'Routine', specType: 'Soft tissue, biopsy', site: 'Retroperitoneum', histFamily: 'undifferentiated', refFacility: '', refAccession: 'EDU-24-008', refDate: '', hxNF1: 'Unknown', hxRT: 'No', hxPriorSarcoma: 'No', hxImaging: '', stains: [], attachName: '', margins: 'Negative', ancillaryOrders: [], reconStatus: {}, gDiff: '1', gMitoses: '1', gNecrosis: '0', stsSite: 'Extremity/Trunk', stsN: 'N0', stsM: 'M0', boneSkip: 'No', boneN: 'N0', boneM: 'M0', dpBreslow: '', dpUlceration: 'Unknown', dpMitoses: '', dpLVI: 'Unknown', dpPNI: 'Unknown', dpRegression: 'Unknown', dpSatellites: 'Unknown', dpVerticalGrowth: 'Unknown', melanomaN: 'N0', melanomaM: 'M0', isGuidedMode: false
+        },
+        solution: {
+            diagnosis: 'Desmoplastic Small Round Cell Tumor (DSRCT)',
+            keyTakeaway: 'DSRCT is an aggressive sarcoma of young adults, typically intra-abdominal. It is defined by the EWSR1-WT1 fusion and has a classic "polyphenotypic" IHC profile, co-expressing epithelial, mesenchymal, and neural markers.',
+            keyMorphologicFeatures: ["small round blue cells", "desmoplastic stroma", "well-circumscribed nests", "scant cytoplasm", "hyperchromatic nuclei"],
+            differentialDiagnosis: ["Ewing Sarcoma", "Alveolar Rhabdomyosarcoma", "Lymphoma", "Metastatic Carcinoma"],
+            ihcPanel: [
+                { marker: "Desmin", result: "Positive (dot-like)" },
+                { marker: "Pan-Keratin", result: "Positive" },
+                { marker: "EMA", result: "Positive" },
+                { marker: "WT1 (C-terminus)", result: "Positive (nuclear)" },
+                { marker: "CD99", result: "Negative or weak" },
+            ],
+            molecularFindings: ["t(11;22)(p13;q12) EWSR1-WT1 fusion."]
+        },
+        hints: [
+            "This tumor typically presents as a large intra-abdominal mass in a young male.",
+            "The IHC profile is characteristically 'polyphenotypic,' meaning it expresses markers of multiple different lineages.",
+            "Look for dot-like positivity with Desmin."
+        ]
+    },
+    {
+        id: 'cotw-004-myxoidlps',
+        caseData: {
+            serviceLine: 'BST', caseMode: 'Primary (in-house)', refDx: 'Myxoid soft tissue neoplasm',
+            hxAge: '45', hxSex: 'Male', hxLocation: 'Deep thigh', sizeCm: '8.0',
+            notes: 'Hypocellular myxoid stroma with a prominent, branching "chicken-wire" capillary network. Contains uniform round to oval cells and scattered lipoblasts.',
+            images: {
+                histologyHE: ["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Myxoid_liposarcoma_2_--_high_mag.jpg/1024px-Myxoid_liposarcoma_2_--_high_mag.jpg"]
+            },
+            priority: 'Routine', specType: 'Soft tissue, biopsy', site: 'Extremity/Trunk', histFamily: 'adipocytic', refFacility: '', refAccession: 'EDU-24-004', refDate: '', hxNF1: 'Unknown', hxRT: 'No', hxPriorSarcoma: 'No', hxImaging: '', stains: [], attachName: '', margins: 'Negative', ancillaryOrders: [], reconStatus: {}, gDiff: '1', gMitoses: '1', gNecrosis: '0', stsSite: 'Extremity/Trunk', stsN: 'N0', stsM: 'M0', boneSkip: 'No', boneN: 'N0', boneM: 'M0', dpBreslow: '', dpUlceration: 'Unknown', dpMitoses: '', dpLVI: 'Unknown', dpPNI: 'Unknown', dpRegression: 'Unknown', dpSatellites: 'Unknown', dpVerticalGrowth: 'Unknown', melanomaN: 'N0', melanomaM: 'M0', isGuidedMode: false
+        },
+        solution: {
+            diagnosis: 'Myxoid Liposarcoma',
+            keyTakeaway: 'Myxoid liposarcoma is characterized by its bland cytology, prominent plexiform vasculature, and the presence of lipoblasts. It is associated with a recurrent FUS-DDIT3 or EWSR1-DDIT3 fusion.',
+            keyMorphologicFeatures: ["plexiform capillaries", "chicken-wire vasculature", "bland round cells", "myxoid stroma", "lipoblasts", "hypocellular"],
+            differentialDiagnosis: ["Myxofibrosarcoma", "Myxoid MPNST", "Myxoma"],
+            ihcPanel: [
+                { marker: "S100", result: "Positive (in lipoblasts)" },
+                { marker: "MDM2", result: "Negative" },
+            ],
+            molecularFindings: ["t(12;16) FUS-DDIT3 fusion", "t(12;22) EWSR1-DDIT3 fusion"]
+        },
+        hints: [
+            "Look for the characteristic delicate, branching vascular pattern.",
+            "This tumor is defined by a specific molecular translocation, often involving the DDIT3 gene.",
+            "While lipoblasts are classic, they can be rare. The overall pattern is more important."
+        ]
+    },
+    {
+        id: 'cotw-005-melanoma',
+        caseData: {
+            serviceLine: 'DermPath', caseMode: 'Primary (in-house)', refDx: 'Atypical melanocytic proliferation',
+            hxAge: '68', hxSex: 'Male', hxLocation: 'Shoulder', sizeCm: '1.5',
+            notes: 'Nodular proliferation of large, pleomorphic epithelioid cells with prominent nucleoli and brisk mitotic activity, including atypical forms. Ulceration is present.',
+            images: {
+                histologyHE: ["https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Nodular_melanoma_-_high_mag.jpg/1024px-Nodular_melanoma_-_high_mag.jpg"]
+            },
+            priority: 'Routine', specType: 'Skin, excision', site: 'Extremity/Trunk', histFamily: 'melanocytic', refFacility: '', refAccession: 'EDU-24-005', refDate: '', hxNF1: 'Unknown', hxRT: 'No', hxPriorSarcoma: 'No', hxImaging: '', stains: [], attachName: '', margins: 'Negative', ancillaryOrders: [], reconStatus: {}, gDiff: '1', gMitoses: '1', gNecrosis: '0', stsSite: 'Extremity/Trunk', stsN: 'N0', stsM: 'M0', boneSkip: 'No', boneN: 'N0', boneM: 'M0', dpBreslow: '', dpUlceration: 'Unknown', dpMitoses: '', dpLVI: 'Unknown', dpPNI: 'Unknown', dpRegression: 'Unknown', dpSatellites: 'Unknown', dpVerticalGrowth: 'Unknown', melanomaN: 'N0', melanomaM: 'M0', isGuidedMode: false
+        },
+        solution: {
+            diagnosis: 'Nodular Melanoma',
+            keyTakeaway: 'Nodular melanoma is defined by a vertical growth phase without a significant radial component. Key prognostic factors include Breslow thickness, ulceration, and mitotic rate.',
+            keyMorphologicFeatures: ["nodular growth", "vertical growth phase", "epithelioid melanocytes", "pleomorphism", "prominent nucleoli", "atypical mitoses", "ulceration"],
+            differentialDiagnosis: ["Spitz Nevus", "Metastatic Carcinoma", "Poorly Differentiated SCC", "AFX"],
+            ihcPanel: [
+                { marker: "SOX10", result: "Positive" },
+                { marker: "Melan-A", result: "Positive" },
+                { marker: "HMB-45", result: "Positive" },
+                { marker: "PRAME", result: "Positive" },
+            ],
+            molecularFindings: ["BRAF V600E mutation (common)", "NRAS mutation"]
+        },
+        hints: [
+            "This is a primary cutaneous malignancy. Staging depends on microscopic measurements.",
+            "The presence of ulceration is a key prognostic factor.",
+            "A panel of melanocytic markers is used to confirm the diagnosis."
+        ]
+    },
+    {
+        id: 'cotw-002-synovial',
+        caseData: {
+            serviceLine: 'BST', caseMode: 'Primary (in-house)', refDx: 'Spindle cell neoplasm, favor sarcoma',
+            hxAge: '28', hxSex: 'Female', hxLocation: 'Popliteal fossa (deep)', sizeCm: '5.2',
+            notes: 'Monomorphic population of spindle cells arranged in dense fascicles. High N:C ratio. Mitotically active.',
+            images: {
+                histologyHE: ["https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Synovial_sarcoma_1_--_high_mag.jpg/1024px-Synovial_sarcoma_1_--_high_mag.jpg"],
+                histologyIHC: [{ stain: "TLE1", url: "https://www.pathologyoutlines.com/caseofweek/case254_TLE1.jpg" }]
+            },
+            priority: 'Routine', specType: 'Soft tissue, excision/resection', site: 'Extremity/Trunk', histFamily: 'uncertain', refFacility: '', refAccession: 'EDU-24-002', refDate: '', hxNF1: 'Unknown', hxRT: 'No', hxPriorSarcoma: 'No', hxImaging: '', stains: [], attachName: '', margins: 'Negative', ancillaryOrders: [], reconStatus: {}, gDiff: '1', gMitoses: '1', gNecrosis: '0', stsSite: 'Extremity/Trunk', stsN: 'N0', stsM: 'M0', boneSkip: 'No', boneN: 'N0', boneM: 'M0', dpBreslow: '', dpUlceration: 'Unknown', dpMitoses: '', dpLVI: 'Unknown', dpPNI: 'Unknown', dpRegression: 'Unknown', dpSatellites: 'Unknown', dpVerticalGrowth: 'Unknown', melanomaN: 'N0', melanomaM: 'M0', isGuidedMode: false
+        },
+        solution: {
+            diagnosis: 'Monophasic Synovial Sarcoma',
+            keyTakeaway: 'Synovial sarcoma is a translocation-associated sarcoma (SS18-SSX) with characteristic strong, diffuse TLE1 nuclear positivity. It frequently occurs in young adults in deep soft tissues of the extremities and can paradoxically express epithelial markers like cytokeratins.',
+            keyMorphologicFeatures: ["monomorphic spindle cells", "hyperchromatic nuclei", "scant cytoplasm", "high N:C ratio", "short fascicles", "herringbone pattern"],
+            differentialDiagnosis: ["MPNST", "SFT", "Ewing Sarcoma", "Fibrosarcoma"],
+            ihcPanel: [
+                { marker: "TLE1", result: "Positive (strong nuclear)" },
+                { marker: "Pan-Keratin (AE1/AE3)", result: "Positive (focal)" },
+                { marker: "EMA", result: "Positive (focal)" },
+                { marker: "CD99", result: "Positive (focal)" },
+                { marker: "S100/SOX10", result: "Negative" },
+            ],
+            molecularFindings: ["t(X;18)(p11;q11) SS18-SSX1/SSX2 fusion"]
+        },
+        hints: [
+            "Consider a translocation-associated sarcoma in a young adult with a deep-seated mass.",
+            "The nuclear IHC marker TLE1 is the most sensitive and specific marker for this entity.",
+            "Don't be fooled by epithelial marker positivity; it's a known feature of this mesenchymal neoplasm."
+        ]
+    },
+    {
+        id: 'cotw-001-sft',
+        caseData: {
+            serviceLine: 'BST', caseMode: 'Primary (in-house)', refDx: 'Spindle cell neoplasm',
+            hxAge: '55', hxSex: 'Male', hxLocation: 'Thigh', sizeCm: '10.5',
+            notes: 'Classic staghorn vasculature noted in a "patternless" spindle cell proliferation.',
+            images: {
+                histologyHE: ["https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Solitary_fibrous_tumour_--_high_mag.jpg/1024px-Solitary_fibrous_tumour_--_high_mag.jpg"],
+                histologyIHC: [{ stain: "STAT6", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Solitary_fibrous_tumour_-_STAT6_stain_-_high_mag.jpg/1024px-Solitary_fibrous_tumour_-_STAT6_stain_-_high_mag.jpg" }]
+            },
+            priority: 'Routine', specType: 'Soft tissue, excision/resection', site: 'Extremity/Trunk', histFamily: 'sft', refFacility: '', refAccession: 'EDU-24-001', refDate: '', hxNF1: 'Unknown', hxRT: 'No', hxPriorSarcoma: 'No', hxImaging: '', stains: [], attachName: '', margins: 'Negative', ancillaryOrders: [], reconStatus: {}, gDiff: '1', gMitoses: '1', gNecrosis: '0', stsSite: 'Extremity/Trunk', stsN: 'N0', stsM: 'M0', boneSkip: 'No', boneN: 'N0', boneM: 'M0', dpBreslow: '', dpUlceration: 'Unknown', dpMitoses: '', dpLVI: 'Unknown', dpPNI: 'Unknown', dpRegression: 'Unknown', dpSatellites: 'Unknown', dpVerticalGrowth: 'Unknown', melanomaN: 'N0', melanomaM: 'M0', isGuidedMode: false
+        },
+        solution: {
+            diagnosis: 'Solitary Fibrous Tumor (SFT)',
+            keyTakeaway: 'The pathognomonic finding for SFT is diffuse, strong nuclear STAT6 positivity, reflecting the underlying NAB2-STAT6 gene fusion. CD34 is also characteristically positive.',
+            keyMorphologicFeatures: ["staghorn vasculature", "branching vessels", "patternless architecture", "ovoid to spindled cells", "collagenous stroma"],
+            differentialDiagnosis: ["MPNST", "Leiomyosarcoma", "Synovial Sarcoma"],
+            ihcPanel: [
+                { marker: "STAT6", result: "Positive (strong nuclear)" },
+                { marker: "CD34", result: "Positive" },
+                { marker: "BCL2", result: "Positive" },
+                { marker: "S100", result: "Negative" },
+            ],
+            molecularFindings: ["NAB2-STAT6 gene fusion"]
+        },
+        hints: [
+            "Observe the prominent 'staghorn' or branching vasculature pattern in the histology.",
+            "The immunohistochemistry panel shows a specific nuclear marker is positive. This is key.",
+            "This entity was previously known as hemangiopericytoma, but a specific molecular alteration redefined it."
+        ]
+    },
+];

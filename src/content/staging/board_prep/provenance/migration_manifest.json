@@ -1,0 +1,68 @@
+{
+  "source_repo": "/Users/skim4/Documents/GitHub/board_prep",
+  "target_stage_root": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/board_prep",
+  "generated_at": "2026-03-18",
+  "included_categories": [
+    "board-prep tutorials",
+    "AP syllabus nodes",
+    "parsed syllabus topics"
+  ],
+  "excluded_categories": [
+    "node_modules",
+    "build artifacts",
+    "frontend/src duplicate mirrors",
+    "lecture-specific raw assets not found",
+    "histology-specific raw assets not found"
+  ],
+  "source_inventory": {
+    "tutorial_records": 190,
+    "ap_spec_nodes": 76,
+    "parsed_syllabus_topics": 6698
+  },
+  "staged_files": [
+    {
+      "source_path": "/Users/skim4/Documents/GitHub/board_prep/frontend/public/data/content_data.json",
+      "staged_path": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/board_prep/frontend/public/data/content_data.json",
+      "category": "board-prep tutorials",
+      "records": 190,
+      "bytes": 2260776
+    },
+    {
+      "source_path": "/Users/skim4/Documents/GitHub/board_prep/frontend/public/data/ap_spec.json",
+      "staged_path": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/board_prep/frontend/public/data/ap_spec.json",
+      "category": "AP syllabus nodes",
+      "records": 76,
+      "bytes": 1854749
+    },
+    {
+      "source_path": "/Users/skim4/Documents/GitHub/board_prep/data/parsed_syllabus.json",
+      "staged_path": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/board_prep/data/parsed_syllabus.json",
+      "category": "parsed syllabus topics",
+      "records": 6698,
+      "bytes": 1388054
+    }
+  ],
+  "content_shape": {
+    "content_data_keys": [
+      "topic",
+      "tutorial",
+      "mcqs",
+      "flashcards"
+    ],
+    "content_data_topic_examples": [
+      "Bone Tumors (Osteosarcoma, Chondrosarcoma)",
+      "AP: Breast",
+      "AP: Cytopathology",
+      "AP: Genitourinary"
+    ]
+  },
+  "dependencies": [
+    "content_data.json is the main tutorial corpus and is paired with ap_spec.json for AP syllabus mapping",
+    "parsed_syllabus.json is the canonical topic backbone for syllabus-driven navigation and search"
+  ],
+  "unresolved_issues": [
+    "No dedicated lecture-content JSON was found in board_prep",
+    "No histology-specific raw dataset was found in board_prep beyond tutorial-adjacent content",
+    "Duplicate JSON mirrors under frontend/src/data were intentionally skipped to avoid redundant staging"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "sources": [
+    {
+      "sourceRepo": "stainbrain printable",
+      "sourcePath": "/Users/skim4/Documents/GitHub/stainbrain printable/public/data/lectures.json",
+      "targetPath": "src/content/lectures/lectures.raw.json",
+      "contentFamily": "lectures",
+      "contentType": "lecture",
+      "description": "Structured lecture records with slides, transcript, and entity cards.",
+      "sizeBytes": 67844,
+      "sha256": "47a747436a193e91bb5f8c9a0db1f180744b19a214345fdfa3cce6d299eb1140",
+      "recordCount": 2
+    },
+    {
+      "sourceRepo": "stainbrain printable",
+      "sourcePath": "/Users/skim4/Documents/GitHub/stainbrain printable/public/data/algorithms.json",
+      "targetPath": "src/content/algorithms/algorithms.raw.json",
+      "contentFamily": "algorithms",
+      "contentType": "algorithm",
+      "description": "Structured diagnostic algorithms associated with lectures.",
+      "sizeBytes": 11958,
+      "sha256": "ab2a0c4db601834513e99a345af8cf17789eb1200e7c1c767f30027f9e2f0004",
+      "recordCount": 2
+    },
+    {
+      "sourceRepo": "stainbrain printable",
+      "sourcePath": "/Users/skim4/Documents/GitHub/stainbrain printable/public/data/network.json",
+      "targetPath": "src/content/network/network.raw.json",
+      "contentFamily": "network",
+      "contentType": "network",
+      "description": "Graph/network data that supports the lecture ecosystem.",
+      "sizeBytes": 128798,
+      "sha256": "c24cfb9e009d076b7beb784cd21e6439e2d40957920717fcc4e9b7ca777c810c",
+      "recordCount": 3,
+      "nodes": 433,
+      "links": 56,
+      "extended": 219
+    },
+    {
+      "sourceRepo": "board_prep",
+      "sourcePath": "/Users/skim4/Documents/GitHub/board_prep/frontend/public/data/content_data.json",
+      "targetPath": "src/content/tutorials/board_prep_tutorials.raw.json",
+      "contentFamily": "tutorials",
+      "contentType": "tutorial",
+      "description": "Tutorials with markdown body, MCQs, and flashcards.",
+      "sizeBytes": 2260776,
+      "sha256": "b1ca064e39167b3b47ff1c88a57ef657acb505b493d46835757111846efc79e0",
+      "recordCount": 190
+    },
+    {
+      "sourceRepo": "board_prep",
+      "sourcePath": "/Users/skim4/Documents/GitHub/board_prep/frontend/public/data/ap_spec.json",
+      "targetPath": "src/content/syllabus/board_prep_ap_spec.raw.json",
+      "contentFamily": "syllabus",
+      "contentType": "syllabus-tree",
+      "description": "Board prep syllabus tree payload used by the frontend.",
+      "sizeBytes": 1854749,
+      "sha256": "004edc7dbebd16b9fc71e1cea7d7c7171ca6abd0ad1beb0d82fab112073c1b62",
+      "recordCount": 76
+    },
+    {
+      "sourceRepo": "board_prep",
+      "sourcePath": "/Users/skim4/Documents/GitHub/board_prep/data/parsed_syllabus.json",
+      "targetPath": "src/content/syllabus/board_prep_parsed_syllabus.raw.json",
+      "contentFamily": "syllabus",
+      "contentType": "syllabus-topic",
+      "description": "Board prep parsed syllabus topics.",
+      "sizeBytes": 1388054,
+      "sha256": "98c19ad5e93ca81a482778d1abb42e8bac6c08482add2969d26c7acdf4a2c9a6",
+      "recordCount": 6698
+    },
+    {
+      "sourceRepo": "syllabus",
+      "sourcePath": "/Users/skim4/Documents/GitHub/syllabus/data/parsed_topics_v3.json",
+      "targetPath": "src/content/syllabus/parsed_topics_v3.raw.json",
+      "contentFamily": "syllabus",
+      "contentType": "syllabus-topic",
+      "description": "Canonical parsed syllabus topics.",
+      "sizeBytes": 1910266,
+      "sha256": "262d674b71a07283b17c630251cef63caf3e4ab0ab0d10e1ebd1ddca6c0c4b32",
+      "recordCount": 3863
+    },
+    {
+      "sourceRepo": "syllabus",
+      "sourcePath": "/Users/skim4/Documents/GitHub/syllabus/data/ap_spec.txt",
+      "targetPath": "src/content/syllabus/ap_spec.raw.txt",
+      "contentFamily": "syllabus",
+      "contentType": "syllabus-source",
+      "description": "Raw AP specification text.",
+      "sizeBytes": 217532,
+      "sha256": "64e8685f0647c8511d0d465ff424f5eab3e1ce95a6c1a81fedb836a1d43412b1"
+    },
+    {
+      "sourceRepo": "syllabus",
+      "sourcePath": "/Users/skim4/Documents/GitHub/syllabus/data/cp_spec.txt",
+      "targetPath": "src/content/syllabus/cp_spec.raw.txt",
+      "contentFamily": "syllabus",
+      "contentType": "syllabus-source",
+      "description": "Raw CP specification text.",
+      "sizeBytes": 8872,
+      "sha256": "0118946d2b77e3acda94997002b81edecd51bec6dc3cbb2831d824952176f600"
+    }
+  ]
+}

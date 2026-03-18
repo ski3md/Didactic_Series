@@ -1,0 +1,67 @@
+
+import type { HistologicFamily } from '../types';
+
+export interface WhoEntity {
+    name: string;
+    searchTerms: string[];
+    references: string[];
+}
+
+// This is a curated list of search terms based on WHO classifications for BST and DermPath entities.
+// Expanded to cover the full spectrum of the 5th Edition (Benign to Malignant).
+export const WHO_CLASSIFICATION_DATA: Partial<Record<HistologicFamily | 'gyn_rare' | 'gyn_benign' | 'gyn_vagina' | 'gyn_cervix' | 'gyn_expanded' | 'gyn_variants', WhoEntity>> = {
+    // ... [Existing Keys Preserved] ...
+    adipocytic: { name: 'Adipocytic Tumors', searchTerms: ['liposarcoma histology', 'lipoma histology'], references: ['WHO Soft Tissue'] },
+    fibroblastic: { name: 'Fibroblastic Tumors', searchTerms: ['fibrosarcoma histology', 'nodular fasciitis histology'], references: ['WHO Soft Tissue'] },
+    sft: { name: 'Solitary Fibrous Tumor', searchTerms: ['solitary fibrous tumor histology', 'hemangiopericytoma histology'], references: ['WHO Soft Tissue'] },
+    fibrohistiocytic: { name: 'Fibrohistiocytic Tumors', searchTerms: ['undifferentiated pleomorphic sarcoma histology', 'giant cell tumor soft tissue'], references: ['WHO Soft Tissue'] },
+    vascular: { name: 'Vascular Tumors', searchTerms: ['angiosarcoma histology', 'hemangioma histology'], references: ['WHO Soft Tissue'] },
+    pericytic: { name: 'Pericytic Tumors', searchTerms: ['glomus tumor histology', 'myopericytoma histology'], references: ['WHO Soft Tissue'] },
+    smc: { name: 'Smooth Muscle Tumors', searchTerms: ['leiomyosarcoma histology', 'leiomyoma histology'], references: ['WHO Soft Tissue'] },
+    skm: { name: 'Skeletal Muscle Tumors', searchTerms: ['rhabdomyosarcoma histology', 'rhabdomyoma histology'], references: ['WHO Soft Tissue'] },
+    gastrointestinal: { name: 'GIST', searchTerms: ['gastrointestinal stromal tumor histology'], references: ['WHO Digestive'] },
+    pnst: { name: 'Nerve Sheath Tumors', searchTerms: ['malignant peripheral nerve sheath tumor histology', 'schwannoma histology'], references: ['WHO Soft Tissue'] },
+    uncertain: { name: 'Tumors of Uncertain Diff', searchTerms: ['synovial sarcoma histology', 'epithelioid sarcoma histology'], references: ['WHO Soft Tissue'] },
+    undifferentiated: { name: 'Undifferentiated Sarcomas', searchTerms: ['ewing sarcoma histology', 'undifferentiated round cell sarcoma'], references: ['WHO Soft Tissue'] },
+    'chondro-osseous': { name: 'Chondro-osseous Soft Tissue', searchTerms: ['extraskeletal osteosarcoma', 'myositis ossificans'], references: ['WHO Soft Tissue'] },
+    bone_other: { name: 'Bone Tumors', searchTerms: ['osteosarcoma histology', 'chondrosarcoma histology', 'giant cell tumor bone'], references: ['WHO Bone'] },
+    bone_fibro: { name: 'Fibrogenic Bone Tumors', searchTerms: ['non-ossifying fibroma histology'], references: ['WHO Bone'] },
+    bone_cartilage: { name: 'Chondrogenic Bone Tumors', searchTerms: ['enchondroma histology', 'chondroblastoma histology'], references: ['WHO Bone'] },
+    bone_vascular: { name: 'Vascular Bone Tumors', searchTerms: ['hemangioma bone histology'], references: ['WHO Bone'] },
+    melanocytic: { name: 'Melanocytic', searchTerms: ['melanoma histology', 'nevus histology'], references: ['WHO Skin'] },
+    basaloid: { name: 'Basaloid Skin', searchTerms: ['basal cell carcinoma histology'], references: ['WHO Skin'] },
+    squamous: { name: 'Squamous Skin', searchTerms: ['squamous cell carcinoma skin histology'], references: ['WHO Skin'] },
+    adnexal: { name: 'Adnexal', searchTerms: ['sebaceous carcinoma histology', 'trichoepithelioma histology'], references: ['WHO Skin'] },
+    lymphoid: { name: 'Cutaneous Lymphoma', searchTerms: ['mycosis fungoides histology'], references: ['WHO Skin'] },
+    histiocytic_dendritic: { name: 'Histiocytic Skin', searchTerms: ['langerhans cell histiocytosis skin'], references: ['WHO Skin'] },
+    spindled: { name: 'Spindled Skin', searchTerms: ['dermatofibroma histology', 'atypical fibroxanthoma'], references: ['WHO Skin'] },
+    neuroendocrine: { name: 'Neuroendocrine Skin', searchTerms: ['merkel cell carcinoma histology'], references: ['WHO Skin'] },
+    epithelial_gyn: { name: 'Epithelial GYN', searchTerms: ['high grade serous carcinoma histology'], references: ['WHO Female Genital'] },
+    mesenchymal_gyn: { name: 'Mesenchymal GYN', searchTerms: ['uterine leiomyosarcoma histology'], references: ['WHO Female Genital'] },
+    sex_cord: { name: 'Sex Cord-Stromal', searchTerms: ['granulosa cell tumor histology'], references: ['WHO Female Genital'] },
+    germ_cell: { name: 'Germ Cell GYN', searchTerms: ['dysgerminoma histology'], references: ['WHO Female Genital'] },
+    trophoblastic: { name: 'Trophoblastic', searchTerms: ['choriocarcinoma histology'], references: ['WHO Female Genital'] },
+    gyn_rare: { name: 'Rare GYN', searchTerms: ['small cell carcinoma ovary hypercalcemic'], references: ['WHO Female Genital'] },
+    gyn_benign: { name: 'Benign GYN', searchTerms: ['endometriosis histology'], references: ['WHO Female Genital'] },
+    gyn_vagina: { name: 'Vaginal', searchTerms: ['vaginal intraepithelial neoplasia'], references: ['WHO Female Genital'] },
+    gyn_cervix: { name: 'Cervical', searchTerms: ['cervical squamous cell carcinoma'], references: ['WHO Female Genital'] },
+    gyn_expanded: { name: 'Expanded GYN', searchTerms: ['adenomatoid tumor uterus'], references: ['WHO Female Genital'] },
+    gyn_variants: { name: 'GYN Variants', searchTerms: ['juvenile granulosa cell tumor'], references: ['WHO Female Genital'] },
+
+    // --- NEW ENTITIES ---
+    breast_neoplasm: { name: 'Breast Neoplasms', searchTerms: ['invasive ductal carcinoma histology', 'lobular carcinoma breast', 'phyllodes tumor histology'], references: ['WHO Breast'] },
+    renal_neoplasm: { name: 'Renal Neoplasms', searchTerms: ['clear cell renal cell carcinoma histology', 'papillary renal cell carcinoma', 'chromophobe rcc'], references: ['WHO Urinary'] },
+    urothelial: { name: 'Urothelial Neoplasms', searchTerms: ['urothelial carcinoma histology', 'papillary urothelial carcinoma'], references: ['WHO Urinary'] },
+    prostate: { name: 'Prostate Neoplasms', searchTerms: ['prostate adenocarcinoma histology', 'gleason pattern 4'], references: ['WHO Urinary'] },
+    testis: { name: 'Testicular Neoplasms', searchTerms: ['seminoma histology', 'embryonal carcinoma testis'], references: ['WHO Urinary'] },
+    lung_neoplasm: { name: 'Lung Neoplasms', searchTerms: ['lung adenocarcinoma histology', 'squamous cell carcinoma lung', 'small cell lung carcinoma'], references: ['WHO Thoracic'] },
+    mediastinal: { name: 'Mediastinal Tumors', searchTerms: ['thymoma histology', 'thymic carcinoma'], references: ['WHO Thoracic'] },
+    gi_neoplasm: { name: 'GI Neoplasms', searchTerms: ['colonic adenocarcinoma histology', 'gastric adenocarcinoma histology'], references: ['WHO Digestive'] },
+    liver_biliary: { name: 'Liver/Biliary', searchTerms: ['hepatocellular carcinoma histology', 'cholangiocarcinoma histology'], references: ['WHO Digestive'] },
+    pancreas: { name: 'Pancreatic Neoplasms', searchTerms: ['pancreatic ductal adenocarcinoma histology', 'pancreatic neuroendocrine tumor'], references: ['WHO Digestive'] },
+    cns_neoplasm: { name: 'CNS Tumors', searchTerms: ['glioblastoma histology', 'meningioma histology', 'medulloblastoma'], references: ['WHO CNS'] },
+    salivary: { name: 'Salivary Gland', searchTerms: ['pleomorphic adenoma histology', 'adenoid cystic carcinoma histology', 'mucoepidermoid carcinoma'], references: ['WHO Head & Neck'] },
+    thyroid_parathyroid: { name: 'Thyroid/Parathyroid', searchTerms: ['papillary thyroid carcinoma histology', 'medullary thyroid carcinoma'], references: ['WHO Endocrine'] },
+    adrenal: { name: 'Adrenal', searchTerms: ['adrenocortical carcinoma histology', 'pheochromocytoma histology'], references: ['WHO Endocrine'] },
+    hematolymphoid: { name: 'Hematolymphoid', searchTerms: ['diffuse large b cell lymphoma histology', 'hodgkin lymphoma histology'], references: ['WHO Haematolymphoid'] }
+};

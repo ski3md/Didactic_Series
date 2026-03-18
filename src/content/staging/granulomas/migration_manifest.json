@@ -1,0 +1,28 @@
+{
+  "source_root": "/Users/skim4/Documents/GitHub/granulomas",
+  "target_root": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/granulomas",
+  "directory_only": true,
+  "files_found": 0,
+  "files_copied": 0,
+  "content_categories_found": [],
+  "top_level_directories": [
+    "blastomycosis",
+    "calcified_granulomas",
+    "caseating_granulomas",
+    "coccidioidomycosis",
+    "cryptococcosis",
+    "foreign_body_granulomas",
+    "histoplasmosis",
+    "immune_granulomas",
+    "infectious_granulomas",
+    "necrotizing_granulomas",
+    "noncaseating_granulomas",
+    "sarcoidosis",
+    "silicotic_granulomas",
+    "tuberculosis"
+  ],
+  "note": "The repository contains only empty topic/stain directories and no raw content files, so there was nothing reusable to stage.",
+  "blockers": [
+    "No histology images, lecture materials, board-prep datasets, or structured JSON/MD source files were present in the repository."
+  ]
+}

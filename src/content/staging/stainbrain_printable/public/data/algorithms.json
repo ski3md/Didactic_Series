@@ -1,0 +1,281 @@
+[
+    {
+        "id": "st-soft-tissue-spindle-basic",
+        "title": "Spindle Cell Tumor Workup (Soft Tissue)",
+        "category": "Soft Tissue",
+        "summary": "A minimal, type-valid pathway: start → morphology gate → decision → result.",
+        "startNodeId": "n1",
+        "nodes": {
+            "n1": {
+                "id": "n1",
+                "type": "start",
+                "title": "Start",
+                "description": "Review clinical context (age, site, depth), imaging, and gross. Confirm this is a spindle cell predominant lesion on H&E.",
+                "options": [
+                    {
+                        "label": "Proceed to morphology gate",
+                        "nextNodeId": "n2"
+                    }
+                ]
+            },
+            "n2": {
+                "id": "n2",
+                "type": "morphology_gate",
+                "title": "Morphology gate",
+                "description": "Confirm key pattern-level features before ordering broad panels.",
+                "morphologyFeatures": [
+                    "Spindle cell predominant",
+                    "Growth pattern: fascicular / storiform / patternless / herringbone",
+                    "Stroma: collagenized / myxoid / hyalinized",
+                    "Vascular pattern: staghorn / branching / delicate capillaries",
+                    "Necrosis / mitotic activity / atypia"
+                ],
+                "recommendedInitialIHC": [
+                    "AE1/AE3",
+                    "S100",
+                    "SOX10",
+                    "SMA",
+                    "Desmin",
+                    "CD34"
+                ],
+                "options": [
+                    {
+                        "label": "Patternless + staghorn vessels (consider SFT)",
+                        "nextNodeId": "n3",
+                        "rationale": "Classic architectural clue for SFT spectrum."
+                    },
+                    {
+                        "label": "Fascicular + eosinophilic cytoplasm (consider SMC)",
+                        "nextNodeId": "n4",
+                        "rationale": "Smooth muscle morphology suggests SMA/Desmin."
+                    },
+                    {
+                        "label": "Wavy nuclei / nerve association (consider PNST)",
+                        "nextNodeId": "n5",
+                        "rationale": "PNST clues push S100/SOX10."
+                    }
+                ]
+            },
+            "n3": {
+                "id": "n3",
+                "type": "decision",
+                "title": "Decision: SFT pathway",
+                "description": "If SFT is suspected, confirm with lineage-defining markers and exclude mimics.",
+                "recommendedReflexIHC": [
+                    "STAT6",
+                    "CD34",
+                    "BCL2",
+                    "CD99"
+                ],
+                "molecularIndications": [
+                    "NAB2-STAT6 fusion testing if STAT6 equivocal or for challenging cases"
+                ],
+                "options": [
+                    {
+                        "label": "Confirm SFT",
+                        "nextNodeId": "n6"
+                    },
+                    {
+                        "label": "Not SFT / equivocal",
+                        "nextNodeId": "n7"
+                    }
+                ]
+            },
+            "n4": {
+                "id": "n4",
+                "type": "decision",
+                "title": "Decision: Smooth muscle pathway",
+                "description": "Confirm smooth muscle differentiation and assess malignancy parameters.",
+                "recommendedReflexIHC": [
+                    "SMA",
+                    "Desmin",
+                    "H-caldesmon"
+                ],
+                "options": [
+                    {
+                        "label": "Confirm smooth muscle tumor",
+                        "nextNodeId": "n8"
+                    },
+                    {
+                        "label": "Equivocal smooth muscle",
+                        "nextNodeId": "n7"
+                    }
+                ]
+            },
+            "n5": {
+                "id": "n5",
+                "type": "decision",
+                "title": "Decision: PNST pathway",
+                "description": "Confirm neural crest differentiation and consider site-specific entities.",
+                "recommendedReflexIHC": [
+                    "S100",
+                    "SOX10",
+                    "EMA",
+                    "Claudin-1",
+                    "GLUT1"
+                ],
+                "options": [
+                    {
+                        "label": "Confirm PNST",
+                        "nextNodeId": "n9"
+                    },
+                    {
+                        "label": "Not PNST / equivocal",
+                        "nextNodeId": "n7"
+                    }
+                ]
+            },
+            "n6": {
+                "id": "n6",
+                "type": "result",
+                "title": "Result: Solitary fibrous tumor favored",
+                "description": "Integrate morphology + STAT6 nuclear positivity. Risk stratify by size, mitoses, necrosis, and age as applicable.",
+                "diagnosis": "Solitary fibrous tumor",
+                "confirmatoryStudies": [
+                    "STAT6 (nuclear)",
+                    "Consider fusion testing if STAT6 negative/equivocal"
+                ],
+                "pearls": [
+                    "Patternless architecture + staghorn vasculature is a strong clue.",
+                    "STAT6 is the key confirmatory marker."
+                ],
+                "pitfalls": [
+                    "CD34 is supportive but not specific.",
+                    "Beware cellular SFT vs other hypercellular spindle tumors."
+                ],
+                "prognosis": "Variable; risk stratification recommended."
+            },
+            "n7": {
+                "id": "n7",
+                "type": "stop",
+                "title": "Stop: broaden differential",
+                "description": "If lineage is unclear, stop and broaden workup (consider keratin-positive sarcomatoid carcinoma, melanoma, synovial sarcoma, MPNST, etc.). Use targeted panels and correlate with imaging/gross.",
+                "stopConditions": [
+                    "Unexpected keratin positivity",
+                    "Strong SOX10 with atypical morphology",
+                    "Discrepant clinical/radiologic scenario"
+                ]
+            },
+            "n8": {
+                "id": "n8",
+                "type": "result",
+                "title": "Result: Smooth muscle tumor favored",
+                "description": "If SMA/Desmin/H-caldesmon support SMC differentiation, classify based on site and malignant criteria.",
+                "diagnosis": "Smooth muscle tumor (site-specific classification required)",
+                "confirmatoryStudies": [
+                    "SMA",
+                    "Desmin",
+                    "H-caldesmon"
+                ],
+                "pearls": [
+                    "Fascicles + blunt-ended nuclei + eosinophilic cytoplasm support SMC."
+                ],
+                "pitfalls": [
+                    "Myofibroblastic lesions can be SMA+ but desmin/H-caldesmon-."
+                ]
+            },
+            "n9": {
+                "id": "n9",
+                "type": "result",
+                "title": "Result: PNST favored",
+                "description": "If S100/SOX10 support neural differentiation, subclassify with clinicopathologic correlation and consider perineurial markers as appropriate.",
+                "diagnosis": "Peripheral nerve sheath tumor (subclassify)",
+                "confirmatoryStudies": [
+                    "S100",
+                    "SOX10",
+                    "EMA/Claudin-1/GLUT1 if perineurial differentiation suspected"
+                ],
+                "pearls": [
+                    "SOX10 is often more specific for Schwannian differentiation than S100 alone."
+                ],
+                "pitfalls": [
+                    "Melanocytic lesions can mimic PNST and share SOX10 positivity."
+                ]
+            }
+        }
+    },
+    {
+        "id": "bone-giant-cell-basic",
+        "title": "Lytic Bone Lesion: Giant Cell–Rich Differential",
+        "category": "Bone",
+        "summary": "Minimal pathway for giant cell–rich lytic bone lesions: start → decision → result/stop.",
+        "startNodeId": "b1",
+        "nodes": {
+            "b1": {
+                "id": "b1",
+                "type": "start",
+                "title": "Start",
+                "description": "Confirm radiology: lytic vs sclerotic, epiphyseal vs metaphyseal, and patient age. Review H&E for giant cell–rich pattern.",
+                "options": [
+                    {
+                        "label": "Proceed to decision node",
+                        "nextNodeId": "b2"
+                    }
+                ]
+            },
+            "b2": {
+                "id": "b2",
+                "type": "decision",
+                "title": "Decision: giant cell–rich patterns",
+                "description": "Use radiology + distribution of osteoclast-type giant cells and stromal cytology.",
+                "options": [
+                    {
+                        "label": "Epiphyseal lesion in skeletally mature, uniform giant cells",
+                        "nextNodeId": "b3"
+                    },
+                    {
+                        "label": "Aneurysmal spaces / blood-filled cystic change",
+                        "nextNodeId": "b4"
+                    },
+                    {
+                        "label": "High-grade atypia / malignant osteoid",
+                        "nextNodeId": "b5"
+                    }
+                ]
+            },
+            "b3": {
+                "id": "b3",
+                "type": "result",
+                "title": "Result: Giant cell tumor of bone favored",
+                "description": "Correlate with epiphyseal location; consider H3F3A (G34) mutation testing if needed.",
+                "diagnosis": "Giant cell tumor of bone",
+                "confirmatoryStudies": [
+                    "H3F3A mutation testing (as needed)"
+                ],
+                "pearls": [
+                    "Mononuclear stromal cells are the neoplastic population."
+                ],
+                "pitfalls": [
+                    "Beware giant cell–rich osteosarcoma if malignant osteoid present."
+                ]
+            },
+            "b4": {
+                "id": "b4",
+                "type": "result",
+                "title": "Result: Aneurysmal bone cyst pattern",
+                "description": "Primary ABC can show USP6 rearrangement; secondary ABC occurs over other lesions.",
+                "diagnosis": "Aneurysmal bone cyst (primary vs secondary)",
+                "confirmatoryStudies": [
+                    "USP6 rearrangement testing if primary ABC suspected"
+                ],
+                "pearls": [
+                    "Always exclude underlying lesion in secondary ABC."
+                ],
+                "pitfalls": [
+                    "Telangiectatic osteosarcoma can mimic ABC radiologically and grossly."
+                ]
+            },
+            "b5": {
+                "id": "b5",
+                "type": "stop",
+                "title": "Stop: consider aggressive/malignant bone tumor",
+                "description": "If malignant osteoid or marked atypia is present, stop and evaluate for osteosarcoma subtype (including telangiectatic) with full radiologic correlation and sampling.",
+                "stopConditions": [
+                    "Malignant lace-like osteoid",
+                    "Marked nuclear pleomorphism in stromal cells",
+                    "Atypical mitoses"
+                ]
+            }
+        }
+    }
+]

@@ -1,0 +1,244 @@
+2069 e. General Hematopoiesis C
+2070 f. Peripheral Blood C
+2071 g. Bone Marrow C
+2072 h. Lymph Nodes C
+2073 i. Spleen C
+2074 j. Thymus C
+2075 k. Other Lymphoid Tissues (e.g., Tonsils) C
+2076 l. Pediatric Issues, Including Fetal Hematopoiesis AR
+2077
+2078
+2079 3. Non-Neoplastic Disorders of Erythrocytes
+2080 a. Anemias
+2081 i. Iron Deficiency and Related Disorders C
+2082 ii. Sideroblastic Anemias
+2083 1. Acquired AR
+2084 2. Inherited F
+2085 iii. Erythrocyte Membrane Disorders
+2086 1. Hereditary Spherocytosis AR
+2087 2. Hereditary Elliptocytosis AR
+2088 3. Other Erythrocyte Membrane Disorders (e.g., Spur Cell) AR
+2089 iv. Erythrocyte Enzyme Disorders
+2090 1. G6PD AR
+2091 2. Pyruvate Kinase Deficiency AR
+2092 3. Other Erythrocyte Enzyme Disorders AR
+2093 v. Other Hemolytic Anemias
+2094 1. Immune C
+2095 2. Non-Immune (e.g., Thermal Injury) C
+2096 3. Microangiopathic Hemolytic Anemia C
+2097 vi. Megaloblastic Anemias C
+2098 vii. Aplastic Anemias C
+2099 viii. Anemia Related to Chronic Disease & Other Disorders C
+2100 ix. Congenital Dyserythropoietic Anemia F
+2101 x. Hemoglobinopathies
+2102 1. Hb S and Related Disorders C
+2103 2. Hb C Disorders AR
+2104 3. Hb E Disorders AR
+2105 4. Other Hemoglobinopathies F
+2106 xi. Thalassemias C
+2107 xii. PNH C
+2108 xiii. Porphyrias AR
+2109 xiv. Other Causes of Anemia
+2110 1. Lead Poisoning AR
+2111 2. Diamond-Blackfan Anemia F
+2112 b. Erythrocytosis AR
+2113 c. Cold Agglutinin Disease AR
+2114 d. Advanced Erythrocyte Abnormalities AR
+2115
+50
+American Board of Pathology
+2116
+2117 4. Non-Neoplastic Disorders of Leucocytes
+2118 a. Inherited Disorders with Morphologic Correlates
+2119 i. Pelger-Huet Anomaly C
+2120 ii. Alder-Reilly Anomaly AR
+2121 iii. Chediak-Higashi Syndrome AR
+2122 b. Neutrophils – Quantitative & Qualitative Aspects C
+2123 c. Monocytes – Quantitative & Qualitative Aspects C
+2124 d. Histiocytic Disorders
+2125 i. HLH/Macrophage Activation Disorders/Hemophagocytic Disorders C
+2126 ii. Storage Disorders AR
+2127 iii. Other Histocytic Disorders
+2128 (e.g., Prosthetic Associated Histiocyte Proliferation) F
+2129 e. Plasmacytoid Dendritic Cells F
+2130 f. Lymphocytes – Including Quantitative Aspects C
+2131 g. Eosinophils and Basophils C
+2132 h. Plasma Cells C
+2133
+2134 5. Multilineage Benign Hematopoietic Disorders
+2135 a. Inherited Disorders (e.g., May-Hegglin Anomaly) AR
+2136 b. Other Benign Hematopoietic Disorders F
+2137
+2138 6. Infections with Manifestation in the Peripheral Blood
+2139 a. Erythrocyte & Plasma Infections
+2140 i. Malaria C
+2141 ii. Babesia C
+2142 iii. Other Erythrocyte & Plasma Infections AR
+2143 b. Leucocyte Infections
+2144 i. Infectious Mononucleosis C
+2145 ii. Anaplasma & Ehrlichia AR
+2146 iii. Other Infections of Leucocytes
+2147 (e.g., Fungi including Histoplasma, Pertussis) AR
+2148
+2149 7. Benign Hematologic Disorders of the Bone Marrow Not Otherwise Classified
+2150 a. Infectious Disorders (e.g., Parvovirus) C
+2151 b. Therapy Related Effects AR
+2152 c. Bone Abnormalities
+2153 i. Paget Disease AR
+2154 ii. Renal Osteodystrophy AR
+2155 d. Other Benign Disorders of Bone Marrow F
+2156
+2157 8. Benign Disorders of the Lymphoid Tissues
+2158 a. Lymph Node
+2159 i. Dermatopathic Lymphadenopathy C
+2160 ii. Cat Scratch Disease AR
+2161 iii. Toxoplasmosis AR
+51
+American Board of Pathology
+2162 iv. Infectious Mononucleosis AR
+2163 v. Other Infectious Disorders AR
+2164 vi. Kikuchi-Fujimoto Disease (i.e., Histiocytic Necrotizing Lymphadenitis) AR
+2165 vii. Rosai-Dorfman Disease AR
+2166 viii. Castleman Disease AR
+2167 ix. Autoimmune Disorders AR
+2168 x. Non-Lymphoid Inclusions (e.g., Mesothelial) AR
+2169 xi. Syphilis F
+2170 xii. Drug-Related (e.g., Phenytoin) F
+2171 xiii. Other Benign Disorders of the Lymph Nodes F
+2172 b. Spleen
+2173 i. Lymphoid Hyperplasias AR
+2174 ii. Splenic Cysts & Other Non-Neoplastic Proliferations (e.g., Hamartomas) AR
+2175 c. Thymus
+2176 i. Thymic Hyperplasia AR
+2177 ii. Other Benign Thymus Disorders (e.g., Thymoma) AR
+2178 d. Extranodal Lymphoid Tissue AR
+2179
+2180 9. Fluid Specimens
+2181 a. CSF C
+2182 b. Other Body Fluids C
+2183
+2184 10. Immunodeficiency Disorders
+2185 a. Primary Immunodeficiencies F
+2186 b. Secondary Immunodeficiencies
+2187 i. Viral-Associated F
+2188 ii. Iatrogenic F
+2189 c. Immunodeficiency-Associated Lymphoproliferative Disorders
+2190 i. HIV-Associated AR
+2191 ii. PTLD AR
+2192 iii. Other Iatrogenic Lymphoproliferative Disorders F
+2193
+2194 11. Hemostasis and Thrombosis
+2195 a. Coagulation and Fibrinolytic Disorders
+2196 i. Factor Deficiency or Functional Abnormalities C
+2197 ii. Factor Inhibitors AR
+2198 iii. Fibrinolysis AR
+2199 b. Platelet Disorders and von Willebrand Disease
+2200 i. Qualitative Issues with Normal Platelet Counts C
+2201 ii. Thrombocytosis C
+2202 iii. Thrombocytopenia
+2203 1. Immune C
+2204 2. Inherited AR
+2205 3. Other Causes of Thrombocytopenia AR
+2206 iv. von Willebrand Disease C
+2207 v. Abnormal Platelet Morphology, Not Otherwise Specified AR
+2208 c. Thrombophilic Disorders
+52
+American Board of Pathology
+2209 i. Heparin Induced Thrombocytopenia C
+2210 ii. TTP/HUS C
+2211 iii. DIC C
+2212 iv. Laboratory Diagnosis of Thrombosis and Thrombophilia AR
+2213 v. Fibrinolytic Thrombotic Disorders AR
+2214 vi. Antiphospholipid Antibody Syndrome AR
+2215 d. Antiplatelet and Anticoagulant Drugs
+2216 i. Warfarin and Warfarin Monitoring C
+2217 ii. Heparin and Heparinoid Monitoring C
+2218 iii. Direct Thrombin and Factor Xa Inhibitor Monitoring AR
+2219 iv. Antiplatelet Agent Monitoring AR
+2220
+2221 12. Myeloid Neoplasms
+2222 a. Myeloproliferative Neoplasms
+2223 i. CML (BCR-ABL1+) C
+2224 ii. Polycythemia Vera AR
+2225 iii. Primary Myelofibrosis AR
+2226 iv. Essential Thrombocythemia AR
+2227 v. Chronic Eosinophilic Leukemia, Not Otherwise Specified AR
+2228 vi. Mastocytosis AR
+2229 vii. Other Myeloproliferative Neoplasms (e.g., CNL) F
+2230 b. Myeloid & Lymphoid Neoplasms with Eosinophilia and Gene Rearrangements
+2231 i. PDFGRA AR
+2232 ii. PDFGRB AR
+2233 iii. FGFR1 AR
+2234 iv. PCM1-JAK2 AR
+2235 c. Myelodysplastic/Myeloproliferative Neoplasms
+2236 i. CMML C
+2237 ii. Other MDS/MPN Disorders AR
+2238 1. Atypical CML AR
+2239 2. BCR-ABL1 AR
+2240 iii. Juvenile Myelomonocytic Leukemia
+2241 d. Myelodysplastic Syndromes AR
+2242 e. AML and Related Precursor Neoplasms
+2243 i. AML with Recurrent Genetic Abnormalities
+2244 1. AML with t(8;21) AR
+2245 2. AML with inv(16) or t(16;16) AR
+2246 3. APL with t(15;17) C
+2247 4. AML with t(9;11) F
+2248 5. Other AML with Recurrent Genetic Abnormalities F
+2249 ii. AML with Myelodysplasia-Related Changes AR
+2250 iii. Therapy-Related Myeloid Neoplasms AR
+2251 iv. AML, Not Otherwise Specified
+2252 1. Acute Monoblastic/Monocytic Leukemia AR
+2253 2. Acute Erythroid Leukemia F
+2254 3. Acute Megakaryoblastic Leukemia F
+2255 4. Other AML, Not Otherwise Specified F
+53
+American Board of Pathology
+2256 v. Myeloid Sarcoma AR
+2257 vi. Myeloid Proliferations with Germline Predisposition F
+2258 1. Myeloid Proliferations with Down Syndrome AR
+2259 vii. Blastic Plasmacytoid Dendritic Cell Neoplasm AR
+2260 viii. Other Myeloid Proliferations with Germline Predisposition F
+2261
+2262 13. Acute Leukemias of Ambiguous Lineage F
+2263
+2264 14. Lymphoid Neoplasms
+2265 a. B Lymphoblastic Leukemia/Lymphoma
+2266 i. B Lymphoblastic Leukemia/Lymphoma, Not Otherwise Specified AR
+2267 1. B Lymphoblastic Leukemia/Lymphoma with Recurrent
+2268 Genetic Abnormalities AR
+2269 ii. Other B Lymphoblastic Leukemias & Lymphomas F
+2270 b. T Lymphoblastic Leukemia/Lymphoma C
+2271 c. Mature B-cell Neoplasms
+2272 i. CLL/SLL including Monoclonal B-cell Lymphocytosis C
+2273 ii. MALT Lymphoma C
+2274 iii. Follicular Lymphoma C
+2275 iv. Mantle cell Lymphoma C
+2276 v. Large cell Lymphomas
+2277 1. Diffuse Large B-cell Lymphoma, Not Otherwise Specified C
+2278 2. Primary Mediastinal Large B-cell Lymphoma AR
+2279 3. Other Large B-cell Lymphomas F
+2280 vi. Burkitt Lymphoma C
+2281 vii. Splenic Marginal Zone Lymphoma (SMZL) AR
+2282 viii. Hairy Cell Leukemia (HCL) AR
+2283 ix. Lymphoplasmacytic Lymphoma (LPL) AR
+2284 x. Nodal Marginal Zone Lymphoma (MZL) AR
+2285 xi. In situ Lymphoid Neoplasia F
+2286 d. Mature T- and NK-cell Neoplasms
+2287 i. T-cell and NK-cell LGL C
+2288 ii. Extranodal NK/T-cell Lymphoma, Nasal Type C
+2289 iii. Anaplastic Large Cell Lymphoma (ALK + and ALK -) C
+2290 iv. T-cell PLL AR
+2291 v. Adult T-cell Leukemia/Lymphoma AR
+2292 vi. Hepatosplenic T-cell Lymphoma AR
+2293 vii. Mycosis Fungoides & Sézary Syndrome AR
+2294 viii. PTCL, Not Otherwise Specified AR
+2295 ix. Angioimmunoblastic T-cell Lymphoma AR
+2296 x. Enteropathy-Associated T-cell Lymphoma and Other Intestinal T-cell
+2297 Lymphomas F
+2298 xi. CD30+ Cutaneous Lymphoproliferative Disorders F
+2299 xii. Other Cutaneous T-cell Lymphomas F
+2300 xiii. Other Mature T- and NK-cell Neoplasms F
+2301 e. Hodgkin Lymphoma
+2302 i. Nodular Lymphocyte Predominant C
+54
+American Board of Pathology

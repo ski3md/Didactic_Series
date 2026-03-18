@@ -1,0 +1,5385 @@
+[
+  {
+    "topic_id": "71405cff-94b8-419f-b2cd-e3ca9071a5a7",
+    "title": "Invasive ductal carcinoma, NOS",
+    "clean_title": "Invasive ductal carcinoma, NOS",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Anatomy and Histology",
+      "Premalignant, Malignant, and Borderline",
+      "Invasive ductal carcinoma, NOS"
+    ],
+    "source_line": 347,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ceb4a4de-9746-421b-bb8a-73535301188d",
+    "title": "Radiation-induced sarcoma",
+    "clean_title": "Radiation-induced sarcoma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Anatomy and Histology",
+      "Premalignant, Malignant, and Borderline",
+      "Radiation-induced sarcoma"
+    ],
+    "source_line": 439,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "0dec2b80-11e8-4daf-8446-0624f69d0ac2",
+    "title": "Rosai-Dorfman",
+    "clean_title": "Rosai-Dorfman",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Therapy induced changes",
+      "Hematopoietic lesions",
+      "Rosai-Dorfman"
+    ],
+    "source_line": 474,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3b842547-a9d2-4e45-8e8e-9fe6b146efae",
+    "title": "Acute diffuse intracapillary proliferative glomerulonephritis",
+    "clean_title": "Acute diffuse intracapillary proliferative glomerulonephritis",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "Acute diffuse intracapillary proliferative glomerulonephritis"
+    ],
+    "source_line": 504,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "6ceba7eb-60c9-4af9-80b5-b5b09f0e276f",
+    "title": "Non-proliferative glomerulonephropathies",
+    "clean_title": "Non-proliferative glomerulonephropathies",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "Non-proliferative glomerulonephropathies"
+    ],
+    "source_line": 576,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "04baa07c-af8d-45b7-8f3c-bf500239674d",
+    "title": "Glomerular diseases associated with isolated hematuria",
+    "clean_title": "Glomerular diseases associated with isolated hematuria",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "Glomerular diseases associated with isolated hematuria"
+    ],
+    "source_line": 592,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a16c00a4-1b77-4b59-b8b6-64d0cff9089b",
+    "title": "Diseases associated with acellular closure of glomerular capillaries",
+    "clean_title": "Diseases associated with acellular closure of glomerular capillaries",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "Diseases associated with acellular closure of glomerular capillaries"
+    ],
+    "source_line": 608,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "18409708-f047-4e52-8b5f-fa579c8b99a8",
+    "title": "Thrombotic microangiopathy",
+    "clean_title": "Thrombotic microangiopathy",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "Thrombotic microangiopathy"
+    ],
+    "source_line": 612,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "dc3fc5e2-51b4-4a73-8d48-86b6838ca904",
+    "title": "Lupus nephropathies",
+    "clean_title": "Lupus nephropathies",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "Lupus nephropathies"
+    ],
+    "source_line": 623,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "5a0b4593-83b1-4fd8-b9e6-e37e659402d8",
+    "title": "Monoclonal gammopathy associated renal disease",
+    "clean_title": "Monoclonal gammopathy associated renal disease",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "Monoclonal gammopathy associated renal disease"
+    ],
+    "source_line": 625,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "2c1ac861-b2d6-44f4-97f0-e923a39e7399",
+    "title": "Tubulointerstitial Disease",
+    "clean_title": "Tubulointerstitial Disease",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "Tubulointerstitial Disease"
+    ],
+    "source_line": 627,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3f153e85-319e-4e59-a069-00de1c525b61",
+    "title": "Vascular lesions",
+    "clean_title": "Vascular lesions",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "Vascular lesions"
+    ],
+    "source_line": 640,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9d681425-2af3-4684-8cf3-2e9a77b498fc",
+    "title": "End Stage Renal Disease",
+    "clean_title": "End Stage Renal Disease",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "End Stage Renal Disease"
+    ],
+    "source_line": 653,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "92a82684-d989-4874-8bc0-1de838dc9439",
+    "title": "Renal transplantation, donor assessment",
+    "clean_title": "Renal transplantation, donor assessment",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "Renal transplantation, donor assessment"
+    ],
+    "source_line": 655,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "137a49fc-ff9d-463d-b39f-39a079e41018",
+    "title": "Pyelonephritis",
+    "clean_title": "Pyelonephritis",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Medical Kidney Disease",
+      "Pyelonephritis"
+    ],
+    "source_line": 662,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e86bd890-418d-41d7-9dcb-c632ac3f1292",
+    "title": "Tissue processing of renal biopsies",
+    "clean_title": "Tissue processing of renal biopsies",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Kidney",
+      "Additional Topics",
+      "Tissue processing of renal biopsies"
+    ],
+    "source_line": 741,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "81a650d7-7fbf-4be9-a076-42731e33a1ac",
+    "title": "Atrophy",
+    "clean_title": "Atrophy",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Prostate and Seminal Vesicles",
+      "Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+      "Atrophy"
+    ],
+    "source_line": 825,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "03c731d4-f7e8-4b83-bb28-58544f951dc4",
+    "title": "Anti-androgen",
+    "clean_title": "Anti-androgen",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Prostate and Seminal Vesicles",
+      "Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+      "Anti-androgen"
+    ],
+    "source_line": 936,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "24fb9f00-0770-41f3-9c64-49bc5a19509c",
+    "title": "Duct obstruction, vasitis nodosum",
+    "clean_title": "Duct obstruction, vasitis nodosum",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Testis",
+      "Duct obstruction, vasitis nodosum"
+    ],
+    "source_line": 1088,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ab21d7a0-854c-46c8-9b98-4b0f70535c3e",
+    "title": "Lichen schlerosis",
+    "clean_title": "Lichen schlerosis",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Penis",
+      "Lichen schlerosis"
+    ],
+    "source_line": 1135,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "2a8958d0-a04d-44af-945e-2a1701decf85",
+    "title": "Paget Disease",
+    "clean_title": "Paget Disease",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Penis",
+      "Neoplastic",
+      "Paget Disease"
+    ],
+    "source_line": 1198,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "f73cd1fe-b2ce-4754-9cb3-9d084a90ca07",
+    "title": "Normal Anatomy and Histology",
+    "clean_title": "Normal Anatomy and Histology",
+    "difficulty": "C",
+    "level": 1,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Anatomy and Histology"
+    ],
+    "source_line": 1206,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e5c6458d-70b5-4578-8f0e-f63274c9d497",
+    "title": "Anthracycline cardiotoxicity",
+    "clean_title": "Anthracycline cardiotoxicity",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Anatomy and Histology",
+      "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+      "Anthracycline cardiotoxicity"
+    ],
+    "source_line": 1224,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a952fd63-31df-4a7b-a892-ce208483291f",
+    "title": "Secondary cardiomyopathy",
+    "clean_title": "Secondary cardiomyopathy",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Anatomy and Histology",
+      "Congenital, Developmental, and Familial Conditions",
+      "Secondary cardiomyopathy"
+    ],
+    "source_line": 1250,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "51b11029-18d1-4a04-8692-fd61495b293e",
+    "title": "Amyloidosis",
+    "clean_title": "Amyloidosis",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Anatomy and Histology",
+      "Secondary cardiomyopathy",
+      "Amyloidosis"
+    ],
+    "source_line": 1342,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "fc7e0d95-74f4-4cab-a839-5d304e21835b",
+    "title": "Pericardial diseases",
+    "clean_title": "Pericardial diseases",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Anatomy and Histology",
+      "Additional Topics",
+      "Pericardial diseases"
+    ],
+    "source_line": 1375,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "fa3420ff-9a73-46be-9c00-2bfd00f4b9af",
+    "title": "Pyogenic granuloma",
+    "clean_title": "Pyogenic granuloma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Jaws, Oral Cavity, and Oropharynx",
+      "Pyogenic granuloma"
+    ],
+    "source_line": 1403,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "35cc7784-06d7-44df-87f2-89591b074790",
+    "title": "Peripheral giant cell granuloma",
+    "clean_title": "Peripheral giant cell granuloma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Jaws, Oral Cavity, and Oropharynx",
+      "Pyogenic granuloma",
+      "Peripheral giant cell granuloma"
+    ],
+    "source_line": 1461,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "195b851e-65b0-4e2d-9d16-1848435f0eb3",
+    "title": "Normal Anatomy and Histology",
+    "clean_title": "Normal Anatomy and Histology",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Normal Anatomy and Histology"
+    ],
+    "source_line": 1630,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1479c701-b51d-4e98-954e-7c52bae70a18",
+    "title": "Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+    "clean_title": "Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Physiologic Changes, Metabolic Conditions & Trauma/Infarct"
+    ],
+    "source_line": 1632,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "02d44215-fe13-4ace-965a-4cf737d0abf6",
+    "title": "Respiratory epithelial adenomatoid hamartoma",
+    "clean_title": "Respiratory epithelial adenomatoid hamartoma",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Congenital, Developmental, and Familial Conditions",
+      "Respiratory epithelial adenomatoid hamartoma"
+    ],
+    "source_line": 1636,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "8cd0eabf-a11c-44dd-9332-5ac9cb84fa35",
+    "title": "Glial heterotopia",
+    "clean_title": "Glial heterotopia",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Congenital, Developmental, and Familial Conditions",
+      "Glial heterotopia"
+    ],
+    "source_line": 1638,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ee739f28-a98a-4081-931d-8aecf9ce2b68",
+    "title": "Wegner granulomatosis",
+    "clean_title": "Wegner granulomatosis",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Inflammatory Conditions, Non-Infectious & Infectious",
+      "Wegner granulomatosis"
+    ],
+    "source_line": 1641,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "8ee72e6c-5a3a-4b72-b149-213ae2ad8838",
+    "title": "Infectious",
+    "clean_title": "Infectious",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Inflammatory Conditions, Non-Infectious & Infectious",
+      "Infectious"
+    ],
+    "source_line": 1643,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "da090a20-33ea-4a72-9449-55c2bb39ff5f",
+    "title": "Nasal polyps",
+    "clean_title": "Nasal polyps",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Neoplastic",
+      "Nasal polyps"
+    ],
+    "source_line": 1647,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "41bc66a7-dd79-4753-b111-f6c2a4483e67",
+    "title": "Squamous papilloma",
+    "clean_title": "Squamous papilloma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Neoplastic",
+      "Squamous papilloma"
+    ],
+    "source_line": 1649,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "4cdf8788-2c93-4aa2-9253-0a772dd323c5",
+    "title": "Schneiderian papilloma",
+    "clean_title": "Schneiderian papilloma",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Neoplastic",
+      "Squamous papilloma",
+      "Schneiderian papilloma"
+    ],
+    "source_line": 1651,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1cd4384c-d0c5-49be-9838-3405330625b5",
+    "title": "Angiofibroma",
+    "clean_title": "Angiofibroma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Neoplastic",
+      "Angiofibroma"
+    ],
+    "source_line": 1653,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ac630c74-fa31-4fe6-b174-824d3ec4fe44",
+    "title": "Lobular capillary hemangioma (pyogenic granuloma)",
+    "clean_title": "Lobular capillary hemangioma (pyogenic granuloma)",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Neoplastic",
+      "Lobular capillary hemangioma (pyogenic granuloma)"
+    ],
+    "source_line": 1655,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a5f5aaf3-5d11-41d8-9d0e-4ed467bfc11c",
+    "title": "Pituitary adenoma",
+    "clean_title": "Pituitary adenoma",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Neoplastic",
+      "Pituitary adenoma"
+    ],
+    "source_line": 1657,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "dbd1b738-4e8a-4a16-bb87-bc3177463c62",
+    "title": "Olfactory neuroblastoma",
+    "clean_title": "Olfactory neuroblastoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Olfactory neuroblastoma"
+    ],
+    "source_line": 1669,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "97075e03-a8d3-4200-91ca-c500440264ab",
+    "title": "Small cell undifferentiated carcinoma",
+    "clean_title": "Small cell undifferentiated carcinoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Small cell undifferentiated carcinoma"
+    ],
+    "source_line": 1671,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "70f21ea1-4514-4b89-90d9-31caaae53183",
+    "title": "Sinonasal undifferentiated carcinoma",
+    "clean_title": "Sinonasal undifferentiated carcinoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Sinonasal undifferentiated carcinoma"
+    ],
+    "source_line": 1673,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "748675a4-e037-465d-b188-abd1c7323a84",
+    "title": "Melanoma",
+    "clean_title": "Melanoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Melanoma"
+    ],
+    "source_line": 1675,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "39382064-9748-49df-8334-bf03a93c049e",
+    "title": "Paraganglioma",
+    "clean_title": "Paraganglioma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Larynx",
+      "Paraganglioma"
+    ],
+    "source_line": 1677,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a28f4d76-15a5-4348-ad4e-7f73bc881ad5",
+    "title": "Eye and Ocular Adnexa",
+    "clean_title": "Eye and Ocular Adnexa",
+    "difficulty": "AR",
+    "level": 1,
+    "category_id": "ap_hn",
+    "parent_topic_id": null,
+    "path_context": [
+      "Head and Neck",
+      "Eye and Ocular Adnexa"
+    ],
+    "source_line": 1775,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "48ec01e0-4047-4fa8-8655-4f348bf101e8",
+    "title": "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+    "clean_title": "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_gi",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Digestive System",
+      "The Gastrointestinal Tract",
+      "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+    ],
+    "source_line": 1869,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "2b19cc95-e665-4feb-8a15-a630121a44b0",
+    "title": "Squamous dysplasia",
+    "clean_title": "Squamous dysplasia",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gi",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Digestive System",
+      "The Gastrointestinal Tract",
+      "Neoplastic",
+      "Squamous dysplasia"
+    ],
+    "source_line": 1941,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9d22fdf7-b6fa-4ed4-aef7-149ed8c12e4a",
+    "title": "Acute infectious colitis (acute self-limited colitis)",
+    "clean_title": "Acute infectious colitis (acute self-limited colitis)",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gi",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Digestive System",
+      "The Gastrointestinal Tract",
+      "Inflammatory Conditions, Non-Infectious & Infectious",
+      "Acute infectious colitis (acute self-limited colitis)"
+    ],
+    "source_line": 2120,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ffbddaaa-3dd1-4baa-b723-a5f3019338c6",
+    "title": "The Liver and Biliary Tract",
+    "clean_title": "The Liver and Biliary Tract",
+    "difficulty": "AR",
+    "level": 1,
+    "category_id": "ap_gi",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Digestive System",
+      "The Liver and Biliary Tract"
+    ],
+    "source_line": 2367,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "fc88adea-13b8-40d8-81d6-fe9f6ba4370b",
+    "title": "Hepatoblastoma",
+    "clean_title": "Hepatoblastoma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gi",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Digestive System",
+      "The Liver and Biliary Tract",
+      "Premalignant, Malignant, and Borderline",
+      "Hepatoblastoma"
+    ],
+    "source_line": 2414,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1f91b161-6a07-4ba0-9d68-6fa7c6df6a64",
+    "title": "Other malignancies of the pancreas",
+    "clean_title": "Other malignancies of the pancreas",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_gi",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Digestive System",
+      "The Pancreas",
+      "Neoplastic",
+      "Solid pseudopapillary neoplasm",
+      "Other malignancies of the pancreas"
+    ],
+    "source_line": 2593,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "bc61467f-d17f-4270-b45a-9b7f4f153e98",
+    "title": "Other malignancies involving the thyroid",
+    "clean_title": "Other malignancies involving the thyroid",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Thyroid",
+      "Neoplastic",
+      "Lymphoma",
+      "Other malignancies involving the thyroid"
+    ],
+    "source_line": 2708,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "559701c3-7994-4826-8b93-47665d56ff3b",
+    "title": "Infections",
+    "clean_title": "Infections",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "The Vulva",
+      "Lichen sclerosis",
+      "Infections"
+    ],
+    "source_line": 2873,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "6e35606a-195e-43d5-a352-a848857c5f47",
+    "title": "Mesonephric adenocarcinoma",
+    "clean_title": "Mesonephric adenocarcinoma",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "The Uterine Cervix",
+      "Neoplastic",
+      "Mesonephric adenocarcinoma"
+    ],
+    "source_line": 2990,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a4c85149-5ead-4f55-a5d3-27a61d76b314",
+    "title": "The Ovaries",
+    "clean_title": "The Ovaries",
+    "difficulty": "F",
+    "level": 1,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "The Ovaries"
+    ],
+    "source_line": 3086,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3cc570ae-d5b3-424d-9094-89c70f3c6317",
+    "title": "Lymphomas/Leukemia",
+    "clean_title": "Lymphomas/Leukemia",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "The Ovaries",
+      "Lymphomas/Leukemia"
+    ],
+    "source_line": 3254,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "374b1ecf-5b43-4363-af4d-e7c72b893cc7",
+    "title": "Desmoplastic small round cell tumor",
+    "clean_title": "Desmoplastic small round cell tumor",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "The Peritoneum",
+      "Neoplastic",
+      "Well differentiated papillary mesothelial tumor",
+      "Desmoplastic small round cell tumor"
+    ],
+    "source_line": 3376,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "147d1bfc-61e5-458f-bf40-fd3d1cbeb94c",
+    "title": "Exaggerated placental site",
+    "clean_title": "Exaggerated placental site",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_placenta",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Placenta",
+      "Normal Anatomy and Histology",
+      "Exaggerated placental site"
+    ],
+    "source_line": 3418,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "42d494ae-63b2-4538-8550-52b59d08abe4",
+    "title": "Epithelioid trophoblastic tumor",
+    "clean_title": "Epithelioid trophoblastic tumor",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_placenta",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Placenta",
+      "Normal Anatomy and Histology",
+      "Exaggerated placental site",
+      "Epithelioid trophoblastic tumor"
+    ],
+    "source_line": 3491,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a56b53ed-c1c5-4513-8427-2654a8161dd4",
+    "title": "PEComa",
+    "clean_title": "PEComa",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "PEComa"
+    ],
+    "source_line": 3537,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "81244e63-b705-495f-9c3a-1e9536759207",
+    "title": "Other benign neoplastic pulmonary tumors",
+    "clean_title": "Other benign neoplastic pulmonary tumors",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Other benign neoplastic pulmonary tumors"
+    ],
+    "source_line": 3594,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1b7d01ce-08e3-42e5-b620-7135a3b6d10d",
+    "title": "Squamous cell carcinoma",
+    "clean_title": "Squamous cell carcinoma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Squamous cell carcinoma"
+    ],
+    "source_line": 3597,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9fb6432d-c885-4dcc-9996-89287a9053d7",
+    "title": "Adenocarcinoma",
+    "clean_title": "Adenocarcinoma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Adenocarcinoma"
+    ],
+    "source_line": 3599,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c1210bca-308c-47a1-9b7a-d144da595361",
+    "title": "Small cell carcinoma",
+    "clean_title": "Small cell carcinoma",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Adenocarcinoma",
+      "Small cell carcinoma"
+    ],
+    "source_line": 3601,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "7f87089d-622c-4762-85ca-26b411461c5f",
+    "title": "Carcinoid",
+    "clean_title": "Carcinoid",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Carcinoid"
+    ],
+    "source_line": 3603,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ffc133eb-8c5f-47f6-8628-bf9c4e158835",
+    "title": "Atypical Carcinoid",
+    "clean_title": "Atypical Carcinoid",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Atypical Carcinoid"
+    ],
+    "source_line": 3605,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a726f9b9-8e8c-41c5-814f-4a1c3e7377d5",
+    "title": "Metastatic tumor, lung",
+    "clean_title": "Metastatic tumor, lung",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Metastatic tumor, lung"
+    ],
+    "source_line": 3607,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "131236b0-67f4-42b5-8988-a85a48f81397",
+    "title": "Large cell carcinoma (Other than neuroendocrine)",
+    "clean_title": "Large cell carcinoma (Other than neuroendocrine)",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Metastatic tumor, lung",
+      "Large cell carcinoma (Other than neuroendocrine)"
+    ],
+    "source_line": 3609,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ce045d90-9959-40e5-97cf-da61a01de2b4",
+    "title": "Sarcomatoid carcinoma",
+    "clean_title": "Sarcomatoid carcinoma",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Metastatic tumor, lung",
+      "Sarcomatoid carcinoma"
+    ],
+    "source_line": 3611,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "90fa627d-4043-4701-b1b2-d5fb97f7e1f7",
+    "title": "Lymphoepithlioma-like carcinoma",
+    "clean_title": "Lymphoepithlioma-like carcinoma",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Lymphoepithlioma-like carcinoma"
+    ],
+    "source_line": 3613,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "38325545-c84c-4cbc-a972-09ac49728250",
+    "title": "Carcinosarcoma/pulmonary blastoma",
+    "clean_title": "Carcinosarcoma/pulmonary blastoma",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Carcinosarcoma/pulmonary blastoma"
+    ],
+    "source_line": 3615,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "95d5b9e1-a47d-450a-be75-d8dde2a064dc",
+    "title": "Large cell neuroendocrine carcinoma",
+    "clean_title": "Large cell neuroendocrine carcinoma",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Large cell neuroendocrine carcinoma"
+    ],
+    "source_line": 3617,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "39025e51-0636-4148-a3ec-f176d35c2542",
+    "title": "Lymphomas, including MALTomas and lymphomatoid granulomatosis",
+    "clean_title": "Lymphomas, including MALTomas and lymphomatoid granulomatosis",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Large cell neuroendocrine carcinoma",
+      "Lymphomas, including MALTomas and lymphomatoid granulomatosis"
+    ],
+    "source_line": 3619,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "5eae5477-a4cb-49af-a0db-140dbfc0fdcb",
+    "title": "Bronchial gland tumors",
+    "clean_title": "Bronchial gland tumors",
+    "difficulty": "F",
+    "level": 4,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Respiratory Tract",
+      "Neoplastic",
+      "Large cell neuroendocrine carcinoma",
+      "Bronchial gland tumors"
+    ],
+    "source_line": 3621,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "cd94897f-6629-4910-af54-6dccafdab626",
+    "title": "Neuroendocrine tumors",
+    "clean_title": "Neuroendocrine tumors",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Mediastinum",
+      "Premalignant, Malignant, and Borderline",
+      "Neuroendocrine tumors"
+    ],
+    "source_line": 3692,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ee3642be-550d-4f8b-9d87-b584d07c08c8",
+    "title": "Mesenchymal tumors of the mediastinum",
+    "clean_title": "Mesenchymal tumors of the mediastinum",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_resp",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Respiratory Tract, Pleura, and Mediastinum",
+      "The Mediastinum",
+      "Premalignant, Malignant, and Borderline",
+      "Mesenchymal tumors of the mediastinum"
+    ],
+    "source_line": 3769,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "939a46fd-68da-4d40-8eb3-a69cbd30e737",
+    "title": "Vascular tumors of intermediate malignancy",
+    "clean_title": "Vascular tumors of intermediate malignancy",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_soft",
+    "parent_topic_id": null,
+    "path_context": [
+      "Soft Tissue, Bones, and Joints",
+      "Soft Tissue",
+      "Premalignant, Malignant, and Borderline",
+      "Vascular tumors of intermediate malignancy"
+    ],
+    "source_line": 3815,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ad62b79f-5caa-4cc9-9624-6d5f988d4db5",
+    "title": "Other malignant soft tissue tumors of uncertain differentiation",
+    "clean_title": "Other malignant soft tissue tumors of uncertain differentiation",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_soft",
+    "parent_topic_id": null,
+    "path_context": [
+      "Soft Tissue, Bones, and Joints",
+      "Soft Tissue",
+      "Premalignant, Malignant, and Borderline",
+      "Other malignant soft tissue tumors of uncertain differentiation"
+    ],
+    "source_line": 3862,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "6de7d7f6-0d9a-4526-9d2a-17e49c380de6",
+    "title": "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+    "clean_title": "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_soft",
+    "parent_topic_id": null,
+    "path_context": [
+      "Soft Tissue, Bones, and Joints",
+      "Joints",
+      "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+    ],
+    "source_line": 3967,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9361e39c-1b59-4739-8277-b77a9b466dce",
+    "title": "Shed Endometrial Cells",
+    "clean_title": "Shed Endometrial Cells",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_cyto",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cytopathology Topics for Anatomic Pathology Residents",
+      "Cervical/Vaginal Cytology",
+      "Screening, Indications, and Techniques",
+      "Shed Endometrial Cells"
+    ],
+    "source_line": 4117,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "4f2e20a7-9106-4907-9e06-7d137b2b5734",
+    "title": "Management of Abnormalities",
+    "clean_title": "Management of Abnormalities",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_cyto",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cytopathology Topics for Anatomic Pathology Residents",
+      "Cervical/Vaginal Cytology",
+      "Other Lower Anogenital Tract, Men & Women (e.g., Anal, Vulvar)",
+      "Management of Abnormalities"
+    ],
+    "source_line": 4229,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "441fb5f3-a682-445a-9bd9-01fba56c0fc8",
+    "title": "Malignant",
+    "clean_title": "Malignant",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_cyto",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cytopathology Topics for Anatomic Pathology Residents",
+      "Cervical/Vaginal Cytology",
+      "Upper Female Genital Tract (e.g., Endometrium, Upper Tract Genital Tract)",
+      "Malignant"
+    ],
+    "source_line": 4277,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "739a2b81-12a0-45a8-bf24-4714983fcc7c",
+    "title": "Reporting",
+    "clean_title": "Reporting",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_cyto",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cytopathology Topics for Anatomic Pathology Residents",
+      "Cervical/Vaginal Cytology",
+      "Pleural and Pericardial Effusions",
+      "Reporting"
+    ],
+    "source_line": 4335,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "0bfd076f-3880-41f8-8e93-b79caa2f320c",
+    "title": "Leukocytes and Macrophages",
+    "clean_title": "Leukocytes and Macrophages",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_cyto",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cytopathology Topics for Anatomic Pathology Residents",
+      "Cervical/Vaginal Cytology",
+      "Peritoneal Effusions",
+      "Leukocytes and Macrophages"
+    ],
+    "source_line": 4381,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "441639ef-d11e-407f-9f4a-0de5ace26540",
+    "title": "Reporting",
+    "clean_title": "Reporting",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Pseudomyxoma Peritonei",
+      "Reporting"
+    ],
+    "source_line": 4432,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "d8c9ca9e-ece1-4866-a926-c777093274a7",
+    "title": "Pseudomyxoma Peritonei",
+    "clean_title": "Pseudomyxoma Peritonei",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Pseudomyxoma Peritonei"
+    ],
+    "source_line": 4498,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "dcb65566-3392-4ef5-909f-9cec7822e9a3",
+    "title": "Rheumatoid Arthritis",
+    "clean_title": "Rheumatoid Arthritis",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Synovial Fluid",
+      "Rheumatoid Arthritis"
+    ],
+    "source_line": 4549,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9a193e5b-2e18-4b7c-b320-1e0640726292",
+    "title": "Ependymoma",
+    "clean_title": "Ependymoma",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Cerebrospinal Fluid (CSF)",
+      "Ependymoma"
+    ],
+    "source_line": 4619,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "6e7e408b-94a9-40e6-87e6-16378d665540",
+    "title": "Metastatic Carcinomas",
+    "clean_title": "Metastatic Carcinomas",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "The Urinary Tract",
+      "Metastatic Carcinomas"
+    ],
+    "source_line": 4714,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "82afa792-bdfb-4ffa-bd34-868abf74de80",
+    "title": "Low Grade Urothelial Neoplasm (LGUN)",
+    "clean_title": "Low Grade Urothelial Neoplasm (LGUN)",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "The Urinary Tract",
+      "Low Grade Urothelial Neoplasm (LGUN)"
+    ],
+    "source_line": 4755,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "10792582-c44d-47f1-beea-d697e4d3647c",
+    "title": "Reporting and Management Guidelines",
+    "clean_title": "Reporting and Management Guidelines",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "The Urinary Tract",
+      "Reporting and Management Guidelines"
+    ],
+    "source_line": 4796,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c29f0c9b-5c21-49b8-b1be-283fa181351c",
+    "title": "Preparatory Techniques (e.g., Liquid-Based Preparations)",
+    "clean_title": "Preparatory Techniques (e.g., Liquid-Based Preparations)",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Respiratory Exfoliative (Sputum, Brushing, Washing)",
+      "Specific Sampling Techniques",
+      "Preparatory Techniques (e.g., Liquid-Based Preparations)"
+    ],
+    "source_line": 4875,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b96d44f8-648f-4b55-8863-6c2a2245bc1a",
+    "title": "Bronchial (e.g., Ciliated Cells, Goblet Cells)",
+    "clean_title": "Bronchial (e.g., Ciliated Cells, Goblet Cells)",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Bronchial (e.g., Ciliated Cells, Goblet Cells)"
+    ],
+    "source_line": 4955,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ddfe7975-d7e2-49a9-a0cb-dc1dafdf0c15",
+    "title": "Alveolar Macrophages",
+    "clean_title": "Alveolar Macrophages",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Alveolar Macrophages"
+    ],
+    "source_line": 4957,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e6cdcea0-6546-4440-b6cb-a8877ba3ff95",
+    "title": "Other (e.g., Mesothelial Cells, Cartilage)",
+    "clean_title": "Other (e.g., Mesothelial Cells, Cartilage)",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Alveolar Macrophages",
+      "Other (e.g., Mesothelial Cells, Cartilage)"
+    ],
+    "source_line": 4959,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ccd91ab7-17be-41f6-b346-2fbfb68b851a",
+    "title": "Indications for Evaluation and Complications",
+    "clean_title": "Indications for Evaluation and Complications",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Indications for Evaluation and Complications"
+    ],
+    "source_line": 4962,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "d33f5a7a-9c34-4901-80b0-551ecbada6c6",
+    "title": "Microorganism Stains",
+    "clean_title": "Microorganism Stains",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Specific Sampling Techniques (e.g. Transthoracic, Transbronchial, EBUS, ENB)",
+      "Microorganism Stains"
+    ],
+    "source_line": 4965,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "d6036ac0-c7a4-48ea-a9db-19f46e6fa416",
+    "title": "IHC and Flow Cytometry",
+    "clean_title": "IHC and Flow Cytometry",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "IHC and Flow Cytometry"
+    ],
+    "source_line": 4967,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e9abe9aa-7ddb-40f2-b047-ab070911b424",
+    "title": "Molecular Studies (e.g., FISH testing)",
+    "clean_title": "Molecular Studies (e.g., FISH testing)",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Molecular Studies (e.g., FISH testing)"
+    ],
+    "source_line": 4969,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "46faf830-f7a4-41c5-b92c-e0d782728f30",
+    "title": "Specimen Adequacy (e.g., Immediate Evaluation Techniques)",
+    "clean_title": "Specimen Adequacy (e.g., Immediate Evaluation Techniques)",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Specimen Adequacy (e.g., Immediate Evaluation Techniques)"
+    ],
+    "source_line": 4971,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "5540e6e1-005f-41d4-8af8-09c10457cc95",
+    "title": "Bacterial (e.g., abscess) and Mycobacterial",
+    "clean_title": "Bacterial (e.g., abscess) and Mycobacterial",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Bacterial (e.g., abscess) and Mycobacterial"
+    ],
+    "source_line": 4974,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3d2f97df-d068-441f-961d-c94c4226e79f",
+    "title": "Fungal (e.g., Histoplasma, Aspergillus, Mucor, Cryptococcus)",
+    "clean_title": "Fungal (e.g., Histoplasma, Aspergillus, Mucor, Cryptococcus)",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Fungal (e.g., Histoplasma, Aspergillus, Mucor, Cryptococcus)"
+    ],
+    "source_line": 4976,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "972bfaa6-ce71-4637-82b7-fcbe84eb6438",
+    "title": "Viral (e.g., CMV, Herpes)",
+    "clean_title": "Viral (e.g., CMV, Herpes)",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Fungal (e.g., Histoplasma, Aspergillus, Mucor, Cryptococcus)",
+      "Viral (e.g., CMV, Herpes)"
+    ],
+    "source_line": 4978,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a4848345-586a-40be-b34c-7930dfa1d8e8",
+    "title": "Parasitic",
+    "clean_title": "Parasitic",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Parasitic"
+    ],
+    "source_line": 4980,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "38c6f4fc-a49a-4088-93b3-aecb9aa36050",
+    "title": "Granulomas (e.g., Sarcoid)",
+    "clean_title": "Granulomas (e.g., Sarcoid)",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Granulomas (e.g., Sarcoid)"
+    ],
+    "source_line": 4983,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ccdcfbf1-2449-4d1e-b539-90a6858d8652",
+    "title": "Radiation and Chemotherapy Effects",
+    "clean_title": "Radiation and Chemotherapy Effects",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Radiation and Chemotherapy Effects"
+    ],
+    "source_line": 4985,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b8c37d41-c2b3-4600-8ff9-44c566acd5cd",
+    "title": "Pneumoconiosis",
+    "clean_title": "Pneumoconiosis",
+    "difficulty": "F",
+    "level": 4,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Radiation and Chemotherapy Effects",
+      "Pneumoconiosis"
+    ],
+    "source_line": 4987,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3025d6a6-7a1c-4620-b12f-8175bbe94ca5",
+    "title": "Amyloidosis",
+    "clean_title": "Amyloidosis",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Amyloidosis"
+    ],
+    "source_line": 4989,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "17db46cf-7948-4a76-88ce-1d521f120ca1",
+    "title": "Hamartoma",
+    "clean_title": "Hamartoma",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Hamartoma"
+    ],
+    "source_line": 4992,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "acfd74a3-a7db-4898-90fc-3a21139f7303",
+    "title": "Inflammatory Pseudotumor",
+    "clean_title": "Inflammatory Pseudotumor",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Inflammatory Pseudotumor"
+    ],
+    "source_line": 4994,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c55a4a29-7f15-4f7d-8055-28a725f88ef2",
+    "title": "Benign Mixed Tumor",
+    "clean_title": "Benign Mixed Tumor",
+    "difficulty": "F",
+    "level": 4,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lung FNA",
+      "Inflammatory Pseudotumor",
+      "Benign Mixed Tumor"
+    ],
+    "source_line": 4996,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c329faba-e7bc-46bd-842d-06b538f4870a",
+    "title": "Adenocarcinoma",
+    "clean_title": "Adenocarcinoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Adenocarcinoma"
+    ],
+    "source_line": 5000,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "98fb8c31-1591-4b73-993b-4cfa8d73da2f",
+    "title": "Squamous Cell Carcinoma",
+    "clean_title": "Squamous Cell Carcinoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Squamous Cell Carcinoma"
+    ],
+    "source_line": 5002,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "2d14dc13-b9d1-451c-aa00-cbebd4cd6368",
+    "title": "Small Cell Carcinoma",
+    "clean_title": "Small Cell Carcinoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Small Cell Carcinoma"
+    ],
+    "source_line": 5004,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9d8cc3c9-249c-44d8-ba61-1fc727399b37",
+    "title": "Carcinoid Tumor",
+    "clean_title": "Carcinoid Tumor",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Carcinoid Tumor"
+    ],
+    "source_line": 5006,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b2914db8-166d-4c9b-8df7-8f548442d4c2",
+    "title": "Large Cell Neuroendocrine Carcinoma",
+    "clean_title": "Large Cell Neuroendocrine Carcinoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Large Cell Neuroendocrine Carcinoma"
+    ],
+    "source_line": 5008,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "042c2f47-f9af-4de8-8857-8189556d2768",
+    "title": "Mixed Carcinomas",
+    "clean_title": "Mixed Carcinomas",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Mixed Carcinomas"
+    ],
+    "source_line": 5010,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "10c24cfd-c5c7-4dd6-8052-f3d7d48217d6",
+    "title": "Salivary Gland-Type Carcinomas",
+    "clean_title": "Salivary Gland-Type Carcinomas",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Salivary Gland-Type Carcinomas"
+    ],
+    "source_line": 5012,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "09cff407-a236-4e7b-9f75-042077e68204",
+    "title": "Non-Hodgkin Lymphoma",
+    "clean_title": "Non-Hodgkin Lymphoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Non-Hodgkin Lymphoma"
+    ],
+    "source_line": 5016,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "aabe5cb2-02e8-4dc8-ae01-79321afb0ed8",
+    "title": "Myeloid Neoplasms",
+    "clean_title": "Myeloid Neoplasms",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Myeloid Neoplasms"
+    ],
+    "source_line": 5018,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "d80215ea-4baa-4659-8bfc-a37a8286b096",
+    "title": "Plasma Cell Neoplasms",
+    "clean_title": "Plasma Cell Neoplasms",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Plasma Cell Neoplasms"
+    ],
+    "source_line": 5020,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ed26b27a-bc3c-4f89-a9a8-fd5ab8aaa24e",
+    "title": "Langerhans Cell Histiocytosis",
+    "clean_title": "Langerhans Cell Histiocytosis",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Langerhans Cell Histiocytosis"
+    ],
+    "source_line": 5022,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "86d56cb1-ef20-44c6-b343-6b7130ff716c",
+    "title": "Carcinoma",
+    "clean_title": "Carcinoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Carcinoma"
+    ],
+    "source_line": 5025,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "6efc17be-9b42-4fb4-b750-7e8fd0ddb497",
+    "title": "Lymphoma",
+    "clean_title": "Lymphoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lymphoma"
+    ],
+    "source_line": 5027,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "22ade076-3b96-4013-9ef8-559e130a8022",
+    "title": "Reporting and Management Guidelines",
+    "clean_title": "Reporting and Management Guidelines",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Synovial Sarcoma",
+      "Reporting and Management Guidelines"
+    ],
+    "source_line": 5048,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e0ac15d1-6740-42c6-b014-c57f5d3fedb5",
+    "title": "Metaplastic and Preneoplastic Changes (e.g., Dysplasia, Barrett Esophagus)",
+    "clean_title": "Metaplastic and Preneoplastic Changes (e.g., Dysplasia, Barrett Esophagus)",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Esophageal Cytopathology",
+      "Metaplastic and Preneoplastic Changes (e.g., Dysplasia, Barrett Esophagus)"
+    ],
+    "source_line": 5083,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "5c73af95-e30c-431b-a9da-7706c9b8b994",
+    "title": "Lymphoma",
+    "clean_title": "Lymphoma",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Diffuse (e.g., Signet Ring, Linitis Plastica)",
+      "Lymphoma"
+    ],
+    "source_line": 5119,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "083b6e34-dc9d-4001-bba6-2611bcf78e29",
+    "title": "Ancillary Testing (e.g., IHC, Molecular Studies, Stains)",
+    "clean_title": "Ancillary Testing (e.g., IHC, Molecular Studies, Stains)",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Liver Cytopathology",
+      "Sampling Techniques (e.g., FNA)",
+      "Ancillary Testing (e.g., IHC, Molecular Studies, Stains)"
+    ],
+    "source_line": 5145,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "7f274c3e-dbe9-47c3-8978-f5062fa6853f",
+    "title": "Reactive and Non-Neoplastic Disorders",
+    "clean_title": "Reactive and Non-Neoplastic Disorders",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Fibrolamellar Carcinoma",
+      "Reactive and Non-Neoplastic Disorders"
+    ],
+    "source_line": 5194,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "7b577bfa-6aac-4a2d-9375-b78089f54520",
+    "title": "Adenocarcinoma",
+    "clean_title": "Adenocarcinoma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Biliary Cytopathology",
+      "Adenocarcinoma"
+    ],
+    "source_line": 5233,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "5fc55c6a-aaba-4362-b608-37a1d0cead3c",
+    "title": "Chronic Pancreatitis, including Autoimmune",
+    "clean_title": "Chronic Pancreatitis, including Autoimmune",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Pancreatic Cytopathology",
+      "Acute Pancreatitis",
+      "Chronic Pancreatitis, including Autoimmune"
+    ],
+    "source_line": 5268,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ceb5c1f1-dcab-4ef6-bad7-4b06268d7185",
+    "title": "Reporting and Management Guidelines",
+    "clean_title": "Reporting and Management Guidelines",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Intraductal Papillary Mucinous Neoplasm (IPMN)",
+      "Reporting and Management Guidelines"
+    ],
+    "source_line": 5316,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1b9d5219-bd97-4b62-9cb3-2bb5aaea7c4c",
+    "title": "Carcinoma Ex Pleomorphic Adenoma",
+    "clean_title": "Carcinoma Ex Pleomorphic Adenoma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Salivary Gland FNA",
+      "Carcinoma Ex Pleomorphic Adenoma"
+    ],
+    "source_line": 5385,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b631553d-ee4a-4194-80d9-b3aaad6f6890",
+    "title": "Management",
+    "clean_title": "Management",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Salivary Gland FNA",
+      "Management"
+    ],
+    "source_line": 5427,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c7a2be29-e383-4b8c-9ff8-ee04685eb4ee",
+    "title": "The Bethesda System Reporting and Management Guidelines",
+    "clean_title": "The Bethesda System Reporting and Management Guidelines",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Thyroid & Parathyroid FNA",
+      "The Bethesda System Reporting and Management Guidelines"
+    ],
+    "source_line": 5500,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "449b1d23-0f2a-4513-808b-6e842ebe9d8a",
+    "title": "Normal Cytology",
+    "clean_title": "Normal Cytology",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lymph Node FNA",
+      "Normal Cytology"
+    ],
+    "source_line": 5533,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "206a9acf-6571-449a-8d6a-d66d1e1ad37f",
+    "title": "Vascular Neoplasms (e.g., Kaposi Sarcoma)",
+    "clean_title": "Vascular Neoplasms (e.g., Kaposi Sarcoma)",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Lymph Node FNA",
+      "Vascular Neoplasms (e.g., Kaposi Sarcoma)"
+    ],
+    "source_line": 5589,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "2c592a82-a232-46e4-ac96-9e574057e27b",
+    "title": "Nasopharyngeal Carcinoma",
+    "clean_title": "Nasopharyngeal Carcinoma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Non-HPV Related",
+      "Nasopharyngeal Carcinoma"
+    ],
+    "source_line": 5649,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "8d4dba71-1f0c-49f5-957d-cd9799e64226",
+    "title": "Metastatic Neoplasms (e.g., Carcinomas, Melanoma)",
+    "clean_title": "Metastatic Neoplasms (e.g., Carcinomas, Melanoma)",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Lung Primary",
+      "Non-HPV Related",
+      "Metastatic Neoplasms (e.g., Carcinomas, Melanoma)"
+    ],
+    "source_line": 5684,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "2902429a-abd0-4867-af27-693583ab7189",
+    "title": "Reporting and Management Guidelines",
+    "clean_title": "Reporting and Management Guidelines",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Cytology",
+      "Pregnancy and Lactational Changes",
+      "Reporting and Management Guidelines"
+    ],
+    "source_line": 5746,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ccdd7332-06c5-48e7-94fb-f4766f8bac8f",
+    "title": "Infections",
+    "clean_title": "Infections",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Cytology",
+      "Pregnancy and Lactational Changes",
+      "Infections"
+    ],
+    "source_line": 5785,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9e417e0b-dfd8-4327-a8d0-1c7339f8abd2",
+    "title": "Sarcomas",
+    "clean_title": "Sarcomas",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Cytology",
+      "Pregnancy and Lactational Changes",
+      "Melanoma",
+      "Sarcomas"
+    ],
+    "source_line": 5842,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "fb6343f4-425b-4555-833f-530246db0624",
+    "title": "Malignant Pediatric Renal Tumors (e.g., Wilms Tumor [Nephroblastoma])",
+    "clean_title": "Malignant Pediatric Renal Tumors (e.g., Wilms Tumor [Nephroblastoma])",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Cytology",
+      "Pregnancy and Lactational Changes",
+      "Malignant Pediatric Renal Tumors (e.g., Wilms Tumor [Nephroblastoma])"
+    ],
+    "source_line": 5906,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "667b53a4-7c55-4037-98e3-0fcb50063462",
+    "title": "Ganglioneuroma",
+    "clean_title": "Ganglioneuroma",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Cytology",
+      "Pregnancy and Lactational Changes",
+      "Neuroblastoma",
+      "Ganglioneuroma"
+    ],
+    "source_line": 5963,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b5c7e800-dbab-4f2d-9e33-26f0ac907ec2",
+    "title": "Intramuscular Myxoma",
+    "clean_title": "Intramuscular Myxoma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Cytology",
+      "Pregnancy and Lactational Changes",
+      "Intramuscular Myxoma"
+    ],
+    "source_line": 6034,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "232ea743-cca4-428a-b24d-d051b0eab829",
+    "title": "Metastatic Carcinoma",
+    "clean_title": "Metastatic Carcinoma",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Cytology",
+      "Pleomorphic Liposarcoma",
+      "Metastatic Carcinoma"
+    ],
+    "source_line": 6103,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "feb8150f-22b0-4f74-a469-d56de2e98a73",
+    "title": "Metastases",
+    "clean_title": "Metastases",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Cytology",
+      "Pleomorphic Liposarcoma",
+      "Metastases"
+    ],
+    "source_line": 6162,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "84703dd4-9a7c-421f-bdb2-fb6cfd9f9f6d",
+    "title": "Safety",
+    "clean_title": "Safety",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Cytology",
+      "Pleomorphic Liposarcoma",
+      "Safety"
+    ],
+    "source_line": 6184,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e4a3b3e2-3a6d-4b92-8a0e-3c5c0301cdc3",
+    "title": "Telecytology",
+    "clean_title": "Telecytology",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Cytology",
+      "Immediate Evaluation Techniques",
+      "Digital Cytology/Pathology",
+      "Telecytology"
+    ],
+    "source_line": 6273,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "14bce51f-f7dd-45f0-8799-04206c523163",
+    "title": "Lichen Planus",
+    "clean_title": "Lichen Planus",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Interface Dermatitis (Lichenoid Reaction Pattern)",
+      "Lichen Planus"
+    ],
+    "source_line": 6320,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "cdaf40d8-b1b0-47d9-8afd-84a51655f1d2",
+    "title": "Juvenile Plantar Dermatosis",
+    "clean_title": "Juvenile Plantar Dermatosis",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Poikiloderma of Civatte",
+      "Pompholyx",
+      "Juvenile Plantar Dermatosis"
+    ],
+    "source_line": 6422,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3eacd893-98dd-431f-a9b5-0315b5695554",
+    "title": "Rheumatoid Nodules",
+    "clean_title": "Rheumatoid Nodules",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Rheumatoid Nodules"
+    ],
+    "source_line": 6557,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "20eccb82-42fc-4784-bf1e-034cc61ce2ad",
+    "title": "Rheumatoid Neutrophilic Dermatosis",
+    "clean_title": "Rheumatoid Neutrophilic Dermatosis",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Rheumatoid Neutrophilic Dermatosis"
+    ],
+    "source_line": 6695,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "7a634a3a-b939-4c93-84b6-236d8ee9f339",
+    "title": "Takayasu Arteritis",
+    "clean_title": "Takayasu Arteritis",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Takayasu Arteritis"
+    ],
+    "source_line": 6773,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "434e447c-1959-4ca0-a156-a42ea17e4530",
+    "title": "Disorders Characterized by Hypopigmentation",
+    "clean_title": "Disorders Characterized by Hypopigmentation",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Hidrotic Ectodermal Dysplasia",
+      "Disorders Characterized by Hypopigmentation"
+    ],
+    "source_line": 6844,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "bfd1611b-ba85-4eb0-8890-a7e64fc066cc",
+    "title": "Notalgia Paresthetica",
+    "clean_title": "Notalgia Paresthetica",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Notalgia Paresthetica"
+    ],
+    "source_line": 6901,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "8fc2b636-4313-4441-8519-ca5163469ce6",
+    "title": "Elastoma",
+    "clean_title": "Elastoma",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Elastoma"
+    ],
+    "source_line": 6974,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a9192de2-bea1-4647-b4a3-f4de254afd46",
+    "title": "Lipoid Proteinosis",
+    "clean_title": "Lipoid Proteinosis",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Lipoid Proteinosis"
+    ],
+    "source_line": 7091,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "38c89017-8ffe-4c26-a425-cd801c4506ba",
+    "title": "Medication",
+    "clean_title": "Medication",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Medication"
+    ],
+    "source_line": 7198,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "4d1c8162-8fd9-46bd-9605-4a7f9e569adb",
+    "title": "Epidermolytic Hyperkeratosis",
+    "clean_title": "Epidermolytic Hyperkeratosis",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Normal Skin and Mucosa",
+      "Focal Acantholytic Dyskeratosis",
+      "Epidermolytic Hyperkeratosis"
+    ],
+    "source_line": 7233,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c27ddea7-7a1f-4bfd-b7d1-78e5ae08c8c5",
+    "title": "Freeze, Electrocautery, Formalin Pigment, Floaters/Tissue Carry Over,",
+    "clean_title": "Freeze, Electrocautery, Formalin Pigment, Floaters/Tissue Carry Over,",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Artifacts",
+      "Freeze, Electrocautery, Formalin Pigment, Floaters/Tissue Carry Over,"
+    ],
+    "source_line": 7248,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "531dde86-f44a-4dc9-8665-de039fca6b0d",
+    "title": "Apocrine Disorders",
+    "clean_title": "Apocrine Disorders",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Discoid Lupus Erythematosus (Scarring)",
+      "Apocrine Disorders"
+    ],
+    "source_line": 7347,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "faa471f8-de96-4dd2-892c-645ce53bf330",
+    "title": "Sweat Gland Necrosis",
+    "clean_title": "Sweat Gland Necrosis",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Sweat Gland Necrosis"
+    ],
+    "source_line": 7403,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "808d7616-bafd-4a0b-9d3d-5af138a4d06d",
+    "title": "Vellus Hair Cyst",
+    "clean_title": "Vellus Hair Cyst",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Cysts, Sinuses, and Pits",
+      "Vellus Hair Cyst"
+    ],
+    "source_line": 7459,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b93b889b-4781-4250-be13-695f6867fadb",
+    "title": "Sclerema Neonatorum",
+    "clean_title": "Sclerema Neonatorum",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Panniculitis",
+      "Subcutaneous Fat Necrosis of the Newborn",
+      "Sclerema Neonatorum"
+    ],
+    "source_line": 7506,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "28da95c0-6da9-4f22-988c-9a9de1d0f31b",
+    "title": "Lipodystrophy Syndromes",
+    "clean_title": "Lipodystrophy Syndromes",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Panniculitis",
+      "Lipodystrophy Syndromes"
+    ],
+    "source_line": 7533,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ea60cec6-7933-4567-9f43-f771599d6a3b",
+    "title": "Chronic Actinic Dermatitis",
+    "clean_title": "Chronic Actinic Dermatitis",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Infections and Infestations",
+      "Chronic Actinic Dermatitis"
+    ],
+    "source_line": 7612,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "284c0f77-1225-40ed-8220-3da77abd578a",
+    "title": "Staphylococcal \u201cScalded Skin\u201d Syndrome (SSSS)",
+    "clean_title": "Staphylococcal \u201cScalded Skin\u201d Syndrome (SSSS)",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Staphylococcal \u201cScalded Skin\u201d Syndrome (SSSS)"
+    ],
+    "source_line": 7643,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "44665827-48c5-48ef-8a43-f4db7c41bb28",
+    "title": "Fungi and Algae",
+    "clean_title": "Fungi and Algae",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Scrub Typhus Group",
+      "Fungi and Algae"
+    ],
+    "source_line": 7739,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9706142e-b740-4460-aa8a-4c95247d83d0",
+    "title": "Herpes Zoster Virus",
+    "clean_title": "Herpes Zoster Virus",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Herpes Zoster Virus"
+    ],
+    "source_line": 7869,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "79ce8470-5159-4ba7-969d-cb41c4a8c0cc",
+    "title": "Ticks",
+    "clean_title": "Ticks",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Ticks"
+    ],
+    "source_line": 7995,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a1378ab3-4f36-4a3b-a4eb-33f520f5acd1",
+    "title": "Tungiasis",
+    "clean_title": "Tungiasis",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Tungiasis"
+    ],
+    "source_line": 8051,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b36c1b51-3423-404c-adc8-bba70cae69f2",
+    "title": "Squamous Cell Carcinoma (SCC)",
+    "clean_title": "Squamous Cell Carcinoma (SCC)",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Squamous Cell Carcinoma (SCC)"
+    ],
+    "source_line": 8130,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "557c9522-da87-4cbf-b9b2-5e1823c70d82",
+    "title": "Malignant Melanoma",
+    "clean_title": "Malignant Melanoma",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Malignant Melanoma"
+    ],
+    "source_line": 8251,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "57f98515-4b07-463b-8d5c-8e2eacd3a704",
+    "title": "Folliculosebaceous Cystic Hamartoma",
+    "clean_title": "Folliculosebaceous Cystic Hamartoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Folliculosebaceous Cystic Hamartoma"
+    ],
+    "source_line": 8384,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "93638b6e-5ae5-48f0-b349-28d35f2258d8",
+    "title": "Angiofibromas",
+    "clean_title": "Angiofibromas",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Angiofibromas"
+    ],
+    "source_line": 8516,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3214e4ac-a17c-4149-9de1-69bb8a9ae606",
+    "title": "Soft Tissue of Uncertain Histogenesis",
+    "clean_title": "Soft Tissue of Uncertain Histogenesis",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Soft Tissue of Uncertain Histogenesis"
+    ],
+    "source_line": 8647,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "659094a2-f9c5-4772-b9ba-e6a0f975cae3",
+    "title": "Rhabdomyosarcoma",
+    "clean_title": "Rhabdomyosarcoma",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Rhabdomyosarcoma"
+    ],
+    "source_line": 8781,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "85d249cd-514f-4851-9192-db21e9238ca6",
+    "title": "Venous Malformations (General)",
+    "clean_title": "Venous Malformations (General)",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Venous Malformations (General)"
+    ],
+    "source_line": 8914,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1516fb7c-85e4-401e-bb6f-b6f72d7b3e3d",
+    "title": "Hobnail Hemangioendothelioma",
+    "clean_title": "Hobnail Hemangioendothelioma",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Hobnail Hemangioendothelioma"
+    ],
+    "source_line": 9043,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b1158918-5447-45c5-aca2-b3493af81566",
+    "title": "Reticulohistiocytoma",
+    "clean_title": "Reticulohistiocytoma",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Reticulohistiocytoma"
+    ],
+    "source_line": 9175,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "502ee696-d3db-4f3c-ac03-d11670dc0949",
+    "title": "Post-Transplant Lymphoproliferative Disorder",
+    "clean_title": "Post-Transplant Lymphoproliferative Disorder",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Post-Transplant Lymphoproliferative Disorder"
+    ],
+    "source_line": 9306,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "56b8fb0c-95d7-4d67-bef4-1a7c7d8a5dbf",
+    "title": "Other T/NK-cell Lymphoma and Leukemias",
+    "clean_title": "Other T/NK-cell Lymphoma and Leukemias",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Other T/NK-cell Lymphoma and Leukemias"
+    ],
+    "source_line": 9410,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "370dae93-4052-45e4-ac24-a4bef1a85c65",
+    "title": "Mohs Micrographic Surgery",
+    "clean_title": "Mohs Micrographic Surgery",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Laboratory Techniques and Management",
+      "Mohs Micrographic Surgery"
+    ],
+    "source_line": 9469,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "49ff6d38-236a-4bf8-b39f-240f84d1bf5f",
+    "title": "Appropriate Utilization",
+    "clean_title": "Appropriate Utilization",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Laboratory Techniques and Management",
+      "Root Cause Analysis",
+      "Appropriate Utilization"
+    ],
+    "source_line": 9504,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "8219fa76-ae92-418c-80a7-133bc0e85672",
+    "title": "Nail Melanoma",
+    "clean_title": "Nail Melanoma",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Seborrheic Keratosis",
+      "Nail Melanoma"
+    ],
+    "source_line": 9584,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "d9db3f96-c359-4496-bcbd-5f35f65b98d7",
+    "title": "Oral Lymphoepithelial Cyst",
+    "clean_title": "Oral Lymphoepithelial Cyst",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_dermpath",
+    "parent_topic_id": null,
+    "path_context": [
+      "Dermatopathology Topics for Anatomic Pathology Residents",
+      "Inflammatory Reaction Patterns",
+      "Diseases of the Mucosa (Oral, Ocular, & Anogenital)",
+      "Oral Lymphoepithelial Cyst"
+    ],
+    "source_line": 9729,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ec5aaf20-7979-48e3-a143-5ae57057b5c6",
+    "title": "Natural Deaths",
+    "clean_title": "Natural Deaths",
+    "difficulty": "C",
+    "level": 1,
+    "category_id": "ap_forensic",
+    "parent_topic_id": null,
+    "path_context": [
+      "Forensic Pathology Topics for Anatomic Pathology Residents",
+      "Natural Deaths"
+    ],
+    "source_line": 9863,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e7d89a0d-abb6-49ba-8177-c0c1b028d7e5",
+    "title": "Fluid and Electrolyte Disturbances",
+    "clean_title": "Fluid and Electrolyte Disturbances",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_forensic",
+    "parent_topic_id": null,
+    "path_context": [
+      "Forensic Pathology Topics for Anatomic Pathology Residents",
+      "Natural Deaths",
+      "Pediatric Deaths",
+      "Fluid and Electrolyte Disturbances"
+    ],
+    "source_line": 9887,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "11624648-af4c-4c0f-863f-eda8b9270832",
+    "title": "Asphyxia, including smothering suffocation, choking, wedging)",
+    "clean_title": "Asphyxia, including smothering suffocation, choking, wedging)",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_forensic",
+    "parent_topic_id": null,
+    "path_context": [
+      "Forensic Pathology Topics for Anatomic Pathology Residents",
+      "Natural Deaths",
+      "Pediatric Deaths",
+      "Neglect",
+      "Asphyxia, including smothering suffocation, choking, wedging)"
+    ],
+    "source_line": 9978,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "acf88f15-7d33-45cf-bd9d-e98ac9b47340",
+    "title": "Cardiac Dysrhythmias",
+    "clean_title": "Cardiac Dysrhythmias",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Anatomy",
+      "Atherosclerosis",
+      "Cardiac Dysrhythmias"
+    ],
+    "source_line": 10019,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "75f002b6-d8bb-4f7c-8c33-09e88e0e8b6c",
+    "title": "Esophageal Varies",
+    "clean_title": "Esophageal Varies",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Anatomy",
+      "Chronic Alcoholism",
+      "Esophageal Varies"
+    ],
+    "source_line": 10046,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "931703b7-f4df-4f71-8ab5-f1dfebf48637",
+    "title": "Seizure Disorders",
+    "clean_title": "Seizure Disorders",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Anatomy",
+      "The Central Nervous System",
+      "Seizure Disorders"
+    ],
+    "source_line": 10148,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ceda8f5b-92a3-4537-b622-50cf5b41cb04",
+    "title": "Drug-Induced Lung Disease",
+    "clean_title": "Drug-Induced Lung Disease",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Anatomy",
+      "The Respiratory System",
+      "Drug-Induced Lung Disease"
+    ],
+    "source_line": 10182,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "53fbbd7d-a93a-41ff-9ff7-6143a293c730",
+    "title": "Obstructive Uropathy, including Prostate and Calculi",
+    "clean_title": "Obstructive Uropathy, including Prostate and Calculi",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Obstructive Uropathy, including Prostate and Calculi"
+    ],
+    "source_line": 10201,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9945c0e3-3f0b-47f7-827f-2bfd42672365",
+    "title": "The Hematopoietic/Lymphatic System",
+    "clean_title": "The Hematopoietic/Lymphatic System",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Obstructive Uropathy, including Prostate and Calculi",
+      "The Hematopoietic/Lymphatic System"
+    ],
+    "source_line": 10281,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "5d997b97-5aee-45d4-b973-752f84f80ce3",
+    "title": "The Hepatic, Gastrointestinal, and Pancreatic System",
+    "clean_title": "The Hepatic, Gastrointestinal, and Pancreatic System",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_gu",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Genitourinary System",
+      "Obstructive Uropathy, including Prostate and Calculi",
+      "The Hepatic, Gastrointestinal, and Pancreatic System"
+    ],
+    "source_line": 10297,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "2515dfbb-bbca-4b9c-90d2-93e77d9491ad",
+    "title": "The Skin and Nails",
+    "clean_title": "The Skin and Nails",
+    "difficulty": "C",
+    "level": 1,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails"
+    ],
+    "source_line": 10347,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "bc0b96b3-a124-4fd4-9a62-f49ec77ddf54",
+    "title": "Bones, Joints, and Soft Tissue",
+    "clean_title": "Bones, Joints, and Soft Tissue",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Bones, Joints, and Soft Tissue"
+    ],
+    "source_line": 10369,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a80c94d5-cf70-46f7-b551-bf3f179a329e",
+    "title": "Common Inflammatory Conditions",
+    "clean_title": "Common Inflammatory Conditions",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Bones, Joints, and Soft Tissue",
+      "Common Inflammatory Conditions"
+    ],
+    "source_line": 10434,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "92d601f7-4a6e-45d7-870a-e991e1d94dba",
+    "title": "Specimen Procurement and Preparation",
+    "clean_title": "Specimen Procurement and Preparation",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Peripheral Nerve and Skeletal System",
+      "Specimen Procurement and Preparation"
+    ],
+    "source_line": 10440,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "7271a397-15cf-4972-8c24-d11a29c256d8",
+    "title": "Infectious Disease / Microbiology",
+    "clean_title": "Infectious Disease / Microbiology",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Infectious Disease / Microbiology"
+    ],
+    "source_line": 10444,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3addce5e-ba46-42a5-b85e-f29f5c3959fd",
+    "title": "Immune Deficiency Disorders (Primary & Secondary)",
+    "clean_title": "Immune Deficiency Disorders (Primary & Secondary)",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Immune Deficiency Disorders (Primary & Secondary)"
+    ],
+    "source_line": 10469,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3fd5b46e-3794-4b6a-9f40-2829f6e406bb",
+    "title": "Obesity",
+    "clean_title": "Obesity",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Obesity"
+    ],
+    "source_line": 10473,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "914abd0e-aeec-4491-be73-51b4e7af8837",
+    "title": "Medicolegal Investigation of Natural Deaths",
+    "clean_title": "Medicolegal Investigation of Natural Deaths",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Medicolegal Investigation of Natural Deaths"
+    ],
+    "source_line": 10477,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ec96d584-c9e1-4243-9c62-178b52877586",
+    "title": "Mechanisms of Traumatic Death",
+    "clean_title": "Mechanisms of Traumatic Death",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Mechanisms of Traumatic Death"
+    ],
+    "source_line": 10481,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "fc3234e1-4da3-4441-a551-96e5ea018e7c",
+    "title": "Visceral Injures",
+    "clean_title": "Visceral Injures",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Blunt Trauma",
+      "Visceral Injures"
+    ],
+    "source_line": 10506,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1f90c9b6-8869-4cdc-9d6c-d853a118ae83",
+    "title": "Animal Bite Marks",
+    "clean_title": "Animal Bite Marks",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Blunt Trauma",
+      "Animal Bite Marks"
+    ],
+    "source_line": 10583,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "f877a0bb-db28-4c54-a3c2-b499f74f5d3c",
+    "title": "Asphyxia",
+    "clean_title": "Asphyxia",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia"
+    ],
+    "source_line": 10592,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b874b3a7-2956-455d-ada5-44ac73b983d5",
+    "title": "Detection of Gunshot Residue",
+    "clean_title": "Detection of Gunshot Residue",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Detection of Gunshot Residue"
+    ],
+    "source_line": 10649,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "70b35b80-c088-4d91-b045-40913048071e",
+    "title": "Radiography of Gunshot Wounds",
+    "clean_title": "Radiography of Gunshot Wounds",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Radiography of Gunshot Wounds"
+    ],
+    "source_line": 10729,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "5f3f1458-4914-4cdd-ae5e-35dbf535ad66",
+    "title": "Classification of Blast Injuries",
+    "clean_title": "Classification of Blast Injuries",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Classification of Blast Injuries"
+    ],
+    "source_line": 10736,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "cbcfb31f-77dc-4613-93fd-ad9fed71cb36",
+    "title": "Laboratory Diagnostics",
+    "clean_title": "Laboratory Diagnostics",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Laboratory Diagnostics"
+    ],
+    "source_line": 10803,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "fbfdfd15-b6b6-4485-9955-fe47d0992d39",
+    "title": "Heat Stroke",
+    "clean_title": "Heat Stroke",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Heat Stroke"
+    ],
+    "source_line": 10815,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "06370432-75ce-4396-a728-79ee74c4a907",
+    "title": "Entomotoxicology",
+    "clean_title": "Entomotoxicology",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Entomotoxicology"
+    ],
+    "source_line": 10934,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "53fe0da2-b38f-480f-9169-ead527c3fd59",
+    "title": "Confirmatory Tests",
+    "clean_title": "Confirmatory Tests",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Confirmatory Tests"
+    ],
+    "source_line": 10963,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a3c0520f-726e-43a8-806c-1a5ba35b1b90",
+    "title": "Metabolism and Pharmacogenetics",
+    "clean_title": "Metabolism and Pharmacogenetics",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Metabolism and Pharmacogenetics"
+    ],
+    "source_line": 10972,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b8193dbc-df4f-453d-a4be-4efd7e9f9934",
+    "title": "Volatile Organic Compounds",
+    "clean_title": "Volatile Organic Compounds",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Volatile Organic Compounds"
+    ],
+    "source_line": 10980,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "13580f33-0068-4a0c-ac96-12b93ee3063c",
+    "title": "Pesticides",
+    "clean_title": "Pesticides",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Pesticides"
+    ],
+    "source_line": 11036,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1d6f0448-451f-4fa1-b8bd-0d7daca51f91",
+    "title": "Decomposition",
+    "clean_title": "Decomposition",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Decomposition"
+    ],
+    "source_line": 11088,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9e0b779e-3b51-4383-ac14-e4ba8fd12124",
+    "title": "Blunt Trauma",
+    "clean_title": "Blunt Trauma",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Blunt Trauma"
+    ],
+    "source_line": 11139,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1fd7ae26-69f3-445c-979f-c327772bf8a2",
+    "title": "Surgical/Medical Complications / Intervention Artifact",
+    "clean_title": "Surgical/Medical Complications / Intervention Artifact",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Surgical/Medical Complications / Intervention Artifact"
+    ],
+    "source_line": 11275,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "67372562-362c-4fee-b176-22ff4a5934bd",
+    "title": "Stress Related Sudden Death",
+    "clean_title": "Stress Related Sudden Death",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Stress Related Sudden Death"
+    ],
+    "source_line": 11370,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "eee9b36a-9c7c-4bfa-a93f-4cebd8f8f40a",
+    "title": "Aircraft Crash Scene",
+    "clean_title": "Aircraft Crash Scene",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Asphyxia",
+      "Aircraft Crash Scene"
+    ],
+    "source_line": 11547,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "56700aee-5280-402f-8846-889dccb49cc8",
+    "title": "Molecular Testing",
+    "clean_title": "Molecular Testing",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Cytochemical and Advanced Hematology Stains",
+      "Molecular Testing"
+    ],
+    "source_line": 11770,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "06511d7c-0256-4729-9b80-c77326a599ca",
+    "title": "Erythrocytes (RBCs)",
+    "clean_title": "Erythrocytes (RBCs)",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
+      "Erythrocytes (RBCs)"
+    ],
+    "source_line": 11815,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "6b85dc0f-5bc4-4297-94dc-ce72bd256b5a",
+    "title": "Pediatric Issues, Including Fetal Hematopoiesis",
+    "clean_title": "Pediatric Issues, Including Fetal Hematopoiesis",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Other Lymphoid Cells",
+      "Pediatric Issues, Including Fetal Hematopoiesis"
+    ],
+    "source_line": 11895,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "84c38f80-0822-4959-b58b-3cf41acf41b8",
+    "title": "Microangiopathic Hemolytic Anemia",
+    "clean_title": "Microangiopathic Hemolytic Anemia",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Microangiopathic Hemolytic Anemia"
+    ],
+    "source_line": 11942,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "0625e376-714f-474a-8781-2098e94b1830",
+    "title": "Advanced Erythrocyte Abnormalities",
+    "clean_title": "Advanced Erythrocyte Abnormalities",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Diamond-Blackfan Anemia",
+      "Advanced Erythrocyte Abnormalities"
+    ],
+    "source_line": 12037,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c8882d84-c30a-4dd5-803d-6fbca3537829",
+    "title": "Plasma Cells",
+    "clean_title": "Plasma Cells",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Non-Neoplastic Disorders of Leucocytes",
+      "Plasma Cells"
+    ],
+    "source_line": 12073,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "301c8501-51e7-4ff9-b4a8-29886d42679d",
+    "title": "Other Benign Hematopoietic Disorders",
+    "clean_title": "Other Benign Hematopoietic Disorders",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Multilineage Benign Hematopoietic Disorders",
+      "Other Benign Hematopoietic Disorders"
+    ],
+    "source_line": 12090,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ff44035e-bc5e-436a-8bd4-82c7002e1caa",
+    "title": "Leucocyte Infections",
+    "clean_title": "Leucocyte Infections",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Infections with Manifestation in the Peripheral Blood",
+      "Leucocyte Infections"
+    ],
+    "source_line": 12103,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "d1a53fb1-9e95-4ddb-a910-4a91ba31b8be",
+    "title": "Other Benign Disorders of Bone Marrow",
+    "clean_title": "Other Benign Disorders of Bone Marrow",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Benign Hematologic Disorders of the Bone Marrow Not Otherwise Classified",
+      "Other Benign Disorders of Bone Marrow"
+    ],
+    "source_line": 12176,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "43d46ef5-4275-4403-821a-c66c8a584a5e",
+    "title": "Lymph Node",
+    "clean_title": "Lymph Node",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Benign Disorders of the Lymphoid Tissues",
+      "Lymph Node"
+    ],
+    "source_line": 12185,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "55a05ca6-a5d6-44e9-a457-4849a3ab31a9",
+    "title": "Spleen",
+    "clean_title": "Spleen",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Benign Disorders of the Lymphoid Tissues",
+      "Spleen"
+    ],
+    "source_line": 12224,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "6e3e951a-fc34-493b-a803-612dc2f9c9c2",
+    "title": "Thymus",
+    "clean_title": "Thymus",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Benign Disorders of the Lymphoid Tissues",
+      "Thymus"
+    ],
+    "source_line": 12230,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "acfdbf5c-4541-4fde-a23e-1fafdb87feb5",
+    "title": "Extranodal",
+    "clean_title": "Extranodal",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Benign Disorders of the Lymphoid Tissues",
+      "Extranodal"
+    ],
+    "source_line": 12237,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "70512e60-bb93-4fe1-9dbc-dae1b4bbeaba",
+    "title": "Other Body Fluids",
+    "clean_title": "Other Body Fluids",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Fluid Specimens",
+      "Other Body Fluids"
+    ],
+    "source_line": 12242,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "75478486-fca6-4499-b4eb-69cd5ec87c43",
+    "title": "Immunodeficiency-Associated Lymphoproliferative Disorders",
+    "clean_title": "Immunodeficiency-Associated Lymphoproliferative Disorders",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Immunodeficiency Disorders",
+      "Immunodeficiency-Associated Lymphoproliferative Disorders"
+    ],
+    "source_line": 12254,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "20749b7f-8ee9-4f6c-96e2-e4015c0dc831",
+    "title": "Antiplatelet and Anticoagulant Drugs",
+    "clean_title": "Antiplatelet and Anticoagulant Drugs",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Other Causes of Thrombocytopenia",
+      "Antiplatelet and Anticoagulant Drugs"
+    ],
+    "source_line": 12355,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "6cfd67b6-8d73-402c-a50c-afe13197a787",
+    "title": "BCR-ABL1",
+    "clean_title": "BCR-ABL1",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "BCR-ABL1"
+    ],
+    "source_line": 12417,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "29db5112-7360-437e-8126-6d5499789fe7",
+    "title": "Acute Leukemias of Ambiguous Lineage",
+    "clean_title": "Acute Leukemias of Ambiguous Lineage",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Acute Leukemias of Ambiguous Lineage"
+    ],
+    "source_line": 12517,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "65b795bc-9be3-46f8-871f-892a66442d1c",
+    "title": "Mature T- and NK-cell Neoplasms",
+    "clean_title": "Mature T- and NK-cell Neoplasms",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Other Large B-cell Lymphomas",
+      "Mature T- and NK-cell Neoplasms"
+    ],
+    "source_line": 12573,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "92f23260-d186-4a93-aa8d-c758ab1c5454",
+    "title": "Hodgkin Lymphoma",
+    "clean_title": "Hodgkin Lymphoma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Other Large B-cell Lymphomas",
+      "Hodgkin Lymphoma"
+    ],
+    "source_line": 12671,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a6b1621c-bb16-4ab7-892b-44ae8aa6e1ba",
+    "title": "Plasma Cell Neoplasms, Paraprotein Disorders, & Amyloidosis",
+    "clean_title": "Plasma Cell Neoplasms, Paraprotein Disorders, & Amyloidosis",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Plasma Cell Neoplasms, Paraprotein Disorders, & Amyloidosis"
+    ],
+    "source_line": 12692,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c3c4212f-7bfb-465e-87d0-9fd3ae915122",
+    "title": "Histiocytic/Dendritic Cell Neoplasms",
+    "clean_title": "Histiocytic/Dendritic Cell Neoplasms",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Histiocytic/Dendritic Cell Neoplasms"
+    ],
+    "source_line": 12708,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b47c272f-be29-4c14-a508-61130d8bd6c7",
+    "title": "Metastases to Other Lymphoid Tissue",
+    "clean_title": "Metastases to Other Lymphoid Tissue",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Metastatic Neoplasms",
+      "Metastases to Other Lymphoid Tissue"
+    ],
+    "source_line": 12727,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "6cab4e6e-fb2b-4145-9416-7489781d647e",
+    "title": "Hematology & Hematopathology-Specific Administration & Laboratory Management",
+    "clean_title": "Hematology & Hematopathology-Specific Administration & Laboratory Management",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "The Skin and Nails",
+      "Hematology & Hematopathology-Specific Administration & Laboratory Management"
+    ],
+    "source_line": 12733,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ff8256af-4511-435f-8b56-8428e242d0c7",
+    "title": "Reactive Gliosis",
+    "clean_title": "Reactive Gliosis",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Storage Productes in Neurometabolic Disease",
+      "Reactive Gliosis"
+    ],
+    "source_line": 12859,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c0d02d24-cb87-40af-9dca-fd6fb7d3138d",
+    "title": "Molecular Techniques",
+    "clean_title": "Molecular Techniques",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Storage Productes in Neurometabolic Disease",
+      "Molecular Techniques"
+    ],
+    "source_line": 12951,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "918c7e90-1733-4629-821e-ad7dd41e80d9",
+    "title": "Chronic Lesions",
+    "clean_title": "Chronic Lesions",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Cerebellar, Brain Stem, and Spinal Cord Lesions",
+      "Chronic Lesions"
+    ],
+    "source_line": 13012,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c7766eb4-958b-4112-8ce4-69cea1e20559",
+    "title": "Cerebellar Agenesis",
+    "clean_title": "Cerebellar Agenesis",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Cerebellar Agenesis"
+    ],
+    "source_line": 13121,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e782a8d3-2113-439c-97a4-698918e6a04e",
+    "title": "Sudden Infant Death Syndrome",
+    "clean_title": "Sudden Infant Death Syndrome",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Syringomyelia/Hydromyelia",
+      "Sudden Infant Death Syndrome"
+    ],
+    "source_line": 13233,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "004e4a52-b6c9-40b4-9c73-0051688fcd15",
+    "title": "Rasmussen encephalitis",
+    "clean_title": "Rasmussen encephalitis",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Epilepsy",
+      "Rasmussen encephalitis"
+    ],
+    "source_line": 13272,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "58937ab0-defa-45d8-936f-14e7bc9d9915",
+    "title": "Cerebral Blood Flow",
+    "clean_title": "Cerebral Blood Flow",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Vascular Disorders",
+      "Cerebral Blood Flow"
+    ],
+    "source_line": 13284,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ba54170b-681e-4bbf-a43d-b505c683b014",
+    "title": "Brain Hemorrhage",
+    "clean_title": "Brain Hemorrhage",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Vascular Disorders",
+      "Brain Hemorrhage"
+    ],
+    "source_line": 13393,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "15577e2b-096e-4b1d-800e-4b83cb2c0116",
+    "title": "Vascular Dementia",
+    "clean_title": "Vascular Dementia",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Vascular Disorders",
+      "Vascular Dementia"
+    ],
+    "source_line": 13468,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ee77ff94-64ad-433c-b298-96c4acd913cf",
+    "title": "Traumatic Spinal Cord Injury",
+    "clean_title": "Traumatic Spinal Cord Injury",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Trauma",
+      "Traumatic Spinal Cord Injury"
+    ],
+    "source_line": 13526,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "8d862a5c-69ef-478b-90f7-46bb1dab8438",
+    "title": "Rabies",
+    "clean_title": "Rabies",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Infections and Inflammatory Diseases",
+      "Rabies"
+    ],
+    "source_line": 13555,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "fc55f5f8-143c-430f-b997-5d9dfad83f60",
+    "title": "Cerebral Malaria",
+    "clean_title": "Cerebral Malaria",
+    "difficulty": "F",
+    "level": 4,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Granulomatous Amebic Encephalitis",
+      "Cysticercosis and Other Cestodes",
+      "Cerebral Malaria"
+    ],
+    "source_line": 13662,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "2542e84e-b7b8-4a10-bd9a-6c50db35376e",
+    "title": "Autoimmune (Lymphocytic) Hypophysitis",
+    "clean_title": "Autoimmune (Lymphocytic) Hypophysitis",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Autoimmune (Lymphocytic) Hypophysitis"
+    ],
+    "source_line": 13745,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ddeae6c7-f96c-47d0-971b-2520fdd54caf",
+    "title": "Central Pontine Myelinolysis",
+    "clean_title": "Central Pontine Myelinolysis",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Aquaporin-4 in NMO",
+      "Central Pontine Myelinolysis"
+    ],
+    "source_line": 13791,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "27e5a47e-df67-4a61-963a-9d49b5d5e030",
+    "title": "Hyperglycemia",
+    "clean_title": "Hyperglycemia",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Complications of Systemic Disorders",
+      "Hyperglycemia"
+    ],
+    "source_line": 13821,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b656d87d-1fef-4a44-ac98-abf61f0f37a5",
+    "title": "Chloroquine/Hydroxychloroquine",
+    "clean_title": "Chloroquine/Hydroxychloroquine",
+    "difficulty": "F",
+    "level": 4,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Adrenoleukodystrophy",
+      "Nucleoside Analogs",
+      "Chloroquine/Hydroxychloroquine"
+    ],
+    "source_line": 13922,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ac40fc87-2af2-43b0-adcb-504904261de7",
+    "title": "Radiation Induced Neoplasia",
+    "clean_title": "Radiation Induced Neoplasia",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Adrenoleukodystrophy",
+      "Radiation Induced Neoplasia"
+    ],
+    "source_line": 13981,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "538963ca-ea7b-4188-a857-e80348a19456",
+    "title": "Spinal-Bulbar Muscular Atrophy/ X-linked Bulbospinal",
+    "clean_title": "Spinal-Bulbar Muscular Atrophy/ X-linked Bulbospinal",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Parkinson Disease-Dementia (PD-D)",
+      "Spinal-Bulbar Muscular Atrophy/ X-linked Bulbospinal"
+    ],
+    "source_line": 14062,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3c9163c5-d3c1-4d8f-bf27-03d2ae905316",
+    "title": "Gliosarcoma",
+    "clean_title": "Gliosarcoma",
+    "difficulty": "F",
+    "level": 4,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Neoplasms",
+      "Giant Cell Glioblastoma",
+      "Gliosarcoma"
+    ],
+    "source_line": 14187,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e8ceca3d-d4b2-431c-984e-1e073c33e4ed",
+    "title": "Pineocytoma",
+    "clean_title": "Pineocytoma",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Neoplasms",
+      "Pineocytoma"
+    ],
+    "source_line": 14330,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "7d686c1f-ede2-457c-ac8e-c889bfa44e57",
+    "title": "Meningioma, Metaplastic",
+    "clean_title": "Meningioma, Metaplastic",
+    "difficulty": "F",
+    "level": 4,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Atypical Neurofibromatous Neoplasm of Uncertain Biologic",
+      "Meningioma, Lymphoplasmacyte-Rich",
+      "Meningioma, Metaplastic"
+    ],
+    "source_line": 14469,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9666f861-15f2-45b1-8305-b45f41966674",
+    "title": "Acidophil Stem Cell Adenoma",
+    "clean_title": "Acidophil Stem Cell Adenoma",
+    "difficulty": "F",
+    "level": 2,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Acidophil Stem Cell Adenoma"
+    ],
+    "source_line": 14603,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "de832eda-83e9-4d5e-b306-2ef874b914b6",
+    "title": "Rhabdoid Tumor Predisposition Syndrome",
+    "clean_title": "Rhabdoid Tumor Predisposition Syndrome",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Plurihormonal PIT1-Positive Adenoma",
+      "Rhabdoid Tumor Predisposition Syndrome"
+    ],
+    "source_line": 14750,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e3b23bfb-08fd-4318-938d-bdf92ac97a43",
+    "title": "Infant-Type Hemispheric Glioma",
+    "clean_title": "Infant-Type Hemispheric Glioma",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "And IDH-Wildtype",
+      "Infant-Type Hemispheric Glioma"
+    ],
+    "source_line": 14836,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "262c2852-0215-46c7-be2b-4657165f66f8",
+    "title": "Lipid Storage Myopathies",
+    "clean_title": "Lipid Storage Myopathies",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Type V (Myophosphorylase Deficiency/McArdle Disease)",
+      "Mitochondrial Myopathy",
+      "Lipid Storage Myopathies"
+    ],
+    "source_line": 14903,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "2f058820-bfc8-4d92-bd04-9f498807017c",
+    "title": "Motor Neuron Diseases, Spinal Muscular Atrophy",
+    "clean_title": "Motor Neuron Diseases, Spinal Muscular Atrophy",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Type V (Myophosphorylase Deficiency/McArdle Disease)",
+      "Motor Neuron Diseases, Spinal Muscular Atrophy"
+    ],
+    "source_line": 14972,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "d60aa675-f243-484a-817c-25e765fa9c62",
+    "title": "Neuropathies Associated with Systemic Diseases",
+    "clean_title": "Neuropathies Associated with Systemic Diseases",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Peripheral Nerve",
+      "Neuropathies Associated with Systemic Diseases"
+    ],
+    "source_line": 15035,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9e771dc3-9c8c-4776-a05b-1cfcea7315d0",
+    "title": "Amyloid Neuropathy",
+    "clean_title": "Amyloid Neuropathy",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Peripheral Nerve",
+      "Amyloid Neuropathy"
+    ],
+    "source_line": 15059,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "6e6ca05a-bf30-44bb-8cdc-85bdb7c47294",
+    "title": "Therapeutic or Iatrogenic Complications",
+    "clean_title": "Therapeutic or Iatrogenic Complications",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_neuro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Neuropathology Topics for Anatomic Pathology Residents",
+      "General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations",
+      "Melanoma",
+      "Therapeutic or Iatrogenic Complications"
+    ],
+    "source_line": 15129,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "33b427dc-a599-4403-bc84-e47cefe9633c",
+    "title": "Maternal Intervillous Space",
+    "clean_title": "Maternal Intervillous Space",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_pediatric",
+    "parent_topic_id": null,
+    "path_context": [
+      "Pediatric Pathology Topics for Anatomic Pathology Residents",
+      "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+      "Maternal Intervillous Space"
+    ],
+    "source_line": 15165,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "60770e57-dcdd-4609-bdf8-d1120c037a2a",
+    "title": "Fetal Vessel Pathology",
+    "clean_title": "Fetal Vessel Pathology",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_pediatric",
+    "parent_topic_id": null,
+    "path_context": [
+      "Pediatric Pathology Topics for Anatomic Pathology Residents",
+      "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+      "Fetal Vessel Pathology"
+    ],
+    "source_line": 15269,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3d7512db-a217-4660-8724-03c52151b660",
+    "title": "Maternal Complications of Pregnancy",
+    "clean_title": "Maternal Complications of Pregnancy",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_pediatric",
+    "parent_topic_id": null,
+    "path_context": [
+      "Pediatric Pathology Topics for Anatomic Pathology Residents",
+      "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+      "Placental Tumors",
+      "Maternal Complications of Pregnancy"
+    ],
+    "source_line": 15379,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "43f9ff06-e87a-4505-8fcf-e3db2c0e8b01",
+    "title": "Intrauterine Growth Restriction",
+    "clean_title": "Intrauterine Growth Restriction",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_pediatric",
+    "parent_topic_id": null,
+    "path_context": [
+      "Pediatric Pathology Topics for Anatomic Pathology Residents",
+      "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+      "Perinatal Pathology: Fetal/Neonatal Pathophysiology",
+      "Intrauterine Growth Restriction"
+    ],
+    "source_line": 15429,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "48a501ff-1fd8-4597-8759-cc1799176352",
+    "title": "Nutritional Disorders",
+    "clean_title": "Nutritional Disorders",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_pediatric",
+    "parent_topic_id": null,
+    "path_context": [
+      "Pediatric Pathology Topics for Anatomic Pathology Residents",
+      "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+      "Retinopathy of Prematurity",
+      "Nutritional Disorders"
+    ],
+    "source_line": 15511,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "da099240-2d70-4f7e-a172-7bbad3760de4",
+    "title": "Metabolic Disorders",
+    "clean_title": "Metabolic Disorders",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_pediatric",
+    "parent_topic_id": null,
+    "path_context": [
+      "Pediatric Pathology Topics for Anatomic Pathology Residents",
+      "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+      "General Pathologic Principles and Syndromes",
+      "Metabolic Disorders"
+    ],
+    "source_line": 15565,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "0f534c21-983e-4311-ab40-e8484a307148",
+    "title": "Peroxisomal Disorders, including Zellweger Syndrome",
+    "clean_title": "Peroxisomal Disorders, including Zellweger Syndrome",
+    "difficulty": "AR",
+    "level": 4,
+    "category_id": "ap_pediatric",
+    "parent_topic_id": null,
+    "path_context": [
+      "Pediatric Pathology Topics for Anatomic Pathology Residents",
+      "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+      "Tyrosinemia",
+      "Organic Acidemias",
+      "Peroxisomal Disorders, including Zellweger Syndrome"
+    ],
+    "source_line": 15652,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c4c13b10-faea-4866-9699-b0f335c31e10",
+    "title": "Aortic Coarctation",
+    "clean_title": "Aortic Coarctation",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "Normal Circulation of the Embryo and Fetus",
+      "Aortic Coarctation"
+    ],
+    "source_line": 15694,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "f8a1e94e-c3cf-4e1b-ad00-8333930401e7",
+    "title": "Idiopathic Infantile Arterial Calcification",
+    "clean_title": "Idiopathic Infantile Arterial Calcification",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "Normal Circulation of the Embryo and Fetus",
+      "Vascular Malformations",
+      "Idiopathic Infantile Arterial Calcification"
+    ],
+    "source_line": 15791,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "fb909710-f70b-4e25-a04e-040906f5cdde",
+    "title": "Necrotizing Tracheobronchitis",
+    "clean_title": "Necrotizing Tracheobronchitis",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "The Respiratory System and Mediastinum",
+      "Necrotizing Tracheobronchitis"
+    ],
+    "source_line": 15843,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "f75c2d25-8c90-4310-a858-1a2387b03ad0",
+    "title": "Genetic Disorders (e.g., Surfactant System Disorders)",
+    "clean_title": "Genetic Disorders (e.g., Surfactant System Disorders)",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "The Respiratory System and Mediastinum",
+      "Genetic Disorders (e.g., Surfactant System Disorders)"
+    ],
+    "source_line": 15936,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "9a336859-4adb-43b4-bd4a-03233dd7007c",
+    "title": "Normal Development, Structure, and Function",
+    "clean_title": "Normal Development, Structure, and Function",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "The Central Nervous System",
+      "Normal Development, Structure, and Function"
+    ],
+    "source_line": 15978,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c694f8ab-18d3-4eeb-bcf8-b5fd3ee8c1d7",
+    "title": "Pineal Lesions",
+    "clean_title": "Pineal Lesions",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "The Central Nervous System",
+      "Pineal Lesions"
+    ],
+    "source_line": 16068,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ba62db9c-33f2-44d2-b92f-f4c7f7025a6c",
+    "title": "Malformations",
+    "clean_title": "Malformations",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "The Skin",
+      "Malformations"
+    ],
+    "source_line": 16190,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "65e0bcba-ca3f-4b9e-8162-6db94319b4d6",
+    "title": "Normal Development, Structure, and Function",
+    "clean_title": "Normal Development, Structure, and Function",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "The Special Senses \u2013 Eye and Ear",
+      "Normal Development, Structure, and Function"
+    ],
+    "source_line": 16232,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "6774e1a9-7383-4feb-87d0-9e423ec9102e",
+    "title": "Degenerative Conditions (e.g., Cataracts)",
+    "clean_title": "Degenerative Conditions (e.g., Cataracts)",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "The Special Senses \u2013 Eye and Ear",
+      "Degenerative Conditions (e.g., Cataracts)"
+    ],
+    "source_line": 16264,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "5b151c66-2b48-4ed4-a159-9f2d1aeb3a4c",
+    "title": "Malrotation / Abnormal Fixation",
+    "clean_title": "Malrotation / Abnormal Fixation",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "Other Salivary Gland Tumors, Benign and Malignant",
+      "Malrotation / Abnormal Fixation"
+    ],
+    "source_line": 16336,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "0e29984d-57a4-46a4-adcb-dd52db486375",
+    "title": "Lymphangiectasis",
+    "clean_title": "Lymphangiectasis",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "Other Dysmotility Disorders",
+      "Lymphangiectasis"
+    ],
+    "source_line": 16452,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "b8cf463d-cf6f-4829-ae84-2520fa546ab8",
+    "title": "Lymphoid/Hematopoietic",
+    "clean_title": "Lymphoid/Hematopoietic",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "Other Dysmotility Disorders",
+      "Mesenchymal",
+      "Lymphoid/Hematopoietic"
+    ],
+    "source_line": 16514,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a8bcaa6e-ec4b-4b6e-8a6d-75aac657bd93",
+    "title": "Neonatal Hemochromatosis",
+    "clean_title": "Neonatal Hemochromatosis",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "The Hepatobiliary System and Pancreas",
+      "Neonatal Giant Cell Hepatitis",
+      "Neonatal Hemochromatosis"
+    ],
+    "source_line": 16590,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "944e6a06-41ac-49cc-89e0-8df5189161f6",
+    "title": "Pancreatoblastoma",
+    "clean_title": "Pancreatoblastoma",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "Pancreatoblastoma"
+    ],
+    "source_line": 16711,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e14d5a0f-5793-4d68-bc09-7a8996a07f37",
+    "title": "Malformations (e.g., Annular Pancreas)",
+    "clean_title": "Malformations (e.g., Annular Pancreas)",
+    "difficulty": "F",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "Pancreatoblastoma",
+      "Malformations (e.g., Annular Pancreas)"
+    ],
+    "source_line": 16755,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "8fecb701-d697-4bf3-815e-5a0b64a66d01",
+    "title": "Complications of Immunosuppression",
+    "clean_title": "Complications of Immunosuppression",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "Antibody-Mediated",
+      "Complications of Immunosuppression"
+    ],
+    "source_line": 16842,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c5eaf41e-83fd-4d54-8ee2-7a592bb3ad77",
+    "title": "Urinary Calculi",
+    "clean_title": "Urinary Calculi",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_cv",
+    "parent_topic_id": null,
+    "path_context": [
+      "Cardiovascular",
+      "Normal Development, Structure, and Function",
+      "Antibody-Mediated",
+      "Urinary Calculi"
+    ],
+    "source_line": 16916,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c00d30c8-1a27-4d03-82cb-41b3d149409f",
+    "title": "Disorders of Hormonal Synthesis",
+    "clean_title": "Disorders of Hormonal Synthesis",
+    "difficulty": "C",
+    "level": 4,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "Normal Anatomy, Histology, and Development",
+      "Medullary, including C-cell Hyperplasia",
+      "Cytomegaly",
+      "Disorders of Hormonal Synthesis"
+    ],
+    "source_line": 16982,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "e8be0da0-95aa-4782-9aa2-bdc1ab219139",
+    "title": "Metabolic Disorders (e.g., Adrenoleukodystrophy & Wolman Disease)",
+    "clean_title": "Metabolic Disorders (e.g., Adrenoleukodystrophy & Wolman Disease)",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "Normal Anatomy, Histology, and Development",
+      "Medullary, including C-cell Hyperplasia",
+      "Metabolic Disorders (e.g., Adrenoleukodystrophy & Wolman Disease)"
+    ],
+    "source_line": 17020,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "05c454ea-7529-4d45-8d7d-184c0364e7f0",
+    "title": "Burkitt Lymphoma",
+    "clean_title": "Burkitt Lymphoma",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "Normal Anatomy, Histology, and Development",
+      "Burkitt Lymphoma"
+    ],
+    "source_line": 17101,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1607d34e-034f-4eba-be8b-918cb2f81d09",
+    "title": "Other Constitutional / Hereditary Disorders",
+    "clean_title": "Other Constitutional / Hereditary Disorders",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_endo",
+    "parent_topic_id": null,
+    "path_context": [
+      "The Endocrine System",
+      "Normal Anatomy, Histology, and Development",
+      "Myeloid Proliferations Related to Trisomy 21",
+      "Other Constitutional / Hereditary Disorders"
+    ],
+    "source_line": 17192,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "931bc8f1-395a-4463-afa1-951e3ea91617",
+    "title": "Secretory Carcinoma",
+    "clean_title": "Secretory Carcinoma",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_breast",
+    "parent_topic_id": null,
+    "path_context": [
+      "Breast",
+      "Normal Anatomy, History, and Development",
+      "Developmental Malformations",
+      "Secretory Carcinoma"
+    ],
+    "source_line": 17241,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "42d4d88b-ea75-4d04-b202-66892c2bcb16",
+    "title": "Fallopian Tube Disorders & Neoplasms",
+    "clean_title": "Fallopian Tube Disorders & Neoplasms",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology, and Development",
+      "Small Cell Carcinoma",
+      "Fallopian Tube Disorders & Neoplasms"
+    ],
+    "source_line": 17300,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "f67893d1-a1a7-4c3a-917c-bd76ad4982c0",
+    "title": "Persistent M\u00fcllerian Duct Syndrome",
+    "clean_title": "Persistent M\u00fcllerian Duct Syndrome",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology, and Development",
+      "Disorders of Sexual Development (Intersex Disorders)",
+      "Persistent M\u00fcllerian Duct Syndrome"
+    ],
+    "source_line": 17352,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1b65e7a2-a05a-47d3-a4a9-749c385a5b8b",
+    "title": "Bacterial",
+    "clean_title": "Bacterial",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology and Development",
+      "Bacterial"
+    ],
+    "source_line": 17378,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ed767940-2dd0-4114-b519-e92394fba8c4",
+    "title": "Prostate (e.g., Rhabdomyosarcoma)",
+    "clean_title": "Prostate (e.g., Rhabdomyosarcoma)",
+    "difficulty": "C",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology and Development",
+      "Neoplasms (e.g., Rhabdomyosarcoma)",
+      "Prostate (e.g., Rhabdomyosarcoma)"
+    ],
+    "source_line": 17429,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "1d6e342c-9606-4972-a50c-8050c2b6314b",
+    "title": "Neurothekeoma",
+    "clean_title": "Neurothekeoma",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology and Development",
+      "Neurothekeoma"
+    ],
+    "source_line": 17490,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "70922821-4b72-4a45-921c-29e3d0a5c05c",
+    "title": "Metabolic, Nutritional, and Degenerative Disorders",
+    "clean_title": "Metabolic, Nutritional, and Degenerative Disorders",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology and Development",
+      "Other Sarcomas (e.g., CIC- and BCOR-altered)",
+      "Metabolic, Nutritional, and Degenerative Disorders"
+    ],
+    "source_line": 17581,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a9e3209e-b7f9-466c-a458-a2311a4c9958",
+    "title": "Bone Cysts (UBC and ABC)",
+    "clean_title": "Bone Cysts (UBC and ABC)",
+    "difficulty": "C",
+    "level": 2,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology and Development",
+      "Bone Cysts (UBC and ABC)"
+    ],
+    "source_line": 17628,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "3b729906-279a-4219-9fa3-cc6d9acd66b8",
+    "title": "Skeletal Dysplasia (e.g., Thanatophoric Dysplasia, Osteogenesis Imperfecta)AR",
+    "clean_title": "Skeletal Dysplasia (e.g., Thanatophoric Dysplasia, Osteogenesis Imperfecta)AR",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology and Development",
+      "Langerhans Cell Histiocytosis",
+      "Skeletal Dysplasia (e.g., Thanatophoric Dysplasia, Osteogenesis Imperfecta)AR"
+    ],
+    "source_line": 17655,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "75c1c080-684f-4ec7-a55c-1f3baed2ba89",
+    "title": "Serology for Infectious Diseases",
+    "clean_title": "Serology for Infectious Diseases",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology and Development",
+      "Serology for Infectious Diseases"
+    ],
+    "source_line": 17739,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "a864ca36-a1c8-4751-8f71-91eaa95b67ab",
+    "title": "Immunophenotyping (Flow Cytometry)",
+    "clean_title": "Immunophenotyping (Flow Cytometry)",
+    "difficulty": "AR",
+    "level": 2,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology and Development",
+      "Immunophenotyping (Flow Cytometry)"
+    ],
+    "source_line": 17870,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "ca63c64b-3ede-4c9e-8cf4-6e0c55dc53cb",
+    "title": "Development of Reference Ranges/Assay Validation",
+    "clean_title": "Development of Reference Ranges/Assay Validation",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology and Development",
+      "Crystals, Casts, and Cells",
+      "Development of Reference Ranges/Assay Validation"
+    ],
+    "source_line": 17990,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "c0d9456d-e315-48fd-8cec-cf7a24c1137d",
+    "title": "Informatics",
+    "clean_title": "Informatics",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology and Development",
+      "Crystals, Casts, and Cells",
+      "Informatics"
+    ],
+    "source_line": 18070,
+    "is_valid_topic": true
+  },
+  {
+    "topic_id": "8417052b-076b-4380-a432-a4e2529bbebc",
+    "title": "Therapeutic Misadventure / Complications of Treatment",
+    "clean_title": "Therapeutic Misadventure / Complications of Treatment",
+    "difficulty": "AR",
+    "level": 3,
+    "category_id": "ap_male_repro",
+    "parent_topic_id": null,
+    "path_context": [
+      "Male Reproductive System",
+      "Normal Anatomy, Histology and Development",
+      "Crystals, Casts, and Cells",
+      "Therapeutic Misadventure / Complications of Treatment"
+    ],
+    "source_line": 18121,
+    "is_valid_topic": true
+  }
+]

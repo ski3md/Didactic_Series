@@ -1,0 +1,7 @@
+{
+  "name": "StainBrain",
+  "description": "A comprehensive case tracker for anatomic pathology, styled after Epic Beaker. It facilitates case management for Bone & Soft Tissue Pathology and Dermatopathology, including features for outside consults, FNCLCC/AJCC staging, and an AI-powered educational advisor for complex cases.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

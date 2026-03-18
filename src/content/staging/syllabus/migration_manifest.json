@@ -1,0 +1,52 @@
+{
+  "source_repo": "/Users/skim4/Documents/GitHub/syllabus",
+  "target_dir": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/syllabus",
+  "content_categories_found": [
+    "syllabus-spec",
+    "parsed-syllabus-topics"
+  ],
+  "absent_categories": [
+    "lecture",
+    "histology",
+    "board-prep"
+  ],
+  "staged_files": [
+    {
+      "source_path": "/Users/skim4/Documents/GitHub/syllabus/data/ap_spec.txt",
+      "target_path": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/syllabus/data/ap_spec.txt",
+      "category": "syllabus-spec",
+      "line_count": 18143
+    },
+    {
+      "source_path": "/Users/skim4/Documents/GitHub/syllabus/data/cp_spec.txt",
+      "target_path": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/syllabus/data/cp_spec.txt",
+      "category": "syllabus-spec",
+      "line_count": 244
+    },
+    {
+      "source_path": "/Users/skim4/Documents/GitHub/syllabus/data/parsed_topics.json",
+      "target_path": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/syllabus/data/parsed_topics.json",
+      "category": "parsed-syllabus-topics",
+      "topic_count": 320
+    },
+    {
+      "source_path": "/Users/skim4/Documents/GitHub/syllabus/data/parsed_topics_v3.json",
+      "target_path": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/syllabus/data/parsed_topics_v3.json",
+      "category": "parsed-syllabus-topics",
+      "topic_count": 3863
+    }
+  ],
+  "notable_dependencies": [
+    {
+      "path": "/Users/skim4/Documents/GitHub/syllabus/backend/syllabus_agent_v3.py",
+      "note": "Parser/dependency logic for regenerating syllabus topics; not copied because this staging area is content-only."
+    },
+    {
+      "path": "/Users/skim4/Documents/GitHub/syllabus/backend/server.py",
+      "note": "Backend API integration layer for syllabus storage and retrieval; not part of the raw content migration."
+    }
+  ],
+  "unresolved_issues": [
+    "This repo does not provide lecture, histology, or board-prep source payloads to migrate."
+  ]
+}

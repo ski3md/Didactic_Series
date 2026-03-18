@@ -1,0 +1,19 @@
+{
+  "counts": {
+    "lectures": 2,
+    "algorithms": 2,
+    "tutorials": 190,
+    "syllabusTopics": 3863
+  },
+  "sources": [
+    "stainbrain printable",
+    "board_prep",
+    "syllabus"
+  ],
+  "normalizedOutputs": {
+    "lectures": "src/content/lectures/lectures.normalized.json",
+    "algorithms": "src/content/algorithms/algorithms.normalized.json",
+    "tutorials": "src/content/tutorials/tutorials.normalized.json",
+    "syllabus": "src/content/syllabus/syllabus.normalized.json"
+  }
+}

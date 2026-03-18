@@ -1,0 +1,714 @@
+
+import type { DiagnosticAlgorithm, AlgorithmNode } from '../types';
+
+// --- SPINDLE CELL ALGORITHM ---
+const SPINDLE_CELL_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Adult Spindle Cell Sarcoma', description: 'Diagnostic approach to deep-seated spindle cell neoplasms.',
+        options: [{ label: 'Begin Analysis', nextNodeId: 'step1' }],
+        remainingDifferential: ['MPNST', 'Leiomyosarcoma', 'Synovial Sarcoma', 'SFT', 'Fibrosarcoma', 'Dedifferentiated Liposarcoma']
+    },
+    'step1': {
+        id: 'step1', type: 'decision', title: 'Pattern Recognition', description: 'What is the dominant architectural pattern?',
+        options: [
+            { label: 'Fascicular / Herringbone', nextNodeId: 'fascicular_branch' },
+            { label: 'Patternless / Staghorn', nextNodeId: 'sft_branch' },
+            { label: 'Pleomorphic / Storiform', nextNodeId: 'pleomorphic_branch' }
+        ]
+    },
+    'fascicular_branch': {
+        id: 'fascicular_branch', type: 'decision', title: 'Fascicular Spindle Cells', description: 'Check myogenic and neural markers.',
+        recommendedInitialIHC: ['SMA', 'Desmin', 'S100', 'SOX10', 'H3K27me3'],
+        options: [
+            { label: 'Desmin/SMA Positive', nextNodeId: 'result_lms' },
+            { label: 'S100/SOX10 Positive', nextNodeId: 'result_mpnst' },
+            { label: 'Negative for all', nextNodeId: 'check_synovial' }
+        ]
+    },
+    'sft_branch': {
+        id: 'sft_branch', type: 'result', title: 'SFT Pathway', description: 'Suspect Solitary Fibrous Tumor.',
+        diagnosis: 'Solitary Fibrous Tumor',
+        confirmatoryStudies: ['STAT6 (Nuclear)', 'CD34 (Diffuse)']
+    },
+    'pleomorphic_branch': {
+        id: 'pleomorphic_branch', type: 'stop', title: 'Go to Pleomorphic Algorithm', description: 'Switch to the dedicated Pleomorphic Sarcoma algorithm for high-grade lesions.'
+    },
+    'result_lms': { id: 'result_lms', type: 'result', title: 'Leiomyosarcoma', description: 'Smooth muscle differentiation.', diagnosis: 'Leiomyosarcoma', pearls: ['Perinuclear vacuoles', 'Cigar-shaped nuclei'] },
+    'result_mpnst': { id: 'result_mpnst', type: 'result', title: 'MPNST', description: 'Nerve sheath differentiation.', diagnosis: 'Malignant Peripheral Nerve Sheath Tumor', confirmatoryStudies: ['H3K27me3 Loss'] },
+    'check_synovial': {
+        id: 'check_synovial',
+        type: 'result',
+        title: 'Synovial Sarcoma',
+        description: 'Translocation associated. Classic biphasic or monophasic spindle cell patterns.',
+        diagnosis: 'Synovial Sarcoma',
+        confirmatoryStudies: ['TLE1 (Nuclear)', 'SS18-SSX fusion', 'Cytokeratin/EMA (Focal)', 'CD99+'],
+        pitfalls: [
+            'MPNST: Can be TLE1 positive! Check H3K27me3 loss.',
+            'Ewing Sarcoma: CD99 is positive in both. Check NKX2.2 and molecular.',
+            'SFT: Both can be CD99/BCL2 positive. Check STAT6.'
+        ]
+    }
+};
+
+// --- EPITHELIOID ALGORITHM ---
+const EPITHELIOID_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Epithelioid Soft Tissue Tumors', description: 'Rule out carcinoma first.',
+        options: [{ label: 'Start', nextNodeId: 'keratin_check' }]
+    },
+    'keratin_check': {
+        id: 'keratin_check', type: 'decision', title: 'Keratin Expression', description: 'Is the tumor Keratin positive?',
+        options: [
+            { label: 'Strongly Positive', nextNodeId: 'result_carcinoma' },
+            { label: 'Negative / Focal', nextNodeId: 'mesenchymal_branch' }
+        ]
+    },
+    'result_carcinoma': { id: 'result_carcinoma', type: 'stop', title: 'Consider Carcinoma', description: 'Metastatic Carcinoma is the most common epithelioid malignancy.' },
+    'mesenchymal_branch': {
+        id: 'mesenchymal_branch', type: 'decision', title: 'Mesenchymal Markers', description: 'Check vascular, myogenic, and specific markers.',
+        recommendedInitialIHC: ['CD31', 'ERG', 'INI1', 'S100', 'Desmin'],
+        options: [
+            { label: 'CD31 / ERG +', nextNodeId: 'result_angio' },
+            { label: 'INI1 Loss', nextNodeId: 'result_epith_sarcoma' },
+            { label: 'S100/HMB45 +', nextNodeId: 'result_melanoma' }
+        ]
+    },
+    'result_angio': { id: 'result_angio', type: 'result', title: 'Epithelioid Angiosarcoma', description: 'Vascular malignancy.', diagnosis: 'Epithelioid Angiosarcoma' },
+    'result_epith_sarcoma': { id: 'result_epith_sarcoma', type: 'result', title: 'Epithelioid Sarcoma', description: 'SMARCB1 Deficient.', diagnosis: 'Epithelioid Sarcoma', confirmatoryStudies: ['CD34+', 'Keratin+'] },
+    'result_melanoma': { id: 'result_melanoma', type: 'result', title: 'Melanoma', description: 'The great mimicker.', diagnosis: 'Metastatic Melanoma', pearls: ['Always include S100/SOX10 in epithelioid panels'] }
+};
+
+// --- MYXOID ALGORITHM ---
+const MYXOID_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Myxoid Soft Tissue Tumors', description: 'Differential of MFS, Myxoid LPS, LGFMS.',
+        remainingDifferential: ['Myxoma', 'Myxoid Liposarcoma', 'Myxofibrosarcoma', 'Low-grade Fibromyxoid Sarcoma'],
+        options: [{ label: 'Analyze Vasculature', nextNodeId: 'vessel_check' }]
+    },
+    'vessel_check': {
+        id: 'vessel_check', type: 'decision', title: 'Vascular Pattern', description: 'Assess the capillary architecture.',
+        options: [
+            { label: 'Chicken-wire / Plexiform', nextNodeId: 'result_myxoid_lps' },
+            { label: 'Curvilinear / Prominent', nextNodeId: 'result_mfs' },
+            { label: 'Arcades / Bland', nextNodeId: 'result_lgfms' }
+        ]
+    },
+    'result_myxoid_lps': { id: 'result_myxoid_lps', type: 'result', title: 'Myxoid Liposarcoma', description: 'Look for lipoblasts.', diagnosis: 'Myxoid Liposarcoma', confirmatoryStudies: ['FUS-DDIT3', 'NY-ESO-1'] },
+    'result_mfs': { id: 'result_mfs', type: 'result', title: 'Myxofibrosarcoma', description: 'Infiltrative, pleomorphic cells floating in mucus.', diagnosis: 'Myxofibrosarcoma', pearls: ['Look for curvilinear vessels with perivascular tumor condensation'] },
+    'result_lgfms': { id: 'result_lgfms', type: 'result', title: 'Low-grade Fibromyxoid Sarcoma', description: 'Bland spindle cells, swirling pattern.', diagnosis: 'Low-grade Fibromyxoid Sarcoma', confirmatoryStudies: ['MUC4', 'FUS-CREB3L2'] }
+};
+
+// --- SMALL ROUND BLUE CELL ALGORITHM ---
+const SRBCT_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Small Round Blue Cell Tumors', description: 'Urgent differentiation required.',
+        remainingDifferential: ['Lymphoma', 'Ewing Sarcoma', 'Rhabdomyosarcoma', 'DSRCT', 'Neuroblastoma', 'Poorly Diff. Synovial Sarcoma'],
+        options: [{ label: 'Start IHC Triage', nextNodeId: 'cd45_check' }]
+    },
+    'cd45_check': {
+        id: 'cd45_check', type: 'decision', title: 'CD45 (LCA)', description: 'Is it hematopoietic?',
+        options: [
+            { label: 'Positive', nextNodeId: 'result_lymphoma' },
+            { label: 'Negative', nextNodeId: 'cd99_check' }
+        ]
+    },
+    'result_lymphoma': { id: 'result_lymphoma', type: 'stop', title: 'Lymphoma/Leukemia', description: 'Proceed to Hematopathology workup (TdT, CD20, CD3, etc.).' },
+    'cd99_check': {
+        id: 'cd99_check', type: 'decision', title: 'CD99 Expression', description: 'Strong membranous positivity?',
+        recommendedInitialIHC: ['CD99', 'NKX2.2', 'Desmin', 'Myogenin'],
+        options: [
+            { label: 'Strong Diffuse +', nextNodeId: 'ewing_branch' },
+            { label: 'Negative / Weak', nextNodeId: 'muscle_check' }
+        ]
+    },
+    'ewing_branch': {
+        id: 'ewing_branch', type: 'decision', title: 'Ewing Markers', description: 'Check NKX2.2 and Cytokeratin.',
+        options: [
+            { label: 'NKX2.2 +, Keratin -', nextNodeId: 'result_ewing' },
+            { label: 'Keratin +, Desmin +', nextNodeId: 'result_dsrct' },
+            { label: 'TdT +', nextNodeId: 'result_lbl' }
+        ]
+    },
+    'muscle_check': {
+        id: 'muscle_check', type: 'decision', title: 'Myogenic Markers', description: 'Desmin and Myogenin.',
+        options: [
+            { label: 'Myogenin +', nextNodeId: 'result_rms' },
+            { label: 'Negative', nextNodeId: 'result_other' }
+        ]
+    },
+    'result_ewing': { id: 'result_ewing', type: 'result', title: 'Ewing Sarcoma', description: 'Defined by EWSR1 rearrangement.', diagnosis: 'Ewing Sarcoma', confirmatoryStudies: ['EWSR1 rearrangement'] },
+    'result_dsrct': { id: 'result_dsrct', type: 'result', title: 'DSRCT', description: 'Polyphenotypic small round blue cell tumor.', diagnosis: 'Desmoplastic Small Round Cell Tumor', confirmatoryStudies: ['EWSR1-WT1', 'WT1 C-term IHC'] },
+    'result_lbl': { id: 'result_lbl', type: 'result', title: 'Lymphoblastic Lymphoma', description: 'TdT positive, often mediastinal mass.', diagnosis: 'Lymphoblastic Lymphoma', pearls: ['CD99 is NOT specific for Ewing!'] },
+    'result_rms': { id: 'result_rms', type: 'result', title: 'Rhabdomyosarcoma', description: 'Skeletal muscle differentiation.', diagnosis: 'Rhabdomyosarcoma', confirmatoryStudies: ['PAX3/7-FOXO1 (for Alveolar)'] },
+    'result_other': { id: 'result_other', type: 'stop', title: 'Broad Differential', description: 'Consider CIC-sarcoma, BCOR-sarcoma, Neuroblastoma, or Poorly Differentiated Synovial Sarcoma. Molecular testing required.' }
+};
+
+// --- BONE TUMOR ALGORITHM ---
+const BONE_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Bone Tumor Workup', description: 'Primary triage by matrix production and radiology.',
+        options: [{ label: 'Assess Matrix', nextNodeId: 'matrix_check' }]
+    },
+    'matrix_check': {
+        id: 'matrix_check', type: 'decision', title: 'Dominant Matrix', description: 'Is the tumor producing osteoid or cartilage?',
+        options: [
+            { label: 'Osteoid (Bone)', nextNodeId: 'osteoid_branch' },
+            { label: 'Cartilage', nextNodeId: 'cartilage_branch' },
+            { label: 'Lytic / Cystic', nextNodeId: 'lytic_branch' }
+        ]
+    },
+    'osteoid_branch': {
+        id: 'osteoid_branch', type: 'decision', title: 'Osteoid Forming', description: 'Malignant vs Benign osteoid.',
+        options: [
+            { label: 'Malignant Stroma', nextNodeId: 'result_osteosarcoma' },
+            { label: 'Benign Nidus (<2cm)', nextNodeId: 'result_osteoid_osteoma' },
+            { label: 'Benign Nidus (>2cm)', nextNodeId: 'result_osteoblastoma' }
+        ]
+    },
+    'cartilage_branch': {
+        id: 'cartilage_branch', type: 'decision', title: 'Cartilage Forming', description: 'Cellularity and host bone entrapment.',
+        options: [
+            { label: 'Entraps Host Bone', nextNodeId: 'result_chondrosarcoma' },
+            { label: 'Circumscribed lobules', nextNodeId: 'result_enchondroma' },
+            { label: 'Surface cap', nextNodeId: 'result_osteochondroma' }
+        ]
+    },
+    'lytic_branch': {
+        id: 'lytic_branch', type: 'decision', title: 'Lytic Lesion', description: 'Dominant cell type.',
+        options: [
+            { label: 'Giant Cells', nextNodeId: 'result_gct' },
+            { label: 'Small Blue Cells', nextNodeId: 'result_myeloma_ewing' },
+            { label: 'Fibrous / Cystic', nextNodeId: 'fibrous_branch' }
+        ]
+    },
+    'fibrous_branch': {
+        id: 'fibrous_branch', type: 'decision', title: 'Fibro-osseous / Cystic', description: 'Stromal appearance.',
+        options: [
+            { label: 'Chinese Characters (Woven Bone)', nextNodeId: 'result_fd' },
+            { label: 'Blood-filled spaces', nextNodeId: 'result_abc' },
+            { label: 'Storiform pattern', nextNodeId: 'result_nof' }
+        ]
+    },
+    'result_osteosarcoma': { id: 'result_osteosarcoma', type: 'result', title: 'Osteosarcoma', description: 'Production of osteoid by malignant cells.', diagnosis: 'Osteosarcoma', pearls: ['SATB2+'] },
+    'result_osteoid_osteoma': { id: 'result_osteoid_osteoma', type: 'result', title: 'Osteoid Osteoma', description: 'Benign nidus with sclerotic rim.', diagnosis: 'Osteoid Osteoma', pearls: ['Pain relieved by aspirin'] },
+    'result_osteoblastoma': { id: 'result_osteoblastoma', type: 'result', title: 'Osteoblastoma', description: 'Larger benign osteoid lesion.', diagnosis: 'Osteoblastoma' },
+    'result_chondrosarcoma': { id: 'result_chondrosarcoma', type: 'result', title: 'Chondrosarcoma', description: 'Malignant cartilage.', diagnosis: 'Chondrosarcoma', pearls: ['Permeation of marrow fat is key'] },
+    'result_enchondroma': { id: 'result_enchondroma', type: 'result', title: 'Enchondroma', description: 'Benign medullary cartilage.', diagnosis: 'Enchondroma', pearls: ['Hands/Feet common'] },
+    'result_osteochondroma': { id: 'result_osteochondroma', type: 'result', title: 'Osteochondroma', description: 'Benign exostosis.', diagnosis: 'Osteochondroma', pearls: ['Continuous with marrow space'] },
+    'result_gct': { id: 'result_gct', type: 'result', title: 'Giant Cell Tumor', description: 'H3F3A mutant.', diagnosis: 'Giant Cell Tumor of Bone', confirmatoryStudies: ['H3.3 G34W'] },
+    'result_myeloma_ewing': { id: 'result_myeloma_ewing', type: 'stop', title: 'Rule out Myeloma/Ewing', description: 'Check CD138 (Myeloma) and CD99 (Ewing) immediately.' },
+    'result_fd': { id: 'result_fd', type: 'result', title: 'Fibrous Dysplasia', description: 'GNAS mutation. No osteoblastic rimming.', diagnosis: 'Fibrous Dysplasia' },
+    'result_abc': { id: 'result_abc', type: 'result', title: 'Aneurysmal Bone Cyst', description: 'USP6 rearrangement.', diagnosis: 'Aneurysmal Bone Cyst' },
+    'result_nof': { id: 'result_nof', type: 'result', title: 'Non-ossifying Fibroma', description: 'Benign fibrous defect.', diagnosis: 'Non-ossifying Fibroma' }
+};
+
+// --- LIPOMATOUS ALGORITHM ---
+const LIPOMATOUS_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Adipocytic Tumors', description: 'Approach to fatty masses.',
+        options: [{ label: 'Assess Atypia', nextNodeId: 'atypia_check' }]
+    },
+    'atypia_check': {
+        id: 'atypia_check', type: 'decision', title: 'Nuclear Atypia', description: 'Are there hyperchromatic stromal cells?',
+        options: [
+            { label: 'Yes (Atypical)', nextNodeId: 'location_check' },
+            { label: 'No (Bland)', nextNodeId: 'bland_branch' }
+        ]
+    },
+    'location_check': {
+        id: 'location_check', type: 'decision', title: 'Anatomic Location', description: 'Location predicts behavior for atypical fatty tumors.',
+        options: [
+            { label: 'Extremity / Subcutaneous', nextNodeId: 'result_alt' },
+            { label: 'Retroperitoneum / Deep', nextNodeId: 'result_wdlps' }
+        ]
+    },
+    'bland_branch': {
+        id: 'bland_branch', type: 'decision', title: 'Specific Features', description: 'Vascular thrombi or ropey collagen?',
+        options: [
+            { label: 'Fibrin Thrombi', nextNodeId: 'result_angiolipoma' },
+            { label: 'Ropey Collagen / Spindled', nextNodeId: 'result_scl' },
+            { label: 'Pure Fat', nextNodeId: 'result_lipoma' }
+        ]
+    },
+    'result_alt': { id: 'result_alt', type: 'result', title: 'ALT', description: 'Atypical Lipomatous Tumor.', diagnosis: 'Atypical Lipomatous Tumor', confirmatoryStudies: ['MDM2 Amplification'] },
+    'result_wdlps': { id: 'result_wdlps', type: 'result', title: 'WDLPS', description: 'Well-Differentiated Liposarcoma.', diagnosis: 'Well-Differentiated Liposarcoma', confirmatoryStudies: ['MDM2 Amplification'] },
+    'result_angiolipoma': { id: 'result_angiolipoma', type: 'result', title: 'Angiolipoma', description: 'Painful subcutaneous nodule.', diagnosis: 'Angiolipoma' },
+    'result_scl': { id: 'result_scl', type: 'result', title: 'Spindle Cell Lipoma', description: 'CD34+ spindle cells.', diagnosis: 'Spindle Cell Lipoma', pearls: ['Loss of RB1'] },
+    'result_lipoma': { id: 'result_lipoma', type: 'result', title: 'Lipoma', description: 'Benign mature fat.', diagnosis: 'Lipoma (Conventional)' }
+};
+
+// --- EPIDERMAL ALGORITHM ---
+const EPIDERMAL_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Epidermal Lesions', description: 'Common keratinocytic proliferations.',
+        options: [{ label: 'Architecture', nextNodeId: 'arch_check' }]
+    },
+    'arch_check': {
+        id: 'arch_check', type: 'decision', title: 'Growth Pattern', description: 'Exophytic vs Endophytic/Invasive.',
+        options: [
+            { label: 'Verrucous / Stuck-on', nextNodeId: 'exophytic_branch' },
+            { label: 'Invasive / Ulcerated', nextNodeId: 'invasive_branch' }
+        ]
+    },
+    'exophytic_branch': {
+        id: 'exophytic_branch', type: 'decision', title: 'Feature Check', description: 'Horn cysts vs Koilocytes.',
+        options: [
+            { label: 'Horn Cysts / Basaloid', nextNodeId: 'result_sk' },
+            { label: 'Koilocytes / Parakeratosis', nextNodeId: 'result_verruca' }
+        ]
+    },
+    'invasive_branch': {
+        id: 'invasive_branch', type: 'decision', title: 'Invasion Type', description: 'Crateriform vs infiltrative.',
+        options: [
+            { label: 'Crater / Glassy', nextNodeId: 'result_ka' },
+            { label: 'Infiltrative Nests', nextNodeId: 'result_scc' },
+            { label: 'Basaloid Nests / Retraction', nextNodeId: 'result_bcc' }
+        ]
+    },
+    'result_sk': { id: 'result_sk', type: 'result', title: 'Seborrheic Keratosis', description: 'Benign.', diagnosis: 'Seborrheic Keratosis' },
+    'result_verruca': { id: 'result_verruca', type: 'result', title: 'Verruca Vulgaris', description: 'HPV-associated.', diagnosis: 'Verruca Vulgaris' },
+    'result_ka': { id: 'result_ka', type: 'result', title: 'Keratoacanthoma', description: 'Rapidly growing, distinct SCC variant.', diagnosis: 'Keratoacanthoma' },
+    'result_scc': { id: 'result_scc', type: 'result', title: 'Squamous Cell Carcinoma', description: 'Invasive malignancy.', diagnosis: 'Invasive Squamous Cell Carcinoma' },
+    'result_bcc': { id: 'result_bcc', type: 'result', title: 'Basal Cell Carcinoma', description: 'Peripheral palisading.', diagnosis: 'Basal Cell Carcinoma' }
+};
+
+// --- SKIN SPINDLE CELL ALGORITHM ---
+const SKIN_SPINDLE_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Cutaneous Spindle Cell Tumors', description: 'The "SLAM" differential: SCC, Leiomyosarcoma, AFX, Melanoma.',
+        options: [{ label: 'Start IHC Panel', nextNodeId: 'ihc_triage' }]
+    },
+    'ihc_triage': {
+        id: 'ihc_triage', type: 'decision', title: 'Basic IHC Panel', description: 'Keratin, S100, SMA/Desmin, CD10.',
+        recommendedInitialIHC: ['Pan-Keratin', 'p63/p40', 'S100/SOX10', 'SMA', 'Desmin', 'CD10', 'CD34'],
+        options: [
+            { label: 'Keratin/p63 +', nextNodeId: 'result_scc_spindle' },
+            { label: 'S100/SOX10 +', nextNodeId: 'result_melanoma_spindle' },
+            { label: 'SMA/Desmin +', nextNodeId: 'result_lms_skin' },
+            { label: 'CD10/Procollagen +', nextNodeId: 'result_afx' },
+            { label: 'CD34 +', nextNodeId: 'result_dfsp' }
+        ]
+    },
+    'result_scc_spindle': { id: 'result_scc_spindle', type: 'result', title: 'Spindle Cell SCC', description: 'Keratinizing malignancy.', diagnosis: 'Spindle Cell Squamous Cell Carcinoma', pearls: ['Deep invasion', 'connection to epidermis'] },
+    'result_melanoma_spindle': { id: 'result_melanoma_spindle', type: 'result', title: 'Desmoplastic Melanoma', description: 'Neurotropic, spindle cell.', diagnosis: 'Desmoplastic Melanoma', pearls: ['p16 loss common', 'S100 usually positive, Melan-A often negative'] },
+    'result_lms_skin': { id: 'result_lms_skin', type: 'result', title: 'Cutaneous Leiomyosarcoma', description: 'Smooth muscle.', diagnosis: 'Cutaneous Leiomyosarcoma', pearls: ['Desmin +', 'p53 mutant'] },
+    'result_afx': { id: 'result_afx', type: 'result', title: 'AFX / PDS', description: 'Diagnosis of exclusion.', diagnosis: 'Atypical Fibroxanthoma', pearls: ['Must rule out Carcinoma and Melanoma first'] },
+    'result_dfsp': { id: 'result_dfsp', type: 'result', title: 'DFSP', description: 'Storiform CD34+.', diagnosis: 'Dermatofibrosarcoma Protuberans', confirmatoryStudies: ['COL1A1-PDGFB'] }
+};
+
+// --- PLEOMORPHIC ALGORITHM ---
+const PLEOMORPHIC_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Pleomorphic Sarcomas', description: 'Approach to high-grade undifferentiated neoplasms.',
+        options: [{ label: 'Start', nextNodeId: 'lineage_check' }]
+    },
+    'lineage_check': {
+        id: 'lineage_check', type: 'decision', title: 'Lineage Markers', description: 'Exclude specific differentiation.',
+        recommendedInitialIHC: ['Pan-Keratin', 'S100', 'SOX10', 'Desmin', 'SMA', 'MDM2', 'CD31'],
+        options: [
+            { label: 'Lineage Found', nextNodeId: 'specific_dx' },
+            { label: 'MDM2/CDK4 +', nextNodeId: 'result_ddlps' },
+            { label: 'All Negative', nextNodeId: 'result_ups' }
+        ]
+    },
+    'specific_dx': { id: 'specific_dx', type: 'stop', title: 'Specific Sarcoma', description: 'Classify based on lineage (e.g., Pleomorphic LMS, Pleomorphic Rhabdo, Carcinoma).' },
+    'result_ddlps': { id: 'result_ddlps', type: 'result', title: 'Dedifferentiated Liposarcoma', description: 'MDM2 amplified.', diagnosis: 'Dedifferentiated Liposarcoma', pearls: ['Retroperitoneum is DDLPS until proven otherwise', 'Look for WDLPS component'] },
+    'result_ups': { id: 'result_ups', type: 'result', title: 'UPS', diagnosis: 'Undifferentiated Pleomorphic Sarcoma', description: 'Diagnosis of exclusion.' }
+};
+
+// --- ENDOMETRIAL ALGORITHM (ProMisE) ---
+const ENDOMETRIAL_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Endometrial Carcinoma Molecular Class', description: 'ProMisE / TCGA Classification.',
+        options: [{ label: 'Step 1: MMR', nextNodeId: 'mmr_check' }]
+    },
+    'mmr_check': {
+        id: 'mmr_check', type: 'decision', title: 'MMR Status', description: 'Check MLH1, PMS2, MSH2, MSH6.',
+        options: [
+            { label: 'Loss (dMMR)', nextNodeId: 'result_mmrd' },
+            { label: 'Intact (pMMR)', nextNodeId: 'pole_check' }
+        ]
+    },
+    'pole_check': {
+        id: 'pole_check', type: 'decision', title: 'POLE Mutation', description: 'Sequencing for POLE exonuclease domain.',
+        options: [
+            { label: 'Pathogenic Mutation', nextNodeId: 'result_pole' },
+            { label: 'Wild-type', nextNodeId: 'p53_check' }
+        ]
+    },
+    'p53_check': {
+        id: 'p53_check', type: 'decision', title: 'p53 IHC', description: 'Check for aberrant patterns.',
+        options: [
+            { label: 'Aberrant (Mutant)', nextNodeId: 'result_p53abn' },
+            { label: 'Wild-type', nextNodeId: 'result_nsmp' }
+        ]
+    },
+    'result_mmrd': { id: 'result_mmrd', type: 'result', title: 'MMR Deficient', description: 'Loss of mismatch repair proteins.', diagnosis: 'Endometrial Ca, MMR-deficient', pearls: ['Lynch Syndrome screening indicated'] },
+    'result_pole': { id: 'result_pole', type: 'result', title: 'POLE Ultramutated', description: 'Pathogenic POLE mutation.', diagnosis: 'Endometrial Ca, POLE-mutated', prognosis: 'Excellent prognosis, even if high grade.' },
+    'result_p53abn': { id: 'result_p53abn', type: 'result', title: 'p53 Abnormal', description: 'Aberrant p53 expression (mutant).', diagnosis: 'Endometrial Ca, p53-abnormal (Copy-number high)', prognosis: 'Poor prognosis. Aggressive therapy.' },
+    'result_nsmp': { id: 'result_nsmp', type: 'result', title: 'NSMP', diagnosis: 'Endometrial Ca, NSMP (Copy-number low)', description: 'Non-Specific Molecular Profile. Intermediate prognosis.' }
+};
+
+// --- OVARIAN ALGORITHM ---
+const OVARIAN_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Ovarian Carcinoma Subtyping', description: 'Distinguishing the major histotypes.',
+        options: [{ label: 'Start Workup', nextNodeId: 'wt1_p53_check' }]
+    },
+    'wt1_p53_check': {
+        id: 'wt1_p53_check', type: 'decision', title: 'WT1 and p53', description: 'The primary triage axis.',
+        recommendedInitialIHC: ['WT1', 'p53', 'PAX8', 'Napsin A'],
+        options: [
+            { label: 'WT1+, p53 Mutant', nextNodeId: 'result_hgsc' },
+            { label: 'WT1-, p53 WT', nextNodeId: 'endo_clear_branch' },
+            { label: 'WT1+, p53 WT', nextNodeId: 'result_lgsc' }
+        ]
+    },
+    'endo_clear_branch': {
+        id: 'endo_clear_branch', type: 'decision', title: 'Endometrioid vs Clear Cell', description: 'Check Napsin A and ER.',
+        options: [
+            { label: 'Napsin A+, ER-', nextNodeId: 'result_ccc' },
+            { label: 'Napsin A-, ER+', nextNodeId: 'result_endo' },
+            { label: 'Mucinous?', nextNodeId: 'result_mucinous' }
+        ]
+    },
+    'result_hgsc': { id: 'result_hgsc', type: 'result', title: 'High-Grade Serous', description: 'Most common ovarian malignancy.', diagnosis: 'High-Grade Serous Carcinoma', pearls: ['Originates from STIC in Fallopian Tube'] },
+    'result_lgsc': { id: 'result_lgsc', type: 'result', title: 'Low-Grade Serous', description: 'Indolent behavior.', diagnosis: 'Low-Grade Serous Carcinoma', pearls: ['Associated with borderline tumors', 'BRAF/KRAS mutations'] },
+    'result_ccc': { id: 'result_ccc', type: 'result', title: 'Clear Cell Carcinoma', description: 'Hobnail cells, clear cytoplasm.', diagnosis: 'Clear Cell Carcinoma', confirmatoryStudies: ['HNF1b+', 'AMACR+'] },
+    'result_endo': { id: 'result_endo', type: 'result', title: 'Endometrioid Carcinoma', description: 'Resembles endometrium.', diagnosis: 'Endometrioid Carcinoma', pearls: ['Associated with endometriosis'] },
+    'result_mucinous': { id: 'result_mucinous', type: 'result', title: 'Mucinous Carcinoma', description: 'Gastrointestinal-type differentiation.', diagnosis: 'Mucinous Carcinoma', confirmatoryStudies: ['CK7+', 'CK20+', 'CDX2+', 'PAX8- (usually)'] }
+};
+
+// --- UTERINE MESENCHYMAL ALGORITHM ---
+const UTERINE_MESENCHYMAL_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Uterine Mesenchymal Tumors', description: 'Distinguishing smooth muscle from stromal tumors.',
+        options: [{ label: 'Determine Cell Type', nextNodeId: 'cell_type' }]
+    },
+    'cell_type': {
+        id: 'cell_type', type: 'decision', title: 'Dominant Morphology', description: 'Spindle vs Round/Stromal cells.',
+        options: [
+            { label: 'Spindle / Eosinophilic', nextNodeId: 'spindle_branch' },
+            { label: 'Round / Basophilic', nextNodeId: 'stromal_branch' }
+        ]
+    },
+    'spindle_branch': {
+        id: 'spindle_branch', type: 'decision', title: 'Smooth Muscle Assessment', description: 'Evaluate for atypia, necrosis, and mitoses.',
+        recommendedInitialIHC: ['Desmin', 'SMA', 'p16', 'p53'],
+        options: [
+            { label: 'Severe Atypia + Mitoses/Necrosis', nextNodeId: 'result_lms' },
+            { label: 'Bland cytology', nextNodeId: 'result_leiomyoma' }
+        ]
+    },
+    'stromal_branch': {
+        id: 'stromal_branch', type: 'decision', title: 'Stromal Markers', description: 'CD10 and Hormone Receptors.',
+        recommendedInitialIHC: ['CD10', 'ER', 'PR', 'Cyclin D1', 'BCOR'],
+        options: [
+            { label: 'CD10+, ER+, Bland', nextNodeId: 'result_ess_lg' },
+            { label: 'Cyclin D1+ or BCOR+', nextNodeId: 'result_ess_hg' }
+        ]
+    },
+    'result_lms': { id: 'result_lms', type: 'result', title: 'Leiomyosarcoma', description: 'Malignant smooth muscle.', diagnosis: 'Leiomyosarcoma', confirmatoryStudies: ['p16 diffuse block+', 'p53 mutant'] },
+    'result_leiomyoma': { id: 'result_leiomyoma', type: 'result', title: 'Leiomyoma / STUMP', description: 'Benign or uncertain potential.', diagnosis: 'Leiomyoma (or STUMP if equivocal)', pearls: ['If necrosis present without atypia = Leiomyoma with infarct'] },
+    'result_ess_lg': { id: 'result_ess_lg', type: 'result', title: 'Low-Grade ESS', description: 'Resembles proliferative stroma.', diagnosis: 'Low-Grade Endometrial Stromal Sarcoma', confirmatoryStudies: ['JAZF1 fusion'] },
+    'result_ess_hg': { id: 'result_ess_hg', type: 'result', title: 'High-Grade ESS', description: 'High-grade round cell sarcoma.', diagnosis: 'High-Grade Endometrial Stromal Sarcoma', confirmatoryStudies: ['YWHAE-NUTM2 (Cyclin D1+)', 'ZC3H7B-BCOR (BCOR+)'] }
+};
+
+// --- GTD ALGORITHM ---
+const GTD_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Gestational Trophoblastic Disease', description: 'Classifying malignant trophoblastic neoplasms.',
+        options: [{ label: 'Analyze Cell Types', nextNodeId: 'morph_check' }]
+    },
+    'morph_check': {
+        id: 'morph_check', type: 'decision', title: 'Morphology', description: 'Biphasic vs Monophasic pattern.',
+        options: [
+            { label: 'Biphasic (Cyto + Syncytio)', nextNodeId: 'result_chorio' },
+            { label: 'Monophasic (Intermediate)', nextNodeId: 'intermediate_branch' }
+        ]
+    },
+    'intermediate_branch': {
+        id: 'intermediate_branch', type: 'decision', title: 'Intermediate Trophoblast', description: 'Implantation site (PSTT) vs Chorionic (ETT).',
+        recommendedInitialIHC: ['hPL', 'p63', 'Ki-67'],
+        options: [
+            { label: 'hPL++, p63-', nextNodeId: 'result_pstt' },
+            { label: 'hPL-, p63+', nextNodeId: 'result_ett' }
+        ]
+    },
+    'result_chorio': { id: 'result_chorio', type: 'result', title: 'Choriocarcinoma', description: 'Malignant trophoblastic tumor.', diagnosis: 'Choriocarcinoma', pearls: ['Biphasic pattern', 'Hemorrhage', 'High HCG'] },
+    'result_pstt': { id: 'result_pstt', type: 'result', title: 'PSTT', description: 'Implantation site intermediate trophoblast.', diagnosis: 'Placental Site Trophoblastic Tumor', pearls: ['Infiltrating muscle fibers', 'hPL strong'] },
+    'result_ett': { id: 'result_ett', type: 'result', title: 'ETT', description: 'Chorionic type intermediate trophoblast.', diagnosis: 'Epithelioid Trophoblastic Tumor', pearls: ['Nests/Cords', 'p63 positive'] }
+};
+
+// --- VULVAR ALGORITHM ---
+const VULVAR_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Vulvar Squamous Lesions', description: 'Precursors and Carcinoma.',
+        options: [{ label: 'Assess Atypia', nextNodeId: 'atypia_check' }]
+    },
+    'atypia_check': {
+        id: 'atypia_check', type: 'decision', title: 'Atypia Pattern', description: 'Level of epithelial atypia.',
+        options: [
+            { label: 'Full Thickness Atypia', nextNodeId: 'hsil_branch' },
+            { label: 'Basal Atypia Only', nextNodeId: 'dvin_branch' },
+            { label: 'Invasive Nests', nextNodeId: 'result_scc' }
+        ]
+    },
+    'hsil_branch': { id: 'hsil_branch', type: 'result', title: 'HSIL (VIN 2/3)', description: 'HPV-associated precursor.', diagnosis: 'High-Grade Squamous Intraepithelial Lesion', confirmatoryStudies: ['p16 block positive'] },
+    'dvin_branch': { id: 'dvin_branch', type: 'result', title: 'dVIN', description: 'HPV-independent precursor.', diagnosis: 'Differentiated VIN', confirmatoryStudies: ['p53 mutant (basal)', 'p16 negative'] },
+    'result_scc': { id: 'result_scc', type: 'result', title: 'Squamous Cell Carcinoma', description: 'Invasive malignancy.', diagnosis: 'Invasive Squamous Cell Carcinoma', pearls: ['Determine HPV status (p16)'] }
+};
+
+// --- CERVICAL ALGORITHM ---
+const CERVICAL_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Cervical Carcinoma Subtyping', description: 'Squamous and Glandular lesions.',
+        options: [{ label: 'Cell Type', nextNodeId: 'cell_type' }]
+    },
+    'cell_type': {
+        id: 'cell_type', type: 'decision', title: 'Differentiation', description: 'Squamous vs Glandular.',
+        options: [
+            { label: 'Squamous', nextNodeId: 'result_scc' },
+            { label: 'Glandular', nextNodeId: 'gland_branch' }
+        ]
+    },
+    'result_scc': { id: 'result_scc', type: 'result', title: 'Squamous Cell Carcinoma', description: 'Invasive squamous malignancy.', diagnosis: 'Cervical Squamous Cell Carcinoma', confirmatoryStudies: ['p16+', 'p63+'] },
+    'gland_branch': {
+        id: 'gland_branch', type: 'decision', title: 'Adenocarcinoma Type', description: 'HPV-associated vs Gastric-type.',
+        recommendedInitialIHC: ['p16', 'p53', 'MUC6'],
+        options: [
+            { label: 'p16+', nextNodeId: 'result_hpv_adeno' },
+            { label: 'p16-, MUC6+', nextNodeId: 'result_gastric' }
+        ]
+    },
+    'result_hpv_adeno': { id: 'result_hpv_adeno', type: 'result', title: 'HPV-Associated Adeno', description: 'Usual type endocervical adenocarcinoma.', diagnosis: 'Endocervical Adenocarcinoma, HPV-associated', pearls: ['Apical mitosis', 'Apoptotic bodies'] },
+    'result_gastric': { id: 'result_gastric', type: 'result', title: 'Gastric-type Adeno', description: 'Aggressive HPV-independent adenocarcinoma.', diagnosis: 'Gastric-type Endocervical Adenocarcinoma', pearls: ['HPV-independent', 'Eosinophilic/Clear cytoplasm'] }
+};
+
+// --- VAGINAL ALGORITHM ---
+const VAGINAL_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Vaginal Mass Evaluation', description: 'Primary vs Metastatic vs Benign Mimics.',
+        options: [{ label: 'Start Evaluation', nextNodeId: 'polyp_check' }]
+    },
+    'polyp_check': {
+        id: 'polyp_check', type: 'decision', title: 'Polypoid Mass', description: 'Evaluate stromal features.',
+        options: [
+            { label: 'Adult (Stromal Atypia)', nextNodeId: 'result_fep' },
+            { label: 'Child (Cambium Layer)', nextNodeId: 'result_rms' },
+            { label: 'Solid / Ulcerated', nextNodeId: 'result_carcinoma' }
+        ]
+    },
+    'result_fep': { id: 'result_fep', type: 'result', title: 'Fibroepithelial Polyp', description: 'Benign polypoid lesion.', diagnosis: 'Fibroepithelial Polyp', pearls: ['Bizarre stromal cells', 'No cambium layer', 'Benign'] },
+    'result_rms': { id: 'result_rms', type: 'result', title: 'Botryoid RMS', description: 'Malignant skeletal muscle tumor.', diagnosis: 'Embryonal Rhabdomyosarcoma (Botryoid)', pearls: ['Cambium layer', 'Myogenin+'] },
+    'result_carcinoma': { id: 'result_carcinoma', type: 'stop', title: 'Carcinoma', description: 'Rule out extension from Cervix/Vulva (more common than primary).' }
+};
+
+// --- MIMICS ALGORITHM ---
+const MIMIC_NODES: Record<string, AlgorithmNode> = {
+    'start': {
+        id: 'start', type: 'start', title: 'Benign Mimics of GYN Malignancy', description: 'Approach to lesions that look scary but are benign.',
+        remainingDifferential: ['Postop Spindle Cell Nodule', 'Adenomatoid Tumor', 'Endosalpingiosis', 'Cotyledonoid Leiomyoma'],
+        options: [
+            { label: 'Spindle Cell / Ulcerated', nextNodeId: 'spindle_mimic' },
+            { label: 'Glandular / Tubular', nextNodeId: 'gland_mimic' },
+            { label: 'Grossly Alarming / Mass', nextNodeId: 'gross_mimic' }
+        ]
+    },
+    'spindle_mimic': { id: 'spindle_mimic', type: 'decision', title: 'Spindle Cell Lesion', description: 'Context is key.', options: [{ label: 'Recent Surgery', nextNodeId: 'result_pscn' }, { label: 'Deep Mass', nextNodeId: 'result_lms_check' }] },
+    'result_pscn': { id: 'result_pscn', type: 'result', title: 'Postoperative Spindle Cell Nodule', description: 'Reactive.', diagnosis: 'Postoperative Spindle Cell Nodule' },
+    'result_lms_check': { id: 'result_lms_check', type: 'stop', title: 'Rule out Leiomyosarcoma', description: 'Must exclude malignancy.' },
+    'gland_mimic': { id: 'gland_mimic', type: 'decision', title: 'Glandular Mimic', description: 'Benign glands.', options: [{ label: 'Mesothelial', nextNodeId: 'result_adenomatoid' }, { label: 'Peritoneal', nextNodeId: 'result_endosalpingiosis' }] },
+    'result_adenomatoid': { id: 'result_adenomatoid', type: 'result', title: 'Adenomatoid Tumor', description: 'Benign mesothelial.', diagnosis: 'Adenomatoid Tumor' },
+    'result_endosalpingiosis': { id: 'result_endosalpingiosis', type: 'result', title: 'Endosalpingiosis', description: 'Ectopic tubal.', diagnosis: 'Endosalpingiosis' },
+    'gross_mimic': { id: 'gross_mimic', type: 'decision', title: 'Gross Mass', description: 'Looks malignant.', options: [{ label: 'Hydropic', nextNodeId: 'result_cotyledonoid' }, { label: 'Intravascular', nextNodeId: 'result_ivl' }] },
+    'result_cotyledonoid': { id: 'result_cotyledonoid', type: 'result', title: 'Cotyledonoid Leiomyoma', description: 'Benign.', diagnosis: 'Cotyledonoid Dissecting Leiomyoma' },
+    'result_ivl': { id: 'result_ivl', type: 'result', title: 'Intravenous Leiomyomatosis', description: 'Benign histology, aggressive growth.', diagnosis: 'Intravenous Leiomyomatosis' }
+};
+
+// --- NEW GENERAL SURGICAL PATHOLOGY ALGORITHMS ---
+
+const BREAST_NODES: Record<string, AlgorithmNode> = {
+    'start': { id: 'start', type: 'start', title: 'Breast Neoplasms', description: 'Triage for breast masses.', options: [{ label: 'Epithelial vs Fibroepithelial', nextNodeId: 'type_check' }] },
+    'type_check': { id: 'type_check', type: 'decision', title: 'Lesion Type', description: 'Carcinoma vs Stromal-rich.', options: [{ label: 'Carcinoma / Invasive', nextNodeId: 'carcinoma_branch' }, { label: 'Fibroepithelial (Stroma+Glands)', nextNodeId: 'fibro_branch' }] },
+    'carcinoma_branch': { id: 'carcinoma_branch', type: 'decision', title: 'Invasive Carcinoma', description: 'Evaluate E-cadherin.', recommendedInitialIHC: ['E-Cadherin', 'p120', 'ER', 'PR', 'HER2'], options: [{ label: 'E-cad (+)', nextNodeId: 'result_idc' }, { label: 'E-cad (-)', nextNodeId: 'result_ilc' }] },
+    'fibro_branch': { id: 'fibro_branch', type: 'decision', title: 'Fibroepithelial Lesion', description: 'Stromal cellularity and overgrowth.', options: [{ label: 'Low Cellularity', nextNodeId: 'result_fa' }, { label: 'High Cellularity / Leaf-like', nextNodeId: 'result_phyllodes' }] },
+    'result_idc': { id: 'result_idc', type: 'result', title: 'Invasive Ductal Carcinoma', description: 'No special type (NST).', diagnosis: 'Invasive Ductal Carcinoma' },
+    'result_ilc': { id: 'result_ilc', type: 'result', title: 'Invasive Lobular Carcinoma', description: 'Single file, targetoid.', diagnosis: 'Invasive Lobular Carcinoma', pearls: ['Loss of E-cadherin'] },
+    'result_fa': { id: 'result_fa', type: 'result', title: 'Fibroadenoma', description: 'Benign.', diagnosis: 'Fibroadenoma' },
+    'result_phyllodes': { id: 'result_phyllodes', type: 'result', title: 'Phyllodes Tumor', description: 'Stromal overgrowth.', diagnosis: 'Phyllodes Tumor', pearls: ['Grade based on mitoses/atypia'] }
+};
+
+const KIDNEY_NODES: Record<string, AlgorithmNode> = {
+    'start': { id: 'start', type: 'start', title: 'Renal Cell Carcinoma', description: 'Workup of renal masses.', options: [{ label: 'Cytoplasm Color', nextNodeId: 'cyto_check' }] },
+    'cyto_check': { id: 'cyto_check', type: 'decision', title: 'Cytoplasm Appearance', description: 'Clear vs Eosinophilic.', options: [{ label: 'Clear Cells', nextNodeId: 'clear_branch' }, { label: 'Eosinophilic / Papillary', nextNodeId: 'eosinophilic_branch' }] },
+    'clear_branch': { id: 'clear_branch', type: 'decision', title: 'Clear Cell Markers', description: 'CA9 and PAX8.', recommendedInitialIHC: ['PAX8', 'CA9', 'CD10', 'CK7'], options: [{ label: 'CA9 Box-like +', nextNodeId: 'result_ccrcc' }, { label: 'TFE3 +', nextNodeId: 'result_tfe3' }] },
+    'eosinophilic_branch': { id: 'eosinophilic_branch', type: 'decision', title: 'Papillary/Oncoytic', description: 'CK7 and Hale Colloidal Iron.', recommendedInitialIHC: ['CK7', 'CD117', 'AMACR'], options: [{ label: 'CK7+, AMACR+', nextNodeId: 'result_pap_rcc' }, { label: 'CD117+, CK7-', nextNodeId: 'result_onco' }, { label: 'CK7+, CD117+, Halo', nextNodeId: 'result_chromophobe' }] },
+    'result_ccrcc': { id: 'result_ccrcc', type: 'result', title: 'Clear Cell RCC', description: 'VHL mutation.', diagnosis: 'Clear Cell Renal Cell Carcinoma' },
+    'result_tfe3': { id: 'result_tfe3', type: 'result', title: 'Translocation RCC', description: 'TFE3 rearrangement.', diagnosis: 'Translocation-Associated RCC' },
+    'result_pap_rcc': { id: 'result_pap_rcc', type: 'result', title: 'Papillary RCC', description: 'Papillae with foam cells.', diagnosis: 'Papillary Renal Cell Carcinoma' },
+    'result_onco': { id: 'result_onco', type: 'result', title: 'Oncocytoma', description: 'Benign, central scar.', diagnosis: 'Renal Oncocytoma' },
+    'result_chromophobe': { id: 'result_chromophobe', type: 'result', title: 'Chromophobe RCC', description: 'Perinuclear halos, plant cell walls.', diagnosis: 'Chromophobe Renal Cell Carcinoma' }
+};
+
+const BLADDER_NODES: Record<string, AlgorithmNode> = {
+    'start': { id: 'start', type: 'start', title: 'Urothelial Neoplasms', description: 'Papillary and Flat lesions.', options: [{ label: 'Architecture', nextNodeId: 'arch_check' }] },
+    'arch_check': { id: 'arch_check', type: 'decision', title: 'Growth Pattern', description: 'Papillary vs Flat.', options: [{ label: 'Papillary', nextNodeId: 'pap_branch' }, { label: 'Flat', nextNodeId: 'flat_branch' }] },
+    'pap_branch': { id: 'pap_branch', type: 'decision', title: 'Papillary Grading', description: 'Order and atypia.', options: [{ label: 'Orderly, Low Atypia', nextNodeId: 'result_lguc' }, { label: 'Disordered, High Atypia', nextNodeId: 'result_hguc' }] },
+    'flat_branch': { id: 'flat_branch', type: 'decision', title: 'Flat Lesions', description: 'CIS vs Dysplasia.', options: [{ label: 'Full thickness atypia', nextNodeId: 'result_cis' }, { label: 'Reactive / Atypia of Unknown', nextNodeId: 'result_aus' }] },
+    'result_lguc': { id: 'result_lguc', type: 'result', title: 'Low Grade UC', description: 'Non-invasive papillary.', diagnosis: 'Low Grade Papillary Urothelial Carcinoma' },
+    'result_hguc': { id: 'result_hguc', type: 'result', title: 'High Grade UC', description: 'Risk of invasion.', diagnosis: 'High Grade Papillary Urothelial Carcinoma' },
+    'result_cis': { id: 'result_cis', type: 'result', title: 'Carcinoma In Situ', description: 'Flat, high grade.', diagnosis: 'Urothelial Carcinoma In Situ' },
+    'result_aus': { id: 'result_aus', type: 'result', title: 'Atypia of Unknown Sig', description: 'Reactive vs Neoplastic.', diagnosis: 'Urothelial Atypia of Unknown Significance' }
+};
+
+const PROSTATE_NODES: Record<string, AlgorithmNode> = {
+    'start': { id: 'start', type: 'start', title: 'Prostate Glandular Lesions', description: 'Benign vs Malignant glands.', options: [{ label: 'Assess Basal Cells', nextNodeId: 'basal_check' }] },
+    'basal_check': { id: 'basal_check', type: 'decision', title: 'Basal Cell Layer', description: 'Use p63 / HMWCK.', recommendedInitialIHC: ['p63', 'HMWCK (34betaE12)', 'AMACR (Racemase)'], options: [{ label: 'Present (Continuous)', nextNodeId: 'result_benign' }, { label: 'Absent', nextNodeId: 'result_adeno' }, { label: 'Present but AMACR+', nextNodeId: 'result_hgpin' }] },
+    'result_benign': { id: 'result_benign', type: 'result', title: 'Benign Glands', description: 'Normal or BPH.', diagnosis: 'Benign Prostatic Tissue' },
+    'result_adeno': { id: 'result_adeno', type: 'result', title: 'Adenocarcinoma', description: 'Invasive malignancy.', diagnosis: 'Prostate Adenocarcinoma', pearls: ['AMACR Positive, Basal Negative'] },
+    'result_hgpin': { id: 'result_hgpin', type: 'result', title: 'HGPIN', description: 'Precursor lesion.', diagnosis: 'High Grade Prostatic Intraepithelial Neoplasia' }
+};
+
+const TESTIS_NODES: Record<string, AlgorithmNode> = {
+    'start': { id: 'start', type: 'start', title: 'Testicular Germ Cell Tumors', description: 'Seminoma vs Non-Seminoma.', options: [{ label: 'Morphology', nextNodeId: 'morph_check' }] },
+    'morph_check': { id: 'morph_check', type: 'decision', title: 'Cell Type', description: 'Fried egg cells vs others.', recommendedInitialIHC: ['OCT4', 'CD117', 'CD30', 'Glypican-3'], options: [{ label: 'Solid, Lymphocytes, CD117+', nextNodeId: 'result_seminoma' }, { label: 'Glandular / Papillary / Solid', nextNodeId: 'nsgct_branch' }] },
+    'nsgct_branch': { id: 'nsgct_branch', type: 'decision', title: 'Non-Seminoma', description: 'Subtyping.', options: [{ label: 'CD30+, Pleomorphic', nextNodeId: 'result_ec' }, { label: 'Glypican-3+, Schiller-Duval', nextNodeId: 'result_yst' }] },
+    'result_seminoma': { id: 'result_seminoma', type: 'result', title: 'Seminoma', description: 'Radiosensitive.', diagnosis: 'Seminoma' },
+    'result_ec': { id: 'result_ec', type: 'result', title: 'Embryonal Carcinoma', description: 'Aggressive.', diagnosis: 'Embryonal Carcinoma' },
+    'result_yst': { id: 'result_yst', type: 'result', title: 'Yolk Sac Tumor', description: 'AFP elevated.', diagnosis: 'Yolk Sac Tumor' }
+};
+
+const LUNG_NODES: Record<string, AlgorithmNode> = {
+    'start': { id: 'start', type: 'start', title: 'Lung Carcinoma', description: 'NSCLC vs Small Cell.', options: [{ label: 'Cell Size & Pattern', nextNodeId: 'size_check' }] },
+    'size_check': { id: 'size_check', type: 'decision', title: 'Small vs Non-Small', description: 'Nuclear features.', options: [{ label: 'Small Blue Cells, Molding', nextNodeId: 'result_sclc' }, { label: 'Large Cells, Glands/Squam', nextNodeId: 'nsclc_branch' }] },
+    'nsclc_branch': { id: 'nsclc_branch', type: 'decision', title: 'NSCLC Subtyping', description: 'Adeno vs Squamous.', recommendedInitialIHC: ['TTF1', 'p40', 'Napsin A'], options: [{ label: 'TTF1+, p40-', nextNodeId: 'result_adeno' }, { label: 'p40+, TTF1-', nextNodeId: 'result_scc' }] },
+    'result_sclc': { id: 'result_sclc', type: 'result', title: 'Small Cell Carcinoma', description: 'Neuroendocrine.', diagnosis: 'Small Cell Carcinoma', confirmatoryStudies: ['INSM1', 'Synaptophysin'] },
+    'result_adeno': { id: 'result_adeno', type: 'result', title: 'Adenocarcinoma', description: 'Glandular differentiation.', diagnosis: 'Lung Adenocarcinoma' },
+    'result_scc': { id: 'result_scc', type: 'result', title: 'Squamous Cell Carcinoma', description: 'Keratinization.', diagnosis: 'Squamous Cell Carcinoma of Lung' }
+};
+
+const GI_NODES: Record<string, AlgorithmNode> = {
+    'start': { id: 'start', type: 'start', title: 'GI Tract Neoplasms', description: 'Site-specific approach.', options: [{ label: 'Select Site', nextNodeId: 'site_check' }] },
+    'site_check': { id: 'site_check', type: 'decision', title: 'Anatomic Site', description: 'Where is the tumor?', options: [{ label: 'Colon/Rectum', nextNodeId: 'colon_branch' }, { label: 'Stomach', nextNodeId: 'stomach_branch' }, { label: 'Liver', nextNodeId: 'liver_branch' }] },
+    'colon_branch': { id: 'colon_branch', type: 'decision', title: 'Colon Polyp', description: 'Serrated vs Adenomatous.', options: [{ label: 'Dysplasia, Nuclear pencil-shape', nextNodeId: 'result_tubular' }, { label: 'Saw-tooth, Boot-shaped', nextNodeId: 'result_ssl' }] },
+    'stomach_branch': { id: 'stomach_branch', type: 'decision', title: 'Gastric Malignancy', description: 'Carcinoma vs GIST.', options: [{ label: 'Glandular/Signet Ring', nextNodeId: 'result_gastric_ca' }, { label: 'Spindle Cell', nextNodeId: 'result_gist' }] },
+    'liver_branch': { id: 'liver_branch', type: 'decision', title: 'Liver Primary', description: 'HCC vs Cholangio.', recommendedInitialIHC: ['HepPar1', 'Arginase-1', 'CK7', 'CK19'], options: [{ label: 'HepPar1+', nextNodeId: 'result_hcc' }, { label: 'CK7/19+', nextNodeId: 'result_cholangio' }] },
+    'result_tubular': { id: 'result_tubular', type: 'result', title: 'Tubular Adenoma', description: 'Conventional dysplasia.', diagnosis: 'Tubular Adenoma' },
+    'result_ssl': { id: 'result_ssl', type: 'result', title: 'Sessile Serrated Lesion', description: 'Right sided, BRAF.', diagnosis: 'Sessile Serrated Lesion' },
+    'result_gastric_ca': { id: 'result_gastric_ca', type: 'result', title: 'Gastric Adenocarcinoma', description: 'Intestinal or Diffuse.', diagnosis: 'Gastric Adenocarcinoma' },
+    'result_gist': { id: 'result_gist', type: 'result', title: 'GIST', description: 'KIT positive.', diagnosis: 'Gastrointestinal Stromal Tumor' },
+    'result_hcc': { id: 'result_hcc', type: 'result', title: 'Hepatocellular Carcinoma', description: 'Hepatic differentiation.', diagnosis: 'Hepatocellular Carcinoma' },
+    'result_cholangio': { id: 'result_cholangio', type: 'result', title: 'Cholangiocarcinoma', description: 'Biliary differentiation.', diagnosis: 'Cholangiocarcinoma' }
+};
+
+const THYROID_NODES: Record<string, AlgorithmNode> = {
+    'start': { id: 'start', type: 'start', title: 'Thyroid Carcinoma', description: 'Follicular vs C-cell.', options: [{ label: 'Cell Origin', nextNodeId: 'origin_check' }] },
+    'origin_check': { id: 'origin_check', type: 'decision', title: 'Follicular vs C-Cell', description: 'Calcitonin status.', options: [{ label: 'Follicular Derived', nextNodeId: 'follicular_branch' }, { label: 'Calcitonin +', nextNodeId: 'result_medullary' }] },
+    'follicular_branch': { id: 'follicular_branch', type: 'decision', title: 'Nuclear Features', description: 'PTC nuclear features (Grooves, inclusions, clearing).', options: [{ label: 'Present', nextNodeId: 'result_ptc' }, { label: 'Absent', nextNodeId: 'result_follicular' }] },
+    'result_ptc': { id: 'result_ptc', type: 'result', title: 'Papillary Thyroid Ca', description: 'BRAF V600E common.', diagnosis: 'Papillary Thyroid Carcinoma' },
+    'result_follicular': { id: 'result_follicular', type: 'result', title: 'Follicular Carcinoma', description: 'Capsular/Vascular invasion required.', diagnosis: 'Follicular Thyroid Carcinoma' },
+    'result_medullary': { id: 'result_medullary', type: 'result', title: 'Medullary Carcinoma', description: 'Neuroendocrine, Amyloid.', diagnosis: 'Medullary Thyroid Carcinoma', pearls: ['MEN 2 Association'] }
+};
+
+const SALIVARY_NODES: Record<string, AlgorithmNode> = {
+    'start': { id: 'start', type: 'start', title: 'Salivary Gland Tumors', description: 'Biphasic vs Monophasic.', options: [{ label: 'Pattern', nextNodeId: 'pattern_check' }] },
+    'pattern_check': { id: 'pattern_check', type: 'decision', title: 'Cell Population', description: 'Ductal + Myoepithelial?', options: [{ label: 'Biphasic (Duct/Myoep)', nextNodeId: 'biphasic_branch' }, { label: 'Monophasic / Other', nextNodeId: 'mono_branch' }] },
+    'biphasic_branch': { id: 'biphasic_branch', type: 'decision', title: 'Matrix/Architecture', description: 'Chondromyxoid vs Cribriform.', options: [{ label: 'Chondromyxoid Stroma', nextNodeId: 'result_pa' }, { label: 'Cribriform / Cylinders', nextNodeId: 'result_acc' }] },
+    'mono_branch': { id: 'mono_branch', type: 'decision', title: 'Specific Types', description: 'Mucinous vs Serous.', options: [{ label: 'Mucous + Squamous', nextNodeId: 'result_mec' }, { label: 'Serous / Zymogen', nextNodeId: 'result_acinic' }] },
+    'result_pa': { id: 'result_pa', type: 'result', title: 'Pleomorphic Adenoma', description: 'Benign mixed tumor.', diagnosis: 'Pleomorphic Adenoma' },
+    'result_acc': { id: 'result_acc', type: 'result', title: 'Adenoid Cystic Ca', description: 'Perineural invasion.', diagnosis: 'Adenoid Cystic Carcinoma' },
+    'result_mec': { id: 'result_mec', type: 'result', title: 'Mucoepidermoid Ca', description: 'MAML2 fusion.', diagnosis: 'Mucoepidermoid Carcinoma' },
+    'result_acinic': { id: 'result_acinic', type: 'result', title: 'Acinic Cell Ca', description: 'Low grade.', diagnosis: 'Acinic Cell Carcinoma' }
+};
+
+const CNS_NODES: Record<string, AlgorithmNode> = {
+    'start': { id: 'start', type: 'start', title: 'CNS Tumors (Adult)', description: 'Glial vs Non-Glial.', options: [{ label: 'Glial Marker (GFAP)', nextNodeId: 'gfap_check' }] },
+    'gfap_check': { id: 'gfap_check', type: 'decision', title: 'GFAP Status', description: 'Is it a glioma?', options: [{ label: 'Positive', nextNodeId: 'glioma_branch' }, { label: 'Negative', nextNodeId: 'non_glial_branch' }] },
+    'glioma_branch': { id: 'glioma_branch', type: 'decision', title: 'IDH Mutation', description: 'The key molecular classifier.', recommendedInitialIHC: ['IDH1 R132H', 'ATRX', 'p53'], options: [{ label: 'IDH Mutant', nextNodeId: 'idh_mut_branch' }, { label: 'IDH Wild-type', nextNodeId: 'result_gbm' }] },
+    'idh_mut_branch': { id: 'idh_mut_branch', type: 'decision', title: '1p/19q Codeletion', description: 'Oligo vs Astro.', options: [{ label: 'Codeleted', nextNodeId: 'result_oligo' }, { label: 'Intact (ATRX loss)', nextNodeId: 'result_astro' }] },
+    'non_glial_branch': { id: 'non_glial_branch', type: 'decision', title: 'Other Tumors', description: 'Meningeal vs Metastatic.', options: [{ label: 'Whorls, EMA+', nextNodeId: 'result_meningioma' }, { label: 'Epithelial, Keratin+', nextNodeId: 'result_met' }] },
+    'result_gbm': { id: 'result_gbm', type: 'result', title: 'Glioblastoma', description: 'Grade 4, IDH-wildtype.', diagnosis: 'Glioblastoma' },
+    'result_oligo': { id: 'result_oligo', type: 'result', title: 'Oligodendroglioma', description: 'IDH-mutant, 1p/19q-codeleted.', diagnosis: 'Oligodendroglioma' },
+    'result_astro': { id: 'result_astro', type: 'result', title: 'Astrocytoma', description: 'IDH-mutant.', diagnosis: 'Astrocytoma, IDH-mutant' },
+    'result_meningioma': { id: 'result_meningioma', type: 'result', title: 'Meningioma', description: 'Dural based.', diagnosis: 'Meningioma' },
+    'result_met': { id: 'result_met', type: 'stop', title: 'Metastatic Carcinoma', description: 'Rule out Lung, Breast, Melanoma.' }
+};
+
+export const ALGORITHMS: DiagnosticAlgorithm[] = [
+    // Existing BST
+    { id: 'algo_spindle_soft_tissue', title: 'Adult Spindle Cell Sarcoma', category: 'Soft Tissue', summary: 'Diagnostic pathway for deep-seated spindle cell neoplasms.', startNodeId: 'start', nodes: SPINDLE_CELL_NODES },
+    { id: 'algo_epithelioid_soft_tissue', title: 'Epithelioid Soft Tissue Tumors', category: 'Soft Tissue', summary: 'Distinguishing carcinoma mimics from true epithelioid sarcomas.', startNodeId: 'start', nodes: EPITHELIOID_NODES },
+    { id: 'algo_myxoid_soft_tissue', title: 'Myxoid Soft Tissue Tumors', category: 'Soft Tissue', summary: 'Using vascular patterns to navigate the differential.', startNodeId: 'start', nodes: MYXOID_NODES },
+    { id: 'algo_srbct', title: 'Small Round Blue Cell Tumors', category: 'Pediatric / Bone', summary: 'Urgent differentiation between Lymphoma, Ewing, and Rhabdo.', startNodeId: 'start', nodes: SRBCT_NODES },
+    { id: 'algo_pleomorphic', title: 'Pleomorphic Sarcomas', category: 'Soft Tissue', summary: 'Approach to high-grade undifferentiated neoplasms.', startNodeId: 'start', nodes: PLEOMORPHIC_NODES },
+    { id: 'algo_bone_matrix', title: 'Bone Tumor Workup', category: 'Bone', summary: 'Diagnostic approach based on matrix production (Osteoid vs Chondroid).', startNodeId: 'start', nodes: BONE_NODES },
+    { id: 'algo_lipomatous', title: 'Lipomatous Tumors', category: 'Soft Tissue', summary: 'Distinguishing benign lipoma from atypical lipomatous tumors.', startNodeId: 'start', nodes: LIPOMATOUS_NODES },
+
+    // Existing Derm
+    { id: 'algo_epidermal', title: 'Epidermal Lesions', category: 'Dermatopathology', summary: 'Common keratinocytic lesions (Verruca, SK, SCC).', startNodeId: 'start', nodes: EPIDERMAL_NODES },
+    { id: 'algo_skin_spindle', title: 'Cutaneous Spindle Cell Tumors', category: 'Dermatopathology', summary: 'The "SLAM" differential (SCC, LMS, AFX, Melanoma).', startNodeId: 'start', nodes: SKIN_SPINDLE_NODES },
+
+    // Existing GYN
+    { id: 'algo_endometrial_molecular', title: 'Endometrial Ca (ProMisE)', category: 'Gynecologic', summary: 'Molecular classification of Endometrial Carcinoma.', startNodeId: 'start', nodes: ENDOMETRIAL_NODES },
+    { id: 'algo_ovarian_carcinoma', title: 'Ovarian Carcinoma & Mimics', category: 'Gynecologic', summary: 'Distinguishing HGSC, Endometrioid, Mucinous.', startNodeId: 'start', nodes: OVARIAN_NODES },
+    { id: 'algo_gtd', title: 'Gestational Trophoblastic Disease', category: 'Gynecologic', summary: 'Differentiation of Choriocarcinoma, PSTT, ETT.', startNodeId: 'start', nodes: GTD_NODES },
+    { id: 'algo_uterine_mesenchymal', title: 'Uterine Mesenchymal Tumors', category: 'Gynecologic', summary: 'Algorithm for Leiomyosarcoma, ESS.', startNodeId: 'start', nodes: UTERINE_MESENCHYMAL_NODES },
+    { id: 'algo_vulva', title: 'Vulvar Pathology', category: 'Gynecologic', summary: 'Approach to squamous and glandular lesions.', startNodeId: 'start', nodes: VULVAR_NODES },
+    { id: 'algo_vagina', title: 'Vaginal Pathology', category: 'Gynecologic', summary: 'Approach to VAIN and carcinoma.', startNodeId: 'start', nodes: VAGINAL_NODES },
+    { id: 'algo_cervix', title: 'Cervical Carcinoma & Mimics', category: 'Gynecologic', summary: 'HPV-associated vs Independent.', startNodeId: 'start', nodes: CERVICAL_NODES },
+    { id: 'algo_gyn_mimics', title: 'Benign Mimics of Malignancy', category: 'Gynecologic', summary: 'Recognizing lesions that simulate cancer.', startNodeId: 'start', nodes: MIMIC_NODES },
+
+    // NEW General Surgical Pathology Algorithms
+    { id: 'algo_breast', title: 'Breast Neoplasms', category: 'Breast', summary: 'Invasive Carcinoma and Fibroepithelial Lesions.', startNodeId: 'start', nodes: BREAST_NODES },
+    { id: 'algo_kidney', title: 'Renal Cell Carcinoma', category: 'Genitourinary', summary: 'Subtyping RCC based on cytoplasm and architecture.', startNodeId: 'start', nodes: KIDNEY_NODES },
+    { id: 'algo_bladder', title: 'Urothelial Neoplasms', category: 'Genitourinary', summary: 'Grading and Staging of Bladder Tumors.', startNodeId: 'start', nodes: BLADDER_NODES },
+    { id: 'algo_prostate', title: 'Prostate Adenocarcinoma', category: 'Genitourinary', summary: 'Diagnosis of Malignancy (Basal Cell Loss).', startNodeId: 'start', nodes: PROSTATE_NODES },
+    { id: 'algo_testis', title: 'Testicular Germ Cell Tumors', category: 'Genitourinary', summary: 'Seminoma vs Non-Seminoma.', startNodeId: 'start', nodes: TESTIS_NODES },
+    { id: 'algo_lung', title: 'Lung Carcinoma', category: 'Thoracic', summary: 'Small Cell vs Non-Small Cell (Adeno/Squamous).', startNodeId: 'start', nodes: LUNG_NODES },
+    { id: 'algo_gi_tract', title: 'GI Tract Neoplasms', category: 'Gastrointestinal', summary: 'Colon, Stomach, and Liver primaries.', startNodeId: 'start', nodes: GI_NODES },
+    { id: 'algo_thyroid', title: 'Thyroid Carcinoma', category: 'Head & Neck', summary: 'Follicular vs Papillary vs Medullary.', startNodeId: 'start', nodes: THYROID_NODES },
+    { id: 'algo_salivary', title: 'Salivary Gland Tumors', category: 'Head & Neck', summary: 'Common benign and malignant entities.', startNodeId: 'start', nodes: SALIVARY_NODES },
+    { id: 'algo_cns', title: 'CNS Tumors (Adult)', category: 'Neuropathology', summary: 'Gliomas and Meningiomas (WHO 2021).', startNodeId: 'start', nodes: CNS_NODES }
+];
+
+export const getAlgorithm = (id: string): DiagnosticAlgorithm | undefined => {
+    return ALGORITHMS.find(a => a.id === id);
+};
+
+export const findLineage = (algorithmId: string, targetNodeId: string): string[] => {
+    const algorithm = getAlgorithm(algorithmId);
+    if (!algorithm) return [];
+
+    const nodes = algorithm.nodes;
+    const startNodeId = algorithm.startNodeId;
+
+    // BFS to find path
+    const queue: { id: string; path: string[] }[] = [{ id: startNodeId, path: [startNodeId] }];
+    const visited = new Set<string>();
+
+    while (queue.length > 0) {
+        const { id, path } = queue.shift()!;
+
+        if (id === targetNodeId) {
+            return path;
+        }
+
+        if (visited.has(id)) continue;
+        visited.add(id);
+
+        const node = nodes[id];
+        if (node && node.options) {
+            for (const option of node.options) {
+                if (option.nextNodeId) {
+                    queue.push({
+                        id: option.nextNodeId,
+                        path: [...path, option.nextNodeId]
+                    });
+                }
+            }
+        }
+    }
+
+    return [];
+};

@@ -1,0 +1,36 @@
+{
+  "sourceRepo": "/Users/skim4/Documents/GitHub/pathology-learning-module_-granulomatous-diseases",
+  "targetStagingDir": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/pathology_learning_module_granulomatous_diseases",
+  "assessment": "This repository is primarily an interactive React learning module. It does not contain separate lecture JSON, board-prep JSON, or histology media bundles. The reusable educational content is embedded in TSX source modules.",
+  "contentCategoriesFound": [
+    "comparative job aid",
+    "interactive case study",
+    "diagnostic pathway / quiz tree",
+    "instructional design modules (analysis, design, development, evaluation)",
+    "AI case generator prompt",
+    "module metadata"
+  ],
+  "copiedFiles": [
+    "raw/root/App.tsx",
+    "raw/root/types.ts",
+    "raw/root/metadata.json",
+    "raw/root/README.md",
+    "raw/components/Home.tsx",
+    "raw/components/JobAid.tsx",
+    "raw/components/CaseStudy.tsx",
+    "raw/components/DiagnosticPathway.tsx",
+    "raw/components/AnalysisPhase.tsx",
+    "raw/components/DesignPhase.tsx",
+    "raw/components/DevelopmentPhase.tsx",
+    "raw/components/EvaluationPhase.tsx",
+    "raw/components/AssessmentPhase.tsx",
+    "raw/components/AICaseGenerator.tsx"
+  ],
+  "copiedFileCount": 14,
+  "notableGaps": [
+    "No standalone lecture dataset was present.",
+    "No board-prep content JSON or syllabus export was present.",
+    "No histology image manifest or image asset bundle was present.",
+    "Content is coupled to React components, so reuse requires component-level extraction rather than raw data import."
+  ]
+}

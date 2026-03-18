@@ -1,0 +1,78 @@
+{
+  "project": "stainbrain",
+  "sourceRepo": "/Users/skim4/Documents/GitHub/stainbrain",
+  "targetDir": "/Users/skim4/Downloads/Didactic_Series/src/content/staging/stainbrain",
+  "stagedFiles": [
+    "metadata.json",
+    "services/tutorialContent.ts",
+    "services/algorithmData.ts",
+    "services/algorithmDatav2.ts",
+    "services/networkData.ts",
+    "services/histologyImageService.ts",
+    "services/educationalCases.ts",
+    "services/caseTutorData.ts",
+    "services/caseGeneratorData.ts",
+    "services/differentialDiagnosisData.ts",
+    "services/whoClassificationService.ts"
+  ],
+  "contentCategories": {
+    "lecture": {
+      "status": "absent",
+      "notes": "No standalone lecture JSON or lecture service was present in this repo. Lecture-like content is embedded inside tutorial and algorithm modules."
+    },
+    "tutorial_board_prep": {
+      "status": "present",
+      "files": ["services/tutorialContent.ts"],
+      "counts": {
+        "tutorialSections": 15
+      }
+    },
+    "algorithm": {
+      "status": "present",
+      "files": [
+        "services/algorithmData.ts",
+        "services/algorithmDatav2.ts",
+        "services/differentialDiagnosisData.ts",
+        "services/whoClassificationService.ts"
+      ],
+      "counts": {
+        "algorithmDataAlgorithms": 27,
+        "algorithmDataNodeRecords": 238,
+        "algorithmDatav2Algorithms": 27,
+        "whoClassificationEntries": 53
+      }
+    },
+    "network": {
+      "status": "present",
+      "files": ["services/networkData.ts"],
+      "counts": {
+        "imageFamilies": 36,
+        "nodes": 398,
+        "links": 35,
+        "extendedRecords": 219
+      }
+    },
+    "histology": {
+      "status": "present",
+      "files": [
+        "services/histologyImageService.ts",
+        "services/educationalCases.ts",
+        "services/caseTutorData.ts",
+        "services/caseGeneratorData.ts"
+      ],
+      "counts": {
+        "generatorProfiles": 15,
+        "educationalCases": 9
+      }
+    }
+  },
+  "notableDependencies": [
+    "These staged files import shared app types from `../types`; they are source payloads, not standalone runtime modules.",
+    "The histology image and educational case files reference external image URLs rather than local image assets.",
+    "The algorithm modules overlap by design and should be deduplicated before any downstream normalization."
+  ],
+  "unresolvedIssues": [
+    "No dedicated lecture corpus exists in this repo, so there is nothing to stage for that category beyond tutorial and algorithm material.",
+    "The repo is mostly application code; the staged files are the reusable content layer, not the UI shell."
+  ]
+}

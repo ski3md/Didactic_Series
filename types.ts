@@ -3,6 +3,9 @@ export enum Section {
   JOB_AID = 'Job Aid & Atlas',
   CASE_STUDY = 'Case Study',
   CASE_LIBRARY = 'Case Library',
+  LECTURES = 'Lectures',
+  TUTORIALS = 'Tutorials',
+  SYLLABUS_EXPLORER = 'Syllabus Explorer',
   VISUAL_CHALLENGE = 'Visual Challenge',
   DIAGNOSTIC_PATHWAY = 'Diagnostic Pathway',
   AI_CASE_GENERATOR = 'AI Case Generator',
@@ -113,4 +116,80 @@ export interface CaseStudy extends Case {
     discussion: string;
     teachingPoints: string[];
     references: string[];
+}
+
+export type ImportedContentType =
+  | 'lecture'
+  | 'tutorial'
+  | 'algorithm'
+  | 'syllabus-topic'
+  | 'syllabus-tree'
+  | 'syllabus-source'
+  | 'network';
+
+export interface ImportedContentRecord {
+  id: string;
+  sourceRepo: string;
+  sourcePath: string;
+  contentType: ImportedContentType;
+  title: string;
+  category: string | null;
+  summary: string | null;
+  body: string;
+  learningObjectives: string[];
+  slides: Array<Record<string, unknown>>;
+  mcqs: TutorialMCQ[];
+  flashcards: TutorialFlashcard[];
+  references: string[];
+  tags: string[];
+  provenance: Record<string, unknown>;
+}
+
+export interface TutorialMCQ {
+  question: string;
+  choices: string[];
+  answer: string;
+  rationale?: string;
+  type?: string;
+}
+
+export interface TutorialFlashcard {
+  front: string;
+  back: string;
+  tag?: string;
+}
+
+export interface LectureSlide {
+  title?: string;
+  type?: string;
+  content?: string;
+  config?: Record<string, unknown>;
+}
+
+export interface LectureEntityCard {
+  entityId?: string;
+  summary?: string;
+  keyMorphology?: string[];
+  keyIHC?: {
+    positive?: string[];
+    negative?: string[];
+    patterns?: string[];
+  };
+  pearls?: Array<{
+    text?: string;
+    type?: string;
+  }>;
+}
+
+export interface SyllabusTopicProvenance {
+  topic_id?: string;
+  title?: string;
+  clean_title?: string;
+  difficulty?: string;
+  level?: number;
+  category_id?: string;
+  parent_topic_id?: string | null;
+  path_context?: string[];
+  source_line?: number;
+  is_valid_topic?: boolean;
 }
