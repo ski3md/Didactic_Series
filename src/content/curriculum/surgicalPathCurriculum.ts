@@ -159,7 +159,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
     ]),
     plannedAssets: ['images', 'syllabus', 'assessment'],
     navigationIntents: {
-      lectures: { query: 'Renal Pathology', track: 'core-principles' },
+      lectures: { selectedId: 'renal_mass_eval', query: 'Renal Mass Evaluation', track: 'curated' },
       tutorials: { query: 'Renal Cell Carcinoma' },
       syllabus: { query: 'renal cell carcinoma' },
     },
@@ -188,7 +188,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
     ]),
     plannedAssets: ['images', 'syllabus', 'assessment'],
     navigationIntents: {
-      lectures: { query: 'Thyroid Pathology', track: 'core-principles' },
+      lectures: { selectedId: 'ioc-overview-endocrine-surgery', query: 'Thyroid Pathology: Core Principles', track: 'core-principles' },
       tutorials: { query: 'Papillary Thyroid' },
       syllabus: { query: 'papillary thyroid papillary renal' },
     },
@@ -374,7 +374,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
     ]),
     plannedAssets: ['algorithms', 'images', 'syllabus', 'assessment'],
     navigationIntents: {
-      lectures: { query: 'Breast Pathology', track: 'core-principles' },
+      lectures: { selectedId: 'ioc-overview-breast-surgery', query: 'Breast Pathology: Core Principles', track: 'core-principles' },
       tutorials: { query: 'Breast' },
       syllabus: { query: 'breast pathology' },
     },
@@ -403,7 +403,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
     ]),
     plannedAssets: ['algorithms', 'images', 'syllabus', 'assessment'],
     navigationIntents: {
-      lectures: { query: 'Gynecologic Pathology', track: 'core-principles' },
+      lectures: { selectedId: 'ioc-overview-gynecologic-oncology', query: 'Gynecologic Pathology: Core Principles', track: 'core-principles' },
       tutorials: { query: 'Gynecologic Ovar' },
       syllabus: { query: 'gynecologic ovarian endometrial' },
     },
@@ -435,7 +435,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
     ]),
     plannedAssets: ['algorithms', 'images', 'syllabus', 'assessment'],
     navigationIntents: {
-      lectures: { query: 'Renal Testicular', track: 'all' },
+      lectures: { selectedId: 'renal_mass_eval', query: 'Renal Mass Evaluation', track: 'curated' },
       tutorials: { query: 'Renal Testis' },
       syllabus: { query: 'renal testis germ cell' },
     },
@@ -532,7 +532,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
     ]),
     plannedAssets: ['algorithms', 'images', 'syllabus', 'assessment'],
     navigationIntents: {
-      lectures: { query: 'Liver Pancreas', track: 'core-principles' },
+      lectures: { selectedId: 'ioc-overview-hepatobiliary-surgery', query: 'Liver/Biliary Pathology: Core Principles', track: 'core-principles' },
       tutorials: { query: 'Liver Pancreas Cholangiocarcinoma' },
       syllabus: { query: 'liver pancreas cholangiocarcinoma pancreatic adenocarcinoma' },
     },
@@ -562,7 +562,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
     ]),
     plannedAssets: ['algorithms', 'images', 'syllabus', 'assessment'],
     navigationIntents: {
-      lectures: { query: 'Lung Pathology', track: 'core-principles' },
+      lectures: { selectedId: 'ioc-overview-thoracic-surgery', query: 'Lung Pathology: Core Principles', track: 'core-principles' },
       tutorials: { query: 'Lung adenocarcinoma squamous small cell' },
       images: { query: 'granulomatous lung', filter: 'all' },
       syllabus: { query: 'lung adenocarcinoma small cell squamous' },
@@ -599,7 +599,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
     ]),
     plannedAssets: ['algorithms', 'images', 'syllabus', 'assessment'],
     navigationIntents: {
-      lectures: { query: 'Head Neck Thyroid', track: 'core-principles' },
+      lectures: { selectedId: 'ioc-overview-head-neck-surgery', query: 'Head & Neck Pathology: Core Principles', track: 'core-principles' },
       tutorials: { query: 'Thyroid salivary head neck endocrine' },
       syllabus: { query: 'thyroid head neck salivary' },
     },
@@ -697,7 +697,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
     ]),
     plannedAssets: ['algorithms', 'images', 'syllabus', 'assessment'],
     navigationIntents: {
-      lectures: { query: 'Neurosurgical Pathology', track: 'core-principles' },
+      lectures: { selectedId: 'ioc-overview-neuropathology', query: 'Neurosurgical Pathology: Core Principles', track: 'core-principles' },
       tutorials: { query: 'Glioma Meningioma Neuropathology' },
       syllabus: { query: 'glioma meningioma metastasis cns' },
     },

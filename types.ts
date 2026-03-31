@@ -271,6 +271,7 @@ export interface SurgicalPathAssetRef {
 }
 
 export interface CurriculumNavigationIntent {
+  selectedId?: string;
   query?: string;
   track?: string;
   filter?: string;

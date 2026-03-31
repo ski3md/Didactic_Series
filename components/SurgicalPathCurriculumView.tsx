@@ -144,6 +144,7 @@ const SurgicalPathCurriculumView: React.FC<SurgicalPathCurriculumViewProps> = ({
     setCurriculumDrilldown({
       sourceModuleId: moduleId,
       targetSection,
+      selectedId: intent?.selectedId,
       query: intent?.query,
       track: intent?.track,
       filter: intent?.filter,
@@ -439,9 +440,26 @@ const SurgicalPathCurriculumView: React.FC<SurgicalPathCurriculumViewProps> = ({
                     <div className="mt-3 space-y-2">
                       {(items as SurgicalPathModule['lectures']).length > 0 ? (
                         (items as SurgicalPathModule['lectures']).map((item) => (
-                          <div key={item.id} className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
-                            {item.label}
-                          </div>
+                          label === 'Lectures' ? (
+                            <button
+                              key={item.id}
+                              type="button"
+                              onClick={() =>
+                                openSection(Section.LECTURES, selectedModule.moduleId, {
+                                  selectedId: item.id,
+                                  track: selectedModule.navigationIntents?.lectures?.track,
+                                  query: item.label,
+                                })
+                              }
+                              className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-left text-sm text-slate-700 transition hover:border-primary-300 hover:bg-primary-50 hover:text-primary-900"
+                            >
+                              {item.label}
+                            </button>
+                          ) : (
+                            <div key={item.id} className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
+                              {item.label}
+                            </div>
+                          )
                         ))
                       ) : (
                         <div className="rounded-lg border border-dashed border-slate-200 px-3 py-2 text-sm text-slate-500">

@@ -3,8 +3,14 @@ import Card from './ui/Card';
 import { Section } from '../types';
 import { 
   DocumentTextIcon, MicroscopeIcon, EyeIcon, BeakerIcon, 
-  SparklesIcon, BookOpenIcon, PhotographIcon, CollectionIcon
+  SparklesIcon, BookOpenIcon, PhotographIcon, CollectionIcon, AcademicCapIcon
 } from './icons';
+import { setCurriculumDrilldown } from '../utils/curriculumDrilldown';
+import {
+  corePrinciplesPromotedLectures,
+  curatedPromotedLectures,
+  PromotedLectureRecord,
+} from '../utils/lectureCatalog';
 
 interface HomeProps {
   onSectionChange: (section: Section) => void;
@@ -55,6 +61,17 @@ const Home: React.FC<HomeProps> = ({ onSectionChange }) => {
     { section: Section.EVALUATION, description: "Measuring your ability to integrate findings and form a diagnosis.", icon: <BookOpenIcon className="h-5 w-5" /> },
   ];
 
+  const openLecture = (lecture: PromotedLectureRecord) => {
+    setCurriculumDrilldown({
+      sourceModuleId: `home-lecture-pathway-${lecture.id}`,
+      targetSection: Section.LECTURES,
+      selectedId: lecture.id,
+      query: lecture.title,
+      track: lecture.lectureTrack,
+    });
+    onSectionChange(Section.LECTURES);
+  };
+
   return (
     <div className="space-y-12 animate-fade-in">
       <header className="text-center">
@@ -77,6 +94,41 @@ const Home: React.FC<HomeProps> = ({ onSectionChange }) => {
             <SectionLinkCard key={item.section} {...item} onClick={onSectionChange} />
           ))}
         </ul>
+      </div>
+
+      <div>
+        <h2 className="text-2xl font-semibold font-serif text-slate-800 mb-6 text-center">Lecture Pathways</h2>
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          {[
+            {
+              title: 'Curated GU Lectures',
+              description: 'Direct pathways to the original GU lecture imports.',
+              lectures: curatedPromotedLectures,
+            },
+            {
+              title: 'Core Principles Series',
+              description: 'Direct pathways to the promoted topic-based core-principles lectures.',
+              lectures: corePrinciplesPromotedLectures,
+            },
+          ].map((group) => (
+            <Card key={group.title}>
+              <h3 className="text-xl font-semibold font-serif text-slate-900">{group.title}</h3>
+              <p className="mt-1 text-sm text-slate-500">{group.description}</p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {group.lectures.map((lecture) => (
+                  <button
+                    key={lecture.id}
+                    type="button"
+                    onClick={() => openLecture(lecture)}
+                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-primary-300 hover:bg-primary-50 hover:text-primary-900"
+                  >
+                    {lecture.title}
+                  </button>
+                ))}
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
       
       <div>

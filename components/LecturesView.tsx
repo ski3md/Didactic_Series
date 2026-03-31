@@ -4,30 +4,16 @@ import SectionHeader from './ui/SectionHeader';
 import MarkdownContent from './ui/MarkdownContent';
 import { AcademicCapIcon, ArrowPathIcon, DocumentTextIcon } from './icons';
 import algorithmsData from '../src/content/algorithms/algorithms.normalized.json';
-import promotedLecturesData from '../src/content/downloads_imports/normalized/lectures.normalized.json';
-import lecturesData from '../src/content/lectures/lectures.normalized.json';
 import { ImportedContentRecord, LectureEntityCard, LectureSlide, Section } from '../types';
-import { getPromotedDownloadsLectures } from '../utils/promotedContentRegistry';
 import { consumeCurriculumDrilldown } from '../utils/curriculumDrilldown';
-
-type LectureTrack = 'curated' | 'core-principles';
-
-type PromotedLectureRecord = ImportedContentRecord & {
-  lectureTrack: LectureTrack;
-  sourceLabel: string;
-};
-
-const curatedLectures = (lecturesData as ImportedContentRecord[]).map((lecture) => ({
-  ...lecture,
-  lectureTrack: 'curated' as const,
-  sourceLabel: 'Curated Lecture Imports',
-}));
-const promotedLectures = getPromotedDownloadsLectures(promotedLecturesData as ImportedContentRecord[]).map((lecture) => ({
-  ...lecture,
-  lectureTrack: 'core-principles' as const,
-  sourceLabel: 'Core Principles Library',
-}));
-const lectures: PromotedLectureRecord[] = [...curatedLectures, ...promotedLectures];
+import {
+  allPromotedLectures as lectures,
+  corePrinciplesPromotedLectures as promotedLectures,
+  curatedPromotedLectures as curatedLectures,
+  getPromotedLectureById,
+  LectureTrack,
+  PromotedLectureRecord,
+} from '../utils/lectureCatalog';
 const algorithms = algorithmsData as ImportedContentRecord[];
 
 const LecturesView: React.FC = () => {
@@ -46,6 +32,13 @@ const LecturesView: React.FC = () => {
     }
     if (drilldown.track === 'curated' || drilldown.track === 'core-principles' || drilldown.track === 'all') {
       setTrackFilter(drilldown.track);
+    }
+    if (drilldown.selectedId) {
+      const selectedLecture = getPromotedLectureById(drilldown.selectedId);
+      if (selectedLecture) {
+        setSelectedId(selectedLecture.id);
+        setTrackFilter(selectedLecture.lectureTrack);
+      }
     }
   }, []);
 

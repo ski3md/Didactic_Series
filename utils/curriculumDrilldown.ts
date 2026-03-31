@@ -5,6 +5,7 @@ const CURRICULUM_DRILLDOWN_KEY = 'didactic_series_curriculum_drilldown';
 export interface CurriculumDrilldownPayload {
   sourceModuleId: string;
   targetSection: Section;
+  selectedId?: string;
   query?: string;
   track?: string;
   filter?: string;
