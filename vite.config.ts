@@ -5,7 +5,7 @@ import process from 'process'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   // Load environment variables
-  const env = loadEnv(mode, process.cwd(), '');
+  const env = loadEnv(mode, process.cwd(), '')
 
   return {
     plugins: [react()],
@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
 
     // Define API key for client use (read-only)
     define: {
-      'process.env.API_KEY': JSON.stringify(env.API_KEY),
+      'process.env.API_KEY': JSON.stringify(env.API_KEY || ''),
     },
 
     // Explicit alias for OpenSeadragon (fixes Vite import resolution)
@@ -28,6 +28,7 @@ export default defineConfig(({ mode }) => {
     // Ensure dependencies are pre-bundled correctly
     optimizeDeps: {
       include: ['openseadragon'],
+      exclude: ['@google/genai'],
     },
 
     build: {
@@ -44,8 +45,10 @@ export default defineConfig(({ mode }) => {
           },
         },
 
-        // Externalize optional large libs if needed
-        external: ['openseadragon'],
+        // Prevent unresolved imports from breaking build
+        external: [
+          '@google/genai',
+        ],
       },
     },
   };

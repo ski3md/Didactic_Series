@@ -1,7 +1,7 @@
 {
   "name": "Didactic_Series",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.1.0",
   "type": "module",
   "homepage": "https://ski3md.github.io/Didactic_Series/",
   "scripts": {
@@ -14,12 +14,19 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@google/genai": "^1.27.0",
+    "@google/generative-ai": "^0.24.1",
+    "clsx": "^2.0.0",
+    "konva": "^9.3.6",
+    "lucide-react": "^0.294.0",
     "openseadragon": "^5.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^10.1.0",
-    "remark-gfm": "^4.0.1"
+    "react-konva": "^18.2.10",
+    "remark-gfm": "^4.0.1",
+    "tailwind-merge": "^2.1.0",
+    "use-image": "^1.1.1",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -29,6 +36,7 @@
     "dotenv": "^16.3.1",
     "gh-pages": "^6.0.0",
     "postcss": "^8.4.27",
+    "rollup": "^4.52.5",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
