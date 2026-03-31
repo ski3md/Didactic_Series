@@ -1,108 +1,157 @@
-# Pathology Learning Module: Granulomatous Diseases of the Lung
+# Didactic Series
 
-This is an interactive, all-inclusive didactic educational experience for pathology residents on granulomatous diseases of the lung. The module is built using the ADDIE model of instructional design, providing not only a learning experience on the topic but also a meta-narrative on how the module itself was constructed.
+`Didactic_Series` is a pathology education platform built in React, TypeScript, and Vite. It started as a granulomatous lung teaching module, but it now includes a broader set of educational surfaces for lectures, tutorials, syllabus exploration, image atlases, and case-based learning.
 
-This project has been configured with Vite for a modern, fast development experience and easy deployment.
+## Current Product Scope
 
-## Key Features
+The app currently combines four kinds of educational experiences:
 
--   **Interactive Case Studies**: Explore clinical scenarios with integrated Whole Slide Imaging (WSI) powered by OpenSeadragon.
--   **AI-Powered Case Generator**: Leverage the Google Gemini API to generate unique, board-style case studies on demand and receive instant, AI-driven feedback on your diagnostic reasoning.
--   **Comprehensive Diagnostic Pathway**: A multi-step guided workflow that simulates the diagnostic process for a wide range of granulomatous diseases, from common to rare.
--   **Visual Discrimination Challenges**: Sharpen your eye for subtle morphologic differences with side-by-side WSI comparisons.
--   **Instructional Design Meta-Narrative**: Learn about the ADDIE model (Analysis, Design, Development, Evaluation) through dedicated sections that explain the pedagogical principles behind the module's creation.
--   **Responsive Design**: Fully accessible on both desktop and mobile devices.
+1. Native granulomatous teaching workflows
+- Job Aid & Atlas
+- Diagnostic Pathway
+- AI Case Generator
+- Case Study, Visual Challenge, and Evaluation flows
+
+2. Promoted educational content
+- Lectures
+- Tutorials
+- Syllabus Explorer
+
+3. Imported staging and review surface
+- Downloads Library
+
+4. Histology image experiences
+- Image Galleries
+- Curated Histology Atlas
+- Supplemental promoted granulomatous atlas content
+
+## Current Content Footprint
+
+The repo currently contains:
+
+- 2 primary normalized lectures
+- 190 primary normalized tutorials
+- 9 Downloads-derived lectures
+- 290 Downloads-derived tutorials
+- 216 Downloads-derived images
+- 1 Downloads-derived algorithm
+
+These datasets live under:
+
+- [src/content/lectures](/Users/skim4/Downloads/Didactic_Series/src/content/lectures)
+- [src/content/tutorials](/Users/skim4/Downloads/Didactic_Series/src/content/tutorials)
+- [src/content/syllabus](/Users/skim4/Downloads/Didactic_Series/src/content/syllabus)
+- [src/content/downloads_imports](/Users/skim4/Downloads/Didactic_Series/src/content/downloads_imports)
+- [src/content/staging](/Users/skim4/Downloads/Didactic_Series/src/content/staging)
 
 ## Tech Stack
 
--   **Framework**: [React](https://reactjs.org/) with [TypeScript](https://www.typescriptlang.org/)
--   **Build Tool**: [Vite](https://vitejs.dev/)
--   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
--   **AI**: [Google Gemini API](https://ai.google.dev/docs)
--   **Whole Slide Imaging**: [OpenSeadragon](https://openseadragon.github.io/)
+- React 18
+- TypeScript 5
+- Vite 4
+- Tailwind CSS
+- `react-markdown` + `remark-gfm`
+- `@google/genai`
+- OpenSeadragon
 
----
+## Key App Sections
 
-## Getting Started
+The main app currently exposes:
 
-Follow these instructions to get the project running locally and to deploy it.
+- Home
+- Job Aid & Atlas
+- Case Study
+- Case Library
+- Lectures
+- Tutorials
+- Downloads Library
+- Syllabus Explorer
+- Visual Challenge
+- Diagnostic Pathway
+- AI Case Generator
+- Image Galleries
 
-### 1. Clone the Repository
+## Local Development
 
-```bash
-git clone https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>.git
-cd <YOUR_REPO_NAME>
-```
+### 1. Install dependencies
 
-### 2. Install Dependencies
-
-You will need [Node.js](https://nodejs.org/) installed. Then, run:
 ```bash
 npm install
 ```
 
-### 3. Configure Environment Variables
+### 2. Configure secrets
 
-The AI Case Generator feature requires a Google Gemini API Key.
+The recommended local setup is no longer a plain `.env` file. This machine is now set up to use:
 
-1.  Create a new file named `.env` in the root of the project.
-2.  Add your API key to this file:
+- `direnv`
+- `project-secrets`
+- macOS Keychain
 
-    ```env
-    API_KEY="YOUR_GEMINI_API_KEY_HERE"
-    ```
+If that setup is available, entering the repo should load the repo-scoped secrets automatically through:
 
-    _Note: The `.env` file is listed in `.gitignore` and should not be committed to your repository._
+- [.envrc](/Users/skim4/Downloads/Didactic_Series/.envrc)
 
-### 4. Run the Development Server
+If you are not using that system, you can still export the required values manually before running the app.
+
+### 3. Frontend runtime keys
+
+AI-driven frontend features require a Google Gemini-compatible key through one of:
+
+- `API_KEY`
+- `VITE_API_KEY`
+- `GEMINI_API_KEY`
+
+### 4. Start the app
 
 ```bash
 npm run dev
 ```
 
-This will start the Vite development server. Open your browser to the local address provided (usually `http://localhost:5173`).
-
----
-
-## Deployment to GitHub Pages
-
-This project is pre-configured for easy deployment to GitHub Pages.
-
-### 1. Update Project Configuration
-
-Before deploying, you need to set the correct repository name.
-
--   **In `package.json`**: Update the `homepage` field to point to your GitHub Pages URL.
-    ```json
-    "homepage": "https://<YOUR_GITHUB_USERNAME>.github.io/<YOUR_REPO_NAME>",
-    ```
--   **In `vite.config.ts`**: Update the `base` property to match your repository name.
-    ```ts
-    // ...
-    base: '/<YOUR_REPO_NAME>/',
-    // ...
-    ```
-    (This has been pre-filled with `/Didactic_Series/`. Change it if your repo name is different.)
-
-### 2. Deploy
-
-The project includes the `gh-pages` package to simplify deployment. When you run the deploy script, it will use the `API_KEY` from your local `.env` file and embed it in the static files.
-
-**Important**: For a public repository, be aware that the API key will be visible in the built JavaScript files. For personal or private use, this may be acceptable. For a truly secure public deployment, you would need to implement a server-side component to proxy API requests, which is beyond the scope of a static site deployment.
-
-Run the following command to deploy:
+### 5. Production build
 
 ```bash
-npm run deploy
+npm run build
 ```
 
-This command will first build the project into a `dist` folder and then push the contents of that folder to a special `gh-pages` branch on your repository.
+## Supporting Scripts
 
-### 3. Configure GitHub Pages
+### Content planning
 
-1.  In your GitHub repository, go to **Settings > Pages**.
-2.  Under **Build and deployment**, set the **Source** to **Deploy from a branch**.
-3.  Set the **Branch** to `gh-pages` and the folder to `/ (root)`.
-4.  Click **Save**.
+```bash
+npm run batch:next-10
+```
 
-Your site should be live at the URL specified in your `homepage` field within a few minutes.
+This generates planning outputs under:
+
+- [src/content/downloads_imports/planning](/Users/skim4/Downloads/Didactic_Series/src/content/downloads_imports/planning)
+
+### Pipeline notifications
+
+The pathology image pipeline in [map_and_run_pipeline.py](/Users/skim4/Downloads/Didactic_Series/map_and_run_pipeline.py) now supports Gmail OAuth notifications rather than Gmail app-password SMTP. Setup notes are in:
+
+- [docs/gmail_oauth_notifications.md](/Users/skim4/Downloads/Didactic_Series/docs/gmail_oauth_notifications.md)
+
+## Important Project Notes
+
+- The repo still contains legacy image-manifest tooling that expects `src/assets/data/image_manifest.json`. That path is not yet fully reconciled with the newer curated atlas/content system.
+- The Downloads Library is a staging and promotion surface, not yet the final curated teaching experience.
+- The current worktree may contain local generated content and environment churn. Treat migration outputs and runtime state carefully before committing.
+
+## Planning Documents
+
+For the actual project direction, use these documents instead of the older single-module framing:
+
+- [CURRENT_STATE_MASTER_ROADMAP.md](/Users/skim4/Downloads/Didactic_Series/CURRENT_STATE_MASTER_ROADMAP.md)
+- [LECTURE_CONTENT_MIGRATION_STRATEGY.md](/Users/skim4/Downloads/Didactic_Series/LECTURE_CONTENT_MIGRATION_STRATEGY.md)
+- [NEXT_10_MIGRATION_BATCH_PLAN.md](/Users/skim4/Downloads/Didactic_Series/NEXT_10_MIGRATION_BATCH_PLAN.md)
+
+## Current State Summary
+
+The repo is past the initial migration stage. The main remaining work is:
+
+- consolidating product identity
+- promoting curated content out of staging
+- reconciling legacy and new image-data paths
+- tightening docs and repo hygiene
+
+This project should now be treated as a reusable pathology education shell with a strong granulomatous domain, not just a single-topic teaching module.

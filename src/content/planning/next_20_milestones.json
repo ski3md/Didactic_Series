@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Publish a current-state master roadmap",
+    "tranche": 1,
+    "status": "completed"
+  },
+  {
+    "id": 2,
+    "title": "Replace the stale README with current product and setup guidance",
+    "tranche": 1,
+    "status": "completed"
+  },
+  {
+    "id": 3,
+    "title": "Restore the missing legacy image-manifest compatibility path",
+    "tranche": 1,
+    "status": "completed"
+  },
+  {
+    "id": 4,
+    "title": "Add a deterministic sync script and package command for compatibility assets",
+    "tranche": 1,
+    "status": "completed"
+  },
+  {
+    "id": 5,
+    "title": "Reduce future local runtime churn through improved ignore rules",
+    "tranche": 1,
+    "status": "completed"
+  },
+  {
+    "id": 6,
+    "title": "Promote core-principles lectures into a first-class didactic module",
+    "tranche": 2,
+    "status": "completed"
+  },
+  {
+    "id": 7,
+    "title": "Split Downloads lectures into topic-first navigation instead of a flat library",
+    "tranche": 2,
+    "status": "completed"
+  },
+  {
+    "id": 8,
+    "title": "Curate one coherent tutorial track from the imported corpora",
+    "tranche": 2,
+    "status": "completed"
+  },
+  {
+    "id": 9,
+    "title": "Deduplicate overlapping AP/CP/tutorial records across primary and Downloads content",
+    "tranche": 2,
+    "status": "completed"
+  },
+  {
+    "id": 10,
+    "title": "Define canonical versus staged content namespaces in code and docs",
+    "tranche": 2,
+    "status": "pending"
+  },
+  {
+    "id": 11,
+    "title": "Add cross-links between lectures, tutorials, syllabus topics, and atlas entities",
+    "tranche": 3,
+    "status": "pending"
+  },
+  {
+    "id": 12,
+    "title": "Add topic and entity facets to main promoted content views",
+    "tranche": 3,
+    "status": "pending"
+  },
+  {
+    "id": 13,
+    "title": "Add a dedicated algorithm navigator rather than leaving algorithms as raw imports",
+    "tranche": 3,
+    "status": "pending"
+  },
+  {
+    "id": 14,
+    "title": "Normalize image family labels and improve atlas summaries for readability",
+    "tranche": 3,
+    "status": "pending"
+  },
+  {
+    "id": 15,
+    "title": "Add promote-from-staging selection rules so Downloads Library stops being a dumping surface",
+    "tranche": 3,
+    "status": "pending"
+  },
+  {
+    "id": 16,
+    "title": "Unify documentation around one setup path and one product definition",
+    "tranche": 4,
+    "status": "pending"
+  },
+  {
+    "id": 17,
+    "title": "Add deterministic validation for normalized content outputs",
+    "tranche": 4,
+    "status": "pending"
+  },
+  {
+    "id": 18,
+    "title": "Separate generated runtime artifacts from canonical repo content",
+    "tranche": 4,
+    "status": "pending"
+  },
+  {
+    "id": 19,
+    "title": "Establish a clean release baseline with reproducible build verification",
+    "tranche": 4,
+    "status": "pending"
+  },
+  {
+    "id": 20,
+    "title": "Publish a release-ready project map describing what is production-like, staged, or experimental",
+    "tranche": 4,
+    "status": "pending"
+  }
+]

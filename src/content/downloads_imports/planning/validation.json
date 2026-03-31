@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-03-19T08:58:42.284Z",
+  "root": "src/content/downloads_imports",
+  "datasets": {
+    "lectures": 9,
+    "tutorials": 290,
+    "algorithms": 1,
+    "images": 216
+  },
+  "checks": [
+    {
+      "name": "Lectures imported",
+      "status": "pass"
+    },
+    {
+      "name": "Tutorials imported",
+      "status": "pass"
+    },
+    {
+      "name": "Algorithms imported",
+      "status": "pass"
+    },
+    {
+      "name": "Images imported",
+      "status": "pass"
+    }
+  ]
+}

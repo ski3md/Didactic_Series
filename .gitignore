@@ -27,6 +27,11 @@ Thumbs.db
 
 # GitHub Pages cache
 node_modules/.cache/gh-pages/
+
+# Python local runtime
+venv/
+__pycache__/
+*.pyc
 # macOS system files
 .DS_Store
 */.DS_Store
@@ -64,4 +69,3 @@ Thumbs.db
 
 # GitHub Pages cache
 node_modules/.cache/gh-pages/
-

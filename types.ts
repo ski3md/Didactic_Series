@@ -1,5 +1,6 @@
 export enum Section {
   HOME = 'Home',
+  SURGICAL_PATH_CURRICULUM = 'Pathology Curriculum',
   JOB_AID = 'Job Aid & Atlas',
   CASE_STUDY = 'Case Study',
   CASE_LIBRARY = 'Case Library',
@@ -42,7 +43,7 @@ export interface StoredImage {
   stain?: string;
   magnification?: string;
   sourceUrl?: string;
-  collection?: 'curated' | 'official' | 'community';
+  collection?: 'curated' | 'promoted' | 'official' | 'community';
   readOnly?: boolean;
   // Optional enriched data
   entity?: string;
@@ -200,4 +201,103 @@ export interface SyllabusTopicProvenance {
   path_context?: string[];
   source_line?: number;
   is_valid_topic?: boolean;
+}
+
+export type SurgicalPathSubspecialty =
+  | 'Foundations'
+  | 'Clinical Pathology'
+  | 'Breast'
+  | 'Gynecologic'
+  | 'Genitourinary'
+  | 'Gastrointestinal'
+  | 'Hepatobiliary & Pancreatic'
+  | 'Thoracic'
+  | 'Head & Neck / Endocrine'
+  | 'Skin / Melanocytic'
+  | 'Soft Tissue / Bone'
+  | 'Hematolymphoid Interface'
+  | 'Neuropathology'
+  | 'Pediatric / Placental';
+
+export type SurgicalPathPatternFamily =
+  | 'clear-cell'
+  | 'spindle-cell'
+  | 'papillary'
+  | 'cystic'
+  | 'mucinous'
+  | 'small-round-blue-cell'
+  | 'oncocytic'
+  | 'necrotizing-inflammatory-mimic'
+  | 'neuroendocrine'
+  | 'glandular'
+  | 'lymphoid-interface'
+  | 'melanocytic'
+  | 'serrated-dysplasia'
+  | 'borderline-ovarian'
+  | 'bone-cartilage'
+  | 'hematology'
+  | 'coagulation'
+  | 'transfusion-medicine'
+  | 'plasma-cell-disorder';
+
+export type SurgicalPathSpecimenContext =
+  | 'biopsy'
+  | 'excision'
+  | 'resection'
+  | 'margin'
+  | 'lymph-node'
+  | 'frozen-section'
+  | 'cytology'
+  | 'consult-triage'
+  | 'lab-workup'
+  | 'transfusion-reaction'
+  | 'blood-bank';
+
+export type SurgicalPathBoardPriority = 'core' | 'high-yield' | 'advanced';
+
+export type SurgicalPathPromotionState = 'staged' | 'canonical' | 'archived';
+
+export type SurgicalPathAssetKind =
+  | 'lectures'
+  | 'tutorials'
+  | 'algorithms'
+  | 'images'
+  | 'syllabus'
+  | 'assessment';
+
+export interface SurgicalPathAssetRef {
+  id: string;
+  label: string;
+}
+
+export interface CurriculumNavigationIntent {
+  query?: string;
+  track?: string;
+  filter?: string;
+}
+
+export interface SurgicalPathModule {
+  moduleId: string;
+  title: string;
+  summary: string;
+  subspecialty: SurgicalPathSubspecialty;
+  patternFamilies: SurgicalPathPatternFamily[];
+  specimenContexts: SurgicalPathSpecimenContext[];
+  boardPriority: SurgicalPathBoardPriority;
+  promotionState: SurgicalPathPromotionState;
+  priorityScore: number;
+  recommendedOrder: number;
+  relatedModules: string[];
+  linkedLectureIds: string[];
+  linkedTutorialIds: string[];
+  linkedAlgorithmIds: string[];
+  linkedImageIds: string[];
+  linkedSyllabusTopicIds: string[];
+  plannedAssets: SurgicalPathAssetKind[];
+  lectures: SurgicalPathAssetRef[];
+  tutorials: SurgicalPathAssetRef[];
+  algorithms: SurgicalPathAssetRef[];
+  images: SurgicalPathAssetRef[];
+  syllabus: SurgicalPathAssetRef[];
+  navigationIntents?: Partial<Record<'lectures' | 'tutorials' | 'images' | 'syllabus', CurriculumNavigationIntent>>;
 }

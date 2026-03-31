@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StoredImage, User } from '../types';
+import { Section, StoredImage, User } from '../types';
 import SectionHeader from './ui/SectionHeader';
 import Card from './ui/Card';
 import { getOfficialImages, saveOfficialImages, getCommunityImages, saveCommunityImages } from '../utils/imageStore';
 import { getCuratedAtlasFamilies, getCuratedAtlasImages } from '../utils/curatedHistologyAtlas';
+import {
+  getPromotedGranulomatousAtlasFamilies,
+  getPromotedGranulomatousAtlasImages,
+} from '../utils/promotedGranulomatousAtlas';
 import { XCircleIcon, PhotographIcon, CloudArrowUpIcon, ArrowDownTrayIcon, ShieldCheckIcon, EyeIcon, GlobeAltIcon } from './icons';
 import ImageUploadForm from './ImageUploadForm';
 import Alert from './ui/Alert';
+import { consumeCurriculumDrilldown } from '../utils/curriculumDrilldown';
 
 const ImageGrid: React.FC<{
   images: StoredImage[];
@@ -129,12 +134,29 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
   const importFileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setCuratedImages(getCuratedAtlasImages());
+    setCuratedImages([...getCuratedAtlasImages(), ...getPromotedGranulomatousAtlasImages()]);
     setOfficialImages(getOfficialImages());
     setCommunityImages(getCommunityImages());
   }, []);
 
-  const curatedFamilies = getCuratedAtlasFamilies();
+  useEffect(() => {
+    const drilldown = consumeCurriculumDrilldown(Section.IMAGE_GALLERIES);
+    if (!drilldown) {
+      return;
+    }
+
+    if (drilldown.query) {
+      setCuratedSearch(drilldown.query);
+      setView('browse');
+    }
+    if (drilldown.filter) {
+      setCuratedFamilyFilter(drilldown.filter);
+    }
+  }, []);
+
+  const curatedFamilies = Array.from(
+    new Set([...getCuratedAtlasFamilies(), ...getPromotedGranulomatousAtlasFamilies()])
+  ).sort((left, right) => left.localeCompare(right));
   const filteredCuratedImages = curatedImages.filter((image) => {
     const matchesFamily = curatedFamilyFilter === 'all' || image.family === curatedFamilyFilter;
     const searchableText = [
@@ -339,9 +361,9 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
                 <Card className="!shadow-none border-dashed border-2 bg-slate-50/50">
                     <div className="flex flex-col gap-4 mb-4">
                         <div>
-                            <h3 className="text-xl font-semibold font-serif text-slate-800">Curated Histology Atlas</h3>
+                            <h3 className="text-xl font-semibold font-serif text-slate-800">Curated and Promoted Histology Atlas</h3>
                             <p className="text-sm text-slate-600 mt-1">
-                                Imported read-only histology material from the migrated curriculum sources, with source attribution preserved.
+                                Imported read-only histology material from the migrated curriculum sources, now expanded with the promoted Downloads granulomatous atlas set.
                             </p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -366,13 +388,13 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
                             </select>
                         </div>
                         <p className="text-xs text-slate-500">
-                            Showing {filteredCuratedImages.length} of {curatedImages.length} curated images across {curatedFamilies.length} families.
+                            Showing {filteredCuratedImages.length} of {curatedImages.length} atlas images across {curatedFamilies.length} families.
                         </p>
                     </div>
                     <ImageGrid
                       images={filteredCuratedImages}
                       onImageClick={setSelectedImage}
-                      emptyMessage="No curated atlas images match the current search and family filters."
+                      emptyMessage="No atlas images match the current search and family filters."
                     />
                 </Card>
                 <Card className="!shadow-none border-dashed border-2 bg-slate-50/50">

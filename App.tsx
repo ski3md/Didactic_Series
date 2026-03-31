@@ -12,6 +12,7 @@ import ChangePasswordModal from './components/ChangePasswordModal';
 const JobAid = lazy(() => import('./components/JobAid'));
 const CaseStudy = lazy(() => import('./components/CaseStudy'));
 const CaseLibrary = lazy(() => import('./components/CaseLibrary'));
+const SurgicalPathCurriculumView = lazy(() => import('./components/SurgicalPathCurriculumView'));
 const LecturesView = lazy(() => import('./components/LecturesView'));
 const TutorialsView = lazy(() => import('./components/TutorialsView'));
 const DownloadsLibraryView = lazy(() => import('./components/DownloadsLibraryView'));
@@ -47,6 +48,7 @@ const MainApp: React.FC<{ user: User; onLogout: () => void }> = ({ user, onLogou
   const renderSection = () => {
     switch (currentSection) {
       case Section.HOME: return <Home onSectionChange={onSectionSelect} />;
+      case Section.SURGICAL_PATH_CURRICULUM: return <SurgicalPathCurriculumView onSectionChange={onSectionSelect} />;
       case Section.JOB_AID: return <JobAid />;
       case Section.CASE_STUDY: return <CaseStudy />;
       case Section.CASE_LIBRARY: return <CaseLibrary user={user} />;

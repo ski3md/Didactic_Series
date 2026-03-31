@@ -14,8 +14,19 @@ import lecturesDataUrl from '../src/content/downloads_imports/normalized/lecture
 import tutorialsDataUrl from '../src/content/downloads_imports/normalized/tutorials.normalized.json?url';
 import algorithmsDataUrl from '../src/content/downloads_imports/normalized/algorithms.normalized.json?url';
 import imagesDataUrl from '../src/content/downloads_imports/normalized/images.normalized.json?url';
+import primaryTutorialsDataUrl from '../src/content/tutorials/tutorials.normalized.json?url';
+import {
+  getCanonicalBoardPrepTutorials,
+  getPromotedClinicalPathTutorials,
+  getStagingDownloadsLectures,
+  getStagingDownloadsTutorials,
+} from '../utils/promotedContentRegistry';
 
 type DownloadsTab = 'lectures' | 'tutorials' | 'algorithms' | 'images';
+type TopicGroup = {
+  category: string;
+  records: ImportedContentRecord[];
+};
 
 interface DownloadsImageRecord {
   id: string;
@@ -40,6 +51,24 @@ interface DownloadsLibraryState {
   images: DownloadsImageRecord[];
 }
 
+interface PromotionSummary {
+  hiddenLectures: number;
+  hiddenTutorials: number;
+}
+
+const SOURCE_DISPLAY_NAMES: Record<string, string> = {
+  'ioc-next-app': 'Core Principles Library',
+  'abpath-advanced-board-prep-platform (3)': 'ABPath Board Prep',
+  'cp-content-specification-tutorial-batch-ready': 'CP Tutorial Batch',
+  'cp-content-specification-tutorial_11.11.25': 'CP Tutorial Cases',
+  'pathology-learning-module_-granulomatous-diseases (3)': 'Granulomatous Teaching Module',
+  'workspace-3418f879-7689-4224-9717-636b27130563': 'Microbiology Algorithm Set',
+};
+
+function getSourceDisplayName(sourceRepo: string): string {
+  return SOURCE_DISPLAY_NAMES[sourceRepo] || sourceRepo;
+}
+
 const emptyState: DownloadsLibraryState = {
   lectures: [],
   tutorials: [],
@@ -60,6 +89,7 @@ const tabConfig: Array<{
 
 const DownloadsLibraryView: React.FC = () => {
   const [library, setLibrary] = useState<DownloadsLibraryState>(emptyState);
+  const [promotionSummary, setPromotionSummary] = useState<PromotionSummary>({ hiddenLectures: 0, hiddenTutorials: 0 });
   const [activeTab, setActiveTab] = useState<DownloadsTab>('lectures');
   const [selectedId, setSelectedId] = useState('');
   const [query, setQuery] = useState('');
@@ -76,11 +106,12 @@ const DownloadsLibraryView: React.FC = () => {
         setIsLoading(true);
         setLoadError(null);
 
-        const [lecturesResponse, tutorialsResponse, algorithmsResponse, imagesResponse] = await Promise.all([
+        const [lecturesResponse, tutorialsResponse, algorithmsResponse, imagesResponse, primaryTutorialsResponse] = await Promise.all([
           fetch(lecturesDataUrl),
           fetch(tutorialsDataUrl),
           fetch(algorithmsDataUrl),
           fetch(imagesDataUrl),
+          fetch(primaryTutorialsDataUrl),
         ]);
 
         const responses = [
@@ -88,6 +119,7 @@ const DownloadsLibraryView: React.FC = () => {
           ['tutorials', tutorialsResponse],
           ['algorithms', algorithmsResponse],
           ['images', imagesResponse],
+          ['primaryTutorials', primaryTutorialsResponse],
         ] as const;
 
         const failedResponse = responses.find(([, response]) => !response.ok);
@@ -95,16 +127,31 @@ const DownloadsLibraryView: React.FC = () => {
           throw new Error(`Unable to load ${failedResponse[0]} dataset (${failedResponse[1].status})`);
         }
 
-        const [lectures, tutorials, algorithms, images] = await Promise.all([
+        const [lectures, tutorials, algorithms, images, primaryTutorials] = await Promise.all([
           lecturesResponse.json() as Promise<ImportedContentRecord[]>,
           tutorialsResponse.json() as Promise<ImportedContentRecord[]>,
           algorithmsResponse.json() as Promise<ImportedContentRecord[]>,
           imagesResponse.json() as Promise<DownloadsImageRecord[]>,
+          primaryTutorialsResponse.json() as Promise<ImportedContentRecord[]>,
         ]);
 
+        const promotedClinicalPathTutorials = getPromotedClinicalPathTutorials(tutorials);
+        const canonicalPrimaryTutorials = [
+          ...promotedClinicalPathTutorials,
+          ...getCanonicalBoardPrepTutorials(primaryTutorials, promotedClinicalPathTutorials),
+        ];
+        const stagedLectures = getStagingDownloadsLectures(lectures);
+        const stagedTutorials = getStagingDownloadsTutorials(tutorials, canonicalPrimaryTutorials);
+
         if (!isCancelled) {
-          setLibrary({ lectures, tutorials, algorithms, images });
-          setSelectedId((currentId) => currentId || lectures[0]?.id || tutorials[0]?.id || algorithms[0]?.id || images[0]?.id || '');
+          setLibrary({ lectures: stagedLectures, tutorials: stagedTutorials, algorithms, images });
+          setPromotionSummary({
+            hiddenLectures: lectures.length - stagedLectures.length,
+            hiddenTutorials: tutorials.length - stagedTutorials.length,
+          });
+          setSelectedId(
+            (currentId) => currentId || stagedLectures[0]?.id || stagedTutorials[0]?.id || algorithms[0]?.id || images[0]?.id || ''
+          );
         }
       } catch (error) {
         if (!isCancelled) {
@@ -130,6 +177,24 @@ const DownloadsLibraryView: React.FC = () => {
     setSelectedId('');
   }, [activeTab]);
 
+  const lectureTopicGroups = useMemo<TopicGroup[]>(() => {
+    return Object.entries(
+      library.lectures.reduce<Record<string, ImportedContentRecord[]>>((groups, lecture) => {
+        const key = lecture.category ?? 'Uncategorized';
+        if (!groups[key]) {
+          groups[key] = [];
+        }
+        groups[key].push(lecture);
+        return groups;
+      }, {})
+    )
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([category, records]) => ({
+        category,
+        records: records.sort((left, right) => left.title.localeCompare(right.title)),
+      }));
+  }, [library.lectures]);
+
   const activeDataset = useMemo(() => {
     if (activeTab === 'lectures') {
       return library.lectures;
@@ -153,13 +218,25 @@ const DownloadsLibraryView: React.FC = () => {
       return { label: 'Entity', options };
     }
 
+    if (activeTab === 'lectures') {
+      const options = ['all', ...lectureTopicGroups.map((group) => group.category)];
+      return { label: 'Topic', options };
+    }
+
     const options = ['all', ...new Set(
       (activeDataset as ImportedContentRecord[])
         .map((record) => record.category)
         .filter(Boolean) as string[]
     )];
     return { label: 'Category', options };
-  }, [activeDataset, activeTab, library.images]);
+  }, [activeDataset, activeTab, lectureTopicGroups, library.images]);
+
+  useEffect(() => {
+    if (activeTab !== 'lectures' || lectureTopicGroups.length === 0 || facetFilter !== 'all') {
+      return;
+    }
+    setFacetFilter(lectureTopicGroups[0].category);
+  }, [activeTab, facetFilter, lectureTopicGroups]);
 
   const filteredContent = useMemo(() => {
     const lowered = query.trim().toLowerCase();
@@ -238,6 +315,9 @@ const DownloadsLibraryView: React.FC = () => {
   }, [filteredContent, selectedId]);
 
   const selectedRecord = filteredContent.find((record) => record.id === selectedId) ?? filteredContent[0];
+  const selectedLectureTriad = activeTab === 'lectures'
+    ? ((selectedRecord as ImportedContentRecord | undefined)?.provenance.triad as string[] | undefined) ?? []
+    : [];
 
   const datasetCounts = {
     lectures: library.lectures.length,
@@ -259,7 +339,7 @@ const DownloadsLibraryView: React.FC = () => {
           <div>
             <h2 className="text-xl font-semibold font-serif text-slate-900">Staged Imports</h2>
             <p className="mt-1 text-sm text-slate-500">
-              9 lectures, 290 tutorials, 1 algorithm, and 216 image records preserved from Downloads-based project folders.
+              {library.lectures.length} staged lectures, {library.tutorials.length} staged tutorials, {library.algorithms.length} algorithm, and {library.images.length} image records remain after canonical promotions.
             </p>
           </div>
           <label className="block">
@@ -283,7 +363,7 @@ const DownloadsLibraryView: React.FC = () => {
             >
               {sourceOptions.map((option) => (
                 <option key={option} value={option}>
-                  {option === 'all' ? 'All sources' : option}
+                  {option === 'all' ? 'All sources' : getSourceDisplayName(option)}
                 </option>
               ))}
             </select>
@@ -303,6 +383,47 @@ const DownloadsLibraryView: React.FC = () => {
             </select>
           </label>
         </div>
+        {(promotionSummary.hiddenLectures > 0 || promotionSummary.hiddenTutorials > 0) && (
+          <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+            {promotionSummary.hiddenLectures} promoted lectures and {promotionSummary.hiddenTutorials} tutorial duplicates are hidden from staging because
+            they now live on the main didactic surfaces.
+          </div>
+        )}
+        {activeTab === 'lectures' && lectureTopicGroups.length > 0 && (
+          <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+              <div>
+                <h3 className="font-serif text-lg font-semibold text-slate-900">Topic Navigator</h3>
+                <p className="text-sm text-slate-600">
+                  The lecture staging area is now organized by pathology topic instead of a flat import list.
+                </p>
+              </div>
+              <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+                {lectureTopicGroups.length} promoted topic buckets detected
+              </p>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {lectureTopicGroups.map((group) => {
+                const isActive = facetFilter === group.category;
+                return (
+                  <button
+                    key={group.category}
+                    type="button"
+                    onClick={() => setFacetFilter(group.category)}
+                    className={`rounded-xl border px-4 py-3 text-left transition ${
+                      isActive
+                        ? 'border-primary-400 bg-primary-50 text-primary-900'
+                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                    }`}
+                  >
+                    <div className="font-semibold">{group.category}</div>
+                    <div className="mt-1 text-xs text-slate-500">{group.records.length} lecture{group.records.length === 1 ? '' : 's'}</div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
         <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-500">
           <span className="rounded-full bg-slate-100 px-3 py-1">{filteredContent.length} matches in current tab</span>
           {sourceFilter !== 'all' && (
@@ -369,7 +490,7 @@ const DownloadsLibraryView: React.FC = () => {
                   )}
                   <h3 className="mt-2 font-serif text-lg font-semibold text-slate-900">{record.title}</h3>
                   {record.summary && <p className="mt-2 text-sm text-slate-600">{record.summary}</p>}
-                  <p className="mt-4 text-xs text-slate-500">{record.sourceRepo}</p>
+                  <p className="mt-4 text-xs text-slate-500">{getSourceDisplayName(record.sourceRepo)}</p>
                 </button>
               );
             })}
@@ -390,10 +511,29 @@ const DownloadsLibraryView: React.FC = () => {
                   </div>
                   <div className="rounded-lg bg-slate-50 px-4 py-3 text-sm text-slate-600">
                     <div className="font-semibold text-slate-900">Source</div>
-                    <div>{selectedRecord.sourceRepo}</div>
+                    <div>{getSourceDisplayName(selectedRecord.sourceRepo)}</div>
                   </div>
                 </div>
               </Card>
+
+              {activeTab === 'lectures' && selectedLectureTriad.length > 0 && (
+                <Card>
+                  <h3 className="mb-4 flex items-center text-xl font-semibold font-serif text-slate-900">
+                    <AcademicCapIcon className="mr-3 h-6 w-6 text-primary-600" />
+                    Topic Anchors
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {selectedLectureTriad.map((item) => (
+                      <span
+                        key={item}
+                        className="inline-flex rounded-full bg-primary-100 px-3 py-1.5 text-sm font-semibold text-primary-800"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </Card>
+              )}
 
               <Card>
                 <h3 className="mb-4 flex items-center text-xl font-semibold font-serif text-slate-900">
@@ -424,7 +564,13 @@ const DownloadsLibraryView: React.FC = () => {
             </div>
           ) : (
             <Card>
-              <p className="text-slate-600">No {activeTab} matched the current search.</p>
+              <p className="text-slate-600">
+                {activeTab === 'lectures' && library.lectures.length === 0
+                  ? 'All Downloads lectures have already been promoted into the main Lectures surface.'
+                  : activeTab === 'tutorials' && library.tutorials.length === 0
+                    ? 'All overlapping Downloads tutorials have either been promoted or deduplicated out of staging.'
+                    : `No ${activeTab} matched the current search.`}
+              </p>
             </Card>
           )}
         </div>
@@ -457,7 +603,7 @@ const DownloadsLibraryView: React.FC = () => {
                   <h3 className="mt-3 font-serif text-lg font-semibold text-slate-900">{image.title}</h3>
                   <p className="mt-2 text-sm text-slate-600">{image.description}</p>
                   <div className="mt-4 space-y-1 text-xs text-slate-500">
-                    <p>Source repo: {image.sourceRepo}</p>
+                    <p>Source: {getSourceDisplayName(image.sourceRepo)}</p>
                     {image.difficulty && <p>Difficulty: {image.difficulty}</p>}
                     {image.uploader && <p>Uploader: {image.uploader}</p>}
                   </div>

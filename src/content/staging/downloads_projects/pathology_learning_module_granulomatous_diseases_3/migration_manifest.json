@@ -10,8 +10,8 @@
   "summary": {
     "overall": "This is a pathology learning module for granulomatous lung disease with substantial educational content embedded in React components and JSON data. The most migratable payloads are the lecture slide deck, the diagnostic pathway, the tutorial/case bank, and the image gallery metadata.",
     "counts": {
-      "lectureSlides": 1,
-      "pathwayQuestions": 4,
+      "lectureSlides": 9,
+      "pathwayQuestions": 25,
       "tutorialModules": 3,
       "galleryCollections": 2,
       "officialImages": 216,

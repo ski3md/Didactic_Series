@@ -1,0 +1,93 @@
+[
+  {
+    "step": 1,
+    "title": "Validate staged Downloads imports",
+    "status": "completed_in_batch",
+    "outputFiles": [
+      "validation.json"
+    ],
+    "detail": "Confirmed the normalized lectures, tutorials, algorithms, and image datasets are present and non-empty."
+  },
+  {
+    "step": 2,
+    "title": "Profile each source repository by content yield and educational density",
+    "status": "completed_in_batch",
+    "outputFiles": [
+      "source_profiles.json"
+    ],
+    "detail": "Built per-source counts for lectures, tutorials, algorithms, images, MCQs, flashcards, categories, and entities."
+  },
+  {
+    "step": 3,
+    "title": "Rank source repositories for promotion priority",
+    "status": "completed_in_batch",
+    "outputFiles": [
+      "promotion_priority.json"
+    ],
+    "detail": "Applied deterministic scoring using strategic fit, data quality, breadth, and content yield."
+  },
+  {
+    "step": 4,
+    "title": "Create a lecture promotion queue",
+    "status": "completed_in_batch",
+    "outputFiles": [
+      "promotion_queues.json"
+    ],
+    "detail": "Queued the core principles lectures first because they are cleanly structured and clinically coherent."
+  },
+  {
+    "step": 5,
+    "title": "Create a tutorial promotion queue",
+    "status": "completed_in_batch",
+    "outputFiles": [
+      "promotion_queues.json"
+    ],
+    "detail": "Ranked ABPath, CP, core-principles, and granulomatous tutorials by source fit plus embedded learning assets."
+  },
+  {
+    "step": 6,
+    "title": "Create an algorithm promotion queue",
+    "status": "completed_in_batch",
+    "outputFiles": [
+      "promotion_queues.json"
+    ],
+    "detail": "Preserved the microbiology algorithm as staged content with an explicit hold recommendation."
+  },
+  {
+    "step": 7,
+    "title": "Create an image promotion queue",
+    "status": "completed_in_batch",
+    "outputFiles": [
+      "promotion_queues.json"
+    ],
+    "detail": "Prioritized granulomatous entities for atlas and differential-view promotion."
+  },
+  {
+    "step": 8,
+    "title": "Build facet manifests for source, category, and entity filtering",
+    "status": "completed_in_batch",
+    "outputFiles": [
+      "facet_manifest.json"
+    ],
+    "detail": "Prepared reusable filter metadata for future UI promotion and QA checks."
+  },
+  {
+    "step": 9,
+    "title": "Write integration recommendations in domain order",
+    "status": "completed_in_batch",
+    "outputFiles": [
+      "integration_recommendations.json"
+    ],
+    "detail": "Mapped the safest app-facing promotion order: granulomatous images, core-principles lectures, curated board-prep tutorials, then algorithms."
+  },
+  {
+    "step": 10,
+    "title": "Publish the execution report and roadmap",
+    "status": "completed_in_batch",
+    "outputFiles": [
+      "NEXT_TEN_STEPS_BATCH_REPORT.md",
+      "next_ten_steps.json"
+    ],
+    "detail": "Wrote a markdown report and machine-readable roadmap for the next migration tranche."
+  }
+]

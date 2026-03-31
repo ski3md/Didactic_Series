@@ -1,0 +1,170 @@
+{
+  "lectures": {
+    "sourceRepos": [
+      "ioc-next-app"
+    ],
+    "categories": [
+      "Breast Pathology",
+      "Endocrine Pathology",
+      "Genitourinary Pathology",
+      "Gynecologic Pathology",
+      "Head and Neck Pathology",
+      "Hepatobiliary Pathology",
+      "Neuropathology",
+      "Pancreatic Pathology",
+      "Thoracic Pathology"
+    ]
+  },
+  "tutorials": {
+    "sourceRepos": [
+      "abpath-advanced-board-prep-platform (3)",
+      "cp-content-specification-tutorial_11.11.25",
+      "cp-content-specification-tutorial-batch-ready",
+      "ioc-next-app",
+      "pathology-learning-module_-granulomatous-diseases (3)"
+    ],
+    "categories": [
+      "Diagnostic Pattern Tutorial",
+      "Granulomatous Disease"
+    ],
+    "topTags": [
+      {
+        "key": "smear",
+        "count": 214
+      },
+      {
+        "key": "didactic",
+        "count": 26
+      },
+      {
+        "key": "histology",
+        "count": 21
+      },
+      {
+        "key": "Acquired Coagulation Factor Inhibitors",
+        "count": 1
+      },
+      {
+        "key": "Acquired Platelet Function Disorders",
+        "count": 1
+      },
+      {
+        "key": "Adenocarcinoma",
+        "count": 1
+      },
+      {
+        "key": "Anemia in Oncology Patients",
+        "count": 1
+      },
+      {
+        "key": "Antithrombotic Therapy",
+        "count": 1
+      },
+      {
+        "key": "bb-1-a",
+        "count": 1
+      },
+      {
+        "key": "Bleeding from Coagulation Defects",
+        "count": 1
+      },
+      {
+        "key": "Blood Banking/Transfusion Medicine",
+        "count": 1
+      },
+      {
+        "key": "Cell and Tissue Therapy",
+        "count": 1
+      },
+      {
+        "key": "Cholangiocarcinoma",
+        "count": 1
+      },
+      {
+        "key": "Chromophobe",
+        "count": 1
+      },
+      {
+        "key": "Chronic Beryllium Disease",
+        "count": 1
+      },
+      {
+        "key": "Cirrhosis Coagulopathy",
+        "count": 1
+      },
+      {
+        "key": "ClearCell",
+        "count": 1
+      },
+      {
+        "key": "Clinical Practice",
+        "count": 1
+      },
+      {
+        "key": "Congenital Coagulopathies/Thrombophilias",
+        "count": 1
+      },
+      {
+        "key": "Corrected Platelet Count Increment (CCI)",
+        "count": 1
+      }
+    ]
+  },
+  "algorithms": {
+    "sourceRepos": [
+      "workspace-3418f879-7689-4224-9717-636b27130563"
+    ],
+    "categories": [
+      "Microbiology"
+    ]
+  },
+  "images": {
+    "sourceRepos": [
+      "pathology-learning-module_-granulomatous-diseases (3)"
+    ],
+    "entities": [
+      "blastomycosis",
+      "coccidioidomycosis",
+      "cryptococcosis",
+      "foreign-body",
+      "gpa",
+      "histoplasmosis",
+      "hypersensitivity-pneumonitis",
+      "sarcoidosis"
+    ],
+    "topEntities": [
+      {
+        "key": "cryptococcosis",
+        "count": 59
+      },
+      {
+        "key": "blastomycosis",
+        "count": 41
+      },
+      {
+        "key": "histoplasmosis",
+        "count": 35
+      },
+      {
+        "key": "sarcoidosis",
+        "count": 30
+      },
+      {
+        "key": "foreign-body",
+        "count": 20
+      },
+      {
+        "key": "coccidioidomycosis",
+        "count": 16
+      },
+      {
+        "key": "hypersensitivity-pneumonitis",
+        "count": 12
+      },
+      {
+        "key": "gpa",
+        "count": 3
+      }
+    ]
+  }
+}

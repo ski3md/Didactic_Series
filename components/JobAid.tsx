@@ -5,6 +5,10 @@ import { XCircleIcon, SparklesIcon } from './icons';
 import { findRelevantImage } from '../utils/aiImageSelector';
 import { StoredImage } from '../types';
 import { getCuratedAtlasFamilies, getCuratedAtlasImages } from '../utils/curatedHistologyAtlas';
+import {
+  getPromotedGranulomatousAtlasFamilies,
+  getPromotedGranulomatousAtlasImages,
+} from '../utils/promotedGranulomatousAtlas';
 
 const atlasData = [
   {
@@ -164,8 +168,10 @@ const JobAid: React.FC = () => {
   const [curatedSearch, setCuratedSearch] = useState('');
   const [curatedFamily, setCuratedFamily] = useState('all');
 
-  const curatedImages = getCuratedAtlasImages();
-  const curatedFamilies = getCuratedAtlasFamilies();
+  const curatedImages = [...getCuratedAtlasImages(), ...getPromotedGranulomatousAtlasImages()];
+  const curatedFamilies = Array.from(
+    new Set([...getCuratedAtlasFamilies(), ...getPromotedGranulomatousAtlasFamilies()])
+  ).sort((left, right) => left.localeCompare(right));
   const filteredCuratedImages = curatedImages.filter((image) => {
     const matchesFamily = curatedFamily === 'all' || image.family === curatedFamily;
     const searchableText = [image.title, image.entity, image.family, image.stain, image.description]
@@ -316,12 +322,12 @@ const JobAid: React.FC = () => {
           <div>
             <h2 className="text-2xl font-semibold font-serif text-slate-900">Supplemental Migrated Atlas</h2>
             <p className="text-sm text-slate-600 mt-2 max-w-3xl">
-              This imported atlas comes from the migrated curriculum projects and is best used as a morphology-first reference set.
-              It complements the granulomatous link-out atlas above rather than serving as a one-to-one disease map.
+              This expanded atlas now combines the original migrated morphology set with the promoted Downloads granulomatous image corpus.
+              It is best used as a morphology-first reference layer that complements the disease-oriented link-out atlas above.
             </p>
           </div>
           <p className="text-xs text-slate-500">
-            {filteredCuratedImages.length} of {curatedImages.length} curated images shown across {curatedFamilies.length} imported families
+            {filteredCuratedImages.length} of {curatedImages.length} atlas images shown across {curatedFamilies.length} families
           </p>
         </div>
 
@@ -331,7 +337,7 @@ const JobAid: React.FC = () => {
             value={curatedSearch}
             onChange={(event) => setCuratedSearch(event.target.value)}
             className="w-full border border-slate-300 rounded-md shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm p-2"
-            placeholder="Search migrated atlas by entity, family, stain, or title"
+            placeholder="Search atlas by entity, family, stain, or title"
           />
           <select
             value={curatedFamily}
@@ -349,7 +355,7 @@ const JobAid: React.FC = () => {
 
         {filteredCuratedImages.length === 0 ? (
           <p className="text-center text-slate-500 py-8">
-            No migrated atlas images match the current entity and family filters.
+            No atlas images match the current entity and family filters.
           </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">

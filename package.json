@@ -8,6 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "sync:legacy-manifest": "node scripts/sync_legacy_image_manifest.cjs",
+    "batch:next-10": "node scripts/run_next_ten_migration_steps.cjs",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

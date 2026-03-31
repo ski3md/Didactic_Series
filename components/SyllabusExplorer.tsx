@@ -2,8 +2,9 @@ import React, { useEffect, useMemo, useState } from 'react';
 import Card from './ui/Card';
 import SectionHeader from './ui/SectionHeader';
 import { BookOpenIcon } from './icons';
-import { ImportedContentRecord, SyllabusTopicProvenance } from '../types';
+import { ImportedContentRecord, Section, SyllabusTopicProvenance } from '../types';
 import syllabusDataUrl from '../src/content/syllabus/syllabus.normalized.json?url';
+import { consumeCurriculumDrilldown } from '../utils/curriculumDrilldown';
 
 const SyllabusExplorer: React.FC = () => {
   const [syllabusTopics, setSyllabusTopics] = useState<ImportedContentRecord[]>([]);
@@ -11,6 +12,13 @@ const SyllabusExplorer: React.FC = () => {
   const [selectedId, setSelectedId] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const drilldown = consumeCurriculumDrilldown(Section.SYLLABUS_EXPLORER);
+    if (drilldown?.query) {
+      setQuery(drilldown.query);
+    }
+  }, []);
 
   useEffect(() => {
     let isCancelled = false;

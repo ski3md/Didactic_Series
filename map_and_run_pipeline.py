@@ -32,7 +32,6 @@ import argparse
 import imghdr
 import traceback
 import subprocess
-import smtplib
 import shutil
 import psutil
 import backoff
@@ -60,12 +59,17 @@ except ImportError:
     print("To install, run: pip install PyYAML")
 
 try:
-    import yagmail
-    YAGMAIL_AVAILABLE = True
+    from google.oauth2.credentials import Credentials
+    from google.auth.transport.requests import Request
+    from google_auth_oauthlib.flow import InstalledAppFlow
+    from googleapiclient.discovery import build
+    from googleapiclient.errors import HttpError
+    GOOGLE_OAUTH_AVAILABLE = True
 except ImportError:
-    YAGMAIL_AVAILABLE = False
-    print("Warning: yagmail not installed. Email notifications won't be available.")
-    print("To install, run: pip install yagmail")
+    GOOGLE_OAUTH_AVAILABLE = False
+    Credentials = Request = InstalledAppFlow = build = HttpError = None
+    print("Warning: Google Gmail OAuth libraries not installed. Email notifications won't be available.")
+    print("To install, run: pip install google-auth google-auth-oauthlib google-api-python-client")
 
 try:
     from prometheus_client import start_http_server, Counter as PROM_COUNTER, Histogram as PROM_HISTOGRAM, Gauge as PROM_GAUGE
@@ -141,6 +145,10 @@ class Config:
     enable_icloud_sync: bool = True
     repair_corrupt_images: bool = True
     gmail_app_password: Optional[str] = None
+    gmail_oauth_client_secrets_file: Optional[str] = None
+    gmail_oauth_token_file: Optional[str] = None
+    gmail_oauth_scopes: Optional[List[str]] = None
+    gmail_oauth_auto_authorize: bool = False
 
     def __post_init__(self):
         if self.valid_extensions is None:
@@ -158,13 +166,21 @@ class Config:
         self.max_concurrent = int(os.environ.get("MAX_CONCURRENT", self.max_concurrent))
         self.retry_limit = int(os.environ.get("RETRY_LIMIT", self.retry_limit))
         self.email_recipient = os.environ.get("EMAIL_RECIPIENT", self.email_recipient)
-        self.email_sender = os.environ.get("EMAIL_SENDER", self.email_sender)
+        self.email_sender = os.environ.get("GMAIL_SENDER_EMAIL", os.environ.get("EMAIL_SENDER", self.email_sender))
         self.auto_resume = os.environ.get("AUTO_RESUME", "true").lower() == "true"
         self.max_restart_attempts = int(os.environ.get("MAX_RESTART_ATTEMPTS", self.max_restart_attempts))
         self.icloud_sync_timeout = int(os.environ.get("ICLOUD_SYNC_TIMEOUT", self.icloud_sync_timeout))
         self.enable_icloud_sync = os.environ.get("ENABLE_ICLOUD_SYNC", "true").lower() == "true"
         self.repair_corrupt_images = os.environ.get("REPAIR_CORRUPT_IMAGES", "true").lower() == "true"
         self.gmail_app_password = os.environ.get("GMAIL_APP_PASSWORD", self.gmail_app_password)
+        self.gmail_oauth_client_secrets_file = os.environ.get("GMAIL_OAUTH_CLIENT_SECRETS_FILE", self.gmail_oauth_client_secrets_file)
+        self.gmail_oauth_token_file = os.environ.get("GMAIL_OAUTH_TOKEN_FILE", self.gmail_oauth_token_file)
+        scopes_env = os.environ.get("GMAIL_OAUTH_SCOPES")
+        if scopes_env:
+            self.gmail_oauth_scopes = [scope.strip() for scope in scopes_env.split(",") if scope.strip()]
+        elif self.gmail_oauth_scopes is None:
+            self.gmail_oauth_scopes = ["https://www.googleapis.com/auth/gmail.send"]
+        self.gmail_oauth_auto_authorize = os.environ.get("GMAIL_OAUTH_AUTO_AUTHORIZE", "false").lower() == "true"
         
         # Load from config file if exists
         config_file = os.environ.get("CONFIG_FILE")
@@ -267,76 +283,193 @@ class ProcessingStats:
 # ---------------------------------------------------------------------
 # EMAIL NOTIFIER
 # ---------------------------------------------------------------------
+GMAIL_SEND_SCOPE = "https://www.googleapis.com/auth/gmail.send"
+
+
+class GmailOAuthClient:
+    """Send Gmail notifications through the Gmail API using OAuth credentials."""
+
+    def __init__(
+        self,
+        sender: str,
+        recipient: str,
+        client_secrets_file: Optional[str],
+        token_file: Optional[str],
+        scopes: Optional[List[str]] = None,
+        auto_authorize: bool = False,
+    ):
+        self.sender = sender
+        self.recipient = recipient
+        self.client_secrets_file = client_secrets_file
+        self.token_file = token_file
+        if isinstance(scopes, str):
+            scopes = [scope.strip() for scope in scopes.split(",") if scope.strip()]
+        self.scopes = scopes or [GMAIL_SEND_SCOPE]
+        self.auto_authorize = auto_authorize
+        self.creds = None
+        self.service = None
+        self.enabled = False
+        self._initialize()
+
+    def _initialize(self):
+        if not GOOGLE_OAUTH_AVAILABLE:
+            logging.warning("Gmail OAuth libraries are not installed; email notifications disabled.")
+            return
+
+        self.creds = self._load_credentials()
+        if not self.creds:
+            return
+
+        try:
+            self.service = build("gmail", "v1", credentials=self.creds, cache_discovery=False)
+            self.enabled = True
+        except Exception as e:
+            self.service = None
+            self.enabled = False
+            logging.warning(f"Gmail API client initialization failed: {e}")
+
+    def _resolved_token_file(self) -> Optional[Path]:
+        if self.token_file:
+            return Path(self.token_file).expanduser()
+        if self.client_secrets_file:
+            return Path(self.client_secrets_file).expanduser().with_name("gmail_oauth_token.json")
+        return None
+
+    def _save_credentials(self, creds) -> None:
+        token_path = self._resolved_token_file()
+        if not token_path:
+            return
+        try:
+            token_path.parent.mkdir(parents=True, exist_ok=True)
+            token_path.write_text(creds.to_json(), encoding="utf-8")
+        except Exception as e:
+            logging.warning(f"Failed to persist Gmail OAuth token: {e}")
+
+    def _refresh_credentials_if_needed(self, creds):
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+            self._save_credentials(creds)
+        return creds
+
+    def _authorize_interactively(self):
+        if not self.client_secrets_file or not os.path.exists(self.client_secrets_file):
+            return None
+        if not self.auto_authorize:
+            logging.warning(
+                "Gmail OAuth token is missing or invalid; set GMAIL_OAUTH_AUTO_AUTHORIZE=true "
+                "or pass --gmail-oauth-auto-authorize to bootstrap locally."
+            )
+            return None
+        try:
+            flow = InstalledAppFlow.from_client_secrets_file(self.client_secrets_file, self.scopes)
+            if sys.stdin.isatty() and sys.stdout.isatty():
+                creds = flow.run_local_server(port=0)
+            else:
+                creds = flow.run_console()
+            self._save_credentials(creds)
+            return creds
+        except Exception as e:
+            logging.warning(f"Interactive Gmail OAuth bootstrap failed: {e}")
+            return None
+
+    def _load_credentials(self):
+        token_path = self._resolved_token_file()
+        creds = None
+
+        if token_path and token_path.exists():
+            try:
+                creds = Credentials.from_authorized_user_file(str(token_path), self.scopes)
+            except Exception as e:
+                logging.warning(f"Failed to load Gmail OAuth token from {token_path}: {e}")
+
+        if creds:
+            try:
+                creds = self._refresh_credentials_if_needed(creds)
+            except Exception as e:
+                logging.warning(f"Failed to refresh Gmail OAuth token: {e}")
+                creds = None
+
+        if creds is None and self.auto_authorize:
+            creds = self._authorize_interactively()
+
+        return creds
+
+    def _build_message(self, subject: str, body: str, attachments: Optional[List[str]] = None) -> MIMEMultipart:
+        message = MIMEMultipart()
+        message["From"] = self.sender
+        message["To"] = self.recipient
+        message["Subject"] = subject
+        message.attach(MIMEText(body, "plain", "utf-8"))
+
+        for file_path in attachments or []:
+            if not os.path.exists(file_path):
+                logging.warning(f"Skipping missing email attachment: {file_path}")
+                continue
+            with open(file_path, "rb") as handle:
+                part = MIMEApplication(handle.read(), Name=os.path.basename(file_path))
+            part["Content-Disposition"] = f'attachment; filename="{os.path.basename(file_path)}"'
+            message.attach(part)
+
+        return message
+
+    def send_message(self, subject: str, body: str, attachments: Optional[List[str]] = None) -> bool:
+        if not self.enabled or self.service is None:
+            return False
+
+        try:
+            self.creds = self._refresh_credentials_if_needed(self.creds)
+            if self.creds is not None:
+                self.service = build("gmail", "v1", credentials=self.creds, cache_discovery=False)
+        except Exception as e:
+            logging.warning(f"Failed to refresh Gmail OAuth credentials before send: {e}")
+            return False
+
+        try:
+            message = self._build_message(subject, body, attachments)
+            raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
+            self.service.users().messages().send(userId="me", body={"raw": raw_message}).execute()
+            logging.info(f"📧 Email notification sent via Gmail API to {self.recipient}")
+            return True
+        except HttpError as e:
+            logging.warning(f"Failed to send email via Gmail API: {e}")
+        except Exception as e:
+            logging.warning(f"Failed to send email via Gmail API: {e}")
+        return False
+
+
 class EmailNotifier:
     """Send email notifications upon completion or failure."""
+
     def __init__(self, config: Config):
         self.recipient = config.email_recipient
         self.sender = config.email_sender
         self.gmail_app_password = config.gmail_app_password
+        self.client = None
 
-        try:
-            if YAGMAIL_AVAILABLE and self.gmail_app_password:
-                self.client = yagmail.SMTP(self.sender, self.gmail_app_password)
-                self.yagmail_active = True
-            else:
-                self.yagmail_active = False
-                logging.warning("Yagmail email notifications disabled")
-        except Exception as e:
-            self.yagmail_active = False
-            logging.warning(f"Yagmail email notification disabled: {e}")
-        
-        self.smtp_active = bool(self.gmail_app_password)
-        if not self.smtp_active:
-            logging.warning("SMTP email notifications disabled (no GMAIL_APP_PASSWORD)")
+        if self.gmail_app_password:
+            logging.warning("GMAIL_APP_PASSWORD is deprecated and ignored; Gmail OAuth is now required.")
+        if not self.sender or "@" not in self.sender:
+            logging.warning("EMAIL_SENDER must be set to the Gmail address authorized for notification sending.")
+            return
+
+        self.client = GmailOAuthClient(
+            sender=self.sender,
+            recipient=self.recipient,
+            client_secrets_file=config.gmail_oauth_client_secrets_file,
+            token_file=config.gmail_oauth_token_file,
+            scopes=config.gmail_oauth_scopes,
+            auto_authorize=config.gmail_oauth_auto_authorize,
+        )
+
+        if not self.client.enabled:
+            logging.warning("Email notifications disabled: Gmail OAuth is not configured or could not be initialized.")
 
     def send_notification(self, subject: str, body: str, attachments: Optional[List[str]] = None):
-        """Send an email if credentials are configured."""
-        if self.yagmail_active:
-            self._send_with_yagmail(subject, body, attachments)
-        elif self.smtp_active:
-            self._send_with_smtp(subject, body, attachments)
-        else:
-            logging.warning("Email notification disabled: no valid email configuration")
-
-    def _send_with_yagmail(self, subject: str, body: str, attachments: Optional[List[str]] = None):
-        """Send email using yagmail."""
-        try:
-            self.client.send(
-                to=self.recipient,
-                subject=subject,
-                contents=body,
-                attachments=attachments or []
-            )
-            logging.info(f"📧 Email notification sent via yagmail to {self.recipient}")
-        except Exception as e:
-            logging.warning(f"Failed to send email via yagmail: {e}")
-
-    def _send_with_smtp(self, subject: str, body: str, attachments: Optional[List[str]] = None):
-        """Send email using SMTP."""
-        try:
-            msg = MIMEMultipart()
-            msg["From"] = self.sender
-            msg["To"] = self.recipient
-            msg["Subject"] = subject
-            msg.attach(MIMEText(body, "plain"))
-            
-            # Add attachments
-            if attachments:
-                for file_path in attachments:
-                    if os.path.exists(file_path):
-                        with open(file_path, "rb") as f:
-                            part = MIMEApplication(f.read(), Name=os.path.basename(file_path))
-                        part['Content-Disposition'] = f'attachment; filename="{os.path.basename(file_path)}"'
-                        msg.attach(part)
-            
-            with smtplib.SMTP("smtp.gmail.com", 587) as server:
-                server.starttls()
-                server.login(self.sender.split("@")[0] + "@gmail.com", self.gmail_app_password)
-                server.send_message(msg)
-            
-            logging.info(f"📧 Email notification sent via SMTP to {self.recipient}")
-        except Exception as e:
-            logging.warning(f"Failed to send email via SMTP: {e}")
+        """Send an email if Gmail OAuth credentials are configured."""
+        if not self.client or not self.client.enabled:
+            logging.warning("Email notification disabled: no valid Gmail OAuth configuration")
+            return False
+        return self.client.send_message(subject, body, attachments)
 
 # ---------------------------------------------------------------------
 # ICLOUD SYNC MANAGER
@@ -1103,7 +1236,11 @@ def parse_arguments():
     parser.add_argument("--disable-icloud-sync", action="store_true", help="Disable iCloud sync")
     parser.add_argument("--disable-image-repair", action="store_true", help="Disable corrupt image repair")
     parser.add_argument("--email-recipient", help="Email address for notifications")
-    parser.add_argument("--gmail-app-password", help="Gmail app password for SMTP notifications")
+    parser.add_argument("--email-sender", help="Gmail sender address for OAuth notifications")
+    parser.add_argument("--gmail-oauth-client-secrets", help="Path to Gmail OAuth client secrets JSON")
+    parser.add_argument("--gmail-oauth-token-file", help="Path to cached Gmail OAuth token JSON")
+    parser.add_argument("--gmail-oauth-auto-authorize", action="store_true", help="Run interactive Gmail OAuth authorization if no valid token is available")
+    parser.add_argument("--gmail-app-password", help="Deprecated: ignored; use Gmail OAuth instead")
     return parser.parse_args()
 
 # ---------------------------------------------------------------------
@@ -1140,6 +1277,14 @@ def main():
         config.repair_corrupt_images = False
     if args.email_recipient:
         config.email_recipient = args.email_recipient
+    if args.email_sender:
+        config.email_sender = args.email_sender
+    if args.gmail_oauth_client_secrets:
+        config.gmail_oauth_client_secrets_file = args.gmail_oauth_client_secrets
+    if args.gmail_oauth_token_file:
+        config.gmail_oauth_token_file = args.gmail_oauth_token_file
+    if args.gmail_oauth_auto_authorize:
+        config.gmail_oauth_auto_authorize = True
     if args.gmail_app_password:
         config.gmail_app_password = args.gmail_app_password
     

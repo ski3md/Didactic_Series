@@ -1,0 +1,98 @@
+[
+  {
+    "rank": 1,
+    "sourceRepo": "ioc-next-app",
+    "displayName": "Core Principles Library",
+    "score": 99.5,
+    "recommendedAction": "Promote as a distinct didactic lecture and tutorial library with pathology-topic filters.",
+    "rationale": "Clean lecture/tutorial structure, clinically coherent, and immediately usable as an education-first teaching vertical.",
+    "counts": {
+      "lectures": 9,
+      "tutorials": 26,
+      "algorithms": 0,
+      "images": 0,
+      "mcqs": 0,
+      "flashcards": 0
+    }
+  },
+  {
+    "rank": 2,
+    "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+    "displayName": "Granulomatous Diseases Module",
+    "score": 95.95,
+    "recommendedAction": "Promote images and granulomatous tutorials first because they align directly with the current app domain.",
+    "rationale": "Highest topical alignment with the existing app and already compatible with the histology-centered UI.",
+    "counts": {
+      "lectures": 0,
+      "tutorials": 3,
+      "algorithms": 0,
+      "images": 216,
+      "mcqs": 3,
+      "flashcards": 6
+    }
+  },
+  {
+    "rank": 3,
+    "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+    "displayName": "ABPath Advanced Board Prep",
+    "score": 84.2,
+    "recommendedAction": "Promote selected high-yield pathology tutorials into the main board prep surface after curation.",
+    "rationale": "Large tutorial corpus with MCQs/flashcards, but broad scope means it needs curation before mainline exposure.",
+    "counts": {
+      "lectures": 0,
+      "tutorials": 239,
+      "algorithms": 0,
+      "images": 0,
+      "mcqs": 100,
+      "flashcards": 100
+    }
+  },
+  {
+    "rank": 4,
+    "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+    "displayName": "CP Tutorial Batch Ready",
+    "score": 72.07,
+    "recommendedAction": "Promote as a focused CP tutorial subset with explicit board-prep labeling.",
+    "rationale": "Structured tutorials with strong MCQ/flashcard density and lower cleanup cost than the larger ABPath corpus.",
+    "counts": {
+      "lectures": 0,
+      "tutorials": 18,
+      "algorithms": 0,
+      "images": 0,
+      "mcqs": 81,
+      "flashcards": 160
+    }
+  },
+  {
+    "rank": 5,
+    "sourceRepo": "cp-content-specification-tutorial_11.11.25",
+    "displayName": "CP Tutorial 11.11.25",
+    "score": 60.9,
+    "recommendedAction": "Fold into the CP queue after topic deduplication against the batch-ready set.",
+    "rationale": "Small but useful tutorial set; risk is mainly duplication and inconsistent case naming.",
+    "counts": {
+      "lectures": 0,
+      "tutorials": 4,
+      "algorithms": 0,
+      "images": 0,
+      "mcqs": 15,
+      "flashcards": 0
+    }
+  },
+  {
+    "rank": 6,
+    "sourceRepo": "workspace-3418f879-7689-4224-9717-636b27130563",
+    "displayName": "Microbiology Algorithm Workspace",
+    "score": 46.4,
+    "recommendedAction": "Keep staged until a microbiology or infectious-disease workflow is intentionally added.",
+    "rationale": "Algorithm is structured, but its subject matter is broader and less aligned with the current pathology module.",
+    "counts": {
+      "lectures": 0,
+      "tutorials": 0,
+      "algorithms": 1,
+      "images": 0,
+      "mcqs": 0,
+      "flashcards": 0
+    }
+  }
+]

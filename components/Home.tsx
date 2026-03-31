@@ -33,6 +33,7 @@ const SectionLinkCard: React.FC<{
 
 const Home: React.FC<HomeProps> = ({ onSectionChange }) => {
   const learningSections = [
+    { section: Section.SURGICAL_PATH_CURRICULUM, description: "Follow the new boards-first pathology curriculum shell spanning surgical pathology modules plus curated clinical pathology teaching blocks.", icon: <AcademicCapIcon className="h-5 w-5" /> },
     { section: Section.JOB_AID, description: "A quick-reference table comparing high-yield features of Sarcoidosis and Tuberculosis.", icon: <DocumentTextIcon className="h-5 w-5" /> },
     { section: Section.CASE_STUDY, description: "Work through a classic case of Hypersensitivity Pneumonitis with an interactive whole-slide image viewer.", icon: <MicroscopeIcon className="h-5 w-5" /> },
     { section: Section.CASE_LIBRARY, description: "Browse a library of AI-organized case studies with integrated histology.", icon: <CollectionIcon className="h-5 w-5" /> },
@@ -57,19 +58,20 @@ const Home: React.FC<HomeProps> = ({ onSectionChange }) => {
   return (
     <div className="space-y-12 animate-fade-in">
       <header className="text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold font-serif text-slate-900 tracking-tight">Granulomatous Diseases of the Lung</h1>
-        <p className="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">An Interactive Learning Module for Pathology Residents</p>
+        <h1 className="text-4xl sm:text-5xl font-bold font-serif text-slate-900 tracking-tight">Pathology Didactic Series</h1>
+        <p className="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">A teaching platform for pathology residents, board review, and diagnostic pattern reinforcement.</p>
       </header>
 
       <Card>
         <h2 className="text-2xl font-semibold font-serif text-slate-800 mb-4">Welcome, Resident!</h2>
         <p className="text-slate-600 leading-relaxed">
-          This module is designed to elevate your diagnostic skills in evaluating granulomatous diseases of the lung. The primary challenge in this area is not just identifying a granuloma, but navigating the significant morphologic overlap between different etiologies. Our goal is to move you from simple identification to integrated diagnostic reasoning—a crucial skill for both daily sign-out and board examinations.
+          This platform began as a focused granulomatous-disease module and now serves as a broader didactic workspace for lectures, tutorials,
+          atlas review, job aids, and case-based study. The aim is the same throughout: move from isolated pattern recognition to integrated diagnostic reasoning that holds up on sign-out and on boards.
         </p>
       </Card>
 
       <div>
-        <h2 className="text-2xl font-semibold font-serif text-slate-800 mb-6 text-center">The Learning Module</h2>
+        <h2 className="text-2xl font-semibold font-serif text-slate-800 mb-6 text-center">Teaching Library</h2>
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {learningSections.map(item => (
             <SectionLinkCard key={item.section} {...item} onClick={onSectionChange} />
@@ -80,7 +82,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange }) => {
       <div>
         <h2 className="text-2xl font-semibold font-serif text-slate-800 mb-6 text-center">About This Project (Instructional Design)</h2>
         <p className="text-slate-600 mb-6 text-center max-w-3xl mx-auto">
-          This module was built using the ADDIE model of instructional design. The sections below provide a meta-narrative on how this learning experience was constructed, from initial analysis to final evaluation.
+          The platform still uses the ADDIE model as its instructional backbone. The sections below document how the teaching experience was scoped, designed, built, and evaluated.
         </p>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {addieSections.map(item => (

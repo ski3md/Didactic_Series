@@ -105,6 +105,41 @@ function formatBulletLines(items) {
   return (items || []).map((item) => `- ${item}`);
 }
 
+const SERVICE_LINE_CATEGORY_MAP = {
+  'Breast Surgery': 'Breast Pathology',
+  'Endocrine Surgery': 'Endocrine Pathology',
+  'Gynecologic Oncology': 'Gynecologic Pathology',
+  'Head & Neck Surgery': 'Head and Neck Pathology',
+  'Hepatobiliary Surgery': 'Hepatobiliary Pathology',
+  'Neuropathology': 'Neuropathology',
+  'Pancreatic Surgery': 'Pancreatic Pathology',
+  'Thoracic Surgery': 'Thoracic Pathology',
+  'Urologic Oncology': 'Genitourinary Pathology',
+};
+
+const EDUCATIONAL_LABEL_MAP = {
+  "Surgeon's Question": 'Core Teaching Question',
+  'Primary Role': 'Primary Diagnostic Focus',
+  'Common Specimens': 'Representative Specimens',
+  'IOC Request': 'Teaching Question',
+};
+
+function toEducationalCategory(serviceLine) {
+  return SERVICE_LINE_CATEGORY_MAP[serviceLine] || serviceLine.replace(/\bSurgery\b/g, 'Pathology').trim();
+}
+
+function toEducationalLabel(label) {
+  return EDUCATIONAL_LABEL_MAP[label] || label;
+}
+
+function toEducationalTitle(title, fallbackCategory) {
+  const baseTitle = String(title || `${fallbackCategory} Pathology Core Principles`);
+  return baseTitle
+    .replace(/\bIOC\b/g, 'Pathology')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
+
 function stageRawJson(sourcePath, targetFileName, payload, sourceRepo, description) {
   const targetPath = path.join(RAW_ROOT, targetFileName);
   writeJson(targetPath, payload);
@@ -127,19 +162,21 @@ function stageRawJson(sourcePath, targetFileName, payload, sourceRepo, descripti
 function normalizeIocLectures(rawRecords, sourcePath) {
   return rawRecords.map((record) => {
     const overview = record.payload.overview || {};
+    const educationalCategory = toEducationalCategory(record.serviceLine);
     const keyPointLines = (overview.key_points || []).map(
-      (item) => `- ${item.label}: ${item.text}`
+      (item) => `- ${toEducationalLabel(item.label)}: ${item.text}`
     );
     const triadLines = formatBulletLines(record.payload.triad || overview.triad_summary || []);
+    const summaryLine = keyPointLines.find((line) => !line.includes('Core Teaching Question')) || keyPointLines[0];
 
     return {
       id: `ioc-overview-${slugify(record.serviceLine)}`,
       sourceRepo: 'ioc-next-app',
       sourcePath,
       contentType: 'lecture',
-      title: overview.title || `${record.serviceLine} IOC Overview`,
-      category: record.serviceLine,
-      summary: keyPointLines[0] ? keyPointLines[0].replace(/^- /, '') : `${record.serviceLine} intraoperative consultation overview.`,
+      title: toEducationalTitle(overview.title, educationalCategory),
+      category: educationalCategory,
+      summary: summaryLine ? summaryLine.replace(/^- /, '') : `${educationalCategory} didactic overview.`,
       body: [formatSection('Key Points', keyPointLines), formatSection('Triad Summary', triadLines)]
         .filter(Boolean)
         .join('\n\n'),
@@ -148,8 +185,9 @@ function normalizeIocLectures(rawRecords, sourcePath) {
       mcqs: [],
       flashcards: [],
       references: [],
-      tags: [record.serviceLine, 'ioc'],
+      tags: [educationalCategory, 'didactic'],
       provenance: {
+        sourceServiceLine: record.serviceLine,
         triad: record.payload.triad || [],
         keyPointCount: (overview.key_points || []).length,
       },
@@ -160,24 +198,28 @@ function normalizeIocLectures(rawRecords, sourcePath) {
 function normalizeIocEntities(rawRecords, sourcePath) {
   return rawRecords.map((record) => {
     const casePointLines = (record.payload.case_points || []).map(
-      (item) => `- ${item.label}: ${item.text}`
+      (item) => `- ${toEducationalLabel(item.label)}: ${item.text}`
     );
     const sketchLines = formatBulletLines(record.payload.sketch || []);
+    const normalizedTitle = toEducationalTitle(
+      String(record.payload.title || record.entityName).replace(/\s+Modal$/, ''),
+      record.entityName
+    );
 
     return {
       id: `ioc-entity-${slugify(record.entityName)}`,
       sourceRepo: 'ioc-next-app',
       sourcePath,
       contentType: 'tutorial',
-      title: String(record.payload.title || record.entityName).replace(/\s+Modal$/, ''),
-      category: 'Intraoperative Consultation',
-      summary: record.payload.action || record.payload.consequence || `IOC teaching brief for ${record.entityName}.`,
+      title: normalizedTitle,
+      category: 'Diagnostic Pattern Tutorial',
+      summary: `High-yield didactic pattern tutorial for ${normalizedTitle}.`,
       body: [
         formatSection('Case Points', casePointLines),
         formatSection('Sketch', sketchLines),
         formatSection('Pitfall', record.payload.pitfall ? [record.payload.pitfall] : []),
         formatSection('Consequence', record.payload.consequence ? [record.payload.consequence] : []),
-        formatSection('Action', record.payload.action ? [record.payload.action] : []),
+        formatSection('Teaching Takeaway', record.payload.action ? [record.payload.action] : []),
       ]
         .filter(Boolean)
         .join('\n\n'),
@@ -186,7 +228,7 @@ function normalizeIocEntities(rawRecords, sourcePath) {
       mcqs: [],
       flashcards: [],
       references: [],
-      tags: ['ioc', record.entityName],
+      tags: ['didactic', record.entityName],
       provenance: {
         casePointCount: (record.payload.case_points || []).length,
         sketchCount: (record.payload.sketch || []).length,
@@ -229,7 +271,7 @@ function normalizePregeneratedTutorials(rawRecords, sourcePath, sourceRepo) {
     contentType: 'tutorial',
     title: record.topic,
     category: null,
-    summary: record.tutorial?.title || record.topic,
+    summary: record.tutorial?.title || `${record.topic} didactic tutorial`,
     body: String(record.tutorial?.content || '').trim(),
     learningObjectives: [],
     slides: [],

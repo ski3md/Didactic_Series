@@ -1,0 +1,26 @@
+[
+  {
+    "order": 1,
+    "area": "Granulomatous image promotion",
+    "action": "Promote top granulomatous entities from Downloads images into the curated atlas and Job Aid differential view.",
+    "output": "Uses the direct app-domain overlap from the granulomatous module without new routing complexity."
+  },
+  {
+    "order": 2,
+    "area": "Core principles lecture promotion",
+    "action": "Split the core principles lectures into a dedicated didactic section with pathology-topic navigation.",
+    "output": "Converts the current Downloads lecture staging area into an education-first teaching module."
+  },
+  {
+    "order": 3,
+    "area": "Board-prep tutorial curation",
+    "action": "Curate ABPath and CP tutorial records into AP, CP, and granulomatous tracks before exposing them in the main tutorial browser.",
+    "output": "Prevents the existing Tutorials view from becoming noisy or clinically incoherent."
+  },
+  {
+    "order": 4,
+    "area": "Algorithm integration",
+    "action": "Keep the microbiology algorithm staged until a dedicated algorithm navigator exists or an infectious disease track is added.",
+    "output": "Avoids mixing a broad microbiology decision tree into a lung granuloma-focused app prematurely."
+  }
+]

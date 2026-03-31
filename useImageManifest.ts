@@ -2,7 +2,7 @@
 // Provides utilities to query and use granuloma images in dashboard components
 
 import { useEffect, useState, useMemo } from 'react';
-import imageManifest from '../assets/data/image_manifest.json';
+import imageManifest from './src/assets/data/image_manifest.json';
 
 // Type definitions
 interface ImageMetadata {

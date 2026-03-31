@@ -4,20 +4,21 @@
     "sourceRepo": "ioc-next-app",
     "sourcePath": "src/content/downloads_imports/raw/ioc_overviews.raw.json",
     "contentType": "lecture",
-    "title": "Breast IOC: Core Principles",
-    "category": "Breast Surgery",
-    "summary": "Surgeon's Question: Is the lesion malignant, what is the histologic type, and are the margins clear?",
-    "body": "## Key Points\n- Surgeon's Question: Is the lesion malignant, what is the histologic type, and are the margins clear?\n- Primary Role: Evaluate lumpectomy margins and sentinel lymph nodes; distinguish invasive carcinoma from benign mimickers.\n- Cardinal Rule: Complex sclerosing lesions and radial scars may mimic invasive carcinoma; correlation with permanent sections and immunostains may be necessary.\n- Common Specimens: Lumpectomy margins, core needle biopsies, sentinel lymph nodes.\n\n## Triad Summary\n- Tubular\n- Sclerosing\n- Cribriform",
+    "title": "Breast Pathology: Core Principles",
+    "category": "Breast Pathology",
+    "summary": "Primary Diagnostic Focus: Evaluate lumpectomy margins and sentinel lymph nodes; distinguish invasive carcinoma from benign mimickers.",
+    "body": "## Key Points\n- Core Teaching Question: Is the lesion malignant, what is the histologic type, and are the margins clear?\n- Primary Diagnostic Focus: Evaluate lumpectomy margins and sentinel lymph nodes; distinguish invasive carcinoma from benign mimickers.\n- Cardinal Rule: Complex sclerosing lesions and radial scars may mimic invasive carcinoma; correlation with permanent sections and immunostains may be necessary.\n- Representative Specimens: Lumpectomy margins, core needle biopsies, sentinel lymph nodes.\n\n## Triad Summary\n- Tubular\n- Sclerosing\n- Cribriform",
     "learningObjectives": [],
     "slides": [],
     "mcqs": [],
     "flashcards": [],
     "references": [],
     "tags": [
-      "Breast Surgery",
-      "ioc"
+      "Breast Pathology",
+      "didactic"
     ],
     "provenance": {
+      "sourceServiceLine": "Breast Surgery",
       "triad": [
         "Tubular",
         "Sclerosing",
@@ -31,20 +32,21 @@
     "sourceRepo": "ioc-next-app",
     "sourcePath": "src/content/downloads_imports/raw/ioc_overviews.raw.json",
     "contentType": "lecture",
-    "title": "Thyroid IOC: Core Principles",
-    "category": "Endocrine Surgery",
-    "summary": "Surgeon's Question: Is this thyroid nodule malignant and, if so, should a total thyroidectomy be performed?",
-    "body": "## Key Points\n- Surgeon's Question: Is this thyroid nodule malignant and, if so, should a total thyroidectomy be performed?\n- Primary Role: Triage thyroid lesions into papillary, follicular‑patterned and other categories; recognize that follicular carcinoma cannot be diagnosed on frozen section.\n- Cardinal Rule: Follicular carcinoma requires capsular and/or vascular invasion on permanent sections; never overcall invasion on frozen.\n- Common Specimens: Lobectomy, isthmusectomy, subtotal or completion thyroidectomy.\n\n## Triad Summary\n- Papillary\n- Follicular\n- SolidSpindle",
+    "title": "Thyroid Pathology: Core Principles",
+    "category": "Endocrine Pathology",
+    "summary": "Primary Diagnostic Focus: Triage thyroid lesions into papillary, follicular‑patterned and other categories; recognize that follicular carcinoma cannot be diagnosed on frozen section.",
+    "body": "## Key Points\n- Core Teaching Question: Is this thyroid nodule malignant and, if so, should a total thyroidectomy be performed?\n- Primary Diagnostic Focus: Triage thyroid lesions into papillary, follicular‑patterned and other categories; recognize that follicular carcinoma cannot be diagnosed on frozen section.\n- Cardinal Rule: Follicular carcinoma requires capsular and/or vascular invasion on permanent sections; never overcall invasion on frozen.\n- Representative Specimens: Lobectomy, isthmusectomy, subtotal or completion thyroidectomy.\n\n## Triad Summary\n- Papillary\n- Follicular\n- SolidSpindle",
     "learningObjectives": [],
     "slides": [],
     "mcqs": [],
     "flashcards": [],
     "references": [],
     "tags": [
-      "Endocrine Surgery",
-      "ioc"
+      "Endocrine Pathology",
+      "didactic"
     ],
     "provenance": {
+      "sourceServiceLine": "Endocrine Surgery",
       "triad": [
         "Papillary",
         "Follicular",
@@ -58,20 +60,21 @@
     "sourceRepo": "ioc-next-app",
     "sourcePath": "src/content/downloads_imports/raw/ioc_overviews.raw.json",
     "contentType": "lecture",
-    "title": "Gynecologic IOC: Core Principles",
-    "category": "Gynecologic Oncology",
-    "summary": "Surgeon's Question: Is the adnexal or uterine mass benign, borderline, or malignant, and does it require staging?",
-    "body": "## Key Points\n- Surgeon's Question: Is the adnexal or uterine mass benign, borderline, or malignant, and does it require staging?\n- Primary Role: Classify ovarian and endometrial tumors into major histologic categories; determine need for comprehensive staging or debulking.\n- Cardinal Rule: Borderline serous tumors can be difficult to distinguish from invasive carcinoma on frozen; deferral may be prudent.\n- Common Specimens: Oophorectomy, salpingo‑oophorectomy, hysterectomy, omentectomy.\n\n## Triad Summary\n- Serous\n- Mucinous\n- Endometrioid",
+    "title": "Gynecologic Pathology: Core Principles",
+    "category": "Gynecologic Pathology",
+    "summary": "Primary Diagnostic Focus: Classify ovarian and endometrial tumors into major histologic categories; determine need for comprehensive staging or debulking.",
+    "body": "## Key Points\n- Core Teaching Question: Is the adnexal or uterine mass benign, borderline, or malignant, and does it require staging?\n- Primary Diagnostic Focus: Classify ovarian and endometrial tumors into major histologic categories; determine need for comprehensive staging or debulking.\n- Cardinal Rule: Borderline serous tumors can be difficult to distinguish from invasive carcinoma on frozen; deferral may be prudent.\n- Representative Specimens: Oophorectomy, salpingo‑oophorectomy, hysterectomy, omentectomy.\n\n## Triad Summary\n- Serous\n- Mucinous\n- Endometrioid",
     "learningObjectives": [],
     "slides": [],
     "mcqs": [],
     "flashcards": [],
     "references": [],
     "tags": [
-      "Gynecologic Oncology",
-      "ioc"
+      "Gynecologic Pathology",
+      "didactic"
     ],
     "provenance": {
+      "sourceServiceLine": "Gynecologic Oncology",
       "triad": [
         "Serous",
         "Mucinous",
@@ -85,20 +88,21 @@
     "sourceRepo": "ioc-next-app",
     "sourcePath": "src/content/downloads_imports/raw/ioc_overviews.raw.json",
     "contentType": "lecture",
-    "title": "Head & Neck IOC: Core Principles",
-    "category": "Head & Neck Surgery",
-    "summary": "Surgeon's Question: Is this head and neck lesion malignant and what is its histologic type? Are margins clear?",
-    "body": "## Key Points\n- Surgeon's Question: Is this head and neck lesion malignant and what is its histologic type? Are margins clear?\n- Primary Role: Distinguish squamous cell carcinoma from benign/inflammatory lesions, recognize papillary thyroid carcinoma metastases and lymphomas in lymph nodes.\n- Cardinal Rule: Reactive squamous atypia and cystic changes can mimic carcinoma; correlation with clinical and radiologic findings is essential.\n- Common Specimens: Mucosal margins, neck dissection lymph nodes, thyroid lobectomy frozen sections.\n\n## Triad Summary\n- SquamousHN\n- PapillaryThyroid\n- Lymphoma",
+    "title": "Head & Neck Pathology: Core Principles",
+    "category": "Head and Neck Pathology",
+    "summary": "Primary Diagnostic Focus: Distinguish squamous cell carcinoma from benign/inflammatory lesions, recognize papillary thyroid carcinoma metastases and lymphomas in lymph nodes.",
+    "body": "## Key Points\n- Core Teaching Question: Is this head and neck lesion malignant and what is its histologic type? Are margins clear?\n- Primary Diagnostic Focus: Distinguish squamous cell carcinoma from benign/inflammatory lesions, recognize papillary thyroid carcinoma metastases and lymphomas in lymph nodes.\n- Cardinal Rule: Reactive squamous atypia and cystic changes can mimic carcinoma; correlation with clinical and radiologic findings is essential.\n- Representative Specimens: Mucosal margins, neck dissection lymph nodes, thyroid lobectomy frozen sections.\n\n## Triad Summary\n- SquamousHN\n- PapillaryThyroid\n- Lymphoma",
     "learningObjectives": [],
     "slides": [],
     "mcqs": [],
     "flashcards": [],
     "references": [],
     "tags": [
-      "Head & Neck Surgery",
-      "ioc"
+      "Head and Neck Pathology",
+      "didactic"
     ],
     "provenance": {
+      "sourceServiceLine": "Head & Neck Surgery",
       "triad": [
         "SquamousHN",
         "PapillaryThyroid",
@@ -112,20 +116,21 @@
     "sourceRepo": "ioc-next-app",
     "sourcePath": "src/content/downloads_imports/raw/ioc_overviews.raw.json",
     "contentType": "lecture",
-    "title": "Liver/Biliary IOC: Core Principles",
-    "category": "Hepatobiliary Surgery",
-    "summary": "Surgeon's Question: Is this hepatic or bile duct lesion malignant and are surgical margins free of tumor?",
-    "body": "## Key Points\n- Surgeon's Question: Is this hepatic or bile duct lesion malignant and are surgical margins free of tumor?\n- Primary Role: Differentiate primary hepatocellular patterns from metastatic tumors and benign regenerative nodules; assess bile duct lesions for malignancy.\n- Cardinal Rule: Poorly differentiated hepatocellular carcinoma may mimic cholangiocarcinoma; correlation with radiology and immunostains on permanents is essential.\n- Common Specimens: Segmental hepatectomy margins, wedge biopsies of hepatic nodules, bile duct excisions.\n\n## Triad Summary\n- Hepatocellular\n- Cholangiocarcinoma\n- MetastaticLiver",
+    "title": "Liver/Biliary Pathology: Core Principles",
+    "category": "Hepatobiliary Pathology",
+    "summary": "Primary Diagnostic Focus: Differentiate primary hepatocellular patterns from metastatic tumors and benign regenerative nodules; assess bile duct lesions for malignancy.",
+    "body": "## Key Points\n- Core Teaching Question: Is this hepatic or bile duct lesion malignant and are surgical margins free of tumor?\n- Primary Diagnostic Focus: Differentiate primary hepatocellular patterns from metastatic tumors and benign regenerative nodules; assess bile duct lesions for malignancy.\n- Cardinal Rule: Poorly differentiated hepatocellular carcinoma may mimic cholangiocarcinoma; correlation with radiology and immunostains on permanents is essential.\n- Representative Specimens: Segmental hepatectomy margins, wedge biopsies of hepatic nodules, bile duct excisions.\n\n## Triad Summary\n- Hepatocellular\n- Cholangiocarcinoma\n- MetastaticLiver",
     "learningObjectives": [],
     "slides": [],
     "mcqs": [],
     "flashcards": [],
     "references": [],
     "tags": [
-      "Hepatobiliary Surgery",
-      "ioc"
+      "Hepatobiliary Pathology",
+      "didactic"
     ],
     "provenance": {
+      "sourceServiceLine": "Hepatobiliary Surgery",
       "triad": [
         "Hepatocellular",
         "Cholangiocarcinoma",
@@ -139,10 +144,10 @@
     "sourceRepo": "ioc-next-app",
     "sourcePath": "src/content/downloads_imports/raw/ioc_overviews.raw.json",
     "contentType": "lecture",
-    "title": "Neurosurgical IOC: Core Principles",
+    "title": "Neurosurgical Pathology: Core Principles",
     "category": "Neuropathology",
-    "summary": "Surgeon's Question: What is the nature of this central nervous system lesion and does it require further resection?",
-    "body": "## Key Points\n- Surgeon's Question: What is the nature of this central nervous system lesion and does it require further resection?\n- Primary Role: Provide rapid classification of CNS lesions into glioma, metastatic tumor, or meningioma to guide extent of surgery.\n- Cardinal Rule: Frozen sections distort brain tissue; cytologic crush preparations may be more reliable for grading glial tumors.\n- Common Specimens: Stereotactic biopsies, intraoperative tumor debulking specimens.\n\n## Triad Summary\n- Glioma\n- MetastasisCNS\n- Meningioma",
+    "summary": "Primary Diagnostic Focus: Provide rapid classification of CNS lesions into glioma, metastatic tumor, or meningioma to guide extent of surgery.",
+    "body": "## Key Points\n- Core Teaching Question: What is the nature of this central nervous system lesion and does it require further resection?\n- Primary Diagnostic Focus: Provide rapid classification of CNS lesions into glioma, metastatic tumor, or meningioma to guide extent of surgery.\n- Cardinal Rule: Frozen sections distort brain tissue; cytologic crush preparations may be more reliable for grading glial tumors.\n- Representative Specimens: Stereotactic biopsies, intraoperative tumor debulking specimens.\n\n## Triad Summary\n- Glioma\n- MetastasisCNS\n- Meningioma",
     "learningObjectives": [],
     "slides": [],
     "mcqs": [],
@@ -150,9 +155,10 @@
     "references": [],
     "tags": [
       "Neuropathology",
-      "ioc"
+      "didactic"
     ],
     "provenance": {
+      "sourceServiceLine": "Neuropathology",
       "triad": [
         "Glioma",
         "MetastasisCNS",
@@ -166,20 +172,21 @@
     "sourceRepo": "ioc-next-app",
     "sourcePath": "src/content/downloads_imports/raw/ioc_overviews.raw.json",
     "contentType": "lecture",
-    "title": "Pancreas IOC: Core Principles",
-    "category": "Pancreatic Surgery",
-    "summary": "Surgeon's Question: Is the pancreatic resection margin free of invasive carcinoma and is this lesion malignant or benign?",
-    "body": "## Key Points\n- Surgeon's Question: Is the pancreatic resection margin free of invasive carcinoma and is this lesion malignant or benign?\n- Primary Role: Distinguish inflammation and benign cystic lesions from invasive carcinoma; evaluate margins for tumor.\n- Cardinal Rule: Desmoplastic stroma can mimic chronic pancreatitis on frozen; caution with diagnosing adenocarcinoma without definitive glands invading stroma.\n- Common Specimens: Pancreatic neck margin from Whipple procedure, distal pancreatectomy margins, enucleation of cystic lesions.\n\n## Triad Summary\n- Glandular\n- Ductal\n- Desmoplastic",
+    "title": "Pancreas Pathology: Core Principles",
+    "category": "Pancreatic Pathology",
+    "summary": "Primary Diagnostic Focus: Distinguish inflammation and benign cystic lesions from invasive carcinoma; evaluate margins for tumor.",
+    "body": "## Key Points\n- Core Teaching Question: Is the pancreatic resection margin free of invasive carcinoma and is this lesion malignant or benign?\n- Primary Diagnostic Focus: Distinguish inflammation and benign cystic lesions from invasive carcinoma; evaluate margins for tumor.\n- Cardinal Rule: Desmoplastic stroma can mimic chronic pancreatitis on frozen; caution with diagnosing adenocarcinoma without definitive glands invading stroma.\n- Representative Specimens: Pancreatic neck margin from Whipple procedure, distal pancreatectomy margins, enucleation of cystic lesions.\n\n## Triad Summary\n- Glandular\n- Ductal\n- Desmoplastic",
     "learningObjectives": [],
     "slides": [],
     "mcqs": [],
     "flashcards": [],
     "references": [],
     "tags": [
-      "Pancreatic Surgery",
-      "ioc"
+      "Pancreatic Pathology",
+      "didactic"
     ],
     "provenance": {
+      "sourceServiceLine": "Pancreatic Surgery",
       "triad": [
         "Glandular",
         "Ductal",
@@ -193,20 +200,21 @@
     "sourceRepo": "ioc-next-app",
     "sourcePath": "src/content/downloads_imports/raw/ioc_overviews.raw.json",
     "contentType": "lecture",
-    "title": "Lung IOC: Core Principles",
-    "category": "Thoracic Surgery",
-    "summary": "Surgeon's Question: Is this lung lesion malignant and, if so, should more lung tissue be resected?",
-    "body": "## Key Points\n- Surgeon's Question: Is this lung lesion malignant and, if so, should more lung tissue be resected?\n- Primary Role: Provide rapid triage for malignancy versus benign/reactive lesions; do not overinterpret frozen artifacts.\n- Cardinal Rule: Many subtle adenocarcinoma patterns (e.g. lepidic) are under‑diagnosed on frozen; deferral may be appropriate.\n- Common Specimens: Wedge resections for peripheral nodules, mediastinal lymph node biopsies, lobectomies.\n\n## Triad Summary\n- Adenocarcinoma\n- Squamous\n- SmallCell",
+    "title": "Lung Pathology: Core Principles",
+    "category": "Thoracic Pathology",
+    "summary": "Primary Diagnostic Focus: Provide rapid triage for malignancy versus benign/reactive lesions; do not overinterpret frozen artifacts.",
+    "body": "## Key Points\n- Core Teaching Question: Is this lung lesion malignant and, if so, should more lung tissue be resected?\n- Primary Diagnostic Focus: Provide rapid triage for malignancy versus benign/reactive lesions; do not overinterpret frozen artifacts.\n- Cardinal Rule: Many subtle adenocarcinoma patterns (e.g. lepidic) are under‑diagnosed on frozen; deferral may be appropriate.\n- Representative Specimens: Wedge resections for peripheral nodules, mediastinal lymph node biopsies, lobectomies.\n\n## Triad Summary\n- Adenocarcinoma\n- Squamous\n- SmallCell",
     "learningObjectives": [],
     "slides": [],
     "mcqs": [],
     "flashcards": [],
     "references": [],
     "tags": [
-      "Thoracic Surgery",
-      "ioc"
+      "Thoracic Pathology",
+      "didactic"
     ],
     "provenance": {
+      "sourceServiceLine": "Thoracic Surgery",
       "triad": [
         "Adenocarcinoma",
         "Squamous",
@@ -220,20 +228,21 @@
     "sourceRepo": "ioc-next-app",
     "sourcePath": "src/content/downloads_imports/raw/ioc_overviews.raw.json",
     "contentType": "lecture",
-    "title": "Renal IOC: Core Principles",
-    "category": "Urologic Oncology",
-    "summary": "Surgeon's Question: Is the renal mass malignant, and if so, what subtype is it; are margins free of tumor?",
-    "body": "## Key Points\n- Surgeon's Question: Is the renal mass malignant, and if so, what subtype is it; are margins free of tumor?\n- Primary Role: Distinguish clear cell renal cell carcinoma from oncocytoma and other benign lesions; evaluate partial nephrectomy margins.\n- Cardinal Rule: Papillary and chromophobe renal tumors may appear deceptively bland; rely on architectural patterns more than cytology alone.\n- Common Specimens: Partial nephrectomy margins, radical nephrectomy sampling, ureteral margins.\n\n## Triad Summary\n- ClearCell\n- PapillaryKidney\n- Chromophobe",
+    "title": "Renal Pathology: Core Principles",
+    "category": "Genitourinary Pathology",
+    "summary": "Primary Diagnostic Focus: Distinguish clear cell renal cell carcinoma from oncocytoma and other benign lesions; evaluate partial nephrectomy margins.",
+    "body": "## Key Points\n- Core Teaching Question: Is the renal mass malignant, and if so, what subtype is it; are margins free of tumor?\n- Primary Diagnostic Focus: Distinguish clear cell renal cell carcinoma from oncocytoma and other benign lesions; evaluate partial nephrectomy margins.\n- Cardinal Rule: Papillary and chromophobe renal tumors may appear deceptively bland; rely on architectural patterns more than cytology alone.\n- Representative Specimens: Partial nephrectomy margins, radical nephrectomy sampling, ureteral margins.\n\n## Triad Summary\n- ClearCell\n- PapillaryKidney\n- Chromophobe",
     "learningObjectives": [],
     "slides": [],
     "mcqs": [],
     "flashcards": [],
     "references": [],
     "tags": [
-      "Urologic Oncology",
-      "ioc"
+      "Genitourinary Pathology",
+      "didactic"
     ],
     "provenance": {
+      "sourceServiceLine": "Urologic Oncology",
       "triad": [
         "ClearCell",
         "PapillaryKidney",

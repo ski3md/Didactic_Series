@@ -1,0 +1,4944 @@
+{
+  "lectures": [
+    {
+      "id": "ioc-overview-breast-surgery",
+      "title": "Breast Pathology: Core Principles",
+      "sourceRepo": "ioc-next-app",
+      "category": "Breast Pathology",
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Core principles lecture module",
+      "rationale": "Lecture-format pathology overview with clean topic taxonomy."
+    },
+    {
+      "id": "ioc-overview-gynecologic-oncology",
+      "title": "Gynecologic Pathology: Core Principles",
+      "sourceRepo": "ioc-next-app",
+      "category": "Gynecologic Pathology",
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Core principles lecture module",
+      "rationale": "Lecture-format pathology overview with clean topic taxonomy."
+    },
+    {
+      "id": "ioc-overview-head-neck-surgery",
+      "title": "Head & Neck Pathology: Core Principles",
+      "sourceRepo": "ioc-next-app",
+      "category": "Head and Neck Pathology",
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Core principles lecture module",
+      "rationale": "Lecture-format pathology overview with clean topic taxonomy."
+    },
+    {
+      "id": "ioc-overview-hepatobiliary-surgery",
+      "title": "Liver/Biliary Pathology: Core Principles",
+      "sourceRepo": "ioc-next-app",
+      "category": "Hepatobiliary Pathology",
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Core principles lecture module",
+      "rationale": "Lecture-format pathology overview with clean topic taxonomy."
+    },
+    {
+      "id": "ioc-overview-thoracic-surgery",
+      "title": "Lung Pathology: Core Principles",
+      "sourceRepo": "ioc-next-app",
+      "category": "Thoracic Pathology",
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Core principles lecture module",
+      "rationale": "Lecture-format pathology overview with clean topic taxonomy."
+    },
+    {
+      "id": "ioc-overview-neuropathology",
+      "title": "Neurosurgical Pathology: Core Principles",
+      "sourceRepo": "ioc-next-app",
+      "category": "Neuropathology",
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Core principles lecture module",
+      "rationale": "Lecture-format pathology overview with clean topic taxonomy."
+    },
+    {
+      "id": "ioc-overview-pancreatic-surgery",
+      "title": "Pancreas Pathology: Core Principles",
+      "sourceRepo": "ioc-next-app",
+      "category": "Pancreatic Pathology",
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Core principles lecture module",
+      "rationale": "Lecture-format pathology overview with clean topic taxonomy."
+    },
+    {
+      "id": "ioc-overview-urologic-oncology",
+      "title": "Renal Pathology: Core Principles",
+      "sourceRepo": "ioc-next-app",
+      "category": "Genitourinary Pathology",
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Core principles lecture module",
+      "rationale": "Lecture-format pathology overview with clean topic taxonomy."
+    },
+    {
+      "id": "ioc-overview-endocrine-surgery",
+      "title": "Thyroid Pathology: Core Principles",
+      "sourceRepo": "ioc-next-app",
+      "category": "Endocrine Pathology",
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Core principles lecture module",
+      "rationale": "Lecture-format pathology overview with clean topic taxonomy."
+    }
+  ],
+  "tutorials": [
+    {
+      "id": "ioc-entity-adenocarcinoma",
+      "title": "Adenocarcinoma (Lung)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-cholangiocarcinoma",
+      "title": "Cholangiocarcinoma",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-chromophobe",
+      "title": "Chromophobe Renal Cell Carcinoma",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-clearcell",
+      "title": "Clear Cell Renal Cell Carcinoma",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-sclerosing",
+      "title": "Complex Sclerosing Lesion (Breast)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-cribriform",
+      "title": "Cribriform Carcinoma (Breast)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-desmoplastic",
+      "title": "Desmoplastic Stroma Modal (Pancreas)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-ductal",
+      "title": "Ductal Lesion (Pancreas)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-endometrioid",
+      "title": "Endometrioid Carcinoma (Uterus/Ovary)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-glioma",
+      "title": "Glioma",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-hepatocellular",
+      "title": "Hepatocellular Carcinoma",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-lymphoma",
+      "title": "Lymphoma Modal (Head & Neck)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-meningioma",
+      "title": "Meningioma",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-metastasiscns",
+      "title": "Metastatic Tumor (CNS)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-metastaticliver",
+      "title": "Metastatic Tumor (Liver)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-mucinous",
+      "title": "Mucinous Tumor (Ovary)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-glandular",
+      "title": "Pancreatic Adenocarcinoma (Glandular)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-papillarykidney",
+      "title": "Papillary Renal Cell Carcinoma",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-papillary",
+      "title": "Papillary Thyroid Carcinoma",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-papillarythyroid",
+      "title": "Papillary Thyroid Carcinoma Metastasis (Head & Neck)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-serous",
+      "title": "Serous Tumor (Ovary)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-smallcell",
+      "title": "Small Cell Carcinoma (Lung)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-solidspindle",
+      "title": "Solid/Spindled Thyroid Lesion",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-squamoushn",
+      "title": "Squamous Cell Carcinoma (Head & Neck)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-squamous",
+      "title": "Squamous Cell Carcinoma (Lung)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "ioc-entity-tubular",
+      "title": "Tubular Carcinoma (Breast)",
+      "sourceRepo": "ioc-next-app",
+      "category": "Diagnostic Pattern Tutorial",
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 99.5,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "chronic-beryllium-disease",
+      "title": "Chronic Beryllium Disease",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "category": "Granulomatous Disease",
+      "mcqCount": 1,
+      "flashcardCount": 2,
+      "priorityScore": 99.45,
+      "promotionTarget": "Main granulomatous tutorial surface"
+    },
+    {
+      "id": "granulomatosis-with-polyangiitis-gpa",
+      "title": "Granulomatosis with Polyangiitis (GPA)",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "category": "Granulomatous Disease",
+      "mcqCount": 1,
+      "flashcardCount": 2,
+      "priorityScore": 99.45,
+      "promotionTarget": "Main granulomatous tutorial surface"
+    },
+    {
+      "id": "histoplasmosis",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "category": "Granulomatous Disease",
+      "mcqCount": 1,
+      "flashcardCount": 2,
+      "priorityScore": 99.45,
+      "promotionTarget": "Main granulomatous tutorial surface"
+    },
+    {
+      "id": "topic-ap-gen-neoplasia",
+      "title": "Biology of Tumor Growth and Neoplasia",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-cv",
+      "title": "Cardiovascular Pathology: Ischemic and Valvular Heart Disease",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-cell-injury",
+      "title": "Cell Injury, Cell Death, and Adaptations",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gi-eso",
+      "title": "Clinical Focus: Barrett's Esophagus and Esophageal Malignancy",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-cv-vasc",
+      "title": "Clinical Overview of Systemic Vasculitides",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gi-colon",
+      "title": "Colon Pathology: IBD, Polyps, and Cancer Syndromes",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-AP_ROOT",
+      "title": "Fundamentals of Anatomic Pathology and Histologic Evaluation",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gi-root",
+      "title": "Gastrointestinal Pathology High-Yield Review",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gen",
+      "title": "General Pathology: Cell Injury, Inflammation, and Repair",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gen-hemo",
+      "title": "Hemodynamic Disorders, Thromboembolism, and Shock",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-lung-2",
+      "title": "Interstitial Lung Disease (ILD) Clinical Review",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gi-liver",
+      "title": "Liver Pathology: Hepatitis, Cirrhosis, and Tumors",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-lung-1",
+      "title": "Lung Neoplasms: Adeno, Squamous, and Small Cell Carcinomas",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-lung-3",
+      "title": "Malignant Pleural Mesothelioma: A Clinical Overview",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-lung-4",
+      "title": "Mediastinum: Thymoma and Paraneoplastic Syndromes",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gen-inflam",
+      "title": "Medical Board Review: Acute and Chronic Inflammation",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-resp",
+      "title": "Respiratory & Mediastinal Pathology Overview",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gi-small",
+      "title": "Small Intestinal Pathology: Celiac Disease and Carcinoid Tumors",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gi-stomach",
+      "title": "Stomach Pathology: Gastritis, Polyps, and Neoplasia",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gen-repair",
+      "title": "Tissue Renewal, Regeneration, and Repair",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 5,
+      "priorityScore": 96.7,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "acquired-coagulation-factor-inhibitors",
+      "title": "Acquired Coagulation Factor Inhibitors",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "acquired-platelet-function-disorders",
+      "title": "Acquired Platelet Function Disorders",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "anemia-in-oncology-patients",
+      "title": "Anemia in Oncology Patients",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "antithrombotic-therapy",
+      "title": "Antithrombotic Therapy",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "bleeding-from-coagulation-defects",
+      "title": "Bleeding from Coagulation Defects",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "blood-banking-transfusion-medicine",
+      "title": "Blood Banking/Transfusion Medicine",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "cell-and-tissue-therapy",
+      "title": "Cell and Tissue Therapy",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "cirrhosis-coagulopathy",
+      "title": "Cirrhosis Coagulopathy",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "clinical-practice",
+      "title": "Clinical Practice",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "congenital-coagulopathies-thrombophilias",
+      "title": "Congenital Coagulopathies/Thrombophilias",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "drug-induced-hemolytic-anemia",
+      "title": "Drug-Induced Hemolytic Anemia",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "hla-antigens-and-alleles",
+      "title": "HLA Antigens and Alleles",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "immune-thrombocytopenia",
+      "title": "Immune Thrombocytopenia",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "paroxysmal-nocturnal-hemoglobinuria",
+      "title": "Paroxysmal Nocturnal Hemoglobinuria",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "perioperative-blood-management",
+      "title": "Perioperative Blood Management",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "platelet-product-choice-in-leukemia",
+      "title": "Platelet Product Choice in Leukemia",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 10,
+      "priorityScore": 89.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-16-d",
+      "title": "ABO Incompatibility in Hematopoietic Progenitor Cell Transplant: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-3-a",
+      "title": "Acute Leukemias (AML, ALL) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-2-b",
+      "title": "Adenocarcinoma (Gleason Grading) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-prostate-2",
+      "title": "Adenocarcinoma (Gleason Grading) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-br",
+      "title": "Advanced Pathology Dossier: Breast Pathology",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gi",
+      "title": "Advanced Pathology Dossier: Digestive System",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-neu",
+      "title": "Advanced Pathology Dossier: Neuropathology",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-1-e",
+      "title": "Anaerobic Infections: A Case Tutorial on Clostridium and Bacteroides",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-1-c",
+      "title": "Anemia in Oncology Patients: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-1-h",
+      "title": "Antimicrobial Susceptibility Testing: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-skin",
+      "title": "AP: Dermatopathology Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-endocrine",
+      "title": "AP: Endocrine Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gyn",
+      "title": "AP: Female Reproductive Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-for",
+      "title": "AP: Forensic Pathology Advanced Dossier",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu",
+      "title": "AP: Genitourinary Pathology Dossier",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-lung",
+      "title": "AP: Respiratory & Mediastinum Case Tutorial: Lung Adenocarcinoma",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-5",
+      "title": "Apheresis Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-8-e",
+      "title": "Bacterial Contamination of Blood Products: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-1",
+      "title": "Bacteriology Case Tutorial: Community-Acquired Pneumonia",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-prostate-1",
+      "title": "Benign Prostatic Hyperplasia Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-breast-7",
+      "title": "Biomarkers (ER/PR/HER2) in Breast Cancer: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-bladder",
+      "title": "Bladder & Ureter Case Tutorial: Urothelial Carcinoma",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb",
+      "title": "Blood Banking / Transfusion Medicine: Advanced Pathology Dossier",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-9",
+      "title": "Blood Donors and Collection: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-7",
+      "title": "Blood Gases & Electrolytes: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-6",
+      "title": "Carbohydrates (Diabetes) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-4-b",
+      "title": "Cardiac Markers (Troponin, BNP) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-soft-1",
+      "title": "Case Tutorial: Adipocytic Tumors (Lipoma, Liposarcoma)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-skin-adnexal",
+      "title": "Case Tutorial: Adnexal Tumors",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-2-c",
+      "title": "Case Tutorial: Adoptive Immunotherapy (CAR-T, TILs)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-8-b",
+      "title": "Case Tutorial: Adrenal Cortex & Medulla",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-endo-adrenal",
+      "title": "Case Tutorial: Adrenal Gland Pathologies (Cortical and Pheochromocytoma)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-1",
+      "title": "Case Tutorial: Analytical Techniques",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-peds",
+      "title": "Case Tutorial: AP - Pediatric Pathology",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-neuro",
+      "title": "Case Tutorial: AP Neuropathology",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-cardio",
+      "title": "Case Tutorial: AP: Cardiovascular",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-cyto",
+      "title": "Case Tutorial: AP: Cytopathology",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-forensic",
+      "title": "Case Tutorial: AP: Forensic Pathology",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-headneck",
+      "title": "Case Tutorial: AP: Head & Neck",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-soft",
+      "title": "Case Tutorial: AP: Soft Tissue & Bone",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-1-a",
+      "title": "Case Tutorial: Autoimmune Hemolytic Anemia",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-breast-2",
+      "title": "Case Tutorial: Benign Neoplasms (Fibroadenoma, Papilloma)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-1-e",
+      "title": "Case Tutorial: Bleeding from Coagulation Defects",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-4-a",
+      "title": "Case Tutorial: Blood & Tissue Protozoa (Malaria, Babesia)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-bone",
+      "title": "Case Tutorial: Bone Tumors (Osteosarcoma, Chondrosarcoma, Ewing, Giant Cell)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-breast",
+      "title": "Case Tutorial: Breast Pathology - Ductal Carcinoma In Situ with Microinvasion",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-8-d",
+      "title": "Case Tutorial: Calcium & Bone Metabolism",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-3-e",
+      "title": "Case Tutorial: Carbohydrate Blood Groups (ABO, Lewis, Ii, P)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gyn-cervix",
+      "title": "Case Tutorial: Cervix (HPV, SIL, Carcinoma)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp",
+      "title": "Case Tutorial: Chemical Pathology",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-9-b",
+      "title": "Case Tutorial: Clinical Toxicology (Metals, Volatiles)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-2-b",
+      "title": "Case Tutorial: Coagulation Factors (Hemophilia, vWD)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-9-b",
+      "title": "Case Tutorial: Collection Complications",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-9-c",
+      "title": "Case Tutorial: Component Processing and Testing",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-peds-4",
+      "title": "Case Tutorial: Congenital Anomalies & Genetic Syndromes",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-8-c",
+      "title": "Case Tutorial: Cytomegalovirus (CMV) & Other Herpesviruses",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-2-c",
+      "title": "Case Tutorial: Dimorphic Fungi",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-9-a",
+      "title": "Case Tutorial: Donor Eligibility and Screening",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-9-c",
+      "title": "Case Tutorial: Drugs of Abuse",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-8-f",
+      "title": "Case Tutorial: Emerging Pathogens (Zika, West Nile, Prions)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-breast-6",
+      "title": "Case Tutorial: Fibroepithelial Lesions (Phyllodes)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-2-d",
+      "title": "Case Tutorial: Gene Therapy in Transfusion Medicine",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mol-4",
+      "title": "Case Tutorial: Genetics (Hereditary Cancer Syndromes)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-1-a",
+      "title": "Case Tutorial: Gram Positive Cocci (Staph, Strep, Entero)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-1-b",
+      "title": "Case Tutorial: Gram Positive Rods (Bacillus, Listeria, Corynebacterium)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-6",
+      "title": "Case Tutorial: Hazards of Transfusion",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-6-a",
+      "title": "Case Tutorial: Hemolytic Transfusion Reactions (Acute & Delayed)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-3-b",
+      "title": "Case Tutorial: Hepatitis & Retroviruses",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-8-a",
+      "title": "Case Tutorial: Hepatitis Viruses (HBV, HCV, HEV)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-3-c",
+      "title": "Case Tutorial: Herpesviruses",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-3-g",
+      "title": "Case Tutorial: Histiocytic/Dendritic Cell Neoplasms",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-2-a",
+      "title": "Case Tutorial: HLA Antigens and Alleles",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-for-id",
+      "title": "Case Tutorial: Identification",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-breast-4",
+      "title": "Case Tutorial: In Situ Carcinoma (DCIS, LCIS)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-skin-inflam",
+      "title": "Case Tutorial: Inflammatory Dermatoses (Spongiotic, Psoriasiform, Lichenoid)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-breast-1",
+      "title": "Case Tutorial: Inflammatory/Reactive Breast Lesions (Fat Necrosis, Mastitis)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-1",
+      "title": "Case Tutorial: Iron Deficiency Anemia",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-bone-joint",
+      "title": "Case Tutorial: Joint Disorders (Gout, Synovial Sarcoma)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-5",
+      "title": "Case Tutorial: Lipids & Lipoproteins",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-4-c",
+      "title": "Case Tutorial: Liver Enzymes (AST, ALT, ALP, GGT)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-3-d",
+      "title": "Case Tutorial: Mature B-Cell Neoplasms",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-3-e",
+      "title": "Case Tutorial: Mature T/NK-Cell Neoplasms",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb",
+      "title": "Case Tutorial: Medical Microbiology",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-neuro-meningioma",
+      "title": "Case Tutorial: Meningiomas",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-neuro-meta",
+      "title": "Case Tutorial: Metastatic Disease",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-3-h",
+      "title": "Case Tutorial: Metastatic Neoplasms",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-2-b",
+      "title": "Case Tutorial: Molds (Aspergillus, Mucorales)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mol-1",
+      "title": "Case Tutorial: Molecular Techniques (PCR, FISH, NGS)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-1-f",
+      "title": "Case Tutorial: Mycobacteria (TB, NTM)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-3-c",
+      "title": "Case Tutorial: Myelodysplastic Syndromes",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-hn-neck",
+      "title": "Case Tutorial: Neck Masses - Branchial Cleft Cysts and Paraganglioma",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-skin-neo",
+      "title": "Case Tutorial: Neoplasms of the Skin (BCC, SCC, Melanoma, Nevi)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-3",
+      "title": "Case Tutorial: Neoplastic Hematopathology - Mantle Cell Lymphoma",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-neuro-degen",
+      "title": "Case Tutorial: Neurodegenerative (Alzheimer, Parkinson)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-cyto-nongyn",
+      "title": "Case Tutorial: Non-Gyn (Fluids, Urine)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-15",
+      "title": "Case Tutorial: Obstetric and Pediatric Transfusion",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-hn-oral",
+      "title": "Case Tutorial: Oral Cavity & Oropharynx Lesions (SCC, Odontogenic Tumors)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gyn-ovary",
+      "title": "Case Tutorial: Ovarian Neoplasms (Epithelial, Germ Cell, Sex Cord-Stromal)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-8-d",
+      "title": "Case Tutorial: Parasites (Babesia, Malaria, Chagas)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-4",
+      "title": "Case Tutorial: Parasitology",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-1-b",
+      "title": "Case Tutorial: Paroxysmal Nocturnal Hemoglobinuria",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-peds-1",
+      "title": "Case Tutorial: Pediatric Renal Tumors (Wilms)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-kidney-3",
+      "title": "Case Tutorial: Pediatric Tumors (Wilms)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gyn-placenta",
+      "title": "Case Tutorial: Placenta (Trophoblastic Disease, Inflammation)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-3-f",
+      "title": "Case Tutorial: Plasma Cell Neoplasms",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-7",
+      "title": "Case Tutorial: Plasma Components and Derivatives",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-2-a",
+      "title": "Case Tutorial: Platelet Disorders (ITP, TTP, Functional)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-3-a",
+      "title": "Case Tutorial: Precision, Accuracy, Bias",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-7-b",
+      "title": "Case Tutorial: Preparation (FFP, Cryo, Fractionation)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-endo-para",
+      "title": "Case Tutorial: Primary Hyperparathyroidism",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-8",
+      "title": "Case Tutorial: Primary Hypothyroidism",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-endo",
+      "title": "Case Tutorial: Primary Hypothyroidism",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-16-c",
+      "title": "Case Tutorial: Processing, Cryopreservation, and Storage",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-breast-3",
+      "title": "Case Tutorial: Proliferative Lesions (UDH, ADH, ALH)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-pros",
+      "title": "Case Tutorial: Prostate Adenocarcinoma",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-prostate",
+      "title": "Case Tutorial: Prostate Adenocarcinoma",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-4",
+      "title": "Case Tutorial: Proteins & Enzymes",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-1-a",
+      "title": "Case Tutorial: RBC Disorders (Anemia, Hemoglobinopathies)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-3",
+      "title": "Case Tutorial: RBCs and RBC Components",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-3-d",
+      "title": "Case Tutorial: Red Cell Immunology and Compatibility Testing",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-3-c",
+      "title": "Case Tutorial: Red Cell Metabolism and Preservation (Storage Lesion)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-3-a",
+      "title": "Case Tutorial: Red Cell Production, Kinetics, and Oxygen Delivery",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-lm-2",
+      "title": "Case Tutorial: Regulatory Agencies in Laboratory Medicine (CLIA, CAP, TJC)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-3-a",
+      "title": "Case Tutorial: Respiratory Viruses",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-8-b",
+      "title": "Case Tutorial: Retroviruses (HIV, HTLV)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-15-d",
+      "title": "Case Tutorial: RhIg Calculation and Fetomaternal Hemorrhage",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-3-c",
+      "title": "Case Tutorial: Sensitivity, Specificity, ROC Curves",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-4-a",
+      "title": "Case Tutorial: Serum Protein Electrophoresis (SPEP/IFE)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-soft-4",
+      "title": "Case Tutorial: Skeletal Muscle & Nerve",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-peds-3",
+      "title": "Case Tutorial: Small Round Blue Cell Tumors",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mol-2",
+      "title": "Case Tutorial: Solid Tumor Molecular Testing (Lung, Colon, Melanoma)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-lm-4",
+      "title": "Case Tutorial: Statistical Interpretation of Laboratory Data",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-9-a",
+      "title": "Case Tutorial: Therapeutic Drug Monitoring (TDM)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-5-b",
+      "title": "Case Tutorial: Therapeutic Plasma Exchange (TPE)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-8-a",
+      "title": "Case Tutorial: Thyroid Function",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-2-b",
+      "title": "Case Tutorial: Tissue Banking (Allografts, Donation, Suitability)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-2-e",
+      "title": "Case Tutorial: Tissue Engineering and Regenerative Medicine",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-6-d",
+      "title": "Case Tutorial: Transfusion-Related Acute Lung Injury (TRALI)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gyn-vulva",
+      "title": "Case Tutorial: Vulva & Vagina (VIN, Carcinoma, Dermatoses)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-1-b",
+      "title": "Case Tutorial: WBC Disorders (Benign, Infectious)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-for-wound",
+      "title": "Case Tutorial: Wound Pattern Analysis (GSW, Blunt Force)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-2-a",
+      "title": "Case Tutorial: Yeasts (Candida, Cryptococcus)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-f-1",
+      "title": "Cause and Manner of Death Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-for-cod",
+      "title": "Cause and Manner of Death Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-2",
+      "title": "Cell and Tissue Therapy: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-chem",
+      "title": "Chemical Pathology: Advanced Clinical Biochemistry Dossier",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-1",
+      "title": "Clinical Practice Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-7-c",
+      "title": "Clinical Use of Albumin, IVIG, and RhIg: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-2",
+      "title": "Coagulation Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-cv-heart",
+      "title": "Comprehensive Heart Pathology: Ischemic, Cardiomyopathy, and Neoplasia",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-hn-ear",
+      "title": "Ear & Temporal Bone: Cholesteatoma Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-1-b",
+      "title": "Electrochemistry & Sensors: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-1-c",
+      "title": "Electrophoresis & Chromatography Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-6-b",
+      "title": "Febrile, Allergic, and Anaphylactic Transfusion Reactions: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-soft-2",
+      "title": "Fibroblastic/Myofibroblastic: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-cyto-fna",
+      "title": "FNA Case Tutorial: Thyroid, Lung, and Salivary Gland Lesions",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-for-tox",
+      "title": "Forensic Toxicology Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-testis-1",
+      "title": "Germ Cell Tumors (Seminoma, Non-Seminoma) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-neuro-glioma",
+      "title": "Gliomas (Glioblastoma, Astrocytoma) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-1-c",
+      "title": "Gram Negative Cocci: Neisseria and Moraxella Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-1-d",
+      "title": "Gram Negative Rods (Enterobacteriaceae, Pseudomonas) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-1-f",
+      "title": "Granulocyte Transfusion: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-cyto-gyn",
+      "title": "Gynecologic (Pap Smear, Bethesda) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-4-c",
+      "title": "Helminths (Nematodes, Cestodes, Trematodes) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mol-3",
+      "title": "Hematolymphoid Molecular Testing: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp",
+      "title": "Hematopathology (CP) Case Tutorial: Acute Myeloid Leukemia with Myelodysplasia-Related Changes",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-16",
+      "title": "Hematopoietic Progenitor Cell (HPC) Transplantation: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-15-a",
+      "title": "Hemolytic Disease of the Fetus and Newborn (HDFN) - Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-16-b",
+      "title": "HLA Matching and Engraftment Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-16-a",
+      "title": "HPC Sources (Marrow, Peripheral, Cord) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-1-d",
+      "title": "Immune Thrombocytopenia (ITP) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-1-e",
+      "title": "Immunoassay Principles: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-8",
+      "title": "Infectious Hazards of Transfusion: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-4-b",
+      "title": "Intestinal Protozoa (Giardia, Entamoeba) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-15-c",
+      "title": "Intrauterine Transfusion Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-breast-5",
+      "title": "Invasive Carcinoma (Ductal, Lobular, Special Types)",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-kid",
+      "title": "Kidney Case Tutorial: Acute Kidney Injury Management",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-kidney",
+      "title": "Kidney Case Tutorial: Acute Kidney Injury Management",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-lab-mgmt",
+      "title": "Lab Management & Informatics Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-lm-3",
+      "title": "Laboratory Safety: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-1-d",
+      "title": "Mass Spectrometry Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-kidney-1",
+      "title": "Medical Renal Disease: Glomerulonephritis Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-3",
+      "title": "Method Validation & Statistics: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mol-gen",
+      "title": "Molecular & Genomic Pathology Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-2",
+      "title": "Mycology Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-3-b",
+      "title": "Myeloproliferative Neoplasms: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-15-b",
+      "title": "Neonatal Alloimmune Thrombocytopenia (NAIT) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-peds-2",
+      "title": "Neuroblastoma & Adrenal Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-bladder-2",
+      "title": "Non-Neoplastic Bladder Pathology: Cystitis",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-testis-2",
+      "title": "Ovarian Sex Cord-Stromal Tumors",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gi-pancreas",
+      "title": "Pancreas Case Tutorial: Pancreatitis, PDAC, and Neuroendocrine Tumors",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-8-c",
+      "title": "Pituitary Adenoma with Reproductive Manifestations: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-endo-pituitary",
+      "title": "Pituitary Adenomas: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-peds-5",
+      "title": "Placental Pathology: Chorioamnionitis and Vascular Lesions Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-7-a",
+      "title": "Plasma Composition and Proteins: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-6-f",
+      "title": "Posttransfusion Purpura: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-5-a",
+      "title": "Principles and Technology of Hemapheresis: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-3-g",
+      "title": "Protein Blood Group Systems: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-lm-1",
+      "title": "Quality Control & Quality Assurance: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-3-b",
+      "title": "Reference Intervals Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-kidney-2",
+      "title": "Renal Cell Carcinoma (Clear Cell, Papillary) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-3-f",
+      "title": "Rh and LW Blood Group Systems Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-hn-salivary",
+      "title": "Salivary Gland Tumors: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-hn-sino",
+      "title": "Sinonasal & Nasopharyngeal Lesions: Papillomas and Neuroblastoma",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-1-a",
+      "title": "Spectrophotometry & Optics Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-1-g",
+      "title": "Spirochetes (Syphilis, Lyme) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-testis",
+      "title": "Testicular Germ Cell Tumors: Diagnostic Approach",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-5-c",
+      "title": "Therapeutic Cytapheresis: A Case-Based Review of Red Cell, Platelet, and Leukocyte Apheresis",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-hp-2-c",
+      "title": "Thrombophilia Case Tutorial: Factor V Leiden and Antiphospholipid Syndrome",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-endo-thyroid",
+      "title": "Thyroid Gland Pathology: Nodules, Carcinoma, and Thyroiditis",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-9",
+      "title": "Toxicology & TDM Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-6-e",
+      "title": "Transfusion-Associated Circulatory Overload (TACO) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-bb-6-c",
+      "title": "Transfusion-Associated Graft-Versus-Host Disease (TA-GVHD) Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-cp-4-d",
+      "title": "Tumor Markers: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gu-bladder-1",
+      "title": "Urothelial Carcinoma Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-gyn-uterus",
+      "title": "Uterine Pathology: Endometrial Carcinoma, Leiomyoma, and Sarcoma Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-cv-valves",
+      "title": "Valvular Heart Disease Comprehensive Clinical Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-ap-soft-3",
+      "title": "Vascular Tumors: A Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "topic-mb-3",
+      "title": "Virology Case Tutorial",
+      "sourceRepo": "abpath-advanced-board-prep-platform (3)",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 84.2,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "tissue-banking",
+      "title": "Tissue Banking",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 1,
+      "flashcardCount": 0,
+      "priorityScore": 73.57,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "corrected-platelet-count-increment-cci",
+      "title": "Corrected Platelet Count Increment (CCI)",
+      "sourceRepo": "cp-content-specification-tutorial-batch-ready",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 72.07,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "TUT003",
+      "title": "Case Study: Acute Anemia and a Positive DAT",
+      "sourceRepo": "cp-content-specification-tutorial_11.11.25",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 0,
+      "priorityScore": 68.4,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "TUT004",
+      "title": "Case Study: From Skin Lesion to Systemic Infection",
+      "sourceRepo": "cp-content-specification-tutorial_11.11.25",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 0,
+      "priorityScore": 68.4,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "TUT005",
+      "title": "Case Study: Quantifying an M-Spike",
+      "sourceRepo": "cp-content-specification-tutorial_11.11.25",
+      "category": null,
+      "mcqCount": 5,
+      "flashcardCount": 0,
+      "priorityScore": 68.4,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    },
+    {
+      "id": "TUT001",
+      "title": "Case Study: Vaso-occlusive Crisis in Sickle Cell Anemia",
+      "sourceRepo": "cp-content-specification-tutorial_11.11.25",
+      "category": null,
+      "mcqCount": 0,
+      "flashcardCount": 0,
+      "priorityScore": 60.9,
+      "promotionTarget": "Downloads Library -> Board prep surface"
+    }
+  ],
+  "algorithms": [
+    {
+      "id": "bacterial-diagnosis-algorithm",
+      "title": "Bacterial Diagnosis Algorithm",
+      "sourceRepo": "workspace-3418f879-7689-4224-9717-636b27130563",
+      "category": "Microbiology",
+      "nodeCount": 81,
+      "priorityScore": 56.12,
+      "promotionTarget": "Keep in Downloads Library until an algorithm navigator is added"
+    }
+  ],
+  "images": [
+    {
+      "id": "blastomycosis_blastomycosis_04",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_12",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_14",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_28",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_29",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_15",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_59",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_70",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_58",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_60",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_61",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_77",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_89",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_62",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_47",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_85",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_78",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_44",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_50",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_87",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_93",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_79",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_82",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_96",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_54",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_81",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_94",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_57",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_30",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_24",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_25",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_31",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_19",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_27",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_32",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_26",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_23",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_35",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_21",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_20",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "blastomycosis_blastomycosis_35",
+      "title": "Blastomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "blastomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_95",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_96",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_87",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_79",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_21",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_20",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_22",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_14",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_15",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_02",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_05",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_88",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_74",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_73",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_98",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "coccidioidomycosis_coccidioidomycosis_07",
+      "title": "Coccidioidomycosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "coccidioidomycosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_37",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_23",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_22",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_34",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_08",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_21",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_31",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_18",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_27",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_83",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_69",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_82",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_94",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_57",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_95",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_81",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_91",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_52",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_53",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_90",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_92",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_86",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_45",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_78",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_87",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_60",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_89",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_76",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_88",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_73",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_66",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_99",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_16",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_17",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_11",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_39",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_37",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_08",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_09",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_18",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_97",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_83",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_54",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_80",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_56",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_84",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_79",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_75",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_77",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_99",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_16",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_02",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_03",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_17",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_10",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_11",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_05",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_13",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "cryptococcosis_cryptococcosis_06",
+      "title": "Cryptococcosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "cryptococcosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_55",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_56",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_23",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_36",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_34",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_09",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_35",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_31",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_16",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_02",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_03",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_10",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_07",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_61",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_60",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_89",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_76",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_63",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_58",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "foreign_body_foreign_body_64",
+      "title": "Foreign Body",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "foreign-body",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "gpa_gpa_100",
+      "title": "Gpa",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "gpa",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "gpa_gpa_12",
+      "title": "Gpa",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "gpa",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "gpa_vasculitis_83",
+      "title": "Gpa",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "gpa",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_69",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_54",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_40",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_81",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_94",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_43",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_90",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_84",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_85",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_91",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_93",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_92",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_86",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_37",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_24",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_18",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_32",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_26",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_17",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_yeast_forms_33",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_15",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_11",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_05",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_10",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_06",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_100",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_48",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_49",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_88",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_66",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_yeast_forms_83",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_65",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_71",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_06",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "histoplasmosis_histoplasmosis_70",
+      "title": "Histoplasmosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "histoplasmosis",
+      "difficulty": "advanced",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_12",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_10",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_11",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_29",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_15",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_14",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_28",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_30",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_20",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_21",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_09",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "hypersensitivity_pneumonitis_hypersensitivity_pneumonitis_22",
+      "title": "Hypersensitivity Pneumonitis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "hypersensitivity-pneumonitis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_60",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_66",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_59",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_02",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_28",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_29",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_38",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_10",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_06",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_12",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_13",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_07",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_09",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_35",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_granulomas_67",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_34",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_08",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_24",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_18",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_25",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_32",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_54",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_granulomas_05",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_granulomas_11",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_53",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_granulomas_15",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_46",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_51",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_45",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    },
+    {
+      "id": "sarcoidosis_sarcoidosis_57",
+      "title": "Sarcoidosis",
+      "sourceRepo": "pathology-learning-module_-granulomatous-diseases (3)",
+      "entity": "sarcoidosis",
+      "difficulty": "intermediate",
+      "priorityScore": 103.95,
+      "promotionTarget": "Curated atlas and granulomatous workflow"
+    }
+  ]
+}
