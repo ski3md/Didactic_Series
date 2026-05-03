@@ -4,6 +4,7 @@ node_modules/
 # Build outputs
 dist/
 .cache/
+.npm-cache/
 out/
 build/
 test-results/
