@@ -1,0 +1,520 @@
+{
+  "version": "2026-05-02",
+  "title": "GU Pathology Sign-Out Simulations",
+  "cases": [
+    {
+      "id": "gu-prostate-acinar-biopsy-gg1",
+      "title": "Prostate needle biopsy: acinar adenocarcinoma, Grade Group 1",
+      "site": "Prostate",
+      "workflow": "biopsy",
+      "specimenType": "Left apex prostate needle core biopsy",
+      "clinicalHistory": "68-year-old man with PSA 6.4 ng/mL and PI-RADS 4 lesion in the left peripheral zone.",
+      "image": {
+        "src": "reference-library/gu-signout/prostate-acinar-adenocarcinoma-cc0.jpg",
+        "caption": "Acinar prostatic adenocarcinoma on H&E stain.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prostate_adenocarcinoma_-_acinar_pattern.jpg"
+      },
+      "diagnosticSteps": [
+        "Identify infiltrative small glands with nuclear enlargement and prominent nucleoli.",
+        "Confirm absence of basal cells if morphology is limited or potentially mimicked by benign glands.",
+        "Report Gleason score, Grade Group, number of involved cores, linear extent, and percent involvement."
+      ],
+      "ancillaryOptions": [
+        { "id": "p504s-basal", "name": "PIN4 or AMACR plus basal-cell cocktail", "result": "AMACR positive with absent basal-cell staining in malignant glands.", "recommended": true },
+        { "id": "nkx31", "name": "NKX3.1", "result": "Nuclear positivity supports prostatic origin.", "recommended": false },
+        { "id": "erg", "name": "ERG", "result": "ERG is not required for routine grading.", "recommended": false }
+      ],
+      "reportingTarget": "Prostate, left apex, needle core biopsy: Acinar adenocarcinoma, Gleason score 3+3=6, Grade Group 1, involving 1 of 2 cores, 3 mm linear extent, 20% of submitted tissue.",
+      "requiredReportElements": ["acinar adenocarcinoma", "Gleason score 3+3=6", "Grade Group 1", "cores involved", "linear extent"],
+      "pitfalls": ["Do not omit core count or linear extent.", "Do not use immunostains to grade the tumor."]
+    },
+    {
+      "id": "gu-prostate-gg2-pattern4",
+      "title": "Prostate biopsy: acinar adenocarcinoma with Gleason pattern 4",
+      "site": "Prostate",
+      "workflow": "biopsy",
+      "specimenType": "Targeted prostate needle core biopsy",
+      "clinicalHistory": "72-year-old man with rising PSA and MRI-targeted biopsy from a right posterior peripheral-zone lesion.",
+      "image": {
+        "src": "reference-library/gu-signout/prostate-gleason-pattern-4-cc-by-sa.jpg",
+        "caption": "Prostatic adenocarcinoma with Gleason pattern 4 architecture.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prostatic_carcinoma_-_Gleason_pattern_4_--_intermed_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize fused, poorly formed, or glomeruloid glands as Gleason pattern 4.",
+        "Estimate the percent pattern 4 because it changes risk communication.",
+        "Report Gleason score, Grade Group, core involvement, and cribriform/intraductal carcinoma if present."
+      ],
+      "ancillaryOptions": [
+        { "id": "basal-amacr", "name": "Basal-cell markers plus AMACR", "result": "May support carcinoma in a limited focus but does not assign grade.", "recommended": false },
+        { "id": "pten", "name": "PTEN", "result": "Not required for routine sign-out.", "recommended": false },
+        { "id": "none", "name": "No ancillary study", "result": "Morphology is sufficient for grading in this case.", "recommended": true }
+      ],
+      "reportingTarget": "Prostate, targeted core biopsy: Acinar adenocarcinoma, Gleason score 3+4=7, Grade Group 2, pattern 4 approximately 20%, involving 2 of 3 cores, greatest linear extent 7 mm.",
+      "requiredReportElements": ["Gleason score 3+4=7", "Grade Group 2", "pattern 4 approximately 20%", "cores", "linear extent"],
+      "pitfalls": ["Do not bury percent pattern 4.", "Do not call all small glands pattern 3 when fused architecture is present."]
+    },
+    {
+      "id": "gu-prostate-bph-turp",
+      "title": "Prostate chips: benign prostatic hyperplasia",
+      "site": "Prostate",
+      "workflow": "gross-only",
+      "specimenType": "Transurethral resection of prostate chips",
+      "clinicalHistory": "76-year-old man with bladder outlet obstruction and no suspicious lesion on preoperative evaluation.",
+      "image": {
+        "src": "reference-library/gu-signout/benign-prostatic-hyperplasia-he.jpg",
+        "caption": "Benign prostatic hyperplasia with nodular glandular and stromal proliferation.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Benign_prostate_hyperplasia.jpg"
+      },
+      "diagnosticSteps": [
+        "Confirm benign nodular glandular and stromal proliferation.",
+        "Search for incidental carcinoma when sampling volume or gross concern warrants microscopy.",
+        "Report inflammation, infarct, or incidental carcinoma only if present."
+      ],
+      "ancillaryOptions": [
+        { "id": "none", "name": "No ancillary study", "result": "No ancillary study is required for uncomplicated benign nodular hyperplasia.", "recommended": true },
+        { "id": "basal-amacr", "name": "Basal-cell markers plus AMACR", "result": "Reserve for a suspicious microscopic focus.", "recommended": false }
+      ],
+      "grossOnlyChecklist": ["aggregate weight", "aggregate dimensions", "representative sampling", "incidental lesion if present"],
+      "reportingTarget": "Prostate, transurethral resection: Benign prostatic tissue with nodular glandular and stromal hyperplasia.",
+      "requiredReportElements": ["benign prostatic tissue", "nodular glandular and stromal hyperplasia"],
+      "pitfalls": ["Do not sign out gross-only if tissue has not been examined per local sampling policy.", "Do not ignore a firm or yellow gross focus."]
+    },
+    {
+      "id": "gu-bladder-cis-biopsy",
+      "title": "Bladder biopsy: urothelial carcinoma in situ",
+      "site": "Bladder",
+      "workflow": "biopsy",
+      "specimenType": "Cold-cup bladder biopsy",
+      "clinicalHistory": "69-year-old man with positive urine cytology and erythematous posterior bladder wall mucosa.",
+      "image": {
+        "src": "reference-library/acquired/acb2acd39c28a2d6b7bfde044242534a38455554.jpg",
+        "caption": "Urothelial carcinoma in situ with high-grade cytologic atypia.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Urothelial_carcinoma_in_situ,_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize flat high-grade cytologic atypia involving urothelium.",
+        "Assess whether lamina propria invasion is present.",
+        "State muscularis propria presence or absence when applicable."
+      ],
+      "ancillaryOptions": [
+        { "id": "ck20-p53", "name": "CK20 and p53", "result": "Diffuse CK20 and aberrant p53 support CIS in the correct morphology.", "recommended": true },
+        { "id": "gms", "name": "GMS", "result": "No fungal organisms identified.", "recommended": false },
+        { "id": "ki67", "name": "Ki-67", "result": "Expanded proliferation supports but does not replace morphology.", "recommended": false }
+      ],
+      "reportingTarget": "Urinary bladder, posterior wall, biopsy: Urothelial carcinoma in situ. No lamina propria invasion identified. Muscularis propria is not present.",
+      "requiredReportElements": ["urothelial carcinoma in situ", "no lamina propria invasion", "muscularis propria is not present"],
+      "pitfalls": ["Do not call reactive atypia CIS without full cytologic and architectural support.", "Always state muscularis propria status when relevant."]
+    },
+    {
+      "id": "gu-punlmp-turbt",
+      "title": "TURBT: papillary urothelial neoplasm of low malignant potential",
+      "site": "Bladder",
+      "workflow": "resection",
+      "specimenType": "Transurethral resection of bladder tumor",
+      "clinicalHistory": "61-year-old man with a small papillary bladder tumor near the left lateral wall.",
+      "image": {
+        "src": "reference-library/acquired/8bc41cfcae3544f0afd8790c7b8709cb7f05facd.jpg",
+        "caption": "Papillary urothelial neoplasm of low malignant potential, low-power H&E.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_low_magnification.jpg"
+      },
+      "diagnosticSteps": [
+        "Identify orderly papillary fronds with increased urothelial thickness but minimal cytologic atypia.",
+        "Exclude low-grade papillary urothelial carcinoma if architectural disorder and cytologic atypia are greater.",
+        "Assess lamina propria invasion and muscularis propria presence."
+      ],
+      "ancillaryOptions": [
+        { "id": "none", "name": "No ancillary study", "result": "Papillary urothelial neoplasia grading is morphology based.", "recommended": true },
+        { "id": "ck20-p53", "name": "CK20 and p53", "result": "Not required for routine PUNLMP diagnosis.", "recommended": false }
+      ],
+      "synopticChecklist": ["histologic type", "grade/category", "lamina propria invasion", "muscularis propria status"],
+      "reportingTarget": "Urinary bladder, tumor, transurethral resection: Papillary urothelial neoplasm of low malignant potential. No invasion identified. Muscularis propria is present and uninvolved.",
+      "requiredReportElements": ["papillary urothelial neoplasm of low malignant potential", "no invasion", "muscularis propria is present"],
+      "pitfalls": ["Do not omit muscularis propria status.", "Do not overgrade a bland orderly papillary lesion."]
+    },
+    {
+      "id": "gu-high-grade-papillary-uc-turbt",
+      "title": "TURBT: high-grade papillary urothelial carcinoma",
+      "site": "Bladder",
+      "workflow": "resection",
+      "specimenType": "Transurethral resection of bladder tumor",
+      "clinicalHistory": "74-year-old man with a 3.1 cm papillary bladder tumor and hematuria.",
+      "image": {
+        "src": "reference-library/acquired/d07852f6c51d3828ffa4852a51af8d3b63811c6b.jpg",
+        "caption": "High-grade papillary urothelial carcinoma on H&E stain.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:High-grade_papillary_urothelial_carcinoma_--_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize disordered papillary architecture with high-grade cytologic atypia.",
+        "Determine whether lamina propria invasion is present.",
+        "State muscularis propria presence and involvement because staging adequacy depends on it."
+      ],
+      "ancillaryOptions": [
+        { "id": "desmin-smoothelin", "name": "Desmin or smoothelin", "result": "May help separate muscularis mucosae from muscularis propria in difficult cases.", "recommended": true },
+        { "id": "gataa3", "name": "GATA3", "result": "Supports urothelial lineage but is not needed for a typical primary bladder tumor.", "recommended": false }
+      ],
+      "synopticChecklist": ["histologic type", "grade", "lamina propria invasion", "muscularis propria presence", "muscularis propria invasion"],
+      "reportingTarget": "Urinary bladder, tumor, transurethral resection: High-grade papillary urothelial carcinoma with lamina propria invasion. Muscularis propria is present and uninvolved.",
+      "requiredReportElements": ["high-grade papillary urothelial carcinoma", "lamina propria invasion", "muscularis propria is present and uninvolved"],
+      "pitfalls": ["Do not report stage without muscularis propria status.", "Do not ignore cautery-limited invasion assessment."]
+    },
+    {
+      "id": "gu-bcg-cystitis-mimic",
+      "title": "Bladder biopsy after BCG: granulomatous cystitis",
+      "site": "Bladder",
+      "workflow": "biopsy",
+      "specimenType": "Bladder biopsy after intravesical therapy",
+      "clinicalHistory": "70-year-old man with prior high-grade noninvasive urothelial carcinoma treated with intravesical BCG, now with erythematous mucosa.",
+      "image": {
+        "src": "reference-library/acquired/0da1ef85d0eea13811da587680b1a8128c8c376c.jpg",
+        "caption": "BCG-associated granulomatous cystitis.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BCG-induced_granulomatous_cystitis,_low_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize granulomatous inflammation in the post-BCG setting.",
+        "Search the urothelium for residual or recurrent carcinoma in situ.",
+        "Use organism stains when necrosis, organisms, or clinical infection concern is present."
+      ],
+      "ancillaryOptions": [
+        { "id": "afb", "name": "AFB stain", "result": "No acid-fast bacilli identified.", "recommended": true },
+        { "id": "gms", "name": "GMS stain", "result": "No fungal organisms identified.", "recommended": true },
+        { "id": "ck20-p53", "name": "CK20 and p53", "result": "Reserve for urothelial atypia suspicious for CIS.", "recommended": false }
+      ],
+      "reportingTarget": "Urinary bladder, biopsy: Granulomatous cystitis consistent with treatment effect in the setting of prior intravesical BCG. No carcinoma identified.",
+      "requiredReportElements": ["granulomatous cystitis", "treatment effect", "no carcinoma identified"],
+      "pitfalls": ["Do not miss recurrent CIS in adjacent urothelium.", "Do not diagnose infection without organism or clinical support."]
+    },
+    {
+      "id": "gu-clear-cell-rcc-nephrectomy",
+      "title": "Nephrectomy: clear cell renal cell carcinoma",
+      "site": "Kidney",
+      "workflow": "resection",
+      "specimenType": "Radical nephrectomy",
+      "clinicalHistory": "64-year-old man with a 5.8 cm enhancing upper-pole renal mass.",
+      "image": {
+        "src": "reference-library/acquired/b7b9c4be75283aec75932847b81906b4813cdda6.jpg",
+        "caption": "Clear cell renal cell carcinoma morphology.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Clear_cell_renal_cell_carcinoma_intermed_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Identify clear cells with delicate vasculature compatible with clear cell RCC.",
+        "Assign WHO/ISUP nucleolar grade and document necrosis or sarcomatoid/rhabdoid features if present.",
+        "Complete resection fields: size, extent, margins, renal sinus/perinephric fat, vein, nodes, and pT category."
+      ],
+      "ancillaryOptions": [
+        { "id": "cax-pax8", "name": "CAIX and PAX8", "result": "PAX8 positive and diffuse box-like CAIX support clear cell RCC.", "recommended": true },
+        { "id": "ck7-kit", "name": "CK7 and KIT", "result": "Pattern would be used if chromophobe RCC is in the differential.", "recommended": false }
+      ],
+      "synopticChecklist": ["tumor size", "histologic type", "WHO/ISUP grade", "necrosis", "sarcomatoid/rhabdoid features", "extent", "margins", "pT category"],
+      "reportingTarget": "Kidney, radical nephrectomy: Clear cell renal cell carcinoma, 5.8 cm, WHO/ISUP grade 2, confined to kidney, margins negative, pT1b.",
+      "requiredReportElements": ["clear cell renal cell carcinoma", "5.8 cm", "WHO/ISUP grade 2", "confined to kidney", "margins negative", "pT1b"],
+      "pitfalls": ["Do not omit renal sinus or vein assessment.", "Do not grade chromophobe RCC by WHO/ISUP criteria."]
+    },
+    {
+      "id": "gu-renal-oncocytoma-partial",
+      "title": "Partial nephrectomy: renal oncocytoma",
+      "site": "Kidney",
+      "workflow": "resection",
+      "specimenType": "Partial nephrectomy",
+      "clinicalHistory": "59-year-old woman with a 2.4 cm well-circumscribed enhancing renal cortical mass.",
+      "image": {
+        "src": "reference-library/acquired/6e3a581809c77e5e07ef776938f90a32b769b42c.jpg",
+        "caption": "Renal oncocytoma with oncocytic cytoplasm.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Renal_oncocytoma_low_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize nested/tubular oncocytic neoplasm with bland nuclei and supportive architecture.",
+        "Separate oncocytoma from chromophobe RCC and hybrid oncocytic tumors.",
+        "Report tumor size and margin status for the partial nephrectomy."
+      ],
+      "ancillaryOptions": [
+        { "id": "ck7-kit", "name": "CK7 and KIT", "result": "Scattered CK7 staining with KIT positivity supports oncocytoma over chromophobe RCC.", "recommended": true },
+        { "id": "cax", "name": "CAIX", "result": "CAIX is not the primary discriminator for oncocytoma versus chromophobe RCC.", "recommended": false }
+      ],
+      "synopticChecklist": ["diagnosis", "tumor size", "margin status", "non-neoplastic kidney if submitted"],
+      "reportingTarget": "Kidney, partial nephrectomy: Renal oncocytoma, 2.4 cm, completely excised.",
+      "requiredReportElements": ["renal oncocytoma", "2.4 cm", "completely excised"],
+      "pitfalls": ["Do not overcall focal atypia as carcinoma.", "Do not ignore chromophobe RCC if diffuse CK7 and raisinoid nuclei are present."]
+    },
+    {
+      "id": "gu-chromophobe-rcc-partial",
+      "title": "Partial nephrectomy: chromophobe renal cell carcinoma",
+      "site": "Kidney",
+      "workflow": "resection",
+      "specimenType": "Partial nephrectomy",
+      "clinicalHistory": "63-year-old woman with a 3.2 cm renal cortical tumor with oncocytic features on biopsy.",
+      "image": {
+        "src": "reference-library/acquired/f2d4b77a5a21b97efb7f55782e5368f202366527.jpg",
+        "caption": "Chromophobe renal cell carcinoma, eosinophilic variant.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chromophobe_renal_cell_carcinoma,_eosinophilic_variant_-_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize chromophobe cytology: pale or eosinophilic cells, irregular nuclear membranes, and perinuclear clearing.",
+        "Use CK7/KIT pattern to separate chromophobe RCC from oncocytoma when needed.",
+        "Report size, extent, margin status, necrosis, sarcomatoid/rhabdoid features, and pT category."
+      ],
+      "ancillaryOptions": [
+        { "id": "ck7-kit", "name": "CK7 and KIT", "result": "Diffuse CK7 with KIT positivity supports chromophobe RCC.", "recommended": true },
+        { "id": "cax", "name": "CAIX", "result": "Diffuse box-like CAIX would support clear cell RCC instead.", "recommended": false }
+      ],
+      "synopticChecklist": ["histologic type", "tumor size", "necrosis", "sarcomatoid/rhabdoid features", "extent", "margins", "pT category"],
+      "reportingTarget": "Kidney, partial nephrectomy: Chromophobe renal cell carcinoma, 3.2 cm, limited to kidney, margins negative, pT1a.",
+      "requiredReportElements": ["chromophobe renal cell carcinoma", "3.2 cm", "limited to kidney", "margins negative", "pT1a"],
+      "pitfalls": ["Do not assign WHO/ISUP grade to chromophobe RCC.", "Do not call oncocytoma when diffuse CK7 and chromophobe nuclear features are present."]
+    },
+    {
+      "id": "gu-seminoma-orchiectomy",
+      "title": "Radical orchiectomy: seminoma",
+      "site": "Testis",
+      "workflow": "resection",
+      "specimenType": "Radical orchiectomy",
+      "clinicalHistory": "35-year-old man with a 4.1 cm testicular mass and mildly elevated beta-hCG; AFP is normal.",
+      "image": {
+        "src": "reference-library/acquired/09c2b02a11432b772cbcf1232bf63f0126d54046.jpg",
+        "caption": "Seminoma with uniform clear cells and lymphocyte-rich septa.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seminoma_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize seminoma morphology with uniform clear cells, fibrous septa, and lymphocytes.",
+        "Correlate serum markers; elevated AFP excludes pure seminoma.",
+        "Report tumor size, rete testis involvement, lymphovascular invasion, spermatic cord/margins, GCNIS, and pT category."
+      ],
+      "ancillaryOptions": [
+        { "id": "oct4-kit", "name": "OCT4 and CD117", "result": "OCT4 and CD117 positivity support seminoma.", "recommended": true },
+        { "id": "cd30", "name": "CD30", "result": "CD30 negativity argues against embryonal carcinoma.", "recommended": true },
+        { "id": "afp", "name": "AFP immunostain", "result": "AFP is reserved for suspected yolk sac tumor component.", "recommended": false }
+      ],
+      "synopticChecklist": ["histologic type", "tumor size", "rete testis", "lymphovascular invasion", "margins", "GCNIS", "pT category"],
+      "reportingTarget": "Testis, radical orchiectomy: Seminoma, 4.1 cm, confined to testis, lymphovascular invasion not identified, spermatic cord margin negative, GCNIS present, pT1.",
+      "requiredReportElements": ["seminoma", "4.1 cm", "confined to testis", "lymphovascular invasion not identified", "GCNIS present", "pT1"],
+      "pitfalls": ["Do not sign out pure seminoma if AFP is elevated.", "Do not omit GCNIS and margin status."]
+    },
+    {
+      "id": "gu-mixed-gct-orchiectomy",
+      "title": "Radical orchiectomy: mixed germ cell tumor",
+      "site": "Testis",
+      "workflow": "resection",
+      "specimenType": "Radical orchiectomy",
+      "clinicalHistory": "27-year-old man with testicular mass, elevated AFP, and heterogeneous tumor on gross examination.",
+      "image": {
+        "src": "reference-library/acquired/0ffcbe55f6f0a30fff8b666360ae6b84241a513c.jpg",
+        "caption": "Mixed germ cell tumor with heterogeneous morphology.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mixed_germ_cell_tumour_-_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Identify more than one germ cell tumor component.",
+        "Estimate component percentages because embryonal carcinoma, yolk sac tumor, choriocarcinoma, and teratoma alter management.",
+        "Report lymphovascular invasion, rete testis, spermatic cord/margins, GCNIS, and pT category."
+      ],
+      "ancillaryOptions": [
+        { "id": "oct4-cd30", "name": "OCT4 and CD30", "result": "Supports embryonal carcinoma component where morphology is appropriate.", "recommended": true },
+        { "id": "glypican-afp", "name": "Glypican-3 and AFP", "result": "Supports yolk sac tumor component.", "recommended": true },
+        { "id": "kit", "name": "CD117", "result": "Useful if seminoma component is suspected.", "recommended": false }
+      ],
+      "synopticChecklist": ["component percentages", "tumor size", "lymphovascular invasion", "rete testis", "margins", "GCNIS", "pT category"],
+      "reportingTarget": "Testis, radical orchiectomy: Mixed germ cell tumor composed of embryonal carcinoma 60%, yolk sac tumor 25%, and teratoma 15%, 3.6 cm, lymphovascular invasion present, spermatic cord margin negative, GCNIS present, pT2.",
+      "requiredReportElements": ["mixed germ cell tumor", "embryonal carcinoma 60%", "yolk sac tumor 25%", "teratoma 15%", "lymphovascular invasion present", "pT2"],
+      "pitfalls": ["Do not report mixed GCT without percentages.", "Do not call pure seminoma in a patient with elevated AFP."]
+    },
+    {
+      "id": "gu-postpubertal-teratoma",
+      "title": "Testis tumor: postpubertal teratoma component",
+      "site": "Testis",
+      "workflow": "resection",
+      "specimenType": "Radical orchiectomy",
+      "clinicalHistory": "31-year-old man with a heterogeneous testicular mass; serum markers show elevated AFP before surgery.",
+      "image": {
+        "src": "reference-library/acquired/5151456af2836466487c394803538b23efca4e21.jpg",
+        "caption": "Teratoma with somatic tissue differentiation.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Teratoma_2_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize somatic tissue differentiation within a postpubertal germ cell tumor setting.",
+        "Search for additional nonseminomatous components and somatic-type malignancy.",
+        "Report teratoma percentage because residual teratoma is clinically important after chemotherapy."
+      ],
+      "ancillaryOptions": [
+        { "id": "none", "name": "No ancillary study", "result": "Teratoma is usually diagnosed morphologically in the correct clinical setting.", "recommended": true },
+        { "id": "12p", "name": "12p amplification or i(12p)", "result": "Supports postpubertal germ cell tumor pathway when the context is uncertain.", "recommended": false }
+      ],
+      "synopticChecklist": ["component percentages", "somatic-type malignancy absent or present", "tumor size", "margins", "GCNIS", "pT category"],
+      "reportingTarget": "Testis, radical orchiectomy: Mixed germ cell tumor with teratoma component, 40% of tumor; no somatic-type malignancy identified.",
+      "requiredReportElements": ["mixed germ cell tumor", "teratoma component", "40%", "no somatic-type malignancy"],
+      "pitfalls": ["Do not call postpubertal teratoma benign.", "Do not omit a somatic-type malignant component if present."]
+    },
+    {
+      "id": "gu-spermatocytic-tumor",
+      "title": "Radical orchiectomy: spermatocytic tumor",
+      "site": "Testis",
+      "workflow": "resection",
+      "specimenType": "Radical orchiectomy",
+      "clinicalHistory": "67-year-old man with a slow-growing testicular mass and normal serum AFP and beta-hCG.",
+      "image": {
+        "src": "reference-library/acquired/aaf3b9f768b72a37b8c081b7dec8fb45c480c667.jpg",
+        "caption": "Spermatocytic tumor with characteristic variable cell size.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spermatocytic_seminoma_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize a non-GCNIS-associated germ cell tumor in an older patient.",
+        "Separate spermatocytic tumor from seminoma, lymphoma, and embryonal carcinoma.",
+        "Search for sarcomatous transformation because it changes prognosis and reporting."
+      ],
+      "ancillaryOptions": [
+        { "id": "oct4-kit", "name": "OCT4 and CD117", "result": "Classic seminoma profile is not expected.", "recommended": true },
+        { "id": "lymphoid", "name": "CD45 and lymphoid markers", "result": "Use when lymphoma is in the differential.", "recommended": false }
+      ],
+      "synopticChecklist": ["histologic type", "tumor size", "sarcomatous transformation", "margins", "pT category if applicable"],
+      "reportingTarget": "Testis, radical orchiectomy: Spermatocytic tumor, 5.2 cm, confined to testis, no sarcomatous transformation identified, spermatic cord margin negative.",
+      "requiredReportElements": ["spermatocytic tumor", "5.2 cm", "confined to testis", "no sarcomatous transformation", "margin negative"],
+      "pitfalls": ["Do not call this seminoma.", "Do not imply GCNIS-derived mixed GCT pathway without evidence."]
+    },
+    {
+      "id": "gu-sertoli-cell-tumor",
+      "title": "Testis tumor: Sertoli cell tumor",
+      "site": "Testis",
+      "workflow": "resection",
+      "specimenType": "Partial or radical orchiectomy",
+      "clinicalHistory": "42-year-old man with a 1.8 cm well-circumscribed testicular mass and normal germ cell tumor markers.",
+      "image": {
+        "src": "reference-library/acquired/9414772ae243ff1072c6882912ef051e3215a6d5.jpg",
+        "caption": "Sertoli cell tumor with sex cord-stromal differentiation.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sertoli_cell_tumour_-_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize sex cord-stromal architecture rather than germ cell tumor morphology.",
+        "Assess malignant-risk features including size, infiltrative growth, necrosis, cytologic atypia, and mitotic activity.",
+        "Use sex cord-stromal markers when morphology overlaps with germ cell or metastatic tumors."
+      ],
+      "ancillaryOptions": [
+        { "id": "sf1-inhibin", "name": "SF1, inhibin, calretinin", "result": "Supports sex cord-stromal differentiation.", "recommended": true },
+        { "id": "oct4-sall4", "name": "OCT4 and SALL4", "result": "Negative staining argues against germ cell tumor.", "recommended": true }
+      ],
+      "synopticChecklist": ["histologic type", "tumor size", "malignant-risk features", "margin status"],
+      "reportingTarget": "Testis, tumor, excision: Sertoli cell tumor, 1.8 cm, no necrosis, no lymphovascular invasion, mitotic activity not increased, margin negative.",
+      "requiredReportElements": ["Sertoli cell tumor", "1.8 cm", "no necrosis", "no lymphovascular invasion", "margin negative"],
+      "pitfalls": ["Do not apply germ cell tumor component accounting to a pure sex cord-stromal tumor.", "Do not omit malignant-risk features."]
+    },
+    {
+      "id": "gu-pein-biopsy",
+      "title": "Penile biopsy: high-grade penile intraepithelial neoplasia",
+      "site": "Penis",
+      "workflow": "biopsy",
+      "specimenType": "Glans penis biopsy",
+      "clinicalHistory": "58-year-old man with an erythematous glans lesion and no palpable inguinal lymphadenopathy.",
+      "image": {
+        "src": "reference-library/acquired/640ce6ac3f070f9088f98b5fe0be01de5b4ea032.jpg",
+        "caption": "Penile intraepithelial neoplasia with high-grade atypia.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penile_intraepithelial_neoplasia_-_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize high-grade squamous intraepithelial atypia.",
+        "Determine whether morphology supports HPV-associated or HPV-independent pathway.",
+        "Assess the biopsy base and state whether invasion is identified."
+      ],
+      "ancillaryOptions": [
+        { "id": "p16", "name": "p16", "result": "Block-type p16 supports HPV-associated high-grade PeIN.", "recommended": true },
+        { "id": "p53", "name": "p53", "result": "Aberrant p53 pattern may support differentiated HPV-independent PeIN.", "recommended": false }
+      ],
+      "reportingTarget": "Penis, glans, biopsy: High-grade penile intraepithelial neoplasia, HPV-associated pattern. No invasive carcinoma identified in this biopsy.",
+      "requiredReportElements": ["high-grade penile intraepithelial neoplasia", "HPV-associated", "no invasive carcinoma identified"],
+      "pitfalls": ["Do not imply invasion if the biopsy base is not evaluable.", "Do not use p16 as a stand-alone malignancy test."]
+    },
+    {
+      "id": "gu-penile-scc-penectomy",
+      "title": "Penectomy: invasive squamous cell carcinoma",
+      "site": "Penis",
+      "workflow": "resection",
+      "specimenType": "Partial penectomy",
+      "clinicalHistory": "64-year-old man with an ulcerated glans mass and clinically negative inguinal nodes.",
+      "image": {
+        "src": "reference-library/acquired/80952ef17f815a861ec261d55813f2922438d876.jpg",
+        "caption": "Invasive penile squamous cell carcinoma.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Squamous_carcinoma_of_the_penis_--_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Confirm destructive stromal invasion by squamous carcinoma.",
+        "Assign histologic subtype and grade and assess lymphovascular and perineural invasion.",
+        "Report depth/anatomic level of invasion and margin status."
+      ],
+      "ancillaryOptions": [
+        { "id": "p16", "name": "p16", "result": "Block-type p16 supports HPV-associated SCC when morphology is compatible.", "recommended": true },
+        { "id": "p40", "name": "p40", "result": "Confirms squamous lineage if poorly differentiated.", "recommended": false }
+      ],
+      "synopticChecklist": ["histologic subtype", "grade", "anatomic level of invasion", "lymphovascular invasion", "perineural invasion", "margins", "pT category"],
+      "reportingTarget": "Penis, partial penectomy: Invasive squamous cell carcinoma, usual type, moderately differentiated, invading corpus spongiosum, lymphovascular invasion not identified, margins negative, pT2.",
+      "requiredReportElements": ["invasive squamous cell carcinoma", "usual type", "moderately differentiated", "corpus spongiosum", "margins negative", "pT2"],
+      "pitfalls": ["Do not omit anatomic level of invasion.", "Do not merge PeIN margin status with invasive carcinoma margin status."]
+    },
+    {
+      "id": "gu-penile-verrucous-carcinoma",
+      "title": "Penectomy: verrucous squamous cell carcinoma",
+      "site": "Penis",
+      "workflow": "resection",
+      "specimenType": "Partial penectomy",
+      "clinicalHistory": "71-year-old man with a large exophytic cauliflower-like penile mass.",
+      "image": {
+        "src": "reference-library/acquired/7c54defbfdeadce7a32ddede50df8a5ae394ccd5.jpg",
+        "caption": "Penile verrucous carcinoma with broad pushing architecture.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Micrograph_of_penile_verrucous_carcinoma_-_20x_and_200x.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize well-differentiated verruciform squamous proliferation with broad pushing interface.",
+        "Sample and assess the base to exclude mixed usual-type SCC or destructive invasion.",
+        "Report subtype, invasion level, margins, and absence or presence of adverse mixed components."
+      ],
+      "ancillaryOptions": [
+        { "id": "none", "name": "No ancillary study", "result": "Verrucous carcinoma diagnosis is morphology-led with adequate base sampling.", "recommended": true },
+        { "id": "p16", "name": "p16", "result": "Usually not block-positive in classic verrucous carcinoma.", "recommended": false }
+      ],
+      "synopticChecklist": ["verrucous subtype", "base assessment", "mixed SCC component", "anatomic level of invasion", "margins"],
+      "reportingTarget": "Penis, partial penectomy: Verrucous squamous cell carcinoma, invading lamina propria with broad pushing border; no usual-type invasive SCC component identified; margins negative.",
+      "requiredReportElements": ["verrucous squamous cell carcinoma", "broad pushing border", "no usual-type invasive SCC component", "margins negative"],
+      "pitfalls": ["A superficial biopsy cannot exclude a mixed invasive component.", "Do not call verrucous carcinoma without adequate base assessment."]
+    },
+    {
+      "id": "gu-extramammary-paget-penile",
+      "title": "Penoscrotal skin biopsy: extramammary Paget disease",
+      "site": "Penis / scrotal skin",
+      "workflow": "biopsy",
+      "specimenType": "Penoscrotal skin punch biopsy",
+      "clinicalHistory": "73-year-old man with chronic erythematous pruritic penoscrotal plaque.",
+      "image": {
+        "src": "reference-library/acquired/b89023112b03385c53cc05ee6752380d3aa52aeb.jpg",
+        "caption": "Extramammary Paget disease with intraepidermal Paget cells.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Extramammary_Paget_disease_-_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Identify intraepidermal Paget cells with pale cytoplasm and atypical nuclei.",
+        "Use immunohistochemistry to support primary cutaneous versus secondary urothelial or gastrointestinal involvement.",
+        "State whether dermal invasion is identified in the biopsy."
+      ],
+      "ancillaryOptions": [
+        { "id": "ck7-gata3", "name": "CK7 and GATA3", "result": "Supports Paget phenotype; interpret with clinical context.", "recommended": true },
+        { "id": "uroplakin-cdx2", "name": "Uroplakin and CDX2", "result": "Helps evaluate secondary urothelial or gastrointestinal involvement.", "recommended": true },
+        { "id": "sox10", "name": "SOX10", "result": "Negative staining helps exclude melanoma.", "recommended": false }
+      ],
+      "reportingTarget": "Penoscrotal skin, biopsy: Extramammary Paget disease, intraepidermal. No dermal invasion identified in this biopsy.",
+      "requiredReportElements": ["extramammary Paget disease", "intraepidermal", "no dermal invasion identified"],
+      "pitfalls": ["Do not omit evaluation for secondary involvement when clinical context requires it.", "Do not miss melanoma in the differential."]
+    }
+  ]
+}

@@ -1,0 +1,378 @@
+[
+  {
+    "id": "penile_who_complete_pathology",
+    "sourceRepo": "didactic_series",
+    "sourcePath": "src/content/lectures/gu_who_complete_lectures.normalized.json",
+    "contentType": "lecture",
+    "title": "Penile Pathology: WHO-Complete Sign-Out Lecture",
+    "category": "Genitourinary Pathology",
+    "summary": "Resident-facing penile pathology lecture covering WHO 2022 penile precursor lesions and tumors with biopsy, penectomy, HPV, invasion, margin, and mimic logic.",
+    "body": "## Penile Pathology: WHO-Complete Sign-Out Lecture\n\n### Opening frame\nPenile pathology is not a memorization exercise in squamous carcinoma names. The real sign-out task is to decide whether the lesion is a precursor, invasive squamous carcinoma, non-squamous primary tumor, or secondary tumor; then to report the features that change treatment: HPV association, depth and anatomic compartment of invasion, grade, lymphovascular invasion, perineural invasion, urethral/corporal involvement, and margins.\n\n### Learning objectives\n- Separate HPV-associated, HPV-independent, and NOS penile squamous lesions using morphology first and p16 support when appropriate.\n- Diagnose penile precursor lesions without overcalling invasion on small biopsies.\n- Recognize the major invasive SCC patterns and know which patterns are now grouped under broader WHO 2022 categories.\n- Build a penectomy report around depth, corpus spongiosum/cavernosum, urethra, LVI, PNI, and margins.\n- Stop the SCC algorithm when melanoma, Paget disease, mesenchymal/hematolymphoid disease, or metastasis is more plausible.\n\n## Specimen-first workflow\n1. Identify specimen type: shave/punch biopsy, wide local excision, partial penectomy, total penectomy, or lymph node specimen.\n2. Identify anatomic site: glans, foreskin, coronal sulcus, shaft skin, urethral mucosa, corpus spongiosum, corpus cavernosum.\n3. Decide whether the lesion is intraepithelial, superficially invasive, deeply invasive, or non-squamous.\n4. For invasive carcinoma, report subtype/pathogenesis, grade, depth, involved structures, LVI, PNI, and all relevant margins.\n\n## Precursor lesions\n### Low-grade squamous intraepithelial lesion / condyloma / PeIN 1\nThis is the low-grade HPV-associated bucket: LSIL, condyloma acuminatum, and PeIN1. The sign-out error is overcalling condyloma as warty carcinoma. Look for true destructive invasion at the base before escalating.\n\n### High-grade squamous intraepithelial lesion / PeIN 2-3\nThis includes HSIL, usual PeIN, basaloid PeIN, warty PeIN, PeIN2, and PeIN3. The pattern is high-grade squamous atypia without stromal invasion. Block-type p16 supports HPV-associated disease, but invasion is still an H&E/anatomic diagnosis.\n\n### Differentiated penile intraepithelial neoplasia\nDifferentiated PeIN, or dPeIN, is the HPV-independent precursor. It can look deceptively mature. The diagnostic clue is basal atypia with abnormal premature maturation, often in a background of chronic inflammatory dermatosis. It is the precursor you miss if you only look for full-thickness basaloid atypia.\n\n## Invasive SCC: pathogenesis first\n### HPV-associated squamous cell carcinoma, NOS\nUse this when the carcinoma is HPV-associated but does not fit a dominant named pattern. Block-type p16 is practical support, but morphology and clinical context still matter.\n\n### Basaloid squamous cell carcinoma\nBasaloid SCC, including papillary-basaloid morphology, is an HPV-associated high-risk pattern. It shows nests or sheets of basaloid cells, often with comedonecrosis or abrupt keratinization. Exclude lymphoma, melanoma, and small cell neuroendocrine carcinoma when the biopsy is crushed or very blue.\n\n### Warty squamous cell carcinoma\nWarty SCC is the condyloma mimic that has destructive invasion. Sample the base. A beautiful papillary surface does not make the lesion benign.\n\n### Warty-basaloid squamous cell carcinoma\nWarty-basaloid SCC contains both warty and basaloid HPV-associated morphology. In a penectomy specimen, report the dominant patterns and relative percentages when meaningful.\n\n### Clear cell squamous cell carcinoma\nClear cell SCC is rare and can trigger a metastatic clear cell RCC differential. Confirm squamous lineage and avoid losing the penile SCC staging workflow.\n\n### Lymphoepithelioma-like squamous cell carcinoma\nThis tumor has poorly differentiated epithelial cells in a dense inflammatory background. The pitfall is lymphoma. Confirm epithelial lineage before calling it inflammatory or hematolymphoid.\n\n## Invasive SCC: HPV-independent and NOS categories\n### HPV-independent squamous cell carcinoma, NOS\nThis is a useful honest category when the carcinoma is HPV-independent in morphology or p16 pattern but lacks a more specific pattern. If HPV status cannot be determined, use squamous cell carcinoma, NOS rather than forcing the tumor into a pathogenesis bucket.\n\n### Usual-type squamous cell carcinoma\nUsual-type SCC is the common keratinizing HPV-independent pattern. WHO 2022 groups pseudohyperplastic SCC, pseudoglandular SCC, and acantholytic SCC within the usual-type spectrum. The reporting job is depth, grade, structures, LVI, PNI, and margins.\n\n### Verrucous squamous cell carcinoma\nVerrucous SCC includes carcinoma cuniculatum as a related pattern. It is well differentiated and pushing or burrowing. The practical diagnostic error is missing a conventional usual-type invasive SCC component. If present, report mixed squamous cell carcinoma and estimate components.\n\n### Papillary squamous cell carcinoma, NOS\nPapillary SCC, NOS is exophytic and HPV-independent. Separate it from warty SCC and verrucous carcinoma by morphology, p16 pattern, and base architecture.\n\n### Sarcomatoid squamous cell carcinoma\nSarcomatoid SCC is aggressive and can mimic sarcoma or melanoma. Keratins and p40 may be focal. Do not under-sample the transition to conventional carcinoma.\n\n### Adenosquamous and mucoepidermoid carcinoma\nThis rare entity has squamous plus glandular or mucinous differentiation. Exclude urethral adenocarcinoma and metastasis before final sign-out.\n\n### Mixed squamous cell carcinoma\nMixed SCC means two or more clinically meaningful SCC patterns. The practical rule is to report percentages when feasible, especially when a low-grade-looking verrucous/cuniculatum component is admixed with usual invasive SCC.\n\n### Squamous cell carcinoma, NOS\nSCC NOS is appropriate when HPV association or subtype cannot be determined confidently. It is not a failure; it is safer than false precision on a superficial, crushed, or cauterized biopsy.\n\n## Non-squamous and secondary tumors\n### Extramammary Paget disease\nPaget disease presents as an intraepithelial glandular-appearing lesion and may be primary or secondary. Use CK7, GATA3, urothelial markers, and GI markers according to the differential, then search for invasive or underlying carcinoma.\n\n### Melanoma\nPenile melanoma can be pigmented or amelanotic. Use SOX10, S100, Melan-A, and HMB45 to confirm lineage. Once melanoma is favored, switch to melanoma reporting parameters rather than SCC staging habits.\n\n### Mesenchymal, hematolymphoid, and metastatic tumors of the penis\nAny non-squamous morphology should stop the SCC algorithm. Consider sarcoma, lymphoma, and metastasis. The biopsy triage issue is real: lymphoma may need flow cytometry, and sarcoma/metastasis may need molecular or broad lineage workup.\n\n## Penectomy reporting script\n- Tumor site and size.\n- Histologic type and HPV association when determinable.\n- Grade.\n- Depth of invasion and involved structures: lamina propria, corpus spongiosum, corpus cavernosum, urethra, skin/soft tissue.\n- LVI and PNI.\n- Margins: urethral, corporal, soft tissue/skin, deep margin as applicable.\n- Associated precursor lesion.\n- In mixed tumors, report component percentages when feasible.\n\n## Final take-home points\n- Penile SCC classification starts with HPV-associated versus HPV-independent versus NOS, but the patient outcome is driven by invasion, structures, LVI/PNI, nodes, and margins.\n- dPeIN is subtle and easy to miss; HSIL is easier to see but still needs an invasion search.\n- Verrucous/cuniculatum lesions require base sampling to exclude mixed usual-type invasive SCC.\n- Sarcomatoid SCC, melanoma, lymphoma, Paget disease, and metastasis are the cases where reflexively staying in the SCC lane causes harm.",
+    "learningObjectives": [
+      "Classify penile squamous precursor lesions into LSIL/condyloma/PeIN1, HSIL/PeIN2-3, and differentiated PeIN.",
+      "Separate HPV-associated, HPV-independent, and NOS penile SCC categories using morphology and p16 support.",
+      "Report penectomy specimens using depth, anatomic compartment, LVI, PNI, and margin logic.",
+      "Recognize non-squamous penile tumors and secondary tumors that require a different diagnostic workflow."
+    ],
+    "slides": [
+      {
+        "type": "intro",
+        "title": "Why Penile Pathology Is a Sign-Out Problem",
+        "content": "Biopsy and penectomy decisions revolve around precursor vs invasive disease, HPV pathway, anatomic invasion, and margins.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/52/Squamous_carcinoma_of_the_penis_--_low_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Squamous_carcinoma_of_the_penis_--_low_mag.jpg",
+          "alt": "Low-power micrograph of penile squamous cell carcinoma",
+          "caption": "This low-power penile SCC image shows invasive architecture; the report must state depth of invasion, involved anatomic structures, LVI/PNI, and margin status.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "framework",
+        "title": "Specimen First",
+        "content": "Orient glans, foreskin, shaft skin, urethra, corpus spongiosum, corpus cavernosum, and margins before subtyping.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Penile_verrucous_carcinoma.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Penile_verrucous_carcinoma.jpg",
+          "alt": "Gross photograph of penile verrucous carcinoma",
+          "caption": "This exophytic penile mass requires sampling of the base; superficial biopsy cannot exclude destructive invasion or a mixed usual-type SCC component.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "ihc",
+        "title": "HPV Pathway",
+        "content": "p16 block positivity supports HPV-associated SCC; non-block p16 supports HPV-independent disease only in the right morphology.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Penile_intraepithelial_neoplasia_--_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Penile_intraepithelial_neoplasia_--_high_mag.jpg",
+          "alt": "High-power micrograph of penile intraepithelial neoplasia",
+          "caption": "Penile intraepithelial neoplasia provides the visual bridge into HPV-associated precursor disease.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "grading",
+        "title": "Precursor Lesions",
+        "content": "LSIL/condyloma/PeIN1, HSIL/PeIN2-3, and differentiated PeIN.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Penile_intraepithelial_neoplasia_--_intermed_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Penile_intraepithelial_neoplasia_--_intermed_mag.jpg",
+          "alt": "Intermediate-power micrograph of penile intraepithelial neoplasia",
+          "caption": "Intermediate-power PeIN helps learners compare intraepithelial atypia with invasive carcinoma.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "variant",
+        "title": "HPV-Associated SCC",
+        "content": "Basaloid, warty, warty-basaloid, clear cell, lymphoepithelioma-like, and HPV-associated SCC NOS.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Penile_intraepithelial_neoplasia_-_alt_--_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Penile_intraepithelial_neoplasia_-_alt_--_high_mag.jpg",
+          "alt": "Alternative high-power micrograph of penile intraepithelial neoplasia",
+          "caption": "This PeIN image shows basaloid/warty HPV-associated atypia; use block-pattern p16 as support and search the biopsy base for invasion.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "variant",
+        "title": "HPV-Independent SCC",
+        "content": "Usual-type, verrucous/cuniculatum, papillary NOS, sarcomatoid, adenosquamous/mucoepidermoid, mixed, and HPV-independent SCC NOS.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Squamous_carcinoma_of_the_penis_--_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Squamous_carcinoma_of_the_penis_--_high_mag.jpg",
+          "alt": "High-power micrograph of penile squamous cell carcinoma",
+          "caption": "This keratinizing penile SCC image shows an HPV-independent usual-type pattern; report depth, grade, LVI/PNI, involved structures, and margins.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "mimic",
+        "title": "Non-Squamous Stops",
+        "content": "Paget disease, melanoma, mesenchymal/hematolymphoid tumors, and metastases stop the SCC algorithm.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Extramammary_Paget_disease_-_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Extramammary_Paget_disease_-_high_mag.jpg",
+          "alt": "High-power micrograph of extramammary Paget disease",
+          "caption": "This extramammary Paget disease image shows intraepidermal glandular cells; stop the SCC algorithm and evaluate primary versus secondary Paget disease with CK7, GATA3, urothelial, and GI markers as indicated.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "workflow",
+        "title": "Penectomy Report",
+        "content": "Type/pathway, grade, depth, structures, LVI, PNI, margins, precursor lesion, and component percentages.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Micrograph_of_penile_verrucous_carcinoma_-_20x_and_200x.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Micrograph_of_penile_verrucous_carcinoma_-_20x_and_200x.jpg",
+          "alt": "Composite micrograph of penile verrucous carcinoma at low and high power",
+          "caption": "Paired low- and high-power verrucous carcinoma image highlights base assessment and reporting consequences.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "summary",
+        "title": "Resident Takeaways",
+        "content": "HPV pathway organizes the diagnosis; anatomy and margins drive management.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Micrograph_of_penile_verrucous_carcinoma_-_200x.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Micrograph_of_penile_verrucous_carcinoma_-_200x.jpg",
+          "alt": "High-power micrograph of penile verrucous carcinoma",
+          "caption": "This verrucous carcinoma image shows bland squamous proliferation with a pushing profile; sign-out still requires base assessment, invasion status, and margin status.",
+          "credit": "Wikimedia Commons"
+        }
+      }
+    ],
+    "mcqs": [
+      {
+        "topic": "Penile Pathology",
+        "question": "Which finding most practically supports HPV-associated penile SCC in daily sign-out?",
+        "choices": [
+          "Patchy p16 staining",
+          "Block-type p16 staining",
+          "Diffuse CK7 staining",
+          "Loss of INI1"
+        ],
+        "answer": "Block-type p16 staining",
+        "rationale": "Block-type p16 immunohistochemistry is the practical supportive test for HPV-associated penile SCC when interpreted with morphology."
+      },
+      {
+        "topic": "Penile Pathology",
+        "question": "A well-differentiated burrowing penile SCC with labyrinthine channels is best grouped with which WHO 2022 pattern?",
+        "choices": [
+          "Basaloid SCC",
+          "Verrucous SCC / carcinoma cuniculatum pattern",
+          "Clear cell SCC",
+          "Lymphoepithelioma-like SCC"
+        ],
+        "answer": "Verrucous SCC / carcinoma cuniculatum pattern",
+        "rationale": "Carcinoma cuniculatum is now handled as a pattern within the verrucous carcinoma spectrum."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Most important practical test for HPV-associated penile SCC?",
+        "back": "Block-type p16 staining, interpreted with morphology.",
+        "tag": "penis"
+      },
+      {
+        "front": "HPV-independent precursor of penile SCC?",
+        "back": "Differentiated penile intraepithelial neoplasia (dPeIN).",
+        "tag": "penis"
+      },
+      {
+        "front": "What must be sampled in verrucous/cuniculatum penile lesions?",
+        "back": "The base and any heterogeneous areas to exclude mixed usual-type invasive SCC.",
+        "tag": "penis"
+      }
+    ],
+    "references": [
+      "WHO Classification of Tumours: Urinary and Male Genital Tumours, 5th ed., Volume 8. IARC; 2022.",
+      "Moch H, Amin MB, Berney DM, et al. The 2022 WHO Classification of Tumours of the Urinary System and Male Genital Organs-Part A. Eur Urol. 2022.",
+      "Menon S, Moch H, Berney DM, et al. WHO 2022 classification of penile and scrotal cancers: updates and evolution. Histopathology. 2023."
+    ],
+    "tags": [
+      "penis",
+      "penile carcinoma",
+      "PeIN",
+      "HPV",
+      "WHO 2022",
+      "genitourinary pathology"
+    ],
+    "provenance": {
+      "authoringMode": "who-coverage-batch",
+      "manifest": "src/content/gu/who_gu_entity_manifest.json",
+      "readiness": "resident-review-draft",
+      "requiresExpertReview": true
+    }
+  },
+  {
+    "id": "testicular_who_complete_pathology",
+    "sourceRepo": "didactic_series",
+    "sourcePath": "src/content/lectures/gu_who_complete_lectures.normalized.json",
+    "contentType": "lecture",
+    "title": "Testicular and Paratesticular Pathology",
+    "category": "Genitourinary Pathology",
+    "summary": "Pathology residency lecture covering WHO 2022 testicular and paratesticular tumors, including GCNIS-associated germ cell tumors, germ cell tumors unrelated to GCNIS, sex cord-stromal tumors, rete/epididymal/paratesticular tumors, lymphoma, and metastases.",
+    "body": "## Testicular and Paratesticular Pathology\n\n### Opening frame\nTestis pathology is age, pathway, and component accounting. Before naming a tumor, decide whether the patient is prepubertal, postpubertal, or older; whether the tumor arises in a GCNIS background or is unrelated to GCNIS; whether serum markers fit the slides; and whether the specimen is a routine orchiectomy, post-chemotherapy residual mass, paratesticular mass, epididymal mass, or lymphoma/metastasis workup.\n\n### Learning objectives\n- Use age and serum markers as first-line diagnostic data rather than afterthoughts.\n- Separate germ cell tumors arising in a GCNIS background from tumors unrelated to GCNIS.\n- Quantify mixed GCT components and identify treatment-changing components such as teratoma, embryonal carcinoma, yolk sac tumor, choriocarcinoma, and somatic-type malignancy.\n- Recognize sex cord-stromal tumors and assess malignant risk features using mitotic activity per mm2 rather than informal HPF language.\n- Work up paratesticular, epididymal, rete testis, mesothelial, lymphoma, and metastatic tumors without forcing them into the germ cell pathway.\n\n## Specimen-first workflow\n1. Start with age: prepubertal, postpubertal, or older adult.\n2. Pull serum AFP, beta-hCG, and LDH before finalizing.\n3. Inspect background testis for GCNIS and impaired spermatogenesis.\n4. Sample heterogeneous gross areas and the spermatic cord margin.\n5. Report tumor size, histologic type, component percentages, rete testis/tunica/epididymis/spermatic cord involvement, LVI, margins, and relevant treatment effect.\n\n## Non-invasive lesions arising in a GCNIS background\n### Germ cell neoplasia in situ\nGCNIS is the background lesion of most postpubertal malignant GCTs. Look for atypical germ cells along the basement membrane with impaired spermatogenesis. OCT4, SALL4, PLAP, and CD117 can support the diagnosis.\n\n### Specific forms of intratubular germ cell neoplasia\nSpecific forms include intratubular seminoma, intratubular embryonal carcinoma, and intratubular trophoblast. These usually support the invasive tumor pathway rather than replacing invasive component reporting.\n\n### Gonadoblastoma\nGonadoblastoma occurs in dysgenetic gonads with Y-chromosome material and contains germ cells plus immature sex cord cells. It can mimic seminoma and has high invasive transformation risk.\n\n## Invasive germ cell tumors arising in a GCNIS background\n### Seminoma\nSeminoma is in the germinoma family. It shows uniform clear cells, crisp borders, fibrous septa, and lymphocytes. OCT4, SALL4, and CD117 are positive, while CD30 is negative. Seminoma with syncytiotrophoblastic cells can mildly elevate hCG but should not be treated as choriocarcinoma.\n\n### Embryonal carcinoma\nEmbryonal carcinoma is a high-grade primitive epithelial NSGCT component. It is commonly necrotic and CD30/OCT4 positive. Quantify it in mixed tumors.\n\n### Yolk sac tumor, postpubertal type\nPostpubertal yolk sac tumor is the AFP-linked NSGCT component. It has reticular, microcystic, glandular, papillary, solid, hepatoid, or Schiller-Duval patterns. If AFP is elevated, pure seminoma is unsafe until yolk sac tumor is excluded by sampling.\n\n### Choriocarcinoma\nChoriocarcinoma is a hemorrhagic, aggressive trophoblastic tumor with cytotrophoblast and syncytiotrophoblast. Even a small component can matter clinically because of aggressive hematogenous spread and high hCG.\n\n### Other trophoblastic tumors\nOther trophoblastic tumors include placental site trophoblastic tumor, epithelioid trophoblastic tumor, and cystic trophoblastic tumor patterns. They are rare but should be recognized in mixed GCT and hCG-discordant cases.\n\n### Teratoma, postpubertal type\nPostpubertal teratoma is malignant by pathway even when mature. It is chemo-resistant, so quantify it in mixed tumors and in post-chemotherapy residual masses.\n\n### Teratoma with somatic-type malignancy\nTeratoma with somatic-type malignancy includes embryonic neuroectodermal tumor, rhabdomyosarcoma arising in teratoma, nephroblastoma arising in teratoma, carcinoma, or other frank somatic malignancies. WHO 2022 replaces primitive neuroectodermal tumor language with embryonic neuroectodermal tumor terminology. Name the somatic malignancy because it can change therapy.\n\n### Mixed germ cell tumor\nMixed GCT is the default reality in many postpubertal tumors. Report every component percentage. Teratoma, embryonal carcinoma, yolk sac tumor, and trophoblastic components change clinical expectations.\n\n## Germ cell tumors unrelated to GCNIS\n### Spermatocytic tumor\nSpermatocytic tumor usually occurs in older patients, is unrelated to GCNIS, and is often indolent. It should not be signed out as classic seminoma.\n\n### Spermatocytic tumor with sarcomatous differentiation\nSarcomatous differentiation converts the clinical conversation. Sample high-grade fleshy or necrotic areas and characterize the sarcomatous component.\n\n### Yolk sac tumor, prepubertal type\nPrepubertal yolk sac tumor is the classic malignant pediatric germ cell tumor and is not the same biologic pathway as postpubertal yolk sac tumor.\n\n### Teratoma, prepubertal type\nPrepubertal teratoma, including dermoid cyst and epidermoid cyst patterns when appropriate, generally behaves benignly when truly unrelated to GCNIS. Do not apply postpubertal malignant-teratoma assumptions to the wrong pathway.\n\n### Prepubertal-type testicular neuroendocrine tumor\nThe old carcinoid terminology is retired. Most examples fit a prepubertal-type teratoma-associated neuroendocrine tumor pathway. Exclude metastasis and document Ki-67/mitotic features when clinically relevant.\n\n## Sex cord-stromal tumors\n### Leydig cell tumor\nLeydig cell tumor is often yellow-brown and may be endocrine active. Inhibin, calretinin, and SF1 support lineage. Assess malignant Leydig cell tumor features: size, necrosis, atypia, vascular invasion, extra-testicular invasion, and mitotic activity per mm2.\n\n### Sertoli cell tumor\nSertoli cell tumor includes conventional forms, large cell calcifying Sertoli cell tumor, intratubular hyalinizing Sertoli cell neoplasia, and Sertoliform cystadenoma now handled in the Sertoli category. Think syndromes: Carney complex and Peutz-Jeghers in the right morphology.\n\n### Granulosa cell tumor\nGranulosa cell tumor includes adult and juvenile forms. Juvenile granulosa cell tumor is a pediatric differential for yolk sac tumor. Use sex cord markers and age-pathway logic.\n\n### Other sex cord-stromal tumors\nOther sex cord-stromal tumors include mixed sex cord-stromal tumor, sex cord-stromal tumor NOS, signet ring stromal tumor, myoid gonadal stromal tumor, and thecoma/fibroma group tumors. WHO 2022 specifically defines signet ring stromal tumor and myoid gonadal stromal tumor. Do not confuse signet ring stromal tumor with metastatic GI signet ring carcinoma.\n\n## Rete, epididymal, ovarian-type, and paratesticular tumors\n### Ovarian-type epithelial tumors\nOvarian-type epithelial tumors include serous cystadenoma, mucinous cystadenoma, borderline serous tumor, and serous carcinoma patterns in the testis/paratestis region. Exclude metastasis and mesothelial tumors.\n\n### Tumors of the collecting ducts and rete testis\nRete testis tumors include adenoma of rete testis and adenocarcinoma of rete testis. The diagnosis depends on accurate hilar/rete localization and exclusion of metastasis and mesothelioma.\n\n### Paratesticular mesothelial tumors\nParatesticular mesothelial tumors include adenomatoid tumor, well-differentiated papillary mesothelial tumor, and malignant mesothelioma of the tunica vaginalis. WHO 2022 defines well-differentiated papillary mesothelial tumor as a favorable tumor when strictly noninvasive.\n\n### Tumors of the epididymis\nEpididymal tumors include cystadenoma of epididymis, papillary cystadenoma, and rare epididymal adenocarcinoma. Bilateral papillary cystadenoma can suggest von Hippel-Lindau syndrome; metastatic RCC is a key mimic.\n\n## Hematolymphoid and metastatic tumors\n### Hematolymphoid and metastatic tumors of the testis\nIn an older man, bilateral testicular enlargement or diffuse destructive infiltrate is lymphoma until excluded. Use CD45 early. Metastases also occur and should be worked up by history and morphology rather than forced into the GCT algorithm.\n\n## Resident sign-out script\n- Age and serum markers in the first internal sentence.\n- Tumor arising in a GCNIS background versus tumor unrelated to GCNIS.\n- Pure versus mixed tumor, with percentages.\n- Teratoma and somatic-type malignancy explicitly named.\n- Rete testis, tunica, epididymis, spermatic cord, LVI, and margin status.\n- For sex cord-stromal tumors, malignant risk features and mitotic activity per mm2.\n- In older patients, exclude lymphoma and metastasis before finalizing seminoma.\n\n## Final take-home points\n- Age is diagnostic data; use it before ordering stains or naming the tumor.\n- AFP mismatch overrides a clean-looking seminoma slide set until sampling proves otherwise.\n- Postpubertal teratoma is not pediatric teratoma.\n- Mixed GCT component percentages are treatment data.\n- Paratesticular, epididymal, rete, mesothelial, lymphoma, and metastatic tumors should not be forced into the germ cell tumor algorithm.",
+    "learningObjectives": [
+      "Use age, serum markers, GCNIS, and morphology to classify testicular tumors by WHO 2022 pathway.",
+      "Quantify mixed germ cell tumor components and recognize post-chemotherapy treatment-changing residual disease.",
+      "Identify sex cord-stromal tumor categories and assess malignant risk features.",
+      "Recognize paratesticular, epididymal, rete, mesothelial, hematolymphoid, and metastatic tumors that require non-GCT workflows."
+    ],
+    "slides": [
+      {
+        "type": "intro",
+        "title": "Age and Pathway Define the Differential",
+        "content": "Prepubertal tumors, postpubertal germ cell tumors, and tumors in older adults do not share one algorithm.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Seminoma_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Seminoma_high_mag.jpg",
+          "alt": "High-power micrograph of seminoma",
+          "caption": "This seminoma image shows uniform clear cells and lymphocyte-rich septa; correlate age, AFP, beta-hCG, LDH, and background GCNIS before finalizing a pure seminoma diagnosis.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "anatomy",
+        "title": "Specimen Orientation",
+        "content": "Orchiectomy sampling must capture background testis, rete/tunica/epididymis/spermatic cord, and heterogeneous tumor areas.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Seminoma_with_syncytiotrophoblasts_-_low_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Seminoma_with_syncytiotrophoblasts_-_low_mag.jpg",
+          "alt": "Low-power micrograph of seminoma with syncytiotrophoblasts",
+          "caption": "This seminoma with syncytiotrophoblasts image can explain mild beta-hCG elevation; elevated AFP still requires additional sampling for yolk sac tumor or another NSGCT component.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "framework",
+        "title": "Tumors Arising in a GCNIS Background",
+        "content": "GCNIS, seminoma, embryonal carcinoma, postpubertal yolk sac tumor, choriocarcinoma, trophoblastic tumors, postpubertal teratoma, somatic-type malignancy, and mixed GCT.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Mixed_germ_cell_tumour_-_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Mixed_germ_cell_tumour_-_high_mag.jpg",
+          "alt": "High-power micrograph of mixed germ cell tumor",
+          "caption": "This mixed germ cell tumor image requires a report that lists each component and percentage; embryonal carcinoma, yolk sac tumor, choriocarcinoma, teratoma, and somatic-type malignancy change staging discussions, serum marker interpretation, chemotherapy response, or surgical planning.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "framework",
+        "title": "Tumors Unrelated to GCNIS",
+        "content": "Spermatocytic tumor, prepubertal yolk sac tumor, prepubertal teratoma, and prepubertal-type neuroendocrine tumor.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Spermatocytic_seminoma_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Spermatocytic_seminoma_high_mag.jpg",
+          "alt": "High-power micrograph of spermatocytic tumor",
+          "caption": "This spermatocytic tumor image should trigger a diagnosis in an older patient that is unrelated to GCNIS; do not diagnose classic seminoma unless morphology and OCT4/CD117/GCNIS findings support seminoma.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "variant",
+        "title": "Sex Cord-Stromal Tumors",
+        "content": "Leydig, Sertoli, granulosa, mixed/NOS, signet ring stromal, myoid gonadal stromal, and thecoma/fibroma group tumors.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Sertoli_cell_tumour_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Sertoli_cell_tumour_high_mag.jpg",
+          "alt": "High-power micrograph of Sertoli cell tumor",
+          "caption": "This Sertoli cell tumor image should trigger sex cord-stromal markers such as inhibin, calretinin, and SF1 rather than a germ cell tumor marker panel alone.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "variant",
+        "title": "Paratesticular and Adnexal Tumors",
+        "content": "Ovarian-type epithelial tumors, rete testis tumors, mesothelial tumors, and epididymal tumors.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Adenomatoid_tumour_-_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Adenomatoid_tumour_-_high_mag.jpg",
+          "alt": "High-power micrograph of adenomatoid tumor",
+          "caption": "This adenomatoid tumor image should be worked up as a benign paratesticular mesothelial tumor; confirm localization and avoid signing it out as an intratesticular germ cell tumor.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "mimic",
+        "title": "Lymphoma and Metastasis in Older Patients",
+        "content": "Lymphoma and metastasis must be excluded before defaulting to seminoma in older patients.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6e/DLBCL_of_testis_--_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:DLBCL_of_testis_--_high_mag.jpg",
+          "alt": "High-power micrograph of diffuse large B-cell lymphoma of the testis",
+          "caption": "This DLBCL image shows diffuse lymphoid replacement of testis; in older patients or bilateral masses, order CD45 early and do not finalize seminoma until lymphoma is excluded.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "workflow",
+        "title": "Mixed GCT Report",
+        "content": "List and quantify every component; teratoma and somatic-type malignancy are treatment-changing.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/91/Yolk_sac_tumour_--_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Yolk_sac_tumour_--_high_mag.jpg",
+          "alt": "High-power micrograph of yolk sac tumor of the testis",
+          "caption": "This yolk sac tumor image explains AFP elevation; if AFP is elevated in an apparent seminoma, submit more tissue and report yolk sac tumor percentage when identified.",
+          "credit": "Wikimedia Commons"
+        }
+      },
+      {
+        "type": "summary",
+        "title": "Resident Takeaways",
+        "content": "Classify the tumor by GCNIS relationship, list every mixed GCT component with percentage, and state treatment-relevant features: teratoma, somatic-type malignancy, LVI, rete/tunica/epididymis/spermatic cord involvement, and margins.",
+        "visualAid": {
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Embryonal_carcinoma_-_high_mag.jpg",
+          "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Embryonal_carcinoma_-_high_mag.jpg",
+          "alt": "High-power micrograph of embryonal carcinoma",
+          "caption": "This embryonal carcinoma image shows a high-grade CD30/OCT4-positive NSGCT component; quantify it in mixed tumors because it changes risk assessment and treatment planning.",
+          "credit": "Wikimedia Commons"
+        }
+      }
+    ],
+    "mcqs": [
+      {
+        "topic": "Testicular Pathology",
+        "question": "A 29-year-old man has a testicular tumor with classic seminoma morphology but serum AFP is markedly elevated. What is the safest next step?",
+        "choices": [
+          "Sign out pure seminoma",
+          "Ignore AFP if CD117 is positive",
+          "Submit/search more tissue for yolk sac or other NSGCT component",
+          "Call spermatocytic tumor"
+        ],
+        "answer": "Submit/search more tissue for yolk sac or other NSGCT component",
+        "rationale": "Pure seminoma should not elevate AFP; a serologic mismatch requires additional sampling and mixed-GCT thinking."
+      },
+      {
+        "topic": "Testicular Pathology",
+        "question": "Which WHO 2022 terminology replaces the older 'carcinoid tumor' language for most testicular examples?",
+        "choices": [
+          "Embryonic neuroectodermal tumor",
+          "Prepubertal-type testicular neuroendocrine tumor",
+          "Spermatocytic tumor",
+          "Epithelioid trophoblastic tumor"
+        ],
+        "answer": "Prepubertal-type testicular neuroendocrine tumor",
+        "rationale": "WHO 2022 retires carcinoid terminology and classifies most testicular examples as prepubertal-type testicular neuroendocrine tumor."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Testicular mass in a man over 60?",
+        "back": "Exclude lymphoma early, especially if bilateral or diffuse.",
+        "tag": "testis"
+      },
+      {
+        "front": "Postpubertal teratoma reporting point?",
+        "back": "Quantify it because it is chemo-resistant and can drive surgery.",
+        "tag": "testis"
+      },
+      {
+        "front": "WHO 2022 testis update for PNET terminology?",
+        "back": "Use embryonic neuroectodermal tumor rather than primitive neuroectodermal tumor.",
+        "tag": "testis"
+      }
+    ],
+    "references": [
+      "WHO Classification of Tumours: Urinary and Male Genital Tumours, 5th ed., Volume 8. IARC; 2022.",
+      "Moch H, Amin MB, Berney DM, et al. The 2022 WHO Classification of Tumours of the Urinary System and Male Genital Organs-Part A. Eur Urol. 2022.",
+      "Berney DM, Cree I, Rao V, et al. An introduction to the WHO 5th edition 2022 classification of testicular tumours. Histopathology. 2022."
+    ],
+    "tags": [
+      "testis",
+      "paratestis",
+      "germ cell tumor",
+      "sex cord-stromal tumor",
+      "WHO 2022",
+      "genitourinary pathology"
+    ],
+    "provenance": {
+      "authoringMode": "who-coverage-batch",
+      "manifest": "src/content/gu/who_gu_entity_manifest.json",
+      "readiness": "resident-review-draft",
+      "requiresExpertReview": true
+    }
+  }
+]

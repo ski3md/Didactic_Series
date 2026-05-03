@@ -6,6 +6,12 @@ dist/
 .cache/
 out/
 build/
+test-results/
+playwright-report/
+.playwright-mcp/
+output/
+public/reference-library/source-articles/
+.tmp_*.spec.*
 
 # Logs
 npm-debug.log*
@@ -46,6 +52,12 @@ dist/
 build/
 .cache/
 out/
+test-results/
+playwright-report/
+.playwright-mcp/
+output/
+public/reference-library/source-articles/
+.tmp_*.spec.*
 
 # Log files
 npm-debug.log*

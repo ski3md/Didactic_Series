@@ -1,0 +1,46 @@
+{
+  "source": "Johns Hopkins Atlas of Surgical Neuropathology",
+  "publicMetadataSources": [
+    "https://apps.apple.com/us/app/johns-hopkins-atlas-of-surgical-neuropathology/id1210848613",
+    "https://apps.pathology.jhu.edu/all/",
+    "https://academic.oup.com/jnen/article/76/9/836/4077005"
+  ],
+  "copyrightStatus": "Johns Hopkins app images are copyrighted app content and are not extracted or copied into this project without a licensed export or written permission.",
+  "deconstructedLearningModel": [
+    "Searchable diagnostic image atlas organized by entity.",
+    "Image-based quiz for pattern recognition.",
+    "Flashcard module for entity recall.",
+    "Interactive diffuse glioma algorithm integrating histology and molecular data."
+  ],
+  "implementationMapping": [
+    {
+      "jhAtlasElement": "Searchable image atlas",
+      "projectElement": "Local reference-library-backed sign-out case images with source attribution."
+    },
+    {
+      "jhAtlasElement": "Image-based quiz",
+      "projectElement": "Image-first diagnostic sequence with stepwise reveal and report drafting."
+    },
+    {
+      "jhAtlasElement": "Flashcards",
+      "projectElement": "Required report elements, pitfalls, and ancillary decision targets."
+    },
+    {
+      "jhAtlasElement": "Diffuse glioma algorithm",
+      "projectElement": "Integrated diagnosis cases requiring IDH, ATRX, p53, 1p/19q, MGMT, and molecular-status language."
+    }
+  ],
+  "authorizedImportContract": {
+    "acceptedInputs": [
+      "A user-provided folder of images licensed for local educational reuse.",
+      "A CSV or JSON manifest mapping image filenames to diagnosis, stain, caption, and source/license.",
+      "Open-license image URLs or PDFs where local capture is permitted by license."
+    ],
+    "requiredFields": ["caseId", "diagnosis", "imagePath", "caption", "stain", "sourceUrl", "license"],
+    "blockedInputs": [
+      "DRM-protected application bundles.",
+      "Paid-app image assets copied without permission.",
+      "Images without reuse rights or source attribution."
+    ]
+  }
+}

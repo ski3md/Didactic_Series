@@ -1,0 +1,3071 @@
+{
+  "generatedAt": "2026-05-02T16:26:11.353Z",
+  "mode": "import",
+  "retrievalPolicy": {
+    "database": "PMC",
+    "filters": [
+      "open access[filter]"
+    ],
+    "commercialOnly": false,
+    "note": "Only PMC Open Access package links returned by the PMC OA Web Service are eligible for import."
+  },
+  "targets": [
+    {
+      "caseId": "cyto-pleural-effusion-metastatic-breast",
+      "title": "Pleural effusion: metastatic breast carcinoma",
+      "specialty": "Cytopathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/cytopathology/pleural-effusion-metastatic-adenocarcinoma-cell-block.jpg",
+      "searchTerm": "(Pleural effusion metastatic breast carcinoma OR cyto pleural effusion metastatic breast) AND Pleural fluid Pleural fluid cytology with cell block H&E cell block AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Pleural effusion metastatic breast carcinoma OR cyto pleural effusion metastatic breast) AND Pleural fluid Pleural fluid cytology with cell block H&E cell block AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Malignant epithelial cells in pleural fluid cell block OR metastatic breast carcinoma) AND H&E cell block AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(cyto pleural effusion metastatic breast OR metastatic breast carcinoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "cyto",
+        "pleural",
+        "effusion",
+        "metastatic",
+        "breast",
+        "fluid",
+        "block",
+        "cytology"
+      ],
+      "figureTokens": [
+        "malignant",
+        "epithelial",
+        "pleural",
+        "fluid",
+        "block",
+        "effusion",
+        "metastatic",
+        "breast",
+        "carcinoma",
+        "cytology",
+        "positive",
+        "for",
+        "consistent",
+        "primary",
+        "distinguish",
+        "clusters",
+        "from",
+        "reactive"
+      ]
+    },
+    {
+      "caseId": "cyto-cervical-pap-hsil",
+      "title": "Cervical Pap test: high-grade squamous intraepithelial lesion",
+      "specialty": "Cytopathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/cytopathology/cervical-pap-hsil-pap.jpg",
+      "searchTerm": "(Cervical Pap test high-grade squamous intraepithelial lesion OR cyto cervical pap hsil test) AND Cervix Liquid-based cervical cytology Papanicolaou AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Cervical Pap test high-grade squamous intraepithelial lesion OR cyto cervical pap hsil test) AND Cervix Liquid-based cervical cytology Papanicolaou AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(High-grade squamous intraepithelial lesion in cervical cytology OR high-grade squamous intraepithelial lesion) AND Papanicolaou AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(cyto cervical pap hsil test OR high-grade squamous intraepithelial lesion) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "cyto",
+        "cervical",
+        "pap",
+        "hsil",
+        "test",
+        "high",
+        "grade",
+        "squamous"
+      ],
+      "figureTokens": [
+        "high",
+        "grade",
+        "squamous",
+        "intraepithelial",
+        "lesion",
+        "cervical",
+        "cytology",
+        "papanicolaou",
+        "pap",
+        "test",
+        "liquid",
+        "based",
+        "hsil",
+        "specimen",
+        "satisfactory",
+        "for",
+        "evaluation",
+        "transformation"
+      ]
+    },
+    {
+      "caseId": "cyto-bile-duct-brushing-adenocarcinoma",
+      "title": "Bile duct brushing: adenocarcinoma",
+      "specialty": "Cytopathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/cytopathology/bile-duct-brushing-adenocarcinoma-pap.jpg",
+      "searchTerm": "(Bile duct brushing adenocarcinoma OR cyto bile duct brushing extrahepatic) AND Extrahepatic bile duct ERCP bile duct brushing cytology Papanicolaou AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Bile duct brushing adenocarcinoma OR cyto bile duct brushing extrahepatic) AND Extrahepatic bile duct ERCP bile duct brushing cytology Papanicolaou AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Malignant glandular cells in bile duct brushing cytology OR adenocarcinoma) AND Papanicolaou AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(cyto bile duct brushing extrahepatic OR adenocarcinoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "cyto",
+        "bile",
+        "duct",
+        "brushing",
+        "extrahepatic",
+        "pap",
+        "common",
+        "stricture"
+      ],
+      "figureTokens": [
+        "malignant",
+        "glandular",
+        "bile",
+        "duct",
+        "brushing",
+        "cytology",
+        "papanicolaou",
+        "adenocarcinoma",
+        "common",
+        "stricture",
+        "positive",
+        "for",
+        "assess",
+        "cellularity",
+        "preservation",
+        "the",
+        "context",
+        "artifact"
+      ]
+    },
+    {
+      "caseId": "gi-colon-adenocarcinoma-resection",
+      "title": "Right hemicolectomy: invasive colonic adenocarcinoma",
+      "specialty": "GI Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/gastrointestinal/colon-adenocarcinoma-biopsy-he.jpg",
+      "searchTerm": "(Right hemicolectomy invasive colonic adenocarcinoma OR colon right hemicolectomy invasive colonic) AND Colon Right hemicolectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Right hemicolectomy invasive colonic adenocarcinoma OR colon right hemicolectomy invasive colonic) AND Colon Right hemicolectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Colorectal adenocarcinoma with infiltrative malignant glands in desmoplastic stroma OR invasive colonic adenocarcinoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(colon right hemicolectomy invasive colonic OR invasive colonic adenocarcinoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "colon",
+        "right",
+        "hemicolectomy",
+        "invasive",
+        "colonic",
+        "moderately",
+        "differentiated",
+        "cecum"
+      ],
+      "figureTokens": [
+        "colorectal",
+        "adenocarcinoma",
+        "infiltrative",
+        "malignant",
+        "glands",
+        "desmoplastic",
+        "stroma",
+        "right",
+        "hemicolectomy",
+        "invasive",
+        "colonic",
+        "colon",
+        "moderately",
+        "differentiated",
+        "cecum",
+        "invading",
+        "through",
+        "muscularis"
+      ]
+    },
+    {
+      "caseId": "gi-gastric-poorly-cohesive-resection",
+      "title": "Subtotal gastrectomy: poorly cohesive gastric adenocarcinoma",
+      "specialty": "GI Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/gastrointestinal/poorly-cohesive-gastric-adenocarcinoma-he.jpg",
+      "searchTerm": "(Subtotal gastrectomy poorly cohesive gastric adenocarcinoma OR gastric poorly cohesive subtotal gastrectomy) AND Stomach Distal subtotal gastrectomy with lymphadenectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Subtotal gastrectomy poorly cohesive gastric adenocarcinoma OR gastric poorly cohesive subtotal gastrectomy) AND Stomach Distal subtotal gastrectomy with lymphadenectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Poorly cohesive gastric adenocarcinoma with signet-ring cell morphology OR poorly cohesive gastric adenocarcinoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(gastric poorly cohesive subtotal gastrectomy OR poorly cohesive gastric adenocarcinoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "gastric",
+        "poorly",
+        "cohesive",
+        "subtotal",
+        "gastrectomy",
+        "stomach",
+        "distal",
+        "signet"
+      ],
+      "figureTokens": [
+        "poorly",
+        "cohesive",
+        "gastric",
+        "adenocarcinoma",
+        "signet",
+        "ring",
+        "morphology",
+        "subtotal",
+        "gastrectomy",
+        "stomach",
+        "distal",
+        "features",
+        "invading",
+        "subserosal",
+        "connective",
+        "tissue",
+        "margins",
+        "negative"
+      ]
+    },
+    {
+      "caseId": "gyn-endometrium-ein-biopsy",
+      "title": "Endometrial biopsy: atypical hyperplasia / EIN",
+      "specialty": "Gynecologic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/gynecologic/endometrial-intraepithelial-neoplasia-he.jpg",
+      "searchTerm": "(Endometrial biopsy atypical hyperplasia EIN OR gyn endometrium ein endometrial atypical) AND Endometrium Endometrial biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Endometrial biopsy atypical hyperplasia EIN OR gyn endometrium ein endometrial atypical) AND Endometrium Endometrial biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Crowded endometrial glands with cytologic demarcation from background endometrium OR atypical hyperplasia EIN) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(gyn endometrium ein endometrial atypical OR atypical hyperplasia EIN) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "gyn",
+        "endometrium",
+        "ein",
+        "endometrial",
+        "atypical",
+        "hyperplasia",
+        "intraepithelial",
+        "neoplasia"
+      ],
+      "figureTokens": [
+        "crowded",
+        "endometrial",
+        "glands",
+        "cytologic",
+        "demarcation",
+        "from",
+        "background",
+        "endometrium",
+        "atypical",
+        "hyperplasia",
+        "ein",
+        "endometrioid",
+        "intraepithelial",
+        "neoplasia",
+        "carcinoma",
+        "identified",
+        "this",
+        "sample"
+      ]
+    },
+    {
+      "caseId": "gyn-endometrium-serous-biopsy",
+      "title": "Endometrial biopsy: serous carcinoma",
+      "specialty": "Gynecologic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/gynecologic/endometrial-serous-carcinoma-p53-he.jpg",
+      "searchTerm": "(Endometrial biopsy serous carcinoma OR gyn endometrium serous endometrial p53) AND Endometrium Endometrial curettage H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Endometrial biopsy serous carcinoma OR gyn endometrium serous endometrial p53) AND Endometrium Endometrial curettage H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(High-grade endometrial carcinoma with papillary architecture and marked cytologic atypia OR serous carcinoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(gyn endometrium serous endometrial p53 OR serous carcinoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "gyn",
+        "endometrium",
+        "serous",
+        "endometrial",
+        "p53",
+        "curettage"
+      ],
+      "figureTokens": [
+        "high",
+        "grade",
+        "endometrial",
+        "carcinoma",
+        "papillary",
+        "architecture",
+        "marked",
+        "cytologic",
+        "atypia",
+        "serous",
+        "endometrium",
+        "curettage",
+        "recognize",
+        "cytology",
+        "complex",
+        "glandular",
+        "solid",
+        "out"
+      ]
+    },
+    {
+      "caseId": "gyn-hysterectomy-endometrioid-carcinoma",
+      "title": "Hysterectomy: endometrioid carcinoma with myoinvasion",
+      "specialty": "Gynecologic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/gynecologic/endometrioid-carcinoma-myoinvasion-he.jpg",
+      "searchTerm": "(Hysterectomy endometrioid carcinoma with myoinvasion OR gyn hysterectomy endometrioid myoinvasion uterus) AND Uterus Total hysterectomy with bilateral salpingo-oophorectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Hysterectomy endometrioid carcinoma with myoinvasion OR gyn hysterectomy endometrioid myoinvasion uterus) AND Uterus Total hysterectomy with bilateral salpingo-oophorectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Endometrioid adenocarcinoma invading myometrium OR endometrioid carcinoma with myoinvasion) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(gyn hysterectomy endometrioid myoinvasion uterus OR endometrioid carcinoma with myoinvasion) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "gyn",
+        "hysterectomy",
+        "endometrioid",
+        "myoinvasion",
+        "uterus",
+        "cervix",
+        "bilateral",
+        "tubes"
+      ],
+      "figureTokens": [
+        "endometrioid",
+        "adenocarcinoma",
+        "invading",
+        "myometrium",
+        "hysterectomy",
+        "carcinoma",
+        "myoinvasion",
+        "uterus",
+        "cervix",
+        "bilateral",
+        "tubes",
+        "ovaries",
+        "salpingo",
+        "oophorectomy",
+        "figo",
+        "grade",
+        "cervical",
+        "stromal"
+      ]
+    },
+    {
+      "caseId": "gyn-cervix-cone-hsil-ais",
+      "title": "Cervical cone: HSIL with endocervical adenocarcinoma in situ",
+      "specialty": "Gynecologic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/gynecologic/cervix-hsil-ais-he.jpg",
+      "searchTerm": "(Cervical cone HSIL with endocervical adenocarcinoma in situ OR gyn cervix cone hsil ais) AND Cervix Cold knife cone biopsy with endocervical curettage H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Cervical cone HSIL with endocervical adenocarcinoma in situ OR gyn cervix cone hsil ais) AND Cervix Cold knife cone biopsy with endocervical curettage H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(High-grade squamous intraepithelial lesion with adjacent endocervical glandular atypia OR HSIL with endocervical adenocarcinoma in situ) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(gyn cervix cone hsil ais OR HSIL with endocervical adenocarcinoma in situ) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "gyn",
+        "cervix",
+        "cone",
+        "hsil",
+        "ais",
+        "cervical",
+        "endocervical",
+        "situ"
+      ],
+      "figureTokens": [
+        "high",
+        "grade",
+        "squamous",
+        "intraepithelial",
+        "lesion",
+        "adjacent",
+        "endocervical",
+        "glandular",
+        "atypia",
+        "cervical",
+        "cone",
+        "hsil",
+        "adenocarcinoma",
+        "situ",
+        "cervix",
+        "cold",
+        "knife",
+        "cin"
+      ]
+    },
+    {
+      "caseId": "gyn-ovary-serous-borderline",
+      "title": "Oophorectomy: serous borderline tumor",
+      "specialty": "Gynecologic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/gynecologic/ovary-serous-borderline-tumor-he.jpg",
+      "searchTerm": "(Oophorectomy serous borderline tumor OR gyn ovary serous borderline oophorectomy) AND Ovary Unilateral salpingo-oophorectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Oophorectomy serous borderline tumor OR gyn ovary serous borderline oophorectomy) AND Ovary Unilateral salpingo-oophorectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Serous borderline tumor with hierarchical papillary architecture and epithelial stratification OR serous borderline tumor) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(gyn ovary serous borderline oophorectomy OR serous borderline tumor) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "gyn",
+        "ovary",
+        "serous",
+        "borderline",
+        "oophorectomy",
+        "fallopian",
+        "tube",
+        "unilateral"
+      ],
+      "figureTokens": [
+        "serous",
+        "borderline",
+        "hierarchical",
+        "papillary",
+        "architecture",
+        "epithelial",
+        "stratification",
+        "oophorectomy",
+        "ovary",
+        "fallopian",
+        "tube",
+        "unilateral",
+        "salpingo",
+        "confined",
+        "ovarian",
+        "surface",
+        "not",
+        "involved"
+      ]
+    },
+    {
+      "caseId": "gyn-products-of-conception-gross-only",
+      "title": "Products of conception: first-trimester evacuation",
+      "specialty": "Gynecologic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/gynecologic/products-of-conception-chorionic-villi-he.jpg",
+      "searchTerm": "(Products of conception first-trimester evacuation OR gyn products conception only first) AND Uterus Suction dilation and curettage products of conception H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Products of conception first-trimester evacuation OR gyn products conception only first) AND Uterus Suction dilation and curettage products of conception H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Immature chorionic villi and decidua in products of conception OR first-trimester evacuation) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(gyn products conception only first OR first-trimester evacuation) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "gyn",
+        "products",
+        "conception",
+        "only",
+        "first",
+        "trimester",
+        "evacuation",
+        "uterus"
+      ],
+      "figureTokens": [
+        "immature",
+        "chorionic",
+        "villi",
+        "decidua",
+        "products",
+        "conception",
+        "first",
+        "trimester",
+        "evacuation",
+        "uterine",
+        "contents",
+        "suction",
+        "curettage",
+        "identified",
+        "confirm",
+        "that",
+        "the",
+        "specimen"
+      ]
+    },
+    {
+      "caseId": "hn-oral-scc-biopsy",
+      "title": "Oral tongue biopsy: invasive squamous cell carcinoma",
+      "specialty": "Head and Neck Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/head-neck/oral-squamous-cell-carcinoma-he.jpg",
+      "searchTerm": "(Oral tongue biopsy invasive squamous cell carcinoma OR oral scc tongue invasive squamous) AND Oral cavity Lateral tongue incisional biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Oral tongue biopsy invasive squamous cell carcinoma OR oral scc tongue invasive squamous) AND Oral cavity Lateral tongue incisional biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Well-differentiated oral squamous cell carcinoma with keratinizing invasion OR invasive squamous cell carcinoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(oral scc tongue invasive squamous OR invasive squamous cell carcinoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "oral",
+        "scc",
+        "tongue",
+        "invasive",
+        "squamous",
+        "cavity",
+        "lateral",
+        "keratinizing"
+      ],
+      "figureTokens": [
+        "well",
+        "differentiated",
+        "oral",
+        "squamous",
+        "carcinoma",
+        "keratinizing",
+        "invasion",
+        "tongue",
+        "invasive",
+        "lateral",
+        "moderately",
+        "depth",
+        "cannot",
+        "reliably",
+        "determined",
+        "this",
+        "confirm",
+        "destructive"
+      ]
+    },
+    {
+      "caseId": "hn-oropharynx-p16-scc-resection",
+      "title": "Tonsillectomy: HPV-associated oropharyngeal squamous cell carcinoma",
+      "specialty": "Head and Neck Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/head-neck/oropharyngeal-squamous-cell-carcinoma-he.jpg",
+      "searchTerm": "(Tonsillectomy HPV-associated oropharyngeal squamous cell carcinoma OR oropharynx p16 scc tonsillectomy hpv) AND Oropharynx Radical tonsillectomy with neck dissection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Tonsillectomy HPV-associated oropharyngeal squamous cell carcinoma OR oropharynx p16 scc tonsillectomy hpv) AND Oropharynx Radical tonsillectomy with neck dissection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Nonkeratinizing squamous cell carcinoma compatible with HPV-associated oropharyngeal primary in the proper context OR HPV-associated oropharyngeal squamous cell carcinoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(oropharynx p16 scc tonsillectomy hpv OR HPV-associated oropharyngeal squamous cell carcinoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "oropharynx",
+        "p16",
+        "scc",
+        "tonsillectomy",
+        "hpv",
+        "associated",
+        "oropharyngeal",
+        "squamous"
+      ],
+      "figureTokens": [
+        "nonkeratinizing",
+        "squamous",
+        "carcinoma",
+        "compatible",
+        "hpv",
+        "associated",
+        "oropharyngeal",
+        "primary",
+        "the",
+        "proper",
+        "context",
+        "tonsillectomy",
+        "right",
+        "tonsil",
+        "radical",
+        "margins",
+        "negative",
+        "neck"
+      ]
+    },
+    {
+      "caseId": "hn-larynx-scc-laryngectomy",
+      "title": "Total laryngectomy: transglottic squamous cell carcinoma",
+      "specialty": "Head and Neck Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/head-neck/laryngeal-squamous-cell-carcinoma-he.jpg",
+      "searchTerm": "(Total laryngectomy transglottic squamous cell carcinoma OR larynx scc laryngectomy total transglottic) AND Larynx Total laryngectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Total laryngectomy transglottic squamous cell carcinoma OR larynx scc laryngectomy total transglottic) AND Larynx Total laryngectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Keratinizing squamous cell carcinoma of the larynx OR transglottic squamous cell carcinoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(larynx scc laryngectomy total transglottic OR transglottic squamous cell carcinoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "larynx",
+        "scc",
+        "laryngectomy",
+        "total",
+        "transglottic",
+        "squamous",
+        "laryngeal",
+        "keratinizing"
+      ],
+      "figureTokens": [
+        "keratinizing",
+        "squamous",
+        "carcinoma",
+        "the",
+        "larynx",
+        "total",
+        "laryngectomy",
+        "transglottic",
+        "moderately",
+        "differentiated",
+        "invading",
+        "through",
+        "thyroid",
+        "cartilage",
+        "margins",
+        "negative",
+        "pt4a",
+        "map"
+      ]
+    },
+    {
+      "caseId": "hn-papillary-thyroid-carcinoma-thyroidectomy",
+      "title": "Thyroidectomy: classic papillary thyroid carcinoma",
+      "specialty": "Head and Neck Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/head-neck/papillary-thyroid-carcinoma-he.jpg",
+      "searchTerm": "(Thyroidectomy classic papillary thyroid carcinoma OR papillary thyroid thyroidectomy classic total) AND Thyroid Total thyroidectomy with central neck lymph nodes H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Thyroidectomy classic papillary thyroid carcinoma OR papillary thyroid thyroidectomy classic total) AND Thyroid Total thyroidectomy with central neck lymph nodes H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Papillary thyroid carcinoma with papillary architecture and diagnostic nuclear features OR classic papillary thyroid carcinoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(papillary thyroid thyroidectomy classic total OR classic papillary thyroid carcinoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "papillary",
+        "thyroid",
+        "thyroidectomy",
+        "classic",
+        "total",
+        "subtype",
+        "confined",
+        "margins"
+      ],
+      "figureTokens": [
+        "papillary",
+        "thyroid",
+        "carcinoma",
+        "architecture",
+        "nuclear",
+        "features",
+        "thyroidectomy",
+        "classic",
+        "total",
+        "subtype",
+        "confined",
+        "margins",
+        "negative",
+        "central",
+        "neck",
+        "metastatic",
+        "lymph",
+        "nodes"
+      ]
+    },
+    {
+      "caseId": "hn-pleomorphic-adenoma-parotidectomy",
+      "title": "Superficial parotidectomy: pleomorphic adenoma",
+      "specialty": "Head and Neck Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/head-neck/pleomorphic-adenoma-parotid-he.jpg",
+      "searchTerm": "(Superficial parotidectomy pleomorphic adenoma OR pleomorphic adenoma parotidectomy superficial parotid) AND Parotid gland Superficial parotidectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Superficial parotidectomy pleomorphic adenoma OR pleomorphic adenoma parotidectomy superficial parotid) AND Parotid gland Superficial parotidectomy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Pleomorphic adenoma with epithelial and myxochondroid stromal components OR pleomorphic adenoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(pleomorphic adenoma parotidectomy superficial parotid OR pleomorphic adenoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "pleomorphic",
+        "adenoma",
+        "parotidectomy",
+        "superficial",
+        "parotid",
+        "gland",
+        "narrowly",
+        "excised"
+      ],
+      "figureTokens": [
+        "pleomorphic",
+        "adenoma",
+        "epithelial",
+        "myxochondroid",
+        "stromal",
+        "components",
+        "superficial",
+        "parotidectomy",
+        "parotid",
+        "gland",
+        "narrowly",
+        "excised",
+        "from",
+        "inked",
+        "margin",
+        "carcinoma",
+        "identified",
+        "recognize"
+      ]
+    },
+    {
+      "caseId": "hn-tonsils-hypertrophy-gross-only",
+      "title": "Tonsils and adenoids: lymphoid hyperplasia, gross-only workflow",
+      "specialty": "Head and Neck Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/head-neck/tonsillar-hyperplasia-gross.jpg",
+      "searchTerm": "(Tonsils and adenoids lymphoid hyperplasia, gross-only workflow OR tonsils hypertrophy only adenoids lymphoid) AND Tonsils and adenoids Bilateral tonsillectomy and adenoidectomy Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Tonsils and adenoids lymphoid hyperplasia, gross-only workflow OR tonsils hypertrophy only adenoids lymphoid) AND Tonsils and adenoids Bilateral tonsillectomy and adenoidectomy Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Symmetric tonsillar tissue without a described suspicious mass lesion OR lymphoid hyperplasia gross-only workflow) AND Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(tonsils hypertrophy only adenoids lymphoid OR lymphoid hyperplasia gross-only workflow) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "tonsils",
+        "hypertrophy",
+        "only",
+        "adenoids",
+        "lymphoid",
+        "hyperplasia",
+        "workflow",
+        "tonsillar"
+      ],
+      "figureTokens": [
+        "symmetric",
+        "tonsillar",
+        "tissue",
+        "without",
+        "described",
+        "suspicious",
+        "mass",
+        "lesion",
+        "photograph",
+        "tonsils",
+        "adenoids",
+        "lymphoid",
+        "hyperplasia",
+        "only",
+        "workflow",
+        "excision",
+        "adenoidal",
+        "examination"
+      ]
+    },
+    {
+      "caseId": "heme-reactive-lymph-node-excision",
+      "title": "Lymph node excision: reactive follicular hyperplasia",
+      "specialty": "Hematopathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/hematopathology/reactive-follicular-hyperplasia-he.jpg",
+      "searchTerm": "(Lymph node excision reactive follicular hyperplasia OR heme reactive lymph node excision) AND Cervical lymph node Excisional lymph node biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Lymph node excision reactive follicular hyperplasia OR heme reactive lymph node excision) AND Cervical lymph node Excisional lymph node biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Reactive follicular hyperplasia with polarized germinal centers and preserved lymph node compartments OR reactive follicular hyperplasia) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(heme reactive lymph node excision OR reactive follicular hyperplasia) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "heme",
+        "reactive",
+        "lymph",
+        "node",
+        "excision",
+        "follicular",
+        "hyperplasia",
+        "cervical"
+      ],
+      "figureTokens": [
+        "reactive",
+        "follicular",
+        "hyperplasia",
+        "polarized",
+        "germinal",
+        "centers",
+        "preserved",
+        "lymph",
+        "node",
+        "compartments",
+        "excision",
+        "cervical",
+        "morphologic",
+        "immunophenotypic",
+        "evidence",
+        "lymphoma",
+        "assess",
+        "architecture"
+      ]
+    },
+    {
+      "caseId": "heme-follicular-lymphoma-core",
+      "title": "Lymph node core biopsy: follicular lymphoma, low grade",
+      "specialty": "Hematopathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/hematopathology/follicular-lymphoma-he.jpg",
+      "searchTerm": "(Lymph node core biopsy follicular lymphoma, low grade OR heme follicular lymphoma core lymph) AND Inguinal lymph node Image-guided lymph node core biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Lymph node core biopsy follicular lymphoma, low grade OR heme follicular lymphoma core lymph) AND Inguinal lymph node Image-guided lymph node core biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Follicular lymphoma with closely packed atypical follicles on H E stain OR follicular lymphoma low grade) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(heme follicular lymphoma core lymph OR follicular lymphoma low grade) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "heme",
+        "follicular",
+        "lymphoma",
+        "core",
+        "lymph",
+        "node",
+        "low",
+        "grade"
+      ],
+      "figureTokens": [
+        "follicular",
+        "lymphoma",
+        "closely",
+        "packed",
+        "atypical",
+        "follicles",
+        "stain",
+        "lymph",
+        "node",
+        "core",
+        "low",
+        "grade",
+        "inguinal",
+        "classic",
+        "type",
+        "the",
+        "sampled",
+        "tissue"
+      ]
+    },
+    {
+      "caseId": "heme-dlbcl-excision",
+      "title": "Lymph node excision: diffuse large B-cell lymphoma",
+      "specialty": "Hematopathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/hematopathology/dlbcl-he.jpg",
+      "searchTerm": "(Lymph node excision diffuse large B-cell lymphoma OR heme dlbcl excision lymph node) AND Axillary lymph node Excisional lymph node biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Lymph node excision diffuse large B-cell lymphoma OR heme dlbcl excision lymph node) AND Axillary lymph node Excisional lymph node biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Diffuse large B-cell lymphoma composed of sheets of large atypical lymphoid cells OR diffuse large B-cell lymphoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(heme dlbcl excision lymph node OR diffuse large B-cell lymphoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "heme",
+        "dlbcl",
+        "excision",
+        "lymph",
+        "node",
+        "diffuse",
+        "large",
+        "lymphoma"
+      ],
+      "figureTokens": [
+        "diffuse",
+        "large",
+        "lymphoma",
+        "composed",
+        "sheets",
+        "atypical",
+        "lymphoid",
+        "lymph",
+        "node",
+        "excision",
+        "axillary",
+        "nos",
+        "germinal",
+        "center",
+        "phenotype",
+        "hans",
+        "algorithm",
+        "myc"
+      ]
+    },
+    {
+      "caseId": "heme-mantle-cell-flow-core",
+      "title": "Lymph node core biopsy: mantle cell lymphoma with flow correlation",
+      "specialty": "Hematopathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/hematopathology/mantle-cell-lymphoma-cyclin-d1.jpg",
+      "searchTerm": "(Lymph node core biopsy mantle cell lymphoma with flow correlation OR heme mantle flow core lymph) AND Mesenteric lymph node Image-guided lymph node core biopsy with concurrent flow cytometry Cyclin D1 immunostain AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Lymph node core biopsy mantle cell lymphoma with flow correlation OR heme mantle flow core lymph) AND Mesenteric lymph node Image-guided lymph node core biopsy with concurrent flow cytometry Cyclin D1 immunostain AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Mantle cell lymphoma with nuclear cyclin D1 expression OR mantle cell lymphoma with flow correlation) AND Cyclin D1 immunostain AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(heme mantle flow core lymph OR mantle cell lymphoma with flow correlation) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "heme",
+        "mantle",
+        "flow",
+        "core",
+        "lymph",
+        "node",
+        "lymphoma",
+        "correlation"
+      ],
+      "figureTokens": [
+        "mantle",
+        "lymphoma",
+        "nuclear",
+        "cyclin",
+        "expression",
+        "immunostain",
+        "lymph",
+        "node",
+        "core",
+        "flow",
+        "correlation",
+        "mesenteric",
+        "classic",
+        "morphology",
+        "involving",
+        "tissue",
+        "proliferation",
+        "index"
+      ]
+    },
+    {
+      "caseId": "heme-aml-bone-marrow-biopsy",
+      "title": "Bone marrow biopsy: acute myeloid leukemia",
+      "specialty": "Hematopathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/hematopathology/acute-myeloid-leukemia-marrow-smear.jpg",
+      "searchTerm": "(Bone marrow biopsy acute myeloid leukemia OR heme aml bone marrow acute) AND Posterior iliac crest bone marrow Bone marrow aspirate, clot section, and core biopsy Wright-Giemsa AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Bone marrow biopsy acute myeloid leukemia OR heme aml bone marrow acute) AND Posterior iliac crest bone marrow Bone marrow aspirate, clot section, and core biopsy Wright-Giemsa AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Acute myeloid leukemia with increased blasts on bone marrow aspirate smear OR acute myeloid leukemia) AND Wright-Giemsa AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(heme aml bone marrow acute OR acute myeloid leukemia) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "heme",
+        "aml",
+        "bone",
+        "marrow",
+        "acute",
+        "myeloid",
+        "leukemia",
+        "posterior"
+      ],
+      "figureTokens": [
+        "acute",
+        "myeloid",
+        "leukemia",
+        "increased",
+        "blasts",
+        "bone",
+        "marrow",
+        "aspirate",
+        "smear",
+        "wright",
+        "giemsa",
+        "clot",
+        "section",
+        "core",
+        "approximately",
+        "differential",
+        "flow",
+        "cytometry"
+      ]
+    },
+    {
+      "caseId": "heme-gross-only-thymus",
+      "title": "Gross-only specimen: benign thymic tissue from cardiac surgery",
+      "specialty": "Hematopathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/hematopathology/benign-thymus-gross.jpg",
+      "searchTerm": "(Gross-only specimen benign thymic tissue from cardiac surgery OR heme only thymus specimen benign) AND Anterior mediastinum Incidental thymic tissue Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Gross-only specimen benign thymic tissue from cardiac surgery OR heme only thymus specimen benign) AND Anterior mediastinum Incidental thymic tissue Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Grossly unremarkable thymic tissue may be submitted incidentally during pediatric cardiothoracic surgery OR benign thymic tissue from cardiac surgery) AND Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(heme only thymus specimen benign OR benign thymic tissue from cardiac surgery) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "heme",
+        "only",
+        "thymus",
+        "specimen",
+        "benign",
+        "thymic",
+        "tissue",
+        "from"
+      ],
+      "figureTokens": [
+        "grossly",
+        "unremarkable",
+        "thymic",
+        "tissue",
+        "may",
+        "submitted",
+        "incidentally",
+        "during",
+        "pediatric",
+        "cardiothoracic",
+        "surgery",
+        "photograph",
+        "only",
+        "specimen",
+        "benign",
+        "from",
+        "cardiac",
+        "thymus"
+      ]
+    },
+    {
+      "caseId": "neuro-primary-cns-lymphoma-biopsy",
+      "title": "Brain biopsy: primary diffuse large B-cell lymphoma of the CNS",
+      "specialty": "Neuropathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/neuropathology/primary-cns-lymphoma-high-mag.jpg",
+      "searchTerm": "(Brain biopsy primary diffuse large B-cell lymphoma of the CNS OR neuro primary cns lymphoma brain) AND Deep cerebral white matter Stereotactic brain biopsy with touch preparation H&E / HPS AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Brain biopsy primary diffuse large B-cell lymphoma of the CNS OR neuro primary cns lymphoma brain) AND Deep cerebral white matter Stereotactic brain biopsy with touch preparation H&E / HPS AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Primary CNS lymphoma composed of large atypical lymphoid cells with open chromatin and prominent nucleoli OR primary diffuse large B-cell lymphoma of the CNS) AND H&E / HPS AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(neuro primary cns lymphoma brain OR primary diffuse large B-cell lymphoma of the CNS) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "neuro",
+        "primary",
+        "cns",
+        "lymphoma",
+        "brain",
+        "diffuse",
+        "large",
+        "the"
+      ],
+      "figureTokens": [
+        "primary",
+        "cns",
+        "lymphoma",
+        "composed",
+        "large",
+        "atypical",
+        "lymphoid",
+        "open",
+        "chromatin",
+        "prominent",
+        "nucleoli",
+        "hps",
+        "brain",
+        "diffuse",
+        "the",
+        "periventricular",
+        "mass",
+        "stereotactic"
+      ]
+    },
+    {
+      "caseId": "neuro-meningioma-resection",
+      "title": "Dural-based mass resection: meningioma, CNS WHO grade 1",
+      "specialty": "Neuropathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/neuropathology/meningioma-he.jpg",
+      "searchTerm": "(Dural-based mass resection meningioma, CNS WHO grade 1 OR neuro meningioma dural based mass) AND Convexity dura Craniotomy resection with attached dura H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Dural-based mass resection meningioma, CNS WHO grade 1 OR neuro meningioma dural based mass) AND Convexity dura Craniotomy resection with attached dura H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Meningothelial meningioma with syncytial architecture whorls bland nuclei and psammoma bodies OR meningioma CNS WHO grade 1) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(neuro meningioma dural based mass OR meningioma CNS WHO grade 1) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "neuro",
+        "meningioma",
+        "dural",
+        "based",
+        "mass",
+        "cns",
+        "who",
+        "grade"
+      ],
+      "figureTokens": [
+        "meningothelial",
+        "meningioma",
+        "syncytial",
+        "architecture",
+        "whorls",
+        "bland",
+        "nuclei",
+        "psammoma",
+        "bodies",
+        "dural",
+        "based",
+        "mass",
+        "cns",
+        "who",
+        "grade",
+        "dura",
+        "convexity",
+        "type"
+      ]
+    },
+    {
+      "caseId": "neuro-oligodendroglioma-resection",
+      "title": "Craniotomy resection: oligodendroglioma, IDH-mutant and 1p/19q-codeleted",
+      "specialty": "Neuropathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/neuropathology/anaplastic-oligodendroglioma-he.jpg",
+      "searchTerm": "(Craniotomy resection oligodendroglioma, IDH-mutant and 1p 19q-codeleted OR neuro oligodendroglioma craniotomy idh mutant) AND Frontal lobe Frontal lobe tumor resection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Craniotomy resection oligodendroglioma, IDH-mutant and 1p 19q-codeleted OR neuro oligodendroglioma craniotomy idh mutant) AND Frontal lobe Frontal lobe tumor resection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Oligodendroglial tumor with round nuclei perinuclear halos delicate branching capillaries and increased cellularity OR oligodendroglioma IDH-mutant and 1p 19q-codeleted) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(neuro oligodendroglioma craniotomy idh mutant OR oligodendroglioma IDH-mutant and 1p 19q-codeleted) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "neuro",
+        "oligodendroglioma",
+        "craniotomy",
+        "idh",
+        "mutant",
+        "19q",
+        "codeleted",
+        "frontal"
+      ],
+      "figureTokens": [
+        "oligodendroglial",
+        "round",
+        "nuclei",
+        "perinuclear",
+        "halos",
+        "delicate",
+        "branching",
+        "capillaries",
+        "increased",
+        "cellularity",
+        "craniotomy",
+        "oligodendroglioma",
+        "idh",
+        "mutant",
+        "19q",
+        "codeleted",
+        "brain",
+        "frontal"
+      ]
+    },
+    {
+      "caseId": "neuro-pitnet-transsphenoidal-resection",
+      "title": "Transsphenoidal resection: pituitary neuroendocrine tumor",
+      "specialty": "Neuropathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/neuropathology/pituitary-adenoma-nonfunctioning-he.jpg",
+      "searchTerm": "(Transsphenoidal resection pituitary neuroendocrine tumor OR neuro pitnet transsphenoidal pituitary neuroendocrine) AND Sellar region Transsphenoidal pituitary mass resection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Transsphenoidal resection pituitary neuroendocrine tumor OR neuro pitnet transsphenoidal pituitary neuroendocrine) AND Sellar region Transsphenoidal pituitary mass resection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Pituitary neuroendocrine tumor with monotonous cells and pseudorosette-like growth around vascular channels OR pituitary neuroendocrine tumor) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(neuro pitnet transsphenoidal pituitary neuroendocrine OR pituitary neuroendocrine tumor) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "neuro",
+        "pitnet",
+        "transsphenoidal",
+        "pituitary",
+        "neuroendocrine",
+        "sellar",
+        "region",
+        "adenoma"
+      ],
+      "figureTokens": [
+        "pituitary",
+        "neuroendocrine",
+        "monotonous",
+        "pseudorosette",
+        "like",
+        "growth",
+        "around",
+        "vascular",
+        "channels",
+        "transsphenoidal",
+        "sellar",
+        "mass",
+        "gonadotroph",
+        "lineage",
+        "sf1",
+        "expression",
+        "proliferation",
+        "index"
+      ]
+    },
+    {
+      "caseId": "neuro-schwannoma-skull-base-resection",
+      "title": "Skull base mass resection: schwannoma",
+      "specialty": "Neuropathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/neuropathology/schwannoma-high-mag.jpg",
+      "searchTerm": "(Skull base mass resection schwannoma OR neuro schwannoma skull base mass) AND Cerebellopontine angle Skull base tumor resection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Skull base mass resection schwannoma OR neuro schwannoma skull base mass) AND Cerebellopontine angle Skull base tumor resection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Schwannoma with spindle cells nuclear palisading and alternating compact and loose architecture OR schwannoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(neuro schwannoma skull base mass OR schwannoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "neuro",
+        "schwannoma",
+        "skull",
+        "base",
+        "mass",
+        "cerebellopontine",
+        "angle",
+        "high"
+      ],
+      "figureTokens": [
+        "schwannoma",
+        "spindle",
+        "nuclear",
+        "palisading",
+        "alternating",
+        "compact",
+        "loose",
+        "architecture",
+        "skull",
+        "base",
+        "mass",
+        "malignant",
+        "features",
+        "identified",
+        "identify",
+        "benign",
+        "peripheral",
+        "nerve"
+      ]
+    },
+    {
+      "caseId": "neuro-medulloblastoma-resection",
+      "title": "Posterior fossa resection: medulloblastoma",
+      "specialty": "Neuropathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/neuropathology/medulloblastoma-he.jpg",
+      "searchTerm": "(Posterior fossa resection medulloblastoma OR neuro medulloblastoma posterior fossa cerebellum) AND Cerebellum Posterior fossa tumor resection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Posterior fossa resection medulloblastoma OR neuro medulloblastoma posterior fossa cerebellum) AND Cerebellum Posterior fossa tumor resection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Medulloblastoma with densely cellular embryonal tumor morphology in the posterior fossa OR medulloblastoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(neuro medulloblastoma posterior fossa cerebellum OR medulloblastoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "neuro",
+        "medulloblastoma",
+        "posterior",
+        "fossa",
+        "cerebellum",
+        "cerebellar",
+        "mass",
+        "classic"
+      ],
+      "figureTokens": [
+        "medulloblastoma",
+        "densely",
+        "cellular",
+        "embryonal",
+        "morphology",
+        "the",
+        "posterior",
+        "fossa",
+        "cerebellar",
+        "mass",
+        "classic",
+        "cns",
+        "who",
+        "grade",
+        "molecular",
+        "subgrouping",
+        "pending",
+        "recognize"
+      ]
+    },
+    {
+      "caseId": "neuro-ependymoma-spinal-resection",
+      "title": "Spinal cord tumor resection: ependymoma",
+      "specialty": "Neuropathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/neuropathology/ependymoma-he.jpg",
+      "searchTerm": "(Spinal cord tumor resection ependymoma OR neuro ependymoma spinal cord cns) AND Spinal cord Intramedullary spinal cord tumor resection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Spinal cord tumor resection ependymoma OR neuro ependymoma spinal cord cns) AND Spinal cord Intramedullary spinal cord tumor resection H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Ependymoma with perivascular pseudorosettes in a spinal cord tumor OR ependymoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(neuro ependymoma spinal cord cns OR ependymoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "neuro",
+        "ependymoma",
+        "spinal",
+        "cord",
+        "cns",
+        "who",
+        "grade"
+      ],
+      "figureTokens": [
+        "ependymoma",
+        "perivascular",
+        "pseudorosettes",
+        "spinal",
+        "cord",
+        "cns",
+        "who",
+        "grade",
+        "identify",
+        "ependymal",
+        "neoplasm",
+        "true",
+        "rosettes",
+        "correlate",
+        "site",
+        "posterior",
+        "fossa",
+        "supratentorial"
+      ]
+    },
+    {
+      "caseId": "neuro-intervertebral-disc-gross-only",
+      "title": "Intervertebral disc: degenerative disc material",
+      "specialty": "Neuropathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/neuropathology/intervertebral-disc-gross.jpg",
+      "searchTerm": "(Intervertebral disc degenerative disc material OR neuro intervertebral disc only degenerative) AND Spine Discectomy fragments Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Intervertebral disc degenerative disc material OR neuro intervertebral disc only degenerative) AND Spine Discectomy fragments Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Intervertebral disc material submitted as irregular tan-white fibrocartilaginous fragments OR degenerative disc material) AND Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(neuro intervertebral disc only degenerative OR degenerative disc material) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "neuro",
+        "intervertebral",
+        "disc",
+        "only",
+        "degenerative",
+        "material",
+        "spine",
+        "discectomy"
+      ],
+      "figureTokens": [
+        "intervertebral",
+        "disc",
+        "material",
+        "submitted",
+        "irregular",
+        "tan",
+        "white",
+        "fibrocartilaginous",
+        "fragments",
+        "photograph",
+        "degenerative",
+        "discectomy",
+        "only",
+        "confirm",
+        "that",
+        "the",
+        "specimen",
+        "consists"
+      ]
+    },
+    {
+      "caseId": "thoracic-lung-adenocarcinoma-lobectomy",
+      "title": "Lung lobectomy: invasive adenocarcinoma, acinar predominant",
+      "specialty": "Thoracic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/thoracic/lung-adenocarcinoma-acinar-he.png",
+      "searchTerm": "(Lung lobectomy invasive adenocarcinoma, acinar predominant OR thoracic lung lobectomy invasive acinar) AND Right upper lobe lung Right upper lobectomy with hilar lymph nodes H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Lung lobectomy invasive adenocarcinoma, acinar predominant OR thoracic lung lobectomy invasive acinar) AND Right upper lobe lung Right upper lobectomy with hilar lymph nodes H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Invasive lung adenocarcinoma with acinar growth pattern OR invasive adenocarcinoma acinar predominant) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(thoracic lung lobectomy invasive acinar OR invasive adenocarcinoma acinar predominant) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "thoracic",
+        "lung",
+        "lobectomy",
+        "invasive",
+        "acinar",
+        "predominant",
+        "right",
+        "upper"
+      ],
+      "figureTokens": [
+        "invasive",
+        "lung",
+        "adenocarcinoma",
+        "acinar",
+        "growth",
+        "pattern",
+        "lobectomy",
+        "predominant",
+        "right",
+        "upper",
+        "lobe",
+        "total",
+        "size",
+        "margins",
+        "negative",
+        "visceral",
+        "pleural",
+        "invasion"
+      ]
+    },
+    {
+      "caseId": "thoracic-squamous-cell-carcinoma-biopsy",
+      "title": "Endobronchial biopsy: squamous cell carcinoma",
+      "specialty": "Thoracic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/thoracic/lung-squamous-cell-carcinoma-he.jpg",
+      "searchTerm": "(Endobronchial biopsy squamous cell carcinoma OR thoracic squamous endobronchial left mainstem) AND Left mainstem bronchus Endobronchial forceps biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Endobronchial biopsy squamous cell carcinoma OR thoracic squamous endobronchial left mainstem) AND Left mainstem bronchus Endobronchial forceps biopsy H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Squamous cell carcinoma of lung with keratinizing nests OR squamous cell carcinoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(thoracic squamous endobronchial left mainstem OR squamous cell carcinoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "thoracic",
+        "squamous",
+        "endobronchial",
+        "left",
+        "mainstem",
+        "bronchus",
+        "lung",
+        "keratinizing"
+      ],
+      "figureTokens": [
+        "squamous",
+        "carcinoma",
+        "lung",
+        "keratinizing",
+        "nests",
+        "endobronchial",
+        "left",
+        "mainstem",
+        "bronchus",
+        "type",
+        "identify",
+        "invasive",
+        "malignant",
+        "differentiation",
+        "keratinization",
+        "intercellular",
+        "bridges",
+        "use"
+      ]
+    },
+    {
+      "caseId": "thoracic-small-cell-carcinoma-biopsy",
+      "title": "Mediastinal node biopsy: small cell carcinoma",
+      "specialty": "Thoracic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/thoracic/small-cell-carcinoma-he.jpg",
+      "searchTerm": "(Mediastinal node biopsy small cell carcinoma OR thoracic small mediastinal node lymph) AND Mediastinal lymph node EBUS-guided transbronchial needle biopsy cell block H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Mediastinal node biopsy small cell carcinoma OR thoracic small mediastinal node lymph) AND Mediastinal lymph node EBUS-guided transbronchial needle biopsy cell block H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Small cell carcinoma with scant cytoplasm nuclear molding and necrosis OR small cell carcinoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(thoracic small mediastinal node lymph OR small cell carcinoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "thoracic",
+        "small",
+        "mediastinal",
+        "node",
+        "lymph",
+        "ebus",
+        "guided",
+        "metastatic"
+      ],
+      "figureTokens": [
+        "small",
+        "carcinoma",
+        "scant",
+        "cytoplasm",
+        "nuclear",
+        "molding",
+        "necrosis",
+        "mediastinal",
+        "node",
+        "lymph",
+        "ebus",
+        "guided",
+        "metastatic",
+        "compatible",
+        "pulmonary",
+        "origin",
+        "the",
+        "clinical"
+      ]
+    },
+    {
+      "caseId": "thoracic-pleural-mesothelioma-biopsy",
+      "title": "Pleural biopsy: malignant mesothelioma, epithelioid type",
+      "specialty": "Thoracic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/thoracic/epithelioid-mesothelioma-he.jpg",
+      "searchTerm": "(Pleural biopsy malignant mesothelioma, epithelioid type OR thoracic pleural mesothelioma epithelioid type) AND Parietal pleura Thoracoscopic pleural biopsies H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Pleural biopsy malignant mesothelioma, epithelioid type OR thoracic pleural mesothelioma epithelioid type) AND Parietal pleura Thoracoscopic pleural biopsies H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Epithelioid malignant mesothelioma involving pleura OR malignant mesothelioma epithelioid type) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(thoracic pleural mesothelioma epithelioid type OR malignant mesothelioma epithelioid type) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "thoracic",
+        "pleural",
+        "mesothelioma",
+        "epithelioid",
+        "type",
+        "parietal",
+        "pleura",
+        "thoracoscopic"
+      ],
+      "figureTokens": [
+        "epithelioid",
+        "malignant",
+        "mesothelioma",
+        "involving",
+        "pleura",
+        "pleural",
+        "type",
+        "thoracoscopic",
+        "supported",
+        "mesothelial",
+        "immunophenotype",
+        "loss",
+        "bap1",
+        "expression",
+        "establish",
+        "invasive",
+        "proliferation",
+        "tissue"
+      ]
+    },
+    {
+      "caseId": "thoracic-thymoma-thymectomy",
+      "title": "Thymectomy: type B2 thymoma",
+      "specialty": "Thoracic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/thoracic/thymoma-type-b2-he.jpg",
+      "searchTerm": "(Thymectomy type B2 thymoma OR thoracic thymoma thymectomy type anterior) AND Anterior mediastinum Total thymectomy with perithymic fat H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Thymectomy type B2 thymoma OR thoracic thymoma thymectomy type anterior) AND Anterior mediastinum Total thymectomy with perithymic fat H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Thymoma with abundant lymphocytes and polygonal epithelial cells OR type B2 thymoma) AND H&E AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(thoracic thymoma thymectomy type anterior OR type B2 thymoma) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "thoracic",
+        "thymoma",
+        "thymectomy",
+        "type",
+        "anterior",
+        "mediastinum",
+        "thymus",
+        "who"
+      ],
+      "figureTokens": [
+        "thymoma",
+        "abundant",
+        "lymphocytes",
+        "polygonal",
+        "epithelial",
+        "thymectomy",
+        "type",
+        "thymus",
+        "who",
+        "microscopically",
+        "transcapsular",
+        "into",
+        "perithymic",
+        "fat",
+        "margins",
+        "negative",
+        "classify",
+        "the"
+      ]
+    },
+    {
+      "caseId": "thoracic-apical-bleb-gross-only",
+      "title": "Apical lung wedge: ruptured bleb",
+      "specialty": "Thoracic Pathology Sign-Out Simulations",
+      "localPath": "reference-library/signout-sims/thoracic/apical-bleb-gross.jpg",
+      "searchTerm": "(Apical lung wedge ruptured bleb OR thoracic apical bleb only lung) AND Lung apex Apical wedge resection for spontaneous pneumothorax Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+      "searchTerms": [
+        "(Apical lung wedge ruptured bleb OR thoracic apical bleb only lung) AND Lung apex Apical wedge resection for spontaneous pneumothorax Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND (review OR editorial OR \"case report\" OR \"case reports\" OR clinicopathologic) AND open access[filter]",
+        "(Apical subpleural bleb from wedge resection specimen OR ruptured bleb) AND Gross photograph AND (histology OR histopathology OR cytology OR immunohistochemistry OR figure) AND open access[filter]",
+        "(thoracic apical bleb only lung OR ruptured bleb) AND (pathology OR histopathology OR cytology) AND (figure OR figures OR photomicrograph OR micrograph) AND open access[filter]"
+      ],
+      "entityTokens": [
+        "thoracic",
+        "apical",
+        "bleb",
+        "only",
+        "lung",
+        "wedge",
+        "ruptured",
+        "apex"
+      ],
+      "figureTokens": [
+        "apical",
+        "subpleural",
+        "bleb",
+        "from",
+        "wedge",
+        "specimen",
+        "photograph",
+        "lung",
+        "ruptured",
+        "only",
+        "confirm",
+        "the",
+        "expected",
+        "stapled",
+        "bulla",
+        "formation",
+        "review",
+        "history"
+      ]
+    }
+  ],
+  "imports": [
+    {
+      "caseId": "cyto-pleural-effusion-metastatic-breast",
+      "title": "Pleural effusion: metastatic breast carcinoma",
+      "status": "imported",
+      "pmcid": "PMC10927224",
+      "record": {
+        "id": "PMC10927224",
+        "citation": "Cytojournal. 2024 Feb 9; 21:8",
+        "license": "CC BY-NC-SA",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/ab/de/PMC10927224.tar.gz",
+            "updated": "2025-09-19 12:25:15"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/ab/de/Cytojournal-21-8.PMC10927224.pdf",
+            "updated": "2024-03-11 17:46:03"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-0Sd1P5/PMC10927224/Cytojournal-21-8-g002.jpg",
+      "outputPath": "public/reference-library/signout-sims/cytopathology/pleural-effusion-metastatic-adenocarcinoma-cell-block.jpg",
+      "figure": {
+        "label": "figure 2",
+        "caption": "distribution of patterns of cell arrangement in various malignancies in cell blocks a metastatic adenocarcinoma from the lung b metastatic adenocarcinoma from the breast c metastatic adenocarcinoma from the ovary d metastatic adenocarcinoma from the esophagus e metastatic adenocarcinoma from the colon f metastatic adenocarcinoma from the urothelium g metastatic adenocarcinoma from other sites h malignant mesothelioma i squamous cell carcinoma j lymphoma k myeloma l melanoma m small cell carcinoma n embryonal rhabdomyosarcoma o thymoma and p unclassified tumors numerals inside the figure indicate the number of cases",
+        "score": 42,
+        "graphicIds": [
+          "Cytojournal-21-8-g002"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/ab/de/PMC10927224.tar.gz"
+    },
+    {
+      "caseId": "cyto-cervical-pap-hsil",
+      "title": "Cervical Pap test: high-grade squamous intraepithelial lesion",
+      "status": "imported",
+      "pmcid": "PMC8477285",
+      "record": {
+        "id": "PMC8477285",
+        "citation": "Ann Afr Med. 2021 Sep 17 Jul-Sep; 20(3):212-221",
+        "license": "CC BY-NC-SA",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/d1/b6/PMC8477285.tar.gz",
+            "updated": "2021-10-15 00:39:06"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-CmzfKz/PMC8477285/AAM-20-212-g006.jpg",
+      "outputPath": "public/reference-library/signout-sims/cytopathology/cervical-pap-hsil-pap.jpg",
+      "figure": {
+        "label": "figure v",
+        "caption": "high grade squamous intra epithelial lesion hsil cells showing high nuclear to cytoplasmic ratio hyperchromatic nuclei liquid based thinprep papanicolaou x100mag",
+        "score": 58,
+        "graphicIds": [
+          "AAM-20-212-g006"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/d1/b6/PMC8477285.tar.gz"
+    },
+    {
+      "caseId": "cyto-bile-duct-brushing-adenocarcinoma",
+      "title": "Bile duct brushing: adenocarcinoma",
+      "status": "imported",
+      "pmcid": "PMC6395130",
+      "record": {
+        "id": "PMC6395130",
+        "citation": "Intern Med. 2019 Feb 1; 58(3):329-335",
+        "license": "CC BY-NC-ND",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c5/24/PMC6395130.tar.gz",
+            "updated": "2019-03-02 00:19:53"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/c5/24/1349-7235-58-0329.PMC6395130.pdf",
+            "updated": "2019-02-28 22:22:52"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-rP31A9/PMC6395130/1349-7235-58-0329-g004.jpg",
+      "outputPath": "public/reference-library/signout-sims/cytopathology/bile-duct-brushing-adenocarcinoma-pap.jpg",
+      "figure": {
+        "label": "figure 4",
+        "caption": "representative brush cytology specimens from patients with severe jaundice left an adequate brush cytology specimen indicating adenocarcinoma cells with atypical nuclei of different sizes disturbance in polarity and clear nucleoli are easily observed right an inadequate specimen obtained from a patient with malignant stricture and severe jaundice cells with large nuclei are seen as an aggregate but the nuclei of the peripheral cells appeared condensed due to damage although the findings suggest malignancy the diagnosis is unclear because the nuclei could not be accurately assessed",
+        "score": 25,
+        "graphicIds": [
+          "1349-7235-58-0329-g004"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c5/24/PMC6395130.tar.gz"
+    },
+    {
+      "caseId": "gi-colon-adenocarcinoma-resection",
+      "title": "Right hemicolectomy: invasive colonic adenocarcinoma",
+      "status": "imported",
+      "pmcid": "PMC8572189",
+      "record": {
+        "id": "PMC8572189",
+        "citation": "J Robot Surg. 2021 Jan 25; 15(6):915-922",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/cc/9c/PMC8572189.tar.gz",
+            "updated": "2026-04-12 15:25:13"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-TFldjh/PMC8572189/11701_2020_1188_Fig2_HTML.jpg",
+      "outputPath": "public/reference-library/signout-sims/gastrointestinal/colon-adenocarcinoma-biopsy-he.jpg",
+      "figure": {
+        "label": "fig 2",
+        "caption": "distribution of length of stay los of 97 patients undergoing minimally invasive right hemicolectomy with intracorporeal or extracorporeal anastomosis ia intracorporeal anastomosis ea extracorporeal anastomosis",
+        "score": 24,
+        "graphicIds": [
+          "11701_2020_1188_Fig2_HTML"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/cc/9c/PMC8572189.tar.gz"
+    },
+    {
+      "caseId": "gi-gastric-poorly-cohesive-resection",
+      "title": "Subtotal gastrectomy: poorly cohesive gastric adenocarcinoma",
+      "status": "imported",
+      "pmcid": "PMC10745076",
+      "record": {
+        "id": "PMC10745076",
+        "citation": "Medicina (Kaunas). 2023 Dec 5; 59(12):2126",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/13/5b/PMC10745076.tar.gz",
+            "updated": "2024-01-29 16:25:09"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-1aehuB/PMC10745076/medicina-59-02126-g002.jpg",
+      "outputPath": "public/reference-library/signout-sims/gastrointestinal/poorly-cohesive-gastric-adenocarcinoma-he.jpg",
+      "figure": {
+        "label": "figure 2",
+        "caption": "endoscopic radiologic and pathologic findings of case 2 a esophagogastroduodenoscopy showed a polypoid mass without ulceration in the gastric antrum b an initial abdominal computed tomography revealed a 2 0 cm sized protruding lesion arrow in the proximal antrum and no enlarged perigastric lymph node c gross examination of the distal subtotal gastrectomy specimen showed 2 3 cm 1 5 cm sized elevated lesion of early gastric cancer type i arrow in the anterior wall of the antrum d serial sectioning revealed that the tumor was limited to the mucosa e low power microscopic view of the tumor showed differentiated type adenocarcinoma with intact muscularis mucosae hematoxylin eosin he stain 12 5 f high power view revealed up to five foci of tumor buddings arrows at the invasive front he stain 200 g although no lymphatic invasion was seen in the primary tumor lymph node metastases arrows were found in perigastric lymph nodes he stain 12 5 h high power view of the lymph nodes showed metastatic gastric adenocarcinoma he stain 200",
+        "score": 36,
+        "graphicIds": [
+          "medicina-59-02126-g002"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/13/5b/PMC10745076.tar.gz"
+    },
+    {
+      "caseId": "gyn-endometrium-ein-biopsy",
+      "title": "Endometrial biopsy: atypical hyperplasia / EIN",
+      "status": "imported",
+      "pmcid": "PMC8252414",
+      "record": {
+        "id": "PMC8252414",
+        "citation": "J Pathol. 2021 May 9; 254(1):20-30",
+        "license": "CC BY-NC-ND",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/9c/ce/PMC8252414.tar.gz",
+            "updated": "2026-04-06 00:25:13"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/9c/ce/PATH-254-20.PMC8252414.pdf",
+            "updated": "2021-07-02 10:38:11"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-Hu114n/PMC8252414/PATH-254-20-g010.jpg",
+      "outputPath": "public/reference-library/signout-sims/gynecologic/endometrial-intraepithelial-neoplasia-he.jpg",
+      "figure": {
+        "label": "figure 4",
+        "caption": "histology of early biopsies with ihc confirmed hts mutations but lacking diagnostic features of ein ah all panels are at the same magnification bar 100 m images were taken with 20 objective cd glands per ihc step sections are shown with symbol a representative endometrial cancer pt3 figo grade 1 for general comparison showing crowded glands with no intervening stroma diagnostic of adenocarcinoma b pt3 most fragments are superficial and atrophic rare glands in retrospect have distinct histology but such glands are too few and changes too minimal for diagnosis of ah ein c pt11 glands have some crowding and architectural abnormalities that fall short of ah ein criteria d pt13 glands have larger cells but minimal architectural irregularities e pt14 specimen very scant and highly fragmented limiting diagnosis f pt21 glands show mild architectural abnormalities and are not histologically very distinct from neighboring glands",
+        "score": 25,
+        "graphicIds": [
+          "PATH-254-20-g010"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/9c/ce/PMC8252414.tar.gz"
+    },
+    {
+      "caseId": "gyn-endometrium-serous-biopsy",
+      "title": "Endometrial biopsy: serous carcinoma",
+      "status": "imported",
+      "pmcid": "PMC6709041",
+      "record": {
+        "id": "PMC6709041",
+        "citation": "Medicine (Baltimore). 2019 Jul 19; 98(29):e16433",
+        "license": "CC BY-NC-ND",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/3c/d8/PMC6709041.tar.gz",
+            "updated": "2019-10-02 00:34:31"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/3c/d8/medi-98-e16433.PMC6709041.pdf",
+            "updated": "2019-08-26 01:51:59"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-Ky22i3/PMC6709041/medi-98-e16433-g003.jpg",
+      "outputPath": "public/reference-library/signout-sims/gynecologic/endometrial-serous-carcinoma-p53-he.jpg",
+      "figure": {
+        "label": "figure 2",
+        "caption": "histological findings of endometrium a high grade serous carcinoma has an infiltrated growth pattern in myometrial muscle the neoplastic cells are arranged in nesting glandular and ethmoid with abundant cytoplasm partial eosinophilic large nucleus obvious heterogeneity and prominent nucleolus h e 100 b neuroendocrine carcinoma is arranged in trabeculae and islands the tumor cells are large with rich cytoplasm and the nucleus is pleomorphic arranged in a mosaic and the nucleolus is obvious h e 100 c the adenocarcinoma manifested positive for pax 8 d synaptophysin immunolabeling of neuroendocrine carcinoma e chromogranin a immunolabeling of neuroendocrine carcinoma f negative immunohistochemical stains for pax 8 in neuroendocrine carcinoma",
+        "score": 26,
+        "graphicIds": [
+          "medi-98-e16433-g003"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/3c/d8/PMC6709041.tar.gz"
+    },
+    {
+      "caseId": "gyn-hysterectomy-endometrioid-carcinoma",
+      "title": "Hysterectomy: endometrioid carcinoma with myoinvasion",
+      "status": "imported",
+      "pmcid": "PMC6296844",
+      "record": {
+        "id": "PMC6296844",
+        "citation": "Int J Gynecol Pathol. 2019 Jan 14; 38(Iss 1 Suppl 1):S9-S24",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c5/a6/PMC6296844.tar.gz",
+            "updated": "2018-12-27 00:18:49"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-ySYNRn/PMC6296844/pgp-38-s009-g002.jpg",
+      "outputPath": "public/reference-library/signout-sims/gynecologic/endometrioid-carcinoma-myoinvasion-he.jpg",
+      "figure": {
+        "label": "fig 2",
+        "caption": "inking the anterior and posterior uterine serosal surfaces with extension of the ink to the ectocervix or vaginal cuff margin a helps to confirm the presence of tumor in the uterine serosa arrow b and in cases with cervical stromal involvement c the measurement of the relationship of the stromal invasion to the full thickness of the cervical wall line and the proper identification of the ectocervical or vaginal cuff margin d",
+        "score": 12,
+        "graphicIds": [
+          "pgp-38-s009-g002"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c5/a6/PMC6296844.tar.gz"
+    },
+    {
+      "caseId": "gyn-cervix-cone-hsil-ais",
+      "title": "Cervical cone: HSIL with endocervical adenocarcinoma in situ",
+      "status": "imported",
+      "pmcid": "PMC6897002",
+      "record": {
+        "id": "PMC6897002",
+        "citation": "Asian Pac J Cancer Prev. 2019; 20(2):377-382",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/04/30/PMC6897002.tar.gz",
+            "updated": "2023-10-19 20:25:24"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-bwq61u/PMC6897002/APJCP-20-377-g001.jpg",
+      "outputPath": "public/reference-library/signout-sims/gynecologic/cervix-hsil-ais-he.jpg",
+      "figure": {
+        "label": "figure 1",
+        "caption": "management of women with atypical glandular cells not otherwise specified cin2 cervical intraepithelial neoplasia grade 2 leep loop electrosurgical excision procedure ckc cold knife conization ais adenocarcinoma in situ ecc endocervical curettage",
+        "score": 44,
+        "graphicIds": [
+          "APJCP-20-377-g001"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/04/30/PMC6897002.tar.gz"
+    },
+    {
+      "caseId": "gyn-ovary-serous-borderline",
+      "title": "Oophorectomy: serous borderline tumor",
+      "status": "imported",
+      "pmcid": "PMC12335055",
+      "record": {
+        "id": "PMC12335055",
+        "citation": "BMC Pregnancy Childbirth. 2025 Aug 8; 25:829",
+        "license": "CC BY-NC-ND",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/96/64/PMC12335055.tar.gz",
+            "updated": "2025-08-10 12:25:27"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/96/64/12884_2025_Article_7918.PMC12335055.pdf",
+            "updated": "2025-08-09 10:55:43"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-1dMqDl/PMC12335055/12884_2025_7918_Fig3_HTML.jpg",
+      "outputPath": "public/reference-library/signout-sims/gynecologic/ovary-serous-borderline-tumor-he.jpg",
+      "figure": {
+        "label": "fig 3",
+        "caption": "questions that need to be discussed step by step by the mdt for embryo cryopreservation before fss in bot patients and our answers for the patient in this case mdt multidisciplinary team fss fertility sparing surgery bot borderline ovarian tumor fp fertility preservation re fss re fertility sparing surgery le letrozole os ovarian stimulation opu oocyte pick up fet frozen embryo transfer",
+        "score": 10,
+        "graphicIds": [
+          "12884_2025_7918_Fig3_HTML"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/96/64/PMC12335055.tar.gz"
+    },
+    {
+      "caseId": "gyn-products-of-conception-gross-only",
+      "title": "Products of conception: first-trimester evacuation",
+      "status": "imported",
+      "pmcid": "PMC6280238",
+      "record": {
+        "id": "PMC6280238",
+        "citation": "Case Rep Obstet Gynecol. 2018 Nov 21; 2018:1536801",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/ef/f5/PMC6280238.tar.gz",
+            "updated": "2023-10-04 02:25:16"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-fsGBWd/PMC6280238/CRIOG2018-1536801.001.jpg",
+      "outputPath": "public/reference-library/signout-sims/gynecologic/products-of-conception-chorionic-villi-he.jpg",
+      "figure": {
+        "label": "figure 1",
+        "caption": "retained products of conception a and b prehysteroscopic morcellation and c and d postmorcellation appearance with the intrauterine bigatti shaver system",
+        "score": 20,
+        "graphicIds": [
+          "CRIOG2018-1536801.001"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/ef/f5/PMC6280238.tar.gz"
+    },
+    {
+      "caseId": "hn-oral-scc-biopsy",
+      "title": "Oral tongue biopsy: invasive squamous cell carcinoma",
+      "status": "imported",
+      "pmcid": "PMC8818095",
+      "record": {
+        "id": "PMC8818095",
+        "citation": "Diagn Pathol. 2022 Feb 6; 17:23",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/ff/1f/PMC8818095.tar.gz",
+            "updated": "2024-08-21 13:25:16"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-jD11QD/PMC8818095/13000_2022_1210_Fig4_HTML.jpg",
+      "outputPath": "public/reference-library/signout-sims/head-neck/oral-squamous-cell-carcinoma-he.jpg",
+      "figure": {
+        "label": "image 3",
+        "caption": "histological slides a scc h e 100 at surface of tumour demonstrating irregular nests of highly atypical squamous cells invading the submucosal space with adjacent oral mucosa at top left b scc h e 100 present as infiltrative tumoural nests with keratinisation at invasive front of tumour c lymph node metastasis h e 20 demonstrating extranodal extension of scc in to adjacent soft tissue",
+        "score": 31,
+        "graphicIds": [
+          "13000_2022_1210_Fig4_HTML"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/ff/1f/PMC8818095.tar.gz"
+    },
+    {
+      "caseId": "hn-oropharynx-p16-scc-resection",
+      "title": "Tonsillectomy: HPV-associated oropharyngeal squamous cell carcinoma",
+      "status": "imported",
+      "pmcid": "PMC7685177",
+      "record": {
+        "id": "PMC7685177",
+        "citation": "Front Oncol. 2020 Nov 10; 10:593164",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/a1/35/PMC7685177.tar.gz",
+            "updated": "2024-04-29 22:25:11"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-B9TA04/PMC7685177/fonc-10-593164-g002.jpg",
+      "outputPath": "public/reference-library/signout-sims/head-neck/oropharyngeal-squamous-cell-carcinoma-he.jpg",
+      "figure": {
+        "label": "figure 2",
+        "caption": "73 year old man with an human papilloma virus hpv 16 positive squamous cell carcinoma from an unknown primary site with bilateral positive level 2 lymph nodes the patient was treated with deintensified intensity modulated radiotherapy imrt to 60 gy in 30 once daily fractions to the oropharynx and bilateral positive nodes and 54 gy in 30 fractions to the retropharyngeal nodes on the side with bulkier neck disease and levels 3 and 4 bilaterally concomitant weekly cisplatin 30 mg m2 was administered the patient tolerated treatment well and has remained disease free for 4 5 years without complications",
+        "score": 30,
+        "graphicIds": [
+          "fonc-10-593164-g002"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/a1/35/PMC7685177.tar.gz"
+    },
+    {
+      "caseId": "hn-larynx-scc-laryngectomy",
+      "title": "Total laryngectomy: transglottic squamous cell carcinoma",
+      "status": "imported",
+      "pmcid": "PMC8738708",
+      "record": {
+        "id": "PMC8738708",
+        "citation": "Eur Arch Otorhinolaryngol. 2022 Sep 24; 279(1):299-310",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/a2/c2/PMC8738708.tar.gz",
+            "updated": "2022-08-30 00:46:38"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-tFXkhH/PMC8738708/405_2021_7076_Fig4_HTML.jpg",
+      "outputPath": "public/reference-library/signout-sims/head-neck/laryngeal-squamous-cell-carcinoma-he.jpg",
+      "figure": {
+        "label": "fig 4",
+        "caption": "a forest plot of multivariable disease free survival analysis dfs survival curves derived from the multivariable dfs model showing the marginal effect of the histological type b stage c and treatment d adjusted for the effects of other covariates legend scc squamous cell carcinoma tlm transoral laser microsurgery ophl open partial horizontal laryngectomy ctra crico tracheal resection and anastomosis tl total laryngectomy",
+        "score": 35,
+        "graphicIds": [
+          "405_2021_7076_Fig4_HTML"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/a2/c2/PMC8738708.tar.gz"
+    },
+    {
+      "caseId": "hn-papillary-thyroid-carcinoma-thyroidectomy",
+      "title": "Thyroidectomy: classic papillary thyroid carcinoma",
+      "status": "imported",
+      "pmcid": "PMC12142297",
+      "record": {
+        "id": "PMC12142297",
+        "citation": "Pathologica. 2025 May 31; 117(2):111-120",
+        "license": "CC BY-NC-ND",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/55/fb/PMC12142297.tar.gz",
+            "updated": "2025-06-07 00:25:19"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/55/fb/pathol-2025-02-111.PMC12142297.pdf",
+            "updated": "2025-06-06 07:18:56"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-j0NCR9/PMC12142297/pathol-2025-02-111-g003.jpg",
+      "outputPath": "public/reference-library/signout-sims/head-neck/papillary-thyroid-carcinoma-he.jpg",
+      "figure": {
+        "label": "figure 3",
+        "caption": "evidence of lymph node metastasis in a case of completion thyroidectomy 200x h e",
+        "score": 18,
+        "graphicIds": [
+          "pathol-2025-02-111-g003"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/55/fb/PMC12142297.tar.gz"
+    },
+    {
+      "caseId": "hn-pleomorphic-adenoma-parotidectomy",
+      "title": "Superficial parotidectomy: pleomorphic adenoma",
+      "status": "imported",
+      "pmcid": "PMC10697545",
+      "record": {
+        "id": "PMC10697545",
+        "citation": "Am J Case Rep. 2023 Nov 30; 24:e940985-1-e940985-6",
+        "license": "CC BY-NC-ND",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/22/5c/PMC10697545.tar.gz",
+            "updated": "2024-10-14 13:25:14"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/22/5c/amjcaserep-24-e940985.PMC10697545.pdf",
+            "updated": "2023-12-05 17:19:36"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-Jadx5D/PMC10697545/amjcaserep-24-e940985-g001.jpg",
+      "outputPath": "public/reference-library/signout-sims/head-neck/pleomorphic-adenoma-parotid-he.jpg",
+      "figure": {
+        "label": "figure 1",
+        "caption": "presurgical imaging coronal image t1 weighted fat saturated of a 54 year old patient with a smaller contrast enhancing lesion in the middle part of the parotid gland histologically proven as a pa marked by an arrow and a second less enhancing lesion in the parotid gland histologically proven as a wt marked by an asterisk pa pleomorphic adenoma wt warthin s tumor",
+        "score": 33,
+        "graphicIds": [
+          "amjcaserep-24-e940985-g001"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/22/5c/PMC10697545.tar.gz"
+    },
+    {
+      "caseId": "heme-reactive-lymph-node-excision",
+      "title": "Lymph node excision: reactive follicular hyperplasia",
+      "status": "imported",
+      "pmcid": "PMC3874606",
+      "record": {
+        "id": "PMC3874606",
+        "citation": "Diagn Pathol. 2013 Jun 19; 8:100",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/9c/e3/PMC3874606.tar.gz",
+            "updated": "2014-09-30 16:26:45"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-50Cq7d/PMC3874606/1746-1596-8-100-1.jpg",
+      "outputPath": "public/reference-library/signout-sims/hematopathology/reactive-follicular-hyperplasia-he.jpg",
+      "figure": {
+        "label": "figure 1",
+        "caption": "excisional 1st biopsy from cervical lymph node a and b low power view reactive appearing follicles with preserved architecture c infarcted lymph node with occasional large cells with prominent nucleoli on high magnification d cd20 e cd3 f bcl 2 g bcl 6 h eber and lmp 1",
+        "score": 44,
+        "graphicIds": [
+          "1746-1596-8-100-1"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/9c/e3/PMC3874606.tar.gz"
+    },
+    {
+      "caseId": "heme-follicular-lymphoma-core",
+      "title": "Lymph node core biopsy: follicular lymphoma, low grade",
+      "status": "imported",
+      "pmcid": "PMC11305520",
+      "record": {
+        "id": "PMC11305520",
+        "citation": "Acta Cytol. 2024 Aug 20; 68(3):260-280",
+        "license": "CC BY-NC",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/8e/32/PMC11305520.tar.gz",
+            "updated": "2024-08-28 16:25:16"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-LiLrv9/PMC11305520/acy-2024-0068-0003-535906_F02.jpg",
+      "outputPath": "public/reference-library/signout-sims/hematopathology/follicular-lymphoma-he.jpg",
+      "figure": {
+        "label": "fig 2",
+        "caption": "entities causing potential fp diagnoses a kfl with increased numbers of activated large lymphocytes superficially mimicking lymphoma with large cell morphology hemacolor 40 b kfl showing prominent crescentic histiocytes pap 60 c pmx showing seemingly crowded sheets of basaloid cells with hyperchromatic nuclei pap 40 d pmx showing nucleated epithelial cells transitioning to ghost cells pap 40 e wt featuring atypical orangeophilic cells closely mimicking keratinising scc pap 20 f metastatic scc showing diagnostic crowded disorganised sheets of cytologically malignant cells pap 20",
+        "score": 23,
+        "graphicIds": [
+          "acy-2024-0068-0003-535906_F02"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/8e/32/PMC11305520.tar.gz"
+    },
+    {
+      "caseId": "heme-dlbcl-excision",
+      "title": "Lymph node excision: diffuse large B-cell lymphoma",
+      "status": "imported",
+      "pmcid": "PMC5168845",
+      "record": {
+        "id": "PMC5168845",
+        "citation": "Diagn Pathol. 2016 Dec 19; 11:137",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c0/b8/PMC5168845.tar.gz",
+            "updated": "2016-12-24 00:08:34"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-54PekU/PMC5168845/13000_2016_588_Fig2_HTML.jpg",
+      "outputPath": "public/reference-library/signout-sims/hematopathology/dlbcl-he.jpg",
+      "figure": {
+        "label": "fig 2",
+        "caption": "histological findings of the inguinal lymph node excision 2 weeks after initial presentation a low power view 25 shows a lymph node with a preserved architecture with intact capsule patent sinuses and polarized germinal centers with well demarcated mantle zones the interfollicular areas are expanded h e b at higher magnification 100 the interfollicular infiltrate is composed of numerous large transformed immunoblasts in the background of small lymphocytes abundant eosinophils scattered plasma cells and histiocytes h e c at 200 magnification h e and d at 400 magnification the large atypical cells have large oval to slightly irregular nuclei with vesicular chromatin prominent nucleoli and scant to moderate amounts of clear to amphophilic cytoplasm h e e the large atypical cells are immunoreactive for cd20 cd20 immunostain 50 as well as for f pax5 pax5 immunostain 200 g cd30 cd30 immunostain 200 and h mum1 mum1 immunostain 200",
+        "score": 45,
+        "graphicIds": [
+          "13000_2016_588_Fig2_HTML"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c0/b8/PMC5168845.tar.gz"
+    },
+    {
+      "caseId": "heme-aml-bone-marrow-biopsy",
+      "title": "Bone marrow biopsy: acute myeloid leukemia",
+      "status": "imported",
+      "pmcid": "PMC8208042",
+      "record": {
+        "id": "PMC8208042",
+        "citation": "Cold Spring Harb Mol Case Stud. 2021 Jun; 7(3):a006084",
+        "license": "CC BY-NC",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/aa/3c/PMC8208042.tar.gz",
+            "updated": "2025-01-08 17:25:39"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/aa/3c/MCS006084Que.PMC8208042.pdf",
+            "updated": "2021-06-16 13:05:01"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-3sYZvI/PMC8208042/MCS006084Que_F1.jpg",
+      "outputPath": "public/reference-library/signout-sims/hematopathology/acute-myeloid-leukemia-marrow-smear.jpg",
+      "figure": {
+        "label": "figure 1",
+        "caption": "a hypercellular bone marrow biopsy showing increased immature cells and granulocytic predominance hematoxylin and eosin h e 400 b bone marrow touch imprint showing increased blasts and left shifted granulocytes with some dysplastic features wright giemsa 1000 oil immersion",
+        "score": 34,
+        "graphicIds": [
+          "MCS006084Que_F1"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/aa/3c/PMC8208042.tar.gz"
+    },
+    {
+      "caseId": "heme-gross-only-thymus",
+      "title": "Gross-only specimen: benign thymic tissue from cardiac surgery",
+      "status": "imported",
+      "pmcid": "PMC8544165",
+      "record": {
+        "id": "PMC8544165",
+        "citation": "J Toxicol Pathol. 2021 Sep 28; 34(3 Suppl):1S-182S",
+        "license": "CC BY-NC-ND",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c2/59/PMC8544165.tar.gz",
+            "updated": "2025-08-07 14:25:38"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/c2/59/tox-34-S001.PMC8544165.pdf",
+            "updated": "2021-10-25 13:09:11"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-nW09CC/PMC8544165/tox-34-S001-g148.jpg",
+      "outputPath": "public/reference-library/signout-sims/hematopathology/benign-thymus-gross.jpg",
+      "figure": {
+        "label": "figure 148",
+        "caption": "cynomolgus ovary teratoma benign showing bone hair and connective tissue h e high magnification modified from cline et al 2008",
+        "score": 24,
+        "graphicIds": [
+          "tox-34-S001-g148"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c2/59/PMC8544165.tar.gz"
+    },
+    {
+      "caseId": "neuro-primary-cns-lymphoma-biopsy",
+      "title": "Brain biopsy: primary diffuse large B-cell lymphoma of the CNS",
+      "status": "imported",
+      "pmcid": "PMC11011375",
+      "record": {
+        "id": "PMC11011375",
+        "citation": "Diagnostics (Basel). 2024 Mar 23; 14(7):679",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/db/4a/PMC11011375.tar.gz",
+            "updated": "2026-03-22 23:25:13"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-q5rGi8/PMC11011375/diagnostics-14-00679-g002.jpg",
+      "outputPath": "public/reference-library/signout-sims/neuropathology/primary-cns-lymphoma-high-mag.jpg",
+      "figure": {
+        "label": "figure 2",
+        "caption": "intravascular lymphoma involving the brain the vasculature of the brain parenchyma is dilated by atypical lymphoid cells a 200 at higher magnification the tumor cells are large and hyperchromatic b 400 the tumor cells express cd20 a b cell marker c 400 and they exhibit a high ki 67 proliferation index d 400",
+        "score": 36,
+        "graphicIds": [
+          "diagnostics-14-00679-g002"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/db/4a/PMC11011375.tar.gz"
+    },
+    {
+      "caseId": "neuro-meningioma-resection",
+      "title": "Dural-based mass resection: meningioma, CNS WHO grade 1",
+      "status": "imported",
+      "pmcid": "PMC10918275",
+      "record": {
+        "id": "PMC10918275",
+        "citation": "World Neurosurg X. 2024 Feb 25; 22:100311",
+        "license": "CC BY-NC",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/91/68/PMC10918275.tar.gz",
+            "updated": "2026-01-31 23:25:14"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/91/68/main.PMC10918275.pdf",
+            "updated": "2024-03-07 05:04:01"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-AbkSmI/PMC10918275/gr4.jpg",
+      "outputPath": "public/reference-library/signout-sims/neuropathology/meningioma-he.jpg",
+      "figure": {
+        "label": "fig 4",
+        "caption": "a schwannoma squash cytology smear showing tight aggregates of spindle cells in a clear background h and e stain 40 b schwannoma histopathology showing hypercellular antoni a areas with nuclear palisading arrow and tumor cells showing nuclear palisading around fibrillary processes known as verocay bodies h and e stain 400 c meningothelial meningioma grade 2 squash smear showing meningothelial whorl arrow with epithelioid cells having moderate amount of eosinophilic cytoplasm and round to oval nuclei h and e stain 400 d meningioma section showed multiple areas of small cell change arrow in this case along with hypercellularity and raised mitotic count",
+        "score": 32,
+        "graphicIds": [
+          "gr4"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/91/68/PMC10918275.tar.gz"
+    },
+    {
+      "caseId": "neuro-oligodendroglioma-resection",
+      "title": "Craniotomy resection: oligodendroglioma, IDH-mutant and 1p/19q-codeleted",
+      "status": "imported",
+      "pmcid": "PMC4745799",
+      "record": {
+        "id": "PMC4745799",
+        "citation": "Oncotarget. 2015 Jul 3; 6(30):30295-30305",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/74/fe/PMC4745799.tar.gz",
+            "updated": "2021-04-10 00:43:28"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-BEKr4n/PMC4745799/oncotarget-06-30295-g001.jpg",
+      "outputPath": "public/reference-library/signout-sims/neuropathology/anaplastic-oligodendroglioma-he.jpg",
+      "figure": {
+        "label": "figure 1",
+        "caption": "two who grade ii gliomas are illustrated the first a diagnosed as oligoastrocytoma displays infiltration of cortex by a low density population of cells in part with round regular nuclei and clear halos oligodendroglial in part with irregular elongated nuclei astrocytic the cells are idh1r132h positive b and lack atrx expression c in the second d diagnosed as oligodendroglioma tumor cells are idh1r132h positive e and maintain atrx expression f this second tumor showed 1p19q codeletion by fish all photos were taken at 400 magnification bar shown in panel a 10 microns",
+        "score": 32,
+        "graphicIds": [
+          "oncotarget-06-30295-g001"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/74/fe/PMC4745799.tar.gz"
+    },
+    {
+      "caseId": "neuro-pitnet-transsphenoidal-resection",
+      "title": "Transsphenoidal resection: pituitary neuroendocrine tumor",
+      "status": "imported",
+      "pmcid": "PMC7451506",
+      "record": {
+        "id": "PMC7451506",
+        "citation": "J Clin Endocrinol Metab. 2020 Jul 24; 105(10):3109-3121",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/6f/45/PMC7451506.tar.gz",
+            "updated": "2026-03-29 00:25:13"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-G7kbvL/PMC7451506/dgaa474_fig2.jpg",
+      "outputPath": "public/reference-library/signout-sims/neuropathology/pituitary-adenoma-nonfunctioning-he.jpg",
+      "figure": {
+        "label": "figure 2",
+        "caption": "hematoxylin and eosin staining shows tumor cells with small to large bizarre nuclei against a background of finely fibrillar neuropil like matrix magnification 100 a b individual tumor cells with irregular shapes and dysplastic nuclei containing a prominent nucleolus can be seen magnification 400 some cells display cleaved nuclei arrow and some are multinucleated arrow head immunohistochemical staining for pituitary and hypothalamic hormones revealed a diffuse co expression of both tsh c and trh d for the cytoplasm of tumor cells magnification 200",
+        "score": 20,
+        "graphicIds": [
+          "dgaa474_fig2"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/6f/45/PMC7451506.tar.gz"
+    },
+    {
+      "caseId": "neuro-schwannoma-skull-base-resection",
+      "title": "Skull base mass resection: schwannoma",
+      "status": "imported",
+      "pmcid": "PMC6540636",
+      "record": {
+        "id": "PMC6540636",
+        "citation": "Acta Otorhinolaryngol Ital. 2019 Jun; 39(3 Suppl 1):S1-S146",
+        "license": "CC BY-NC-ND",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/2f/f7/PMC6540636.tar.gz",
+            "updated": "2024-07-16 08:25:17"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/2f/f7/aoi-2019-03-S1.PMC6540636.pdf",
+            "updated": "2019-05-29 11:19:19"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-eVwdwa/PMC6540636/aoi-2019-03-S1-g039.jpg",
+      "outputPath": "public/reference-library/signout-sims/neuropathology/schwannoma-high-mag.jpg",
+      "figure": {
+        "label": "fig 4 1 2 1",
+        "caption": "axial t1 weighted post contrast mri demonstrate a post contrast enhancing small acoustic neuroma in the left cerebellopontine angle",
+        "score": 18,
+        "graphicIds": [
+          "aoi-2019-03-S1-g039"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/2f/f7/PMC6540636.tar.gz"
+    },
+    {
+      "caseId": "neuro-medulloblastoma-resection",
+      "title": "Posterior fossa resection: medulloblastoma",
+      "status": "imported",
+      "pmcid": "PMC9421471",
+      "record": {
+        "id": "PMC9421471",
+        "citation": "Neuroimage Clin. 2022 Mar 30; 35:103000",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/24/d6/PMC9421471.tar.gz",
+            "updated": "2022-08-30 04:18:16"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-7SyIv2/PMC9421471/gr1.jpg",
+      "outputPath": "public/reference-library/signout-sims/neuropathology/medulloblastoma-he.jpg",
+      "figure": {
+        "label": "fig 1",
+        "caption": "example of afq segmented cerebellar peduncles shown on t1 weighted post contrast images of a representative subject with medulloblastoma a parasagittal section showing the right superior cerebellar peduncle in blue b axial section showing middle cerebellar peduncle in red c parasagittal section showing the left inferior cerebellar peduncle in yellow for interpretation of the references to colour in this figure legend the reader is referred to the web version of this article",
+        "score": 18,
+        "graphicIds": [
+          "gr1"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/24/d6/PMC9421471.tar.gz"
+    },
+    {
+      "caseId": "neuro-ependymoma-spinal-resection",
+      "title": "Spinal cord tumor resection: ependymoma",
+      "status": "imported",
+      "pmcid": "PMC10865573",
+      "record": {
+        "id": "PMC10865573",
+        "citation": "J Med Case Rep. 2024 Feb 14; 18:95",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/41/93/PMC10865573.tar.gz",
+            "updated": "2024-02-15 11:25:10"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-w20nol/PMC10865573/13256_2023_4283_Fig1_HTML.jpg",
+      "outputPath": "public/reference-library/signout-sims/neuropathology/ependymoma-he.jpg",
+      "figure": {
+        "label": "fig 1",
+        "caption": "t1 weighted sagittal c spine mri predominantly hypointense 0 9 1 4 4 8 cm ap trv cc intramedullary tumor extending from upper c1 to upper t3 level top left t2 weighted transverse c spine mri expansion of the dominant tumor causes the cord to completely fill the spinal canal from c7 through t2 top right characteristic perivascular pseudorosettes hematoxylin and eosin h e stain 100 magnification bottom left isomorphic glial tumor cells with round to oval nuclei in a dense fibrillary glial matrix h e 200 magnification bottom right",
+        "score": 24,
+        "graphicIds": [
+          "13256_2023_4283_Fig1_HTML"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/41/93/PMC10865573.tar.gz"
+    },
+    {
+      "caseId": "neuro-intervertebral-disc-gross-only",
+      "title": "Intervertebral disc: degenerative disc material",
+      "status": "imported",
+      "pmcid": "PMC8313180",
+      "record": {
+        "id": "PMC8313180",
+        "citation": "JOR Spine. 2021 Jun 14; 4(2):e1162",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/be/ba/PMC8313180.tar.gz",
+            "updated": "2023-11-01 01:25:24"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-1A9Ggo/PMC8313180/JSP2-4-e1162-g012.jpg",
+      "outputPath": "public/reference-library/signout-sims/neuropathology/intervertebral-disc-gross.jpg",
+      "figure": {
+        "label": "figure 7",
+        "caption": "composite depicting progressive stages of induced ivd degeneration in goat left images h e and sheep right images bright field microscopy ab psr mid sagittal lumbar spine sections dorsal aspects of discs oriented to the left ivd degeneration was enzymatically induced by chondroitinase abc disc injection in 3 year old skeletally mature goats 12 14 weeks prior to harvest nuclectomy was performed in 2 4 year old skeletally mature sheep 4 5 months prior to harvest amsbio cambridge ma grade 0 normal healthy controls ivds have a distinct nucleus pulposus np that stains blue on h e and deep turquoise on ab psr with a well defined np annulus fibrosus af interface hemi concentric well defined lamellae of the af stain eosinophilic with h e the cartilage endplates cep are thin uniform contiguous bands the bony endplates beps stained pink on h e and dark red on ab psr are comprised of uniform regularly spaced arrays of bone trabeculae that are often flanked by persistent cartilage growth plates of the vertebral bodies arrowheads section artifacts include clefts short arrows within the np af or cep interface that have sharp margins with abrupt transition to clear space devoid of degenerative matrix or cells see figure s 2 grade 1 mild disc degeneration ivds show loss of basophilic turquoise staining and reduced definition between the np and af that corresponds to reduced np glycosaminoglycan gag content and chondroid metaplasia of the af respectively inner to mid lamellae of the af in this region arrows contain fine clefts spanned by proteoglycan rich fibrillated collagen corresponding to microtears black frame see figure s2 ceps retain their discrete uniform contour but the trabecular bone of flanking beps has compacted ie endplate sclerosis grade 2 moderate disc degeneration changes show almost complete loss of np basophilia h e with poor definition of np af interface inner to mid lamellae of the af in this region arrows show larger more extensive clefts in the af black frames see figure s2 and progressive compaction of flanking trabecular bone in the sheep although proteoglycan staining of np persists there is loss of the inner to mid af layers with np protrusion into this region arrows that coincides to narrowing of the disc space and regional endplate thickening grade 3 severe disc degeneration changes include complete loss of np basophilia h e and more severely depleted np gag staining ab psr with loss of np architecture and poor discernment of np af interface there is a collapse of ivd space and clefts within the distorted degenerate np black frame see figure s2 and extrusion of degenerate chondroid ivd material beyond the ceps that extends to the flanking cartilage growth plates of the vertebral bodies arrows the chondroid material white arrow stains dark blue on ab psr see figure s2 a triangular cleft at the dorsal aspect of the endplate asterisk is an artifact of sectioning in the sheep there is herniation of the ventral annulus with osteophytes that span cranial and caudal vertebral bodies arrowheads amsbio cambridge ma",
+        "score": 37,
+        "graphicIds": [
+          "JSP2-4-e1162-g012"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/be/ba/PMC8313180.tar.gz"
+    },
+    {
+      "caseId": "thoracic-lung-adenocarcinoma-lobectomy",
+      "title": "Lung lobectomy: invasive adenocarcinoma, acinar predominant",
+      "status": "imported",
+      "pmcid": "PMC7118875",
+      "record": {
+        "id": "PMC7118875",
+        "citation": "BMC Pulm Med. 2020 Apr 3; 20:80",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/06/44/PMC7118875.tar.gz",
+            "updated": "2026-03-19 23:25:13"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-TbQPRH/PMC7118875/12890_2020_1119_Fig1_HTML.jpg",
+      "outputPath": "public/reference-library/signout-sims/thoracic/lung-adenocarcinoma-acinar-he.png",
+      "figure": {
+        "label": "fig 1",
+        "caption": "chest radiograph and clinicopathologic details of the lesions a upper panel chest computed tomography scan l1 l2 and l3 were in the right upper lobe rul right middle lobe rml and right lower lobe rll respectively l4 l5 and l6 were all observed in the left upper lobe lul no hilar or mediastinal lymphadenopathy was observed bottom panel the corresponding positron emission tomography pet ct scans revealed intense 18f fluorodeoxyglucose fdg avidity b tumor lesion images c microscopic images of hematoxylin and eosin stained sections representing the predominant histologic subtypes two representative areas are shown in a and b the corresponding histologic subtypes are described in table 1",
+        "score": 29,
+        "graphicIds": [
+          "12890_2020_1119_Fig1_HTML"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/06/44/PMC7118875.tar.gz"
+    },
+    {
+      "caseId": "thoracic-squamous-cell-carcinoma-biopsy",
+      "title": "Endobronchial biopsy: squamous cell carcinoma",
+      "status": "imported",
+      "pmcid": "PMC5340650",
+      "record": {
+        "id": "PMC5340650",
+        "citation": "Respirol Case Rep. 2017 Mar 7; 5(3):e00225",
+        "license": "CC BY-NC",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/b4/6d/PMC5340650.tar.gz",
+            "updated": "2019-01-09 04:56:10"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/b4/6d/RCR2-5-na.PMC5340650.pdf",
+            "updated": "2017-03-07 23:05:41"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-BO1wAr/PMC5340650/RCR2-5-na-g002.jpg",
+      "outputPath": "public/reference-library/signout-sims/thoracic/lung-squamous-cell-carcinoma-he.jpg",
+      "figure": {
+        "label": "figure 2",
+        "caption": "flexible bronchoscopy immediately following re intubation revealed a tumour obstructing the left mainstem bronchus lmsb with ball valve effect a and residual tumour and clot at the right mainstem bronchus rmsb b view from main carina after urgent flexible bronchoscopy with extraction of lmsb endobronchial tumour embolism c minimal residual tumour at rmsb d",
+        "score": 32,
+        "graphicIds": [
+          "RCR2-5-na-g002"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/b4/6d/PMC5340650.tar.gz"
+    },
+    {
+      "caseId": "thoracic-small-cell-carcinoma-biopsy",
+      "title": "Mediastinal node biopsy: small cell carcinoma",
+      "status": "imported",
+      "pmcid": "PMC11437883",
+      "record": {
+        "id": "PMC11437883",
+        "citation": "Diagn Pathol. 2024 Sep 27; 19:130",
+        "license": "CC BY-NC-ND",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/19/01/PMC11437883.tar.gz",
+            "updated": "2025-10-30 16:25:17"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/19/01/13000_2024_Article_1552.PMC11437883.pdf",
+            "updated": "2024-09-28 11:44:04"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-s9AS3A/PMC11437883/13000_2024_1552_Fig1_HTML.jpg",
+      "outputPath": "public/reference-library/signout-sims/thoracic/small-cell-carcinoma-he.jpg",
+      "figure": {
+        "label": "fig 1",
+        "caption": "radiologic findings of three mcc cases presenting as a soft tissue bone mass a axial t1 weighted and b axial t2 weighted fat saturated mri images of case 1 showing two lesions in the inguinal region arrow and gluteal region arrowhead with t1 isointensity to muscle a and t2 hyperintensity b c axial and d sagittal t2 weighted mri images of case 2 showing a slightly hypointense lesion in the second thoracic vertebra arrow in the transversal c and sagittal plane d and additional similar lesions in other thoracic vertebrae e f diagnostic imaging of case 3 showing a lesion on the upper arm e ultrasound image depicting a hypoechogenic partially ill defined mass f axial t1 weighted mri image showing a mass arrow with isointensity to muscle",
+        "score": 8,
+        "graphicIds": [
+          "13000_2024_1552_Fig1_HTML"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/19/01/PMC11437883.tar.gz"
+    },
+    {
+      "caseId": "thoracic-pleural-mesothelioma-biopsy",
+      "title": "Pleural biopsy: malignant mesothelioma, epithelioid type",
+      "status": "imported",
+      "pmcid": "PMC10809128",
+      "record": {
+        "id": "PMC10809128",
+        "citation": "Eur Respir J. 2024 Jan 25; 63(1):2300143",
+        "license": "CC BY",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/fe/92/PMC10809128.tar.gz",
+            "updated": "2024-02-19 13:25:20"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-rfjFbp/PMC10809128/ERJ-00143-2023.01.jpg",
+      "outputPath": "public/reference-library/signout-sims/thoracic/epithelioid-mesothelioma-he.jpg",
+      "figure": {
+        "label": "figure 1",
+        "caption": "a single cell rna sequencing scrna seq atlas of human parietal pleura a study pipeline samples obtained by video assisted thoracic surgery vats were disaggregated to single cells with collagenase viable cells were collected by fluorescence activated cell sorting and immediately processed by 10x genomics chromium controller b uniform manifold approximation and projection umap of 63 748 pleural cells from eight donors are colour coded by cell type c umap projection of canonical marker gene expression mesothelial cells intelectin 1 itln1 mesothelin msln and podoplanin pdpn fibroblasts collagen type i 2 chain col1a2 and platelet derived growth factor receptor pdgfrb pericytes regulator of g protein signaling 5 rgs5 smooth muscle cells smooth muscle actin 2 acta2 and myosin heavy chain 11 myh11 and endothelial cells platelet and endothelial cell adhesion molecule 1 pecam1 d heat map of the relative average expression of the most strongly enriched genes for each cluster presented as log fold change of one cluster versus all others grouped by cell type all gene expression values are normalised across rows e violin plots of dermatopontin dpt collagen type xv 1 chain col15a1 peptidase inhibitor 16 pi16 and microfibril associated protein 5 mfap5 expression f umap visualisation of 32 750 stromal cells eight populations identified through graph based clustering are indicated by colour and annotated as mesothelial pi16 col15a1 pi16 + col15a1 pi16 + col15a1 + pi16 col15a1 + pi16 + angptl7 + pericyte and smooth muscle g heat map of the relative average expression of the most strongly enriched genes for each cluster in f presented as log fold change of one cluster versus all others grouped by cell type all gene expression values are normalised across rows angptl7 angiopoietin related protein 7",
+        "score": 40,
+        "graphicIds": [
+          "ERJ-00143-2023.01"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/fe/92/PMC10809128.tar.gz"
+    },
+    {
+      "caseId": "thoracic-thymoma-thymectomy",
+      "title": "Thymectomy: type B2 thymoma",
+      "status": "imported",
+      "pmcid": "PMC10328808",
+      "record": {
+        "id": "PMC10328808",
+        "citation": "JTCVS Open. 2023 Mar 3; 14:561-580",
+        "license": "CC BY-NC-ND",
+        "retracted": "no",
+        "links": [
+          {
+            "format": "tgz",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/15/f2/PMC10328808.tar.gz",
+            "updated": "2023-07-10 12:25:09"
+          },
+          {
+            "format": "pdf",
+            "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/15/f2/main.PMC10328808.pdf",
+            "updated": "2023-07-08 01:32:49"
+          }
+        ]
+      },
+      "sourcePath": "/var/folders/6d/6k6dyg1d4jl5dx1myc3rqv4m0000gn/T/pmc-oa-At3O1I/PMC10328808/gr4.jpg",
+      "outputPath": "public/reference-library/signout-sims/thoracic/thymoma-type-b2-he.jpg",
+      "figure": {
+        "label": "figure 4",
+        "caption": "comparison of postoperative radiotherapy port management under r0 resection among different guidelines the colored bubbles represent the patients in whom port may be recommended by guidelines nccn national comprehensive cancer network jlcs japan lung cancer society esmo european society for medical oncology a a program in evidence based care pebc was developed by ontario health cancer care ontario canada suggesting that port is recommended for tnm stage iii iv thymomas b thymic malignancies tyme was founded by the italian collaborative group c the china anti cancer association caca suggested that port be recommended for tnm stage ii iiia thymomas with type b2 b3 and all tnm stage iv thymomas",
+        "score": 26,
+        "graphicIds": [
+          "gr4"
+        ]
+      },
+      "tgzUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/15/f2/PMC10328808.tar.gz"
+    }
+  ],
+  "skipped": [
+    {
+      "caseId": "hn-tonsils-hypertrophy-gross-only",
+      "title": "Tonsils and adenoids: lymphoid hyperplasia, gross-only workflow",
+      "status": "no-usable-figure",
+      "attempts": [
+        {
+          "status": "no-matching-figure",
+          "pmcid": "PMC13051783",
+          "record": {
+            "id": "PMC13051783",
+            "citation": "Case Rep Otolaryngol. 2026 Apr 3; 2026:5486047",
+            "license": "CC BY",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/77/3c/PMC13051783.tar.gz",
+                "updated": "2026-04-08 09:25:13"
+              }
+            ]
+          },
+          "totalFigures": 3,
+          "topFigures": [
+            {
+              "label": "figure 1",
+              "caption": "case 1 view of an fep inside the patient s mouth",
+              "score": 0,
+              "graphicIds": [
+                "CROT-2026-5486047-g002"
+              ]
+            },
+            {
+              "label": "figure 2",
+              "caption": "case 2 view of an fep inside the patient s mouth a and the specimen sent to pathology for further pathology workup b",
+              "score": 0,
+              "graphicIds": [
+                "CROT-2026-5486047-g003"
+              ]
+            },
+            {
+              "label": "figure 3",
+              "caption": "b",
+              "score": 0,
+              "graphicIds": [
+                "CROT-2026-5486047-g001"
+              ]
+            }
+          ]
+        },
+        {
+          "status": "license-not-allowed",
+          "pmcid": "PMC7315329",
+          "record": {
+            "id": "PMC7315329",
+            "citation": "Textbook of Family Medicine. 2012 Jun 22;:300-342",
+            "license": "none",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/dd/c2/PMC7315329.tar.gz",
+                "updated": "2024-07-29 15:25:15"
+              }
+            ]
+          }
+        },
+        {
+          "status": "no-matching-figure",
+          "pmcid": "PMC12439377",
+          "record": {
+            "id": "PMC12439377",
+            "citation": "Pediatr Rheumatol Online J. 2025 Sep 16; 23(Suppl 2):93",
+            "license": "CC BY-NC-ND",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/bd/4b/PMC12439377.tar.gz",
+                "updated": "2025-09-17 12:25:38"
+              },
+              {
+                "format": "pdf",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/bd/4b/12969_2025_Article_1138.PMC12439377.pdf",
+                "updated": "2025-09-16 10:52:20"
+              }
+            ]
+          },
+          "totalFigures": 0,
+          "topFigures": []
+        },
+        {
+          "status": "no-matching-figure",
+          "pmcid": "PMC3337669",
+          "record": {
+            "id": "PMC3337669",
+            "citation": "Case Rep Med. 2012 Apr 17; 2012:587503",
+            "license": "CC BY",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/31/d5/PMC3337669.tar.gz",
+                "updated": "2017-05-04 15:32:03"
+              }
+            ]
+          },
+          "totalFigures": 3,
+          "topFigures": [
+            {
+              "label": "figure 1",
+              "caption": "lateral neck radiograph demonstrating a large tonsillolith",
+              "score": 0,
+              "graphicIds": [
+                "CRIM2012-587503.001"
+              ]
+            },
+            {
+              "label": "figure 2",
+              "caption": "intraoperative photograph of the tonsilloliths in right palatine tonsil",
+              "score": 0,
+              "graphicIds": [
+                "CRIM2012-587503.002"
+              ]
+            },
+            {
+              "label": "figure 3",
+              "caption": "tonsillolith specimen",
+              "score": 0,
+              "graphicIds": [
+                "CRIM2012-587503.003"
+              ]
+            }
+          ]
+        },
+        {
+          "status": "license-not-allowed",
+          "pmcid": "PMC7103182",
+          "record": {
+            "id": "PMC7103182",
+            "citation": "Virchows Arch. 2016 Aug 23; 469(Suppl 1):1-346",
+            "license": "none",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/2c/16/PMC7103182.tar.gz",
+                "updated": "2025-03-05 14:25:38"
+              }
+            ]
+          }
+        },
+        {
+          "status": "no-matching-figure",
+          "pmcid": "PMC6763540",
+          "record": {
+            "id": "PMC6763540",
+            "citation": "Virchows Arch. 2013 Aug 8; 463(2):101-352",
+            "license": "CC BY",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/cc/03/PMC6763540.tar.gz",
+                "updated": "2026-03-12 02:25:14"
+              }
+            ]
+          },
+          "totalFigures": 0,
+          "topFigures": []
+        }
+      ]
+    },
+    {
+      "caseId": "heme-mantle-cell-flow-core",
+      "title": "Lymph node core biopsy: mantle cell lymphoma with flow correlation",
+      "status": "no-usable-figure",
+      "attempts": [
+        {
+          "status": "license-not-allowed",
+          "pmcid": "PMC7103182",
+          "record": {
+            "id": "PMC7103182",
+            "citation": "Virchows Arch. 2016 Aug 23; 469(Suppl 1):1-346",
+            "license": "none",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/2c/16/PMC7103182.tar.gz",
+                "updated": "2025-03-05 14:25:38"
+              }
+            ]
+          }
+        },
+        {
+          "status": "license-not-allowed",
+          "pmcid": "PMC7161413",
+          "record": {
+            "id": "PMC7161413",
+            "citation": "Withrow and MacEwen's Small Animal Clinical Oncology. 2019 Nov 22;:688-772",
+            "license": "none",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/31/14/PMC7161413.tar.gz",
+                "updated": "2026-02-17 05:25:12"
+              }
+            ]
+          }
+        },
+        {
+          "status": "no-matching-figure",
+          "pmcid": "PMC6460989",
+          "record": {
+            "id": "PMC6460989",
+            "citation": "J Carcinog. 2016 Apr 7; 15:2",
+            "license": "CC BY-NC-SA",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/a6/33/PMC6460989.tar.gz",
+                "updated": "2025-09-19 12:25:15"
+              },
+              {
+                "format": "pdf",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/a6/33/JC-15-2.PMC6460989.pdf",
+                "updated": "2019-04-12 12:52:19"
+              }
+            ]
+          },
+          "totalFigures": 0,
+          "topFigures": []
+        },
+        {
+          "status": "license-not-allowed",
+          "pmcid": "PMC7161412",
+          "record": {
+            "id": "PMC7161412",
+            "citation": "Withrow and MacEwen's Small Animal Clinical Oncology. 2013 Nov 28;:608-678",
+            "license": "none",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/a3/a1/PMC7161412.tar.gz",
+                "updated": "2025-10-30 16:25:17"
+              }
+            ]
+          }
+        },
+        {
+          "status": "no-matching-figure",
+          "pmcid": "PMC4669991",
+          "record": {
+            "id": "PMC4669991",
+            "citation": "United European Gastroenterol J. 2015 Oct; 3(5 Suppl):146-687",
+            "license": "CC BY-NC",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/0c/bc/PMC4669991.tar.gz",
+                "updated": "2025-06-05 13:25:31"
+              },
+              {
+                "format": "pdf",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/0c/bc/10.1177_2050640615601623.PMC4669991.pdf",
+                "updated": "2015-12-04 14:57:56"
+              }
+            ]
+          },
+          "totalFigures": 0,
+          "topFigures": []
+        },
+        {
+          "status": "license-not-allowed",
+          "pmcid": "PMC9844952",
+          "record": {
+            "id": "PMC9844952",
+            "citation": "Mol Imaging Biol. 2022 Jan 17; 24(Suppl 2):63-480",
+            "license": "none",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/a0/af/PMC9844952.tar.gz",
+                "updated": "2025-05-08 15:25:37"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "thoracic-apical-bleb-gross-only",
+      "title": "Apical lung wedge: ruptured bleb",
+      "status": "no-usable-figure",
+      "attempts": [
+        {
+          "status": "license-not-allowed",
+          "pmcid": "PMC3400751",
+          "record": {
+            "id": "PMC3400751",
+            "citation": "Virchows Arch. 2012 Aug 22; 461(Suppl 1):1-332",
+            "license": "none",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c6/d9/PMC3400751.tar.gz",
+                "updated": "2026-03-21 21:25:14"
+              }
+            ]
+          }
+        },
+        {
+          "status": "license-not-allowed",
+          "pmcid": "PMC7103147",
+          "record": {
+            "id": "PMC7103147",
+            "citation": "Virchows Arch. 2019 Aug 22; 475(Suppl 1):1-436",
+            "license": "none",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/ed/28/PMC7103147.tar.gz",
+                "updated": "2026-03-21 21:25:14"
+              }
+            ]
+          }
+        },
+        {
+          "status": "license-not-allowed",
+          "pmcid": "PMC7103177",
+          "record": {
+            "id": "PMC7103177",
+            "citation": "Surg Endosc. 2019 Sep 13; 33(Suppl 2):485-781",
+            "license": "none",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/41/46/PMC7103177.tar.gz",
+                "updated": "2026-03-21 21:25:14"
+              }
+            ]
+          }
+        },
+        {
+          "status": "license-not-allowed",
+          "pmcid": "PMC9771673",
+          "record": {
+            "id": "PMC9771673",
+            "citation": "Saunders Comprehensive Veterinary Dictionary. 2021 Oct 16;:806-923",
+            "license": "none",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/e5/08/PMC9771673.tar.gz",
+                "updated": "2025-06-10 14:25:37"
+              }
+            ]
+          }
+        },
+        {
+          "status": "no-matching-figure",
+          "pmcid": "PMC6796246",
+          "record": {
+            "id": "PMC6796246",
+            "citation": "United European Gastroenterol J. 2018 Oct 21; 6(8 Suppl):A135-A747",
+            "license": "CC BY-NC",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c1/97/PMC6796246.tar.gz",
+                "updated": "2025-07-03 15:25:38"
+              },
+              {
+                "format": "pdf",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_pdf/c1/97/10.1177_2050640618792819.PMC6796246.pdf",
+                "updated": "2019-10-17 10:34:58"
+              }
+            ]
+          },
+          "totalFigures": 0,
+          "topFigures": []
+        },
+        {
+          "status": "license-not-allowed",
+          "pmcid": "PMC9771676",
+          "record": {
+            "id": "PMC9771676",
+            "citation": "Saunders Comprehensive Veterinary Dictionary. 2021 Oct 16;:168-295",
+            "license": "none",
+            "retracted": "no",
+            "links": [
+              {
+                "format": "tgz",
+                "href": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/73/ba/PMC9771676.tar.gz",
+                "updated": "2025-06-10 14:25:37"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "failures": []
+}

@@ -82,6 +82,15 @@ const ImageModal: React.FC<{ image: StoredImage; onClose: () => void }> = ({ ima
             <div className="pt-4 px-2 flex-shrink-0">
                 <h2 id="image-modal-title" className="text-lg font-bold text-slate-800">{image.title}</h2>
                 <p className="text-sm text-slate-600 mt-1">{image.description}</p>
+                {image.benchmarkTraceability && (
+                    <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-3 text-xs text-slate-700">
+                        <p><span className="font-semibold text-slate-900">Traceability:</span> {image.benchmarkTraceability.conformanceLevel} / {image.benchmarkTraceability.learnerLevel}</p>
+                        <p className="mt-1"><span className="font-semibold text-slate-900">Surface:</span> {image.benchmarkTraceability.promotionSurface}</p>
+                        {image.benchmarkTraceability.diagnosticFocus && (
+                            <p className="mt-1"><span className="font-semibold text-slate-900">Diagnostic focus:</span> {image.benchmarkTraceability.diagnosticFocus}</p>
+                        )}
+                    </div>
+                )}
                 {(image.family || image.stain || image.magnification) && (
                     <p className="text-xs text-slate-500 mt-2">
                         {[

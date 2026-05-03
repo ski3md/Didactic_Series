@@ -45,7 +45,7 @@ const JobAid: React.FC = () => {
 
     return (
         <div className="animate-fade-in">
-            <SectionHeader title="Atlas & Flashcards" subtitle="Quick-reference job aids for high-yield facts." icon={<CollectionIcon className="h-8 w-8" />} />
+            <SectionHeader title="Flashcards" subtitle="Quick-reference review for high-yield facts." icon={<CollectionIcon className="h-8 w-8" />} />
             
             <Card>
                 <div className="flex justify-between items-center mb-4">

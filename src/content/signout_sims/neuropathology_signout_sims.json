@@ -1,0 +1,642 @@
+{
+  "version": "2026-05-02",
+  "title": "Neuropathology Sign-Out Simulations",
+  "sourceScaffold": "Johns Hopkins Atlas of Surgical Neuropathology public app metadata was used only to identify curriculum structure: searchable image atlas, image-based quiz, flashcards, and diffuse glioma algorithm. Johns Hopkins app images are not copied into this file.",
+  "cases": [
+    {
+      "id": "neuro-glioblastoma-stereotactic-biopsy",
+      "title": "Brain biopsy: glioblastoma, IDH-wildtype",
+      "site": "Cerebral hemisphere",
+      "workflow": "biopsy",
+      "specimenType": "Stereotactic brain biopsy",
+      "clinicalHistory": "72-year-old patient with a ring-enhancing right frontal mass, central necrosis, surrounding edema, and no known systemic malignancy.",
+      "image": {
+        "src": "reference-library/signout-sims/neuropathology/glioblastoma-high-mag-he.jpg",
+        "caption": "Glioblastoma with hypercellular astrocytic tumor, marked nuclear atypia, mitotic activity, and high-grade morphology.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_glioblastoma%2C_high_magnification.jpg"
+      },
+      "diagnosticSteps": [
+        "Establish that the biopsy contains an infiltrating diffuse glioma rather than metastatic carcinoma, lymphoma, abscess, or treatment effect.",
+        "Look for histologic grade 4 features: microvascular proliferation, necrosis, brisk mitotic activity, and marked cytologic atypia.",
+        "Integrate IDH status, ATRX, p53, and molecular results when available; in an older adult, document IDH-wildtype glioblastoma when criteria are met.",
+        "State biopsy limitations if necrosis or enhancement was targeted but nonenhancing infiltrative edge is under-sampled."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "idh1-r132h-atrx-p53",
+          "name": "IDH1 R132H, ATRX, and p53 immunohistochemistry",
+          "result": "Screens for IDH-mutant astrocytoma pattern and supports integrated diagnosis.",
+          "recommended": true
+        },
+        {
+          "id": "mgmt-ngs",
+          "name": "MGMT promoter methylation and targeted NGS",
+          "result": "MGMT informs treatment response; molecular testing supports WHO integrated classification.",
+          "recommended": true
+        },
+        {
+          "id": "cam52-ema",
+          "name": "Pancytokeratin and EMA",
+          "result": "Use when metastatic carcinoma or meningioma remains in the differential.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Brain, right frontal mass, stereotactic biopsy: Glioblastoma, IDH-wildtype, CNS WHO grade 4. MGMT promoter methylation and additional molecular studies pending.",
+      "requiredReportElements": [
+        "glioblastoma",
+        "IDH-wildtype",
+        "CNS WHO grade 4",
+        "biopsy site",
+        "molecular studies pending or resulted"
+      ],
+      "pitfalls": [
+        "Do not call a reactive gliosis malignant without unequivocal infiltrating tumor.",
+        "Do not omit IDH and molecular integration in diffuse glioma sign-out.",
+        "Do not overstate complete grading confidence if the biopsy is necrotic or scant."
+      ]
+    },
+    {
+      "id": "neuro-primary-cns-lymphoma-biopsy",
+      "title": "Brain biopsy: primary diffuse large B-cell lymphoma of the CNS",
+      "site": "Deep cerebral white matter",
+      "workflow": "biopsy",
+      "specimenType": "Stereotactic brain biopsy with touch preparation",
+      "clinicalHistory": "66-year-old immunocompetent patient with an enhancing periventricular mass and rapid steroid-associated radiographic response before biopsy.",
+      "image": {
+        "src": "reference-library/signout-sims/neuropathology/primary-cns-lymphoma-high-mag.jpg",
+        "caption": "Primary CNS lymphoma composed of large atypical lymphoid cells with open chromatin and prominent nucleoli.",
+        "stain": "H&E / HPS",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11011375/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC11011375",
+          "citation": "Diagnostics (Basel). 2024 Mar 23; 14(7):679",
+          "license": "CC BY",
+          "figureLabel": "figure 2",
+          "figureCaption": "intravascular lymphoma involving the brain the vasculature of the brain parenchyma is dilated by atypical lymphoid cells a 200 at higher magnification the tumor cells are large and hyperchromatic b 400 the tumor cells express cd20 a b cell marker c 400 and they exhibit a high ki 67 proliferation index d 400",
+          "figureScore": 36,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/db/4a/PMC11011375.tar.gz",
+          "acquiredAt": "2026-05-02T16:28:55.656Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Recognize sheets and angiocentric aggregates of atypical large lymphoid cells in CNS tissue.",
+        "Separate lymphoma from glioblastoma, metastatic small blue cell tumor, demyelination with macrophages, and steroid-treated lymphoid infiltrate.",
+        "Confirm B-cell lineage and large-cell phenotype using CD20, PAX5, CD45, CD3, Ki-67, and EBER when indicated.",
+        "State whether the sampled tissue is diagnostic or limited by corticosteroid treatment effect."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "cd20-pax5-cd3-cd45",
+          "name": "CD20, PAX5, CD3, and CD45",
+          "result": "Confirms B-cell lymphoma and excludes T-cell-predominant reactive infiltrates.",
+          "recommended": true
+        },
+        {
+          "id": "ki67-ebv",
+          "name": "Ki-67 and EBER in situ hybridization",
+          "result": "High proliferation supports DLBCL; EBER is essential in immunodeficiency-associated settings.",
+          "recommended": true
+        },
+        {
+          "id": "gfap-olig2",
+          "name": "GFAP and OLIG2",
+          "result": "Use when high-grade glioma remains a serious mimic.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Brain, periventricular mass, stereotactic biopsy: Diffuse large B-cell lymphoma, compatible with primary CNS lymphoma in the clinical setting.",
+      "requiredReportElements": [
+        "diffuse large B-cell lymphoma",
+        "CNS site",
+        "B-cell marker support",
+        "clinical correlation for primary CNS lymphoma",
+        "steroid effect if present"
+      ],
+      "pitfalls": [
+        "Do not exclude lymphoma after steroids if only apoptotic lymphocytes are present.",
+        "Do not confuse macrophage-rich demyelination with lymphoma without lineage stains.",
+        "Do not use systemic DLBCL subclassification language without clinical staging context."
+      ]
+    },
+    {
+      "id": "neuro-meningioma-resection",
+      "title": "Dural-based mass resection: meningioma, CNS WHO grade 1",
+      "site": "Convexity dura",
+      "workflow": "resection",
+      "specimenType": "Craniotomy resection with attached dura",
+      "clinicalHistory": "58-year-old patient with a slowly enlarging extra-axial enhancing convexity mass and radiographic dural tail.",
+      "image": {
+        "src": "reference-library/signout-sims/neuropathology/meningioma-he.jpg",
+        "caption": "Meningothelial meningioma with syncytial architecture, whorls, bland nuclei, and psammoma bodies.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10918275/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC10918275",
+          "citation": "World Neurosurg X. 2024 Feb 25; 22:100311",
+          "license": "CC BY-NC",
+          "figureLabel": "fig 4",
+          "figureCaption": "a schwannoma squash cytology smear showing tight aggregates of spindle cells in a clear background h and e stain 40 b schwannoma histopathology showing hypercellular antoni a areas with nuclear palisading arrow and tumor cells showing nuclear palisading around fibrillary processes known as verocay bodies h and e stain 400 c meningothelial meningioma grade 2 squash smear showing meningothelial whorl arrow with epithelioid cells having moderate amount of eosinophilic cytoplasm and round to oval nuclei h and e stain 400 d meningioma section showed multiple areas of small cell change arrow in this case along with hypercellularity and raised mitotic count",
+          "figureScore": 32,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/91/68/PMC10918275.tar.gz",
+          "acquiredAt": "2026-05-02T16:29:01.892Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Confirm a meningothelial neoplasm and evaluate architecture, cytology, mitotic activity, necrosis, small-cell change, macronucleoli, and sheet-like growth.",
+        "Assess for brain invasion, which upgrades an otherwise grade 1 meningioma to CNS WHO grade 2.",
+        "Sample dura, bone, soft tissue, and adherent brain when submitted to document extent of involvement.",
+        "Assign CNS WHO grade and specify subtype when it changes risk or grade."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "ema-sstr2a",
+          "name": "EMA and SSTR2A",
+          "result": "Supports meningioma lineage in the correct morphologic setting.",
+          "recommended": true
+        },
+        {
+          "id": "ki67",
+          "name": "Ki-67",
+          "result": "Provides supportive proliferative index information but does not replace mitotic count or brain invasion assessment.",
+          "recommended": true
+        },
+        {
+          "id": "stat6",
+          "name": "STAT6",
+          "result": "Use when solitary fibrous tumor is in the differential diagnosis.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "tumor site",
+        "histologic type",
+        "CNS WHO grade",
+        "mitotic count",
+        "brain invasion",
+        "necrosis",
+        "bone or soft tissue involvement",
+        "margin or dural attachment status"
+      ],
+      "reportingTarget": "Dura, convexity mass, resection: Meningioma, meningothelial type, CNS WHO grade 1. No brain invasion identified in submitted sections.",
+      "requiredReportElements": [
+        "meningioma",
+        "histologic type",
+        "CNS WHO grade",
+        "brain invasion status",
+        "mitotic activity"
+      ],
+      "pitfalls": [
+        "Do not grade meningioma from frozen section alone.",
+        "Do not miss brain invasion at the tumor-brain interface.",
+        "Do not confuse solitary fibrous tumor with fibrous meningioma when STAT6 is indicated."
+      ]
+    },
+    {
+      "id": "neuro-oligodendroglioma-resection",
+      "title": "Craniotomy resection: oligodendroglioma, IDH-mutant and 1p/19q-codeleted",
+      "site": "Frontal lobe",
+      "workflow": "resection",
+      "specimenType": "Frontal lobe tumor resection",
+      "clinicalHistory": "43-year-old patient with seizures and a calcified cortical-subcortical frontal mass without ring enhancement.",
+      "image": {
+        "src": "reference-library/signout-sims/neuropathology/anaplastic-oligodendroglioma-he.jpg",
+        "caption": "Oligodendroglial tumor with round nuclei, perinuclear halos, delicate branching capillaries, and increased cellularity.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4745799/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC4745799",
+          "citation": "Oncotarget. 2015 Jul 3; 6(30):30295-30305",
+          "license": "CC BY",
+          "figureLabel": "figure 1",
+          "figureCaption": "two who grade ii gliomas are illustrated the first a diagnosed as oligoastrocytoma displays infiltration of cortex by a low density population of cells in part with round regular nuclei and clear halos oligodendroglial in part with irregular elongated nuclei astrocytic the cells are idh1r132h positive b and lack atrx expression c in the second d diagnosed as oligodendroglioma tumor cells are idh1r132h positive e and maintain atrx expression f this second tumor showed 1p19q codeletion by fish all photos were taken at 400 magnification bar shown in panel a 10 microns",
+          "figureScore": 32,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/74/fe/PMC4745799.tar.gz",
+          "acquiredAt": "2026-05-02T16:29:06.971Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Recognize an infiltrating glioma with oligodendroglial morphology and evaluate cellularity, mitotic activity, microvascular proliferation, necrosis, and calcification.",
+        "Do not finalize oligodendroglioma without molecular evidence of IDH mutation and whole-arm 1p/19q codeletion.",
+        "Use ATRX retention and p53 pattern as supportive but not definitive evidence.",
+        "Report CNS WHO grade based on integrated histologic and molecular criteria."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "idh-1p19q",
+          "name": "IDH mutation testing and 1p/19q codeletion testing",
+          "result": "Required for integrated oligodendroglioma diagnosis.",
+          "recommended": true
+        },
+        {
+          "id": "atrx-p53",
+          "name": "ATRX and p53 immunohistochemistry",
+          "result": "ATRX retention and non-mutant p53 pattern support oligodendroglioma but do not replace 1p/19q testing.",
+          "recommended": true
+        },
+        {
+          "id": "braf",
+          "name": "BRAF V600E",
+          "result": "Not first-line for a classic adult diffuse oligodendroglial tumor.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "tumor site",
+        "integrated diagnosis",
+        "CNS WHO grade",
+        "IDH status",
+        "1p/19q status",
+        "ATRX status",
+        "mitotic activity",
+        "necrosis",
+        "microvascular proliferation"
+      ],
+      "reportingTarget": "Brain, frontal lobe, resection: Oligodendroglioma, IDH-mutant and 1p/19q-codeleted, CNS WHO grade 3.",
+      "requiredReportElements": [
+        "oligodendroglioma",
+        "IDH-mutant",
+        "1p/19q-codeleted",
+        "CNS WHO grade",
+        "histologic grade features"
+      ],
+      "pitfalls": [
+        "Do not diagnose oligodendroglioma from clear-cell morphology alone.",
+        "Do not use isolated 1p or 19q loss as evidence of whole-arm codeletion.",
+        "Do not ignore astrocytoma molecular features when ATRX is lost or p53 is strong and diffuse."
+      ]
+    },
+    {
+      "id": "neuro-pitnet-transsphenoidal-resection",
+      "title": "Transsphenoidal resection: pituitary neuroendocrine tumor",
+      "site": "Sellar region",
+      "workflow": "resection",
+      "specimenType": "Transsphenoidal pituitary mass resection",
+      "clinicalHistory": "61-year-old patient with bitemporal hemianopsia, a 2.2 cm sellar mass, and no clinical hormone hypersecretion syndrome.",
+      "image": {
+        "src": "reference-library/signout-sims/neuropathology/pituitary-adenoma-nonfunctioning-he.jpg",
+        "caption": "Pituitary neuroendocrine tumor with monotonous cells and pseudorosette-like growth around vascular channels.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7451506/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC7451506",
+          "citation": "J Clin Endocrinol Metab. 2020 Jul 24; 105(10):3109-3121",
+          "license": "CC BY",
+          "figureLabel": "figure 2",
+          "figureCaption": "hematoxylin and eosin staining shows tumor cells with small to large bizarre nuclei against a background of finely fibrillar neuropil like matrix magnification 100 a b individual tumor cells with irregular shapes and dysplastic nuclei containing a prominent nucleolus can be seen magnification 400 some cells display cleaved nuclei arrow and some are multinucleated arrow head immunohistochemical staining for pituitary and hypothalamic hormones revealed a diffuse co expression of both tsh c and trh d for the cytoplasm of tumor cells magnification 200",
+          "figureScore": 20,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/6f/45/PMC7451506.tar.gz",
+          "acquiredAt": "2026-05-02T16:29:12.900Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Confirm a pituitary neuroendocrine tumor and distinguish it from normal adenohypophysis, pituicytoma, craniopharyngioma, metastasis, and lymphoma.",
+        "Classify lineage using pituitary transcription factors and hormone immunostains.",
+        "Assess mitotic activity, Ki-67, p53 pattern, invasion information, and clinically aggressive features.",
+        "Report clinically relevant subtype and correlate with endocrine status."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "pit1-tpit-sf1",
+          "name": "PIT1, TPIT, and SF1",
+          "result": "Defines pituitary cell lineage and supports modern PitNET classification.",
+          "recommended": true
+        },
+        {
+          "id": "pituitary-hormones",
+          "name": "Pituitary hormone panel",
+          "result": "Correlates lineage with hormone expression and clinical syndrome.",
+          "recommended": true
+        },
+        {
+          "id": "synapto-keratin",
+          "name": "Synaptophysin and cytokeratin",
+          "result": "Supports neuroendocrine epithelial differentiation when morphology is limited.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "site",
+        "tumor type",
+        "lineage",
+        "hormone expression",
+        "Ki-67 index",
+        "p53 pattern",
+        "mitotic activity",
+        "invasion if documented"
+      ],
+      "reportingTarget": "Sellar mass, transsphenoidal resection: Pituitary neuroendocrine tumor, gonadotroph lineage by SF1 expression. Ki-67 proliferation index low.",
+      "requiredReportElements": [
+        "pituitary neuroendocrine tumor",
+        "lineage",
+        "hormone or transcription factor profile",
+        "Ki-67",
+        "clinical correlation"
+      ],
+      "pitfalls": [
+        "Do not sign out PitNET subtype from H&E alone when transcription factor testing is available.",
+        "Do not overcall invasion without operative, radiographic, or histologic support.",
+        "Do not omit lineage markers in a clinically nonfunctioning tumor."
+      ]
+    },
+    {
+      "id": "neuro-schwannoma-skull-base-resection",
+      "title": "Skull base mass resection: schwannoma",
+      "site": "Cerebellopontine angle",
+      "workflow": "resection",
+      "specimenType": "Skull base tumor resection",
+      "clinicalHistory": "49-year-old patient with unilateral sensorineural hearing loss and a vestibular schwannoma radiographically centered on the internal auditory canal.",
+      "image": {
+        "src": "reference-library/signout-sims/neuropathology/schwannoma-high-mag.jpg",
+        "caption": "Schwannoma with spindle cells, nuclear palisading, and alternating compact and loose architecture.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6540636/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC6540636",
+          "citation": "Acta Otorhinolaryngol Ital. 2019 Jun; 39(3 Suppl 1):S1-S146",
+          "license": "CC BY-NC-ND",
+          "figureLabel": "fig 4 1 2 1",
+          "figureCaption": "axial t1 weighted post contrast mri demonstrate a post contrast enhancing small acoustic neuroma in the left cerebellopontine angle",
+          "figureScore": 18,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/2f/f7/PMC6540636.tar.gz",
+          "acquiredAt": "2026-05-02T16:29:18.320Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Identify a benign peripheral nerve sheath tumor with Antoni A and Antoni B areas, palisading, and Verocay body formation when present.",
+        "Separate schwannoma from meningioma, solitary fibrous tumor, neurofibroma, and malignant peripheral nerve sheath tumor.",
+        "Evaluate atypia, mitotic activity, necrosis, and infiltrative growth before calling a malignant process.",
+        "Document anatomic site and correlate with radiographic vestibular nerve origin."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "s100-sox10",
+          "name": "S100 and SOX10",
+          "result": "Diffuse positivity supports schwannian differentiation.",
+          "recommended": true
+        },
+        {
+          "id": "ema-sstr2a",
+          "name": "EMA and SSTR2A",
+          "result": "Helps exclude meningioma in skull base spindle cell lesions.",
+          "recommended": true
+        },
+        {
+          "id": "stat6",
+          "name": "STAT6",
+          "result": "Use when solitary fibrous tumor is considered.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "site",
+        "tumor type",
+        "benign versus malignant features",
+        "necrosis",
+        "mitotic activity",
+        "margin status if oriented"
+      ],
+      "reportingTarget": "Skull base tumor, resection: Schwannoma. No malignant features identified.",
+      "requiredReportElements": [
+        "schwannoma",
+        "site",
+        "benign features",
+        "absence of malignant features",
+        "margin status if applicable"
+      ],
+      "pitfalls": [
+        "Do not confuse degenerative atypia in ancient schwannoma with sarcoma.",
+        "Do not miss meningioma in cerebellopontine angle spindle cell lesions.",
+        "Do not overuse margin language when the specimen is fragmented and unoriented."
+      ]
+    },
+    {
+      "id": "neuro-medulloblastoma-resection",
+      "title": "Posterior fossa resection: medulloblastoma",
+      "site": "Cerebellum",
+      "workflow": "resection",
+      "specimenType": "Posterior fossa tumor resection",
+      "clinicalHistory": "8-year-old child with headaches, vomiting, hydrocephalus, and a midline cerebellar mass.",
+      "image": {
+        "src": "reference-library/signout-sims/neuropathology/medulloblastoma-he.jpg",
+        "caption": "Medulloblastoma with densely cellular embryonal tumor morphology in the posterior fossa.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9421471/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC9421471",
+          "citation": "Neuroimage Clin. 2022 Mar 30; 35:103000",
+          "license": "CC BY",
+          "figureLabel": "fig 1",
+          "figureCaption": "example of afq segmented cerebellar peduncles shown on t1 weighted post contrast images of a representative subject with medulloblastoma a parasagittal section showing the right superior cerebellar peduncle in blue b axial section showing middle cerebellar peduncle in red c parasagittal section showing the left inferior cerebellar peduncle in yellow for interpretation of the references to colour in this figure legend the reader is referred to the web version of this article",
+          "figureScore": 18,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/24/d6/PMC9421471.tar.gz",
+          "acquiredAt": "2026-05-02T16:29:23.799Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Recognize an embryonal CNS tumor and distinguish medulloblastoma from ependymoma, ATRT, high-grade glioma, and lymphoma.",
+        "Assess classic, desmoplastic/nodular, extensive nodularity, or large cell/anaplastic histology.",
+        "Order molecular subgrouping and clinically required markers, including workup for WNT, SHH, group 3, and group 4 assignment.",
+        "Report integrated diagnosis and note tissue allocation for molecular testing."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "synapto-yap1-gab1-beta-catenin",
+          "name": "Synaptophysin, YAP1, GAB1, and beta-catenin",
+          "result": "Supports embryonal neuronal tumor and assists subgroup screening.",
+          "recommended": true
+        },
+        {
+          "id": "ini1-brg1",
+          "name": "INI1 and BRG1",
+          "result": "Retained expression helps exclude ATRT in the right context.",
+          "recommended": true
+        },
+        {
+          "id": "idh1-r132h",
+          "name": "IDH1 R132H",
+          "result": "Not a first-line marker for a classic pediatric posterior fossa embryonal tumor.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "tumor site",
+        "histologic diagnosis",
+        "histologic pattern",
+        "molecular subgroup",
+        "CNS WHO grade",
+        "CSF or metastatic status if known",
+        "molecular studies pending or resulted"
+      ],
+      "reportingTarget": "Cerebellar mass, resection: Medulloblastoma, classic histology, CNS WHO grade 4. Molecular subgrouping pending.",
+      "requiredReportElements": [
+        "medulloblastoma",
+        "histologic pattern",
+        "CNS WHO grade 4",
+        "molecular subgrouping status",
+        "posterior fossa site"
+      ],
+      "pitfalls": [
+        "Do not sign out medulloblastoma without planning molecular subgrouping.",
+        "Do not miss ATRT in a very young child or rhabdoid morphology.",
+        "Do not use adult diffuse glioma markers as a substitute for embryonal tumor workup."
+      ]
+    },
+    {
+      "id": "neuro-ependymoma-spinal-resection",
+      "title": "Spinal cord tumor resection: ependymoma",
+      "site": "Spinal cord",
+      "workflow": "resection",
+      "specimenType": "Intramedullary spinal cord tumor resection",
+      "clinicalHistory": "36-year-old patient with progressive sensory symptoms and an enhancing intramedullary spinal cord mass.",
+      "image": {
+        "src": "reference-library/signout-sims/neuropathology/ependymoma-he.jpg",
+        "caption": "Ependymoma with perivascular pseudorosettes in a spinal cord tumor.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10865573/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC10865573",
+          "citation": "J Med Case Rep. 2024 Feb 14; 18:95",
+          "license": "CC BY",
+          "figureLabel": "fig 1",
+          "figureCaption": "t1 weighted sagittal c spine mri predominantly hypointense 0 9 1 4 4 8 cm ap trv cc intramedullary tumor extending from upper c1 to upper t3 level top left t2 weighted transverse c spine mri expansion of the dominant tumor causes the cord to completely fill the spinal canal from c7 through t2 top right characteristic perivascular pseudorosettes hematoxylin and eosin h e stain 100 magnification bottom left isomorphic glial tumor cells with round to oval nuclei in a dense fibrillary glial matrix h e 200 magnification bottom right",
+          "figureScore": 24,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/41/93/PMC10865573.tar.gz",
+          "acquiredAt": "2026-05-02T16:29:28.988Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Identify an ependymal neoplasm with perivascular pseudorosettes or true ependymal rosettes.",
+        "Correlate tumor site with spinal, posterior fossa, supratentorial, or myxopapillary classification requirements.",
+        "Assess mitotic activity, necrosis, microvascular proliferation, and anaplastic features while recognizing evolving molecular classification.",
+        "Use EMA dot-like staining and GFAP when morphology requires support."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "ema-gfap",
+          "name": "EMA and GFAP",
+          "result": "Dot-like or ring-like EMA with GFAP supports ependymoma.",
+          "recommended": true
+        },
+        {
+          "id": "ki67",
+          "name": "Ki-67",
+          "result": "Provides proliferative index and helps contextualize aggressive features.",
+          "recommended": true
+        },
+        {
+          "id": "h3k27me3",
+          "name": "H3 K27me3",
+          "result": "Use for posterior fossa ependymoma subgrouping, not as a routine spinal ependymoma marker.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "tumor site",
+        "histologic diagnosis",
+        "CNS WHO grade",
+        "mitotic activity",
+        "necrosis",
+        "microvascular proliferation",
+        "molecular classification if performed"
+      ],
+      "reportingTarget": "Spinal cord tumor, resection: Ependymoma, CNS WHO grade 2.",
+      "requiredReportElements": [
+        "ependymoma",
+        "spinal cord site",
+        "CNS WHO grade",
+        "ependymal morphologic support",
+        "ancillary support if performed"
+      ],
+      "pitfalls": [
+        "Do not call every perivascular pattern ependymoma without considering astrocytoma and hemangioblastoma.",
+        "Do not apply posterior fossa molecular terminology to spinal tumors without basis.",
+        "Do not omit site because ependymoma classification is site-dependent."
+      ]
+    },
+    {
+      "id": "neuro-intervertebral-disc-gross-only",
+      "title": "Intervertebral disc: degenerative disc material",
+      "site": "Spine",
+      "workflow": "gross-only",
+      "specimenType": "Discectomy fragments",
+      "clinicalHistory": "52-year-old patient with radiculopathy and imaging-confirmed lumbar disc herniation.",
+      "image": {
+        "src": "reference-library/signout-sims/neuropathology/intervertebral-disc-gross.jpg",
+        "caption": "Intervertebral disc material submitted as irregular tan-white fibrocartilaginous fragments.",
+        "stain": "Gross photograph",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8313180/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC8313180",
+          "citation": "JOR Spine. 2021 Jun 14; 4(2):e1162",
+          "license": "CC BY",
+          "figureLabel": "figure 7",
+          "figureCaption": "composite depicting progressive stages of induced ivd degeneration in goat left images h e and sheep right images bright field microscopy ab psr mid sagittal lumbar spine sections dorsal aspects of discs oriented to the left ivd degeneration was enzymatically induced by chondroitinase abc disc injection in 3 year old skeletally mature goats 12 14 weeks prior to harvest nuclectomy was performed in 2 4 year old skeletally mature sheep 4 5 months prior to harvest amsbio cambridge ma grade 0 normal healthy controls ivds have a distinct nucleus pulposus np that stains blue on h e and deep turquoise on ab psr with a well defined np annulus fibrosus af interface hemi concentric well defined lamellae of the af stain eosinophilic with h e the cartilage endplates cep are thin uniform contiguous bands the bony endplates beps stained pink on h e and dark red on ab psr are comprised of uniform regularly spaced arrays of bone trabeculae that are often flanked by persistent cartilage growth plates of the vertebral bodies arrowheads section artifacts include clefts short arrows within the np af or cep interface that have sharp margins with abrupt transition to clear space devoid of degenerative matrix or cells see figure s 2 grade 1 mild disc degeneration ivds show loss of basophilic turquoise staining and reduced definition between the np and af that corresponds to reduced np glycosaminoglycan gag content and chondroid metaplasia of the af respectively inner to mid lamellae of the af in this region arrows contain fine clefts spanned by proteoglycan rich fibrillated collagen corresponding to microtears black frame see figure s2 ceps retain their discrete uniform contour but the trabecular bone of flanking beps has compacted ie endplate sclerosis grade 2 moderate disc degeneration changes show almost complete loss of np basophilia h e with poor definition of np af interface inner to mid lamellae of the af in this region arrows show larger more extensive clefts in the af black frames see figure s2 and progressive compaction of flanking trabecular bone in the sheep although proteoglycan staining of np persists there is loss of the inner to mid af layers with np protrusion into this region arrows that coincides to narrowing of the disc space and regional endplate thickening grade 3 severe disc degeneration changes include complete loss of np basophilia h e and more severely depleted np gag staining ab psr with loss of np architecture and poor discernment of np af interface there is a collapse of ivd space and clefts within the distorted degenerate np black frame see figure s2 and extrusion of degenerate chondroid ivd material beyond the ceps that extends to the flanking cartilage growth plates of the vertebral bodies arrows the chondroid material white arrow stains dark blue on ab psr see figure s2 a triangular cleft at the dorsal aspect of the endplate asterisk is an artifact of sectioning in the sheep there is herniation of the ventral annulus with osteophytes that span cranial and caudal vertebral bodies arrowheads amsbio cambridge ma",
+          "figureScore": 37,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/be/ba/PMC8313180.tar.gz",
+          "acquiredAt": "2026-05-02T16:29:34.264Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Confirm that the specimen consists of expected fibrocartilaginous disc material from a concordant discectomy procedure.",
+        "Check the requisition and imaging for infection, tumor, inflammatory disease, or unexpected mass lesion.",
+        "Use gross-only sign-out only when local policy permits and no red-flag clinical or gross features are present.",
+        "Submit microscopic sections if the tissue is atypical, hemorrhagic, necrotic, purulent, or not grossly compatible with disc."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "Appropriate for concordant routine discectomy material without red flags.",
+          "recommended": true
+        },
+        {
+          "id": "culture",
+          "name": "Microbiology culture",
+          "result": "Use when discitis, osteomyelitis, or purulence is suspected clinically or grossly.",
+          "recommended": false
+        },
+        {
+          "id": "afb-gms",
+          "name": "AFB and GMS stains",
+          "result": "Reserve for microscopic evaluation when infection is suspected.",
+          "recommended": false
+        }
+      ],
+      "grossOnlyChecklist": [
+        "specimen identity",
+        "aggregate dimensions",
+        "gross appearance",
+        "absence of mass or purulence",
+        "clinical concordance",
+        "local gross-only policy compliance"
+      ],
+      "reportingTarget": "Intervertebral disc, discectomy: Fibrocartilaginous disc material, gross diagnosis only.",
+      "requiredReportElements": [
+        "intervertebral disc",
+        "fibrocartilaginous tissue",
+        "gross diagnosis only",
+        "no mass or purulence if applicable"
+      ],
+      "pitfalls": [
+        "Do not sign out gross-only when infection or neoplasm is suspected.",
+        "Do not ignore unexpected bone, tumor-like tissue, or necrosis.",
+        "Do not omit aggregate size and gross description."
+      ]
+    }
+  ]
+}

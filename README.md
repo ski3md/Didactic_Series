@@ -1,6 +1,6 @@
-# Didactic Series
+# P@thfndr
 
-`Didactic_Series` is a pathology education platform built with React, TypeScript, and Vite. It began as a granulomatous lung teaching module and now functions as a broader pathology learning environment with lectures, tutorials, curriculum modules, image atlases, and case-based study tools.
+`P@thfndr` is a pathology education platform built with React, TypeScript, and Vite. It began as a granulomatous lung teaching module and now functions as a broader pathology learning environment with lectures, tutorials, curriculum modules, image atlases, and case-based study tools.
 
 ## Current Product Scope
 

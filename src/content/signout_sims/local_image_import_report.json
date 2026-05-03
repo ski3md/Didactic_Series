@@ -1,0 +1,561 @@
+{
+  "generatedAt": "2026-05-02T15:47:45.505Z",
+  "roots": [
+    "/Users/skim4/Downloads/Didactic_Series/public/reference-library"
+  ],
+  "includePdf": true,
+  "dryRun": true,
+  "replaceExisting": false,
+  "scannedFiles": 63,
+  "targets": 37,
+  "imported": 0,
+  "ambiguous": [],
+  "unresolved": [
+    {
+      "caseId": "cyto-pleural-effusion-metastatic-breast",
+      "title": "Pleural effusion: metastatic breast carcinoma",
+      "expectedLocalPath": "reference-library/signout-sims/cytopathology/pleural-effusion-metastatic-adenocarcinoma-cell-block.jpg",
+      "tokens": [
+        "cyto",
+        "pleural",
+        "effusion",
+        "metastatic",
+        "breast",
+        "carcinoma",
+        "adenocarcinoma",
+        "block",
+        "cancer",
+        "fluid",
+        "2293304241"
+      ]
+    },
+    {
+      "caseId": "cyto-cervical-pap-hsil",
+      "title": "Cervical Pap test: high-grade squamous intraepithelial lesion",
+      "expectedLocalPath": "reference-library/signout-sims/cytopathology/cervical-pap-hsil-pap.jpg",
+      "tokens": [
+        "cyto",
+        "cervical",
+        "hsil",
+        "test",
+        "grade",
+        "squamous",
+        "intraepithelial",
+        "lesion"
+      ]
+    },
+    {
+      "caseId": "cyto-bile-duct-brushing-adenocarcinoma",
+      "title": "Bile duct brushing: adenocarcinoma",
+      "expectedLocalPath": "reference-library/signout-sims/cytopathology/bile-duct-brushing-adenocarcinoma-pap.jpg",
+      "tokens": [
+        "cyto",
+        "bile",
+        "duct",
+        "brushing",
+        "adenocarcinoma",
+        "common"
+      ]
+    },
+    {
+      "caseId": "gi-colon-adenocarcinoma-resection",
+      "title": "Right hemicolectomy: invasive colonic adenocarcinoma",
+      "expectedLocalPath": "reference-library/signout-sims/gastrointestinal/colon-adenocarcinoma-biopsy-he.jpg",
+      "tokens": [
+        "colon",
+        "adenocarcinoma",
+        "right",
+        "hemicolectomy",
+        "invasive",
+        "colonic"
+      ]
+    },
+    {
+      "caseId": "gi-gastric-poorly-cohesive-resection",
+      "title": "Subtotal gastrectomy: poorly cohesive gastric adenocarcinoma",
+      "expectedLocalPath": "reference-library/signout-sims/gastrointestinal/poorly-cohesive-gastric-adenocarcinoma-he.jpg",
+      "tokens": [
+        "gastric",
+        "poorly",
+        "cohesive",
+        "subtotal",
+        "gastrectomy",
+        "adenocarcinoma"
+      ]
+    },
+    {
+      "caseId": "gyn-endometrium-ein-biopsy",
+      "title": "Endometrial biopsy: atypical hyperplasia / EIN",
+      "expectedLocalPath": "reference-library/signout-sims/gynecologic/endometrial-intraepithelial-neoplasia-he.jpg",
+      "tokens": [
+        "gyn",
+        "endometrium",
+        "ein",
+        "endometrial",
+        "atypical",
+        "hyperplasia",
+        "intraepithelial",
+        "neoplasia",
+        "histopathology"
+      ]
+    },
+    {
+      "caseId": "gyn-endometrium-serous-biopsy",
+      "title": "Endometrial biopsy: serous carcinoma",
+      "expectedLocalPath": "reference-library/signout-sims/gynecologic/endometrial-serous-carcinoma-p53-he.jpg",
+      "tokens": [
+        "gyn",
+        "endometrium",
+        "serous",
+        "endometrial",
+        "carcinoma",
+        "p53",
+        "uterine"
+      ]
+    },
+    {
+      "caseId": "gyn-hysterectomy-endometrioid-carcinoma",
+      "title": "Hysterectomy: endometrioid carcinoma with myoinvasion",
+      "expectedLocalPath": "reference-library/signout-sims/gynecologic/endometrioid-carcinoma-myoinvasion-he.jpg",
+      "tokens": [
+        "gyn",
+        "hysterectomy",
+        "endometrioid",
+        "carcinoma",
+        "myoinvasion",
+        "endometrial",
+        "adenocarcinoma"
+      ]
+    },
+    {
+      "caseId": "gyn-cervix-cone-hsil-ais",
+      "title": "Cervical cone: HSIL with endocervical adenocarcinoma in situ",
+      "expectedLocalPath": "reference-library/signout-sims/gynecologic/cervix-hsil-ais-he.jpg",
+      "tokens": [
+        "gyn",
+        "cervix",
+        "cone",
+        "hsil",
+        "ais",
+        "cervical",
+        "endocervical",
+        "adenocarcinoma",
+        "situ",
+        "1799755393"
+      ]
+    },
+    {
+      "caseId": "gyn-ovary-serous-borderline",
+      "title": "Oophorectomy: serous borderline tumor",
+      "expectedLocalPath": "reference-library/signout-sims/gynecologic/ovary-serous-borderline-tumor-he.jpg",
+      "tokens": [
+        "gyn",
+        "ovary",
+        "serous",
+        "borderline",
+        "oophorectomy",
+        "tumor",
+        "histopathology",
+        "ovarian"
+      ]
+    },
+    {
+      "caseId": "gyn-products-of-conception-gross-only",
+      "title": "Products of conception: first-trimester evacuation",
+      "expectedLocalPath": "reference-library/signout-sims/gynecologic/products-of-conception-chorionic-villi-he.jpg",
+      "tokens": [
+        "gyn",
+        "products",
+        "conception",
+        "only",
+        "first",
+        "trimester",
+        "evacuation",
+        "chorionic",
+        "villi"
+      ]
+    },
+    {
+      "caseId": "hn-oral-scc-biopsy",
+      "title": "Oral tongue biopsy: invasive squamous cell carcinoma",
+      "expectedLocalPath": "reference-library/signout-sims/head-neck/oral-squamous-cell-carcinoma-he.jpg",
+      "tokens": [
+        "oral",
+        "scc",
+        "tongue",
+        "invasive",
+        "squamous",
+        "carcinoma",
+        "cancer",
+        "histopathology"
+      ]
+    },
+    {
+      "caseId": "hn-oropharynx-p16-scc-resection",
+      "title": "Tonsillectomy: HPV-associated oropharyngeal squamous cell carcinoma",
+      "expectedLocalPath": "reference-library/signout-sims/head-neck/oropharyngeal-squamous-cell-carcinoma-he.jpg",
+      "tokens": [
+        "oropharynx",
+        "p16",
+        "scc",
+        "tonsillectomy",
+        "hpv",
+        "associated",
+        "oropharyngeal",
+        "squamous",
+        "carcinoma",
+        "positive"
+      ]
+    },
+    {
+      "caseId": "hn-larynx-scc-laryngectomy",
+      "title": "Total laryngectomy: transglottic squamous cell carcinoma",
+      "expectedLocalPath": "reference-library/signout-sims/head-neck/laryngeal-squamous-cell-carcinoma-he.jpg",
+      "tokens": [
+        "larynx",
+        "scc",
+        "laryngectomy",
+        "total",
+        "transglottic",
+        "squamous",
+        "carcinoma",
+        "laryngeal",
+        "intermed"
+      ]
+    },
+    {
+      "caseId": "hn-papillary-thyroid-carcinoma-thyroidectomy",
+      "title": "Thyroidectomy: classic papillary thyroid carcinoma",
+      "expectedLocalPath": "reference-library/signout-sims/head-neck/papillary-thyroid-carcinoma-he.jpg",
+      "tokens": [
+        "papillary",
+        "thyroid",
+        "carcinoma",
+        "thyroidectomy",
+        "classic",
+        "microcarcinoma"
+      ]
+    },
+    {
+      "caseId": "hn-pleomorphic-adenoma-parotidectomy",
+      "title": "Superficial parotidectomy: pleomorphic adenoma",
+      "expectedLocalPath": "reference-library/signout-sims/head-neck/pleomorphic-adenoma-parotid-he.jpg",
+      "tokens": [
+        "pleomorphic",
+        "adenoma",
+        "parotidectomy",
+        "superficial",
+        "parotid",
+        "histopathology"
+      ]
+    },
+    {
+      "caseId": "hn-tonsils-hypertrophy-gross-only",
+      "title": "Tonsils and adenoids: lymphoid hyperplasia, gross-only workflow",
+      "expectedLocalPath": "reference-library/signout-sims/head-neck/tonsillar-hyperplasia-gross.jpg",
+      "tokens": [
+        "tonsils",
+        "hypertrophy",
+        "only",
+        "adenoids",
+        "lymphoid",
+        "hyperplasia",
+        "workflow",
+        "tonsillar",
+        "tonsil"
+      ]
+    },
+    {
+      "caseId": "heme-reactive-lymph-node-excision",
+      "title": "Lymph node excision: reactive follicular hyperplasia",
+      "expectedLocalPath": "reference-library/signout-sims/hematopathology/reactive-follicular-hyperplasia-he.jpg",
+      "tokens": [
+        "heme",
+        "reactive",
+        "lymph",
+        "node",
+        "excision",
+        "follicular",
+        "hyperplasia",
+        "histopathology"
+      ]
+    },
+    {
+      "caseId": "heme-follicular-lymphoma-core",
+      "title": "Lymph node core biopsy: follicular lymphoma, low grade",
+      "expectedLocalPath": "reference-library/signout-sims/hematopathology/follicular-lymphoma-he.jpg",
+      "tokens": [
+        "heme",
+        "follicular",
+        "lymphoma",
+        "core",
+        "lymph",
+        "node",
+        "grade"
+      ]
+    },
+    {
+      "caseId": "heme-dlbcl-excision",
+      "title": "Lymph node excision: diffuse large B-cell lymphoma",
+      "expectedLocalPath": "reference-library/signout-sims/hematopathology/dlbcl-he.jpg",
+      "tokens": [
+        "heme",
+        "dlbcl",
+        "excision",
+        "lymph",
+        "node",
+        "diffuse",
+        "large",
+        "lymphoma"
+      ]
+    },
+    {
+      "caseId": "heme-mantle-cell-flow-core",
+      "title": "Lymph node core biopsy: mantle cell lymphoma with flow correlation",
+      "expectedLocalPath": "reference-library/signout-sims/hematopathology/mantle-cell-lymphoma-cyclin-d1.jpg",
+      "tokens": [
+        "heme",
+        "mantle",
+        "flow",
+        "core",
+        "lymph",
+        "node",
+        "lymphoma",
+        "correlation",
+        "cyclin",
+        "intermed"
+      ]
+    },
+    {
+      "caseId": "heme-aml-bone-marrow-biopsy",
+      "title": "Bone marrow biopsy: acute myeloid leukemia",
+      "expectedLocalPath": "reference-library/signout-sims/hematopathology/acute-myeloid-leukemia-marrow-smear.jpg",
+      "tokens": [
+        "heme",
+        "aml",
+        "bone",
+        "marrow",
+        "acute",
+        "myeloid",
+        "leukemia",
+        "smear",
+        "myeloblast",
+        "auer",
+        "rod",
+        "2010"
+      ]
+    },
+    {
+      "caseId": "heme-gross-only-thymus",
+      "title": "Gross-only specimen: benign thymic tissue from cardiac surgery",
+      "expectedLocalPath": "reference-library/signout-sims/hematopathology/benign-thymus-gross.jpg",
+      "tokens": [
+        "heme",
+        "only",
+        "thymus",
+        "specimen",
+        "benign",
+        "thymic",
+        "tissue",
+        "from",
+        "cardiac",
+        "surgery",
+        "histology",
+        "gland"
+      ]
+    },
+    {
+      "caseId": "neuro-primary-cns-lymphoma-biopsy",
+      "title": "Brain biopsy: primary diffuse large B-cell lymphoma of the CNS",
+      "expectedLocalPath": "reference-library/signout-sims/neuropathology/primary-cns-lymphoma-high-mag.jpg",
+      "tokens": [
+        "neuro",
+        "primary",
+        "cns",
+        "lymphoma",
+        "brain",
+        "diffuse",
+        "large"
+      ]
+    },
+    {
+      "caseId": "neuro-meningioma-resection",
+      "title": "Dural-based mass resection: meningioma, CNS WHO grade 1",
+      "expectedLocalPath": "reference-library/signout-sims/neuropathology/meningioma-he.jpg",
+      "tokens": [
+        "neuro",
+        "meningioma",
+        "dural",
+        "based",
+        "mass",
+        "cns",
+        "who",
+        "grade",
+        "histopathology"
+      ]
+    },
+    {
+      "caseId": "neuro-oligodendroglioma-resection",
+      "title": "Craniotomy resection: oligodendroglioma, IDH-mutant and 1p/19q-codeleted",
+      "expectedLocalPath": "reference-library/signout-sims/neuropathology/anaplastic-oligodendroglioma-he.jpg",
+      "tokens": [
+        "neuro",
+        "oligodendroglioma",
+        "craniotomy",
+        "idh",
+        "mutant",
+        "19q",
+        "codeleted",
+        "anaplastic"
+      ]
+    },
+    {
+      "caseId": "neuro-pitnet-transsphenoidal-resection",
+      "title": "Transsphenoidal resection: pituitary neuroendocrine tumor",
+      "expectedLocalPath": "reference-library/signout-sims/neuropathology/pituitary-adenoma-nonfunctioning-he.jpg",
+      "tokens": [
+        "neuro",
+        "pitnet",
+        "transsphenoidal",
+        "pituitary",
+        "neuroendocrine",
+        "tumor",
+        "adenoma",
+        "nonfunctioning"
+      ]
+    },
+    {
+      "caseId": "neuro-schwannoma-skull-base-resection",
+      "title": "Skull base mass resection: schwannoma",
+      "expectedLocalPath": "reference-library/signout-sims/neuropathology/schwannoma-high-mag.jpg",
+      "tokens": [
+        "neuro",
+        "schwannoma",
+        "skull",
+        "base",
+        "mass"
+      ]
+    },
+    {
+      "caseId": "neuro-medulloblastoma-resection",
+      "title": "Posterior fossa resection: medulloblastoma",
+      "expectedLocalPath": "reference-library/signout-sims/neuropathology/medulloblastoma-he.jpg",
+      "tokens": [
+        "neuro",
+        "medulloblastoma",
+        "posterior",
+        "fossa"
+      ]
+    },
+    {
+      "caseId": "neuro-ependymoma-spinal-resection",
+      "title": "Spinal cord tumor resection: ependymoma",
+      "expectedLocalPath": "reference-library/signout-sims/neuropathology/ependymoma-he.jpg",
+      "tokens": [
+        "neuro",
+        "ependymoma",
+        "spinal",
+        "cord",
+        "tumor"
+      ]
+    },
+    {
+      "caseId": "neuro-intervertebral-disc-gross-only",
+      "title": "Intervertebral disc: degenerative disc material",
+      "expectedLocalPath": "reference-library/signout-sims/neuropathology/intervertebral-disc-gross.jpg",
+      "tokens": [
+        "neuro",
+        "intervertebral",
+        "disc",
+        "only",
+        "degenerative",
+        "material",
+        "herniated"
+      ]
+    },
+    {
+      "caseId": "thoracic-lung-adenocarcinoma-lobectomy",
+      "title": "Lung lobectomy: invasive adenocarcinoma, acinar predominant",
+      "expectedLocalPath": "reference-library/signout-sims/thoracic/lung-adenocarcinoma-acinar-he.png",
+      "tokens": [
+        "thoracic",
+        "lung",
+        "adenocarcinoma",
+        "lobectomy",
+        "invasive",
+        "acinar",
+        "predominant",
+        "histopathology",
+        "pattern"
+      ]
+    },
+    {
+      "caseId": "thoracic-squamous-cell-carcinoma-biopsy",
+      "title": "Endobronchial biopsy: squamous cell carcinoma",
+      "expectedLocalPath": "reference-library/signout-sims/thoracic/lung-squamous-cell-carcinoma-he.jpg",
+      "tokens": [
+        "thoracic",
+        "squamous",
+        "carcinoma",
+        "endobronchial",
+        "lung",
+        "40x"
+      ]
+    },
+    {
+      "caseId": "thoracic-small-cell-carcinoma-biopsy",
+      "title": "Mediastinal node biopsy: small cell carcinoma",
+      "expectedLocalPath": "reference-library/signout-sims/thoracic/small-cell-carcinoma-he.jpg",
+      "tokens": [
+        "thoracic",
+        "small",
+        "carcinoma",
+        "mediastinal",
+        "node",
+        "histopathology"
+      ]
+    },
+    {
+      "caseId": "thoracic-pleural-mesothelioma-biopsy",
+      "title": "Pleural biopsy: malignant mesothelioma, epithelioid type",
+      "expectedLocalPath": "reference-library/signout-sims/thoracic/epithelioid-mesothelioma-he.jpg",
+      "tokens": [
+        "thoracic",
+        "pleural",
+        "mesothelioma",
+        "malignant",
+        "epithelioid",
+        "type"
+      ]
+    },
+    {
+      "caseId": "thoracic-thymoma-thymectomy",
+      "title": "Thymectomy: type B2 thymoma",
+      "expectedLocalPath": "reference-library/signout-sims/thoracic/thymoma-type-b2-he.jpg",
+      "tokens": [
+        "thoracic",
+        "thymoma",
+        "thymectomy",
+        "type"
+      ]
+    },
+    {
+      "caseId": "thoracic-apical-bleb-gross-only",
+      "title": "Apical lung wedge: ruptured bleb",
+      "expectedLocalPath": "reference-library/signout-sims/thoracic/apical-bleb-gross.jpg",
+      "tokens": [
+        "thoracic",
+        "apical",
+        "bleb",
+        "only",
+        "lung",
+        "wedge",
+        "ruptured",
+        "bullous",
+        "emphysema",
+        "4857852447"
+      ]
+    }
+  ],
+  "imports": []
+}

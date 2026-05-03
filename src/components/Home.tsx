@@ -1,17 +1,32 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import Card from './ui/Card.tsx';
 import { Section, User, UserActivity } from '../types.ts';
-import { 
+import {
   MicroscopeIcon, EyeIcon, 
-  BookOpenIcon, SparklesIcon
+  BookOpenIcon, SparklesIcon, AcademicCapIcon
 } from './icons.tsx';
 import { useUserProgress } from '../hooks/useUserProgress.ts';
 import { getAllUserData } from '../utils/tracking.ts';
 import { modules } from '../data/modules.ts';
+import {
+  corePrinciplesPromotedLectures,
+  curatedPromotedLectures,
+  type PromotedLectureRecord,
+} from '../utils/lectureLibraryCatalog.ts';
+import { setLectureLibraryIntent } from '../utils/lectureLibraryNavigation.ts';
+import { activeCurriculumModules } from '../content/curriculum/activeCurriculum.ts';
+import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
+import { getGuPilotEnhancement } from '../content/lectures/guPilotEnhancements.ts';
+import { setAlgorithmNavigatorIntent } from '../utils/algorithmNavigatorNavigation.ts';
+import { setCurriculumIntent } from '../utils/curriculumNavigation.ts';
+import { getInteractivePromotedLecture } from '../utils/interactiveLectureCatalog.ts';
+import { setTutorialLibraryIntent } from '../utils/tutorialLibraryNavigation.ts';
+import { BRAND } from '../utils/brand.ts';
 
 interface HomeProps {
   onSectionChange: (section: Section) => void;
   user: User | null;
+  preferences: LearningPreferences;
 }
 
 const diseaseCategories: Record<string, string[]> = {
@@ -189,65 +204,373 @@ const DiagnosticWorkbench: React.FC<{ user: User | null, onStartCase: (section: 
         </Card>
     );
 };
-
-
-const SectionLinkCard: React.FC<{
-  section: Section;
-  description: string;
-  icon: React.ReactNode;
-  onClick: (section: Section) => void;
-}> = ({ section, description, icon, onClick }) => (
-  <li className="list-none">
-    <Card 
-      interactive={true} 
-      className="!mb-0 h-full"
-      onClick={() => onClick(section)}
-    >
-      <div className="flex items-start">
-        <div className="flex-shrink-0 h-8 w-8 rounded-lg bg-sky-100 flex items-center justify-center mr-4">
-          <div className="text-sky-600">{icon}</div>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold font-serif text-slate-900">{section}</h3>
-          <p className="mt-1 text-sm text-slate-700">{description}</p>
-        </div>
-      </div>
-    </Card>
-  </li>
-);
-
-const Home: React.FC<HomeProps> = ({ onSectionChange, user }) => {
+const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
   // `useUserProgress` can be used here for other purposes if needed, e.g., showing visited status
   useUserProgress(user?.username);
+
+  const openLectureLibrary = (
+    lecture?: PromotedLectureRecord,
+    options?: { initialMode?: 'overview' | 'algorithm' | 'tissue' | 'knowledge' | 'check' | 'transcript'; imageLayerSetId?: string }
+  ) => {
+    const enhancement = lecture ? getGuPilotEnhancement(lecture.id) : undefined;
+    setLectureLibraryIntent({
+      selectedId: lecture?.id,
+      query: undefined,
+      track: lecture?.lectureTrack ?? 'all',
+      initialMode: options?.initialMode ?? enhancement?.defaultMode,
+      imageLayerSetId: options?.imageLayerSetId ?? enhancement?.tissueLayerSets[0]?.id,
+    });
+    onSectionChange(Section.DIDACTIC_LECTURES);
+  };
+
+  const openAlgorithmNavigator = (
+    algorithmId?: string,
+    lectureId?: string,
+    queryText?: string,
+    category?: string,
+    patternFamily?: string
+  ) => {
+    setAlgorithmNavigatorIntent({
+      selectedId: algorithmId,
+      lectureId,
+      query: queryText,
+      category,
+      patternFamily,
+    });
+    onSectionChange(Section.DIDACTIC_ALGORITHMS);
+  };
+
+  const openCurriculumModule = (moduleId: string) => {
+    const module = activeCurriculumModules.find((item) => item.moduleId === moduleId);
+    if (!module) {
+      onSectionChange(Section.PATHOLOGY_CURRICULUM);
+      return;
+    }
+
+    setCurriculumIntent({
+      moduleId: module.moduleId,
+      subspecialty: module.subspecialty,
+      promotion: module.promotionState,
+      query: module.title,
+    });
+    onSectionChange(Section.PATHOLOGY_CURRICULUM);
+  };
+
+  const openTutorialLibrary = (queryText?: string, track: 'all' | 'surgical-path' | 'clinical-path' | 'cross-cutting' = 'all') => {
+    setTutorialLibraryIntent({
+      query: queryText,
+      lane: 'all',
+      track,
+    });
+    onSectionChange(Section.DIDACTIC_TUTORIALS);
+  };
+
+  const openAssessmentPathway = (kind: 'ap-visual' | 'ap-signout' | 'cp-quiz' | 'cp-curriculum') => {
+    if (kind === 'ap-visual') {
+      onSectionChange(Section.VISUAL_CHALLENGE);
+      return;
+    }
+    if (kind === 'ap-signout') {
+      onSectionChange(Section.SIGN_OUT_SIMULATOR);
+      return;
+    }
+    if (kind === 'cp-quiz') {
+      openTutorialLibrary('hematology coagulation transfusion blood bank', 'clinical-path');
+      return;
+    }
+    openCurriculumModule('clinical-path-foundations');
+  };
     
-  const learningSections = [
-    { section: Section.LECTURE, description: "Core concepts, frameworks, and a high-level overview of the diagnostic approach.", icon: <SparklesIcon className="h-5 w-5" /> },
-    { section: Section.REFERENCE_LIBRARY, description: "Explore case studies, browse image galleries, and use the diagnostic atlas & flashcards.", icon: <BookOpenIcon className="h-5 w-5" /> },
-    { section: Section.SIGN_OUT_SIMULATOR, description: "The capstone experience: work through an unknown case, order tests, and write a report for AI-powered feedback.", icon: <MicroscopeIcon className="h-5 w-5" /> },
-    { section: Section.VISUAL_CHALLENGE, description: "Sharpen your morphologic eye by comparing Sarcoidosis and HP side-by-side on digital slides.", icon: <EyeIcon className="h-5 w-5" /> },
+  const practiceSections = [
+    { section: Section.REFERENCE_LIBRARY, description: 'Histology and ancillary images for the current teaching topic.', icon: <BookOpenIcon className="h-5 w-5" /> },
+    { section: Section.SIGN_OUT_SIMULATOR, description: 'Case-based application after lecture or tutorial study.', icon: <MicroscopeIcon className="h-5 w-5" /> },
+    { section: Section.SYLLABUS_EXPLORER, description: 'Review the related AP topics and board objectives.', icon: <AcademicCapIcon className="h-5 w-5" /> },
+    { section: Section.VISUAL_CHALLENGE, description: 'Short morphology drill when you want a visual reset instead of a long reading block.', icon: <EyeIcon className="h-5 w-5" /> },
+    { section: Section.LECTURE, description: 'Granulomatous disease lecture deck.', icon: <SparklesIcon className="h-5 w-5" /> },
+  ];
+  const breastGynHighlights = activeCurriculumModules.filter((module) =>
+    ['breast-core', 'gynecologic-core'].includes(module.moduleId)
+  );
+  const systemPathways = activeCurriculumModules.filter((module) =>
+    ['hpb-pancreas-core', 'thoracic-core', 'head-neck-endocrine-core'].includes(module.moduleId)
+  );
+  const skinMesenchymalHighlights = activeCurriculumModules.filter((module) =>
+    ['skin-melanocytic-staged', 'soft-tissue-bone-core'].includes(module.moduleId)
+  );
+  const neuroPediatricHighlights = activeCurriculumModules.filter((module) =>
+    ['neuropathology-core', 'pediatric-placental-staged'].includes(module.moduleId)
+  );
+  const guGiHighlights = activeCurriculumModules.filter((module) =>
+    ['renal-testicular-core', 'lower-gu-bladder-core', 'upper-gi-staged', 'colorectal-staged'].includes(module.moduleId)
+  );
+  const clinicalPathHighlights = activeCurriculumModules.filter((module) =>
+    ['clinical-path-foundations', 'hematology-red-cell-core', 'coagulation-hemostasis-core', 'transfusion-cellular-therapy-core'].includes(module.moduleId)
+  );
+  const dashboardLectureIds = ['bladder_path_core_principles', 'renal_mass_eval', 'testicular_mass_eval'];
+  const dashboardLectures = dashboardLectureIds
+    .map((lectureId) => getInteractivePromotedLecture(lectureId))
+    .filter(Boolean);
+  const masterclassLectureIds = [
+    'penile_who_complete_pathology',
+    'testicular_who_complete_pathology',
+    'bladder_path_core_principles',
+    'renal_mass_eval',
+  ];
+  const masterclassLectures = masterclassLectureIds
+    .map((lectureId) => getInteractivePromotedLecture(lectureId))
+    .filter(Boolean);
+  const primaryRoute = {
+    title: 'Breast and gynecologic core',
+    description: 'Start with the highest-yield AP lane, then branch outward once the epithelial framework is stable.',
+    primaryLabel: 'Start Breast Core',
+    primaryAction: () => openCurriculumModule('breast-core'),
+    secondaryLabel: 'Open Gynecologic Core',
+    secondaryAction: () => openCurriculumModule('gynecologic-core'),
+    modules: breastGynHighlights,
+  };
+  const alternateRoutes = [
+    {
+      key: 'systems',
+      title: 'GU, GI, and visceral systems',
+      description: 'Move into organ systems after the core breast and gyn pass.',
+      actionLabel: 'Open GU Core',
+      action: () => openCurriculumModule('renal-testicular-core'),
+    },
+    {
+      key: 'cp',
+      title: 'Clinical pathology',
+      description: 'Use the CP track when you need heme, coagulation, and transfusion flow.',
+      actionLabel: 'Open CP Foundations',
+      action: () => openCurriculumModule('clinical-path-foundations'),
+    },
+    {
+      key: 'curriculum',
+      title: 'Browse the full curriculum',
+      description: 'Open the full module map if you already know where you want to go.',
+      actionLabel: 'Open Curriculum',
+      action: () => onSectionChange(Section.PATHOLOGY_CURRICULUM),
+    },
+  ];
+  const laneCards = [
+    {
+      key: 'breast-gyn',
+      title: 'Breast / Gyn',
+      modules: breastGynHighlights,
+      actionLabel: 'Open lane',
+      action: () => openCurriculumModule('breast-core'),
+    },
+    {
+      key: 'gu-gi',
+      title: 'GU / GI',
+      modules: guGiHighlights,
+      actionLabel: 'Open lane',
+      action: () => openCurriculumModule('renal-testicular-core'),
+    },
+    {
+      key: 'thoracic-visceral',
+      title: 'Thoracic / HPB / H&N',
+      modules: systemPathways,
+      actionLabel: 'Open lane',
+      action: () => openCurriculumModule('thoracic-core'),
+    },
+    {
+      key: 'skin-soft',
+      title: 'Skin / Soft Tissue',
+      modules: skinMesenchymalHighlights,
+      actionLabel: 'Open lane',
+      action: () => openCurriculumModule('soft-tissue-bone-core'),
+    },
+    {
+      key: 'neuro-peds',
+      title: 'Neuro / Pediatric',
+      modules: neuroPediatricHighlights,
+      actionLabel: 'Open lane',
+      action: () => openCurriculumModule('neuropathology-core'),
+    },
+    {
+      key: 'cp-lane',
+      title: 'Heme / Coag / Transfusion',
+      modules: clinicalPathHighlights,
+      actionLabel: 'Open lane',
+      action: () => openCurriculumModule('clinical-path-foundations'),
+    },
+  ];
+  const studyUtilities = [
+    {
+      key: 'lectures',
+      title: 'Lectures',
+      ariaLabel: 'Lecture Sprint',
+      action: () => openLectureLibrary(curatedPromotedLectures.find((lecture) => lecture.id === 'bladder_path_core_principles')),
+    },
+    {
+      key: 'tutorials',
+      title: 'Tutorials',
+      ariaLabel: 'Tutorials',
+      action: () => openTutorialLibrary(undefined, 'all'),
+    },
+    {
+      key: 'atlas',
+      title: 'Reference Library',
+      ariaLabel: 'Reference Library',
+      action: () => onSectionChange(Section.REFERENCE_LIBRARY),
+    },
+    {
+      key: 'algorithms',
+      title: 'Algorithms',
+      ariaLabel: 'Algorithms',
+      action: () => openAlgorithmNavigator('algo_bladder_triage', 'bladder_path_core_principles'),
+    },
+  ];
+  const assessmentRoutes = [
+    {
+      title: 'AP cases',
+      description: 'Sign-out and morphology practice.',
+      primaryLabel: 'Open',
+      primaryAction: () => openAssessmentPathway('ap-signout'),
+    },
+    {
+      title: 'Visual drill',
+      description: 'Short morphology resets.',
+      primaryLabel: 'Open',
+      primaryAction: () => openAssessmentPathway('ap-visual'),
+    },
+    {
+      title: 'CP checks',
+      description: 'Quick board-style review.',
+      primaryLabel: 'Open',
+      primaryAction: () => openAssessmentPathway('cp-quiz'),
+    },
+    {
+      title: 'CP curriculum',
+      description: 'Return to the CP sequence.',
+      primaryLabel: 'Open',
+      primaryAction: () => openAssessmentPathway('cp-curriculum'),
+    },
   ];
 
   return (
-    <div className="space-y-12 animate-fade-in">
-      <header className="text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold font-serif text-slate-900 tracking-tight">Granulomatous Diseases of the Lung</h1>
-        <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto">An Interactive Learning Module for Pathology Residents</p>
+    <div className={`mx-auto max-w-6xl space-y-8 ${preferences.reduceMotion ? '' : 'animate-fade-in'}`}>
+      <header className="border-b border-slate-200 pb-8">
+        <p className="text-sm font-semibold uppercase tracking-wide text-sky-700">{BRAND.name}</p>
+        <h1 className="mt-3 max-w-4xl text-4xl font-semibold font-serif tracking-tight text-slate-950 sm:text-5xl">
+          A simple path for lecture, image review, and practice.
+        </h1>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-slate-650">
+          Start with a lecture. Use the microscopy review during teaching. Move to questions after the didactic pass.
+        </p>
       </header>
-      
-      <DiagnosticWorkbench user={user} onStartCase={onSectionChange} />
-      
-      <div>
-        <h2 className="text-2xl font-semibold font-serif text-slate-900 mb-6 text-center">Reference Library & Deep Dives</h2>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {learningSections.map(item => (
-            <SectionLinkCard 
-                key={item.section} 
-                {...item} 
-                onClick={onSectionChange}
-            />
-          ))}
-        </ul>
-      </div>
+
+      <section className="grid gap-4 lg:grid-cols-3">
+        {[
+          {
+            step: '1',
+            title: 'Choose a lecture',
+            text: 'Open the lecture library and choose the session you want to teach.',
+            label: 'Open lectures',
+            action: () => openLectureLibrary(),
+            primary: true,
+          },
+          {
+            step: '2',
+            title: 'Teach from the overview',
+            text: 'Use the teaching sequence and microscopy review as the session structure.',
+            label: 'Start GU WHO testis',
+            action: () => openLectureLibrary(masterclassLectures.find((lecture) => lecture.id === 'testicular_who_complete_pathology') as PromotedLectureRecord | undefined),
+          },
+          {
+            step: '3',
+            title: 'Apply after teaching',
+            text: 'Move to cases or visual drill only after the didactic pass.',
+            label: 'Open practice',
+            action: () => openAssessmentPathway('ap-signout'),
+          },
+        ].map((item) => (
+          <button
+            key={item.step}
+            type="button"
+            onClick={item.action}
+            className={`rounded-lg border p-5 text-left transition ${
+              item.primary
+                ? 'border-sky-500 bg-sky-50 text-sky-950 shadow-sm'
+                : 'border-slate-200 bg-white text-slate-900 hover:border-sky-300 hover:bg-sky-50'
+            }`}
+          >
+            <div className="flex items-center gap-3">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sm font-semibold text-sky-700 ring-1 ring-sky-200">
+                {item.step}
+              </span>
+              <h2 className="text-lg font-semibold text-slate-950">{item.title}</h2>
+            </div>
+            <p className="mt-4 min-h-12 text-sm leading-6 text-slate-600">{item.text}</p>
+            <div className="mt-5 text-sm font-semibold text-sky-700">{item.label}</div>
+          </button>
+        ))}
+      </section>
+
+      <section className="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.8fr)]">
+        <Card className="!mb-0">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-sky-700">Masterclass lectures</p>
+              <h2 className="mt-2 text-2xl font-semibold font-serif text-slate-950">Start here</h2>
+            </div>
+            <button
+              type="button"
+              onClick={() => openLectureLibrary()}
+              className="rounded-md border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-sky-300 hover:text-sky-800"
+            >
+              View all lectures
+            </button>
+          </div>
+          <div className="mt-6 divide-y divide-slate-200">
+            {masterclassLectures.map((lecture) => (
+              <button
+                key={lecture.id}
+                type="button"
+                onClick={() => openLectureLibrary(lecture as PromotedLectureRecord, { initialMode: 'overview' })}
+                className="block w-full py-5 text-left transition hover:bg-slate-50"
+              >
+                <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-slate-950">{lecture.title}</h3>
+                    {lecture.summary && (
+                      <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">{lecture.summary}</p>
+                    )}
+                  </div>
+                  <span className="shrink-0 text-sm font-semibold text-sky-700">Open</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </Card>
+
+        <Card className="!mb-0">
+          <p className="text-sm font-semibold uppercase tracking-wide text-sky-700">Secondary routes</p>
+          <div className="mt-5 space-y-3">
+            <button
+              type="button"
+              onClick={() => openCurriculumModule('renal-testicular-core')}
+              className="block w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-sky-300 hover:bg-sky-50"
+            >
+              GU curriculum
+            </button>
+            <button
+              type="button"
+              onClick={() => openTutorialLibrary(undefined, 'surgical-path')}
+              className="block w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-sky-300 hover:bg-sky-50"
+            >
+              Case tutorials
+            </button>
+            <button
+              type="button"
+              onClick={() => onSectionChange(Section.REFERENCE_LIBRARY)}
+              className="block w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-sky-300 hover:bg-sky-50"
+            >
+              Reference library
+            </button>
+          </div>
+        </Card>
+      </section>
     </div>
   );
 };

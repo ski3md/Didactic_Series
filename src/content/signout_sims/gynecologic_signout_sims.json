@@ -1,0 +1,421 @@
+{
+  "version": "2026-05-02",
+  "title": "Gynecologic Pathology Sign-Out Simulations",
+  "cases": [
+    {
+      "id": "gyn-endometrium-ein-biopsy",
+      "title": "Endometrial biopsy: atypical hyperplasia / EIN",
+      "site": "Endometrium",
+      "workflow": "biopsy",
+      "specimenType": "Endometrial biopsy",
+      "clinicalHistory": "54-year-old woman with abnormal uterine bleeding and thickened endometrium on ultrasound.",
+      "image": {
+        "src": "reference-library/signout-sims/gynecologic/endometrial-intraepithelial-neoplasia-he.jpg",
+        "caption": "Crowded endometrial glands with cytologic demarcation from background endometrium.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8252414/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC8252414",
+          "citation": "J Pathol. 2021 May 9; 254(1):20-30",
+          "license": "CC BY-NC-ND",
+          "figureLabel": "figure 4",
+          "figureCaption": "histology of early biopsies with ihc confirmed hts mutations but lacking diagnostic features of ein ah all panels are at the same magnification bar 100 m images were taken with 20 objective cd glands per ihc step sections are shown with symbol a representative endometrial cancer pt3 figo grade 1 for general comparison showing crowded glands with no intervening stroma diagnostic of adenocarcinoma b pt3 most fragments are superficial and atrophic rare glands in retrospect have distinct histology but such glands are too few and changes too minimal for diagnosis of ah ein c pt11 glands have some crowding and architectural abnormalities that fall short of ah ein criteria d pt13 glands have larger cells but minimal architectural irregularities e pt14 specimen very scant and highly fragmented limiting diagnosis f pt21 glands show mild architectural abnormalities and are not histologically very distinct from neighboring glands",
+          "figureScore": 25,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/9c/ce/PMC8252414.tar.gz",
+          "acquiredAt": "2026-05-02T16:26:57.509Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Identify architecturally crowded glands with gland area exceeding stroma in a discrete focus.",
+        "Confirm cytologic atypia relative to background endometrium and exclude benign mimics such as breakdown or polyp effect.",
+        "Search for confluent, complex, or solid growth that would support endometrioid carcinoma rather than EIN alone."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "pten-pax2",
+          "name": "PTEN and PAX2",
+          "result": "Loss may support EIN in a difficult or fragmented biopsy but is not required when morphology is diagnostic.",
+          "recommended": true
+        },
+        {
+          "id": "mismatch-repair",
+          "name": "Mismatch repair IHC",
+          "result": "Not routinely required for isolated EIN on biopsy unless carcinoma is diagnosed or clinical criteria indicate testing.",
+          "recommended": false
+        },
+        {
+          "id": "p53",
+          "name": "p53",
+          "result": "Wild-type pattern would not support serous carcinoma; reserve for marked atypia or serous differential.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Endometrium, biopsy: Atypical hyperplasia / endometrioid intraepithelial neoplasia (EIN). No carcinoma identified in this sample.",
+      "requiredReportElements": [
+        "atypical hyperplasia / EIN",
+        "no carcinoma identified",
+        "sample adequacy or fragmentation limitations"
+      ],
+      "pitfalls": [
+        "Do not overcall gland crowding from collapse, metaplasia, or polyp-associated change as EIN.",
+        "Do not exclude carcinoma if the biopsy is scant and clinically suspicious; communicate sampling limitation."
+      ]
+    },
+    {
+      "id": "gyn-endometrium-serous-biopsy",
+      "title": "Endometrial biopsy: serous carcinoma",
+      "site": "Endometrium",
+      "workflow": "biopsy",
+      "specimenType": "Endometrial curettage",
+      "clinicalHistory": "69-year-old postmenopausal woman with bleeding and a heterogeneous endometrial cavity on ultrasound.",
+      "image": {
+        "src": "reference-library/signout-sims/gynecologic/endometrial-serous-carcinoma-p53-he.jpg",
+        "caption": "High-grade endometrial carcinoma with papillary architecture and marked cytologic atypia.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6709041/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC6709041",
+          "citation": "Medicine (Baltimore). 2019 Jul 19; 98(29):e16433",
+          "license": "CC BY-NC-ND",
+          "figureLabel": "figure 2",
+          "figureCaption": "histological findings of endometrium a high grade serous carcinoma has an infiltrated growth pattern in myometrial muscle the neoplastic cells are arranged in nesting glandular and ethmoid with abundant cytoplasm partial eosinophilic large nucleus obvious heterogeneity and prominent nucleolus h e 100 b neuroendocrine carcinoma is arranged in trabeculae and islands the tumor cells are large with rich cytoplasm and the nucleus is pleomorphic arranged in a mosaic and the nucleolus is obvious h e 100 c the adenocarcinoma manifested positive for pax 8 d synaptophysin immunolabeling of neuroendocrine carcinoma e chromogranin a immunolabeling of neuroendocrine carcinoma f negative immunohistochemical stains for pax 8 in neuroendocrine carcinoma",
+          "figureScore": 26,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/3c/d8/PMC6709041.tar.gz",
+          "acquiredAt": "2026-05-02T16:27:03.155Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Recognize high-grade cytology with complex papillary, glandular, or solid architecture out of proportion to endometrioid carcinoma grade 1-2.",
+        "Evaluate for serous endometrial intraepithelial carcinoma and background atrophic endometrium when present.",
+        "Use p53 and p16 to support serous differentiation and avoid misclassifying a high-grade endometrioid carcinoma."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "p53-p16",
+          "name": "p53 and p16",
+          "result": "Aberrant p53 with diffuse p16 supports serous carcinoma in the appropriate morphology.",
+          "recommended": true
+        },
+        {
+          "id": "er-pr",
+          "name": "ER and PR",
+          "result": "Often reduced or patchy in serous carcinoma; useful as supportive context, not a standalone classifier.",
+          "recommended": false
+        },
+        {
+          "id": "mismatch-repair",
+          "name": "Mismatch repair IHC",
+          "result": "May be performed for endometrial carcinoma screening but does not replace histotype assignment.",
+          "recommended": true
+        }
+      ],
+      "reportingTarget": "Endometrium, curettage: Serous carcinoma.",
+      "requiredReportElements": [
+        "serous carcinoma",
+        "high-grade carcinoma",
+        "ancillary support if used"
+      ],
+      "pitfalls": [
+        "Do not diagnose serous carcinoma from p53 staining alone without compatible morphology.",
+        "Do not miss mixed carcinoma if a low-grade endometrioid component is also present."
+      ]
+    },
+    {
+      "id": "gyn-hysterectomy-endometrioid-carcinoma",
+      "title": "Hysterectomy: endometrioid carcinoma with myoinvasion",
+      "site": "Uterus",
+      "workflow": "resection",
+      "specimenType": "Total hysterectomy with bilateral salpingo-oophorectomy",
+      "clinicalHistory": "61-year-old woman with biopsy-proven FIGO grade 1 endometrioid adenocarcinoma.",
+      "image": {
+        "src": "reference-library/signout-sims/gynecologic/endometrioid-carcinoma-myoinvasion-he.jpg",
+        "caption": "Endometrioid adenocarcinoma invading myometrium.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6296844/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC6296844",
+          "citation": "Int J Gynecol Pathol. 2019 Jan 14; 38(Iss 1 Suppl 1):S9-S24",
+          "license": "CC BY",
+          "figureLabel": "fig 2",
+          "figureCaption": "inking the anterior and posterior uterine serosal surfaces with extension of the ink to the ectocervix or vaginal cuff margin a helps to confirm the presence of tumor in the uterine serosa arrow b and in cases with cervical stromal involvement c the measurement of the relationship of the stromal invasion to the full thickness of the cervical wall line and the proper identification of the ectocervical or vaginal cuff margin d",
+          "figureScore": 12,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c5/a6/PMC6296844.tar.gz",
+          "acquiredAt": "2026-05-02T16:27:07.978Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Confirm endometrioid histotype and assign FIGO grade based on solid growth and nuclear features.",
+        "Measure tumor size and depth of myometrial invasion relative to total myometrial thickness.",
+        "Assess cervical stromal involvement, lymphovascular invasion, lower uterine segment, adnexa, serosa, margins, and submitted lymph nodes."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "mismatch-repair",
+          "name": "Mismatch repair IHC",
+          "result": "Screening panel helps identify mismatch repair deficiency and potential Lynch syndrome workup.",
+          "recommended": true
+        },
+        {
+          "id": "p53",
+          "name": "p53",
+          "result": "Wild-type pattern supports low-grade endometrioid carcinoma when morphology is concordant.",
+          "recommended": true
+        },
+        {
+          "id": "er-pr",
+          "name": "ER and PR",
+          "result": "Usually positive in low-grade endometrioid carcinoma; not required for routine staging.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "tumor site",
+        "histologic type",
+        "FIGO grade",
+        "tumor size",
+        "myometrial invasion depth",
+        "myometrial thickness",
+        "cervical stromal involvement",
+        "lymphovascular invasion",
+        "adnexa",
+        "margins",
+        "lymph nodes",
+        "pT category"
+      ],
+      "reportingTarget": "Uterus, cervix, bilateral tubes and ovaries, hysterectomy and bilateral salpingo-oophorectomy: Endometrioid carcinoma, FIGO grade 1, 4.2 cm, invading 6 mm of 18 mm myometrium, no cervical stromal involvement, no lymphovascular invasion identified, margins negative, pT1a.",
+      "requiredReportElements": [
+        "endometrioid carcinoma",
+        "FIGO grade 1",
+        "tumor size",
+        "depth and percent myometrial invasion",
+        "cervical stromal involvement",
+        "lymphovascular invasion",
+        "margins",
+        "pT category"
+      ],
+      "pitfalls": [
+        "Do not report percent myoinvasion without documenting both invasion depth and myometrial thickness.",
+        "Do not omit LVSI because it affects risk stratification and adjuvant management."
+      ]
+    },
+    {
+      "id": "gyn-cervix-cone-hsil-ais",
+      "title": "Cervical cone: HSIL with endocervical adenocarcinoma in situ",
+      "site": "Cervix",
+      "workflow": "resection",
+      "specimenType": "Cold knife cone biopsy with endocervical curettage",
+      "clinicalHistory": "37-year-old woman with HPV-16 positivity, HSIL cytology, and atypical glandular cells.",
+      "image": {
+        "src": "reference-library/signout-sims/gynecologic/cervix-hsil-ais-he.jpg",
+        "caption": "High-grade squamous intraepithelial lesion with adjacent endocervical glandular atypia.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6897002/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC6897002",
+          "citation": "Asian Pac J Cancer Prev. 2019; 20(2):377-382",
+          "license": "CC BY",
+          "figureLabel": "figure 1",
+          "figureCaption": "management of women with atypical glandular cells not otherwise specified cin2 cervical intraepithelial neoplasia grade 2 leep loop electrosurgical excision procedure ckc cold knife conization ais adenocarcinoma in situ ecc endocervical curettage",
+          "figureScore": 44,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/04/30/PMC6897002.tar.gz",
+          "acquiredAt": "2026-05-02T16:27:17.070Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Map HSIL extent across ectocervical and endocervical quadrants and identify gland duct involvement if present.",
+        "Evaluate endocervical glands for AIS with stratified atypical mucinous epithelium and mitotic/apoptotic activity.",
+        "Assess ectocervical, endocervical, and deep margin status separately and exclude stromal invasion."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "p16",
+          "name": "p16",
+          "result": "Block-type staining supports HPV-associated HSIL/AIS in morphologically suspicious foci.",
+          "recommended": true
+        },
+        {
+          "id": "ki67",
+          "name": "Ki-67",
+          "result": "Expanded proliferation supports HSIL when the differential includes immature metaplasia.",
+          "recommended": false
+        },
+        {
+          "id": "cea-er",
+          "name": "CEA and ER",
+          "result": "Can help separate AIS from endometrial-type glandular mimics in selected cases.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "HSIL presence and extent",
+        "AIS presence and extent",
+        "invasion status",
+        "ectocervical margin",
+        "endocervical margin",
+        "deep margin",
+        "ECC findings"
+      ],
+      "reportingTarget": "Cervix, cold knife cone: High-grade squamous intraepithelial lesion (CIN 3) and endocervical adenocarcinoma in situ. No invasive carcinoma identified. Endocervical margin involved by AIS; ectocervical and deep margins negative. Endocervical curettage shows AIS.",
+      "requiredReportElements": [
+        "HSIL / CIN 3",
+        "adenocarcinoma in situ",
+        "no invasive carcinoma",
+        "separate margin status",
+        "ECC result"
+      ],
+      "pitfalls": [
+        "Do not combine all margins into a single positive/negative statement.",
+        "Do not miss skip lesions of AIS; submit and examine the cone systematically."
+      ]
+    },
+    {
+      "id": "gyn-ovary-serous-borderline",
+      "title": "Oophorectomy: serous borderline tumor",
+      "site": "Ovary",
+      "workflow": "resection",
+      "specimenType": "Unilateral salpingo-oophorectomy",
+      "clinicalHistory": "45-year-old woman with a 7.5 cm multiloculated cystic ovarian mass and no radiographic extraovarian disease.",
+      "image": {
+        "src": "reference-library/signout-sims/gynecologic/ovary-serous-borderline-tumor-he.jpg",
+        "caption": "Serous borderline tumor with hierarchical papillary architecture and epithelial stratification.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12335055/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC12335055",
+          "citation": "BMC Pregnancy Childbirth. 2025 Aug 8; 25:829",
+          "license": "CC BY-NC-ND",
+          "figureLabel": "fig 3",
+          "figureCaption": "questions that need to be discussed step by step by the mdt for embryo cryopreservation before fss in bot patients and our answers for the patient in this case mdt multidisciplinary team fss fertility sparing surgery bot borderline ovarian tumor fp fertility preservation re fss re fertility sparing surgery le letrozole os ovarian stimulation opu oocyte pick up fet frozen embryo transfer",
+          "figureScore": 10,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/96/64/PMC12335055.tar.gz",
+          "acquiredAt": "2026-05-02T16:27:23.225Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Identify hierarchical papillary architecture with epithelial proliferation and mild to moderate atypia.",
+        "Extensively sample solid, papillary, or excrescences to exclude invasive low-grade serous carcinoma.",
+        "Report ovarian surface involvement, capsule status, implants if submitted, and microinvasion or micropapillary pattern if present."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "Typical serous borderline tumor is diagnosed by morphology and sampling.",
+          "recommended": true
+        },
+        {
+          "id": "wt1-pax8",
+          "name": "WT1 and PAX8",
+          "result": "Supports Mullerian serous lineage if the differential includes metastatic carcinoma.",
+          "recommended": false
+        },
+        {
+          "id": "p53",
+          "name": "p53",
+          "result": "Wild-type pattern is expected; aberrant staining should prompt reconsideration of high-grade serous carcinoma.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "tumor site",
+        "tumor size",
+        "histologic type",
+        "ovarian surface involvement",
+        "capsule status",
+        "microinvasion",
+        "implants",
+        "fallopian tube involvement",
+        "pT category"
+      ],
+      "reportingTarget": "Ovary and fallopian tube, unilateral salpingo-oophorectomy: Serous borderline tumor, 7.5 cm, confined to ovary, ovarian surface not involved, no microinvasion identified, fallopian tube uninvolved, pT1a.",
+      "requiredReportElements": [
+        "serous borderline tumor",
+        "tumor size",
+        "surface involvement",
+        "microinvasion status",
+        "fallopian tube involvement",
+        "pT category"
+      ],
+      "pitfalls": [
+        "Do not under-sample papillary excrescences where invasive carcinoma may be focal.",
+        "Do not call detached epithelial clusters in cyst fluid invasive implants."
+      ]
+    },
+    {
+      "id": "gyn-products-of-conception-gross-only",
+      "title": "Products of conception: first-trimester evacuation",
+      "site": "Uterus",
+      "workflow": "gross-only",
+      "specimenType": "Suction dilation and curettage products of conception",
+      "clinicalHistory": "29-year-old woman with missed abortion at 9 weeks gestational age.",
+      "image": {
+        "src": "reference-library/signout-sims/gynecologic/products-of-conception-chorionic-villi-he.jpg",
+        "caption": "Immature chorionic villi and decidua in products of conception.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6280238/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC6280238",
+          "citation": "Case Rep Obstet Gynecol. 2018 Nov 21; 2018:1536801",
+          "license": "CC BY",
+          "figureLabel": "figure 1",
+          "figureCaption": "retained products of conception a and b prehysteroscopic morcellation and c and d postmorcellation appearance with the intrauterine bigatti shaver system",
+          "figureScore": 20,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/ef/f5/PMC6280238.tar.gz",
+          "acquiredAt": "2026-05-02T16:27:28.458Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Confirm that the specimen grossly contains villous or membranous tissue consistent with products of conception.",
+        "Submit representative tissue when local policy requires microscopic confirmation or when villi are not grossly identified.",
+        "Screen for hydropic villi, abnormal trophoblastic proliferation, fetal parts, or clinical concern for ectopic pregnancy."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "No ancillary study is needed for routine first-trimester products with typical villi.",
+          "recommended": true
+        },
+        {
+          "id": "p57",
+          "name": "p57",
+          "result": "Reserve for suspected complete hydatidiform mole or abnormal villous morphology.",
+          "recommended": false
+        },
+        {
+          "id": "genotyping",
+          "name": "Molar genotyping",
+          "result": "Useful when morphology and p57 do not resolve molar classification.",
+          "recommended": false
+        }
+      ],
+      "grossOnlyChecklist": [
+        "aggregate weight or volume",
+        "aggregate dimensions",
+        "presence of villous tissue",
+        "fetal parts if present",
+        "representative sampling or gross-only policy statement"
+      ],
+      "reportingTarget": "Uterine contents, suction curettage: Products of conception, immature chorionic villi and decidua identified.",
+      "requiredReportElements": [
+        "products of conception",
+        "chorionic villi",
+        "decidua",
+        "gross-only or microscopic confirmation basis"
+      ],
+      "pitfalls": [
+        "Do not issue a routine products diagnosis if no villi are identified and ectopic pregnancy is a clinical concern.",
+        "Do not miss molar pregnancy in hydropic or unusually proliferative villi."
+      ]
+    }
+  ]
+}

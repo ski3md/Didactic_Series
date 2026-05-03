@@ -1,0 +1,50 @@
+{
+  "id": "ap-subspecialty-01",
+  "subspecialtyId": "subspecialty-id",
+  "title": "Case title",
+  "workflow": "biopsy",
+  "specimenType": "Biopsy specimen, resection specimen, or gross-only specimen",
+  "diagnosticTask": "Clinical sign-out task the resident must perform.",
+  "displayFormatting": {
+    "firstPanel": "histology-image-first",
+    "secondPanel": "observation-sequence",
+    "thirdPanel": "report-language",
+    "revealOrder": ["image", "clinical header", "learner observation", "diagnostic reasoning", "ancillary studies if indicated", "final report language"],
+    "imageSizing": "uniform-large-contain",
+    "requiredNavigation": "case-list-to-single-case-page-or-panel"
+  },
+  "imageAcquisition": {
+    "library": "ap-signout/subspecialty-id",
+    "acceptedSourceKinds": ["image_url", "local_image", "pdf_page"],
+    "minimumImages": 1,
+    "requiredEvidence": [
+      {
+        "slot": "stable-image-slot-id",
+        "role": "diagnostic-histology",
+        "sourceStatus": "required-before-release",
+        "captionMustName": ["diagnostic feature", "stain or marker", "entity"]
+      }
+    ]
+  },
+  "diagnosticSteps": [
+    {
+      "step": 1,
+      "prompt": "Name the first visual finding that drives the differential.",
+      "expectedObservation": "Specific finding the learner must see."
+    },
+    {
+      "step": 2,
+      "prompt": "State the highest-risk diagnostic or reporting decision.",
+      "expectedObservation": "Decision point that changes sign-out or management."
+    },
+    {
+      "step": 3,
+      "prompt": "Dictate the final report line.",
+      "expectedObservation": "Exact report-ready language."
+    }
+  ],
+  "synopticChecklist": [],
+  "grossOnlyChecklist": [],
+  "reportingTarget": "Exact report language.",
+  "pitfalls": ["Specific diagnostic pitfall", "Specific reporting pitfall"]
+}

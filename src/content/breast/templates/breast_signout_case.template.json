@@ -1,0 +1,42 @@
+{
+  "id": "bsg-entity-or-case-id",
+  "title": "Case title",
+  "diagnosticTask": "State the real sign-out task the trainee must perform.",
+  "mode": "image-first-mcq",
+  "assetCategoryIds": ["diagnostic-histology", "ancillary-study", "faculty-key"],
+  "clinicalHeader": {
+    "specimen": "Core biopsy, excision, mastectomy, sentinel node, or biomarker study",
+    "clinicalQuestion": "What the pathologist must resolve",
+    "radiologyOrGross": "Only include clinically relevant information"
+  },
+  "visualEvidenceRequirements": [
+    {
+      "slot": "he-diagnostic-image",
+      "requiredRole": "diagnostic-histology",
+      "requiredCaptionElements": ["diagnostic feature 1", "diagnostic feature 2"],
+      "minimumResolutionPx": 1000
+    }
+  ],
+  "diagnosticSteps": [
+    {
+      "step": 1,
+      "displayState": "image-only",
+      "prompt": "Ask for a visual observation, not a diagnosis.",
+      "expectedObservation": "Specific microscopic finding the learner must see."
+    },
+    {
+      "step": 2,
+      "displayState": "content-revealed",
+      "prompt": "Ask for the diagnostic decision.",
+      "expectedObservation": "Explicit reason this diagnosis is favored over the closest mimic."
+    }
+  ],
+  "reportingTarget": "Exact sign-out language.",
+  "mustMention": ["required report element 1", "required report element 2"],
+  "pitfalls": ["Specific diagnostic pitfall", "Specific reporting pitfall"],
+  "facultyKey": {
+    "diagnosticDecision": "Correct diagnosis",
+    "highestRiskMimic": "Most important mimic",
+    "managementImpact": "Why this matters clinically"
+  }
+}

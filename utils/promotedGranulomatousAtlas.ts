@@ -1,5 +1,6 @@
 import { StoredImage } from '../types';
 import promotedGranulomatousImages from '../src/content/downloads_imports/normalized/images.normalized.json';
+import { getGranulomatousAtlasTraceability } from './benchmarkTraceability';
 
 interface PromotedGranulomatousSourceImage {
   id: string;
@@ -43,12 +44,14 @@ const promotedAtlasImages: StoredImage[] = (promotedGranulomatousImages as Promo
   const displayEntity = toDisplayEntity(image.entity);
   const cells = image.provenance?.cells || [];
   const cellSummary = cells.length > 0 ? ` Key cells: ${cells.slice(0, 3).join(', ')}.` : '';
+  const traceability = getGranulomatousAtlasTraceability(image.entity);
+  const diagnosticSummary = traceability ? ` ${traceability.diagnosticSummary}` : '';
 
   return {
     id: `promoted_${image.id}_${index}`,
     src: image.src,
     title: displayEntity,
-    description: `${image.description}${cellSummary}`.trim(),
+    description: `${image.description}${cellSummary}${diagnosticSummary}`.trim(),
     uploader: 'Promoted Downloads Atlas',
     timestamp: 0,
     entity: displayEntity,
@@ -57,6 +60,7 @@ const promotedAtlasImages: StoredImage[] = (promotedGranulomatousImages as Promo
     cells,
     collection: 'promoted',
     readOnly: true,
+    benchmarkTraceability: traceability?.benchmarkTraceability,
   };
 });
 

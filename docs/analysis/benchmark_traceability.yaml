@@ -1,0 +1,249 @@
+version: 1
+generated_on: 2026-04-01
+project: Didactic_Series
+purpose: >
+  Seed machine-readable benchmark and promotion traceability for staged pathology
+  content moving into canonical learner-facing surfaces.
+
+source_documents:
+  roadmap:
+    - CURRENT_STATE_MASTER_ROADMAP.md
+    - NEXT_20_MILESTONES_TRANCHE_PLAN.md
+  planning:
+    - src/content/downloads_imports/planning/promotion_priority.json
+    - src/content/downloads_imports/planning/promotion_queues.json
+    - src/content/downloads_imports/planning/integration_recommendations.json
+  pathology_specs:
+    - src/content/syllabus/ap_spec.raw.txt
+    - src/content/syllabus/cp_spec.raw.txt
+    - src/content/syllabus/syllabus.normalized.json
+  analysis:
+    - docs/analysis/LEARNING_CONTRACT_ANNEX.md
+    - docs/analysis/COMPETENCY_TRACEABILITY_MATRIX.md
+    - docs/analysis/PATHOLOGY_SPECIFICATION_CONFORMANCE_PROFILE.md
+
+benchmark_frameworks:
+  adult_learning:
+    principles:
+      - learner_orientation
+      - self_directed_use
+      - authentic_task_relevance
+      - scaffolded_progression
+      - reflection_and_feedback
+  professional_education:
+    principles:
+      - explicit_learning_objectives
+      - practice_aligned_instruction
+      - assessment_fit
+      - level_disclosure
+      - provenance_and_reviewability
+  pathology_spec_alignment:
+    principles:
+      - discipline_classification
+      - syllabus_topic_mapping
+      - level_mapping
+      - promotion_rationale
+
+promotion_gates:
+  - id: orientation
+    description: Learner can identify module type, audience, and purpose quickly.
+  - id: objective_clarity
+    description: Observable learning objectives are present.
+  - id: workflow_relevance
+    description: Content teaches a pathology task such as diagnosis, workup, or differential reasoning.
+  - id: assessment_fit
+    description: Assessment pattern matches the content surface.
+  - id: path_spec_traceability
+    description: Content maps to AP/CP syllabus topics and level.
+  - id: content_integrity
+    description: Promoted content is curated, deduplicated, and provenance-retaining.
+  - id: ux_readiness
+    description: Canonical navigation placement and cross-links are defined.
+
+conformance_levels:
+  L0: no_pathology_spec_mapping
+  L1: discipline_only
+  L2: syllabus_mapped
+  L3: syllabus_and_level_mapped
+  L4: mapped_and_cross_linked
+
+queues:
+  - queue_id: core_principles_library
+    display_name: Core Principles Library
+    source_repo: ioc-next-app
+    current_score: 99.5
+    content_types:
+      - lectures
+      - tutorials
+    intended_surface: core_principles_didactic_module
+    discipline: AP
+    current_state: staged_for_promotion
+    recommended_decision: promote_first
+    conformance_target: L3
+    benchmark_status:
+      learner_orientation: pass_with_metadata_work
+      self_directed_use: pass
+      authentic_task_relevance: pass
+      scaffolded_progression: partial
+      explicit_learning_objectives: partial
+      assessment_fit: partial
+      syllabus_topic_mapping: partial
+      level_mapping: partial
+      ux_readiness: partial
+    required_actions:
+      - add_objective_metadata
+      - add_ap_category_anchors
+      - assign_c_or_ar_level
+      - add_cross_links_to_tutorials_and_syllabus
+    seed_assets:
+      - id: ioc-overview-breast-surgery
+        title: "Breast Pathology: Core Principles"
+      - id: ioc-overview-gynecologic-oncology
+        title: "Gynecologic Pathology: Core Principles"
+      - id: ioc-overview-thoracic-surgery
+        title: "Lung Pathology: Core Principles"
+
+  - queue_id: granulomatous_module
+    display_name: Granulomatous Diseases Module
+    source_repo: pathology-learning-module_-granulomatous-diseases (3)
+    current_score: 95.95
+    content_types:
+      - images
+      - tutorials
+      - mcqs
+      - flashcards
+    intended_surface: atlas_and_native_granuloma_workflows
+    discipline: mixed
+    current_state: staged_for_promotion
+    recommended_decision: promote_first
+    conformance_target: L2
+    benchmark_status:
+      learner_orientation: pass
+      self_directed_use: pass
+      authentic_task_relevance: pass
+      scaffolded_progression: partial
+      explicit_learning_objectives: partial
+      assessment_fit: partial
+      syllabus_topic_mapping: partial
+      level_mapping: partial
+      ux_readiness: pass
+    required_actions:
+      - normalize_image_family_labels
+      - add_diagnostic_summaries
+      - map_tutorials_to_syllabus_topics_where_possible
+      - add_cross_links_between_images_and_tutorials
+
+  - queue_id: abpath_advanced_board_prep
+    display_name: ABPath Advanced Board Prep
+    source_repo: abpath-advanced-board-prep-platform (3)
+    current_score: 84.2
+    content_types:
+      - tutorials
+      - mcqs
+      - flashcards
+    intended_surface: curated_board_prep_tracks
+    discipline: mixed
+    current_state: staged_pending_curation
+    recommended_decision: promote_after_curation
+    conformance_target: L3
+    benchmark_status:
+      learner_orientation: partial
+      self_directed_use: partial
+      authentic_task_relevance: pass
+      scaffolded_progression: partial
+      explicit_learning_objectives: partial
+      assessment_fit: pass
+      syllabus_topic_mapping: fail
+      level_mapping: fail
+      ux_readiness: fail
+    required_actions:
+      - split_into_ap_cp_and_granulomatous_tracks
+      - deduplicate_overlapping_titles
+      - map_promoted_subset_to_normalized_syllabus
+      - add_track_and_level_labels
+
+  - queue_id: cp_tutorial_batch_ready
+    display_name: CP Tutorial Batch Ready
+    source_repo: cp-content-specification-tutorial-batch-ready
+    current_score: 72.07
+    content_types:
+      - tutorials
+      - mcqs
+      - flashcards
+    intended_surface: cp_board_prep_track
+    discipline: CP
+    current_state: staged_pending_curation
+    recommended_decision: promote_after_curation
+    conformance_target: L3
+    benchmark_status:
+      learner_orientation: partial
+      self_directed_use: pass
+      authentic_task_relevance: pass
+      scaffolded_progression: partial
+      explicit_learning_objectives: partial
+      assessment_fit: pass
+      syllabus_topic_mapping: partial
+      level_mapping: partial
+      ux_readiness: partial
+    required_actions:
+      - map_to_cp_spec_topics
+      - assign_c_ar_f_levels
+      - expose_as_cp_specific_track
+
+  - queue_id: cp_tutorial_111125
+    display_name: CP Tutorial 11.11.25
+    source_repo: cp-content-specification-tutorial_11.11.25
+    current_score: 60.9
+    content_types:
+      - tutorials
+      - mcqs
+    intended_surface: cp_board_prep_track
+    discipline: CP
+    current_state: staged_pending_deduplication
+    recommended_decision: fold_into_cp_queue
+    conformance_target: L3
+    benchmark_status:
+      learner_orientation: partial
+      self_directed_use: partial
+      authentic_task_relevance: pass
+      scaffolded_progression: partial
+      explicit_learning_objectives: partial
+      assessment_fit: pass
+      syllabus_topic_mapping: partial
+      level_mapping: partial
+      ux_readiness: partial
+    required_actions:
+      - deduplicate_against_cp_batch_ready
+      - map_retained_items_to_cp_topics
+      - inherit_cp_track_labels
+
+  - queue_id: microbiology_algorithm_workspace
+    display_name: Microbiology Algorithm Workspace
+    source_repo: workspace-3418f879-7689-4224-9717-636b27130563
+    current_score: 46.4
+    content_types:
+      - algorithms
+    intended_surface: none_currently
+    discipline: domain-adjacent
+    current_state: staged_hold
+    recommended_decision: hold_in_staging
+    conformance_target: L0
+    benchmark_status:
+      learner_orientation: partial
+      self_directed_use: partial
+      authentic_task_relevance: partial
+      scaffolded_progression: unknown
+      explicit_learning_objectives: unknown
+      assessment_fit: fail
+      syllabus_topic_mapping: fail
+      level_mapping: fail
+      ux_readiness: fail
+    required_actions:
+      - defer_until_algorithm_navigator_exists
+      - decide_if_infectious_disease_track_belongs_in_product
+
+next_execution_steps:
+  - create traceability fields in promoted content metadata
+  - promote the first core principles lecture set with syllabus anchors
+  - promote the first granulomatous atlas group with diagnostic summaries
+  - curate one AP_or_CP tutorial track before exposing mixed board prep content

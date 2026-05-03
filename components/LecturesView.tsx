@@ -70,6 +70,8 @@ const LecturesView: React.FC = () => {
   const selectedLecture = filteredLectures.find((lecture) => lecture.id === selectedId) ?? filteredLectures[0];
   const entityCards = (selectedLecture?.provenance.entityCards as LectureEntityCard[] | undefined) ?? [];
   const slides = (selectedLecture?.slides as LectureSlide[] | undefined) ?? [];
+  const learningObjectives = selectedLecture?.learningObjectives ?? [];
+  const benchmarkTraceability = selectedLecture?.benchmarkTraceability;
   const relatedAlgorithms = useMemo(() => {
     if (!selectedLecture?.category) {
       return [];
@@ -162,6 +164,7 @@ const LecturesView: React.FC = () => {
                 <div className="mt-4 flex items-center gap-4 text-xs text-slate-500">
                   <span>{(lecture.provenance.slideCount as number | undefined) ?? 0} slides</span>
                   <span>{(lecture.provenance.entityCardsCount as number | undefined) ?? 0} entity cards</span>
+                  {lecture.benchmarkTraceability && <span>{lecture.benchmarkTraceability.learnerLevel} level</span>}
                 </div>
               </button>
             );
@@ -201,6 +204,77 @@ const LecturesView: React.FC = () => {
                 </div>
               )}
             </Card>
+
+            {(learningObjectives.length > 0 || benchmarkTraceability) && (
+              <Card>
+                <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
+                  {learningObjectives.length > 0 && (
+                    <div>
+                      <h3 className="text-xl font-semibold font-serif text-slate-900">Learning Objectives</h3>
+                      <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                        {learningObjectives.map((objective) => (
+                          <li key={objective} className="list-disc ml-5">
+                            {objective}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {benchmarkTraceability && (
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm text-slate-700">
+                      <h3 className="text-base font-semibold text-slate-900">Benchmark Traceability</h3>
+                      <div className="mt-3 space-y-2">
+                        <p><span className="font-semibold text-slate-900">Discipline:</span> {benchmarkTraceability.discipline}</p>
+                        <p><span className="font-semibold text-slate-900">Conformance:</span> {benchmarkTraceability.conformanceLevel}</p>
+                        <p><span className="font-semibold text-slate-900">Learner level:</span> {benchmarkTraceability.learnerLevel}</p>
+                        <p><span className="font-semibold text-slate-900">Surface:</span> {benchmarkTraceability.promotionSurface}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </Card>
+            )}
+
+            {benchmarkTraceability && (
+              <Card>
+                <h3 className="text-xl font-semibold font-serif text-slate-900">Syllabus Anchors</h3>
+                <div className="mt-4 grid gap-4 lg:grid-cols-2">
+                  {benchmarkTraceability.syllabusAnchors.map((anchor) => (
+                    <div
+                      key={`${anchor.categoryId ?? 'manual'}-${anchor.topic}`}
+                      className="rounded-lg border border-slate-200 bg-slate-50 p-4"
+                    >
+                      <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        <span>{anchor.categoryId ?? 'Manual anchor'}</span>
+                        {anchor.difficulty && <span className="rounded-full bg-white px-2 py-1 text-[11px] text-slate-600">{anchor.difficulty}</span>}
+                      </div>
+                      <h4 className="mt-2 font-semibold text-slate-900">{anchor.topic}</h4>
+                      <p className="mt-2 text-sm text-slate-600">{anchor.summary}</p>
+                    </div>
+                  ))}
+                </div>
+                {benchmarkTraceability.normalizedSyllabusGap && (
+                  <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+                    {benchmarkTraceability.normalizedSyllabusGap}
+                  </div>
+                )}
+                {benchmarkTraceability.relatedContent && benchmarkTraceability.relatedContent.length > 0 && (
+                  <div className="mt-6">
+                    <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-500">Related Promoted Content</h4>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {benchmarkTraceability.relatedContent.map((item) => (
+                        <span
+                          key={`${item.contentType}-${item.id}`}
+                          className="rounded-full bg-primary-50 px-3 py-1.5 text-sm text-primary-800"
+                        >
+                          {item.title}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </Card>
+            )}
 
             <Card>
               <h3 className="mb-4 flex items-center text-xl font-semibold font-serif text-slate-900">

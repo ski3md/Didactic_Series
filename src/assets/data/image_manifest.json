@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-22T04:14:30.777Z",
+  "generated": "2026-03-31T05:56:25.015Z",
   "ai_enhanced": false,
   "version": "1.0.0-compat",
   "schema": "who-2022-thoracic",
@@ -1447,31 +1447,6 @@
           }
         ]
       },
-      "malakoplakia": {
-        "H&E": [
-          {
-            "id": "curated_gyn_expanded_malakoplakia___high_mag",
-            "entity": "malakoplakia",
-            "category": "curated-import",
-            "pattern": "gyn_expanded",
-            "cells": [],
-            "stain": "H&E",
-            "stainRole": "general morphology",
-            "organ": "mixed",
-            "system": "pathology",
-            "difficulty": "intermediate",
-            "path": "https://upload.wikimedia.org/wikipedia/commons/3/30/Malakoplakia_-_high_mag.jpg",
-            "tags": [
-              "gyn_expanded",
-              "malakoplakia_high_mag"
-            ],
-            "teachingPoint": "Curated histology atlas image for Malakoplakia — high mag.",
-            "source": "https://commons.wikimedia.org/wiki/File:Malakoplakia_-_high_mag.jpg",
-            "filename": "Malakoplakia_-_high_mag.jpg",
-            "aiEnhanced": false
-          }
-        ]
-      },
       "juvenile_granulosa_cell_tumor": {
         "H&E": [
           {
@@ -1668,6 +1643,291 @@
             "teachingPoint": "Curated histology atlas image for Leydig cell tumor — high mag.",
             "source": "https://commons.wikimedia.org/wiki/File:Leydig_cell_tumor_-_high_mag.jpg",
             "filename": "Leydig_cell_tumor_-_high_mag.jpg",
+            "aiEnhanced": false
+          }
+        ]
+      }
+    },
+    "inflammatory_mimic": {
+      "malakoplakia": {
+        "H&E": [
+          {
+            "id": "curated_gyn_expanded_malakoplakia___high_mag",
+            "entity": "malakoplakia",
+            "category": "inflammatory_mimic",
+            "pattern": "gyn_expanded",
+            "cells": [
+              "von Hansemann histiocytes",
+              "Michaelis-Gutmann bodies"
+            ],
+            "stain": "H&E",
+            "stainRole": "general morphology",
+            "organ": "mixed",
+            "system": "pathology",
+            "difficulty": "advanced",
+            "path": "https://upload.wikimedia.org/wikipedia/commons/3/30/Malakoplakia_-_high_mag.jpg",
+            "tags": [
+              "bladder",
+              "malakoplakia",
+              "histiocytes",
+              "mimic",
+              "inflammatory",
+              "gyn_expanded",
+              "malakoplakia_high_mag"
+            ],
+            "teachingPoint": "Malakoplakia is a classic urinary-tract inflammatory mimic characterized by histiocytic sheets and Michaelis-Gutmann bodies.",
+            "source": "https://commons.wikimedia.org/wiki/File:Malakoplakia_-_high_mag.jpg",
+            "filename": "Malakoplakia_-_high_mag.jpg",
+            "aiEnhanced": false
+          },
+          {
+            "id": "curated_bladder_malakoplakia",
+            "entity": "malakoplakia",
+            "category": "inflammatory_mimic",
+            "pattern": "Inflammatory mimic",
+            "cells": [
+              "von Hansemann histiocytes",
+              "Michaelis-Gutmann bodies"
+            ],
+            "stain": "H&E",
+            "stainRole": "general morphology",
+            "organ": "bladder",
+            "system": "genitourinary",
+            "difficulty": "advanced",
+            "path": "https://upload.wikimedia.org/wikipedia/commons/3/31/Malakoplakia.jpg",
+            "tags": [
+              "bladder",
+              "malakoplakia",
+              "histiocytes",
+              "mimic",
+              "inflammatory",
+              "inflammatory_mimic"
+            ],
+            "teachingPoint": "Malakoplakia belongs in the bladder mimic slide because it can produce a mass-forming lesion and is defined by histiocytic sheets with Michaelis-Gutmann bodies.",
+            "source": "https://commons.wikimedia.org/wiki/File:Malakoplakia.jpg",
+            "filename": "Malakoplakia.jpg",
+            "aiEnhanced": false
+          }
+        ]
+      },
+      "bcg_induced_granulomatous_cystitis": {
+        "H&E": [
+          {
+            "id": "curated_bladder_bcg_cystitis_low_mag",
+            "entity": "bcg_induced_granulomatous_cystitis",
+            "category": "inflammatory_mimic",
+            "pattern": "Treatment-related inflammatory mimic",
+            "cells": [
+              "epithelioid histiocytes",
+              "giant cells",
+              "lymphocytes"
+            ],
+            "stain": "H&E",
+            "stainRole": "general morphology",
+            "organ": "bladder",
+            "system": "genitourinary",
+            "difficulty": "intermediate",
+            "path": "https://upload.wikimedia.org/wikipedia/commons/b/be/BCG-induced_granulomatous_cystitis%2C_low_mag.jpg",
+            "tags": [
+              "bladder",
+              "bcg",
+              "granulomatous cystitis",
+              "treatment effect",
+              "mimic",
+              "treatment_related_inflammatory_mimic",
+              "bcg_induced_granulomatous_cystitis"
+            ],
+            "teachingPoint": "BCG therapy can produce granulomatous cystitis that looks dramatic at low power. Always correlate with treatment history before overcalling infection or new tumor.",
+            "source": "https://commons.wikimedia.org/wiki/File:BCG-induced_granulomatous_cystitis,_low_mag.jpg",
+            "filename": "BCG-induced_granulomatous_cystitis%2C_low_mag.jpg",
+            "aiEnhanced": false
+          },
+          {
+            "id": "curated_bladder_bcg_cystitis_intermed_mag",
+            "entity": "bcg_induced_granulomatous_cystitis",
+            "category": "inflammatory_mimic",
+            "pattern": "Treatment-related inflammatory mimic",
+            "cells": [
+              "epithelioid histiocytes",
+              "giant cells"
+            ],
+            "stain": "H&E",
+            "stainRole": "general morphology",
+            "organ": "bladder",
+            "system": "genitourinary",
+            "difficulty": "intermediate",
+            "path": "https://upload.wikimedia.org/wikipedia/commons/d/d5/BCG-induced_granulomatous_cystitis%2C_intermed._mag.jpg",
+            "tags": [
+              "bladder",
+              "bcg",
+              "granulomatous cystitis",
+              "treatment effect",
+              "mimic",
+              "high power",
+              "treatment_related_inflammatory_mimic",
+              "bcg_induced_granulomatous_cystitis"
+            ],
+            "teachingPoint": "On higher power, the lesion reads as granulomatous inflammation rather than urothelial atypia. This is a useful counterexample when discussing post-therapy specimens.",
+            "source": "https://commons.wikimedia.org/wiki/File:BCG-induced_granulomatous_cystitis,_intermed._mag.jpg",
+            "filename": "BCG-induced_granulomatous_cystitis%2C_intermed._mag.jpg",
+            "aiEnhanced": false
+          }
+        ]
+      }
+    },
+    "urothelial_neoplasm": {
+      "papillary_urothelial_neoplasm_of_low_malignant_potential": {
+        "H&E": [
+          {
+            "id": "curated_bladder_punlmp_low_mag",
+            "entity": "papillary_urothelial_neoplasm_of_low_malignant_potential",
+            "category": "urothelial_neoplasm",
+            "pattern": "Papillary urothelial neoplasm",
+            "cells": [
+              "urothelial cells",
+              "fibrovascular cores"
+            ],
+            "stain": "H&E",
+            "stainRole": "general morphology",
+            "organ": "bladder",
+            "system": "genitourinary",
+            "difficulty": "intermediate",
+            "path": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_low_magnification.jpg",
+            "tags": [
+              "bladder",
+              "urothelial",
+              "papillary",
+              "punlmp",
+              "low-grade spectrum",
+              "low grade",
+              "papillary_urothelial_neoplasm"
+            ],
+            "teachingPoint": "At low power, PUNLMP retains architectural order with slender papillae and lacks the crowded, disorganized fusion pattern of high-grade papillary carcinoma.",
+            "source": "https://commons.wikimedia.org/wiki/File:Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_low_magnification.jpg",
+            "filename": "Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_low_magnification.jpg",
+            "aiEnhanced": false
+          },
+          {
+            "id": "curated_bladder_punlmp_high_mag",
+            "entity": "papillary_urothelial_neoplasm_of_low_malignant_potential",
+            "category": "urothelial_neoplasm",
+            "pattern": "Papillary urothelial neoplasm",
+            "cells": [
+              "urothelial cells"
+            ],
+            "stain": "H&E",
+            "stainRole": "general morphology",
+            "organ": "bladder",
+            "system": "genitourinary",
+            "difficulty": "intermediate",
+            "path": "https://upload.wikimedia.org/wikipedia/commons/2/26/Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_high_magnification.jpg",
+            "tags": [
+              "bladder",
+              "urothelial",
+              "papillary",
+              "punlmp",
+              "low-grade spectrum",
+              "high power",
+              "papillary_urothelial_neoplasm"
+            ],
+            "teachingPoint": "At high power, PUNLMP shows only mild nuclear enlargement and largely preserved polarity rather than the pleomorphism and mitotic activity expected in carcinoma.",
+            "source": "https://commons.wikimedia.org/wiki/File:Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_high_magnification.jpg",
+            "filename": "Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_high_magnification.jpg",
+            "aiEnhanced": false
+          }
+        ]
+      },
+      "urothelial_carcinoma_in_situ": {
+        "H&E": [
+          {
+            "id": "curated_bladder_urothelial_cis_intermed_mag",
+            "entity": "urothelial_carcinoma_in_situ",
+            "category": "urothelial_neoplasm",
+            "pattern": "Flat urothelial lesion",
+            "cells": [
+              "atypical urothelial cells"
+            ],
+            "stain": "H&E",
+            "stainRole": "general morphology",
+            "organ": "bladder",
+            "system": "genitourinary",
+            "difficulty": "advanced",
+            "path": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Urothelial_carcinoma_in_situ%2C_intermed._mag.jpg",
+            "tags": [
+              "bladder",
+              "urothelial",
+              "cis",
+              "flat lesion",
+              "high grade",
+              "flat_urothelial_lesion",
+              "urothelial_carcinoma_in_situ"
+            ],
+            "teachingPoint": "Bladder CIS is a flat, high-grade lesion. The architecture is not papillary; the key is diffuse atypia with loss of maturation across the urothelial thickness.",
+            "source": "https://commons.wikimedia.org/wiki/File:Urothelial_carcinoma_in_situ,_intermed._mag.jpg",
+            "filename": "Urothelial_carcinoma_in_situ%2C_intermed._mag.jpg",
+            "aiEnhanced": false
+          },
+          {
+            "id": "curated_bladder_urothelial_cis_high_mag",
+            "entity": "urothelial_carcinoma_in_situ",
+            "category": "urothelial_neoplasm",
+            "pattern": "Flat urothelial lesion",
+            "cells": [
+              "atypical urothelial cells"
+            ],
+            "stain": "H&E",
+            "stainRole": "general morphology",
+            "organ": "bladder",
+            "system": "genitourinary",
+            "difficulty": "advanced",
+            "path": "https://upload.wikimedia.org/wikipedia/commons/0/04/Urothelial_carcinoma_in_situ%2C_high_mag.jpg",
+            "tags": [
+              "bladder",
+              "urothelial",
+              "cis",
+              "flat lesion",
+              "high grade",
+              "high power",
+              "flat_urothelial_lesion",
+              "urothelial_carcinoma_in_situ"
+            ],
+            "teachingPoint": "The high-power CIS view is the slide to use against reactive atypia: nuclei are enlarged, pleomorphic, hyperchromatic, and disordered through the full thickness.",
+            "source": "https://commons.wikimedia.org/wiki/File:Urothelial_carcinoma_in_situ,_high_mag.jpg",
+            "filename": "Urothelial_carcinoma_in_situ%2C_high_mag.jpg",
+            "aiEnhanced": false
+          }
+        ]
+      }
+    },
+    "benign_urothelial_neoplasm": {
+      "inverted_urothelial_papilloma": {
+        "H&E": [
+          {
+            "id": "curated_bladder_inverted_urothelial_papilloma",
+            "entity": "inverted_urothelial_papilloma",
+            "category": "benign_urothelial_neoplasm",
+            "pattern": "Benign urothelial neoplasm",
+            "cells": [
+              "urothelial cells"
+            ],
+            "stain": "H&E",
+            "stainRole": "general morphology",
+            "organ": "bladder",
+            "system": "genitourinary",
+            "difficulty": "intermediate",
+            "path": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Histopathology_of_inverted_urothelial_papilloma.jpg",
+            "tags": [
+              "bladder",
+              "urothelial",
+              "papilloma",
+              "benign",
+              "inverted growth",
+              "benign_urothelial_neoplasm",
+              "inverted_urothelial_papilloma"
+            ],
+            "teachingPoint": "Inverted urothelial papilloma is a benign endophytic lesion. It earns a place in the bladder lecture because it helps frame the difference between orderly inverted growth and infiltrative nests.",
+            "source": "https://commons.wikimedia.org/wiki/File:Histopathology_of_inverted_urothelial_papilloma.jpg",
+            "filename": "Histopathology_of_inverted_urothelial_papilloma.jpg",
             "aiEnhanced": false
           }
         ]

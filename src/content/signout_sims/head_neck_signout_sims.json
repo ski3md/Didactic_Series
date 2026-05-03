@@ -1,0 +1,421 @@
+{
+  "version": "2026-05-02",
+  "title": "Head and Neck Pathology Sign-Out Simulations",
+  "cases": [
+    {
+      "id": "hn-oral-scc-biopsy",
+      "title": "Oral tongue biopsy: invasive squamous cell carcinoma",
+      "site": "Oral cavity",
+      "workflow": "biopsy",
+      "specimenType": "Lateral tongue incisional biopsy",
+      "clinicalHistory": "61-year-old man with tobacco history and a nonhealing ulcer on the lateral oral tongue.",
+      "image": {
+        "src": "reference-library/signout-sims/head-neck/oral-squamous-cell-carcinoma-he.jpg",
+        "caption": "Well-differentiated oral squamous cell carcinoma with keratinizing invasion.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8818095/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC8818095",
+          "citation": "Diagn Pathol. 2022 Feb 6; 17:23",
+          "license": "CC BY",
+          "figureLabel": "image 3",
+          "figureCaption": "histological slides a scc h e 100 at surface of tumour demonstrating irregular nests of highly atypical squamous cells invading the submucosal space with adjacent oral mucosa at top left b scc h e 100 present as infiltrative tumoural nests with keratinisation at invasive front of tumour c lymph node metastasis h e 20 demonstrating extranodal extension of scc in to adjacent soft tissue",
+          "figureScore": 31,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/ff/1f/PMC8818095.tar.gz",
+          "acquiredAt": "2026-05-02T16:27:35.042Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Confirm destructive stromal invasion by atypical squamous nests or cords rather than tangentially sectioned dysplasia.",
+        "Assess tumor differentiation, keratinization, depth represented in the biopsy, and perineural or lymphovascular invasion if present.",
+        "Evaluate adjacent mucosa for high-grade dysplasia and state biopsy limitations for depth of invasion."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "p40",
+          "name": "p40 or p63",
+          "result": "Confirms squamous lineage if the tumor is poorly differentiated.",
+          "recommended": true
+        },
+        {
+          "id": "p16",
+          "name": "p16",
+          "result": "Not a routine surrogate for HPV-driven disease in oral cavity SCC.",
+          "recommended": false
+        },
+        {
+          "id": "fungal",
+          "name": "GMS stain",
+          "result": "Consider only if pseudoepitheliomatous hyperplasia with fungal infection is a realistic mimic.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Tongue, lateral, biopsy: Invasive keratinizing squamous cell carcinoma, moderately differentiated. Depth of invasion cannot be reliably determined in this biopsy.",
+      "requiredReportElements": [
+        "invasive squamous cell carcinoma",
+        "differentiation",
+        "biopsy site",
+        "depth limitation"
+      ],
+      "pitfalls": [
+        "Do not assign final depth of invasion from a superficial or fragmented incisional biopsy.",
+        "Do not use p16 positivity alone to reclassify an oral cavity primary as HPV-associated oropharyngeal carcinoma."
+      ]
+    },
+    {
+      "id": "hn-oropharynx-p16-scc-resection",
+      "title": "Tonsillectomy: HPV-associated oropharyngeal squamous cell carcinoma",
+      "site": "Oropharynx",
+      "workflow": "resection",
+      "specimenType": "Radical tonsillectomy with neck dissection",
+      "clinicalHistory": "55-year-old man with cystic level II neck node and asymmetric right tonsil; biopsy showed nonkeratinizing squamous cell carcinoma.",
+      "image": {
+        "src": "reference-library/signout-sims/head-neck/oropharyngeal-squamous-cell-carcinoma-he.jpg",
+        "caption": "Nonkeratinizing squamous cell carcinoma compatible with HPV-associated oropharyngeal primary in the proper context.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7685177/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC7685177",
+          "citation": "Front Oncol. 2020 Nov 10; 10:593164",
+          "license": "CC BY",
+          "figureLabel": "figure 2",
+          "figureCaption": "73 year old man with an human papilloma virus hpv 16 positive squamous cell carcinoma from an unknown primary site with bilateral positive level 2 lymph nodes the patient was treated with deintensified intensity modulated radiotherapy imrt to 60 gy in 30 once daily fractions to the oropharynx and bilateral positive nodes and 54 gy in 30 fractions to the retropharyngeal nodes on the side with bulkier neck disease and levels 3 and 4 bilaterally concomitant weekly cisplatin 30 mg m2 was administered the patient tolerated treatment well and has remained disease free for 4 5 years without complications",
+          "figureScore": 30,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/a1/35/PMC7685177.tar.gz",
+          "acquiredAt": "2026-05-02T16:27:40.904Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Confirm nonkeratinizing or basaloid squamous carcinoma arising in oropharyngeal tonsillar tissue.",
+        "Verify HPV association with block-type p16 staining or HPV-specific testing according to local practice.",
+        "Report tumor size, margin status, lymphovascular invasion, perineural invasion, nodal metastases, and extranodal extension."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "p16",
+          "name": "p16 immunohistochemistry",
+          "result": "Strong diffuse block-type p16 supports HPV-associated oropharyngeal SCC.",
+          "recommended": true
+        },
+        {
+          "id": "hr-hpv-ish",
+          "name": "High-risk HPV RNA/DNA in situ hybridization",
+          "result": "Confirms transcriptionally active or high-risk HPV when p16 is equivocal or context is unusual.",
+          "recommended": false
+        },
+        {
+          "id": "ebv",
+          "name": "EBER in situ hybridization",
+          "result": "Use if nasopharyngeal carcinoma is a serious differential diagnosis.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "tumor site",
+        "tumor size",
+        "histologic type",
+        "p16/HPV status",
+        "margins",
+        "lymphovascular invasion",
+        "perineural invasion",
+        "lymph nodes",
+        "extranodal extension",
+        "pT category",
+        "pN category"
+      ],
+      "reportingTarget": "Right tonsil, radical tonsillectomy: HPV-associated squamous cell carcinoma, 2.3 cm, margins negative. Neck dissection: metastatic carcinoma in 2 of 18 lymph nodes, largest deposit 3.1 cm, no extranodal extension, pT2 pN1.",
+      "requiredReportElements": [
+        "HPV-associated squamous cell carcinoma",
+        "p16 status",
+        "tumor size",
+        "margins",
+        "lymph nodes",
+        "extranodal extension",
+        "pT2",
+        "pN1"
+      ],
+      "pitfalls": [
+        "Do not apply HPV-associated staging to a non-oropharyngeal primary.",
+        "Do not omit extranodal extension assessment in nodal disease."
+      ]
+    },
+    {
+      "id": "hn-larynx-scc-laryngectomy",
+      "title": "Total laryngectomy: transglottic squamous cell carcinoma",
+      "site": "Larynx",
+      "workflow": "resection",
+      "specimenType": "Total laryngectomy",
+      "clinicalHistory": "68-year-old man with progressive hoarseness, airway compromise, and imaging showing a transglottic mass with thyroid cartilage erosion.",
+      "image": {
+        "src": "reference-library/signout-sims/head-neck/laryngeal-squamous-cell-carcinoma-he.jpg",
+        "caption": "Keratinizing squamous cell carcinoma of the larynx.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8738708/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC8738708",
+          "citation": "Eur Arch Otorhinolaryngol. 2022 Sep 24; 279(1):299-310",
+          "license": "CC BY",
+          "figureLabel": "fig 4",
+          "figureCaption": "a forest plot of multivariable disease free survival analysis dfs survival curves derived from the multivariable dfs model showing the marginal effect of the histological type b stage c and treatment d adjusted for the effects of other covariates legend scc squamous cell carcinoma tlm transoral laser microsurgery ophl open partial horizontal laryngectomy ctra crico tracheal resection and anastomosis tl total laryngectomy",
+          "figureScore": 35,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/a2/c2/PMC8738708.tar.gz",
+          "acquiredAt": "2026-05-02T16:27:47.129Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Map the tumor across supraglottic, glottic, and subglottic subsites and correlate with gross cartilage involvement.",
+        "Confirm invasion pattern, histologic grade, lymphovascular invasion, perineural invasion, and thyroid cartilage or extralaryngeal extension.",
+        "Assess mucosal, soft tissue, tracheal, and pharyngeal margins and stage using the involved laryngeal subsite."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "Typical keratinizing laryngeal SCC is signed out on morphology and anatomic extent.",
+          "recommended": true
+        },
+        {
+          "id": "p40",
+          "name": "p40",
+          "result": "Useful if the carcinoma is poorly differentiated and lineage is uncertain.",
+          "recommended": false
+        },
+        {
+          "id": "p16",
+          "name": "p16",
+          "result": "Not routinely used for staging laryngeal SCC.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "laryngeal subsite",
+        "tumor size",
+        "histologic type and grade",
+        "cartilage invasion",
+        "extralaryngeal extension",
+        "lymphovascular invasion",
+        "perineural invasion",
+        "margins",
+        "pT category"
+      ],
+      "reportingTarget": "Larynx, total laryngectomy: Keratinizing squamous cell carcinoma, moderately differentiated, 3.8 cm, transglottic, invading through thyroid cartilage, margins negative, pT4a.",
+      "requiredReportElements": [
+        "squamous cell carcinoma",
+        "tumor size",
+        "transglottic",
+        "thyroid cartilage invasion",
+        "margins negative",
+        "pT4a"
+      ],
+      "pitfalls": [
+        "Do not stage cartilage invasion from decalcified sections without careful gross-radiologic correlation.",
+        "Do not omit specific margin sites in a laryngectomy specimen."
+      ]
+    },
+    {
+      "id": "hn-papillary-thyroid-carcinoma-thyroidectomy",
+      "title": "Thyroidectomy: classic papillary thyroid carcinoma",
+      "site": "Thyroid",
+      "workflow": "resection",
+      "specimenType": "Total thyroidectomy with central neck lymph nodes",
+      "clinicalHistory": "42-year-old woman with a 2.1 cm hypoechoic thyroid nodule with microcalcifications and Bethesda VI FNA.",
+      "image": {
+        "src": "reference-library/signout-sims/head-neck/papillary-thyroid-carcinoma-he.jpg",
+        "caption": "Papillary thyroid carcinoma with papillary architecture and diagnostic nuclear features.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12142297/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC12142297",
+          "citation": "Pathologica. 2025 May 31; 117(2):111-120",
+          "license": "CC BY-NC-ND",
+          "figureLabel": "figure 3",
+          "figureCaption": "evidence of lymph node metastasis in a case of completion thyroidectomy 200x h e",
+          "figureScore": 18,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/55/fb/PMC12142297.tar.gz",
+          "acquiredAt": "2026-05-02T16:27:52.847Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Confirm papillary thyroid carcinoma by nuclear enlargement, clearing, grooves, pseudoinclusions, and papillary or infiltrative architecture.",
+        "Measure tumor size and determine focality, extrathyroidal extension, vascular invasion, lymphatic invasion, and margin status.",
+        "Assess submitted lymph nodes and report number positive, size of largest metastatic deposit, and extranodal extension."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "Classic papillary thyroid carcinoma is usually diagnosed morphologically.",
+          "recommended": true
+        },
+        {
+          "id": "braf",
+          "name": "BRAF V600E testing",
+          "result": "May be ordered for risk stratification or targeted therapy context but is not required for routine diagnosis.",
+          "recommended": false
+        },
+        {
+          "id": "thyroglobulin-ttf1",
+          "name": "Thyroglobulin and TTF-1",
+          "result": "Useful if metastatic thyroid origin is uncertain.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "tumor focality",
+        "tumor size",
+        "histologic type",
+        "extrathyroidal extension",
+        "vascular invasion",
+        "margins",
+        "lymph nodes",
+        "pT category",
+        "pN category"
+      ],
+      "reportingTarget": "Thyroid, total thyroidectomy: Papillary thyroid carcinoma, classic subtype, 2.1 cm, confined to thyroid, margins negative. Central neck: metastatic carcinoma in 1 of 6 lymph nodes, 0.2 cm deposit, no extranodal extension, pT2 pN1a.",
+      "requiredReportElements": [
+        "papillary thyroid carcinoma",
+        "classic subtype",
+        "tumor size",
+        "confined to thyroid",
+        "margins",
+        "lymph nodes",
+        "pT2",
+        "pN1a"
+      ],
+      "pitfalls": [
+        "Do not diagnose papillary carcinoma from architecture alone without diagnostic nuclear features.",
+        "Do not omit microscopic extrathyroidal extension and margin relationship."
+      ]
+    },
+    {
+      "id": "hn-pleomorphic-adenoma-parotidectomy",
+      "title": "Superficial parotidectomy: pleomorphic adenoma",
+      "site": "Parotid gland",
+      "workflow": "resection",
+      "specimenType": "Superficial parotidectomy",
+      "clinicalHistory": "49-year-old woman with a slow-growing, mobile 2.7 cm parotid tail mass and benign salivary neoplasm on FNA.",
+      "image": {
+        "src": "reference-library/signout-sims/head-neck/pleomorphic-adenoma-parotid-he.jpg",
+        "caption": "Pleomorphic adenoma with epithelial and myxochondroid stromal components.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10697545/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC10697545",
+          "citation": "Am J Case Rep. 2023 Nov 30; 24:e940985-1-e940985-6",
+          "license": "CC BY-NC-ND",
+          "figureLabel": "figure 1",
+          "figureCaption": "presurgical imaging coronal image t1 weighted fat saturated of a 54 year old patient with a smaller contrast enhancing lesion in the middle part of the parotid gland histologically proven as a pa marked by an arrow and a second less enhancing lesion in the parotid gland histologically proven as a wt marked by an asterisk pa pleomorphic adenoma wt warthin s tumor",
+          "figureScore": 33,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/22/5c/PMC10697545.tar.gz",
+          "acquiredAt": "2026-05-02T16:27:57.850Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Recognize biphasic ductal and myoepithelial proliferation in myxoid or chondromyxoid stroma.",
+        "Evaluate capsule, pseudopodia, tumor spillage, and margin distance because recurrence risk depends on excision quality.",
+        "Search for carcinoma ex pleomorphic adenoma features including infiltrative growth, marked atypia, necrosis, and high mitotic activity."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "Typical pleomorphic adenoma is diagnosed morphologically.",
+          "recommended": true
+        },
+        {
+          "id": "plag1-hmga2",
+          "name": "PLAG1 or HMGA2 testing",
+          "result": "Can support diagnosis in unusual cellular or limited samples.",
+          "recommended": false
+        },
+        {
+          "id": "myoepithelial",
+          "name": "p63, SOX10, S100, calponin",
+          "result": "Can highlight myoepithelial differentiation if morphology is ambiguous.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "tumor type",
+        "tumor size",
+        "margin status or distance",
+        "capsular integrity",
+        "carcinoma ex pleomorphic adenoma absent or present"
+      ],
+      "reportingTarget": "Parotid gland, superficial parotidectomy: Pleomorphic adenoma, 2.7 cm, narrowly excised with tumor 0.1 cm from inked margin; no carcinoma identified.",
+      "requiredReportElements": [
+        "pleomorphic adenoma",
+        "tumor size",
+        "margin distance",
+        "no carcinoma identified"
+      ],
+      "pitfalls": [
+        "Do not ignore a small frankly invasive carcinoma component in a long-standing pleomorphic adenoma.",
+        "Do not overcall pseudopod-like capsular extension as malignant invasion."
+      ]
+    },
+    {
+      "id": "hn-tonsils-hypertrophy-gross-only",
+      "title": "Tonsils and adenoids: lymphoid hyperplasia, gross-only workflow",
+      "site": "Tonsils and adenoids",
+      "workflow": "gross-only",
+      "specimenType": "Bilateral tonsillectomy and adenoidectomy",
+      "clinicalHistory": "7-year-old child with obstructive sleep symptoms and symmetric tonsillar hypertrophy; no mass, ulceration, or malignancy concern.",
+      "image": {
+        "src": "reference-library/signout-sims/head-neck/tonsillar-hyperplasia-gross.jpg",
+        "caption": "Symmetric tonsillar tissue without a described suspicious mass lesion.",
+        "stain": "Gross photograph",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gross_pathology_of_tonsil.jpg"
+      },
+      "diagnosticSteps": [
+        "Confirm pediatric obstructive indication with symmetric tonsils/adenoids and no clinical red flags.",
+        "Inspect for asymmetry, ulceration, firm mass, necrosis, or abnormal color that would trigger histologic submission.",
+        "Document laterality, dimensions, aggregate adenoid tissue, and absence of gross lesion according to local gross-only policy."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "No ancillary study is required for uncomplicated symmetric pediatric tonsils/adenoids.",
+          "recommended": true
+        },
+        {
+          "id": "flow",
+          "name": "Flow cytometry",
+          "result": "Use only when lymphoma is clinically or grossly suspected, or for marked asymmetry with concerning features.",
+          "recommended": false
+        },
+        {
+          "id": "histology",
+          "name": "Representative histology",
+          "result": "Submit tissue if gross findings or clinical history fall outside gross-only criteria.",
+          "recommended": false
+        }
+      ],
+      "grossOnlyChecklist": [
+        "right tonsil dimensions",
+        "left tonsil dimensions",
+        "adenoid aggregate dimensions",
+        "symmetry",
+        "mucosal surface",
+        "absence of mass or ulceration"
+      ],
+      "reportingTarget": "Tonsils and adenoids, excision: Symmetric tonsillar and adenoidal lymphoid tissue by gross examination; no gross lesion identified.",
+      "requiredReportElements": [
+        "tonsils and adenoids",
+        "symmetric",
+        "no gross lesion identified"
+      ],
+      "pitfalls": [
+        "Do not gross-only an adult tonsillectomy or asymmetric tonsil unless local policy explicitly permits it.",
+        "Do not ignore a firm, ulcerated, or necrotic focus."
+      ]
+    }
+  ]
+}

@@ -58,3 +58,225 @@ body {
     pointer-events: none;
     z-index: 0;
 }
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.55in;
+  }
+
+  html,
+  body {
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+
+  #root {
+    display: block !important;
+    height: auto !important;
+    width: auto !important;
+  }
+
+  .print-hide {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .lecture-print-document {
+    color: #0f172a;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  .lecture-print-document h1,
+  .lecture-print-document h2,
+  .lecture-print-document h3,
+  .lecture-print-document h4 {
+    color: #0f172a;
+    break-after: avoid;
+  }
+
+  .lecture-print-document h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 27pt;
+    line-height: 1.05;
+    margin: 0.12in 0 0.16in;
+  }
+
+  .lecture-print-document h2 {
+    border-bottom: 1px solid #cbd5e1;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17pt;
+    margin: 0.24in 0 0.12in;
+    padding-bottom: 0.06in;
+  }
+
+  .lecture-print-document h3 {
+    font-size: 12pt;
+    margin: 0.04in 0 0.05in;
+  }
+
+  .lecture-print-document h4 {
+    font-size: 9.5pt;
+    letter-spacing: 0;
+    margin: 0.12in 0 0.04in;
+    text-transform: uppercase;
+  }
+
+  .lecture-print-document p {
+    margin: 0.04in 0 0.08in;
+  }
+
+  .lecture-print-document ul,
+  .lecture-print-document ol {
+    margin: 0.06in 0 0.1in 0.18in;
+    padding: 0;
+  }
+
+  .lecture-print-document li {
+    margin: 0.025in 0;
+  }
+
+  .lecture-print-cover {
+    border-bottom: 2px solid #0f172a;
+    margin-bottom: 0.18in;
+    padding-bottom: 0.16in;
+  }
+
+  .lecture-print-cover > p {
+    color: #0369a1;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .lecture-print-summary {
+    color: #334155;
+    font-size: 11pt;
+    max-width: 7.1in;
+  }
+
+  .lecture-print-section {
+    break-inside: auto;
+    margin-bottom: 0.16in;
+  }
+
+  .lecture-print-card {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    break-inside: avoid;
+    margin: 0 0 0.1in;
+    padding: 0.11in;
+  }
+
+  .lecture-print-run-sheet,
+  .lecture-print-metrics,
+  .lecture-print-two-column,
+  .lecture-print-image-grid {
+    display: grid;
+    gap: 0.1in;
+  }
+
+  .lecture-print-run-sheet,
+  .lecture-print-two-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lecture-print-metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: 0.12in;
+  }
+
+  .lecture-print-metric {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 0.08in;
+  }
+
+  .lecture-print-metric strong {
+    display: block;
+    font-size: 17pt;
+    line-height: 1;
+  }
+
+  .lecture-print-metric span,
+  .lecture-print-time,
+  .lecture-print-stain {
+    color: #475569;
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+  }
+
+  .lecture-print-diagnostic-groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.06in;
+    margin-bottom: 0.12in;
+  }
+
+  .lecture-print-diagnostic-groups span,
+  .lecture-print-entity-heading span {
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    color: #334155;
+    font-size: 8.5pt;
+    padding: 0.025in 0.075in;
+  }
+
+  .lecture-print-entity-heading {
+    align-items: flex-start;
+    display: flex;
+    gap: 0.08in;
+    justify-content: space-between;
+  }
+
+  .lecture-print-image-grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0.08in 0 0.12in;
+  }
+
+  .lecture-print-figure {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    break-inside: avoid;
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .lecture-print-image {
+    background: #ffffff;
+    display: block;
+    height: 3.15in;
+    max-height: none;
+    object-fit: contain;
+    width: 100%;
+  }
+
+  .lecture-print-figure figcaption {
+    border-top: 1px solid #e2e8f0;
+    color: #475569;
+    font-size: 8.5pt;
+    padding: 0.06in 0.08in;
+  }
+
+  .lecture-print-node {
+    border-top: 1px solid #e2e8f0;
+    break-inside: avoid;
+    margin-top: 0.08in;
+    padding-top: 0.08in;
+  }
+}

@@ -1,9 +1,17 @@
 import React from 'react';
 import { Section, User } from '../types.ts';
 import { useUIState } from '../hooks/useUIState.ts';
+import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
+import { BRAND } from '../utils/brand.ts';
 import {
-  HomeIcon, MicroscopeIcon, EyeIcon, 
-  BookOpenIcon, AcademicCapIcon, UserCircleIcon, CogIcon, BeakerIcon, LogoutIcon, ArrowRightToBracketIcon, ChevronLeftIcon, MagnifyingGlassChartIcon, BullseyeIcon, CheckCircleIcon
+  MicroscopeIcon,
+  BookOpenIcon,
+  AcademicCapIcon,
+  UserCircleIcon,
+  CogIcon,
+  LogoutIcon,
+  ArrowRightToBracketIcon,
+  ChevronLeftIcon,
 } from './icons.tsx';
 
 interface SidebarProps {
@@ -12,18 +20,20 @@ interface SidebarProps {
   user: User | null;
   onLogout: () => void;
   onLoginClick: () => void;
+  preferences: LearningPreferences;
 }
 
 const NavLink: React.FC<{
-  section: Section;
-  currentSection: Section;
-  onClick: (section: Section) => void;
+  label: string;
+  ariaLabel?: string;
+  isActive: boolean;
+  onClick: () => void;
   icon: React.ReactNode;
-}> = ({ section, currentSection, onClick, icon }) => {
-  const isActive = section === currentSection;
+}> = ({ label, ariaLabel, isActive, onClick, icon }) => {
   return (
     <button
-      onClick={() => onClick(section)}
+      onClick={onClick}
+      aria-label={ariaLabel ?? label}
       className={`w-full flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 text-left ${
         isActive
           ? 'bg-sky-100 text-sky-800 font-bold shadow-lg shadow-sky-500/20'
@@ -31,92 +41,93 @@ const NavLink: React.FC<{
       }`}
     >
       <div className="mr-3 flex-shrink-0">{icon}</div>
-      <span>{section}</span>
+      <span>{label}</span>
     </button>
   );
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user, onLogout, onLoginClick }) => {
+const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user, onLogout, onLoginClick, preferences }) => {
     const { isSidebarOpen, toggleSidebar } = useUIState();
-
-    const learningSections = [
-        { section: Section.LECTURE, icon: <AcademicCapIcon className="h-5 w-5" /> },
-        { section: Section.REFERENCE_LIBRARY, icon: <BookOpenIcon className="h-5 w-5" /> },
-        { section: Section.SIGN_OUT_SIMULATOR, icon: <MicroscopeIcon className="h-5 w-5" /> },
-        { section: Section.VISUAL_CHALLENGE, icon: <EyeIcon className="h-5 w-5" /> },
-        { section: Section.DIAGNOSTIC_PATHWAY, icon: <BeakerIcon className="h-5 w-5" /> },
-    ];
-    
-    const instructionalDesignSections = [
-        { section: Section.ANALYSIS, icon: <MagnifyingGlassChartIcon className="h-5 w-5" /> },
-        { section: Section.DESIGN, icon: <BullseyeIcon className="h-5 w-5" /> },
-        { section: Section.DEVELOPMENT, icon: <CogIcon className="h-5 w-5" /> },
-        { section: Section.EVALUATION, icon: <CheckCircleIcon className="h-5 w-5" /> },
-    ];
+    const isLearnActive = [
+      Section.HOME,
+      Section.PATHOLOGY_CURRICULUM,
+      Section.SYLLABUS_EXPLORER,
+    ].includes(currentSection);
+    const isDidacticsActive = [
+      Section.DIDACTIC_LECTURES,
+      Section.DIDACTIC_TUTORIALS,
+      Section.DIDACTIC_ALGORITHMS,
+      Section.LECTURE,
+    ].includes(currentSection);
+    const isSignOutActive = [
+      Section.SIGN_OUT_SIMULATOR,
+      Section.BREAST_SIGNOUT_MASTERCLASS,
+    ].includes(currentSection);
 
   return (
-    <aside className={`fixed inset-y-0 left-0 z-30 bg-white border-r border-slate-200/80 p-4 flex flex-col w-72 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-      <div className="flex items-center justify-between mb-6 px-2 flex-shrink-0">
-        <div className="flex items-center">
+    <aside
+      aria-label={`${BRAND.name} navigation`}
+      className={`fixed inset-y-0 left-0 z-30 bg-white border-r border-slate-200/80 p-4 flex flex-col w-72 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
+    >
+      <div className="mb-6 flex-shrink-0 px-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
             <AcademicCapIcon className="h-8 w-8 text-primary-600" />
-            <h1 className="ml-3 text-lg font-bold font-serif text-slate-900">Pathology Module</h1>
-        </div>
-        <button
-          onClick={toggleSidebar}
-          className="text-slate-500 hover:text-slate-800 p-1"
-          aria-label="Collapse menu"
-        >
-          <ChevronLeftIcon className="h-6 w-6" />
-        </button>
-      </div>
-      
-      <nav className="flex-1 space-y-4 overflow-y-auto">
-        <div>
-           <NavLink
-              section={Section.HOME}
-              currentSection={currentSection}
-              onClick={onSectionChange}
-              icon={<HomeIcon className="h-5 w-5" />}
-            />
-        </div>
-        <div>
-          <h2 className="px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 mt-4">Learning Sections</h2>
-          <div className="space-y-1">
-            {learningSections.map(({ section, icon }) => (
-              <NavLink
-                key={section}
-                section={section}
-                currentSection={currentSection}
-                onClick={onSectionChange}
-                icon={icon}
-              />
-            ))}
-          </div>
-        </div>
-        
-        <div>
-            <h2 className="px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 mt-4">Instructional Design</h2>
-            <div className="space-y-1">
-                {instructionalDesignSections.map(({ section, icon }) => (
-                <NavLink
-                    key={section}
-                    section={section}
-                    currentSection={currentSection}
-                    onClick={onSectionChange}
-                    icon={icon}
-                />
-                ))}
+            <div className="ml-3 min-w-0">
+              <h1 className="text-lg font-bold font-serif text-slate-900">{BRAND.name}</h1>
+              <p className="truncate text-[11px] font-semibold uppercase tracking-wide text-slate-500">{BRAND.shortTagline}</p>
             </div>
+          </div>
+          <button
+            onClick={toggleSidebar}
+            className="p-1 text-slate-500 hover:text-slate-800"
+            aria-label="Collapse menu"
+          >
+            <ChevronLeftIcon className="h-6 w-6" />
+          </button>
         </div>
+        <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+          <p>Move through {BRAND.name} in three steps: learn, study, then sign out.</p>
+          {preferences.focusMode && <p className="mt-2 text-xs text-slate-500">Focus mode keeps the active workspace centered.</p>}
+        </div>
+      </div>
+
+      <nav className="flex-1 space-y-2 overflow-y-auto">
+        <NavLink
+          label="Learn"
+          ariaLabel="Pathology Curriculum"
+          isActive={isLearnActive}
+          onClick={() => onSectionChange(Section.PATHOLOGY_CURRICULUM)}
+          icon={<AcademicCapIcon className="h-5 w-5" />}
+        />
+        <NavLink
+          label="Didactics"
+          isActive={isDidacticsActive}
+          onClick={() => onSectionChange(isDidacticsActive ? currentSection : Section.DIDACTIC_LECTURES)}
+          icon={<BookOpenIcon className="h-5 w-5" />}
+        />
+        <NavLink
+          label="Images"
+          ariaLabel="Reference Library"
+          isActive={currentSection === Section.REFERENCE_LIBRARY}
+          onClick={() => onSectionChange(Section.REFERENCE_LIBRARY)}
+          icon={<BookOpenIcon className="h-5 w-5" />}
+        />
+        <NavLink
+          label="Sign-Out"
+          ariaLabel="Pathology Sign-Out Workflows"
+          isActive={isSignOutActive}
+          onClick={() => onSectionChange(Section.SIGN_OUT_SIMULATOR)}
+          icon={<MicroscopeIcon className="h-5 w-5" />}
+        />
 
         {user?.isAdmin && (
           <div>
-            <h2 className="px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 mt-4">Admin</h2>
             <div className="space-y-1">
               <NavLink
-                section={Section.ADMIN}
-                currentSection={currentSection}
-                onClick={onSectionChange}
+                label="Admin"
+                isActive={currentSection === Section.ADMIN}
+                onClick={() => onSectionChange(Section.ADMIN)}
                 icon={<CogIcon className="h-5 w-5" />}
               />
             </div>

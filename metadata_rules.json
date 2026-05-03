@@ -130,6 +130,92 @@
       "tags": ["foreign", "polarizable", "giant cells", "exogenous"],
       "teachingPoint": "Foreign body granulomas with polarizable material indicate exogenous substance exposure. Look for refractile material under polarized light.",
       "abpathRelevance": "low"
+    },
+    "papillary_urothelial_neoplasm_of_low_malignant_potential": {
+      "category": "urothelial_neoplasm",
+      "patterns": [
+        {
+          "keyword": "papillary",
+          "description": "delicate papillary architecture with fibrovascular cores"
+        },
+        {
+          "keyword": "orderly",
+          "description": "preserved polarity and minimal cytologic atypia"
+        }
+      ],
+      "cells": ["urothelial cells", "fibrovascular cores"],
+      "difficulty": "intermediate",
+      "tags": ["bladder", "urothelial", "papillary", "punlmp", "low-grade spectrum"],
+      "teachingPoint": "PUNLMP retains an orderly papillary architecture and minimal atypia, which is why it is separated from overt papillary urothelial carcinoma.",
+      "abpathRelevance": "high"
+    },
+    "urothelial_carcinoma_in_situ": {
+      "category": "urothelial_neoplasm",
+      "patterns": [
+        {
+          "keyword": "flat",
+          "description": "flat urothelial lesion with diffuse atypia"
+        },
+        {
+          "keyword": "full thickness",
+          "description": "full-thickness nuclear atypia with loss of maturation"
+        }
+      ],
+      "cells": ["atypical urothelial cells"],
+      "difficulty": "advanced",
+      "tags": ["bladder", "urothelial", "cis", "flat lesion", "high grade"],
+      "teachingPoint": "Bladder CIS is a flat, high-grade lesion defined by diffuse urothelial atypia and loss of maturation rather than papillary architecture.",
+      "abpathRelevance": "high"
+    },
+    "bcg_induced_granulomatous_cystitis": {
+      "category": "inflammatory_mimic",
+      "patterns": [
+        {
+          "keyword": "granulomatous",
+          "description": "granulomatous inflammation after intravesical therapy"
+        },
+        {
+          "keyword": "bcg",
+          "description": "post-therapy treatment effect"
+        }
+      ],
+      "cells": ["epithelioid histiocytes", "giant cells", "lymphocytes"],
+      "difficulty": "intermediate",
+      "tags": ["bladder", "bcg", "granulomatous cystitis", "treatment effect", "mimic"],
+      "teachingPoint": "Intravesical BCG can cause granulomatous cystitis that becomes a major mimic on bladder biopsies and TURBT specimens.",
+      "abpathRelevance": "medium"
+    },
+    "inverted_urothelial_papilloma": {
+      "category": "benign_urothelial_neoplasm",
+      "patterns": [
+        {
+          "keyword": "inverted",
+          "description": "endophytic urothelial growth with an orderly nested pattern"
+        }
+      ],
+      "cells": ["urothelial cells"],
+      "difficulty": "intermediate",
+      "tags": ["bladder", "urothelial", "papilloma", "benign", "inverted growth"],
+      "teachingPoint": "Inverted urothelial papilloma is a benign endophytic lesion and helps frame the difference between orderly nested growth and infiltrative carcinoma.",
+      "abpathRelevance": "medium"
+    },
+    "malakoplakia": {
+      "category": "inflammatory_mimic",
+      "patterns": [
+        {
+          "keyword": "histiocytes",
+          "description": "sheet-like histiocytic infiltrate"
+        },
+        {
+          "keyword": "Michaelis-Gutmann",
+          "description": "Michaelis-Gutmann bodies in von Hansemann histiocytes"
+        }
+      ],
+      "cells": ["von Hansemann histiocytes", "Michaelis-Gutmann bodies"],
+      "difficulty": "advanced",
+      "tags": ["bladder", "malakoplakia", "histiocytes", "mimic", "inflammatory"],
+      "teachingPoint": "Malakoplakia is a classic urinary-tract inflammatory mimic characterized by histiocytic sheets and Michaelis-Gutmann bodies.",
+      "abpathRelevance": "medium"
     }
   },
   "stainRoles": {

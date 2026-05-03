@@ -3,6 +3,7 @@ import { User } from '../types.ts';
 import Alert from './ui/Alert.tsx';
 import AuthForm from './AuthForm.tsx';
 import { AcademicCapIcon } from './icons.tsx';
+import { BRAND } from '../utils/brand.ts';
 
 interface WelcomeProps {
   onLogin: (username: string, password: string, rememberMe: boolean) => Promise<User>;
@@ -38,7 +39,8 @@ const Welcome: React.FC<WelcomeProps> = ({ onLogin, onBack }) => {
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
             <AcademicCapIcon className="h-12 w-12 mx-auto text-sky-700" />
-            <h2 className="mt-2 text-xl font-bold text-slate-800">Pathology Learning Module</h2>
+            <h2 className="mt-2 text-xl font-bold text-slate-800">{BRAND.name}</h2>
+            <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">{BRAND.shortTagline}</p>
         </div>
         <div className="bg-white rounded-2xl shadow-lg p-8">
             <header className="text-left mb-10">
@@ -61,7 +63,7 @@ const Welcome: React.FC<WelcomeProps> = ({ onLogin, onBack }) => {
         {onBack && (
           <div className="mt-4 text-center">
             <button onClick={onBack} className="text-sm font-medium text-slate-600 hover:text-slate-800">
-              &larr; Back to Module
+              &larr; Back to {BRAND.name}
             </button>
           </div>
         )}

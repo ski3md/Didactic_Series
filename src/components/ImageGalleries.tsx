@@ -4,8 +4,51 @@ import Card from './ui/Card.tsx';
 import { getGalleryImages, updateImageMetadata, deleteImage } from '../utils/imageStore.ts';
 import { XCircleIcon, CloudArrowUpIcon, ShieldCheckIcon, EyeIcon, EditIcon } from './icons.tsx';
 import { ImageUploadForm } from './ImageUploadForm.tsx';
+import { ReferenceLibraryIntent } from '../utils/referenceLibraryNavigation.ts';
 
 type CombinedImage = StoredImage & { isOfficial: boolean };
+
+const normalizeDedupeText = (value?: string) =>
+  (value || '')
+    .toLowerCase()
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const normalizeImageSrc = (value?: string) =>
+  (value || '')
+    .replace(/^https:\/\/storage\.googleapis\.com\/granuloma-lecture-bucket\//, '')
+    .replace(/^\/?Didactic_Series\//, '')
+    .replace(/^\/+/, '')
+    .split(/[?#]/)[0]
+    .toLowerCase();
+
+const dedupeGalleryImages = (images: CombinedImage[]) => {
+  const seen = new Set<string>();
+  return images.filter((image) => {
+    const srcKey = normalizeImageSrc(image.src || image.gcsPath);
+    const displayKey = [
+      normalizeDedupeText(image.entity || image.title),
+      normalizeDedupeText(image.family),
+      normalizeDedupeText(image.category),
+      normalizeDedupeText(image.atlasCollection),
+    ]
+      .filter(Boolean)
+      .join('|');
+    const key = displayKey || srcKey || image.id;
+    if (seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
+};
+
+const imageFallback =
+  'data:image/svg+xml;utf8,' +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240"><rect width="320" height="240" fill="#f1f5f9"/><path d="M86 76h148v88H86z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="3"/><circle cx="128" cy="112" r="17" fill="#94a3b8"/><path d="M98 154l44-38 30 27 20-18 30 29z" fill="#cbd5e1"/><text x="160" y="198" text-anchor="middle" fill="#475569" font-family="Arial" font-size="16">Image unavailable</text></svg>'
+  );
 
 const ImageGrid: React.FC<{
   images: CombinedImage[];
@@ -17,15 +60,15 @@ const ImageGrid: React.FC<{
   if (images.length === 0) {
     return (
       <p className="text-center text-slate-600 py-8">
-        No images have been submitted to this gallery yet.
+        No images match the current search.
       </p>
     );
   }
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-      {images.map((image) => (
-        <div key={image.id} className="group relative">
+      {images.map((image, index) => (
+        <div key={`${image.atlasCollection || image.category}-${image.id}-${index}`} className="group relative">
           <div
             className="aspect-square w-full bg-slate-100 rounded-lg overflow-hidden cursor-pointer"
             onClick={() => onImageClick(image)}
@@ -35,7 +78,7 @@ const ImageGrid: React.FC<{
               alt={image.title}
               loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              onError={(e) => (e.currentTarget.src = 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_02.jpg')}
+              onError={(e) => (e.currentTarget.src = imageFallback)}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute bottom-0 left-0 p-2.5 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-full">
@@ -56,16 +99,16 @@ const ImageGrid: React.FC<{
                   onImageClick(image);
                 }}
                 className="mt-2 text-xs font-bold text-sky-300 hover:text-white transition-colors"
-                aria-label={`View details for ${image.title}`}
+                aria-label={`Review image for ${image.title}`}
               >
-                View Details →
+                Review Image →
               </button>
             </div>
           </div>
           {image.isOfficial && (
             <div
               className="absolute top-1.5 left-1.5 bg-sky-600 text-white rounded-full p-1 shadow-md"
-              title="Official Atlas Image"
+              title="Teaching image"
             >
               <ShieldCheckIcon className="h-4 w-4" />
             </div>
@@ -149,13 +192,13 @@ const ImageDetailsModal: React.FC<{
             alt={image.title}
             loading="lazy"
             className="object-contain w-full h-full max-h-[85vh] rounded"
-            onError={(e) => (e.currentTarget.src = 'https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/foreign_body/Unclassified/foreign_body_foreign_body_02.jpg')}
+            onError={(e) => (e.currentTarget.src = imageFallback)}
           />
         </div>
         <div className="w-full sm:w-1/2 space-y-4 flex flex-col">
           <h2 className="text-xl font-bold font-serif text-slate-900 flex items-center">
             <EditIcon className="h-5 w-5 mr-2 text-sky-700" />{' '}
-            {isAdmin ? 'Edit Image Details' : 'Image Details'}
+            {isAdmin ? 'Edit Image Details' : 'Image Review'}
           </h2>
           <div className="flex-grow space-y-4">
             <label className="block text-sm font-medium text-slate-800">Title</label>
@@ -215,14 +258,21 @@ const ImageDetailsModal: React.FC<{
 
 interface ImageGalleriesProps {
   user: User | null;
+  focusIntent?: ReferenceLibraryIntent | null;
 }
 
-const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
+const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user, focusIntent }) => {
   const [view, setView] = useState<'browse' | 'upload' | 'moderate'>('browse');
   const [allImages, setAllImages] = useState<CombinedImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<StoredImage | null>(null);
   const [isLoadingGalleries, setIsLoadingGalleries] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    setSearchQuery((focusIntent?.focusTerms || []).join(' '));
+    setView('browse');
+  }, [focusIntent]);
 
   const loadGalleries = useCallback(async () => {
     setIsLoadingGalleries(true);
@@ -232,7 +282,7 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
       const combined = imagesFromDb
         .map((img) => ({ ...img, isOfficial: img.category === 'official' }))
         .sort((a, b) => b.timestamp - a.timestamp);
-      setAllImages(combined);
+      setAllImages(dedupeGalleryImages(combined));
     } catch (e: any) {
       console.error(e);
       setError(`Error loading gallery: ${e.message}`);
@@ -291,6 +341,20 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
   };
 
   const communitySubmissions = allImages.filter((img) => !img.isOfficial);
+  const browseImages = allImages.filter((image) => {
+    const lowered = searchQuery.trim().toLowerCase();
+    if (!lowered) {
+      return true;
+    }
+    return [
+      image.title,
+      image.description,
+      image.entity || '',
+      image.family || '',
+      ...(image.tags || []),
+      ...(image.cells || []),
+    ].some((value) => value.toLowerCase().includes(lowered));
+  });
 
   return (
     <div className="animate-fade-in space-y-8">
@@ -303,15 +367,17 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
 
         <div className="mb-6 flex flex-col sm:flex-row gap-2 border-b border-slate-200 pb-4">
           <NavTab targetView="browse" currentView={view} onClick={setView} icon={<EyeIcon className="h-5 w-5" />}>
-            Browse Galleries
-          </NavTab>
-          <NavTab targetView="upload" currentView={view} onClick={setView} icon={<CloudArrowUpIcon className="h-5 w-5" />}>
-            Upload an Image
+            Browse Images
           </NavTab>
           {user?.isAdmin && (
-            <NavTab targetView="moderate" currentView={view} onClick={setView} icon={<ShieldCheckIcon className="h-5 w-5" />}>
-              Moderate Submissions
-            </NavTab>
+            <>
+              <NavTab targetView="upload" currentView={view} onClick={setView} icon={<CloudArrowUpIcon className="h-5 w-5" />}>
+                Add Teaching Image
+              </NavTab>
+              <NavTab targetView="moderate" currentView={view} onClick={setView} icon={<ShieldCheckIcon className="h-5 w-5" />}>
+                Review Submissions
+              </NavTab>
+            </>
           )}
         </div>
 
@@ -321,13 +387,46 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
           <>
             {view === 'browse' && (
               <Card className="!shadow-none border-dashed border-2 bg-slate-50/50">
-                <h3 className="text-xl font-semibold font-serif text-slate-900 mb-4">Unified Gallery</h3>
+                <div className="mb-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                  <div>
+                    <h3 className="text-xl font-semibold font-serif text-slate-900">Image Review</h3>
+                    <p className="mt-1 text-sm text-slate-600">
+                      {focusIntent?.title
+                        ? `Focused on ${focusIntent.title}. Adjust or clear the search to review additional images.`
+                        : 'Browse the image library or narrow it with a quick search.'}
+                    </p>
+                  </div>
+                  <label className="block lg:w-80">
+                    <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Search</span>
+                    <input
+                      type="search"
+                      value={searchQuery}
+                      onChange={(event) => setSearchQuery(event.target.value)}
+                      placeholder="Search title, tag, entity, or cell"
+                      className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-700 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                    />
+                  </label>
+                </div>
+                {focusIntent?.focusTerms && focusIntent.focusTerms.length > 0 && (
+                  <div className="mb-4 flex flex-wrap gap-2">
+                    {focusIntent.focusTerms.map((term) => (
+                      <button
+                        key={term}
+                        type="button"
+                        onClick={() => setSearchQuery(term)}
+                        className="rounded-full border border-sky-200 bg-white px-3 py-1 text-xs font-medium text-sky-800 transition hover:border-sky-300 hover:bg-sky-50"
+                      >
+                        {term}
+                      </button>
+                    ))}
+                  </div>
+                )}
                 <ImageGrid
-                  images={allImages}
+                  images={browseImages}
                   onImageClick={setSelectedImage}
                   currentUser={user}
-                  onDelete={user?.isAdmin ? handleDeleteImage : undefined}
-                  onEdit={user?.isAdmin ? setSelectedImage : undefined}
+                  onDelete={user?.isAdmin ? (image) => (!image.readOnly ? handleDeleteImage(image) : undefined) : undefined}
+                  onEdit={user?.isAdmin ? (image) => (!image.readOnly ? setSelectedImage(image) : undefined) : undefined}
                 />
               </Card>
             )}
@@ -344,7 +443,7 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user }) => {
                   Moderate Community Submissions
                 </h3>
                 <ImageGrid
-                  images={communitySubmissions}
+                  images={communitySubmissions.filter((image) => !image.readOnly)}
                   onImageClick={setSelectedImage}
                   onDelete={handleDeleteImage}
                   onEdit={setSelectedImage}

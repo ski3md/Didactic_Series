@@ -1,0 +1,177 @@
+{
+  "version": "2026-05-02",
+  "title": "Bone and Soft Tissue Pathology Sign-Out Simulations",
+  "cases": [
+    {
+      "id": "bst-osteosarcoma-core-biopsy",
+      "title": "Distal femur core biopsy: conventional osteosarcoma",
+      "site": "Distal femur",
+      "workflow": "biopsy",
+      "specimenType": "CT-guided core needle biopsy of distal femoral metaphyseal mass",
+      "clinicalHistory": "16-year-old patient with progressive knee pain and imaging showing an aggressive metaphyseal lesion with sunburst periosteal reaction and soft tissue extension.",
+      "image": {
+        "src": "reference-library/signout-sims/bone-soft-tissue/osteosarcoma-high-mag-he.jpg",
+        "caption": "Conventional osteosarcoma with malignant osteoid production.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_osteosarcoma,_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Confirm the biopsy contains viable lesional tissue rather than fracture callus or reactive woven bone.",
+        "Identify malignant spindle to epithelioid cells directly producing lace-like osteoid.",
+        "Correlate with radiology to support a primary intramedullary bone-forming malignant tumor.",
+        "Limit biopsy sign-out to diagnostic category and grade; defer size, margins, treatment effect, and stage to resection."
+      ],
+      "ancillaryOptions": [
+        { "id": "mdm2", "name": "MDM2 by IHC or FISH", "result": "Reserve for low-grade central or parosteal osteosarcoma differential; not required for classic high-grade osteosarcoma.", "recommended": false },
+        { "id": "satb2", "name": "SATB2", "result": "Supports osteoblastic differentiation when morphology is limited.", "recommended": true },
+        { "id": "broad-keratin", "name": "Pancytokeratin", "result": "May be used if metastatic carcinoma is a serious morphologic mimic.", "recommended": false }
+      ],
+      "reportingTarget": "Bone, distal femur, core biopsy: Conventional osteosarcoma, high grade, with malignant osteoid production.",
+      "requiredReportElements": ["conventional osteosarcoma", "high grade", "malignant osteoid", "biopsy site", "radiologic correlation"],
+      "pitfalls": ["Do not diagnose osteosarcoma from reactive osteoid without cytologic malignancy.", "Do not over-specify subtype or treatment response on a small pretreatment biopsy.", "Always correlate with imaging before final classification of a primary bone sarcoma."]
+    },
+    {
+      "id": "bst-myxoid-liposarcoma-core-biopsy",
+      "title": "Thigh core biopsy: myxoid liposarcoma",
+      "site": "Deep thigh soft tissue",
+      "workflow": "biopsy",
+      "specimenType": "Ultrasound-guided core needle biopsy of deep thigh mass",
+      "clinicalHistory": "42-year-old patient with a 9.4 cm deep intramuscular thigh mass that is T2 bright on MRI.",
+      "image": {
+        "src": "reference-library/signout-sims/bone-soft-tissue/myxoid-liposarcoma-he.png",
+        "caption": "Myxoid liposarcoma with delicate branching vasculature and lipoblasts.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_myxoid_liposarcoma.png"
+      },
+      "diagnosticSteps": [
+        "Recognize uniform oval to spindle cells in abundant myxoid stroma with delicate arborizing capillaries.",
+        "Search for lipoblasts and assess whether a round-cell component is present in the sampled tissue.",
+        "Use molecular confirmation because myxoid liposarcoma is defined by DDIT3 rearrangement.",
+        "State biopsy limitations for grading when the mass is large or imaging suggests heterogeneity."
+      ],
+      "ancillaryOptions": [
+        { "id": "ddit3-fish", "name": "DDIT3 break-apart FISH", "result": "Positive rearrangement supports myxoid liposarcoma.", "recommended": true },
+        { "id": "ny-eso-1", "name": "NY-ESO-1", "result": "Often positive in myxoid liposarcoma but not a substitute for molecular confirmation.", "recommended": false },
+        { "id": "mdm2-fish", "name": "MDM2 FISH", "result": "Useful if well-differentiated or dedifferentiated liposarcoma is in the differential.", "recommended": false }
+      ],
+      "reportingTarget": "Soft tissue, deep thigh mass, core biopsy: Myxoid liposarcoma. No definite round-cell component identified in this limited sample.",
+      "requiredReportElements": ["myxoid liposarcoma", "DDIT3 rearrangement status", "round-cell component assessment", "biopsy limitation", "site"],
+      "pitfalls": ["Do not call a hypocellular myxoid lesion benign without considering sampling and imaging.", "Do not use MDM2 amplification to confirm myxoid liposarcoma.", "Do not exclude a round-cell component based on scant biopsy if imaging shows solid nodules."]
+    },
+    {
+      "id": "bst-synovial-sarcoma-core-biopsy",
+      "title": "Ankle core biopsy: monophasic synovial sarcoma",
+      "site": "Periarticular ankle soft tissue",
+      "workflow": "biopsy",
+      "specimenType": "Core needle biopsy of periarticular ankle mass",
+      "clinicalHistory": "31-year-old patient with a slowly enlarging 4.2 cm periarticular ankle mass and punctate calcifications on imaging.",
+      "image": {
+        "src": "reference-library/signout-sims/bone-soft-tissue/monophasic-synovial-sarcoma-he.jpg",
+        "caption": "Monophasic synovial sarcoma with uniform spindle cell fascicles.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monophasic_synovial_sarcoma_-_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Identify a monotonous spindle cell neoplasm with fascicular growth and limited pleomorphism.",
+        "Evaluate for epithelial differentiation, hemangiopericytoma-like vessels, and calcification that support synovial sarcoma.",
+        "Confirm SS18 rearrangement because morphology overlaps with malignant peripheral nerve sheath tumor and solitary fibrous tumor.",
+        "Report as a malignant spindle cell neoplasm with specific classification when molecular support is available."
+      ],
+      "ancillaryOptions": [
+        { "id": "ss18-ssx-ihc", "name": "SS18-SSX fusion-specific IHC", "result": "Diffuse nuclear positivity supports synovial sarcoma.", "recommended": true },
+        { "id": "ss18-fish", "name": "SS18 break-apart FISH or RNA fusion testing", "result": "Detects SS18 rearrangement or SS18::SSX fusion.", "recommended": true },
+        { "id": "stat6", "name": "STAT6", "result": "Negative staining helps exclude solitary fibrous tumor.", "recommended": false }
+      ],
+      "reportingTarget": "Soft tissue, ankle mass, core biopsy: Synovial sarcoma, monophasic type, pending or supported by SS18 rearrangement.",
+      "requiredReportElements": ["synovial sarcoma", "monophasic type", "SS18 status", "malignant spindle cell neoplasm", "biopsy site"],
+      "pitfalls": ["Do not rely on keratin or EMA alone because staining can be focal.", "Do not misclassify as benign fibrous tissue when biopsy is hypocellular.", "Do not omit molecular confirmation in an unusual age, site, or morphology."]
+    },
+    {
+      "id": "bst-chondrosarcoma-pelvis-resection",
+      "title": "Pelvic resection: conventional chondrosarcoma, grade 2",
+      "site": "Pelvis",
+      "workflow": "resection",
+      "specimenType": "Internal hemipelvectomy specimen",
+      "clinicalHistory": "58-year-old patient with a destructive 7.8 cm pelvic cartilaginous tumor with cortical breakthrough and soft tissue extension.",
+      "image": {
+        "src": "reference-library/signout-sims/bone-soft-tissue/chondrosarcoma-grade2-he.jpg",
+        "caption": "Conventional chondrosarcoma with hypercellular malignant cartilage.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bone_Chondrosarcoma_Grade2_HP_PA.jpg"
+      },
+      "diagnosticSteps": [
+        "Confirm permeative growth through host bone and soft tissue extension, separating chondrosarcoma from enchondroma.",
+        "Grade the cartilaginous tumor using cellularity, atypia, myxoid change, mitotic activity, and necrosis.",
+        "Map the tumor to all inked bone and soft tissue margins and document closest margin distance.",
+        "Complete bone sarcoma staging fields including size, grade, extent, margins, and treatment effect if neoadjuvant therapy was given."
+      ],
+      "ancillaryOptions": [
+        { "id": "idh1-idh2", "name": "IDH1/IDH2 mutation testing", "result": "Can support central cartilaginous neoplasm in selected differential diagnoses.", "recommended": false },
+        { "id": "mdm2", "name": "MDM2 amplification testing", "result": "Consider if dedifferentiated liposarcoma or low-grade osteosarcoma is in the differential.", "recommended": false },
+        { "id": "none", "name": "No ancillary study", "result": "Integrated radiologic and histologic features are sufficient for this conventional chondrosarcoma resection.", "recommended": true }
+      ],
+      "synopticChecklist": ["procedure", "tumor site", "tumor size", "histologic type", "histologic grade", "extent", "necrosis", "mitotic rate if applicable", "margins", "closest margin distance", "treatment effect", "pT category"],
+      "reportingTarget": "Bone and soft tissue, pelvis, internal hemipelvectomy: Conventional chondrosarcoma, grade 2, 7.8 cm, with soft tissue extension. Margins negative; closest soft tissue margin 0.4 cm. pT2.",
+      "requiredReportElements": ["conventional chondrosarcoma", "grade 2", "7.8 cm", "soft tissue extension", "margin status", "pT category"],
+      "pitfalls": ["Do not grade chondrosarcoma from the most bland area only.", "Do not omit margin distance in pelvic resections.", "Do not diagnose dedifferentiation unless an abrupt high-grade noncartilaginous component is present."]
+    },
+    {
+      "id": "bst-dfsp-wide-excision",
+      "title": "Trunk wide excision: dermatofibrosarcoma protuberans",
+      "site": "Trunk skin and subcutis",
+      "workflow": "resection",
+      "specimenType": "Wide local excision of abdominal wall skin and soft tissue",
+      "clinicalHistory": "45-year-old patient with a recurrent plaque-like abdominal wall mass after prior shave removal elsewhere.",
+      "image": {
+        "src": "reference-library/signout-sims/bone-soft-tissue/dfsp-storiform-he.jpg",
+        "caption": "Dermatofibrosarcoma protuberans with storiform spindle cell growth.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_cartwheel_pattern_in_dermatofibrosarcoma_protuberans,_original.jpg"
+      },
+      "diagnosticSteps": [
+        "Recognize a dermal and subcutaneous spindle cell tumor with storiform architecture and honeycomb fat infiltration.",
+        "Assess for fibrosarcomatous transformation because it changes risk and reporting language.",
+        "Submit and evaluate peripheral and deep margins thoroughly due to tentacular infiltration.",
+        "Correlate prior procedure history so scar and residual tumor are handled correctly."
+      ],
+      "ancillaryOptions": [
+        { "id": "cd34", "name": "CD34", "result": "Diffuse CD34 positivity supports DFSP in the appropriate morphology.", "recommended": true },
+        { "id": "col1a1-pdgfb", "name": "COL1A1::PDGFB fusion testing", "result": "Useful for diagnostically difficult or fibrosarcomatous cases.", "recommended": false },
+        { "id": "s100-sox10", "name": "S100 and SOX10", "result": "Negative staining helps exclude spindle cell melanoma or nerve sheath tumor.", "recommended": false }
+      ],
+      "synopticChecklist": ["procedure", "tumor site", "tumor size", "histologic type", "fibrosarcomatous transformation", "depth of invasion", "margins", "closest peripheral margin", "closest deep margin"],
+      "reportingTarget": "Skin and soft tissue, abdominal wall, wide excision: Dermatofibrosarcoma protuberans, 3.6 cm, involving dermis and subcutis, no fibrosarcomatous transformation identified. Margins negative; closest deep margin 0.2 cm.",
+      "requiredReportElements": ["dermatofibrosarcoma protuberans", "tumor size", "depth", "fibrosarcomatous transformation status", "margin status", "closest margin"],
+      "pitfalls": ["Do not under-sample the deep and peripheral edges.", "Do not miss fibrosarcomatous transformation with reduced CD34 staining.", "Do not confuse scar spindle cells with residual DFSP without architecture and immunophenotype support."]
+    },
+    {
+      "id": "bst-femoral-head-osteoarthritis-gross-only",
+      "title": "Femoral head: degenerative joint disease",
+      "site": "Femoral head",
+      "workflow": "gross-only",
+      "specimenType": "Femoral head from total hip arthroplasty",
+      "clinicalHistory": "71-year-old patient with long-standing hip pain and radiographic osteoarthritis undergoing total hip arthroplasty.",
+      "image": {
+        "src": "reference-library/signout-sims/bone-soft-tissue/osteoarthritis-femoral-head-gross.jpg",
+        "caption": "Degenerative joint disease with eburnation and osteophyte formation.",
+        "stain": "Gross photograph",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Degenerative_joint_disease_-_severe_--_low_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Confirm the specimen is an expected arthroplasty femoral head with degenerative cartilage loss, eburnation, and osteophytes.",
+        "Review the requisition and imaging history for red flags such as tumor, osteonecrosis, infection, fracture, or inflammatory arthritis.",
+        "Determine whether local policy permits gross-only sign-out or requires representative decalcified sections.",
+        "Escalate to microscopic sampling if gross findings are atypical or clinical history is discordant."
+      ],
+      "ancillaryOptions": [
+        { "id": "none", "name": "No ancillary study", "result": "No ancillary testing is required for uncomplicated degenerative joint disease.", "recommended": true },
+        { "id": "culture", "name": "Microbiology culture", "result": "Only appropriate if infection is suspected clinically or grossly.", "recommended": false },
+        { "id": "polarization", "name": "Polarized microscopy", "result": "Reserve for suspected crystal arthropathy if tissue is submitted microscopically.", "recommended": false }
+      ],
+      "grossOnlyChecklist": ["specimen identity", "femoral head dimensions", "articular cartilage loss", "eburnation", "osteophytes", "fracture or lesion absence", "local gross-only policy compliance"],
+      "reportingTarget": "Femoral head, arthroplasty: Degenerative joint disease, gross diagnosis only.",
+      "requiredReportElements": ["femoral head", "degenerative joint disease", "gross diagnosis only", "no gross lesion if applicable"],
+      "pitfalls": ["Do not use gross-only workflow when there is a history of tumor, infection, osteonecrosis, or unexplained fracture.", "Do not omit dimensions and key degenerative gross findings.", "Do not discard tissue before confirming local retention and sampling policy."]
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "generatedAt": "2026-05-02T14:22:29.878Z",
+  "acquisitions": [
+    {
+      "caseId": "cyto-thyroid-fna-papillary-carcinoma",
+      "title": "Thyroid FNA: papillary thyroid carcinoma",
+      "file": "src/content/signout_sims/cytopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/cytopathology/thyroid-fna-papillary-carcinoma-pap.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/cytopathology/thyroid-fna-papillary-carcinoma-pap.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cytopathology_of_papillary_thyroid_carcinoma.png",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Cytopathology_of_papillary_thyroid_carcinoma.png"
+    },
+    {
+      "caseId": "cyto-lung-fna-adenocarcinoma",
+      "title": "Lung FNA: adenocarcinoma",
+      "file": "src/content/signout_sims/cytopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/cytopathology/lung-fna-adenocarcinoma-cell-block-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/cytopathology/lung-fna-adenocarcinoma-cell-block-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Adenocarcinoma_of_lung,_FNA_(5435902375).jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Adenocarcinoma_of_lung%2C_FNA_(5435902375).jpg"
+    },
+    {
+      "caseId": "cyto-pleural-effusion-metastatic-breast",
+      "title": "Pleural effusion: metastatic breast carcinoma",
+      "file": "src/content/signout_sims/cytopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/cytopathology/pleural-effusion-metastatic-adenocarcinoma-cell-block.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/cytopathology/pleural-effusion-metastatic-adenocarcinoma-cell-block.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Metastatic_Breast_Cancer_in_Pleural_Fluid_(2293304241).jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Metastatic_Breast_Cancer_in_Pleural_Fluid_(2293304241).jpg"
+    },
+    {
+      "caseId": "cyto-urine-high-grade-urothelial-carcinoma",
+      "title": "Urine cytology: high-grade urothelial carcinoma",
+      "file": "src/content/signout_sims/cytopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/cytopathology/urine-high-grade-urothelial-carcinoma-pap.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/cytopathology/urine-high-grade-urothelial-carcinoma-pap.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cytopathology_of_high-grade_urothelial_carcinoma_(HGUC).jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Cytopathology_of_high-grade_urothelial_carcinoma_(HGUC).jpg"
+    },
+    {
+      "caseId": "cyto-cervical-pap-hsil",
+      "title": "Cervical Pap test: high-grade squamous intraepithelial lesion",
+      "file": "src/content/signout_sims/cytopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/cytopathology/cervical-pap-hsil-pap.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/cytopathology/cervical-pap-hsil-pap.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:High-grade_squamous_intraepithelial_lesion.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/High-grade_squamous_intraepithelial_lesion.jpg"
+    },
+    {
+      "caseId": "cyto-bile-duct-brushing-adenocarcinoma",
+      "title": "Bile duct brushing: adenocarcinoma",
+      "file": "src/content/signout_sims/cytopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/cytopathology/bile-duct-brushing-adenocarcinoma-pap.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/cytopathology/bile-duct-brushing-adenocarcinoma-pap.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Adenocarcinoma_of_common_bile_duct.png",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/5/52/Adenocarcinoma_of_common_bile_duct.png"
+    },
+    {
+      "caseId": "gi-colon-adenocarcinoma-resection",
+      "title": "Right hemicolectomy: invasive colonic adenocarcinoma",
+      "file": "src/content/signout_sims/gastrointestinal_signout_sims.json",
+      "localPath": "reference-library/signout-sims/gastrointestinal/colon-adenocarcinoma-biopsy-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/gastrointestinal/colon-adenocarcinoma-biopsy-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Colon_adenocarcinoma_-_biopsy,_high_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Colon_adenocarcinoma_-_biopsy%2C_high_mag.jpg"
+    },
+    {
+      "caseId": "gi-gastric-poorly-cohesive-resection",
+      "title": "Subtotal gastrectomy: poorly cohesive gastric adenocarcinoma",
+      "file": "src/content/signout_sims/gastrointestinal_signout_sims.json",
+      "localPath": "reference-library/signout-sims/gastrointestinal/poorly-cohesive-gastric-adenocarcinoma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/gastrointestinal/poorly-cohesive-gastric-adenocarcinoma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Poorly_cohesive_gastric_adenocarcinoma,_high_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Poorly_cohesive_gastric_adenocarcinoma%2C_high_mag.jpg"
+    },
+    {
+      "caseId": "gyn-endometrium-ein-biopsy",
+      "title": "Endometrial biopsy: atypical hyperplasia / EIN",
+      "file": "src/content/signout_sims/gynecologic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/gynecologic/endometrial-intraepithelial-neoplasia-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/gynecologic/endometrial-intraepithelial-neoplasia-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_endometrial_intraepithelial_neoplasia_(EIN).jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Histopathology_of_endometrial_intraepithelial_neoplasia_(EIN).jpg"
+    },
+    {
+      "caseId": "gyn-endometrium-serous-biopsy",
+      "title": "Endometrial biopsy: serous carcinoma",
+      "file": "src/content/signout_sims/gynecologic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/gynecologic/endometrial-serous-carcinoma-p53-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/gynecologic/endometrial-serous-carcinoma-p53-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Uterine_serous_carcinoma_high_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Uterine_serous_carcinoma_high_mag.jpg"
+    },
+    {
+      "caseId": "gyn-hysterectomy-endometrioid-carcinoma",
+      "title": "Hysterectomy: endometrioid carcinoma with myoinvasion",
+      "file": "src/content/signout_sims/gynecologic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/gynecologic/endometrioid-carcinoma-myoinvasion-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/gynecologic/endometrioid-carcinoma-myoinvasion-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Endometrioid_endometrial_adenocarcinoma_high_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Endometrioid_endometrial_adenocarcinoma_high_mag.jpg"
+    },
+    {
+      "caseId": "gyn-cervix-cone-hsil-ais",
+      "title": "Cervical cone: HSIL with endocervical adenocarcinoma in situ",
+      "file": "src/content/signout_sims/gynecologic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/gynecologic/cervix-hsil-ais-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/gynecologic/cervix-hsil-ais-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cervix_Adenocarcinoma_in_situ_%26_HSIL_(1799755393).jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/5/59/Cervix_Adenocarcinoma_in_situ_%26_HSIL_(1799755393).jpg"
+    },
+    {
+      "caseId": "gyn-ovary-serous-borderline",
+      "title": "Oophorectomy: serous borderline tumor",
+      "file": "src/content/signout_sims/gynecologic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/gynecologic/ovary-serous-borderline-tumor-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/gynecologic/ovary-serous-borderline-tumor-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_ovarian_serous_borderline_tumor.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Histopathology_of_ovarian_serous_borderline_tumor.jpg"
+    },
+    {
+      "caseId": "gyn-products-of-conception-gross-only",
+      "title": "Products of conception: first-trimester evacuation",
+      "file": "src/content/signout_sims/gynecologic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/gynecologic/products-of-conception-chorionic-villi-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/gynecologic/products-of-conception-chorionic-villi-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Products_of_Conception_4x.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/1/13/Products_of_Conception_4x.jpg"
+    },
+    {
+      "caseId": "hn-oral-scc-biopsy",
+      "title": "Oral tongue biopsy: invasive squamous cell carcinoma",
+      "file": "src/content/signout_sims/head_neck_signout_sims.json",
+      "localPath": "reference-library/signout-sims/head-neck/oral-squamous-cell-carcinoma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/head-neck/oral-squamous-cell-carcinoma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oral_cancer_(1)_squamous_cell_carcinoma_histopathology.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Oral_cancer_(1)_squamous_cell_carcinoma_histopathology.jpg"
+    },
+    {
+      "caseId": "hn-oropharynx-p16-scc-resection",
+      "title": "Tonsillectomy: HPV-associated oropharyngeal squamous cell carcinoma",
+      "file": "src/content/signout_sims/head_neck_signout_sims.json",
+      "localPath": "reference-library/signout-sims/head-neck/oropharyngeal-squamous-cell-carcinoma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/head-neck/oropharyngeal-squamous-cell-carcinoma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Squamous_cell_carcinoma_-_p16_positive_--_high_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Squamous_cell_carcinoma_-_p16_positive_--_high_mag.jpg"
+    },
+    {
+      "caseId": "hn-larynx-scc-laryngectomy",
+      "title": "Total laryngectomy: transglottic squamous cell carcinoma",
+      "file": "src/content/signout_sims/head_neck_signout_sims.json",
+      "localPath": "reference-library/signout-sims/head-neck/laryngeal-squamous-cell-carcinoma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/head-neck/laryngeal-squamous-cell-carcinoma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Laryngeal_squamous_carcinoma_--_intermed_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Laryngeal_squamous_carcinoma_--_intermed_mag.jpg"
+    },
+    {
+      "caseId": "hn-papillary-thyroid-carcinoma-thyroidectomy",
+      "title": "Thyroidectomy: classic papillary thyroid carcinoma",
+      "file": "src/content/signout_sims/head_neck_signout_sims.json",
+      "localPath": "reference-library/signout-sims/head-neck/papillary-thyroid-carcinoma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/head-neck/papillary-thyroid-carcinoma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Papillary_thyroid_microcarcinoma_-_high_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Papillary_thyroid_microcarcinoma_-_high_mag.jpg"
+    },
+    {
+      "caseId": "hn-pleomorphic-adenoma-parotidectomy",
+      "title": "Superficial parotidectomy: pleomorphic adenoma",
+      "file": "src/content/signout_sims/head_neck_signout_sims.json",
+      "localPath": "reference-library/signout-sims/head-neck/pleomorphic-adenoma-parotid-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/head-neck/pleomorphic-adenoma-parotid-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_pleomorphic_adenoma.png",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Histopathology_of_pleomorphic_adenoma.png"
+    },
+    {
+      "caseId": "hn-tonsils-hypertrophy-gross-only",
+      "title": "Tonsils and adenoids: lymphoid hyperplasia, gross-only workflow",
+      "file": "src/content/signout_sims/head_neck_signout_sims.json",
+      "localPath": "reference-library/signout-sims/head-neck/tonsillar-hyperplasia-gross.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/head-neck/tonsillar-hyperplasia-gross.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gross_pathology_of_tonsil.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/Gross_pathology_of_tonsil.jpg"
+    },
+    {
+      "caseId": "heme-reactive-lymph-node-excision",
+      "title": "Lymph node excision: reactive follicular hyperplasia",
+      "file": "src/content/signout_sims/hematopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/hematopathology/reactive-follicular-hyperplasia-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/hematopathology/reactive-follicular-hyperplasia-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_reactive_follicular_hyperplasia.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/Histopathology_of_reactive_follicular_hyperplasia.jpg"
+    },
+    {
+      "caseId": "heme-follicular-lymphoma-core",
+      "title": "Lymph node core biopsy: follicular lymphoma, low grade",
+      "file": "src/content/signout_sims/hematopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/hematopathology/follicular-lymphoma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/hematopathology/follicular-lymphoma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Follicular_lymphoma,_H%26E_1.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Follicular_lymphoma%2C_H%26E_1.jpg"
+    },
+    {
+      "caseId": "heme-dlbcl-excision",
+      "title": "Lymph node excision: diffuse large B-cell lymphoma",
+      "file": "src/content/signout_sims/hematopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/hematopathology/dlbcl-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/hematopathology/dlbcl-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Diffuse_large_B-cell_lymphoma_(DLBCL),_high_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/Diffuse_large_B-cell_lymphoma_(DLBCL)%2C_high_mag.jpg"
+    },
+    {
+      "caseId": "heme-mantle-cell-flow-core",
+      "title": "Lymph node core biopsy: mantle cell lymphoma with flow correlation",
+      "file": "src/content/signout_sims/hematopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/hematopathology/mantle-cell-lymphoma-cyclin-d1.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/hematopathology/mantle-cell-lymphoma-cyclin-d1.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mantle_cell_lymphoma_-_intermed_mag_-_cyclin_D1.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/a/af/Mantle_cell_lymphoma_-_intermed_mag_-_cyclin_D1.jpg"
+    },
+    {
+      "caseId": "heme-aml-bone-marrow-biopsy",
+      "title": "Bone marrow biopsy: acute myeloid leukemia",
+      "file": "src/content/signout_sims/hematopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/hematopathology/acute-myeloid-leukemia-marrow-smear.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/hematopathology/acute-myeloid-leukemia-marrow-smear.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Myeloblast_with_Auer_rod_smear_2010-01-27.JPG",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Myeloblast_with_Auer_rod_smear_2010-01-27.JPG"
+    },
+    {
+      "caseId": "heme-gross-only-thymus",
+      "title": "Gross-only specimen: benign thymic tissue from cardiac surgery",
+      "file": "src/content/signout_sims/hematopathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/hematopathology/benign-thymus-gross.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/hematopathology/benign-thymus-gross.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histology_of_thymus_gland.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Histology_of_thymus_gland.jpg"
+    },
+    {
+      "caseId": "neuro-glioblastoma-stereotactic-biopsy",
+      "title": "Brain biopsy: glioblastoma, IDH-wildtype",
+      "file": "src/content/signout_sims/neuropathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/neuropathology/glioblastoma-high-mag-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/neuropathology/glioblastoma-high-mag-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_glioblastoma%2C_high_magnification.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/2/21/Histopathology_of_glioblastoma%2C_high_magnification.jpg"
+    },
+    {
+      "caseId": "neuro-primary-cns-lymphoma-biopsy",
+      "title": "Brain biopsy: primary diffuse large B-cell lymphoma of the CNS",
+      "file": "src/content/signout_sims/neuropathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/neuropathology/primary-cns-lymphoma-high-mag.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/neuropathology/primary-cns-lymphoma-high-mag.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Primary_CNS_lymphoma_-_high_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Primary_CNS_lymphoma_-_high_mag.jpg"
+    },
+    {
+      "caseId": "neuro-meningioma-resection",
+      "title": "Dural-based mass resection: meningioma, CNS WHO grade 1",
+      "file": "src/content/signout_sims/neuropathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/neuropathology/meningioma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/neuropathology/meningioma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_meningioma.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Histopathology_of_meningioma.jpg"
+    },
+    {
+      "caseId": "neuro-oligodendroglioma-resection",
+      "title": "Craniotomy resection: oligodendroglioma, IDH-mutant and 1p/19q-codeleted",
+      "file": "src/content/signout_sims/neuropathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/neuropathology/anaplastic-oligodendroglioma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/neuropathology/anaplastic-oligodendroglioma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anaplastic_oligodendroglioma_%281%29.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Anaplastic_oligodendroglioma_(1).jpg"
+    },
+    {
+      "caseId": "neuro-pitnet-transsphenoidal-resection",
+      "title": "Transsphenoidal resection: pituitary neuroendocrine tumor",
+      "file": "src/content/signout_sims/neuropathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/neuropathology/pituitary-adenoma-nonfunctioning-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/neuropathology/pituitary-adenoma-nonfunctioning-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pituitary_adenoma-nonfunctioning.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Pituitary_adenoma-nonfunctioning.jpg"
+    },
+    {
+      "caseId": "neuro-schwannoma-skull-base-resection",
+      "title": "Skull base mass resection: schwannoma",
+      "file": "src/content/signout_sims/neuropathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/neuropathology/schwannoma-high-mag.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/neuropathology/schwannoma-high-mag.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Schwannoma_1_--_high_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/Schwannoma_1_--_high_mag.jpg"
+    },
+    {
+      "caseId": "neuro-medulloblastoma-resection",
+      "title": "Posterior fossa resection: medulloblastoma",
+      "file": "src/content/signout_sims/neuropathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/neuropathology/medulloblastoma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/neuropathology/medulloblastoma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Medulloblastoma_.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Medulloblastoma_.jpg"
+    },
+    {
+      "caseId": "neuro-ependymoma-spinal-resection",
+      "title": "Spinal cord tumor resection: ependymoma",
+      "file": "src/content/signout_sims/neuropathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/neuropathology/ependymoma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/neuropathology/ependymoma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ependymoma_H%26E.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Ependymoma_H%26E.jpg"
+    },
+    {
+      "caseId": "neuro-intervertebral-disc-gross-only",
+      "title": "Intervertebral disc: degenerative disc material",
+      "file": "src/content/signout_sims/neuropathology_signout_sims.json",
+      "localPath": "reference-library/signout-sims/neuropathology/intervertebral-disc-gross.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/neuropathology/intervertebral-disc-gross.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Herniated_disc.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Herniated_disc.jpg"
+    },
+    {
+      "caseId": "thoracic-lung-adenocarcinoma-lobectomy",
+      "title": "Lung lobectomy: invasive adenocarcinoma, acinar predominant",
+      "file": "src/content/signout_sims/thoracic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/thoracic/lung-adenocarcinoma-acinar-he.png",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/thoracic/lung-adenocarcinoma-acinar-he.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_lung_adenocarcinoma_with_acinar_pattern.png",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Histopathology_of_lung_adenocarcinoma_with_acinar_pattern.png"
+    },
+    {
+      "caseId": "thoracic-squamous-cell-carcinoma-biopsy",
+      "title": "Endobronchial biopsy: squamous cell carcinoma",
+      "file": "src/content/signout_sims/thoracic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/thoracic/lung-squamous-cell-carcinoma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/thoracic/lung-squamous-cell-carcinoma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Squamous_Cell_Carcinoma_Lung_40x.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Squamous_Cell_Carcinoma_Lung_40x.jpg"
+    },
+    {
+      "caseId": "thoracic-small-cell-carcinoma-biopsy",
+      "title": "Mediastinal node biopsy: small cell carcinoma",
+      "file": "src/content/signout_sims/thoracic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/thoracic/small-cell-carcinoma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/thoracic/small-cell-carcinoma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_small_cell_carcinoma.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Histopathology_of_small_cell_carcinoma.jpg"
+    },
+    {
+      "caseId": "thoracic-pleural-mesothelioma-biopsy",
+      "title": "Pleural biopsy: malignant mesothelioma, epithelioid type",
+      "file": "src/content/signout_sims/thoracic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/thoracic/epithelioid-mesothelioma-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/thoracic/epithelioid-mesothelioma-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Malignant_epithelioid_mesothelioma_-_high_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/Malignant_epithelioid_mesothelioma_-_high_mag.jpg"
+    },
+    {
+      "caseId": "thoracic-thymoma-thymectomy",
+      "title": "Thymectomy: type B2 thymoma",
+      "file": "src/content/signout_sims/thoracic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/thoracic/thymoma-type-b2-he.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/thoracic/thymoma-type-b2-he.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thymoma_type_B2_--_high_mag.jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Thymoma_type_B2_--_high_mag.jpg"
+    },
+    {
+      "caseId": "thoracic-apical-bleb-gross-only",
+      "title": "Apical lung wedge: ruptured bleb",
+      "file": "src/content/signout_sims/thoracic_signout_sims.json",
+      "localPath": "reference-library/signout-sims/thoracic/apical-bleb-gross.jpg",
+      "absolutePath": "/Users/skim4/Downloads/Didactic_Series/public/reference-library/signout-sims/thoracic/apical-bleb-gross.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bullous_emphysema_(4857852447).jpg",
+      "directUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Bullous_emphysema_(4857852447).jpg"
+    }
+  ],
+  "unresolved": []
+}

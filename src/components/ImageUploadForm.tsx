@@ -149,17 +149,17 @@ export const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onUploadSucces
 
             {showGallerySelector && (
                  <div>
-                    <label className="block text-sm font-medium leading-6 text-slate-900">Target Gallery</label>
+                    <label className="block text-sm font-medium leading-6 text-slate-900">Image Set</label>
                     <fieldset className="mt-2">
-                        <legend className="sr-only">Choose a gallery to upload to</legend>
+                        <legend className="sr-only">Choose an image set</legend>
                         <div className="flex items-center space-x-4">
                             <div className="flex items-center">
                                 <input id="community" name="gallery-type" type="radio" value="community" checked={targetGallery === 'community'} onChange={(e) => setTargetGallery(e.target.value as TargetGallery)} className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-sky-600" />
-                                <label htmlFor="community" className="ml-2 block text-sm font-medium text-slate-800">Community Gallery</label>
+                                <label htmlFor="community" className="ml-2 block text-sm font-medium text-slate-800">Teaching Images</label>
                             </div>
                             <div className="flex items-center">
                                 <input id="official" name="gallery-type" type="radio" value="official" checked={targetGallery === 'official'} onChange={(e) => setTargetGallery(e.target.value as TargetGallery)} className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-sky-600" />
-                                <label htmlFor="official" className="ml-2 block text-sm font-medium text-slate-800">Official Atlas</label>
+                                <label htmlFor="official" className="ml-2 block text-sm font-medium text-slate-800">Faculty Images</label>
                             </div>
                         </div>
                     </fieldset>

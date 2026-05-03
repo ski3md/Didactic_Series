@@ -75,7 +75,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange }) => {
   return (
     <div className="space-y-12 animate-fade-in">
       <header className="text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold font-serif text-slate-900 tracking-tight">Pathology Didactic Series</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold font-serif text-slate-900 tracking-tight">P@thfndr</h1>
         <p className="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">A teaching platform for pathology residents, board review, and diagnostic pattern reinforcement.</p>
       </header>
 

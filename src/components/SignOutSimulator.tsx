@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { User, ModuleData } from '../types.ts';
+import { Section, User, ModuleData } from '../types.ts';
 import { GoogleGenerativeAI as GoogleGenAI } from '@google/generative-ai';
 import { modules } from '../data/modules.ts';
 import Card from './ui/Card.tsx';
 import SectionHeader from './ui/SectionHeader.tsx';
 import WSIViewer from './WSIViewer.tsx';
 import { CheckCircleIcon, LightbulbIcon, ArrowPathIcon } from './icons.tsx';
+import GUSignOutSims from './GUSignOutSims.tsx';
 
 type SimulatorState = 'intro' | 'clinical' | 'histology' | 'ancillaries' | 'reporting' | 'feedback';
 
@@ -99,7 +100,8 @@ const getGeminiClient = () => {
     return new GoogleGenAI({ apiKey });
 };
 
-const SignOutSimulator: React.FC<{ user: User | null }> = ({ user }) => {
+const SignOutSimulator: React.FC<{ user: User | null; onSectionChange?: (section: Section) => void }> = ({ user, onSectionChange }) => {
+    const [simulatorMode, setSimulatorMode] = useState<'directory' | 'specialty' | 'general'>('directory');
     const [caseData, setCaseData] = useState<ModuleData | null>(null);
     const [currentState, setCurrentState] = useState<SimulatorState>('intro');
     const [selectedAncillaries, setSelectedAncillaries] = useState<string[]>([]);
@@ -180,9 +182,69 @@ const SignOutSimulator: React.FC<{ user: User | null }> = ({ user }) => {
     const simulatorSteps: SimulatorState[] = ['clinical', 'histology', 'ancillaries', 'reporting', 'feedback'];
     const currentStepIndex = simulatorSteps.indexOf(currentState);
 
+    const resetGeneralWorkflow = () => {
+        setCaseData(null);
+        setCurrentState('intro');
+        setSelectedAncillaries([]);
+        setUserReport('');
+        setFeedback(null);
+    };
+
+    const workflowCards = [
+        {
+            id: 'specialty' as const,
+            title: 'Subspecialty Sign-Out',
+            description: 'Breast, GI, GU, gynecologic, thoracic, head and neck, heme, cytology, bone and soft tissue, and neuropathology.',
+            meta: 'Open a subspecialty page',
+        },
+        {
+            id: 'general' as const,
+            title: 'General Unknown',
+            description: 'Legacy unknown-case workflow with clinical history, histology, ancillary choices, report drafting, and feedback.',
+            meta: 'Open unknown case page',
+        },
+    ];
+
+    const renderWorkflowDirectory = () => (
+        <div className="grid gap-4 lg:grid-cols-2" data-testid="signout-workflow-directory">
+            {workflowCards.map((card) => (
+                <button
+                    key={card.id}
+                    type="button"
+                    onClick={() => {
+                        if (card.id === 'general') resetGeneralWorkflow();
+                        setSimulatorMode(card.id);
+                    }}
+                    className="rounded-lg border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:border-sky-300 hover:shadow-md"
+                >
+                    <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">{card.meta}</div>
+                    <h2 className="mt-3 font-serif text-2xl font-semibold text-slate-950">{card.title}</h2>
+                    <p className="mt-3 text-sm leading-6 text-slate-700">{card.description}</p>
+                </button>
+            ))}
+        </div>
+    );
+
     return (
         <div className="animate-fade-in space-y-6">
-            <SectionHeader title="Virtual Sign-Out Simulator" subtitle="Work through an unknown case from start to finish." />
+            <SectionHeader title="Virtual Sign-Out Simulator" subtitle="Work through image-first diagnostic sign-out cases from slide review to final report." />
+
+            {simulatorMode !== 'directory' && (
+                <button
+                    type="button"
+                    onClick={() => setSimulatorMode('directory')}
+                    className="w-fit rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300"
+                >
+                    Back to Sign-Out Workflows
+                </button>
+            )}
+
+            {simulatorMode === 'directory' ? (
+                renderWorkflowDirectory()
+            ) : simulatorMode === 'specialty' ? (
+                <GUSignOutSims onSectionChange={onSectionChange} />
+            ) : (
+            <>
             
             {currentState !== 'intro' && (
                 <div className="mb-8 px-2 sm:px-0">
@@ -307,6 +369,8 @@ const SignOutSimulator: React.FC<{ user: User | null }> = ({ user }) => {
                         </Card>
                     )}
                 </>
+            )}
+            </>
             )}
         </div>
     );

@@ -1,0 +1,1022 @@
+{
+  "version": "2026-04-30",
+  "sourceGamePath": "/Users/skim4/Downloads/breast_pathology_signout_game.jsx",
+  "purpose": "Evidence-first breast pathology sign-out training for pathology residents, with case reasoning, report construction, and image-governed remediation.",
+  "externalImplementationPatterns": [
+    {
+      "pattern": "Zoomable high-resolution histology viewing",
+      "reference": "OpenSeadragon",
+      "implementationUse": "Use for high-resolution histology, whole-slide regions, and learner pan/zoom review before diagnosis reveal."
+    },
+    {
+      "pattern": "PDF page rendering to canvas/image",
+      "reference": "PDF.js examples",
+      "implementationUse": "Use for extracting figures, tables, or case handout pages into locally governed teaching assets."
+    },
+    {
+      "pattern": "Manifest-driven asset acquisition",
+      "reference": "Local acquired lecture image pipeline",
+      "implementationUse": "Preserve source URL, local path, caption, stain, role, and case/entity linkage for every image."
+    }
+  ],
+  "assetCategories": [
+    {
+      "id": "diagnostic-histology",
+      "label": "Diagnostic histology",
+      "minimumPerEntity": 1,
+      "requiredMetadata": ["entityId", "stain", "magnification", "sourceUrl", "localPath", "caption"]
+    },
+    {
+      "id": "ancillary-study",
+      "label": "Ancillary study",
+      "minimumPerRelevantEntity": 1,
+      "requiredMetadata": ["entityId", "markerOrStudy", "resultPattern", "sourceUrl", "localPath", "caption"]
+    },
+    {
+      "id": "gross-radiology-correlation",
+      "label": "Gross or imaging correlation",
+      "minimumPerApplicableCase": 1,
+      "requiredMetadata": ["caseId", "modality", "clinicalQuestion", "sourceUrl", "localPath", "caption"]
+    },
+    {
+      "id": "reporting-artifact",
+      "label": "Reporting artifact",
+      "minimumPerSimulation": 1,
+      "requiredMetadata": ["caseId", "artifactType", "requiredFields", "scoringRubric"]
+    },
+    {
+      "id": "faculty-key",
+      "label": "Faculty key",
+      "minimumPerCase": 1,
+      "requiredMetadata": ["caseId", "diagnosticDecision", "expectedReportLanguage", "pitfalls"]
+    }
+  ],
+  "teachingMechanisms": [
+    {
+      "id": "image-first",
+      "label": "Image first, answer second",
+      "learnerFlow": [
+        "Display only the image and clinical header.",
+        "Require the learner to state the compartment, process, and immediate differential.",
+        "Reveal the microscopic findings only after an observation is recorded.",
+        "Reveal ancillary studies only after morphology-driven reasoning is complete.",
+        "Reveal final diagnosis and report language last."
+      ]
+    },
+    {
+      "id": "diagnostic-commitment",
+      "label": "Diagnostic commitment",
+      "learnerFlow": [
+        "Learner enters diagnosis, grade/classification, and one exclusion.",
+        "Faculty reveals the strongest confirming feature and the highest-risk mimic.",
+        "Learner revises the report before the answer key is shown."
+      ]
+    },
+    {
+      "id": "signout-efficiency",
+      "label": "Sign-out efficiency",
+      "learnerFlow": [
+        "Learner identifies the report-critical elements in under 90 seconds.",
+        "Learner dictates a concise diagnosis line.",
+        "Learner checks whether radiology, margins, biomarkers, and staging are adequately addressed."
+      ]
+    },
+    {
+      "id": "synoptic-build",
+      "label": "Synoptic build",
+      "learnerFlow": [
+        "Learner completes structured fields from image and scenario data.",
+        "System checks missing mandatory fields.",
+        "Faculty compares the draft with the locked expected report."
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "bsg-01-benign-calcifications",
+      "sourceGameCase": 1,
+      "title": "Benign calcifications on stereotactic core",
+      "diagnosticTask": "Explain benign calcifications on core biopsy and avoid overcalling usual ductal hyperplasia as atypia.",
+      "mode": "image-first-mcq",
+      "assetCategoryIds": ["diagnostic-histology", "gross-radiology-correlation", "faculty-key"],
+      "visualEvidenceRequirements": [
+        {
+          "slot": "he-benign-calcifications",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["fibrocystic change", "usual ductal hyperplasia", "benign ductal calcifications"]
+        },
+        {
+          "slot": "mammographic-calcifications",
+          "requiredRole": "gross-radiology-correlation",
+          "requiredCaptionElements": ["calcification target", "radiology-pathology concordance"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Name the process explaining the targeted calcifications.",
+          "expectedObservation": "Calcifications are present in benign ducts/lobules with fibrocystic change and no atypical epithelial proliferation."
+        },
+        {
+          "step": 2,
+          "prompt": "Exclude the lesion that would change management.",
+          "expectedObservation": "No monomorphic low-grade proliferation meeting ADH or DCIS criteria."
+        },
+        {
+          "step": 3,
+          "prompt": "Dictate the final core biopsy diagnosis.",
+          "expectedObservation": "Benign breast tissue with fibrocystic change and benign calcifications; negative for atypia and malignancy."
+        }
+      ],
+      "reportingTarget": "Benign breast tissue with fibrocystic change and benign calcifications; negative for atypia and malignancy.",
+      "pitfalls": ["Failure to state whether calcifications are explained", "Overcalling florid usual ductal hyperplasia as ADH"]
+    },
+    {
+      "id": "bsg-02-adh-vs-dcis",
+      "sourceGameCase": 2,
+      "title": "Atypical ductal hyperplasia on core biopsy",
+      "diagnosticTask": "Separate ADH from low-grade DCIS using morphology plus extent in core biopsy material.",
+      "mode": "image-first-mcq",
+      "assetCategoryIds": ["diagnostic-histology", "ancillary-study", "faculty-key"],
+      "visualEvidenceRequirements": [
+        {
+          "slot": "he-adh-low-grade-ductal-atypia",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["monomorphic low-grade cells", "rigid spaces", "limited extent"]
+        },
+        {
+          "slot": "ck5-er-adh-support",
+          "requiredRole": "ancillary-study",
+          "requiredCaptionElements": ["CK5/6 reduced or absent in atypical focus", "ER diffuse in atypical focus"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "State whether the proliferation is usual or atypical.",
+          "expectedObservation": "The proliferation is monomorphic with rigid spaces, supporting atypical ductal proliferation."
+        },
+        {
+          "step": 2,
+          "prompt": "State why the diagnosis is not DCIS on this core.",
+          "expectedObservation": "The atypical proliferation is quantitatively limited in the sampled tissue."
+        },
+        {
+          "step": 3,
+          "prompt": "State the management-facing diagnosis for the report.",
+          "expectedObservation": "Atypical ductal hyperplasia with calcifications, requiring radiology-pathology concordance and usual clinical consideration of excision."
+        }
+      ],
+      "reportingTarget": "Atypical ductal hyperplasia with calcifications.",
+      "pitfalls": ["Using immunostains instead of extent to separate ADH from low-grade DCIS", "Ignoring radiology-pathology concordance"]
+    },
+    {
+      "id": "bsg-03-dcis-biopsy",
+      "sourceGameCase": 3,
+      "title": "Ductal carcinoma in situ on core biopsy",
+      "diagnosticTask": "Report DCIS grade, architecture, necrosis, calcifications, and absence of invasion.",
+      "mode": "image-first-mcq",
+      "assetCategoryIds": ["diagnostic-histology", "ancillary-study", "faculty-key"],
+      "visualEvidenceRequirements": [
+        {
+          "slot": "he-dcis-cribriform-solid-necrosis",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["intraductal carcinoma", "grade", "architecture", "necrosis", "calcifications"]
+        },
+        {
+          "slot": "myoepithelial-retention-dcis",
+          "requiredRole": "ancillary-study",
+          "requiredCaptionElements": ["retained myoepithelial cells", "p63 or smooth muscle myosin"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Determine whether the lesion is in situ or invasive.",
+          "expectedObservation": "The malignant epithelial proliferation remains within ducts with retained myoepithelial cells."
+        },
+        {
+          "step": 2,
+          "prompt": "List the report-required DCIS qualifiers.",
+          "expectedObservation": "Nuclear grade, architectural pattern, necrosis, calcifications, and no invasive carcinoma identified."
+        },
+        {
+          "step": 3,
+          "prompt": "Dictate the DCIS biopsy sign-out line.",
+          "expectedObservation": "Ductal carcinoma in situ, nuclear grade 2, cribriform and solid patterns, with necrosis and calcifications; no invasive carcinoma identified."
+        }
+      ],
+      "reportingTarget": "Ductal carcinoma in situ, nuclear grade 2, cribriform and solid patterns, with necrosis and calcifications; no invasive carcinoma identified.",
+      "pitfalls": ["Omitting necrosis or calcifications", "Calling DCIS invasive without stromal invasion"]
+    },
+    {
+      "id": "bsg-04-invasive-carcinoma-nst-core",
+      "sourceGameCase": 4,
+      "title": "Invasive carcinoma of no special type on core biopsy",
+      "diagnosticTask": "Recognize invasive NST carcinoma and translate biomarkers into clinically useful receptor class.",
+      "mode": "image-first-mcq",
+      "assetCategoryIds": ["diagnostic-histology", "ancillary-study", "faculty-key"],
+      "visualEvidenceRequirements": [
+        {
+          "slot": "he-invasive-nst-desmoplasia",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["infiltrative nests or tubules", "desmoplastic stroma", "associated DCIS if present"]
+        },
+        {
+          "slot": "er-pr-her2-ki67-luminal-profile",
+          "requiredRole": "ancillary-study",
+          "requiredCaptionElements": ["ER percentage and intensity", "PR percentage and intensity", "HER2 score", "Ki-67 index"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Identify invasion and the special type status.",
+          "expectedObservation": "Infiltrative malignant glands/nests in desmoplastic stroma support invasive carcinoma NST."
+        },
+        {
+          "step": 2,
+          "prompt": "Convert biomarker values to receptor class.",
+          "expectedObservation": "ER and PR positive with HER2 1+ is hormone receptor positive and HER2 negative."
+        },
+        {
+          "step": 3,
+          "prompt": "State the biomarker reporting consequence.",
+          "expectedObservation": "The carcinoma is hormone receptor positive and HER2 negative; HER2 1+ is reported as negative by IHC."
+        }
+      ],
+      "reportingTarget": "Invasive carcinoma of no special type, provisional Nottingham grade as appropriate on core biopsy; biomarkers reported separately.",
+      "pitfalls": ["Treating HER2 1+ as HER2 positive", "Omitting associated DCIS in the diagnostic comment"]
+    },
+    {
+      "id": "bsg-05-invasive-lobular-carcinoma",
+      "sourceGameCase": 5,
+      "title": "Classic invasive lobular carcinoma",
+      "diagnosticTask": "Recognize discohesive single-file and targetoid growth and use E-cadherin/p120 appropriately.",
+      "mode": "image-first-mcq",
+      "assetCategoryIds": ["diagnostic-histology", "ancillary-study", "faculty-key"],
+      "visualEvidenceRequirements": [
+        {
+          "slot": "he-ilc-single-file-targetoid",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["single-file growth", "targetoid pattern", "discohesive cells"]
+        },
+        {
+          "slot": "ecadherin-p120-ilc",
+          "requiredRole": "ancillary-study",
+          "requiredCaptionElements": ["loss of membranous E-cadherin", "cytoplasmic p120 if available"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Name the invasive pattern.",
+          "expectedObservation": "Discohesive cells infiltrate in single files and targetoid arrays."
+        },
+        {
+          "step": 2,
+          "prompt": "State the ancillary result that supports lobular phenotype.",
+          "expectedObservation": "Loss of membranous E-cadherin supports lobular carcinoma in the correct morphologic context."
+        },
+        {
+          "step": 3,
+          "prompt": "Dictate the diagnostic line and ancillary support.",
+          "expectedObservation": "Invasive lobular carcinoma, classic type; loss of membranous E-cadherin supports lobular phenotype."
+        }
+      ],
+      "reportingTarget": "Invasive lobular carcinoma, classic type.",
+      "pitfalls": ["Underestimating extent", "Using E-cadherin without first recognizing the growth pattern"]
+    },
+    {
+      "id": "bsg-06-lumpectomy-synoptic-margins",
+      "sourceGameCase": 6,
+      "title": "Lumpectomy synoptic margins",
+      "diagnosticTask": "Separately report invasive carcinoma and DCIS margins when both components are present.",
+      "mode": "synoptic-build",
+      "assetCategoryIds": ["diagnostic-histology", "reporting-artifact", "faculty-key"],
+      "visualEvidenceRequirements": [
+        {
+          "slot": "he-invasive-and-dcis-at-margin-context",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["invasive carcinoma", "DCIS", "inked margin or measured distance"]
+        },
+        {
+          "slot": "cap-margin-field-template",
+          "requiredRole": "reporting-artifact",
+          "requiredCaptionElements": ["closest invasive margin", "closest DCIS margin", "distance in millimeters"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Separate invasive and DCIS margin statements.",
+          "expectedObservation": "Invasive carcinoma and DCIS are measured and reported as separate margin fields."
+        },
+        {
+          "step": 2,
+          "prompt": "State the closest negative margin for each component.",
+          "expectedObservation": "Posterior margin to invasive carcinoma is 3 mm; superior margin to DCIS is 2 mm."
+        },
+        {
+          "step": 3,
+          "prompt": "Dictate the separate margin sentence.",
+          "expectedObservation": "Margins are negative; closest invasive carcinoma margin is posterior at 3 mm, and closest DCIS margin is superior at 2 mm."
+        }
+      ],
+      "reportingTarget": "Margins negative; closest invasive carcinoma margin 3 mm posterior; closest DCIS margin 2 mm superior.",
+      "synopticChecklist": [
+        {
+          "group": "Invasive carcinoma margins",
+          "items": ["Margin status", "Closest margin name", "Distance in millimeters"]
+        },
+        {
+          "group": "DCIS margins",
+          "items": ["Margin status", "Closest margin name", "Distance in millimeters"]
+        }
+      ],
+      "pitfalls": ["Reporting only one closest margin", "Mixing invasive and DCIS margin distances"]
+    },
+    {
+      "id": "bsg-07-er-low-positive",
+      "sourceGameCase": 7,
+      "title": "ER low positive biomarker reporting",
+      "diagnosticTask": "Classify 1-10% ER nuclear staining as ER low positive and state intensity.",
+      "mode": "image-first-mcq",
+      "assetCategoryIds": ["ancillary-study", "faculty-key"],
+      "visualEvidenceRequirements": [
+        {
+          "slot": "er-low-positive-nuclear-staining",
+          "requiredRole": "ancillary-study",
+          "requiredCaptionElements": ["ER 1-10%", "weak intensity", "invasive tumor nuclei"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Estimate percentage and intensity of ER nuclear staining.",
+          "expectedObservation": "Approximately 5% of invasive tumor nuclei show weak ER staining."
+        },
+        {
+          "step": 2,
+          "prompt": "Translate the result into the required reporting category.",
+          "expectedObservation": "ER low positive."
+        },
+        {
+          "step": 3,
+          "prompt": "Dictate the ER result exactly.",
+          "expectedObservation": "ER low positive, weak intensity, approximately 5% of invasive tumor nuclei."
+        }
+      ],
+      "reportingTarget": "ER low positive, weak intensity, approximately 5% of invasive tumor nuclei.",
+      "pitfalls": ["Calling ER low positive negative", "Omitting the low-positive qualifier"]
+    },
+    {
+      "id": "bsg-08-post-neoadjuvant-resection",
+      "sourceGameCase": 8,
+      "title": "Post-neoadjuvant breast resection",
+      "diagnosticTask": "Use yp staging and separately document residual tumor, tumor bed, and treatment effect in breast and nodes.",
+      "mode": "synoptic-build",
+      "assetCategoryIds": ["diagnostic-histology", "reporting-artifact", "faculty-key"],
+      "visualEvidenceRequirements": [
+        {
+          "slot": "he-treated-tumor-bed-residual-carcinoma",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["tumor bed", "residual invasive carcinoma", "treatment effect"]
+        },
+        {
+          "slot": "treated-node-metastasis",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["residual nodal metastasis", "treatment effect", "metastasis size"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Distinguish tumor bed size from residual invasive tumor size.",
+          "expectedObservation": "Tumor bed is 3.2 cm; residual invasive carcinoma is 6 mm."
+        },
+        {
+          "step": 2,
+          "prompt": "Apply post-treatment staging convention.",
+          "expectedObservation": "Use ypTNM and document treatment effect in breast and nodes."
+        },
+        {
+          "step": 3,
+          "prompt": "Dictate the post-treatment staging and reporting sentence.",
+          "expectedObservation": "Post-neoadjuvant specimen with 6 mm residual invasive carcinoma in a 3.2 cm tumor bed and one node with a 1.5 mm residual metastasis; stage with y prefix."
+        }
+      ],
+      "reportingTarget": "Post-neoadjuvant specimen with 6 mm residual invasive carcinoma in a 3.2 cm tumor bed; one node with 1.5 mm residual metastasis; stage with y prefix.",
+      "synopticChecklist": [
+        {
+          "group": "Breast treatment response",
+          "items": ["Tumor bed size", "Residual invasive carcinoma size", "Residual cellularity", "In situ carcinoma after treatment"]
+        },
+        {
+          "group": "Nodal treatment response",
+          "items": ["Number of nodes examined", "Number of nodes with metastasis", "Largest residual nodal metastasis", "Treatment effect in nodes"]
+        }
+      ],
+      "pitfalls": ["Staging tumor bed as residual invasive size", "Failing to document nodal treatment effect"]
+    },
+    {
+      "id": "bsg-09-mucinous-carcinoma",
+      "sourceGameCase": 9,
+      "title": "Mucinous carcinoma receptor summary",
+      "diagnosticTask": "Recognize mucinous carcinoma and summarize biomarkers as hormone receptor positive and HER2 negative.",
+      "mode": "image-first-free-text",
+      "assetCategoryIds": ["diagnostic-histology", "ancillary-study", "faculty-key"],
+      "visualEvidenceRequirements": [
+        {
+          "slot": "he-mucinous-carcinoma",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["tumor clusters", "extracellular mucin", "low-grade cytology"]
+        },
+        {
+          "slot": "er-pr-her2-mucinous-profile",
+          "requiredRole": "ancillary-study",
+          "requiredCaptionElements": ["ER strong positive", "PR strong positive", "HER2 0"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Name the special type.",
+          "expectedObservation": "Floating clusters of carcinoma in extracellular mucin support mucinous carcinoma."
+        },
+        {
+          "step": 2,
+          "prompt": "Summarize receptor class.",
+          "expectedObservation": "Hormone receptor positive and HER2 negative."
+        },
+        {
+          "step": 3,
+          "prompt": "Dictate the receptor-class sentence.",
+          "expectedObservation": "Invasive mucinous carcinoma; hormone receptor positive and HER2 negative."
+        }
+      ],
+      "reportingTarget": "Invasive mucinous carcinoma; hormone receptor positive and HER2 negative.",
+      "pitfalls": ["Failing to distinguish pure from mixed mucinous carcinoma", "Overcomplicating receptor summary"]
+    },
+    {
+      "id": "bsg-10-her2-score-zero",
+      "sourceGameCase": 10,
+      "title": "HER2 IHC score 0",
+      "diagnosticTask": "Distinguish HER2 score 0 from 1+ using membrane staining extent and completeness.",
+      "mode": "image-first-free-text",
+      "assetCategoryIds": ["ancillary-study", "faculty-key"],
+      "visualEvidenceRequirements": [
+        {
+          "slot": "her2-score-zero",
+          "requiredRole": "ancillary-study",
+          "requiredCaptionElements": ["faint incomplete membrane staining", "less than or equal to 10% of cells", "score 0"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Describe membrane staining.",
+          "expectedObservation": "Faint incomplete membrane staining is present in no more than 10% of tumor cells."
+        },
+        {
+          "step": 2,
+          "prompt": "Assign HER2 score.",
+          "expectedObservation": "HER2 IHC score 0."
+        },
+        {
+          "step": 3,
+          "prompt": "Dictate the HER2 result exactly.",
+          "expectedObservation": "HER2 IHC score 0 because faint incomplete membrane staining is present in no more than 10% of tumor cells."
+        }
+      ],
+      "reportingTarget": "HER2 IHC score 0.",
+      "pitfalls": ["Inflating minimal incomplete staining to 1+", "Ignoring percentage cutoff"]
+    },
+    {
+      "id": "bsg-11-lumpectomy-invasive-sln-cap",
+      "title": "Lumpectomy with sentinel lymph nodes",
+      "caseTrack": "resection-synoptic",
+      "specimenType": "Partial mastectomy with separately submitted sentinel lymph nodes",
+      "diagnosticTask": "Complete a CAP-style invasive carcinoma resection sign-out with separate invasive carcinoma, DCIS, margin, lymphovascular invasion, sentinel node, biomarker, and pTNM elements.",
+      "mode": "synoptic-build",
+      "assetCategoryIds": ["diagnostic-histology", "reporting-artifact", "faculty-key"],
+      "grossScenario": "Left partial mastectomy contains a 2.1 cm firm irregular mass with adjacent calcifications. Three sentinel lymph nodes are submitted separately. Invasive carcinoma is 4 mm from the anterior margin and DCIS is 1.5 mm from the superior margin.",
+      "capProtocol": {
+        "protocol": "Breast invasive carcinoma resection",
+        "versionAnchor": "CAP Breast Invasive Resection v4.9.0.1 or current institutional CAP protocol",
+        "requiredFieldGroups": [
+          {
+            "group": "Procedure and laterality",
+            "fields": ["procedure", "specimen laterality", "tumor site if provided"]
+          },
+          {
+            "group": "Invasive carcinoma",
+            "fields": ["histologic type", "tumor size", "Nottingham grade", "lymphovascular invasion"]
+          },
+          {
+            "group": "DCIS",
+            "fields": ["presence or absence", "extent if required by local practice", "grade", "necrosis", "architectural pattern"]
+          },
+          {
+            "group": "Margins",
+            "fields": ["invasive carcinoma margin status and closest distance", "DCIS margin status and closest distance"]
+          },
+          {
+            "group": "Regional lymph nodes",
+            "fields": ["total nodes examined", "sentinel nodes examined", "macro/micro/isolated tumor cell counts", "largest metastasis", "extranodal extension"]
+          },
+          {
+            "group": "Ancillary and stage",
+            "fields": ["biomarker block or prior biomarker reference", "pT", "pN", "applicable descriptors"]
+          }
+        ],
+        "stagingNotes": "Use pTNM for upfront surgery. Do not combine DCIS and invasive carcinoma margin distances into a single closest margin statement."
+      },
+      "visualEvidenceRequirements": [
+        {
+          "slot": "he-invasive-nst-resection",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["invasive carcinoma", "tumor size context", "grade"]
+        },
+        {
+          "slot": "sentinel-node-metastasis-or-negative-node",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["sentinel lymph node", "metastatic deposit status", "largest deposit if positive"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "State the invasive carcinoma type, size, grade, and lymphovascular invasion status.",
+          "expectedObservation": "The report begins with invasive carcinoma NST, tumor size 2.1 cm, Nottingham grade, and LVI status."
+        },
+        {
+          "step": 2,
+          "prompt": "Separate invasive carcinoma margin reporting from DCIS margin reporting.",
+          "expectedObservation": "Closest invasive carcinoma margin is anterior at 4 mm; closest DCIS margin is superior at 1.5 mm."
+        },
+        {
+          "step": 3,
+          "prompt": "Complete sentinel node accounting.",
+          "expectedObservation": "Total nodes, sentinel nodes, positive node category, size of largest deposit, and extranodal extension are all explicitly addressed."
+        }
+      ],
+      "synopticChecklist": [
+        {
+          "group": "Tumor",
+          "items": ["histologic type", "invasive tumor size", "Nottingham score/grade", "DCIS qualifiers", "LVI"]
+        },
+        {
+          "group": "Margins",
+          "items": ["closest invasive margin with distance", "closest DCIS margin with distance", "separate additional margin specimens if submitted"]
+        },
+        {
+          "group": "Nodes and stage",
+          "items": ["total nodes", "sentinel nodes", "macro/micro/ITC counts", "largest deposit", "extranodal extension", "pT/pN"]
+        }
+      ],
+      "reportingTarget": "Invasive carcinoma of no special type, 2.1 cm, Nottingham grade as assigned, with associated DCIS; margins negative with invasive carcinoma 4 mm from anterior margin and DCIS 1.5 mm from superior margin; sentinel lymph nodes reported with total count, positive count, largest deposit, extranodal extension, and pTNM.",
+      "pitfalls": ["Reporting only one closest margin when invasive carcinoma and DCIS are both present", "Failing to state sentinel node denominator", "Omitting LVI"]
+    },
+    {
+      "id": "bsg-12-mastectomy-dcis-sln-cap",
+      "title": "Mastectomy for extensive DCIS with sentinel node sampling",
+      "caseTrack": "resection-synoptic",
+      "specimenType": "Skin-sparing mastectomy with nipple margin and sentinel lymph node biopsy",
+      "diagnosticTask": "Complete a DCIS resection sign-out including extent, grade, necrosis, margins, nipple/skin involvement, sentinel node accounting, and pTis staging.",
+      "mode": "synoptic-build",
+      "assetCategoryIds": ["diagnostic-histology", "reporting-artifact", "faculty-key"],
+      "grossScenario": "Right skin-sparing mastectomy for extensive calcifications. DCIS spans 6.4 cm across sequential slices. Nipple margin is submitted separately. Two sentinel lymph nodes are negative.",
+      "capProtocol": {
+        "protocol": "Breast DCIS resection",
+        "versionAnchor": "CAP Breast DCIS Resection v4.4.0.0 or current institutional CAP protocol",
+        "requiredFieldGroups": [
+          {
+            "group": "DCIS",
+            "fields": ["estimated extent", "nuclear grade", "architectural patterns", "necrosis", "microcalcifications"]
+          },
+          {
+            "group": "Margins",
+            "fields": ["margin status", "closest margin and distance", "separately submitted nipple/skin margins"]
+          },
+          {
+            "group": "Regional lymph nodes",
+            "fields": ["whether nodes were submitted", "total nodes examined", "sentinel nodes examined", "positive node count if applicable"]
+          },
+          {
+            "group": "Stage",
+            "fields": ["pTis (DCIS)", "pN category if nodes submitted", "descriptor if recurrent"]
+          }
+        ],
+        "stagingNotes": "Use the DCIS resection protocol when there is no invasive carcinoma. If invasion or microinvasion is identified, move to the invasive carcinoma protocol."
+      },
+      "visualEvidenceRequirements": [
+        {
+          "slot": "he-extensive-dcis",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["DCIS", "grade", "necrosis", "calcifications"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Confirm whether the case belongs in the DCIS or invasive carcinoma protocol.",
+          "expectedObservation": "No invasive carcinoma or microinvasion is identified, so the DCIS resection protocol applies."
+        },
+        {
+          "step": 2,
+          "prompt": "State how extent is derived.",
+          "expectedObservation": "DCIS extent is estimated from the distribution across sequential gross slices and histologic confirmation."
+        },
+        {
+          "step": 3,
+          "prompt": "Account for sentinel lymph nodes without implying invasive carcinoma.",
+          "expectedObservation": "Two sentinel nodes are examined and negative; final tumor stage remains pTis (DCIS)."
+        }
+      ],
+      "synopticChecklist": [
+        {
+          "group": "DCIS fields",
+          "items": ["extent", "grade", "architecture", "necrosis", "calcifications"]
+        },
+        {
+          "group": "Mastectomy fields",
+          "items": ["skin/nipple involvement", "nipple margin", "closest anatomic margin", "sentinel nodes"]
+        }
+      ],
+      "reportingTarget": "Ductal carcinoma in situ, estimated extent 6.4 cm, grade and necrosis as observed, margins negative with closest margin specified, sentinel lymph nodes 0/2, pTis (DCIS) pN0 if applicable.",
+      "pitfalls": ["Using the invasive carcinoma protocol when no invasion is present", "Omitting extent in mastectomy DCIS", "Treating sentinel node sampling as evidence of invasion"]
+    },
+    {
+      "id": "bsg-13-neoadjuvant-lumpectomy-sln-residual",
+      "title": "Post-neoadjuvant lumpectomy with sentinel nodes",
+      "caseTrack": "neoadjuvant-resection",
+      "specimenType": "Partial mastectomy after neoadjuvant therapy with sentinel lymph node biopsy",
+      "diagnosticTask": "Separate tumor bed, residual invasive carcinoma, residual cellularity, DCIS, nodal response, and ypTNM in a treated breast resection.",
+      "mode": "synoptic-build",
+      "assetCategoryIds": ["diagnostic-histology", "reporting-artifact", "faculty-key"],
+      "grossScenario": "Tumor bed measures 3.8 cm. Residual invasive carcinoma is present as scattered foci spanning 9 mm within the bed. Residual cellularity is low. Residual DCIS is present. Two sentinel lymph nodes show treatment effect; one contains a 1.2 mm residual metastasis.",
+      "capProtocol": {
+        "protocol": "Breast invasive carcinoma resection after neoadjuvant therapy",
+        "versionAnchor": "Current CAP invasive breast resection protocol with post-treatment reporting fields",
+        "requiredFieldGroups": [
+          {
+            "group": "Treatment context",
+            "fields": ["presurgical therapy descriptor", "tumor bed size", "residual invasive tumor size", "residual cancer burden inputs if institution uses RCB"]
+          },
+          {
+            "group": "Breast response",
+            "fields": ["treatment effect in breast", "residual invasive carcinoma", "residual DCIS", "cellularity"]
+          },
+          {
+            "group": "Nodal response",
+            "fields": ["total nodes examined", "sentinel nodes examined", "residual metastasis size", "treatment effect in nodes", "extranodal extension"]
+          },
+          {
+            "group": "Stage",
+            "fields": ["ypT category", "ypN category", "residual disease qualifiers"]
+          }
+        ],
+        "stagingNotes": "Use ypTNM after neoadjuvant therapy. Do not stage the full tumor bed as residual invasive carcinoma."
+      },
+      "treatmentResponse": {
+        "context": "Neoadjuvant systemic therapy before breast-conserving surgery",
+        "requiredAssessments": ["tumor bed size", "residual invasive size", "residual cellularity", "DCIS", "treatment effect in breast", "treatment effect in nodes", "residual nodal metastasis size"],
+        "teachingNote": "The sign-out should make treatment response auditable by tumor board; the learner must distinguish tumor bed from viable invasive carcinoma."
+      },
+      "lymphNodeWorkup": {
+        "submitted": "Two sentinel lymph nodes",
+        "requiredCounts": ["total nodes examined", "sentinel nodes examined", "nodes with residual metastasis", "largest residual metastatic deposit"],
+        "nodalResponse": "Treatment effect present in nodes; one node contains micrometastatic residual disease.",
+        "stagingFocus": "ypN category is based on residual nodal disease after therapy."
+      },
+      "visualEvidenceRequirements": [
+        {
+          "slot": "treated-tumor-bed-residual-invasive-carcinoma",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["tumor bed", "residual invasive carcinoma", "treatment effect"]
+        },
+        {
+          "slot": "treated-sentinel-node",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["nodal treatment effect", "residual metastasis size"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "State tumor bed size separately from residual invasive tumor size.",
+          "expectedObservation": "Tumor bed is 3.8 cm; residual invasive carcinoma spans 9 mm."
+        },
+        {
+          "step": 2,
+          "prompt": "List the required breast treatment response elements.",
+          "expectedObservation": "Residual invasive carcinoma, residual DCIS, treatment effect, and residual cellularity are all documented."
+        },
+        {
+          "step": 3,
+          "prompt": "Complete nodal response accounting.",
+          "expectedObservation": "Two sentinel nodes examined; one has a 1.2 mm residual metastasis with treatment effect; ypN category follows residual disease."
+        }
+      ],
+      "synopticChecklist": [
+        {
+          "group": "Post-treatment breast",
+          "items": ["tumor bed", "residual invasive size", "cellularity", "residual DCIS", "breast treatment effect"]
+        },
+        {
+          "group": "Post-treatment nodes",
+          "items": ["node count", "sentinel node count", "residual deposit size", "nodal treatment effect", "ypN"]
+        }
+      ],
+      "reportingTarget": "Post-neoadjuvant partial mastectomy with 9 mm residual invasive carcinoma in a 3.8 cm tumor bed, residual DCIS present, treatment effect in breast and nodes, one sentinel node with 1.2 mm residual metastasis, ypTNM assigned from residual disease.",
+      "pitfalls": ["Using tumor bed size as residual invasive size", "Omitting nodal treatment effect", "Using pTNM rather than ypTNM"]
+    },
+    {
+      "id": "bsg-14-neoadjuvant-mastectomy-no-nodes-pcr",
+      "title": "Post-neoadjuvant mastectomy with no lymph nodes submitted",
+      "caseTrack": "neoadjuvant-resection",
+      "specimenType": "Total mastectomy after neoadjuvant therapy, no lymph nodes submitted",
+      "diagnosticTask": "Sign out a treated mastectomy with no residual invasive carcinoma and no lymph nodes, while preserving tumor bed documentation and staging limitations.",
+      "mode": "synoptic-build",
+      "assetCategoryIds": ["diagnostic-histology", "reporting-artifact", "faculty-key"],
+      "grossScenario": "Mastectomy shows a 2.6 cm fibrotic tumor bed with biopsy clip. Entire tumor bed is submitted. No residual invasive carcinoma or DCIS is identified. No lymph nodes are submitted or found.",
+      "capProtocol": {
+        "protocol": "Post-neoadjuvant breast resection with no residual carcinoma",
+        "versionAnchor": "Current CAP invasive breast resection protocol plus institutional handling for no residual cancer after neoadjuvant therapy",
+        "requiredFieldGroups": [
+          {
+            "group": "Treatment context",
+            "fields": ["prior diagnosis", "biopsy clip/tumor bed", "extent of sampling", "treatment effect"]
+          },
+          {
+            "group": "Residual disease",
+            "fields": ["residual invasive carcinoma absent", "residual DCIS absent", "tumor bed size"]
+          },
+          {
+            "group": "Regional nodes",
+            "fields": ["no lymph nodes submitted or found", "ypN cannot be assigned from this specimen"]
+          },
+          {
+            "group": "Stage limitation",
+            "fields": ["ypT0 if supported", "ypNX if no nodes submitted", "reference prior biopsy diagnosis"]
+          }
+        ],
+        "stagingNotes": "A complete response in the breast still requires documentation of tumor bed and sampling. Nodal status cannot be inferred when no nodes are submitted."
+      },
+      "treatmentResponse": {
+        "context": "Mastectomy after neoadjuvant therapy with pathologic complete response in breast",
+        "requiredAssessments": ["tumor bed size", "biopsy clip correlation", "sampling adequacy", "absence of residual invasive carcinoma", "absence of residual DCIS", "node submission status"],
+        "teachingNote": "The learner must state what is known from the specimen and what cannot be assigned because no nodes were submitted."
+      },
+      "lymphNodeWorkup": {
+        "submitted": "No lymph nodes submitted or found",
+        "requiredCounts": ["total nodes examined equals 0", "sentinel nodes examined equals 0"],
+        "nodalResponse": "Cannot assess nodal response in this specimen.",
+        "stagingFocus": "ypNX if no regional lymph nodes are submitted or found."
+      },
+      "visualEvidenceRequirements": [
+        {
+          "slot": "treated-tumor-bed-no-residual-carcinoma",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["fibrosis", "treatment effect", "no residual carcinoma"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Confirm whether residual invasive carcinoma or DCIS is present.",
+          "expectedObservation": "No residual invasive carcinoma or DCIS is identified in the submitted tumor bed."
+        },
+        {
+          "step": 2,
+          "prompt": "State the tumor bed and sampling evidence.",
+          "expectedObservation": "Tumor bed is 2.6 cm with biopsy clip correlation and complete histologic submission."
+        },
+        {
+          "step": 3,
+          "prompt": "State the nodal staging limitation.",
+          "expectedObservation": "No nodes are submitted; nodal response and ypN status cannot be assessed from this specimen."
+        }
+      ],
+      "synopticChecklist": [
+        {
+          "group": "Complete response documentation",
+          "items": ["prior biopsy diagnosis", "tumor bed size", "sampling extent", "residual invasive carcinoma absent", "residual DCIS absent"]
+        },
+        {
+          "group": "Staging limits",
+          "items": ["ypT0 if criteria met", "ypNX when no nodes submitted", "do not imply nodal complete response"]
+        }
+      ],
+      "reportingTarget": "Post-neoadjuvant mastectomy with treatment effect/tumor bed measuring 2.6 cm and no residual invasive carcinoma or DCIS identified; no lymph nodes submitted or found; ypT0 ypNX if supported by prior invasive carcinoma diagnosis and institutional staging practice.",
+      "pitfalls": ["Calling nodal pathologic complete response without nodes", "Omitting tumor bed size", "Failing to reference the prior diagnostic biopsy"]
+    },
+    {
+      "id": "bsg-15-mastectomy-immediate-reconstruction-implant-capsule",
+      "title": "Mastectomy with immediate reconstruction and implant capsule pathology",
+      "caseTrack": "implant-reconstruction",
+      "specimenType": "Completion mastectomy with immediate reconstruction, acellular dermal matrix, implant capsule, and additional skin",
+      "diagnosticTask": "Separate oncologic resection reporting from reconstruction-associated specimens, implant capsule findings, foreign-body reaction, and lymphoma exclusion when clinically indicated.",
+      "mode": "synoptic-build",
+      "assetCategoryIds": ["diagnostic-histology", "reporting-artifact", "faculty-key"],
+      "grossScenario": "Completion mastectomy shows no residual invasive carcinoma at the prior lumpectomy site. A fibrous implant capsule and acellular dermal matrix are submitted from reconstruction. Capsule shows dense fibrosis, synovial-like metaplasia, chronic inflammation, and foreign-body giant cell reaction. No atypical lymphoid infiltrate is identified.",
+      "capProtocol": {
+        "protocol": "Breast resection plus non-neoplastic implant/reconstruction specimens",
+        "versionAnchor": "Use the applicable CAP breast cancer protocol for the oncologic specimen; implant capsule findings are reported descriptively unless lymphoma or another neoplasm is identified.",
+        "requiredFieldGroups": [
+          {
+            "group": "Oncologic specimen",
+            "fields": ["residual carcinoma status", "prior procedure correlation", "margins if carcinoma present", "stage or prior stage reference"]
+          },
+          {
+            "group": "Reconstruction specimens",
+            "fields": ["implant capsule", "acellular dermal matrix", "skin/scar", "fat necrosis", "foreign-body reaction"]
+          },
+          {
+            "group": "Lymphoma exclusion if indicated",
+            "fields": ["late seroma or mass history", "cytology if fluid submitted", "CD30/ALK workup if atypical lymphoid cells are present"]
+          }
+        ],
+        "stagingNotes": "Do not force benign implant capsule findings into the carcinoma synoptic. Report them in a separate diagnosis/comment section."
+      },
+      "reconstructionImplant": {
+        "scenario": "Immediate reconstruction with implant capsule and acellular dermal matrix submitted with oncologic specimen.",
+        "pathologyTasks": ["document no residual carcinoma if true", "diagnose scar/fat necrosis/foreign-body reaction", "separate benign reconstruction findings from carcinoma fields"],
+        "implantCapsuleTasks": ["assess capsule cellularity", "look for synovial-like metaplasia", "identify silicone/foreign material reaction", "screen for atypical CD30-positive lymphoid infiltrate when clinical setting raises concern"],
+        "reportingBoundary": "The carcinoma synoptic covers the breast cancer specimen; implant capsule pathology is a separate descriptive diagnosis unless a neoplasm is present."
+      },
+      "visualEvidenceRequirements": [
+        {
+          "slot": "implant-capsule-foreign-body-reaction",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["fibrous capsule", "foreign-body giant cells", "chronic inflammation"]
+        },
+        {
+          "slot": "cd30-if-bia-alcl-suspected",
+          "requiredRole": "ancillary-study",
+          "requiredCaptionElements": ["CD30", "ALK", "atypical lymphoid cells if present"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "Separate the oncologic specimen from reconstruction-associated tissue.",
+          "expectedObservation": "No residual carcinoma is reported separately from implant capsule and acellular dermal matrix findings."
+        },
+        {
+          "step": 2,
+          "prompt": "Describe the implant capsule pathology.",
+          "expectedObservation": "Fibrous capsule with synovial-like metaplasia, chronic inflammation, and foreign-body giant cell reaction."
+        },
+        {
+          "step": 3,
+          "prompt": "State when BIA-ALCL workup is required.",
+          "expectedObservation": "Late seroma, mass, or atypical lymphoid infiltrate should trigger cytology/histology correlation and CD30-based workup with ALK as appropriate."
+        }
+      ],
+      "synopticChecklist": [
+        {
+          "group": "Oncologic report",
+          "items": ["residual carcinoma status", "prior lumpectomy site", "margins/stage only if applicable"]
+        },
+        {
+          "group": "Implant/reconstruction report",
+          "items": ["capsule fibrosis", "synovial-like metaplasia", "foreign-body reaction", "silicone reaction", "atypical lymphoid infiltrate absent or present"]
+        }
+      ],
+      "reportingTarget": "Breast, completion mastectomy: prior procedure site changes, no residual carcinoma identified. Implant capsule/acellular dermal matrix: fibrous capsule with synovial-like metaplasia, chronic inflammation, and foreign-body giant cell reaction; no atypical lymphoid infiltrate identified.",
+      "pitfalls": ["Mixing benign implant capsule findings into carcinoma stage fields", "Ignoring late seroma or mass history", "Ordering CD30 indiscriminately without a clinical or morphologic trigger"]
+    },
+    {
+      "id": "bsg-16-implant-associated-seroma-bia-alcl-workup",
+      "title": "Late peri-implant seroma with capsule excision",
+      "caseTrack": "implant-reconstruction",
+      "specimenType": "Peri-implant seroma fluid, implant capsule, and regional lymph node excision",
+      "diagnosticTask": "Work up implant-associated seroma/capsule specimens for silicone reaction versus breast implant-associated anaplastic large cell lymphoma, including CD30, ALK, capsule invasion, and nodal assessment.",
+      "mode": "synoptic-build",
+      "assetCategoryIds": ["diagnostic-histology", "ancillary-study", "reporting-artifact", "faculty-key"],
+      "grossScenario": "Patient with textured implant placed 9 years earlier presents with delayed peri-implant seroma and capsular thickening. Seroma cytology contains atypical large lymphoid cells. Capsule excision shows fibrinous material and scattered atypical CD30-positive cells confined to the luminal surface. ALK is negative. One excised lymph node is negative.",
+      "capProtocol": {
+        "protocol": "Implant-associated lymphoma workup with separate breast cancer protocol only if carcinoma is present",
+        "versionAnchor": "Use current hematopathology/WHO-aligned lymphoma reporting practice; CAP breast carcinoma synoptic is not the correct template unless carcinoma is also present.",
+        "requiredFieldGroups": [
+          {
+            "group": "Specimens",
+            "fields": ["seroma fluid", "capsule", "implant-associated mass if present", "lymph nodes"]
+          },
+          {
+            "group": "Diagnosis",
+            "fields": ["BIA-ALCL versus reactive process", "CD30", "ALK", "T-cell markers", "cytology-histology correlation"]
+          },
+          {
+            "group": "Extent",
+            "fields": ["effusion-only/luminal disease", "capsule invasion", "mass-forming disease", "lymph node involvement"]
+          }
+        ],
+        "stagingNotes": "This is not staged as breast carcinoma. The report should clearly define compartment and extent for surgical/oncologic management."
+      },
+      "reconstructionImplant": {
+        "scenario": "Late peri-implant seroma with capsular thickening and atypical lymphoid cells.",
+        "pathologyTasks": ["triage seroma fluid for cytology/cell block", "sample capsule and any mass", "correlate with implant history and imaging", "assess lymph node if submitted"],
+        "implantCapsuleTasks": ["determine whether atypical cells are luminal only or invading capsule", "perform CD30 and ALK", "document necrosis/mass if present", "exclude silicone granuloma/reactive inflammation"],
+        "reportingBoundary": "Do not use a breast carcinoma synoptic. Use lymphoma-oriented diagnostic language and extent descriptors."
+      },
+      "lymphNodeWorkup": {
+        "submitted": "One regional lymph node",
+        "requiredCounts": ["total lymph nodes examined", "nodes involved by lymphoma if present"],
+        "nodalResponse": "Not a neoadjuvant carcinoma response case.",
+        "stagingFocus": "Node involvement changes implant-associated lymphoma extent rather than breast carcinoma pN stage."
+      },
+      "visualEvidenceRequirements": [
+        {
+          "slot": "cd30-positive-large-cells",
+          "requiredRole": "ancillary-study",
+          "requiredCaptionElements": ["CD30 positive large cells", "ALK negative", "capsule surface"]
+        },
+        {
+          "slot": "silicone-granuloma-mimic",
+          "requiredRole": "diagnostic-histology",
+          "requiredCaptionElements": ["silicone reaction", "histiocytes", "foreign-body giant cells"]
+        }
+      ],
+      "diagnosticSteps": [
+        {
+          "step": 1,
+          "prompt": "State the clinical trigger for implant-associated lymphoma workup.",
+          "expectedObservation": "Delayed peri-implant seroma with capsular thickening years after implant placement is the trigger."
+        },
+        {
+          "step": 2,
+          "prompt": "Classify the compartment of disease.",
+          "expectedObservation": "Atypical CD30-positive ALK-negative cells are confined to the seroma/capsule luminal surface without capsule invasion in this teaching scenario."
+        },
+        {
+          "step": 3,
+          "prompt": "Account for lymph nodes without using breast carcinoma pN language.",
+          "expectedObservation": "One lymph node is examined and negative for lymphoma; this is reported as lymphoma extent, not carcinoma pN staging."
+        }
+      ],
+      "synopticChecklist": [
+        {
+          "group": "Implant-associated lymphoma workup",
+          "items": ["seroma cytology", "capsule sampling", "CD30", "ALK", "T-cell phenotype", "capsule invasion", "mass", "node involvement"]
+        },
+        {
+          "group": "Differential",
+          "items": ["silicone granuloma", "reactive seroma", "infection", "recurrent carcinoma if clinically relevant"]
+        }
+      ],
+      "reportingTarget": "Peri-implant seroma/capsule: CD30-positive ALK-negative atypical T-cell proliferation consistent with breast implant-associated anaplastic large cell lymphoma in the appropriate clinical setting, confined to seroma/capsule luminal surface in this scenario; lymph node negative if confirmed.",
+      "pitfalls": ["Using breast carcinoma CAP synoptic for lymphoma", "Failing to sample a capsule mass", "Missing silicone granuloma as a mimic", "Not documenting whether capsule invasion is present"]
+    }
+  ],
+  "entityCoverage": [
+    "Fat Necrosis",
+    "Granulomatous Mastitis",
+    "Diabetic Mastopathy",
+    "Intraductal Papilloma",
+    "Fibroadenoma",
+    "Phyllodes Tumor (Benign/Borderline/Malignant)",
+    "Ductal Carcinoma In Situ (DCIS)",
+    "Invasive Ductal Carcinoma (NST)",
+    "Invasive Lobular Carcinoma",
+    "Tubular Carcinoma",
+    "Mucinous Carcinoma",
+    "Medullary Carcinoma",
+    "Metaplastic Carcinoma",
+    "Adenoid Cystic Carcinoma (Breast)",
+    "Secretory Carcinoma",
+    "Lobular Carcinoma In Situ (LCIS)",
+    "Atypical Ductal Hyperplasia (ADH)",
+    "Flat Epithelial Atypia (FEA)",
+    "Radial Scar / Complex Sclerosing Lesion",
+    "PASH (Pseudoangiomatous Stromal Hyperplasia)",
+    "Lactating Adenoma",
+    "Nipple Adenoma",
+    "Paget Disease of Nipple",
+    "Inflammatory Carcinoma",
+    "Encapsulated Papillary Carcinoma"
+  ],
+  "entityMinimumVisualPlan": {
+    "defaultRequiredSlots": ["H&E diagnostic histology"],
+    "ancillaryRecommendedFor": {
+      "Invasive Lobular Carcinoma": ["E-cadherin", "p120"],
+      "Ductal Carcinoma In Situ (DCIS)": ["p63 or smooth muscle myosin if invasion is questioned"],
+      "Atypical Ductal Hyperplasia (ADH)": ["CK5/6", "ER"],
+      "Flat Epithelial Atypia (FEA)": ["ER optional, CK5/6 optional in difficult cases"],
+      "Paget Disease of Nipple": ["CK7", "HER2", "p63 to exclude squamous mimics if needed"],
+      "Secretory Carcinoma": ["S100", "mammaglobin, SOX10, pan-TRK or molecular confirmation as available"],
+      "Adenoid Cystic Carcinoma (Breast)": ["CD117", "p63 or p40, myoepithelial markers"],
+      "Metaplastic Carcinoma": ["pancytokeratin", "p63 or p40 as clinically needed"]
+    }
+  },
+  "acceptanceCriteria": [
+    "Every case has at least one diagnostic image requirement before it can be released.",
+    "Every entity has at least one H&E diagnostic histology slot in the source manifest.",
+    "Every acquired image has a local file path, source URL or source document path, caption, stain or marker, and case/entity linkage.",
+    "Every case has image-first prompts, delayed reveal content, final report language, and pitfalls.",
+    "The validation script passes in non-strict mode and reports unresolved source slots separately from schema failures.",
+    "Strict mode may be enabled when the lecture is ready for release and should fail on any missing image source or local file."
+  ]
+}

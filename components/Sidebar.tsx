@@ -64,7 +64,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
     <aside className={`bg-white border-r border-slate-200/80 p-4 flex flex-col ${className}`}>
       <div className="flex items-center mb-6 px-2 flex-shrink-0">
         <AcademicCapIcon className="h-8 w-8 text-primary-600" />
-        <h1 className="ml-3 text-lg font-bold font-serif text-slate-800">Didactic Series</h1>
+        <h1 className="ml-3 text-lg font-bold font-serif text-slate-800">P@thfndr</h1>
       </div>
       
       <nav className="flex-1 space-y-4 overflow-y-auto">

@@ -26,6 +26,13 @@ const promotedPath = path.join(
   'normalized',
   'images.normalized.json'
 );
+const bladderSupplementPath = path.join(
+  repoRoot,
+  'src',
+  'content',
+  'images',
+  'bladderAtlasSupplement.json'
+);
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -74,7 +81,7 @@ function basenameFromSrc(src) {
 function buildCuratedRecord(image, rules) {
   const entityKey = normalizeEntityName(image.entity || image.family || image.title);
   const entityRule = rules.entities[entityKey];
-  const category = entityRule?.category || 'curated-import';
+  const category = image.category || entityRule?.category || 'curated-import';
   const stain = image.stain || 'Unspecified';
   const title = image.title || toTitleCase(entityKey);
 
@@ -83,15 +90,17 @@ function buildCuratedRecord(image, rules) {
     entity: entityKey,
     category,
     pattern: image.family || title,
-    cells: entityRule?.cells || [],
+    cells: image.cells || entityRule?.cells || [],
     stain,
     stainRole: rules.stainRoles?.[stain] || 'reference image',
-    organ: 'mixed',
-    system: 'pathology',
-    difficulty: entityRule?.difficulty || 'intermediate',
+    organ: image.organ || 'mixed',
+    system: image.system || 'pathology',
+    difficulty: image.difficulty || entityRule?.difficulty || 'intermediate',
     path: image.fullUrl || image.thumbUrl,
-    tags: [...new Set([...(entityRule?.tags || []), slugify(image.family), slugify(title)].filter(Boolean))],
-    teachingPoint: entityRule?.teachingPoint || `Curated histology atlas image for ${title}.`,
+    tags: [
+      ...new Set([...(entityRule?.tags || []), ...(image.tags || []), slugify(image.family), slugify(title)].filter(Boolean)),
+    ],
+    teachingPoint: image.teachingPoint || entityRule?.teachingPoint || image.description || `Curated histology atlas image for ${title}.`,
     source: image.sourcePageUrl || 'migrated-curated-atlas',
     filename: basenameFromSrc(image.fullUrl || image.thumbUrl),
     aiEnhanced: false,
@@ -146,6 +155,7 @@ function main() {
 
   const curatedImages = fs.existsSync(curatedPath) ? readJson(curatedPath) : [];
   const promotedImages = fs.existsSync(promotedPath) ? readJson(promotedPath) : [];
+  const bladderSupplementImages = fs.existsSync(bladderSupplementPath) ? readJson(bladderSupplementPath) : [];
 
   const manifest = {
     generated: new Date().toISOString(),
@@ -155,7 +165,9 @@ function main() {
     categories: {},
   };
 
-  curatedImages.map((image) => buildCuratedRecord(image, rules)).forEach((record) => pushManifestRecord(manifest, record));
+  [...curatedImages, ...bladderSupplementImages]
+    .map((image) => buildCuratedRecord(image, rules))
+    .forEach((record) => pushManifestRecord(manifest, record));
   promotedImages.map((image) => buildPromotedRecord(image, rules)).forEach((record) => pushManifestRecord(manifest, record));
 
   const allRecords = Object.values(manifest.categories)

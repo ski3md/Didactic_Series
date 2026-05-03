@@ -1,0 +1,16 @@
+{
+  "id": "stable-pdf-page-asset-id",
+  "caseId": "bsg-case-id",
+  "entityId": "Entity name",
+  "kind": "pdf_page",
+  "pdfPath": "/absolute/path/to/local/source.pdf",
+  "pdfUrl": null,
+  "page": 1,
+  "role": "diagnostic-histology",
+  "stain": "H&E or PDF page",
+  "markerOrStudy": null,
+  "magnification": "page region or figure panel",
+  "caption": "Describe the histologic or immunohistochemical finding visible on this PDF page.",
+  "sourceUrl": "https://source-page-for-the-pdf-or-article",
+  "license": "License or permission note"
+}

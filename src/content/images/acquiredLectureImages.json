@@ -1,0 +1,937 @@
+[
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Penile_intraepithelial_neoplasia_-_alt_--_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penile_intraepithelial_neoplasia_-_alt_--_high_mag.jpg",
+    "title": "Alternative high-power micrograph of penile intraepithelial neoplasia",
+    "description": "This PeIN image shows basaloid/warty HPV-associated atypia; use block-pattern p16 as support and search the biopsy base for invasion.",
+    "entity": "Alternative high-power micrograph of penile intraepithelial neoplasia",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_alternative-high-power-micrograph-of-penile-intraepithelial-neoplasia_b6042381d8",
+    "src": "reference-library/acquired/b6042381d8fd159e77aa77f10e160029183c2ff3.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Penile_intraepithelial_neoplasia_-_alt_--_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d5/BCG-induced_granulomatous_cystitis%2C_intermed._mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_high_magnification.jpg",
+    "title": "BCG induced granulomatous cystitis, intermed. mag",
+    "description": "Acquired lecture image for BCG induced granulomatous cystitis, intermed. mag.",
+    "entity": "BCG induced granulomatous cystitis, intermed. mag",
+    "tags": [
+      "lecture-acquired",
+      "H&E",
+      "Treatment-related inflammatory mimic",
+      "bladder",
+      "genitourinary",
+      "bladder_path_core_principles",
+      "bcg",
+      "granulomatous cystitis",
+      "treatment effect",
+      "high power",
+      "epithelioid histiocytes",
+      "giant cells"
+    ],
+    "sourceFile": [
+      "src/content/lectures/guPilotEnhancements.ts",
+      "src/content/images/bladderAtlasSupplement.json"
+    ],
+    "family": "Treatment-related inflammatory mimic",
+    "stain": "H&E",
+    "magnification": "Intermediate magnification",
+    "id": "acquired_bcg-induced-granulomatous-cystitis-intermed-mag_ef52998322",
+    "src": "reference-library/acquired/ef529983220e2eda6a0f36c22661ffa3504051ed.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_high_magnification.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/BCG-induced_granulomatous_cystitis%2C_low_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BCG-induced_granulomatous_cystitis,_low_mag.jpg",
+    "title": "BCG-Induced Granulomatous Cystitis",
+    "description": "Wikimedia Commons H&E image showing treatment-related granulomatous inflammation after intravesical BCG therapy.",
+    "entity": "bcg_induced_granulomatous_cystitis",
+    "family": "Treatment-related inflammatory mimic",
+    "stain": "H&E",
+    "magnification": "Low magnification",
+    "tags": [
+      "H&E",
+      "Treatment-related inflammatory mimic",
+      "bladder",
+      "genitourinary",
+      "bladder_path_core_principles",
+      "bcg",
+      "granulomatous cystitis",
+      "treatment effect",
+      "mimic",
+      "epithelioid histiocytes",
+      "giant cells",
+      "lymphocytes"
+    ],
+    "sourceFile": [
+      "src/content/images/bladderAtlasSupplement.json"
+    ],
+    "id": "acquired_bcg-induced-granulomatous-cystitis_0da1ef85d0",
+    "src": "reference-library/acquired/0da1ef85d0eea13811da587680b1a8128c8c376c.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:BCG-induced_granulomatous_cystitis,_low_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Chromophobe_renal_cell_carcinoma%2C_eosinophilic_variant_-_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Clear_cell_renal_cell_carcinoma_intermed_mag.jpg",
+    "title": "Chromophobe renal cell carcinoma, eosinophilic variant high mag",
+    "description": "Acquired lecture image for Chromophobe renal cell carcinoma, eosinophilic variant high mag.",
+    "entity": "Chromophobe renal cell carcinoma, eosinophilic variant high mag",
+    "tags": [
+      "lecture-acquired"
+    ],
+    "sourceFile": "src/content/lectures/guPilotEnhancements.ts",
+    "id": "acquired_chromophobe-renal-cell-carcinoma-eosinophilic-variant-high-mag_f2d4b77a5a",
+    "src": "reference-library/acquired/f2d4b77a5a21b97efb7f55782e5368f202366527.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Clear_cell_renal_cell_carcinoma_intermed_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/21/Clear_cell_papillary_renal_cell_carcinoma_-_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:High-grade_papillary_urothelial_carcinoma_-_inv_--_low_mag.jpg",
+    "title": "Clear cell papillary renal cell carcinoma high mag",
+    "description": "Acquired lecture image for Clear cell papillary renal cell carcinoma high mag.",
+    "entity": "Clear cell papillary renal cell carcinoma high mag",
+    "tags": [
+      "lecture-acquired"
+    ],
+    "sourceFile": "src/content/lectures/guPilotEnhancements.ts",
+    "id": "acquired_clear-cell-papillary-renal-cell-carcinoma-high-mag_e21c2c3b35",
+    "src": "reference-library/acquired/e21c2c3b355c41020341b38060548443e3532878.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:High-grade_papillary_urothelial_carcinoma_-_inv_--_low_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/46/Clear_cell_renal_cell_carcinoma_intermed_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:High-grade_papillary_urothelial_carcinoma_--_high_mag.jpg",
+    "title": "Clear cell renal cell carcinoma intermed mag",
+    "description": "Acquired lecture image for Clear cell renal cell carcinoma intermed mag.",
+    "entity": "Clear cell renal cell carcinoma intermed mag",
+    "tags": [
+      "lecture-acquired"
+    ],
+    "sourceFile": "src/content/lectures/guPilotEnhancements.ts",
+    "id": "acquired_clear-cell-renal-cell-carcinoma-intermed-mag_b7b9c4be75",
+    "src": "reference-library/acquired/b7b9c4be75283aec75932847b81906b4813cdda6.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:High-grade_papillary_urothelial_carcinoma_--_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Micrograph_of_penile_verrucous_carcinoma_-_20x_and_200x.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Micrograph_of_penile_verrucous_carcinoma_-_20x_and_200x.jpg",
+    "title": "Composite micrograph of penile verrucous carcinoma at low and high power",
+    "description": "Paired low- and high-power verrucous carcinoma image highlights base assessment and reporting consequences.",
+    "entity": "Composite micrograph of penile verrucous carcinoma at low and high power",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_composite-micrograph-of-penile-verrucous-carcinoma-at-low-and-high-power_7c54defbfd",
+    "src": "reference-library/acquired/7c54defbfdeadce7a32ddede50df8a5ae394ccd5.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Micrograph_of_penile_verrucous_carcinoma_-_20x_and_200x.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Penile_verrucous_carcinoma.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penile_verrucous_carcinoma.jpg",
+    "title": "Gross photograph of penile verrucous carcinoma",
+    "description": "This exophytic penile mass requires sampling of the base; superficial biopsy cannot exclude destructive invasion or a mixed usual-type SCC component.",
+    "entity": "Gross photograph of penile verrucous carcinoma",
+    "tags": [
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_gross-photograph-of-penile-verrucous-carcinoma_3aa7eef77e",
+    "src": "reference-library/acquired/3aa7eef77e54125f8d0e984e96459f45da2bd3af.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Penile_verrucous_carcinoma.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/63/High-grade_papillary_urothelial_carcinoma_--_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Urothelial_carcinoma_in_situ,_high_mag.jpg",
+    "title": "High grade papillary urothelial carcinoma high mag",
+    "description": "Acquired lecture image for High grade papillary urothelial carcinoma high mag.",
+    "entity": "High grade papillary urothelial carcinoma high mag",
+    "tags": [
+      "lecture-acquired"
+    ],
+    "sourceFile": "src/content/lectures/guPilotEnhancements.ts",
+    "id": "acquired_high-grade-papillary-urothelial-carcinoma-high-mag_d07852f6c5",
+    "src": "reference-library/acquired/d07852f6c51d3828ffa4852a51af8d3b63811c6b.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Urothelial_carcinoma_in_situ,_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/High-grade_papillary_urothelial_carcinoma_-_inv_--_low_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BCG-induced_granulomatous_cystitis,_intermed._mag.jpg",
+    "title": "High grade papillary urothelial carcinoma inv low mag",
+    "description": "Acquired lecture image for High grade papillary urothelial carcinoma inv low mag.",
+    "entity": "High grade papillary urothelial carcinoma inv low mag",
+    "tags": [
+      "lecture-acquired"
+    ],
+    "sourceFile": "src/content/lectures/guPilotEnhancements.ts",
+    "id": "acquired_high-grade-papillary-urothelial-carcinoma-inv-low-mag_32418e3907",
+    "src": "reference-library/acquired/32418e39075a6ce5a19b053f3217d988dd3b602f.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:BCG-induced_granulomatous_cystitis,_intermed._mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Adenosquamous_carcinoma_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Adenosquamous_carcinoma_high_mag.jpg",
+    "title": "High-power H&E micrograph of adenosquamous carcinoma",
+    "description": "Adenosquamous carcinoma showing squamous and glandular differentiation.",
+    "entity": "High-power H&E micrograph of adenosquamous carcinoma",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-h-e-micrograph-of-adenosquamous-carcinoma_4af33133fd",
+    "src": "reference-library/acquired/4af33133fddbc3bb4a42a00a2c4df776b3da6898.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Adenosquamous_carcinoma_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/46/Squamous_carcinoma_of_the_penis_-_alt_--_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Squamous_carcinoma_of_the_penis_-_alt_--_high_mag.jpg",
+    "title": "High-power H&E micrograph of penile squamous cell carcinoma",
+    "description": "Invasive penile squamous cell carcinoma without a specific dominant subtype.",
+    "entity": "High-power H&E micrograph of penile squamous cell carcinoma",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-h-e-micrograph-of-penile-squamous-cell-carcinoma_682c1a851f",
+    "src": "reference-library/acquired/682c1a851f94def5eda1eb3fa5cae75d4cfdb121.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Squamous_carcinoma_of_the_penis_-_alt_--_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Sertoli-Leydig_cell_tumour_-_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sertoli-Leydig_cell_tumour_-_high_mag.jpg",
+    "title": "High-power H&E micrograph of Sertoli-Leydig cell tumor",
+    "description": "Mixed sex cord-stromal tumor showing uncommon sex cord-stromal patterns.",
+    "entity": "High-power H&E micrograph of Sertoli-Leydig cell tumor",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-h-e-micrograph-of-sertoli-leydig-cell-tumor_6de20cae2b",
+    "src": "reference-library/acquired/6de20cae2b737a57b74572277954cd2f81b52e30.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Sertoli-Leydig_cell_tumour_-_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/Teratoma_2_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Teratoma_2_high_mag.jpg",
+    "title": "High-power H&E micrograph of teratoma",
+    "description": "This teratoma image shows somatic tissue differentiation; in a postpubertal testis tumor, report teratoma percentage because residual teratoma is chemotherapy-resistant and surgically managed.",
+    "entity": "High-power H&E micrograph of teratoma",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-h-e-micrograph-of-teratoma_5151456af2",
+    "src": "reference-library/acquired/5151456af2836466487c394803538b23efca4e21.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Teratoma_2_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Testicular_spermatocytic_tumour_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Testicular_spermatocytic_tumour_high_mag.jpg",
+    "title": "High-power H&E micrograph of testicular spermatocytic tumor",
+    "description": "Spermatocytic tumor; sarcomatous areas require separate sampling when present.",
+    "entity": "High-power H&E micrograph of testicular spermatocytic tumor",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-h-e-micrograph-of-testicular-spermatocytic-tumor_aaf3b9f768",
+    "src": "reference-library/acquired/aaf3b9f768b72a37b8c081b7dec8fb45c480c667.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Testicular_spermatocytic_tumour_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Extramammary_Paget_disease_-_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Extramammary_Paget_disease_-_high_mag.jpg",
+    "title": "High-power micrograph of extramammary Paget disease",
+    "description": "This extramammary Paget disease image shows intraepidermal glandular cells; stop the SCC algorithm and evaluate primary versus secondary Paget disease with CK7, GATA3, urothelial, and GI markers as indicated.",
+    "entity": "High-power micrograph of extramammary Paget disease",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-micrograph-of-extramammary-paget-disease_b89023112b",
+    "src": "reference-library/acquired/b89023112b03385c53cc05ee6752380d3aa52aeb.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Extramammary_Paget_disease_-_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Mixed_germ_cell_tumour_-_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mixed_germ_cell_tumour_-_high_mag.jpg",
+    "title": "High-power micrograph of mixed germ cell tumor",
+    "description": "This mixed germ cell tumor image requires a report that lists each component and percentage; embryonal carcinoma, yolk sac tumor, choriocarcinoma, teratoma, and somatic-type malignancy change staging discussions, serum marker interpretation, chemotherapy response, or surgical planning.",
+    "entity": "High-power micrograph of mixed germ cell tumor",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-micrograph-of-mixed-germ-cell-tumor_0ffcbe55f6",
+    "src": "reference-library/acquired/0ffcbe55f6f0a30fff8b666360ae6b84241a513c.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Mixed_germ_cell_tumour_-_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Penile_intraepithelial_neoplasia_--_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penile_intraepithelial_neoplasia_--_high_mag.jpg",
+    "title": "High-power micrograph of penile intraepithelial neoplasia",
+    "description": "Penile intraepithelial neoplasia provides the visual bridge into HPV-associated precursor disease.",
+    "entity": "High-power micrograph of penile intraepithelial neoplasia",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-micrograph-of-penile-intraepithelial-neoplasia_640ce6ac3f",
+    "src": "reference-library/acquired/640ce6ac3f070f9088f98b5fe0be01de5b4ea032.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Penile_intraepithelial_neoplasia_--_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Squamous_carcinoma_of_the_penis_--_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Squamous_carcinoma_of_the_penis_--_high_mag.jpg",
+    "title": "High-power micrograph of penile squamous cell carcinoma",
+    "description": "This keratinizing penile SCC image shows an HPV-independent usual-type pattern; report depth, grade, LVI/PNI, involved structures, and margins.",
+    "entity": "High-power micrograph of penile squamous cell carcinoma",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-micrograph-of-penile-squamous-cell-carcinoma_80952ef17f",
+    "src": "reference-library/acquired/80952ef17f815a861ec261d55813f2922438d876.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Squamous_carcinoma_of_the_penis_--_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Micrograph_of_penile_verrucous_carcinoma_-_200x.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Micrograph_of_penile_verrucous_carcinoma_-_200x.jpg",
+    "title": "High-power micrograph of penile verrucous carcinoma",
+    "description": "This verrucous carcinoma image shows bland squamous proliferation with a pushing profile; sign-out still requires base assessment, invasion status, and margin status.",
+    "entity": "High-power micrograph of penile verrucous carcinoma",
+    "tags": [
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-micrograph-of-penile-verrucous-carcinoma_0441d1748d",
+    "src": "reference-library/acquired/0441d1748d92daee4cd8e177158444a87f811309.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Micrograph_of_penile_verrucous_carcinoma_-_200x.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Seminoma_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seminoma_high_mag.jpg",
+    "title": "High-power micrograph of seminoma",
+    "description": "This seminoma image shows uniform clear cells and lymphocyte-rich septa; correlate age, AFP, beta-hCG, LDH, and background GCNIS before finalizing a pure seminoma diagnosis.",
+    "entity": "High-power micrograph of seminoma",
+    "stain": "H&E",
+    "tags": [
+      "lecture-acquired",
+      "H&E"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "src/content/lectures/guPilotEnhancements.ts",
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-micrograph-of-seminoma_09c2b02a11",
+    "src": "reference-library/acquired/09c2b02a11432b772cbcf1232bf63f0126d54046.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Seminoma_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Sertoli_cell_tumour_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sertoli_cell_tumour_high_mag.jpg",
+    "title": "High-power micrograph of Sertoli cell tumor",
+    "description": "This Sertoli cell tumor image should trigger sex cord-stromal markers such as inhibin, calretinin, and SF1 rather than a germ cell tumor marker panel alone.",
+    "entity": "High-power micrograph of Sertoli cell tumor",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_high-power-micrograph-of-sertoli-cell-tumor_9414772ae2",
+    "src": "reference-library/acquired/9414772ae243ff1072c6882912ef051e3215a6d5.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Sertoli_cell_tumour_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_high_magnification.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_low_magnification.jpg",
+    "title": "Histopathology of papillary urothelial neoplasm of low malignant potential high magnification",
+    "description": "Acquired lecture image for Histopathology of papillary urothelial neoplasm of low malignant potential high magnification.",
+    "entity": "Histopathology of papillary urothelial neoplasm of low malignant potential high magnification",
+    "tags": [
+      "lecture-acquired",
+      "H&E",
+      "Papillary urothelial neoplasm",
+      "bladder",
+      "genitourinary",
+      "bladder_path_core_principles",
+      "urothelial",
+      "papillary",
+      "punlmp",
+      "high power",
+      "urothelial cells"
+    ],
+    "sourceFile": [
+      "src/content/lectures/guPilotEnhancements.ts",
+      "src/content/images/bladderAtlasSupplement.json"
+    ],
+    "family": "Papillary urothelial neoplasm",
+    "stain": "H&E",
+    "magnification": "High magnification",
+    "id": "acquired_histopathology-of-papillary-urothelial-neoplasm-of-low-malignant-potential-high-_5b2cb0f294",
+    "src": "reference-library/acquired/5b2cb0f2947744dc979674e828ea1dcc79223a21.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_low_magnification.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_low_magnification.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_low_magnification.jpg",
+    "title": "Histopathology of papillary urothelial neoplasm of low malignant potential low magnification",
+    "description": "Acquired lecture image for Histopathology of papillary urothelial neoplasm of low malignant potential low magnification.",
+    "entity": "Histopathology of papillary urothelial neoplasm of low malignant potential low magnification",
+    "tags": [
+      "lecture-acquired",
+      "H&E",
+      "Papillary urothelial neoplasm",
+      "bladder",
+      "genitourinary",
+      "bladder_path_core_principles",
+      "urothelial",
+      "papillary",
+      "punlmp",
+      "low grade",
+      "urothelial cells",
+      "fibrovascular cores"
+    ],
+    "sourceFile": [
+      "src/content/lectures/guPilotEnhancements.ts",
+      "src/content/images/bladderAtlasSupplement.json"
+    ],
+    "family": "Papillary urothelial neoplasm",
+    "stain": "H&E",
+    "magnification": "Low magnification",
+    "id": "acquired_histopathology-of-papillary-urothelial-neoplasm-of-low-malignant-potential-low-m_8bc41cfcae",
+    "src": "reference-library/acquired/8bc41cfcae3544f0afd8790c7b8709cb7f05facd.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_low_magnification.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Histopathology_of_inverted_urothelial_papilloma.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_inverted_urothelial_papilloma.jpg",
+    "title": "Inverted Urothelial Papilloma",
+    "description": "Wikimedia Commons H&E image showing a benign endophytic urothelial proliferation typical of inverted urothelial papilloma.",
+    "entity": "inverted_urothelial_papilloma",
+    "family": "Benign urothelial neoplasm",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "Benign urothelial neoplasm",
+      "bladder",
+      "genitourinary",
+      "bladder_path_core_principles",
+      "urothelial",
+      "papilloma",
+      "benign",
+      "inverted growth",
+      "urothelial cells"
+    ],
+    "sourceFile": [
+      "src/content/images/bladderAtlasSupplement.json"
+    ],
+    "id": "acquired_inverted-urothelial-papilloma_a6116575d4",
+    "src": "reference-library/acquired/a6116575d4c9053d183fee8496051f95831746ca.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Histopathology_of_inverted_urothelial_papilloma.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/Micrograph_of_penile_verrucous_carcinoma_-_20x.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Micrograph_of_penile_verrucous_carcinoma_-_20x.jpg",
+    "title": "Low-power H&E micrograph of penile verrucous carcinoma",
+    "description": "Papillary/verruciform penile squamous cell carcinoma; assess the base for invasion pattern.",
+    "entity": "Low-power H&E micrograph of penile verrucous carcinoma",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_low-power-h-e-micrograph-of-penile-verrucous-carcinoma_1177c17d8b",
+    "src": "reference-library/acquired/1177c17d8b2567deb48e47174afb36a7fa707f6d.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Micrograph_of_penile_verrucous_carcinoma_-_20x.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/52/Squamous_carcinoma_of_the_penis_--_low_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Squamous_carcinoma_of_the_penis_--_low_mag.jpg",
+    "title": "Low-power micrograph of penile squamous cell carcinoma",
+    "description": "This low-power penile SCC image shows invasive architecture; the report must state depth of invasion, involved anatomic structures, LVI/PNI, and margin status.",
+    "entity": "Low-power micrograph of penile squamous cell carcinoma",
+    "stain": "H&E",
+    "tags": [
+      "H&E",
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "src/content/gu/who_gu_entity_manifest.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_low-power-micrograph-of-penile-squamous-cell-carcinoma_b83e436830",
+    "src": "reference-library/acquired/b83e4368305e4679ad3641e93d1aea9e9d5e782a.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Squamous_carcinoma_of_the_penis_--_low_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Seminoma_with_syncytiotrophoblasts_-_low_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seminoma_with_syncytiotrophoblasts_-_low_mag.jpg",
+    "title": "Low-power micrograph of seminoma with syncytiotrophoblasts",
+    "description": "This seminoma with syncytiotrophoblasts image can explain mild beta-hCG elevation; elevated AFP still requires additional sampling for yolk sac tumor or another NSGCT component.",
+    "entity": "Low-power micrograph of seminoma with syncytiotrophoblasts",
+    "tags": [
+      "lecture-acquired"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "scripts/commons_image_sources.cjs"
+    ],
+    "id": "acquired_low-power-micrograph-of-seminoma-with-syncytiotrophoblasts_148aa2e8c7",
+    "src": "reference-library/acquired/148aa2e8c7b762ea081ef4591ac504c71d40e5f9.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Seminoma_with_syncytiotrophoblasts_-_low_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Renal_oncocytoma_--_low_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Clear_cell_papillary_renal_cell_carcinoma_-_high_mag.jpg",
+    "title": "Renal oncocytoma low mag",
+    "description": "Acquired lecture image for Renal oncocytoma low mag.",
+    "entity": "Renal oncocytoma low mag",
+    "tags": [
+      "lecture-acquired"
+    ],
+    "sourceFile": "src/content/lectures/guPilotEnhancements.ts",
+    "id": "acquired_renal-oncocytoma-low-mag_6e3a581809",
+    "src": "reference-library/acquired/6e3a581809c77e5e07ef776938f90a32b769b42c.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Clear_cell_papillary_renal_cell_carcinoma_-_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Urothelial_carcinoma_in_situ%2C_intermed._mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Urothelial_carcinoma_in_situ,_intermed._mag.jpg",
+    "title": "Urothelial Carcinoma In Situ",
+    "description": "Wikimedia Commons H&E image showing a flat urothelial lesion with diffuse atypia and loss of maturation consistent with carcinoma in situ.",
+    "entity": "urothelial_carcinoma_in_situ",
+    "family": "Flat urothelial lesion",
+    "stain": "H&E",
+    "magnification": "Intermediate magnification",
+    "tags": [
+      "H&E",
+      "Flat urothelial lesion",
+      "bladder",
+      "genitourinary",
+      "bladder_path_core_principles",
+      "urothelial",
+      "cis",
+      "flat lesion",
+      "high grade",
+      "atypical urothelial cells"
+    ],
+    "sourceFile": [
+      "src/content/images/bladderAtlasSupplement.json"
+    ],
+    "id": "acquired_urothelial-carcinoma-in-situ_acb2acd39c",
+    "src": "reference-library/acquired/acb2acd39c28a2d6b7bfde044242534a38455554.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Urothelial_carcinoma_in_situ,_intermed._mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Urothelial_carcinoma_in_situ%2C_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_high_magnification.jpg",
+    "title": "Urothelial carcinoma in situ, high mag",
+    "description": "Acquired lecture image for Urothelial carcinoma in situ, high mag.",
+    "entity": "Urothelial carcinoma in situ, high mag",
+    "tags": [
+      "lecture-acquired",
+      "H&E",
+      "Flat urothelial lesion",
+      "bladder",
+      "genitourinary",
+      "bladder_path_core_principles",
+      "urothelial",
+      "cis",
+      "flat lesion",
+      "high power",
+      "atypical urothelial cells"
+    ],
+    "sourceFile": [
+      "src/content/lectures/guPilotEnhancements.ts",
+      "src/content/images/bladderAtlasSupplement.json"
+    ],
+    "family": "Flat urothelial lesion",
+    "stain": "H&E",
+    "magnification": "High magnification",
+    "id": "acquired_urothelial-carcinoma-in-situ-high-mag_33533625a1",
+    "src": "reference-library/acquired/33533625a1c015f6e9be0768704732f27735b86d.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Histopathology_of_papillary_urothelial_neoplasm_of_low_malignant_potential_-_high_magnification.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Penile_intraepithelial_neoplasia_--_intermed_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Penile_intraepithelial_neoplasia_--_intermed_mag.jpg",
+    "title": "Intermediate-power micrograph of penile intraepithelial neoplasia",
+    "description": "H&E micrograph of penile intraepithelial neoplasia for lecture microscopy review.",
+    "entity": "Penile intraepithelial neoplasia",
+    "family": "HPV-associated precursor lesion",
+    "stain": "H&E",
+    "magnification": "Intermediate magnification",
+    "tags": [
+      "H&E",
+      "penile pathology",
+      "penile intraepithelial neoplasia",
+      "genitourinary"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json"
+    ],
+    "id": "acquired_penile-intraepithelial-neoplasia-intermediate_bd692bc6a5",
+    "src": "reference-library/acquired/bd692bc6a51dc5a64dac8bf6722e3238abe5992e.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Penile_intraepithelial_neoplasia_--_intermed_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Spermatocytic_seminoma_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spermatocytic_seminoma_high_mag.jpg",
+    "title": "High-power micrograph of spermatocytic tumor",
+    "description": "H&E micrograph of spermatocytic tumor for testicular pathology lecture microscopy review.",
+    "entity": "Spermatocytic tumor",
+    "family": "Germ cell tumor unrelated to GCNIS",
+    "stain": "H&E",
+    "magnification": "High magnification",
+    "tags": [
+      "H&E",
+      "testicular pathology",
+      "spermatocytic tumor",
+      "genitourinary"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json"
+    ],
+    "id": "acquired_spermatocytic-tumor-high_5250140618",
+    "src": "reference-library/acquired/52501406187f94f9d3e73b961edc6ee2b0aff94f.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Spermatocytic_seminoma_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Adenomatoid_tumour_-_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Adenomatoid_tumour_-_high_mag.jpg",
+    "title": "High-power micrograph of adenomatoid tumor",
+    "description": "H&E micrograph of adenomatoid tumor for paratesticular pathology lecture microscopy review.",
+    "entity": "Adenomatoid tumor",
+    "family": "Paratesticular mesothelial tumor",
+    "stain": "H&E",
+    "magnification": "High magnification",
+    "tags": [
+      "H&E",
+      "paratesticular pathology",
+      "adenomatoid tumor",
+      "genitourinary"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json"
+    ],
+    "id": "acquired_adenomatoid-tumor-high_2be4a8ac77",
+    "src": "reference-library/acquired/2be4a8ac77a5b2bf82af017b637105db8e685023.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:Adenomatoid_tumour_-_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  },
+  {
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6e/DLBCL_of_testis_--_high_mag.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:DLBCL_of_testis_--_high_mag.jpg",
+    "title": "High-power micrograph of diffuse large B-cell lymphoma of the testis",
+    "description": "H&E micrograph of diffuse large B-cell lymphoma of the testis for lecture microscopy review.",
+    "entity": "Diffuse large B-cell lymphoma of the testis",
+    "family": "Testicular hematolymphoid neoplasm",
+    "stain": "H&E",
+    "magnification": "High magnification",
+    "tags": [
+      "H&E",
+      "testicular pathology",
+      "diffuse large B-cell lymphoma",
+      "genitourinary"
+    ],
+    "sourceFile": [
+      "src/content/lectures/gu_who_complete_lectures.normalized.json"
+    ],
+    "id": "acquired_testicular-dlbcl-high_727bc6da15",
+    "src": "reference-library/acquired/727bc6da15e45db5c3452f1b5f37c9c60e6f9216.jpg",
+    "gcsPath": "https://commons.wikimedia.org/wiki/File:DLBCL_of_testis_--_high_mag.jpg",
+    "uploader": "Acquired Lecture Image Pipeline",
+    "timestamp": 0,
+    "category": "official",
+    "difficulty": "intermediate",
+    "atlasCollection": "acquired",
+    "readOnly": true
+  }
+]

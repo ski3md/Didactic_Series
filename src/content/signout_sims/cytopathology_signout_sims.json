@@ -1,0 +1,340 @@
+{
+  "version": "2026-05-02",
+  "title": "Cytopathology Sign-Out Simulations",
+  "cases": [
+    {
+      "id": "cyto-thyroid-fna-papillary-carcinoma",
+      "title": "Thyroid FNA: papillary thyroid carcinoma",
+      "site": "Thyroid",
+      "workflow": "biopsy",
+      "specimenType": "Ultrasound-guided thyroid fine needle aspiration",
+      "clinicalHistory": "42-year-old woman with a 1.6 cm hypoechoic thyroid nodule with punctate echogenic foci.",
+      "image": {
+        "src": "reference-library/signout-sims/cytopathology/thyroid-fna-papillary-carcinoma-pap.jpg",
+        "caption": "Papillary thyroid carcinoma cytology with nuclear grooves and intranuclear pseudoinclusions.",
+        "stain": "Papanicolaou",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cytopathology_of_papillary_thyroid_carcinoma.png"
+      },
+      "diagnosticSteps": [
+        "Assess specimen adequacy and identify a cellular follicular-derived epithelial lesion.",
+        "Recognize papillary thyroid carcinoma nuclear features including enlargement, powdery chromatin, grooves, pseudoinclusions, and crowding.",
+        "Classify using the Bethesda System category and recommend clinical correlation for surgical management."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "braf-v600e",
+          "name": "BRAF V600E testing",
+          "result": "Positive result supports papillary thyroid carcinoma but is not required when cytology is diagnostic.",
+          "recommended": false
+        },
+        {
+          "id": "thyroglobulin-washout",
+          "name": "Thyroglobulin needle washout",
+          "result": "Useful for suspected metastatic thyroid carcinoma in a lymph node, not routine for primary thyroid nodule FNA.",
+          "recommended": false
+        },
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "Classic cytomorphology is sufficient for a malignant Bethesda VI interpretation.",
+          "recommended": true
+        }
+      ],
+      "reportingTarget": "Thyroid, right lobe nodule, fine needle aspiration: Malignant. Papillary thyroid carcinoma, Bethesda category VI.",
+      "requiredReportElements": [
+        "specimen adequacy",
+        "malignant",
+        "papillary thyroid carcinoma",
+        "Bethesda category VI"
+      ],
+      "pitfalls": [
+        "Do not overcall air-drying artifact or cyst-lining cells as papillary carcinoma.",
+        "Do not omit Bethesda category and adequacy statement."
+      ]
+    },
+    {
+      "id": "cyto-lung-fna-adenocarcinoma",
+      "title": "Lung FNA: adenocarcinoma",
+      "site": "Lung",
+      "workflow": "biopsy",
+      "specimenType": "CT-guided lung fine needle aspiration with cell block",
+      "clinicalHistory": "66-year-old former smoker with a 2.8 cm peripheral right upper lobe mass.",
+      "image": {
+        "src": "reference-library/signout-sims/cytopathology/lung-fna-adenocarcinoma-cell-block-he.jpg",
+        "caption": "Lung adenocarcinoma in cytology cell block with gland-forming malignant epithelial cells.",
+        "stain": "H&E cell block",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Adenocarcinoma_of_lung,_FNA_(5435902375).jpg"
+      },
+      "diagnosticSteps": [
+        "Confirm a malignant epithelial population in direct smears and/or cell block material.",
+        "Evaluate glandular features such as acinar clusters, mucin, cytoplasmic vacuoles, and eccentric nuclei.",
+        "Conserve cell block material while ordering a focused immunopanel and molecular studies needed for lung adenocarcinoma management."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "ttf1-napsin",
+          "name": "TTF-1 and Napsin A",
+          "result": "Nuclear TTF-1 and granular Napsin A positivity support primary lung adenocarcinoma.",
+          "recommended": true
+        },
+        {
+          "id": "p40",
+          "name": "p40",
+          "result": "Negative or focal staining helps exclude squamous cell carcinoma when morphology is ambiguous.",
+          "recommended": true
+        },
+        {
+          "id": "broad-ihc",
+          "name": "Broad metastatic carcinoma panel",
+          "result": "Avoid broad upfront panels if tissue is limited and clinical context supports lung primary.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Lung, right upper lobe mass, fine needle aspiration: Positive for malignant cells, adenocarcinoma. Immunophenotype supports pulmonary primary. Cell block is available for ancillary testing.",
+      "requiredReportElements": [
+        "positive for malignant cells",
+        "adenocarcinoma",
+        "site sampled",
+        "cell block availability",
+        "ancillary testing suitability"
+      ],
+      "pitfalls": [
+        "Do not exhaust scant cell block material before required predictive testing.",
+        "Do not label as primary lung adenocarcinoma without considering metastatic disease when history or immunophenotype is discordant."
+      ]
+    },
+    {
+      "id": "cyto-pleural-effusion-metastatic-breast",
+      "title": "Pleural effusion: metastatic breast carcinoma",
+      "site": "Pleural fluid",
+      "workflow": "biopsy",
+      "specimenType": "Pleural fluid cytology with cell block",
+      "clinicalHistory": "58-year-old woman with history of ER-positive invasive breast carcinoma and new unilateral pleural effusion.",
+      "image": {
+        "src": "reference-library/signout-sims/cytopathology/pleural-effusion-metastatic-adenocarcinoma-cell-block.jpg",
+        "caption": "Malignant epithelial cells in pleural fluid cell block.",
+        "stain": "H&E cell block",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10927224/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC10927224",
+          "citation": "Cytojournal. 2024 Feb 9; 21:8",
+          "license": "CC BY-NC-SA",
+          "figureLabel": "figure 2",
+          "figureCaption": "distribution of patterns of cell arrangement in various malignancies in cell blocks a metastatic adenocarcinoma from the lung b metastatic adenocarcinoma from the breast c metastatic adenocarcinoma from the ovary d metastatic adenocarcinoma from the esophagus e metastatic adenocarcinoma from the colon f metastatic adenocarcinoma from the urothelium g metastatic adenocarcinoma from other sites h malignant mesothelioma i squamous cell carcinoma j lymphoma k myeloma l melanoma m small cell carcinoma n embryonal rhabdomyosarcoma o thymoma and p unclassified tumors numerals inside the figure indicate the number of cases",
+          "figureScore": 42,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/ab/de/PMC10927224.tar.gz",
+          "acquiredAt": "2026-05-02T16:26:20.568Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Distinguish malignant epithelial clusters from reactive mesothelial cells using cytologic features and cell block architecture.",
+        "Correlate with prior breast carcinoma history and assess whether the cytology supports metastatic adenocarcinoma.",
+        "Use a focused immunopanel to confirm epithelial lineage and support breast origin while excluding mesothelial proliferation."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "ber-ep4-moc31",
+          "name": "Ber-EP4 or MOC31",
+          "result": "Membranous positivity supports carcinoma over mesothelial cells.",
+          "recommended": true
+        },
+        {
+          "id": "gata3-er",
+          "name": "GATA3 and ER",
+          "result": "Positivity supports metastatic breast carcinoma in the appropriate clinical context.",
+          "recommended": true
+        },
+        {
+          "id": "calretinin-wt1",
+          "name": "Calretinin and WT1",
+          "result": "Mesothelial marker staining helps exclude reactive or malignant mesothelial proliferation.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Pleural fluid, cytology: Positive for malignant cells, metastatic carcinoma consistent with breast primary.",
+      "requiredReportElements": [
+        "positive for malignant cells",
+        "metastatic carcinoma",
+        "consistent with breast primary",
+        "cell block/immunostain support"
+      ],
+      "pitfalls": [
+        "Do not mistake florid reactive mesothelial cells for carcinoma without supportive features.",
+        "Do not overstate the primary site if immunostains are limited or discordant."
+      ]
+    },
+    {
+      "id": "cyto-urine-high-grade-urothelial-carcinoma",
+      "title": "Urine cytology: high-grade urothelial carcinoma",
+      "site": "Urinary tract",
+      "workflow": "biopsy",
+      "specimenType": "Voided urine cytology",
+      "clinicalHistory": "71-year-old man with painless hematuria and cystoscopic erythematous bladder mucosa.",
+      "image": {
+        "src": "reference-library/signout-sims/cytopathology/urine-high-grade-urothelial-carcinoma-pap.jpg",
+        "caption": "High-grade urothelial carcinoma cells in urine cytology.",
+        "stain": "Papanicolaou",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cytopathology_of_high-grade_urothelial_carcinoma_(HGUC).jpg"
+      },
+      "diagnosticSteps": [
+        "Assess adequacy and preservation, including whether degeneration limits interpretation.",
+        "Identify high nuclear-to-cytoplasmic ratio, hyperchromasia, irregular nuclear membranes, and coarse chromatin in urothelial cells.",
+        "Apply the Paris System category and correlate with cystoscopic findings for targeted biopsy."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "fish-urovysion",
+          "name": "UroVysion FISH",
+          "result": "Can support urothelial carcinoma detection in selected equivocal or surveillance settings.",
+          "recommended": false
+        },
+        {
+          "id": "ck20-p53",
+          "name": "CK20 and p53 on cell block",
+          "result": "May support high-grade urothelial carcinoma if sufficient cell block material exists.",
+          "recommended": false
+        },
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "Classic high-grade malignant cytology is sufficient for a positive Paris System interpretation.",
+          "recommended": true
+        }
+      ],
+      "reportingTarget": "Urine, voided, cytology: Positive for high-grade urothelial carcinoma, Paris System category VI.",
+      "requiredReportElements": [
+        "specimen adequacy",
+        "positive for high-grade urothelial carcinoma",
+        "Paris System category VI",
+        "urine specimen type"
+      ],
+      "pitfalls": [
+        "Do not use urine cytology to exclude low-grade papillary urothelial neoplasm.",
+        "Do not overcall instrumented or stone-related reactive atypia as high-grade carcinoma."
+      ]
+    },
+    {
+      "id": "cyto-cervical-pap-hsil",
+      "title": "Cervical Pap test: high-grade squamous intraepithelial lesion",
+      "site": "Cervix",
+      "workflow": "biopsy",
+      "specimenType": "Liquid-based cervical cytology",
+      "clinicalHistory": "31-year-old woman with high-risk HPV positivity on screening.",
+      "image": {
+        "src": "reference-library/signout-sims/cytopathology/cervical-pap-hsil-pap.jpg",
+        "caption": "High-grade squamous intraepithelial lesion in cervical cytology.",
+        "stain": "Papanicolaou",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8477285/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC8477285",
+          "citation": "Ann Afr Med. 2021 Sep 17 Jul-Sep; 20(3):212-221",
+          "license": "CC BY-NC-SA",
+          "figureLabel": "figure v",
+          "figureCaption": "high grade squamous intra epithelial lesion hsil cells showing high nuclear to cytoplasmic ratio hyperchromatic nuclei liquid based thinprep papanicolaou x100mag",
+          "figureScore": 58,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/d1/b6/PMC8477285.tar.gz",
+          "acquiredAt": "2026-05-02T16:26:28.575Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Evaluate specimen adequacy, transformation zone component, and obscuring factors.",
+        "Identify small atypical squamous cells with high nuclear-to-cytoplasmic ratio, hyperchromasia, and irregular nuclear contours.",
+        "Classify under the Bethesda System and recommend correlation with HPV status and colposcopic biopsy."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "hrhpv",
+          "name": "High-risk HPV testing or genotyping",
+          "result": "High-risk HPV positivity supports risk stratification and management.",
+          "recommended": true
+        },
+        {
+          "id": "p16-ki67-dual-stain",
+          "name": "p16/Ki-67 dual stain",
+          "result": "May support triage in selected screening algorithms but is not required when HSIL cytology is diagnostic.",
+          "recommended": false
+        },
+        {
+          "id": "gc-ct",
+          "name": "Gonorrhea and chlamydia testing",
+          "result": "Addresses infectious screening only; it does not classify epithelial abnormality.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Cervical cytology, liquid-based Pap test: High-grade squamous intraepithelial lesion (HSIL). Specimen satisfactory for evaluation; transformation zone component present.",
+      "requiredReportElements": [
+        "specimen adequacy",
+        "transformation zone component",
+        "HSIL",
+        "Bethesda System terminology"
+      ],
+      "pitfalls": [
+        "Do not downgrade HSIL to LSIL because the abnormal cells are few.",
+        "Do not omit adequacy or transformation zone status."
+      ]
+    },
+    {
+      "id": "cyto-bile-duct-brushing-adenocarcinoma",
+      "title": "Bile duct brushing: adenocarcinoma",
+      "site": "Extrahepatic bile duct",
+      "workflow": "biopsy",
+      "specimenType": "ERCP bile duct brushing cytology",
+      "clinicalHistory": "67-year-old man with painless jaundice and a distal common bile duct stricture.",
+      "image": {
+        "src": "reference-library/signout-sims/cytopathology/bile-duct-brushing-adenocarcinoma-pap.jpg",
+        "caption": "Malignant glandular cells in bile duct brushing cytology.",
+        "stain": "Papanicolaou",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6395130/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC6395130",
+          "citation": "Intern Med. 2019 Feb 1; 58(3):329-335",
+          "license": "CC BY-NC-ND",
+          "figureLabel": "figure 4",
+          "figureCaption": "representative brush cytology specimens from patients with severe jaundice left an adequate brush cytology specimen indicating adenocarcinoma cells with atypical nuclei of different sizes disturbance in polarity and clear nucleoli are easily observed right an inadequate specimen obtained from a patient with malignant stricture and severe jaundice cells with large nuclei are seen as an aggregate but the nuclei of the peripheral cells appeared condensed due to damage although the findings suggest malignancy the diagnosis is unclear because the nuclei could not be accurately assessed",
+          "figureScore": 25,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c5/24/PMC6395130.tar.gz",
+          "acquiredAt": "2026-05-02T16:26:37.159Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Assess cellularity and preservation in the context of brushing artifact and biliary stent-related changes.",
+        "Identify malignant glandular features including three-dimensional crowded clusters, nuclear irregularity, prominent nucleoli, and necrotic background.",
+        "Correlate with imaging and endoscopic findings and communicate if material is sufficient for cell block or molecular testing."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "fish-polysomy",
+          "name": "Biliary FISH polysomy panel",
+          "result": "Can increase support for malignancy in suspicious or atypical biliary brushings.",
+          "recommended": true
+        },
+        {
+          "id": "muc-stains",
+          "name": "Mucin stain",
+          "result": "May support glandular differentiation but is rarely decisive in a clearly malignant brushing.",
+          "recommended": false
+        },
+        {
+          "id": "cell-block-ihc",
+          "name": "Cell block immunohistochemistry",
+          "result": "Useful if sufficient material is available and metastatic disease is in the differential.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Common bile duct stricture, brushing cytology: Positive for malignant cells, adenocarcinoma.",
+      "requiredReportElements": [
+        "positive for malignant cells",
+        "adenocarcinoma",
+        "bile duct brushing site",
+        "specimen adequacy or limitation"
+      ],
+      "pitfalls": [
+        "Do not overcall reactive atypia from stent, stones, or inflammation without malignant architecture and cytology.",
+        "Do not ignore scant cellularity; state limitations when preservation or cellularity is poor."
+      ]
+    }
+  ]
+}

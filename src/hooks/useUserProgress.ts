@@ -4,7 +4,7 @@ import { apiGetAllUserData } from '../api/mockApi.ts';
 import { trackSectionVisit } from '../utils/tracking.ts';
 
 export const useUserProgress = (username: string | undefined) => {
-  const [currentSection, setCurrentSection] = useState<Section>(Section.LECTURE);
+  const [currentSection, setCurrentSection] = useState<Section>(Section.HOME);
   const [visitedSections, setVisitedSections] = useState<Section[]>([]);
   const [isProgressLoading, setIsProgressLoading] = useState(true);
 
@@ -20,12 +20,12 @@ export const useUserProgress = (username: string | undefined) => {
       try {
         const allUserData = await apiGetAllUserData();
         const currentUserData: UserActivity = allUserData[username] || {};
-        // Do not load currentSection to ensure Lecture is always the landing page.
-        // setCurrentSection(currentUserData.currentSection || Section.LECTURE);
-        setVisitedSections(currentUserData.visitedSections || [Section.LECTURE]);
+        // Keep the landing experience on Home so users can choose between the
+        // didactic lecture library, the legacy lecture deck, and the rest of the module.
+        setVisitedSections(currentUserData.visitedSections || [Section.HOME]);
       } catch (error) {
         console.error("Failed to load user progress:", error);
-        setVisitedSections([Section.LECTURE]);
+        setVisitedSections([Section.HOME]);
       } finally {
         setIsProgressLoading(false);
       }

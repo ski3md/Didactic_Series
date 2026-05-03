@@ -127,6 +127,14 @@ const ImageModal: React.FC<{ image: StoredImage; onClose: () => void }> = ({ ima
         <div className="px-2 pt-3 pb-1">
           <h2 id="image-modal-title" className="text-lg font-semibold text-slate-900">{image.title}</h2>
           {image.description && <p className="text-sm text-slate-600 mt-1">{image.description}</p>}
+          {image.benchmarkTraceability && (
+            <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-3 text-xs text-slate-700">
+              <p><span className="font-semibold text-slate-900">Traceability:</span> {image.benchmarkTraceability.conformanceLevel} / {image.benchmarkTraceability.learnerLevel}</p>
+              {image.benchmarkTraceability.diagnosticFocus && (
+                <p className="mt-1"><span className="font-semibold text-slate-900">Diagnostic focus:</span> {image.benchmarkTraceability.diagnosticFocus}</p>
+              )}
+            </div>
+          )}
           {(image.family || image.stain || image.magnification) && (
             <p className="text-xs text-slate-500 mt-2">
               {[
@@ -206,6 +214,10 @@ const JobAid: React.FC = () => {
         title="Histology Link-Out Atlas"
         subtitle="A curated collection of high-yield examples for differentiating granulomatous diseases."
       />
+
+      <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+        The first atlas family now carries benchmark traceability metadata through the promoted registry. Blastomycosis is seeded as the initial traced image group.
+      </div>
 
       <div className="space-y-6">
         {atlasData.map(({ category, subcategories }) => {

@@ -1,0 +1,14 @@
+{
+  "id": "stable-asset-id",
+  "caseId": "bsg-case-id",
+  "entityId": "Entity name",
+  "kind": "image_url",
+  "url": "https://example.org/image.jpg",
+  "role": "diagnostic-histology",
+  "stain": "H&E",
+  "markerOrStudy": null,
+  "magnification": "low, medium, high, or whole-slide region",
+  "caption": "Describe what the trainee must see in the image.",
+  "sourceUrl": "https://example.org/source-page",
+  "license": "License or institutional permission note"
+}

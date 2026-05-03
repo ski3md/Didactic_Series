@@ -49,6 +49,7 @@ export interface StoredImage {
   entity?: string;
   difficulty?: 'beginner' | 'intermediate' | 'advanced';
   cells?: string[];
+  benchmarkTraceability?: BenchmarkTraceabilityRecord;
 }
 
 export interface QuizAnswer {
@@ -136,6 +137,41 @@ export type ImportedContentType =
   | 'syllabus-source'
   | 'network';
 
+export type BenchmarkDiscipline = 'AP' | 'CP' | 'mixed' | 'domain-adjacent';
+
+export type BenchmarkConformanceLevel = 'L0' | 'L1' | 'L2' | 'L3' | 'L4';
+
+export type BenchmarkLearnerLevel = 'C' | 'AR' | 'F' | 'C/AR' | 'AR/F';
+
+export interface SyllabusAnchor {
+  categoryId?: string;
+  topic: string;
+  summary: string;
+  difficulty?: 'C' | 'AR' | 'F';
+  anchorType?: 'normalized' | 'manual' | 'gap';
+}
+
+export interface BenchmarkRelatedContent {
+  id: string;
+  title: string;
+  contentType: ImportedContentType | 'image-family';
+}
+
+export interface BenchmarkTraceabilityRecord {
+  discipline: BenchmarkDiscipline;
+  conformanceLevel: BenchmarkConformanceLevel;
+  learnerLevel: BenchmarkLearnerLevel;
+  promotionSurface: string;
+  uxEntryPoint: string;
+  reviewStatus: 'seeded' | 'ready' | 'needs-curation' | 'hold';
+  benchmarkTags: string[];
+  promotionRationale: string;
+  diagnosticFocus?: string;
+  syllabusAnchors: SyllabusAnchor[];
+  relatedContent?: BenchmarkRelatedContent[];
+  normalizedSyllabusGap?: string;
+}
+
 export interface ImportedContentRecord {
   id: string;
   sourceRepo: string;
@@ -152,6 +188,7 @@ export interface ImportedContentRecord {
   references: string[];
   tags: string[];
   provenance: Record<string, unknown>;
+  benchmarkTraceability?: BenchmarkTraceabilityRecord;
 }
 
 export interface TutorialMCQ {

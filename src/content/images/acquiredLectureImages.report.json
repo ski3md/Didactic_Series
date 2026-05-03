@@ -1,0 +1,291 @@
+{
+  "generatedAt": "2026-05-02T23:49:33.695Z",
+  "sourceFileCount": 7,
+  "discoveredCount": 62,
+  "acquiredCount": 31,
+  "failureCount": 31,
+  "failures": [
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Choriocarcinoma_-_high_mag.jpg",
+      "title": "High-power H&E micrograph of choriocarcinoma",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/40/Condyloma_acuminatum_-_high_mag.jpg",
+      "title": "High-power H&E micrograph of condyloma acuminatum",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Epidermoid_cyst_of_testis_--_high_mag.jpg",
+      "title": "High-power H&E micrograph of dermoid cyst",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/08/Differentiated_vulvar_intraepithelial_neoplasia_-_deep_-_high_mag.jpg",
+      "title": "High-power H&E micrograph of differentiated intraepithelial neoplasia",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/Diffuse_large_B-cell_lymphoma_%28DLBCL%29%2C_high_mag.jpg",
+      "title": "High-power H&E micrograph of diffuse large B-cell lymphoma",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Intratubular_germ_cell_neoplasia_high_mag_cropped.jpg",
+      "title": "High-power H&E micrograph of germ cell neoplasia in situ",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Gonadoblastoma_-_high_mag.jpg",
+      "title": "High-power H&E micrograph of gonadoblastoma",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/47/Juvenile_granulosa_cell_tumour_-_high_mag.jpg",
+      "title": "High-power H&E micrograph of granulosa cell tumor",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/68/Histopathology_of_leydig_cell_tumor_of_the_ovary%2C_high_mag.jpg",
+      "title": "High-power H&E micrograph of Leydig cell tumor",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Lichen_sclerosus_-_high_mag.jpg",
+      "title": "High-power H&E micrograph of lichen sclerosus",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/Malignant_melanoma_in_situ_--_high_mag.jpg",
+      "title": "High-power H&E micrograph of melanoma",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/88/Well-differentiated_neuroendocrine_tumor_of_the_stomach%2C_high_mag.jpg",
+      "title": "High-power H&E micrograph of neuroendocrine tumor",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Squamous_carcinoma_of_the_penis_-_2_--_high_mag.jpg",
+      "title": "High-power H&E micrograph of penile squamous cell carcinoma",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Micrograph_of_spindle_cell_%28sarcomatoid%29_squamous_cell_carcinoma.jpg",
+      "title": "High-power H&E micrograph of sarcomatoid squamous cell carcinoma",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Seminoma_with_syncytiotrophoblasts_-_high_mag.jpg",
+      "title": "High-power H&E micrograph of seminoma with syncytiotrophoblasts",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Ovarian_serous_cystadenoma_--_high_mag.jpg",
+      "title": "High-power H&E micrograph of serous cystadenoma",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Pleomorphic_undifferentiated_sarcoma_-_very_high_mag.jpg",
+      "title": "High-power H&E micrograph of spindle cell sarcoma",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Adenomatoid_tumour_-_high_mag.jpg",
+      "title": "High-power micrograph of adenomatoid tumor",
+      "sourceFile": [
+        "src/content/lectures/gu_who_complete_lectures.normalized.json",
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6e/DLBCL_of_testis_--_high_mag.jpg",
+      "title": "High-power micrograph of diffuse large B-cell lymphoma of the testis",
+      "sourceFile": [
+        "src/content/lectures/gu_who_complete_lectures.normalized.json",
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Embryonal_carcinoma_-_high_mag.jpg",
+      "title": "High-power micrograph of embryonal carcinoma",
+      "sourceFile": [
+        "src/content/lectures/gu_who_complete_lectures.normalized.json",
+        "src/content/lectures/guPilotEnhancements.ts",
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Spermatocytic_seminoma_high_mag.jpg",
+      "title": "High-power micrograph of spermatocytic tumor",
+      "sourceFile": [
+        "src/content/lectures/gu_who_complete_lectures.normalized.json",
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/91/Yolk_sac_tumour_--_high_mag.jpg",
+      "title": "High-power micrograph of yolk sac tumor of the testis",
+      "sourceFile": [
+        "src/content/lectures/gu_who_complete_lectures.normalized.json",
+        "src/content/lectures/guPilotEnhancements.ts",
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Adenomatoid_tumour_-_intermed_mag.jpg",
+      "title": "Intermediate-power H&E micrograph of adenomatoid tumor",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Mixed_germ_cell_tumour_-_intermed_mag.jpg",
+      "title": "Intermediate-power H&E micrograph of mixed germ cell tumor",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/33/Penile_intraepithelial_neoplasia_-_alt_--_intermed_mag.jpg",
+      "title": "Intermediate-power H&E micrograph of penile intraepithelial neoplasia",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Squamous_carcinoma_of_the_penis_-_2_--_intermed_mag.jpg",
+      "title": "Intermediate-power H&E micrograph of penile squamous cell carcinoma",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/Yolk_sac_tumour_--_intermed_mag.jpg",
+      "title": "Intermediate-power H&E micrograph of yolk sac tumor",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Penile_intraepithelial_neoplasia_--_intermed_mag.jpg",
+      "title": "Intermediate-power micrograph of penile intraepithelial neoplasia",
+      "sourceFile": [
+        "src/content/lectures/gu_who_complete_lectures.normalized.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Intertubular_seminoma_-_alt_--_low_mag.jpg",
+      "title": "Low-power H&E micrograph of intertubular seminoma",
+      "sourceFile": [
+        "src/content/gu/who_gu_entity_manifest.json",
+        "scripts/commons_image_sources.cjs"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/35/Malakoplakia_of_the_urinary_bladder%2C_high_mag.jpg",
+      "title": "Malakoplakia",
+      "sourceFile": [
+        "src/content/images/bladderAtlasSupplement.json"
+      ],
+      "error": "HTTP 429"
+    },
+    {
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Spermatocytic_seminoma_intermed_mag.jpg",
+      "title": "Spermatocytic seminoma intermed mag",
+      "sourceFile": "src/content/lectures/guPilotEnhancements.ts",
+      "error": "HTTP 429"
+    }
+  ]
+}

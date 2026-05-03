@@ -1,0 +1,373 @@
+{
+  "version": "2026-05-02",
+  "title": "GI Pathology Sign-Out Simulations",
+  "cases": [
+    {
+      "id": "gi-barrett-indefinite-biopsy",
+      "title": "Distal esophagus biopsy: Barrett esophagus, negative for dysplasia",
+      "site": "Distal esophagus",
+      "workflow": "biopsy",
+      "specimenType": "Esophagogastroduodenoscopy biopsy from salmon-colored mucosa",
+      "clinicalHistory": "59-year-old man with chronic reflux and a 2 cm segment of columnar-lined distal esophagus on surveillance endoscopy.",
+      "image": {
+        "src": "reference-library/signout-sims/gastrointestinal/barrett-esophagus-intestinal-metaplasia-he.jpg",
+        "caption": "Barrett esophagus with specialized intestinal metaplasia and goblet cells.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Barrett_esophagus_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Confirm the biopsy is from tubular esophagus or gastroesophageal junction mucosa with columnar epithelium.",
+        "Identify true goblet cells to support specialized intestinal metaplasia.",
+        "Assess crypt architecture, surface maturation, and nuclear atypia to determine whether dysplasia is present."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "Morphology is sufficient for uncomplicated Barrett esophagus without dysplasia.",
+          "recommended": true
+        },
+        {
+          "id": "p53",
+          "name": "p53 immunostain",
+          "result": "Reserve for difficult dysplasia assessment; aberrant staining can support true dysplasia in the correct morphology.",
+          "recommended": false
+        },
+        {
+          "id": "alcian-blue",
+          "name": "Alcian blue/PAS",
+          "result": "Can highlight acidic mucin but is not required when goblet cells are evident on H&E.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Esophagus, distal, biopsy: Barrett esophagus with intestinal metaplasia, negative for dysplasia.",
+      "requiredReportElements": [
+        "Barrett esophagus",
+        "intestinal metaplasia",
+        "negative for dysplasia",
+        "specimen site"
+      ],
+      "pitfalls": [
+        "Do not diagnose Barrett esophagus from gastric cardia intestinal metaplasia without endoscopic context.",
+        "Do not overcall reactive basal nuclear changes adjacent to erosion as low-grade dysplasia."
+      ]
+    },
+    {
+      "id": "gi-celiac-duodenal-biopsy",
+      "title": "Duodenal biopsy: celiac-type mucosal injury",
+      "site": "Duodenum",
+      "workflow": "biopsy",
+      "specimenType": "Duodenal bulb and second portion biopsies",
+      "clinicalHistory": "34-year-old woman with iron-deficiency anemia, chronic bloating, and elevated tissue transglutaminase IgA.",
+      "image": {
+        "src": "reference-library/signout-sims/gastrointestinal/celiac-disease-duodenum-he.jpg",
+        "caption": "Duodenal mucosa with villous blunting and increased intraepithelial lymphocytes, compatible with celiac-type injury.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gluten-sensitive_enteropathy_(Marsh_3b),_high_mag.jpg"
+      },
+      "diagnosticSteps": [
+        "Orient villi and crypts before grading villous blunting to avoid tangential artifact.",
+        "Count intraepithelial lymphocytes and assess crypt hyperplasia, lamina propria inflammation, and epithelial injury.",
+        "Correlate with serology and gluten exposure because the histologic pattern is not specific for celiac disease."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "cd3",
+          "name": "CD3 immunostain",
+          "result": "Highlights increased intraepithelial T lymphocytes when the H&E count is borderline.",
+          "recommended": true
+        },
+        {
+          "id": "h-pylori",
+          "name": "H. pylori stain on gastric biopsies",
+          "result": "Consider if peptic duodenitis is in the differential based on concurrent gastric sampling.",
+          "recommended": false
+        },
+        {
+          "id": "giardia",
+          "name": "Giardia evaluation",
+          "result": "Review luminal surface for organisms when symptoms or travel history suggest infection.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Duodenum, biopsy: Duodenal mucosa with villous blunting, crypt hyperplasia, and increased intraepithelial lymphocytes, compatible with celiac-type mucosal injury in the appropriate clinical setting.",
+      "requiredReportElements": [
+        "villous blunting",
+        "crypt hyperplasia",
+        "increased intraepithelial lymphocytes",
+        "clinical correlation"
+      ],
+      "pitfalls": [
+        "Do not diagnose celiac disease as a stand-alone pathologic certainty without serologic and dietary context.",
+        "Do not grade villous architecture on poorly oriented fragments."
+      ]
+    },
+    {
+      "id": "gi-sessile-serrated-lesion-polypectomy",
+      "title": "Right colon polypectomy: sessile serrated lesion without dysplasia",
+      "site": "Right colon",
+      "workflow": "resection",
+      "specimenType": "Cold snare polypectomy",
+      "clinicalHistory": "62-year-old woman undergoing screening colonoscopy with a flat 9 mm mucus-capped polyp in the ascending colon.",
+      "image": {
+        "src": "reference-library/signout-sims/gastrointestinal/sessile-serrated-lesion-he.jpg",
+        "caption": "Sessile serrated lesion with dilated and horizontally branched basal crypts.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sessile_serrated_adenoma.jpg"
+      },
+      "diagnosticSteps": [
+        "Identify serrated architecture extending to the crypt base with basal dilatation, branching, or horizontal growth.",
+        "Separate sessile serrated lesion from hyperplastic polyp using location, size, and basal crypt morphology.",
+        "Search for conventional or serrated dysplasia and assess whether the cauterized margin is evaluable."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "Diagnosis is based on crypt architecture and dysplasia assessment.",
+          "recommended": true
+        },
+        {
+          "id": "mlh1",
+          "name": "MLH1 immunostain",
+          "result": "Not needed without dysplasia; loss may support serrated-pathway dysplasia when present.",
+          "recommended": false
+        },
+        {
+          "id": "braf",
+          "name": "BRAF V600E testing",
+          "result": "Not required for routine polypectomy sign-out.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "polyp type",
+        "dysplasia absent or present",
+        "specimen fragmentation",
+        "margin evaluability if applicable"
+      ],
+      "reportingTarget": "Colon, ascending, polypectomy: Sessile serrated lesion, negative for dysplasia.",
+      "requiredReportElements": [
+        "sessile serrated lesion",
+        "negative for dysplasia",
+        "site",
+        "polypectomy"
+      ],
+      "pitfalls": [
+        "Do not call a right-sided SSL hyperplastic polyp when abnormal basal crypts are present.",
+        "Do not omit dysplasia status."
+      ]
+    },
+    {
+      "id": "gi-colon-adenocarcinoma-resection",
+      "title": "Right hemicolectomy: invasive colonic adenocarcinoma",
+      "site": "Colon",
+      "workflow": "resection",
+      "specimenType": "Right hemicolectomy",
+      "clinicalHistory": "70-year-old man with iron-deficiency anemia and an obstructing cecal mass biopsied as adenocarcinoma.",
+      "image": {
+        "src": "reference-library/signout-sims/gastrointestinal/colon-adenocarcinoma-biopsy-he.jpg",
+        "caption": "Colorectal adenocarcinoma with infiltrative malignant glands in desmoplastic stroma.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8572189/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC8572189",
+          "citation": "J Robot Surg. 2021 Jan 25; 15(6):915-922",
+          "license": "CC BY",
+          "figureLabel": "fig 2",
+          "figureCaption": "distribution of length of stay los of 97 patients undergoing minimally invasive right hemicolectomy with intracorporeal or extracorporeal anastomosis ia intracorporeal anastomosis ea extracorporeal anastomosis",
+          "figureScore": 24,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/cc/9c/PMC8572189.tar.gz",
+          "acquiredAt": "2026-05-02T16:26:47.323Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Confirm invasive adenocarcinoma and assign histologic grade, including mucinous, signet-ring, or medullary features if present.",
+        "Determine deepest anatomic extent, lymphovascular invasion, perineural invasion, tumor budding if applicable, and margin status.",
+        "Count examined and positive lymph nodes and integrate mismatch repair screening results for reporting."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "mmr-ihc",
+          "name": "MLH1, PMS2, MSH2, MSH6 immunohistochemistry",
+          "result": "Universal MMR screening is recommended for colorectal adenocarcinoma.",
+          "recommended": true
+        },
+        {
+          "id": "braf-mlh1-methylation",
+          "name": "BRAF V600E or MLH1 promoter methylation",
+          "result": "Reflex testing is useful when MLH1/PMS2 loss is identified.",
+          "recommended": false
+        },
+        {
+          "id": "her2",
+          "name": "HER2 testing",
+          "result": "Consider in advanced/metastatic RAS wild-type disease, not required for primary resection sign-out.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "tumor site",
+        "tumor size",
+        "histologic type and grade",
+        "depth of invasion",
+        "lymphovascular invasion",
+        "perineural invasion",
+        "margins",
+        "lymph nodes",
+        "MMR status",
+        "pT category",
+        "pN category"
+      ],
+      "reportingTarget": "Colon, right hemicolectomy: Moderately differentiated adenocarcinoma of cecum, 4.2 cm, invading through muscularis propria into pericolonic tissue, margins negative, 2 of 24 lymph nodes positive, pT3 pN1b. MMR immunohistochemistry pending.",
+      "requiredReportElements": [
+        "adenocarcinoma",
+        "tumor size",
+        "depth of invasion",
+        "margins",
+        "lymph nodes",
+        "pT3",
+        "pN1b",
+        "MMR status"
+      ],
+      "pitfalls": [
+        "Do not finalize staging without total lymph node count and positive node count.",
+        "Do not omit treatment effect if the patient received neoadjuvant therapy."
+      ]
+    },
+    {
+      "id": "gi-gastric-poorly-cohesive-resection",
+      "title": "Subtotal gastrectomy: poorly cohesive gastric adenocarcinoma",
+      "site": "Stomach",
+      "workflow": "resection",
+      "specimenType": "Distal subtotal gastrectomy with lymphadenectomy",
+      "clinicalHistory": "66-year-old woman with weight loss and a poorly distensible antrum; biopsy showed poorly cohesive carcinoma with signet-ring cells.",
+      "image": {
+        "src": "reference-library/signout-sims/gastrointestinal/poorly-cohesive-gastric-adenocarcinoma-he.jpg",
+        "caption": "Poorly cohesive gastric adenocarcinoma with signet-ring cell morphology.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10745076/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC10745076",
+          "citation": "Medicina (Kaunas). 2023 Dec 5; 59(12):2126",
+          "license": "CC BY",
+          "figureLabel": "figure 2",
+          "figureCaption": "endoscopic radiologic and pathologic findings of case 2 a esophagogastroduodenoscopy showed a polypoid mass without ulceration in the gastric antrum b an initial abdominal computed tomography revealed a 2 0 cm sized protruding lesion arrow in the proximal antrum and no enlarged perigastric lymph node c gross examination of the distal subtotal gastrectomy specimen showed 2 3 cm 1 5 cm sized elevated lesion of early gastric cancer type i arrow in the anterior wall of the antrum d serial sectioning revealed that the tumor was limited to the mucosa e low power microscopic view of the tumor showed differentiated type adenocarcinoma with intact muscularis mucosae hematoxylin eosin he stain 12 5 f high power view revealed up to five foci of tumor buddings arrows at the invasive front he stain 200 g although no lymphatic invasion was seen in the primary tumor lymph node metastases arrows were found in perigastric lymph nodes he stain 12 5 h high power view of the lymph nodes showed metastatic gastric adenocarcinoma he stain 200",
+          "figureScore": 36,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/13/5b/PMC10745076.tar.gz",
+          "acquiredAt": "2026-05-02T16:26:52.625Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Confirm poorly cohesive adenocarcinoma and document signet-ring cell predominance if present.",
+        "Map tumor depth through gastric wall layers and assess proximal, distal, and radial/omental margins.",
+        "Report lymphovascular invasion, perineural invasion, treatment effect if applicable, lymph nodes, and biomarker status."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "her2",
+          "name": "HER2 immunohistochemistry with reflex ISH if equivocal",
+          "result": "Recommended predictive biomarker for gastric/GEJ adenocarcinoma in appropriate clinical settings.",
+          "recommended": true
+        },
+        {
+          "id": "mmr",
+          "name": "Mismatch repair immunohistochemistry",
+          "result": "Assesses deficient MMR/MSI phenotype with therapeutic and hereditary implications.",
+          "recommended": true
+        },
+        {
+          "id": "ebv-ish",
+          "name": "EBER in situ hybridization",
+          "result": "Can identify EBV-associated gastric carcinoma when morphology or institutional protocol supports testing.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "procedure",
+        "tumor site",
+        "tumor size",
+        "histologic type",
+        "grade",
+        "depth of invasion",
+        "lymphovascular invasion",
+        "perineural invasion",
+        "margins",
+        "lymph nodes",
+        "biomarkers",
+        "pT category",
+        "pN category"
+      ],
+      "reportingTarget": "Stomach, distal subtotal gastrectomy: Poorly cohesive adenocarcinoma with signet-ring cell features, 5.1 cm, invading subserosal connective tissue, margins negative, lymphovascular and perineural invasion present, 7 of 28 lymph nodes positive, pT3 pN3a.",
+      "requiredReportElements": [
+        "poorly cohesive adenocarcinoma",
+        "tumor size",
+        "depth of invasion",
+        "margins",
+        "lymphovascular invasion",
+        "perineural invasion",
+        "lymph nodes",
+        "pT3",
+        "pN3a"
+      ],
+      "pitfalls": [
+        "Do not underestimate extent in diffuse poorly cohesive carcinoma with subtle gross borders.",
+        "Do not omit biomarker testing status when local protocol requires it."
+      ]
+    },
+    {
+      "id": "gi-gallbladder-cholelithiasis-gross-only",
+      "title": "Gallbladder: cholelithiasis, gross-only workflow",
+      "site": "Gallbladder",
+      "workflow": "gross-only",
+      "specimenType": "Cholecystectomy",
+      "clinicalHistory": "45-year-old woman with biliary colic and ultrasound showing multiple mobile gallstones without mass or wall thickening.",
+      "image": {
+        "src": "reference-library/signout-sims/gastrointestinal/cholelithiasis-gallbladder-gross.jpg",
+        "caption": "Gallbladder with cholelithiasis and no described mass lesion.",
+        "stain": "Gross photograph",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gallstones.jpg"
+      },
+      "diagnosticSteps": [
+        "Confirm the specimen is an uncomplicated gallbladder with expected anatomy, cystic duct margin, mucosa, wall, and stones.",
+        "Inspect for mass, polyp, mucosal ulceration, porcelain change, focal wall thickening, or clinical concern that would require histologic sampling.",
+        "Document stone burden and gross wall/mucosal findings according to local gross-only criteria."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "No ancillary study is required for an uncomplicated gross-only gallbladder.",
+          "recommended": true
+        },
+        {
+          "id": "submit-sections",
+          "name": "Histologic sections",
+          "result": "Recommended if a mass, suspicious mucosal lesion, marked wall thickening, or unexpected clinical concern is present.",
+          "recommended": false
+        }
+      ],
+      "grossOnlyChecklist": [
+        "specimen dimensions",
+        "wall thickness",
+        "mucosal appearance",
+        "stone number or aggregate description",
+        "cystic duct status",
+        "absence of mass lesion"
+      ],
+      "reportingTarget": "Gallbladder, cholecystectomy: Cholelithiasis. No gross mass lesion identified.",
+      "requiredReportElements": [
+        "gallbladder",
+        "cholelithiasis",
+        "no gross mass lesion"
+      ],
+      "pitfalls": [
+        "Do not use a gross-only workflow if a mass, polyp, or focal wall thickening is present.",
+        "Do not discard the cystic duct margin description when local policy requires it."
+      ]
+    }
+  ]
+}

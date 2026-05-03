@@ -1,0 +1,507 @@
+{
+  "version": "2026-05-02",
+  "title": "Hematopathology Sign-Out Simulations",
+  "cases": [
+    {
+      "id": "heme-reactive-lymph-node-excision",
+      "title": "Lymph node excision: reactive follicular hyperplasia",
+      "site": "Cervical lymph node",
+      "workflow": "resection",
+      "specimenType": "Excisional lymph node biopsy",
+      "clinicalHistory": "24-year-old woman with tender cervical lymphadenopathy after an upper respiratory infection; flow cytometry shows no monotypic B-cell or aberrant T-cell population.",
+      "image": {
+        "src": "reference-library/signout-sims/hematopathology/reactive-follicular-hyperplasia-he.jpg",
+        "caption": "Reactive follicular hyperplasia with polarized germinal centers and preserved lymph node compartments.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3874606/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC3874606",
+          "citation": "Diagn Pathol. 2013 Jun 19; 8:100",
+          "license": "CC BY",
+          "figureLabel": "figure 1",
+          "figureCaption": "excisional 1st biopsy from cervical lymph node a and b low power view reactive appearing follicles with preserved architecture c infarcted lymph node with occasional large cells with prominent nucleoli on high magnification d cd20 e cd3 f bcl 2 g bcl 6 h eber and lmp 1",
+          "figureScore": 44,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/9c/e3/PMC3874606.tar.gz",
+          "acquiredAt": "2026-05-02T16:28:14.263Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Assess architecture at low power for preserved capsule, sinuses, paracortex, and variably sized follicles rather than back-to-back monotonous nodules.",
+        "Confirm reactive follicle features including polarization, tangible-body macrophages, and intact mantle zones.",
+        "Correlate with flow cytometry and immunostains to exclude follicular lymphoma or another clonal lymphoid process."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "cd20-cd3",
+          "name": "CD20 and CD3",
+          "result": "Preserved B-cell follicles and T-cell paracortex support reactive architecture.",
+          "recommended": true
+        },
+        {
+          "id": "bcl2-cd10-bcl6",
+          "name": "BCL2, CD10, and BCL6",
+          "result": "Reactive germinal centers are CD10/BCL6 positive and BCL2 negative.",
+          "recommended": true
+        },
+        {
+          "id": "igh-clonality",
+          "name": "IGH clonality assay",
+          "result": "Not required when morphology, immunophenotype, and flow cytometry are reactive.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "specimen adequacy",
+        "architecture",
+        "follicular pattern",
+        "flow cytometry correlation",
+        "evidence of lymphoma absent or present"
+      ],
+      "reportingTarget": "Lymph node, cervical, excision: Reactive follicular hyperplasia. No morphologic or immunophenotypic evidence of lymphoma.",
+      "requiredReportElements": [
+        "reactive follicular hyperplasia",
+        "flow cytometry correlation",
+        "no evidence of lymphoma"
+      ],
+      "pitfalls": [
+        "Do not call follicular lymphoma solely because follicles are numerous.",
+        "Do not ignore flow cytometry limitations if only a small or necrotic portion was submitted.",
+        "Do not omit comment on architecture in an excisional lymph node specimen."
+      ]
+    },
+    {
+      "id": "heme-follicular-lymphoma-core",
+      "title": "Lymph node core biopsy: follicular lymphoma, low grade",
+      "site": "Inguinal lymph node",
+      "workflow": "biopsy",
+      "specimenType": "Image-guided lymph node core biopsy",
+      "clinicalHistory": "62-year-old man with slowly progressive inguinal and retroperitoneal lymphadenopathy; PET/CT shows low to moderate FDG uptake.",
+      "image": {
+        "src": "reference-library/signout-sims/hematopathology/follicular-lymphoma-he.jpg",
+        "caption": "Follicular lymphoma with closely packed atypical follicles on H&E stain.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11305520/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC11305520",
+          "citation": "Acta Cytol. 2024 Aug 20; 68(3):260-280",
+          "license": "CC BY-NC",
+          "figureLabel": "fig 2",
+          "figureCaption": "entities causing potential fp diagnoses a kfl with increased numbers of activated large lymphocytes superficially mimicking lymphoma with large cell morphology hemacolor 40 b kfl showing prominent crescentic histiocytes pap 60 c pmx showing seemingly crowded sheets of basaloid cells with hyperchromatic nuclei pap 40 d pmx showing nucleated epithelial cells transitioning to ghost cells pap 40 e wt featuring atypical orangeophilic cells closely mimicking keratinising scc pap 20 f metastatic scc showing diagnostic crowded disorganised sheets of cytologically malignant cells pap 20",
+          "figureScore": 23,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/8e/32/PMC11305520.tar.gz",
+          "acquiredAt": "2026-05-02T16:28:19.958Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Recognize an atypical follicular proliferation with effaced architecture, crowded follicles, attenuated mantle zones, and reduced polarization.",
+        "Grade the sampled lymphoma by estimating centroblasts per high-power field while noting that limited core tissue may under-sample grade 3 or transformation.",
+        "Integrate immunophenotype and flow cytometry showing a germinal-center B-cell population with light-chain restriction and aberrant BCL2 expression."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "cd20-cd10-bcl6-bcl2",
+          "name": "CD20, CD10, BCL6, and BCL2",
+          "result": "Neoplastic follicles are CD20 positive with CD10/BCL6 expression and aberrant BCL2 positivity.",
+          "recommended": true
+        },
+        {
+          "id": "ki67",
+          "name": "Ki-67",
+          "result": "Low proliferation index supports low-grade follicular lymphoma in the sampled tissue.",
+          "recommended": true
+        },
+        {
+          "id": "fish-bcl2",
+          "name": "FISH for IGH::BCL2",
+          "result": "May support the diagnosis when immunophenotype is atypical or tissue is limited.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Lymph node, inguinal, core biopsy: Follicular lymphoma, classic type, low grade (grade 1-2 of 3) in the sampled tissue. No diffuse large B-cell lymphoma identified in this biopsy.",
+      "requiredReportElements": [
+        "follicular lymphoma",
+        "classic type",
+        "grade 1-2 of 3",
+        "core biopsy limitation",
+        "no diffuse large B-cell lymphoma identified"
+      ],
+      "pitfalls": [
+        "Do not overstate complete nodal architecture on a core biopsy.",
+        "Do not exclude transformation if PET-avid disease was not sampled.",
+        "Do not rely on BCL2 alone because reactive follicles and variant follicular lymphomas can be misleading."
+      ]
+    },
+    {
+      "id": "heme-dlbcl-excision",
+      "title": "Lymph node excision: diffuse large B-cell lymphoma",
+      "site": "Axillary lymph node",
+      "workflow": "resection",
+      "specimenType": "Excisional lymph node biopsy",
+      "clinicalHistory": "71-year-old man with rapidly enlarging axillary lymphadenopathy, B symptoms, and LDH elevation.",
+      "image": {
+        "src": "reference-library/signout-sims/hematopathology/dlbcl-he.jpg",
+        "caption": "Diffuse large B-cell lymphoma composed of sheets of large atypical lymphoid cells.",
+        "stain": "H&E",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5168845/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC5168845",
+          "citation": "Diagn Pathol. 2016 Dec 19; 11:137",
+          "license": "CC BY",
+          "figureLabel": "fig 2",
+          "figureCaption": "histological findings of the inguinal lymph node excision 2 weeks after initial presentation a low power view 25 shows a lymph node with a preserved architecture with intact capsule patent sinuses and polarized germinal centers with well demarcated mantle zones the interfollicular areas are expanded h e b at higher magnification 100 the interfollicular infiltrate is composed of numerous large transformed immunoblasts in the background of small lymphocytes abundant eosinophils scattered plasma cells and histiocytes h e c at 200 magnification h e and d at 400 magnification the large atypical cells have large oval to slightly irregular nuclei with vesicular chromatin prominent nucleoli and scant to moderate amounts of clear to amphophilic cytoplasm h e e the large atypical cells are immunoreactive for cd20 cd20 immunostain 50 as well as for f pax5 pax5 immunostain 200 g cd30 cd30 immunostain 200 and h mum1 mum1 immunostain 200",
+          "figureScore": 45,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c0/b8/PMC5168845.tar.gz",
+          "acquiredAt": "2026-05-02T16:28:27.999Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Identify diffuse architectural effacement by sheets of large atypical lymphoid cells with vesicular chromatin and prominent nucleoli.",
+        "Confirm B-cell lineage and classify cell-of-origin by an accepted immunohistochemical algorithm when molecular profiling is not performed.",
+        "Evaluate MYC, BCL2, and BCL6 protein expression and order cytogenetic testing when high-grade B-cell lymphoma with rearrangements is a concern."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "cd20-pax5-cd3",
+          "name": "CD20, PAX5, and CD3",
+          "result": "Large atypical cells are CD20/PAX5 positive and CD3 negative, supporting B-cell lineage.",
+          "recommended": true
+        },
+        {
+          "id": "myc-bcl2-bcl6-fish",
+          "name": "MYC, BCL2, and BCL6 FISH",
+          "result": "Recommended to exclude high-grade B-cell lymphoma with MYC and BCL2 and/or BCL6 rearrangements.",
+          "recommended": true
+        },
+        {
+          "id": "ebv-ish",
+          "name": "EBER in situ hybridization",
+          "result": "Useful in older or immunocompromised patients and selected morphologic settings.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "diagnosis",
+        "specimen type",
+        "architecture",
+        "cell-of-origin category",
+        "MYC/BCL2 double-expressor status",
+        "FISH status",
+        "EBV status if tested",
+        "flow cytometry correlation"
+      ],
+      "reportingTarget": "Lymph node, axillary, excision: Diffuse large B-cell lymphoma, NOS, germinal center B-cell phenotype by Hans algorithm. MYC/BCL2 double-expressor status and MYC/BCL2/BCL6 FISH pending.",
+      "requiredReportElements": [
+        "diffuse large B-cell lymphoma, NOS",
+        "cell-of-origin phenotype",
+        "MYC/BCL2 double-expressor status",
+        "MYC/BCL2/BCL6 FISH status",
+        "flow cytometry correlation"
+      ],
+      "pitfalls": [
+        "Do not sign out DLBCL without addressing high-grade B-cell lymphoma with rearrangements when MYC is expressed or morphology is high grade.",
+        "Do not miss an underlying low-grade lymphoma component.",
+        "Do not delay urgent communication when the diagnosis has immediate treatment implications."
+      ]
+    },
+    {
+      "id": "heme-hodgkin-lymphoma-excision",
+      "title": "Lymph node excision: classic Hodgkin lymphoma",
+      "site": "Mediastinal lymph node",
+      "workflow": "resection",
+      "specimenType": "Mediastinal lymph node excision",
+      "clinicalHistory": "33-year-old woman with mediastinal mass, pruritus, and contiguous cervical lymphadenopathy.",
+      "image": {
+        "src": "reference-library/signout-sims/hematopathology/classic-hodgkin-lymphoma-he.jpg",
+        "caption": "Classic Hodgkin lymphoma with scattered Reed-Sternberg cells in a mixed inflammatory background.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hodgkin_lymphoma_(1)_mixed_cellulary_type.jpg"
+      },
+      "diagnosticSteps": [
+        "Find diagnostic Hodgkin/Reed-Sternberg cells in the appropriate polymorphous inflammatory background rather than interpreting scattered activated immunoblasts as lymphoma.",
+        "Confirm the classic Hodgkin immunophenotype and document weak PAX5 with CD30 and CD15 expression.",
+        "Classify the subtype when possible and exclude nodular lymphocyte-predominant Hodgkin lymphoma and mediastinal gray-zone lymphoma."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "cd30-cd15-pax5",
+          "name": "CD30, CD15, and PAX5",
+          "result": "Hodgkin cells are CD30 positive, usually CD15 positive, and show weak PAX5 expression.",
+          "recommended": true
+        },
+        {
+          "id": "cd45-cd20-oct2-bob1",
+          "name": "CD45, CD20, OCT2, and BOB1",
+          "result": "Pattern helps separate classic Hodgkin lymphoma from mimics including NLPHL and large B-cell lymphoma.",
+          "recommended": true
+        },
+        {
+          "id": "flow-cytometry",
+          "name": "Flow cytometry",
+          "result": "Often non-diagnostic in classic Hodgkin lymphoma and should not override tissue morphology.",
+          "recommended": false
+        }
+      ],
+      "synopticChecklist": [
+        "diagnosis",
+        "classic Hodgkin subtype",
+        "diagnostic cell immunophenotype",
+        "EBV status if tested",
+        "exclusion of key mimics"
+      ],
+      "reportingTarget": "Lymph node, mediastinal, excision: Classic Hodgkin lymphoma, nodular sclerosis type. EBER pending.",
+      "requiredReportElements": [
+        "classic Hodgkin lymphoma",
+        "subtype",
+        "CD30/CD15/PAX5 immunophenotype",
+        "EBV status if tested",
+        "exclusion of mimics"
+      ],
+      "pitfalls": [
+        "Do not exclude classic Hodgkin lymphoma because flow cytometry is negative.",
+        "Do not confuse NLPHL with lymphocyte-rich classic Hodgkin lymphoma.",
+        "Do not under-sample mediastinal lesions where gray-zone lymphoma is in the differential."
+      ]
+    },
+    {
+      "id": "heme-mantle-cell-flow-core",
+      "title": "Lymph node core biopsy: mantle cell lymphoma with flow correlation",
+      "site": "Mesenteric lymph node",
+      "workflow": "biopsy",
+      "specimenType": "Image-guided lymph node core biopsy with concurrent flow cytometry",
+      "clinicalHistory": "68-year-old man with leukocytosis, splenomegaly, and multiple mesenteric lymph nodes; flow cytometry detects a CD5-positive, kappa-restricted B-cell population that is CD23 negative.",
+      "image": {
+        "src": "reference-library/signout-sims/hematopathology/mantle-cell-lymphoma-cyclin-d1.jpg",
+        "caption": "Mantle cell lymphoma with nuclear cyclin D1 expression.",
+        "stain": "Cyclin D1 immunostain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mantle_cell_lymphoma_-_intermed_mag_-_cyclin_D1.jpg"
+      },
+      "diagnosticSteps": [
+        "Correlate the flow cytometry phenotype of monotypic CD5-positive/CD23-negative B cells with tissue involvement by a small to intermediate lymphoid infiltrate.",
+        "Confirm mantle cell lymphoma by cyclin D1 or SOX11 expression and/or CCND1 rearrangement.",
+        "Assess blastoid or pleomorphic morphology and proliferation index because these features change risk assessment."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "cyclin-d1-sox11",
+          "name": "Cyclin D1 and SOX11",
+          "result": "Nuclear cyclin D1 expression with SOX11 positivity supports mantle cell lymphoma.",
+          "recommended": true
+        },
+        {
+          "id": "fish-ccnd1-igh",
+          "name": "FISH for CCND1::IGH",
+          "result": "Confirms t(11;14) when immunostains are equivocal or cyclin D1-negative mantle cell lymphoma is considered.",
+          "recommended": true
+        },
+        {
+          "id": "tp53",
+          "name": "TP53 sequencing or p53 immunostain",
+          "result": "Useful for prognostic workup but not required for the initial tissue diagnosis in every setting.",
+          "recommended": false
+        }
+      ],
+      "reportingTarget": "Lymph node, mesenteric, core biopsy: Mantle cell lymphoma, classic morphology, involving core biopsy tissue. Ki-67 proliferation index approximately 20%. Concurrent flow cytometry shows a CD5-positive, CD23-negative, kappa-restricted B-cell population.",
+      "requiredReportElements": [
+        "mantle cell lymphoma",
+        "morphologic variant",
+        "Ki-67 proliferation index",
+        "flow cytometry phenotype",
+        "cyclin D1/SOX11 or CCND1 rearrangement status"
+      ],
+      "pitfalls": [
+        "Do not diagnose CLL/SLL solely because the lymphoma is CD5 positive.",
+        "Do not omit Ki-67 in mantle cell lymphoma.",
+        "Do not miss blastoid morphology in a small core."
+      ]
+    },
+    {
+      "id": "heme-aml-bone-marrow-biopsy",
+      "title": "Bone marrow biopsy: acute myeloid leukemia",
+      "site": "Posterior iliac crest bone marrow",
+      "workflow": "biopsy",
+      "specimenType": "Bone marrow aspirate, clot section, and core biopsy",
+      "clinicalHistory": "59-year-old man with fatigue, circulating blasts, hemoglobin 8.1 g/dL, platelets 34 K/uL, and absolute neutropenia.",
+      "image": {
+        "src": "reference-library/signout-sims/hematopathology/acute-myeloid-leukemia-marrow-smear.jpg",
+        "caption": "Acute myeloid leukemia with increased blasts on bone marrow aspirate smear.",
+        "stain": "Wright-Giemsa",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8208042/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC8208042",
+          "citation": "Cold Spring Harb Mol Case Stud. 2021 Jun; 7(3):a006084",
+          "license": "CC BY-NC",
+          "figureLabel": "figure 1",
+          "figureCaption": "a hypercellular bone marrow biopsy showing increased immature cells and granulocytic predominance hematoxylin and eosin h e 400 b bone marrow touch imprint showing increased blasts and left shifted granulocytes with some dysplastic features wright giemsa 1000 oil immersion",
+          "figureScore": 34,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/aa/3c/PMC8208042.tar.gz",
+          "acquiredAt": "2026-05-02T16:28:44.726Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Quantify blasts on aspirate differential and core biopsy, then determine whether AML-defining genetic abnormalities or blast threshold criteria are met.",
+        "Use flow cytometry to establish myeloid lineage and define aberrant antigen expression useful for measurable residual disease planning.",
+        "Order cytogenetic and molecular studies needed for WHO/ICC classification and risk stratification before final integrated classification."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "flow-acute-leukemia",
+          "name": "Acute leukemia flow cytometry panel",
+          "result": "Expanded blast population expresses CD34, CD117, CD13, CD33, MPO, and aberrant CD7.",
+          "recommended": true
+        },
+        {
+          "id": "karyotype-fish",
+          "name": "Conventional karyotype and AML FISH",
+          "result": "Required to identify recurrent genetic abnormalities and therapy-defining lesions.",
+          "recommended": true
+        },
+        {
+          "id": "myeloid-ngs",
+          "name": "Myeloid NGS panel",
+          "result": "Recommended for classification refinement and prognostic/risk assignment.",
+          "recommended": true
+        }
+      ],
+      "reportingTarget": "Bone marrow, aspirate, clot section, and core biopsy: Acute myeloid leukemia with approximately 62% blasts by aspirate differential. Flow cytometry confirms an aberrant myeloid blast population. Cytogenetic and molecular studies pending for final subclassification.",
+      "requiredReportElements": [
+        "acute myeloid leukemia",
+        "blast percentage",
+        "flow cytometry phenotype",
+        "cytogenetic studies pending or resulted",
+        "molecular studies pending or resulted"
+      ],
+      "pitfalls": [
+        "Do not finalize AML subclassification before required genetic data if it will change the diagnostic category.",
+        "Do not rely on core CD34 alone when aspirate and flow data are available.",
+        "Do not miss acute promyelocytic leukemia when abnormal promyelocytes or coagulopathy are present."
+      ]
+    },
+    {
+      "id": "heme-b-lymphoblastic-leukemia-flow",
+      "title": "Bone marrow biopsy: B-lymphoblastic leukemia by flow cytometry",
+      "site": "Posterior iliac crest bone marrow",
+      "workflow": "biopsy",
+      "specimenType": "Bone marrow aspirate and core biopsy with flow cytometry",
+      "clinicalHistory": "17-year-old male with bruising, bone pain, WBC 46 K/uL, anemia, thrombocytopenia, and 72% circulating blasts.",
+      "image": {
+        "src": "reference-library/signout-sims/hematopathology/b-lymphoblastic-leukemia-marrow.jpg",
+        "caption": "Bone marrow involved by acute lymphoblastic leukemia with sheets of blasts.",
+        "stain": "H&E",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Leukemia_bone_marrow.jpg"
+      },
+      "diagnosticSteps": [
+        "Confirm marrow replacement by blasts and correlate morphology with flow cytometry showing precursor B-cell immunophenotype.",
+        "Document lineage-defining markers including TdT and B-lineage antigens while excluding mixed-phenotype acute leukemia criteria.",
+        "Order genetic studies for recurrent B-ALL abnormalities because BCR::ABL1, KMT2A rearrangement, ETV6::RUNX1, hyperdiploidy, and Ph-like features affect therapy."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "flow-ball",
+          "name": "B-ALL flow cytometry panel",
+          "result": "Blasts express CD19, CD10, TdT, CD34, CD38, CD22, and dim CD45 with absent surface light chains.",
+          "recommended": true
+        },
+        {
+          "id": "bcr-abl1",
+          "name": "BCR::ABL1 testing",
+          "result": "Required to identify Philadelphia chromosome-positive B-ALL.",
+          "recommended": true
+        },
+        {
+          "id": "karyotype-fish-ngs",
+          "name": "Karyotype, B-ALL FISH, and molecular testing",
+          "result": "Recommended for classification, risk stratification, and clinical-trial eligibility.",
+          "recommended": true
+        }
+      ],
+      "reportingTarget": "Bone marrow, aspirate and core biopsy: B-lymphoblastic leukemia/lymphoma involving hypercellular marrow, with approximately 88% blasts by flow cytometry. BCR::ABL1 and additional cytogenetic/molecular studies pending.",
+      "requiredReportElements": [
+        "B-lymphoblastic leukemia/lymphoma",
+        "blast percentage",
+        "precursor B-cell immunophenotype",
+        "BCR::ABL1 status",
+        "cytogenetic/molecular studies"
+      ],
+      "pitfalls": [
+        "Do not confuse hematogones with B-ALL; evaluate maturation spectrum and aberrancy.",
+        "Do not omit mixed-phenotype acute leukemia assessment when myeloid markers are expressed.",
+        "Do not delay BCR::ABL1 testing in a new B-ALL diagnosis."
+      ]
+    },
+    {
+      "id": "heme-gross-only-thymus",
+      "title": "Gross-only specimen: benign thymic tissue from cardiac surgery",
+      "site": "Anterior mediastinum",
+      "workflow": "gross-only",
+      "specimenType": "Incidental thymic tissue",
+      "clinicalHistory": "5-month-old infant undergoing congenital cardiac repair; small fragment of grossly unremarkable thymic tissue submitted from surgical exposure.",
+      "image": {
+        "src": "reference-library/signout-sims/hematopathology/benign-thymus-gross.jpg",
+        "caption": "Grossly unremarkable thymic tissue may be submitted incidentally during pediatric cardiothoracic surgery.",
+        "stain": "Gross photograph",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8544165/",
+        "sourceArticle": {
+          "acquisitionMethod": "pmc-open-access-figure-caption-match",
+          "pmcid": "PMC8544165",
+          "citation": "J Toxicol Pathol. 2021 Sep 28; 34(3 Suppl):1S-182S",
+          "license": "CC BY-NC-ND",
+          "figureLabel": "figure 148",
+          "figureCaption": "cynomolgus ovary teratoma benign showing bone hair and connective tissue h e high magnification modified from cline et al 2008",
+          "figureScore": 24,
+          "packageUrl": "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_package/c2/59/PMC8544165.tar.gz",
+          "acquiredAt": "2026-05-02T16:28:50.578Z"
+        }
+      },
+      "diagnosticSteps": [
+        "Confirm the specimen is clinically incidental thymic tissue from an infant or child and not a targeted mass excision.",
+        "Inspect for nodules, firmness, hemorrhage, necrosis, or other gross abnormality that would require microscopic submission.",
+        "Apply local gross-only policy and document weight, dimensions, color, consistency, and absence of gross lesions."
+      ],
+      "ancillaryOptions": [
+        {
+          "id": "none",
+          "name": "No ancillary study",
+          "result": "No ancillary study is indicated for grossly unremarkable incidental thymic tissue.",
+          "recommended": true
+        },
+        {
+          "id": "histology",
+          "name": "Representative histologic section",
+          "result": "Submit tissue for microscopy if there is a gross lesion, atypical clinical history, or local policy requires histology.",
+          "recommended": false
+        },
+        {
+          "id": "flow",
+          "name": "Flow cytometry",
+          "result": "Not indicated without suspicion for lymphoma or leukemia involvement.",
+          "recommended": false
+        }
+      ],
+      "grossOnlyChecklist": [
+        "specimen designation",
+        "weight",
+        "aggregate dimensions",
+        "gross appearance",
+        "gross lesion absent or present",
+        "local gross-only policy satisfied"
+      ],
+      "reportingTarget": "Thymus, incidental excision: Grossly unremarkable thymic tissue, gross examination only.",
+      "requiredReportElements": [
+        "incidental thymic tissue",
+        "grossly unremarkable",
+        "gross examination only",
+        "weight",
+        "dimensions"
+      ],
+      "pitfalls": [
+        "Do not use gross-only handling for an adult anterior mediastinal mass.",
+        "Do not discard tissue with nodules, necrosis, or a concerning clinical history.",
+        "Do not omit that the diagnosis is based on gross examination only."
+      ]
+    }
+  ]
+}

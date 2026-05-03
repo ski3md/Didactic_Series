@@ -5,6 +5,7 @@ import {
     apiDeleteImageMock,
     apiUploadImageMock,
 } from '../api/mockApi.ts';
+import { getAtlasImages } from './atlasImageCatalog.ts';
 
 let cachedImages: StoredImage[] | null = null;
 let inflightRequest: Promise<StoredImage[]> | null = null;
@@ -24,12 +25,15 @@ export const getGalleryImages = async (forceRefresh = false): Promise<StoredImag
 
     inflightRequest = apiGetGalleryImagesMock()
         .then(images => {
-            cachedImages = images;
-            return images;
+            const atlasImages = getAtlasImages();
+            cachedImages = [...images, ...atlasImages];
+            return cachedImages;
         })
         .catch(e => {
             console.error("Failed to get gallery images from mock API:", e);
-            return [];
+            const atlasImages = getAtlasImages();
+            cachedImages = atlasImages;
+            return atlasImages;
         })
         .finally(() => {
             inflightRequest = null;

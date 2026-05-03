@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-05-03T00:39:52.769Z",
+  "scannedRoots": [
+    "src/content",
+    "src/assets/data"
+  ],
+  "references": 924,
+  "present": 924,
+  "missing": 0,
+  "zeroByte": 0,
+  "missingReferences": [],
+  "zeroByteReferences": [],
+  "referencesByPrefix": {
+    "reference-library/breast-signout": 18,
+    "reference-library/gu-signout": 9,
+    "reference-library/acquired": 83,
+    "reference-library/local-teaching": 655,
+    "reference-library/signout-sims": 159
+  }
+}

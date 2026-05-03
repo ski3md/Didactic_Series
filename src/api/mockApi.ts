@@ -4,17 +4,14 @@ import {
 } from '../types.ts';
 import { getStoreData, setStoreData, deleteStoreData } from '../utils/db.ts';
 import localManifest from './manifest.json';
+import bladderAtlasSupplement from '../content/images/bladderAtlasSupplement.json';
 
 /* -------------------------------------------------------------------------- */
 /*                            Dynamic Gallery Loader                          */
 /* -------------------------------------------------------------------------- */
 
-const MANIFEST_URL = "https://storage.googleapis.com/granuloma-lecture-bucket/granulomas/manifest.json";
 const IMAGES_KEY = 'pathology_images';
 
-/**
- * Fetch manifest.json from CDN or fallback to static sample data.
- */
 const normalizeArray = (value: any): string[] => {
   if (!value) return [];
   if (Array.isArray(value)) return value.filter(Boolean);
@@ -46,23 +43,46 @@ const normalizeManifestEntries = (data: any[]): StoredImage[] =>
     } as StoredImage;
   });
 
-const fetchManifest = async (): Promise<StoredImage[]> => {
-  try {
-    const res = await fetch(MANIFEST_URL, { cache: "no-store" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+const normalizeSupplementEntries = (data: any[]): StoredImage[] =>
+  data.map((entry: any, i: number) => {
+    const tags = normalizeArray(entry.tags);
+    const cells = normalizeArray(entry.cells);
+    const src: string = entry.fullUrl || entry.thumbUrl || entry.src || '';
+    return {
+      id: entry.id || `supplement_${i}`,
+      src,
+      gcsPath: src.startsWith('http') ? src.replace(/^https?:\/\//, '') : src,
+      title: entry.title || entry.entity || 'Untitled Image',
+      description: entry.description || entry.teachingPoint || '',
+      uploader: entry.uploader || 'curator',
+      timestamp: entry.timestamp || Date.now(),
+      category: entry.category || 'official',
+      tags,
+      entity: entry.entity || '',
+      difficulty: entry.difficulty || 'intermediate',
+      cells,
+    } as StoredImage;
+  });
 
-    // Normalize manifest entries
-    return normalizeManifestEntries(data);
+const localSupplementImages = normalizeSupplementEntries(bladderAtlasSupplement as any[]);
+const localSupplementIds = new Set(localSupplementImages.map((image) => image.id));
 
-  } catch (err) {
-    console.warn("⚠️ Manifest load failed; falling back to static gallery:", err);
-    try {
-      return normalizeManifestEntries(localManifest as any[]);
-    } catch (innerErr) {
-      console.error("Failed to parse embedded manifest, using static fallback.", innerErr);
-      return getStaticGalleryFallback();
+const mergeImageSets = (...imageSets: StoredImage[][]): StoredImage[] => {
+  const merged = new Map<string, StoredImage>();
+  imageSets.flat().forEach((image) => {
+    if (!merged.has(image.id)) {
+      merged.set(image.id, image);
     }
+  });
+  return Array.from(merged.values());
+};
+
+const loadEmbeddedManifest = (): StoredImage[] => {
+  try {
+    return mergeImageSets(localSupplementImages, normalizeManifestEntries(localManifest as any[]));
+  } catch (err) {
+    console.error("Failed to parse embedded manifest, using static fallback.", err);
+    return mergeImageSets(localSupplementImages, getStaticGalleryFallback());
   }
 };
 
@@ -106,6 +126,8 @@ const getStaticGalleryFallback = (): StoredImage[] => ([
 
 const shouldRefreshFromManifest = (images: StoredImage[] | null | undefined) => {
   if (!images || images.length === 0) return true;
+  const existingIds = new Set(images.map((img) => img.id));
+  if (Array.from(localSupplementIds).some((id) => !existingIds.has(id))) return true;
   return images.some(img =>
     !img.title ||
     !img.description ||
@@ -118,7 +140,7 @@ const shouldRefreshFromManifest = (images: StoredImage[] | null | undefined) => 
 const getImagesDB = async (): Promise<StoredImage[]> => {
   let images = await getStoreData<StoredImage[]>(IMAGES_KEY);
   if (shouldRefreshFromManifest(images)) {
-    const manifestImages = await fetchManifest();
+    const manifestImages = loadEmbeddedManifest();
     await setStoreData(IMAGES_KEY, manifestImages);
     return manifestImages;
   }

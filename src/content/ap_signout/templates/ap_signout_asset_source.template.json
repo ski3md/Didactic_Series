@@ -1,0 +1,18 @@
+{
+  "id": "stable-asset-id",
+  "subspecialtyId": "subspecialty-id",
+  "caseId": "ap-subspecialty-01",
+  "entityId": "Entity or process name",
+  "kind": "image_url",
+  "url": "https://example.org/image.jpg",
+  "pdfPath": null,
+  "pdfUrl": null,
+  "page": null,
+  "role": "diagnostic-histology",
+  "stain": "H&E",
+  "markerOrStudy": null,
+  "magnification": "low, medium, high, or gross",
+  "caption": "Describe what the learner must see.",
+  "sourceUrl": "https://example.org/source-page",
+  "license": "License or permission note"
+}
