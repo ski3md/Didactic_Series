@@ -1,5 +1,5 @@
 export const apP0PediatricCardBatch = {
-  "generatedAt": "2026-05-15T22:35:18.785Z",
+  "generatedAt": "2026-05-15T22:40:28.770Z",
   "sourcePlan": "reports/ap_gap_closure_plan.json",
   "sourceQueue": "src/content/competency/apGapClosureQueue.ts",
   "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",

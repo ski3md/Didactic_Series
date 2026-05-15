@@ -1,6 +1,6 @@
 # P0 Pediatric / Perinatal Entity Card Batch Faculty Packet
 
-Generated: 2026-05-15T22:35:18.785Z
+Generated: 2026-05-15T22:40:28.770Z
 Batch source: src/content/competency/apGapClosureQueue.ts
 Source plan: reports/ap_gap_closure_plan.json
 Cards: 24

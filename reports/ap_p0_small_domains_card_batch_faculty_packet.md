@@ -1,6 +1,6 @@
 # P0 Small-Domain Entity Card Batch Faculty Authoring Packet
 
-Generated: 2026-05-15T22:35:20.124Z
+Generated: 2026-05-15T22:40:30.077Z
 
 Status: draft small-domain scaffolds awaiting faculty-reviewed medical content, visual/context anchors, answer keys, and review metadata
 

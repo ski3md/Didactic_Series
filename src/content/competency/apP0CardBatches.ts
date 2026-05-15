@@ -2,6 +2,7 @@ import { apP0BreastCardBatch } from './apP0BreastCardBatch.ts';
 import { apP0CvAutopsyCardBatch } from './apP0CvAutopsyCardBatch.ts';
 import { apP0CvAutopsyCardBatch2 } from './apP0CvAutopsyCardBatch2.ts';
 import { apP0CvAutopsyCardBatch3 } from './apP0CvAutopsyCardBatch3.ts';
+import { apP0CvTaxonomyReviewCardBatch } from './apP0CvTaxonomyReviewCardBatch.ts';
 import { apP0DermpathCardBatch } from './apP0DermpathCardBatch.ts';
 import { apP0EndocrineCardBatch } from './apP0EndocrineCardBatch.ts';
 import { apP0EndocrineCardBatch2 } from './apP0EndocrineCardBatch2.ts';
@@ -16,6 +17,7 @@ export const apP0CardBatches = [
   apP0CvAutopsyCardBatch,
   apP0CvAutopsyCardBatch2,
   apP0CvAutopsyCardBatch3,
+  apP0CvTaxonomyReviewCardBatch,
   apP0EndocrineCardBatch,
   apP0EndocrineCardBatch2,
   apP0DermpathCardBatch,

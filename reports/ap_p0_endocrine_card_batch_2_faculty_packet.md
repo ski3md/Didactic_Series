@@ -1,6 +1,6 @@
 # P0 Endocrine Entity Card Batch 2 Faculty Authoring Packet
 
-Generated: 2026-05-15T22:35:19.797Z
+Generated: 2026-05-15T22:40:29.759Z
 
 Status: draft endocrine remainder scaffolds awaiting taxonomy QA, source-backed content, visual anchors or reassignment rationale, retrieval answer keys, and faculty review
 

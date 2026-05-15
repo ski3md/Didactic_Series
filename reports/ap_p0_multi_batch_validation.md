@@ -1,15 +1,15 @@
 # AP P0 Multi-Batch Validation
 
-Generated: 2026-05-15T22:35:33.629Z
+Generated: 2026-05-15T22:40:31.262Z
 Source pattern: `src/content/competency/apP0*CardBatch.ts`
 
 ## Summary
 
-- Batch files: 12
-- Parsed batch files: 12
-- Cards: 276
-- Gate statuses: 1380
-- Gate counts by status: missing: 1104, ready-for-review: 276
+- Batch files: 13
+- Parsed batch files: 13
+- Cards: 279
+- Gate statuses: 1395
+- Gate counts by status: missing: 1116, ready-for-review: 279
 - Completion: 0% complete, 20% ready-for-review, 80% missing
 - Duplicate card IDs across batches: 0
 - Duplicate sourceQueueIds across batches: 0
@@ -27,6 +27,7 @@ Source pattern: `src/content/competency/apP0*CardBatch.ts`
 | `src/content/competency/apP0CvAutopsyCardBatch.ts` | P0 cardiovascular/autopsy entity card batch | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
 | `src/content/competency/apP0CvAutopsyCardBatch2.ts` | P0 cardiovascular/autopsy entity card batch 2 | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
 | `src/content/competency/apP0CvAutopsyCardBatch3.ts` | P0 cardiovascular/autopsy entity card batch 3 | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
+| `src/content/competency/apP0CvTaxonomyReviewCardBatch.ts` | P0 cardiovascular/autopsy taxonomy review completion batch | 3 | 15 | ready-for-review: 3, missing: 12 | 0 |
 | `src/content/competency/apP0DermpathCardBatch.ts` | P0 dermatopathology entity card batch | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
 | `src/content/competency/apP0EndocrineCardBatch.ts` | P0 endocrine entity card batch | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
 | `src/content/competency/apP0EndocrineCardBatch2.ts` | P0 endocrine entity card batch 2 | 16 | 80 | ready-for-review: 16, missing: 64 | 0 |

@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-05-15T22:35:33.629Z",
+  "generatedAt": "2026-05-15T22:40:31.262Z",
   "sourcePattern": "src/content/competency/apP0*CardBatch.ts",
   "expectedGateStatusCount": 5,
   "summary": {
-    "batchFileCount": 12,
-    "parsedBatchFileCount": 12,
-    "totalCards": 276,
-    "totalGates": 1380,
+    "batchFileCount": 13,
+    "parsedBatchFileCount": 13,
+    "totalCards": 279,
+    "totalGates": 1395,
     "gateStatusCounts": {
-      "missing": 1104,
-      "ready-for-review": 276
+      "missing": 1116,
+      "ready-for-review": 279
     },
     "percentComplete": 0,
     "percentReviewReady": 20,
@@ -1382,6 +1382,71 @@
           "id": "p0-cv-autopsy-batch-3-card-24-fa8a0a7d-b22a-424d-8353-d392b2c4b2c7",
           "sourceQueueId": "ap_cv-fa8a0a7d-b22a-424d-8353-d392b2c4b2c7",
           "title": "Carbohydrate Disorders including Pompe",
+          "category": "Cardiovascular / Autopsy-adjacent",
+          "missingFields": [],
+          "missingReadinessFields": [],
+          "gateStatusCount": 5,
+          "hasExpectedGateStatusCount": true,
+          "gatesWithMissingFields": [],
+          "duplicateGateIds": [],
+          "readinessMatchesGateCount": true
+        }
+      ],
+      "issues": []
+    },
+    {
+      "file": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
+      "exportName": "apP0CvTaxonomyReviewCardBatch",
+      "parsed": true,
+      "batchName": "P0 cardiovascular/autopsy taxonomy review completion batch",
+      "status": "draft taxonomy-review scaffolds awaiting faculty keep/reassign decision before canonical promotion",
+      "cardCount": 3,
+      "gateCount": 15,
+      "gateStatusCounts": {
+        "ready-for-review": 3,
+        "missing": 12
+      },
+      "missingBatchFields": [],
+      "cardsWithMissingRequiredFields": 0,
+      "cardsWithoutExpectedGateCount": 0,
+      "gatesWithMissingRequiredFields": 0,
+      "readinessMismatchCount": 0,
+      "facultyPacketPath": "reports/ap_p0_cv_taxonomy_review_card_batch_faculty_packet.md",
+      "facultyPacketExists": true,
+      "cards": [
+        {
+          "index": 0,
+          "id": "p0-cv-taxonomy-review-card-01-475eb4ab-3238-429b-b48e-ca4d66a541dd",
+          "sourceQueueId": "ap_cv-475eb4ab-3238-429b-b48e-ca4d66a541dd",
+          "title": "Steatosis, Steatohepatitis, Metabolic Syndrome",
+          "category": "Cardiovascular / Autopsy-adjacent",
+          "missingFields": [],
+          "missingReadinessFields": [],
+          "gateStatusCount": 5,
+          "hasExpectedGateStatusCount": true,
+          "gatesWithMissingFields": [],
+          "duplicateGateIds": [],
+          "readinessMatchesGateCount": true
+        },
+        {
+          "index": 1,
+          "id": "p0-cv-taxonomy-review-card-02-1ed9c3dd-c294-405a-934a-28d54bce5fee",
+          "sourceQueueId": "ap_cv-1ed9c3dd-c294-405a-934a-28d54bce5fee",
+          "title": "Diabetes Mellitus",
+          "category": "Cardiovascular / Autopsy-adjacent",
+          "missingFields": [],
+          "missingReadinessFields": [],
+          "gateStatusCount": 5,
+          "hasExpectedGateStatusCount": true,
+          "gatesWithMissingFields": [],
+          "duplicateGateIds": [],
+          "readinessMatchesGateCount": true
+        },
+        {
+          "index": 2,
+          "id": "p0-cv-taxonomy-review-card-03-99a8b9d8-db08-4250-990f-91241f292200",
+          "sourceQueueId": "ap_cv-99a8b9d8-db08-4250-990f-91241f292200",
+          "title": "Shwachman-Diamond",
           "category": "Cardiovascular / Autopsy-adjacent",
           "missingFields": [],
           "missingReadinessFields": [],
