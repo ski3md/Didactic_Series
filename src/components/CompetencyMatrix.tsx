@@ -424,6 +424,18 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
                       <div key={batch.batchName} className="break-all font-mono text-xs text-slate-700">{batch.facultyPacketPath}</div>
                     ))}
                   </div>
+                  <div className="mt-3 border-t border-slate-200 pt-3">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Promotion queue outputs</div>
+                    <div className="mt-2 space-y-1">
+                      {[
+                        'reports/ap_p0_promotion_queue.md',
+                        'reports/ap_p0_promotion_queue.csv',
+                        'reports/ap_p0_promotion_queue.json',
+                      ].map((reportPath) => (
+                        <div key={reportPath} className="break-all font-mono text-xs text-slate-700">{reportPath}</div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
                 <div className="mt-3 rounded-md border border-slate-200 bg-white px-3 py-3">
                   <div className="flex flex-wrap items-center justify-between gap-2">
