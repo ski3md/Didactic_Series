@@ -6,6 +6,22 @@
     "https://academic.oup.com/jnen/article/76/9/836/4077005"
   ],
   "copyrightStatus": "Johns Hopkins app images are copyrighted app content and are not extracted or copied into this project without a licensed export or written permission.",
+  "localMetadataImport": {
+    "sourceAppPath": "/Applications/JH Neuro Atlas.app/Wrapper/JHNeuroAtlas.app",
+    "database": "/Applications/JH Neuro Atlas.app/Wrapper/JHNeuroAtlas.app/neuro_atlas_db_v021_en.db",
+    "manifest": "src/content/neuro/jh_neuro_atlas_entity_manifest.json",
+    "summary": "src/content/neuro/jh_neuro_atlas_entity_manifest.summary.json",
+    "importer": "scripts/import_jh_neuro_atlas_metadata.cjs",
+    "scope": [
+      "diagnostic entities",
+      "synonyms",
+      "image-level legends and feature annotations",
+      "stain and modality metadata",
+      "quiz prompts and explanations",
+      "diffuse glioma algorithm node descriptions"
+    ],
+    "imageBinaryPolicy": "Image files remain in the licensed app bundle and are not copied into this project by the metadata import."
+  },
   "deconstructedLearningModel": [
     "Searchable diagnostic image atlas organized by entity.",
     "Image-based quiz for pattern recognition.",

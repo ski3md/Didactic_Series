@@ -6,12 +6,14 @@ import process from 'process'
 export default defineConfig(({ mode }) => {
   // Load environment variables
   const env = loadEnv(mode, process.cwd(), '')
+  const basePath = env.VITE_BASE_PATH || '/Didactic_Series/'
+  const outDir = env.VITE_OUT_DIR || 'dist'
 
   return {
     plugins: [react()],
 
-    // ✅ Correct GitHub Pages base path
-    base: '/Didactic_Series/',
+    // Default keeps the historical GitHub Pages path; production can mount at /didactics/.
+    base: basePath,
 
     // Define API key for client use (read-only)
     define: {
@@ -32,6 +34,8 @@ export default defineConfig(({ mode }) => {
     },
 
     build: {
+      outDir,
+
       // Raise warning threshold from 500 kB → 1 MB
       chunkSizeWarningLimit: 1000,
 

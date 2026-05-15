@@ -5,6 +5,7 @@ export enum Section {
   DIDACTIC_ALGORITHMS = 'Didactic Algorithms',
   DIDACTIC_TUTORIALS = 'Didactic Tutorials',
   BREAST_SIGNOUT_MASTERCLASS = 'Breast Sign-Out Masterclass',
+  COMPETENCY_MATRIX = 'Competency Matrix',
   SYLLABUS_EXPLORER = 'Syllabus Explorer',
   PATHOLOGY_CURRICULUM = 'Pathology Curriculum',
   HOME = 'Home',
@@ -416,6 +417,80 @@ export type ActiveCurriculumSubspecialty =
 export type ActiveCurriculumPriority = 'core' | 'high-yield' | 'advanced';
 export type ActiveCurriculumPromotionState = 'canonical' | 'staged' | 'archived';
 
+export type LearnerLevel = 'PGY1' | 'PGY2' | 'PGY3' | 'PGY4' | 'PGY5_FELLOW' | 'ATTENDING';
+
+export type CompetencyDomain =
+  | 'foundations'
+  | 'organ-system knowledge'
+  | 'image recognition'
+  | 'differential diagnosis'
+  | 'ancillary selection'
+  | 'report writing'
+  | 'staging/synoptic'
+  | 'quality assurance'
+  | 'teaching';
+
+export type AutonomyTarget =
+  | 'observe'
+  | 'guided'
+  | 'supervised'
+  | 'independent draft'
+  | 'near-independent'
+  | 'consult-level'
+  | 'faculty calibration';
+
+export type EditorialStatus = 'draft' | 'reviewed' | 'canonical';
+
+export interface ContentTrustMetadata {
+  editorialStatus: EditorialStatus;
+  lastReviewed: string;
+  provenance: string;
+  sourceQuality: 'local validated' | 'curated public' | 'imported source' | 'derived planning';
+}
+
+export interface LearnerCompetencyMetadata {
+  learnerLevels: LearnerLevel[];
+  primaryLevel: LearnerLevel;
+  competencyDomains: CompetencyDomain[];
+  difficulty: 'introductory' | 'core' | 'advanced' | 'expert';
+  rotation: ActiveCurriculumSubspecialty | 'Cross-Rotation' | 'Faculty Development';
+  autonomyTarget: AutonomyTarget;
+  milestoneOutcome: string;
+  facultyUse?: 'assign' | 'teach' | 'calibrate' | 'author';
+  trust: ContentTrustMetadata;
+}
+
+export interface CompetencyMatrixRecord extends LearnerCompetencyMetadata {
+  id: string;
+  title: string;
+  summary: string;
+  sourceType: 'curriculum' | 'lecture' | 'tutorial' | 'atlas' | 'signout' | 'assessment' | 'faculty';
+  linkedSection: Section;
+  linkedModuleId?: string;
+  linkedQuery?: string;
+  availableNow: boolean;
+  gapSummary: string;
+  closureAction: string;
+}
+
+export interface AssessmentRubricCriterion {
+  id: string;
+  label: string;
+  domain: CompetencyDomain;
+  learnerLevels: LearnerLevel[];
+  maxScore: number;
+  passingScore: number;
+  safetyCritical?: boolean;
+  feedbackPrompt: string;
+}
+
+export interface AssessmentRubric {
+  id: string;
+  title: string;
+  appliesTo: 'signout' | 'visual challenge' | 'lecture check' | 'faculty calibration';
+  criteria: AssessmentRubricCriterion[];
+}
+
 export interface ActiveCurriculumLectureRef {
   id: string;
   label: string;
@@ -438,4 +513,5 @@ export interface ActiveCurriculumModule {
   syllabusTopics: string[];
   algorithmTopics: string[];
   assessmentTopics: string[];
+  competency?: LearnerCompetencyMetadata;
 }

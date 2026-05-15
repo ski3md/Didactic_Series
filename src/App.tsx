@@ -22,6 +22,7 @@ import AlgorithmNavigator from './components/AlgorithmNavigator.tsx';
 import DidacticTutorials from './components/DidacticTutorials.tsx';
 import DiagnosticPathway from './components/DiagnosticPathway.tsx';
 import PathologyCurriculum from './components/PathologyCurriculum.tsx';
+import CompetencyMatrix from './components/CompetencyMatrix.tsx';
 import SyllabusExplorer from './components/SyllabusExplorer.tsx';
 import Welcome from './components/Welcome.tsx';
 import { trackSectionVisit } from './utils/tracking.ts';
@@ -68,6 +69,7 @@ const AppContent: React.FC<{
       case Section.DIDACTIC_ALGORITHMS: return <AlgorithmNavigator preferences={preferences} onSectionChange={onSectionSelect} />;
       case Section.DIDACTIC_TUTORIALS: return <DidacticTutorials preferences={preferences} onSectionChange={onSectionSelect} />;
       case Section.BREAST_SIGNOUT_MASTERCLASS: return <SignOutSimulator user={user} onSectionChange={onSectionSelect} />;
+      case Section.COMPETENCY_MATRIX: return <CompetencyMatrix onSectionChange={onSectionSelect} />;
       case Section.SYLLABUS_EXPLORER: return <SyllabusExplorer />;
       case Section.PATHOLOGY_CURRICULUM: return <PathologyCurriculum onSectionChange={onSectionSelect} preferences={preferences} />;
       case Section.HOME: return <Home onSectionChange={onSectionSelect} user={user} preferences={preferences} />;

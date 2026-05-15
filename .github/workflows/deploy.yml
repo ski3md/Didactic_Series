@@ -1,4 +1,4 @@
-name: Deploy Vite site to GitHub Pages
+name: Deploy P@thfndr Didactics to GitHub Pages
 
 on:
   push:
@@ -31,8 +31,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build project
-        run: npm run build
+      - name: Build didactics site
+        run: npm run build:didactics
 
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
@@ -42,7 +42,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://pthfndr.online/didactics/
     runs-on: ubuntu-latest
     needs: build
     steps:

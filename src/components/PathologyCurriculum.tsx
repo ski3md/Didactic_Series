@@ -15,6 +15,7 @@ import { setTutorialLibraryIntent } from '../utils/tutorialLibraryNavigation.ts'
 import { consumeCurriculumIntent } from '../utils/curriculumNavigation.ts';
 import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
 import { getGuPilotEnhancement } from '../content/lectures/guPilotEnhancements.ts';
+import { deriveModuleCompetency, learnerLevelLabels } from '../content/competency/competencyMatrix.ts';
 
 interface PathologyCurriculumProps {
   onSectionChange: (section: Section) => void;
@@ -189,6 +190,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
   };
 
   const primaryLecture = selectedModule?.lectures[0];
+  const selectedModuleCompetency = selectedModule ? deriveModuleCompetency(selectedModule) : null;
   const primaryLectureEnhancement = getGuPilotEnhancement(primaryLecture?.id ?? '');
   const isPatternBlock = selectedModule?.subspecialty === 'Foundations';
   const isInflammatoryMimicModule = selectedModule
@@ -518,6 +520,11 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                 <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-800">
                   {selectedModule.subspecialty}
                 </span>
+                {selectedModuleCompetency && (
+                  <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-800">
+                    {learnerLevelLabels[selectedModuleCompetency.primaryLevel]} primary
+                  </span>
+                )}
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
                   {priorityLabels[selectedModule.boardPriority]}
                 </span>
@@ -596,6 +603,32 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                   </div>
                 </div>
               </div>
+
+              {selectedModuleCompetency && (
+                <div className="mt-6 rounded-2xl border border-slate-200 bg-white px-4 py-4">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Competency Target</div>
+                      <p className="mt-2 text-sm text-slate-700">{selectedModuleCompetency.milestoneOutcome}</p>
+                    </div>
+                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+                      {selectedModuleCompetency.autonomyTarget}
+                    </span>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {selectedModuleCompetency.learnerLevels.map((level) => (
+                      <span key={level} className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-800">
+                        {learnerLevelLabels[level]}
+                      </span>
+                    ))}
+                    {selectedModuleCompetency.competencyDomains.slice(0, 5).map((domain) => (
+                      <span key={domain} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                        {domain}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {selectedModule.lectures.length > 1 && (
                 <div className="mt-6">

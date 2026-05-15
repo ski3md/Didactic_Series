@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import { ArrowLeft, CheckCircle2, ClipboardList, FileText, Microscope, RotateCcw } from 'lucide-react';
-import { Section } from '../types.ts';
+import { LearnerLevel, Section } from '../types.ts';
 import guSignoutData from '../content/gu/gu_signout_sims.json';
 import BreastSignoutMasterclass from './BreastSignoutMasterclass.tsx';
 import breastCurriculumData from '../content/breast/breast_signout_curriculum.enhanced.json';
 import breastAssetData from '../content/breast/breast_signout_acquired_assets.json';
+import { learnerLevelLabels, signOutRubric } from '../content/competency/competencyMatrix.ts';
 
 type Workflow = 'biopsy' | 'resection' | 'gross-only';
 
@@ -73,6 +74,16 @@ const workflowLabel: Record<Workflow, string> = {
   'gross-only': 'Gross / benign specimen',
 };
 
+const caseLearnerLevels = (workflow: Workflow): LearnerLevel[] => {
+  if (workflow === 'gross-only') {
+    return ['PGY1', 'PGY2'];
+  }
+  if (workflow === 'biopsy') {
+    return ['PGY2', 'PGY3'];
+  }
+  return ['PGY3', 'PGY4', 'PGY5_FELLOW'];
+};
+
 const specialtyLabel = (title: string) =>
   title
     .replace(/ pathology sign-out simulations/i, '')
@@ -93,22 +104,25 @@ const GUSignOutSims: React.FC<SpecialtySignOutSimsProps> = ({ onSectionChange })
   const activeCurriculum = selectedSpecialtySlug
     ? curricula.find((item) => item.slug === selectedSpecialtySlug) ?? curricula[0]
     : curricula[0];
-  const [selectedCaseId, setSelectedCaseId] = useState(activeCurriculum?.cases[0]?.id ?? '');
+  const [selectedCaseId, setSelectedCaseId] = useState<string | null>(null);
   const [activePanel, setActivePanel] = useState<'reasoning' | 'report' | 'pitfalls'>('reasoning');
+  const [selectedLearnerLevel, setSelectedLearnerLevel] = useState<LearnerLevel>('PGY3');
   const [revealedStepCount, setRevealedStepCount] = useState(0);
   const [selectedAncillaries, setSelectedAncillaries] = useState<string[]>([]);
   const [reportText, setReportText] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const selectedCase =
-    activeCurriculum?.cases.find((item) => item.id === selectedCaseId) ?? activeCurriculum?.cases[0] ?? curricula[0].cases[0];
+  const selectedCase = selectedCaseId ? activeCurriculum?.cases.find((item) => item.id === selectedCaseId) : undefined;
 
   const recommendedAncillaries = useMemo(
-    () => selectedCase.ancillaryOptions.filter((item) => item.recommended).map((item) => item.id),
+    () => selectedCase?.ancillaryOptions.filter((item) => item.recommended).map((item) => item.id) ?? [],
     [selectedCase]
   );
 
   const reportAssessment = useMemo(() => {
+    if (!selectedCase) {
+      return { present: [], missing: [] };
+    }
     const normalizedReport = normalize(reportText);
     const present = selectedCase.requiredReportElements.filter((item) => normalizedReport.includes(normalize(item)));
     const missing = selectedCase.requiredReportElements.filter((item) => !normalizedReport.includes(normalize(item)));
@@ -125,29 +139,102 @@ const GUSignOutSims: React.FC<SpecialtySignOutSimsProps> = ({ onSectionChange })
     };
   }, [recommendedAncillaries, selectedAncillaries]);
 
-  const resetCase = (caseId = selectedCase.id) => {
+  const rubricAssessment = useMemo(() => {
+    if (!selectedCase || !submitted) {
+      return [];
+    }
+    const normalizedReport = normalize(reportText);
+    return signOutRubric.criteria
+      .filter((criterion) => criterion.learnerLevels.includes(selectedLearnerLevel))
+      .map((criterion) => {
+        let score = 0;
+        if (criterion.id === 'diagnostic-accuracy') {
+          score = normalizedReport.includes(normalize(selectedCase.reportingTarget)) || reportAssessment.present.length > 0 ? 3 : 1;
+        } else if (criterion.id === 'report-completeness') {
+          score = selectedCase.requiredReportElements.length === 0
+            ? criterion.maxScore
+            : Math.round((reportAssessment.present.length / selectedCase.requiredReportElements.length) * criterion.maxScore);
+        } else if (criterion.id === 'ancillary-appropriateness') {
+          score = recommendedAncillaries.length === 0
+            ? criterion.maxScore
+            : Math.max(0, criterion.maxScore - ancillaryAssessment.omitted.length - Math.min(1, ancillaryAssessment.extra.length));
+        } else if (criterion.id === 'staging-synoptic') {
+          const checklist = selectedCase.synopticChecklist ?? selectedCase.grossOnlyChecklist ?? [];
+          score = checklist.length === 0
+            ? criterion.maxScore
+            : checklist.some((item) => normalizedReport.includes(normalize(item))) || reportAssessment.missing.length === 0
+              ? criterion.passingScore
+              : 1;
+        } else if (criterion.id === 'safety-critical-misses') {
+          score = reportAssessment.missing.length === 0 && ancillaryAssessment.omitted.length === 0 ? criterion.maxScore : 1;
+        }
+        const boundedScore = Math.min(criterion.maxScore, Math.max(0, score));
+        return {
+          criterion,
+          score: boundedScore,
+          passed: boundedScore >= criterion.passingScore,
+        };
+      });
+  }, [
+    ancillaryAssessment.extra.length,
+    ancillaryAssessment.omitted.length,
+    recommendedAncillaries.length,
+    reportAssessment.missing.length,
+    reportAssessment.present.length,
+    reportText,
+    selectedCase,
+    selectedLearnerLevel,
+    submitted,
+  ]);
+
+  const openCase = (caseId: string) => {
     setSelectedCaseId(caseId);
     setActivePanel('reasoning');
     setRevealedStepCount(0);
     setSelectedAncillaries([]);
     setReportText('');
     setSubmitted(false);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const selectSpecialty = (slug: string) => {
     if (slug === 'breast') {
       setSelectedSpecialtySlug('breast');
+      setSelectedCaseId(null);
       setActivePanel('reasoning');
       return;
     }
     const nextCurriculum = curricula.find((item) => item.slug === slug) ?? curricula[0];
     setSelectedSpecialtySlug(nextCurriculum.slug);
-    resetCase(nextCurriculum.cases[0]?.id ?? selectedCase.id);
+    setSelectedCaseId(null);
+    setActivePanel('reasoning');
+    setRevealedStepCount(0);
+    setSelectedAncillaries([]);
+    setReportText('');
+    setSubmitted(false);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const backToDirectory = () => {
     setSelectedSpecialtySlug(null);
+    setSelectedCaseId(null);
     setActivePanel('reasoning');
+  };
+
+  const backToCaseDirectory = () => {
+    setSelectedCaseId(null);
+    setActivePanel('reasoning');
+    setRevealedStepCount(0);
+    setSelectedAncillaries([]);
+    setReportText('');
+    setSubmitted(false);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const toggleAncillary = (id: string) => {
@@ -156,7 +243,7 @@ const GUSignOutSims: React.FC<SpecialtySignOutSimsProps> = ({ onSectionChange })
     );
   };
 
-  const revealAllSteps = revealedStepCount >= selectedCase.diagnosticSteps.length;
+  const revealAllSteps = selectedCase ? revealedStepCount >= selectedCase.diagnosticSteps.length : false;
 
   if (selectedSpecialtySlug === 'breast') {
     return (
@@ -189,6 +276,22 @@ const GUSignOutSims: React.FC<SpecialtySignOutSimsProps> = ({ onSectionChange })
           <p className="mt-2 max-w-3xl text-sm text-slate-700">
             Each subspecialty opens as its own page with a dedicated case list and image-first workspace.
           </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {(['PGY2', 'PGY3', 'PGY4', 'PGY5_FELLOW'] as LearnerLevel[]).map((level) => (
+              <button
+                key={level}
+                type="button"
+                onClick={() => setSelectedLearnerLevel(level)}
+                className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+                  selectedLearnerLevel === level
+                    ? 'border-sky-300 bg-sky-50 text-sky-800'
+                    : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                }`}
+              >
+                {learnerLevelLabels[level]}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           <button
@@ -247,53 +350,85 @@ const GUSignOutSims: React.FC<SpecialtySignOutSimsProps> = ({ onSectionChange })
     );
   }
 
+  if (!selectedCase) {
+    return (
+      <div className="space-y-4" data-testid="specialty-case-directory-page">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <button
+            type="button"
+            onClick={backToDirectory}
+            className="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Subspecialties
+          </button>
+          <div className="text-right">
+            <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Subspecialty Page</div>
+            <h2 className="font-serif text-2xl font-semibold text-slate-950">{specialtyLabel(activeCurriculum.title)}</h2>
+          </div>
+        </div>
+        <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Cases</div>
+              <h3 className="mt-1 font-serif text-2xl font-semibold text-slate-950">Choose a Case</h3>
+              <p className="mt-1 text-sm text-slate-700">{activeCurriculum.cases.length} image-backed cases</p>
+            </div>
+          </div>
+          <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {activeCurriculum.cases.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => openCase(item.id)}
+                data-testid={`gu-case-button-${item.id}`}
+                className="w-full rounded-md border border-slate-200 bg-white px-4 py-4 text-left text-slate-700 transition hover:border-sky-300 hover:shadow-sm"
+              >
+                <span className="block text-sm font-semibold leading-snug text-slate-950">{item.title}</span>
+                <span className="mt-1 block text-xs text-slate-500">
+                  {item.site} • {workflowLabel[item.workflow]}
+                </span>
+                <span className="mt-3 flex flex-wrap gap-1.5">
+                  {caseLearnerLevels(item.workflow).map((level) => (
+                    <span key={level} className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-700">
+                      {learnerLevelLabels[level]}
+                    </span>
+                  ))}
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-4" data-testid="specialty-signout-sims">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <button
-          type="button"
-          onClick={backToDirectory}
-          className="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Subspecialties
-        </button>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={backToDirectory}
+            className="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Subspecialties
+          </button>
+          <button
+            type="button"
+            onClick={backToCaseDirectory}
+            className="rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300"
+          >
+            Cases
+          </button>
+        </div>
         <div className="text-right">
           <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Subspecialty Page</div>
           <h2 className="font-serif text-2xl font-semibold text-slate-950">{specialtyLabel(activeCurriculum.title)}</h2>
         </div>
       </div>
-      <div className="grid gap-4 xl:grid-cols-[300px_minmax(0,1fr)]">
-        <aside className="rounded-lg border border-slate-200 bg-white p-3 shadow-sm xl:sticky xl:top-4 xl:max-h-[calc(100vh-190px)] xl:overflow-y-auto">
-          <div className="border-b border-slate-100 pb-3">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Cases</div>
-            <div className="mt-1 text-sm font-semibold text-slate-950">{activeCurriculum.cases.length} image-backed cases</div>
-          </div>
-          <div className="mt-3 space-y-2">
-            {activeCurriculum.cases.map((item) => {
-              const isActive = item.id === selectedCase.id;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => resetCase(item.id)}
-                  data-testid={`gu-case-button-${item.id}`}
-                  className={`w-full rounded-md border px-3 py-2 text-left transition ${
-                    isActive
-                      ? 'border-sky-300 bg-sky-50 text-slate-950'
-                      : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
-                  }`}
-                >
-                  <span className="block text-sm font-semibold leading-snug">{item.title}</span>
-                  <span className="mt-1 block text-xs text-slate-500">
-                    {item.site} • {workflowLabel[item.workflow]}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </aside>
-
+      <div>
         <section className="space-y-4">
           <div className="rounded-lg border border-slate-200 bg-white shadow-sm">
             <div className="border-b border-slate-100 px-5 py-4">
@@ -304,6 +439,22 @@ const GUSignOutSims: React.FC<SpecialtySignOutSimsProps> = ({ onSectionChange })
                   </div>
                   <h2 className="mt-1 font-serif text-2xl font-semibold text-slate-950">{selectedCase.title}</h2>
                   <p className="mt-2 max-w-3xl text-sm text-slate-700">{selectedCase.clinicalHistory}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {caseLearnerLevels(selectedCase.workflow).map((level) => (
+                      <button
+                        key={level}
+                        type="button"
+                        onClick={() => setSelectedLearnerLevel(level)}
+                        className={`rounded-full border px-3 py-1 text-xs font-semibold transition ${
+                          selectedLearnerLevel === level
+                            ? 'border-sky-300 bg-sky-50 text-sky-800'
+                            : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                        }`}
+                      >
+                        {learnerLevelLabels[level]}
+                      </button>
+                    ))}
+                  </div>
                 </div>
                 <span className="rounded-md bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-700">
                   {selectedCase.specimenType}
@@ -382,7 +533,7 @@ const GUSignOutSims: React.FC<SpecialtySignOutSimsProps> = ({ onSectionChange })
                         </button>
                         <button
                           type="button"
-                          onClick={() => resetCase()}
+                          onClick={() => openCase(selectedCase.id)}
                           data-testid="gu-reset-case"
                           className="inline-flex items-center gap-2 rounded-md border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300"
                         >
@@ -492,6 +643,26 @@ const GUSignOutSims: React.FC<SpecialtySignOutSimsProps> = ({ onSectionChange })
                           <h3 className="text-sm font-semibold text-slate-900">Expected sign-out language</h3>
                           <p className="mt-2 text-sm font-semibold text-slate-950">{selectedCase.reportingTarget}</p>
                         </div>
+                        {rubricAssessment.length > 0 && (
+                          <div className="mt-4 border-t border-slate-200 pt-4">
+                            <h3 className="text-sm font-semibold text-slate-900">
+                              {learnerLevelLabels[selectedLearnerLevel]} rubric
+                            </h3>
+                            <div className="mt-3 grid gap-2">
+                              {rubricAssessment.map(({ criterion, score, passed }) => (
+                                <div key={criterion.id} className="rounded-md bg-white px-3 py-2">
+                                  <div className="flex items-center justify-between gap-3">
+                                    <span className="text-sm font-semibold text-slate-900">{criterion.label}</span>
+                                    <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${passed ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-800'}`}>
+                                      {score}/{criterion.maxScore}
+                                    </span>
+                                  </div>
+                                  <p className="mt-1 text-xs text-slate-600">{criterion.feedbackPrompt}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>

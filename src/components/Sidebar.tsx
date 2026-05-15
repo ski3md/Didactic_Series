@@ -7,6 +7,7 @@ import {
   MicroscopeIcon,
   BookOpenIcon,
   AcademicCapIcon,
+  ClipboardDocumentListIcon,
   UserCircleIcon,
   CogIcon,
   LogoutIcon,
@@ -51,6 +52,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
     const isLearnActive = [
       Section.HOME,
       Section.PATHOLOGY_CURRICULUM,
+      Section.COMPETENCY_MATRIX,
       Section.SYLLABUS_EXPLORER,
     ].includes(currentSection);
     const isDidacticsActive = [
@@ -99,6 +101,13 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
           isActive={isLearnActive}
           onClick={() => onSectionChange(Section.PATHOLOGY_CURRICULUM)}
           icon={<AcademicCapIcon className="h-5 w-5" />}
+        />
+        <NavLink
+          label="Competency"
+          ariaLabel="Competency Matrix"
+          isActive={currentSection === Section.COMPETENCY_MATRIX}
+          onClick={() => onSectionChange(Section.COMPETENCY_MATRIX)}
+          icon={<ClipboardDocumentListIcon className="h-5 w-5" />}
         />
         <NavLink
           label="Didactics"

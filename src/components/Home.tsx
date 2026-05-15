@@ -282,6 +282,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
   };
     
   const practiceSections = [
+    { section: Section.COMPETENCY_MATRIX, description: 'PGY-level progression map, rubrics, and gap-closure targets.', icon: <AcademicCapIcon className="h-5 w-5" /> },
     { section: Section.REFERENCE_LIBRARY, description: 'Histology and ancillary images for the current teaching topic.', icon: <BookOpenIcon className="h-5 w-5" /> },
     { section: Section.SIGN_OUT_SIMULATOR, description: 'Case-based application after lecture or tutorial study.', icon: <MicroscopeIcon className="h-5 w-5" /> },
     { section: Section.SYLLABUS_EXPLORER, description: 'Review the related AP topics and board objectives.', icon: <AcademicCapIcon className="h-5 w-5" /> },
@@ -567,6 +568,13 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
               className="block w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-sky-300 hover:bg-sky-50"
             >
               Reference library
+            </button>
+            <button
+              type="button"
+              onClick={() => onSectionChange(Section.COMPETENCY_MATRIX)}
+              className="block w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-sky-300 hover:bg-sky-50"
+            >
+              Competency matrix
             </button>
           </div>
         </Card>

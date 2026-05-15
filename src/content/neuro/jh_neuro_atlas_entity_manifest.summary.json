@@ -1,0 +1,2848 @@
+{
+  "generatedAt": "2026-05-07T02:25:11.639Z",
+  "source": {
+    "name": "Johns Hopkins Atlas of Surgical Neuropathology",
+    "appDirectory": "/Applications/JH Neuro Atlas.app/Wrapper/JHNeuroAtlas.app",
+    "database": "/Applications/JH Neuro Atlas.app/Wrapper/JHNeuroAtlas.app/neuro_atlas_db_v021_en.db",
+    "imageBinaryPolicy": "Image files remain in the licensed app bundle and are not copied into this project by this metadata import.",
+    "contentPolicy": "This file mirrors local atlas metadata for curriculum mapping and review on this workstation."
+  },
+  "summary": {
+    "diagnoses": 179,
+    "images": 894,
+    "features": 56,
+    "questions": 100,
+    "diagnosisNodes": 9,
+    "featureNodes": 16,
+    "stains": 145,
+    "modalities": 10,
+    "shortListDiagnoses": 9,
+    "entitiesWithImages": 103,
+    "entitiesWithQuestions": 57
+  },
+  "entities": [
+    {
+      "id": 163,
+      "name": "Abscess",
+      "shortList": false,
+      "imageCount": 8,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Gram-Weigert",
+        "Grocott's Methenamine Silver",
+        "Hematoxylin and eosin",
+        "Immunolabeling for Toxoplasma gondii",
+        "Masson trichrome"
+      ],
+      "features": [
+        "Necrosis"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 169,
+      "name": "Amyloid angiopathy",
+      "shortList": false,
+      "imageCount": 6,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for beta amyloid"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 4,
+      "name": "Anaplastic astrocytoma",
+      "shortList": true,
+      "imageCount": 24,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for ATRX",
+        "Immunolabeling for IDH1",
+        "Immunolabeling for p53",
+        "Immunolabeling for synaptophysin",
+        "In situ-hybridization for telomeres"
+      ],
+      "features": [
+        "1p/19q intact",
+        "ATRX loss",
+        "Brisk mitotic activity",
+        "Cellular monotony",
+        "Hypercellularity",
+        "IDH mutated",
+        "IDH wildtype",
+        "Increased mitotic activity",
+        "Microcysts",
+        "Microvascular proliferation absent",
+        "Necrosis absent",
+        "Neuropil islands",
+        "Nuclear elongation",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism",
+        "p53 positivity",
+        "Perinuclear halos"
+      ],
+      "diagnosisNodes": [
+        {
+          "id": 7,
+          "name": "Anaplastic astrocytoma, IDH wild type"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Anaplastic astrocytoma, IDH mutant",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": [
+        {
+          "id": 6,
+          "name": "Anaplastic astrocytoma, IDH mutant"
+        }
+      ]
+    },
+    {
+      "id": 179,
+      "name": "Anaplastic astrocytoma, IDH wildtype",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": [
+        {
+          "id": 7,
+          "name": "Anaplastic astrocytoma, IDH wild type"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Anaplastic oligodendroglioma",
+      "shortList": true,
+      "imageCount": 27,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for IDH1",
+        "Immunolabeling for synaptophysin",
+        "Reticulin"
+      ],
+      "features": [
+        "1p/19q codeleted",
+        "Brisk mitotic activity",
+        "Cellular monotony",
+        "Chicken wire vasculature",
+        "Endothelial hypertrophy",
+        "Feature ",
+        "Gliofibrillary oligodendrocytes",
+        "Hypercellularity",
+        "IDH mutated",
+        "Microvascular proliferation",
+        "Minigemistocytes",
+        "Necrosis",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism",
+        "Perineuronal satellitosis",
+        "Perinuclear halos",
+        "Round nuclei",
+        "Small nucleolus"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 19,
+      "name": "Anaplastic oligodendroglioma, IDH mutant and 1p/19q codeleted",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": [
+        {
+          "id": 3,
+          "name": "Anaplastic oligodendroglioma, IDH mutant and 1p/19q codeleted"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Anaplastic oligodendroglioma-oligosarcoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 28,
+      "name": "Anaplastic pleomorphic xanthoastrocytoma",
+      "shortList": false,
+      "imageCount": 4,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Hypercellularity",
+        "Microvascular proliferation",
+        "Nuclear elongation",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 39,
+      "name": "Angiocentric glioma",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for EMA"
+      ],
+      "features": [
+        "Cellular monotony",
+        "Low/absent mitotic activity",
+        "Nuclear elongation"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 172,
+      "name": "Angiosarcoma",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 40,
+      "name": "Astroblastoma",
+      "shortList": false,
+      "imageCount": 13,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for EMA",
+        "Immunolabeling for GFAP"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Nuclear elongation",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism",
+        "Perivascular pseudorosette"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 42,
+      "name": "Atypical choroid plexus papilloma",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for Ki67"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 78,
+      "name": "Atypical teratoid/rhabdoid tumor",
+      "shortList": false,
+      "imageCount": 14,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for EMA",
+        "Immunolabeling for INI1"
+      ],
+      "features": [
+        "Feature ",
+        "Hypercellularity",
+        "INI1 loss",
+        "Macronucleoli",
+        "Nuclear pleomorphism",
+        "Rhabdoid change"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 79,
+      "name": "CNS embryonal tumor with rhabdoid features",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 77,
+      "name": "CNS embryonal tumor, NOS",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for synaptophysin"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Hypercellularity"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 76,
+      "name": "CNS ganglioneuroblastoma",
+      "shortList": false,
+      "imageCount": 1,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Hypercellularity"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 75,
+      "name": "CNS neuroblastoma",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for Ki67",
+        "Immunolabeling for synaptophysin"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Cellular monotony",
+        "Hypercellularity",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 140,
+      "name": "Calcifying pseudoneoplasm",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 53,
+      "name": "Central neurocytoma",
+      "shortList": false,
+      "imageCount": 8,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for synaptophysin"
+      ],
+      "features": [
+        "1p/19q intact",
+        "Cellular monotony",
+        "Chicken wire vasculature",
+        "Perinuclear halos",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": [
+        {
+          "id": 1,
+          "name": "Oligodendroglioma mimics"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "name": "Cerebellar liponeurocytoma",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for synaptophysin"
+      ],
+      "features": [
+        "Perinuclear halos",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 102,
+      "name": "Chondrosarcoma",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for brachyury"
+      ],
+      "features": [
+        "Calcifications"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 104,
+      "name": "Chondrosarcoma - mesenchymal chondrosarcoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 103,
+      "name": "Chondrosarcoma - well-differentiated chondrosarcoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 38,
+      "name": "Chordoid glioma of third ventricle",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for TTF-1"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 106,
+      "name": "Chordoma",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for brachyury"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 127,
+      "name": "Choriocarcinoma",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for cytokeratin (Cam 5.2)"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 43,
+      "name": "Choroid plexus carcinoma",
+      "shortList": false,
+      "imageCount": 9,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for cytokeratin (Cam 5.2)"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Necrosis",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 41,
+      "name": "Choroid plexus papilloma",
+      "shortList": false,
+      "imageCount": 6,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Low/absent mitotic activity",
+        "Round nuclei",
+        "Treatment effect"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 165,
+      "name": "Colloid cyst",
+      "shortList": false,
+      "imageCount": 1,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 149,
+      "name": "Cortical tuber",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Calcifications"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 130,
+      "name": "Craniopharyngioma",
+      "shortList": false,
+      "imageCount": 11,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 131,
+      "name": "Craniopharyngioma - adamantinomatous craniopharyngioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 132,
+      "name": "Craniopharyngioma - papillary craniopharyngioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 137,
+      "name": "Demyelination",
+      "shortList": false,
+      "imageCount": 8,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for neurofilament"
+      ],
+      "features": [
+        "Hypercellularity"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 160,
+      "name": "Dermoid cyst",
+      "shortList": false,
+      "imageCount": 1,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 49,
+      "name": "Desmoplastic infantile astrocytoma and ganglioglioma",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for GFAP"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Hypercellularity",
+        "Nuclear elongation"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 2,
+      "name": "Diffuse astrocytoma",
+      "shortList": true,
+      "imageCount": 16,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for ATRX",
+        "Immunolabeling for IDH1",
+        "Immunolabeling for p53"
+      ],
+      "features": [
+        "1p/19q intact",
+        "ATRX loss",
+        "Feature ",
+        "Hypercellularity",
+        "IDH mutated",
+        "IDH wildtype",
+        "Low/absent mitotic activity",
+        "Microcysts",
+        "Microvascular proliferation absent",
+        "Necrosis absent",
+        "Nuclear elongation",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism",
+        "p53 positivity",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": [
+        {
+          "id": 5,
+          "name": "Diffuse astrocytoma, IDH wild type"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Diffuse astrocytoma, IDH mutant",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": [
+        {
+          "id": 4,
+          "name": "Diffuse astrocytoma, IDH mutant"
+        }
+      ]
+    },
+    {
+      "id": 178,
+      "name": "Diffuse astrocytoma, IDH wildtype",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": [
+        {
+          "id": 5,
+          "name": "Diffuse astrocytoma, IDH wild type"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Diffuse intrinsic pontine glioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 52,
+      "name": "Diffuse leptomeningeal glioneuronal tumor",
+      "shortList": false,
+      "imageCount": 7,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for Olig2"
+      ],
+      "features": [
+        "1p/19q intact",
+        "Cellular monotony",
+        "IDH wildtype",
+        "Perinuclear halos",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 107,
+      "name": "Diffuse melanocytosis",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 15,
+      "name": "Diffuse midline glioma, H3 K27M mutant",
+      "shortList": false,
+      "imageCount": 9,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for H3.3 K27M"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "H3 K27M mutation",
+        "Hypercellularity",
+        "Nuclear elongation",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism",
+        "Perineuronal satellitosis"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 44,
+      "name": "Dysembryoplastic neuroepithelial tumor",
+      "shortList": false,
+      "imageCount": 16,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "1p/19q intact",
+        "Cellular monotony",
+        "Endothelial hypertrophy",
+        "Floating neurons",
+        "IDH wildtype",
+        "Microcysts",
+        "Microvascular proliferation",
+        "Nuclear elongation",
+        "Nuclear pleomorphism",
+        "Perineuronal satellitosis",
+        "Perinuclear halos",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": [
+        {
+          "id": 1,
+          "name": "Oligodendroglioma mimics"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Dysplastic cerebellar gangliocytoma (Lhermitte-Duclos)",
+      "shortList": false,
+      "imageCount": 4,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 125,
+      "name": "Embryonal carcinoma",
+      "shortList": false,
+      "imageCount": 1,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Macronucleoli",
+        "Necrosis"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 72,
+      "name": "Embryonal tumor with multilayered rosettes",
+      "shortList": false,
+      "imageCount": 7,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for Ki67"
+      ],
+      "features": [
+        "Brisk mitotic activity"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 73,
+      "name": "Embryonal tumor with multilayered rosettes - C19MC altered",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 155,
+      "name": "Encephalocele",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 31,
+      "name": "Ependymoma",
+      "shortList": true,
+      "imageCount": 56,
+      "questionCount": 5,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for cyclin D1",
+        "Immunolabeling for EMA",
+        "Immunolabeling for GFAP",
+        "Immunolabeling for L1CAM",
+        "Immunolabeling for NeuN",
+        "Immunolabeling for O13 (CD99)",
+        "In-situ hybridization for C11orf95",
+        "In-situ hybridization for RELA"
+      ],
+      "features": [
+        "1p/19q intact",
+        "Brisk mitotic activity",
+        "Calcifications",
+        "Cellular monotony",
+        "Ependymal rosette",
+        "Fascicular architecture",
+        "Hypercellularity",
+        "Nuclear elongation",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism",
+        "Perinuclear halos",
+        "Perivascular pseudorosette",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 35,
+      "name": "Ependymoma - RELA fusion-positive",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 36,
+      "name": "Ependymoma - anaplastic ependymoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 33,
+      "name": "Ependymoma - clear cell ependymoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": [
+        {
+          "id": 1,
+          "name": "Oligodendroglioma mimics"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Ependymoma - ependymosarcoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 159,
+      "name": "Ependymoma - giant cell ependymoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 30,
+      "name": "Ependymoma - myxopapillary ependymoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 32,
+      "name": "Ependymoma - papillary ependymoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 34,
+      "name": "Ependymoma - tanycytic ependymoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 120,
+      "name": "Erdheim-Chester disease",
+      "shortList": false,
+      "imageCount": 4,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for BRAF (V600E)"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 98,
+      "name": "Ewing sarcoma",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for O13 (CD99)"
+      ],
+      "features": [
+        "Hypercellularity",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 54,
+      "name": "Extraventricular neurocytoma",
+      "shortList": false,
+      "imageCount": 7,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for synaptophysin"
+      ],
+      "features": [
+        "1p/19q intact",
+        "Calcifications",
+        "Cellular monotony",
+        "IDH wildtype",
+        "Microcysts",
+        "Nuclear elongation",
+        "Perinuclear halos",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": [
+        {
+          "id": 1,
+          "name": "Oligodendroglioma mimics"
+        }
+      ]
+    },
+    {
+      "id": 145,
+      "name": "Focal cortical dysplasia",
+      "shortList": false,
+      "imageCount": 4,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for NeuN"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 45,
+      "name": "Gangliocytoma",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Low/absent mitotic activity",
+        "Macronucleoli"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 46,
+      "name": "Ganglioglioma",
+      "shortList": false,
+      "imageCount": 24,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for BRAF (V600E)",
+        "Immunolabeling for CD34",
+        "Immunolabeling for GFAP",
+        "Immunolabeling for NeuN",
+        "Immunolabeling for synaptophysin",
+        "Periodic acid-Schiff"
+      ],
+      "features": [
+        "1p/19q intact",
+        "Brisk mitotic activity",
+        "Cellular monotony",
+        "Eosinophilic granular bodies",
+        "Hypercellularity",
+        "Low/absent mitotic activity",
+        "Macronucleoli",
+        "Microcysts",
+        "Nuclear elongation",
+        "Nuclear pleomorphism",
+        "Perinuclear halos",
+        "Rosenthal fibers",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 47,
+      "name": "Ganglioglioma-Anaplastic ganglioglioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 13,
+      "name": "Gemistocytic astrocytoma",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Gemistocytes",
+        "Hypercellularity",
+        "Microvascular proliferation absent",
+        "Necrosis",
+        "Necrosis absent",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 124,
+      "name": "Germinoma",
+      "shortList": false,
+      "imageCount": 9,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for cKIT",
+        "Immunolabeling for cytokeratin (Cam 5.2)",
+        "Immunolabeling for Oct-4",
+        "Immunolabeling for SALL4"
+      ],
+      "features": [
+        "Macronucleoli"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 6,
+      "name": "Glioblastoma",
+      "shortList": true,
+      "imageCount": 67,
+      "questionCount": 7,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for ATRX",
+        "Immunolabeling for GFAP",
+        "Immunolabeling for IDH1",
+        "Immunolabeling for p53",
+        "Immunolabeling for PTEN",
+        "Immunolabeling for synaptophysin",
+        "Reticulin"
+      ],
+      "features": [
+        "ATRX loss",
+        "Brisk mitotic activity",
+        "Feature ",
+        "Hypercellularity",
+        "IDH mutated",
+        "IDH wildtype",
+        "Increased mitotic activity",
+        "Macronucleoli",
+        "Microvascular proliferation",
+        "Necrosis",
+        "Necrosis, pseudopallisading",
+        "Nuclear elongation",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism",
+        "p53 positivity",
+        "Perinuclear halos",
+        "Rhabdoid change",
+        "Secondary glioblastoma",
+        "Small nucleolus",
+        "Treatment effect"
+      ],
+      "diagnosisNodes": [
+        {
+          "id": 9,
+          "name": "Glioblastoma, IDH wild type"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Glioblastoma - epithelioid glioblastoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 7,
+      "name": "Glioblastoma - giant cell glioblastoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 8,
+      "name": "Glioblastoma - gliosarcoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 10,
+      "name": "Glioblastoma, IDH mutant",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": [
+        {
+          "id": 8,
+          "name": "Glioblastoma, IDH mutant"
+        }
+      ]
+    },
+    {
+      "id": 180,
+      "name": "Glioblastoma, IDH wildtype",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": [
+        {
+          "id": 9,
+          "name": "Glioblastoma, IDH wild type"
+        }
+      ]
+    },
+    {
+      "id": 146,
+      "name": "Gliosis",
+      "shortList": false,
+      "imageCount": 7,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)"
+      ],
+      "features": [
+        "Hypercellularity",
+        "Rosenthal fibers"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 147,
+      "name": "Gliosis-fibrillary gliosis",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 148,
+      "name": "Gliosis-piloid gliosis",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 12,
+      "name": "Granular cell astrocytoma",
+      "shortList": false,
+      "imageCount": 8,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for CD68",
+        "Immunolabeling for GFAP",
+        "Periodic acid-Schiff"
+      ],
+      "features": [
+        "Hypercellularity",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 133,
+      "name": "Granular cell tumor",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for S-100 protein",
+        "Immunolabeling for TTF-1",
+        "Periodic acid-Schiff"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 97,
+      "name": "Hemangioblastoma",
+      "shortList": false,
+      "imageCount": 15,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for inhibin",
+        "Immunolabeling for neurofilament",
+        "Immunolabeling for S-100 protein"
+      ],
+      "features": [
+        "Microvascular proliferation",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 123,
+      "name": "Histiocytic sarcoma",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for CD163"
+      ],
+      "features": [
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 143,
+      "name": "Hypothalamic hamartoma",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 170,
+      "name": "IgG4-related disease",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Immunolabeling for IgG4"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 171,
+      "name": "Immunoglobulin deposition",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Congo Red",
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 118,
+      "name": "Immunoglobulin deposition-Amyloidoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 167,
+      "name": "Immunoglobulin deposition-Crystal storing histiocytosis",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 138,
+      "name": "Infarct",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 100,
+      "name": "Inflammatory myofibroblastic tumor",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for smooth muscle actin"
+      ],
+      "features": [
+        "Nuclear elongation"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 122,
+      "name": "Juvenile xanthogranuloma",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 119,
+      "name": "Langerhans cell histiocytosis",
+      "shortList": false,
+      "imageCount": 6,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for CD1a",
+        "Immunolabeling for langerin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 101,
+      "name": "Leiomyosarcoma",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for caldesmon",
+        "In-situ hybridization for EBER"
+      ],
+      "features": [
+        "Hypercellularity",
+        "Nuclear elongation"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 99,
+      "name": "Lipoma",
+      "shortList": false,
+      "imageCount": 1,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 111,
+      "name": "Lymphoma",
+      "shortList": false,
+      "imageCount": 35,
+      "questionCount": 3,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for CD20",
+        "Immunolabeling for CD3",
+        "Immunolabeling for CD30",
+        "Immunolabeling for CD43",
+        "Immunolabeling for Ki67",
+        "Immunolabeling for PAX5",
+        "In-situ hybridization for EBER"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Cellular monotony",
+        "Hypercellularity",
+        "Macronucleoli",
+        "Necrosis",
+        "Nuclear elongation",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 117,
+      "name": "Lymphoma - MALT lymphoma of the dura",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 114,
+      "name": "Lymphoma - anaplastic large cell lymphoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 112,
+      "name": "Lymphoma - diffuse large B cell lymphoma (DLBCL)",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 113,
+      "name": "Lymphoma - immunodeficiency-associated CNS lymphomas",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 116,
+      "name": "Lymphoma - intravascular large B-cell lymphoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 115,
+      "name": "Lymphoma - lymphomatoid granulomatosis",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 57,
+      "name": "Malignant glioneuronal tumors",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Cellular monotony",
+        "Hypercellularity",
+        "Macronucleoli",
+        "Nuclear pleomorphism",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 109,
+      "name": "Malignant melanoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 63,
+      "name": "Medulloblastoma",
+      "shortList": true,
+      "imageCount": 35,
+      "questionCount": 4,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for beta-catenin",
+        "Immunolabeling for desmin",
+        "Immunolabeling for GRB2-associated-binding protein 1 (GAB1)",
+        "Immunolabeling for myogenin",
+        "Immunolabeling for p53",
+        "Immunolabeling for Yes-Associated Protein 1 (YAP1)",
+        "Reticulin"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Cellular monotony",
+        "Desmoplasia",
+        "Feature ",
+        "Hypercellularity",
+        "Inconspicuous nucleolus",
+        "Neuropil islands",
+        "Nuclear elongation",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism",
+        "p53 positivity",
+        "Round nuclei",
+        "Treatment effect"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 68,
+      "name": "Medulloblastoma - desmoplastic/nodular medulloblastoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 70,
+      "name": "Medulloblastoma - large cell/anaplastic medulloblastoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 69,
+      "name": "Medulloblastoma with extensive nodularity",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 65,
+      "name": "Medulloblastoma, SHH activated",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 64,
+      "name": "Medulloblastoma, WNT activated",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 67,
+      "name": "Medulloblastoma, classic",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 66,
+      "name": "Medulloblastoma, non-WNT/non-SHH",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 74,
+      "name": "Medulloepithelioma",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 71,
+      "name": "Medullomyoblastoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 108,
+      "name": "Melanocytoma",
+      "shortList": false,
+      "imageCount": 9,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for Melan-A"
+      ],
+      "features": [
+        "Fascicular architecture",
+        "Macronucleoli",
+        "Nuclear elongation"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 162,
+      "name": "Melanoma",
+      "shortList": false,
+      "imageCount": 8,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for SOX10"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Macronucleoli",
+        "Necrosis",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 110,
+      "name": "Meningeal melanomatosis",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 141,
+      "name": "Meningioangiomatosis",
+      "shortList": false,
+      "imageCount": 6,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for EMA",
+        "Masson trichrome"
+      ],
+      "features": [
+        "Calcifications",
+        "Nuclear elongation"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 80,
+      "name": "Meningioma",
+      "shortList": true,
+      "imageCount": 77,
+      "questionCount": 9,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for EMA",
+        "Immunolabeling for GFAP",
+        "Immunolabeling for progesterone receptor",
+        "Immunolabeling for S-100 protein"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Calcifications",
+        "Cellular monotony",
+        "Feature ",
+        "Hypercellularity",
+        "Increased mitotic activity",
+        "Low/absent mitotic activity",
+        "Macronucleoli",
+        "Microcysts",
+        "Necrosis",
+        "Nuclear elongation",
+        "Nuclear pleomorphism",
+        "Perivascular pseudorosette",
+        "Rhabdoid change",
+        "Sheet-like growth"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 95,
+      "name": "Meningioma - anaplastic meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 85,
+      "name": "Meningioma - angiomatous meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 92,
+      "name": "Meningioma - atypical meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 90,
+      "name": "Meningioma - chordoid meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 91,
+      "name": "Meningioma - clear cell meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 82,
+      "name": "Meningioma - fibrous meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 88,
+      "name": "Meningioma - lymphoplasmacyte-rich meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 81,
+      "name": "Meningioma - meningothelial meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 89,
+      "name": "Meningioma - metaplastic meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 86,
+      "name": "Meningioma - microcystic meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 93,
+      "name": "Meningioma - papillary meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 84,
+      "name": "Meningioma - psammomatous meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 94,
+      "name": "Meningioma - rhabdoid meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 87,
+      "name": "Meningioma - secretory meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 83,
+      "name": "Meningioma - transitional meningioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 136,
+      "name": "Metastatic tumors",
+      "shortList": false,
+      "imageCount": 15,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for CDX2",
+        "Immunolabeling for prostate specific antigen (PSA)",
+        "Immunolabeling for TTF-1"
+      ],
+      "features": [
+        "Macronucleoli",
+        "Necrosis",
+        "Nuclear hyperchromasia"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 150,
+      "name": "Miscellaneous neoplasms",
+      "shortList": false,
+      "imageCount": 21,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for GFAP",
+        "Immunolabeling for Olig2",
+        "Immunolabeling for synaptophysin"
+      ],
+      "features": [
+        "Calcifications",
+        "Cellular monotony",
+        "Low/absent mitotic activity",
+        "Nuclear elongation",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 158,
+      "name": "Miscellaneous neoplasms - gliomatosis cerebri",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 151,
+      "name": "Miscellaneous neoplasms - massively calcified low-grade glioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 152,
+      "name": "Miscellaneous neoplasms - multinodular and vacuolating neuronal tumors of the cerebrum",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 154,
+      "name": "Miscellaneous neoplasms - papillary tumor of the spinal cord",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 153,
+      "name": "Miscellaneous neoplasms - polar spongioblastoma pattern",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 156,
+      "name": "Miscellaneous neoplasms - tectal glioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 177,
+      "name": "Miscellaneous neoplasms-NF1-associated low grade glioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 129,
+      "name": "Mixed germ cell tumor",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 173,
+      "name": "Multiple myeloma",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Macronucleoli",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 166,
+      "name": "Myoepithelial tumor",
+      "shortList": false,
+      "imageCount": 1,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 20,
+      "name": "Oligoastrocytoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 21,
+      "name": "Oligoastrocytoma-anaplastic oligoastrocytoma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 16,
+      "name": "Oligodendroglioma",
+      "shortList": true,
+      "imageCount": 11,
+      "questionCount": 3,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for IDH1"
+      ],
+      "features": [
+        "1p/19q codeleted",
+        "1p/19q intact",
+        "Brisk mitotic activity absent",
+        "Cellular monotony",
+        "IDH mutated",
+        "IDH wildtype",
+        "Microvascular proliferation absent",
+        "Necrosis absent",
+        "Perinuclear halos",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 17,
+      "name": "Oligodendroglioma, IDH mutant and 1p/19q codeleted",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": [
+        {
+          "id": 2,
+          "name": "Oligodendroglioma, IDH mutant and 1p/19q codeleted"
+        }
+      ]
+    },
+    {
+      "id": 164,
+      "name": "Osteosarcoma",
+      "shortList": false,
+      "imageCount": 1,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 50,
+      "name": "Papillary glioneuronal tumor",
+      "shortList": false,
+      "imageCount": 10,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for GFAP",
+        "Immunolabeling for synaptophysin"
+      ],
+      "features": [
+        "1p/19q intact",
+        "Cellular monotony",
+        "Perinuclear halos",
+        "Rosenthal fibers",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 61,
+      "name": "Papillary tumor of the pineal region",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for cytokeratin (Cam 5.2)"
+      ],
+      "features": [
+        "Macronucleoli"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 56,
+      "name": "Paraganglioma",
+      "shortList": false,
+      "imageCount": 9,
+      "questionCount": 3,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for cytokeratin (Cam 5.2)",
+        "Immunolabeling for S-100 protein",
+        "Immunolabeling for synaptophysin"
+      ],
+      "features": [
+        "1p/19q intact",
+        "Cellular monotony"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 175,
+      "name": "Pediatric oligodendroglioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": [
+        {
+          "id": 1,
+          "name": "Oligodendroglioma mimics"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Pilocytic astrocytoma",
+      "shortList": true,
+      "imageCount": 21,
+      "questionCount": 5,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)",
+        "Immunolabeling for Ki67"
+      ],
+      "features": [
+        "1p/19q intact",
+        "Brisk mitotic activity",
+        "Calcifications",
+        "Cellular monotony",
+        "Eosinophilic granular bodies",
+        "Hypercellularity",
+        "Microcysts",
+        "Microvascular proliferation",
+        "Necrosis",
+        "Necrosis, pseudopallisading",
+        "Nuclear elongation",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism",
+        "Perinuclear halos",
+        "Rosenthal fibers",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 24,
+      "name": "Pilocytic astrocytoma - anaplastic features",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 25,
+      "name": "Pilomyxoid astrocytoma",
+      "shortList": false,
+      "imageCount": 7,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)"
+      ],
+      "features": [
+        "Cellular monotony",
+        "Inconspicuous nucleolus",
+        "Nuclear elongation",
+        "Perivascular pseudorosette"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 62,
+      "name": "Pineal anlage tumor",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Hypercellularity"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 59,
+      "name": "Pineal parenchymal tumor of intermediate differentiation",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for neurofilament"
+      ],
+      "features": [
+        "Pineocytomatous rosette",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 60,
+      "name": "Pineoblastoma",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for synaptophysin"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Calcifications",
+        "Hypercellularity",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 58,
+      "name": "Pineocytoma",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Low/absent mitotic activity",
+        "Nuclear pleomorphism",
+        "Pineocytomatous rosette"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 134,
+      "name": "Pituicytoma",
+      "shortList": false,
+      "imageCount": 4,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for TTF-1"
+      ],
+      "features": [
+        "Low/absent mitotic activity",
+        "Nuclear elongation"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 157,
+      "name": "Plasmacytoma",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for lambda light chain"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 161,
+      "name": "Pleomorphic spindle cell sarcoma",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Hypercellularity",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 27,
+      "name": "Pleomorphic xanthoastrocytoma",
+      "shortList": false,
+      "imageCount": 19,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for CD34",
+        "Periodic acid-Schiff",
+        "Reticulin"
+      ],
+      "features": [
+        "Eosinophilic granular bodies",
+        "Low/absent mitotic activity",
+        "Macronucleoli",
+        "Nuclear elongation",
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 139,
+      "name": "Progressive multifocal leukoencephalopathy",
+      "shortList": false,
+      "imageCount": 4,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for SV40"
+      ],
+      "features": [
+        "Nuclear hyperchromasia",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 142,
+      "name": "Radiation necrosis and treatment effect",
+      "shortList": false,
+      "imageCount": 6,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Necrosis",
+        "Nuclear pleomorphism",
+        "Treatment effect"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 121,
+      "name": "Rosai-Dorfman disease",
+      "shortList": false,
+      "imageCount": 4,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 51,
+      "name": "Rosette-forming glioneuronal tumor",
+      "shortList": false,
+      "imageCount": 16,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for synaptophysin"
+      ],
+      "features": [
+        "1p/19q intact",
+        "Calcifications",
+        "Cellular monotony",
+        "Inconspicuous nucleolus",
+        "Microcysts",
+        "Nuclear elongation",
+        "Nuclear hyperchromasia",
+        "Round nuclei"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 144,
+      "name": "Sarcoidosis",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 11,
+      "name": "Small cell astrocytoma",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "1p/19q intact",
+        "Cellular monotony",
+        "IDH wildtype",
+        "Nuclear elongation",
+        "Perineuronal satellitosis",
+        "Perinuclear halos",
+        "Small cell change"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 96,
+      "name": "Solitary fibrous tumor/hemangiopericytoma",
+      "shortList": false,
+      "imageCount": 11,
+      "questionCount": 2,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for CD34",
+        "Immunolabeling for STAT6"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Fascicular architecture",
+        "Hypercellularity",
+        "Increased mitotic activity",
+        "Low/absent mitotic activity",
+        "Nuclear elongation"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 135,
+      "name": "Spindle cell oncocytoma",
+      "shortList": false,
+      "imageCount": 4,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Nuclear elongation"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 26,
+      "name": "Subependymal giant cell astrocytoma",
+      "shortList": false,
+      "imageCount": 5,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Hematoxylin and eosin (direct smear)"
+      ],
+      "features": [
+        "Macronucleoli"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 29,
+      "name": "Subependymoma",
+      "shortList": false,
+      "imageCount": 3,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [
+        "Cellular monotony"
+      ],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 105,
+      "name": "Synovial sarcoma",
+      "shortList": false,
+      "imageCount": 1,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 128,
+      "name": "Teratoma",
+      "shortList": false,
+      "imageCount": 4,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 168,
+      "name": "Vascular malformations",
+      "shortList": false,
+      "imageCount": 6,
+      "questionCount": 1,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 176,
+      "name": "Vascular malformations-cavernous hemangioma",
+      "shortList": false,
+      "imageCount": 0,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 174,
+      "name": "Venous congestive myelopathy",
+      "shortList": false,
+      "imageCount": 2,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin"
+      ],
+      "features": [],
+      "diagnosisNodes": []
+    },
+    {
+      "id": 126,
+      "name": "Yolk sac tumor",
+      "shortList": false,
+      "imageCount": 4,
+      "questionCount": 0,
+      "synonyms": [],
+      "stains": [
+        "Hematoxylin and eosin",
+        "Immunolabeling for alpha feto-protein (AFP)",
+        "Immunolabeling for glypican 3"
+      ],
+      "features": [
+        "Brisk mitotic activity",
+        "Nuclear pleomorphism"
+      ],
+      "diagnosisNodes": []
+    }
+  ]
+}
