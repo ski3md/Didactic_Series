@@ -54,7 +54,7 @@ const REQUIRED_READINESS_FIELDS = [
   'percentReviewReady',
 ];
 const EXPECTED_GATE_COUNT = 5;
-const BATCH_FILE_PATTERN = /^apP0.*CardBatch\.ts$/;
+const BATCH_FILE_PATTERN = /^apP0.*CardBatch\d*\.ts$/;
 
 function isBlank(value) {
   if (value === null || value === undefined) return true;
@@ -85,7 +85,7 @@ function findBatchFiles(dir) {
 }
 
 function findExportedObjectText(source, filePath) {
-  const exportMatch = source.match(/export\s+const\s+(apP0\w*CardBatch)\s*=/);
+  const exportMatch = source.match(/export\s+const\s+(apP0\w*CardBatch\d*)\s*=/);
   if (!exportMatch) {
     throw new Error(`Could not find an apP0*CardBatch export in ${path.relative(repoRoot, filePath)}`);
   }

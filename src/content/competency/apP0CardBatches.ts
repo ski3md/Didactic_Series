@@ -1,21 +1,29 @@
 import { apP0BreastCardBatch } from './apP0BreastCardBatch.ts';
 import { apP0CvAutopsyCardBatch } from './apP0CvAutopsyCardBatch.ts';
+import { apP0CvAutopsyCardBatch2 } from './apP0CvAutopsyCardBatch2.ts';
+import { apP0CvAutopsyCardBatch3 } from './apP0CvAutopsyCardBatch3.ts';
 import { apP0DermpathCardBatch } from './apP0DermpathCardBatch.ts';
 import { apP0EndocrineCardBatch } from './apP0EndocrineCardBatch.ts';
+import { apP0EndocrineCardBatch2 } from './apP0EndocrineCardBatch2.ts';
 import { apP0EntityCardBatch } from './apP0EntityCardBatch.ts';
 import { apP0GiCardBatch } from './apP0GiCardBatch.ts';
 import { apP0MaleReproCardBatch } from './apP0MaleReproCardBatch.ts';
 import { apP0PediatricCardBatch } from './apP0PediatricCardBatch.ts';
+import { apP0SmallDomainsCardBatch } from './apP0SmallDomainsCardBatch.ts';
 
 export const apP0CardBatches = [
   apP0EntityCardBatch,
   apP0CvAutopsyCardBatch,
+  apP0CvAutopsyCardBatch2,
+  apP0CvAutopsyCardBatch3,
   apP0EndocrineCardBatch,
+  apP0EndocrineCardBatch2,
   apP0DermpathCardBatch,
   apP0GiCardBatch,
   apP0BreastCardBatch,
   apP0MaleReproCardBatch,
   apP0PediatricCardBatch,
+  apP0SmallDomainsCardBatch,
 ] as const;
 
 export type ApP0CardBatch = typeof apP0CardBatches[number];

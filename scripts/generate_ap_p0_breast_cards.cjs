@@ -60,7 +60,7 @@ const queue = readExportedObject(queuePath, 'apGapClosureQueue');
 
 const existingSourceQueueIds = new Set();
 for (const fileName of fs.readdirSync(contentDir)) {
-  if (!/^apP0.*CardBatch\.ts$/.test(fileName) || fileName === 'apP0BreastCardBatch.ts') continue;
+  if (!/^apP0.*CardBatch\d*\.ts$/.test(fileName) || fileName === 'apP0BreastCardBatch.ts') continue;
 
   const filePath = path.join(contentDir, fileName);
   const source = fs.readFileSync(filePath, 'utf8');

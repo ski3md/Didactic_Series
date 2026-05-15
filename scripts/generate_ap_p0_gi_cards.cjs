@@ -56,7 +56,7 @@ const queue = JSON.parse(extractExportedObject(fs.readFileSync(queuePath, 'utf8'
 
 const existingSourceQueueIds = new Set();
 for (const fileName of fs.readdirSync(batchDir)) {
-  if (!/^apP0.*CardBatch\.ts$/.test(fileName) || fileName === 'apP0GiCardBatch.ts') continue;
+  if (!/^apP0.*CardBatch\d*\.ts$/.test(fileName) || fileName === 'apP0GiCardBatch.ts') continue;
   const source = fs.readFileSync(path.join(batchDir, fileName), 'utf8');
   for (const match of source.matchAll(/"sourceQueueId":\s*"([^"]+)"/g)) {
     existingSourceQueueIds.add(match[1]);

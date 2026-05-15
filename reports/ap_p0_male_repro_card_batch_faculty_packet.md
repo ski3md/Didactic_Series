@@ -1,6 +1,6 @@
 # P0 Male Reproductive Entity Card Batch Faculty Authoring Packet
 
-Generated: 2026-05-15T22:26:38.014Z
+Generated: 2026-05-15T22:35:18.460Z
 
 Status: draft male reproductive scaffolds awaiting taxonomy QA, source-backed content, visual anchors, retrieval answer keys, and faculty review
 

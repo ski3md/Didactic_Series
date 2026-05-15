@@ -63,7 +63,7 @@ const collectExistingSourceQueueIds = () => {
   const ids = new Set();
   for (const entry of fs.readdirSync(batchDir, { withFileTypes: true })) {
     if (!entry.isFile()) continue;
-    if (!/^apP0.*CardBatch\.ts$/.test(entry.name)) continue;
+    if (!/^apP0.*CardBatch\d*\.ts$/.test(entry.name)) continue;
     if (entry.name === path.basename(outPath)) continue;
 
     const source = fs.readFileSync(path.join(batchDir, entry.name), 'utf8');
