@@ -408,7 +408,7 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
                   <span className="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-800">draft scaffolds awaiting faculty review</span>
                 </div>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
-                  The active build-out now covers the original core batch plus cardiovascular/autopsy, endocrine, and dermatopathology P0 batches with the same five-gate promotion model.
+                  The active build-out now covers core AP scaffolds plus cardiovascular/autopsy, endocrine, dermatopathology, GI, breast, male reproductive, and pediatric/perinatal P0 batches with the same five-gate promotion model.
                 </p>
                 <div className="mt-3 rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
                   <div className="font-semibold text-slate-900">Faculty authoring packets</div>

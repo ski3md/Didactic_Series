@@ -1,6 +1,6 @@
 # P0 Cardiovascular / Autopsy Entity Card Batch Faculty Authoring Packet
 
-Generated: 2026-05-15T22:12:29.783Z
+Generated: 2026-05-15T22:26:36.180Z
 
 Status: draft cardiovascular/autopsy scaffolds awaiting faculty-reviewed medical content and visual assets
 
