@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const basePath = env.VITE_BASE_PATH || '/Didactic_Series/'
   const outDir = env.VITE_OUT_DIR || 'dist'
+  const buildId = (env.VITE_BUILD_ID || 'local').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 12) || 'local'
 
   return {
     plugins: [react()],
@@ -42,6 +43,9 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         // Split vendor libraries into separate chunks automatically
         output: {
+          entryFileNames: `assets/[name]-${buildId}-[hash].js`,
+          chunkFileNames: `assets/[name]-${buildId}-[hash].js`,
+          assetFileNames: `assets/[name]-${buildId}-[hash][extname]`,
           manualChunks(id) {
             if (id.includes('node_modules')) {
               return id.toString().split('node_modules/')[1].split('/')[0];

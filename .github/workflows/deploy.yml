@@ -33,6 +33,8 @@ jobs:
 
       - name: Build didactics site
         run: npm run build:didactics
+        env:
+          VITE_BUILD_ID: ${{ github.sha }}
 
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
