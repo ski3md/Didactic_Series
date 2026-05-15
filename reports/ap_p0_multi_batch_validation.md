@@ -1,6 +1,6 @@
 # AP P0 Multi-Batch Validation
 
-Generated: 2026-05-15T22:40:31.262Z
+Generated: 2026-05-15T22:45:57.472Z
 Source pattern: `src/content/competency/apP0*CardBatch.ts`
 
 ## Summary

@@ -1,6 +1,6 @@
 # AP P0 Entity Card Validation
 
-Generated: 2026-05-15T22:40:30.913Z
+Generated: 2026-05-15T22:45:56.842Z
 Source: `src/content/competency/apP0EntityCardBatch.ts`
 Faculty packet: `reports/ap_p0_entity_card_batch_1_faculty_packet.md` (found)
 
