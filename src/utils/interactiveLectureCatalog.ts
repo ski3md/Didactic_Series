@@ -12,6 +12,7 @@ import {
 import { getPromotedLectureById, type ImportedLectureRecord, type PromotedLectureRecord } from './lectureLibraryCatalog.ts';
 import { getGuPilotEnhancement } from '../content/lectures/guPilotEnhancements.ts';
 import { getGuPilotAlgorithm } from '../content/lectures/guPilotAlgorithms.ts';
+import { buildLectureAbpathAugmentation } from './lectureAbpathAugmentation.ts';
 
 export interface InteractivePromotedLectureRecord extends PromotedLectureRecord {
   slides: InteractiveLectureSlide[];
@@ -39,6 +40,7 @@ const normalizeSlides = (slides: Array<Record<string, unknown>>): InteractiveLec
 
 const normalizeLecture = (lecture: PromotedLectureRecord): InteractivePromotedLectureRecord => {
   const enhancement = getGuPilotEnhancement(lecture.id);
+  const abpathAugmentation = buildLectureAbpathAugmentation(lecture);
   const normalizedSlides = normalizeSlides((lecture.slides as Array<Record<string, unknown>> | undefined) ?? []);
   const embeddedMcqs = ((lecture as ImportedLectureRecord & { mcqs?: MCQ[] }).mcqs ?? []).filter(Boolean);
   const embeddedFlashcards = ((lecture as ImportedLectureRecord & { flashcards?: Flashcard[] }).flashcards ?? []).filter(Boolean);
@@ -46,17 +48,20 @@ const normalizeLecture = (lecture: PromotedLectureRecord): InteractivePromotedLe
   const algorithms = algorithmIds
     .map((id) => getGuPilotAlgorithm(id))
     .filter(Boolean) as LectureAlgorithmRecord[];
+  const existingObjectives = ((lecture as ImportedLectureRecord & { learningObjectives?: string[] }).learningObjectives ?? []).filter(Boolean);
+  const mergedObjectives = Array.from(new Set([...existingObjectives, ...abpathAugmentation.objectives]));
 
   return {
     ...lecture,
-    slides: normalizedSlides,
-    mcqs: embeddedMcqs,
-    flashcards: embeddedFlashcards,
+    learningObjectives: mergedObjectives,
+    slides: normalizedSlides.length > 0 ? normalizedSlides : abpathAugmentation.slides,
+    mcqs: embeddedMcqs.length > 0 ? embeddedMcqs : abpathAugmentation.mcqs,
+    flashcards: embeddedFlashcards.length > 0 ? embeddedFlashcards : abpathAugmentation.flashcards,
     enhancement,
-    algorithms,
-    tissueLayerSets: enhancement?.tissueLayerSets ?? [],
-    entityCards: enhancement?.entityCards ?? [],
-    quickChecks: enhancement?.quickChecks ?? [],
+    algorithms: algorithms.length > 0 ? algorithms : abpathAugmentation.algorithms,
+    tissueLayerSets: (enhancement?.tissueLayerSets.length ?? 0) > 0 ? enhancement!.tissueLayerSets : abpathAugmentation.tissueLayerSets,
+    entityCards: (enhancement?.entityCards.length ?? 0) > 0 ? enhancement!.entityCards : abpathAugmentation.entityCards,
+    quickChecks: (enhancement?.quickChecks.length ?? 0) > 0 ? enhancement!.quickChecks : abpathAugmentation.quickChecks,
     defaultMode: enhancement?.defaultMode ?? 'overview',
   };
 };

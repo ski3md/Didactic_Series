@@ -174,8 +174,32 @@ const LectureTissueLayers: React.FC<LectureTissueLayersProps> = ({
         </Card>
       )}
 
-      <div className={`grid gap-5 ${focusMode ? 'grid-cols-1' : 'xl:grid-cols-2'}`}>
-        {selectedSet.images.map((image) => (
+      {selectedSet.images.length === 0 ? (
+        <Card>
+          <div className="space-y-4">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Microscopy checklist</div>
+              <h4 className="mt-1 text-xl font-semibold font-serif text-slate-900">Image assets pending faculty attachment</h4>
+              <p className="mt-2 text-sm leading-6 text-slate-700">
+                This lecture has an ABPath-aligned microscopy plan before licensed H&E, gross, IHC, or WSI images are attached.
+                Use the checklist below to teach the inspection sequence without implying an image has already been validated.
+              </p>
+            </div>
+            {teachingSteps.length > 0 && (
+              <div className="grid gap-3 md:grid-cols-2">
+                {teachingSteps.map((step, index) => (
+                  <div key={`${selectedSet.id}-step-${index}`} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Field {index + 1}</div>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">{step}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </Card>
+      ) : (
+        <div className={`grid gap-5 ${focusMode ? 'grid-cols-1' : 'xl:grid-cols-2'}`}>
+          {selectedSet.images.map((image) => (
           <Card key={image.id}>
             <div className="space-y-4">
               <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
@@ -219,8 +243,9 @@ const LectureTissueLayers: React.FC<LectureTissueLayersProps> = ({
               )}
             </div>
           </Card>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

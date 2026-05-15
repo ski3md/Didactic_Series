@@ -1023,7 +1023,7 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
     setActiveMode(nextMode);
     setInitialNodeId(requestedSeed?.initialNodeId);
     setInitialLayerSetId(requestedSeed?.initialLayerSetId);
-  }, [availableModes, progressStore, selectedLecture, selectionSeed]);
+  }, [availableModes, selectedLecture?.id, selectionSeed]);
 
   const persistProgress = (lectureId: string, updater: (current: LectureStudyProgress) => LectureStudyProgress) => {
     setProgressStore((current) => {

@@ -12,6 +12,7 @@ export interface ImportedLectureRecord {
   category: string | null;
   summary: string | null;
   body: string;
+  learningObjectives?: string[];
   sourceRepo: string;
   sourcePath: string;
   tags: string[];
