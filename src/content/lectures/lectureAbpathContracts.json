@@ -1,0 +1,2170 @@
+{
+  "version": "lecture-abpath-contract.v1",
+  "generatedFrom": [
+    "src/content/lectures/lectureAbpathSpecSeeds.ts",
+    "src/content/syllabus/syllabus.normalized.json",
+    "promoted lecture library"
+  ],
+  "purpose": "Contract-based parameters for filling each promoted lecture top tab from ABPath AP content-specification anchors while preserving content-area scope.",
+  "globalParameters": {
+    "requiredTabs": [
+      "overview",
+      "diagnosticApproach",
+      "microscopy",
+      "diagnosticCriteria",
+      "questions",
+      "fullText"
+    ],
+    "minimums": {
+      "objectives": 5,
+      "abpathAnchors": 5,
+      "algorithmNodes": 4,
+      "microscopyChecklistSteps": 5,
+      "entityCards": 5,
+      "quickChecks": 2,
+      "mcqs": 2,
+      "flashcards": 3
+    },
+    "conformanceTarget": "L4: topic mapped, level declared, and cross-links to lecture tab outputs present",
+    "scopeRule": "Each lecture is governed by its content area. ABPath topics outside the scoped content area may be used only for mimic, staging, specimen-handling, or quality/safety contrast."
+  },
+  "lectures": [
+    {
+      "lectureId": "renal_mass_eval",
+      "title": "Renal Mass Evaluation",
+      "track": "curated",
+      "sourceLabel": "P@thfndr Local",
+      "contentArea": "Genitourinary: kidney/renal pathology evaluation",
+      "apCategories": [
+        "ap_gu: kidney"
+      ],
+      "normalizedSourceCategories": [
+        "ap_gu"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Kidney/renal pathology and renal specimen handling only; bladder topics may support urothelial differential context but must not become the main lecture.",
+      "contractWarnings": [
+        "The normalized AP seed currently has stronger medical-kidney/process anchors than renal neoplasm anchors; renal tumor-specific anchors should be added when the source specification is expanded."
+      ],
+      "allowedPathPrefixes": [
+        "The Genitourinary System > Kidney"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Tissue processing of renal biopsies",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Tissue processing of renal biopsies",
+          "sourceLine": 741
+        },
+        {
+          "title": "End Stage Renal Disease",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > End Stage Renal Disease",
+          "sourceLine": 653
+        },
+        {
+          "title": "Monoclonal gammopathy associated renal disease",
+          "category": "ap_gu",
+          "designation": "AR",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Monoclonal gammopathy associated renal disease",
+          "sourceLine": 625
+        },
+        {
+          "title": "Renal transplantation, donor assessment",
+          "category": "ap_gu",
+          "designation": "AR",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Renal transplantation, donor assessment",
+          "sourceLine": 655
+        },
+        {
+          "title": "Diseases associated with acellular closure of glomerular capillaries",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Diseases associated with acellular closure of glomerular capillaries",
+          "sourceLine": 608
+        },
+        {
+          "title": "Non-proliferative glomerulonephropathies",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Non-proliferative glomerulonephropathies",
+          "sourceLine": 576
+        },
+        {
+          "title": "Pyelonephritis",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Pyelonephritis",
+          "sourceLine": 662
+        },
+        {
+          "title": "Tubulointerstitial Disease",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Tubulointerstitial Disease",
+          "sourceLine": 627
+        },
+        {
+          "title": "Vascular lesions",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Vascular lesions",
+          "sourceLine": 640
+        },
+        {
+          "title": "Acute diffuse intracapillary proliferative glomerulonephritis",
+          "category": "ap_gu",
+          "designation": "AR",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Acute diffuse intracapillary proliferative glomerulonephritis",
+          "sourceLine": 504
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Genitourinary: kidney/renal pathology evaluation is the scoped content area.",
+            "List at least five ABPath-derived objectives using Tissue processing of renal biopsies and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Tissue processing of renal biopsies versus End Stage Renal Disease, Monoclonal gammopathy associated renal disease, Renal transplantation, donor assessment as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "testicular_mass_eval",
+      "title": "Testicular Mass Evaluation",
+      "track": "curated",
+      "sourceLabel": "P@thfndr Local",
+      "contentArea": "Genitourinary: testis and paratesticular masses",
+      "apCategories": [
+        "ap_male_repro: testis/paratestis"
+      ],
+      "normalizedSourceCategories": [
+        "ap_male_repro"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Testis and paratesticular mass evaluation only; prostate and penile topics are out of scope unless used as brief contrast.",
+      "contractWarnings": [],
+      "allowedPathPrefixes": [
+        "Male Reproductive System > Testis"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Intratubular germ cell neoplasia",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Intratubular germ cell neoplasia",
+          "sourceLine": 1051
+        },
+        {
+          "title": "Seminoma",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Seminoma",
+          "sourceLine": 1052
+        },
+        {
+          "title": "Spermatocytic seminoma",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Spermatocytic seminoma",
+          "sourceLine": 1055
+        },
+        {
+          "title": "Teratoma",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Teratoma",
+          "sourceLine": 1053
+        },
+        {
+          "title": "Spermatic cord/paratesticular tumors",
+          "category": "ap_male_repro",
+          "designation": "AR",
+          "path": "Male Reproductive System > Testis > Plasmacytoma > Tumors of the tunica albuginea and mesothelium > Spermatic cord/paratesticular tumors",
+          "sourceLine": 1078
+        },
+        {
+          "title": "Embryonal carcinoma",
+          "category": "ap_male_repro",
+          "designation": "AR",
+          "path": "Male Reproductive System > Testis > Embryonal carcinoma",
+          "sourceLine": 1056
+        },
+        {
+          "title": "Mixed germ cell tumor",
+          "category": "ap_male_repro",
+          "designation": "AR",
+          "path": "Male Reproductive System > Testis > Mixed germ cell tumor",
+          "sourceLine": 1059
+        },
+        {
+          "title": "Other germ cell tumors",
+          "category": "ap_male_repro",
+          "designation": "AR",
+          "path": "Male Reproductive System > Testis > Other germ cell tumors",
+          "sourceLine": 1061
+        },
+        {
+          "title": "Yolk sac tumor",
+          "category": "ap_male_repro",
+          "designation": "AR",
+          "path": "Male Reproductive System > Testis > Yolk sac tumor",
+          "sourceLine": 1057
+        },
+        {
+          "title": "Cryptorchidism",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Cryptorchidism",
+          "sourceLine": 982
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Genitourinary: testis and paratesticular masses is the scoped content area.",
+            "List at least five ABPath-derived objectives using Intratubular germ cell neoplasia and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Intratubular germ cell neoplasia versus Seminoma, Spermatocytic seminoma, Teratoma as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "bladder_path_core_principles",
+      "title": "Bladder Pathology: Core Principles",
+      "track": "curated",
+      "sourceLabel": "P@thfndr Local",
+      "contentArea": "Genitourinary: bladder and urothelial tract",
+      "apCategories": [
+        "ap_gu: urothelial tract/bladder"
+      ],
+      "normalizedSourceCategories": [
+        "ap_gu"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Bladder biopsy/TURBT/cystectomy logic only; renal, prostate, testis, and penile content are out of scope unless used as mimics.",
+      "contractWarnings": [],
+      "allowedPathPrefixes": [
+        "The Genitourinary System > The Urothelial Tract and Bladder"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "BCG effects",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > BCG effects",
+          "sourceLine": 762
+        },
+        {
+          "title": "Nephrogenic metaplasia",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Nephrogenic metaplasia",
+          "sourceLine": 755
+        },
+        {
+          "title": "Radiation Changes",
+          "category": "ap_gu",
+          "designation": "AR",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Radiation Changes",
+          "sourceLine": 754
+        },
+        {
+          "title": "Diverticula",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Diverticula",
+          "sourceLine": 757
+        },
+        {
+          "title": "Other Congenital, Developmental, and Familial Conditions",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Other Congenital, Developmental, and Familial Conditions",
+          "sourceLine": 759
+        },
+        {
+          "title": "Urethral polyp",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Urethral polyp",
+          "sourceLine": 761
+        },
+        {
+          "title": "Normal Anatomy and Histology",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Normal Anatomy and Histology",
+          "sourceLine": 752
+        },
+        {
+          "title": "The Urothelial Tract and Bladder",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder",
+          "sourceLine": 751
+        },
+        {
+          "title": "Cystitis glandularis",
+          "category": "ap_gu",
+          "designation": "AR",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Cystitis glandularis",
+          "sourceLine": 758
+        },
+        {
+          "title": "Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+          "category": "ap_gu",
+          "designation": "AR",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+          "sourceLine": 753
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Genitourinary: bladder and urothelial tract is the scoped content area.",
+            "List at least five ABPath-derived objectives using BCG effects and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use BCG effects versus Nephrogenic metaplasia, Radiation Changes, Diverticula as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "penile_who_complete_pathology",
+      "title": "Penile Pathology: WHO-Complete Sign-Out Lecture",
+      "track": "curated",
+      "sourceLabel": "Curated GU Imports",
+      "contentArea": "Genitourinary: penis",
+      "apCategories": [
+        "ap_male_repro: penis"
+      ],
+      "normalizedSourceCategories": [
+        "ap_male_repro"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Penile precursor, invasive, HPV-related, margin, and mimic logic only.",
+      "contractWarnings": [],
+      "allowedPathPrefixes": [
+        "Male Reproductive System > Penis"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Penile intraepithelial neoplasia",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Penis > Lichen schlerosis > Penile intraepithelial neoplasia",
+          "sourceLine": 1195
+        },
+        {
+          "title": "Squamous cell carcinoma",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Penis > Lichen schlerosis > Bowenoid papulosis > Squamous cell carcinoma",
+          "sourceLine": 1197
+        },
+        {
+          "title": "Paget Disease",
+          "category": "ap_male_repro",
+          "designation": "AR",
+          "path": "Male Reproductive System > Penis > Lichen schlerosis > Paget Disease",
+          "sourceLine": 1198
+        },
+        {
+          "title": "Bowenoid papulosis",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Penis > Lichen schlerosis > Bowenoid papulosis",
+          "sourceLine": 1196
+        },
+        {
+          "title": "Lichen schlerosis",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Penis > Lichen schlerosis",
+          "sourceLine": 1135
+        },
+        {
+          "title": "Penis",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Penis",
+          "sourceLine": 1125
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Genitourinary: penis is the scoped content area.",
+            "List at least five ABPath-derived objectives using Penile intraepithelial neoplasia and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Penile intraepithelial neoplasia versus Squamous cell carcinoma, Paget Disease, Bowenoid papulosis as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "testicular_who_complete_pathology",
+      "title": "Testicular and Paratesticular Pathology",
+      "track": "curated",
+      "sourceLabel": "Curated GU Imports",
+      "contentArea": "Genitourinary: testis/paratestis WHO classification",
+      "apCategories": [
+        "ap_male_repro: testis/paratestis"
+      ],
+      "normalizedSourceCategories": [
+        "ap_male_repro"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Testicular, paratesticular, rete, epididymal, germ-cell, sex-cord stromal, lymphoma, and metastatic patterns only.",
+      "contractWarnings": [],
+      "allowedPathPrefixes": [
+        "Male Reproductive System > Testis"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Seminoma",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Seminoma",
+          "sourceLine": 1052
+        },
+        {
+          "title": "Spermatocytic seminoma",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Spermatocytic seminoma",
+          "sourceLine": 1055
+        },
+        {
+          "title": "Teratoma",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Teratoma",
+          "sourceLine": 1053
+        },
+        {
+          "title": "Embryonal carcinoma",
+          "category": "ap_male_repro",
+          "designation": "AR",
+          "path": "Male Reproductive System > Testis > Embryonal carcinoma",
+          "sourceLine": 1056
+        },
+        {
+          "title": "Mixed germ cell tumor",
+          "category": "ap_male_repro",
+          "designation": "AR",
+          "path": "Male Reproductive System > Testis > Mixed germ cell tumor",
+          "sourceLine": 1059
+        },
+        {
+          "title": "Yolk sac tumor",
+          "category": "ap_male_repro",
+          "designation": "AR",
+          "path": "Male Reproductive System > Testis > Yolk sac tumor",
+          "sourceLine": 1057
+        },
+        {
+          "title": "Cryptorchidism",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Cryptorchidism",
+          "sourceLine": 982
+        },
+        {
+          "title": "Duct obstruction, vasitis nodosum",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Duct obstruction, vasitis nodosum",
+          "sourceLine": 1088
+        },
+        {
+          "title": "Epidermoid cyst and dermoid cyst",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Epidermoid cyst and dermoid cyst",
+          "sourceLine": 1054
+        },
+        {
+          "title": "Intratubular germ cell neoplasia",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > Testis > Intratubular germ cell neoplasia",
+          "sourceLine": 1051
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Genitourinary: testis/paratestis WHO classification is the scoped content area.",
+            "List at least five ABPath-derived objectives using Seminoma and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Seminoma versus Spermatocytic seminoma, Teratoma, Embryonal carcinoma as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "ioc-overview-breast-surgery",
+      "title": "Breast Pathology: Core Principles",
+      "track": "core-principles",
+      "sourceLabel": "Core Principles Series",
+      "contentArea": "Breast surgical pathology",
+      "apCategories": [
+        "ap_breast"
+      ],
+      "normalizedSourceCategories": [
+        "ap_breast"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Breast specimen orientation, benign/proliferative lesions, carcinoma, margins, and sentinel lymph node workflow only.",
+      "contractWarnings": [],
+      "allowedPathPrefixes": [
+        "Breast > Normal Anatomy and Histology",
+        "Breast > Normal Cytology"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Ductal carcinoma in situ (DCIS)",
+          "category": "ap_breast",
+          "designation": "C",
+          "path": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Ductal carcinoma in situ (DCIS)",
+          "sourceLine": 346
+        },
+        {
+          "title": "Invasive ductal carcinoma, NOS",
+          "category": "ap_breast",
+          "designation": "C",
+          "path": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Invasive ductal carcinoma, NOS",
+          "sourceLine": 347
+        },
+        {
+          "title": "Invasive lobular carcinoma",
+          "category": "ap_breast",
+          "designation": "C",
+          "path": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Invasive lobular carcinoma",
+          "sourceLine": 419
+        },
+        {
+          "title": "Lobular carcinoma in situ (LCIS)",
+          "category": "ap_breast",
+          "designation": "C",
+          "path": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Lobular carcinoma in situ (LCIS)",
+          "sourceLine": 418
+        },
+        {
+          "title": "Radial Scar",
+          "category": "ap_breast",
+          "designation": "C",
+          "path": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Radial Scar",
+          "sourceLine": 328
+        },
+        {
+          "title": "Invasive micropapillary carcinoma",
+          "category": "ap_breast",
+          "designation": "AR",
+          "path": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Invasive micropapillary carcinoma",
+          "sourceLine": 425
+        },
+        {
+          "title": "Sentinel Node Sampling",
+          "category": "ap_breast",
+          "designation": "AR",
+          "path": "Breast > Normal Cytology > Pregnancy and Lactational Changes > Sentinel Node Sampling",
+          "sourceLine": 5728
+        },
+        {
+          "title": "Adenosis",
+          "category": "ap_breast",
+          "designation": "C",
+          "path": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Adenosis",
+          "sourceLine": 325
+        },
+        {
+          "title": "Apocrine Metaplasia",
+          "category": "ap_breast",
+          "designation": "C",
+          "path": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Apocrine Metaplasia",
+          "sourceLine": 323
+        },
+        {
+          "title": "Cysts",
+          "category": "ap_breast",
+          "designation": "C",
+          "path": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Cysts",
+          "sourceLine": 324
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Breast surgical pathology is the scoped content area.",
+            "List at least five ABPath-derived objectives using Ductal carcinoma in situ (DCIS) and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Ductal carcinoma in situ (DCIS) versus Invasive ductal carcinoma, NOS, Invasive lobular carcinoma, Lobular carcinoma in situ (LCIS) as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "ioc-overview-endocrine-surgery",
+      "title": "Thyroid Pathology: Core Principles",
+      "track": "core-principles",
+      "sourceLabel": "Core Principles Series",
+      "contentArea": "Endocrine: thyroid",
+      "apCategories": [
+        "ap_endo: thyroid"
+      ],
+      "normalizedSourceCategories": [
+        "ap_endo"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Thyroid-focused endocrine pathology only; pituitary, adrenal, and non-thyroid endocrine topics are out of scope.",
+      "contractWarnings": [],
+      "allowedPathPrefixes": [
+        "The Endocrine System > The Thyroid"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Medullary carcinoma",
+          "category": "ap_endo",
+          "designation": "AR",
+          "path": "The Endocrine System > The Thyroid > Inflammatory, Metabolic, Non-Infectious & Infectious > Follicular carcinoma > Medullary carcinoma",
+          "sourceLine": 2704
+        },
+        {
+          "title": "Follicular carcinoma",
+          "category": "ap_endo",
+          "designation": "C",
+          "path": "The Endocrine System > The Thyroid > Inflammatory, Metabolic, Non-Infectious & Infectious > Follicular carcinoma",
+          "sourceLine": 2703
+        },
+        {
+          "title": "Papillary carcinoma",
+          "category": "ap_endo",
+          "designation": "C",
+          "path": "The Endocrine System > The Thyroid > Inflammatory, Metabolic, Non-Infectious & Infectious > Papillary carcinoma",
+          "sourceLine": 2702
+        },
+        {
+          "title": "Anaplastic carcinoma",
+          "category": "ap_endo",
+          "designation": "AR",
+          "path": "The Endocrine System > The Thyroid > Inflammatory, Metabolic, Non-Infectious & Infectious > Anaplastic carcinoma",
+          "sourceLine": 2706
+        },
+        {
+          "title": "Follicular adenoma",
+          "category": "ap_endo",
+          "designation": "AR",
+          "path": "The Endocrine System > The Thyroid > Inflammatory, Metabolic, Non-Infectious & Infectious > Follicular adenoma",
+          "sourceLine": 2699
+        },
+        {
+          "title": "Graves Disease",
+          "category": "ap_endo",
+          "designation": "AR",
+          "path": "The Endocrine System > The Thyroid > Inflammatory, Metabolic, Non-Infectious & Infectious > Graves Disease",
+          "sourceLine": 2694
+        },
+        {
+          "title": "Other malignancies involving the thyroid",
+          "category": "ap_endo",
+          "designation": "C",
+          "path": "The Endocrine System > The Thyroid > Inflammatory, Metabolic, Non-Infectious & Infectious > Lymphoma > Other malignancies involving the thyroid",
+          "sourceLine": 2708
+        },
+        {
+          "title": "Infections",
+          "category": "ap_endo",
+          "designation": "C",
+          "path": "The Endocrine System > The Thyroid > Inflammatory, Metabolic, Non-Infectious & Infectious > Infections",
+          "sourceLine": 2696
+        },
+        {
+          "title": "Infectious",
+          "category": "ap_endo",
+          "designation": "C",
+          "path": "The Endocrine System > The Thyroid > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Infectious",
+          "sourceLine": 2676
+        },
+        {
+          "title": "Oncocytic neoplasms",
+          "category": "ap_endo",
+          "designation": "C",
+          "path": "The Endocrine System > The Thyroid > Inflammatory, Metabolic, Non-Infectious & Infectious > Oncocytic neoplasms",
+          "sourceLine": 2700
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Endocrine: thyroid is the scoped content area.",
+            "List at least five ABPath-derived objectives using Medullary carcinoma and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Medullary carcinoma versus Follicular carcinoma, Papillary carcinoma, Anaplastic carcinoma as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "ioc-overview-gynecologic-oncology",
+      "title": "Gynecologic Pathology: Core Principles",
+      "track": "core-principles",
+      "sourceLabel": "Core Principles Series",
+      "contentArea": "Gynecologic surgical pathology",
+      "apCategories": [
+        "ap_cyto/ap_male_repro normalized source: gynecologic path-context filtered"
+      ],
+      "normalizedSourceCategories": [
+        "ap_male_repro"
+      ],
+      "expectedLevel": "C",
+      "scopeBoundary": "Gynecologic tract and gynecologic oncology logic only; male reproductive topics are out of scope even if source categories overlap.",
+      "contractWarnings": [
+        "The normalized AP source does not currently expose a clean ap_gyn category; this contract is governed by gynecologic path-context filtering and the scope boundary."
+      ],
+      "allowedPathPrefixes": [
+        "Male Reproductive System > The Uterine Cervix"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Adenocarcinoma in situ",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Squamous cell carcinoma > Adenocarcinoma in situ",
+          "sourceLine": 2988
+        },
+        {
+          "title": "Clear cell carcinoma",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Squamous cell carcinoma > Clear cell carcinoma",
+          "sourceLine": 2970
+        },
+        {
+          "title": "Adenosis",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Adenosis",
+          "sourceLine": 2961
+        },
+        {
+          "title": "Endometriosis",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Endometriosis",
+          "sourceLine": 2980
+        },
+        {
+          "title": "Mesonephric rests and hyperplasia",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Mesonephric rests and hyperplasia",
+          "sourceLine": 2978
+        },
+        {
+          "title": "Microglandular hyperplasia",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Microglandular hyperplasia",
+          "sourceLine": 2976
+        },
+        {
+          "title": "Polyps",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Polyps",
+          "sourceLine": 2984
+        },
+        {
+          "title": "Squamous cell carcinoma",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Squamous cell carcinoma",
+          "sourceLine": 2987
+        },
+        {
+          "title": "Squamous intraepithelial lesions",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Squamous intraepithelial lesions",
+          "sourceLine": 2986
+        },
+        {
+          "title": "Stromal polyp",
+          "category": "ap_male_repro",
+          "designation": "C",
+          "path": "Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Stromal polyp",
+          "sourceLine": 2966
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Gynecologic surgical pathology is the scoped content area.",
+            "List at least five ABPath-derived objectives using Adenocarcinoma in situ and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Adenocarcinoma in situ versus Clear cell carcinoma, Adenosis, Endometriosis as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "ioc-overview-head-neck-surgery",
+      "title": "Head & Neck Pathology: Core Principles",
+      "track": "core-principles",
+      "sourceLabel": "Core Principles Series",
+      "contentArea": "Head and neck pathology",
+      "apCategories": [
+        "ap_hn"
+      ],
+      "normalizedSourceCategories": [
+        "ap_hn"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Upper aerodigestive tract, salivary, sinonasal, oral cavity, jaw, and neck lesion workflow only.",
+      "contractWarnings": [],
+      "allowedPathPrefixes": [
+        "Head and Neck > Jaws, Oral Cavity, and Oropharynx",
+        "Head and Neck > Larynx"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Infections of the Jaws & Oral Cavity",
+          "category": "ap_hn",
+          "designation": "C",
+          "path": "Head and Neck > Jaws, Oral Cavity, and Oropharynx > Pyogenic granuloma > Infections of the Jaws & Oral Cavity",
+          "sourceLine": 1459
+        },
+        {
+          "title": "Pyogenic granuloma",
+          "category": "ap_hn",
+          "designation": "C",
+          "path": "Head and Neck > Jaws, Oral Cavity, and Oropharynx > Pyogenic granuloma",
+          "sourceLine": 1403
+        },
+        {
+          "title": "Jaws, Oral Cavity, and Oropharynx",
+          "category": "ap_hn",
+          "designation": "C",
+          "path": "Head and Neck > Jaws, Oral Cavity, and Oropharynx",
+          "sourceLine": 1393
+        },
+        {
+          "title": "Lichen planus",
+          "category": "ap_hn",
+          "designation": "AR",
+          "path": "Head and Neck > Jaws, Oral Cavity, and Oropharynx > Pyogenic granuloma > Lichen planus",
+          "sourceLine": 1460
+        },
+        {
+          "title": "Peripheral giant cell granuloma",
+          "category": "ap_hn",
+          "designation": "AR",
+          "path": "Head and Neck > Jaws, Oral Cavity, and Oropharynx > Pyogenic granuloma > Peripheral giant cell granuloma",
+          "sourceLine": 1461
+        },
+        {
+          "title": "Sinonasal undifferentiated carcinoma",
+          "category": "ap_hn",
+          "designation": "AR",
+          "path": "Head and Neck > Larynx > Sinonasal undifferentiated carcinoma",
+          "sourceLine": 1673
+        },
+        {
+          "title": "Schneiderian papilloma",
+          "category": "ap_hn",
+          "designation": "C",
+          "path": "Head and Neck > Larynx > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Squamous papilloma > Schneiderian papilloma",
+          "sourceLine": 1651
+        },
+        {
+          "title": "Angiofibroma",
+          "category": "ap_hn",
+          "designation": "C",
+          "path": "Head and Neck > Larynx > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Angiofibroma",
+          "sourceLine": 1653
+        },
+        {
+          "title": "Contact ulcer",
+          "category": "ap_hn",
+          "designation": "C",
+          "path": "Head and Neck > Larynx > Paraganglioma > Contact ulcer",
+          "sourceLine": 1695
+        },
+        {
+          "title": "Cysts",
+          "category": "ap_hn",
+          "designation": "C",
+          "path": "Head and Neck > Larynx > Paraganglioma > Cysts",
+          "sourceLine": 1696
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Head and neck pathology is the scoped content area.",
+            "List at least five ABPath-derived objectives using Infections of the Jaws & Oral Cavity and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Infections of the Jaws & Oral Cavity versus Pyogenic granuloma, Jaws, Oral Cavity, and Oropharynx, Lichen planus as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "ioc-overview-hepatobiliary-surgery",
+      "title": "Liver/Biliary Pathology: Core Principles",
+      "track": "core-principles",
+      "sourceLabel": "Core Principles Series",
+      "contentArea": "Hepatobiliary pathology",
+      "apCategories": [
+        "ap_gi: hepatobiliary"
+      ],
+      "normalizedSourceCategories": [
+        "ap_gi"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Liver, gallbladder, and biliary pathology only; pancreas is out of scope except periampullary contrast.",
+      "contractWarnings": [],
+      "allowedPathPrefixes": [
+        "The Digestive System > The Liver and Biliary Tract"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Cirrhosis",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Cirrhosis",
+          "sourceLine": 2388
+        },
+        {
+          "title": "Hepatocellular adenoma",
+          "category": "ap_gi",
+          "designation": "AR",
+          "path": "The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Hepatocellular adenoma",
+          "sourceLine": 2408
+        },
+        {
+          "title": "Hepatocellular carcinoma",
+          "category": "ap_gi",
+          "designation": "AR",
+          "path": "The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Hepatocellular carcinoma",
+          "sourceLine": 2411
+        },
+        {
+          "title": "Macroregenerative nodules in cirrhosis",
+          "category": "ap_gi",
+          "designation": "AR",
+          "path": "The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Macroregenerative nodules in cirrhosis",
+          "sourceLine": 2376
+        },
+        {
+          "title": "Polycystic liver disease and congenital hepatic fibrosis",
+          "category": "ap_gi",
+          "designation": "AR",
+          "path": "The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Polycystic liver disease and congenital hepatic fibrosis",
+          "sourceLine": 2382
+        },
+        {
+          "title": "Alcoholic liver disease",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Alcoholic liver disease",
+          "sourceLine": 2386
+        },
+        {
+          "title": "Amebic abscess",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Amebic abscess",
+          "sourceLine": 2389
+        },
+        {
+          "title": "Cholecystitis and cholelithiasis",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Cholecystitis and cholelithiasis",
+          "sourceLine": 2536
+        },
+        {
+          "title": "Echinococcosis",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Echinococcosis",
+          "sourceLine": 2391
+        },
+        {
+          "title": "Focal nodular hyperplasia",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Focal nodular hyperplasia",
+          "sourceLine": 2405
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Hepatobiliary pathology is the scoped content area.",
+            "List at least five ABPath-derived objectives using Cirrhosis and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Cirrhosis versus Hepatocellular adenoma, Hepatocellular carcinoma, Macroregenerative nodules in cirrhosis as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "ioc-overview-neuropathology",
+      "title": "Neurosurgical Pathology: Core Principles",
+      "track": "core-principles",
+      "sourceLabel": "Core Principles Series",
+      "contentArea": "Neuropathology",
+      "apCategories": [
+        "ap_neuro"
+      ],
+      "normalizedSourceCategories": [
+        "ap_neuro"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "CNS, meninges, nerve sheath, metastasis, and neurosurgical pathology workflow only.",
+      "contractWarnings": [],
+      "allowedPathPrefixes": [
+        "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Spinal Cord and Vascular Supply",
+          "category": "ap_neuro",
+          "designation": "C",
+          "path": "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Neuroanatomy > Deep (Basal) Nuclei, Brain Stem, and Cerebellum > Spinal Cord and Vascular Supply",
+          "sourceLine": 12817
+        },
+        {
+          "title": "A-beta-related Angiitis (ABRA)",
+          "category": "ap_neuro",
+          "designation": "AR",
+          "path": "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Vascular Disorders > Brain Hemorrhage > A-beta-related Angiitis (ABRA)",
+          "sourceLine": 13454
+        },
+        {
+          "title": "Anaplastic Meningioma",
+          "category": "ap_neuro",
+          "designation": "AR",
+          "path": "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Atypical Neurofibromatous Neoplasm of Uncertain Biologic > Atypical Meningioma > Anaplastic Meningioma",
+          "sourceLine": 14460
+        },
+        {
+          "title": "Epithelioid Malignant Peripheral Nerve Sheath Tumor",
+          "category": "ap_neuro",
+          "designation": "AR",
+          "path": "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Atypical Neurofibromatous Neoplasm of Uncertain Biologic > Hybrid Nerve Sheath Tumors > Epithelioid Malignant Peripheral Nerve Sheath Tumor",
+          "sourceLine": 14454
+        },
+        {
+          "title": "Meningioma, Angiomatous",
+          "category": "ap_neuro",
+          "designation": "AR",
+          "path": "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Atypical Neurofibromatous Neoplasm of Uncertain Biologic > Meningioma, Transitional (Mixed) > Meningioma, Angiomatous",
+          "sourceLine": 14465
+        },
+        {
+          "title": "Meningioma, Chordoid Type",
+          "category": "ap_neuro",
+          "designation": "AR",
+          "path": "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Atypical Neurofibromatous Neoplasm of Uncertain Biologic > Meningioma, Lymphoplasmacyte-Rich > Meningioma, Chordoid Type",
+          "sourceLine": 14560
+        },
+        {
+          "title": "Meningioma, Clear Cell Type",
+          "category": "ap_neuro",
+          "designation": "AR",
+          "path": "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Atypical Neurofibromatous Neoplasm of Uncertain Biologic > Meningioma, Lymphoplasmacyte-Rich > Meningioma, Clear Cell Type",
+          "sourceLine": 14559
+        },
+        {
+          "title": "Meningioma, Metaplastic",
+          "category": "ap_neuro",
+          "designation": "AR",
+          "path": "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Atypical Neurofibromatous Neoplasm of Uncertain Biologic > Meningioma, Lymphoplasmacyte-Rich > Meningioma, Metaplastic",
+          "sourceLine": 14469
+        },
+        {
+          "title": "Meningioma, Other Types",
+          "category": "ap_neuro",
+          "designation": "AR",
+          "path": "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Atypical Neurofibromatous Neoplasm of Uncertain Biologic > Meningioma, Papillary Type > Meningioma, Other Types",
+          "sourceLine": 14563
+        },
+        {
+          "title": "Meningioma, Psammomatous",
+          "category": "ap_neuro",
+          "designation": "AR",
+          "path": "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Atypical Neurofibromatous Neoplasm of Uncertain Biologic > Meningioma, Transitional (Mixed) > Meningioma, Psammomatous",
+          "sourceLine": 14464
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Neuropathology is the scoped content area.",
+            "List at least five ABPath-derived objectives using Spinal Cord and Vascular Supply and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Spinal Cord and Vascular Supply versus A-beta-related Angiitis (ABRA), Anaplastic Meningioma, Epithelioid Malignant Peripheral Nerve Sheath Tumor as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "ioc-overview-pancreatic-surgery",
+      "title": "Pancreas Pathology: Core Principles",
+      "track": "core-principles",
+      "sourceLabel": "Core Principles Series",
+      "contentArea": "Pancreatic pathology",
+      "apCategories": [
+        "ap_gi: pancreas"
+      ],
+      "normalizedSourceCategories": [
+        "ap_gi"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Pancreas, ampulla, pancreatic cystic/neuroendocrine/ductal lesions only; liver/biliary content is out of scope except staging contrast.",
+      "contractWarnings": [],
+      "allowedPathPrefixes": [
+        "The Digestive System > The Pancreas"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Pancreatic neuroendocrine tumors",
+          "category": "ap_gi",
+          "designation": "AR",
+          "path": "The Digestive System > The Pancreas > Acute and chronic pancreatitis > Solid pseudopapillary neoplasm > Pancreatic neuroendocrine tumors",
+          "sourceLine": 2592
+        },
+        {
+          "title": "Intraductal papillary mucinous neoplasia (PanIN)",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Pancreas > Acute and chronic pancreatitis > Mucinous cystic neoplasm > Intraductal papillary mucinous neoplasia (PanIN)",
+          "sourceLine": 2588
+        },
+        {
+          "title": "Ductal adenocarcinoma",
+          "category": "ap_gi",
+          "designation": "AR",
+          "path": "The Digestive System > The Pancreas > Acute and chronic pancreatitis > Ductal adenocarcinoma",
+          "sourceLine": 2586
+        },
+        {
+          "title": "Mucinous cystic neoplasm",
+          "category": "ap_gi",
+          "designation": "AR",
+          "path": "The Digestive System > The Pancreas > Acute and chronic pancreatitis > Mucinous cystic neoplasm",
+          "sourceLine": 2587
+        },
+        {
+          "title": "Acinar cell carcinoma",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Pancreas > Acute and chronic pancreatitis > Acinar cell carcinoma",
+          "sourceLine": 2589
+        },
+        {
+          "title": "Autoimmune pancreatitis",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Pancreas > Acute and chronic pancreatitis > Autoimmune pancreatitis",
+          "sourceLine": 2579
+        },
+        {
+          "title": "Infections",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Pancreas > Acute and chronic pancreatitis > Infections",
+          "sourceLine": 2580
+        },
+        {
+          "title": "Acute and chronic pancreatitis",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Pancreas > Acute and chronic pancreatitis",
+          "sourceLine": 2577
+        },
+        {
+          "title": "Other malignancies of the pancreas",
+          "category": "ap_gi",
+          "designation": "AR",
+          "path": "The Digestive System > The Pancreas > Acute and chronic pancreatitis > Solid pseudopapillary neoplasm > Other malignancies of the pancreas",
+          "sourceLine": 2593
+        },
+        {
+          "title": "The Pancreas",
+          "category": "ap_gi",
+          "designation": "C",
+          "path": "The Digestive System > The Pancreas",
+          "sourceLine": 2567
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Pancreatic pathology is the scoped content area.",
+            "List at least five ABPath-derived objectives using Pancreatic neuroendocrine tumors and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Pancreatic neuroendocrine tumors versus Intraductal papillary mucinous neoplasia (PanIN), Ductal adenocarcinoma, Mucinous cystic neoplasm as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "ioc-overview-thoracic-surgery",
+      "title": "Lung Pathology: Core Principles",
+      "track": "core-principles",
+      "sourceLabel": "Core Principles Series",
+      "contentArea": "Thoracic/lung pathology",
+      "apCategories": [
+        "ap_resp"
+      ],
+      "normalizedSourceCategories": [
+        "ap_resp"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Lung, pleura, mediastinum, thoracic biopsy/resection, and lung cancer workflow only.",
+      "contractWarnings": [],
+      "allowedPathPrefixes": [
+        "The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Small cell carcinoma",
+          "category": "ap_resp",
+          "designation": "C",
+          "path": "The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Adenocarcinoma > Small cell carcinoma",
+          "sourceLine": 3601
+        },
+        {
+          "title": "Adenocarcinoma",
+          "category": "ap_resp",
+          "designation": "C",
+          "path": "The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Adenocarcinoma",
+          "sourceLine": 3599
+        },
+        {
+          "title": "Bronchiolocentric interstitial lung disease",
+          "category": "ap_resp",
+          "designation": "C",
+          "path": "The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Bronchiolocentric interstitial lung disease",
+          "sourceLine": 3520
+        },
+        {
+          "title": "Metastatic tumor, lung",
+          "category": "ap_resp",
+          "designation": "C",
+          "path": "The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Metastatic tumor, lung",
+          "sourceLine": 3607
+        },
+        {
+          "title": "Squamous cell carcinoma",
+          "category": "ap_resp",
+          "designation": "C",
+          "path": "The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Squamous cell carcinoma",
+          "sourceLine": 3597
+        },
+        {
+          "title": "Constrictive bronchiolitis",
+          "category": "ap_resp",
+          "designation": "AR",
+          "path": "The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Bronchiolocentric interstitial lung disease > Constrictive bronchiolitis",
+          "sourceLine": 3521
+        },
+        {
+          "title": "Large cell carcinoma (Other than neuroendocrine)",
+          "category": "ap_resp",
+          "designation": "AR",
+          "path": "The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Metastatic tumor, lung > Large cell carcinoma (Other than neuroendocrine)",
+          "sourceLine": 3609
+        },
+        {
+          "title": "Sarcomatoid carcinoma",
+          "category": "ap_resp",
+          "designation": "AR",
+          "path": "The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Metastatic tumor, lung > Sarcomatoid carcinoma",
+          "sourceLine": 3611
+        },
+        {
+          "title": "Sclerosing pneumocytoma",
+          "category": "ap_resp",
+          "designation": "C",
+          "path": "The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Meningothelial-like nodule > Sclerosing pneumocytoma",
+          "sourceLine": 3536
+        },
+        {
+          "title": "Atypical Carcinoid",
+          "category": "ap_resp",
+          "designation": "C",
+          "path": "The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Atypical Carcinoid",
+          "sourceLine": 3605
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Thoracic/lung pathology is the scoped content area.",
+            "List at least five ABPath-derived objectives using Small cell carcinoma and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Small cell carcinoma versus Adenocarcinoma, Bronchiolocentric interstitial lung disease, Metastatic tumor, lung as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    },
+    {
+      "lectureId": "ioc-overview-urologic-oncology",
+      "title": "Renal Pathology: Core Principles",
+      "track": "core-principles",
+      "sourceLabel": "Core Principles Series",
+      "contentArea": "Genitourinary: renal/urologic oncology overview",
+      "apCategories": [
+        "ap_gu: renal/urologic overview"
+      ],
+      "normalizedSourceCategories": [
+        "ap_gu"
+      ],
+      "expectedLevel": "mixed C/AR",
+      "scopeBoundary": "Renal and urologic oncology orientation only; medical kidney disease is supporting context, not the main endpoint.",
+      "contractWarnings": [
+        "The normalized AP seed blends kidney and urothelial/bladder anchors; the lecture contract keeps renal/urologic oncology as the teaching endpoint."
+      ],
+      "allowedPathPrefixes": [
+        "The Genitourinary System > Kidney",
+        "The Genitourinary System > The Urothelial Tract and Bladder"
+      ],
+      "abpathAnchors": [
+        {
+          "title": "Tissue processing of renal biopsies",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Tissue processing of renal biopsies",
+          "sourceLine": 741
+        },
+        {
+          "title": "BCG effects",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > BCG effects",
+          "sourceLine": 762
+        },
+        {
+          "title": "Diverticula",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Diverticula",
+          "sourceLine": 757
+        },
+        {
+          "title": "End Stage Renal Disease",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > Kidney > Medical Kidney Disease > End Stage Renal Disease",
+          "sourceLine": 653
+        },
+        {
+          "title": "Nephrogenic metaplasia",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Nephrogenic metaplasia",
+          "sourceLine": 755
+        },
+        {
+          "title": "Other Congenital, Developmental, and Familial Conditions",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Other Congenital, Developmental, and Familial Conditions",
+          "sourceLine": 759
+        },
+        {
+          "title": "Urethral polyp",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Urethral polyp",
+          "sourceLine": 761
+        },
+        {
+          "title": "Normal Anatomy and Histology",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Normal Anatomy and Histology",
+          "sourceLine": 752
+        },
+        {
+          "title": "The Urothelial Tract and Bladder",
+          "category": "ap_gu",
+          "designation": "C",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder",
+          "sourceLine": 751
+        },
+        {
+          "title": "Cystitis glandularis",
+          "category": "ap_gu",
+          "designation": "AR",
+          "path": "The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Cystitis glandularis",
+          "sourceLine": 758
+        }
+      ],
+      "contractParameters": {
+        "overview": {
+          "required": [
+            "State that Genitourinary: renal/urologic oncology overview is the scoped content area.",
+            "List at least five ABPath-derived objectives using Tissue processing of renal biopsies and related anchors.",
+            "Show a faculty run sheet that starts with the ABPath content-specification frame."
+          ],
+          "acceptance": "Learner can say what ABPath domain is being taught and what report-level task the session prepares them to perform."
+        },
+        "diagnosticApproach": {
+          "required": [
+            "Start from specimen type, clinical question, site, and adequacy.",
+            "Commit to low-power architecture before high-power details.",
+            "Use Tissue processing of renal biopsies versus BCG effects, Diverticula, End Stage Renal Disease as the core differential frame.",
+            "Select ancillary studies only when they change classification, staging, margin, adequacy, or management language."
+          ],
+          "acceptance": "Algorithm endpoint produces a defensible diagnosis/report consequence rather than a memorized entity label."
+        },
+        "microscopy": {
+          "required": [
+            "Begin with normal histology or expected tissue compartment for the content area.",
+            "Require low-power pattern recognition, high-power discriminator, closest mimic, and report consequence.",
+            "Use image assets only when source/provenance and faculty review are available; otherwise show the checklist scaffold."
+          ],
+          "acceptance": "Microscopy tab teaches an inspection sequence even before final licensed images are attached."
+        },
+        "diagnosticCriteria": {
+          "required": [
+            "Provide entity cards for the highest-yield ABPath anchors in this content area.",
+            "For each entity, include key morphology, targeted ancillary logic, critical differential, and management/reporting implication.",
+            "Keep criteria tied to the scoped content area; do not promote unrelated organ-system material."
+          ],
+          "acceptance": "Diagnostic criteria are actionable at sign-out and mapped to the lecture ABPath anchors."
+        },
+        "questions": {
+          "required": [
+            "Include oral recall/retrieval prompts before answer reveal.",
+            "Include at least two MCQs that test workflow and reporting consequence.",
+            "Include flashcards for spaced recall of content-area anchors and diagnostic sequence."
+          ],
+          "acceptance": "Assessment checks recognition, differential logic, ancillary appropriateness, and report consequence."
+        },
+        "fullText": {
+          "required": [
+            "Preserve the source lecture transcript/body as provenance.",
+            "Do not silently replace source content with generated contract text.",
+            "Use the generated ABPath parameters as scaffolding around the transcript."
+          ],
+          "acceptance": "Transcript remains available as source material while tabs provide structured ABPath learning tasks."
+        }
+      },
+      "minimums": {
+        "objectives": 5,
+        "abpathAnchors": 5,
+        "algorithmNodes": 4,
+        "microscopyChecklistSteps": 5,
+        "entityCards": 6,
+        "quickChecks": 2,
+        "mcqs": 2,
+        "flashcards": 3
+      },
+      "exclusionRule": "A lecture may reference adjacent content only as a brief mimic, staging, or specimen-handling contrast; it should not add objectives, MCQs, or entity cards outside its content-area scope.",
+      "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence."
+    }
+  ]
+}
