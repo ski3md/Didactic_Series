@@ -3,6 +3,12 @@ import { ClipboardDocumentListIcon, ShieldCheckIcon } from './icons.tsx';
 import Card from './ui/Card.tsx';
 import SectionHeader from './ui/SectionHeader.tsx';
 import {
+  apP0CardBatches,
+  apP0CardBatchReadiness,
+  apP0CardBatchSummary,
+  ApP0CardBatchCard,
+} from '../content/competency/apP0CardBatches.ts';
+import {
   competencyDomains,
   competencyMatrixRecords,
   competencyMatrixSummary,
@@ -15,7 +21,6 @@ import {
   sourceStandardDocuments,
 } from '../content/competency/competencyMatrix.ts';
 import { apGapClosureQueue } from '../content/competency/apGapClosureQueue.ts';
-import { apP0EntityCardBatch } from '../content/competency/apP0EntityCardBatch.ts';
 import { setCurriculumIntent } from '../utils/curriculumNavigation.ts';
 import { CompetencyDomain, CompetencyMatrixRecord, LearnerLevel, Section } from '../types.ts';
 
@@ -128,8 +133,9 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
     [selectedP0Category],
   );
 
-  const visibleEntityCards = useMemo(
-    () => apP0EntityCardBatch.cards
+  const visibleEntityCards = useMemo<ApP0CardBatchCard[]>(
+    () => apP0CardBatches
+      .flatMap((batch) => batch.cards)
       .filter((card) => selectedP0Category === 'all' || card.sourceQueueId.startsWith(`${selectedP0Category}-`))
       .slice(0, 12),
     [selectedP0Category],
@@ -148,7 +154,7 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
   const guidance = levelModeGuidance[selectedLevel];
   const availableCount = filteredRecords.filter((record) => record.availableNow).length;
   const gapCount = filteredRecords.length - availableCount;
-  const batchReadiness = apP0EntityCardBatch.batchReadiness;
+  const batchReadiness = apP0CardBatchReadiness;
   const missingGatePercent = Math.max(
     0,
     100 - batchReadiness.percentComplete - batchReadiness.percentReviewReady,
@@ -176,17 +182,17 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
   const readinessLegend = [
     {
       label: 'complete',
-      text: apP0EntityCardBatch.readinessLegend.complete,
+      text: apP0CardBatches[0].readinessLegend.complete,
       className: 'bg-emerald-500',
     },
     {
       label: 'ready-for-review',
-      text: apP0EntityCardBatch.readinessLegend['ready-for-review'],
+      text: apP0CardBatches[0].readinessLegend['ready-for-review'],
       className: 'bg-sky-500',
     },
     {
       label: 'missing',
-      text: apP0EntityCardBatch.readinessLegend.missing,
+      text: apP0CardBatches[0].readinessLegend.missing,
       className: 'bg-amber-400',
     },
   ];
@@ -398,16 +404,22 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
               <div className="border-b border-slate-200 px-4 py-3">
                 <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Draft Entity Cards</div>
                 <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-slate-700">
-                  <span>{apP0EntityCardBatch.batchName}</span>
-                  <span className="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-800">{apP0EntityCardBatch.status}</span>
+                  <span>{apP0CardBatchSummary.batchCount} AP P0 faculty batches</span>
+                  <span className="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-800">draft scaffolds awaiting faculty review</span>
                 </div>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{apP0EntityCardBatch.batchStrategy}</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  The active build-out now covers the original core batch plus cardiovascular/autopsy, endocrine, and dermatopathology P0 batches with the same five-gate promotion model.
+                </p>
                 <div className="mt-3 rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
-                  <div className="font-semibold text-slate-900">Faculty authoring packet</div>
+                  <div className="font-semibold text-slate-900">Faculty authoring packets</div>
                   <p className="mt-1 leading-6">
-                    Use this review packet to fill source-backed content, visual assets, answer keys, and reviewer sign-off before any scaffold becomes canonical.
+                    Use these review packets to fill source-backed content, visual assets, answer keys, and reviewer sign-off before any scaffold becomes canonical.
                   </p>
-                  <div className="mt-2 break-all font-mono text-xs text-slate-700">{apP0EntityCardBatch.facultyPacketPath}</div>
+                  <div className="mt-2 space-y-1">
+                    {apP0CardBatches.map((batch) => (
+                      <div key={batch.batchName} className="break-all font-mono text-xs text-slate-700">{batch.facultyPacketPath}</div>
+                    ))}
+                  </div>
                 </div>
                 <div className="mt-3 rounded-md border border-slate-200 bg-white px-3 py-3">
                   <div className="flex flex-wrap items-center justify-between gap-2">
@@ -440,10 +452,10 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
                 </div>
                 <div className="mt-3 grid gap-2 sm:grid-cols-4">
                   {[
-                    ['Cards', apP0EntityCardBatch.cards.length],
-                    ['Complete gates', apP0EntityCardBatch.batchReadiness.completedGates],
-                    ['Review-ready gates', apP0EntityCardBatch.batchReadiness.reviewReadyGates],
-                    ['Missing gates', apP0EntityCardBatch.batchReadiness.missingGates],
+                    ['Cards', apP0CardBatchSummary.cardCount],
+                    ['Complete gates', apP0CardBatchSummary.completedGates],
+                    ['Review-ready gates', apP0CardBatchSummary.reviewReadyGates],
+                    ['Missing gates', apP0CardBatchSummary.missingGates],
                   ].map(([label, value]) => (
                     <div key={label} className="rounded-md bg-slate-50 px-3 py-2">
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">{label}</div>

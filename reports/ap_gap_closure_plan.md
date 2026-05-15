@@ -1,6 +1,6 @@
 # AP Content Specification Gap-Closure Plan
 
-Generated: 2026-05-15T20:40:32.336Z
+Generated: 2026-05-15T22:12:29.227Z
 
 Objective: Close every active-teaching gap between the normalized AP content specification and P@thfndr didactics.
 
