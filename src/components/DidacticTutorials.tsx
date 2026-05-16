@@ -12,6 +12,7 @@ import {
   type TutorialTrack,
 } from '../utils/tutorialLibraryCatalog.ts';
 import { consumeTutorialLibraryIntent } from '../utils/tutorialLibraryNavigation.ts';
+import { getAnswerChoiceReasoning } from '../utils/answerChoiceReasoning.ts';
 import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
 import { Section } from '../types.ts';
 import DidacticWorkspaceNav from './DidacticWorkspaceNav.tsx';
@@ -323,9 +324,9 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                 </div>
                 {(selectedTutorial.topicChips.length > 0 || selectedTutorial.tags.length > 0) && (
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {selectedTutorial.topicChips.concat(selectedTutorial.tags).slice(0, preferences.focusMode ? 6 : 10).map((tag) => (
+                    {selectedTutorial.topicChips.concat(selectedTutorial.tags).slice(0, preferences.focusMode ? 6 : 10).map((tag, index) => (
                       <button
-                        key={tag}
+                        key={`${tag}-${index}`}
                         type="button"
                         onClick={() => setQuery(tag)}
                         className="rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-sky-800"
@@ -487,6 +488,21 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                             {currentQuestion.rationale && (
                               <p className="mt-2">{currentQuestion.rationale}</p>
                             )}
+                          </div>
+                          <div className="space-y-2">
+                            {getAnswerChoiceReasoning(currentQuestion).map((item) => (
+                              <div
+                                key={`${currentQuestion.question}-${item.choice}-reasoning`}
+                                className={`rounded-xl border px-4 py-3 text-sm ${
+                                  item.isCorrect
+                                    ? 'border-emerald-200 bg-emerald-50 text-emerald-950'
+                                    : 'border-rose-100 bg-white text-slate-700'
+                                }`}
+                              >
+                                <div className="font-semibold">{item.choice}</div>
+                                <div className="mt-1">{item.reasoning}</div>
+                              </div>
+                            ))}
                           </div>
                           <button
                             type="button"

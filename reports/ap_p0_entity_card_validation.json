@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-15T23:01:29.231Z",
+  "generatedAt": "2026-05-16T03:34:46.151Z",
   "source": "src/content/competency/apP0EntityCardBatch.ts",
   "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
   "facultyPacketExists": true,
@@ -18,8 +18,8 @@
     "gateCounts": {
       "totalGates": 120,
       "byStatus": {
-        "ready-for-review": 24,
-        "missing": 96
+        "ready-for-review": 96,
+        "missing": 24
       },
       "byGateId": {
         "taxonomy-qa": 24,

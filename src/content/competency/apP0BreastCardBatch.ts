@@ -9,7 +9,7 @@ export const apP0BreastCardBatch = {
   "facultyPacketCsvPath": "reports/ap_p0_breast_card_batch_faculty_packet.csv",
   "batchName": "P0 breast entity card batch",
   "batchStrategy": "All available unassigned P0 Breast rows, capped at 24, converted into normal-comparator and concordance-aware draft scaffolds with five readiness gates.",
-  "status": "draft breast scaffolds awaiting taxonomy QA, source-backed content, visual anchors, retrieval answer keys, and faculty review metadata",
+  "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
   "categoryCoverage": {
     "categoryId": "ap_breast",
     "category": "Breast",
@@ -18,11 +18,11 @@ export const apP0BreastCardBatch = {
   },
   "batchReadiness": {
     "completedGates": 0,
-    "reviewReadyGates": 19,
-    "missingGates": 76,
+    "reviewReadyGates": 76,
+    "missingGates": 19,
     "totalGates": 95,
     "percentComplete": 0,
-    "percentReviewReady": 20
+    "percentReviewReady": 80
   },
   "readinessLegend": {
     "complete": "Evidence is present and reviewed.",
@@ -33,7 +33,7 @@ export const apP0BreastCardBatch = {
     {
       "id": "p0-breast-card-01-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109",
       "sourceQueueId": "ap_breast-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Cysts",
       "category": "Breast",
@@ -79,7 +79,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -90,20 +90,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -114,17 +114,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Cysts is treated in this curriculum as an ABPath AP content-specification topic within Diabetic mastopathy; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Cysts.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Normal Anatomy and Histology > Diabetic mastopathy > Cysts. Source line: 324.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Cysts.",
+          "answer": "Cysts; scoped to Diabetic mastopathy in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Cysts.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Cysts.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-02-2605228a-e2fd-4c25-a6e0-d3ee3ca6e074",
       "sourceQueueId": "ap_breast-2605228a-e2fd-4c25-a6e0-d3ee3ca6e074",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Adenosis",
       "category": "Breast",
@@ -170,7 +213,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -181,20 +224,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -205,17 +248,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Adenosis is treated in this curriculum as an ABPath AP content-specification topic within Diabetic mastopathy; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Adenosis.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Normal Anatomy and Histology > Diabetic mastopathy > Adenosis. Source line: 325.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Adenosis.",
+          "answer": "Adenosis; scoped to Diabetic mastopathy in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Adenosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Adenosis.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-03-2a8fcd9a-2b21-4c2c-90de-aed238adba69",
       "sourceQueueId": "ap_breast-2a8fcd9a-2b21-4c2c-90de-aed238adba69",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Hemangioma",
       "category": "Breast",
@@ -261,7 +347,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -272,20 +358,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -296,17 +382,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Hemangioma is treated in this curriculum as an ABPath AP content-specification topic within Diabetic mastopathy; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Hemangioma.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Normal Anatomy and Histology > Diabetic mastopathy > Hemangioma. Source line: 332.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Hemangioma.",
+          "answer": "Hemangioma; scoped to Diabetic mastopathy in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Hemangioma.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Hemangioma.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-04-a932fcfa-fe27-4db4-8180-ca7b7289715f",
       "sourceQueueId": "ap_breast-a932fcfa-fe27-4db4-8180-ca7b7289715f",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Leiomyoma",
       "category": "Breast",
@@ -352,7 +481,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -363,20 +492,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -387,17 +516,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Leiomyoma is treated in this curriculum as an ABPath AP content-specification topic within Diabetic mastopathy; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Leiomyoma.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Normal Anatomy and Histology > Diabetic mastopathy > Leiomyoma. Source line: 333.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Leiomyoma.",
+          "answer": "Leiomyoma; scoped to Diabetic mastopathy in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Leiomyoma.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Leiomyoma.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-05-ba5f6b06-f921-4a8e-9e91-24f117a6bf82",
       "sourceQueueId": "ap_breast-ba5f6b06-f921-4a8e-9e91-24f117a6bf82",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Therapy induced changes",
       "category": "Breast",
@@ -443,7 +615,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -454,20 +626,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "tumor bed fibrosis/necrosis/treatment-effect field paired with residual carcinoma or no-residual-disease comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: tumor bed fibrosis/necrosis/treatment-effect field paired with residual carcinoma or no-residual-disease comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -478,17 +650,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Therapy induced changes is treated in this curriculum as an ABPath AP content-specification topic within Breast; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Therapy induced changes.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Therapy induced changes. Source line: 470.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Therapy induced changes.",
+          "answer": "Therapy induced changes; scoped to Breast in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Therapy induced changes.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "tumor bed fibrosis/necrosis/treatment-effect field paired with residual carcinoma or no-residual-disease comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Therapy induced changes.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-06-3a0a1c98-5417-4a39-b0fe-b81ca4cafc2d",
       "sourceQueueId": "ap_breast-3a0a1c98-5417-4a39-b0fe-b81ca4cafc2d",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Drug and Therapy Changes",
       "category": "Breast",
@@ -534,7 +749,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -545,20 +760,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "tumor bed fibrosis/necrosis/treatment-effect field paired with residual carcinoma or no-residual-disease comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: tumor bed fibrosis/necrosis/treatment-effect field paired with residual carcinoma or no-residual-disease comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -569,17 +784,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Drug and Therapy Changes is treated in this curriculum as an ABPath AP content-specification topic within Cerebrospinal Fluid (CSF); learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Drug and Therapy Changes.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > Cerebrospinal Fluid (CSF) > Drug and Therapy Changes. Source line: 4616.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Drug and Therapy Changes.",
+          "answer": "Drug and Therapy Changes; scoped to Cerebrospinal Fluid (CSF) in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Drug and Therapy Changes.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "tumor bed fibrosis/necrosis/treatment-effect field paired with residual carcinoma or no-residual-disease comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Drug and Therapy Changes.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-07-1021aa23-ea15-4038-861e-7a80e806821d",
       "sourceQueueId": "ap_breast-1021aa23-ea15-4038-861e-7a80e806821d",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Shunt and Foreign Body Reactions",
       "category": "Breast",
@@ -625,7 +883,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -636,20 +894,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -660,17 +918,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Shunt and Foreign Body Reactions is treated in this curriculum as an ABPath AP content-specification topic within Cerebrospinal Fluid (CSF); learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Shunt and Foreign Body Reactions.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > Cerebrospinal Fluid (CSF) > Shunt and Foreign Body Reactions. Source line: 4617.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Shunt and Foreign Body Reactions.",
+          "answer": "Shunt and Foreign Body Reactions; scoped to Cerebrospinal Fluid (CSF) in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Shunt and Foreign Body Reactions.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Shunt and Foreign Body Reactions.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-08-6bffa019-efd2-4760-8ff0-00dac30a64c5",
       "sourceQueueId": "ap_breast-6bffa019-efd2-4760-8ff0-00dac30a64c5",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Reactive Pleocytosis (e.g., Mollaret)",
       "category": "Breast",
@@ -716,7 +1017,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -727,20 +1028,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -751,17 +1052,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Reactive Pleocytosis (e.g., Mollaret) is treated in this curriculum as an ABPath AP content-specification topic within Shunt and Foreign Body Reactions; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Reactive Pleocytosis (e.g., Mollaret).",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > Cerebrospinal Fluid (CSF) > Shunt and Foreign Body Reactions > Reactive Pleocytosis (e.g., Mollaret). Source line: 4618.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Reactive Pleocytosis (e.g., Mollaret).",
+          "answer": "Reactive Pleocytosis (e.g., Mollaret); scoped to Shunt and Foreign Body Reactions in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Reactive Pleocytosis (e.g., Mollaret).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Reactive Pleocytosis (e.g., Mollaret).",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-09-6b18e9dc-c078-495e-8853-37cb9329dea2",
       "sourceQueueId": "ap_breast-6b18e9dc-c078-495e-8853-37cb9329dea2",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Fungal (e.g., Candida)",
       "category": "Breast",
@@ -807,7 +1151,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -818,20 +1162,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -842,17 +1186,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Fungal (e.g., Candida) is treated in this curriculum as an ABPath AP content-specification topic within The Urinary Tract; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Fungal (e.g., Candida).",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > The Urinary Tract > Fungal (e.g., Candida). Source line: 4743.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Fungal (e.g., Candida).",
+          "answer": "Fungal (e.g., Candida); scoped to The Urinary Tract in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Fungal (e.g., Candida).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Fungal (e.g., Candida).",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-10-7ddcbb0f-8aaa-46f2-b77d-a3e1f31def7d",
       "sourceQueueId": "ap_breast-7ddcbb0f-8aaa-46f2-b77d-a3e1f31def7d",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Parasitic (e.g., Schistosoma)",
       "category": "Breast",
@@ -898,7 +1285,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -909,20 +1296,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -933,17 +1320,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Parasitic (e.g., Schistosoma) is treated in this curriculum as an ABPath AP content-specification topic within The Urinary Tract; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Parasitic (e.g., Schistosoma).",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > The Urinary Tract > Parasitic (e.g., Schistosoma). Source line: 4744.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Parasitic (e.g., Schistosoma).",
+          "answer": "Parasitic (e.g., Schistosoma); scoped to The Urinary Tract in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Parasitic (e.g., Schistosoma).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Parasitic (e.g., Schistosoma).",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-11-5fa2507f-a7c7-4230-83ad-18c3a342a164",
       "sourceQueueId": "ap_breast-5fa2507f-a7c7-4230-83ad-18c3a342a164",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Viral (e.g., Polyoma)",
       "category": "Breast",
@@ -989,7 +1419,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1000,20 +1430,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1024,17 +1454,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Viral (e.g., Polyoma) is treated in this curriculum as an ABPath AP content-specification topic within Parasitic (e.g., Schistosoma); learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Viral (e.g., Polyoma).",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > The Urinary Tract > Parasitic (e.g., Schistosoma) > Viral (e.g., Polyoma). Source line: 4745.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Viral (e.g., Polyoma).",
+          "answer": "Viral (e.g., Polyoma); scoped to Parasitic (e.g., Schistosoma) in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Viral (e.g., Polyoma).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Viral (e.g., Polyoma).",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-12-37b48393-6e98-42df-ae1f-af8812b75ecf",
       "sourceQueueId": "ap_breast-37b48393-6e98-42df-ae1f-af8812b75ecf",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Infections",
       "category": "Breast",
@@ -1080,7 +1553,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1091,20 +1564,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1115,17 +1588,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Infections is treated in this curriculum as an ABPath AP content-specification topic within Respiratory Exfoliative (Sputum, Brushing, Washing); learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Infections.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > Respiratory Exfoliative (Sputum, Brushing, Washing) > Infections. Source line: 4849.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Infections.",
+          "answer": "Infections; scoped to Respiratory Exfoliative (Sputum, Brushing, Washing) in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Infections.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Infections.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-13-8164ef68-6102-440f-982c-d5c07a9bbc74",
       "sourceQueueId": "ap_breast-8164ef68-6102-440f-982c-d5c07a9bbc74",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Bacterial / Mycobacterial",
       "category": "Breast",
@@ -1171,7 +1687,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1182,20 +1698,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1206,17 +1722,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Bacterial / Mycobacterial is treated in this curriculum as an ABPath AP content-specification topic within Respiratory Exfoliative (Sputum, Brushing, Washing); learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Bacterial / Mycobacterial.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > Respiratory Exfoliative (Sputum, Brushing, Washing) > Bacterial / Mycobacterial. Source line: 4850.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Bacterial / Mycobacterial.",
+          "answer": "Bacterial / Mycobacterial; scoped to Respiratory Exfoliative (Sputum, Brushing, Washing) in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Bacterial / Mycobacterial.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Bacterial / Mycobacterial.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-14-c9016898-a487-48e6-be1f-b6f813c7e5b3",
       "sourceQueueId": "ap_breast-c9016898-a487-48e6-be1f-b6f813c7e5b3",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Endoscopic Brushings",
       "category": "Breast",
@@ -1262,7 +1821,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1273,20 +1832,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1297,17 +1856,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Endoscopic Brushings is treated in this curriculum as an ABPath AP content-specification topic within Esophageal Cytopathology; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Endoscopic Brushings.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > Esophageal Cytopathology > Endoscopic Brushings. Source line: 5074.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Endoscopic Brushings.",
+          "answer": "Endoscopic Brushings; scoped to Esophageal Cytopathology in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Endoscopic Brushings.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Endoscopic Brushings.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-15-90f3726b-a2dc-4b50-a0d2-fbf7c9f34e2f",
       "sourceQueueId": "ap_breast-90f3726b-a2dc-4b50-a0d2-fbf7c9f34e2f",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Indications / Techniques",
       "category": "Breast",
@@ -1353,7 +1955,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1364,20 +1966,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1388,17 +1990,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Indications / Techniques is treated in this curriculum as an ABPath AP content-specification topic within Pancreatic Cytopathology; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Indications / Techniques.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > Pancreatic Cytopathology > Indications / Techniques. Source line: 5259.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Indications / Techniques.",
+          "answer": "Indications / Techniques; scoped to Pancreatic Cytopathology in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Indications / Techniques.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Indications / Techniques.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-16-60c26c37-80e6-487b-a8ba-258ad30bde2f",
       "sourceQueueId": "ap_breast-60c26c37-80e6-487b-a8ba-258ad30bde2f",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Indications for Evaluation",
       "category": "Breast",
@@ -1444,7 +2089,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1455,20 +2100,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1479,17 +2124,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Indications for Evaluation is treated in this curriculum as an ABPath AP content-specification topic within Pancreatic Cytopathology; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Indications for Evaluation.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > Pancreatic Cytopathology > Indications for Evaluation. Source line: 5260.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Indications for Evaluation.",
+          "answer": "Indications for Evaluation; scoped to Pancreatic Cytopathology in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Indications for Evaluation.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Indications for Evaluation.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-17-a749573e-6763-45b2-bf7f-7092d22f98d4",
       "sourceQueueId": "ap_breast-a749573e-6763-45b2-bf7f-7092d22f98d4",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Epithelial Myoepithelial Carcinoma",
       "category": "Breast",
@@ -1535,7 +2223,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1546,20 +2234,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1570,17 +2258,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Epithelial Myoepithelial Carcinoma is treated in this curriculum as an ABPath AP content-specification topic within Salivary Gland FNA; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Epithelial Myoepithelial Carcinoma.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Lung Primary > Salivary Gland FNA > Epithelial Myoepithelial Carcinoma. Source line: 5383.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Epithelial Myoepithelial Carcinoma.",
+          "answer": "Epithelial Myoepithelial Carcinoma; scoped to Salivary Gland FNA in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Epithelial Myoepithelial Carcinoma.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Epithelial Myoepithelial Carcinoma.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-18-fe908fb0-3f26-4218-b27f-15b4d8241a74",
       "sourceQueueId": "ap_breast-fe908fb0-3f26-4218-b27f-15b4d8241a74",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Normal Cytology",
       "category": "Breast",
@@ -1626,7 +2357,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1637,20 +2368,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1661,17 +2392,60 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Normal Cytology is treated in this curriculum as an ABPath AP content-specification topic within Breast; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Normal Cytology.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Normal Cytology. Source line: 5722.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Normal Cytology.",
+          "answer": "Normal Cytology; scoped to Breast in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Normal Cytology.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power breast architecture plus high-power diagnostic feature and normal/reactive comparator",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Normal Cytology.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-breast-card-19-807f09d4-89f3-42fd-856e-5be0f851413c",
       "sourceQueueId": "ap_breast-807f09d4-89f3-42fd-856e-5be0f851413c",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Normal Anatomy, History, and Development",
       "category": "Breast",
@@ -1717,7 +2491,7 @@ export const apP0BreastCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "Radiology-pathology concordance, biomarker, myoepithelial, or synoptic implication is handled when relevant."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed breast content, visual anchor, retrieval answer key, and breast faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1728,20 +2502,20 @@ export const apP0BreastCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, ancillary/reporting consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Breast prompt set exists; faculty-reviewed answer key and reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1752,11 +2526,54 @@ export const apP0BreastCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Normal Anatomy, History, and Development is treated in this curriculum as an ABPath AP content-specification topic within Breast; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Normal Anatomy, History, and Development.",
+        "topMimic": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+        "discriminator": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+        "ancillaryOrReportingConsequence": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+        "safetyPitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Breast > Normal Anatomy, History, and Development. Source line: 17232.",
+        "scopedDomain": "Breast"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Normal Anatomy, History, and Development.",
+          "answer": "Normal Anatomy, History, and Development; scoped to Breast in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Normal Anatomy, History, and Development.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue",
+        "inspectionSequence": [
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Normal Anatomy, History, and Development.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     }
   ]

@@ -1,6 +1,6 @@
 # AP P0 Batch Status Report
 
-Generated: 2026-05-15T23:01:30.394Z
+Generated: 2026-05-16T03:34:27.365Z
 
 ## Source Files
 
@@ -43,7 +43,7 @@ P0 rows are core AP content-spec entities missing from active teaching surfaces.
 
 Batch: P0 core entity card batch 1
 
-Status: draft scaffolds awaiting faculty-reviewed medical content and visual assets
+Status: draft content attached; awaiting faculty review, citation, and asset/license completion
 
 Strategy: First 24 P0 rows prioritized toward medical kidney/GU, placenta, GI, cardiovascular/autopsy, endocrine, thoracic, soft tissue, cytology, and head and neck before broader long-tail domains.
 
@@ -51,12 +51,12 @@ Strategy: First 24 P0 rows prioritized toward medical kidney/GU, placenta, GI, c
 | --- | --- |
 | Cards | 24 |
 | Completed gates | 0 |
-| Review-ready gates | 24 |
-| Missing gates | 96 |
+| Review-ready gates | 96 |
+| Missing gates | 24 |
 | Total gates | 120 |
 | Percent complete | 0% |
-| Percent review-ready | 20% |
-| Percent missing | 80% |
+| Percent review-ready | 80% |
+| Percent missing | 20% |
 
 ## First-Batch Categories
 
@@ -70,25 +70,22 @@ Strategy: First 24 P0 rows prioritized toward medical kidney/GU, placenta, GI, c
 
 | Gate label | Complete | Ready for review | Missing |
 | --- | --- | --- | --- |
-| Entity card content | 0 | 0 | 24 |
+| Entity card content | 0 | 24 | 0 |
 | Faculty review | 0 | 0 | 24 |
-| Retrieval answer key | 0 | 0 | 24 |
+| Retrieval answer key | 0 | 24 | 0 |
 | Taxonomy QA | 0 | 24 | 0 |
-| Visual anchor | 0 | 0 | 24 |
+| Visual anchor | 0 | 24 | 0 |
 
 ## Missing Gates By Label
 
 | Gate label | Missing count |
 | --- | --- |
-| Entity card content | 24 |
 | Faculty review | 24 |
-| Retrieval answer key | 24 |
-| Visual anchor | 24 |
 
 ## Next Actions
 
 - Assign the highest-volume missing gate work first.
-  Rationale: Entity card content is missing on 24 first-batch cards.
+  Rationale: Faculty review is missing on 24 first-batch cards.
 - Convert ready taxonomy gates into reviewed gates.
   Rationale: Every first-batch card currently has a structured taxonomy QA scaffold; faculty confirmation is the fastest route to measurable progress.
 - Add source-backed content and answer keys before visual-only expansion.

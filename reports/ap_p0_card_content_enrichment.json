@@ -1,0 +1,184 @@
+{
+  "generatedAt": "2026-05-16T03:32:51.781Z",
+  "rule": "Attach deterministic draft entity-card content, retrieval answer keys, and visual inspection sequences to every AP P0 card while preserving faculty review as the canonical release gate.",
+  "files": [
+    {
+      "file": "src/content/competency/apP0BreastCardBatch.ts",
+      "batchName": "P0 breast entity card batch",
+      "cards": 19,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 76,
+        "missingGates": 19,
+        "totalGates": 95,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
+      "batchName": "P0 cardiovascular/autopsy entity card batch",
+      "cards": 24,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 96,
+        "missingGates": 24,
+        "totalGates": 120,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+      "batchName": "P0 cardiovascular/autopsy entity card batch 2",
+      "cards": 24,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 96,
+        "missingGates": 24,
+        "totalGates": 120,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
+      "batchName": "P0 cardiovascular/autopsy entity card batch 3",
+      "cards": 24,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 96,
+        "missingGates": 24,
+        "totalGates": 120,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
+      "batchName": "P0 cardiovascular/autopsy taxonomy review completion batch",
+      "cards": 3,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 12,
+        "missingGates": 3,
+        "totalGates": 15,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0DermpathCardBatch.ts",
+      "batchName": "P0 dermatopathology entity card batch",
+      "cards": 24,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 96,
+        "missingGates": 24,
+        "totalGates": 120,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0EndocrineCardBatch.ts",
+      "batchName": "P0 endocrine entity card batch",
+      "cards": 24,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 96,
+        "missingGates": 24,
+        "totalGates": 120,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
+      "batchName": "P0 endocrine entity card batch 2",
+      "cards": 16,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 64,
+        "missingGates": 16,
+        "totalGates": 80,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0EntityCardBatch.ts",
+      "batchName": "P0 core entity card batch 1",
+      "cards": 24,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 96,
+        "missingGates": 24,
+        "totalGates": 120,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0GiCardBatch.ts",
+      "batchName": "P0 gastrointestinal entity card batch",
+      "cards": 20,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 80,
+        "missingGates": 20,
+        "totalGates": 100,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0MaleReproCardBatch.ts",
+      "batchName": "P0 male reproductive entity card batch",
+      "cards": 23,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 92,
+        "missingGates": 23,
+        "totalGates": 115,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0PediatricCardBatch.ts",
+      "batchName": "P0 pediatric/perinatal entity card batch",
+      "cards": 24,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 96,
+        "missingGates": 24,
+        "totalGates": 120,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    },
+    {
+      "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
+      "batchName": "P0 small-domain entity card batch",
+      "cards": 30,
+      "readiness": {
+        "completedGates": 0,
+        "reviewReadyGates": 120,
+        "missingGates": 30,
+        "totalGates": 150,
+        "percentComplete": 0,
+        "percentReviewReady": 80
+      }
+    }
+  ],
+  "summary": {
+    "cards": 279,
+    "completedGates": 0,
+    "reviewReadyGates": 1116,
+    "missingGates": 279,
+    "totalGates": 1395,
+    "percentComplete": 0,
+    "percentReviewReady": 80
+  }
+}

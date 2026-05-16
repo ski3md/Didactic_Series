@@ -1,6 +1,6 @@
 # AP P0 Multi-Batch Validation
 
-Generated: 2026-05-15T23:01:29.697Z
+Generated: 2026-05-16T03:34:26.761Z
 Source pattern: `src/content/competency/apP0*CardBatch.ts`
 
 ## Summary
@@ -9,8 +9,8 @@ Source pattern: `src/content/competency/apP0*CardBatch.ts`
 - Parsed batch files: 13
 - Cards: 279
 - Gate statuses: 1395
-- Gate counts by status: missing: 1116, ready-for-review: 279
-- Completion: 0% complete, 20% ready-for-review, 80% missing
+- Gate counts by status: ready-for-review: 1116, missing: 279
+- Completion: 0% complete, 80% ready-for-review, 20% missing
 - Duplicate card IDs across batches: 0
 - Duplicate sourceQueueIds across batches: 0
 - Cards with missing required fields: 0
@@ -23,19 +23,19 @@ Source pattern: `src/content/competency/apP0*CardBatch.ts`
 
 | File | Batch | Cards | Gates | Gate status counts | Issues |
 | --- | --- | --- | --- | --- | --- |
-| `src/content/competency/apP0BreastCardBatch.ts` | P0 breast entity card batch | 19 | 95 | ready-for-review: 19, missing: 76 | 0 |
-| `src/content/competency/apP0CvAutopsyCardBatch.ts` | P0 cardiovascular/autopsy entity card batch | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
-| `src/content/competency/apP0CvAutopsyCardBatch2.ts` | P0 cardiovascular/autopsy entity card batch 2 | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
-| `src/content/competency/apP0CvAutopsyCardBatch3.ts` | P0 cardiovascular/autopsy entity card batch 3 | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
-| `src/content/competency/apP0CvTaxonomyReviewCardBatch.ts` | P0 cardiovascular/autopsy taxonomy review completion batch | 3 | 15 | ready-for-review: 3, missing: 12 | 0 |
-| `src/content/competency/apP0DermpathCardBatch.ts` | P0 dermatopathology entity card batch | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
-| `src/content/competency/apP0EndocrineCardBatch.ts` | P0 endocrine entity card batch | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
-| `src/content/competency/apP0EndocrineCardBatch2.ts` | P0 endocrine entity card batch 2 | 16 | 80 | ready-for-review: 16, missing: 64 | 0 |
-| `src/content/competency/apP0EntityCardBatch.ts` | P0 core entity card batch 1 | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
-| `src/content/competency/apP0GiCardBatch.ts` | P0 gastrointestinal entity card batch | 20 | 100 | ready-for-review: 20, missing: 80 | 0 |
-| `src/content/competency/apP0MaleReproCardBatch.ts` | P0 male reproductive entity card batch | 23 | 115 | ready-for-review: 23, missing: 92 | 0 |
-| `src/content/competency/apP0PediatricCardBatch.ts` | P0 pediatric/perinatal entity card batch | 24 | 120 | ready-for-review: 24, missing: 96 | 0 |
-| `src/content/competency/apP0SmallDomainsCardBatch.ts` | P0 small-domain entity card batch | 30 | 150 | ready-for-review: 30, missing: 120 | 0 |
+| `src/content/competency/apP0BreastCardBatch.ts` | P0 breast entity card batch | 19 | 95 | ready-for-review: 76, missing: 19 | 0 |
+| `src/content/competency/apP0CvAutopsyCardBatch.ts` | P0 cardiovascular/autopsy entity card batch | 24 | 120 | ready-for-review: 96, missing: 24 | 0 |
+| `src/content/competency/apP0CvAutopsyCardBatch2.ts` | P0 cardiovascular/autopsy entity card batch 2 | 24 | 120 | ready-for-review: 96, missing: 24 | 0 |
+| `src/content/competency/apP0CvAutopsyCardBatch3.ts` | P0 cardiovascular/autopsy entity card batch 3 | 24 | 120 | ready-for-review: 96, missing: 24 | 0 |
+| `src/content/competency/apP0CvTaxonomyReviewCardBatch.ts` | P0 cardiovascular/autopsy taxonomy review completion batch | 3 | 15 | ready-for-review: 12, missing: 3 | 0 |
+| `src/content/competency/apP0DermpathCardBatch.ts` | P0 dermatopathology entity card batch | 24 | 120 | ready-for-review: 96, missing: 24 | 0 |
+| `src/content/competency/apP0EndocrineCardBatch.ts` | P0 endocrine entity card batch | 24 | 120 | ready-for-review: 96, missing: 24 | 0 |
+| `src/content/competency/apP0EndocrineCardBatch2.ts` | P0 endocrine entity card batch 2 | 16 | 80 | ready-for-review: 64, missing: 16 | 0 |
+| `src/content/competency/apP0EntityCardBatch.ts` | P0 core entity card batch 1 | 24 | 120 | ready-for-review: 96, missing: 24 | 0 |
+| `src/content/competency/apP0GiCardBatch.ts` | P0 gastrointestinal entity card batch | 20 | 100 | ready-for-review: 80, missing: 20 | 0 |
+| `src/content/competency/apP0MaleReproCardBatch.ts` | P0 male reproductive entity card batch | 23 | 115 | ready-for-review: 92, missing: 23 | 0 |
+| `src/content/competency/apP0PediatricCardBatch.ts` | P0 pediatric/perinatal entity card batch | 24 | 120 | ready-for-review: 96, missing: 24 | 0 |
+| `src/content/competency/apP0SmallDomainsCardBatch.ts` | P0 small-domain entity card batch | 30 | 150 | ready-for-review: 120, missing: 30 | 0 |
 
 ## Cross-Batch Duplicates
 

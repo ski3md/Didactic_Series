@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-15T23:01:29.697Z",
+  "generatedAt": "2026-05-16T03:34:26.761Z",
   "sourcePattern": "src/content/competency/apP0*CardBatch.ts",
   "expectedGateStatusCount": 5,
   "summary": {
@@ -8,12 +8,12 @@
     "totalCards": 279,
     "totalGates": 1395,
     "gateStatusCounts": {
-      "missing": 1116,
-      "ready-for-review": 279
+      "ready-for-review": 1116,
+      "missing": 279
     },
     "percentComplete": 0,
-    "percentReviewReady": 20,
-    "percentMissing": 80,
+    "percentReviewReady": 80,
+    "percentMissing": 20,
     "batchesWithIssues": 0,
     "cardsWithMissingRequiredFields": 0,
     "cardsWithoutExpectedGateCount": 0,
@@ -33,12 +33,12 @@
       "exportName": "apP0BreastCardBatch",
       "parsed": true,
       "batchName": "P0 breast entity card batch",
-      "status": "draft breast scaffolds awaiting taxonomy QA, source-backed content, visual anchors, retrieval answer keys, and faculty review metadata",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 19,
       "gateCount": 95,
       "gateStatusCounts": {
-        "ready-for-review": 19,
-        "missing": 76
+        "ready-for-review": 76,
+        "missing": 19
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -322,12 +322,12 @@
       "exportName": "apP0CvAutopsyCardBatch",
       "parsed": true,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
-      "status": "draft cardiovascular/autopsy scaffolds awaiting faculty-reviewed medical content and visual assets",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 24,
       "gateCount": 120,
       "gateStatusCounts": {
-        "ready-for-review": 24,
-        "missing": 96
+        "ready-for-review": 96,
+        "missing": 24
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -681,12 +681,12 @@
       "exportName": "apP0CvAutopsyCardBatch2",
       "parsed": true,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
-      "status": "draft cardiovascular/autopsy batch-2 scaffolds awaiting faculty-reviewed medical content and visual assets",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 24,
       "gateCount": 120,
       "gateStatusCounts": {
-        "ready-for-review": 24,
-        "missing": 96
+        "ready-for-review": 96,
+        "missing": 24
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -1040,12 +1040,12 @@
       "exportName": "apP0CvAutopsyCardBatch3",
       "parsed": true,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
-      "status": "draft cardiovascular/autopsy batch-3 scaffolds awaiting faculty-reviewed medical content, visual anchors, answer keys, and review metadata",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 24,
       "gateCount": 120,
       "gateStatusCounts": {
-        "ready-for-review": 24,
-        "missing": 96
+        "ready-for-review": 96,
+        "missing": 24
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -1399,12 +1399,12 @@
       "exportName": "apP0CvTaxonomyReviewCardBatch",
       "parsed": true,
       "batchName": "P0 cardiovascular/autopsy taxonomy review completion batch",
-      "status": "draft taxonomy-review scaffolds awaiting faculty keep/reassign decision before canonical promotion",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 3,
       "gateCount": 15,
       "gateStatusCounts": {
-        "ready-for-review": 3,
-        "missing": 12
+        "ready-for-review": 12,
+        "missing": 3
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -1464,12 +1464,12 @@
       "exportName": "apP0DermpathCardBatch",
       "parsed": true,
       "batchName": "P0 dermatopathology entity card batch",
-      "status": "draft scaffolds awaiting dermatopathology faculty content, visual assets, answer keys, and review metadata",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 24,
       "gateCount": 120,
       "gateStatusCounts": {
-        "ready-for-review": 24,
-        "missing": 96
+        "ready-for-review": 96,
+        "missing": 24
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -1823,12 +1823,12 @@
       "exportName": "apP0EndocrineCardBatch",
       "parsed": true,
       "batchName": "P0 endocrine entity card batch",
-      "status": "draft endocrine scaffolds awaiting taxonomy QA, source-backed content, visual anchors, retrieval answer keys, and faculty review",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 24,
       "gateCount": 120,
       "gateStatusCounts": {
-        "ready-for-review": 24,
-        "missing": 96
+        "ready-for-review": 96,
+        "missing": 24
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -2182,12 +2182,12 @@
       "exportName": "apP0EndocrineCardBatch2",
       "parsed": true,
       "batchName": "P0 endocrine entity card batch 2",
-      "status": "draft endocrine remainder scaffolds awaiting taxonomy QA, source-backed content, visual anchors or reassignment rationale, retrieval answer keys, and faculty review",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 16,
       "gateCount": 80,
       "gateStatusCounts": {
-        "ready-for-review": 16,
-        "missing": 64
+        "ready-for-review": 64,
+        "missing": 16
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -2429,12 +2429,12 @@
       "exportName": "apP0EntityCardBatch",
       "parsed": true,
       "batchName": "P0 core entity card batch 1",
-      "status": "draft scaffolds awaiting faculty-reviewed medical content and visual assets",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 24,
       "gateCount": 120,
       "gateStatusCounts": {
-        "ready-for-review": 24,
-        "missing": 96
+        "ready-for-review": 96,
+        "missing": 24
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -2788,12 +2788,12 @@
       "exportName": "apP0GiCardBatch",
       "parsed": true,
       "batchName": "P0 gastrointestinal entity card batch",
-      "status": "draft GI scaffolds awaiting faculty-reviewed medical content, visual anchors, answer keys, and review metadata",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 20,
       "gateCount": 100,
       "gateStatusCounts": {
-        "ready-for-review": 20,
-        "missing": 80
+        "ready-for-review": 80,
+        "missing": 20
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -3091,12 +3091,12 @@
       "exportName": "apP0MaleReproCardBatch",
       "parsed": true,
       "batchName": "P0 male reproductive entity card batch",
-      "status": "draft male reproductive scaffolds awaiting taxonomy QA, source-backed content, visual anchors, retrieval answer keys, and faculty review",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 23,
       "gateCount": 115,
       "gateStatusCounts": {
-        "ready-for-review": 23,
-        "missing": 92
+        "ready-for-review": 92,
+        "missing": 23
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -3436,12 +3436,12 @@
       "exportName": "apP0PediatricCardBatch",
       "parsed": true,
       "batchName": "P0 pediatric/perinatal entity card batch",
-      "status": "draft pediatric/perinatal scaffolds awaiting taxonomy QA, source-backed content, visual anchors, retrieval answer keys, and faculty review",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 24,
       "gateCount": 120,
       "gateStatusCounts": {
-        "ready-for-review": 24,
-        "missing": 96
+        "ready-for-review": 96,
+        "missing": 24
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,
@@ -3795,12 +3795,12 @@
       "exportName": "apP0SmallDomainsCardBatch",
       "parsed": true,
       "batchName": "P0 small-domain entity card batch",
-      "status": "draft small-domain scaffolds awaiting faculty-reviewed medical content, visual/context anchors, answer keys, and review metadata",
+      "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
       "cardCount": 30,
       "gateCount": 150,
       "gateStatusCounts": {
-        "ready-for-review": 30,
-        "missing": 120
+        "ready-for-review": 120,
+        "missing": 30
       },
       "missingBatchFields": [],
       "cardsWithMissingRequiredFields": 0,

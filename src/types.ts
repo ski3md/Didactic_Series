@@ -175,6 +175,7 @@ export interface MCQ {
   choices: string[];
   answer: string;
   rationale: string;
+  choiceRationales?: Record<string, string>;
 }
 
 export interface Flashcard {

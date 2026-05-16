@@ -711,6 +711,12 @@ const bladderQuickChecks: LectureQuickCheck[] = [
       choices: ['Reactive atypia', 'Urothelial dysplasia', 'Carcinoma in situ', 'Nephrogenic adenoma'],
       answer: 'Carcinoma in situ',
       rationale: 'Full-thickness atypia with supportive CK20/CD44 staining is classic for urothelial carcinoma in situ.',
+      choiceRationales: {
+        'Reactive atypia': 'Reactive atypia can mimic CIS, but full-thickness atypia with diffuse CK20 and loss of basal CD44 is beyond a reactive pattern.',
+        'Urothelial dysplasia': 'Dysplasia is atypical but does not fully explain the full-thickness cytologic abnormality and supportive CIS immunophenotype.',
+        'Carcinoma in situ': 'This is the best answer because the flat lesion has full-thickness atypia and a CK20/CD44 pattern supporting urothelial CIS.',
+        'Nephrogenic adenoma': 'Nephrogenic adenoma is a glandular/tubular mimic, not the best fit for a flat full-thickness urothelial atypia pattern.',
+      },
     },
   },
   {
@@ -724,6 +730,12 @@ const bladderQuickChecks: LectureQuickCheck[] = [
       choices: ['Diffuse CK20 staining', 'Lamina propria invasion', 'Muscularis propria invasion', 'Presence of necrosis'],
       answer: 'Muscularis propria invasion',
       rationale: 'Invasion into muscularis propria defines pT2 disease and is the key management threshold for muscle-invasive bladder cancer.',
+      choiceRationales: {
+        'Diffuse CK20 staining': 'Diffuse CK20 can support a flat-lesion differential but does not define muscle-invasive disease.',
+        'Lamina propria invasion': 'Lamina propria invasion is invasive carcinoma, but it remains non-muscle-invasive until muscularis propria is involved.',
+        'Muscularis propria invasion': 'This is the best answer because detrusor muscle invasion defines pT2 disease and changes management decisively.',
+        'Presence of necrosis': 'Necrosis may indicate high-grade biology, but it does not establish the anatomic threshold for muscle invasion.',
+      },
     },
   },
 ];
@@ -746,6 +758,12 @@ const renalQuickChecks: LectureQuickCheck[] = [
       choices: ['CA9 box pattern with CK7 negativity', 'CA9 cup pattern with diffuse CK7 positivity', 'Diffuse CD10 with Vimentin positivity', 'PAX8 positivity alone'],
       answer: 'CA9 cup pattern with diffuse CK7 positivity',
       rationale: 'Clear cell papillary tumors characteristically show basolateral CA9 cup staining with diffuse CK7 positivity.',
+      choiceRationales: {
+        'CA9 box pattern with CK7 negativity': 'A complete CA9 box pattern with CK7 negativity favors conventional clear cell RCC more than clear cell papillary tumor.',
+        'CA9 cup pattern with diffuse CK7 positivity': 'This is the best answer because clear cell papillary tumors classically show basolateral CA9 cup staining with diffuse CK7.',
+        'Diffuse CD10 with Vimentin positivity': 'CD10 and vimentin can support clear cell RCC but do not provide the defining cup-pattern split requested here.',
+        'PAX8 positivity alone': 'PAX8 supports renal epithelial lineage but cannot separate clear cell papillary tumor from clear cell RCC by itself.',
+      },
     },
   },
   {
@@ -775,6 +793,12 @@ const testisQuickChecks: LectureQuickCheck[] = [
       choices: ['CD30 positive and CD117 negative', 'CD117 positive and CD30 negative', 'Inhibin positive and Calretinin positive', 'CD45 positive and OCT4 negative'],
       answer: 'CD117 positive and CD30 negative',
       rationale: 'The classic seminoma split is CD117 positive and CD30 negative, whereas embryonal carcinoma flips that profile.',
+      choiceRationales: {
+        'CD30 positive and CD117 negative': 'This pattern supports embryonal carcinoma more than seminoma, so it points the wrong way for the question.',
+        'CD117 positive and CD30 negative': 'This is the best answer because seminoma is typically CD117 positive and CD30 negative in the core GCT split.',
+        'Inhibin positive and Calretinin positive': 'This profile supports sex cord-stromal differentiation, not the seminoma versus embryonal carcinoma split.',
+        'CD45 positive and OCT4 negative': 'This would raise lymphoma in the right clinical setting, not seminoma over embryonal carcinoma.',
+      },
     },
   },
   {

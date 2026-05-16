@@ -44,6 +44,8 @@
     "ap:gaps:validate-batches": "node scripts/validate_ap_p0_batches.cjs",
     "ap:gaps:status": "node scripts/generate_ap_p0_batch_status_report.cjs",
     "ap:gaps:promotion-queue": "node scripts/generate_ap_p0_promotion_queue.cjs",
+    "ap:gaps:enrich-cards": "node scripts/enrich_ap_p0_cards.cjs",
+    "ap:gaps:content-ready": "npm run ap:gaps:enrich-cards && npm run ap:gaps:validate-cards && npm run ap:gaps:validate-batches && npm run ap:gaps:status && npm run ap:gaps:promotion-queue",
     "ap:gaps:verify": "npm run ap:gaps:validate-cards && npm run ap:gaps:validate-batches && npm run ap:gaps:status && npm run ap:gaps:promotion-queue",
     "lectures:contracts": "node scripts/generate_lecture_abpath_contracts.cjs",
     "lectures:contracts:validate": "node scripts/validate_lecture_abpath_contracts.cjs",

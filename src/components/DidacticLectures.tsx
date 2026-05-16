@@ -19,6 +19,7 @@ import LectureQuickCheckPanel from './lectures/LectureQuickCheckPanel.tsx';
 import { setTutorialLibraryIntent } from '../utils/tutorialLibraryNavigation.ts';
 import { setReferenceLibraryIntent } from '../utils/referenceLibraryNavigation.ts';
 import { resolveAcquiredImageUrl } from '../utils/acquiredImageCatalog.ts';
+import { getAnswerChoiceReasoning } from '../utils/answerChoiceReasoning.ts';
 import guWhoEntityManifest from '../content/gu/who_gu_entity_manifest.json';
 
 interface DidacticLecturesProps {
@@ -818,6 +819,20 @@ const LecturePrintDocument: React.FC<LecturePrintDocumentProps> = ({
                 ))}
               </ul>
             )}
+            {check.mcq && (
+              <>
+                <p>
+                  <strong>Answer:</strong> {check.mcq.answer}
+                </p>
+                <ul>
+                  {getAnswerChoiceReasoning(check.mcq).map((item) => (
+                    <li key={`${check.id}-${item.choice}-reasoning`}>
+                      <strong>{item.choice}:</strong> {item.reasoning}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
         ))}
         {lecture.mcqs.map((mcq) => (
@@ -831,7 +846,13 @@ const LecturePrintDocument: React.FC<LecturePrintDocumentProps> = ({
             <p>
               <strong>Answer:</strong> {mcq.answer}
             </p>
-            <p>{mcq.rationale}</p>
+            <ul>
+              {getAnswerChoiceReasoning(mcq).map((item) => (
+                <li key={`${mcq.topic}-${mcq.question}-${item.choice}-reasoning`}>
+                  <strong>{item.choice}:</strong> {item.reasoning}
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
         {lecture.flashcards.map((card) => (

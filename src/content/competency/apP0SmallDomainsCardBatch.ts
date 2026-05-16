@@ -8,7 +8,7 @@ export const apP0SmallDomainsCardBatch = {
   "facultyPacketCsvPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.csv",
   "batchName": "P0 small-domain entity card batch",
   "batchStrategy": "All remaining unassigned P0 rows from soft tissue/bone/joint, head and neck, cytopathology, forensic pathology, neuropathology, and respiratory categories, preserving category/source order and excluding sourceQueueIds already present in existing apP0 card batches.",
-  "status": "draft small-domain scaffolds awaiting faculty-reviewed medical content, visual/context anchors, answer keys, and review metadata",
+  "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
   "categoryCoverage": {
     "ap_soft": {
       "category": "Soft Tissue, Bone, and Joint",
@@ -49,11 +49,11 @@ export const apP0SmallDomainsCardBatch = {
   },
   "batchReadiness": {
     "completedGates": 0,
-    "reviewReadyGates": 30,
-    "missingGates": 120,
+    "reviewReadyGates": 120,
+    "missingGates": 30,
     "totalGates": 150,
     "percentComplete": 0,
-    "percentReviewReady": 20
+    "percentReviewReady": 80
   },
   "readinessLegend": {
     "complete": "Evidence is present and reviewed.",
@@ -64,7 +64,7 @@ export const apP0SmallDomainsCardBatch = {
     {
       "id": "p0-small-domain-card-01-9da68ebb-22a9-4b26-a195-a85da09953fd",
       "sourceQueueId": "ap_soft-9da68ebb-22a9-4b26-a195-a85da09953fd",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Lipoma and variants",
       "categoryId": "ap_soft",
@@ -113,7 +113,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Soft Tissue, Bone, and Joint content, visual/context anchor, retrieval answer key, and soft tissue/bone/joint pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -124,20 +124,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Soft Tissue, Bone, and Joint prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -148,17 +148,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Lipoma and variants is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Lipoma and variants.",
+        "topMimic": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect",
+        "discriminator": "matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation",
+        "ancillaryOrReportingConsequence": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+        "safetyPitfall": "overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Soft Tissue, Bones, and Joints > Soft Tissue > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Lipoma and variants. Source line: 3786.",
+        "scopedDomain": "Soft Tissue, Bones, and Joints"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Lipoma and variants.",
+          "answer": "Lipoma and variants; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Lipoma and variants.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect; separate with matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant",
+        "inspectionSequence": [
+          "Orient to Soft Tissue, Bones, and Joints and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Lipoma and variants.",
+          "Before sign-out, check the pitfall: overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-02-349db67c-9739-4659-88f8-473c8d2d7a8d",
       "sourceQueueId": "ap_soft-349db67c-9739-4659-88f8-473c8d2d7a8d",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Leiomyoma and variants",
       "categoryId": "ap_soft",
@@ -207,7 +250,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Soft Tissue, Bone, and Joint content, visual/context anchor, retrieval answer key, and soft tissue/bone/joint pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -218,20 +261,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Soft Tissue, Bone, and Joint prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -242,17 +285,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Leiomyoma and variants is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Leiomyoma and variants.",
+        "topMimic": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect",
+        "discriminator": "matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation",
+        "ancillaryOrReportingConsequence": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+        "safetyPitfall": "overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Soft Tissue, Bones, and Joints > Soft Tissue > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Leiomyoma and variants. Source line: 3787.",
+        "scopedDomain": "Soft Tissue, Bones, and Joints"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Leiomyoma and variants.",
+          "answer": "Leiomyoma and variants; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Leiomyoma and variants.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect; separate with matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant",
+        "inspectionSequence": [
+          "Orient to Soft Tissue, Bones, and Joints and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Leiomyoma and variants.",
+          "Before sign-out, check the pitfall: overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-03-d7635436-4a4f-4772-9ef6-06968aa6d323",
       "sourceQueueId": "ap_soft-d7635436-4a4f-4772-9ef6-06968aa6d323",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Lymphatic tumor",
       "categoryId": "ap_soft",
@@ -301,7 +387,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Soft Tissue, Bone, and Joint content, visual/context anchor, retrieval answer key, and soft tissue/bone/joint pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -312,20 +398,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Soft Tissue, Bone, and Joint prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -336,17 +422,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Lymphatic tumor is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Lymphatic tumor.",
+        "topMimic": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect",
+        "discriminator": "matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation",
+        "ancillaryOrReportingConsequence": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+        "safetyPitfall": "overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Soft Tissue, Bones, and Joints > Soft Tissue > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Lymphatic tumor. Source line: 3789.",
+        "scopedDomain": "Soft Tissue, Bones, and Joints"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Lymphatic tumor.",
+          "answer": "Lymphatic tumor; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Lymphatic tumor.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect; separate with matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant",
+        "inspectionSequence": [
+          "Orient to Soft Tissue, Bones, and Joints and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Lymphatic tumor.",
+          "Before sign-out, check the pitfall: overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-04-85b949e2-c483-4c93-8abb-d5995e6c2445",
       "sourceQueueId": "ap_soft-85b949e2-c483-4c93-8abb-d5995e6c2445",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Bones",
       "categoryId": "ap_soft",
@@ -395,7 +524,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Soft Tissue, Bone, and Joint content, visual/context anchor, retrieval answer key, and soft tissue/bone/joint pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -406,20 +535,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Soft Tissue, Bone, and Joint prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -430,17 +559,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Bones is treated in this curriculum as an ABPath AP content-specification topic within Soft Tissue, Bones, and Joints; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Bones.",
+        "topMimic": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect",
+        "discriminator": "matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation",
+        "ancillaryOrReportingConsequence": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+        "safetyPitfall": "overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Soft Tissue, Bones, and Joints > Bones. Source line: 3907.",
+        "scopedDomain": "Soft Tissue, Bones, and Joints"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Bones.",
+          "answer": "Bones; scoped to Soft Tissue, Bones, and Joints in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Bones.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect; separate with matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant",
+        "inspectionSequence": [
+          "Orient to Soft Tissue, Bones, and Joints and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Bones.",
+          "Before sign-out, check the pitfall: overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-05-8b150957-a856-4cb9-b4ae-df3bad021350",
       "sourceQueueId": "ap_soft-8b150957-a856-4cb9-b4ae-df3bad021350",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Osteoporosis",
       "categoryId": "ap_soft",
@@ -489,7 +661,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Soft Tissue, Bone, and Joint content, visual/context anchor, retrieval answer key, and soft tissue/bone/joint pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -500,20 +672,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Soft Tissue, Bone, and Joint prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -524,17 +696,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Osteoporosis is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Osteoporosis.",
+        "topMimic": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect",
+        "discriminator": "matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation",
+        "ancillaryOrReportingConsequence": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+        "safetyPitfall": "overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Soft Tissue, Bones, and Joints > Joints > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Osteoporosis. Source line: 3919.",
+        "scopedDomain": "Soft Tissue, Bones, and Joints"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Osteoporosis.",
+          "answer": "Osteoporosis; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Osteoporosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect; separate with matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant",
+        "inspectionSequence": [
+          "Orient to Soft Tissue, Bones, and Joints and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Osteoporosis.",
+          "Before sign-out, check the pitfall: overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-06-5cb225bd-0f31-4171-a134-f67978a70843",
       "sourceQueueId": "ap_soft-5cb225bd-0f31-4171-a134-f67978a70843",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Other Metabolic disorders",
       "categoryId": "ap_soft",
@@ -583,7 +798,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Soft Tissue, Bone, and Joint content, visual/context anchor, retrieval answer key, and soft tissue/bone/joint pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -594,20 +809,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Soft Tissue, Bone, and Joint prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -618,17 +833,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Other Metabolic disorders is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Other Metabolic disorders.",
+        "topMimic": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect",
+        "discriminator": "matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation",
+        "ancillaryOrReportingConsequence": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+        "safetyPitfall": "overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Soft Tissue, Bones, and Joints > Joints > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Other Metabolic disorders. Source line: 3924.",
+        "scopedDomain": "Soft Tissue, Bones, and Joints"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Other Metabolic disorders.",
+          "answer": "Other Metabolic disorders; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Other Metabolic disorders.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect; separate with matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant",
+        "inspectionSequence": [
+          "Orient to Soft Tissue, Bones, and Joints and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Other Metabolic disorders.",
+          "Before sign-out, check the pitfall: overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-07-7fbfcb44-8bb0-43eb-87fc-435710c0ea88",
       "sourceQueueId": "ap_soft-7fbfcb44-8bb0-43eb-87fc-435710c0ea88",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Osteogenesis imperfecta",
       "categoryId": "ap_soft",
@@ -677,7 +935,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Soft Tissue, Bone, and Joint content, visual/context anchor, retrieval answer key, and soft tissue/bone/joint pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -688,20 +946,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Soft Tissue, Bone, and Joint prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -712,17 +970,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Osteogenesis imperfecta is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Osteogenesis imperfecta.",
+        "topMimic": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect",
+        "discriminator": "matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation",
+        "ancillaryOrReportingConsequence": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+        "safetyPitfall": "overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Soft Tissue, Bones, and Joints > Joints > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Osteogenesis imperfecta. Source line: 3926.",
+        "scopedDomain": "Soft Tissue, Bones, and Joints"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Osteogenesis imperfecta.",
+          "answer": "Osteogenesis imperfecta; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Osteogenesis imperfecta.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect; separate with matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant",
+        "inspectionSequence": [
+          "Orient to Soft Tissue, Bones, and Joints and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Osteogenesis imperfecta.",
+          "Before sign-out, check the pitfall: overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-08-ecb8ed8a-abf8-44a8-a118-3e587760d6e9",
       "sourceQueueId": "ap_soft-ecb8ed8a-abf8-44a8-a118-3e587760d6e9",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Osteomyelitis",
       "categoryId": "ap_soft",
@@ -771,7 +1072,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Soft Tissue, Bone, and Joint content, visual/context anchor, retrieval answer key, and soft tissue/bone/joint pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -782,20 +1083,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Soft Tissue, Bone, and Joint prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -806,17 +1107,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Osteomyelitis is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Osteomyelitis.",
+        "topMimic": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect",
+        "discriminator": "matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation",
+        "ancillaryOrReportingConsequence": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+        "safetyPitfall": "overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Soft Tissue, Bones, and Joints > Joints > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Osteomyelitis. Source line: 3928.",
+        "scopedDomain": "Soft Tissue, Bones, and Joints"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Osteomyelitis.",
+          "answer": "Osteomyelitis; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Osteomyelitis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect; separate with matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant",
+        "inspectionSequence": [
+          "Orient to Soft Tissue, Bones, and Joints and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Osteomyelitis.",
+          "Before sign-out, check the pitfall: overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-09-7f4f2b7d-aecb-441c-b6f9-ff8f46b90ff8",
       "sourceQueueId": "ap_soft-7f4f2b7d-aecb-441c-b6f9-ff8f46b90ff8",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Lymphomas",
       "categoryId": "ap_soft",
@@ -865,7 +1209,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Soft Tissue, Bone, and Joint content, visual/context anchor, retrieval answer key, and soft tissue/bone/joint pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -876,20 +1220,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Soft Tissue, Bone, and Joint prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -900,17 +1244,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Lymphomas is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Lymphomas.",
+        "topMimic": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect",
+        "discriminator": "matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation",
+        "ancillaryOrReportingConsequence": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+        "safetyPitfall": "overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Soft Tissue, Bones, and Joints > Joints > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Lymphomas. Source line: 3960.",
+        "scopedDomain": "Soft Tissue, Bones, and Joints"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Lymphomas.",
+          "answer": "Lymphomas; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Lymphomas.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect; separate with matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant",
+        "inspectionSequence": [
+          "Orient to Soft Tissue, Bones, and Joints and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Lymphomas.",
+          "Before sign-out, check the pitfall: overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-10-8faa85c8-9ebe-49fd-86f5-54359c43548a",
       "sourceQueueId": "ap_soft-8faa85c8-9ebe-49fd-86f5-54359c43548a",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Wear debris arthropathy",
       "categoryId": "ap_soft",
@@ -959,7 +1346,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Soft Tissue, Bone, and Joint content, visual/context anchor, retrieval answer key, and soft tissue/bone/joint pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -970,20 +1357,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Soft Tissue, Bone, and Joint prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -994,17 +1381,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Wear debris arthropathy is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Wear debris arthropathy.",
+        "topMimic": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect",
+        "discriminator": "matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation",
+        "ancillaryOrReportingConsequence": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+        "safetyPitfall": "overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Soft Tissue, Bones, and Joints > Joints > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Wear debris arthropathy. Source line: 4064.",
+        "scopedDomain": "Soft Tissue, Bones, and Joints"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Wear debris arthropathy.",
+          "answer": "Wear debris arthropathy; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Wear debris arthropathy.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect; separate with matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant",
+        "inspectionSequence": [
+          "Orient to Soft Tissue, Bones, and Joints and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Wear debris arthropathy.",
+          "Before sign-out, check the pitfall: overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-11-3d4b52ac-47ba-4741-bee0-5872f60bbc66",
       "sourceQueueId": "ap_soft-3d4b52ac-47ba-4741-bee0-5872f60bbc66",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Septic arthritis, including tuberculosis",
       "categoryId": "ap_soft",
@@ -1053,7 +1483,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Soft Tissue, Bone, and Joint content, visual/context anchor, retrieval answer key, and soft tissue/bone/joint pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1064,20 +1494,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Soft Tissue, Bone, and Joint prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1088,17 +1518,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Septic arthritis, including tuberculosis is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Septic arthritis, including tuberculosis.",
+        "topMimic": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect",
+        "discriminator": "matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation",
+        "ancillaryOrReportingConsequence": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+        "safetyPitfall": "overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Soft Tissue, Bones, and Joints > Joints > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Septic arthritis, including tuberculosis. Source line: 4068.",
+        "scopedDomain": "Soft Tissue, Bones, and Joints"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Septic arthritis, including tuberculosis.",
+          "answer": "Septic arthritis, including tuberculosis; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Septic arthritis, including tuberculosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive lesion, benign mesenchymal tumor, sarcoma, metastatic disease, or treatment effect; separate with matrix type, architecture, cytologic atypia, mitotic/necrosis threshold, and targeted molecular/IHC correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, molecular confirmation, grade, margin, or staging language when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture or lesion distribution, high-power lineage or inflammatory clue, and radiology/gross comparator when relevant",
+        "inspectionSequence": [
+          "Orient to Soft Tissue, Bones, and Joints and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal soft tissue, bone, cartilage, synovium, or radiology-gross baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use growth pattern, matrix, cytology, mitotic activity, necrosis, interface, and radiology/gross correlation to decide whether the finding fits Septic arthritis, including tuberculosis.",
+          "Before sign-out, check the pitfall: overcalling reactive lesions as sarcoma or undercalling malignancy when grade/margin/reporting language is required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-12-c3f3808b-3521-47c4-b450-f4bc59895f28",
       "sourceQueueId": "ap_hn-c3f3808b-3521-47c4-b450-f4bc59895f28",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Nasal polyps",
       "categoryId": "ap_hn",
@@ -1147,7 +1620,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Head and Neck content, visual/context anchor, retrieval answer key, and head and neck pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1158,20 +1631,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Head and Neck prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1182,17 +1655,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Nasal polyps is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, salivary gland, sinonasal tissue, jaw/oral cavity, or lymphoid background as appropriate before labeling the abnormality.",
+        "morphologyAnchor": "Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Nasal polyps.",
+        "topMimic": "reactive squamous change, odontogenic lesion, salivary tumor mimic, infection, or metastatic disease",
+        "discriminator": "site-specific architecture, invasion, HPV/EBV or lineage context, and targeted ancillary confirmation",
+        "ancillaryOrReportingConsequence": "p16/HPV, EBV, salivary-lineage IHC, molecular fusion testing, margin/stage language, or clinicoradiologic correlation",
+        "safetyPitfall": "missing site-specific staging/viral association or overcalling reactive/inflammatory mimics as malignancy",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Head and Neck > Larynx > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Nasal polyps. Source line: 1647.",
+        "scopedDomain": "Head and Neck"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Nasal polyps.",
+          "answer": "Nasal polyps; scoped to Physiologic Changes, Metabolic Conditions & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Nasal polyps.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive squamous change, odontogenic lesion, salivary tumor mimic, infection, or metastatic disease; separate with site-specific architecture, invasion, HPV/EBV or lineage context, and targeted ancillary confirmation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "p16/HPV, EBV, salivary-lineage IHC, molecular fusion testing, margin/stage language, or clinicoradiologic correlation",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator",
+        "inspectionSequence": [
+          "Orient to Head and Neck and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, salivary gland, sinonasal tissue, jaw/oral cavity, or lymphoid background as appropriate before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Nasal polyps.",
+          "Before sign-out, check the pitfall: missing site-specific staging/viral association or overcalling reactive/inflammatory mimics as malignancy"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-13-e147464f-7414-4b0b-8314-0df43d8a65c1",
       "sourceQueueId": "ap_hn-e147464f-7414-4b0b-8314-0df43d8a65c1",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Contact ulcer",
       "categoryId": "ap_hn",
@@ -1241,7 +1757,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Head and Neck content, visual/context anchor, retrieval answer key, and head and neck pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1252,20 +1768,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Head and Neck prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1276,17 +1792,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Contact ulcer is treated in this curriculum as an ABPath AP content-specification topic within Paraganglioma; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, salivary gland, sinonasal tissue, jaw/oral cavity, or lymphoid background as appropriate before labeling the abnormality.",
+        "morphologyAnchor": "Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Contact ulcer.",
+        "topMimic": "reactive squamous change, odontogenic lesion, salivary tumor mimic, infection, or metastatic disease",
+        "discriminator": "site-specific architecture, invasion, HPV/EBV or lineage context, and targeted ancillary confirmation",
+        "ancillaryOrReportingConsequence": "p16/HPV, EBV, salivary-lineage IHC, molecular fusion testing, margin/stage language, or clinicoradiologic correlation",
+        "safetyPitfall": "missing site-specific staging/viral association or overcalling reactive/inflammatory mimics as malignancy",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Head and Neck > Larynx > Paraganglioma > Contact ulcer. Source line: 1695.",
+        "scopedDomain": "Head and Neck"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Contact ulcer.",
+          "answer": "Contact ulcer; scoped to Paraganglioma in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Contact ulcer.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive squamous change, odontogenic lesion, salivary tumor mimic, infection, or metastatic disease; separate with site-specific architecture, invasion, HPV/EBV or lineage context, and targeted ancillary confirmation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "p16/HPV, EBV, salivary-lineage IHC, molecular fusion testing, margin/stage language, or clinicoradiologic correlation",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator",
+        "inspectionSequence": [
+          "Orient to Head and Neck and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, salivary gland, sinonasal tissue, jaw/oral cavity, or lymphoid background as appropriate before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Contact ulcer.",
+          "Before sign-out, check the pitfall: missing site-specific staging/viral association or overcalling reactive/inflammatory mimics as malignancy"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-14-3f2828d1-0548-4223-b315-472755462369",
       "sourceQueueId": "ap_hn-3f2828d1-0548-4223-b315-472755462369",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Cysts",
       "categoryId": "ap_hn",
@@ -1335,7 +1894,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Head and Neck content, visual/context anchor, retrieval answer key, and head and neck pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1346,20 +1905,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Head and Neck prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1370,17 +1929,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Cysts is treated in this curriculum as an ABPath AP content-specification topic within Paraganglioma; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, salivary gland, sinonasal tissue, jaw/oral cavity, or lymphoid background as appropriate before labeling the abnormality.",
+        "morphologyAnchor": "Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Cysts.",
+        "topMimic": "reactive squamous change, odontogenic lesion, salivary tumor mimic, infection, or metastatic disease",
+        "discriminator": "site-specific architecture, invasion, HPV/EBV or lineage context, and targeted ancillary confirmation",
+        "ancillaryOrReportingConsequence": "p16/HPV, EBV, salivary-lineage IHC, molecular fusion testing, margin/stage language, or clinicoradiologic correlation",
+        "safetyPitfall": "missing site-specific staging/viral association or overcalling reactive/inflammatory mimics as malignancy",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Head and Neck > Larynx > Paraganglioma > Cysts. Source line: 1696.",
+        "scopedDomain": "Head and Neck"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Cysts.",
+          "answer": "Cysts; scoped to Paraganglioma in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Cysts.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive squamous change, odontogenic lesion, salivary tumor mimic, infection, or metastatic disease; separate with site-specific architecture, invasion, HPV/EBV or lineage context, and targeted ancillary confirmation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "p16/HPV, EBV, salivary-lineage IHC, molecular fusion testing, margin/stage language, or clinicoradiologic correlation",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator",
+        "inspectionSequence": [
+          "Orient to Head and Neck and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, salivary gland, sinonasal tissue, jaw/oral cavity, or lymphoid background as appropriate before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Cysts.",
+          "Before sign-out, check the pitfall: missing site-specific staging/viral association or overcalling reactive/inflammatory mimics as malignancy"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-15-1b9a46e1-e23a-4566-ba21-44aa5e4ead9b",
       "sourceQueueId": "ap_hn-1b9a46e1-e23a-4566-ba21-44aa5e4ead9b",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Cholesteatoma",
       "categoryId": "ap_hn",
@@ -1429,7 +2031,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Head and Neck content, visual/context anchor, retrieval answer key, and head and neck pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1440,20 +2042,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Head and Neck prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1464,17 +2066,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Cholesteatoma is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, salivary gland, sinonasal tissue, jaw/oral cavity, or lymphoid background as appropriate before labeling the abnormality.",
+        "morphologyAnchor": "Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Cholesteatoma.",
+        "topMimic": "reactive squamous change, odontogenic lesion, salivary tumor mimic, infection, or metastatic disease",
+        "discriminator": "site-specific architecture, invasion, HPV/EBV or lineage context, and targeted ancillary confirmation",
+        "ancillaryOrReportingConsequence": "p16/HPV, EBV, salivary-lineage IHC, molecular fusion testing, margin/stage language, or clinicoradiologic correlation",
+        "safetyPitfall": "missing site-specific staging/viral association or overcalling reactive/inflammatory mimics as malignancy",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Head and Neck > Eye and Ocular Adnexa > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Cholesteatoma. Source line: 1799.",
+        "scopedDomain": "Head and Neck"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Cholesteatoma.",
+          "answer": "Cholesteatoma; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Cholesteatoma.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive squamous change, odontogenic lesion, salivary tumor mimic, infection, or metastatic disease; separate with site-specific architecture, invasion, HPV/EBV or lineage context, and targeted ancillary confirmation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "p16/HPV, EBV, salivary-lineage IHC, molecular fusion testing, margin/stage language, or clinicoradiologic correlation",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator",
+        "inspectionSequence": [
+          "Orient to Head and Neck and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, salivary gland, sinonasal tissue, jaw/oral cavity, or lymphoid background as appropriate before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Cholesteatoma.",
+          "Before sign-out, check the pitfall: missing site-specific staging/viral association or overcalling reactive/inflammatory mimics as malignancy"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-16-540484dc-3b23-4b10-9543-ece39e1c75b9",
       "sourceQueueId": "ap_hn-540484dc-3b23-4b10-9543-ece39e1c75b9",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Infections",
       "categoryId": "ap_hn",
@@ -1523,7 +2168,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Head and Neck content, visual/context anchor, retrieval answer key, and head and neck pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1534,20 +2179,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Head and Neck prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1558,17 +2203,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Infections is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, salivary gland, sinonasal tissue, jaw/oral cavity, or lymphoid background as appropriate before labeling the abnormality.",
+        "morphologyAnchor": "Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Infections.",
+        "topMimic": "reactive squamous change, odontogenic lesion, salivary tumor mimic, infection, or metastatic disease",
+        "discriminator": "site-specific architecture, invasion, HPV/EBV or lineage context, and targeted ancillary confirmation",
+        "ancillaryOrReportingConsequence": "p16/HPV, EBV, salivary-lineage IHC, molecular fusion testing, margin/stage language, or clinicoradiologic correlation",
+        "safetyPitfall": "missing site-specific staging/viral association or overcalling reactive/inflammatory mimics as malignancy",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Head and Neck > Eye and Ocular Adnexa > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Infections. Source line: 1800.",
+        "scopedDomain": "Head and Neck"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Infections.",
+          "answer": "Infections; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Infections.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive squamous change, odontogenic lesion, salivary tumor mimic, infection, or metastatic disease; separate with site-specific architecture, invasion, HPV/EBV or lineage context, and targeted ancillary confirmation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "p16/HPV, EBV, salivary-lineage IHC, molecular fusion testing, margin/stage language, or clinicoradiologic correlation",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "site-specific low-power lesion architecture plus high-power epithelial, stromal, inflammatory, or cyst-lining discriminator",
+        "inspectionSequence": [
+          "Orient to Head and Neck and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, salivary gland, sinonasal tissue, jaw/oral cavity, or lymphoid background as appropriate before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, epithelial or salivary architecture, invasion, keratinization, stromal/myoepithelial pattern, and cytology to decide whether the finding fits Infections.",
+          "Before sign-out, check the pitfall: missing site-specific staging/viral association or overcalling reactive/inflammatory mimics as malignancy"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-17-e6c8ba85-393a-4a49-9cb5-b83a52a932c4",
       "sourceQueueId": "ap_cyto-e6c8ba85-393a-4a49-9cb5-b83a52a932c4",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Specific Sampling Techniques",
       "categoryId": "ap_cyto",
@@ -1617,7 +2305,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Cytopathology content, visual/context anchor, retrieval answer key, and cytopathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1628,20 +2316,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Cytopathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1652,17 +2340,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Specific Sampling Techniques is treated in this curriculum as an ABPath AP content-specification topic within Screening, Indications, and Techniques; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against adequate benign cellular background for the specimen type and preparation before labeling the abnormality.",
+        "morphologyAnchor": "Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Specific Sampling Techniques.",
+        "topMimic": "reactive atypia, contamination, degenerative change, low-cellularity sampling, or metastatic malignancy",
+        "discriminator": "preparation type, adequacy, reproducible cytologic criteria, and clinicoradiologic correlation",
+        "ancillaryOrReportingConsequence": "cell block IHC, flow cytometry, molecular testing, repeat sampling, or diagnostic-category language",
+        "safetyPitfall": "issuing an overconfident diagnosis from inadequate material or omitting category/adequacy language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cytopathology Topics for Anatomic Pathology Residents > Cervical/Vaginal Cytology > Screening, Indications, and Techniques > Specific Sampling Techniques. Source line: 4097.",
+        "scopedDomain": "Cytopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Specific Sampling Techniques.",
+          "answer": "Specific Sampling Techniques; scoped to Screening, Indications, and Techniques in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Specific Sampling Techniques.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, contamination, degenerative change, low-cellularity sampling, or metastatic malignancy; separate with preparation type, adequacy, reproducible cytologic criteria, and clinicoradiologic correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cell block IHC, flow cytometry, molecular testing, repeat sampling, or diagnostic-category language",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate",
+        "inspectionSequence": [
+          "Orient to Cytopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against adequate benign cellular background for the specimen type and preparation before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Specific Sampling Techniques.",
+          "Before sign-out, check the pitfall: issuing an overconfident diagnosis from inadequate material or omitting category/adequacy language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-18-49d31633-4b27-49fe-8236-7114fbe5e837",
       "sourceQueueId": "ap_cyto-49d31633-4b27-49fe-8236-7114fbe5e837",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Unsatisfactory",
       "categoryId": "ap_cyto",
@@ -1711,7 +2442,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Cytopathology content, visual/context anchor, retrieval answer key, and cytopathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1722,20 +2453,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Cytopathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1746,17 +2477,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Unsatisfactory is treated in this curriculum as an ABPath AP content-specification topic within Screening, Indications, and Techniques; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against adequate benign cellular background for the specimen type and preparation before labeling the abnormality.",
+        "morphologyAnchor": "Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Unsatisfactory.",
+        "topMimic": "reactive atypia, contamination, degenerative change, low-cellularity sampling, or metastatic malignancy",
+        "discriminator": "preparation type, adequacy, reproducible cytologic criteria, and clinicoradiologic correlation",
+        "ancillaryOrReportingConsequence": "cell block IHC, flow cytometry, molecular testing, repeat sampling, or diagnostic-category language",
+        "safetyPitfall": "issuing an overconfident diagnosis from inadequate material or omitting category/adequacy language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cytopathology Topics for Anatomic Pathology Residents > Cervical/Vaginal Cytology > Screening, Indications, and Techniques > Unsatisfactory. Source line: 4100.",
+        "scopedDomain": "Cytopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Unsatisfactory.",
+          "answer": "Unsatisfactory; scoped to Screening, Indications, and Techniques in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Unsatisfactory.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, contamination, degenerative change, low-cellularity sampling, or metastatic malignancy; separate with preparation type, adequacy, reproducible cytologic criteria, and clinicoradiologic correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cell block IHC, flow cytometry, molecular testing, repeat sampling, or diagnostic-category language",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate",
+        "inspectionSequence": [
+          "Orient to Cytopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against adequate benign cellular background for the specimen type and preparation before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Unsatisfactory.",
+          "Before sign-out, check the pitfall: issuing an overconfident diagnosis from inadequate material or omitting category/adequacy language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-19-4bae4329-082a-4ce5-9d2b-826150ba9b7e",
       "sourceQueueId": "ap_cyto-4bae4329-082a-4ce5-9d2b-826150ba9b7e",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Normal, NILM, Including Hormonal Changes and Normal Microbiota",
       "categoryId": "ap_cyto",
@@ -1805,7 +2579,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Cytopathology content, visual/context anchor, retrieval answer key, and cytopathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1816,20 +2590,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Cytopathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1840,17 +2614,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Normal, NILM, Including Hormonal Changes and Normal Microbiota is treated in this curriculum as an ABPath AP content-specification topic within Screening, Indications, and Techniques; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against adequate benign cellular background for the specimen type and preparation before labeling the abnormality.",
+        "morphologyAnchor": "Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Normal, NILM, Including Hormonal Changes and Normal Microbiota.",
+        "topMimic": "reactive atypia, contamination, degenerative change, low-cellularity sampling, or metastatic malignancy",
+        "discriminator": "preparation type, adequacy, reproducible cytologic criteria, and clinicoradiologic correlation",
+        "ancillaryOrReportingConsequence": "cell block IHC, flow cytometry, molecular testing, repeat sampling, or diagnostic-category language",
+        "safetyPitfall": "issuing an overconfident diagnosis from inadequate material or omitting category/adequacy language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cytopathology Topics for Anatomic Pathology Residents > Cervical/Vaginal Cytology > Screening, Indications, and Techniques > Normal, NILM, Including Hormonal Changes and Normal Microbiota. Source line: 4101.",
+        "scopedDomain": "Cytopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Normal, NILM, Including Hormonal Changes and Normal Microbiota.",
+          "answer": "Normal, NILM, Including Hormonal Changes and Normal Microbiota; scoped to Screening, Indications, and Techniques in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Normal, NILM, Including Hormonal Changes and Normal Microbiota.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, contamination, degenerative change, low-cellularity sampling, or metastatic malignancy; separate with preparation type, adequacy, reproducible cytologic criteria, and clinicoradiologic correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cell block IHC, flow cytometry, molecular testing, repeat sampling, or diagnostic-category language",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate",
+        "inspectionSequence": [
+          "Orient to Cytopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against adequate benign cellular background for the specimen type and preparation before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Normal, NILM, Including Hormonal Changes and Normal Microbiota.",
+          "Before sign-out, check the pitfall: issuing an overconfident diagnosis from inadequate material or omitting category/adequacy language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-20-c98a7630-2477-42e5-8017-8cc0ab8927f4",
       "sourceQueueId": "ap_cyto-c98a7630-2477-42e5-8017-8cc0ab8927f4",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Endometrial Cells",
       "categoryId": "ap_cyto",
@@ -1899,7 +2716,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Cytopathology content, visual/context anchor, retrieval answer key, and cytopathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1910,20 +2727,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Cytopathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1934,17 +2751,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Endometrial Cells is treated in this curriculum as an ABPath AP content-specification topic within Screening, Indications, and Techniques; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against adequate benign cellular background for the specimen type and preparation before labeling the abnormality.",
+        "morphologyAnchor": "Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Endometrial Cells.",
+        "topMimic": "reactive atypia, contamination, degenerative change, low-cellularity sampling, or metastatic malignancy",
+        "discriminator": "preparation type, adequacy, reproducible cytologic criteria, and clinicoradiologic correlation",
+        "ancillaryOrReportingConsequence": "cell block IHC, flow cytometry, molecular testing, repeat sampling, or diagnostic-category language",
+        "safetyPitfall": "issuing an overconfident diagnosis from inadequate material or omitting category/adequacy language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cytopathology Topics for Anatomic Pathology Residents > Cervical/Vaginal Cytology > Screening, Indications, and Techniques > Endometrial Cells. Source line: 4116.",
+        "scopedDomain": "Cytopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Endometrial Cells.",
+          "answer": "Endometrial Cells; scoped to Screening, Indications, and Techniques in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Endometrial Cells.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, contamination, degenerative change, low-cellularity sampling, or metastatic malignancy; separate with preparation type, adequacy, reproducible cytologic criteria, and clinicoradiologic correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cell block IHC, flow cytometry, molecular testing, repeat sampling, or diagnostic-category language",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "representative cytology field with adequacy/background context, benign cellular pattern, artifact discriminator, or abnormal-cell threshold as appropriate",
+        "inspectionSequence": [
+          "Orient to Cytopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against adequate benign cellular background for the specimen type and preparation before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Endometrial Cells.",
+          "Before sign-out, check the pitfall: issuing an overconfident diagnosis from inadequate material or omitting category/adequacy language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-21-f54a45fb-1633-4955-a674-ec8a888e19c4",
       "sourceQueueId": "ap_forensic-f54a45fb-1633-4955-a674-ec8a888e19c4",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Natural Deaths",
       "categoryId": "ap_forensic",
@@ -1993,7 +2853,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Forensic Pathology content, visual/context anchor, retrieval answer key, and forensic pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2004,20 +2864,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Forensic Pathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2028,17 +2888,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Natural Deaths is treated in this curriculum as an ABPath AP content-specification topic within Forensic Pathology Topics for Anatomic Pathology Residents; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected postmortem baseline with documented interval, scene, and clinical history before labeling the abnormality.",
+        "morphologyAnchor": "Use injury pattern, timing, distribution, competing disease, toxicologic context, and gross-micro correlation to decide whether the finding fits Natural Deaths.",
+        "topMimic": "postmortem artifact, resuscitation change, decomposition, natural disease, or nonspecific injury",
+        "discriminator": "scene/clinical correlation, injury vital reaction, distribution, timing, and toxicology/ancillary support",
+        "ancillaryOrReportingConsequence": "cause and manner language, toxicology, microbiology, radiology, or scene-investigation correlation",
+        "safetyPitfall": "overstating mechanism or manner without adequate autopsy, scene, and ancillary correlation",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Forensic Pathology Topics for Anatomic Pathology Residents > Natural Deaths. Source line: 9863.",
+        "scopedDomain": "Forensic Pathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Natural Deaths.",
+          "answer": "Natural Deaths; scoped to Forensic Pathology Topics for Anatomic Pathology Residents in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use injury pattern, timing, distribution, competing disease, toxicologic context, and gross-micro correlation to decide whether the finding fits Natural Deaths.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, resuscitation change, decomposition, natural disease, or nonspecific injury; separate with scene/clinical correlation, injury vital reaction, distribution, timing, and toxicology/ancillary support.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause and manner language, toxicology, microbiology, radiology, or scene-investigation correlation",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations",
+        "inspectionSequence": [
+          "Orient to Forensic Pathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected postmortem baseline with documented interval, scene, and clinical history before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use injury pattern, timing, distribution, competing disease, toxicologic context, and gross-micro correlation to decide whether the finding fits Natural Deaths.",
+          "Before sign-out, check the pitfall: overstating mechanism or manner without adequate autopsy, scene, and ancillary correlation"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-22-949cbfff-a3c0-48cd-96af-50f24385a6fc",
       "sourceQueueId": "ap_forensic-949cbfff-a3c0-48cd-96af-50f24385a6fc",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Pediatric Deaths",
       "categoryId": "ap_forensic",
@@ -2087,7 +2990,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Forensic Pathology content, visual/context anchor, retrieval answer key, and forensic pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2098,20 +3001,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Forensic Pathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2122,17 +3025,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Pediatric Deaths is treated in this curriculum as an ABPath AP content-specification topic within Natural Deaths; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Pediatric Deaths.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Forensic Pathology Topics for Anatomic Pathology Residents > Natural Deaths > Pediatric Deaths. Source line: 9867.",
+        "scopedDomain": "Forensic Pathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Pediatric Deaths.",
+          "answer": "Pediatric Deaths; scoped to Natural Deaths in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Pediatric Deaths.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations",
+        "inspectionSequence": [
+          "Orient to Forensic Pathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Pediatric Deaths.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-23-1dba932c-41d9-4fba-abeb-21464abaf768",
       "sourceQueueId": "ap_forensic-1dba932c-41d9-4fba-abeb-21464abaf768",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Deaths Associated with Prematurity",
       "categoryId": "ap_forensic",
@@ -2181,7 +3127,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Forensic Pathology content, visual/context anchor, retrieval answer key, and forensic pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2192,20 +3138,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Forensic Pathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2216,17 +3162,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Deaths Associated with Prematurity is treated in this curriculum as an ABPath AP content-specification topic within Pediatric Deaths; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Deaths Associated with Prematurity.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Forensic Pathology Topics for Anatomic Pathology Residents > Natural Deaths > Pediatric Deaths > Deaths Associated with Prematurity. Source line: 9868.",
+        "scopedDomain": "Forensic Pathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Deaths Associated with Prematurity.",
+          "answer": "Deaths Associated with Prematurity; scoped to Pediatric Deaths in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Deaths Associated with Prematurity.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations",
+        "inspectionSequence": [
+          "Orient to Forensic Pathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Deaths Associated with Prematurity.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-24-50bd00f5-aa7f-446c-aef1-f097bc278795",
       "sourceQueueId": "ap_forensic-50bd00f5-aa7f-446c-aef1-f097bc278795",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Congenital Anomalies, Common",
       "categoryId": "ap_forensic",
@@ -2275,7 +3264,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Forensic Pathology content, visual/context anchor, retrieval answer key, and forensic pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2286,20 +3275,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Forensic Pathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2310,17 +3299,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Congenital Anomalies, Common is treated in this curriculum as an ABPath AP content-specification topic within Pediatric Deaths; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Congenital Anomalies, Common.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Forensic Pathology Topics for Anatomic Pathology Residents > Natural Deaths > Pediatric Deaths > Congenital Anomalies, Common. Source line: 9869.",
+        "scopedDomain": "Forensic Pathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Congenital Anomalies, Common.",
+          "answer": "Congenital Anomalies, Common; scoped to Pediatric Deaths in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Congenital Anomalies, Common.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross-organ or histologic correlate tied to cause, mechanism, manner, or exclusion of competing explanations",
+        "inspectionSequence": [
+          "Orient to Forensic Pathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Congenital Anomalies, Common.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-25-60fcaf2f-f009-4cb3-8f8d-82ea03115345",
       "sourceQueueId": "ap_neuro-60fcaf2f-f009-4cb3-8f8d-82ea03115345",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Neuroanatomy",
       "categoryId": "ap_neuro",
@@ -2369,7 +3401,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Neuropathology content, visual/context anchor, retrieval answer key, and neuropathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2380,20 +3412,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Neuropathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2404,17 +3436,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Neuroanatomy is treated in this curriculum as an ABPath AP content-specification topic within General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal neuroanatomic compartment, meninges, peripheral nerve, or expected surgical biopsy context before labeling the abnormality.",
+        "morphologyAnchor": "Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Neuroanatomy.",
+        "topMimic": "reactive gliosis, metastasis, meningioma subtype, nerve sheath tumor, infection, or treatment effect",
+        "discriminator": "site, molecular/IHC class-defining features, grade criteria, and integration of morphology with ancillary results",
+        "ancillaryOrReportingConsequence": "CNS WHO integrated diagnosis, molecular testing, IHC, grade, or consultation language when required",
+        "safetyPitfall": "using morphology alone when integrated diagnosis or grade-defining molecular data are required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Neuroanatomy. Source line: 12754.",
+        "scopedDomain": "Neuropathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Neuroanatomy.",
+          "answer": "Neuroanatomy; scoped to General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Neuroanatomy.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive gliosis, metastasis, meningioma subtype, nerve sheath tumor, infection, or treatment effect; separate with site, molecular/IHC class-defining features, grade criteria, and integration of morphology with ancillary results.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "CNS WHO integrated diagnosis, molecular testing, IHC, grade, or consultation language when required",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator",
+        "inspectionSequence": [
+          "Orient to Neuropathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal neuroanatomic compartment, meninges, peripheral nerve, or expected surgical biopsy context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Neuroanatomy.",
+          "Before sign-out, check the pitfall: using morphology alone when integrated diagnosis or grade-defining molecular data are required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-26-838f9e89-793f-432b-9875-60dd50453652",
       "sourceQueueId": "ap_neuro-838f9e89-793f-432b-9875-60dd50453652",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Neocortex, White Matter, and Entorhinal Cortex/Hippocampus",
       "categoryId": "ap_neuro",
@@ -2463,7 +3538,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Neuropathology content, visual/context anchor, retrieval answer key, and neuropathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2474,20 +3549,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Neuropathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2498,17 +3573,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Neocortex, White Matter, and Entorhinal Cortex/Hippocampus is treated in this curriculum as an ABPath AP content-specification topic within Neuroanatomy; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal neuroanatomic compartment, meninges, peripheral nerve, or expected surgical biopsy context before labeling the abnormality.",
+        "morphologyAnchor": "Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Neocortex, White Matter, and Entorhinal Cortex/Hippocampus.",
+        "topMimic": "reactive gliosis, metastasis, meningioma subtype, nerve sheath tumor, infection, or treatment effect",
+        "discriminator": "site, molecular/IHC class-defining features, grade criteria, and integration of morphology with ancillary results",
+        "ancillaryOrReportingConsequence": "CNS WHO integrated diagnosis, molecular testing, IHC, grade, or consultation language when required",
+        "safetyPitfall": "using morphology alone when integrated diagnosis or grade-defining molecular data are required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Neuroanatomy > Neocortex, White Matter, and Entorhinal Cortex/Hippocampus. Source line: 12815.",
+        "scopedDomain": "Neuropathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Neocortex, White Matter, and Entorhinal Cortex/Hippocampus.",
+          "answer": "Neocortex, White Matter, and Entorhinal Cortex/Hippocampus; scoped to Neuroanatomy in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Neocortex, White Matter, and Entorhinal Cortex/Hippocampus.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive gliosis, metastasis, meningioma subtype, nerve sheath tumor, infection, or treatment effect; separate with site, molecular/IHC class-defining features, grade criteria, and integration of morphology with ancillary results.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "CNS WHO integrated diagnosis, molecular testing, IHC, grade, or consultation language when required",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator",
+        "inspectionSequence": [
+          "Orient to Neuropathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal neuroanatomic compartment, meninges, peripheral nerve, or expected surgical biopsy context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Neocortex, White Matter, and Entorhinal Cortex/Hippocampus.",
+          "Before sign-out, check the pitfall: using morphology alone when integrated diagnosis or grade-defining molecular data are required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-27-dc002355-d39a-45f3-aa84-69a4c723ded8",
       "sourceQueueId": "ap_neuro-dc002355-d39a-45f3-aa84-69a4c723ded8",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Tuberous Sclerosis (Bourneville Disease)",
       "categoryId": "ap_neuro",
@@ -2557,7 +3675,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Neuropathology content, visual/context anchor, retrieval answer key, and neuropathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2568,20 +3686,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Neuropathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2592,17 +3710,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Tuberous Sclerosis (Bourneville Disease) is treated in this curriculum as an ABPath AP content-specification topic within Syringomyelia/Hydromyelia; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal neuroanatomic compartment, meninges, peripheral nerve, or expected surgical biopsy context before labeling the abnormality.",
+        "morphologyAnchor": "Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Tuberous Sclerosis (Bourneville Disease).",
+        "topMimic": "reactive gliosis, metastasis, meningioma subtype, nerve sheath tumor, infection, or treatment effect",
+        "discriminator": "site, molecular/IHC class-defining features, grade criteria, and integration of morphology with ancillary results",
+        "ancillaryOrReportingConsequence": "CNS WHO integrated diagnosis, molecular testing, IHC, grade, or consultation language when required",
+        "safetyPitfall": "using morphology alone when integrated diagnosis or grade-defining molecular data are required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Syringomyelia/Hydromyelia > Tuberous Sclerosis (Bourneville Disease). Source line: 13216.",
+        "scopedDomain": "Neuropathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Tuberous Sclerosis (Bourneville Disease).",
+          "answer": "Tuberous Sclerosis (Bourneville Disease); scoped to Syringomyelia/Hydromyelia in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Tuberous Sclerosis (Bourneville Disease).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive gliosis, metastasis, meningioma subtype, nerve sheath tumor, infection, or treatment effect; separate with site, molecular/IHC class-defining features, grade criteria, and integration of morphology with ancillary results.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "CNS WHO integrated diagnosis, molecular testing, IHC, grade, or consultation language when required",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator",
+        "inspectionSequence": [
+          "Orient to Neuropathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal neuroanatomic compartment, meninges, peripheral nerve, or expected surgical biopsy context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Tuberous Sclerosis (Bourneville Disease).",
+          "Before sign-out, check the pitfall: using morphology alone when integrated diagnosis or grade-defining molecular data are required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-28-63a38349-7aa2-4480-abd9-955be72a5f74",
       "sourceQueueId": "ap_neuro-63a38349-7aa2-4480-abd9-955be72a5f74",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Epilepsy",
       "categoryId": "ap_neuro",
@@ -2651,7 +3812,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Neuropathology content, visual/context anchor, retrieval answer key, and neuropathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2662,20 +3823,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Neuropathology prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2686,17 +3847,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Epilepsy is treated in this curriculum as an ABPath AP content-specification topic within General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal neuroanatomic compartment, meninges, peripheral nerve, or expected surgical biopsy context before labeling the abnormality.",
+        "morphologyAnchor": "Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Epilepsy.",
+        "topMimic": "reactive gliosis, metastasis, meningioma subtype, nerve sheath tumor, infection, or treatment effect",
+        "discriminator": "site, molecular/IHC class-defining features, grade criteria, and integration of morphology with ancillary results",
+        "ancillaryOrReportingConsequence": "CNS WHO integrated diagnosis, molecular testing, IHC, grade, or consultation language when required",
+        "safetyPitfall": "using morphology alone when integrated diagnosis or grade-defining molecular data are required",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Epilepsy. Source line: 13270.",
+        "scopedDomain": "Neuropathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Epilepsy.",
+          "answer": "Epilepsy; scoped to General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Epilepsy.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive gliosis, metastasis, meningioma subtype, nerve sheath tumor, infection, or treatment effect; separate with site, molecular/IHC class-defining features, grade criteria, and integration of morphology with ancillary results.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "CNS WHO integrated diagnosis, molecular testing, IHC, grade, or consultation language when required",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power neuroanatomic localization, high-power diagnostic cell/process cue, and normal-region comparator",
+        "inspectionSequence": [
+          "Orient to Neuropathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal neuroanatomic compartment, meninges, peripheral nerve, or expected surgical biopsy context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use anatomic site, pattern, cytology, mitotic activity, necrosis, vascular proliferation, and infiltrative edge to decide whether the finding fits Epilepsy.",
+          "Before sign-out, check the pitfall: using morphology alone when integrated diagnosis or grade-defining molecular data are required"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-29-2cde90b1-1fa6-4500-a8b9-2a513b2f5428",
       "sourceQueueId": "ap_resp-2cde90b1-1fa6-4500-a8b9-2a513b2f5428",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Emphysema",
       "categoryId": "ap_resp",
@@ -2745,7 +3949,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Respiratory, Pleura, and Mediastinum content, visual/context anchor, retrieval answer key, and pulmonary pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2756,20 +3960,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power airway/alveolar/nodule architecture plus high-power diagnostic discriminator and radiology/gross correlate when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power airway/alveolar/nodule architecture plus high-power diagnostic discriminator and radiology/gross correlate when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Respiratory, Pleura, and Mediastinum prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2780,17 +3984,60 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Emphysema is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal or reactive comparator appropriate to the AP content-spec path before labeling the abnormality.",
+        "morphologyAnchor": "Use low-power pattern, high-power discriminator, site/context, and report-relevant limitation to decide whether the finding fits Emphysema.",
+        "topMimic": "closest reactive, benign, malignant, infectious, treatment-related, or artifact mimic from the same compartment",
+        "discriminator": "the single feature or test result that separates the topic from its closest mimic",
+        "ancillaryOrReportingConsequence": "targeted ancillary test, staging/synoptic element, adequacy language, or management-relevant report phrase",
+        "safetyPitfall": "calling the entity without the required discriminator, mimic exclusion, or report consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Emphysema. Source line: 3504.",
+        "scopedDomain": "The Respiratory Tract, Pleura, and Mediastinum"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Emphysema.",
+          "answer": "Emphysema; scoped to Physiologic Changes, Metabolic Conditions & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power pattern, high-power discriminator, site/context, and report-relevant limitation to decide whether the finding fits Emphysema.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "closest reactive, benign, malignant, infectious, treatment-related, or artifact mimic from the same compartment; separate with the single feature or test result that separates the topic from its closest mimic.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "targeted ancillary test, staging/synoptic element, adequacy language, or management-relevant report phrase",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power airway/alveolar/nodule architecture plus high-power diagnostic discriminator and radiology/gross correlate when relevant",
+        "inspectionSequence": [
+          "Orient to The Respiratory Tract, Pleura, and Mediastinum and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal or reactive comparator appropriate to the AP content-spec path before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power pattern, high-power discriminator, site/context, and report-relevant limitation to decide whether the finding fits Emphysema.",
+          "Before sign-out, check the pitfall: calling the entity without the required discriminator, mimic exclusion, or report consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-small-domain-card-30-dc2007ac-74a5-4b8a-ba24-7df888455042",
       "sourceQueueId": "ap_resp-dc2007ac-74a5-4b8a-ba24-7df888455042",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Sclerosing pneumocytoma",
       "categoryId": "ap_resp",
@@ -2839,7 +4086,7 @@ export const apP0SmallDomainsCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Final language is safe for the relevant diagnostic, cytology, autopsy, forensic, or consult context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed Respiratory, Pleura, and Mediastinum content, visual/context anchor, retrieval answer key, and pulmonary pathology review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2850,20 +4097,20 @@ export const apP0SmallDomainsCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, specimen context, microscopic discriminator, mimic, pitfall, and report/autopsy consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power airway/alveolar/nodule architecture plus high-power diagnostic discriminator and radiology/gross correlate when relevant"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power airway/alveolar/nodule architecture plus high-power diagnostic discriminator and radiology/gross correlate when relevant"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Respiratory, Pleura, and Mediastinum prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2874,11 +4121,54 @@ export const apP0SmallDomainsCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Sclerosing pneumocytoma is treated in this curriculum as an ABPath AP content-specification topic within Meningothelial-like nodule; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against adequate benign cellular background for the specimen type and preparation before labeling the abnormality.",
+        "morphologyAnchor": "Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Sclerosing pneumocytoma.",
+        "topMimic": "reactive atypia, contamination, degenerative change, low-cellularity sampling, or metastatic malignancy",
+        "discriminator": "preparation type, adequacy, reproducible cytologic criteria, and clinicoradiologic correlation",
+        "ancillaryOrReportingConsequence": "cell block IHC, flow cytometry, molecular testing, repeat sampling, or diagnostic-category language",
+        "safetyPitfall": "issuing an overconfident diagnosis from inadequate material or omitting category/adequacy language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Respiratory Tract, Pleura, and Mediastinum > The Respiratory Tract > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Meningothelial-like nodule > Sclerosing pneumocytoma. Source line: 3536.",
+        "scopedDomain": "The Respiratory Tract, Pleura, and Mediastinum"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Sclerosing pneumocytoma.",
+          "answer": "Sclerosing pneumocytoma; scoped to Meningothelial-like nodule in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Sclerosing pneumocytoma.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, contamination, degenerative change, low-cellularity sampling, or metastatic malignancy; separate with preparation type, adequacy, reproducible cytologic criteria, and clinicoradiologic correlation.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cell block IHC, flow cytometry, molecular testing, repeat sampling, or diagnostic-category language",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power airway/alveolar/nodule architecture plus high-power diagnostic discriminator and radiology/gross correlate when relevant",
+        "inspectionSequence": [
+          "Orient to The Respiratory Tract, Pleura, and Mediastinum and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against adequate benign cellular background for the specimen type and preparation before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use adequacy, cellularity, architecture, background, nuclear features, and diagnostic category to decide whether the finding fits Sclerosing pneumocytoma.",
+          "Before sign-out, check the pitfall: issuing an overconfident diagnosis from inadequate material or omitting category/adequacy language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     }
   ]

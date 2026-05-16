@@ -569,21 +569,33 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
                       </div>
                       <div className="mt-3 grid gap-3 md:grid-cols-2">
                         <div>
-                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Card Sections</div>
-                          <ul className="mt-2 space-y-1 text-sm text-slate-700">
-                            {card.entityCardSections.slice(0, 4).map((section) => (
-                              <li key={section}>{section}</li>
-                            ))}
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Draft Entity Card</div>
+                          <ul className="mt-2 space-y-2 text-sm text-slate-700">
+                            <li><span className="font-semibold text-slate-900">Definition:</span> {card.entityCardDraft.definition}</li>
+                            <li><span className="font-semibold text-slate-900">Comparator:</span> {card.entityCardDraft.normalComparator}</li>
+                            <li><span className="font-semibold text-slate-900">Morphology:</span> {card.entityCardDraft.morphologyAnchor}</li>
+                            <li><span className="font-semibold text-slate-900">Mimic:</span> {card.entityCardDraft.topMimic}</li>
                           </ul>
                         </div>
                         <div>
-                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Retrieval Prompts</div>
-                          <ul className="mt-2 space-y-1 text-sm text-slate-700">
-                            {card.retrievalPrompts.slice(0, 3).map((prompt) => (
-                              <li key={prompt}>{prompt}</li>
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Retrieval Answer Key</div>
+                          <ul className="mt-2 space-y-2 text-sm text-slate-700">
+                            {card.retrievalAnswerKey.slice(0, 3).map((item) => (
+                              <li key={`${card.id}-${item.prompt}`}>
+                                <span className="font-semibold text-slate-900">{item.prompt}</span>
+                                <div className="mt-1">{item.answer}</div>
+                              </li>
                             ))}
                           </ul>
                         </div>
+                      </div>
+                      <div className="mt-3 rounded-md bg-slate-50 p-3">
+                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Visual Inspection Sequence</div>
+                        <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-slate-700">
+                          {card.visualAnchorDraft.inspectionSequence.map((step) => (
+                            <li key={`${card.id}-${step}`}>{step}</li>
+                          ))}
+                        </ol>
                       </div>
                       <div className="mt-3">
                         <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Completion Gates</div>

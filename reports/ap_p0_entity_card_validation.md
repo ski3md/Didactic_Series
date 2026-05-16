@@ -1,6 +1,6 @@
 # AP P0 Entity Card Validation
 
-Generated: 2026-05-15T23:01:29.231Z
+Generated: 2026-05-16T03:34:46.151Z
 Source: `src/content/competency/apP0EntityCardBatch.ts`
 Faculty packet: `reports/ap_p0_entity_card_batch_1_faculty_packet.md` (found)
 
@@ -10,7 +10,7 @@ Faculty packet: `reports/ap_p0_entity_card_batch_1_faculty_packet.md` (found)
 - Cards with 5 gateStatuses: 24
 - Cards without 5 gateStatuses: 0
 - Total gates: 120
-- Gate counts by status: ready-for-review: 24, missing: 96
+- Gate counts by status: ready-for-review: 96, missing: 24
 - Duplicate card IDs: 0
 - Duplicate sourceQueueIds: 0
 - Cards with missing required fields: 0

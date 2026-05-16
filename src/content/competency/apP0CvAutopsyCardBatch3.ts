@@ -8,7 +8,7 @@ export const apP0CvAutopsyCardBatch3 = {
   "facultyPacketCsvPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.csv",
   "batchName": "P0 cardiovascular/autopsy entity card batch 3",
   "batchStrategy": "Up to 24 unused P0 Cardiovascular / Autopsy rows after the first 48 ap_cv rows in source-line order, excluding every sourceQueueId already present in existing apP0 card batches.",
-  "status": "draft cardiovascular/autopsy batch-3 scaffolds awaiting faculty-reviewed medical content, visual anchors, answer keys, and review metadata",
+  "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
   "categoryCoverage": {
     "categoryId": "ap_cv",
     "category": "Cardiovascular / Autopsy",
@@ -20,11 +20,11 @@ export const apP0CvAutopsyCardBatch3 = {
   },
   "batchReadiness": {
     "completedGates": 0,
-    "reviewReadyGates": 24,
-    "missingGates": 96,
+    "reviewReadyGates": 96,
+    "missingGates": 24,
     "totalGates": 120,
     "percentComplete": 0,
-    "percentReviewReady": 20
+    "percentReviewReady": 80
   },
   "readinessLegend": {
     "complete": "Evidence is present and reviewed.",
@@ -35,7 +35,7 @@ export const apP0CvAutopsyCardBatch3 = {
     {
       "id": "p0-cv-autopsy-batch-3-card-01-88f1267c-e3d0-4293-b1f7-dc0b6de0b3b5",
       "sourceQueueId": "ap_cv-88f1267c-e3d0-4293-b1f7-dc0b6de0b3b5",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "The Special Senses – Eye and Ear",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -83,7 +83,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -94,20 +94,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -118,17 +118,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "The Special Senses – Eye and Ear is treated in this curriculum as an ABPath AP content-specification topic within Normal Development, Structure, and Function; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits The Special Senses – Eye and Ear.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > The Special Senses – Eye and Ear. Source line: 16231.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by The Special Senses – Eye and Ear.",
+          "answer": "The Special Senses – Eye and Ear; scoped to Normal Development, Structure, and Function in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits The Special Senses – Eye and Ear.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits The Special Senses – Eye and Ear.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-02-076ed8a4-cafe-4ed4-883e-8b1761d11489",
       "sourceQueueId": "ap_cv-076ed8a4-cafe-4ed4-883e-8b1761d11489",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Ophthalmitis",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -176,7 +219,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -187,20 +230,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -211,17 +254,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Ophthalmitis is treated in this curriculum as an ABPath AP content-specification topic within The Special Senses – Eye and Ear; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Ophthalmitis.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > The Special Senses – Eye and Ear > Ophthalmitis. Source line: 16254.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Ophthalmitis.",
+          "answer": "Ophthalmitis; scoped to The Special Senses – Eye and Ear in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Ophthalmitis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Ophthalmitis.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-03-7f4f16bb-46fe-46eb-b8cf-0ac7f8c47031",
       "sourceQueueId": "ap_cv-7f4f16bb-46fe-46eb-b8cf-0ac7f8c47031",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Degenerative Conditions (e.g., Cataracts)",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -269,7 +355,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -280,20 +366,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -304,17 +390,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Degenerative Conditions (e.g., Cataracts) is treated in this curriculum as an ABPath AP content-specification topic within The Special Senses – Eye and Ear; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Degenerative Conditions (e.g., Cataracts).",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > The Special Senses – Eye and Ear > Degenerative Conditions (e.g., Cataracts). Source line: 16264.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Degenerative Conditions (e.g., Cataracts).",
+          "answer": "Degenerative Conditions (e.g., Cataracts); scoped to The Special Senses – Eye and Ear in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Degenerative Conditions (e.g., Cataracts).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Degenerative Conditions (e.g., Cataracts).",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-04-402fd5d9-2f0c-4810-af9a-fca4229c5e0d",
       "sourceQueueId": "ap_cv-402fd5d9-2f0c-4810-af9a-fca4229c5e0d",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "The Alimentary Tract",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -362,7 +491,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -373,20 +502,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -397,17 +526,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "The Alimentary Tract is treated in this curriculum as an ABPath AP content-specification topic within Normal Development, Structure, and Function; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits The Alimentary Tract.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > The Alimentary Tract. Source line: 16308.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by The Alimentary Tract.",
+          "answer": "The Alimentary Tract; scoped to Normal Development, Structure, and Function in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits The Alimentary Tract.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits The Alimentary Tract.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-05-e9bb06bb-de72-4eb6-bc95-0bb5f8054bab",
       "sourceQueueId": "ap_cv-e9bb06bb-de72-4eb6-bc95-0bb5f8054bab",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Odontogenic",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -455,7 +627,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -466,20 +638,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -490,17 +662,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Odontogenic is treated in this curriculum as an ABPath AP content-specification topic within The Alimentary Tract; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Odontogenic.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > The Alimentary Tract > Odontogenic. Source line: 16316.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Odontogenic.",
+          "answer": "Odontogenic; scoped to The Alimentary Tract in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Odontogenic.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Odontogenic.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-06-b499f6e9-d871-468e-8303-28a3947813a3",
       "sourceQueueId": "ap_cv-b499f6e9-d871-468e-8303-28a3947813a3",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Metabolic / Syndromic Disorders",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -548,7 +763,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -559,20 +774,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -583,17 +798,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Metabolic / Syndromic Disorders is treated in this curriculum as an ABPath AP content-specification topic within The Alimentary Tract; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Metabolic / Syndromic Disorders.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > The Alimentary Tract > Metabolic / Syndromic Disorders. Source line: 16318.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Metabolic / Syndromic Disorders.",
+          "answer": "Metabolic / Syndromic Disorders; scoped to The Alimentary Tract in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Metabolic / Syndromic Disorders.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Metabolic / Syndromic Disorders.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-07-fd3ed2b4-25ba-4f09-95d2-42b2ca073cc8",
       "sourceQueueId": "ap_cv-fd3ed2b4-25ba-4f09-95d2-42b2ca073cc8",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Tumors and Tumor-Like Conditions",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -641,7 +899,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -652,20 +910,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -676,17 +934,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Tumors and Tumor-Like Conditions is treated in this curriculum as an ABPath AP content-specification topic within Odontogenic Keratocyst; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Tumors and Tumor-Like Conditions.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Odontogenic Keratocyst > Tumors and Tumor-Like Conditions. Source line: 16325.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Tumors and Tumor-Like Conditions.",
+          "answer": "Tumors and Tumor-Like Conditions; scoped to Odontogenic Keratocyst in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Tumors and Tumor-Like Conditions.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Tumors and Tumor-Like Conditions.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-08-df28a40a-75e1-41a3-9db0-6fffadbcfba7",
       "sourceQueueId": "ap_cv-df28a40a-75e1-41a3-9db0-6fffadbcfba7",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Fistula",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -734,7 +1035,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -745,20 +1046,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -769,17 +1070,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Fistula is treated in this curriculum as an ABPath AP content-specification topic within Atresia / Stenosis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Fistula.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Other Salivary Gland Tumors, Benign and Malignant > Atresia / Stenosis > Fistula. Source line: 16333.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Fistula.",
+          "answer": "Fistula; scoped to Atresia / Stenosis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Fistula.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Fistula.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-09-c09ad5a1-b4ed-47cc-a054-d2ed444f6136",
       "sourceQueueId": "ap_cv-c09ad5a1-b4ed-47cc-a054-d2ed444f6136",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Malrotation / Abnormal Fixation",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -827,7 +1171,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -838,20 +1182,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -862,17 +1206,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Malrotation / Abnormal Fixation is treated in this curriculum as an ABPath AP content-specification topic within Other Salivary Gland Tumors, Benign and Malignant; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Malrotation / Abnormal Fixation.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Other Salivary Gland Tumors, Benign and Malignant > Malrotation / Abnormal Fixation. Source line: 16336.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Malrotation / Abnormal Fixation.",
+          "answer": "Malrotation / Abnormal Fixation; scoped to Other Salivary Gland Tumors, Benign and Malignant in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Malrotation / Abnormal Fixation.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Malrotation / Abnormal Fixation.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-10-1ddc0428-0a81-41e0-aed7-b0dc3bd73d69",
       "sourceQueueId": "ap_cv-1ddc0428-0a81-41e0-aed7-b0dc3bd73d69",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Omphalocele / Gastroschisis",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -920,7 +1307,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -931,20 +1318,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -955,17 +1342,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Omphalocele / Gastroschisis is treated in this curriculum as an ABPath AP content-specification topic within Malrotation / Abnormal Fixation; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Omphalocele / Gastroschisis.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Other Salivary Gland Tumors, Benign and Malignant > Malrotation / Abnormal Fixation > Omphalocele / Gastroschisis. Source line: 16409.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Omphalocele / Gastroschisis.",
+          "answer": "Omphalocele / Gastroschisis; scoped to Malrotation / Abnormal Fixation in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Omphalocele / Gastroschisis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Omphalocele / Gastroschisis.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-11-ae4624e0-3813-4a63-a77d-4f2e64b95cfd",
       "sourceQueueId": "ap_cv-ae4624e0-3813-4a63-a77d-4f2e64b95cfd",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Congenital Diarrheal/Enteropathic Syndromes",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -1013,7 +1443,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1024,20 +1454,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1048,17 +1478,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Congenital Diarrheal/Enteropathic Syndromes is treated in this curriculum as an ABPath AP content-specification topic within Other Salivary Gland Tumors, Benign and Malignant; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Congenital Diarrheal/Enteropathic Syndromes.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Other Salivary Gland Tumors, Benign and Malignant > Congenital Diarrheal/Enteropathic Syndromes. Source line: 16410.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Congenital Diarrheal/Enteropathic Syndromes.",
+          "answer": "Congenital Diarrheal/Enteropathic Syndromes; scoped to Other Salivary Gland Tumors, Benign and Malignant in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Congenital Diarrheal/Enteropathic Syndromes.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Congenital Diarrheal/Enteropathic Syndromes.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-12-a87bb33e-726b-4001-a849-9eff57bc628c",
       "sourceQueueId": "ap_cv-a87bb33e-726b-4001-a849-9eff57bc628c",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Tufting Enteropathy",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -1106,7 +1579,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1117,20 +1590,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1141,17 +1614,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Tufting Enteropathy is treated in this curriculum as an ABPath AP content-specification topic within Other Salivary Gland Tumors, Benign and Malignant; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Tufting Enteropathy.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Other Salivary Gland Tumors, Benign and Malignant > Tufting Enteropathy. Source line: 16412.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Tufting Enteropathy.",
+          "answer": "Tufting Enteropathy; scoped to Other Salivary Gland Tumors, Benign and Malignant in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Tufting Enteropathy.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Tufting Enteropathy.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-13-e349d5b7-d04d-48a1-9118-0b25abf962fd",
       "sourceQueueId": "ap_cv-e349d5b7-d04d-48a1-9118-0b25abf962fd",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Malabsorption due to Transport or Enzyme Disorders",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -1199,7 +1715,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1210,20 +1726,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1234,17 +1750,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Malabsorption due to Transport or Enzyme Disorders is treated in this curriculum as an ABPath AP content-specification topic within Tufting Enteropathy; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Malabsorption due to Transport or Enzyme Disorders.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Other Salivary Gland Tumors, Benign and Malignant > Tufting Enteropathy > Malabsorption due to Transport or Enzyme Disorders. Source line: 16413.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Malabsorption due to Transport or Enzyme Disorders.",
+          "answer": "Malabsorption due to Transport or Enzyme Disorders; scoped to Tufting Enteropathy in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Malabsorption due to Transport or Enzyme Disorders.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Malabsorption due to Transport or Enzyme Disorders.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-14-bb3b8f68-e21a-4c0e-a402-e766d5e4c4ab",
       "sourceQueueId": "ap_cv-bb3b8f68-e21a-4c0e-a402-e766d5e4c4ab",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Immune-Mediated Disorders",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -1292,7 +1851,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1303,20 +1862,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1327,17 +1886,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Immune-Mediated Disorders is treated in this curriculum as an ABPath AP content-specification topic within Other Salivary Gland Tumors, Benign and Malignant; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Immune-Mediated Disorders.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Other Salivary Gland Tumors, Benign and Malignant > Immune-Mediated Disorders. Source line: 16414.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Immune-Mediated Disorders.",
+          "answer": "Immune-Mediated Disorders; scoped to Other Salivary Gland Tumors, Benign and Malignant in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Immune-Mediated Disorders.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Immune-Mediated Disorders.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-15-1738b061-69b7-44bf-86ff-dc61216116a3",
       "sourceQueueId": "ap_cv-1738b061-69b7-44bf-86ff-dc61216116a3",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Celiac Sprue",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -1385,7 +1987,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1396,20 +1998,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1420,17 +2022,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Celiac Sprue is treated in this curriculum as an ABPath AP content-specification topic within Other Salivary Gland Tumors, Benign and Malignant; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Celiac Sprue.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Other Salivary Gland Tumors, Benign and Malignant > Celiac Sprue. Source line: 16415.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Celiac Sprue.",
+          "answer": "Celiac Sprue; scoped to Other Salivary Gland Tumors, Benign and Malignant in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Celiac Sprue.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Celiac Sprue.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-16-36412f55-efa5-47f8-9a37-1b1f014a0deb",
       "sourceQueueId": "ap_cv-36412f55-efa5-47f8-9a37-1b1f014a0deb",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Acute Appendicitis",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -1478,7 +2123,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1489,20 +2134,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1513,17 +2158,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Acute Appendicitis is treated in this curriculum as an ABPath AP content-specification topic within Parasitic Gastroentertis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Acute Appendicitis.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Parasitic Gastroentertis > Acute Appendicitis. Source line: 16432.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Acute Appendicitis.",
+          "answer": "Acute Appendicitis; scoped to Parasitic Gastroentertis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Acute Appendicitis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Acute Appendicitis.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-17-33be0bb4-d85b-49f4-9fa3-e10c1312210e",
       "sourceQueueId": "ap_cv-33be0bb4-d85b-49f4-9fa3-e10c1312210e",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Cystic Fibrosis",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -1571,7 +2259,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1582,20 +2270,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1606,17 +2294,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Cystic Fibrosis is treated in this curriculum as an ABPath AP content-specification topic within Parasitic Gastroentertis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Cystic Fibrosis.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Parasitic Gastroentertis > Cystic Fibrosis. Source line: 16440.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Cystic Fibrosis.",
+          "answer": "Cystic Fibrosis; scoped to Parasitic Gastroentertis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Cystic Fibrosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Cystic Fibrosis.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-18-7a205465-83c8-4231-bf53-ed6c21d35fb4",
       "sourceQueueId": "ap_cv-7a205465-83c8-4231-bf53-ed6c21d35fb4",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Pseudo-Obstruction",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -1664,7 +2395,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1675,20 +2406,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1699,17 +2430,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Pseudo-Obstruction is treated in this curriculum as an ABPath AP content-specification topic within Parasitic Gastroentertis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Pseudo-Obstruction.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Parasitic Gastroentertis > Pseudo-Obstruction. Source line: 16442.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Pseudo-Obstruction.",
+          "answer": "Pseudo-Obstruction; scoped to Parasitic Gastroentertis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Pseudo-Obstruction.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Pseudo-Obstruction.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-19-587b2c40-83dd-4a8a-a385-a59acdc2f503",
       "sourceQueueId": "ap_cv-587b2c40-83dd-4a8a-a385-a59acdc2f503",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Dysmotility Disorders",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -1757,7 +2531,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1768,20 +2542,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1792,17 +2566,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Dysmotility Disorders is treated in this curriculum as an ABPath AP content-specification topic within Parasitic Gastroentertis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Dysmotility Disorders.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Parasitic Gastroentertis > Dysmotility Disorders. Source line: 16443.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Dysmotility Disorders.",
+          "answer": "Dysmotility Disorders; scoped to Parasitic Gastroentertis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Dysmotility Disorders.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Dysmotility Disorders.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-20-c4afd750-e1d5-4fc5-87e4-c3179eb44f23",
       "sourceQueueId": "ap_cv-c4afd750-e1d5-4fc5-87e4-c3179eb44f23",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Adenomatous",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -1850,7 +2667,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1861,20 +2678,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1885,17 +2702,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Adenomatous is treated in this curriculum as an ABPath AP content-specification topic within Other Dysmotility Disorders; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Adenomatous.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Other Dysmotility Disorders > Adenomatous. Source line: 16509.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Adenomatous.",
+          "answer": "Adenomatous; scoped to Other Dysmotility Disorders in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Adenomatous.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Adenomatous.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-21-55c87ac2-da4c-4099-8243-2066305f81d8",
       "sourceQueueId": "ap_cv-55c87ac2-da4c-4099-8243-2066305f81d8",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Disorders of Bile Acid Synthesis",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -1943,7 +2803,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1954,20 +2814,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1978,17 +2838,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Disorders of Bile Acid Synthesis is treated in this curriculum as an ABPath AP content-specification topic within The Hepatobiliary System and Pancreas; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Disorders of Bile Acid Synthesis.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > The Hepatobiliary System and Pancreas > Disorders of Bile Acid Synthesis. Source line: 16569.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Disorders of Bile Acid Synthesis.",
+          "answer": "Disorders of Bile Acid Synthesis; scoped to The Hepatobiliary System and Pancreas in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Disorders of Bile Acid Synthesis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Disorders of Bile Acid Synthesis.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-22-51497c4c-866b-441d-a89f-0a2220572c3f",
       "sourceQueueId": "ap_cv-51497c4c-866b-441d-a89f-0a2220572c3f",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Metabolic Disorders",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -2036,7 +2939,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2047,20 +2950,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2071,17 +2974,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Metabolic Disorders is treated in this curriculum as an ABPath AP content-specification topic within The Hepatobiliary System and Pancreas; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Metabolic Disorders.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > The Hepatobiliary System and Pancreas > Metabolic Disorders. Source line: 16570.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Metabolic Disorders.",
+          "answer": "Metabolic Disorders; scoped to The Hepatobiliary System and Pancreas in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Metabolic Disorders.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Metabolic Disorders.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-23-671ff04f-2dd0-4ca8-af51-897417f0889e",
       "sourceQueueId": "ap_cv-671ff04f-2dd0-4ca8-af51-897417f0889e",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Wilson Disease",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -2129,7 +3075,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2140,20 +3086,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2164,17 +3110,60 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Wilson Disease is treated in this curriculum as an ABPath AP content-specification topic within Cystic Fibrosis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Wilson Disease.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > The Hepatobiliary System and Pancreas > Cystic Fibrosis > Wilson Disease. Source line: 16573.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Wilson Disease.",
+          "answer": "Wilson Disease; scoped to Cystic Fibrosis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Wilson Disease.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Wilson Disease.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-autopsy-batch-3-card-24-fa8a0a7d-b22a-424d-8353-d392b2c4b2c7",
       "sourceQueueId": "ap_cv-fa8a0a7d-b22a-424d-8353-d392b2c4b2c7",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Carbohydrate Disorders including Pompe",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -2222,7 +3211,7 @@ export const apP0CvAutopsyCardBatch3 = {
         "One contrastive near-miss or postmortem artifact is included for durable discrimination.",
         "Mechanism-of-death or clinicopathologic relevance is stated without overstating causality."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed cardiovascular/autopsy content, visual anchor, retrieval answer key, and faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2233,20 +3222,20 @@ export const apP0CvAutopsyCardBatch3 = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross-micro morphology, mechanism, mimic/discriminator, report/autopsy consequence, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Card prompts exist; faculty-reviewed diagnosis, mechanism, mimic, consequence, and safety-caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2257,11 +3246,54 @@ export const apP0CvAutopsyCardBatch3 = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Carbohydrate Disorders including Pompe is treated in this curriculum as an ABPath AP content-specification topic within The Hepatobiliary System and Pancreas; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Carbohydrate Disorders including Pompe.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > The Hepatobiliary System and Pancreas > Carbohydrate Disorders including Pompe. Source line: 16574.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Carbohydrate Disorders including Pompe.",
+          "answer": "Carbohydrate Disorders including Pompe; scoped to The Hepatobiliary System and Pancreas in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Carbohydrate Disorders including Pompe.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross vessel narrowing/thrombus/calcification plus H&E vessel-wall pattern and luminal consequence",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Carbohydrate Disorders including Pompe.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     }
   ]

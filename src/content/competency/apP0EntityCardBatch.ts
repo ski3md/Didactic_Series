@@ -6,14 +6,14 @@ export const apP0EntityCardBatch = {
   "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
   "batchName": "P0 core entity card batch 1",
   "batchStrategy": "First 24 P0 rows prioritized toward medical kidney/GU, placenta, GI, cardiovascular/autopsy, endocrine, thoracic, soft tissue, cytology, and head and neck before broader long-tail domains.",
-  "status": "draft scaffolds awaiting faculty-reviewed medical content and visual assets",
+  "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
   "batchReadiness": {
     "completedGates": 0,
-    "reviewReadyGates": 24,
-    "missingGates": 96,
+    "reviewReadyGates": 96,
+    "missingGates": 24,
     "totalGates": 120,
     "percentComplete": 0,
-    "percentReviewReady": 20
+    "percentReviewReady": 80
   },
   "readinessLegend": {
     "complete": "Evidence is present and reviewed.",
@@ -24,7 +24,7 @@ export const apP0EntityCardBatch = {
     {
       "id": "p0-card-01-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0",
       "sourceQueueId": "ap_gu-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Diseases associated with acellular closure of glomerular capillaries",
       "category": "Medical Kidney / GU",
@@ -63,7 +63,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -74,20 +74,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -98,17 +98,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Diseases associated with acellular closure of glomerular capillaries is treated in this curriculum as an ABPath AP content-specification topic within Medical Kidney Disease; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+        "morphologyAnchor": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diseases associated with acellular closure of glomerular capillaries.",
+        "topMimic": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma",
+        "discriminator": "compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable",
+        "ancillaryOrReportingConsequence": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
+        "safetyPitfall": "missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Genitourinary System > Kidney > Medical Kidney Disease > Diseases associated with acellular closure of glomerular capillaries. Source line: 608.",
+        "scopedDomain": "The Genitourinary System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Diseases associated with acellular closure of glomerular capillaries.",
+          "answer": "Diseases associated with acellular closure of glomerular capillaries; scoped to Medical Kidney Disease in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diseases associated with acellular closure of glomerular capillaries.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma; separate with compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU",
+        "inspectionSequence": [
+          "Orient to The Genitourinary System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diseases associated with acellular closure of glomerular capillaries.",
+          "Before sign-out, check the pitfall: missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-02-59e217f3-550d-40fb-ba59-d900d6d5a5af",
       "sourceQueueId": "ap_gu-59e217f3-550d-40fb-ba59-d900d6d5a5af",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Non-proliferative glomerulonephropathies",
       "category": "Medical Kidney / GU",
@@ -147,7 +190,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -158,20 +201,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -182,17 +225,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Non-proliferative glomerulonephropathies is treated in this curriculum as an ABPath AP content-specification topic within Medical Kidney Disease; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+        "morphologyAnchor": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Non-proliferative glomerulonephropathies.",
+        "topMimic": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma",
+        "discriminator": "compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable",
+        "ancillaryOrReportingConsequence": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
+        "safetyPitfall": "missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Genitourinary System > Kidney > Medical Kidney Disease > Non-proliferative glomerulonephropathies. Source line: 576.",
+        "scopedDomain": "The Genitourinary System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Non-proliferative glomerulonephropathies.",
+          "answer": "Non-proliferative glomerulonephropathies; scoped to Medical Kidney Disease in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Non-proliferative glomerulonephropathies.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma; separate with compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU",
+        "inspectionSequence": [
+          "Orient to The Genitourinary System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Non-proliferative glomerulonephropathies.",
+          "Before sign-out, check the pitfall: missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-03-c7c74b2a-9d75-4b81-b78b-fdbf4e85c76d",
       "sourceQueueId": "ap_gu-c7c74b2a-9d75-4b81-b78b-fdbf4e85c76d",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "BCG effects",
       "category": "Medical Kidney / GU",
@@ -231,7 +317,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -242,20 +328,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -266,17 +352,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "BCG effects is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+        "morphologyAnchor": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits BCG effects.",
+        "topMimic": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma",
+        "discriminator": "compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable",
+        "ancillaryOrReportingConsequence": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
+        "safetyPitfall": "missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > BCG effects. Source line: 762.",
+        "scopedDomain": "The Genitourinary System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by BCG effects.",
+          "answer": "BCG effects; scoped to Physiologic Changes, Metabolic Conditions & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits BCG effects.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma; separate with compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU",
+        "inspectionSequence": [
+          "Orient to The Genitourinary System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits BCG effects.",
+          "Before sign-out, check the pitfall: missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-04-bc90e1cf-b575-4be6-95e0-95b105b8efaa",
       "sourceQueueId": "ap_gu-bc90e1cf-b575-4be6-95e0-95b105b8efaa",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Diverticula",
       "category": "Medical Kidney / GU",
@@ -315,7 +444,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -326,20 +455,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -350,17 +479,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Diverticula is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+        "morphologyAnchor": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diverticula.",
+        "topMimic": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma",
+        "discriminator": "compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable",
+        "ancillaryOrReportingConsequence": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
+        "safetyPitfall": "missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Diverticula. Source line: 757.",
+        "scopedDomain": "The Genitourinary System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Diverticula.",
+          "answer": "Diverticula; scoped to Physiologic Changes, Metabolic Conditions & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diverticula.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma; separate with compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU",
+        "inspectionSequence": [
+          "Orient to The Genitourinary System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diverticula.",
+          "Before sign-out, check the pitfall: missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-05-2acaf2ec-9515-4398-a7b4-6c624aa84638",
       "sourceQueueId": "ap_gu-2acaf2ec-9515-4398-a7b4-6c624aa84638",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Urethral polyp",
       "category": "Medical Kidney / GU",
@@ -399,7 +571,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -410,20 +582,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -434,17 +606,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Urethral polyp is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+        "morphologyAnchor": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Urethral polyp.",
+        "topMimic": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma",
+        "discriminator": "compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable",
+        "ancillaryOrReportingConsequence": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
+        "safetyPitfall": "missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Genitourinary System > The Urothelial Tract and Bladder > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Urethral polyp. Source line: 761.",
+        "scopedDomain": "The Genitourinary System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Urethral polyp.",
+          "answer": "Urethral polyp; scoped to Physiologic Changes, Metabolic Conditions & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Urethral polyp.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma; separate with compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU",
+        "inspectionSequence": [
+          "Orient to The Genitourinary System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Urethral polyp.",
+          "Before sign-out, check the pitfall: missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-06-da4bc31a-bf36-45b7-92cc-f3cd0c717c5a",
       "sourceQueueId": "ap_placenta-da4bc31a-bf36-45b7-92cc-f3cd0c717c5a",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Chorangioma",
       "category": "Placenta",
@@ -483,7 +698,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -494,20 +709,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross orientation image or diagram plus H&E lesion anchor"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross orientation image or diagram plus H&E lesion anchor"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -518,17 +733,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Chorangioma is treated in this curriculum as an ABPath AP content-specification topic within Normal Anatomy and Histology; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Chorangioma.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Placenta > Normal Anatomy and Histology > Chorangioma. Source line: 3413.",
+        "scopedDomain": "The Placenta"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Chorangioma.",
+          "answer": "Chorangioma; scoped to Normal Anatomy and Histology in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Chorangioma.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross orientation image or diagram plus H&E lesion anchor",
+        "inspectionSequence": [
+          "Orient to The Placenta and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Chorangioma.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-07-258e3696-8b48-4e97-a509-e7c209aeaa4c",
       "sourceQueueId": "ap_placenta-258e3696-8b48-4e97-a509-e7c209aeaa4c",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Fetal Membrane Abnormalities",
       "category": "Placenta",
@@ -567,7 +825,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -578,20 +836,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross orientation image or diagram plus H&E lesion anchor"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross orientation image or diagram plus H&E lesion anchor"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -602,17 +860,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Fetal Membrane Abnormalities is treated in this curriculum as an ABPath AP content-specification topic within Normal Anatomy and Histology; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Fetal Membrane Abnormalities.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Placenta > Normal Anatomy and Histology > Fetal Membrane Abnormalities. Source line: 3400.",
+        "scopedDomain": "The Placenta"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Fetal Membrane Abnormalities.",
+          "answer": "Fetal Membrane Abnormalities; scoped to Normal Anatomy and Histology in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Fetal Membrane Abnormalities.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross orientation image or diagram plus H&E lesion anchor",
+        "inspectionSequence": [
+          "Orient to The Placenta and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Fetal Membrane Abnormalities.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-08-5becad66-bbe5-44de-ac72-11551d2d7176",
       "sourceQueueId": "ap_placenta-5becad66-bbe5-44de-ac72-11551d2d7176",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Amnion nodosum",
       "category": "Placenta",
@@ -651,7 +952,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -662,20 +963,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross orientation image or diagram plus H&E lesion anchor"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross orientation image or diagram plus H&E lesion anchor"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -686,17 +987,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Amnion nodosum is treated in this curriculum as an ABPath AP content-specification topic within Fetal Membrane Abnormalities; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Amnion nodosum.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Placenta > Normal Anatomy and Histology > Fetal Membrane Abnormalities > Amnion nodosum. Source line: 3401.",
+        "scopedDomain": "The Placenta"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Amnion nodosum.",
+          "answer": "Amnion nodosum; scoped to Fetal Membrane Abnormalities in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Amnion nodosum.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross orientation image or diagram plus H&E lesion anchor",
+        "inspectionSequence": [
+          "Orient to The Placenta and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Amnion nodosum.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-09-4a7a821e-af51-4637-87d8-ea230c5586fe",
       "sourceQueueId": "ap_placenta-4a7a821e-af51-4637-87d8-ea230c5586fe",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Chorioamnionitis",
       "category": "Placenta",
@@ -735,7 +1079,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -746,20 +1090,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross orientation image or diagram plus H&E lesion anchor"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross orientation image or diagram plus H&E lesion anchor"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -770,17 +1114,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Chorioamnionitis is treated in this curriculum as an ABPath AP content-specification topic within Fetal Membrane Abnormalities; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Chorioamnionitis.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Placenta > Normal Anatomy and Histology > Fetal Membrane Abnormalities > Chorioamnionitis. Source line: 3402.",
+        "scopedDomain": "The Placenta"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Chorioamnionitis.",
+          "answer": "Chorioamnionitis; scoped to Fetal Membrane Abnormalities in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Chorioamnionitis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross orientation image or diagram plus H&E lesion anchor",
+        "inspectionSequence": [
+          "Orient to The Placenta and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Chorioamnionitis.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-10-146a6aef-b3a9-42c3-90ff-7786f0e19599",
       "sourceQueueId": "ap_placenta-146a6aef-b3a9-42c3-90ff-7786f0e19599",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Other fetal membrane abnormalities",
       "category": "Placenta",
@@ -819,7 +1206,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -830,20 +1217,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross orientation image or diagram plus H&E lesion anchor"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross orientation image or diagram plus H&E lesion anchor"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -854,17 +1241,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Other fetal membrane abnormalities is treated in this curriculum as an ABPath AP content-specification topic within Fetal Membrane Abnormalities; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Other fetal membrane abnormalities.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Placenta > Normal Anatomy and Histology > Fetal Membrane Abnormalities > Other fetal membrane abnormalities. Source line: 3403.",
+        "scopedDomain": "The Placenta"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Other fetal membrane abnormalities.",
+          "answer": "Other fetal membrane abnormalities; scoped to Fetal Membrane Abnormalities in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Other fetal membrane abnormalities.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross orientation image or diagram plus H&E lesion anchor",
+        "inspectionSequence": [
+          "Orient to The Placenta and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Other fetal membrane abnormalities.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-11-0391c938-98b7-4f43-aee1-226ec67a227a",
       "sourceQueueId": "ap_placenta-0391c938-98b7-4f43-aee1-226ec67a227a",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Abruption",
       "category": "Placenta",
@@ -903,7 +1333,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -914,20 +1344,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross orientation image or diagram plus H&E lesion anchor"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross orientation image or diagram plus H&E lesion anchor"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -938,17 +1368,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Abruption is treated in this curriculum as an ABPath AP content-specification topic within Placental Disc Abnormalities; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Abruption.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Placenta > Normal Anatomy and Histology > Placental Disc Abnormalities > Abruption. Source line: 3405.",
+        "scopedDomain": "The Placenta"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Abruption.",
+          "answer": "Abruption; scoped to Placental Disc Abnormalities in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Abruption.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross orientation image or diagram plus H&E lesion anchor",
+        "inspectionSequence": [
+          "Orient to The Placenta and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Abruption.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-12-9ebe3f0e-f08e-437a-abd2-fe06aee0554e",
       "sourceQueueId": "ap_placenta-9ebe3f0e-f08e-437a-abd2-fe06aee0554e",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Infarcts",
       "category": "Placenta",
@@ -987,7 +1460,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -998,20 +1471,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross orientation image or diagram plus H&E lesion anchor"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross orientation image or diagram plus H&E lesion anchor"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1022,17 +1495,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Infarcts is treated in this curriculum as an ABPath AP content-specification topic within Placental Disc Abnormalities; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Infarcts.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Placenta > Normal Anatomy and Histology > Placental Disc Abnormalities > Infarcts. Source line: 3406.",
+        "scopedDomain": "The Placenta"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Infarcts.",
+          "answer": "Infarcts; scoped to Placental Disc Abnormalities in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Infarcts.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross orientation image or diagram plus H&E lesion anchor",
+        "inspectionSequence": [
+          "Orient to The Placenta and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Infarcts.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-13-30aabdd9-30e4-4d72-b501-5267be93a4c4",
       "sourceQueueId": "ap_placenta-30aabdd9-30e4-4d72-b501-5267be93a4c4",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Villitis and intervillositis",
       "category": "Placenta",
@@ -1071,7 +1587,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1082,20 +1598,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross orientation image or diagram plus H&E lesion anchor"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross orientation image or diagram plus H&E lesion anchor"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1106,17 +1622,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Villitis and intervillositis is treated in this curriculum as an ABPath AP content-specification topic within Placental Disc Abnormalities; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Villitis and intervillositis.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Placenta > Normal Anatomy and Histology > Placental Disc Abnormalities > Villitis and intervillositis. Source line: 3410.",
+        "scopedDomain": "The Placenta"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Villitis and intervillositis.",
+          "answer": "Villitis and intervillositis; scoped to Placental Disc Abnormalities in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Villitis and intervillositis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross orientation image or diagram plus H&E lesion anchor",
+        "inspectionSequence": [
+          "Orient to The Placenta and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Villitis and intervillositis.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-14-11519070-c819-4729-ab40-3628bfc77152",
       "sourceQueueId": "ap_placenta-11519070-c819-4729-ab40-3628bfc77152",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Umbilical Cord Abnormalities",
       "category": "Placenta",
@@ -1155,7 +1714,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1166,20 +1725,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross orientation image or diagram plus H&E lesion anchor"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross orientation image or diagram plus H&E lesion anchor"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1190,17 +1749,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Umbilical Cord Abnormalities is treated in this curriculum as an ABPath AP content-specification topic within Normal Anatomy and Histology; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Umbilical Cord Abnormalities.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Placenta > Normal Anatomy and Histology > Umbilical Cord Abnormalities. Source line: 3397.",
+        "scopedDomain": "The Placenta"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Umbilical Cord Abnormalities.",
+          "answer": "Umbilical Cord Abnormalities; scoped to Normal Anatomy and Histology in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Umbilical Cord Abnormalities.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross orientation image or diagram plus H&E lesion anchor",
+        "inspectionSequence": [
+          "Orient to The Placenta and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Umbilical Cord Abnormalities.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-15-e8f2ed40-ae50-4f8c-bf9d-7ee2eba1cda3",
       "sourceQueueId": "ap_placenta-e8f2ed40-ae50-4f8c-bf9d-7ee2eba1cda3",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Blood vessel abnormalities",
       "category": "Placenta",
@@ -1239,7 +1841,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1250,20 +1852,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross orientation image or diagram plus H&E lesion anchor"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross orientation image or diagram plus H&E lesion anchor"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1274,17 +1876,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Blood vessel abnormalities is treated in this curriculum as an ABPath AP content-specification topic within Umbilical Cord Abnormalities; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Blood vessel abnormalities.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Placenta > Normal Anatomy and Histology > Umbilical Cord Abnormalities > Blood vessel abnormalities. Source line: 3398.",
+        "scopedDomain": "The Placenta"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Blood vessel abnormalities.",
+          "answer": "Blood vessel abnormalities; scoped to Umbilical Cord Abnormalities in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Blood vessel abnormalities.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross orientation image or diagram plus H&E lesion anchor",
+        "inspectionSequence": [
+          "Orient to The Placenta and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Blood vessel abnormalities.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-16-87ab0736-d554-496f-a2c4-cd4b2ae7bbfe",
       "sourceQueueId": "ap_placenta-87ab0736-d554-496f-a2c4-cd4b2ae7bbfe",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Funisitis",
       "category": "Placenta",
@@ -1323,7 +1968,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1334,20 +1979,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross orientation image or diagram plus H&E lesion anchor"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross orientation image or diagram plus H&E lesion anchor"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1358,17 +2003,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Funisitis is treated in this curriculum as an ABPath AP content-specification topic within Umbilical Cord Abnormalities; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Funisitis.",
+        "topMimic": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process",
+        "discriminator": "gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence",
+        "ancillaryOrReportingConsequence": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+        "safetyPitfall": "using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Placenta > Normal Anatomy and Histology > Umbilical Cord Abnormalities > Funisitis. Source line: 3399.",
+        "scopedDomain": "The Placenta"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Funisitis.",
+          "answer": "Funisitis; scoped to Umbilical Cord Abnormalities in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Funisitis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "developmental variant, sampling artifact, infection, malperfusion, inflammatory lesion, or syndromic process; separate with gestational/age context, compartment-specific pattern, staging/grading when applicable, and maternal/fetal consequence.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "placental diagnosis language, culture/special stains, genetic/syndromic correlation, or maternal/fetal risk comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross orientation image or diagram plus H&E lesion anchor",
+        "inspectionSequence": [
+          "Orient to The Placenta and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against age-appropriate normal tissue, placental compartment, fetal membrane, cord, or developmental baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use developmental stage, compartment, inflammation, vascular/malperfusion pattern, lesion distribution, and clinical timing to decide whether the finding fits Funisitis.",
+          "Before sign-out, check the pitfall: using adult thresholds, ignoring gestational/age context, or omitting maternal/fetal consequence language"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-17-3861597c-5448-414e-911a-dd3237dc0272",
       "sourceQueueId": "ap_gi-3861597c-5448-414e-911a-dd3237dc0272",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Amebic colitis",
       "category": "Gastrointestinal",
@@ -1407,7 +2095,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1418,20 +2106,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture plus high-power diagnostic feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture plus high-power diagnostic feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1442,17 +2130,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Amebic colitis is treated in this curriculum as an ABPath AP content-specification topic within Familial Colorectal Cancer Syndromes; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Amebic colitis.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Familial Colorectal Cancer Syndromes > Amebic colitis. Source line: 2182.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Amebic colitis.",
+          "answer": "Amebic colitis; scoped to Familial Colorectal Cancer Syndromes in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Amebic colitis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture plus high-power diagnostic feature",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Amebic colitis.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-18-be26cbed-b3e6-4693-b09c-adfba6cec5b7",
       "sourceQueueId": "ap_gi-be26cbed-b3e6-4693-b09c-adfba6cec5b7",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Appendicitis",
       "category": "Gastrointestinal",
@@ -1491,7 +2222,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1502,20 +2233,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture plus high-power diagnostic feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture plus high-power diagnostic feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1526,17 +2257,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Appendicitis is treated in this curriculum as an ABPath AP content-specification topic within Familial Colorectal Cancer Syndromes; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Appendicitis.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Familial Colorectal Cancer Syndromes > Appendicitis. Source line: 2247.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Appendicitis.",
+          "answer": "Appendicitis; scoped to Familial Colorectal Cancer Syndromes in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Appendicitis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture plus high-power diagnostic feature",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Appendicitis.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-19-f02e61e2-6e6d-44bc-a66f-320a017c2776",
       "sourceQueueId": "ap_gi-f02e61e2-6e6d-44bc-a66f-320a017c2776",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Crohn's disease",
       "category": "Gastrointestinal",
@@ -1575,7 +2349,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1586,20 +2360,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture plus high-power diagnostic feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture plus high-power diagnostic feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1610,17 +2384,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Crohn's disease is treated in this curriculum as an ABPath AP content-specification topic within Familial Colorectal Cancer Syndromes; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Crohn's disease.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Familial Colorectal Cancer Syndromes > Crohn's disease. Source line: 2118.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Crohn's disease.",
+          "answer": "Crohn's disease; scoped to Familial Colorectal Cancer Syndromes in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Crohn's disease.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture plus high-power diagnostic feature",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Crohn's disease.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-20-5913044e-b704-4f0f-a81f-3959137b143c",
       "sourceQueueId": "ap_gi-5913044e-b704-4f0f-a81f-3959137b143c",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Enterobius vermicularis",
       "category": "Gastrointestinal",
@@ -1659,7 +2476,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1670,20 +2487,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture plus high-power diagnostic feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture plus high-power diagnostic feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1694,17 +2511,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Enterobius vermicularis is treated in this curriculum as an ABPath AP content-specification topic within Familial Colorectal Cancer Syndromes; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Enterobius vermicularis.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Familial Colorectal Cancer Syndromes > Enterobius vermicularis. Source line: 2248.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Enterobius vermicularis.",
+          "answer": "Enterobius vermicularis; scoped to Familial Colorectal Cancer Syndromes in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Enterobius vermicularis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture plus high-power diagnostic feature",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Enterobius vermicularis.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-21-bbdb2542-3a5c-41dd-ae5a-938d60b7cf05",
       "sourceQueueId": "ap_gi-bbdb2542-3a5c-41dd-ae5a-938d60b7cf05",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Pneumatosis coli",
       "category": "Gastrointestinal",
@@ -1743,7 +2603,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1754,20 +2614,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture plus high-power diagnostic feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture plus high-power diagnostic feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1778,17 +2638,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Pneumatosis coli is treated in this curriculum as an ABPath AP content-specification topic within Familial Colorectal Cancer Syndromes; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Pneumatosis coli.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Familial Colorectal Cancer Syndromes > Pneumatosis coli. Source line: 2119.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Pneumatosis coli.",
+          "answer": "Pneumatosis coli; scoped to Familial Colorectal Cancer Syndromes in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Pneumatosis coli.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture plus high-power diagnostic feature",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Pneumatosis coli.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-22-783f1f8c-c70a-48d3-baf4-1804002a5432",
       "sourceQueueId": "ap_gi-783f1f8c-c70a-48d3-baf4-1804002a5432",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Pseudomembranous colitis (C. difficile colitis)",
       "category": "Gastrointestinal",
@@ -1827,7 +2730,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1838,20 +2741,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture plus high-power diagnostic feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture plus high-power diagnostic feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1862,17 +2765,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Pseudomembranous colitis (C. difficile colitis) is treated in this curriculum as an ABPath AP content-specification topic within Familial Colorectal Cancer Syndromes; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Pseudomembranous colitis (C. difficile colitis).",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Familial Colorectal Cancer Syndromes > Pseudomembranous colitis (C. difficile colitis). Source line: 2181.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Pseudomembranous colitis (C. difficile colitis).",
+          "answer": "Pseudomembranous colitis (C. difficile colitis); scoped to Familial Colorectal Cancer Syndromes in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Pseudomembranous colitis (C. difficile colitis).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture plus high-power diagnostic feature",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Pseudomembranous colitis (C. difficile colitis).",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-23-a68c0f28-2d32-4388-9724-12c991a2dca7",
       "sourceQueueId": "ap_gi-a68c0f28-2d32-4388-9724-12c991a2dca7",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Serrated polyps",
       "category": "Gastrointestinal",
@@ -1911,7 +2857,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1922,20 +2868,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture plus high-power diagnostic feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture plus high-power diagnostic feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1946,17 +2892,60 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Serrated polyps is treated in this curriculum as an ABPath AP content-specification topic within Familial Colorectal Cancer Syndromes; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Serrated polyps.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Familial Colorectal Cancer Syndromes > Serrated polyps. Source line: 2189.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Serrated polyps.",
+          "answer": "Serrated polyps; scoped to Familial Colorectal Cancer Syndromes in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Serrated polyps.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture plus high-power diagnostic feature",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Serrated polyps.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-card-24-39ea9242-9a84-4420-8000-ee2428bc5450",
       "sourceQueueId": "ap_gi-39ea9242-9a84-4420-8000-ee2428bc5450",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Ulcerative colitis",
       "category": "Gastrointestinal",
@@ -1995,7 +2984,7 @@ export const apP0EntityCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until entity card, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2006,20 +2995,20 @@ export const apP0EntityCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, morphology, mimic discriminator, pitfall, and report language still require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power architecture plus high-power diagnostic feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power architecture plus high-power diagnostic feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Prompts exist; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2030,11 +3019,54 @@ export const apP0EntityCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Ulcerative colitis is treated in this curriculum as an ABPath AP content-specification topic within Familial Colorectal Cancer Syndromes; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Ulcerative colitis.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Familial Colorectal Cancer Syndromes > Ulcerative colitis. Source line: 2117.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Ulcerative colitis.",
+          "answer": "Ulcerative colitis; scoped to Familial Colorectal Cancer Syndromes in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Ulcerative colitis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power architecture plus high-power diagnostic feature",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Ulcerative colitis.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     }
   ]

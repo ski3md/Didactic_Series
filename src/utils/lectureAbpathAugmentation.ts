@@ -303,6 +303,16 @@ const makeMcqs = (lecture: PromotedLectureRecord, topics: SyllabusTopicRecord[])
     ],
     answer: 'Start with specimen context, morphology, differential, targeted ancillary selection, and report consequence',
     rationale: 'The AP content specifications assess entity recognition, specimen work-up, disease characterization, and judgment around diagnostic methods.',
+    choiceRationales: {
+      'Diagnose from the most memorable buzzword':
+        'This is unsafe because ABPath competence requires specimen context and disease characterization, not isolated recognition of a memorable phrase.',
+      'Start with specimen context, morphology, differential, targeted ancillary selection, and report consequence':
+        'This is the best answer because it follows the complete AP workflow from specimen orientation through the management-changing report element.',
+      'Order a broad immunostain panel before reviewing low power':
+        'This reverses the diagnostic sequence. Stains should answer a named morphologic differential rather than replace low-power and high-power assessment.',
+      'Delay all classification until molecular testing is complete':
+        'This overuses molecular testing. Many AP decisions require timely morphology-based classification with targeted ancillary testing only when it changes the final report.',
+    },
   },
   {
     topic: lecture.category ?? lecture.title,
@@ -315,6 +325,16 @@ const makeMcqs = (lecture: PromotedLectureRecord, topics: SyllabusTopicRecord[])
     ],
     answer: 'A reporting drill tied to staging, margin, adequacy, management, or deferral language',
     rationale: 'ABPath-level competence requires converting recognition into safe diagnostic characterization and clinically meaningful reporting.',
+    choiceRationales: {
+      'More memorized synonyms':
+        'Synonyms may help recognition, but they do not fix the gap: the learner cannot translate the diagnosis into reportable clinical consequence.',
+      'A reporting drill tied to staging, margin, adequacy, management, or deferral language':
+        'This is the best remediation because it forces the learner to connect entity recognition with the report language that changes care.',
+      'Removing the case from the curriculum':
+        'Removing the case avoids the competency gap instead of remediating it. The case should stay and be rebuilt around consequence-based reporting.',
+      'Skipping the normal histology comparator':
+        'Skipping the comparator weakens morphology. Normal-to-abnormal orientation is often the anchor for safe diagnosis and reporting.',
+    },
   },
 ];
 

@@ -8,7 +8,7 @@ export const apP0GiCardBatch = {
   "facultyPacketCsvPath": "reports/ap_p0_gi_card_batch_faculty_packet.csv",
   "batchName": "P0 gastrointestinal entity card batch",
   "batchStrategy": "First up to 24 unused P0 Gastrointestinal rows from the AP gap closure queue, preserving source order and excluding sourceQueueIds already present in existing apP0 card batches.",
-  "status": "draft GI scaffolds awaiting faculty-reviewed medical content, visual anchors, answer keys, and review metadata",
+  "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
   "categoryCoverage": {
     "categoryId": "ap_gi",
     "category": "Gastrointestinal",
@@ -18,11 +18,11 @@ export const apP0GiCardBatch = {
   },
   "batchReadiness": {
     "completedGates": 0,
-    "reviewReadyGates": 20,
-    "missingGates": 80,
+    "reviewReadyGates": 80,
+    "missingGates": 20,
     "totalGates": 100,
     "percentComplete": 0,
-    "percentReviewReady": 20
+    "percentReviewReady": 80
   },
   "readinessLegend": {
     "complete": "Evidence is present and reviewed.",
@@ -33,7 +33,7 @@ export const apP0GiCardBatch = {
     {
       "id": "p0-gi-card-01-7ede8c2a-b226-4493-8dc4-2e90988f6410",
       "sourceQueueId": "ap_gi-7ede8c2a-b226-4493-8dc4-2e90988f6410",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Infections",
       "category": "Gastrointestinal",
@@ -80,7 +80,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -91,20 +91,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -115,17 +115,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Infections is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Infections. Source line: 1932.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Infections.",
+          "answer": "Infections; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-02-e82e42c2-650a-4059-91d2-7ee0cf263cb0",
       "sourceQueueId": "ap_gi-e82e42c2-650a-4059-91d2-7ee0cf263cb0",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Mesenchymal tumors",
       "category": "Gastrointestinal",
@@ -172,7 +215,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -183,20 +226,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power growth pattern or layer of origin plus high-power lineage cue and planned ancillary discriminator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power growth pattern or layer of origin plus high-power lineage cue and planned ancillary discriminator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -207,17 +250,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Mesenchymal tumors is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Mesenchymal tumors.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Mesenchymal tumors. Source line: 1936.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Mesenchymal tumors.",
+          "answer": "Mesenchymal tumors; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Mesenchymal tumors.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power growth pattern or layer of origin plus high-power lineage cue and planned ancillary discriminator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Mesenchymal tumors.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-03-147807c0-cb07-44ab-a1dd-3a85b7d0bc01",
       "sourceQueueId": "ap_gi-147807c0-cb07-44ab-a1dd-3a85b7d0bc01",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Meckel diverticulum",
       "category": "Gastrointestinal",
@@ -264,7 +350,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -275,20 +361,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross or low-power anatomic architecture plus high-power diagnostic structure, mucosa, ganglion cell, or cyst lining cue"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross or low-power anatomic architecture plus high-power diagnostic structure, mucosa, ganglion cell, or cyst lining cue"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -299,17 +385,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Meckel diverticulum is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Meckel diverticulum.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Meckel diverticulum. Source line: 2080.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Meckel diverticulum.",
+          "answer": "Meckel diverticulum; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Meckel diverticulum.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross or low-power anatomic architecture plus high-power diagnostic structure, mucosa, ganglion cell, or cyst lining cue",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Meckel diverticulum.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-04-5ff86977-53f9-4fdd-b61d-2a8e3e37d7a8",
       "sourceQueueId": "ap_gi-5ff86977-53f9-4fdd-b61d-2a8e3e37d7a8",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Celiac disease and tropical sprue",
       "category": "Gastrointestinal",
@@ -356,7 +485,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -367,20 +496,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power villous/crypt architecture plus high-power epithelial, inflammatory, or injury cue with a normal duodenal comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power villous/crypt architecture plus high-power epithelial, inflammatory, or injury cue with a normal duodenal comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -391,17 +520,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Celiac disease and tropical sprue is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Celiac disease and tropical sprue.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Celiac disease and tropical sprue. Source line: 2086.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Celiac disease and tropical sprue.",
+          "answer": "Celiac disease and tropical sprue; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Celiac disease and tropical sprue.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power villous/crypt architecture plus high-power epithelial, inflammatory, or injury cue with a normal duodenal comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Celiac disease and tropical sprue.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-05-8169481e-44b9-474e-819b-4737d5e2a486",
       "sourceQueueId": "ap_gi-8169481e-44b9-474e-819b-4737d5e2a486",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Peptic duodenitis / ulcer",
       "category": "Gastrointestinal",
@@ -448,7 +620,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -459,20 +631,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power villous/crypt architecture plus high-power epithelial, inflammatory, or injury cue with a normal duodenal comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power villous/crypt architecture plus high-power epithelial, inflammatory, or injury cue with a normal duodenal comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -483,17 +655,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Peptic duodenitis / ulcer is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Peptic duodenitis / ulcer.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Peptic duodenitis / ulcer. Source line: 2087.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Peptic duodenitis / ulcer.",
+          "answer": "Peptic duodenitis / ulcer; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Peptic duodenitis / ulcer.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power villous/crypt architecture plus high-power epithelial, inflammatory, or injury cue with a normal duodenal comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Peptic duodenitis / ulcer.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-06-a2b54b0f-165e-4f7f-8313-3a4ee0768a26",
       "sourceQueueId": "ap_gi-a2b54b0f-165e-4f7f-8313-3a4ee0768a26",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Crohn disease",
       "category": "Gastrointestinal",
@@ -540,7 +755,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -551,20 +766,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power crypt architecture or membrane/ulcer pattern plus high-power activity, chronicity, organism, or granuloma cue"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power crypt architecture or membrane/ulcer pattern plus high-power activity, chronicity, organism, or granuloma cue"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -575,17 +790,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Crohn disease is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Crohn disease.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Crohn disease. Source line: 2088.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Crohn disease.",
+          "answer": "Crohn disease; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Crohn disease.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power crypt architecture or membrane/ulcer pattern plus high-power activity, chronicity, organism, or granuloma cue",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Crohn disease.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-07-19bf44d3-9dd4-4993-843a-d41714d08907",
       "sourceQueueId": "ap_gi-19bf44d3-9dd4-4993-843a-d41714d08907",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Lymphomas",
       "category": "Gastrointestinal",
@@ -632,7 +890,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -643,20 +901,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power growth pattern or layer of origin plus high-power lineage cue and planned ancillary discriminator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power growth pattern or layer of origin plus high-power lineage cue and planned ancillary discriminator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -667,17 +925,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Lymphomas is treated in this curriculum as an ABPath AP content-specification topic within Neuroendocrine tumors; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal endocrine architecture for the gland or a clearly documented taxonomy reassignment comparator before labeling the abnormality.",
+        "morphologyAnchor": "Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits Lymphomas.",
+        "topMimic": "hyperplasia, adenoma, carcinoma, metastatic disease, or non-endocrine taxonomy spillover depending on the path context",
+        "discriminator": "invasion, lineage/site confirmation, functional context, and whether architecture supports the endocrine category",
+        "ancillaryOrReportingConsequence": "organ-specific immunostains, molecular tests, staging/synoptic elements, or taxonomy correction before learner promotion",
+        "safetyPitfall": "promoting taxonomy spillover or calling malignancy without invasion/reportable criteria required for the organ",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Neuroendocrine tumors > Lymphomas. Source line: 2101.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Lymphomas.",
+          "answer": "Lymphomas; scoped to Neuroendocrine tumors in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits Lymphomas.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "hyperplasia, adenoma, carcinoma, metastatic disease, or non-endocrine taxonomy spillover depending on the path context; separate with invasion, lineage/site confirmation, functional context, and whether architecture supports the endocrine category.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "organ-specific immunostains, molecular tests, staging/synoptic elements, or taxonomy correction before learner promotion",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power growth pattern or layer of origin plus high-power lineage cue and planned ancillary discriminator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal endocrine architecture for the gland or a clearly documented taxonomy reassignment comparator before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits Lymphomas.",
+          "Before sign-out, check the pitfall: promoting taxonomy spillover or calling malignancy without invasion/reportable criteria required for the organ"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-08-c5bfdb5c-be57-4333-8462-fe5418f6262e",
       "sourceQueueId": "ap_gi-c5bfdb5c-be57-4333-8462-fe5418f6262e",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Melanosis coli",
       "category": "Gastrointestinal",
@@ -724,7 +1025,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -735,20 +1036,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power growth pattern or layer of origin plus high-power lineage cue and planned ancillary discriminator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power growth pattern or layer of origin plus high-power lineage cue and planned ancillary discriminator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -759,17 +1060,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Melanosis coli is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Melanosis coli.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Melanosis coli. Source line: 2105.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Melanosis coli.",
+          "answer": "Melanosis coli; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Melanosis coli.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power growth pattern or layer of origin plus high-power lineage cue and planned ancillary discriminator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Melanosis coli.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-09-704f5a9f-d5da-42f9-91af-bd7a07e9e05f",
       "sourceQueueId": "ap_gi-704f5a9f-d5da-42f9-91af-bd7a07e9e05f",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Hirschsprung disease",
       "category": "Gastrointestinal",
@@ -816,7 +1160,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -827,20 +1171,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross or low-power anatomic architecture plus high-power diagnostic structure, mucosa, ganglion cell, or cyst lining cue"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross or low-power anatomic architecture plus high-power diagnostic structure, mucosa, ganglion cell, or cyst lining cue"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -851,17 +1195,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Hirschsprung disease is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hirschsprung disease.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Hirschsprung disease. Source line: 2107.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Hirschsprung disease.",
+          "answer": "Hirschsprung disease; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hirschsprung disease.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross or low-power anatomic architecture plus high-power diagnostic structure, mucosa, ganglion cell, or cyst lining cue",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hirschsprung disease.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-10-04486cc7-eb7e-42e1-a512-6547da432009",
       "sourceQueueId": "ap_gi-04486cc7-eb7e-42e1-a512-6547da432009",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Tailgut cyst",
       "category": "Gastrointestinal",
@@ -908,7 +1295,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -919,20 +1306,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross or low-power anatomic architecture plus high-power diagnostic structure, mucosa, ganglion cell, or cyst lining cue"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross or low-power anatomic architecture plus high-power diagnostic structure, mucosa, ganglion cell, or cyst lining cue"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -943,17 +1330,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Tailgut cyst is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Tailgut cyst.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Tailgut cyst. Source line: 2262.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Tailgut cyst.",
+          "answer": "Tailgut cyst; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Tailgut cyst.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross or low-power anatomic architecture plus high-power diagnostic structure, mucosa, ganglion cell, or cyst lining cue",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Tailgut cyst.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-11-8998a8bd-81eb-4493-a741-bc4c1f0d51e8",
       "sourceQueueId": "ap_gi-8998a8bd-81eb-4493-a741-bc4c1f0d51e8",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Hemorrhoids",
       "category": "Gastrointestinal",
@@ -1000,7 +1430,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1011,20 +1441,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1035,17 +1465,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Hemorrhoids is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hemorrhoids.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Hemorrhoids. Source line: 2264.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Hemorrhoids.",
+          "answer": "Hemorrhoids; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hemorrhoids.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hemorrhoids.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-12-d80867cc-a1f7-4a7f-9b67-06ccb36915e6",
       "sourceQueueId": "ap_gi-d80867cc-a1f7-4a7f-9b67-06ccb36915e6",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Other infections of the anal canal",
       "category": "Gastrointestinal",
@@ -1092,7 +1565,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1103,20 +1576,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1127,17 +1600,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Other infections of the anal canal is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Other infections of the anal canal.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Other infections of the anal canal. Source line: 2266.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Other infections of the anal canal.",
+          "answer": "Other infections of the anal canal; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Other infections of the anal canal.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Other infections of the anal canal.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-13-6825d573-3be9-4f73-852b-5aaa9122f460",
       "sourceQueueId": "ap_gi-6825d573-3be9-4f73-852b-5aaa9122f460",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Hemochromatosis",
       "category": "Gastrointestinal",
@@ -1184,7 +1700,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1195,20 +1711,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1219,17 +1735,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Hemochromatosis is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hemochromatosis.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Hemochromatosis. Source line: 2379.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Hemochromatosis.",
+          "answer": "Hemochromatosis; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hemochromatosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hemochromatosis.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-14-76076f02-721a-4cff-94c4-1040aa7bf872",
       "sourceQueueId": "ap_gi-76076f02-721a-4cff-94c4-1040aa7bf872",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "NASH (Non-alcoholic steatohepatitis)",
       "category": "Gastrointestinal",
@@ -1276,7 +1835,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1287,20 +1846,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1311,17 +1870,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "NASH (Non-alcoholic steatohepatitis) is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits NASH (Non-alcoholic steatohepatitis).",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > NASH (Non-alcoholic steatohepatitis). Source line: 2387.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by NASH (Non-alcoholic steatohepatitis).",
+          "answer": "NASH (Non-alcoholic steatohepatitis); scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits NASH (Non-alcoholic steatohepatitis).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits NASH (Non-alcoholic steatohepatitis).",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-15-1d6bd63c-eb44-4584-b975-82ab8b97c753",
       "sourceQueueId": "ap_gi-1d6bd63c-eb44-4584-b975-82ab8b97c753",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Cirrhosis",
       "category": "Gastrointestinal",
@@ -1368,7 +1970,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1379,20 +1981,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1403,17 +2005,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Cirrhosis is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Cirrhosis.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Cirrhosis. Source line: 2388.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Cirrhosis.",
+          "answer": "Cirrhosis; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Cirrhosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Cirrhosis.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-16-b9441316-7a6b-4ba8-a12b-fe83a95afb47",
       "sourceQueueId": "ap_gi-b9441316-7a6b-4ba8-a12b-fe83a95afb47",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Amebic abscess",
       "category": "Gastrointestinal",
@@ -1460,7 +2105,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1471,20 +2116,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power crypt architecture or membrane/ulcer pattern plus high-power activity, chronicity, organism, or granuloma cue"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power crypt architecture or membrane/ulcer pattern plus high-power activity, chronicity, organism, or granuloma cue"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1495,17 +2140,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Amebic abscess is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Amebic abscess.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Amebic abscess. Source line: 2389.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Amebic abscess.",
+          "answer": "Amebic abscess; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Amebic abscess.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power crypt architecture or membrane/ulcer pattern plus high-power activity, chronicity, organism, or granuloma cue",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Amebic abscess.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-17-74c916a7-a041-4b2a-b281-dbbdd7ee816a",
       "sourceQueueId": "ap_gi-74c916a7-a041-4b2a-b281-dbbdd7ee816a",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Echinococcosis",
       "category": "Gastrointestinal",
@@ -1552,7 +2240,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1563,20 +2251,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1587,17 +2275,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Echinococcosis is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Echinococcosis.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Echinococcosis. Source line: 2391.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Echinococcosis.",
+          "answer": "Echinococcosis; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Echinococcosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Echinococcosis.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-18-cbad248a-dfec-45d4-a12a-8d065ed449a9",
       "sourceQueueId": "ap_gi-cbad248a-dfec-45d4-a12a-8d065ed449a9",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Hemangioma",
       "category": "Gastrointestinal",
@@ -1644,7 +2375,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1655,20 +2386,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1679,17 +2410,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Hemangioma is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hemangioma.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Liver and Biliary Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Hemangioma. Source line: 2406.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Hemangioma.",
+          "answer": "Hemangioma; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hemangioma.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Hemangioma.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-19-b6ca632d-d00b-429b-8534-d1e73cd7c305",
       "sourceQueueId": "ap_gi-b6ca632d-d00b-429b-8534-d1e73cd7c305",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Autoimmune pancreatitis",
       "category": "Gastrointestinal",
@@ -1736,7 +2510,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1747,20 +2521,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1771,17 +2545,60 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Autoimmune pancreatitis is treated in this curriculum as an ABPath AP content-specification topic within Acute and chronic pancreatitis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Autoimmune pancreatitis.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Pancreas > Acute and chronic pancreatitis > Autoimmune pancreatitis. Source line: 2579.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Autoimmune pancreatitis.",
+          "answer": "Autoimmune pancreatitis; scoped to Acute and chronic pancreatitis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Autoimmune pancreatitis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Autoimmune pancreatitis.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-gi-card-20-b72f3c55-4408-46ae-bab7-3bb5894775a6",
       "sourceQueueId": "ap_gi-b72f3c55-4408-46ae-bab7-3bb5894775a6",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Infections",
       "category": "Gastrointestinal",
@@ -1828,7 +2645,7 @@ export const apP0GiCardBatch = {
         "One contrastive near-miss is included for durable discrimination.",
         "Report language is clinically safe for biopsy, polypectomy, resection, or ancillary-workup context."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed GI content, visual anchor, retrieval answer key, and GI faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1839,20 +2656,20 @@ export const apP0GiCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, gross/endoscopic or low-power anchor, microscopic discriminator, mimic, pitfall, and report consequence."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "GI prompt set exists; faculty-reviewed diagnosis, discriminator, consequence, and safety caveat answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1863,11 +2680,54 @@ export const apP0GiCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Infections is treated in this curriculum as an ABPath AP content-specification topic within Acute and chronic pancreatitis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+        "morphologyAnchor": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
+        "topMimic": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+        "discriminator": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+        "ancillaryOrReportingConsequence": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+        "safetyPitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Digestive System > The Pancreas > Acute and chronic pancreatitis > Infections. Source line: 2580.",
+        "scopedDomain": "The Digestive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Infections.",
+          "answer": "Infections; scoped to Acute and chronic pancreatitis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+        "inspectionSequence": [
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     }
   ]

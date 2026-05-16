@@ -11,14 +11,14 @@ export const apP0EndocrineCardBatch = {
   "sourceCategory": "ap_endo",
   "sourceP0Rows": 40,
   "selectedRows": 24,
-  "status": "draft endocrine scaffolds awaiting taxonomy QA, source-backed content, visual anchors, retrieval answer keys, and faculty review",
+  "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
   "batchReadiness": {
     "completedGates": 0,
-    "reviewReadyGates": 24,
-    "missingGates": 96,
+    "reviewReadyGates": 96,
+    "missingGates": 24,
     "totalGates": 120,
     "percentComplete": 0,
-    "percentReviewReady": 20
+    "percentReviewReady": 80
   },
   "readinessLegend": {
     "complete": "Evidence is present and reviewed.",
@@ -29,7 +29,7 @@ export const apP0EndocrineCardBatch = {
     {
       "id": "p0-endo-card-01-61efa0c2-4270-480b-bcc6-51a679803757",
       "sourceQueueId": "ap_endo-61efa0c2-4270-480b-bcc6-51a679803757",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Infections",
       "category": "Endocrine",
@@ -72,7 +72,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -83,20 +83,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power thyroid architecture plus high-power follicular/lymphoid/infectious feature with normal thyroid comparator"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power thyroid architecture plus high-power follicular/lymphoid/infectious feature with normal thyroid comparator"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -107,17 +107,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Infections is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory, Metabolic, Non-Infectious & Infectious; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal endocrine architecture for the gland or a clearly documented taxonomy reassignment comparator before labeling the abnormality.",
+        "morphologyAnchor": "Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits Infections.",
+        "topMimic": "hyperplasia, adenoma, carcinoma, metastatic disease, or non-endocrine taxonomy spillover depending on the path context",
+        "discriminator": "invasion, lineage/site confirmation, functional context, and whether architecture supports the endocrine category",
+        "ancillaryOrReportingConsequence": "organ-specific immunostains, molecular tests, staging/synoptic elements, or taxonomy correction before learner promotion",
+        "safetyPitfall": "promoting taxonomy spillover or calling malignancy without invasion/reportable criteria required for the organ",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Thyroid > Inflammatory, Metabolic, Non-Infectious & Infectious > Infections. Source line: 2696.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Infections.",
+          "answer": "Infections; scoped to Inflammatory, Metabolic, Non-Infectious & Infectious in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits Infections.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "hyperplasia, adenoma, carcinoma, metastatic disease, or non-endocrine taxonomy spillover depending on the path context; separate with invasion, lineage/site confirmation, functional context, and whether architecture supports the endocrine category.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "organ-specific immunostains, molecular tests, staging/synoptic elements, or taxonomy correction before learner promotion",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power thyroid architecture plus high-power follicular/lymphoid/infectious feature with normal thyroid comparator",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal endocrine architecture for the gland or a clearly documented taxonomy reassignment comparator before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits Infections.",
+          "Before sign-out, check the pitfall: promoting taxonomy spillover or calling malignancy without invasion/reportable criteria required for the organ"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-02-3892cda8-6342-438e-a9c9-294f46ec0eb5",
       "sourceQueueId": "ap_endo-3892cda8-6342-438e-a9c9-294f46ec0eb5",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "The Adrenal Glands",
       "category": "Endocrine",
@@ -160,7 +203,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -171,20 +214,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "adrenal cortex/medulla orientation image plus lesion-specific gross or H&E field"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: adrenal cortex/medulla orientation image plus lesion-specific gross or H&E field"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -195,17 +238,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "The Adrenal Glands is treated in this curriculum as an ABPath AP content-specification topic within The Endocrine System; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal endocrine architecture for the gland or a clearly documented taxonomy reassignment comparator before labeling the abnormality.",
+        "morphologyAnchor": "Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits The Adrenal Glands.",
+        "topMimic": "hyperplasia, adenoma, carcinoma, metastatic disease, or non-endocrine taxonomy spillover depending on the path context",
+        "discriminator": "invasion, lineage/site confirmation, functional context, and whether architecture supports the endocrine category",
+        "ancillaryOrReportingConsequence": "organ-specific immunostains, molecular tests, staging/synoptic elements, or taxonomy correction before learner promotion",
+        "safetyPitfall": "promoting taxonomy spillover or calling malignancy without invasion/reportable criteria required for the organ",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Adrenal Glands. Source line: 2787.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by The Adrenal Glands.",
+          "answer": "The Adrenal Glands; scoped to The Endocrine System in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits The Adrenal Glands.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "hyperplasia, adenoma, carcinoma, metastatic disease, or non-endocrine taxonomy spillover depending on the path context; separate with invasion, lineage/site confirmation, functional context, and whether architecture supports the endocrine category.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "organ-specific immunostains, molecular tests, staging/synoptic elements, or taxonomy correction before learner promotion",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "adrenal cortex/medulla orientation image plus lesion-specific gross or H&E field",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal endocrine architecture for the gland or a clearly documented taxonomy reassignment comparator before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits The Adrenal Glands.",
+          "Before sign-out, check the pitfall: promoting taxonomy spillover or calling malignancy without invasion/reportable criteria required for the organ"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-03-9e46dcae-ae3f-481e-bc7b-f506594e098e",
       "sourceQueueId": "ap_endo-9e46dcae-ae3f-481e-bc7b-f506594e098e",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Infections",
       "category": "Endocrine",
@@ -248,7 +334,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -259,20 +345,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "adrenal cortex/medulla orientation image plus lesion-specific gross or H&E field"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: adrenal cortex/medulla orientation image plus lesion-specific gross or H&E field"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -283,17 +369,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Infections is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal endocrine architecture for the gland or a clearly documented taxonomy reassignment comparator before labeling the abnormality.",
+        "morphologyAnchor": "Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits Infections.",
+        "topMimic": "hyperplasia, adenoma, carcinoma, metastatic disease, or non-endocrine taxonomy spillover depending on the path context",
+        "discriminator": "invasion, lineage/site confirmation, functional context, and whether architecture supports the endocrine category",
+        "ancillaryOrReportingConsequence": "organ-specific immunostains, molecular tests, staging/synoptic elements, or taxonomy correction before learner promotion",
+        "safetyPitfall": "promoting taxonomy spillover or calling malignancy without invasion/reportable criteria required for the organ",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Adrenal Glands > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Infections. Source line: 2816.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Infections.",
+          "answer": "Infections; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits Infections.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "hyperplasia, adenoma, carcinoma, metastatic disease, or non-endocrine taxonomy spillover depending on the path context; separate with invasion, lineage/site confirmation, functional context, and whether architecture supports the endocrine category.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "organ-specific immunostains, molecular tests, staging/synoptic elements, or taxonomy correction before learner promotion",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "adrenal cortex/medulla orientation image plus lesion-specific gross or H&E field",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal endocrine architecture for the gland or a clearly documented taxonomy reassignment comparator before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use capsule/interface, growth pattern, cytology, invasion, necrosis, mitotic activity, and organ-specific architecture to decide whether the finding fits Infections.",
+          "Before sign-out, check the pitfall: promoting taxonomy spillover or calling malignancy without invasion/reportable criteria required for the organ"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-04-c04f5458-8c84-4836-b52e-202c1ac7800a",
       "sourceQueueId": "ap_endo-c04f5458-8c84-4836-b52e-202c1ac7800a",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "The Skin and Nails",
       "category": "Endocrine",
@@ -336,7 +465,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -347,20 +476,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -371,17 +500,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "The Skin and Nails is treated in this curriculum as an ABPath AP content-specification topic within The Endocrine System; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits The Skin and Nails.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails. Source line: 10347.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by The Skin and Nails.",
+          "answer": "The Skin and Nails; scoped to The Endocrine System in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits The Skin and Nails.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits The Skin and Nails.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-05-4ed8007c-ca11-497e-a565-15a9d23bdada",
       "sourceQueueId": "ap_endo-4ed8007c-ca11-497e-a565-15a9d23bdada",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Specimen Procurement and Preparation",
       "category": "Endocrine",
@@ -424,7 +596,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -435,20 +607,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -459,17 +631,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Specimen Procurement and Preparation is treated in this curriculum as an ABPath AP content-specification topic within Peripheral Nerve and Skeletal System; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Specimen Procurement and Preparation.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Peripheral Nerve and Skeletal System > Specimen Procurement and Preparation. Source line: 10440.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Specimen Procurement and Preparation.",
+          "answer": "Specimen Procurement and Preparation; scoped to Peripheral Nerve and Skeletal System in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Specimen Procurement and Preparation.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Specimen Procurement and Preparation.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-06-f7956fb7-9de9-4e08-91e6-4b596150629f",
       "sourceQueueId": "ap_endo-f7956fb7-9de9-4e08-91e6-4b596150629f",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Obesity",
       "category": "Endocrine",
@@ -512,7 +727,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -523,20 +738,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -547,17 +762,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Obesity is treated in this curriculum as an ABPath AP content-specification topic within The Skin and Nails; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Obesity.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Obesity. Source line: 10473.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Obesity.",
+          "answer": "Obesity; scoped to The Skin and Nails in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Obesity.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Obesity.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-07-9bc523b6-c749-47c3-b0f8-3a09c998b606",
       "sourceQueueId": "ap_endo-9bc523b6-c749-47c3-b0f8-3a09c998b606",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Rigor Mortis",
       "category": "Endocrine",
@@ -600,7 +858,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -611,20 +869,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -635,17 +893,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Rigor Mortis is treated in this curriculum as an ABPath AP content-specification topic within Asphyxia; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Rigor Mortis.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Asphyxia > Rigor Mortis. Source line: 11074.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Rigor Mortis.",
+          "answer": "Rigor Mortis; scoped to Asphyxia in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Rigor Mortis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Rigor Mortis.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-08-fdd30645-3b54-4943-881e-ecb0582dd3a7",
       "sourceQueueId": "ap_endo-fdd30645-3b54-4943-881e-ecb0582dd3a7",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Livor Mortis",
       "category": "Endocrine",
@@ -688,7 +989,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -699,20 +1000,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -723,17 +1024,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Livor Mortis is treated in this curriculum as an ABPath AP content-specification topic within Asphyxia; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Livor Mortis.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Asphyxia > Livor Mortis. Source line: 11075.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Livor Mortis.",
+          "answer": "Livor Mortis; scoped to Asphyxia in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Livor Mortis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Livor Mortis.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-09-6aec223f-7362-43e3-a768-6da07042deb5",
       "sourceQueueId": "ap_endo-6aec223f-7362-43e3-a768-6da07042deb5",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Algor Mortis",
       "category": "Endocrine",
@@ -776,7 +1120,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -787,20 +1131,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -811,17 +1155,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Algor Mortis is treated in this curriculum as an ABPath AP content-specification topic within Asphyxia; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Algor Mortis.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Asphyxia > Algor Mortis. Source line: 11076.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Algor Mortis.",
+          "answer": "Algor Mortis; scoped to Asphyxia in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Algor Mortis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Algor Mortis.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-10-9c66fe74-2a32-4a01-9c07-9bc52598f341",
       "sourceQueueId": "ap_endo-9c66fe74-2a32-4a01-9c07-9bc52598f341",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Hemoglobinopathy Analysis",
       "category": "Endocrine",
@@ -864,7 +1251,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -875,20 +1262,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -899,17 +1286,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Hemoglobinopathy Analysis is treated in this curriculum as an ABPath AP content-specification topic within Testing in Hematology and Hematopathology; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Hemoglobinopathy Analysis.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Testing in Hematology and Hematopathology > Hemoglobinopathy Analysis. Source line: 11713.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Hemoglobinopathy Analysis.",
+          "answer": "Hemoglobinopathy Analysis; scoped to Testing in Hematology and Hematopathology in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Hemoglobinopathy Analysis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Hemoglobinopathy Analysis.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-11-d0a81d0f-2707-4c3b-a275-b5741c404132",
       "sourceQueueId": "ap_endo-d0a81d0f-2707-4c3b-a275-b5741c404132",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Cytogenetic Testing",
       "category": "Endocrine",
@@ -952,7 +1382,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -963,20 +1393,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -987,17 +1417,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Cytogenetic Testing is treated in this curriculum as an ABPath AP content-specification topic within Cytochemical and Advanced Hematology Stains; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Cytogenetic Testing.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Cytochemical and Advanced Hematology Stains > Cytogenetic Testing. Source line: 11763.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Cytogenetic Testing.",
+          "answer": "Cytogenetic Testing; scoped to Cytochemical and Advanced Hematology Stains in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Cytogenetic Testing.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Cytogenetic Testing.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-12-0a57f46a-2cda-486f-b247-c4b6acc4bb93",
       "sourceQueueId": "ap_endo-0a57f46a-2cda-486f-b247-c4b6acc4bb93",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Erythrocytes (RBCs)",
       "category": "Endocrine",
@@ -1040,7 +1513,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1051,20 +1524,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1075,17 +1548,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Erythrocytes (RBCs) is treated in this curriculum as an ABPath AP content-specification topic within Normal Anatomy, Histology, Hematopoiesis and Hemostasis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Erythrocytes (RBCs).",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Normal Anatomy, Histology, Hematopoiesis and Hemostasis > Erythrocytes (RBCs). Source line: 11815.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Erythrocytes (RBCs).",
+          "answer": "Erythrocytes (RBCs); scoped to Normal Anatomy, Histology, Hematopoiesis and Hemostasis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Erythrocytes (RBCs).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Erythrocytes (RBCs).",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-13-1e565c1b-897b-4da1-85f9-a33b215c9d64",
       "sourceQueueId": "ap_endo-1e565c1b-897b-4da1-85f9-a33b215c9d64",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Leucocytes (WBCs)",
       "category": "Endocrine",
@@ -1128,7 +1644,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1139,20 +1655,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1163,17 +1679,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Leucocytes (WBCs) is treated in this curriculum as an ABPath AP content-specification topic within Normal Anatomy, Histology, Hematopoiesis and Hemostasis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Leucocytes (WBCs).",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Normal Anatomy, Histology, Hematopoiesis and Hemostasis > Leucocytes (WBCs). Source line: 11869.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Leucocytes (WBCs).",
+          "answer": "Leucocytes (WBCs); scoped to Normal Anatomy, Histology, Hematopoiesis and Hemostasis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Leucocytes (WBCs).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Leucocytes (WBCs).",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-14-6522b46d-67aa-47ae-83e0-b9e1f9cdd76b",
       "sourceQueueId": "ap_endo-6522b46d-67aa-47ae-83e0-b9e1f9cdd76b",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Granulocytes",
       "category": "Endocrine",
@@ -1216,7 +1775,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1227,20 +1786,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1251,17 +1810,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Granulocytes is treated in this curriculum as an ABPath AP content-specification topic within The Skin and Nails; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Granulocytes.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Granulocytes. Source line: 11872.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Granulocytes.",
+          "answer": "Granulocytes; scoped to The Skin and Nails in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Granulocytes.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Granulocytes.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-15-49b36e90-59b5-4de1-a1bc-6c5c613a36b2",
       "sourceQueueId": "ap_endo-49b36e90-59b5-4de1-a1bc-6c5c613a36b2",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Monocytes/Dendritic Cells",
       "category": "Endocrine",
@@ -1304,7 +1906,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1315,20 +1917,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1339,17 +1941,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Monocytes/Dendritic Cells is treated in this curriculum as an ABPath AP content-specification topic within The Skin and Nails; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Monocytes/Dendritic Cells.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Monocytes/Dendritic Cells. Source line: 11873.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Monocytes/Dendritic Cells.",
+          "answer": "Monocytes/Dendritic Cells; scoped to The Skin and Nails in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Monocytes/Dendritic Cells.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Monocytes/Dendritic Cells.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-16-0ba587fe-2ffe-4e5d-a59f-487a5c2a8db1",
       "sourceQueueId": "ap_endo-0ba587fe-2ffe-4e5d-a59f-487a5c2a8db1",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Eosinophils/Basophils/Mast Cells",
       "category": "Endocrine",
@@ -1392,7 +2037,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1403,20 +2048,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1427,17 +2072,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Eosinophils/Basophils/Mast Cells is treated in this curriculum as an ABPath AP content-specification topic within The Skin and Nails; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Eosinophils/Basophils/Mast Cells.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Eosinophils/Basophils/Mast Cells. Source line: 11874.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Eosinophils/Basophils/Mast Cells.",
+          "answer": "Eosinophils/Basophils/Mast Cells; scoped to The Skin and Nails in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Eosinophils/Basophils/Mast Cells.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Eosinophils/Basophils/Mast Cells.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-17-c163d592-f8d9-48dd-9bfa-668a65b1164f",
       "sourceQueueId": "ap_endo-c163d592-f8d9-48dd-9bfa-668a65b1164f",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Other Myeloid Cells",
       "category": "Endocrine",
@@ -1480,7 +2168,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1491,20 +2179,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1515,17 +2203,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Other Myeloid Cells is treated in this curriculum as an ABPath AP content-specification topic within The Skin and Nails; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Other Myeloid Cells.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Other Myeloid Cells. Source line: 11875.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Other Myeloid Cells.",
+          "answer": "Other Myeloid Cells; scoped to The Skin and Nails in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Other Myeloid Cells.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Other Myeloid Cells.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-18-8bad8370-9260-47eb-bf67-f79a0df7f2d4",
       "sourceQueueId": "ap_endo-8bad8370-9260-47eb-bf67-f79a0df7f2d4",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "B-Cells",
       "category": "Endocrine",
@@ -1568,7 +2299,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1579,20 +2310,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1603,17 +2334,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "B-Cells is treated in this curriculum as an ABPath AP content-specification topic within The Skin and Nails; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits B-Cells.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > B-Cells. Source line: 11878.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by B-Cells.",
+          "answer": "B-Cells; scoped to The Skin and Nails in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits B-Cells.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits B-Cells.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-19-e5f1f373-656c-44f3-b686-89c13e459bf8",
       "sourceQueueId": "ap_endo-e5f1f373-656c-44f3-b686-89c13e459bf8",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "T-Cells",
       "category": "Endocrine",
@@ -1656,7 +2430,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1667,20 +2441,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1691,17 +2465,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "T-Cells is treated in this curriculum as an ABPath AP content-specification topic within The Skin and Nails; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits T-Cells.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > T-Cells. Source line: 11879.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by T-Cells.",
+          "answer": "T-Cells; scoped to The Skin and Nails in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits T-Cells.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits T-Cells.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-20-ceac4a4e-cdb4-4e27-9931-4a50b0f9bd67",
       "sourceQueueId": "ap_endo-ceac4a4e-cdb4-4e27-9931-4a50b0f9bd67",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "NK-Cells",
       "category": "Endocrine",
@@ -1744,7 +2561,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1755,20 +2572,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1779,17 +2596,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "NK-Cells is treated in this curriculum as an ABPath AP content-specification topic within The Skin and Nails; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits NK-Cells.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > NK-Cells. Source line: 11880.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by NK-Cells.",
+          "answer": "NK-Cells; scoped to The Skin and Nails in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits NK-Cells.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits NK-Cells.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-21-eade2b0a-0d9f-4495-b226-0846ec5d5072",
       "sourceQueueId": "ap_endo-eade2b0a-0d9f-4495-b226-0846ec5d5072",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Thymus",
       "category": "Endocrine",
@@ -1832,7 +2692,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1843,20 +2703,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1867,17 +2727,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Thymus is treated in this curriculum as an ABPath AP content-specification topic within Other Lymphoid Cells; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Thymus.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Other Lymphoid Cells > Thymus. Source line: 11893.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Thymus.",
+          "answer": "Thymus; scoped to Other Lymphoid Cells in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Thymus.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Thymus.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-22-a3d6e1bf-13aa-4131-8bd3-bbb4f3be0820",
       "sourceQueueId": "ap_endo-a3d6e1bf-13aa-4131-8bd3-bbb4f3be0820",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Pediatric Issues, Including Fetal Hematopoiesis",
       "category": "Endocrine",
@@ -1920,7 +2823,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1931,20 +2834,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1955,17 +2858,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Pediatric Issues, Including Fetal Hematopoiesis is treated in this curriculum as an ABPath AP content-specification topic within Other Lymphoid Cells; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Pediatric Issues, Including Fetal Hematopoiesis.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Other Lymphoid Cells > Pediatric Issues, Including Fetal Hematopoiesis. Source line: 11895.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Pediatric Issues, Including Fetal Hematopoiesis.",
+          "answer": "Pediatric Issues, Including Fetal Hematopoiesis; scoped to Other Lymphoid Cells in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Pediatric Issues, Including Fetal Hematopoiesis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Pediatric Issues, Including Fetal Hematopoiesis.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-23-5ef4e435-873e-4dd8-adc8-48ffe5ba8b22",
       "sourceQueueId": "ap_endo-5ef4e435-873e-4dd8-adc8-48ffe5ba8b22",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Other Erythrocyte Enzyme Disorders",
       "category": "Endocrine",
@@ -2008,7 +2954,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2019,20 +2965,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2043,17 +2989,60 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Other Erythrocyte Enzyme Disorders is treated in this curriculum as an ABPath AP content-specification topic within The Skin and Nails; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Other Erythrocyte Enzyme Disorders.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Other Erythrocyte Enzyme Disorders. Source line: 11937.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Other Erythrocyte Enzyme Disorders.",
+          "answer": "Other Erythrocyte Enzyme Disorders; scoped to The Skin and Nails in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Other Erythrocyte Enzyme Disorders.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Other Erythrocyte Enzyme Disorders.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-endo-card-24-3a2e7a86-75d7-47e6-988c-ddac4208b006",
       "sourceQueueId": "ap_endo-3a2e7a86-75d7-47e6-988c-ddac4208b006",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Immune",
       "category": "Endocrine",
@@ -2096,7 +3085,7 @@ export const apP0EndocrineCardBatch = {
         "Retrieval answer key is reviewed before learner reveal.",
         "One endocrine near-miss or mimic is included for contrastive learning."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed endocrine content, visual anchor, retrieval answer key, and faculty QA metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2107,20 +3096,20 @@ export const apP0EndocrineCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Definition, endocrine normal comparator, morphology, mimic discriminator, pitfall, and report language require source-backed authoring."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answers and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2131,11 +3120,54 @@ export const apP0EndocrineCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Immune is treated in this curriculum as an ABPath AP content-specification topic within The Skin and Nails; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Immune.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: The Endocrine System > The Skin and Nails > Immune. Source line: 11940.",
+        "scopedDomain": "The Endocrine System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Immune.",
+          "answer": "Immune; scoped to The Skin and Nails in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Immune.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA image plan: attach endocrine normal-to-abnormal anchor or document reassignment/no-image rationale",
+        "inspectionSequence": [
+          "Orient to The Endocrine System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Immune.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     }
   ]

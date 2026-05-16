@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-15T23:01:30.394Z",
+  "generatedAt": "2026-05-16T03:34:27.365Z",
   "sourceFiles": {
     "queue": "src/content/competency/apGapClosureQueue.ts",
     "firstBatch": "src/content/competency/apP0EntityCardBatch.ts"
@@ -123,7 +123,7 @@
   },
   "firstBatch": {
     "batchName": "P0 core entity card batch 1",
-    "status": "draft scaffolds awaiting faculty-reviewed medical content and visual assets",
+    "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
     "strategy": "First 24 P0 rows prioritized toward medical kidney/GU, placenta, GI, cardiovascular/autopsy, endocrine, thoracic, soft tissue, cytology, and head and neck before broader long-tail domains.",
     "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
     "cardCount": 24,
@@ -133,38 +133,35 @@
       "Medical Kidney / GU": 5
     },
     "editorialStatusCounts": {
-      "draft-scaffold": 24
+      "draft-content-ready-for-review": 24
     },
     "learnerLevelCounts": {
       "PGY1-PGY2": 24
     },
     "readiness": {
       "completedGates": 0,
-      "reviewReadyGates": 24,
-      "missingGates": 96,
+      "reviewReadyGates": 96,
+      "missingGates": 24,
       "totalGates": 120,
       "percentComplete": 0,
-      "percentReviewReady": 20,
-      "percentMissing": 80
+      "percentReviewReady": 80,
+      "percentMissing": 20
     },
     "missingGatesByLabel": {
-      "Entity card content": 24,
-      "Faculty review": 24,
-      "Retrieval answer key": 24,
-      "Visual anchor": 24
+      "Faculty review": 24
     },
     "gateStatusByLabel": {
       "Taxonomy QA": {
         "ready-for-review": 24
       },
       "Entity card content": {
-        "missing": 24
+        "ready-for-review": 24
       },
       "Visual anchor": {
-        "missing": 24
+        "ready-for-review": 24
       },
       "Retrieval answer key": {
-        "missing": 24
+        "ready-for-review": 24
       },
       "Faculty review": {
         "missing": 24
@@ -174,7 +171,7 @@
   "nextActions": [
     {
       "action": "Assign the highest-volume missing gate work first.",
-      "rationale": "Entity card content is missing on 24 first-batch cards."
+      "rationale": "Faculty review is missing on 24 first-batch cards."
     },
     {
       "action": "Convert ready taxonomy gates into reviewed gates.",

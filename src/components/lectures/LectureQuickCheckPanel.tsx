@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Card from '../ui/Card.tsx';
 import { Flashcard, LectureQuickCheck, MCQ } from '../../types.ts';
+import { getAnswerChoiceReasoning } from '../../utils/answerChoiceReasoning.ts';
 
 interface LectureQuickCheckPanelProps {
   checks: LectureQuickCheck[];
@@ -118,7 +119,26 @@ const LectureQuickCheckPanel: React.FC<LectureQuickCheckPanelProps> = ({
                       </button>
                     </div>
                     {rationaleVisible && (
-                      <div className="mt-3 rounded-lg bg-sky-50 px-4 py-3 text-sm text-slate-700">{check.mcq.rationale}</div>
+                      <div className="mt-3 space-y-3 rounded-lg bg-sky-50 px-4 py-3 text-sm text-slate-700">
+                        <div>
+                          <span className="font-semibold text-slate-900">Answer:</span> {check.mcq.answer}
+                        </div>
+                        <div className="space-y-2">
+                          {getAnswerChoiceReasoning(check.mcq).map((item) => (
+                            <div
+                              key={`${check.id}-${item.choice}-reasoning`}
+                              className={`rounded-lg border px-3 py-2 ${
+                                item.isCorrect
+                                  ? 'border-emerald-200 bg-emerald-50 text-emerald-950'
+                                  : 'border-rose-100 bg-white text-slate-700'
+                              }`}
+                            >
+                              <div className="font-semibold">{item.choice}</div>
+                              <div className="mt-1">{item.reasoning}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     )}
                   </div>
                 )}
@@ -188,7 +208,21 @@ const LectureQuickCheckPanel: React.FC<LectureQuickCheckPanelProps> = ({
                 <div className="mt-3 text-sm text-slate-700">
                   <span className="font-semibold">Answer:</span> {mcq.answer}
                 </div>
-                <div className="mt-2 text-sm text-slate-700">{mcq.rationale}</div>
+                <div className="mt-3 space-y-2 text-sm">
+                  {getAnswerChoiceReasoning(mcq).map((item) => (
+                    <div
+                      key={`${mcq.topic}-${mcq.question}-${item.choice}`}
+                      className={`rounded-lg border px-3 py-2 ${
+                        item.isCorrect
+                          ? 'border-emerald-200 bg-emerald-50 text-emerald-950'
+                          : 'border-slate-200 bg-white text-slate-700'
+                      }`}
+                    >
+                      <div className="font-semibold">{item.choice}</div>
+                      <div className="mt-1">{item.reasoning}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>

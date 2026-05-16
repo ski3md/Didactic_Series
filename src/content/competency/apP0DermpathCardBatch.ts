@@ -8,7 +8,7 @@ export const apP0DermpathCardBatch = {
   "facultyPacketCsvPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.csv",
   "batchName": "P0 dermatopathology entity card batch",
   "batchStrategy": "All available P0 Dermatopathology rows, capped at 24, converted into pattern-first draft scaffolds with five readiness gates.",
-  "status": "draft scaffolds awaiting dermatopathology faculty content, visual assets, answer keys, and review metadata",
+  "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
   "categoryCoverage": {
     "categoryId": "ap_dermpath",
     "category": "Dermatopathology",
@@ -17,11 +17,11 @@ export const apP0DermpathCardBatch = {
   },
   "batchReadiness": {
     "completedGates": 0,
-    "reviewReadyGates": 24,
-    "missingGates": 96,
+    "reviewReadyGates": 96,
+    "missingGates": 24,
     "totalGates": 120,
     "percentComplete": 0,
-    "percentReviewReady": 20
+    "percentReviewReady": 80
   },
   "readinessLegend": {
     "complete": "Evidence is present and reviewed.",
@@ -32,7 +32,7 @@ export const apP0DermpathCardBatch = {
     {
       "id": "p0-dermpath-card-01-6b3da8c6-8a13-49c1-ad80-0a1207f265e0",
       "sourceQueueId": "ap_dermpath-6b3da8c6-8a13-49c1-ad80-0a1207f265e0",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Vesiculobullous Reaction Pattern",
       "category": "Dermatopathology",
@@ -83,7 +83,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -94,20 +94,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -118,17 +118,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Vesiculobullous Reaction Pattern is treated in this curriculum as an ABPath AP content-specification topic within Poikiloderma of Civatte; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Vesiculobullous Reaction Pattern.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Poikiloderma of Civatte > Vesiculobullous Reaction Pattern. Source line: 6515.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Vesiculobullous Reaction Pattern.",
+          "answer": "Vesiculobullous Reaction Pattern; scoped to Poikiloderma of Civatte in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Vesiculobullous Reaction Pattern.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Vesiculobullous Reaction Pattern.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-02-10bfa6b5-aff3-472f-8366-74ec7fe1b8fe",
       "sourceQueueId": "ap_dermpath-10bfa6b5-aff3-472f-8366-74ec7fe1b8fe",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Halogenoderma",
       "category": "Dermatopathology",
@@ -179,7 +222,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -190,20 +233,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -214,17 +257,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Halogenoderma is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Halogenoderma.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Halogenoderma. Source line: 6526.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Halogenoderma.",
+          "answer": "Halogenoderma; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Halogenoderma.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Halogenoderma.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-03-98303819-7743-433f-89a9-7b36d0af9b5d",
       "sourceQueueId": "ap_dermpath-98303819-7743-433f-89a9-7b36d0af9b5d",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Acantholysis",
       "category": "Dermatopathology",
@@ -275,7 +361,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -286,20 +372,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -310,17 +396,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Acantholysis is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Acantholysis.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Acantholysis. Source line: 6528.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Acantholysis.",
+          "answer": "Acantholysis; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Acantholysis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Acantholysis.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-04-2dd20646-ef01-4abe-b3ce-7fe7a3de3a39",
       "sourceQueueId": "ap_dermpath-2dd20646-ef01-4abe-b3ce-7fe7a3de3a39",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Reactions to Foreign Materials",
       "category": "Dermatopathology",
@@ -371,7 +500,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -382,20 +511,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -406,17 +535,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Reactions to Foreign Materials is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Reactions to Foreign Materials.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Reactions to Foreign Materials. Source line: 6550.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Reactions to Foreign Materials.",
+          "answer": "Reactions to Foreign Materials; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Reactions to Foreign Materials.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Reactions to Foreign Materials.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-05-6294819c-b557-4556-951d-774f5c4413bf",
       "sourceQueueId": "ap_dermpath-6294819c-b557-4556-951d-774f5c4413bf",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Scleroderma",
       "category": "Dermatopathology",
@@ -467,7 +639,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -478,20 +650,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -502,17 +674,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Scleroderma is treated in this curriculum as an ABPath AP content-specification topic within Chondrodermatitis Nodularis Helicis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Scleroderma.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > The Dermis > Chondrodermatitis Nodularis Helicis > Scleroderma. Source line: 6956.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Scleroderma.",
+          "answer": "Scleroderma; scoped to Chondrodermatitis Nodularis Helicis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Scleroderma.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Scleroderma.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-06-92580dac-b781-4a78-9229-0ac9825771a2",
       "sourceQueueId": "ap_dermpath-92580dac-b781-4a78-9229-0ac9825771a2",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Calcinosis Cutis",
       "category": "Dermatopathology",
@@ -563,7 +778,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -574,20 +789,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -598,17 +813,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Calcinosis Cutis is treated in this curriculum as an ABPath AP content-specification topic within Nevus Anelasticus; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Calcinosis Cutis.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Nevus Anelasticus > Calcinosis Cutis. Source line: 7074.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Calcinosis Cutis.",
+          "answer": "Calcinosis Cutis; scoped to Nevus Anelasticus in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Calcinosis Cutis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Calcinosis Cutis.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-07-e7d84c1f-0da6-4e64-ad15-a252c35405cc",
       "sourceQueueId": "ap_dermpath-e7d84c1f-0da6-4e64-ad15-a252c35405cc",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Aluminum Chloride",
       "category": "Dermatopathology",
@@ -659,7 +917,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -670,20 +928,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -694,17 +952,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Aluminum Chloride is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Aluminum Chloride.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Aluminum Chloride. Source line: 7179.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Aluminum Chloride.",
+          "answer": "Aluminum Chloride; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Aluminum Chloride.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Aluminum Chloride.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-08-76b1563e-389c-415f-b5d2-419b1bb91a63",
       "sourceQueueId": "ap_dermpath-76b1563e-389c-415f-b5d2-419b1bb91a63",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Ochronosis",
       "category": "Dermatopathology",
@@ -755,7 +1056,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -766,20 +1067,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -790,17 +1091,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Ochronosis is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Ochronosis.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Ochronosis. Source line: 7180.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Ochronosis.",
+          "answer": "Ochronosis; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Ochronosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Ochronosis.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-09-7ed6c7fa-bcb3-45bb-ab29-eab741a2db6e",
       "sourceQueueId": "ap_dermpath-7ed6c7fa-bcb3-45bb-ab29-eab741a2db6e",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Monilethrix",
       "category": "Dermatopathology",
@@ -851,7 +1195,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -862,20 +1206,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -886,17 +1230,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Monilethrix is treated in this curriculum as an ABPath AP content-specification topic within Infundibulofolliculitis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Monilethrix.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Infundibulofolliculitis > Monilethrix. Source line: 7324.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Monilethrix.",
+          "answer": "Monilethrix; scoped to Infundibulofolliculitis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Monilethrix.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Monilethrix.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-10-9aa335d8-fae4-426c-91ac-216e95c599af",
       "sourceQueueId": "ap_dermpath-9aa335d8-fae4-426c-91ac-216e95c599af",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Cat-Scratch Disease",
       "category": "Dermatopathology",
@@ -947,7 +1334,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -958,20 +1345,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -982,17 +1369,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Cat-Scratch Disease is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Cat-Scratch Disease.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Cat-Scratch Disease. Source line: 7715.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Cat-Scratch Disease.",
+          "answer": "Cat-Scratch Disease; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Cat-Scratch Disease.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Cat-Scratch Disease.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-11-3ac9f2fc-d1cc-4020-b08c-c21026316d79",
       "sourceQueueId": "ap_dermpath-3ac9f2fc-d1cc-4020-b08c-c21026316d79",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Verruga Peruana",
       "category": "Dermatopathology",
@@ -1043,7 +1473,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1054,20 +1484,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1078,17 +1508,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Verruga Peruana is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Verruga Peruana.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Verruga Peruana. Source line: 7721.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Verruga Peruana.",
+          "answer": "Verruga Peruana; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Verruga Peruana.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Verruga Peruana.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-12-5681fa5e-ef60-45ff-94c9-e5a07f4ecd4a",
       "sourceQueueId": "ap_dermpath-5681fa5e-ef60-45ff-94c9-e5a07f4ecd4a",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Anthrax",
       "category": "Dermatopathology",
@@ -1139,7 +1612,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1150,20 +1623,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1174,17 +1647,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Anthrax is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Anthrax.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Anthrax. Source line: 7722.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Anthrax.",
+          "answer": "Anthrax; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Anthrax.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Anthrax.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-13-e1d571c3-d2ff-4177-8627-9f401674e6c6",
       "sourceQueueId": "ap_dermpath-e1d571c3-d2ff-4177-8627-9f401674e6c6",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Yaws",
       "category": "Dermatopathology",
@@ -1235,7 +1751,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1246,20 +1762,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1270,17 +1786,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Yaws is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Yaws.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Yaws. Source line: 7726.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Yaws.",
+          "answer": "Yaws; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Yaws.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Yaws.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-14-c38ff563-d51c-43aa-911e-fabe130711ad",
       "sourceQueueId": "ap_dermpath-c38ff563-d51c-43aa-911e-fabe130711ad",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Borrelioses/Lyme Disease/Erythema Migrans",
       "category": "Dermatopathology",
@@ -1331,7 +1890,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1342,20 +1901,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1366,17 +1925,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Borrelioses/Lyme Disease/Erythema Migrans is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Borrelioses/Lyme Disease/Erythema Migrans.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Borrelioses/Lyme Disease/Erythema Migrans. Source line: 7727.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Borrelioses/Lyme Disease/Erythema Migrans.",
+          "answer": "Borrelioses/Lyme Disease/Erythema Migrans; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Borrelioses/Lyme Disease/Erythema Migrans.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Borrelioses/Lyme Disease/Erythema Migrans.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-15-7633de21-5795-43cf-839f-b9814ebc33de",
       "sourceQueueId": "ap_dermpath-7633de21-5795-43cf-839f-b9814ebc33de",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Tinea Nigra",
       "category": "Dermatopathology",
@@ -1427,7 +2029,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1438,20 +2040,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1462,17 +2064,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Tinea Nigra is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Tinea Nigra.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Tinea Nigra. Source line: 7847.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Tinea Nigra.",
+          "answer": "Tinea Nigra; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Tinea Nigra.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Tinea Nigra.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-16-07ce46e0-13be-4487-9d78-46afae32dfcc",
       "sourceQueueId": "ap_dermpath-07ce46e0-13be-4487-9d78-46afae32dfcc",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Viral Diseases",
       "category": "Dermatopathology",
@@ -1523,7 +2168,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1534,20 +2179,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1558,17 +2203,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Viral Diseases is treated in this curriculum as an ABPath AP content-specification topic within Fusariosis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Viral Diseases.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Fusariosis > Viral Diseases. Source line: 7859.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Viral Diseases.",
+          "answer": "Viral Diseases; scoped to Fusariosis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Viral Diseases.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Viral Diseases.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-17-ff89da0c-abc4-4133-abb0-0009c3b489f2",
       "sourceQueueId": "ap_dermpath-ff89da0c-abc4-4133-abb0-0009c3b489f2",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Monkeypox",
       "category": "Dermatopathology",
@@ -1619,7 +2307,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1630,20 +2318,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1654,17 +2342,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Monkeypox is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Monkeypox.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Monkeypox. Source line: 7864.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Monkeypox.",
+          "answer": "Monkeypox; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Monkeypox.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Monkeypox.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-18-197d6410-5c97-489f-b639-fcebbb7d4e9d",
       "sourceQueueId": "ap_dermpath-197d6410-5c97-489f-b639-fcebbb7d4e9d",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Eczema Herpeticum",
       "category": "Dermatopathology",
@@ -1715,7 +2446,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1726,20 +2457,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1750,17 +2481,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Eczema Herpeticum is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Eczema Herpeticum.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Eczema Herpeticum. Source line: 7956.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Eczema Herpeticum.",
+          "answer": "Eczema Herpeticum; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Eczema Herpeticum.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Eczema Herpeticum.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-19-af5cebcf-88e2-44e4-a544-cf3011ed6ba8",
       "sourceQueueId": "ap_dermpath-af5cebcf-88e2-44e4-a544-cf3011ed6ba8",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Epstein-Barr Virus / Mucocutaneous Ulcer",
       "category": "Dermatopathology",
@@ -1811,7 +2585,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1822,20 +2596,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1846,17 +2620,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Epstein-Barr Virus / Mucocutaneous Ulcer is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Epstein-Barr Virus / Mucocutaneous Ulcer.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Epstein-Barr Virus / Mucocutaneous Ulcer. Source line: 7957.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Epstein-Barr Virus / Mucocutaneous Ulcer.",
+          "answer": "Epstein-Barr Virus / Mucocutaneous Ulcer; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Epstein-Barr Virus / Mucocutaneous Ulcer.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Epstein-Barr Virus / Mucocutaneous Ulcer.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-20-20907ae2-e3ee-4112-8de3-d46f85c1ca34",
       "sourceQueueId": "ap_dermpath-20907ae2-e3ee-4112-8de3-d46f85c1ca34",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Retroviridae",
       "category": "Dermatopathology",
@@ -1907,7 +2724,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1918,20 +2735,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1942,17 +2759,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Retroviridae is treated in this curriculum as an ABPath AP content-specification topic within Hand, Foot, and Mouth Disease; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Retroviridae.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Hand, Foot, and Mouth Disease > Retroviridae. Source line: 7970.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Retroviridae.",
+          "answer": "Retroviridae; scoped to Hand, Foot, and Mouth Disease in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Retroviridae.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Retroviridae.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-21-f52003b9-78a3-4eae-bf42-afd44ef095b7",
       "sourceQueueId": "ap_dermpath-f52003b9-78a3-4eae-bf42-afd44ef095b7",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Human Immunodeficiency Virus (HIV)",
       "category": "Dermatopathology",
@@ -2003,7 +2863,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2014,20 +2874,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2038,17 +2898,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Human Immunodeficiency Virus (HIV) is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Human Immunodeficiency Virus (HIV).",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Human Immunodeficiency Virus (HIV). Source line: 7971.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Human Immunodeficiency Virus (HIV).",
+          "answer": "Human Immunodeficiency Virus (HIV); scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Human Immunodeficiency Virus (HIV).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Human Immunodeficiency Virus (HIV).",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-22-b2799c4b-07cd-457c-9e75-64eb7643ca63",
       "sourceQueueId": "ap_dermpath-b2799c4b-07cd-457c-9e75-64eb7643ca63",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Demodicosis",
       "category": "Dermatopathology",
@@ -2099,7 +3002,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2110,20 +3013,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2134,17 +3037,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Demodicosis is treated in this curriculum as an ABPath AP content-specification topic within Inflammatory Reaction Patterns; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Demodicosis.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Demodicosis. Source line: 8047.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Demodicosis.",
+          "answer": "Demodicosis; scoped to Inflammatory Reaction Patterns in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Demodicosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Demodicosis.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-23-248f7d5e-6d82-4470-be26-f46c98e00938",
       "sourceQueueId": "ap_dermpath-248f7d5e-6d82-4470-be26-f46c98e00938",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Hair Follicle Tumor",
       "category": "Dermatopathology",
@@ -2195,7 +3141,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2206,20 +3152,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2230,17 +3176,60 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Hair Follicle Tumor is treated in this curriculum as an ABPath AP content-specification topic within Malignant Melanoma; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Hair Follicle Tumor.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Malignant Melanoma > Hair Follicle Tumor. Source line: 8351.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Hair Follicle Tumor.",
+          "answer": "Hair Follicle Tumor; scoped to Malignant Melanoma in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Hair Follicle Tumor.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Hair Follicle Tumor.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-dermpath-card-24-79744982-840b-491a-b2cc-c942ce9da782",
       "sourceQueueId": "ap_dermpath-79744982-840b-491a-b2cc-c942ce9da782",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Tumors of Bone",
       "category": "Dermatopathology",
@@ -2291,7 +3280,7 @@ export const apP0DermpathCardBatch = {
         "Answer key is faculty-reviewed before learner reveal.",
         "One contrastive near-miss is included for durable discrimination."
       ],
-      "completionGate": "Not complete until taxonomy QA, entity content, visual anchor, retrieval answer key, and dermatopathology faculty review are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2302,20 +3291,20 @@ export const apP0DermpathCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, reaction-pattern placement, morphology, mimic discriminator, clinical correlation, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Dermpath prompt set exists; faculty-reviewed answer key is not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2326,11 +3315,54 @@ export const apP0DermpathCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Tumors of Bone is treated in this curriculum as an ABPath AP content-specification topic within Subungual Osteochondroma; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+        "morphologyAnchor": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Tumors of Bone.",
+        "topMimic": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy",
+        "discriminator": "pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution",
+        "ancillaryOrReportingConsequence": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+        "safetyPitfall": "calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Dermatopathology Topics for Anatomic Pathology Residents > Inflammatory Reaction Patterns > Subungual Osteochondroma > Tumors of Bone. Source line: 8875.",
+        "scopedDomain": "Dermatopathology Topics for Anatomic Pathology Residents"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Tumors of Bone.",
+          "answer": "Tumors of Bone; scoped to Subungual Osteochondroma in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Tumors of Bone.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive dermatitis, infection, inflammatory mimic, adnexal lesion, melanocytic lesion, or cutaneous malignancy; separate with pattern plus compartment, cytology, maturation, organism/stain support, and clinicopathologic distribution.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "PAS/GMS/AFB, immunostains, margin language, or clinicopathologic correlation when it changes classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power inflammatory pattern or tumor silhouette, high-power diagnostic feature, and normal/reactive skin comparator when available",
+        "inspectionSequence": [
+          "Orient to Dermatopathology Topics for Anatomic Pathology Residents and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal epidermis, dermis, adnexa, and inflammatory reaction pattern before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use epidermal reaction pattern, dermal infiltrate distribution, adnexal involvement, cytology, and interface or vascular change to decide whether the finding fits Tumors of Bone.",
+          "Before sign-out, check the pitfall: calling a pattern without excluding infection, reactive mimics, or melanoma/carcinoma where the differential demands it"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     }
   ]

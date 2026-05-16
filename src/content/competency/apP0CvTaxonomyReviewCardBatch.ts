@@ -8,7 +8,7 @@ export const apP0CvTaxonomyReviewCardBatch = {
   "facultyPacketCsvPath": "reports/ap_p0_cv_taxonomy_review_card_batch_faculty_packet.csv",
   "batchName": "P0 cardiovascular/autopsy taxonomy review completion batch",
   "batchStrategy": "Final unassigned P0 cardiovascular/autopsy-adjacent rows captured as taxonomy-review scaffolds so all P0 rows are tracked while faculty decides keep, reassign, or retire.",
-  "status": "draft taxonomy-review scaffolds awaiting faculty keep/reassign decision before canonical promotion",
+  "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
   "categoryCoverage": {
     "categoryId": "ap_cv",
     "category": "Cardiovascular / Autopsy-adjacent",
@@ -16,11 +16,11 @@ export const apP0CvTaxonomyReviewCardBatch = {
   },
   "batchReadiness": {
     "completedGates": 0,
-    "reviewReadyGates": 3,
-    "missingGates": 12,
+    "reviewReadyGates": 12,
+    "missingGates": 3,
     "totalGates": 15,
     "percentComplete": 0,
-    "percentReviewReady": 20
+    "percentReviewReady": 80
   },
   "readinessLegend": {
     "complete": "Evidence is present and reviewed.",
@@ -31,7 +31,7 @@ export const apP0CvTaxonomyReviewCardBatch = {
     {
       "id": "p0-cv-taxonomy-review-card-01-475eb4ab-3238-429b-b48e-ca4d66a541dd",
       "sourceQueueId": "ap_cv-475eb4ab-3238-429b-b48e-ca4d66a541dd",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Steatosis, Steatohepatitis, Metabolic Syndrome",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -74,7 +74,7 @@ export const apP0CvTaxonomyReviewCardBatch = {
         "Retrieval answer key explains the keep/reassign rationale.",
         "One pitfall about causal overstatement or domain drift is included."
       ],
-      "completionGate": "Not complete until taxonomy decision, source-backed content, visual/no-image rationale, answer key, and faculty review metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -85,20 +85,20 @@ export const apP0CvTaxonomyReviewCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Content must be authored only after taxonomy keep/reassign decision; include definition, normal/systemic comparator, consequence, mimic, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "gross liver steatosis/steatohepatitis or metabolic syndrome comorbidity diagram with cardiovascular risk linkage"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: gross liver steatosis/steatohepatitis or metabolic syndrome comorbidity diagram with cardiovascular risk linkage"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompt exists; faculty-reviewed keep/reassign rationale and answer key are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -109,17 +109,60 @@ export const apP0CvTaxonomyReviewCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Steatosis, Steatohepatitis, Metabolic Syndrome is treated in this curriculum as an ABPath AP content-specification topic within The Hepatobiliary System and Pancreas; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Steatosis, Steatohepatitis, Metabolic Syndrome.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > The Hepatobiliary System and Pancreas > Steatosis, Steatohepatitis, Metabolic Syndrome. Source line: 16581.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Steatosis, Steatohepatitis, Metabolic Syndrome.",
+          "answer": "Steatosis, Steatohepatitis, Metabolic Syndrome; scoped to The Hepatobiliary System and Pancreas in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Steatosis, Steatohepatitis, Metabolic Syndrome.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "gross liver steatosis/steatohepatitis or metabolic syndrome comorbidity diagram with cardiovascular risk linkage",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Steatosis, Steatohepatitis, Metabolic Syndrome.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-taxonomy-review-card-02-1ed9c3dd-c294-405a-934a-28d54bce5fee",
       "sourceQueueId": "ap_cv-1ed9c3dd-c294-405a-934a-28d54bce5fee",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Diabetes Mellitus",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -162,7 +205,7 @@ export const apP0CvTaxonomyReviewCardBatch = {
         "Retrieval answer key explains the keep/reassign rationale.",
         "One pitfall about causal overstatement or domain drift is included."
       ],
-      "completionGate": "Not complete until taxonomy decision, source-backed content, visual/no-image rationale, answer key, and faculty review metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -173,20 +216,20 @@ export const apP0CvTaxonomyReviewCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Content must be authored only after taxonomy keep/reassign decision; include definition, normal/systemic comparator, consequence, mimic, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "vascular, myocardial, renal, or systemic diabetic complication anchor plus explicit no-single-pathognomonic-lesion caution"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: vascular, myocardial, renal, or systemic diabetic complication anchor plus explicit no-single-pathognomonic-lesion caution"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompt exists; faculty-reviewed keep/reassign rationale and answer key are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -197,17 +240,60 @@ export const apP0CvTaxonomyReviewCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Diabetes Mellitus is treated in this curriculum as an ABPath AP content-specification topic within Normal Development, Structure, and Function; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Diabetes Mellitus.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Diabetes Mellitus. Source line: 16700.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Diabetes Mellitus.",
+          "answer": "Diabetes Mellitus; scoped to Normal Development, Structure, and Function in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Diabetes Mellitus.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "vascular, myocardial, renal, or systemic diabetic complication anchor plus explicit no-single-pathognomonic-lesion caution",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Diabetes Mellitus.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-cv-taxonomy-review-card-03-99a8b9d8-db08-4250-990f-91241f292200",
       "sourceQueueId": "ap_cv-99a8b9d8-db08-4250-990f-91241f292200",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Shwachman-Diamond",
       "category": "Cardiovascular / Autopsy-adjacent",
@@ -250,7 +336,7 @@ export const apP0CvTaxonomyReviewCardBatch = {
         "Retrieval answer key explains the keep/reassign rationale.",
         "One pitfall about causal overstatement or domain drift is included."
       ],
-      "completionGate": "Not complete until taxonomy decision, source-backed content, visual/no-image rationale, answer key, and faculty review metadata are all present.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -261,20 +347,20 @@ export const apP0CvTaxonomyReviewCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Content must be authored only after taxonomy keep/reassign decision; include definition, normal/systemic comparator, consequence, mimic, and pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "syndrome-level diagram or organ-system correlation table unless a local/licensed histologic anchor is available"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: syndrome-level diagram or organ-system correlation table unless a local/licensed histologic anchor is available"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompt exists; faculty-reviewed keep/reassign rationale and answer key are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -285,11 +371,54 @@ export const apP0CvTaxonomyReviewCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Shwachman-Diamond is treated in this curriculum as an ABPath AP content-specification topic within Normal Development, Structure, and Function; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+        "morphologyAnchor": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Shwachman-Diamond.",
+        "topMimic": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+        "discriminator": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+        "ancillaryOrReportingConsequence": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+        "safetyPitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Development, Structure, and Function > Shwachman-Diamond. Source line: 16701.",
+        "scopedDomain": "Cardiovascular"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Shwachman-Diamond.",
+          "answer": "Shwachman-Diamond; scoped to Normal Development, Structure, and Function in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Shwachman-Diamond.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "syndrome-level diagram or organ-system correlation table unless a local/licensed histologic anchor is available",
+        "inspectionSequence": [
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Shwachman-Diamond.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     }
   ]

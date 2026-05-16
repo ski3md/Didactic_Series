@@ -12,14 +12,14 @@ export const apP0MaleReproCardBatch = {
   "sourceP0Rows": 23,
   "excludedExistingSourceQueueIds": 0,
   "selectedRows": 23,
-  "status": "draft male reproductive scaffolds awaiting taxonomy QA, source-backed content, visual anchors, retrieval answer keys, and faculty review",
+  "status": "draft content attached; awaiting faculty review, citation, and asset/license completion",
   "batchReadiness": {
     "completedGates": 0,
-    "reviewReadyGates": 23,
-    "missingGates": 92,
+    "reviewReadyGates": 92,
+    "missingGates": 23,
     "totalGates": 115,
     "percentComplete": 0,
-    "percentReviewReady": 20
+    "percentReviewReady": 80
   },
   "readinessLegend": {
     "complete": "Evidence is present and reviewed.",
@@ -30,7 +30,7 @@ export const apP0MaleReproCardBatch = {
     {
       "id": "p0-male-repro-card-01-cd232d7a-75c4-462f-8db3-45e5dd5fae86",
       "sourceQueueId": "ap_male_repro-cd232d7a-75c4-462f-8db3-45e5dd5fae86",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Amyloid",
       "category": "Male Reproductive",
@@ -77,7 +77,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -88,20 +88,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power prostate/seminal vesicle architecture plus high-power feature that separates benign, traumatic, infiltrative, or staging-relevant change"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power prostate/seminal vesicle architecture plus high-power feature that separates benign, traumatic, infiltrative, or staging-relevant change"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -112,17 +112,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Amyloid is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Amyloid.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Prostate and Seminal Vesicles > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Amyloid. Source line: 897.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Amyloid.",
+          "answer": "Amyloid; scoped to Physiologic Changes, Metabolic Conditions & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Amyloid.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power prostate/seminal vesicle architecture plus high-power feature that separates benign, traumatic, infiltrative, or staging-relevant change",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Amyloid.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-02-bcadc6fc-94e8-4484-aa77-31ac0e5b95a5",
       "sourceQueueId": "ap_male_repro-bcadc6fc-94e8-4484-aa77-31ac0e5b95a5",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Extraprostatic extension",
       "category": "Male Reproductive",
@@ -169,7 +212,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -180,20 +223,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "low-power prostate/seminal vesicle architecture plus high-power feature that separates benign, traumatic, infiltrative, or staging-relevant change"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: low-power prostate/seminal vesicle architecture plus high-power feature that separates benign, traumatic, infiltrative, or staging-relevant change"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -204,17 +247,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Extraprostatic extension is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Extraprostatic extension.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Prostate and Seminal Vesicles > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Extraprostatic extension. Source line: 928.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Extraprostatic extension.",
+          "answer": "Extraprostatic extension; scoped to Physiologic Changes, Metabolic Conditions & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Extraprostatic extension.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "low-power prostate/seminal vesicle architecture plus high-power feature that separates benign, traumatic, infiltrative, or staging-relevant change",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Extraprostatic extension.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-03-416e8c98-54de-4305-a1ff-aaf044a4a7bd",
       "sourceQueueId": "ap_male_repro-416e8c98-54de-4305-a1ff-aaf044a4a7bd",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Cryptorchidism",
       "category": "Male Reproductive",
@@ -261,7 +347,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -272,20 +358,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "testis low-power architecture plus high-power germ-cell, inflammatory, developmental, or infarct-related feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: testis low-power architecture plus high-power germ-cell, inflammatory, developmental, or infarct-related feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -296,17 +382,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Cryptorchidism is treated in this curriculum as an ABPath AP content-specification topic within Testis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Cryptorchidism.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Testis > Cryptorchidism. Source line: 982.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Cryptorchidism.",
+          "answer": "Cryptorchidism; scoped to Testis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Cryptorchidism.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "testis low-power architecture plus high-power germ-cell, inflammatory, developmental, or infarct-related feature",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Cryptorchidism.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-04-ae24d27b-2eda-417d-b7ee-fa4393f3f2b2",
       "sourceQueueId": "ap_male_repro-ae24d27b-2eda-417d-b7ee-fa4393f3f2b2",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Bowenoid papulosis",
       "category": "Male Reproductive",
@@ -353,7 +482,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -364,20 +493,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "squamous mucosa low-power silhouette plus high-power dysplasia, inflammation, HPV effect, invasion, or reactive mimic feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: squamous mucosa low-power silhouette plus high-power dysplasia, inflammation, HPV effect, invasion, or reactive mimic feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -388,17 +517,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Bowenoid papulosis is treated in this curriculum as an ABPath AP content-specification topic within Lichen schlerosis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Bowenoid papulosis.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Penis > Lichen schlerosis > Bowenoid papulosis. Source line: 1196.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Bowenoid papulosis.",
+          "answer": "Bowenoid papulosis; scoped to Lichen schlerosis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Bowenoid papulosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "squamous mucosa low-power silhouette plus high-power dysplasia, inflammation, HPV effect, invasion, or reactive mimic feature",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Bowenoid papulosis.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-05-57b7ef85-4229-4683-9e12-e9746c5c4e12",
       "sourceQueueId": "ap_male_repro-57b7ef85-4229-4683-9e12-e9746c5c4e12",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Adenosis",
       "category": "Male Reproductive",
@@ -445,7 +617,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -456,20 +628,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -480,17 +652,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Adenosis is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Adenosis.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Adenosis. Source line: 2961.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Adenosis.",
+          "answer": "Adenosis; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Adenosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Adenosis.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-06-01278486-ad2f-413a-93fe-d45d29f116a9",
       "sourceQueueId": "ap_male_repro-01278486-ad2f-413a-93fe-d45d29f116a9",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Stromal polyp",
       "category": "Male Reproductive",
@@ -537,7 +752,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -548,20 +763,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -572,17 +787,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Stromal polyp is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Stromal polyp.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Uterine Cervix > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Stromal polyp. Source line: 2966.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Stromal polyp.",
+          "answer": "Stromal polyp; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Stromal polyp.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Stromal polyp.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-07-1246b90e-c9c9-454c-a63e-9e2613374e7c",
       "sourceQueueId": "ap_male_repro-1246b90e-c9c9-454c-a63e-9e2613374e7c",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "The Ovaries",
       "category": "Male Reproductive",
@@ -629,7 +887,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -640,20 +898,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -664,17 +922,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "The Ovaries is treated in this curriculum as an ABPath AP content-specification topic within Male Reproductive System; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits The Ovaries.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Ovaries. Source line: 3086.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by The Ovaries.",
+          "answer": "The Ovaries; scoped to Male Reproductive System in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits The Ovaries.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits The Ovaries.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-08-38b26e1e-286b-4d31-819a-29c12a8d5056",
       "sourceQueueId": "ap_male_repro-38b26e1e-286b-4d31-819a-29c12a8d5056",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Normal endometrial patterns",
       "category": "Male Reproductive",
@@ -721,7 +1022,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -732,20 +1033,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -756,17 +1057,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Normal endometrial patterns is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Normal endometrial patterns.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Ovaries > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Normal endometrial patterns. Source line: 3094.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Normal endometrial patterns.",
+          "answer": "Normal endometrial patterns; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Normal endometrial patterns.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Normal endometrial patterns.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-09-25f8343f-f402-4b11-ae3e-02cd14891ff5",
       "sourceQueueId": "ap_male_repro-25f8343f-f402-4b11-ae3e-02cd14891ff5",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Exogenous hormonal alteration",
       "category": "Male Reproductive",
@@ -813,7 +1157,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -824,20 +1168,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -848,17 +1192,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Exogenous hormonal alteration is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Exogenous hormonal alteration.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Ovaries > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Exogenous hormonal alteration. Source line: 3096.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Exogenous hormonal alteration.",
+          "answer": "Exogenous hormonal alteration; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Exogenous hormonal alteration.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Exogenous hormonal alteration.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-10-851e8fca-6018-49c8-b182-104216462243",
       "sourceQueueId": "ap_male_repro-851e8fca-6018-49c8-b182-104216462243",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Atrophy",
       "category": "Male Reproductive",
@@ -905,7 +1292,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -916,20 +1303,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -940,17 +1327,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Atrophy is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Atrophy.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Ovaries > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Atrophy. Source line: 3097.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Atrophy.",
+          "answer": "Atrophy; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Atrophy.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Atrophy.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-11-a1d3faa1-e117-4b6d-923b-c8651123d6d1",
       "sourceQueueId": "ap_male_repro-a1d3faa1-e117-4b6d-923b-c8651123d6d1",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Endometritis",
       "category": "Male Reproductive",
@@ -997,7 +1427,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1008,20 +1438,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1032,17 +1462,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Endometritis is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Endometritis.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Ovaries > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Endometritis. Source line: 3104.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Endometritis.",
+          "answer": "Endometritis; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Endometritis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Endometritis.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-12-d51652a0-2893-4617-8e37-5ea57cabe1ee",
       "sourceQueueId": "ap_male_repro-d51652a0-2893-4617-8e37-5ea57cabe1ee",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Disordered proliferative",
       "category": "Male Reproductive",
@@ -1089,7 +1562,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1100,20 +1573,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1124,17 +1597,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Disordered proliferative is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Disordered proliferative.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Ovaries > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Disordered proliferative. Source line: 3111.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Disordered proliferative.",
+          "answer": "Disordered proliferative; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Disordered proliferative.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Disordered proliferative.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-13-599e3866-34ce-4982-988b-cd737e959de3",
       "sourceQueueId": "ap_male_repro-599e3866-34ce-4982-988b-cd737e959de3",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "PEComa",
       "category": "Male Reproductive",
@@ -1181,7 +1697,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1192,20 +1708,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1216,17 +1732,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "PEComa is treated in this curriculum as an ABPath AP content-specification topic within Undifferentiated endometrial stromal sarcoma; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits PEComa.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Ovaries > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Undifferentiated endometrial stromal sarcoma > PEComa. Source line: 3123.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by PEComa.",
+          "answer": "PEComa; scoped to Undifferentiated endometrial stromal sarcoma in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits PEComa.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits PEComa.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-14-fe9d0328-b1ad-4ef9-88b8-bdeda6f31d3c",
       "sourceQueueId": "ap_male_repro-fe9d0328-b1ad-4ef9-88b8-bdeda6f31d3c",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Mucinous tumors",
       "category": "Male Reproductive",
@@ -1273,7 +1832,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1284,20 +1843,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1308,17 +1867,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Mucinous tumors is treated in this curriculum as an ABPath AP content-specification topic within The Ovaries; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Mucinous tumors.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Ovaries > Mucinous tumors. Source line: 3232.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Mucinous tumors.",
+          "answer": "Mucinous tumors; scoped to The Ovaries in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Mucinous tumors.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Mucinous tumors.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-15-e6f18b8b-f28b-4fac-a0f7-1ff0fc1b108f",
       "sourceQueueId": "ap_male_repro-e6f18b8b-f28b-4fac-a0f7-1ff0fc1b108f",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Cysts",
       "category": "Male Reproductive",
@@ -1365,7 +1967,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1376,20 +1978,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1400,17 +2002,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Cysts is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Cysts.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Fallopian Tubes and Broad Ligaments > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Cysts. Source line: 3290.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Cysts.",
+          "answer": "Cysts; scoped to Physiologic Changes, Metabolic Conditions & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Cysts.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Cysts.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-16-51ce17e1-9729-4d56-aaa1-c6bc8e032e8f",
       "sourceQueueId": "ap_male_repro-51ce17e1-9729-4d56-aaa1-c6bc8e032e8f",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Non-Infectious",
       "category": "Male Reproductive",
@@ -1457,7 +2102,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1468,20 +2113,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1492,17 +2137,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Non-Infectious is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Non-Infectious.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Peritoneum > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Non-Infectious. Source line: 3366.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Non-Infectious.",
+          "answer": "Non-Infectious; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Non-Infectious.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Non-Infectious.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-17-1d7ca2fa-b361-4cb9-ad2b-3112c9a112a2",
       "sourceQueueId": "ap_male_repro-1d7ca2fa-b361-4cb9-ad2b-3112c9a112a2",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Peritoneal leiomyomatosis",
       "category": "Male Reproductive",
@@ -1549,7 +2237,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1560,20 +2248,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1584,17 +2272,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Peritoneal leiomyomatosis is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Peritoneal leiomyomatosis.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > The Peritoneum > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Peritoneal leiomyomatosis. Source line: 3371.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Peritoneal leiomyomatosis.",
+          "answer": "Peritoneal leiomyomatosis; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Peritoneal leiomyomatosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "taxonomy QA visual plan: attach correction note, organ-system reassignment, or local image only after category review",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Peritoneal leiomyomatosis.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-18-c4d2f7de-45bf-4685-badf-42d8c4263c70",
       "sourceQueueId": "ap_male_repro-c4d2f7de-45bf-4685-badf-42d8c4263c70",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Infections",
       "category": "Male Reproductive",
@@ -1641,7 +2372,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1652,20 +2383,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1676,17 +2407,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Infections is treated in this curriculum as an ABPath AP content-specification topic within Developmental Anomalies and Malformations; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Infections.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Normal Anatomy, Histology, and Development > Developmental Anomalies and Malformations > Infections. Source line: 17282.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Infections.",
+          "answer": "Infections; scoped to Developmental Anomalies and Malformations in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Infections.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Infections.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-19-c458767e-193e-417f-af50-44331e638a53",
       "sourceQueueId": "ap_male_repro-c458767e-193e-417f-af50-44331e638a53",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Infections",
       "category": "Male Reproductive",
@@ -1733,7 +2507,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1744,20 +2518,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "testis low-power architecture plus high-power germ-cell, inflammatory, developmental, or infarct-related feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: testis low-power architecture plus high-power germ-cell, inflammatory, developmental, or infarct-related feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1768,17 +2542,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Infections is treated in this curriculum as an ABPath AP content-specification topic within Testis; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Infections.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Normal Anatomy, Histology and Development > Testis > Infections. Source line: 17377.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Infections.",
+          "answer": "Infections; scoped to Testis in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Infections.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "testis low-power architecture plus high-power germ-cell, inflammatory, developmental, or infarct-related feature",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Infections.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-20-830e1eaa-49b7-4375-acb3-002582a665c1",
       "sourceQueueId": "ap_male_repro-830e1eaa-49b7-4375-acb3-002582a665c1",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Bacterial",
       "category": "Male Reproductive",
@@ -1825,7 +2642,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1836,20 +2653,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1860,17 +2677,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Bacterial is treated in this curriculum as an ABPath AP content-specification topic within Normal Anatomy, Histology and Development; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Bacterial.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Normal Anatomy, Histology and Development > Bacterial. Source line: 17378.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Bacterial.",
+          "answer": "Bacterial; scoped to Normal Anatomy, Histology and Development in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Bacterial.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Bacterial.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-21-f028963d-1b4e-45eb-9c4e-eb54d230e9cc",
       "sourceQueueId": "ap_male_repro-f028963d-1b4e-45eb-9c4e-eb54d230e9cc",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Penis (e.g., Balanitis)",
       "category": "Male Reproductive",
@@ -1917,7 +2777,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -1928,20 +2788,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "squamous mucosa low-power silhouette plus high-power dysplasia, inflammation, HPV effect, invasion, or reactive mimic feature"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: squamous mucosa low-power silhouette plus high-power dysplasia, inflammation, HPV effect, invasion, or reactive mimic feature"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -1952,17 +2812,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Penis (e.g., Balanitis) is treated in this curriculum as an ABPath AP content-specification topic within Neoplasms (e.g., Rhabdomyosarcoma); learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Penis (e.g., Balanitis).",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Normal Anatomy, Histology and Development > Neoplasms (e.g., Rhabdomyosarcoma) > Penis (e.g., Balanitis). Source line: 17428.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Penis (e.g., Balanitis).",
+          "answer": "Penis (e.g., Balanitis); scoped to Neoplasms (e.g., Rhabdomyosarcoma) in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Penis (e.g., Balanitis).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "squamous mucosa low-power silhouette plus high-power dysplasia, inflammation, HPV effect, invasion, or reactive mimic feature",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Penis (e.g., Balanitis).",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-22-b844a8f9-3e01-4b11-91fe-156014927a18",
       "sourceQueueId": "ap_male_repro-b844a8f9-3e01-4b11-91fe-156014927a18",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Myofibromatosis",
       "category": "Male Reproductive",
@@ -2009,7 +2912,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2020,20 +2923,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2044,17 +2947,60 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Myofibromatosis is treated in this curriculum as an ABPath AP content-specification topic within Normal Anatomy, Histology and Development; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Myofibromatosis.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Normal Anatomy, Histology and Development > Myofibromatosis. Source line: 17478.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Myofibromatosis.",
+          "answer": "Myofibromatosis; scoped to Normal Anatomy, Histology and Development in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Myofibromatosis.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Myofibromatosis.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     },
     {
       "id": "p0-male-repro-card-23-b33a0514-747e-4647-a5ff-c51daacddb7e",
       "sourceQueueId": "ap_male_repro-b33a0514-747e-4647-a5ff-c51daacddb7e",
-      "editorialStatus": "draft-scaffold",
+      "editorialStatus": "draft-content-ready-for-review",
       "priority": "P0 core board/sign-out gap",
       "title": "Neuroma",
       "category": "Male Reproductive",
@@ -2101,7 +3047,7 @@ export const apP0MaleReproCardBatch = {
         "Retrieval answer key is faculty-reviewed before learner reveal.",
         "One near-miss mimic is included for contrastive learning and memory consolidation."
       ],
-      "completionGate": "Not complete until taxonomy QA, source-backed content, visual anchor, retrieval answer key, and male GU/reproductive faculty review metadata are all satisfied.",
+      "completionGate": "Not complete until drafted content, visual inspection plan, retrieval key, and taxonomy scaffold receive faculty QA plus citation/reviewer metadata.",
       "gateStatuses": [
         {
           "id": "taxonomy-qa",
@@ -2112,20 +3058,20 @@ export const apP0MaleReproCardBatch = {
         {
           "id": "content-authoring",
           "label": "Entity card content",
-          "status": "missing",
-          "evidence": "Needs source-backed definition, normal comparator, morphology, mimic discriminator, report/staging/clinical consequence, and safety pitfall."
+          "status": "ready-for-review",
+          "evidence": "Deterministic draft entity card content attached from ABPath path, organ-system profile, mimic/discriminator template, and report-consequence scaffold; requires faculty fact-check before canonical release."
         },
         {
           "id": "visual-anchor",
           "label": "Visual anchor",
-          "status": "missing",
-          "evidence": "organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale"
+          "status": "ready-for-review",
+          "evidence": "Visual inspection sequence attached; asset remains pending. Plan: organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale"
         },
         {
           "id": "retrieval-key",
           "label": "Retrieval answer key",
-          "status": "missing",
-          "evidence": "Retrieval prompts are scaffolded; faculty-reviewed answer key and spaced-repeat reveal text are not yet attached."
+          "status": "ready-for-review",
+          "evidence": "Draft retrieval answer key attached for entity/process, required feature, mimic discriminator, and report consequence; requires faculty review before learner answer reveal is canonical."
         },
         {
           "id": "faculty-review",
@@ -2136,11 +3082,54 @@ export const apP0MaleReproCardBatch = {
       ],
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 1,
-        "missingGates": 4,
+        "reviewReadyGates": 4,
+        "missingGates": 1,
         "totalGates": 5,
         "percentComplete": 0,
-        "percentReviewReady": 20
+        "percentReviewReady": 80
+      },
+      "entityCardDraft": {
+        "definition": "Neuroma is treated in this curriculum as an ABPath AP content-specification topic within Normal Anatomy, Histology and Development; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "normalComparator": "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+        "morphologyAnchor": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Neuroma.",
+        "topMimic": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+        "discriminator": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+        "ancillaryOrReportingConsequence": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+        "safetyPitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment",
+        "sourceBasis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Normal Anatomy, Histology and Development > Neuroma. Source line: 17485.",
+        "scopedDomain": "Male Reproductive System"
+      },
+      "retrievalAnswerKey": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Neuroma.",
+          "answer": "Neuroma; scoped to Normal Anatomy, Histology and Development in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Neuroma.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
+      "visualAnchorDraft": {
+        "plan": "organ-specific gross/H&E anchor or documented no-image/taxonomy-correction rationale",
+        "inspectionSequence": [
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Neuroma.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        ],
+        "assetStatus": "pending licensed/local image or explicit no-image rationale"
       }
     }
   ]
