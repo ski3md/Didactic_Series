@@ -1,0 +1,2906 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-16T02:09:26.827Z",
+  "rule": "Tutorials are scored against ABPath AP and CP content specification topic/subtopic nodes using track-aware token, phrase, root, and acronym evidence. Every tutorial must have at least one primary mapping.",
+  "sources": {
+    "ap": "src/content/syllabus/parsed_topics_v3.raw.json",
+    "cp": "/Volumes/DB_External/Content Specifications ABPath - Clinical Pathology.pdf",
+    "cpExtractedText": "generated at runtime with pdftotext",
+    "tutorials": [
+      "src/content/tutorials/tutorials.normalized.json",
+      "src/content/downloads_imports/normalized/tutorials.normalized.json"
+    ],
+    "labels": "reports/tutorial_label_validation.json"
+  },
+  "counts": {
+    "tutorials": 480,
+    "specNodes": 6284,
+    "apSpecNodes": 3863,
+    "cpSpecNodes": 2421,
+    "mapped": 480,
+    "review": 0
+  },
+  "coverage": {
+    "byRoot": [
+      {
+        "domain": "AP",
+        "root": "Bone and Soft Tissue",
+        "specNodeCount": 68,
+        "coveredNodeCount": 30,
+        "primaryTutorialCount": 17
+      },
+      {
+        "domain": "AP",
+        "root": "Breast",
+        "specNodeCount": 539,
+        "coveredNodeCount": 86,
+        "primaryTutorialCount": 48
+      },
+      {
+        "domain": "AP",
+        "root": "Cardiovascular",
+        "specNodeCount": 444,
+        "coveredNodeCount": 39,
+        "primaryTutorialCount": 13
+      },
+      {
+        "domain": "AP",
+        "root": "Cytopathology",
+        "specNodeCount": 78,
+        "coveredNodeCount": 9,
+        "primaryTutorialCount": 3
+      },
+      {
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "specNodeCount": 888,
+        "coveredNodeCount": 69,
+        "primaryTutorialCount": 19
+      },
+      {
+        "domain": "AP",
+        "root": "Endocrine",
+        "specNodeCount": 380,
+        "coveredNodeCount": 61,
+        "primaryTutorialCount": 22
+      },
+      {
+        "domain": "AP",
+        "root": "Forensic Pathology",
+        "specNodeCount": 38,
+        "coveredNodeCount": 4,
+        "primaryTutorialCount": 3
+      },
+      {
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "specNodeCount": 136,
+        "coveredNodeCount": 43,
+        "primaryTutorialCount": 19
+      },
+      {
+        "domain": "AP",
+        "root": "Genitourinary",
+        "specNodeCount": 30,
+        "coveredNodeCount": 19,
+        "primaryTutorialCount": 17
+      },
+      {
+        "domain": "AP",
+        "root": "Head and Neck",
+        "specNodeCount": 45,
+        "coveredNodeCount": 14,
+        "primaryTutorialCount": 4
+      },
+      {
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "specNodeCount": 397,
+        "coveredNodeCount": 46,
+        "primaryTutorialCount": 15
+      },
+      {
+        "domain": "AP",
+        "root": "Neuropathology",
+        "specNodeCount": 618,
+        "coveredNodeCount": 40,
+        "primaryTutorialCount": 11
+      },
+      {
+        "domain": "AP",
+        "root": "Pediatric Pathology",
+        "specNodeCount": 115,
+        "coveredNodeCount": 13,
+        "primaryTutorialCount": 3
+      },
+      {
+        "domain": "AP",
+        "root": "Placental Pathology",
+        "specNodeCount": 22,
+        "coveredNodeCount": 9,
+        "primaryTutorialCount": 3
+      },
+      {
+        "domain": "AP",
+        "root": "Pulmonary",
+        "specNodeCount": 65,
+        "coveredNodeCount": 31,
+        "primaryTutorialCount": 16
+      },
+      {
+        "domain": "CP",
+        "root": "Blood Banking/Transfusion Medicine",
+        "specNodeCount": 816,
+        "coveredNodeCount": 202,
+        "primaryTutorialCount": 130
+      },
+      {
+        "domain": "CP",
+        "root": "Chemical Pathology",
+        "specNodeCount": 644,
+        "coveredNodeCount": 120,
+        "primaryTutorialCount": 59
+      },
+      {
+        "domain": "CP",
+        "root": "Hematopathology for Clinical Pathology",
+        "specNodeCount": 282,
+        "coveredNodeCount": 63,
+        "primaryTutorialCount": 29
+      },
+      {
+        "domain": "CP",
+        "root": "Management and Informatics",
+        "specNodeCount": 150,
+        "coveredNodeCount": 32,
+        "primaryTutorialCount": 9
+      },
+      {
+        "domain": "CP",
+        "root": "Medical Microbiology",
+        "specNodeCount": 529,
+        "coveredNodeCount": 65,
+        "primaryTutorialCount": 40
+      }
+    ],
+    "weakMappings": [],
+    "uncoveredRepresentativeNodes": [
+      {
+        "id": "ap-ap_breast-61271682-ff29-4165-b116-e6e689f9ac7e",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_breast-3f3b3bcd-a277-48a6-9413-892b5b4af867",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Normal Anatomy and Histology",
+          "Physiologic Changes, Metabolic Conditions & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_breast-167a3c79-bd34-4db9-a427-00222f95c620",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Normal Anatomy and Histology",
+          "Diabetic mastopathy"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_gu-30c0a265-860a-49c0-883d-4174f78c01a8",
+        "domain": "AP",
+        "root": "Genitourinary",
+        "path": [
+          "The Genitourinary System",
+          "Kidney",
+          "Physiologic Changes, Metabolic Conditions & Trauma/Infarct"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-9fc4de65-956e-46f0-9a2f-629273a1888d",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Prostate and Seminal Vesicles",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-4cc98f47-8929-4ee0-8a25-a1b0188e5723",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Prostate and Seminal Vesicles",
+          "Physiologic Changes, Metabolic Conditions & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-0644c788-63e5-4be2-92b8-6a770013f3c7",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Testis",
+          "Non-neoplastic vascular pathology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-22807eac-7672-463e-a58d-dc7d2410a4d5",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Testis",
+          "Intratubular germ cell neoplasia"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-a4d3ec31-f26d-4424-b2ea-f793c78fbdbc",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Testis",
+          "Epidermoid cyst and dermoid cyst"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-ea7faa88-89a3-402b-937b-672b765cbd29",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Testis",
+          "Spermatocytic seminoma"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-fc183196-9134-4a81-9c98-eaad2ea73164",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Testis",
+          "Other germ cell tumors"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-b025ba6d-fd40-4a88-bfba-32c1acf425d1",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Testis",
+          "Plasmacytoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-5ba57760-82c2-4cf3-948c-15549d8efc8e",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Testis",
+          "Infertility Issues"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_male_repro-73ae5e2f-ecfc-4a75-b7b6-da2398e6fdbf",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Testis",
+          "Maturation arrest"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_male_repro-5727964c-9c96-4836-a427-dc954247ee53",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Testis",
+          "Germinal cell aplasia"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_male_repro-3ac046e0-dbb3-4969-87fb-cc565979c9c0",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Testis",
+          "Karyotypic abnormalities"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_male_repro-000981cb-cd2a-4307-b4ae-dad9af63e4a6",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "Testis",
+          "Duct obstruction, vasitis nodosum"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_cv-627bf953-0b67-45bf-9a4b-c5f38625ebcc",
+        "domain": "AP",
+        "root": "Cardiovascular",
+        "path": [
+          "Cardiovascular",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_cv-0ffceb25-0dbc-4fae-b6da-e7c849acaee3",
+        "domain": "AP",
+        "root": "Cardiovascular",
+        "path": [
+          "Cardiovascular",
+          "Normal Anatomy and Histology",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_cv-d78994df-18e6-4855-b880-bcf160d351a9",
+        "domain": "AP",
+        "root": "Cardiovascular",
+        "path": [
+          "Cardiovascular",
+          "Normal Anatomy and Histology",
+          "Secondary cardiomyopathy"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_hn-1153e4d5-d534-444d-b5a8-456d1e8d1bac",
+        "domain": "AP",
+        "root": "Head and Neck",
+        "path": [
+          "Head and Neck",
+          "Nose, Paranasal Sinuses, and Nasopharynx"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_hn-d9380541-0980-42a3-a73c-bbbf7337d5a9",
+        "domain": "AP",
+        "root": "Head and Neck",
+        "path": [
+          "Head and Neck",
+          "Larynx",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_hn-0f4e0e0e-ee57-4c8c-9abc-bc1b795b3ed1",
+        "domain": "AP",
+        "root": "Head and Neck",
+        "path": [
+          "Head and Neck",
+          "Larynx",
+          "Physiologic Changes, Metabolic Conditions & Trauma/Infarct"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_hn-6fb7892a-3a81-4075-8c0d-4e1d46e53924",
+        "domain": "AP",
+        "root": "Head and Neck",
+        "path": [
+          "Head and Neck",
+          "Larynx",
+          "Melanoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_hn-c755aa07-1cde-40b4-8241-6746f4d2bb21",
+        "domain": "AP",
+        "root": "Head and Neck",
+        "path": [
+          "Head and Neck",
+          "Ear and Temporal Bone"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_hn-7d410a39-4fd4-4210-9bdd-e307d668a045",
+        "domain": "AP",
+        "root": "Head and Neck",
+        "path": [
+          "Head and Neck",
+          "Eye and Ocular Adnexa"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_hn-28f872f0-da97-4b2b-bf2e-89cee4abb26c",
+        "domain": "AP",
+        "root": "Head and Neck",
+        "path": [
+          "Head and Neck",
+          "Eye and Ocular Adnexa",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_hn-21041530-5e97-4c16-9cbc-e9d56122a23c",
+        "domain": "AP",
+        "root": "Head and Neck",
+        "path": [
+          "Head and Neck",
+          "Eye and Ocular Adnexa",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_gi-1bc36a5c-e74b-420c-9aa4-64155227d1a6",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Gastrointestinal Tract",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_gi-8e35a9ec-d343-4ad9-976f-7ac07cf2a649",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Gastrointestinal Tract",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_gi-33cee94f-b594-4186-b720-808b28930f8e",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Gastrointestinal Tract",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_gi-4e8fc790-39a7-4341-b9c3-e194cdb1c596",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Gastrointestinal Tract",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_gi-db3c996d-535b-4cc7-8e37-1b4f5ca4d198",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Gastrointestinal Tract",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_gi-8f3b4d93-6059-4118-8698-cff74125f952",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Gastrointestinal Tract",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_gi-d5f2e3ec-bdcf-4f3c-a266-12d6c88469f0",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Gastrointestinal Tract",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_gi-dd8ee4dd-0997-4567-b100-0e4bd1a9ad1a",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Gastrointestinal Tract",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_gi-dce91aba-45cd-40b1-a184-77f068c6c0fc",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Gastrointestinal Tract",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_gi-57ffa438-7979-46c8-a83a-3cd4d8067e8f",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Gastrointestinal Tract",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_gi-2dba376a-e1e6-4b55-972c-0270476517ce",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Liver and Biliary Tract",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_gi-905b3c75-e53f-4ef7-a33a-5f3c9c01f6a1",
+        "domain": "AP",
+        "root": "Gastrointestinal",
+        "path": [
+          "The Digestive System",
+          "The Liver and Biliary Tract",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_endo-70664871-38a1-47be-be06-fddb8be5c12d",
+        "domain": "AP",
+        "root": "Endocrine",
+        "path": [
+          "The Endocrine System",
+          "The Thyroid",
+          "Physiologic Changes, Metabolic Conditions & Trauma/Infarct"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_endo-6335fad1-7261-4834-8540-edfd5a24870c",
+        "domain": "AP",
+        "root": "Endocrine",
+        "path": [
+          "The Endocrine System",
+          "The Thyroid",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_endo-bf41ebc4-abbf-4236-9192-8c1b6a127010",
+        "domain": "AP",
+        "root": "Endocrine",
+        "path": [
+          "The Endocrine System",
+          "The Thyroid",
+          "Inflammatory, Metabolic, Non-Infectious & Infectious"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_endo-7afec7f7-aa7e-46fa-ba2d-46f37c65e7bc",
+        "domain": "AP",
+        "root": "Endocrine",
+        "path": [
+          "The Endocrine System",
+          "The Adrenal Glands",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_endo-a51b6c36-62de-4b7a-a217-2fee401bfdea",
+        "domain": "AP",
+        "root": "Endocrine",
+        "path": [
+          "The Endocrine System",
+          "The Adrenal Glands",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_endo-5a5fd64a-d5b0-43b9-8981-4b67faaba352",
+        "domain": "AP",
+        "root": "Endocrine",
+        "path": [
+          "The Endocrine System",
+          "The Adrenal Glands",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_endo-a6d8cde2-e822-4608-8a6a-82d42ea2a70c",
+        "domain": "AP",
+        "root": "Endocrine",
+        "path": [
+          "The Endocrine System",
+          "The Adrenal Glands",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-dead0996-f5b4-4444-8754-b5bf6f237e52",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Vulva"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-71c400de-9266-46b4-b3b2-330ee470936a",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Vagina"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-0ac3f88c-2dc3-49d6-8ade-07821d426b18",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Uterine Cervix",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_male_repro-e3c725e4-4c35-44d2-aba3-88310b35c045",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Uterine Cervix",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-07d3772c-834e-4ce9-8c8a-641007b612e9",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Uterine Cervix",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-ed3aef0b-0330-4f2d-ae3b-5472aca544f7",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Uterine Cervix",
+          "Physiologic Changes, Metabolic Conditions & Trauma/Infarct"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-87dc7a24-717d-4f1a-8be7-4626d41caa47",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Uterine Corpus"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-1246b90e-c9c9-454c-a63e-9e2613374e7c",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-21cb7da2-f71c-446b-b252-4eee747c9ba2",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-7ccce22d-08dc-4a0f-9ae4-61e5e0a5209a",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-aa221798-2c9d-4f15-8910-52fb6f0e73fb",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-a40db784-9ed3-445a-83ae-4564218e1786",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-d0589515-e5f2-44da-a5a2-53d2b04d62ce",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Serous tumors"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-7f8c9ab1-77dd-435d-aec5-fd457cc43652",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Endometrioid tumors"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-479e58a2-662d-4e5b-8bdb-8cc4986b2213",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Brenner tumors"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-6bb486e1-f03a-4e05-9fe4-0dcab052bad0",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Sertoli and Sertoli-Leydig tumors"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-73581630-b4bb-4d80-9e52-6e0a80f7c200",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Steroid cell tumors"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-d720a473-114c-4915-91a7-c362e455c814",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Sex-cord tumor with annular tubules"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-d57dd9b5-c00d-41f1-a9e4-aa624f3fed98",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Sclerosing stromal tumors"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-b847e53a-0828-42f1-b957-65895609335f",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Gynandroblastoma"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_male_repro-322498c0-4d50-4602-b7cb-7acd1e2122cf",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Dysgerminoma"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_male_repro-9adb5f97-c4a4-43ca-8720-178c4a597920",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Teratoma"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-0031c908-28fa-4075-a8ba-3ca448bbb4f0",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Choriocarcinoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-a91ebc7f-569e-4b94-85b4-a62804bd853a",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Gonadoblastoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-9a09b77b-17e0-4cf2-b912-032b602a2052",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Ovaries",
+          "Lymphomas/Leukemia"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_male_repro-47a05b28-bba3-488d-be30-aeaff6808066",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Fallopian Tubes and Broad Ligaments"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-91773eb7-8b74-4f58-9d67-0af4913f5790",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Fallopian Tubes and Broad Ligaments",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-ac28913c-7b0d-4b4f-b3a4-958d8242eb26",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Fallopian Tubes and Broad Ligaments",
+          "Physiologic Changes, Metabolic Conditions & Trauma/Infarct"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_male_repro-4f62d1a3-26a1-4c0e-b343-7bb37eda0c8d",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Peritoneum"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-95f9e94e-a166-45c7-8c29-2d3248fbd809",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Peritoneum",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_male_repro-4edc8b74-37b7-40e7-b8f4-bc379d0a913a",
+        "domain": "AP",
+        "root": "Male Reproductive",
+        "path": [
+          "Male Reproductive System",
+          "The Peritoneum",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_placenta-85e5f72a-7017-40ef-bced-7dec90675e2f",
+        "domain": "AP",
+        "root": "Placental Pathology",
+        "path": [
+          "The Placenta",
+          "Normal Anatomy and Histology"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_placenta-556032d6-013b-439a-b582-a95e93cf950e",
+        "domain": "AP",
+        "root": "Placental Pathology",
+        "path": [
+          "The Placenta",
+          "Normal Anatomy and Histology",
+          "Physiologic Changes, Metabolic Conditions & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_placenta-a9862f22-3978-4c99-bf0a-128f42c36110",
+        "domain": "AP",
+        "root": "Placental Pathology",
+        "path": [
+          "The Placenta",
+          "Normal Anatomy and Histology",
+          "Placental Disc Abnormalities"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_placenta-7c38e612-235b-4690-b3c7-bc37f5fd9610",
+        "domain": "AP",
+        "root": "Placental Pathology",
+        "path": [
+          "The Placenta",
+          "Normal Anatomy and Histology",
+          "Eclampsia and atherosis"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_placenta-da4bc31a-bf36-45b7-92cc-f3cd0c717c5a",
+        "domain": "AP",
+        "root": "Placental Pathology",
+        "path": [
+          "The Placenta",
+          "Normal Anatomy and Histology",
+          "Chorangioma"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_placenta-b149b895-703e-4a54-87bc-693b547454e4",
+        "domain": "AP",
+        "root": "Placental Pathology",
+        "path": [
+          "The Placenta",
+          "Normal Anatomy and Histology",
+          "Fetal thrombotic vasculopathy (hemorrhagic endovasculitis)"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_resp-105c2400-7e47-4eeb-8a32-7d13002e1c6f",
+        "domain": "AP",
+        "root": "Pulmonary",
+        "path": [
+          "The Respiratory Tract, Pleura, and Mediastinum",
+          "The Respiratory Tract",
+          "Physiologic Changes, Metabolic Conditions & Trauma/Infarct"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_resp-5a5b03b0-60ab-4854-87fd-deb4cc50c9e7",
+        "domain": "AP",
+        "root": "Pulmonary",
+        "path": [
+          "The Respiratory Tract, Pleura, and Mediastinum",
+          "The Mediastinum",
+          "Physiologic Changes, Metabolic Conditions & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_soft-83e25345-14f0-4213-beb6-434fbd9d1630",
+        "domain": "AP",
+        "root": "Bone and Soft Tissue",
+        "path": [
+          "Soft Tissue, Bones, and Joints",
+          "Soft Tissue",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_soft-97f7c4ea-d8b8-4a33-9d62-2f4489d6f676",
+        "domain": "AP",
+        "root": "Bone and Soft Tissue",
+        "path": [
+          "Soft Tissue, Bones, and Joints",
+          "Joints",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_soft-0a7523ff-4b03-453b-8ae2-c80c609306c5",
+        "domain": "AP",
+        "root": "Bone and Soft Tissue",
+        "path": [
+          "Soft Tissue, Bones, and Joints",
+          "Joints",
+          "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_cyto-074ddc9c-4de8-4929-944a-fed7ef0a0238",
+        "domain": "AP",
+        "root": "Cytopathology",
+        "path": [
+          "Cytopathology Topics for Anatomic Pathology Residents",
+          "Cervical/Vaginal Cytology"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_cyto-8be346e8-84cb-47f9-b5cd-917ba47ffb22",
+        "domain": "AP",
+        "root": "Cytopathology",
+        "path": [
+          "Cytopathology Topics for Anatomic Pathology Residents",
+          "Cervical/Vaginal Cytology",
+          "Other Lower Anogenital Tract, Men & Women (e.g., Anal, Vulvar)"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_cyto-27d294bd-4923-4423-92a0-9624b0c03b89",
+        "domain": "AP",
+        "root": "Cytopathology",
+        "path": [
+          "Cytopathology Topics for Anatomic Pathology Residents",
+          "Cervical/Vaginal Cytology",
+          "Upper Female Genital Tract (e.g., Endometrium, Upper Tract Genital Tract)"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_cyto-ba9af26c-7b52-4c6c-9e63-5ee5ffcab372",
+        "domain": "AP",
+        "root": "Cytopathology",
+        "path": [
+          "Cytopathology Topics for Anatomic Pathology Residents",
+          "Cervical/Vaginal Cytology",
+          "Pleural and Pericardial Effusions"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-75483f98-4f04-4b81-bcd9-6649fef8ef45",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Gynecologic Primary"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_breast-7fda4094-487b-4799-b64c-3ce60862f8ed",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Pelvic Washings"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-79cc9be6-9cc2-4ab3-8b1d-f712b7878593",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Endometrial Primary"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-98609ddf-2db8-44f7-a6cb-b009412acff5",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Ovarian / Müllerian/Tubal Primary"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-16f3d45e-ab0a-47b6-9841-536ae2c2d79e",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Synovial Fluid"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_breast-97b011c0-f85f-47b1-b6ac-609d464717d5",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Cerebrospinal Fluid (CSF)"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_breast-cdaf5d9b-ea3b-4abe-b5f5-9eb97a21a971",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "CNS and Eye (i.e., Other Than CSF)"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-43f9f57c-7e65-4136-a715-8ad72647076c",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "The Urinary Tract"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-79f388cd-5389-47b4-8242-08aae1d9d251",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Respiratory Exfoliative (Sputum, Brushing, Washing)"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-03e2df46-d079-4064-9429-d84ca5e1f74b",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Lung FNA"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-8dba4f4a-62e0-479d-9655-e0cf841c23d1",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Carcinoid Tumor"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_breast-5fbf9454-89e2-4103-866e-d09dc9fbe927",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Large Cell Neuroendocrine Carcinoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-95bb249d-a9a3-4fde-9015-30c71f995c0f",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Mixed Carcinomas"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-b9b48c6d-83a9-49e1-9a40-9be77ce1e8ec",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Salivary Gland-Type Carcinomas"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-9c6dc29d-58a9-461e-80ba-a83a36abe749",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Non-Hodgkin Lymphoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-a2a3e79c-da71-4ac0-9c18-2e39c15be1a3",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Myeloid Neoplasms"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-ec3a7f71-63ff-478e-b8c8-1c28af380f2f",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Plasma Cell Neoplasms"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-e92c74e0-83e4-4d3b-968d-280fa23957be",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Langerhans Cell Histiocytosis"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-009570b7-60f9-4a33-98cc-2593ee433149",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Melanoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-96ba2557-b9d7-44f1-8414-b058834f81c2",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Epithelioid Hemangioendothelioma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-7ce400e1-4960-4516-9a9f-17491155acb5",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Angiosarcoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-c777d1d5-b675-42df-8120-d02e9ba86f4d",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Synovial Sarcoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-27e391b2-1e3c-4683-8831-11885b57a4e5",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Esophageal Cytopathology"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-ba68ec66-d0d5-4576-b3c4-f36aec03a7db",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Gastric Cytopathology"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-28833e6a-3a42-4b86-a55c-878d149a8090",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Intestinal Type"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_breast-48ff7d3f-9690-40f3-b185-9804b1e0d0d6",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Diffuse (e.g., Signet Ring, Linitis Plastica)"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_breast-3e7ee05d-2c50-422f-9665-060b4a609406",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Liver Cytopathology"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-d8e33a03-0040-45a8-a428-222edda7762f",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Fibrolamellar Carcinoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-2c73e311-f18e-4560-97d0-ace2136c7836",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Biliary Cytopathology"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_breast-b35fb6ed-b7d4-416b-9289-50e5bad5aa29",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Mucinous Cystic Neoplasm (MCN)"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-3f022417-2b89-490f-bd14-e41d16af666a",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Intraductal Papillary Mucinous Neoplasm (IPMN)"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-577daf89-e1ca-40ac-98db-39c558b16916",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Lung Primary",
+          "Thyroid & Parathyroid FNA"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-5ee42cda-b3af-481b-8ddc-97fa3ff33b68",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Normal Cytology",
+          "Well-Differentiated / Atypical Lipomatous Tumors"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_breast-e6660052-92da-4c0b-8a30-81a30a2d7616",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Normal Cytology",
+          "Myxoid Liposarcoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-a12ded72-3c44-4e78-8822-7b893ed6cfdc",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Normal Cytology",
+          "Round Cell Liposarcoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-a38249b1-fa8d-4af2-83ec-2345d260dc29",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Normal Cytology",
+          "Pleomorphic Liposarcoma"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_breast-796fb817-a2f1-418c-9aa3-79bcd1001416",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Normal Cytology",
+          "Fixation"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_breast-68171526-26a2-4765-ac90-160d86ed4827",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Normal Cytology",
+          "Slide Preparation"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_breast-e6c9e0de-509d-4592-bedc-e0bdd35e4b06",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Normal Cytology",
+          "FNA Indications and Techniques"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_breast-9905c293-5a8b-4228-9531-a8898dd0ebdf",
+        "domain": "AP",
+        "root": "Breast",
+        "path": [
+          "Breast",
+          "Normal Cytology",
+          "Immediate Evaluation Techniques"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-d4fddd4a-c73a-4b26-8609-175cb6a09706",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_dermpath-7a108730-cf0a-41bf-8abc-9f415b3e9579",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Discoid Lupus Erythematosus"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-d9844b85-fe4a-4152-84e2-33bf5b48fc6e",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Subacute Lupus Erythematosus"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-624740e7-3c91-4bad-b707-df20b295c433",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Hypertrophic Lupus Erythematosus"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-425eb0d0-6650-492b-bc1e-604182b11bca",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Acute Lupus Erythematosus"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-bedb96dc-0442-4db6-880f-fbfd7cb59cdf",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Systemic Lupus Erythematosus"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-f894dc2e-a722-456c-ba32-c099010cd6ed",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Neonatal Lupus Erythematosus"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-6c881a7b-faac-4dfc-8173-bf55dba94acb",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Bullous Lupus Erythematosus"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-0d58f92a-6d3b-4270-bd47-cb2d5e5f7158",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Tumid Lupus Erythematosus"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-daad9a9c-4045-4a80-9006-88e1ac924c19",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Lupus Panniculitis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-dfb922bf-ca30-4218-b550-05cdfba4210d",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Dyskeratosis Congenita"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-31d2b966-f67c-44e3-aecd-223e499c9fae",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Poikiloderma of Civatte"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-d0e31b9e-dcdb-4a60-8685-cbae97104e4b",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Pemphigus Foliaceus"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-929567d6-6d9d-4960-9d56-4350bb9137f4",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Pemphigus Erythematosus"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-5caf8f9b-fa44-4cb8-9945-b7dd80f649f4",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Subcorneal Pustular Dermatosis (Sneddon-Wilkinson)"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-134ad2b3-3635-4f55-8582-d870f0beae88",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "IgA Pemphigus"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-ae65bb3b-b766-4efc-934e-50a4e5cc2633",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Infantile Acropustulosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-789c6cd2-26ec-43f9-a1cb-f65413c2df3e",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Erythema Toxicum Neonatorium"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-c5350b22-13f6-4343-82fb-25b50ec354ee",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Transient Neonatal Pustular Melanosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-39c653e0-f6d7-45d0-9fcc-266067a99e01",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Acute Generalized Exanthematous Pustulosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-ea52fa05-3f97-411a-98b9-b567fa0b3b31",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Miliaria Crystallina"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-10bfa6b5-aff3-472f-8366-74ec7fe1b8fe",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Halogenoderma"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_dermpath-98303819-7743-433f-89a9-7b36d0af9b5d",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Acantholysis"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_dermpath-4833ee66-8fa5-46e4-aabc-0b039e78f716",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Acantholytic Dyskeratosis"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-62f4f825-6ab3-4770-ac99-015b4347053a",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Pemphigus Vulgaris"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-42f30b06-4146-4cec-bf35-dd66c85ef4cb",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Hailey-Hailey Disease"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-101877e8-ec84-4388-8969-51d81daa5135",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Darier Disease"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-7d85b7d8-8d29-456e-851d-a688bcffb59c",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Grover Disease"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-6f9de6e9-1c70-44d0-9e50-b3a44f17761f",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Pemphigus Vegetans"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-2478ced2-3ab6-4426-ac3b-ceff45ed78aa",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Paraneoplastic Pemphigus"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_dermpath-9daf7225-e787-43e0-a73f-4624076d4e58",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Bullous Pemphigoid"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-d5e71990-c47f-47b1-8dcc-511f6ce65b3f",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Dermatitis Herpetiformis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-148570af-f62b-413c-94e7-d3d889c47fe3",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Epidermolysis Bullosa"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-82fd77b2-8636-4a12-a374-04babc9d2b3c",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Epidermolysis Bullosa Acquistia"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-5472a5a4-e44b-4a86-bdb8-d98cac908007",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Pemphigoid Gestationis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-69caabc1-bc87-4ad8-9582-f18bcd85349b",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Linear IgA Bullous Dermatosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-efc12f5d-ab29-4aa3-a622-1dc6c7592874",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Cicatricial Pemphigold"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-b4834fb8-6cc8-42d4-a44c-05cc17c1960b",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Bullous Diabeticorum"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-2dd20646-ef01-4abe-b3ce-7fe7a3de3a39",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Reactions to Foreign Materials"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_dermpath-73ea371e-7286-4843-848a-22db8b92b184",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Melkersson-Rosenthal Syndrome (Cheilitis Granulomatosis)"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-bbf4106f-2688-4706-8120-f6b530a6d468",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Cutaneous Crohn Disease"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-096f259d-54e9-4538-ac9a-9fd23d5f4b9c",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Granuloma Annulare"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_dermpath-778b296c-6511-4f75-9ffa-f1436bf6e38b",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Necrobiosis Lipoidica"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-5093edb9-a68c-49b7-8dd9-ff91f07f2728",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Rheumatoid Nodules"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-4fd6a010-bf71-40af-a9af-2c4a3de4d664",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Neutrophilic and Palisaded Granulomatous Dermatitis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-5edec9b9-4134-4254-bcbe-abb4bc62ecb0",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Elastolytic Granuloma"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-200ae748-0db9-49d5-b2f5-be5eee903972",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Necrobiotic Xanthogranuloma"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-ae3e6e24-cadb-4d63-82ba-e650ed98e655",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Ruptured Cysts and Follicles"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_dermpath-0bbae7b9-5e70-4efa-89db-f7b86939a04c",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Foreign Body Granulomas"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_dermpath-f336ed96-10ef-4f35-96dc-a67f9702e221",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Chalazion"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-0e7df00e-ad21-4984-9827-5e5017642145",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Lupus Miliaris Disseminatus Faciei"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-87ab4645-d5ba-4960-b8bd-1890fbd8b9b7",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Cholesterol and Other Types of Embolism"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-eb4e8d03-f386-411c-b567-9169de3539e2",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Protein C and Protein S Deficiencies"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-4fc5da74-ba7d-4e34-96fa-436c17f8ec1f",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Warfarin Necrosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-f847c2f5-3a7c-4b37-a39b-7f3612ed5e16",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Atrophie Blanche (Livedoid Vasculopathy)"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-c873b3b8-9e3c-4947-a5e2-2ddcb938bd0f",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Thrombotic Thrombocytopenic Purpura"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-b00f653c-325e-4c9f-bcac-88eae8d2bb80",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Cryoglobulinemia, Monoclonal"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-c80f870c-df8c-453d-82f3-c26a49f6d1f9",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Sneddon Syndrome"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-18d38ed1-b635-46ea-be3d-ae9d0721215a",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Levamisole-Induced Vasculitis / Vasculopathy"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-9c430c0d-7507-495f-8a8a-4d6577ceae4d",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Leukocytoclastic (Hypersensitivity) Vasculitis"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-1acbf948-396f-4eba-9666-29017ea5b6a7",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Henoch-Schönlein Purpura"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-b0e3d160-847a-48b9-a6c2-3c6fea1513ba",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Polyarteritis Nodosa"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-9350646a-7af3-4ce9-91eb-dac99718a5c2",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Urticarial Vasculitis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-d65f36b8-abfd-4c02-accd-59dcde8ead81",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Mixed Cryoglobulinemia"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-c70de3a7-0783-409a-9be0-a8638a076308",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Septic Vasculitis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-d20d32a7-cd13-40da-afcb-58c2f5ef686b",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Erythema Elevatum Diutinum"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-e3277778-7caa-4f2c-bb8f-496e3e61944a",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Granuloma Faciale"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-a34e5aeb-8d1e-4078-95df-43763edd65b8",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Microscopic Polyangiitis (Polyarteritis)"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-996cf063-fb8a-4409-901a-be01892f7cb8",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Superficial Thrombophlebitis"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-a5ebcfb5-2af4-4dc6-abf1-337cb67aadf2",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Sweet Syndrome"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-c420c93d-d981-4855-b44d-fef658bedd58",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Pyoderma Gangrenosum"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-1c7dac91-e1af-439d-a27f-a18b1b3a4448",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Neutrophilic Dermatosis of the Hand (Pustular Vasculitis)"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-62533535-f31b-4eb1-9c52-df2ebde7cd33",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Bowel-Associated Dermatosis-Arthritis Syndrome"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-bbffc768-2852-4806-8298-7040ed2cc35c",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Rheumatoid Neutrophilic Dermatosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-89c25c68-40a7-4748-b0fa-c0afe2da899a",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Behçet Disease"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-87a4f407-7f8a-46a5-9fe7-54b888930fd7",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Polymorphic Eruption of Pregnancy (PEP)"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-930e8528-c82b-4166-b820-23c0afdf4940",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Gyrate and Annular Erythemas"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-8ed29a2c-39a6-4a9a-9da2-d43fffa7630f",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Erythema Annulare Centrifugum"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-ea6f54ce-5400-4375-9cbd-bfecd6eefcdc",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Erythema Marginatum"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_dermpath-a7255481-6594-43dd-af1b-144fb4eed202",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Pigmented Purpuric Dermatoses"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-70114498-4b95-4a8f-8434-d0a0bbfa24ce",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Malignant Atrophic Papulosis (Degos Disease)"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-ecd5c021-caa7-4ac6-a563-2329c0b570b2",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Perniosis"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-0ed24c7b-378b-436d-bde1-3306d484f540",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Lymphomatoid Granulomatosis"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-bd5d576b-3a46-4249-ae0a-d69991860a9f",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Eosinophilic Granulomatosis with Polyangiitis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-be7b27bb-6b98-4802-85c8-636679b2a136",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Giant Cell (Temporal) Arteritis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-54de3f24-9506-48fe-b8e7-8f93ae54fb36",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Takayasu Arteritis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-eca3b9ad-ea57-4b3a-8fb3-bcbdd515130d",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Ichthyosis Vulgaris"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-b05ec95b-4dd9-43b8-b174-0b50a94b7dbe",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "X-Linked Ichthyosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-32f39f46-d28c-4f3a-a883-509af0bb9050",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Lamellar Ichthyosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-2748a496-4027-4a07-9412-048918e25abe",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Epidermolytic Ichthyosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-48a3e76d-d4e0-4334-a128-f63e96822db7",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Harlequin Ichthyosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-a432f14c-9c5b-45d8-93e7-22152ac6e420",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Acquired Ichthyosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-939a88b4-4f8d-4c60-8242-f7a824808acf",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Punctate Palmoplantar Keratoderma"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-e526d9cc-3aeb-492e-8650-6d0d234f041d",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Acquired Keratoderma"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-46e63135-7aad-4277-b8aa-eeb37cf1e975",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Pachyonychia Congenita"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-45f69558-6d62-4e00-9ab5-9836abd4745d",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Anhidrotic (Hypohidrotic) Ectodermal Dysplasia"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-8ac4ea79-73aa-4238-a789-aca1d7ec6d97",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Hidrotic Ectodermal Dysplasia"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-519e4263-1e22-4d4a-bae8-d92da644c2ab",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Vitiligo"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-30a7b488-f68c-4f2f-9650-1b342b85de6e",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Oculocutaneous Albinism"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-03f313df-8c0b-4e55-a878-a6dedc640773",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Tuberous sclerosis (Ash Leaf Spots)"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-ca48427d-8b1e-4d36-a928-424f87e9c9e8",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Idiopathic Guttate Hypomelanosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-0e3b9366-6d8d-4e81-8bf5-4eaa034d6243",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Hypomelanosis of Ito"
+        ],
+        "difficulty": "C"
+      },
+      {
+        "id": "ap-ap_dermpath-342ecae4-e61a-455d-a04c-c8bcc7bab3f6",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Postinflammatory Melanosis"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-10cd4ff8-6f0f-405f-aca2-b080b1c524e6",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Melasma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-d6f1ac71-d9ae-4fad-b1d1-f79f14632829",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Ephelis (Freckle)"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-0767f40a-025a-4971-a92d-8ebe7aecdb65",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Café-au-lait Spots"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-e322b53a-e1ef-4d41-8972-f48e719b2c53",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Laugier-Hunziker Syndrome"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-6794d52e-0c86-4b15-abe5-f9e954e20ce8",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Peutz-Jeghers Syndrome"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-6be50f3c-3cff-4df1-ae88-7d5f5fa674eb",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Becker Nevus"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-6f73b5a0-b60d-4c8e-80af-17d71ec341bf",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Dowling-Degos Disease"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-cb2a12d0-ab03-44e8-9fe2-d10ec2c0b338",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Notalgia Paresthetica"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-bd5bf425-96ed-4cf4-8365-7304863afa1e",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "The Dermis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-58129f27-ab8a-492e-bc02-f0b6fda9c9f8",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Solar Elastosis"
+        ],
+        "difficulty": "F"
+      },
+      {
+        "id": "ap-ap_dermpath-e2207feb-82f1-4a6d-894f-58a1277e77e7",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Elastofibroma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-d7c293e1-38dc-4bbc-a4be-d5f624b87d67",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Elastoderma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-c11b1e52-b7f7-4c76-a2d8-6c04a14d59a6",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Elastoma"
+        ],
+        "difficulty": "AR"
+      },
+      {
+        "id": "ap-ap_dermpath-165113f3-4b71-446f-91ce-bd9ac281158a",
+        "domain": "AP",
+        "root": "Dermatopathology",
+        "path": [
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Elastosis Perforans Serpiginosa"
+        ],
+        "difficulty": "F"
+      }
+    ]
+  }
+}

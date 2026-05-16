@@ -1,6 +1,6 @@
 {
   "version": "tutorial-label-validation.v1",
-  "generatedAt": "2026-05-16T01:55:31.000Z",
+  "generatedAt": "2026-05-16T02:09:32.847Z",
   "rule": "Every visible tutorial label must be supported by source, title, body, tag, category, or id evidence; blind fallback labels require review.",
   "counts": {
     "totalTutorials": 480,
