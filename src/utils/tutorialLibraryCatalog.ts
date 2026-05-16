@@ -71,28 +71,108 @@ const promotionConfig: Record<TutorialPromotionState, { label: string }> = {
 };
 
 const CLINICAL_PATH_KEYWORDS = [
+  'abnormal coagulation',
+  'analytical technique',
+  'antibody screen',
+  'antimicrobial',
+  'apheresis',
+  'bacteriology',
   'blood bank',
+  'blood banking',
+  'blood donor',
+  'blood donors',
+  'blood gas',
+  'blood gases',
+  'blood group',
+  'blood product',
+  'blood products',
+  'carbohydrate blood groups',
+  'chemical pathology',
   'transfusion',
   'clinical chemistry',
   'chemistry',
+  'clia',
   'microbiology',
-  'molecular',
   'coagulation',
+  'coagulopathy',
+  'compatibility testing',
+  'component processing',
+  'cryopreservation',
+  'cytapheresis',
+  'dat',
+  'delta check',
+  'donor eligibility',
+  'drugs of abuse',
+  'electrochemistry',
+  'electrolytes',
+  'electrophoresis',
+  'ffp',
+  'gram negative',
+  'gram positive',
+  'hla',
+  'immunoassay',
+  'laboratory management',
+  'laboratory medicine',
+  'laboratory safety',
+  'mass spectrometry',
+  'medical microbiology',
+  'mycobacteria',
+  'mycology',
+  'parasitology',
+  'platelet',
+  'plasma components',
+  'quality assurance',
+  'quality control',
+  'reference intervals',
+  'rhig',
+  'serum protein electrophoresis',
   'laboratory',
   'clinical pathology',
   'serology',
+  'spectrophotometry',
+  'therapeutic drug monitoring',
+  'toxicology',
+  'trali',
+  'taco',
+  'virology',
 ];
 
 const CROSS_CUTTING_KEYWORDS = [
+  'acute leukemia',
+  'acute leukemias',
+  'benign hematology',
   'hematopathology',
   'hematopoietic',
+  'hemoglobinopathy',
+  'histiocytic',
   'lymphoma',
   'leukemia',
+  'myelodysplastic',
+  'myeloproliferative',
   'bone marrow',
+  'plasma cell neoplasm',
+  'plasma cell neoplasms',
+  'sickle cell',
 ];
 
 const SURGICAL_PATH_KEYWORDS = [
+  'ap:',
+  'adenocarcinoma',
+  'adipocytic',
+  'adrenal',
   'breast',
+  'cardiovascular',
+  'carcinoma',
+  'cervix',
+  'cholangiocarcinoma',
+  'cytopathology',
+  'dermatopathology',
+  'endocrine',
+  'esophagus',
+  'forensic',
+  'glial',
+  'glioblastoma',
+  'glioma',
   'gyn',
   'gynecologic',
   'renal',
@@ -105,6 +185,12 @@ const SURGICAL_PATH_KEYWORDS = [
   'thyroid',
   'soft tissue',
   'bone',
+  'histology',
+  'neuropathology',
+  'ovary',
+  'placenta',
+  'prostate',
+  'salivary',
   'sarcoidosis',
   'granuloma',
 ];
@@ -125,27 +211,25 @@ const inferLane = (record: RawTutorialRecord): TutorialLane => {
 const inferTrack = (record: RawTutorialRecord): TutorialTrack => {
   const sourceRepo = (record.sourceRepo || '').toLowerCase();
   const id = record.id.toLowerCase();
-  const text = [record.title, record.summary, record.category, ...(record.tags || [])]
+  const text = [record.title, record.summary, record.body?.slice(0, 2200), record.category, ...(record.tags || [])]
     .filter(Boolean)
     .join(' ')
     .toLowerCase();
 
-  if (sourceRepo === 'board_prep' || sourceRepo === 'ioc-next-app') {
-    return 'surgical-path';
-  }
-  if (sourceRepo.includes('granulomatous')) {
-    return 'surgical-path';
-  }
   if (sourceRepo.includes('cp-content-specification')) {
+    return /^topic-hp\b/.test(id) ? 'cross-cutting' : 'clinical-path';
+  }
+  const clinicalHits = CLINICAL_PATH_KEYWORDS.filter((keyword) => text.includes(keyword)).length + (/^topic-(bb|cp|mb)\b/.test(id) ? 3 : 0);
+  const crossCuttingHits = CROSS_CUTTING_KEYWORDS.filter((keyword) => text.includes(keyword)).length + (/^topic-hp\b/.test(id) ? 3 : 0);
+  const surgicalHits = SURGICAL_PATH_KEYWORDS.filter((keyword) => text.includes(keyword)).length + (/^topic-ap\b/.test(id) ? 3 : 0);
+
+  if (clinicalHits > 0 && clinicalHits >= crossCuttingHits && clinicalHits >= surgicalHits) {
     return 'clinical-path';
   }
-  if (/^topic-(bb|cp|mb)\b/.test(id) || CLINICAL_PATH_KEYWORDS.some((keyword) => text.includes(keyword))) {
-    return 'clinical-path';
-  }
-  if (/^topic-hp\b/.test(id) || CROSS_CUTTING_KEYWORDS.some((keyword) => text.includes(keyword))) {
+  if (crossCuttingHits > 0 && crossCuttingHits >= surgicalHits) {
     return 'cross-cutting';
   }
-  if (/^topic-ap\b/.test(id) || SURGICAL_PATH_KEYWORDS.some((keyword) => text.includes(keyword))) {
+  if (sourceRepo.includes('granulomatous') || surgicalHits > 0) {
     return 'surgical-path';
   }
   return 'surgical-path';

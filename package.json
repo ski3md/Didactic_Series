@@ -49,6 +49,7 @@
     "lectures:contracts:validate": "node scripts/validate_lecture_abpath_contracts.cjs",
     "resource:contracts": "node scripts/generate_world_class_resource_contracts.cjs",
     "resource:contracts:validate": "node scripts/validate_world_class_resource_contracts.cjs",
+    "tutorials:labels:validate": "node scripts/validate_tutorial_labels.cjs",
     "images:crawl-entity-histology": "node scripts/crawl_entity_histology_images.cjs",
     "neuro:import-jh-atlas-metadata": "node scripts/import_jh_neuro_atlas_metadata.cjs",
     "images:validate-local": "node scripts/validate_app_local_images.cjs",
