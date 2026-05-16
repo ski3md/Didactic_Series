@@ -361,11 +361,17 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
 
               {activeTab === 'tutorial' && (
                 <Card>
-                  <h3 className="mb-4 flex items-center text-xl font-semibold font-serif text-slate-900">
-                    <DocumentTextIcon className="mr-3 h-6 w-6 text-sky-600" />
-                    Tutorial Content
-                  </h3>
-                  <MarkdownContent content={selectedTutorial.body} />
+                  <div className="mb-6 flex flex-col gap-3 border-b border-slate-200 pb-5 sm:flex-row sm:items-center sm:justify-between">
+                    <h3 className="flex items-center text-xl font-semibold font-serif text-slate-900">
+                      <DocumentTextIcon className="mr-3 h-6 w-6 text-sky-600" />
+                      Case Tutorial
+                    </h3>
+                    <div className="flex flex-wrap gap-2 text-xs font-medium text-slate-600">
+                      <span className="rounded-full bg-slate-100 px-3 py-1">{selectedTutorial.trackLabel}</span>
+                      <span className="rounded-full bg-slate-100 px-3 py-1">{selectedTutorial.sourceLabel}</span>
+                    </div>
+                  </div>
+                  <MarkdownContent content={selectedTutorial.body} variant="tutorial" />
                 </Card>
               )}
 
