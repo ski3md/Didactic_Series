@@ -1,0 +1,11 @@
+/ 
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 0
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Cache-Control: public, max-age=300
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'self' https://images.ctfassets.net https://api.allorigins.win; img-src 'self' data: blob: https://storage.googleapis.com https://upload.wikimedia.org https://www.ncbi.nlm.nih.gov https://pathology.or.jp https://webpath.med.utah.edu https://openseadragon.github.io https://openslide.cs.cmu.edu; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
