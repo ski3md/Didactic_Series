@@ -1,30 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Section, User } from './types.ts';
 import { useUserProgress } from './hooks/useUserProgress.ts';
 import { useAuth } from './hooks/useAuth.ts';
 import { useUIState } from './hooks/useUIState.ts';
 import { useLearningPreferences } from './hooks/useLearningPreferences.ts';
 
-import Sidebar from './components/Sidebar.tsx';
-import Header from './components/Header.tsx';
-import Home from './components/Home.tsx';
-import ReferenceLibrary from './components/ReferenceLibrary.tsx';
-import VisualChallenge from './components/VisualChallenge.tsx';
-import SignOutSimulator from './components/SignOutSimulator.tsx';
-import AnalysisPhase from './components/AnalysisPhase.tsx';
-import DesignPhase from './components/DesignPhase.tsx';
-import DevelopmentPhase from './components/DevelopmentPhase.tsx';
-import AssessmentPhase from './components/AssessmentPhase.tsx';
-import AdminView from './components/AdminView.tsx';
-import Lecture from './components/Lecture.tsx';
-import DidacticLectures from './components/DidacticLectures.tsx';
-import AlgorithmNavigator from './components/AlgorithmNavigator.tsx';
-import DidacticTutorials from './components/DidacticTutorials.tsx';
-import DiagnosticPathway from './components/DiagnosticPathway.tsx';
-import PathologyCurriculum from './components/PathologyCurriculum.tsx';
-import CompetencyMatrix from './components/CompetencyMatrix.tsx';
-import SyllabusExplorer from './components/SyllabusExplorer.tsx';
-import Welcome from './components/Welcome.tsx';
+const Sidebar = lazy(() => import('./components/Sidebar.tsx'));
+const Header = lazy(() => import('./components/Header.tsx'));
+const Home = lazy(() => import('./components/Home.tsx'));
+const ReferenceLibrary = lazy(() => import('./components/ReferenceLibrary.tsx'));
+const VisualChallenge = lazy(() => import('./components/VisualChallenge.tsx'));
+const SignOutSimulator = lazy(() => import('./components/SignOutSimulator.tsx'));
+const AnalysisPhase = lazy(() => import('./components/AnalysisPhase.tsx'));
+const DesignPhase = lazy(() => import('./components/DesignPhase.tsx'));
+const DevelopmentPhase = lazy(() => import('./components/DevelopmentPhase.tsx'));
+const AssessmentPhase = lazy(() => import('./components/AssessmentPhase.tsx'));
+const AdminView = lazy(() => import('./components/AdminView.tsx'));
+const Lecture = lazy(() => import('./components/Lecture.tsx'));
+const DidacticLectures = lazy(() => import('./components/DidacticLectures.tsx'));
+const AlgorithmNavigator = lazy(() => import('./components/AlgorithmNavigator.tsx'));
+const DidacticTutorials = lazy(() => import('./components/DidacticTutorials.tsx'));
+const DiagnosticPathway = lazy(() => import('./components/DiagnosticPathway.tsx'));
+const PathologyCurriculum = lazy(() => import('./components/PathologyCurriculum.tsx'));
+const CompetencyMatrix = lazy(() => import('./components/CompetencyMatrix.tsx'));
+const SyllabusExplorer = lazy(() => import('./components/SyllabusExplorer.tsx'));
+const Welcome = lazy(() => import('./components/Welcome.tsx'));
+const PingTelemetryProbe = lazy(() => import('./components/PingTelemetryProbe.tsx'));
+import {
+  captureAndPersistPingTelemetry,
+  isPingProbeVisible,
+  isPingTelemetryRoute,
+  triggerPingBeacon,
+} from './utils/pingTelemetry.ts';
 import { trackSectionVisit } from './utils/tracking.ts';
 import { BRAND } from './utils/brand.ts';
 
@@ -124,6 +131,33 @@ const AppContent: React.FC<{
 const App: React.FC = () => {
   const { currentUser, login, logout, isLoading } = useAuth();
   const [isLoginViewVisible, setLoginViewVisible] = useState(false);
+  const isPingTelemetry = isPingTelemetryRoute(
+    window.location.pathname,
+    window.location.search,
+  );
+  const isPingProbeRoute = isPingProbeVisible(window.location.search);
+
+  useEffect(() => {
+    if (isPingTelemetry || isPingProbeRoute) {
+      return;
+    }
+    triggerPingBeacon();
+  }, [isPingTelemetry, isPingProbeRoute]);
+
+  useEffect(() => {
+    if (!isPingTelemetry) return;
+    void captureAndPersistPingTelemetry();
+  }, [isPingTelemetry]);
+
+  const loadingFallback = (
+    <div className="w-full h-screen flex items-center justify-center text-slate-600">
+      <p>Loading {BRAND.name}...</p>
+    </div>
+  );
+
+  if (isPingTelemetry && isPingProbeRoute) {
+    return <Suspense fallback={loadingFallback}><PingTelemetryProbe /></Suspense>;
+  }
 
   const handleLoginSuccess = async (username: string, password: string, rememberMe: boolean) => {
     const user = await login(username, password, rememberMe);
@@ -140,17 +174,19 @@ const App: React.FC = () => {
   }
   
   if (isLoginViewVisible) {
-      return <Welcome onLogin={handleLoginSuccess} onBack={() => setLoginViewVisible(false)} />;
+      return <Suspense fallback={loadingFallback}>
+        <Welcome onLogin={handleLoginSuccess} onBack={() => setLoginViewVisible(false)} />
+      </Suspense>;
   }
 
   return (
-    <>
+    <Suspense fallback={loadingFallback}>
       <AppContent
         user={currentUser}
         onLogout={logout}
         onLoginClick={() => setLoginViewVisible(true)}
       />
-    </>
+    </Suspense>
   );
 };
 

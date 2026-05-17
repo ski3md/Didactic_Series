@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ping Beacon</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+      }
+    </style>
+    <script>
+      (() => {
+        const BACKUP_KEY = 'pathology_ping_telemetry_backup';
+        const BEACON_GUARD_KEY = 'pathology_ping_last_beacon_guard';
+        const BEACON_TTL_MS = 30_000;
+
+        const deviceMatchers = [
+          [/\biphone\b/i, 'iPhone'],
+          [/\bipad\b/i, 'iPad'],
+          [/\bipod\b/i, 'iPod'],
+          [/\bsams(a|ung)-?\s*([^;/ )]+)/i, 'Samsung'],
+          [/\bsm-[a-z0-9-]+/i, 'Samsung'],
+          [/\b(huawei)[-\s]?[a-z0-9]+/i, 'Huawei'],
+          [/\b(oneplus)[-\s]?[a-z0-9]*/i, 'OnePlus'],
+          [/\b(lg)-?htc/i, 'LG'],
+          [/\blenovo[-\s][a-z0-9]+/i, 'Lenovo'],
+          [/\b(moto|motorola)[-\s]?[a-z0-9]*/i, 'Motorola'],
+          [/\b(macintosh|mac os x)/i, 'Mac'],
+          [/\bwindows nt/i, 'Windows PC'],
+          [/\bx11|linux/i, 'Linux PC'],
+        ];
+
+        const detectDeviceModel = (userAgent) => {
+          if (!userAgent) return undefined;
+          const hit = deviceMatchers.find(([pattern]) => pattern.test(userAgent));
+          return hit ? hit[1] : undefined;
+        };
+
+        const detectBrowser = (ua) => {
+          if (!ua) return 'Unknown';
+          if (/edg/i.test(ua)) return 'Edge';
+          if (/chrome/i.test(ua) && !/chromium/i.test(ua) && !/edg/i.test(ua)) return 'Chrome';
+          if (/firefox/i.test(ua)) return 'Firefox';
+          if (/safari/i.test(ua) && !/chrome/i.test(ua)) return 'Safari';
+          if (/opera|opr/i.test(ua)) return 'Opera';
+          return 'Unknown';
+        };
+
+        const detectOs = (ua) => {
+          if (!ua) return 'Unknown';
+          if (/windows nt/i.test(ua)) return 'Windows';
+          if (/macintosh|mac os x/i.test(ua)) return 'macOS';
+          if (/android/i.test(ua)) return 'Android';
+          if (/iphone|ipad|ipod/i.test(ua)) return 'iOS';
+          if (/linux/i.test(ua)) return 'Linux';
+          return 'Unknown';
+        };
+
+        const detectDeviceType = (ua) => {
+          if (!ua) return 'Unknown';
+          if (/mobi|iphone|android/i.test(ua)) return 'Mobile';
+          if (/ipad/i.test(ua) || /tablet/i.test(ua)) return 'Tablet';
+          return 'Desktop';
+        };
+
+        const parseOwnerFromMetadata = ({ asn, isp, org }) => {
+          if (!org && !asn && !isp) return 'Unknown';
+          return [org, asn, isp].filter(Boolean).join(' / ');
+        };
+
+        const safeParseJson = (raw) => {
+          try {
+            return raw ? JSON.parse(raw) : null;
+          } catch {
+            return null;
+          }
+        };
+
+        const readBackup = () => {
+          try {
+            const parsed = safeParseJson(window.localStorage.getItem(BACKUP_KEY));
+            return Array.isArray(parsed) ? parsed : [];
+          } catch {
+            return [];
+          }
+        };
+
+        const dedupeById = (items) => {
+          const byId = new Map();
+          items.forEach((item) => {
+            if (item?.id) byId.set(item.id, item);
+          });
+          return Array.from(byId.values());
+        };
+
+        const fetchWithTimeout = async (url, timeoutMs = 2500) => {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), timeoutMs);
+          try {
+            const response = await fetch(url, {
+              method: 'GET',
+              headers: { Accept: 'application/json' },
+              signal: controller.signal,
+            });
+            if (!response.ok) return null;
+            return await response.json();
+          } finally {
+            clearTimeout(timeout);
+          }
+        };
+
+        const getPublicIp = async () => {
+          const payload = await fetchWithTimeout('https://api.ipify.org?format=json');
+          return payload?.ip ? String(payload.ip) : undefined;
+        };
+
+        const getGeoFromIp = async (ip) => {
+          const fallback = {
+            city: null,
+            region: null,
+            country: null,
+            countryCode: null,
+            postal: null,
+            timezone: null,
+            asn: null,
+            org: null,
+            latitude: null,
+            longitude: null,
+          };
+
+          if (!ip) return fallback;
+          const payload = await fetchWithTimeout(`https://ipapi.co/${encodeURIComponent(ip)}/json/`);
+          if (!payload) return fallback;
+          return {
+            city: payload.city ?? null,
+            region: payload.region ?? null,
+            country: payload.country_name ?? null,
+            countryCode: payload.country ?? null,
+            postal: payload.postal ?? null,
+            timezone: payload.timezone ?? null,
+            asn: payload.asn ? String(payload.asn) : null,
+            org: payload.org ?? null,
+            latitude: payload.latitude != null ? Number(payload.latitude) : null,
+            longitude: payload.longitude != null ? Number(payload.longitude) : null,
+          };
+        };
+
+        const now = Date.now();
+        const lastGuard = Number(window.localStorage.getItem(BEACON_GUARD_KEY) || 'NaN');
+        if (Number.isFinite(lastGuard) && now - lastGuard < BEACON_TTL_MS) {
+          return;
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const path = params.get('path') || window.location.pathname || '/';
+        const query = params.get('query') || '';
+        const host = params.get('host') || window.location.host;
+
+        const sessionId = params.get('sid') || `beacon-${now}`;
+        const recordId = `${sessionId}-${now}-${Math.random().toString(16).slice(2, 8)}`;
+        const userAgent = window.navigator?.userAgent || 'unknown';
+
+        const run = async () => {
+          try {
+            const clientIp = await getPublicIp();
+            const geo = clientIp ? await getGeoFromIp(clientIp) : {
+              city: 'unknown',
+              region: 'unknown',
+              country: 'unknown',
+              countryCode: 'unknown',
+              postal: 'unknown',
+              timezone: 'unknown',
+              asn: 'unknown',
+              org: 'unknown',
+              latitude: null,
+              longitude: null,
+            };
+            const normalizedGeo = {
+              city: typeof geo.city === 'string' ? geo.city : 'unknown',
+              region: typeof geo.region === 'string' ? geo.region : 'unknown',
+              country: typeof geo.country === 'string' ? geo.country : 'unknown',
+              countryCode: typeof geo.countryCode === 'string' ? geo.countryCode : 'unknown',
+              postal: typeof geo.postal === 'string' ? geo.postal : 'unknown',
+              timezone: typeof geo.timezone === 'string' ? geo.timezone : 'unknown',
+              asn: typeof geo.asn === 'string' ? geo.asn : 'unknown',
+              org: typeof geo.org === 'string' ? geo.org : 'unknown',
+              latitude: typeof geo.latitude === 'number' ? geo.latitude : undefined,
+              longitude: typeof geo.longitude === 'number' ? geo.longitude : undefined,
+            };
+
+            const record = {
+              id: recordId,
+              timestamp: now,
+              sourceIp: clientIp || 'unknown',
+              city: normalizedGeo.city,
+              region: normalizedGeo.region,
+              country: normalizedGeo.country,
+              countryCode: normalizedGeo.countryCode,
+              postalCode: normalizedGeo.postal,
+              timezone: normalizedGeo.timezone,
+              asn: normalizedGeo.asn,
+              isp: normalizedGeo.org,
+              org: normalizedGeo.org,
+              owner: parseOwnerFromMetadata(normalizedGeo),
+              deviceType: detectDeviceType(userAgent),
+              deviceModel: detectDeviceModel(userAgent),
+              os: detectOs(userAgent),
+              browser: detectBrowser(userAgent),
+              userAgent,
+              userAgentRaw: userAgent,
+              viewportWidth: window.innerWidth || 0,
+              viewportHeight: window.innerHeight || 0,
+              screenWidth: window.screen?.width || 0,
+              screenHeight: window.screen?.height || 0,
+              devicePixelRatio: window.devicePixelRatio || 1,
+              language: window.navigator?.language || 'unknown',
+              path,
+              method: 'GET',
+              referer: document.referrer || 'direct',
+              query,
+              host,
+              physicalAddressNote: 'No street-level data from browser/request metadata only.',
+              latitude: normalizedGeo.latitude,
+              longitude: normalizedGeo.longitude,
+            };
+
+            const next = dedupeById([record, ...readBackup()]).slice(0, 1000);
+            window.localStorage.setItem(BACKUP_KEY, JSON.stringify(next));
+            window.localStorage.setItem(BEACON_GUARD_KEY, String(now));
+          } catch {
+            // Keep failure silent to remain background-only.
+            try {
+              window.localStorage.setItem(BEACON_GUARD_KEY, String(now));
+            } catch {
+              // ignore
+            }
+          } finally {
+            // Keep the beacon from rendering or holding resources.
+            requestAnimationFrame(() => window.close());
+          }
+        };
+
+        void run();
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

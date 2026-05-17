@@ -40,6 +40,42 @@ export interface LoginHistory {
   userAgent: string;
 }
 
+export interface PingTelemetryRecord {
+  id: string;
+  timestamp: number;
+  sourceIp: string;
+  city: string;
+  region: string;
+  country: string;
+  countryCode: string;
+  postalCode: string;
+  timezone: string;
+  asn: string;
+  isp: string;
+  org: string;
+  owner: string;
+  deviceType: string;
+  deviceModel?: string;
+  os: string;
+  browser: string;
+  viewportWidth: number;
+  viewportHeight: number;
+  screenWidth: number;
+  screenHeight: number;
+  devicePixelRatio: number;
+  language: string;
+  path: string;
+  method: string;
+  referer: string;
+  query: string;
+  host: string;
+  userAgent: string;
+  userAgentRaw: string;
+  physicalAddressNote: string;
+  latitude?: number;
+  longitude?: number;
+}
+
 export interface CaseData {
   clinicalHistory: string;
   radiologicFindings: string;

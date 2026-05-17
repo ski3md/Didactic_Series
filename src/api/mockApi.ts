@@ -1,5 +1,6 @@
 import {
   User, UserActivity, Case, CaseStudy, StoredUser,
+  PingTelemetryRecord,
   LoginHistory, StoredImage
 } from '../types.ts';
 import { getStoreData, setStoreData, deleteStoreData } from '../utils/db.ts';
@@ -202,6 +203,35 @@ const USER_ACTIVITY_KEY = 'pathology_user_activity';
 const CASES_KEY = 'pathology_cases';
 const CASE_STUDIES_KEY = 'pathology_case_studies';
 const LOGIN_HISTORY_KEY = 'pathology_login_history';
+const PING_TELEMETRY_KEY = 'pathology_ping_telemetry';
+const PING_TELEMETRY_BACKUP_KEY = 'pathology_ping_telemetry_backup';
+
+const dedupeById = <T extends { id: string }>(items: T[]): T[] => {
+  const byId = new Map<string, T>();
+  items.forEach((item) => byId.set(item.id, item));
+  return Array.from(byId.values());
+};
+
+const safeParsePingBackup = (): PingTelemetryRecord[] => {
+  if (typeof window === 'undefined') return [];
+  try {
+    const raw = localStorage.getItem(PING_TELEMETRY_BACKUP_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+};
+
+const writePingBackup = async (history: PingTelemetryRecord[]) => {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(PING_TELEMETRY_BACKUP_KEY, JSON.stringify(history));
+  } catch {
+    // Ignore quota/privacy restrictions; IndexedDB remains the source of truth.
+  }
+};
 
 /* --------------------------- Default Mocked Users -------------------------- */
 const getInitialUsers = (): Record<string, StoredUser> => ({
@@ -285,6 +315,64 @@ export const apiTrackLogin = async (username: string, ip: string, userAgent: str
   history[username].unshift({ timestamp: Date.now(), ip, userAgent });
   history[username] = history[username].slice(0, 20);
   await setStoreData(LOGIN_HISTORY_KEY, history);
+};
+
+export const apiAppendPingTelemetry = async (record: PingTelemetryRecord): Promise<void> => {
+  try {
+    const history = await apiGetPingTelemetry();
+    const backup = safeParsePingBackup();
+    const next = dedupeById([record, ...history, ...backup]).slice(0, 1000);
+    await setStoreData(PING_TELEMETRY_KEY, next);
+    if (backup.length) {
+      try {
+        localStorage.removeItem(PING_TELEMETRY_BACKUP_KEY);
+      } catch {
+        // Ignore cleanup failures.
+      }
+    }
+    return;
+  } catch (err) {
+    const backup = [record, ...safeParsePingBackup()].slice(0, 1000);
+    await writePingBackup(dedupeById(backup));
+    console.error('IndexedDB append failed; saved ping telemetry to browser localStorage backup instead.', err);
+  }
+};
+
+export const apiGetPingTelemetry = async (limit = 250): Promise<PingTelemetryRecord[]> => {
+  let history: PingTelemetryRecord[] = [];
+  try {
+    history = (await getStoreData<PingTelemetryRecord[]>(PING_TELEMETRY_KEY)) || [];
+  } catch {
+    history = [];
+  }
+  const backup = safeParsePingBackup();
+  if (!backup.length) {
+    return dedupeById(history || []).slice(0, limit);
+  }
+
+  try {
+    const merged = dedupeById([...(history || []), ...backup]).slice(0, 1000);
+    await setStoreData(PING_TELEMETRY_KEY, merged);
+    try {
+      localStorage.removeItem(PING_TELEMETRY_BACKUP_KEY);
+    } catch {
+      // Ignore backup cleanup failures.
+    }
+    return dedupeById(merged).slice(0, limit);
+  } catch {
+    return dedupeById([...(history || []), ...backup]).slice(0, limit);
+  }
+};
+
+export const apiClearPingTelemetry = async (): Promise<void> => {
+  await setStoreData(PING_TELEMETRY_KEY, []);
+  if (typeof window !== 'undefined') {
+    try {
+      localStorage.removeItem(PING_TELEMETRY_BACKUP_KEY);
+    } catch {
+      // Ignore storage cleanup errors.
+    }
+  }
 };
 
 /* ----------------------------- User Progress ------------------------------- */

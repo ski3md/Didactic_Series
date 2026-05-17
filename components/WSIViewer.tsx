@@ -22,7 +22,7 @@ const WSIViewer: React.FC<WSIViewerProps> = ({ dziUrl, staticImageUrl, altText }
     if (viewerRef.current && dziUrl) {
       viewer = OpenSeadragon({
         element: viewerRef.current,
-        prefixUrl: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/images/',
+        prefixUrl: '/openseadragon/images/',
         tileSources: dziUrl,
         animationTime: 0.5,
         blendTime: 0.1,

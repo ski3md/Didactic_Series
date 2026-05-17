@@ -1,0 +1,15 @@
+{
+  "allowedDomains": [
+    "images.ctfassets.net",
+    "storage.googleapis.com",
+    "upload.wikimedia.org",
+    "www.ncbi.nlm.nih.gov",
+    "pathology.or.jp",
+    "webpath.med.utah.edu",
+    "openseadragon.github.io",
+    "openslide.cs.cmu.edu"
+  ],
+  "allowedSubstrings": [
+    "/openseadragon/images/"
+  ]
+}

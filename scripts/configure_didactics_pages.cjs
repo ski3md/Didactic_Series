@@ -6,6 +6,16 @@ const distRoot = path.join(repoRoot, 'dist');
 const didacticsDir = path.join(distRoot, 'didactics');
 const domain = process.env.PTHFNDR_DOMAIN || 'pthfndr.online';
 const didacticsPath = '/didactics/';
+const didacticsFaviconIco = path.join(didacticsDir, 'favicon.ico');
+const didacticsFaviconSvg = path.join(didacticsDir, 'favicon.svg');
+const rootFaviconIco = path.join(distRoot, 'favicon.ico');
+const rootFaviconSvg = path.join(distRoot, 'favicon.svg');
+
+const copyIfExists = (src, dest) => {
+  if (fs.existsSync(src)) {
+    fs.copyFileSync(src, dest);
+  }
+};
 
 if (!fs.existsSync(path.join(didacticsDir, 'index.html'))) {
   throw new Error(`Expected didactics build at ${path.join(didacticsDir, 'index.html')}`);
@@ -34,5 +44,7 @@ fs.writeFileSync(path.join(distRoot, 'index.html'), redirectHtml);
 fs.writeFileSync(path.join(distRoot, '404.html'), redirectHtml);
 fs.writeFileSync(path.join(distRoot, 'CNAME'), `${domain}\n`);
 fs.writeFileSync(path.join(distRoot, '.nojekyll'), '');
+copyIfExists(didacticsFaviconIco, rootFaviconIco);
+copyIfExists(didacticsFaviconSvg, rootFaviconSvg);
 
 console.log(`Configured GitHub Pages artifact for https://${domain}${didacticsPath}`);

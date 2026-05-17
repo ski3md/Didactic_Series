@@ -8,6 +8,7 @@ const ROOT = process.cwd();
 const DEFAULT_SOURCE_ROOT = '/Volumes/APCPBoards';
 const OUT_DIR = path.join(ROOT, 'public', 'reference-library', 'local-teaching');
 const OUT_INDEX = path.join(ROOT, 'src', 'content', 'images', 'apcpboards_reference_images.json');
+const OUT_PUBLIC_INDEX = path.join(ROOT, 'public', 'reference-images', 'apcpboards_reference_images.json');
 
 const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.tif', '.tiff']);
 const PDF_EXTENSION = '.pdf';
@@ -26,6 +27,7 @@ const SKIP_SEGMENTS = new Set([
   'node_modules',
   'venv',
 ]);
+const SKIP_EXACT_FILENAMES = new Set(['.DS_Store', 'Thumbs.db']);
 const SKIP_NAME_PATTERNS = [/screenshot/i, /mnemonic/i, /diagram/i, /table/i, /score/i, /headshot/i, /logo/i, /icon/i];
 const DEFAULT_MAX_FILES = 300;
 
@@ -47,10 +49,13 @@ const splitPaths = (value) =>
 const rootsInput = getArg('--roots') || getArg('--root') || process.env.APCPBOARDS_IMAGE_ROOTS || process.env.APCPBOARDS_IMAGE_ROOT || DEFAULT_SOURCE_ROOT;
 const sourceRoots = splitPaths(rootsInput).map((entry) => path.resolve(entry));
 const maxDepth = Number(getArg('--max-depth') || process.env.APCPBOARDS_IMAGE_MAX_DEPTH || 5);
-const maxFiles = Number(getArg('--max-files') || process.env.APCPBOARDS_IMAGE_MAX_FILES || DEFAULT_MAX_FILES);
+const maxFilesInput = getArg('--max-files') || process.env.APCPBOARDS_IMAGE_MAX_FILES || String(DEFAULT_MAX_FILES);
+const maxFiles = /^(all|unlimited|none|0)$/i.test(maxFilesInput) ? Infinity : Number(maxFilesInput);
 const dryRun = args.includes('--dry-run');
 const includeRecycle = args.includes('--include-recycle');
 const includeScreenshots = args.includes('--include-screenshots');
+const includeAllImages = args.includes('--include-all-images') || args.includes('--all-images');
+const serveFromSource = args.includes('--serve-from-source');
 const includeBroadPathologyMatches = !args.includes('--strict-histology-root');
 const includePdf = !args.includes('--no-pdf');
 const maxImagesPerPdf = Number(getArg('--max-images-per-pdf') || process.env.APCPBOARDS_MAX_IMAGES_PER_PDF || 3);
@@ -188,12 +193,15 @@ const clinicallyRelevantPath = (filePath) => {
 
 const shouldSkip = (filePath) => {
   const segments = filePath.split(path.sep);
+  const baseName = path.basename(filePath);
   if (!includeRecycle && segments.some((segment) => SKIP_SEGMENTS.has(segment))) return true;
+  if (SKIP_EXACT_FILENAMES.has(baseName) || baseName.startsWith('._')) return true;
   if (!includeScreenshots && SKIP_NAME_PATTERNS.some((pattern) => pattern.test(path.basename(filePath)))) return true;
   return false;
 };
 
 const shouldIncludeImage = (filePath) => {
+  if (includeAllImages) return true;
   if (isHistologyRoot(filePath)) return true;
   if (!includeBroadPathologyMatches) return false;
   return clinicallyRelevantPath(filePath);
@@ -228,6 +236,8 @@ const hashFile = (filePath) => {
   return hash.digest('hex');
 };
 
+const hashText = (value) => crypto.createHash('sha1').update(value).digest('hex');
+
 const browserSafeExtension = (filePath) => {
   const ext = path.extname(filePath).toLowerCase().replace('.jpeg', '.jpg');
   return ['.tif', '.tiff'].includes(ext) ? '.jpg' : ext;
@@ -245,6 +255,14 @@ const copyBrowserSafeImage = (sourcePath, outputPath) => {
   }
   fs.copyFileSync(sourcePath, outputPath);
 };
+
+const sourceRelativePath = (sourceRoot, sourcePath) => path.relative(sourceRoot, sourcePath).split(path.sep).join('/');
+
+const sourceUrlForPath = (sourcePath) =>
+  `/@fs${sourcePath
+    .split(path.sep)
+    .map((segment) => encodeURIComponent(segment))
+    .join('/')}`;
 
 const pdfImagesAvailable = () => {
   const result = spawnSync('command', ['-v', 'pdfimages'], { shell: true, encoding: 'utf8' });
@@ -312,22 +330,26 @@ for (const { sourceRoot, files } of sourceFilesByRoot) {
     const title = `${titleFromFilename(importSource.sourcePath)}${importSource.titleSuffix}`;
     const specialty = specialtyFromText(`${sourcePath} ${title}`);
     const ext = browserSafeExtension(importSource.importPath);
-    const digest = hashFile(importSource.importPath);
+    const digest = serveFromSource
+      ? hashText(`${importSource.importPath}|${stat.size}|${Math.round(stat.mtimeMs)}`)
+      : hashFile(importSource.importPath);
     if (seenDigests.has(digest)) continue;
     seenDigests.add(digest);
     const safeTitle = normalize(title).replace(/\s+/g, '-').slice(0, 64) || 'local-teaching-image';
     const fileName = `${safeTitle}-${digest.slice(0, 10)}${ext}`;
     const localRelativePath = path.posix.join('reference-library', 'local-teaching', specialty, fileName);
     const outputPath = path.join(ROOT, 'public', localRelativePath);
-    if (!dryRun) {
+    if (!dryRun && !serveFromSource) {
       if (!fs.existsSync(outputPath)) copyBrowserSafeImage(importSource.importPath, outputPath);
     }
     images.push({
       id: `local-teaching-${digest.slice(0, 16)}`,
       title,
       specialty,
-      localPath: localRelativePath,
+      localPath: serveFromSource ? '' : localRelativePath,
+      imageUrl: serveFromSource ? sourceUrlForPath(importSource.importPath) : undefined,
       sourcePath,
+      sourceRelativePath: sourceRelativePath(sourceRoot, sourcePath),
       sourceDocument: sourceDocumentFromPath(sourcePath),
       pageNumber: pageNumberFromPath(sourcePath),
       caption: captionFromSource({ specialty, sourcePath }),
@@ -349,10 +371,12 @@ const index = {
   sourceRoots,
   missingRoots,
   dryRun,
+  includeAllImages,
+  serveFromSource,
   includePdf,
   maxImagesPerPdf,
   maxDepth,
-  maxFiles,
+  maxFiles: Number.isFinite(maxFiles) ? maxFiles : 'all',
   imageCount: images.length,
   sourceFileCounts: sourceFilesByRoot.reduce((acc, item) => {
     acc[item.sourceRoot] = item.files.length;
@@ -371,6 +395,8 @@ const index = {
 
 fs.mkdirSync(path.dirname(OUT_INDEX), { recursive: true });
 fs.writeFileSync(OUT_INDEX, `${JSON.stringify(index, null, 2)}\n`);
+fs.mkdirSync(path.dirname(OUT_PUBLIC_INDEX), { recursive: true });
+fs.writeFileSync(OUT_PUBLIC_INDEX, `${JSON.stringify(index, null, 2)}\n`);
 
 console.log(
   JSON.stringify(

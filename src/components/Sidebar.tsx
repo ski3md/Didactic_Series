@@ -14,6 +14,7 @@ import {
   ArrowRightToBracketIcon,
   ChevronLeftIcon,
 } from './icons.tsx';
+import { prefetchCompetencyMatrixPayload } from '../utils/competencyMatrixLoader.ts';
 
 interface SidebarProps {
   currentSection: Section;
@@ -29,11 +30,15 @@ const NavLink: React.FC<{
   ariaLabel?: string;
   isActive: boolean;
   onClick: () => void;
+  onMouseEnter?: () => void;
+  onFocus?: () => void;
   icon: React.ReactNode;
-}> = ({ label, ariaLabel, isActive, onClick, icon }) => {
+}> = ({ label, ariaLabel, isActive, onClick, onMouseEnter, onFocus, icon }) => {
   return (
     <button
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onFocus={onFocus}
       aria-label={ariaLabel ?? label}
       className={`w-full flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 text-left ${
         isActive
@@ -107,6 +112,8 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
           ariaLabel="Competency Matrix"
           isActive={currentSection === Section.COMPETENCY_MATRIX}
           onClick={() => onSectionChange(Section.COMPETENCY_MATRIX)}
+          onMouseEnter={() => prefetchCompetencyMatrixPayload()}
+          onFocus={() => prefetchCompetencyMatrixPayload()}
           icon={<ClipboardDocumentListIcon className="h-5 w-5" />}
         />
         <NavLink

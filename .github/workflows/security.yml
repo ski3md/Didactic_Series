@@ -1,0 +1,36 @@
+name: Security Checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run script allowlist scan
+        run: npm run security:scan-scripts
+
+      - name: Validate frontend security headers
+        run: npm run security:header-audit
+
+      - name: Run high-severity dependency audit
+        run: npm run security:deps

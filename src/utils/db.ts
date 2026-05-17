@@ -3,6 +3,38 @@ const DB_NAME = 'PathologyModuleDB';
 const DB_VERSION = 1;
 
 let dbPromise: Promise<IDBDatabase> | null = null;
+let persistencePromise: Promise<boolean> | null = null;
+
+const ensurePersistentStorage = async (): Promise<boolean> => {
+  if (typeof window === 'undefined' || !('storage' in navigator) || !navigator.storage) {
+    return false;
+  }
+
+  if (persistencePromise) {
+    return persistencePromise;
+  }
+
+  persistencePromise = (async () => {
+    if (!navigator.storage.persisted || !navigator.storage.persist) {
+      return false;
+    }
+
+    try {
+      const hasPersistence = await navigator.storage.persisted();
+      if (hasPersistence) {
+        return true;
+      }
+
+      const requested = await navigator.storage.persist();
+      return Boolean(requested);
+    } catch (error) {
+      console.warn('Persistent storage request failed; continuing with default quota behavior.', error);
+      return false;
+    }
+  })();
+
+  return persistencePromise;
+};
 
 const initDB = (): Promise<IDBDatabase> => {
     if (dbPromise) {
@@ -10,6 +42,8 @@ const initDB = (): Promise<IDBDatabase> => {
     }
 
     dbPromise = new Promise((resolve, reject) => {
+        void ensurePersistentStorage();
+
         const request = indexedDB.open(DB_NAME, DB_VERSION);
 
         request.onerror = () => {

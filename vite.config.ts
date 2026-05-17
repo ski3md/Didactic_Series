@@ -16,6 +16,12 @@ export default defineConfig(({ mode }) => {
     // Default keeps the historical GitHub Pages path; production can mount at /didactics/.
     base: basePath,
 
+    server: {
+      fs: {
+        allow: [process.cwd(), '/Volumes/APCPBoards/www'],
+      },
+    },
+
     // Define API key for client use (read-only)
     define: {
       'process.env.API_KEY': JSON.stringify(env.API_KEY || ''),

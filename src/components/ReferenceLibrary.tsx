@@ -7,7 +7,6 @@ import { BookOpenIcon } from './icons.tsx';
 import { consumeReferenceLibraryIntent, ReferenceLibraryIntent } from '../utils/referenceLibraryNavigation.ts';
 import { getAtlasCollectionSummaries } from '../utils/atlasImageCatalog.ts';
 import signoutImageReferenceIndex from '../content/signout_sims/signout_image_reference_index.json';
-import apcpboardsReferenceImages from '../content/images/apcpboards_reference_images.json';
 
 interface ReferenceLibraryProps {
   user: User | null;
@@ -31,7 +30,10 @@ interface SupplementalReferenceImage {
   title: string;
   specialty: string;
   localPath: string;
+  imageUrl?: string;
   sourcePath: string;
+  sourceRelativePath?: string;
+  sourceCollection?: string;
   bytes: number;
   extension: string;
   caption?: string;
@@ -39,8 +41,14 @@ interface SupplementalReferenceImage {
   pageNumber?: number;
 }
 
+interface SupplementalReferenceImageManifest {
+  imageCount: number;
+  images: SupplementalReferenceImage[];
+}
+
 const signoutImages = (signoutImageReferenceIndex.images ?? []) as SignoutReferenceImage[];
-const supplementalImages = (apcpboardsReferenceImages.images ?? []) as SupplementalReferenceImage[];
+const SUPPLEMENTAL_PAGE_SIZE = 60;
+const emptySupplementalManifest: SupplementalReferenceImageManifest = { imageCount: 0, images: [] };
 
 const normalizeReferenceKey = (value?: string) =>
   (value || '')
@@ -50,11 +58,12 @@ const normalizeReferenceKey = (value?: string) =>
     .toLowerCase()
     .trim();
 
-const dedupeByReferenceImage = <T extends { localPath?: string; sourcePath?: string; sourceUrl?: string; title?: string }>(images: T[]) => {
+const dedupeByReferenceImage = <T extends { localPath?: string; imageUrl?: string; sourcePath?: string; sourceUrl?: string; title?: string }>(images: T[]) => {
   const seen = new Set<string>();
   return images.filter((image) => {
     const key =
       normalizeReferenceKey(image.localPath) ||
+      normalizeReferenceKey(image.imageUrl) ||
       normalizeReferenceKey(image.sourcePath) ||
       normalizeReferenceKey(image.sourceUrl) ||
       normalizeReferenceKey(image.title);
@@ -102,11 +111,29 @@ const supplementalSourceLabel = (image: SupplementalReferenceImage) => {
   return `${documentTitle}${pageText && pageText !== image.title ? `, ${pageText}` : ''}`;
 };
 
+const supplementalImageSrc = (image: SupplementalReferenceImage) => {
+  if (image.imageUrl?.startsWith('/@fs/')) return `${import.meta.env.BASE_URL.replace(/\/$/, '')}${image.imageUrl}`;
+  if (image.imageUrl) return image.imageUrl;
+  return `${import.meta.env.BASE_URL}${image.localPath}`;
+};
+
+const matchesSupplementalSearch = (image: SupplementalReferenceImage, searchTerm: string) => {
+  const query = searchTerm.trim().toLowerCase();
+  if (!query) return true;
+  return [image.title, image.specialty, image.sourceDocument, image.sourceRelativePath, image.sourcePath, image.caption]
+    .filter(Boolean)
+    .some((value) => String(value).toLowerCase().includes(query));
+};
+
 const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
   const [focusIntent, setFocusIntent] = useState<ReferenceLibraryIntent | null>(null);
   const [selectedSignoutSpecialty, setSelectedSignoutSpecialty] = useState('GU Pathology Sign-Out Simulations');
   const [selectedSupplementalSpecialty, setSelectedSupplementalSpecialty] = useState('breast');
+  const [supplementalSearch, setSupplementalSearch] = useState('');
+  const [supplementalPage, setSupplementalPage] = useState(1);
+  const [supplementalManifest, setSupplementalManifest] = useState<SupplementalReferenceImageManifest>(emptySupplementalManifest);
   const atlasSummaries = getAtlasCollectionSummaries();
+  const supplementalImages = useMemo(() => supplementalManifest.images ?? [], [supplementalManifest]);
   const signoutSpecialties = useMemo(
     () => ['All', ...Array.from(new Set(signoutImages.map((image) => image.specialty))).sort()],
     []
@@ -128,17 +155,55 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
   };
   const supplementalSpecialties = useMemo(
     () => Array.from(new Set(supplementalImages.map((image) => image.specialty))).sort(),
-    []
+    [supplementalImages]
   );
   const filteredSupplementalImages = useMemo(
     () =>
-      dedupeByReferenceImage(supplementalImages.filter((image) => image.specialty === selectedSupplementalSpecialty)).slice(0, 60),
-    [selectedSupplementalSpecialty]
+      dedupeByReferenceImage(
+        supplementalImages
+          .filter((image) => image.specialty === selectedSupplementalSpecialty)
+          .filter((image) => matchesSupplementalSearch(image, supplementalSearch))
+      ),
+    [selectedSupplementalSpecialty, supplementalImages, supplementalSearch]
+  );
+  const supplementalPageCount = Math.max(1, Math.ceil(filteredSupplementalImages.length / SUPPLEMENTAL_PAGE_SIZE));
+  const visibleSupplementalImages = useMemo(
+    () => filteredSupplementalImages.slice((supplementalPage - 1) * SUPPLEMENTAL_PAGE_SIZE, supplementalPage * SUPPLEMENTAL_PAGE_SIZE),
+    [filteredSupplementalImages, supplementalPage]
   );
 
   useEffect(() => {
     setFocusIntent(consumeReferenceLibraryIntent());
   }, []);
+
+  useEffect(() => {
+    let active = true;
+    const manifestPath = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/reference-images/apcpboards_reference_images.json`;
+    const normalizeManifest = (manifest: SupplementalReferenceImageManifest) => ({
+      imageCount: manifest.imageCount ?? manifest.images?.length ?? 0,
+      images: manifest.images ?? [],
+    });
+    fetch(manifestPath)
+      .then((response) => (response.ok ? response.json() : Promise.reject(response.statusText)))
+      .then((manifest) => {
+        if (!active) return;
+        if (typeof manifest === 'object' && manifest !== null && Array.isArray(manifest.images)) {
+          setSupplementalManifest(normalizeManifest(manifest as SupplementalReferenceImageManifest));
+        }
+      })
+      .catch(() => {
+        if (active) {
+          setSupplementalManifest(emptySupplementalManifest);
+        }
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    setSupplementalPage(1);
+  }, [selectedSupplementalSpecialty, supplementalSearch]);
 
   const focusPresets = [
     ...(focusIntent?.focusTerms?.slice(0, 3).map((term) => ({
@@ -361,13 +426,26 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
             <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Supplemental image set</p>
             <h2 className="mt-1 text-xl font-semibold font-serif text-slate-900">Local histology and gross images</h2>
             <p className="mt-2 text-sm text-slate-700">
-              {apcpboardsReferenceImages.imageCount} images imported from local teaching folders for pathology review.
+              {supplementalManifest.imageCount.toLocaleString()} images indexed from local teaching folders for pathology review.
             </p>
           </div>
           <div className="rounded-lg bg-slate-50 px-4 py-3 text-right">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Showing</div>
-            <div className="text-2xl font-semibold text-slate-900">{filteredSupplementalImages.length}</div>
+            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Matches</div>
+            <div className="text-2xl font-semibold text-slate-900">{filteredSupplementalImages.length.toLocaleString()}</div>
           </div>
+        </div>
+        <div className="mt-4">
+          <label className="sr-only" htmlFor="supplemental-image-search">
+            Search supplemental images
+          </label>
+          <input
+            id="supplemental-image-search"
+            type="search"
+            value={supplementalSearch}
+            onChange={(event) => setSupplementalSearch(event.target.value)}
+            placeholder="Search diagnosis, folder, source, or caption"
+            className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-sky-300 focus:ring-2 focus:ring-sky-100"
+          />
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
           {supplementalSpecialties.map((specialty) => (
@@ -385,11 +463,34 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
             </button>
           ))}
         </div>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600">
+          <div>
+            Showing page {supplementalPage} of {supplementalPageCount} ({visibleSupplementalImages.length.toLocaleString()} images)
+          </div>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => setSupplementalPage((page) => Math.max(1, page - 1))}
+              disabled={supplementalPage === 1}
+              className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 transition hover:border-slate-300 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Previous
+            </button>
+            <button
+              type="button"
+              onClick={() => setSupplementalPage((page) => Math.min(supplementalPageCount, page + 1))}
+              disabled={supplementalPage === supplementalPageCount}
+              className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 transition hover:border-slate-300 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
+        </div>
         <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {filteredSupplementalImages.map((image) => (
+          {visibleSupplementalImages.map((image) => (
             <article key={image.id} className="overflow-hidden rounded-lg border border-slate-200 bg-white">
               <img
-                src={`${import.meta.env.BASE_URL}${image.localPath}`}
+                src={supplementalImageSrc(image)}
                 alt={supplementalCaption(image)}
                 className="h-44 w-full bg-slate-100 object-cover"
                 loading="lazy"
@@ -404,7 +505,10 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                 </div>
                 <div className="border-t border-slate-100 pt-3 text-xs leading-5 text-slate-500">
                   <div>{supplementalSourceLabel(image)}</div>
-                  <div>{Math.round(image.bytes / 1024).toLocaleString()} KB local {image.extension.toUpperCase()}</div>
+                  {image.sourceRelativePath && <div className="truncate" title={image.sourceRelativePath}>{image.sourceRelativePath}</div>}
+                  <div>
+                    {Math.round(image.bytes / 1024).toLocaleString()} KB {image.imageUrl ? 'external local' : 'local'} {image.extension.toUpperCase()}
+                  </div>
                 </div>
               </div>
             </article>

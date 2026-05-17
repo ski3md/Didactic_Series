@@ -21,6 +21,7 @@ import { setAlgorithmNavigatorIntent } from '../utils/algorithmNavigatorNavigati
 import { setCurriculumIntent } from '../utils/curriculumNavigation.ts';
 import { getInteractivePromotedLecture } from '../utils/interactiveLectureCatalog.ts';
 import { setTutorialLibraryIntent } from '../utils/tutorialLibraryNavigation.ts';
+import { prefetchCompetencyMatrixPayload } from '../utils/competencyMatrixLoader.ts';
 import { BRAND } from '../utils/brand.ts';
 
 interface HomeProps {
@@ -279,6 +280,11 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
       return;
     }
     openCurriculumModule('clinical-path-foundations');
+  };
+
+  const openCompetencyMatrix = () => {
+    prefetchCompetencyMatrixPayload();
+    onSectionChange(Section.COMPETENCY_MATRIX);
   };
     
   const practiceSections = [
@@ -571,7 +577,9 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
             </button>
             <button
               type="button"
-              onClick={() => onSectionChange(Section.COMPETENCY_MATRIX)}
+              onClick={openCompetencyMatrix}
+              onMouseEnter={prefetchCompetencyMatrixPayload}
+              onFocus={prefetchCompetencyMatrixPayload}
               className="block w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-sky-300 hover:bg-sky-50"
             >
               Competency matrix

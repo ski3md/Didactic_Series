@@ -1,31 +1,13 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ClipboardDocumentListIcon, ShieldCheckIcon } from './icons.tsx';
 import Card from './ui/Card.tsx';
 import SectionHeader from './ui/SectionHeader.tsx';
-import {
-  apP0CardBatches,
-  apP0CardBatchReadiness,
-  apP0CardBatchSummary,
-  apP0BatchPromotionRows,
-  apP0GateBacklogRows,
-  apP0LearningQualityStandards,
-  apP0PromotionMilestones,
-  ApP0CardBatchCard,
-} from '../content/competency/apP0CardBatches.ts';
-import {
-  competencyDomains,
-  competencyMatrixRecords,
-  competencyMatrixSummary,
-  apDesignationCrosswalk,
-  cpRotationStandards,
-  learnerLevelLabels,
-  learnerLevelOrder,
-  levelModeGuidance,
-  signOutRubric,
-  sourceStandardDocuments,
-} from '../content/competency/competencyMatrix.ts';
-import { apGapClosureQueue } from '../content/competency/apGapClosureQueue.ts';
 import { setCurriculumIntent } from '../utils/curriculumNavigation.ts';
+import {
+  loadCompetencyMatrixPayload,
+  type ApP0CardBatchCard,
+  type CompetencyMatrixData,
+} from '../utils/competencyMatrixLoader.ts';
 import { CompetencyDomain, CompetencyMatrixRecord, LearnerLevel, Section } from '../types.ts';
 
 interface CompetencyMatrixProps {
@@ -74,12 +56,76 @@ const recordMatchesDomain = (record: CompetencyMatrixRecord, domain: CompetencyD
   domain === 'all' || record.competencyDomains.includes(domain);
 
 const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) => {
+  const [data, setData] = useState<CompetencyMatrixData | null>(null);
+  const [loadError, setLoadError] = useState('');
   const [selectedLevel, setSelectedLevel] = useState<LearnerLevel>('PGY1');
   const [selectedDomain, setSelectedDomain] = useState<CompetencyDomain | 'all'>('all');
   const [selectedP0Category, setSelectedP0Category] = useState<string>('all');
   const [showAvailableOnly, setShowAvailableOnly] = useState(false);
   const [query, setQuery] = useState('');
-  const [selectedRecordId, setSelectedRecordId] = useState(competencyMatrixRecords[0]?.id ?? '');
+  const [selectedRecordId, setSelectedRecordId] = useState('');
+
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      try {
+        const loadedData = await loadCompetencyMatrixPayload();
+        if (cancelled) {
+          return;
+        }
+        setData(loadedData);
+        setSelectedRecordId(loadedData.competencyMatrixRecords[0]?.id ?? '');
+        setLoadError('');
+      } catch (error) {
+        if (cancelled) {
+          return;
+        }
+        setLoadError(error instanceof Error ? error.message : 'Failed to load competency data.');
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (loadError) {
+    return (
+      <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+        <h2 className="text-base font-semibold">Competency Matrix unavailable</h2>
+        <p className="mt-2">{loadError}</p>
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="rounded-lg border border-slate-200 bg-white p-6 text-slate-700">
+        <p>Loading Competency Matrix data…</p>
+      </div>
+    );
+  }
+
+  const {
+    apP0CardBatches,
+    apP0CardBatchReadiness,
+    apP0CardBatchSummary,
+    apP0BatchPromotionRows,
+    apP0GateBacklogRows,
+    apP0LearningQualityStandards,
+    apP0PromotionMilestones,
+    competencyDomains,
+    competencyMatrixRecords,
+    competencyMatrixSummary,
+    apDesignationCrosswalk,
+    cpRotationStandards,
+    learnerLevelLabels,
+    learnerLevelOrder,
+    levelModeGuidance,
+    signOutRubric,
+    sourceStandardDocuments,
+    apGapClosureQueue,
+  } = data;
 
   const filteredRecords = useMemo(() => {
     const lowered = query.trim().toLowerCase();
