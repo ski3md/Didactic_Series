@@ -1,12 +1,13 @@
 # Dependencies
 node_modules/
+**/node_modules/
 
 # Build outputs
 dist/
+build/
 .cache/
 .npm-cache/
 out/
-build/
 test-results/
 playwright-report/
 .playwright-mcp/
@@ -25,67 +26,49 @@ logs/*.log
 .env
 .env.*
 
-# IDE/editor
-.vscode/
-.idea/
-.DS_Store
-
-# OS/system
-Thumbs.db
-
-# GitHub Pages cache
-node_modules/.cache/gh-pages/
-
 # Python local runtime
 venv/
 __pycache__/
 *.pyc
-# macOS system files
-.DS_Store
-*/.DS_Store
 
-# Node modules (dependencies)
-node_modules/
-**/node_modules/
-
-# Build and dist outputs
-dist/
-build/
-.cache/
-out/
-test-results/
-playwright-report/
-.playwright-mcp/
-output/
-public/reference-library/source-articles/
-.tmp_*.spec.*
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-logs/*.log
-
-# Environment files
-.env
-.env.*
-
-# Lock files (optional — ignore only if you don’t want to track them)
-# Generally keep one lock file at the project root and ignore nested ones:
-*/node_modules/package-lock.json
-
-# Editor and IDE metadata
+# IDE/editor
 .vscode/
 .idea/
+*.code-workspace
 
 # OS/system
+.DS_Store
+*/.DS_Store
 Thumbs.db
+
+# Nested lock files
+*/node_modules/package-lock.json
 
 # GitHub Pages cache
 node_modules/.cache/gh-pages/
 
+# Generated report mirrors kept local-only
+reports/cp_precision_governance_report.md
+reports/cp_precision_governance_report.csv
+reports/tutorial_label_validation.md
+reports/tutorial_label_validation.csv
+reports/tutorial_abpath_spec_crosswalk.md
+reports/tutorial_abpath_spec_crosswalk.csv
+reports/clinical_pathology_contract_parameters.md
+reports/clinical_pathology_contract_parameters.csv
+reports/content_consumption_journey_evaluation.md
+reports/lecture_abpath_contract_parameters.md
+reports/lecture_abpath_contract_parameters.csv
+reports/corpus_realization_report.md
+reports/didactics_learning_ux_report.md
+
+# Generated image audits kept local-only
+src/content/images/acquiredLectureImages.report.json
+src/content/images/app_local_image_audit.json
+src/content/images/entity_histology_webcrawl_candidates.json
+src/content/images/entity_histology_webcrawl_seeds.json
+src/content/images/entity_histology_webcrawl_pmc_gap_candidates.json
+src/content/images/entity_histology_webcrawl_pmc_gap_seeds.json
+
 # Local planning, proof, and session state
 .cortex/
-
-*.code-workspace

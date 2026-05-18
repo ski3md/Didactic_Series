@@ -1,0 +1,227 @@
+{
+  "version": "generated-artifact-policy.v1",
+  "purpose": "Declare the tracked, mirrored, release-only, local-only, and archival boundaries for generated artifacts that influence didactics runtime behavior, validators, or clutter-sensitive governed surfaces.",
+  "artifactClasses": [
+    "canonical-tracked-artifact",
+    "generated-tracked-artifact",
+    "release-artifact",
+    "ignored-local-only-artifact",
+    "archived-proof-bundle"
+  ],
+  "governedDeclarationScopes": [
+    {
+      "label": "tracked reports",
+      "prefix": "reports/",
+      "extensions": [
+        ".json",
+        ".md",
+        ".csv"
+      ]
+    },
+    {
+      "label": "tracked provenance manifests",
+      "prefix": "src/content/provenance/",
+      "extensions": [
+        ".json"
+      ]
+    },
+    {
+      "label": "public reference image manifests",
+      "prefix": "public/reference-images/",
+      "extensions": [
+        ".json"
+      ]
+    }
+  ],
+  "localOnlyPrefixes": [
+    ".cortex/",
+    "dist/",
+    "playwright-report/",
+    "test-results/",
+    ".playwright-mcp/",
+    "output/",
+    ".cache/",
+    "public/reference-library/source-articles/"
+  ],
+  "localOnlyArtifacts": [
+    "reports/cp_precision_governance_report.md",
+    "reports/cp_precision_governance_report.csv",
+    "reports/tutorial_label_validation.md",
+    "reports/tutorial_label_validation.csv",
+    "reports/tutorial_abpath_spec_crosswalk.md",
+    "reports/tutorial_abpath_spec_crosswalk.csv",
+    "reports/clinical_pathology_contract_parameters.md",
+    "reports/clinical_pathology_contract_parameters.csv",
+    "reports/content_consumption_journey_evaluation.md",
+    "reports/lecture_abpath_contract_parameters.md",
+    "reports/lecture_abpath_contract_parameters.csv",
+    "reports/corpus_realization_report.md",
+    "reports/didactics_learning_ux_report.md",
+    "src/content/images/acquiredLectureImages.report.json",
+    "src/content/images/app_local_image_audit.json",
+    "src/content/images/entity_histology_webcrawl_candidates.json",
+    "src/content/images/entity_histology_webcrawl_seeds.json",
+    "src/content/images/entity_histology_webcrawl_pmc_gap_candidates.json",
+    "src/content/images/entity_histology_webcrawl_pmc_gap_seeds.json"
+  ],
+  "mirroredArtifacts": [
+    {
+      "label": "validated tutorial mappings manifest",
+      "authoritative": "reports/validated_mappings_manifest.json",
+      "mirrors": [
+        "src/content/tutorials/validatedMappingsManifest.json"
+      ],
+      "requireByteParity": true
+    },
+    {
+      "label": "APCPBoards reference image manifest",
+      "authoritative": "src/content/images/apcpboards_reference_images.json",
+      "mirrors": [
+        "public/reference-images/apcpboards_reference_images.json"
+      ],
+      "requireByteParity": true
+    }
+  ],
+  "exactArtifacts": [
+    {
+      "path": "reports/validated_mappings_manifest.json",
+      "class": "canonical-tracked-artifact",
+      "producer": "scripts/validate_validated_mappings_manifest.cjs",
+      "consumers": [
+        "src/content/tutorials/validatedMappingsManifest.json",
+        "scripts/validate_repo_drift_contract.cjs",
+        "src/utils/tutorialLibraryCatalog.ts"
+      ]
+    },
+    {
+      "path": "src/content/tutorials/validatedMappingsManifest.json",
+      "class": "generated-tracked-artifact",
+      "producer": "scripts/validate_validated_mappings_manifest.cjs",
+      "consumers": [
+        "src/utils/tutorialLibraryCatalog.ts",
+        "src/utils/tutorialLibraryCatalog.test.ts"
+      ]
+    },
+    {
+      "path": "reports/cp_precision_governance_report.json",
+      "class": "canonical-tracked-artifact",
+      "producer": "scripts/validate_cp_precision_governance.cjs",
+      "consumers": [
+        "scripts/validate_validated_mappings_manifest.cjs",
+        "scripts/validate_repo_drift_contract.cjs"
+      ]
+    },
+    {
+      "path": "reports/tutorial_label_validation.json",
+      "class": "canonical-tracked-artifact",
+      "producer": "scripts/validate_tutorial_labels.cjs",
+      "consumers": [
+        "scripts/validate_validated_mappings_manifest.cjs",
+        "scripts/validate_repo_drift_contract.cjs"
+      ]
+    },
+    {
+      "path": "reports/corpus_realization_report.json",
+      "class": "canonical-tracked-artifact",
+      "producer": "scripts/import_lecture_content.py",
+      "consumers": [
+        "scripts/validate_repo_drift_contract.cjs",
+        "src/content/provenance/corpusRealization.test.ts"
+      ]
+    },
+    {
+      "path": "reports/tutorial_abpath_spec_coverage.json",
+      "class": "generated-tracked-artifact",
+      "producer": "scripts/generate_tutorial_abpath_crosswalk.cjs",
+      "futureDisposition": "generated-on-demand-demotion-candidate"
+    },
+    {
+      "path": "reports/didactics_learning_ux_report.json",
+      "class": "generated-tracked-artifact",
+      "producer": "scripts/validate_didactics_learning_ux.cjs",
+      "futureDisposition": "generated-on-demand-demotion-candidate"
+    },
+    {
+      "path": "reports/content_consumption_journey_evaluation.json",
+      "class": "generated-tracked-artifact",
+      "producer": "scripts/generate_world_class_resource_contracts.cjs",
+      "futureDisposition": "generated-on-demand-demotion-candidate"
+    },
+    {
+      "path": "reports/cp_content_backlog_mapping_and_strategy_directive_2026-05-17.md",
+      "class": "archived-proof-bundle",
+      "futureDisposition": "archive-or-local-proof-bundle"
+    },
+    {
+      "path": "reports/cp_management_informatics_source_selection_2026-05-17.md",
+      "class": "archived-proof-bundle",
+      "futureDisposition": "archive-or-local-proof-bundle"
+    },
+    {
+      "path": "src/content/provenance/workstation_corpus_index.json",
+      "class": "canonical-tracked-artifact",
+      "producer": "scripts/import_lecture_content.py",
+      "consumers": [
+        "scripts/validate_repo_drift_contract.cjs",
+        "src/content/provenance/corpusRealization.test.ts"
+      ]
+    },
+    {
+      "path": "src/content/provenance/didactics_asset_registry.json",
+      "class": "canonical-tracked-artifact",
+      "producer": "scripts/import_lecture_content.py",
+      "consumers": [
+        "scripts/validate_repo_drift_contract.cjs",
+        "src/content/provenance/corpusRealization.test.ts"
+      ]
+    },
+    {
+      "path": "src/content/provenance/corpus_manifest.json",
+      "class": "generated-tracked-artifact",
+      "producer": "scripts/import_lecture_content.py",
+      "futureDisposition": "generated-on-demand-demotion-candidate"
+    },
+    {
+      "path": "src/content/provenance/source_manifest.json",
+      "class": "generated-tracked-artifact",
+      "producer": "scripts/import_lecture_content.py",
+      "futureDisposition": "generated-on-demand-demotion-candidate"
+    },
+    {
+      "path": "src/content/provenance/dependency_manifest.json",
+      "class": "generated-tracked-artifact",
+      "producer": "scripts/import_lecture_content.py",
+      "futureDisposition": "generated-on-demand-demotion-candidate"
+    },
+    {
+      "path": "src/content/images/apcpboards_reference_images.json",
+      "class": "generated-tracked-artifact",
+      "producer": "scripts/import_apcpboards_reference_images.cjs",
+      "consumers": [
+        "public/reference-images/apcpboards_reference_images.json",
+        "src/content/images/apcpboardsReferenceImagesExtraction.test.ts"
+      ]
+    },
+    {
+      "path": "public/reference-images/apcpboards_reference_images.json",
+      "class": "generated-tracked-artifact",
+      "producer": "scripts/import_apcpboards_reference_images.cjs",
+      "consumers": [
+        "src/components/TutorialImagePathwayStudio.tsx",
+        "src/components/cp-studios/ClinicalPathInteractiveStudio.tsx"
+      ]
+    }
+  ],
+  "prefixArtifacts": [
+    {
+      "prefix": "reports/ap_",
+      "class": "archived-proof-bundle",
+      "futureDisposition": "archive-or-release-bundle"
+    },
+    {
+      "prefix": "reports/security/",
+      "class": "generated-tracked-artifact",
+      "futureDisposition": "local-only-or-ci-release-candidate"
+    }
+  ]
+}
