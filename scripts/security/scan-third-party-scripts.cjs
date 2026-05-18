@@ -44,7 +44,15 @@ const isLocalUrl = (src = '') => {
   if (!value) return true;
   if (value.startsWith('//')) return false;
   if (/^https?:\/\//i.test(value)) return false;
-  return value.startsWith('/') || value.startsWith('./') || value.startsWith('../') || value.startsWith('mailto:') || value.startsWith('tel:') || value.startsWith('#');
+  return (
+    value.startsWith('/') ||
+    value.startsWith('./') ||
+    value.startsWith('../') ||
+    /^[a-z0-9._-]+\.(js|mjs|css|json|png|jpg|jpeg|gif|svg|ico|webp|avif|mp4|webm|woff2?)$/i.test(value) ||
+    value.startsWith('mailto:') ||
+    value.startsWith('tel:') ||
+    value.startsWith('#')
+  );
 };
 
 const getAllowedDomains = (allowlist) => new Set([...(allowlist.allowedDomains || []), ...ALLOWLIST_DEFAULT.allowedDomains]);
