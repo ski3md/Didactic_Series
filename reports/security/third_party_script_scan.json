@@ -1,0 +1,23 @@
+{
+  "scannedAt": "2026-05-18T00:01:25.929Z",
+  "summary": {
+    "allowedDomains": [
+      "images.ctfassets.net",
+      "openseadragon.github.io",
+      "openslide.cs.cmu.edu",
+      "pathology.or.jp",
+      "storage.googleapis.com",
+      "upload.wikimedia.org",
+      "webpath.med.utah.edu",
+      "www.ncbi.nlm.nih.gov"
+    ],
+    "allowedSubstrings": [
+      "/openseadragon/images/"
+    ],
+    "totalFiles": 193
+  },
+  "allowed": [],
+  "alerts": [],
+  "inline": [],
+  "warnings": []
+}

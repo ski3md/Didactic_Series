@@ -91,7 +91,7 @@ The remaining 90 steps are organized around high-yield pathology teaching surfac
 61. Add the skin / melanocytic staged module to the active curriculum.
 62. Add the soft tissue / bone core module to the active curriculum.
 63. Add the neuropathology core module to the active curriculum.
-64. Add exact lecture targeting for `Neurosurgical Pathology: Core Principles`.
+64. Add exact lecture targeting for `Neuropathology: Core Principles`.
 65. Add the pediatric / placental staged module to the active curriculum.
 66. Add skin and mesenchymal home recommendations.
 67. Add neuro and pediatric home recommendations.
