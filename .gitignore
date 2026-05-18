@@ -85,4 +85,7 @@ Thumbs.db
 # GitHub Pages cache
 node_modules/.cache/gh-pages/
 
+# Local planning, proof, and session state
+.cortex/
+
 *.code-workspace
