@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { ArrowLeft, ClipboardList, Eye, FileText, Microscope, Stethoscope } from 'lucide-react';
 import { Section } from '../types.ts';
-import DidacticWorkspaceNav from './DidacticWorkspaceNav.tsx';
 import SectionHeader from './ui/SectionHeader.tsx';
 import curriculumData from '../content/breast/breast_signout_curriculum.enhanced.json';
 import acquiredAssetData from '../content/breast/breast_signout_acquired_assets.json';
@@ -92,7 +91,7 @@ const trackLabels: Record<string, string> = {
   'implant-reconstruction': 'Implant / reconstruction',
 };
 
-const BreastSignoutMasterclass: React.FC<BreastSignoutMasterclassProps> = ({ onSectionChange, embedded = false }) => {
+const BreastSignoutMasterclass: React.FC<BreastSignoutMasterclassProps> = ({ embedded = false }) => {
   const [selectedCaseId, setSelectedCaseId] = useState<string | null>(null);
   const [activePanel, setActivePanel] = useState<'evidence' | 'reasoning' | 'report' | 'checklist'>('reasoning');
   const [revealedStepCount, setRevealedStepCount] = useState(0);
@@ -137,8 +136,6 @@ const BreastSignoutMasterclass: React.FC<BreastSignoutMasterclassProps> = ({ onS
             subtitle="Image-first diagnostic reasoning and report construction for breast pathology."
             icon={<Microscope className="h-10 w-10" />}
           />
-
-          <DidacticWorkspaceNav activeSection={Section.BREAST_SIGNOUT_MASTERCLASS} onSectionChange={onSectionChange} />
         </>
       )}
 

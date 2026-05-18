@@ -687,7 +687,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
     recommendedOrder: 23,
     relatedModules: ['small-round-blue-cell-differential'],
     lectures: refs([
-      ['ioc-overview-neuropathology', 'Neurosurgical Pathology: Core Principles'],
+      ['ioc-overview-neuropathology', 'Neuropathology: Core Principles'],
     ]),
     tutorials: refs([
       ['ap-neuropathology', 'AP: Neuropathology'],
@@ -697,7 +697,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
     ]),
     plannedAssets: ['algorithms', 'images', 'syllabus', 'assessment'],
     navigationIntents: {
-      lectures: { selectedId: 'ioc-overview-neuropathology', query: 'Neurosurgical Pathology: Core Principles', track: 'core-principles' },
+      lectures: { selectedId: 'ioc-overview-neuropathology', query: 'Neuropathology: Core Principles', track: 'core-principles' },
       tutorials: { query: 'Glioma Meningioma Neuropathology' },
       syllabus: { query: 'glioma meningioma metastasis cns' },
     },

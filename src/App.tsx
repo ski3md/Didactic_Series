@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Section, User } from './types.ts';
 import { useUserProgress } from './hooks/useUserProgress.ts';
 import { useAuth } from './hooks/useAuth.ts';
@@ -26,6 +26,7 @@ const CompetencyMatrix = lazy(() => import('./components/CompetencyMatrix.tsx'))
 const SyllabusExplorer = lazy(() => import('./components/SyllabusExplorer.tsx'));
 const Welcome = lazy(() => import('./components/Welcome.tsx'));
 const PingTelemetryProbe = lazy(() => import('./components/PingTelemetryProbe.tsx'));
+const WorkspaceErrorBoundary = lazy(() => import('./components/WorkspaceErrorBoundary.tsx'));
 import {
   captureAndPersistPingTelemetry,
   isPingProbeVisible,
@@ -38,13 +39,16 @@ import { BRAND } from './utils/brand.ts';
 const AppContent: React.FC<{
   user: User | null;
   onLogout: () => void;
-  onLoginClick: () => void;
-}> = ({ user, onLogout, onLoginClick }) => {
-  const { currentSection, handleSectionChange } = useUserProgress(user?.username);
+}> = ({ user, onLogout }) => {
+  const { currentSection, handleSectionChange, navigation } = useUserProgress(user?.username);
   const { isSidebarOpen, setSidebarOpen, toggleSidebar } = useUIState();
-  const { preferences, toggleFocusMode, toggleReduceMotion } = useLearningPreferences();
+  const { preferences, toggleFocusMode } = useLearningPreferences();
   const displayedSection =
-    currentSection === Section.BREAST_SIGNOUT_MASTERCLASS ? Section.SIGN_OUT_SIMULATOR : currentSection;
+    currentSection === Section.BREAST_SIGNOUT_MASTERCLASS
+      ? Section.SIGN_OUT_SIMULATOR
+      : currentSection === Section.ADMIN && !user?.isAdmin
+        ? Section.DIDACTIC_LECTURES
+        : currentSection;
 
   // Effect to set initial sidebar state based on screen size and handle resizing
   useEffect(() => {
@@ -69,6 +73,12 @@ const AppContent: React.FC<{
     }
   };
 
+  useEffect(() => {
+    if (currentSection === Section.ADMIN && !user?.isAdmin) {
+      onSectionSelect(Section.DIDACTIC_LECTURES);
+    }
+  }, [currentSection, onSectionSelect, user]);
+
   const renderSection = () => {
     switch (currentSection) {
       case Section.LECTURE: return <Lecture onComplete={() => onSectionSelect(Section.HOME)} />;
@@ -88,7 +98,7 @@ const AppContent: React.FC<{
       case Section.DESIGN: return <DesignPhase />;
       case Section.DEVELOPMENT: return <DevelopmentPhase />;
       case Section.EVALUATION: return <AssessmentPhase user={user} />;
-      case Section.ADMIN: return <AdminView />;
+      case Section.ADMIN: return user?.isAdmin ? <AdminView /> : <DidacticLectures preferences={preferences} onSectionChange={onSectionSelect} />;
       default: return <Home onSectionChange={onSectionSelect} user={user} />;
     }
   };
@@ -109,7 +119,6 @@ const AppContent: React.FC<{
         currentSection={currentSection}
         onSectionChange={onSectionSelect}
         onLogout={onLogout}
-        onLoginClick={onLoginClick}
         preferences={preferences}
       />
 
@@ -118,10 +127,12 @@ const AppContent: React.FC<{
           currentSection={displayedSection}
           preferences={preferences}
           onToggleFocusMode={toggleFocusMode}
-          onToggleReduceMotion={toggleReduceMotion}
+          navigation={navigation}
         />
-        <main className={`flex-1 overflow-y-auto ${displayedSection === Section.LECTURE ? '' : preferences.focusMode ? 'mx-auto w-full max-w-6xl p-4 sm:p-6 lg:p-8' : 'p-4 sm:p-6 md:p-8 lg:p-12'}`}>
-          {renderSection()}
+        <main className={`flex-1 overflow-y-auto ${displayedSection === Section.LECTURE ? '' : preferences.focusMode ? 'mx-auto w-full max-w-5xl p-4 sm:p-5 lg:p-6' : 'mx-auto w-full max-w-7xl p-4 sm:p-6 md:p-8 lg:p-10'}`}>
+          <WorkspaceErrorBoundary sectionName={displayedSection} onNavigate={onSectionSelect}>
+            {renderSection()}
+          </WorkspaceErrorBoundary>
         </main>
       </div>
     </>
@@ -130,12 +141,13 @@ const AppContent: React.FC<{
 
 const App: React.FC = () => {
   const { currentUser, login, logout, isLoading } = useAuth();
-  const [isLoginViewVisible, setLoginViewVisible] = useState(false);
   const isPingTelemetry = isPingTelemetryRoute(
     window.location.pathname,
     window.location.search,
   );
   const isPingProbeRoute = isPingProbeVisible(window.location.search);
+  const pathname = window.location.pathname.toLowerCase().replace(/\/+$/, '') || '/';
+  const isAdminLoginRoute = pathname === '/didactics/admin';
 
   useEffect(() => {
     if (isPingTelemetry || isPingProbeRoute) {
@@ -161,7 +173,6 @@ const App: React.FC = () => {
 
   const handleLoginSuccess = async (username: string, password: string, rememberMe: boolean) => {
     const user = await login(username, password, rememberMe);
-    setLoginViewVisible(false); // Close login view on success
     return user;
   };
 
@@ -173,9 +184,9 @@ const App: React.FC = () => {
     );
   }
   
-  if (isLoginViewVisible) {
+  if (!currentUser && isAdminLoginRoute) {
       return <Suspense fallback={loadingFallback}>
-        <Welcome onLogin={handleLoginSuccess} onBack={() => setLoginViewVisible(false)} />
+        <Welcome onLogin={handleLoginSuccess} />
       </Suspense>;
   }
 
@@ -184,7 +195,6 @@ const App: React.FC = () => {
       <AppContent
         user={currentUser}
         onLogout={logout}
-        onLoginClick={() => setLoginViewVisible(true)}
       />
     </Suspense>
   );

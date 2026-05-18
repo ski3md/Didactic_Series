@@ -1,0 +1,53 @@
+{
+  "version": "repo-drift-contract.v1",
+  "purpose": "Detect and prevent structural drift across governed didactics artifacts, mirrored generated files, and provenance inventories.",
+  "mirroredArtifacts": [
+    {
+      "label": "validated tutorial mappings",
+      "authoritative": "reports/validated_mappings_manifest.json",
+      "mirror": "src/content/tutorials/validatedMappingsManifest.json"
+    }
+  ],
+  "provenanceContract": {
+    "report": "reports/corpus_realization_report.json",
+    "workstationIndex": "src/content/provenance/workstation_corpus_index.json",
+    "assetRegistry": "src/content/provenance/didactics_asset_registry.json",
+    "requiredProvenanceSource": "local workstation corpus",
+    "forbiddenPathFragments": [
+      "backup",
+      "tmp",
+      "node_modules",
+      "inaccessible"
+    ],
+    "allowedSelfReferenceFiles": [
+      "reports/corpus_realization_report.json",
+      "reports/corpus_realization_report.md",
+      "src/content/provenance/corpus_manifest.json",
+      "src/content/provenance/didactics_asset_registry.json",
+      "src/content/provenance/workstation_corpus_index.json"
+    ]
+  },
+  "validatedTutorialContract": {
+    "report": "reports/validated_mappings_manifest.json",
+    "requireCanonicalSourcePerTutorialId": true,
+    "requireValidatedRowsToCarryScope": true,
+    "requireClinicalPathRowsToUseCpDomain": true,
+    "requireSummaryAlignment": true,
+    "requireKeySetParity": true,
+    "requiredSourceArtifacts": [
+      "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
+      "reports/cp_precision_governance_report.json",
+      "src/content/clinical_pathology/cpGovernanceModules.json",
+      "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+      "reports/tutorial_label_validation.json"
+    ],
+    "denyConflictFlagsOnValidatedRows": [
+      "cp-track-domain-mismatch",
+      "known-bad-mapping",
+      "missing-source-anchor",
+      "missing-review-status",
+      "missing-precision-rationale",
+      "confirmed-low-confidence"
+    ]
+  }
+}

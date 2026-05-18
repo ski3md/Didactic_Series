@@ -7,8 +7,8 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(({ children, className = '', interactive = false, ...rest }, ref) => {
-  const baseClasses = 'bg-white rounded-xl shadow-sm border border-slate-200/80 p-6 md:p-8 mb-8 transition-all duration-300';
-  const interactiveClasses = interactive ? 'hover:shadow-md hover:border-slate-300/80 hover:-translate-y-0.5 cursor-pointer' : '';
+  const baseClasses = 'bg-white rounded-lg border border-slate-200 p-5 md:p-6 mb-6';
+  const interactiveClasses = interactive ? 'hover:border-slate-300 cursor-pointer' : '';
 
   return (
     <div ref={ref} className={`${baseClasses} ${interactiveClasses} ${className}`} {...rest}>

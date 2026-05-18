@@ -456,7 +456,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
   ];
 
   return (
-    <div className={`mx-auto max-w-6xl space-y-8 ${preferences.reduceMotion ? '' : 'animate-fade-in'}`}>
+    <div className="mx-auto max-w-6xl space-y-8 animate-fade-in">
       <header className="border-b border-slate-200 pb-8">
         <p className="text-sm font-semibold uppercase tracking-wide text-sky-700">{BRAND.name}</p>
         <h1 className="mt-3 max-w-4xl text-4xl font-semibold font-serif tracking-tight text-slate-950 sm:text-5xl">

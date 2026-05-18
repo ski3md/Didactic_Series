@@ -10,6 +10,10 @@ const tutorialSources = [
     file: path.join(root, 'src/content/tutorials/tutorials.normalized.json'),
   },
   {
+    dataset: 'clinical-path-interactive',
+    file: path.join(root, 'src/content/tutorials/clinicalPathInteractiveTutorials.json'),
+  },
+  {
     dataset: 'downloads-imports',
     file: path.join(root, 'src/content/downloads_imports/normalized/tutorials.normalized.json'),
   },
@@ -20,9 +24,10 @@ const csvReportPath = path.join(root, 'reports/tutorial_label_validation.csv');
 
 const laneLabels = {
   'board-prep': 'Board Prep Tutorials',
+  'lab-studio': 'Clinical Lab Studios',
   'core-patterns': 'Core Pattern Tutorials',
   granuloma: 'Granuloma Tutorials',
-  mixed: 'Mixed Tutorial Imports',
+  mixed: 'Tutorial Library',
 };
 
 const trackLabels = {
@@ -33,7 +38,7 @@ const trackLabels = {
 
 const promotionLabels = {
   canonical: 'Canonical',
-  staged: 'Staged Import',
+  staged: 'Available',
 };
 
 const clinicalKeywords = [
@@ -167,6 +172,7 @@ const unique = (values) => Array.from(new Set(values.filter(Boolean)));
 const csvCell = (value) => `"${String(value ?? '').replace(/"/g, '""')}"`;
 
 const inferLane = (record) => {
+  if (record.lane) return record.lane;
   if (record.sourceRepo === 'board_prep') return 'board-prep';
   if (record.sourceRepo === 'ioc-next-app') return 'core-patterns';
   if ((record.category || '').toLowerCase().includes('granulomatous')) return 'granuloma';
@@ -178,6 +184,7 @@ const inferPromotion = (record) => (record.sourceRepo === 'board_prep' ? 'canoni
 const inferSourceLabel = (sourceRepo) => {
   if (!sourceRepo) return 'Unknown source';
   if (sourceRepo === 'board_prep') return 'Board Prep Library';
+  if (sourceRepo === 'pthfndr_cp_interactive') return 'P@thfndr Interactive CP';
   if (sourceRepo === 'ioc-next-app') return 'Pattern Tutorial Imports';
   if (sourceRepo.includes('cp-content-specification')) return 'CP Content Specifications';
   if (sourceRepo.includes('granulomatous')) return 'Granulomatous Module Imports';
@@ -188,6 +195,13 @@ const inferSourceLabel = (sourceRepo) => {
 const matchKeywords = (text, keywords) => keywords.filter((keyword) => text.includes(keyword));
 
 const inferTrack = (record) => {
+  if (record.track) {
+    return {
+      track: record.track,
+      evidence: unique([`declared-track:${record.track}`, ...(record.tags || []).slice(0, 4)]),
+      confidence: 'high',
+    };
+  }
   const sourceRepo = (record.sourceRepo || '').toLowerCase();
   const id = (record.id || '').toLowerCase();
   const text = [record.title, record.summary, String(record.body || '').slice(0, 2200), record.category, ...(record.tags || [])]

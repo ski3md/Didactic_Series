@@ -1,14 +1,14 @@
 # Tutorial to ABPath Content Specification Crosswalk
 
-Generated: 2026-05-16T02:09:26.827Z
+Generated: 2026-05-18T01:21:20.316Z
 
 This report maps every normalized tutorial to AP and CP ABPath content specification topics and subtopics using deterministic, track-aware evidence. Primary mappings are intended for routing and coverage review; alternates are retained when they are plausible enough to support cross-domain or adjacent-topic teaching use.
 
 ## Counts
 
-- Tutorials mapped: 480
+- Tutorials mapped: 485
 - Specification nodes: 6284 (3863 AP, 2421 CP)
-- Strong or medium primary mappings: 480
+- Strong or medium primary mappings: 485
 - Low-confidence review mappings: 0
 
 ## Coverage by ABPath Root
@@ -16,25 +16,25 @@ This report maps every normalized tutorial to AP and CP ABPath content specifica
 | Domain | Root topic | Spec nodes | Nodes with tutorial coverage | Primary tutorial mappings |
 | --- | --- | ---: | ---: | ---: |
 | AP | Bone and Soft Tissue | 68 | 30 | 17 |
-| AP | Breast | 539 | 86 | 48 |
+| AP | Breast | 539 | 86 | 46 |
 | AP | Cardiovascular | 444 | 39 | 13 |
 | AP | Cytopathology | 78 | 9 | 3 |
-| AP | Dermatopathology | 888 | 69 | 19 |
+| AP | Dermatopathology | 888 | 70 | 19 |
 | AP | Endocrine | 380 | 61 | 22 |
-| AP | Forensic Pathology | 38 | 4 | 3 |
+| AP | Forensic Pathology | 38 | 3 | 3 |
 | AP | Gastrointestinal | 136 | 43 | 19 |
 | AP | Genitourinary | 30 | 19 | 17 |
 | AP | Head and Neck | 45 | 14 | 4 |
-| AP | Male Reproductive | 397 | 46 | 15 |
+| AP | Male Reproductive | 397 | 45 | 15 |
 | AP | Neuropathology | 618 | 40 | 11 |
 | AP | Pediatric Pathology | 115 | 13 | 3 |
 | AP | Placental Pathology | 22 | 9 | 3 |
 | AP | Pulmonary | 65 | 31 | 16 |
-| CP | Blood Banking/Transfusion Medicine | 816 | 202 | 130 |
-| CP | Chemical Pathology | 644 | 120 | 59 |
-| CP | Hematopathology for Clinical Pathology | 282 | 63 | 29 |
-| CP | Management and Informatics | 150 | 32 | 9 |
-| CP | Medical Microbiology | 529 | 65 | 40 |
+| CP | Blood Banking/Transfusion Medicine | 816 | 201 | 127 |
+| CP | Chemical Pathology | 644 | 124 | 61 |
+| CP | Hematopathology for Clinical Pathology | 282 | 76 | 37 |
+| CP | Management and Informatics | 150 | 31 | 8 |
+| CP | Medical Microbiology | 529 | 72 | 41 |
 
 ## Review Queue
 

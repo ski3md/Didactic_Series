@@ -1,17 +1,22 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Card from './ui/Card.tsx';
-import SectionHeader from './ui/SectionHeader.tsx';
 import MarkdownContent from './ui/MarkdownContent.tsx';
-import { AcademicCapIcon, ArrowDownTrayIcon, DocumentTextIcon, SparklesIcon } from './icons.tsx';
+import StructuredTeachingContent from './ui/StructuredTeachingContent.tsx';
+import { ArrowDownTrayIcon, DocumentTextIcon, SparklesIcon } from './icons.tsx';
 import {
   getPromotedLectureById,
   promotedLectures,
-  type LectureTrack,
 } from '../utils/lectureLibraryCatalog.ts';
 import { consumeLectureLibraryIntent } from '../utils/lectureLibraryNavigation.ts';
 import { getInteractivePromotedLecture } from '../utils/interactiveLectureCatalog.ts';
 import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
-import { DxEntityCard, LecturePlayerMode, LectureVisualAid, Section } from '../types.ts';
+import {
+  type ActiveStudyDestination,
+  DxEntityCard,
+  LecturePlayerMode,
+  LectureVisualAid,
+  Section,
+} from '../types.ts';
 import LectureAlgorithmPlayer from './lectures/LectureAlgorithmPlayer.tsx';
 import LectureTissueLayers from './lectures/LectureTissueLayers.tsx';
 import LectureKnowledgePack from './lectures/LectureKnowledgePack.tsx';
@@ -20,6 +25,18 @@ import { setTutorialLibraryIntent } from '../utils/tutorialLibraryNavigation.ts'
 import { setReferenceLibraryIntent } from '../utils/referenceLibraryNavigation.ts';
 import { resolveAcquiredImageUrl } from '../utils/acquiredImageCatalog.ts';
 import { getAnswerChoiceReasoning } from '../utils/answerChoiceReasoning.ts';
+import { parseTeachingSections } from '../utils/teachingSessionContent.ts';
+import { buildLectureStudyTree } from '../utils/studyCatalogScopes.ts';
+import { readSessionState, writeSessionState } from '../utils/viewStateStorage.ts';
+import {
+  getDefaultStudyDestination,
+  pushStudyDestination,
+  replaceStudyDestination,
+  restoreStudyDestination,
+  setStudyDestinationActiveTab,
+  STUDY_DESTINATION_EVENT,
+} from '../utils/studyDestinationState.ts';
+import { resolveStudyDestinationForRender } from '../utils/studyDestinationResolver.ts';
 import guWhoEntityManifest from '../content/gu/who_gu_entity_manifest.json';
 
 interface DidacticLecturesProps {
@@ -87,13 +104,40 @@ interface LecturePrintDocumentProps {
 }
 
 const STUDY_PROGRESS_KEY = 'didactic_series_lecture_study_progress';
-
 const emptyProgress = (): LectureStudyProgress => ({
   completedModes: [],
   completedAlgorithms: [],
   completedLayerSets: [],
   completedChecks: [],
 });
+
+const LECTURE_VIEW_STATE_KEY = 'pthfndr-didactics-lecture-view-state';
+
+interface LectureViewState {
+  selectedId: string;
+  majorTopicId?: string;
+  subtopicId?: string;
+  activeMode: LecturePlayerMode;
+  activeQuestionIndex: number;
+  initialNodeId?: string;
+  initialLayerSetId?: string;
+}
+
+const LECTURE_VIEW_STATE_DEFAULTS: LectureViewState = {
+  selectedId: '',
+  activeMode: 'overview',
+  activeQuestionIndex: 0,
+};
+
+const persistLectureViewState = (updates: Partial<LectureViewState> = {}) => {
+  const current = readSessionState<LectureViewState>(LECTURE_VIEW_STATE_KEY);
+  const next = {
+    ...LECTURE_VIEW_STATE_DEFAULTS,
+    ...(current || {}),
+    ...updates,
+  };
+  writeSessionState<LectureViewState>(LECTURE_VIEW_STATE_KEY, next);
+};
 
 const readProgressStore = (): Record<string, LectureStudyProgress> => {
   if (typeof window === 'undefined') {
@@ -149,6 +193,9 @@ const teachingImageFrameClass = 'w-full max-w-3xl';
 const teachingImageClass = 'h-80 w-full bg-white object-contain';
 
 type SlideVisualAid = NonNullable<InteractiveLectureRecord['slides'][number]['visualAid']>;
+
+const resolveDidacticAsset = (assetPath: string) =>
+  `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${assetPath.replace(/^\/+/, '')}`;
 
 const slideFallbackVisualAids: Record<string, Record<string, SlideVisualAid>> = {
   renal_mass_eval: {
@@ -437,29 +484,54 @@ const slideFallbackVisualAids: Record<string, Record<string, SlideVisualAid>> = 
       credit: 'Wikimedia Commons',
     },
   },
+  'ioc-overview-neuropathology': {
+    'ABPath content-specification frame': {
+      imageUrl: resolveDidacticAsset('reference-library/signout-sims/neuropathology/glioblastoma-high-mag-he.jpg'),
+      sourcePageUrl:
+        'https://commons.wikimedia.org/wiki/File:Histopathology_of_glioblastoma,_high_magnification',
+      alt: 'Glioblastoma, high-grade astrocytic tumor with pseudopalisading necrosis and microvascular proliferation.',
+      caption: 'Start with specimen context, then triage diffuse glial lesions by pattern, anatomic site, and treatment-effect risk before classifying.',
+      stain: 'H&E',
+      credit: 'Pathology image library',
+    },
+    'Normal-to-abnormal orientation': {
+      imageUrl: resolveDidacticAsset('reference-library/signout-sims/neuropathology/meningioma-he.jpg'),
+      sourcePageUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10918275/',
+      alt: 'Meningioma tissue showing lobules and whorls.',
+      caption:
+        'Neuropathology starts by distinguishing normal CNS architecture from neoplastic and non-neoplastic abnormalities such as meningioma and glioma.',
+      stain: 'H&E',
+      credit: 'PMC (CC BY)',
+    },
+    'Diagnostic decision sequence': {
+      imageUrl: resolveDidacticAsset('reference-library/signout-sims/neuropathology/anaplastic-oligodendroglioma-he.jpg'),
+      sourcePageUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4745799/',
+      alt: 'Oligodendroglioma with uniform round nuclei and clear cytoplasmic halos.',
+      caption: 'Use a sequence of specimen type, architecture, grade, and molecular context to reduce anchoring in neuropathology sign-out.',
+      stain: 'H&E',
+      credit: 'PMC (CC BY)',
+    },
+    'ABPath topic targets': {
+      imageUrl: resolveDidacticAsset('reference-library/signout-sims/neuropathology/primary-cns-lymphoma-high-mag.jpg'),
+      sourcePageUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11011375/',
+      alt: 'Primary CNS lymphoma-like large-cell lymphoid morphology on CNS biopsy.',
+      caption: 'Crosswalk each target to where morphology could confuse glioma, lymphoma, or treatment effect before reporting.',
+      stain: 'H&E / HPS',
+      credit: 'PMC (CC BY)',
+    },
+    'Retrieval before reveal': {
+      imageUrl: resolveDidacticAsset('reference-library/signout-sims/neuropathology/medulloblastoma-he.jpg'),
+      sourcePageUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9421471/',
+      alt: 'Medulloblastoma with dense blue cellular growth pattern.',
+      caption: 'Practice retrieval by naming entity, critical microscopic clue, and report phrase that changes immediate management before answer reveal.',
+      stain: 'H&E',
+      credit: 'PMC (CC BY)',
+    },
+  },
 };
 
 const getSlideVisualAid = (lectureId: string, slide: InteractiveLectureRecord['slides'][number]) =>
   slide.visualAid ?? slideFallbackVisualAids[lectureId]?.[slide.title];
-
-const lectureTopicGroups = [
-  {
-    id: 'gu',
-    label: 'GU',
-    detail: 'renal, testicular, bladder',
-    match: (lecture: (typeof promotedLectures)[number]) =>
-      ['Genitourinary Pathology'].includes(lecture.category ?? '') ||
-      /renal|testicular|bladder|urothelial/i.test([lecture.title, lecture.summary ?? ''].join(' ')),
-  },
-  {
-    id: 'gi',
-    label: 'GI / HPB',
-    detail: 'upper gi, colorectal, hpb, pancreas',
-    match: (lecture: (typeof promotedLectures)[number]) =>
-      ['Hepatobiliary Pathology', 'Pancreatic Pathology'].includes(lecture.category ?? '') ||
-      /liver|biliary|pancreas|gi|gastro|colon|colorectal|esophagus|gastric/i.test([lecture.title, lecture.summary ?? ''].join(' ')),
-  },
-] as const;
 
 const guWhoEntities = guWhoEntityManifest.entities as GuWhoEntityDescriptor[];
 
@@ -883,22 +955,30 @@ const LecturePrintDocument: React.FC<LecturePrintDocumentProps> = ({
 );
 
 const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSectionChange }) => {
-  const [selectedId, setSelectedId] = useState<string>('');
-  const [query, setQuery] = useState('');
-  const [trackFilter, setTrackFilter] = useState<'all' | LectureTrack>('all');
-  const [topicGroupFilter, setTopicGroupFilter] = useState<'all' | (typeof lectureTopicGroups)[number]['id']>('all');
+  const [destination, setDestination] = useState<ActiveStudyDestination>(() =>
+    getDefaultStudyDestination('lectures')
+  );
   const [activeMode, setActiveMode] = useState<LecturePlayerMode>('overview');
   const [initialNodeId, setInitialNodeId] = useState<string | undefined>(undefined);
   const [initialLayerSetId, setInitialLayerSetId] = useState<string | undefined>(undefined);
   const [selectionSeed, setSelectionSeed] = useState<LectureSelectionSeed | null>(null);
   const [progressStore, setProgressStore] = useState<Record<string, LectureStudyProgress>>(readProgressStore);
   const [revealedSlideIds, setRevealedSlideIds] = useState<Record<string, boolean>>({});
+  const lectureStudyTree = useMemo(() => buildLectureStudyTree(promotedLectures), []);
 
   const selectLecture = (
     lectureId: string,
     options?: { mode?: LecturePlayerMode; initialNodeId?: string; initialLayerSetId?: string }
   ) => {
-    setSelectedId(lectureId);
+    const lecture = getPromotedLectureById(lectureId);
+    const nextDestination = pushStudyDestination('lectures', {
+      kind: 'item_detail',
+      majorTopicId: lecture?.category || undefined,
+      subtopicId: lectureId,
+      itemId: lectureId,
+      activeTab: options?.mode ?? 'overview',
+    });
+    setDestination(nextDestination);
     setSelectionSeed({
       lectureId,
       mode: options?.mode,
@@ -911,8 +991,9 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
   };
 
   const returnToLectureList = () => {
-    setSelectedId('');
-    setQuery('');
+    const previousDestination = effectiveDestination.previous ?? getDefaultStudyDestination('lectures');
+    replaceStudyDestination(previousDestination);
+    setDestination(previousDestination);
     setSelectionSeed(null);
     setInitialNodeId(undefined);
     setInitialLayerSetId(undefined);
@@ -922,21 +1003,49 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
   };
 
   useEffect(() => {
+    persistLectureViewState({
+      selectedId: selectedLecture?.id ?? '',
+      majorTopicId: effectiveDestination.majorTopicId,
+      subtopicId: effectiveDestination.subtopicId,
+      activeMode,
+      activeQuestionIndex: 0,
+      initialNodeId: initialNodeId,
+      initialLayerSetId: initialLayerSetId,
+    });
+  }, [
+    activeMode,
+    effectiveDestination.itemId,
+    effectiveDestination.majorTopicId,
+    effectiveDestination.subtopicId,
+    initialNodeId,
+    initialLayerSetId,
+    selectedLecture?.id,
+  ]);
+
+  useEffect(() => {
     const intent = consumeLectureLibraryIntent();
+    const restoredDestination = restoreStudyDestination('lectures');
+    setDestination(restoredDestination);
+    if (restoredDestination.activeTab) {
+      setActiveMode(restoredDestination.activeTab as LecturePlayerMode);
+    }
     if (!intent) {
       return;
     }
 
-    if (intent.query) {
-      setQuery(intent.query);
-    }
     if (intent.track) {
-      setTrackFilter(intent.track);
+      const matchingLecture = promotedLectures.find((lecture) => lecture.lectureTrack === intent.track);
+      if (matchingLecture) {
+        const nextDestination = pushStudyDestination('lectures', {
+          kind: 'topic_overview',
+          majorTopicId: matchingLecture.category || undefined,
+        });
+        setDestination(nextDestination);
+      }
     }
     if (intent.selectedId) {
       const lecture = getPromotedLectureById(intent.selectedId);
       if (lecture) {
-        setTrackFilter(lecture.lectureTrack);
         selectLecture(lecture.id, {
           mode: intent.initialMode,
           initialNodeId: intent.initialNodeId,
@@ -950,35 +1059,104 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
     }
   }, []);
 
-  const filteredLectures = useMemo(() => {
-    const lowered = query.trim().toLowerCase();
-    const trackScopedLectures =
-      trackFilter === 'all' ? promotedLectures : promotedLectures.filter((lecture) => lecture.lectureTrack === trackFilter);
-    const topicScopedLectures =
-      topicGroupFilter === 'all'
-        ? trackScopedLectures
-        : trackScopedLectures.filter((lecture) =>
-            lectureTopicGroups.find((group) => group.id === topicGroupFilter)?.match(lecture) ?? true
-          );
+  useEffect(() => {
+    setStudyDestinationActiveTab('lectures', activeMode);
+  }, [activeMode]);
 
-    if (!lowered) {
-      return topicScopedLectures;
+  useEffect(() => {
+    const handlePopState = (event: PopStateEvent) => {
+      const nextDestination = (event.state?.didacticsStudyDestination as ActiveStudyDestination | undefined);
+      if (nextDestination?.workspace === 'lectures') {
+        setDestination(nextDestination);
+        if (nextDestination.activeTab) {
+          setActiveMode(nextDestination.activeTab as LecturePlayerMode);
+        }
+      }
+    };
+
+    const handleDestinationChange = (event: Event) => {
+      const nextDestination = (event as CustomEvent<ActiveStudyDestination>).detail;
+      if (nextDestination?.workspace === 'lectures') {
+        setDestination(nextDestination);
+        if (nextDestination.activeTab) {
+          setActiveMode(nextDestination.activeTab as LecturePlayerMode);
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener(STUDY_DESTINATION_EVENT, handleDestinationChange as EventListener);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener(STUDY_DESTINATION_EVENT, handleDestinationChange as EventListener);
+    };
+  }, []);
+
+  const lectureSubtopicsByRoot = useMemo(
+    () =>
+      Object.fromEntries(
+        Object.entries(lectureStudyTree.subtopicsByRoot).map(([rootId, entries]) => [
+          rootId,
+          entries.map((entry) => ({ id: entry.id })),
+        ])
+      ),
+    [lectureStudyTree.subtopicsByRoot]
+  );
+  const resolvedDestination = useMemo(
+    () =>
+      resolveStudyDestinationForRender({
+        destination,
+        validRoots: lectureStudyTree.roots.map((root) => root.id),
+        subtopicsByRoot: lectureSubtopicsByRoot,
+        isValidItemId: (itemId) => Boolean(itemId && getPromotedLectureById(itemId)),
+      }),
+    [destination, lectureStudyTree.roots, lectureSubtopicsByRoot]
+  );
+  const effectiveDestination = resolvedDestination.destination;
+  const effectiveKind = resolvedDestination.renderedKind;
+  useEffect(() => {
+    if (!resolvedDestination.resolved) {
+      return;
     }
+    const nextDestination = effectiveDestination;
+    if (JSON.stringify(nextDestination) !== JSON.stringify(destination)) {
+      replaceStudyDestination(nextDestination);
+      setDestination(nextDestination);
+      const syncedMode = nextDestination.activeTab as LecturePlayerMode | undefined;
+      if (syncedMode) {
+        setActiveMode(syncedMode);
+      }
+    }
+  }, [destination, effectiveDestination, resolvedDestination.resolved]);
 
-    return topicScopedLectures.filter((lecture) =>
-      [lecture.title, lecture.category, lecture.summary, lecture.sourceLabel, ...(lecture.tags ?? [])]
-        .filter(Boolean)
-        .some((value) => value!.toLowerCase().includes(lowered))
-    );
-  }, [query, topicGroupFilter, trackFilter]);
+  const activeLectureRecords = useMemo(() => {
+    if (!effectiveDestination.majorTopicId) {
+      return [];
+    }
+    return promotedLectures.filter((lecture) => (lecture.category || 'Curated Lectures') === effectiveDestination.majorTopicId);
+  }, [effectiveDestination.majorTopicId]);
 
   const selectedLecture = useMemo(() => {
-    if (!selectedId) {
+    if (effectiveDestination.kind !== 'item_detail' || !effectiveDestination.itemId) {
       return undefined;
     }
-    const lecture = filteredLectures.find((item) => item.id === selectedId) ?? getPromotedLectureById(selectedId);
+    const lecture = getPromotedLectureById(effectiveDestination.itemId);
     return lecture ? getInteractivePromotedLecture(lecture.id) : undefined;
-  }, [filteredLectures, selectedId]);
+  }, [effectiveDestination.itemId, effectiveDestination.kind]);
+  const activeLectureRoot = effectiveDestination.majorTopicId;
+  const activeLectureSubtopics = useMemo(
+    () => (activeLectureRoot ? lectureStudyTree.subtopicsByRoot[activeLectureRoot] ?? [] : []),
+    [activeLectureRoot, lectureStudyTree.subtopicsByRoot]
+  );
+  const activeLectureSubtopic = activeLectureSubtopics.find((entry) => entry.id === effectiveDestination.subtopicId) ?? null;
+  const activeLectureSubtopicItems = useMemo(
+    () => activeLectureRecords.filter((lecture) => lecture.id === activeLectureSubtopic?.id),
+    [activeLectureRecords, activeLectureSubtopic?.id]
+  );
+  const lectureBodySections = useMemo(
+    () => (selectedLecture?.body ? parseTeachingSections(selectedLecture.body).filter((section) => section.kind !== 'intro') : []),
+    [selectedLecture?.body]
+  );
   const descriptorEntities = useMemo(() => {
     const descriptorSite = selectedLecture ? getDescriptorSiteForLecture(selectedLecture.id) : null;
     if (!descriptorSite) {
@@ -997,10 +1175,6 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
       .map(entityCardToReviewItem)
       .filter((item) => item.visualAids.length > 0 || item.morphology.length > 0 || item.ancillary.length > 0);
   }, [descriptorEntities, selectedLecture]);
-  const visibleLectures = useMemo(() => {
-    return filteredLectures;
-  }, [filteredLectures]);
-
   const availableModes = useMemo(() => {
     if (!selectedLecture) {
       return ['overview', 'transcript'] as LecturePlayerMode[];
@@ -1185,6 +1359,22 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
     });
     onSectionChange(Section.DIDACTIC_TUTORIALS);
   };
+  const openLectureTopicOverview = (majorTopicId: string) => {
+    const nextDestination = pushStudyDestination('lectures', {
+      kind: 'topic_overview',
+      majorTopicId,
+    });
+    setDestination(nextDestination);
+  };
+
+  const openLectureSubtopicOverview = (majorTopicId: string, subtopicId: string) => {
+    const nextDestination = pushStudyDestination('lectures', {
+      kind: 'subtopic_overview',
+      majorTopicId,
+      subtopicId,
+    });
+    setDestination(nextDestination);
+  };
 
   const openReferenceLibrary = (focusTerms?: string[], imageLayerSetId?: string) => {
     if (!selectedLecture) {
@@ -1203,85 +1393,174 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
 
   return (
     <>
-    <div className={`print-hide space-y-8 ${preferences.reduceMotion ? '' : 'animate-fade-in'}`}>
-      <SectionHeader
-        title="Didactic Lectures"
-        subtitle="Choose a session, review the diagnostic frame, and teach from the full case narrative."
-        icon={<AcademicCapIcon className="h-10 w-10" />}
-      />
-
-      {!selectedLecture && (
-        <Card className="!mb-0">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-sky-700">Lecture library</p>
-              <h2 className="mt-2 text-2xl font-semibold font-serif text-slate-950">Teaching sessions</h2>
-            </div>
-            <label className="block lg:w-96">
-              <span className="sr-only">Search lectures</span>
-              <input
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search lectures"
-                className="w-full rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-700 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
-              />
-            </label>
-          </div>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {[
-              { id: 'all', label: 'All lectures' },
-              { id: 'curated', label: 'GU WHO lectures' },
-              { id: 'core-principles', label: 'Core principles' },
-            ].map((option) => {
-              const isActive = trackFilter === option.id;
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  onClick={() => setTrackFilter(option.id as 'all' | LectureTrack)}
-                  className={`rounded-md border px-4 py-2 text-sm font-semibold transition ${
-                    isActive
-                      ? 'border-sky-500 bg-sky-50 text-sky-800'
-                      : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
-                  }`}
-                >
-                  {option.label}
-                </button>
-              );
-            })}
-          </div>
-        </Card>
-      )}
-
-      {!selectedLecture ? (
+    <div className="print-hide space-y-8 animate-fade-in">
+      {effectiveKind !== 'item_detail' ? (
         <div className="space-y-3">
-          {visibleLectures.map((lecture) => {
-            return (
-              <button
-                key={lecture.id}
-                type="button"
-                onClick={() =>
-                  selectLecture(lecture.id, {
-                    mode: 'overview',
-                    initialLayerSetId: getInteractivePromotedLecture(lecture.id)?.tissueLayerSets[0]?.id,
-                  })
-                }
-                className="w-full rounded-xl border border-slate-200 bg-white p-5 text-left shadow-sm transition-all hover:border-sky-300 hover:shadow-md"
-              >
-                <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-                  <div className="max-w-4xl">
-                    <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide">
-                      <span className="text-sky-700">{lecture.category ?? 'Lecture'}</span>
-                    </div>
-                    <h3 className="mt-3 font-serif text-xl font-semibold leading-snug text-slate-900">{lecture.title}</h3>
-                    {!preferences.focusMode && lecture.summary && <p className="mt-3 text-sm leading-6 text-slate-600">{lecture.summary}</p>}
+          {effectiveKind === 'landing' && (
+            <>
+              <Card>
+                <h2 className="font-serif text-2xl font-semibold text-slate-950">Lecture learning paths</h2>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  Continue a topic, resume an active session, or choose a major path from the sidebar.
+                </p>
+              </Card>
+              <div className="grid gap-4 lg:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (effectiveDestination.previous?.itemId) {
+                      replaceStudyDestination(effectiveDestination.previous);
+                      setDestination(effectiveDestination.previous);
+                    }
+                  }}
+                  disabled={!effectiveDestination.previous?.itemId}
+                  className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Resume</div>
+                  <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
+                    {effectiveDestination.previous?.itemId
+                      ? getPromotedLectureById(effectiveDestination.previous.itemId)?.title ?? 'Last lecture'
+                      : 'Choose a lecture topic'}
                   </div>
-                  <div className="shrink-0 text-sm font-semibold text-sky-700">Start lecture</div>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const firstRoot = lectureStudyTree.roots[0]?.id;
+                    if (firstRoot) {
+                      openLectureTopicOverview(firstRoot);
+                    }
+                  }}
+                  className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
+                >
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Resume topic</div>
+                  <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
+                    {lectureStudyTree.roots[0]?.label ?? 'Open a lecture topic'}
+                  </div>
+                </button>
+              </div>
+              <Card>
+                <h3 className="font-serif text-xl font-semibold text-slate-900">Recommended major topics</h3>
+                <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                  {lectureStudyTree.roots.slice(0, preferences.focusMode ? 4 : 6).map((root) => (
+                    <button
+                      key={root.id}
+                      type="button"
+                      onClick={() => openLectureTopicOverview(root.id)}
+                      className="rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
+                    >
+                      <div className="font-semibold text-slate-900">{root.label}</div>
+                      <div className="mt-2 text-sm text-slate-600">
+                        {(lectureStudyTree.subtopicsByRoot[root.id] ?? []).length} sessions
+                      </div>
+                    </button>
+                  ))}
                 </div>
-              </button>
-            );
-          })}
+              </Card>
+            </>
+          )}
+
+          {effectiveKind === 'topic_overview' && activeLectureRoot && (
+            <>
+              <Card>
+                <h2 className="font-serif text-2xl font-semibold text-slate-950">{activeLectureRoot}</h2>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  Confirm the scope quickly, then open one teaching session within this topic.
+                </p>
+                <p className="mt-3 text-sm font-medium text-slate-700">
+                  Scope: {activeLectureSubtopics[0]?.label ?? activeLectureRecords[0]?.title ?? activeLectureRoot}
+                </p>
+                <p className="mt-1 text-xs text-slate-600">All tracks are aligned to the selected topic lane.</p>
+              </Card>
+              {activeLectureSubtopics.length > 0 ? (
+                <div className="grid gap-4 lg:grid-cols-2">
+                  {activeLectureSubtopics.map((subtopic, index) => (
+                    <button
+                      key={subtopic.id}
+                      type="button"
+                      onClick={() => openLectureSubtopicOverview(activeLectureRoot, subtopic.id)}
+                      className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
+                    >
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        {index === 0 ? 'Start here' : 'Session lane'}
+                      </div>
+                      <div className="mt-3 font-serif text-xl font-semibold text-slate-900">{subtopic.label}</div>
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <Card>
+                    <p className="text-slate-700">
+                      No explicit session lanes are defined for this major lecture topic. Open directly from the topic-scoped lecture list below.
+                    </p>
+                  </Card>
+                  {activeLectureRecords.length === 0 ? (
+                    <Card>
+                      <p className="text-slate-600">No lectures are currently available for this topic.</p>
+                    </Card>
+                  ) : (
+                    <div className="space-y-4">
+                      {activeLectureRecords.map((lecture, index) => (
+                        <button
+                          key={lecture.id}
+                          type="button"
+                          onClick={() =>
+                            selectLecture(lecture.id, {
+                              mode: 'overview',
+                              initialLayerSetId: getInteractivePromotedLecture(lecture.id)?.tissueLayerSets[0]?.id,
+                            })
+                          }
+                          className="w-full rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
+                        >
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                            {index === 0 ? 'Recommended first item' : 'Lecture'}
+                          </div>
+                          <h3 className="mt-2 font-serif text-lg font-semibold text-slate-900">{lecture.title}</h3>
+                          <p className="mt-2 text-sm text-slate-600">{lecture.summary}</p>
+                          <div className="mt-2 text-sm font-semibold text-sky-700">Open</div>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </>
+          )}
+
+          {effectiveKind === 'subtopic_overview' && activeLectureRoot && activeLectureSubtopic && (
+            <>
+              <Card>
+                <h2 className="font-serif text-2xl font-semibold text-slate-950">{activeLectureSubtopic.label}</h2>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  {activeLectureRoot} {'>'} {activeLectureSubtopic.label}
+                </p>
+              </Card>
+              {activeLectureSubtopicItems.map((lecture) => (
+                <button
+                  key={lecture.id}
+                  type="button"
+                  onClick={() =>
+                    selectLecture(lecture.id, {
+                      mode: 'overview',
+                      initialLayerSetId: getInteractivePromotedLecture(lecture.id)?.tissueLayerSets[0]?.id,
+                    })
+                  }
+                  className="w-full rounded-xl border border-slate-200 bg-white p-5 text-left shadow-sm transition-all hover:border-sky-300 hover:shadow-md"
+                >
+                  <div className="max-w-4xl">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Teaching session</div>
+                    <h3 className="mt-3 font-serif text-xl font-semibold leading-snug text-slate-900">{lecture.title}</h3>
+                    <p className="mt-2 text-sm font-medium text-slate-800">
+                      Scope: {lecture.tags?.slice(0, 4).join(' · ') || lecture.category || 'General review'}
+                    </p>
+                    {!preferences.focusMode && lecture.summary && <p className="mt-3 text-sm leading-6 text-slate-600">{lecture.summary}</p>}
+                    <div className="mt-2 text-sm font-semibold text-sky-700">Open</div>
+                  </div>
+                </button>
+              ))}
+            </>
+          )}
         </div>
       ) : (
           <div className="space-y-6">
@@ -1292,7 +1571,7 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                   onClick={returnToLectureList}
                   className="rounded-md border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-sky-300 hover:text-sky-800"
                 >
-                  Back to lecture list
+                  Back
                 </button>
                 <button
                   type="button"
@@ -1399,7 +1678,7 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                       </div>
                     )}
                     {selectedLecture.slides.length > 0 && (
-                      <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm" data-testid="lecture-teaching-sequence">
+                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 shadow-sm" data-testid="lecture-teaching-sequence">
                         <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Teaching sequence</div>
                         <div className="mt-3 divide-y divide-slate-200">
                           {selectedLecture.slides.map((slide, index) => {
@@ -1694,17 +1973,43 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                   <DocumentTextIcon className="mr-3 h-6 w-6 text-sky-600" />
                   Transcript
                 </h3>
-                <MarkdownContent content={selectedLecture.body} />
+                <div className="mb-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                    <div className="max-w-3xl">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Teaching session text</div>
+                      <p className="mt-2 text-sm leading-6 text-slate-600">
+                        The full lecture narrative is organized below into readable teaching blocks so the session stays useful during longer review.
+                      </p>
+                    </div>
+                    <div className="grid min-w-[12rem] gap-3 sm:grid-cols-2">
+                      <div className="rounded-xl border border-slate-200 bg-white p-3">
+                        <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Sections</div>
+                        <div className="mt-2 text-2xl font-semibold text-slate-900">{lectureBodySections.length || '--'}</div>
+                      </div>
+                      <div className="rounded-xl border border-slate-200 bg-white p-3">
+                        <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Mode</div>
+                        <div className="mt-2 text-sm font-semibold text-slate-900">Full lecture text</div>
+                      </div>
+                    </div>
+                  </div>
+                  {lectureBodySections.length > 0 && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {lectureBodySections.slice(0, 10).map((section, index) => (
+                        <span
+                          key={section.id}
+                          className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
+                        >
+                          {index + 1}. {section.title}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <StructuredTeachingContent content={selectedLecture.body} compact />
               </Card>
             )}
 
           </div>
-      )}
-
-      {!selectedLecture && filteredLectures.length === 0 && (
-        <Card>
-          <p className="text-slate-600">No lectures matched the current search.</p>
-        </Card>
       )}
     </div>
     {selectedLecture && (

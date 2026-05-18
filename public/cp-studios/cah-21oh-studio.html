@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>CAH Teaching Studio — 21‑Hydroxylase Deficiency (Animation + Case Sims)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="description" content="Interactive studio for congenital adrenal hyperplasia due to 21-hydroxylase deficiency: step-by-step animation, case simulations, quiz, and printable notes. Accessible and autosaving."/>
+<style>
+  :root{
+    --bg:#0e1117; --panel:#141b22; --fg:#e6edf3; --muted:#9aa4b2;
+    --accent:#7aa2f7; --ok:#58d68d; --warn:#fbd38d; --bad:#f7768e;
+    --card:#0f1520; --border:#2b3240; --chip:#1f2632; --shadow:0 10px 28px rgba(0,0,0,.35);
+    --btn:#273142; --btnH:#324257; --focus:#94a3b8
+  }
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans";}
+  a,a:visited{color:#8ab4ff}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  header{
+    position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#0f1520,#192235);
+    border-bottom:1px solid var(--border); padding:10px 14px; display:flex; gap:14px; align-items:center; flex-wrap:wrap
+  }
+  h1{margin:0;font-size:1.05rem}
+  .muted{color:var(--muted)}
+  .btn{background:var(--btn);color:var(--fg);border:1px solid var(--border);border-radius:10px;padding:8px 10px;cursor:pointer}
+  .btn:hover{background:var(--btnH)}
+  .btn.ok{background:#1e3a2f;border-color:#2c5d49}
+  .chip{background:var(--chip);border:1px solid var(--border);padding:6px 10px;border-radius:999px}
+  .dock{display:flex;gap:8px;flex-wrap:wrap}
+  main{display:grid;grid-template-columns:340px 1fr;gap:14px;padding:14px}
+  @media (max-width: 1024px){ main{grid-template-columns:1fr} }
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:12px;min-height:140px}
+  .title{margin:.2rem 0 6px 0;font-weight:600}
+  .grid{display:grid;gap:12px}
+  .grid.two{grid-template-columns:repeat(2,1fr)}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .kpi{display:flex;justify-content:space-between;align-items:center;background:#0e1422;border:1px dashed var(--border);border-radius:10px;padding:8px 10px}
+  .status{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:10px}
+  .okS{background:#14271f;border:1px solid #2c5f48;color:#9fe5c9}
+  .badS{background:#2b1215;border:1px solid #7e2b34;color:#ffb8c0}
+  .warnS{background:#2b2411;border:1px solid #6f5d2a;color:#fde1a5}
+  input,select,textarea{background:#0f1520;color:var(--fg);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+  textarea{min-height:90px;width:100%}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .tabs .btn[aria-selected="true"]{background:#244663;border-color:#2f5b83}
+  .stage{background:#0b1322;border:1px solid var(--border);border-radius:12px;padding:12px;min-height:260px;position:relative;overflow:hidden}
+  .timeline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .dot{width:14px;height:14px;border-radius:50%;background:#334155;border:1px solid #475569}
+  .dot.active{background:#7aa2f7}
+  .progress{height:8px;background:#0b101a;border:1px solid var(--border);border-radius:999px;overflow:hidden}
+  .progress>div{height:100%;background:linear-gradient(90deg,#4dd0e1,#7aa2f7);width:0%}
+  .toast{position:fixed;right:14px;bottom:14px;background:#0f1520;border:1px solid var(--border);border-radius:10px;padding:10px 12px;box-shadow:var(--shadow);z-index:9999}
+  .toast.hidden{display:none}
+  .high-contrast{filter:contrast(1.15) saturate(1.05)}
+  @media print{ header,.toast{display:none!important} body{background:white;color:black} .panel{box-shadow:none;border-color:#ccc}}
+</style>
+</head>
+<body>
+<header role="banner" aria-label="Top bar">
+  <h1>CAH Teaching Studio <span class="chip">21‑Hydroxylase Deficiency</span></h1>
+  <div class="dock" role="toolbar" aria-label="Global controls">
+    <button class="btn" id="btnAnim" aria-pressed="true" aria-controls="secAnim">Animation</button>
+    <button class="btn" id="btnCases" aria-pressed="false" aria-controls="secCases">Case Simulations</button>
+    <button class="btn" id="btnQuiz" aria-pressed="false" aria-controls="secQuiz">Quiz</button>
+    <button class="btn" id="btnNotes" aria-pressed="false" aria-controls="secNotes">Notes / Export</button>
+    <button class="btn ok" id="btnContrast" aria-pressed="false">High Contrast: Off</button>
+  </div>
+  <div class="muted" style="font-size:.9rem">Keyboard: <kbd>Space</kbd> Play/Pause • <kbd>←/→</kbd> Prev/Next • <kbd>1–4</kbd> switch modules • <kbd>?</kbd> help</div>
+</header>
+
+<main>
+  <!-- LEFT HELP -->
+  <aside class="panel" role="complementary" aria-label="Help & Reasoning">
+    <h2 class="title">Help & Reasoning</h2>
+    <div class="card small">
+      <h3>21‑OH Deficiency (Pathway)</h3>
+      <ul>
+        <li>Block: <b>17‑OHP → 11‑deoxycortisol</b> and <b>progesterone → 11‑deoxycorticosterone</b>.</li>
+        <li>Result: <b>↓cortisol</b> (±<b>↓aldosterone</b>) → <b>↑ACTH</b>, adrenal hyperplasia, <b>↑androgens</b>, <b>↑↑17‑OHP</b>. <span class="muted">(screening marker)</span></li>
+      </ul>
+      <p class="muted small">Evidence: Merck Manual (2024), UpToDate (2025), NEJM review (2020). [1](https://journals.viamedica.pl/journal_of_transfusion_medicine_and_hemostasis/article/download/106171/84153)[2](https://www.researchgate.net/publication/374410326_Drug-Induced_Immune_Hemolytic_Anemia_Detection_of_New_Signals_and_Risk_Assessment_in_a_Nationwide_Cohort_Study/fulltext/651c320d1e2386049df3db22/Drug-Induced-Immune-Hemolytic-Anemia-Detection-of-New-Signals-and-Risk-Assessment-in-a-Nationwide-Cohort-Study.pdf)[3](https://www.uptodate.com/contents/drug-induced-hemolytic-anemia)</p>
+    </div>
+    <div class="card small">
+      <h3>Clinical Presentations</h3>
+      <ul>
+        <li><b>Salt‑wasting:</b> hyponatremia, hyperkalemia, dehydration, shock risk.</li>
+        <li><b>Simple virilizing:</b> androgen excess without salt wasting.</li>
+        <li><b>Nonclassic:</b> later onset mild hyperandrogenism (e.g., hirsutism, irregular menses).</li>
+      </ul>
+      <p class="muted small">Evidence: UpToDate (2025), NEJM review (2020). [2](https://www.researchgate.net/publication/374410326_Drug-Induced_Immune_Hemolytic_Anemia_Detection_of_New_Signals_and_Risk_Assessment_in_a_Nationwide_Cohort_Study/fulltext/651c320d1e2386049df3db22/Drug-Induced-Immune-Hemolytic-Anemia-Detection-of-New-Signals-and-Risk-Assessment-in-a-Nationwide-Cohort-Study.pdf)[3](https://www.uptodate.com/contents/drug-induced-hemolytic-anemia)</p>
+    </div>
+  </aside>
+
+  <!-- RIGHT: ANIMATION -->
+  <section class="panel" id="secAnim" role="region" aria-label="21-OH Animation">
+    <h2 class="title">Step‑by‑Step Animation — Normal vs 21‑OH Deficiency</h2>
+    <div class="tabs" role="tablist" aria-label="Animation tabs">
+      <button class="btn" role="tab" aria-selected="true" data-tab="animStage">Animation</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="animMap">Pathway Map</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="animRefs">References</button>
+    </div>
+
+    <!-- Stage -->
+    <div id="animStage" class="card" role="tabpanel" aria-live="polite">
+      <div class="row" style="margin-bottom:6px">
+        <label class="row">Mode
+          <select id="modeSelect" aria-label="Select mode (Normal vs 21-OH deficiency)">
+            <option value="normal" selected>Normal steroidogenesis</option>
+            <option value="deficient">21‑OH deficiency</option>
+          </select>
+        </label>
+        <label class="row">Speed
+          <select id="animSpeed"><option>0.5</option><option selected>1</option><option>2</option></select>
+        </label>
+      </div>
+      <div class="stage" id="stage" aria-label="Animation stage showing steroid pathways">
+        <!-- SVG: cortisol and aldosterone branches with 21-OH checkpoints -->
+        <svg viewBox="0 0 940 300" width="100%" height="240" aria-hidden="true" id="svg">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#7aa2f7"></path>
+            </marker>
+            <filter id="glow"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#7aa2f7"/></filter>
+          </defs>
+
+          <text x="90" y="24" fill="#9aa4b2" font-size="12">Cholesterol</text>
+          <circle cx="90" cy="50" r="12" fill="#94a3b8" id="chol"/>
+
+          <!-- Pregnenolone / Progesterone branch -->
+          <text x="270" y="24" fill="#9aa4b2" font-size="12">Progesterone</text>
+          <rect x="240" y="40" width="80" height="24" rx="6" fill="#334155" id="prog"/>
+
+          <!-- 17-OH Progesterone -->
+          <text x="470" y="24" fill="#9aa4b2" font-size="12">17‑hydroxyprogesterone</text>
+          <rect x="420" y="40" width="160" height="24" rx="6" fill="#334155" id="oh17"/>
+
+          <!-- 11-deoxycortisol -->
+          <text x="690" y="24" fill="#9aa4b2" font-size="12">11‑deoxycortisol</text>
+          <rect x="660" y="40" width="120" height="24" rx="6" fill="#334155" id="deoxyC"/>
+
+          <!-- Cortisol -->
+          <text x="860" y="24" fill="#9aa4b2" font-size="12">Cortisol</text>
+          <rect x="830" y="40" width="80" height="24" rx="6" fill="#22c55e" id="cort"/>
+
+          <!-- Mineralocorticoid branch -->
+          <text x="270" y="160" fill="#9aa4b2" font-size="12">Progesterone</text>
+          <rect x="240" y="176" width="80" height="24" rx="6" fill="#334155" id="prog2"/>
+
+          <text x="470" y="160" fill="#9aa4b2" font-size="12">11‑deoxycorticosterone (DOC)</text>
+          <rect x="420" y="176" width="180" height="24" rx="6" fill="#334155" id="doc"/>
+
+          <text x="690" y="160" fill="#9aa4b2" font-size="12">Aldosterone</text>
+          <rect x="660" y="176" width="120" height="24" rx="6" fill="#22c55e" id="aldo"/>
+
+          <!-- Androgen shunt -->
+          <text x="470" y="260" fill="#9aa4b2" font-size="12">Androgens (DHEA/Androstenedione)</text>
+          <rect x="420" y="220" width="220" height="24" rx="6" fill="#f59e0b" id="androgens"/>
+
+          <!-- Arrows -->
+          <line id="a1" x1="102" y1="50" x2="240" y2="52" stroke="#7aa2f7" stroke-width="3" marker-end="url(#arr)" opacity="1"/>
+          <line id="a2" x1="320" y1="52" x2="420" y2="52" stroke="#7aa2f7" stroke-width="3" marker-end="url(#arr)" opacity="1"/>
+          <line id="a3" x1="580" y1="52" x2="660" y2="52" stroke="#7aa2f7" stroke-width="3" marker-end="url(#arr)" opacity="1"/>
+          <line id="a4" x1="780" y1="52" x2="830" y2="52" stroke="#7aa2f7" stroke-width="3" marker-end="url(#arr)" opacity="1"/>
+
+          <line id="b1" x1="320" y1="188" x2="420" y2="188" stroke="#7aa2f7" stroke-width="3" marker-end="url(#arr)" opacity="1"/>
+          <line id="b2" x1="600" y1="188" x2="660" y2="188" stroke="#7aa2f7" stroke-width="3" marker-end="url(#arr)" opacity="1"/>
+
+          <line id="shunt" x1="500" y1="64" x2="530" y2="220" stroke="#f59e0b" stroke-width="3" marker-end="url(#arr)" opacity="0"/>
+
+          <!-- 21-OH blockade signs -->
+          <text id="block1" x="520" y="38" fill="#f7768e" font-size="18" opacity="0">✕ 21‑OH</text>
+          <text id="block2" x="360" y="172" fill="#f7768e" font-size="18" opacity="0">✕ 21‑OH</text>
+
+          <!-- ACTH / adrenal hyperplasia note -->
+          <text id="acth" x="820" y="120" fill="#f59e0b" font-size="12" opacity="0">↓Cortisol → ↑ACTH → adrenal hyperplasia</text>
+        </svg>
+      </div>
+
+      <!-- Controls -->
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="prev">⟵ Prev</button>
+        <button class="btn" id="play">▶ Play</button>
+        <button class="btn" id="pause">⏸ Pause</button>
+        <button class="btn" id="next">Next ⟶</button>
+        <label class="row" style="flex:1">Scrub <input type="range" id="scrub" min="0" max="4" step="1" style="width:100%"/></label>
+      </div>
+      <div class="timeline"><div class="dot" id="d0"></div><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div><div class="dot" id="d4"></div></div>
+      <div class="progress" style="margin-top:6px"><div id="prog"></div></div>
+      <div id="caption" class="status warnS" style="margin-top:8px" role="status" aria-live="polite">Ready — Step 1: Normal flow from cholesterol → progesterone.</div>
+    </div>
+
+    <!-- Pathway map -->
+    <div id="animMap" class="card" role="tabpanel" hidden>
+      <h3>Compact Pathway Map</h3>
+      <p><b>Normal:</b> 17‑OHP → (21‑OH) → 11‑deoxycortisol → (11β‑OH) → Cortisol; Progesterone → (21‑OH) → DOC → Aldosterone.</p>
+      <p><b>21‑OH Deficiency:</b> Blocked steps → <b>↑17‑OHP</b> (screening marker), <b>↓cortisol/±↓aldosterone</b>, shunting to androgens, <b>↑ACTH</b> and adrenal hyperplasia. [1](https://journals.viamedica.pl/journal_of_transfusion_medicine_and_hemostasis/article/download/106171/84153)[2](https://www.researchgate.net/publication/374410326_Drug-Induced_Immune_Hemolytic_Anemia_Detection_of_New_Signals_and_Risk_Assessment_in_a_Nationwide_Cohort_Study/fulltext/651c320d1e2386049df3db22/Drug-Induced-Immune-Hemolytic-Anemia-Detection-of-New-Signals-and-Risk-Assessment-in-a-Nationwide-Cohort-Study.pdf)</p>
+    </div>
+
+    <!-- References -->
+    <div id="animRefs" class="card small" role="tabpanel" hidden>
+      <ol>
+        <li>MSD (Merck) Manual Professional: 21‑Hydroxylase Deficiency — pathophysiology, precursors, salt wasting. <a target="_blank" rel="noopener" href="https://www.msdmanuals.com/professional/pediatrics/endocrine-disorders-in-children/congenital-adrenal-hyperplasia-caused-by-21-hydroxylase-deficiency">Link</a> [1](https://journals.viamedica.pl/journal_of_transfusion_medicine_and_hemostasis/article/download/106171/84153)</li>
+        <li>UpToDate (2025): Classic CAH due to 21‑OHD — newborn screening and clinical manifestations. <a target="_blank" rel="noopener" href="https://www.uptodate.com/contents/classic-congenital-adrenal-hyperplasia-due-to-21-hydroxylase-deficiency-in-infants-and-children-clinical-manifestations-and-diagnosis/print">Link</a> [2](https://www.researchgate.net/publication/374410326_Drug-Induced_Immune_Hemolytic_Anemia_Detection_of_New_Signals_and_Risk_Assessment_in_a_Nationwide_Cohort_Study/fulltext/651c320d1e2386049df3db22/Drug-Induced-Immune-Hemolytic-Anemia-Detection-of-New-Signals-and-Risk-Assessment-in-a-Nationwide-Cohort-Study.pdf)</li>
+        <li>NEJM Review (2020): Merke & Auchus — genetics, screening, phenotype spectrum. <a target="_blank" rel="noopener" href="https://www.nejm.org/doi/pdf/10.1056/NEJMra1909786">Link</a> [3](https://www.uptodate.com/contents/drug-induced-hemolytic-anemia)</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CASE SIMULATIONS -->
+  <section class="panel" id="secCases" role="region" aria-label="CAH Case Simulations" hidden>
+    <h2 class="title">Case Simulations — Salt‑Wasting • Simple Virilizing • Nonclassic</h2>
+    <div class="tabs" role="tablist">
+      <button class="btn" role="tab" aria-selected="true" data-tab="caseRun">Run a Case</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="caseBank">Case Library</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="caseRefs">References</button>
+    </div>
+
+    <div id="caseRun" class="card" role="tabpanel" aria-live="polite">
+      <div class="grid two">
+        <div class="card">
+          <h3>Start Scenario</h3>
+          <label>Timer (minutes) <input id="caseTimer" type="number" min="1" value="3"/></label>
+          <div class="row" style="margin-top:8px">
+            <button class="btn" id="startCase">Start Random Case</button>
+            <span class="kpi"><span>Clock</span><strong id="caseClock">—</strong></span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Your Decisions</h3>
+          <label>Diagnosis
+            <select id="caseDx">
+              <option>Salt‑wasting 21‑OHD</option>
+              <option>Simple virilizing 21‑OHD</option>
+              <option>Nonclassic 21‑OHD</option>
+              <option>11β‑hydroxylase deficiency</option>
+            </select>
+          </label>
+          <label>Immediate management
+            <input id="caseMgmt" type="text" placeholder="e.g., Hydrocortisone + isotonic saline ± fludrocortisone; very‑low‑fat diet is NOT correct here"/>
+          </label>
+          <label>Your reasoning
+            <textarea id="caseReason"></textarea>
+          </label>
+          <button class="btn ok" id="completeCase">Complete</button>
+          <div id="caseResult" class="status warnS" style="margin-top:8px">Waiting…</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Scenario</h3>
+        <div id="vignette" class="small">Click “Start Random Case”.</div>
+      </div>
+    </div>
+
+    <div id="caseBank" class="card" role="tabpanel" hidden>
+      <h3>Library</h3>
+      <div id="bank" class="small"></div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="exportCases">Export Library (JSON)</button>
+        <label class="btn">Import <input id="importCases" type="file" accept="application/json" class="sr-only"/></label>
+      </div>
+    </div>
+
+    <div id="caseRefs" class="card small" role="tabpanel" hidden>
+      <p>Diagnostic anchors (e.g., newborn screening with ↑17‑OHP; electrolyte pattern in salt‑wasting; phenotype timing) and first‑line treatments (stress‑dose hydrocortisone; mineralocorticoid and salt supplementation when needed) are summarized from: [1](https://journals.viamedica.pl/journal_of_transfusion_medicine_and_hemostasis/article/download/106171/84153)[2](https://www.researchgate.net/publication/374410326_Drug-Induced_Immune_Hemolytic_Anemia_Detection_of_New_Signals_and_Risk_Assessment_in_a_Nationwide_Cohort_Study/fulltext/651c320d1e2386049df3db22/Drug-Induced-Immune-Hemolytic-Anemia-Detection-of-New-Signals-and-Risk-Assessment-in-a-Nationwide-Cohort-Study.pdf)[3](https://www.uptodate.com/contents/drug-induced-hemolytic-anemia)</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="panel" id="secQuiz" role="region" aria-label="CAH Quiz" hidden>
+    <h2 class="title">Quick Quiz</h2>
+    <ol id="quizList" class="small"></ol>
+    <div class="row" style="margin-top:8px">
+      <button class="btn" id="grade">Grade</button>
+      <span id="score" class="status warnS">Not graded</span>
+    </div>
+  </section>
+
+  <!-- NOTES -->
+  <section class="panel" id="secNotes" role="region" aria-label="Notes and Export" hidden>
+    <h2 class="title">Notes & Export</h2>
+    <textarea id="notesBox" placeholder="Type any teaching notes or case reflections here…"></textarea>
+    <div class="row" style="margin-top:8px">
+      <button class="btn" id="saveNotes">Save Notes</button>
+      <button class="btn" id="copyNotes">Copy</button>
+      <button class="btn" id="printAll">Print / PDF</button>
+      <span id="saveStatus" class="status warnS">Not saved</span>
+    </div>
+  </section>
+</main>
+
+<div id="toast" class="toast hidden" role="status" aria-live="polite">Autosaved.</div>
+
+<script>
+/* ====== Autosave & State ====== */
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const storeKey='CAH21_v1';
+const state={contrast:false,active:'anim',anim:{mode:'normal',step:0,speed:1,playing:false},quiz:{},cases:{lib:[],run:null},notes:''};
+function save(){ try{ localStorage.setItem(storeKey, JSON.stringify(state)); const t=$("#toast"); t.classList.remove('hidden'); setTimeout(()=>t.classList.add('hidden'),800);}catch(e){} }
+function load(){ try{ const raw=localStorage.getItem(storeKey); if(raw) Object.assign(state, JSON.parse(raw)); }catch(e){} }
+load();
+
+/* ====== Nav & Contrast ====== */
+function showSec(btnId){
+  const map={btnAnim:'secAnim',btnCases:'secCases',btnQuiz:'secQuiz',btnNotes:'secNotes'};
+  Object.entries(map).forEach(([b,s])=>{ $("#"+s).hidden = (b!==btnId); $("#"+b).setAttribute('aria-pressed', b===btnId?'true':'false'); });
+  state.active = btnId==='btnAnim'?'anim':btnId==='btnCases'?'cases':btnId==='btnQuiz'?'quiz':'notes'; save();
+}
+['btnAnim','btnCases','btnQuiz','btnNotes'].forEach(id=>$("#"+id).addEventListener('click',()=>showSec(id)));
+showSec({anim:'btnAnim',cases:'btnCases',quiz:'btnQuiz',notes:'btnNotes'}[state.active]||'btnAnim');
+
+$("#btnContrast").addEventListener('click',()=>{
+  state.contrast=!state.contrast; document.body.classList.toggle('high-contrast', state.contrast);
+  $("#btnContrast").textContent='High Contrast: '+(state.contrast?'On':'Off'); $("#btnContrast").setAttribute('aria-pressed', state.contrast?'true':'false'); save();
+});
+document.body.classList.toggle('high-contrast', state.contrast);
+$("#btnContrast").textContent='High Contrast: '+(state.contrast?'On':'Off'); $("#btnContrast").setAttribute('aria-pressed', state.contrast?'true':'false');
+
+/* ====== Tabs ====== */
+function initTabs(scopeSel){
+  const scope=$(scopeSel);
+  const tabs=scope.querySelectorAll('[role="tab"]');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.setAttribute('aria-selected','false'));
+    t.setAttribute('aria-selected','true');
+    const id=t.dataset.tab;
+    scope.querySelectorAll('[role="tabpanel"]').forEach(p=>p.hidden=true);
+    scope.querySelector('#'+id).hidden=false;
+  }));
+}
+initTabs('#secAnim'); initTabs('#secCases');
+
+/* ====== Animation Engine (5 steps) ======
+  Step 0: Cholesterol → Progesterone (common start)
+  Step 1: 17-OHP forms (cortisol branch precursor)
+  Step 2: 21-OH checkpoint to 11-deoxycortisol (normal: pass; deficient: block + ↑17-OHP + shunt to androgens)
+  Step 3: Downstream to Cortisol (normal), and aldosterone branch via DOC (normal vs block)
+  Step 4: System response: ↓Cortisol → ↑ACTH and clinical phenotypes
+*/
+const A={chol:$("#chol"),prog:$("#prog"),oh17:$("#oh17"),deoxyC:$("#deoxyC"),cort:$("#cort"),
+          prog2:$("#prog2"),doc:$("#doc"),aldo:$("#aldo"),and:$("#androgens"),
+          a1:$("#a1"),a2:$("#a2"),a3:$("#a3"),a4:$("#a4"),b1:$("#b1"),b2:$("#b2"),
+          shunt:$("#shunt"),blk1:$("#block1"),blk2:$("#block2"),acth:$("#acth"),
+          dots:[$("#d0"),$("#d1"),$("#d2"),$("#d3"),$("#d4")], progbar:$("#prog"), cap:$("#caption")};
+function setAnimStep(k){
+  state.anim.step=Math.max(0,Math.min(4,k));
+  const s=state.anim.step, mode=state.anim.mode;
+
+  // reset styles
+  [A.deoxyC,A.cort,A.doc,A.aldo,A.and,A.blk1,A.blk2,A.acth].forEach(n=>n.style.filter='');
+  [A.blk1,A.blk2,A.shunt,A.acth].forEach(n=>n.style.opacity=0);
+  // default arrow opacities
+  [A.a2,A.a3,A.b1].forEach(n=>n.style.opacity=1);
+
+  if(s>=0){
+    A.cap.textContent='Step 1: Cholesterol → progesterone (shared start).';
+  }
+  if(s>=1){
+    A.cap.textContent='Step 2: 17‑hydroxyprogesterone (17‑OHP) forms on the cortisol branch.';
+  }
+  if(s>=2){
+    if(mode==='normal'){
+      A.deoxyC.style.filter='url(#glow)';
+      A.cap.textContent='Step 3: 21‑OH converts 17‑OHP → 11‑deoxycortisol (normal).';
+    }else{
+      // Block 21-OH: show X, keep 17-OHP, show shunt to androgens
+      A.blk1.style.opacity=1; A.blk2.style.opacity=1;
+      A.a3.style.opacity=0; // block arrow
+      A.shunt.style.opacity=1; A.and.style.filter='url(#glow)';
+      A.cap.textContent='Step 3: 21‑OH blocked → ↑17‑OHP and shunting to androgens.';
+    }
+  }
+  if(s>=3){
+    if(mode==='normal'){
+      A.cort.style.filter='url(#glow)'; A.aldo.style.filter='url(#glow)';
+      A.cap.textContent='Step 4: Cortisol and aldosterone produced normally.';
+    }else{
+      // mineralocorticoid branch block (Progesterone→DOC needs 21-OH)
+      A.b1.style.opacity=0; // block to DOC
+      A.cap.textContent='Step 4: ↓Cortisol (and often ↓aldosterone) due to 21‑OH block.';
+    }
+  }
+  if(s>=4){
+    if(mode==='normal'){
+      A.cap.textContent='Completed normal production; ACTH remains normal.';
+    }else{
+      A.acth.style.opacity=1;
+      A.cap.textContent='Step 5: ↓Cortisol → ↑ACTH → adrenal hyperplasia; phenotypes: salt‑wasting / simple virilizing / nonclassic.';
+    }
+  }
+  A.dots.forEach((d,i)=>d.classList.toggle('active', i<=s));
+  A.progbar.style.width=((s+1)/5*100)+'%';
+  $("#scrub").value=s; save();
+}
+$("#modeSelect").value=state.anim.mode; $("#modeSelect").addEventListener('change',e=>{ state.anim.mode=e.target.value; setAnimStep(state.anim.step); });
+$("#animSpeed").value=String(state.anim.speed||1); $("#animSpeed").addEventListener('change',e=>{ state.anim.speed=Number(e.target.value); save(); });
+$("#prev").addEventListener('click',()=>setAnimStep(state.anim.step-1));
+$("#next").addEventListener('click',()=>setAnimStep(state.anim.step+1));
+$("#scrub").addEventListener('input',e=>setAnimStep(Number(e.target.value)));
+let ticker=null;
+$("#play").addEventListener('click',()=>{ clearInterval(ticker); state.anim.playing=true;
+  ticker=setInterval(()=>{ if(state.anim.step>=4){ clearInterval(ticker); state.anim.playing=false; save(); return; } setAnimStep(state.anim.step+1); }, 1500/(state.anim.speed||1)); });
+$("#pause").addEventListener('click',()=>{ clearInterval(ticker); state.anim.playing=false; save(); });
+setAnimStep(state.anim.step||0);
+
+/* ====== Cases ====== */
+const defaultCases=[
+  { id:'SW-01', type:'Salt‑wasting 21‑OHD',
+    vignette:'10‑day‑old 46,XX infant with poor feeding, vomiting, weight loss, lethargy. BP low; Na 126, K 6.8. Newborn screen: markedly ↑17‑OHP.',
+    key:'Salt‑wasting 21‑OHD',
+    mgmt:'Immediate isotonic saline + IV hydrocortisone; begin mineralocorticoid (fludrocortisone) and salt supplementation; monitor electrolytes.',
+    rationale:'21‑OH block → ↓cortisol/aldosterone; life‑threatening salt wasting with hyperkalemia and hyponatremia; 17‑OHP screening is diagnostic anchor. [1](https://journals.viamedica.pl/journal_of_transfusion_medicine_and_hemostasis/article/download/106171/84153)[2](https://www.researchgate.net/publication/374410326_Drug-Induced_Immune_Hemolytic_Anemia_Detection_of_New_Signals_and_Risk_Assessment_in_a_Nationwide_Cohort_Study/fulltext/651c320d1e2386049df3db22/Drug-Induced-Immune-Hemolytic-Anemia-Detection-of-New-Signals-and-Risk-Assessment-in-a-Nationwide-Cohort-Study.pdf)' },
+  { id:'SV-01', type:'Simple virilizing 21‑OHD',
+    vignette:'3‑year‑old with early pubarche, rapid growth, advanced bone age; electrolytes normal; ↑17‑OHP.',
+    key:'Simple virilizing 21‑OHD',
+    mgmt:'Physiologic glucocorticoid to suppress ACTH/androgens; growth and 17‑OHP monitoring; multidisciplinary follow‑up.',
+    rationale:'Androgen excess without salt wasting; suppression of ACTH decreases adrenal androgens. [1](https://journals.viamedica.pl/journal_of_transfusion_medicine_and_hemostasis/article/download/106171/84153)' },
+  { id:'NC-01', type:'Nonclassic 21‑OHD',
+    vignette:'15‑year‑old with hirsutism and irregular menses; morning 17‑OHP mildly ↑ (± ACTH‑stim test positive).',
+    key:'Nonclassic 21‑OHD',
+    mgmt:'COCs ± low‑dose glucocorticoid if fertility desired; address hyperandrogenic symptoms.',
+    rationale:'Partial enzyme deficiency; later onset; targeted therapy for symptoms and reproductive goals. [3](https://www.uptodate.com/contents/drug-induced-hemolytic-anemia)' },
+  { id:'11B-01', type:'11β‑hydroxylase deficiency',
+    vignette:'Child with virilization and hypertension/hypokalemia; labs show ↑11‑deoxycortisol/DOC (not 21‑OHD).',
+    key:'11β‑hydroxylase deficiency',
+    mgmt:'Glucocorticoid to suppress ACTH; manage hypertension; endocrine follow‑up.',
+    rationale:'Distinguish from 21‑OHD: excess DOC → mineralocorticoid effect (hypertension). [1](https://journals.viamedica.pl/journal_of_transfusion_medicine_and_hemostasis/article/download/106171/84153)' }
+];
+if(!state.cases.lib?.length){ state.cases.lib=defaultCases; }
+
+function renderBank(){
+  $("#bank").innerHTML = state.cases.lib.map(c=>`<div class="card"><b>${c.id}</b> — ${c.type}<br>${c.vignette}</div>`).join('');
+}
+renderBank();
+
+let tick=null;
+$("#startCase").addEventListener('click',()=>{
+  const c = state.cases.lib[Math.floor(Math.random()*state.cases.lib.length)];
+  state.cases.run = {case:c, secs:Number($("#caseTimer").value||3)*60}; $("#vignette").textContent=`${c.id}: ${c.vignette}`;
+  clearInterval(tick);
+  tick=setInterval(()=>{ state.cases.run.secs=Math.max(0,state.cases.run.secs-1);
+    $("#caseClock").textContent=`${Math.floor(state.cases.run.secs/60)}:${String(state.cases.run.secs%60).padStart(2,'0')}`;
+    if(state.cases.run.secs===0) clearInterval(tick);
+  },1000);
+  save();
+});
+$("#completeCase").addEventListener('click',()=>{
+  if(!state.cases.run){ $("#caseResult").className='status badS'; $("#caseResult").textContent='Start a case first.'; return; }
+  const chosen=$("#caseDx").value, mgmt=$("#caseMgmt").value.trim(), reason=$("#caseReason").value.trim();
+  const correct = (chosen===state.cases.run.case.key);
+  $("#caseResult").className='status '+(correct?'okS':'badS');
+  $("#caseResult").innerHTML=(correct?'Correct ✓':'Reassess')+` — Expected: <b>${state.cases.run.case.key}</b>; Suggested: ${state.cases.run.case.mgmt}<br><i>${state.cases.run.case.rationale}</i>`;
+  state.cases.run.outcome={chosen,mgmt,reason,correct,timeUsed:(Number($("#caseTimer").value||3)*60 - state.cases.run.secs)};
+  save();
+});
+$("#exportCases").addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify(state.cases.lib,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='CAH_21OH_CaseLibrary.json'; a.click(); URL.revokeObjectURL(a.href);
+});
+$("#importCases").addEventListener('change',async e=>{
+  const f=e.target.files[0]; if(!f)return; const txt=await f.text(); const obj=JSON.parse(txt);
+  if(Array.isArray(obj)){ state.cases.lib=obj; renderBank(); save(); alert('Imported ✓'); } else alert('Invalid JSON: provide an array of cases.');
+});
+
+/* ====== Quiz ====== */
+const quiz=[
+  {q:'Which serum steroid is markedly increased in 21‑OH deficiency?',opts:['17‑hydroxyprogesterone','Cortisol','Aldosterone','11‑deoxycortisol'],a:0},
+  {q:'21‑OH normally converts 17‑OHP to ______.',opts:['Cortisol','DOC','11‑deoxycortisol','Androstenedione'],a:2},
+  {q:'Salt‑wasting 21‑OHD typically shows which electrolytes?',opts:['Hypernatremia + hypokalemia','Hyponatremia + hyperkalemia','Hyponatremia + hypokalemia'],a:1},
+  {q:'A child with virilization and hypertension is most consistent with:',opts:['21‑OHD salt‑wasting','21‑OHD simple virilizing','11β‑hydroxylase deficiency'],a:2}
+];
+function renderQuiz(){
+  const ul=$("#quizList"); ul.innerHTML='';
+  quiz.forEach((it,idx)=>{
+    const li=document.createElement('li'); li.innerHTML=`<p>${idx+1}. ${it.q}</p>`;
+    it.opts.forEach((opt,i)=>{
+      const id=`q${idx}_${i}`;
+      const lab=document.createElement('label'); lab.style.display='block';
+      lab.innerHTML=`<input type="radio" name="q${idx}" id="${id}" value="${i}"> ${opt}`;
+      lab.querySelector('input').addEventListener('change',()=>{ state.quiz[`q${idx}`]=i; save(); });
+      li.appendChild(lab);
+    });
+    ul.appendChild(li);
+  });
+  // restore
+  Object.keys(state.quiz).forEach(k=>{
+    const val=state.quiz[k]; const inp=document.querySelector(`input[name="${k}"][value="${val}"]`); if(inp) inp.checked=true;
+  });
+}
+renderQuiz();
+$("#grade").addEventListener('click',()=>{
+  let correct=0; quiz.forEach((it,idx)=>{ if(Number(state.quiz[`q${idx}`])===it.a) correct++; });
+  const pct=Math.round(correct/quiz.length*100);
+  $("#score").className='status '+(pct>=70?'okS':'badS'); $("#score").textContent=`Score: ${correct}/${quiz.length} (${pct}%) — ${pct>=70?'PASS':'RETRY'}`;
+  save();
+});
+
+/* ====== Notes & Export ====== */
+$("#notesBox").value=state.notes||'';
+$("#saveNotes").addEventListener('click',()=>{ state.notes=$("#notesBox").value; $("#saveStatus").className='status okS'; $("#saveStatus").textContent='Saved ✓'; save(); });
+$("#copyNotes").addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText($("#notesBox").value); }catch(e){} });
+$("#printAll").addEventListener('click',()=>window.print());
+
+/* ====== Keyboard Shortcuts ====== */
+window.addEventListener('keydown',e=>{
+  if(e.key==='?'){ alert('Keyboard: Space Play/Pause • ←/→ Prev/Next (Animation) • 1=Animation 2=Cases 3=Quiz 4=Notes'); }
+  if(e.key==='1') showSec('btnAnim');
+  if(e.key==='2') showSec('btnCases');
+  if(e.key==='3') showSec('btnQuiz');
+  if(e.key==='4') showSec('btnNotes');
+  if(state.active==='anim'){
+    if(e.key===' '){ e.preventDefault(); $("#play").click(); }
+    if(e.key==='ArrowLeft') $("#prev").click();
+    if(e.key==='ArrowRight') $("#next").click();
+  }
+});
+</script>
+</body>
+</html>

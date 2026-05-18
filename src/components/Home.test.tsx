@@ -83,7 +83,7 @@ vi.mock('../utils/interactiveLectureCatalog.ts', () => ({
 }));
 
 describe('Home', () => {
-  const preferences = { focusMode: true, reduceMotion: false };
+  const preferences = { focusMode: true };
 
   beforeEach(() => {
     Object.values(mocks).forEach((mock) => mock.mockReset());

@@ -8,6 +8,20 @@ export interface AlgorithmNavigatorIntent {
   patternFamily?: string;
 }
 
+export const readAlgorithmNavigatorState = (): AlgorithmNavigatorIntent | null => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  try {
+    const raw = window.sessionStorage.getItem(ALGORITHM_NAVIGATOR_KEY);
+    return raw ? (JSON.parse(raw) as AlgorithmNavigatorIntent) : null;
+  } catch (error) {
+    console.error('Failed to read algorithm navigator state:', error);
+    return null;
+  }
+};
+
 export const setAlgorithmNavigatorIntent = (intent: AlgorithmNavigatorIntent) => {
   if (typeof window === 'undefined') {
     return;
@@ -18,6 +32,10 @@ export const setAlgorithmNavigatorIntent = (intent: AlgorithmNavigatorIntent) =>
   } catch (error) {
     console.error('Failed to persist algorithm navigator intent:', error);
   }
+};
+
+export const writeAlgorithmNavigatorState = (intent: AlgorithmNavigatorIntent) => {
+  setAlgorithmNavigatorIntent(intent);
 };
 
 export const consumeAlgorithmNavigatorIntent = (): AlgorithmNavigatorIntent | null => {

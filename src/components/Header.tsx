@@ -1,26 +1,34 @@
 import React from 'react';
-import { MenuIcon } from './icons';
+import { ChevronLeftIcon, ChevronRightIcon, MenuIcon } from './icons';
 import { Section } from '../types';
 import { useUIState } from '../hooks/useUIState';
 import { LearningPreferences } from '../hooks/useLearningPreferences';
 import { BRAND } from '../utils/brand';
+import { SectionNavigationController } from '../hooks/useSectionNavigation';
 
 interface HeaderProps {
   currentSection: Section;
   preferences: LearningPreferences;
   onToggleFocusMode: () => void;
-  onToggleReduceMotion: () => void;
+  navigation?: SectionNavigationController;
 }
 
 const Header: React.FC<HeaderProps> = ({
   currentSection,
   preferences,
   onToggleFocusMode,
-  onToggleReduceMotion,
+  navigation,
 }) => {
   const { toggleSidebar } = useUIState();
+  const safeNavigation: SectionNavigationController = navigation ?? {
+    canGoBack: false,
+    canGoForward: false,
+    goBack: () => {},
+    goForward: () => {},
+    pushSection: () => {},
+  };
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 px-4 py-3 backdrop-blur-sm shadow-sm">
+    <header className="sticky top-0 z-20 border-b border-slate-200 bg-white px-4 py-2.5">
       <div className="flex items-center gap-2">
         <button
           onClick={toggleSidebar}
@@ -29,12 +37,29 @@ const Header: React.FC<HeaderProps> = ({
         >
           <MenuIcon className="h-6 w-6" />
         </button>
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={safeNavigation.goBack}
+            disabled={!safeNavigation.canGoBack}
+            aria-label="Go to previous view"
+            className="rounded-lg border border-slate-200 bg-white p-2 text-slate-700 transition hover:border-slate-300 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <ChevronLeftIcon className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={safeNavigation.goForward}
+            disabled={!safeNavigation.canGoForward}
+            aria-label="Go to next view"
+            className="rounded-lg border border-slate-200 bg-white p-2 text-slate-700 transition hover:border-slate-300 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <ChevronRightIcon className="h-5 w-5" />
+          </button>
+        </div>
         <div className="min-w-0 flex-1">
-          <p className="hidden text-xs font-semibold uppercase tracking-wide text-sky-700 sm:block">{BRAND.name}</p>
-          <h1 className="truncate text-lg font-semibold text-slate-900">{currentSection}</h1>
-          <p className="hidden text-xs text-slate-500 sm:block">
-            {preferences.focusMode ? 'Focus mode keeps the current task compact and guided.' : 'Standard mode shows the full workspace context.'}
-          </p>
+          <p className="truncate text-[11px] font-semibold uppercase tracking-wide text-slate-500 sm:hidden">{BRAND.name}</p>
+          <h1 className="truncate text-sm font-semibold text-slate-900 md:text-base">{currentSection}</h1>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <button
@@ -45,19 +70,9 @@ const Header: React.FC<HeaderProps> = ({
                 ? 'border-sky-300 bg-sky-50 text-sky-800'
                 : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
             }`}
+            aria-pressed={preferences.focusMode}
           >
-            {preferences.focusMode ? 'Focus Mode On' : 'Focus Mode Off'}
-          </button>
-          <button
-            type="button"
-            onClick={onToggleReduceMotion}
-            className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
-              preferences.reduceMotion
-                ? 'border-emerald-300 bg-emerald-50 text-emerald-800'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
-            }`}
-          >
-            {preferences.reduceMotion ? 'Reduced Motion On' : 'Reduce Motion'}
+            {preferences.focusMode ? 'Focus View' : 'Full View'}
           </button>
         </div>
       </div>

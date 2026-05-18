@@ -1,0 +1,312 @@
+{
+  "clinical-path-foundations": {
+    "abpathSpecVersion": "CP_2026_04_10",
+    "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+    "abpathRootTopic": "Multiple CP roots",
+    "abpathPrimaryPath": "Blood Banking/Transfusion Medicine > Clinical Practice",
+    "abpathPrimaryLevel": "C",
+    "abpathAnchorSet": [
+      "Blood Banking/Transfusion Medicine > Clinical Practice",
+      "Hematopathology > Peripheral Blood",
+      "Hematopathology > Hemostasis and Thrombosis > Coagulation and Fibrinolytic Disorders > Factor Deficiency or Functional Abnormalities",
+      "Microbiology > Bacteriology",
+      "Chemical Pathology > Specimen Collection and Processing"
+    ],
+    "abpathPrecisionMode": "cross-domain-governed",
+    "abpathAnchorConfidence": "moderate",
+    "abpathTestableTask": [
+      "recognize",
+      "interpret",
+      "select-next-test",
+      "manage-critical-result",
+      "quality-regulatory"
+    ],
+    "abpathExamRisk": "high-yield",
+    "crossDomainJustification": "This module is intentionally a CP orientation layer spanning the major exam roots before learners branch into deeper single-domain modules.",
+    "abpathReviewStatus": "confirmed",
+    "boardMasteryFocusTitle": "Foundational CP workflow: specimen, result, escalation, and next-step logic",
+    "mustKnowConcepts": [
+      "CP board performance is driven by operational interpretation rather than isolated fact recall.",
+      "Specimen quality, result interpretation, and safety escalation are cross-cutting skills across CP roots.",
+      "The learner should know when to stay broad and when to route into a deeper domain-specific workup."
+    ],
+    "mustNotMissPitfalls": [
+      "Treating CP as disconnected silos without shared consult logic.",
+      "Missing the distinction between routine interpretation and critical-result escalation.",
+      "Choosing an advanced subspecialty step before the core lab-medicine framing is stable."
+    ],
+    "classicBoardStemPatterns": [
+      "A mixed CP stem where the key task is selecting the next best laboratory action.",
+      "A result interpretation problem that is unsafe without escalation.",
+      "A broad CP consult scenario requiring domain triage before disease naming."
+    ],
+    "calculationOrInterpretationTasks": [
+      "Choose which CP domain owns the next step in a mixed stem.",
+      "Interpret whether the first move is validation, reflex testing, or urgent communication.",
+      "Explain the report-level consequence of a CP result."
+    ],
+    "commonWrongAnswerTraps": [
+      "Jumping to a specific disease label before establishing the operational frame.",
+      "Ignoring safety or quality cues in a cross-domain CP vignette.",
+      "Assuming every CP question is primarily about memorized disease taxonomy."
+    ]
+  },
+  "hematology-red-cell-core": {
+    "abpathSpecVersion": "CP_2026_04_10",
+    "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+    "abpathRootTopic": "Hematopathology / Laboratory Hematology",
+    "abpathPrimaryPath": "Hematopathology > Non-Neoplastic Disorders of Erythrocytes > Anemias",
+    "abpathPrimaryLevel": "C",
+    "abpathAnchorSet": [
+      "Hematopathology > Peripheral Blood",
+      "Hematopathology > Bone Marrow",
+      "Hematopathology > Non-Neoplastic Disorders of Erythrocytes > Anemias",
+      "Hematopathology > Non-Neoplastic Disorders of Erythrocytes > Other Hemolytic Anemias > Immune",
+      "Hematopathology > Non-Neoplastic Disorders of Erythrocytes > Hemoglobinopathies > Hb S and Related Disorders",
+      "Hematopathology > Non-Neoplastic Disorders of Erythrocytes > PNH"
+    ],
+    "abpathPrecisionMode": "literal",
+    "abpathAnchorConfidence": "high",
+    "abpathTestableTask": [
+      "recognize",
+      "interpret",
+      "select-next-test",
+      "manage-critical-result"
+    ],
+    "abpathExamRisk": "high-yield",
+    "abpathReviewStatus": "confirmed",
+    "boardMasteryFocusTitle": "Anemia, hemolysis, marrow-linked red-cell reasoning, and escalation cues",
+    "mustKnowConcepts": [
+      "Peripheral blood, marrow, and specialized testing each answer different anemia questions.",
+      "Immune, non-immune, and microangiopathic hemolysis must be separated quickly.",
+      "PNH and hemoglobinopathy stems are often interpretation-plus-next-test questions."
+    ],
+    "mustNotMissPitfalls": [
+      "Calling hemolysis without integrating smear and laboratory context.",
+      "Missing when marrow evaluation changes the differential.",
+      "Overlooking high-risk hemolysis patterns that require urgent escalation."
+    ],
+    "classicBoardStemPatterns": [
+      "Anemia with smear abnormalities and targeted next-study selection.",
+      "Dark urine, cytopenias, or thrombosis suggesting PNH reasoning.",
+      "Hemoglobinopathy stem requiring distinction among common and less common variants."
+    ],
+    "calculationOrInterpretationTasks": [
+      "Interpret whether the pattern is immune, non-immune, or microangiopathic hemolysis.",
+      "Choose when marrow evaluation is necessary.",
+      "State the next test that best resolves the red-cell differential."
+    ],
+    "commonWrongAnswerTraps": [
+      "Choosing a confirmatory test that does not match the red-cell mechanism.",
+      "Ignoring marrow context in persistent or multilineage abnormalities.",
+      "Anchoring on one anemia label before the pattern is fully classified."
+    ]
+  },
+  "coagulation-hemostasis-core": {
+    "abpathSpecVersion": "CP_2026_04_10",
+    "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+    "abpathRootTopic": "Hematopathology / Laboratory Hematology",
+    "abpathPrimaryPath": "Hematopathology > Hemostasis and Thrombosis > Coagulation and Fibrinolytic Disorders > Factor Deficiency or Functional Abnormalities",
+    "abpathPrimaryLevel": "C",
+    "abpathAnchorSet": [
+      "Hematopathology > Hemostasis and Thrombosis > Coagulation and Fibrinolytic Disorders > Factor Deficiency or Functional Abnormalities",
+      "Hematopathology > Hemostasis and Thrombosis > Coagulation and Fibrinolytic Disorders > Factor Inhibitors",
+      "Hematopathology > Hemostasis and Thrombosis > Platelet Disorders and von Willebrand Disease > Qualitative Issues with Normal Platelet Counts",
+      "Hematopathology > Hemostasis and Thrombosis > Platelet Disorders and von Willebrand Disease > Thrombocytopenia > Immune",
+      "Hematopathology > Hemostasis and Thrombosis > Platelet Disorders and von Willebrand Disease > von Willebrand Disease",
+      "Hematopathology > Hemostasis and Thrombosis > Thrombophilic Disorders > Laboratory Diagnosis of Thrombosis and Thrombophilia"
+    ],
+    "abpathPrecisionMode": "literal",
+    "abpathAnchorConfidence": "high",
+    "abpathTestableTask": [
+      "recognize",
+      "interpret",
+      "calculate",
+      "select-next-test",
+      "manage-critical-result"
+    ],
+    "abpathExamRisk": "high-yield",
+    "abpathReviewStatus": "confirmed",
+    "boardMasteryFocusTitle": "Bleeding, clotting, inhibitor, and anticoagulant-monitoring interpretation",
+    "mustKnowConcepts": [
+      "PT, aPTT, platelet issues, fibrinolysis, and thrombophilia belong to different decision branches.",
+      "Mixing studies and follow-up testing are next-step interpretation tasks, not rote lists.",
+      "DIC, TTP/HUS, HIT, and major bleeding stems are safety-driven CP problems."
+    ],
+    "mustNotMissPitfalls": [
+      "Confusing bleeding and thrombosis workups.",
+      "Ordering broad panels before interpreting the first-line coagulation pattern.",
+      "Missing when a coagulation result implies urgent communication."
+    ],
+    "classicBoardStemPatterns": [
+      "Isolated prolonged aPTT or PT with next-test logic.",
+      "Thrombocytopenia with clotting or hemolysis concern.",
+      "Anticoagulant or antiplatelet monitoring stem requiring method-aware interpretation."
+    ],
+    "calculationOrInterpretationTasks": [
+      "Interpret first-line coagulation results into the correct branch of workup.",
+      "Choose the next most informative follow-up test.",
+      "Identify when the result requires immediate escalation."
+    ],
+    "commonWrongAnswerTraps": [
+      "Treating mixing studies as final diagnoses instead of branch points.",
+      "Missing the difference between inherited and acquired inhibitor logic.",
+      "Using anticoagulant-monitoring rules in the wrong assay context."
+    ]
+  },
+  "transfusion-cellular-therapy-core": {
+    "abpathSpecVersion": "CP_2026_04_10",
+    "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+    "abpathRootTopic": "Blood Banking / Transfusion Medicine",
+    "abpathPrimaryPath": "Blood Banking/Transfusion Medicine > Clinical Practice",
+    "abpathPrimaryLevel": "C",
+    "abpathAnchorSet": [
+      "Blood Banking/Transfusion Medicine > Clinical Practice",
+      "Blood Banking/Transfusion Medicine > Clinical Practice > Autoimmune Hemolytic Anemia",
+      "Blood Banking/Transfusion Medicine > Clinical Practice > Drug-Induced Hemolytic Anemia",
+      "HLA Antigens and Alleles"
+    ],
+    "abpathPrecisionMode": "cross-domain-governed",
+    "abpathAnchorConfidence": "moderate",
+    "abpathTestableTask": [
+      "recognize",
+      "interpret",
+      "select-next-test",
+      "manage-critical-result",
+      "quality-regulatory"
+    ],
+    "abpathExamRisk": "high-yield",
+    "crossDomainJustification": "This module is anchored in blood banking and transfusion medicine, but it intentionally includes HLA-linked support and cellular-therapy decision points that cross into adjacent CP governance.",
+    "abpathReviewStatus": "confirmed",
+    "boardMasteryFocusTitle": "Compatibility, reaction workup, platelet support, HLA, and cellular-therapy decision logic",
+    "mustKnowConcepts": [
+      "Blood bank stems are usually about safety, interpretation, and the next laboratory action.",
+      "Compatibility testing, hemolysis workup, HLA-linked issues, and product selection are connected but distinct branches.",
+      "The correct answer is often the safest operational step before the most detailed immunohematology explanation."
+    ],
+    "mustNotMissPitfalls": [
+      "Continuing a transfusion problem-solving sequence before stopping the transfusion and escalating.",
+      "Confusing product-selection questions with antibody-identification questions.",
+      "Ignoring HLA or platelet refractoriness context when it changes support strategy."
+    ],
+    "classicBoardStemPatterns": [
+      "Acute transfusion reaction with clerical check and DAT-linked workup.",
+      "Crossmatch or antibody-screen discrepancy requiring next-step selection.",
+      "Platelet or HLA support question asking for the safest product strategy."
+    ],
+    "calculationOrInterpretationTasks": [
+      "Interpret the immediate significance of a transfusion reaction pattern.",
+      "Choose the next blood-bank test or product decision.",
+      "State when regulatory or safety communication is required."
+    ],
+    "commonWrongAnswerTraps": [
+      "Choosing advanced serology before core safety steps.",
+      "Mixing HLA support logic with routine red-cell compatibility logic.",
+      "Underestimating how often the exam tests escalation rather than final etiology."
+    ]
+  },
+  "clinical-microbiology-core": {
+    "abpathSpecVersion": "CP_2026_04_10",
+    "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+    "abpathRootTopic": "Clinical Microbiology",
+    "abpathPrimaryPath": "Microbiology > Bacteriology",
+    "abpathPrimaryLevel": "C",
+    "abpathAnchorSet": [
+      "Microbiology > Bacteriology",
+      "Microbiology > Mycology",
+      "Microbiology > Virology",
+      "Microbiology > Parasitology"
+    ],
+    "abpathPrecisionMode": "nearest-valid-deep",
+    "abpathAnchorConfidence": "moderate",
+    "abpathTestableTask": [
+      "recognize",
+      "interpret",
+      "troubleshoot",
+      "select-next-test",
+      "manage-critical-result"
+    ],
+    "abpathExamRisk": "high-yield",
+    "nearestValidReason": "workflow concept distributed across multiple spec nodes",
+    "abpathReviewStatus": "confirmed",
+    "boardMasteryFocusTitle": "Specimen-to-bench reasoning, organism workup, and AST-guided reporting",
+    "mustKnowConcepts": [
+      "Microbiology boards logic is specimen quality plus organism workup plus reporting consequence.",
+      "Bench methods and AST belong inside organism-context reasoning.",
+      "Critical organism notification and infection-control consequences are part of exam-level interpretation."
+    ],
+    "mustNotMissPitfalls": [
+      "Calling a poor specimen interpretable.",
+      "Reporting susceptibility without organism or clinical context.",
+      "Ignoring when a microbiology finding changes isolation or escalation."
+    ],
+    "classicBoardStemPatterns": [
+      "Recent procedure or hospital exposure with resistant organism workup.",
+      "Specimen-quality rejection versus processing question.",
+      "Method-selection stem contrasting culture, antigen, or molecular approaches."
+    ],
+    "calculationOrInterpretationTasks": [
+      "Interpret whether the microbiology pattern supports immediate reporting, reflex testing, or recollection.",
+      "Choose the next identification or susceptibility step.",
+      "State the practical consequence of the result."
+    ],
+    "commonWrongAnswerTraps": [
+      "Choosing a definitive test that bypasses specimen quality logic.",
+      "Treating AST as detached from stewardship and communication.",
+      "Using a narrow microbiology method outside its proper interpretive scope."
+    ]
+  },
+  "chemical-pathology-core": {
+    "abpathSpecVersion": "CP_2026_04_10",
+    "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+    "abpathRootTopic": "Chemical Pathology",
+    "abpathPrimaryPath": "Chemical Pathology > Specimen Collection and Processing",
+    "abpathPrimaryLevel": "C",
+    "abpathAnchorSet": [
+      "Chemical Pathology > Specimen Collection and Processing",
+      "Chemical Pathology > Method Validation & QC",
+      "Chemical Pathology > Method Validation & QC > Analytical Measurement Range (AMR)",
+      "Chemical Pathology > Method Validation & QC > Carryover",
+      "Chemical Pathology > Method Validation & QC > Coefficient of Variation (CV)",
+      "Chemical Pathology > Method Validation & QC > Linearity"
+    ],
+    "abpathPrecisionMode": "nearest-valid-deep",
+    "abpathAnchorConfidence": "moderate",
+    "abpathTestableTask": [
+      "recognize",
+      "interpret",
+      "calculate",
+      "select-next-test",
+      "quality-regulatory"
+    ],
+    "abpathExamRisk": "high-yield",
+    "nearestValidReason": "workflow concept distributed across multiple spec nodes",
+    "abpathReviewStatus": "confirmed",
+    "boardMasteryFocusTitle": "Clinical biochemistry interpretation, endocrine-metabolic patterns, and method-aware CP reasoning",
+    "mustKnowConcepts": [
+      "Chemistry stems are often about interpreting the pattern plus recognizing method limits.",
+      "QC, AMR, linearity, and carryover are testable operational concepts, not only laboratory admin details.",
+      "Endocrine and metabolic teaching labels should map back to chemistry interpretation rather than masquerade as literal spec nodes."
+    ],
+    "mustNotMissPitfalls": [
+      "Ignoring assay or specimen limitations when the value looks clinically dramatic.",
+      "Treating endocrine names as sufficient without biochemical interpretation.",
+      "Missing when a result pattern is primarily a QC or interference problem."
+    ],
+    "classicBoardStemPatterns": [
+      "Unexpected chemistry result requiring distinction between true pathology and method issue.",
+      "Endocrine or metabolic profile asking for the next best confirmatory test.",
+      "QC or validation stem requiring recognition of the failing parameter."
+    ],
+    "calculationOrInterpretationTasks": [
+      "Interpret whether the chemistry pattern is analytically trustworthy.",
+      "Choose the next confirmatory or alternate method when needed.",
+      "Apply QC or validation logic to a practical lab scenario."
+    ],
+    "commonWrongAnswerTraps": [
+      "Treating an interference problem as a disease problem.",
+      "Choosing the most specific disease label instead of the most defensible chemistry interpretation.",
+      "Ignoring the operational meaning of validation or QC terminology."
+    ]
+  }
+}

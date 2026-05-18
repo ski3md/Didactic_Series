@@ -1,0 +1,325 @@
+{
+  "version": "pthfndr-didactics-learning-ux-contract.v1",
+  "productSurface": "/didactics",
+  "purpose": "Deterministic UI/UX contract for reducing cognitive load, accelerating orientation, preserving diagnostic reasoning flow, strengthening memory encoding, improving error recovery, sustaining long study sessions, and reinforcing trust across P@thfndr didactics.",
+  "governingPrinciple": "The interface should disappear psychologically so the learner feels oriented, guided, immersed, rewarded, and intellectually engaged rather than burdened by software.",
+  "designOutcomes": [
+    "cognitive_load_reduction",
+    "rapid_orientation",
+    "uninterrupted_diagnostic_reasoning_flow",
+    "memory_encoding_reinforcement",
+    "fast_error_recovery",
+    "sustained_engagement",
+    "trust_and_authority"
+  ],
+  "pageArchitecture": {
+    "requiredRegions": [
+      {
+        "id": "orientation_zone",
+        "purpose": "Tell the user where they are, what the topic is, why it matters, and what to do next."
+      },
+      {
+        "id": "working_zone",
+        "purpose": "Support the active task: tutorial reading, image review, MCQ solving, or case interpretation."
+      },
+      {
+        "id": "support_zone",
+        "purpose": "Hold pearls, pitfalls, context links, differential anchors, and optional deep dives."
+      },
+      {
+        "id": "feedback_zone",
+        "purpose": "Surface progress updates, mastery changes, discrepancy alerts, remediation links, and next actions."
+      }
+    ],
+    "recommendedLayout": {
+      "leftSidebar": "navigation and contextual location",
+      "mainPanel": "active learning and decision-making work",
+      "rightPanel": "pearls, pitfalls, and semantic reinforcement",
+      "bottomDock": "notes, review queue, and follow-up tasks"
+    }
+  },
+  "visualHierarchy": {
+    "requiredTypeRoles": {
+      "h1": "page mission",
+      "h2": "domain or module",
+      "h3": "section or active task",
+      "body": "actionable content"
+    },
+    "rules": [
+      "The user must be able to identify where they are, what matters most, and what to do next within one viewport.",
+      "Typography, spacing, grouping, contrast, and motion must establish an obvious next step.",
+      "Equal visual weight across unrelated elements is forbidden."
+    ],
+    "failConditions": [
+      "Dense undifferentiated text blocks above the fold.",
+      "Multiple competing primary actions in the same visual tier.",
+      "Inconsistent spacing that obscures hierarchy."
+    ]
+  },
+  "navigationFramework": {
+    "persistentCoreNav": [
+      "Home",
+      "Dashboard",
+      "Didactics",
+      "Cases",
+      "Weak Areas",
+      "Search",
+      "Progress",
+      "Settings"
+    ],
+    "rules": [
+      "Core navigation locations must remain stable across the platform.",
+      "Navigation must use icon and text together.",
+      "Current location must always be visibly highlighted."
+    ],
+    "breadcrumbs": {
+      "required": true,
+      "format": "Domain > Module > Topic > Task",
+      "example": "CP > Transfusion Medicine > Hemolytic Reactions > DAT Interpretation"
+    },
+    "destinationViewRule": "Selecting a tutorial, lecture, case, or teaching session must open a destination view with a clear route back to the library context."
+  },
+  "cognitiveLoadManagement": {
+    "progressiveDisclosure": {
+      "required": true,
+      "rule": "Do not present all details at once. Show overview first, then reveal details, pearls, pitfalls, and deep dives incrementally."
+    },
+    "chunking": {
+      "requiredStructures": [
+        "cards",
+        "collapsible sections",
+        "diagnostic clusters",
+        "visual groupings"
+      ],
+      "preferredContentBuckets": [
+        "Histology",
+        "IHC",
+        "Molecular",
+        "Differential",
+        "Pitfalls"
+      ]
+    },
+    "whitespace": {
+      "required": true,
+      "rule": "Whitespace must be treated as an instructional aid that reduces fatigue and improves comprehension."
+    }
+  },
+  "learningExperience": {
+    "immediateContextFrame": {
+      "requiredFields": [
+        "ABPath Scope",
+        "Why It Matters",
+        "Common Board Trap",
+        "Estimated Time",
+        "Difficulty"
+      ],
+      "placement": "top of every tutorial or teaching-session destination page"
+    },
+    "stateAwareness": {
+      "mustRemember": [
+        "last module",
+        "scroll position",
+        "filters",
+        "notes",
+        "pending reviews",
+        "weak topics"
+      ]
+    },
+    "feedbackLoops": {
+      "requiredFeedback": [
+        "answer submitted",
+        "mastery updated",
+        "progress changed",
+        "review scheduled"
+      ],
+      "rule": "Every meaningful user action must produce visible feedback."
+    },
+    "memoryReinforcement": {
+      "requiredBehaviors": [
+        "automatic weak-topic revisit",
+        "interleaving across adjacent topics",
+        "near-forgotten item reinforcement"
+      ]
+    },
+    "errorCenteredLearning": {
+      "requiredOnIncorrect": [
+        "explanation",
+        "why distractors are wrong",
+        "linked remediation",
+        "related question queue"
+      ]
+    },
+    "adaptiveSequencing": {
+      "mustAdjust": [
+        "difficulty",
+        "pace",
+        "topic order",
+        "question type"
+      ],
+      "signals": [
+        "fatigue",
+        "accuracy",
+        "time_to_answer",
+        "recent_performance"
+      ]
+    }
+  },
+  "visualLanguage": {
+    "typography": {
+      "maxFonts": 2,
+      "lineLengthCharacters": {
+        "min": 60,
+        "max": 90
+      },
+      "rules": [
+        "Readable line height is mandatory.",
+        "Decorative fonts are forbidden in instructional surfaces.",
+        "Excessive capitalization is forbidden."
+      ]
+    },
+    "colorSemantics": {
+      "green": "mastered or correct",
+      "red": "unsafe or incorrect",
+      "yellow": "caution",
+      "blue": "informational",
+      "purple": "advanced or experimental"
+    },
+    "iconography": {
+      "rule": "Use one unified icon system. Icons must reinforce meaning and reduce reading burden rather than decorate."
+    },
+    "microinteractions": {
+      "allowed": [
+        "subtle transitions",
+        "answer reveal fade",
+        "mastery progress animation"
+      ],
+      "forbidden": [
+        "attention-seeking motion that interrupts reasoning",
+        "layout-shifting animation",
+        "decorative motion without instructional value"
+      ]
+    }
+  },
+  "interactionDesign": {
+    "predictability": {
+      "rule": "Buttons, cards, previews, keyboard shortcuts, and navigation outcomes must behave consistently across the platform."
+    },
+    "hoverIntelligence": {
+      "recommended": true,
+      "examples": [
+        "mutation to definition",
+        "disease to differential",
+        "stain to positivity pattern"
+      ]
+    },
+    "frictionReduction": {
+      "minimize": [
+        "modal overload",
+        "redundant confirmations",
+        "redundant navigation",
+        "unnecessary forms"
+      ]
+    }
+  },
+  "userJourney": {
+    "entryState": {
+      "requiredChoices": [
+        "Resume",
+        "Weak topics",
+        "Due reviews"
+      ],
+      "rule": "The didactics landing state must answer 'What should I do right now?' immediately."
+    },
+    "optimalFlow": [
+      "Re-entry",
+      "Orientation",
+      "Active learning",
+      "Reinforcement",
+      "Progress closure"
+    ],
+    "progressClosure": {
+      "requiredOutputs": [
+        "mastery updated",
+        "percentile change",
+        "next recommended task"
+      ]
+    },
+    "rewardLoops": {
+      "recommendedSignals": [
+        "mastery bars",
+        "streaks",
+        "completion indicators",
+        "percentile changes",
+        "improvement trends"
+      ]
+    }
+  },
+  "dashboardIntelligence": {
+    "requiredPanels": [
+      "mastery heatmaps",
+      "forecasting panels",
+      "cross-linking intelligence"
+    ],
+    "crossLinkTargets": [
+      "cases",
+      "mutations",
+      "stains",
+      "differential diagnoses",
+      "board questions",
+      "pitfalls"
+    ]
+  },
+  "accessibilityAndTrust": {
+    "accessibility": {
+      "required": [
+        "keyboard navigation",
+        "screen reader support",
+        "scalable text",
+        "contrast compliance",
+        "reduced motion mode"
+      ]
+    },
+    "mobileResponsiveness": {
+      "requiredContexts": [
+        "workstation",
+        "phone",
+        "between cases",
+        "during signout",
+        "commuting"
+      ]
+    },
+    "stability": {
+      "forbidden": [
+        "layout jumping",
+        "flashing",
+        "inconsistent controls",
+        "lost progress"
+      ]
+    },
+    "informationIntegrity": {
+      "required": [
+        "source transparency",
+        "version tracking",
+        "ABPath alignment",
+        "review status visibility"
+      ]
+    }
+  },
+  "routeAcceptanceGates": [
+    "Every didactics destination route must show an orientation frame before the main instructional body.",
+    "Every selected tutorial or teaching session must open as a destination view rather than remaining only a list-card highlight.",
+    "Every route must preserve state on resume unless a user intentionally resets context.",
+    "Every wrong answer must expose explanation plus remediation routing.",
+    "Every core didactics page must make the AP versus CP scope obvious within one viewport.",
+    "Every interactive surface must preserve stable control placement and predictable navigation outcomes."
+  ],
+  "uiUxAuditChecklist": [
+    "Can a new user identify current location within 3 seconds?",
+    "Can the user infer the next best action without scrolling?",
+    "Does the page expose scope, difficulty, time, and board relevance immediately?",
+    "Does the route preserve prior state after leaving and returning?",
+    "Does an incorrect answer trigger explanation and next-step remediation?",
+    "Is CP content surfaced with equal clarity to AP content where applicable?",
+    "Do colors, icons, and motion retain one meaning each across the surface?"
+  ]
+}

@@ -228,6 +228,24 @@ export type LecturePlayerMode =
   | 'check'
   | 'transcript';
 
+export type StudyDestinationKind =
+  | 'landing'
+  | 'topic_overview'
+  | 'subtopic_overview'
+  | 'item_detail';
+
+export type StudyWorkspace = 'tutorials' | 'lectures' | 'algorithms';
+
+export interface ActiveStudyDestination {
+  workspace: StudyWorkspace;
+  kind: StudyDestinationKind;
+  majorTopicId?: string;
+  subtopicId?: string;
+  itemId?: string;
+  activeTab?: string;
+  previous?: ActiveStudyDestination | null;
+}
+
 export type InteractiveLectureSlideType =
   | 'intro'
   | 'framework'
@@ -528,6 +546,234 @@ export interface AssessmentRubric {
   criteria: AssessmentRubricCriterion[];
 }
 
+export type AbpathPrecisionMode =
+  | 'literal'
+  | 'nearest-valid-deep'
+  | 'cross-domain-governed'
+  | 'local-teaching-only';
+
+export type AbpathAnchorConfidence = 'high' | 'moderate' | 'low';
+
+export type AbpathTestableTask =
+  | 'recognize'
+  | 'interpret'
+  | 'calculate'
+  | 'troubleshoot'
+  | 'select-next-test'
+  | 'manage-critical-result'
+  | 'quality-regulatory';
+
+export type AbpathExamRisk = 'high-yield' | 'medium-yield' | 'low-yield';
+
+export type AbpathReviewStatus = 'confirmed' | 'needs-faculty-review';
+
+export type AbpathNearestValidReason =
+  | 'disease narrower than CP spec'
+  | 'modern entity not literal in spec'
+  | 'workflow concept distributed across multiple spec nodes'
+  | 'interactive artifact teaches operational interpretation';
+
+export interface TutorialAbpathScope {
+  domain: 'AP' | 'CP';
+  root: string;
+  primaryPath: string;
+  title: string;
+  confidence: 'high' | 'medium' | 'low';
+  source: string;
+  sourceLine?: number | null;
+}
+
+export interface ValidatedMappingManifestRow {
+  key: string;
+  id: string;
+  title: string;
+  file: string;
+  track: 'surgical-path' | 'clinical-path' | 'cross-cutting';
+  sourceType: 'crosswalk' | 'cp-governance' | 'interactive-cp';
+  abpathDomain: 'AP' | 'CP';
+  sourceAnchorExists: boolean;
+  validatedForPromotion: boolean;
+  governancePending: boolean;
+  promotionStatus: 'validated' | 'governance-pending' | 'excluded';
+  canonicalForId: boolean;
+  canonicalSourceKey: string;
+  abpathRoot: string;
+  abpathPrimaryPath: string;
+  abpathSpecVersion?: string;
+  abpathPrecisionMode?: AbpathPrecisionMode;
+  abpathAnchorConfidence?: AbpathAnchorConfidence | 'medium';
+  abpathReviewStatus?: AbpathReviewStatus;
+  abpathExamRisk?: AbpathExamRisk;
+  abpathTestableTask?: AbpathTestableTask[];
+  nearestValidReason?: AbpathNearestValidReason;
+  crossDomainJustification?: string;
+  facultyReviewReason?: string;
+  reviewOwner?: string;
+  reviewAction?: string;
+  conflictFlags?: string[];
+}
+
+export interface ValidatedMappingsManifest {
+  generatedAt: string;
+  sourceFingerprint: string;
+  source?: {
+    crosswalk: string;
+    cpGovernanceReport: string;
+    cpModules: string;
+    cpInteractiveTutorials: string;
+    tutorialLabelValidation: string;
+  };
+  summary?: {
+    totalRows: number;
+    canonicalRowCount: number;
+    validatedRowCount: number;
+    governancePendingRowCount: number;
+    excludedRowCount: number;
+    clinicalPathValidatedCount: number;
+    cpDomainValidatedCount: number;
+  };
+  tutorialKeysValidated: string[];
+  tutorialIdsValidated: string[];
+  blockedTutorialKeys: string[];
+  blockedTutorialIds: string[];
+  rows: ValidatedMappingManifestRow[];
+}
+
+export interface PathfndrPerformanceSnapshot {
+  subject: string;
+  percentAnswered: number;
+  numberAnswered: number;
+  totalQuestions: number;
+  remainingQuestions: number;
+  remainingPercent: number;
+  percentCorrect: number;
+  correct: number;
+  incorrect: number;
+  userPercentile?: number;
+  allUsersAverage?: number;
+  allUsersMedian?: number;
+  allUsersMode?: number;
+  allUsersRange?: string;
+}
+
+export interface ReviewGridTile {
+  questionNumber: number;
+  domain: string;
+  result: 'correct' | 'incorrect' | 'unanswered' | 'flagged';
+  questionId?: string;
+  abpathAnchorPath?: string;
+  timeToAnswerSeconds?: number;
+  confidence?: 1 | 2 | 3 | 4 | 5;
+}
+
+export interface QuestionOption {
+  label?: string;
+  text: string;
+}
+
+export interface ImportedQuestion {
+  source: 'pthfndr_export' | 'manual' | 'pdf_review' | 'anki' | 'custom';
+  stem: string;
+  options: QuestionOption[];
+  selectedAnswer?: string;
+  markedCorrectAnswer?: string;
+  images?: string[];
+  domain?: string;
+  abpathAnchorPath?: string;
+  importWarnings?: string[];
+}
+
+export interface AnswerKeyValidationConfig {
+  enabled: boolean;
+  compareAgainstInternalKnowledgeBase: boolean;
+  flagBiologicallyImplausibleAnswers: boolean;
+  requireFacultyReviewForDiscordantItems: boolean;
+}
+
+export interface BoardPassingPredictorInputs {
+  inServiceScore?: number;
+  mcqPracticeSessions: number;
+  pthfndrSessions: number;
+  ankiAccuracy?: number;
+  studyHoursPerWeek?: number;
+  grossingExperience?: number;
+  feedbackQuality?: number;
+  wellBeingScore?: number;
+}
+
+export interface BoardPassingPrediction {
+  predictedScore: number;
+  readinessBand: 'unsafe' | 'borderline' | 'improving' | 'likely_pass' | 'maintenance';
+  confidence: 'low' | 'moderate' | 'high';
+  limitingFactors: string[];
+  nextActions: string[];
+}
+
+export interface TimeSeriesPoint {
+  label: string;
+  value: number;
+}
+
+export interface PerformanceForecast {
+  subject: string;
+  metric: 'percentCorrect' | 'percentAnswered' | 'remainingQuestions' | 'timePerQuestion' | 'percentile';
+  observedPoints: TimeSeriesPoint[];
+  forecastPoints: TimeSeriesPoint[];
+  forecastModel: 'linear' | 'moving_average' | 'prophet' | 'bayesian_mastery';
+  warning?: string;
+}
+
+export type DidacticsCockpitCard =
+  | "Today's board-risk topics"
+  | 'Weakest CP domains'
+  | 'Questions remaining'
+  | 'Accuracy vs percentile'
+  | 'Incorrect cluster review'
+  | 'Time per question'
+  | 'Predicted readiness'
+  | 'Next 20-question drill'
+  | 'Answer-key discrepancy alerts';
+
+export type DidacticsVisualMode =
+  | 'cockpit_dashboard'
+  | 'pthfndr_review_grid'
+  | 'weakness_heatmap'
+  | 'abpath_anchor_map'
+  | 'forecast_timeline'
+  | 'question_review_stack'
+  | 'board_passing_calculator';
+
+export interface DidacticsReviewGridBehavior {
+  showTileGrid: boolean;
+  groupBy: 'domain' | 'abpathAnchor' | 'testSession';
+  tileClickBehavior: 'open_question_review';
+  showCorrectIncorrectOverlay: boolean;
+  showWeakClusterSummary: boolean;
+}
+
+export interface CPGovernanceContract {
+  abpathSpecVersion: 'CP_2026_04_10';
+  abpathSourceUrl: string;
+  abpathRootTopic: string;
+  abpathPrimaryPath: string;
+  abpathPrimaryLevel: string;
+  abpathAnchorSet: string[];
+  abpathPrecisionMode: AbpathPrecisionMode;
+  abpathAnchorConfidence: AbpathAnchorConfidence;
+  abpathTestableTask: AbpathTestableTask[];
+  abpathExamRisk: AbpathExamRisk;
+  nearestValidReason?: AbpathNearestValidReason;
+  crossDomainJustification?: string;
+  facultyReviewReason?: string;
+  abpathReviewStatus: AbpathReviewStatus;
+  boardMasteryFocusTitle: string;
+  mustKnowConcepts: string[];
+  mustNotMissPitfalls: string[];
+  classicBoardStemPatterns: string[];
+  calculationOrInterpretationTasks: string[];
+  commonWrongAnswerTraps: string[];
+}
+
 export interface ActiveCurriculumLectureRef {
   id: string;
   label: string;
@@ -551,4 +797,5 @@ export interface ActiveCurriculumModule {
   algorithmTopics: string[];
   assessmentTopics: string[];
   competency?: LearnerCompetencyMetadata;
+  cpGovernance?: CPGovernanceContract;
 }

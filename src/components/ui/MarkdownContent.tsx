@@ -1,78 +1,31 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { normalizeImportedTeachingMarkdown, parseTeachingSections } from '../../utils/teachingSessionContent.ts';
 
 interface MarkdownContentProps {
   content: string;
   className?: string;
-  variant?: 'default' | 'tutorial';
+  variant?: 'default' | 'tutorial' | 'lecture';
 }
-
-const SECTION_LABELS = [
-  'Clinical Vignette',
-  'Clinical_Vignette',
-  'Objective',
-  'Objectives',
-  'Learning Objectives',
-  'Case Discussion',
-  'Case_Discussion',
-  'Discussion',
-  'Differential Diagnosis',
-  'Diagnostic Workup',
-  'Laboratory Findings',
-  'Microscopic Findings',
-  'Histologic Features',
-  'Key Features',
-  'Teaching Points',
-  'Pearls',
-  'Pitfall',
-  'Pitfalls',
-  'Management',
-  'Final Diagnosis',
-  'Gold Standard Report',
-  'References',
-];
-
-const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-const normalizeImportedMarkdown = (content: string): string => {
-  let normalized = content
-    .replace(/\[\[([^\]|#]+)(?:#[^\]|]+)?\|([^\]]+)\]\]/g, '$2')
-    .replace(/\[\[([^\]|#]+)(?:#[^\]]+)?\]\]/g, '$1')
-    .replace(/\r\n/g, '\n')
-    .replace(/\t/g, '  ')
-    .replace(/\bClinical_Vignette\b/g, 'Clinical Vignette')
-    .replace(/\bCase_Discussion\b/g, 'Case Discussion')
-    .replace(/([^\n])#{1,6}\s*(Objective|Objectives)\s*-\s*/gi, '$1\n\n## Learning Objectives\n\n- ')
-    .replace(/(^|\n)(Objective|Objectives)\s*-\s*/gi, '$1## Learning Objectives\n\n- ');
-
-  SECTION_LABELS.forEach((label) => {
-    const readableLabel = label.replace(/_/g, ' ');
-    const escaped = escapeRegExp(label);
-    normalized = normalized
-      .replace(new RegExp(`([^\\n])#{1,6}\\s*${escaped}\\s*[-:]?\\s*`, 'g'), `$1\n\n## ${readableLabel}\n\n`)
-      .replace(new RegExp(`(^|\\n)#{1,6}\\s*${escaped}(?=\\S)`, 'g'), `$1## ${readableLabel}\n\n`)
-      .replace(new RegExp(`(^|\\n)${escaped}(?=[A-Z0-9])`, 'g'), `$1## ${readableLabel}\n\n`)
-      .replace(new RegExp(`\\s+${escaped}(?=[A-Z0-9])`, 'g'), `\n\n## ${readableLabel}\n\n`)
-      .replace(new RegExp(`(^|\\n)${escaped}\\s*[-:]\\s*`, 'g'), `$1## ${readableLabel}\n\n`);
-  });
-
-  normalized = normalized
-    .replace(/^#\s+(.+?)\s+Case Tutorial\s*$/gm, '# $1\n\n_Clinical case tutorial_')
-    .replace(/^#{1,6}\s*(Objective|Objectives)$/gim, '## Learning Objectives')
-    .replace(/^#{1,6}\s*(Case Discussion)$/gim, '## Case Discussion')
-    .replace(/([.!?])\s*-\s+(?=[A-Z0-9])/g, '$1\n- ')
-    .replace(/(## References\n\n)-\s+/g, '$1- ')
-    .replace(/(\n## Learning Objectives\n\n)-\s+/g, '$1- ')
-    .replace(/(\n-\s+[^\n]+?)\s+-\s+/g, '$1\n- ')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
-
-  return normalized;
-};
 
 const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className = '', variant = 'default' }) => {
   const isTutorial = variant === 'tutorial';
+  const isLecture = variant === 'lecture';
+  const normalizedContent = normalizeImportedTeachingMarkdown(content);
+  const sections = isLecture ? parseTeachingSections(content) : [];
+  const learningObjectives = isLecture
+    ? sections
+        .filter((section) => section.kind === 'objectives')
+        .flatMap((section) => section.bulletItems)
+        .slice(0, 5)
+    : [];
+  const teachingPoints = isLecture
+    ? sections
+        .filter((section) => ['teaching-points', 'pitfalls', 'diagnosis'].includes(section.kind))
+        .flatMap((section) => section.bulletItems)
+        .slice(0, 5)
+    : [];
   const baseClassName = isTutorial
     ? [
         'prose prose-slate max-w-none',
@@ -86,6 +39,18 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className = 
         'prose-strong:font-semibold prose-strong:text-slate-950',
         'prose-em:text-slate-500 prose-em:not-italic',
       ].join(' ')
+    : isLecture
+      ? [
+          'prose prose-slate max-w-none',
+          'prose-headings:font-serif prose-headings:text-slate-950',
+          'prose-h3:mt-6 prose-h3:text-lg prose-h3:font-semibold prose-h3:text-slate-950',
+          'prose-p:my-3 prose-p:text-[1rem] prose-p:leading-7 prose-p:text-slate-700',
+          'prose-li:my-1 prose-li:text-slate-700 prose-li:leading-7',
+          'prose-ul:my-3 prose-ul:pl-5',
+          'prose-ol:my-3 prose-ol:pl-5',
+          'prose-strong:font-semibold prose-strong:text-slate-950',
+          'prose-blockquote:border-l-sky-300 prose-blockquote:text-slate-700',
+        ].join(' ')
     : 'prose prose-slate max-w-none prose-headings:font-serif prose-headings:text-slate-900 prose-p:text-slate-700 prose-li:text-slate-700 prose-strong:text-slate-900';
   const tutorialComponents = isTutorial
     ? {
@@ -118,24 +83,139 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ content, className = 
         ),
       }
     : {};
+  const lectureComponents = isLecture
+    ? {
+        h3: ({ ...props }) => (
+          <h3 {...props} className="mt-6 font-serif text-lg font-semibold leading-snug text-slate-950" />
+        ),
+        p: ({ ...props }) => (
+          <p {...props} className="my-3 text-[1rem] leading-7 text-slate-700" />
+        ),
+        ul: ({ ...props }) => (
+          <ul {...props} className="my-4 list-disc space-y-2 pl-6 text-slate-700" />
+        ),
+        ol: ({ ...props }) => (
+          <ol {...props} className="my-4 list-decimal space-y-2 pl-6 text-slate-700" />
+        ),
+        li: ({ ...props }) => (
+          <li {...props} className="pl-1 text-[1rem] leading-7 text-slate-700" />
+        ),
+        strong: ({ ...props }) => (
+          <strong {...props} className="font-semibold text-slate-950" />
+        ),
+      }
+    : {};
+  const markdownComponents = {
+    ...tutorialComponents,
+    ...lectureComponents,
+    a: ({ ...props }) => (
+      <a
+        {...props}
+        className="text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-800"
+        target="_blank"
+        rel="noreferrer"
+      />
+    ),
+  };
+
+  if (isLecture) {
+    return (
+      <div className={`space-y-6 ${className}`}>
+        <section className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+          <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Teaching note view</div>
+              <h4 className="mt-2 font-serif text-2xl font-semibold text-slate-950">Session guide</h4>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+                The imported narrative is reorganized into faculty-friendly sections so you can skim the teaching arc before reading the full notes.
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-3 xl:min-w-[20rem]">
+              <div className="rounded-lg border border-slate-200 bg-white px-4 py-3">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Sections</div>
+                <div className="mt-2 text-2xl font-semibold text-slate-950">{sections.length}</div>
+              </div>
+              <div className="rounded-lg border border-slate-200 bg-white px-4 py-3">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Objectives</div>
+                <div className="mt-2 text-2xl font-semibold text-slate-950">{learningObjectives.length}</div>
+              </div>
+              <div className="rounded-lg border border-slate-200 bg-white px-4 py-3">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Teaching points</div>
+                <div className="mt-2 text-2xl font-semibold text-slate-950">{teachingPoints.length}</div>
+              </div>
+            </div>
+          </div>
+
+          {sections.length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {sections.map((section) => (
+                <a
+                  key={section.id}
+                  href={`#${section.id}`}
+                  className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:border-sky-300 hover:text-slate-900"
+                >
+                  {section.title}
+                </a>
+              ))}
+            </div>
+          )}
+        </section>
+
+        {(learningObjectives.length > 0 || teachingPoints.length > 0) && (
+          <section className="grid gap-4 lg:grid-cols-2">
+            {learningObjectives.length > 0 && (
+              <div className="rounded-xl border border-slate-200 bg-white p-5">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Learner objectives</div>
+                <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+                  {learningObjectives.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-sky-600" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {teachingPoints.length > 0 && (
+              <div className="rounded-xl border border-slate-200 bg-white p-5">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Faculty emphasis</div>
+                <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+                  {teachingPoints.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-amber-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </section>
+        )}
+
+        <div className="space-y-4">
+          {sections.map((section) => (
+            <section key={section.id} id={section.id} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Section</div>
+              <h4 className="mt-2 font-serif text-2xl font-semibold text-slate-950">{section.title}</h4>
+              <div className={`${baseClassName} mt-4`}>
+                <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+                  {section.content}
+                </ReactMarkdown>
+              </div>
+            </section>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`${baseClassName} ${className}`}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        components={{
-          ...tutorialComponents,
-          a: ({ ...props }) => (
-            <a
-              {...props}
-              className="text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-800"
-              target="_blank"
-              rel="noreferrer"
-            />
-          ),
-        }}
+        components={markdownComponents}
       >
-        {normalizeImportedMarkdown(content)}
+        {normalizedContent}
       </ReactMarkdown>
     </div>
   );

@@ -1,7 +1,17 @@
 import boardPrepTutorialsUrl from '../content/tutorials/tutorials.normalized.json?url';
 import downloadsTutorialsUrl from '../content/downloads_imports/normalized/tutorials.normalized.json?url';
+import clinicalPathInteractiveTutorialsUrl from '../content/tutorials/clinicalPathInteractiveTutorials.json?url';
+import tutorialAbpathSpecCrosswalkUrl from '../content/tutorials/tutorialAbpathSpecCrosswalk.json?url';
+import validatedMappingsManifestUrl from '../content/tutorials/validatedMappingsManifest.json?url';
+import type {
+  CPGovernanceContract,
+  TutorialAbpathScope,
+  ValidatedMappingManifestRow,
+  ValidatedMappingsManifest,
+} from '../types.ts';
+import { resolveExactClinicalPathScope } from './clinicalPathAbpathScope.ts';
 
-export type TutorialLane = 'board-prep' | 'core-patterns' | 'granuloma' | 'mixed';
+export type TutorialLane = 'board-prep' | 'core-patterns' | 'granuloma' | 'lab-studio' | 'mixed';
 export type TutorialTrack = 'surgical-path' | 'clinical-path' | 'cross-cutting';
 export type TutorialPromotionState = 'canonical' | 'staged';
 
@@ -16,6 +26,13 @@ export interface TutorialFlashcard {
   front: string;
   back: string;
   tag?: string;
+}
+
+export interface TutorialInteractiveAsset {
+  id: string;
+  title: string;
+  path: string;
+  summary: string;
 }
 
 export interface DidacticTutorialRecord {
@@ -38,7 +55,47 @@ export interface DidacticTutorialRecord {
   category?: string;
   mcqs: TutorialMCQ[];
   flashcards: TutorialFlashcard[];
+  interactiveAssets?: TutorialInteractiveAsset[];
+  cpGovernance?: CPGovernanceContract;
+  abpathScope?: TutorialAbpathScope;
 }
+
+export interface TutorialTopicScope {
+  id: string;
+  label: string;
+  root: string;
+}
+
+const arraysMatchExactly = (left: string[], right: string[]) =>
+  left.length === right.length && left.every((value, index) => value === right[index]);
+
+export const validateDidacticGovernanceManifest = (manifest: ValidatedMappingsManifest) => {
+  const canonicalRows = manifest.rows.filter((row) => row.canonicalForId);
+  const validatedRows = canonicalRows.filter((row) => row.validatedForPromotion);
+  const governancePendingRows = canonicalRows.filter((row) => row.governancePending);
+  const validatedKeys = validatedRows.map((row) => row.key);
+  const validatedIds = validatedRows.map((row) => row.id);
+  const blockedKeys = governancePendingRows.map((row) => row.key);
+  const blockedIds = governancePendingRows.map((row) => row.id);
+  const summary = manifest.summary;
+
+  const manifestIsConsistent =
+    arraysMatchExactly(manifest.tutorialKeysValidated, validatedKeys) &&
+    arraysMatchExactly(manifest.tutorialIdsValidated, validatedIds) &&
+    arraysMatchExactly(manifest.blockedTutorialKeys, blockedKeys) &&
+    arraysMatchExactly(manifest.blockedTutorialIds, blockedIds) &&
+    summary?.totalRows === manifest.rows.length &&
+    summary?.canonicalRowCount === canonicalRows.length &&
+    summary?.validatedRowCount === validatedRows.length &&
+    summary?.governancePendingRowCount === governancePendingRows.length &&
+    summary?.excludedRowCount === canonicalRows.filter((row) => row.promotionStatus === 'excluded').length;
+
+  if (!manifestIsConsistent) {
+    throw new Error('Didactic governance manifest drift detected: runtime manifest no longer matches canonical row-derived invariants.');
+  }
+
+  return manifest;
+};
 
 type RawTutorialRecord = {
   id: string;
@@ -50,13 +107,21 @@ type RawTutorialRecord = {
   mcqs?: TutorialMCQ[];
   flashcards?: TutorialFlashcard[];
   category?: string;
+  lane?: TutorialLane;
+  track?: TutorialTrack;
+  promotionState?: TutorialPromotionState;
+  sourceLabel?: string;
+  interactiveAssets?: TutorialInteractiveAsset[];
+  cpGovernance?: CPGovernanceContract;
+  __catalogFile?: string;
 };
 
 const laneConfig: Record<TutorialLane, { label: string }> = {
   'board-prep': { label: 'Board Prep Tutorials' },
   'core-patterns': { label: 'Core Pattern Tutorials' },
   granuloma: { label: 'Granuloma Tutorials' },
-  mixed: { label: 'Mixed Tutorial Imports' },
+  'lab-studio': { label: 'Clinical Pathology' },
+  mixed: { label: 'Tutorial Library' },
 };
 
 const trackConfig: Record<TutorialTrack, { label: string }> = {
@@ -67,7 +132,7 @@ const trackConfig: Record<TutorialTrack, { label: string }> = {
 
 const promotionConfig: Record<TutorialPromotionState, { label: string }> = {
   canonical: { label: 'Canonical' },
-  staged: { label: 'Staged Import' },
+  staged: { label: 'Canonical' },
 };
 
 const CLINICAL_PATH_KEYWORDS = [
@@ -196,6 +261,9 @@ const SURGICAL_PATH_KEYWORDS = [
 ];
 
 const inferLane = (record: RawTutorialRecord): TutorialLane => {
+  if (record.lane) {
+    return record.lane;
+  }
   if (record.sourceRepo === 'board_prep') {
     return 'board-prep';
   }
@@ -209,6 +277,9 @@ const inferLane = (record: RawTutorialRecord): TutorialLane => {
 };
 
 const inferTrack = (record: RawTutorialRecord): TutorialTrack => {
+  if (record.track) {
+    return record.track;
+  }
   const sourceRepo = (record.sourceRepo || '').toLowerCase();
   const id = record.id.toLowerCase();
   const text = [record.title, record.summary, record.body?.slice(0, 2200), record.category, ...(record.tags || [])]
@@ -236,9 +307,12 @@ const inferTrack = (record: RawTutorialRecord): TutorialTrack => {
 };
 
 const inferPromotionState = (record: RawTutorialRecord): TutorialPromotionState =>
-  record.sourceRepo === 'board_prep' ? 'canonical' : 'staged';
+  record.promotionState || (record.sourceRepo === 'board_prep' ? 'canonical' : 'staged');
 
-const toSourceLabel = (sourceRepo?: string) => {
+const toSourceLabel = (sourceRepo?: string, explicitSourceLabel?: string) => {
+  if (explicitSourceLabel) {
+    return explicitSourceLabel;
+  }
   if (!sourceRepo) {
     return 'Unknown source';
   }
@@ -260,18 +334,96 @@ const toSourceLabel = (sourceRepo?: string) => {
   return sourceRepo;
 };
 
+type CrosswalkPrimaryMapping = {
+  domain: 'AP' | 'CP';
+  root: string;
+  path: string[];
+  title: string;
+  confidence: 'high' | 'medium' | 'low';
+  sourceLine?: number | null;
+};
+
+type CrosswalkEntry = {
+  tutorial: {
+    key: string;
+    id: string;
+    file: string;
+  };
+  primaryMapping: CrosswalkPrimaryMapping;
+};
+
+type CrosswalkDataset = {
+  crosswalk?: CrosswalkEntry[];
+};
+
+interface DidacticTutorialGovernanceManifest extends ValidatedMappingsManifest {
+  rowsById: Record<string, ValidatedMappingManifestRow>;
+  rowsByKey: Record<string, ValidatedMappingManifestRow>;
+}
+
+export interface DidacticTutorialCatalog {
+  tutorials: DidacticTutorialRecord[];
+  governanceManifest: DidacticTutorialGovernanceManifest;
+}
+
+const toAbpathScope = (mapping?: CrosswalkPrimaryMapping | null): TutorialAbpathScope | undefined => {
+  if (!mapping) {
+    return undefined;
+  }
+
+  return {
+    domain: mapping.domain,
+    root: mapping.root,
+    primaryPath: mapping.path.join(' > '),
+    title: mapping.title,
+    confidence: mapping.confidence,
+    source: mapping.domain === 'CP'
+      ? 'ABPath Clinical Pathology Content Specifications 04/10/2026'
+      : 'ABPath Anatomic Pathology Content Specifications',
+    sourceLine: mapping.sourceLine ?? null,
+  };
+};
+
+export const toAbpathScopeFromManifestRow = (row?: ValidatedMappingManifestRow | null): TutorialAbpathScope | undefined => {
+  if (!row?.abpathRoot || !row.abpathPrimaryPath) {
+    return undefined;
+  }
+
+  return {
+    domain: row.abpathDomain,
+    root: row.abpathRoot,
+    primaryPath: row.abpathPrimaryPath,
+    title: row.abpathPrimaryPath.split(' > ').at(-1) || row.abpathRoot,
+    confidence:
+      row.abpathAnchorConfidence === 'moderate'
+        ? 'medium'
+        : row.abpathAnchorConfidence === 'high'
+          ? 'high'
+          : 'low',
+    source:
+      row.abpathDomain === 'CP'
+        ? row.abpathSpecVersion
+          ? `ABPath Clinical Pathology Content Specifications ${row.abpathSpecVersion.replaceAll('_', '/')}`
+          : 'ABPath Clinical Pathology Content Specifications'
+        : 'ABPath Anatomic Pathology Content Specifications',
+    sourceLine: null,
+  };
+};
+
 const buildTopicChips = (
   record: RawTutorialRecord,
-  lane: TutorialLane,
   track: TutorialTrack,
-  promotionState: TutorialPromotionState
+  abpathScope?: TutorialAbpathScope
 ) => {
+  const abpathSegments = abpathScope?.primaryPath.split(' > ') ?? [];
+  const abpathLeaf = abpathSegments.at(-1) ?? '';
+  const abpathBranch = abpathSegments.length > 2 ? abpathSegments.at(-2) ?? '' : '';
   return Array.from(
     new Set(
       [
-        trackConfig[track].label,
-        laneConfig[lane].label.replace(' Tutorials', ''),
-        promotionConfig[promotionState].label,
+        abpathScope?.root || trackConfig[track].label,
+        abpathLeaf && abpathLeaf !== abpathScope?.root ? abpathLeaf : '',
+        abpathBranch && abpathBranch !== abpathScope?.root ? abpathBranch : '',
         record.category || '',
         ...(record.tags || []).slice(0, 4),
       ].filter(Boolean)
@@ -279,57 +431,194 @@ const buildTopicChips = (
   ).slice(0, 6);
 };
 
-const normalizeTutorial = (record: RawTutorialRecord): DidacticTutorialRecord => {
+const normalizeTutorial = (
+  record: RawTutorialRecord,
+  crosswalkByKey: Map<string, CrosswalkPrimaryMapping>,
+  manifestRow?: ValidatedMappingManifestRow
+): DidacticTutorialRecord => {
   const lane = inferLane(record);
   const track = inferTrack(record);
   const promotionState = inferPromotionState(record);
+  const crosswalkKey = `${record.__catalogFile || ''}::${record.id}`;
+  const exactCpScope = track === 'clinical-path' ? resolveExactClinicalPathScope(record) : undefined;
+  const manifestScope = toAbpathScopeFromManifestRow(manifestRow);
+  const abpathScope = manifestScope ?? exactCpScope ?? toAbpathScope(crosswalkByKey.get(crosswalkKey));
   return {
     id: record.id,
     title: record.title,
     summary: record.summary || record.title,
     body: record.body || '',
     lane,
-    laneLabel: laneConfig[lane].label,
+    laneLabel: abpathScope?.root || laneConfig[lane].label,
     track,
     trackLabel: trackConfig[track].label,
     promotionState,
     promotionLabel: promotionConfig[promotionState].label,
     sourceRepo: record.sourceRepo || 'unknown',
-    sourceLabel: toSourceLabel(record.sourceRepo),
-    topicChips: buildTopicChips(record, lane, track, promotionState),
+    sourceLabel: toSourceLabel(record.sourceRepo, record.sourceLabel),
+    topicChips: buildTopicChips(record, track, abpathScope),
     tags: record.tags || [],
     mcqCount: record.mcqs?.length || 0,
     flashcardCount: record.flashcards?.length || 0,
     category: record.category || undefined,
     mcqs: record.mcqs || [],
     flashcards: record.flashcards || [],
+    interactiveAssets: record.interactiveAssets,
+    cpGovernance: record.cpGovernance,
+    abpathScope,
   };
 };
 
 export const loadDidacticTutorials = async (): Promise<DidacticTutorialRecord[]> => {
-  const [boardPrepResponse, downloadsResponse] = await Promise.all([
+  const catalog = await loadDidacticTutorialCatalog();
+  return catalog.tutorials;
+};
+
+export const loadDidacticTutorialGovernanceManifest = async (): Promise<DidacticTutorialGovernanceManifest> => {
+  const response = await fetch(validatedMappingsManifestUrl);
+  const manifest = validateDidacticGovernanceManifest((await response.json()) as ValidatedMappingsManifest);
+  return {
+    ...manifest,
+    rowsById: Object.fromEntries(
+      manifest.rows
+        .filter((row) => row.canonicalForId || row.governancePending)
+        .map((row) => [row.id, row])
+    ),
+    rowsByKey: Object.fromEntries(manifest.rows.map((row) => [row.key, row])),
+  };
+};
+
+export const loadDidacticTutorialCatalog = async (): Promise<DidacticTutorialCatalog> => {
+  const [boardPrepResponse, downloadsResponse, interactiveResponse, crosswalkResponse, manifestResponse] = await Promise.all([
     fetch(boardPrepTutorialsUrl),
     fetch(downloadsTutorialsUrl),
+    fetch(clinicalPathInteractiveTutorialsUrl),
+    fetch(tutorialAbpathSpecCrosswalkUrl),
+    fetch(validatedMappingsManifestUrl),
   ]);
-  const [boardPrepData, downloadsData] = await Promise.all([
+  const [boardPrepData, downloadsData, interactiveData, crosswalkData, manifestData] = await Promise.all([
     boardPrepResponse.json() as Promise<RawTutorialRecord[]>,
     downloadsResponse.json() as Promise<RawTutorialRecord[]>,
+    interactiveResponse.json() as Promise<RawTutorialRecord[]>,
+    crosswalkResponse.json() as Promise<CrosswalkDataset>,
+    manifestResponse.json() as Promise<ValidatedMappingsManifest>,
   ]);
-  return [...boardPrepData, ...downloadsData]
-    .map(normalizeTutorial)
+  const hardenedManifest = validateDidacticGovernanceManifest(manifestData);
+  const governanceManifest: DidacticTutorialGovernanceManifest = {
+    ...hardenedManifest,
+    rowsById: Object.fromEntries(
+      hardenedManifest.rows
+        .filter((row) => row.canonicalForId || row.governancePending)
+        .map((row) => [row.id, row])
+    ),
+    rowsByKey: Object.fromEntries(hardenedManifest.rows.map((row) => [row.key, row])),
+  };
+  const validatedKeys = new Set(governanceManifest.tutorialKeysValidated);
+  const crosswalkByKey = new Map(
+    (crosswalkData.crosswalk || []).map((entry) => [`${entry.tutorial.file}::${entry.tutorial.id}`, entry.primaryMapping] as const)
+  );
+  const tutorials = [
+    ...interactiveData.map((record) => ({ ...record, __catalogFile: 'src/content/tutorials/clinicalPathInteractiveTutorials.json' })),
+    ...boardPrepData.map((record) => ({ ...record, __catalogFile: 'src/content/tutorials/tutorials.normalized.json' })),
+    ...downloadsData.map((record) => ({ ...record, __catalogFile: 'src/content/downloads_imports/normalized/tutorials.normalized.json' })),
+  ]
+    .filter((record) => {
+      const recordKey = `${record.__catalogFile || ''}::${record.id}`;
+      if (!validatedKeys.has(recordKey)) {
+        return false;
+      }
+      const manifestRow = governanceManifest.rowsByKey[recordKey];
+      return Boolean(manifestRow?.validatedForPromotion && manifestRow.abpathRoot && manifestRow.abpathPrimaryPath);
+    })
+    .map((record) =>
+      normalizeTutorial(
+        record,
+        crosswalkByKey,
+        governanceManifest.rowsByKey[`${record.__catalogFile || ''}::${record.id}`]
+      )
+    )
     .sort((left, right) => {
-      if (left.promotionState !== right.promotionState) {
-        return left.promotionState === 'canonical' ? -1 : 1;
+      const leftRoot = left.abpathScope?.root || '';
+      const rightRoot = right.abpathScope?.root || '';
+      if (leftRoot !== rightRoot) {
+        return leftRoot.localeCompare(rightRoot);
       }
       if (left.track !== right.track) {
         return left.track.localeCompare(right.track);
       }
       return left.title.localeCompare(right.title);
     });
+
+  return {
+    tutorials,
+    governanceManifest,
+  };
 };
 
 export const getDidacticTutorialById = (tutorials: DidacticTutorialRecord[], id?: string | null) =>
   tutorials.find((tutorial) => tutorial.id === id);
+
+export const getGovernancePendingTutorial = (
+  governanceManifest: Pick<DidacticTutorialGovernanceManifest, 'rowsById'>,
+  id?: string | null
+) => {
+  if (!id) {
+    return undefined;
+  }
+  const row = governanceManifest.rowsById[id];
+  return row?.governancePending ? row : undefined;
+};
+
+export const loadTutorialRootTopics = async (): Promise<string[]> => {
+  const tutorials = await loadDidacticTutorials();
+  const roots = tutorials
+    .map((tutorial) => tutorial.abpathScope?.root)
+    .filter(Boolean) as string[];
+  return Array.from(new Set(roots)).sort((left, right) => left.localeCompare(right));
+};
+
+export const deriveTutorialSubtopic = (tutorial: DidacticTutorialRecord): TutorialTopicScope | null => {
+  const root = tutorial.abpathScope?.root;
+  const primaryPath = tutorial.abpathScope?.primaryPath;
+  if (!root || !primaryPath) {
+    return null;
+  }
+
+  const segments = primaryPath.split(' > ').map((segment) => segment.trim()).filter(Boolean);
+  const rootIndex = segments.findIndex((segment) => segment === root);
+  const descendantSegments = rootIndex >= 0 ? segments.slice(rootIndex + 1) : segments.slice(1);
+  const label = descendantSegments[0] || segments.at(-1);
+
+  if (!label || label === root) {
+    return null;
+  }
+
+  return {
+    id: label,
+    label,
+    root,
+  };
+};
+
+export const loadTutorialSubtopicsByRoot = async (): Promise<Record<string, TutorialTopicScope[]>> => {
+  const tutorials = await loadDidacticTutorials();
+  const grouped = tutorials.reduce<Record<string, Map<string, TutorialTopicScope>>>((accumulator, tutorial) => {
+    const scope = deriveTutorialSubtopic(tutorial);
+    if (!scope) {
+      return accumulator;
+    }
+    accumulator[scope.root] ||= new Map<string, TutorialTopicScope>();
+    accumulator[scope.root].set(scope.id, scope);
+    return accumulator;
+  }, {});
+
+  return Object.fromEntries(
+    Object.entries(grouped).map(([root, scopeMap]) => [
+      root,
+      Array.from(scopeMap.values()).sort((left, right) => left.label.localeCompare(right.label)),
+    ])
+  );
+};
 
 export const findBestTutorialMatch = (tutorials: DidacticTutorialRecord[], terms: string[]) => {
   const normalizedTerms = terms

@@ -64,16 +64,25 @@ describe('App routing', () => {
   const handleSectionChange = vi.fn();
   const setSidebarOpen = vi.fn();
   const toggleSidebar = vi.fn();
+  const navigation = {
+    canGoBack: false,
+    canGoForward: false,
+    goBack: vi.fn(),
+    goForward: vi.fn(),
+    pushSection: vi.fn(),
+  };
   const preferencesApi = {
-    preferences: { focusMode: true, reduceMotion: false },
+    preferences: { focusMode: true },
     toggleFocusMode: vi.fn(),
-    toggleReduceMotion: vi.fn(),
   };
 
   beforeEach(() => {
     handleSectionChange.mockReset();
     setSidebarOpen.mockReset();
     toggleSidebar.mockReset();
+    navigation.goBack.mockReset();
+    navigation.goForward.mockReset();
+    navigation.pushSection.mockReset();
     Object.values(mocks).forEach((mock) => mock.mockReset());
 
     mocks.useAuth.mockReturnValue({
@@ -91,45 +100,45 @@ describe('App routing', () => {
     mocks.useUserProgress.mockReturnValue({
       currentSection: Section.HOME,
       handleSectionChange,
+      navigation,
       visitedSections: [Section.HOME],
       isLoading: false,
     });
   });
 
-  it('renders the active section component for Home by default', () => {
+  it('renders the active section component for Home by default', async () => {
     render(<App />);
 
-    expect(screen.getByText('Home Screen')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 1, name: 'Home' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Pathology Sign-Out Workflows' })).toBeInTheDocument();
+    expect(await screen.findByText('Home Screen')).toBeInTheDocument();
+    expect(await screen.findByText('Home')).toBeInTheDocument();
   });
 
-  it('renders the didactic lectures section when the active section is updated', () => {
+  it('renders the didactic lectures section when the active section is updated', async () => {
     mocks.useUserProgress.mockReturnValue({
       currentSection: Section.DIDACTIC_LECTURES,
       handleSectionChange,
+      navigation,
       visitedSections: [Section.HOME, Section.DIDACTIC_LECTURES],
       isLoading: false,
     });
 
     render(<App />);
 
-    expect(screen.getByText('Didactic Lectures Screen')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 1, name: 'Didactic Lectures' })).toBeInTheDocument();
+    expect(await screen.findByText('Didactic Lectures Screen')).toBeInTheDocument();
   });
 
-  it('routes the legacy breast sign-out section into the consolidated sign-out simulator', () => {
+  it('routes the legacy breast sign-out section into the consolidated sign-out simulator', async () => {
     mocks.useUserProgress.mockReturnValue({
       currentSection: Section.BREAST_SIGNOUT_MASTERCLASS,
       handleSectionChange,
+      navigation,
       visitedSections: [Section.HOME, Section.BREAST_SIGNOUT_MASTERCLASS],
       isLoading: false,
     });
 
     render(<App />);
 
-    expect(screen.getByText('Sign Out Screen')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 1, name: 'Sign-Out Simulator' })).toBeInTheDocument();
+    expect(await screen.findByText('Sign Out Screen')).toBeInTheDocument();
     expect(screen.queryByText('Breast Sign-Out Screen')).not.toBeInTheDocument();
   });
 
@@ -137,7 +146,7 @@ describe('App routing', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByRole('button', { name: /Pathology Curriculum/i }));
+    await user.click(await screen.findByRole('button', { name: /Pathology Curriculum/i }));
 
     expect(handleSectionChange).toHaveBeenCalledWith(Section.PATHOLOGY_CURRICULUM);
     expect(mocks.trackSectionVisit).toHaveBeenCalledWith('resident', Section.PATHOLOGY_CURRICULUM);

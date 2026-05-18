@@ -1,0 +1,108 @@
+{
+  "version": "pthfndr-didactics-command-center-contract.v1",
+  "productSurface": "/didactics",
+  "purpose": "Deterministic contract for turning the didactics surface into a P@thfndr board-prep command center with performance tracking, review orchestration, answer-key QA, and readiness forecasting.",
+  "uiUxDependencies": [
+    "src/content/contracts/pthfndrDidacticsLearningUxContract.json",
+    "docs/contracts/PTHFNDR_DIDACTICS_LEARNING_UX_CONTRACT.md"
+  ],
+  "brandingRule": "All learner-facing language must use P@thfndr naming. Legacy source concepts may be preserved only as import provenance or compatibility metadata.",
+  "priorityOrder": [
+    "pthfndr_review_grid",
+    "performance_dashboard",
+    "answer_key_validation_alerts",
+    "abpath_anchor_mapping_per_incorrect_question",
+    "board_passing_readiness_calculator"
+  ],
+  "performanceDashboard": {
+    "enabled": true,
+    "requiredFields": [
+      "subject",
+      "percentAnswered",
+      "numberAnswered",
+      "totalQuestions",
+      "remainingQuestions",
+      "remainingPercent",
+      "percentCorrect",
+      "correct",
+      "incorrect",
+      "userPercentile",
+      "allUsersAverage",
+      "allUsersMedian",
+      "allUsersMode",
+      "allUsersRange"
+    ]
+  },
+  "reviewGrid": {
+    "showTileGrid": true,
+    "groupBy": "abpathAnchor",
+    "tileClickBehavior": "open_question_review",
+    "showCorrectIncorrectOverlay": true,
+    "showWeakClusterSummary": true
+  },
+  "questionImport": {
+    "supportedSources": [
+      "pthfndr_export",
+      "manual",
+      "pdf_review",
+      "anki",
+      "custom"
+    ],
+    "answerKeyValidation": {
+      "enabled": true,
+      "compareAgainstInternalKnowledgeBase": true,
+      "flagBiologicallyImplausibleAnswers": true,
+      "requireFacultyReviewForDiscordantItems": true
+    }
+  },
+  "readinessPrediction": {
+    "enabled": true,
+    "acceptedBands": [
+      "unsafe",
+      "borderline",
+      "improving",
+      "likely_pass",
+      "maintenance"
+    ],
+    "requiredInputs": [
+      "mcqPracticeSessions",
+      "pthfndrSessions"
+    ]
+  },
+  "forecasting": {
+    "enabled": true,
+    "defaultModel": "moving_average",
+    "supportedModels": [
+      "linear",
+      "moving_average",
+      "prophet",
+      "bayesian_mastery"
+    ]
+  },
+  "cockpitCards": [
+    "Today's board-risk topics",
+    "Weakest CP domains",
+    "Questions remaining",
+    "Accuracy vs percentile",
+    "Incorrect cluster review",
+    "Time per question",
+    "Predicted readiness",
+    "Next 20-question drill",
+    "Answer-key discrepancy alerts"
+  ],
+  "visualModes": [
+    "cockpit_dashboard",
+    "pthfndr_review_grid",
+    "weakness_heatmap",
+    "abpath_anchor_map",
+    "forecast_timeline",
+    "question_review_stack",
+    "board_passing_calculator"
+  ],
+  "acceptanceCriteria": [
+    "The quick-review surface must show a dashboard, review grid, discrepancy alerts, and readiness estimate without opening a separate app.",
+    "Every incorrect or flagged question must resolve to an ABPath anchor path when one is available.",
+    "Learner-facing naming must not display legacy vendor labels.",
+    "Discordant answer keys must produce a visible alert and faculty-review requirement."
+  ]
+}

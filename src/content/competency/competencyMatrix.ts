@@ -71,6 +71,57 @@ export const levelModeGuidance: Record<LearnerLevel, {
   },
 };
 
+export const apP0PromotionMilestones = [
+  {
+    milestone: 'Scaffold complete',
+    target: 'Every P0 entity card has a stable title, ABPath path, gap summary, closure action, and draft teaching structure.',
+    outcome: 'Faculty reviewers can assess scope and identify which cards are ready for source-backed enrichment.',
+  },
+  {
+    milestone: 'Evidence enriched',
+    target: 'Cards gain source-backed explanations, curated images, answer-key logic, and deterministic review cues.',
+    outcome: 'The promotion queue reflects which entities are educationally usable versus structurally present only.',
+  },
+  {
+    milestone: 'Faculty review-ready',
+    target: 'All five gates show complete or ready-for-review status with no safety-critical omissions.',
+    outcome: 'The batch can move into attending review without hidden authoring debt.',
+  },
+  {
+    milestone: 'Canonical release',
+    target: 'Reviewer sign-off, provenance, and learner-facing QA language are present before public exposure.',
+    outcome: 'The card can enter the active teaching library as a canonical resource.',
+  },
+] as const;
+
+export const apP0LearningQualityStandards = [
+  {
+    standard: 'ABPath governed',
+    appRule: 'Every scaffold must anchor to the correct AP or CP specification frame before detail is expanded.',
+    evidenceTarget: 'Visible content-spec alignment and subordinate teaching labels.',
+  },
+  {
+    standard: 'Diagnostic first',
+    appRule: 'Teaching content should orient the learner to pattern recognition, differential logic, and safe next steps quickly.',
+    evidenceTarget: 'Clear diagnostic frame, pitfalls, and action-oriented explanations.',
+  },
+  {
+    standard: 'Feedback ready',
+    appRule: 'Questions, reports, and image review should support deterministic feedback before optional AI narration.',
+    evidenceTarget: 'Answer rationales, completeness checks, and error-recovery guidance.',
+  },
+  {
+    standard: 'Faculty reviewable',
+    appRule: 'Draft cards need provenance, source expectations, and a visible editorial state so attendings can trust the queue.',
+    evidenceTarget: 'Review packet path, editorial label, and provenance notes.',
+  },
+  {
+    standard: 'Promotion safe',
+    appRule: 'No card should advance into public teaching without passing the gate model for scope, evidence, images, assessment, and QA.',
+    evidenceTarget: 'Gate statuses support complete or ready-for-review promotion decisions.',
+  },
+] as const;
+
 export const defaultTrustMetadata: ContentTrustMetadata = {
   editorialStatus: 'reviewed',
   lastReviewed: '2026-05-15',

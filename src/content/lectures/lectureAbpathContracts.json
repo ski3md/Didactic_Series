@@ -1549,7 +1549,7 @@
     },
     {
       "lectureId": "ioc-overview-neuropathology",
-      "title": "Neurosurgical Pathology: Core Principles",
+      "title": "Neuropathology: Core Principles",
       "track": "core-principles",
       "sourceLabel": "Core Principles Series",
       "contentArea": "Neuropathology",
@@ -1560,7 +1560,7 @@
         "ap_neuro"
       ],
       "expectedLevel": "mixed C/AR",
-      "scopeBoundary": "CNS, meninges, nerve sheath, metastasis, and neurosurgical pathology workflow only.",
+      "scopeBoundary": "CNS, meninges, nerve sheath, metastasis, and neuropathology workflow only.",
       "contractWarnings": [],
       "allowedPathPrefixes": [
         "Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations"

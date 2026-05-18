@@ -1,5 +1,5 @@
-import React from 'react';
-import { Section, User } from '../types.ts';
+import React, { useEffect, useState } from 'react';
+import { Section, type ActiveStudyDestination, User } from '../types.ts';
 import { useUIState } from '../hooks/useUIState.ts';
 import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
 import { BRAND } from '../utils/brand.ts';
@@ -7,21 +7,34 @@ import {
   MicroscopeIcon,
   BookOpenIcon,
   AcademicCapIcon,
-  ClipboardDocumentListIcon,
   UserCircleIcon,
-  CogIcon,
   LogoutIcon,
-  ArrowRightToBracketIcon,
   ChevronLeftIcon,
 } from './icons.tsx';
 import { prefetchCompetencyMatrixPayload } from '../utils/competencyMatrixLoader.ts';
+import DidacticWorkspaceNav from './DidacticWorkspaceNav.tsx';
+import { loadDidacticTutorials } from '../utils/tutorialLibraryCatalog.ts';
+import { didacticAlgorithms } from '../utils/algorithmCatalog.ts';
+import { promotedLectures } from '../utils/lectureLibraryCatalog.ts';
+import { activeCurriculumModules } from '../content/curriculum/activeCurriculum.ts';
+import { readCurriculumViewState, updateCurriculumSidebarSelection } from '../utils/curriculumViewState.ts';
+import {
+  buildAlgorithmStudyTree,
+  buildLectureStudyTree,
+  buildTutorialStudyTree,
+  type StudySubtopicScope,
+} from '../utils/studyCatalogScopes.ts';
+import {
+  pushStudyDestination,
+  readStudyDestination,
+  STUDY_DESTINATION_EVENT,
+} from '../utils/studyDestinationState.ts';
 
 interface SidebarProps {
   currentSection: Section;
   onSectionChange: (section: Section) => void;
   user: User | null;
   onLogout: () => void;
-  onLoginClick: () => void;
   preferences: LearningPreferences;
 }
 
@@ -52,15 +65,24 @@ const NavLink: React.FC<{
   );
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user, onLogout, onLoginClick, preferences }) => {
+const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user, onLogout, preferences }) => {
     const { isSidebarOpen, toggleSidebar } = useUIState();
-    const isLearnActive = [
+    const [tutorialRootOptions, setTutorialRootOptions] = useState<StudySubtopicScope[]>([]);
+    const [tutorialSubtopicsByRoot, setTutorialSubtopicsByRoot] = useState<Record<string, StudySubtopicScope[]>>({});
+    const [activeTutorialRoot, setActiveTutorialRoot] = useState<string | undefined>(() => readStudyDestination('tutorials').majorTopicId);
+    const [activeTutorialSubtopic, setActiveTutorialSubtopic] = useState<string | undefined>(() => readStudyDestination('tutorials').subtopicId);
+    const lectureStudyTree = buildLectureStudyTree(promotedLectures);
+    const algorithmStudyTree = buildAlgorithmStudyTree(didacticAlgorithms);
+    const [activeLectureRoot, setActiveLectureRoot] = useState<string | undefined>(() => readStudyDestination('lectures').majorTopicId);
+    const [activeLectureSubtopic, setActiveLectureSubtopic] = useState<string | undefined>(() => readStudyDestination('lectures').subtopicId);
+    const [activeAlgorithmCategory, setActiveAlgorithmCategory] = useState<string | undefined>(() => readStudyDestination('algorithms').majorTopicId);
+    const [activeAlgorithmSubtopic, setActiveAlgorithmSubtopic] = useState<string | undefined>(() => readStudyDestination('algorithms').subtopicId);
+    const [activeCurriculumModuleId, setActiveCurriculumModuleId] = useState<string>(() => readCurriculumViewState()?.selectedId ?? '');
+    const isStudyActive = [
       Section.HOME,
       Section.PATHOLOGY_CURRICULUM,
       Section.COMPETENCY_MATRIX,
       Section.SYLLABUS_EXPLORER,
-    ].includes(currentSection);
-    const isDidacticsActive = [
       Section.DIDACTIC_LECTURES,
       Section.DIDACTIC_TUTORIALS,
       Section.DIDACTIC_ALGORITHMS,
@@ -70,6 +92,142 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
       Section.SIGN_OUT_SIMULATOR,
       Section.BREAST_SIGNOUT_MASTERCLASS,
     ].includes(currentSection);
+    const foundationWorkspaceItems = [
+      { section: Section.PATHOLOGY_CURRICULUM, label: 'Curriculum' },
+      { section: Section.COMPETENCY_MATRIX, label: 'Competency' },
+    ];
+    const reviewWorkspaceItems = [
+      {
+        section: Section.DIDACTIC_LECTURES,
+        label: 'Lectures',
+        onActivate: () => {
+          const nextDestination = pushStudyDestination('lectures', { kind: 'landing', previous: null });
+          setActiveLectureRoot(nextDestination.majorTopicId);
+          setActiveLectureSubtopic(nextDestination.subtopicId);
+        },
+      },
+      {
+        section: Section.DIDACTIC_TUTORIALS,
+        label: 'Tutorials',
+        onActivate: () => {
+          const nextDestination = pushStudyDestination('tutorials', { kind: 'landing', previous: null });
+          setActiveTutorialRoot(nextDestination.majorTopicId);
+          setActiveTutorialSubtopic(nextDestination.subtopicId);
+        },
+      },
+      {
+        section: Section.DIDACTIC_ALGORITHMS,
+        label: 'Algorithms',
+        onActivate: () => {
+          const nextDestination = pushStudyDestination('algorithms', { kind: 'landing', previous: null });
+          setActiveAlgorithmCategory(nextDestination.majorTopicId);
+          setActiveAlgorithmSubtopic(nextDestination.subtopicId);
+        },
+      },
+    ];
+    const signOutWorkspaceItems = [
+      { section: Section.SIGN_OUT_SIMULATOR, label: 'Sign-Out cases' },
+    ];
+
+    useEffect(() => {
+      if (currentSection !== Section.DIDACTIC_TUTORIALS) {
+        return;
+      }
+      let isMounted = true;
+      const tutorialDestination = readStudyDestination('tutorials');
+      setActiveTutorialRoot(tutorialDestination.majorTopicId);
+      setActiveTutorialSubtopic(tutorialDestination.subtopicId);
+      void loadDidacticTutorials().then((tutorials) => {
+        if (!isMounted) {
+          return;
+        }
+        const tree = buildTutorialStudyTree(tutorials);
+        setTutorialRootOptions(tree.roots);
+        setTutorialSubtopicsByRoot(tree.subtopicsByRoot);
+      });
+      return () => {
+        isMounted = false;
+      };
+    }, [currentSection]);
+
+    useEffect(() => {
+      const readValidSubtopic = <T extends { id: string }>(
+        destinationSubtopicId: string | undefined,
+        subtopicsByRootMap: Record<string, T[]>,
+        rootId: string | undefined
+      ): string | undefined => {
+        if (!destinationSubtopicId || !rootId) {
+          return undefined;
+        }
+        return subtopicsByRootMap[rootId]?.some((entry) => entry.id === destinationSubtopicId) ? destinationSubtopicId : undefined;
+      };
+
+      const syncSidebarDestination = () => {
+        const tutorialDestination = readStudyDestination('tutorials');
+        setActiveTutorialRoot(tutorialDestination.majorTopicId);
+        setActiveTutorialSubtopic(
+          readValidSubtopic(tutorialDestination.subtopicId, tutorialSubtopicsByRoot, tutorialDestination.majorTopicId)
+        );
+
+        const lectureDestination = readStudyDestination('lectures');
+        setActiveLectureRoot(lectureDestination.majorTopicId);
+        setActiveLectureSubtopic(
+          readValidSubtopic(lectureDestination.subtopicId, lectureStudyTree.subtopicsByRoot, lectureDestination.majorTopicId)
+        );
+
+        const algorithmDestination = readStudyDestination('algorithms');
+        setActiveAlgorithmCategory(algorithmDestination.majorTopicId);
+        setActiveAlgorithmSubtopic(
+          readValidSubtopic(
+            algorithmDestination.subtopicId,
+            algorithmStudyTree.subtopicsByRoot,
+            algorithmDestination.majorTopicId
+          )
+        );
+      };
+
+      syncSidebarDestination();
+
+      const handleDestinationChange = (event: Event) => {
+        const nextDestination = (event as CustomEvent<ActiveStudyDestination>).detail;
+        if (nextDestination?.workspace) {
+          syncSidebarDestination();
+          return;
+        }
+        syncSidebarDestination();
+      };
+
+      const handlePopState = () => {
+        syncSidebarDestination();
+      };
+
+      window.addEventListener(STUDY_DESTINATION_EVENT, handleDestinationChange);
+      window.addEventListener('popstate', handlePopState);
+      return () => {
+        window.removeEventListener(STUDY_DESTINATION_EVENT, handleDestinationChange);
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }, [algorithmStudyTree.subtopicsByRoot, lectureStudyTree.subtopicsByRoot, tutorialSubtopicsByRoot]);
+
+    useEffect(() => {
+      if (currentSection !== Section.PATHOLOGY_CURRICULUM) {
+        return;
+      }
+      setActiveCurriculumModuleId(readCurriculumViewState()?.selectedId ?? '');
+    }, [currentSection]);
+
+    useEffect(() => {
+      if (currentSection === Section.DIDACTIC_LECTURES) {
+        const lectureDestination = readStudyDestination('lectures');
+        setActiveLectureRoot(lectureDestination.majorTopicId);
+        setActiveLectureSubtopic(lectureDestination.subtopicId);
+      }
+      if (currentSection === Section.DIDACTIC_ALGORITHMS) {
+        const algorithmDestination = readStudyDestination('algorithms');
+        setActiveAlgorithmCategory(algorithmDestination.majorTopicId);
+        setActiveAlgorithmSubtopic(algorithmDestination.subtopicId);
+      }
+    }, [currentSection]);
 
   return (
     <aside
@@ -93,35 +251,300 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
             <ChevronLeftIcon className="h-6 w-6" />
           </button>
         </div>
-        <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
-          <p>Move through {BRAND.name} in three steps: learn, study, then sign out.</p>
-          {preferences.focusMode && <p className="mt-2 text-xs text-slate-500">Focus mode keeps the active workspace centered.</p>}
-        </div>
       </div>
 
       <nav className="flex-1 space-y-2 overflow-y-auto">
         <NavLink
-          label="Learn"
+          label="Study"
           ariaLabel="Pathology Curriculum"
-          isActive={isLearnActive}
+          isActive={isStudyActive}
           onClick={() => onSectionChange(Section.PATHOLOGY_CURRICULUM)}
           icon={<AcademicCapIcon className="h-5 w-5" />}
         />
-        <NavLink
-          label="Competency"
-          ariaLabel="Competency Matrix"
-          isActive={currentSection === Section.COMPETENCY_MATRIX}
-          onClick={() => onSectionChange(Section.COMPETENCY_MATRIX)}
-          onMouseEnter={() => prefetchCompetencyMatrixPayload()}
-          onFocus={() => prefetchCompetencyMatrixPayload()}
-          icon={<ClipboardDocumentListIcon className="h-5 w-5" />}
-        />
-        <NavLink
-          label="Didactics"
-          isActive={isDidacticsActive}
-          onClick={() => onSectionChange(isDidacticsActive ? currentSection : Section.DIDACTIC_LECTURES)}
-          icon={<BookOpenIcon className="h-5 w-5" />}
-        />
+        {isStudyActive && (
+          <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+            <div className="space-y-2">
+              <DidacticWorkspaceNav
+                activeSection={currentSection}
+                onSectionChange={onSectionChange}
+                orientation="vertical"
+                items={foundationWorkspaceItems.concat(reviewWorkspaceItems)}
+                compact
+              />
+            </div>
+          </div>
+        )}
+        {currentSection === Section.PATHOLOGY_CURRICULUM && (
+          <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+            <div className="max-h-[24rem] space-y-1 overflow-y-auto pr-1">
+              {activeCurriculumModules.map((module) => {
+                const isActive = activeCurriculumModuleId === module.moduleId;
+                return (
+                  <button
+                    key={module.moduleId}
+                    type="button"
+                    onClick={() => {
+                      setActiveCurriculumModuleId(module.moduleId);
+                      updateCurriculumSidebarSelection(module.moduleId, module.subspecialty);
+                      onSectionChange(Section.PATHOLOGY_CURRICULUM);
+                    }}
+                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
+                      isActive
+                        ? 'border-sky-400 bg-sky-50 text-sky-800'
+                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                    }`}
+                  >
+                    <div className="font-medium">{module.title}</div>
+                    <div className="mt-0.5 text-[11px] text-slate-500">{module.subspecialty}</div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+        {currentSection === Section.DIDACTIC_TUTORIALS && tutorialRootOptions.length > 0 && (
+          <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+            <div className="space-y-2">
+              {tutorialRootOptions.map((root) => {
+                const isActive = activeTutorialRoot === root.id;
+                return (
+                  <button
+                    key={root.id}
+                    type="button"
+                    onClick={() => {
+                      setActiveTutorialRoot(root.id);
+                      setActiveTutorialSubtopic(undefined);
+                      pushStudyDestination('tutorials', {
+                        kind: 'topic_overview',
+                        majorTopicId: root.id,
+                      });
+                      onSectionChange(Section.DIDACTIC_TUTORIALS);
+                    }}
+                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] font-medium transition ${
+                      isActive
+                        ? 'border-sky-400 bg-sky-50 text-sky-800'
+                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                    }`}
+                  >
+                    {root.label}
+                  </button>
+                );
+              })}
+            </div>
+            {activeTutorialRoot && (tutorialSubtopicsByRoot[activeTutorialRoot] || []).length > 0 && (
+              <div className="mt-4 border-t border-slate-200 pt-3">
+                <div className="mb-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTutorialSubtopic(undefined);
+                      pushStudyDestination('tutorials', {
+                        kind: 'topic_overview',
+                        majorTopicId: activeTutorialRoot,
+                      });
+                      onSectionChange(Section.DIDACTIC_TUTORIALS);
+                    }}
+                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
+                      !activeTutorialSubtopic
+                        ? 'border-sky-400 bg-sky-50 text-sky-800'
+                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                    }`}
+                  >
+                    Topic overview
+                  </button>
+                </div>
+                <div className="space-y-2">
+                  {(tutorialSubtopicsByRoot[activeTutorialRoot] || []).map((scope) => {
+                    const isActive = activeTutorialSubtopic === scope.id;
+                    return (
+                      <button
+                        key={`${activeTutorialRoot}-${scope.id}`}
+                        type="button"
+                        onClick={() => {
+                          setActiveTutorialSubtopic(scope.id);
+                          pushStudyDestination('tutorials', {
+                            kind: 'subtopic_overview',
+                            majorTopicId: activeTutorialRoot,
+                            subtopicId: scope.id,
+                          });
+                          onSectionChange(Section.DIDACTIC_TUTORIALS);
+                        }}
+                        className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
+                          isActive
+                            ? 'border-sky-400 bg-sky-50 text-sky-800'
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                        }`}
+                      >
+                        {scope.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+        {currentSection === Section.DIDACTIC_LECTURES && lectureStudyTree.roots.length > 0 && (
+          <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+            <div className="space-y-2">
+              {lectureStudyTree.roots.map((root) => {
+                const isActive = activeLectureRoot === root.id;
+                return (
+                  <button
+                    key={root.id}
+                    type="button"
+                    onClick={() => {
+                      setActiveLectureRoot(root.id);
+                      setActiveLectureSubtopic(undefined);
+                      pushStudyDestination('lectures', {
+                        kind: 'topic_overview',
+                        majorTopicId: root.id,
+                      });
+                      onSectionChange(Section.DIDACTIC_LECTURES);
+                    }}
+                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] font-medium transition ${
+                      isActive
+                        ? 'border-sky-400 bg-sky-50 text-sky-800'
+                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                    }`}
+                  >
+                    {root.label}
+                  </button>
+                );
+              })}
+            </div>
+            {activeLectureRoot && (lectureStudyTree.subtopicsByRoot[activeLectureRoot] || []).length > 0 && (
+              <div className="mt-4 border-t border-slate-200 pt-3">
+                <div className="mb-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveLectureSubtopic(undefined);
+                      pushStudyDestination('lectures', {
+                        kind: 'topic_overview',
+                        majorTopicId: activeLectureRoot,
+                      });
+                      onSectionChange(Section.DIDACTIC_LECTURES);
+                    }}
+                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
+                      !activeLectureSubtopic
+                        ? 'border-sky-400 bg-sky-50 text-sky-800'
+                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                    }`}
+                  >
+                    Overview
+                  </button>
+                </div>
+                <div className="space-y-2">
+                  {(lectureStudyTree.subtopicsByRoot[activeLectureRoot] || []).map((scope) => (
+                    <button
+                      key={`${activeLectureRoot}-${scope.id}`}
+                      type="button"
+                      onClick={() => {
+                        setActiveLectureSubtopic(scope.id);
+                        pushStudyDestination('lectures', {
+                          kind: 'subtopic_overview',
+                          majorTopicId: activeLectureRoot,
+                          subtopicId: scope.id,
+                        });
+                        onSectionChange(Section.DIDACTIC_LECTURES);
+                      }}
+                      className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
+                        activeLectureSubtopic === scope.id
+                          ? 'border-sky-400 bg-sky-50 text-sky-800'
+                          : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                      }`}
+                    >
+                      {scope.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+        {currentSection === Section.DIDACTIC_ALGORITHMS && (
+          <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+            <div className="space-y-2">
+              {algorithmStudyTree.roots.map((category) => {
+                const isActive = activeAlgorithmCategory === category.id;
+                return (
+                  <button
+                    key={category.id}
+                    type="button"
+                    onClick={() => {
+                      setActiveAlgorithmCategory(category.id);
+                      setActiveAlgorithmSubtopic(undefined);
+                      pushStudyDestination('algorithms', {
+                        kind: 'topic_overview',
+                        majorTopicId: category.id,
+                      });
+                      onSectionChange(Section.DIDACTIC_ALGORITHMS);
+                    }}
+                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] font-medium transition ${
+                      isActive
+                        ? 'border-sky-400 bg-sky-50 text-sky-800'
+                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                    }`}
+                  >
+                    {category.label}
+                  </button>
+                );
+              })}
+            </div>
+            {activeAlgorithmCategory && (algorithmStudyTree.subtopicsByRoot[activeAlgorithmCategory] || []).length > 0 && (
+              <div className="mt-4 border-t border-slate-200 pt-3">
+                <div className="mb-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveAlgorithmSubtopic(undefined);
+                      pushStudyDestination('algorithms', {
+                        kind: 'topic_overview',
+                        majorTopicId: activeAlgorithmCategory,
+                      });
+                      onSectionChange(Section.DIDACTIC_ALGORITHMS);
+                    }}
+                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
+                      !activeAlgorithmSubtopic
+                        ? 'border-sky-400 bg-sky-50 text-sky-800'
+                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                    }`}
+                  >
+                    Overview
+                  </button>
+                </div>
+                <div className="space-y-2">
+                  {(algorithmStudyTree.subtopicsByRoot[activeAlgorithmCategory] || []).map((entry) => {
+                    const isActive = activeAlgorithmSubtopic === entry.id;
+                    return (
+                      <button
+                        key={entry.id}
+                        type="button"
+                        onClick={() => {
+                          setActiveAlgorithmSubtopic(entry.id);
+                          pushStudyDestination('algorithms', {
+                            kind: 'subtopic_overview',
+                            majorTopicId: activeAlgorithmCategory,
+                            subtopicId: entry.id,
+                          });
+                          onSectionChange(Section.DIDACTIC_ALGORITHMS);
+                        }}
+                        className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
+                          isActive
+                            ? 'border-sky-400 bg-sky-50 text-sky-800'
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                        }`}
+                      >
+                        {entry.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
         <NavLink
           label="Images"
           ariaLabel="Reference Library"
@@ -136,19 +559,18 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
           onClick={() => onSectionChange(Section.SIGN_OUT_SIMULATOR)}
           icon={<MicroscopeIcon className="h-5 w-5" />}
         />
-
-        {user?.isAdmin && (
-          <div>
-            <div className="space-y-1">
-              <NavLink
-                label="Admin"
-                isActive={currentSection === Section.ADMIN}
-                onClick={() => onSectionChange(Section.ADMIN)}
-                icon={<CogIcon className="h-5 w-5" />}
-              />
-            </div>
+        {isSignOutActive && (
+          <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+            <DidacticWorkspaceNav
+              activeSection={currentSection === Section.BREAST_SIGNOUT_MASTERCLASS ? Section.SIGN_OUT_SIMULATOR : currentSection}
+              onSectionChange={onSectionChange}
+              orientation="vertical"
+              items={signOutWorkspaceItems}
+              compact
+            />
           </div>
         )}
+
       </nav>
 
       <div className="mt-auto pt-4 border-t border-slate-200">
@@ -173,17 +595,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                     </button>
                 </div>
             </>
-        ) : (
-            <div className="px-4 py-2 mt-1">
-                 <button
-                    onClick={onLoginClick}
-                    className="w-full flex items-center justify-center px-4 py-2.5 text-sm font-semibold rounded-lg text-white bg-sky-600 hover:bg-sky-700 transition-all duration-200 shadow"
-                >
-                    <ArrowRightToBracketIcon className="h-5 w-5 mr-3" />
-                    <span>Admin Login</span>
-                </button>
-            </div>
-        )}
+        ) : null}
       </div>
     </aside>
   );

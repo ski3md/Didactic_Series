@@ -1,7 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Card from './ui/Card.tsx';
-import SectionHeader from './ui/SectionHeader.tsx';
-import { AcademicCapIcon } from './icons.tsx';
 import {
   ActiveCurriculumModule,
   ActiveCurriculumPriority,
@@ -16,6 +14,12 @@ import { consumeCurriculumIntent } from '../utils/curriculumNavigation.ts';
 import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
 import { getGuPilotEnhancement } from '../content/lectures/guPilotEnhancements.ts';
 import { deriveModuleCompetency, learnerLevelLabels } from '../content/competency/competencyMatrix.ts';
+import {
+  CURRICULUM_SIDEBAR_EVENT,
+  readCurriculumViewState,
+  writeCurriculumViewState,
+  type CurriculumViewState,
+} from '../utils/curriculumViewState.ts';
 
 interface PathologyCurriculumProps {
   onSectionChange: (section: Section) => void;
@@ -45,10 +49,25 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
   const [specimenFilter, setSpecimenFilter] = useState<'all' | string>('all');
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   const [showAllModules, setShowAllModules] = useState(false);
+  const [isModuleFocusView, setIsModuleFocusView] = useState(false);
 
   useEffect(() => {
     const intent = consumeCurriculumIntent();
+    const storedView = readCurriculumViewState();
     if (!intent) {
+      if (storedView) {
+        setSelectedId(storedView.selectedId);
+        setQuery(storedView.query);
+        setDomainFilter(storedView.domainFilter);
+        setSubspecialtyFilter(storedView.subspecialtyFilter);
+        setPriorityFilter(storedView.priorityFilter);
+        setPromotionFilter(storedView.promotionFilter);
+        setPatternFilter(storedView.patternFilter);
+        setSpecimenFilter(storedView.specimenFilter);
+        setShowAdvancedFilters(storedView.showAdvancedFilters);
+        setShowAllModules(storedView.showAllModules);
+        setIsModuleFocusView(!!storedView.selectedId);
+      }
       return;
     }
 
@@ -72,7 +91,56 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
     }
     if (intent.moduleId) {
       setSelectedId(intent.moduleId);
+      setIsModuleFocusView(true);
     }
+  }, []);
+
+  useEffect(() => {
+    writeCurriculumViewState({
+      selectedId,
+      query,
+      domainFilter,
+      subspecialtyFilter,
+      priorityFilter,
+      promotionFilter,
+      patternFilter,
+      specimenFilter,
+      showAdvancedFilters,
+      showAllModules,
+    });
+  }, [
+    domainFilter,
+    patternFilter,
+    priorityFilter,
+    promotionFilter,
+    query,
+    selectedId,
+    showAdvancedFilters,
+    showAllModules,
+    specimenFilter,
+    subspecialtyFilter,
+  ]);
+
+  useEffect(() => {
+    const handleSidebarSelection = (event: Event) => {
+      const detail = (event as CustomEvent<{ moduleId: string; subspecialty: ActiveCurriculumModule['subspecialty'] }>).detail;
+      if (!detail) {
+        return;
+      }
+      setSelectedId(detail.moduleId);
+      setSubspecialtyFilter(detail.subspecialty);
+      if (detail.subspecialty === 'Clinical Pathology') {
+        setDomainFilter('cp');
+      }
+      setShowAllModules(true);
+      setIsModuleFocusView(true);
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+
+    window.addEventListener(CURRICULUM_SIDEBAR_EVENT, handleSidebarSelection as EventListener);
+    return () => window.removeEventListener(CURRICULUM_SIDEBAR_EVENT, handleSidebarSelection as EventListener);
   }, []);
 
   const filteredModules = useMemo(() => {
@@ -315,15 +383,10 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
   };
 
   return (
-    <div className={`space-y-8 ${preferences.reduceMotion ? '' : 'animate-fade-in'}`}>
-      <SectionHeader
-        title="Pathology Curriculum"
-        subtitle="Choose one module and start."
-        icon={<AcademicCapIcon className="h-10 w-10" />}
-      />
-
-      <Card>
-        <div className="space-y-4">
+    <div className="space-y-8 animate-fade-in">
+      {!isModuleFocusView && (
+        <Card>
+          <div className="space-y-4">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
             <div className="flex flex-wrap gap-3">
               {[
@@ -356,7 +419,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
             </div>
             <div className="flex w-full flex-col gap-3 sm:flex-row xl:w-auto xl:min-w-[30rem]">
               <label className="block flex-1">
-                <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Search</span>
+                <span className="sr-only">Search modules</span>
                 <input
                   type="search"
                   value={query}
@@ -391,19 +454,20 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
 
           <div className="grid gap-3 md:grid-cols-3">
             {nextUpModules.map((module) => (
-              <button
-                key={module.moduleId}
-                type="button"
-                onClick={() => {
-                  setSelectedId(module.moduleId);
-                  setSubspecialtyFilter(module.subspecialty);
-                  setPromotionFilter('canonical');
-                  setShowAllModules(false);
-                }}
-                className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-4 text-left transition hover:border-sky-300 hover:bg-sky-50"
-              >
-                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Start here</div>
-                <div className="mt-2 text-base font-semibold text-slate-900">{module.title}</div>
+                <button
+                  key={module.moduleId}
+                  type="button"
+                  onClick={() => {
+                    setSelectedId(module.moduleId);
+                    setSubspecialtyFilter(module.subspecialty);
+                    setDomainFilter(module.subspecialty === 'Clinical Pathology' ? 'cp' : 'ap');
+                    setPromotionFilter('canonical');
+                    setShowAllModules(false);
+                    setIsModuleFocusView(true);
+                  }}
+                  className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-4 text-left transition hover:border-sky-300 hover:bg-sky-50"
+                >
+                <div className="text-base font-semibold text-slate-900">{module.title}</div>
                 <div className="mt-1 text-sm text-slate-600">{module.subspecialty}</div>
               </button>
             ))}
@@ -461,13 +525,17 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
               </label>
             </div>
           )}
-        </div>
-      </Card>
+          </div>
+        </Card>
+      )}
 
-      <div className="grid gap-8 xl:grid-cols-[18rem_minmax(0,1fr)]">
-        <div className="space-y-4">
+      <div className={isModuleFocusView ? 'space-y-6' : 'grid gap-8 xl:grid-cols-[18rem_minmax(0,1fr)]'}>
+        {!isModuleFocusView && (
+          <div className="space-y-4">
           <div className="flex items-center justify-between px-1">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Modules</div>
+            <div className="text-sm font-medium text-slate-600">
+              {hasActiveRefinement ? `${filteredModules.length} modules` : 'Available modules'}
+            </div>
             {!hasActiveRefinement && filteredModules.length > visibleModules.length && (
               <button
                 type="button"
@@ -485,7 +553,13 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                 <button
                   key={module.moduleId}
                   type="button"
-                  onClick={() => setSelectedId(module.moduleId)}
+                  onClick={() => {
+                    setSelectedId(module.moduleId);
+                    setSubspecialtyFilter(module.subspecialty);
+                    setDomainFilter(module.subspecialty === 'Clinical Pathology' ? 'cp' : 'ap');
+                    setShowAllModules(false);
+                    setIsModuleFocusView(true);
+                  }}
                   className={`w-full rounded-xl border px-4 py-3 text-left transition ${
                     isActive
                       ? 'border-sky-400 bg-sky-50'
@@ -511,26 +585,38 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
               );
             })}
           </div>
-        </div>
+          </div>
+        )}
 
         {selectedModule ? (
           <div className="space-y-6">
             <Card>
-              <div className="flex flex-wrap gap-2">
-                <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-800">
-                  {selectedModule.subspecialty}
-                </span>
-                {selectedModuleCompetency && (
-                  <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-800">
-                    {learnerLevelLabels[selectedModuleCompetency.primaryLevel]} primary
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex flex-wrap gap-2">
+                  <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-800">
+                    {selectedModule.subspecialty}
                   </span>
+                  {selectedModuleCompetency && (
+                    <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-800">
+                      {learnerLevelLabels[selectedModuleCompetency.primaryLevel]} primary
+                    </span>
+                  )}
+                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                    {priorityLabels[selectedModule.boardPriority]}
+                  </span>
+                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                    {promotionLabels[selectedModule.promotionState]}
+                  </span>
+                </div>
+                {isModuleFocusView && (
+                  <button
+                    type="button"
+                    onClick={() => setIsModuleFocusView(false)}
+                    className="shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                  >
+                    Change module
+                  </button>
                 )}
-                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
-                  {priorityLabels[selectedModule.boardPriority]}
-                </span>
-                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
-                  {promotionLabels[selectedModule.promotionState]}
-                </span>
               </div>
 
               <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
@@ -546,111 +632,176 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
               </div>
 
               {firstAvailableLaunchCard && (
-                <div className="mt-6 grid gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
+                <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                    <div className="max-w-3xl">
+                      <div className="text-2xl font-semibold text-slate-900">{firstAvailableLaunchCard.buttonLabel}</div>
+                      <div className="mt-2 text-sm leading-6 text-slate-600">
+                        {isPatternBlock
+                          ? 'Use the nearest teaching entry point for this block.'
+                          : 'Open the strongest first pass for this module and stay in that lane until the core pattern feels stable.'}
+                      </div>
+                    </div>
+                    {secondaryLaunchCards.length > 0 && (
+                      <div className="flex flex-wrap gap-2 lg:justify-end">
+                        {secondaryLaunchCards.map((card) => (
+                          <button
+                            key={card.key}
+                            type="button"
+                            onClick={card.onClick}
+                            className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900"
+                          >
+                            {card.buttonLabel}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                   <button
                     type="button"
                     onClick={firstAvailableLaunchCard.onClick}
-                    className="rounded-2xl border border-sky-300 bg-sky-50 px-5 py-4 text-left transition hover:border-sky-400 hover:bg-sky-100"
+                    className="mt-4 inline-flex items-center rounded-full bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-700"
                   >
-                    <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Start</div>
-                    <div className="mt-2 text-xl font-semibold text-slate-900">{firstAvailableLaunchCard.buttonLabel}</div>
-                    <div className="mt-1 text-sm text-slate-600">
-                      {isPatternBlock ? 'Use the nearest teaching entry point for this block.' : 'Open the strongest first pass for this module.'}
-                    </div>
+                    {firstAvailableLaunchCard.buttonLabel}
                   </button>
+                </div>
+              )}
 
-                  {secondaryLaunchCards.length > 0 && (
-                    <div className="flex flex-wrap content-start gap-3">
-                      {secondaryLaunchCards.map((card) => (
-                        <button
-                          key={card.key}
-                          type="button"
-                          onClick={card.onClick}
-                          className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm text-slate-700 transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900"
-                        >
-                          {card.buttonLabel}
-                        </button>
+              <div className="mt-6 grid gap-4 xl:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
+                <div className="space-y-4">
+                  <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">At a glance</div>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {[...selectedModule.patternFamilies, ...selectedModule.specimenContexts].slice(0, 7).map((item) => (
+                        <span key={item} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                          {item}
+                        </span>
                       ))}
+                    </div>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {availableNow.map((item) => (
+                        <span key={item} className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                          {item}
+                        </span>
+                      ))}
+                      {buildoutRoutes.map((item) => (
+                        <span key={item} className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {selectedModule.cpGovernance && (
+                    <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Why this matters</div>
+                      <div className="mt-3 text-lg font-semibold text-slate-900">
+                        {selectedModule.cpGovernance.boardMasteryFocusTitle}
+                      </div>
+                      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+                        <div>
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Must know</div>
+                          <ul className="mt-2 space-y-2 text-sm leading-6 text-slate-700">
+                            {selectedModule.cpGovernance.mustKnowConcepts.slice(0, 3).map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Do not miss</div>
+                          <ul className="mt-2 space-y-2 text-sm leading-6 text-slate-700">
+                            {selectedModule.cpGovernance.mustNotMissPitfalls.slice(0, 2).map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {selectedModuleCompetency && (
+                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                      <div className="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Competency target</div>
+                          <p className="mt-2 text-sm leading-6 text-slate-700">{selectedModuleCompetency.milestoneOutcome}</p>
+                        </div>
+                        <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700">
+                          {selectedModuleCompetency.autonomyTarget}
+                        </span>
+                      </div>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {selectedModuleCompetency.learnerLevels.map((level) => (
+                          <span key={level} className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-800">
+                            {learnerLevelLabels[level]}
+                          </span>
+                        ))}
+                        {selectedModuleCompetency.competencyDomains.slice(0, 5).map((domain) => (
+                          <span key={domain} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                            {domain}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
-              )}
 
-              <div className="mt-6 grid gap-3 md:grid-cols-2">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Focus</div>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {[...selectedModule.patternFamilies, ...selectedModule.specimenContexts].slice(0, 7).map((item) => (
-                      <span key={item} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Routes</div>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {availableNow.map((item) => (
-                      <span key={item} className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-                        {item}
-                      </span>
-                    ))}
-                    {buildoutRoutes.map((item) => (
-                      <span key={item} className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+                <div className="space-y-4">
+                  {selectedModule.cpGovernance && (
+                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Official ABPath scope</div>
+                      <div className="mt-3 text-sm font-semibold text-slate-900">{selectedModule.cpGovernance.abpathRootTopic}</div>
+                      <div className="mt-2 text-sm leading-6 text-slate-600">{selectedModule.cpGovernance.abpathPrimaryPath}</div>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                          {selectedModule.cpGovernance.abpathSpecVersion}
+                        </span>
+                        <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                          {selectedModule.cpGovernance.abpathPrimaryLevel}
+                        </span>
+                        <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                          {selectedModule.cpGovernance.abpathPrecisionMode}
+                        </span>
+                        <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                          {selectedModule.cpGovernance.abpathExamRisk}
+                        </span>
+                      </div>
+                      <div className="mt-4">
+                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Testable tasks</div>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {selectedModule.cpGovernance.abpathTestableTask.map((task) => (
+                            <span key={task} className="rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-sky-800">
+                              {task}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {selectedModule.lectures.length > 1 && (
+                    <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Linked lectures</div>
+                      <div className="mt-3 flex flex-wrap gap-3">
+                        {selectedModule.lectures.map((lecture) => (
+                          <button
+                            key={lecture.id}
+                            type="button"
+                            onClick={() =>
+                              openLecture(lecture.id, lecture.label, {
+                                initialMode: getGuPilotEnhancement(lecture.id)?.defaultMode ?? 'overview',
+                              })
+                            }
+                            className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900"
+                          >
+                            {lecture.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-
-              {selectedModuleCompetency && (
-                <div className="mt-6 rounded-2xl border border-slate-200 bg-white px-4 py-4">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div>
-                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Competency Target</div>
-                      <p className="mt-2 text-sm text-slate-700">{selectedModuleCompetency.milestoneOutcome}</p>
-                    </div>
-                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-                      {selectedModuleCompetency.autonomyTarget}
-                    </span>
-                  </div>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {selectedModuleCompetency.learnerLevels.map((level) => (
-                      <span key={level} className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-800">
-                        {learnerLevelLabels[level]}
-                      </span>
-                    ))}
-                    {selectedModuleCompetency.competencyDomains.slice(0, 5).map((domain) => (
-                      <span key={domain} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
-                        {domain}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {selectedModule.lectures.length > 1 && (
-                <div className="mt-6">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Linked lectures</div>
-                  <div className="mt-3 flex flex-wrap gap-3">
-                    {selectedModule.lectures.map((lecture) => (
-                      <button
-                        key={lecture.id}
-                        type="button"
-                        onClick={() =>
-                          openLecture(lecture.id, lecture.label, {
-                            initialMode: getGuPilotEnhancement(lecture.id)?.defaultMode ?? 'overview',
-                          })
-                        }
-                        className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900"
-                      >
-                        {lecture.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
 
               {nearbyModules.length > 1 && (
                 <div className="mt-6">
@@ -671,6 +822,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                             }
                             setPromotionFilter('all');
                             setShowAllModules(false);
+                            setIsModuleFocusView(true);
                           }}
                           className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
                         >

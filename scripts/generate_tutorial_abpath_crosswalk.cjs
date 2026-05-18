@@ -10,6 +10,7 @@ const AP_TOPICS_PATH = path.join(REPO_ROOT, "src/content/syllabus/parsed_topics_
 const TUTORIAL_PATHS = [
   path.join(REPO_ROOT, "src/content/tutorials/tutorials.normalized.json"),
   path.join(REPO_ROOT, "src/content/downloads_imports/normalized/tutorials.normalized.json"),
+  path.join(REPO_ROOT, "src/content/tutorials/clinicalPathInteractiveTutorials.json"),
 ];
 const LABEL_VALIDATION_PATH = path.join(REPO_ROOT, "reports/tutorial_label_validation.json");
 const CP_PDF_PATH = "/Volumes/DB_External/Content Specifications ABPath - Clinical Pathology.pdf";
@@ -185,6 +186,15 @@ function loadTutorials() {
         labelConfidence: label.confidence || "",
         labelEvidenceTerms: label.evidenceTerms || [],
       };
+      if (tutorial.cpGovernance?.abpathRootTopic) {
+        tutorialRecord.declaredCpGovernanceRoot = tutorial.cpGovernance.abpathRootTopic;
+      }
+      if (tutorial.cpGovernance?.abpathPrimaryPath) {
+        tutorialRecord.declaredCpGovernancePrimaryPath = tutorial.cpGovernance.abpathPrimaryPath;
+      }
+      if (Array.isArray(tutorial.cpGovernance?.abpathAnchorSet)) {
+        tutorialRecord.declaredCpGovernanceAnchorSet = tutorial.cpGovernance.abpathAnchorSet.slice();
+      }
       tutorialRecord.scoringText = [
         tutorialRecord.id,
         tutorialRecord.title,
@@ -198,7 +208,10 @@ function loadTutorials() {
       tutorialRecord.titleTokens = tokenSet(`${tutorialRecord.title} ${tutorialRecord.tags.join(" ")}`);
       tutorialRecord.normalizedScoringText = normalizeText(tutorialRecord.scoringText);
       tutorialRecord.hintText = normalizeText(`${tutorialRecord.id} ${tutorialRecord.title} ${tutorialRecord.category} ${tutorialRecord.summary} ${tutorialRecord.tags.join(" ")} ${tutorialRecord.sourcePath}`);
-      tutorialRecord.expectedRoots = expectedRoots(tutorialRecord.hintText);
+      tutorialRecord.expectedRoots = unique([
+        ...expectedRoots(tutorialRecord.hintText),
+        tutorialRecord.declaredCpGovernanceRoot,
+      ]);
       tutorials.push(tutorialRecord);
     }
   }
@@ -206,6 +219,7 @@ function loadTutorials() {
 }
 
 function inferTrack(tutorial) {
+  if (tutorial.track) return tutorial.track;
   const haystack = normalizeText([
     tutorial.id,
     tutorial.title,
@@ -219,6 +233,8 @@ function inferTrack(tutorial) {
 }
 
 function inferTrackLabel(tutorial) {
+  if (tutorial.track === "clinical-path") return "Clinical Pathology";
+  if (tutorial.track === "cross-cutting") return "Cross-Cutting";
   return inferTrack(tutorial) === "clinical-path" ? "Clinical Pathology" : "Surgical Pathology";
 }
 
@@ -474,9 +490,9 @@ function expectedRoots(haystack) {
     [/(\bplacenta\b|\bplacental\b|\bpregnancy\b)/, "Placental Pathology"],
     [/(\bchild\b|\bpediatric\b|\bneonatal\b|\bcongenital\b)/, "Pediatric Pathology"],
     [/(\btransfusion\b|\bcoagulation\b|\bhemostasis\b|\bplatelet\b|\bwarfarin\b|\bpt\b|\baptt\b|\bhemolytic\b|\bblood banking\b)/, "Blood Banking/Transfusion Medicine"],
-    [/(\bchemistry\b|\belectrolyte\b|\btoxicology\b|\benzyme\b|\bprotein electrophoresis\b|\btherapeutic drug\b)/, "Chemical Pathology"],
-    [/(\bleukemia\b|\blymphoma\b|\bmyeloid\b|\blymphoid\b|\bplasma cell\b|\bhematology\b)/, "Hematopathology for Clinical Pathology"],
-    [/(\bbacteria\b|\bvirus\b|\bfungi\b|\bparasite\b|\bmicrobiology\b|\bmycobacter)/, "Medical Microbiology"],
+    [/(\bchemistry\b|\bclinical chemistry\b|\belectrolyte\b|\btoxicology\b|\benzyme\b|\bprotein electrophoresis\b|\btherapeutic drug\b|\bendocrine\b|\bmetabolic\b|\blipid\b|\bquality control\b|\bqc\b|\blinearity\b|\bcarryover\b|\bamr\b)/, "Chemical Pathology"],
+    [/(\bleukemia\b|\blymphoma\b|\bmyeloid\b|\blymphoid\b|\bplasma cell\b|\bhematology\b|\bhematopathology\b|\blaboratory hematology\b|\bflow cytometry\b|\bbone marrow\b|\bperipheral blood\b|\banemia\b|\bhemolysis\b)/, "Hematopathology for Clinical Pathology"],
+    [/(\bbacteria\b|\bvirus\b|\bfungi\b|\bparasite\b|\bmicrobiology\b|\bmycobacter\b|\bbacteriology\b|\bmycology\b|\bvirology\b|\bparasitology\b|\bast\b|\bmaldi\b|\bculture\b)/, "Medical Microbiology"],
     [/(\binformatics\b|\bquality\b|\bsafety\b|\bbilling\b|\bethics\b|\bfinance\b)/, "Management and Informatics"],
   ];
   return unique(rules.filter(([pattern]) => pattern.test(haystack)).map(([, root]) => root));
@@ -499,6 +515,33 @@ function confidenceFor(score) {
   if (score >= 0.58) return "high";
   if (score >= 0.34) return "medium";
   return "low";
+}
+
+function normalizeSpecPath(value) {
+  return normalizeText(String(value || "").replace(/\s*>\s*/g, " "));
+}
+
+function findGovernedSpecMatches(tutorial, specNodes) {
+  const results = [];
+  const seen = new Set();
+  const primaryPath = normalizeSpecPath(tutorial.declaredCpGovernancePrimaryPath);
+  const anchorPaths = unique(tutorial.declaredCpGovernanceAnchorSet || []).map(normalizeSpecPath);
+  const desiredPaths = unique([primaryPath, ...anchorPaths]).filter(Boolean);
+
+  for (const desiredPath of desiredPaths) {
+    const node = specNodes.find((candidate) => candidate.domain === "CP" && candidate.normalizedPath === desiredPath);
+    if (!node || seen.has(node.id)) continue;
+    seen.add(node.id);
+    const evidenceTerms = node.tokenArray.filter((token) => tutorial.scoringTokens.has(token)).slice(0, 14);
+    results.push({
+      node,
+      score: desiredPath === primaryPath ? 1 : 0.96,
+      sharedTokens: evidenceTerms,
+      governed: true,
+    });
+  }
+
+  return results;
 }
 
 function mapTutorials(tutorials, specNodes) {
@@ -538,8 +581,14 @@ function mapTutorials(tutorials, specNodes) {
       })
       .filter((candidate) => candidate.score > 0.08 || candidate.sharedTokens.length >= 2)
       .sort((a, b) => b.score - a.score);
-    const primary = scored[0] || { node: specNodes[0], score: 0, sharedTokens: [] };
-    const alternates = scored
+    const governedMatches = findGovernedSpecMatches(tutorial, specNodes);
+    const governedIds = new Set(governedMatches.map((candidate) => candidate.node.id));
+    const mergedScored = [
+      ...governedMatches,
+      ...scored.filter((candidate) => !governedIds.has(candidate.node.id)),
+    ];
+    const primary = mergedScored[0] || { node: specNodes[0], score: 0, sharedTokens: [] };
+    const alternates = mergedScored
       .slice(1)
       .filter((candidate) => candidate.node.domain !== primary.node.domain || candidate.score >= primary.score * 0.72)
       .slice(0, 5);

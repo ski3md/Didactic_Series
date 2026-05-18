@@ -189,7 +189,7 @@
     "sourcePath": "/Users/skim4/Downloads/ioc-next-app/ioc-modal-complete-upgrade/data/overview/Neuropathology.json",
     "payload": {
       "overview": {
-        "title": "Neurosurgical IOC: Core Principles",
+        "title": "Neuropathology IOC: Core Principles",
         "key_points": [
           {
             "label": "Surgeon's Question",

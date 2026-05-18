@@ -6,6 +6,7 @@ import ImageGalleries from './ImageGalleries.tsx';
 import { BookOpenIcon } from './icons.tsx';
 import { consumeReferenceLibraryIntent, ReferenceLibraryIntent } from '../utils/referenceLibraryNavigation.ts';
 import { getAtlasCollectionSummaries } from '../utils/atlasImageCatalog.ts';
+import { readSessionState, writeSessionState } from '../utils/viewStateStorage.ts';
 import signoutImageReferenceIndex from '../content/signout_sims/signout_image_reference_index.json';
 
 interface ReferenceLibraryProps {
@@ -46,9 +47,24 @@ interface SupplementalReferenceImageManifest {
   images: SupplementalReferenceImage[];
 }
 
+interface FocusPreset {
+  id: string;
+  title: string;
+  description: string;
+  focusTerms: string[];
+}
+
 const signoutImages = (signoutImageReferenceIndex.images ?? []) as SignoutReferenceImage[];
 const SUPPLEMENTAL_PAGE_SIZE = 60;
 const emptySupplementalManifest: SupplementalReferenceImageManifest = { imageCount: 0, images: [] };
+const REFERENCE_LIBRARY_VIEW_STATE_KEY = 'didactic_series_reference_library_view_state';
+
+interface ReferenceLibraryViewState {
+  selectedSignoutSpecialty: string;
+  selectedSupplementalSpecialty: string;
+  supplementalSearch: string;
+  supplementalPage: number;
+}
 
 const normalizeReferenceKey = (value?: string) =>
   (value || '')
@@ -125,6 +141,39 @@ const matchesSupplementalSearch = (image: SupplementalReferenceImage, searchTerm
     .some((value) => String(value).toLowerCase().includes(query));
 };
 
+const collectionPresetMap: Record<
+  'acquired' | 'curated' | 'promoted',
+  {
+    intentTitle: string;
+    intentSummary: string;
+    focusTerms: string[];
+    bestFor: string;
+    ctaLabel: string;
+  }
+> = {
+  acquired: {
+    intentTitle: 'Lecture microscopy',
+    intentSummary: 'Start with the images already used in active lectures and teaching walkthroughs.',
+    focusTerms: ['lecture', 'microscopy', 'histology'],
+    bestFor: 'lecture review and rapid recap',
+    ctaLabel: 'Open lecture images',
+  },
+  curated: {
+    intentTitle: 'Histology comparison',
+    intentSummary: 'Use a broad morphology-first set when you want to compare look-alikes side by side.',
+    focusTerms: ['adipocytic', 'spindle', 'melanocytic'],
+    bestFor: 'pattern recognition and differential diagnosis',
+    ctaLabel: 'Compare histology',
+  },
+  promoted: {
+    intentTitle: 'Granulomatous differential',
+    intentSummary: 'Review infectious and inflammatory mimics when the key problem is granulomatous disease.',
+    focusTerms: ['sarcoidosis', 'blastomycosis', 'cryptococcosis'],
+    bestFor: 'granuloma workups and mimic review',
+    ctaLabel: 'Review granulomas',
+  },
+};
+
 const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
   const [focusIntent, setFocusIntent] = useState<ReferenceLibraryIntent | null>(null);
   const [selectedSignoutSpecialty, setSelectedSignoutSpecialty] = useState('GU Pathology Sign-Out Simulations');
@@ -147,12 +196,6 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
       ),
     [selectedSignoutSpecialty]
   );
-  const signoutCoverage = signoutImageReferenceIndex as {
-    totalImages: number;
-    presentImages: number;
-    missingImages: number;
-    generatedAt: string;
-  };
   const supplementalSpecialties = useMemo(
     () => Array.from(new Set(supplementalImages.map((image) => image.specialty))).sort(),
     [supplementalImages]
@@ -173,8 +216,25 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
   );
 
   useEffect(() => {
-    setFocusIntent(consumeReferenceLibraryIntent());
+    const intent = consumeReferenceLibraryIntent();
+    const storedView = readSessionState<ReferenceLibraryViewState>(REFERENCE_LIBRARY_VIEW_STATE_KEY);
+    setFocusIntent(intent);
+    if (!intent && storedView) {
+      setSelectedSignoutSpecialty(storedView.selectedSignoutSpecialty);
+      setSelectedSupplementalSpecialty(storedView.selectedSupplementalSpecialty);
+      setSupplementalSearch(storedView.supplementalSearch);
+      setSupplementalPage(storedView.supplementalPage);
+    }
   }, []);
+
+  useEffect(() => {
+    writeSessionState<ReferenceLibraryViewState>(REFERENCE_LIBRARY_VIEW_STATE_KEY, {
+      selectedSignoutSpecialty,
+      selectedSupplementalSpecialty,
+      supplementalSearch,
+      supplementalPage,
+    });
+  }, [selectedSignoutSpecialty, selectedSupplementalSpecialty, supplementalSearch, supplementalPage]);
 
   useEffect(() => {
     let active = true;
@@ -205,7 +265,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
     setSupplementalPage(1);
   }, [selectedSupplementalSpecialty, supplementalSearch]);
 
-  const focusPresets = [
+  const focusPresets: FocusPreset[] = [
     ...(focusIntent?.focusTerms?.slice(0, 3).map((term) => ({
       id: `focus-${term}`,
       title: term,
@@ -286,6 +346,27 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
     },
   ];
 
+  const groupedFocusPresets = [
+    {
+      id: 'differentials',
+      title: 'Common differentials',
+      description: 'Start from a pattern or high-yield mimic set.',
+      presets: focusPresets.filter((preset) =>
+        ['preset-blastomycosis', 'preset-cryptococcosis', 'preset-sarcoidosis', 'preset-sft', 'preset-melanocytic', 'preset-inflammatory-mimics'].includes(
+          preset.id
+        )
+      ),
+    },
+    {
+      id: 'organ-systems',
+      title: 'Organ systems',
+      description: 'Jump into a service-style image set by subspecialty.',
+      presets: focusPresets.filter((preset) =>
+        ['preset-breast', 'preset-gynecologic', 'preset-gu', 'preset-hpb', 'preset-thoracic', 'preset-gastrointestinal'].includes(preset.id)
+      ),
+    },
+  ];
+
   const applyPreset = (preset: { title: string; description: string; focusTerms: string[] }) => {
     setFocusIntent({
       title: preset.title,
@@ -297,6 +378,15 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
     });
   };
 
+  const applyCollectionPreset = (summary: (typeof atlasSummaries)[number]) => {
+    const collectionPreset = collectionPresetMap[summary.id];
+    applyPreset({
+      title: collectionPreset.intentTitle,
+      description: collectionPreset.intentSummary,
+      focusTerms: collectionPreset.focusTerms,
+    });
+  };
+
   return (
     <div className="animate-fade-in space-y-8">
       <SectionHeader 
@@ -304,54 +394,111 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
         subtitle="Review histology and ancillary images for teaching and diagnostic comparison."
         icon={<BookOpenIcon className="h-10 w-10" />}
       />
-      <div className="grid gap-4 lg:grid-cols-2">
-        {atlasSummaries.map((summary) => (
-          <Card key={summary.id}>
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Image set</p>
-                <h2 className="mt-1 text-xl font-semibold font-serif text-slate-900">{summary.title}</h2>
-                <p className="mt-2 text-sm text-slate-700">{summary.description}</p>
-              </div>
-              <div className="rounded-2xl bg-slate-50 px-4 py-3 text-right">
-                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Images</div>
-                <div className="text-2xl font-semibold text-slate-900">{summary.imageCount}</div>
-              </div>
+      <Card className="overflow-hidden border-sky-200 bg-gradient-to-r from-sky-50 via-white to-emerald-50">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Start here</p>
+            <h2 className="mt-2 text-2xl font-semibold font-serif text-slate-950">Choose the kind of review you want</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-700">
+              Use lecture images for recap, histology comparison for morphology drills, or granulomatous sets for focused differentials.
+            </p>
+          </div>
+          {focusIntent && (
+            <div className="rounded-2xl border border-sky-200 bg-white/90 px-4 py-3 text-sm text-slate-700 shadow-sm">
+              <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Current pathway</div>
+              <div className="mt-1 font-semibold text-slate-950">{focusIntent.title}</div>
+              {focusIntent.summary && <div className="mt-1 text-slate-600">{focusIntent.summary}</div>}
             </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {summary.highlightedTerms.map((term) => (
+          )}
+        </div>
+      </Card>
+      <div className="grid gap-4 xl:grid-cols-3">
+        {atlasSummaries.map((summary) => (
+          <Card
+            key={summary.id}
+            interactive
+            className={`mb-0 h-full ${
+              focusIntent?.title === collectionPresetMap[summary.id].intentTitle ? 'border-sky-300 shadow-md ring-2 ring-sky-100' : ''
+            }`}
+            onClick={() => applyCollectionPreset(summary)}
+          >
+            <div className="flex h-full flex-col">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-700">Image pathway</p>
+                  <h2 className="mt-1 text-2xl font-semibold font-serif text-slate-950">{summary.title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-700">{summary.description}</p>
+                </div>
+                <div className="rounded-2xl bg-slate-50 px-4 py-3 text-right">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Images</div>
+                  <div className="text-2xl font-semibold text-slate-900">{summary.imageCount}</div>
+                </div>
+              </div>
+              <div className="mt-5 rounded-2xl bg-slate-50 px-4 py-3">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Best for</div>
+                <div className="mt-1 text-sm font-medium text-slate-900">{collectionPresetMap[summary.id].bestFor}</div>
+              </div>
+              <div className="mt-4">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Common examples</div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {summary.highlightedTerms.slice(0, 4).map((term) => (
+                    <button
+                      key={`${summary.id}-${term}`}
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        applyPreset({ title: term, description: `${summary.title} example set`, focusTerms: [term.toLowerCase()] });
+                      }}
+                      className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                    >
+                      {term}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-5">
                 <button
-                  key={`${summary.id}-${term}`}
                   type="button"
-                  onClick={() => applyPreset({ title: term, description: `${summary.title} preset`, focusTerms: [term.toLowerCase()] })}
-                  className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    applyCollectionPreset(summary);
+                  }}
+                  className="w-full rounded-xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
                 >
-                  {term}
+                  {collectionPresetMap[summary.id].ctaLabel}
                 </button>
-              ))}
+              </div>
             </div>
           </Card>
         ))}
       </div>
       <Card>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-5">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Diagnostic groups</p>
-            <h2 className="mt-1 text-xl font-semibold font-serif text-slate-900">Focused review</h2>
+            <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Quick pathways</p>
+            <h2 className="mt-1 text-xl font-semibold font-serif text-slate-900">Browse by differential or service</h2>
             <p className="mt-2 text-sm text-slate-700">
-              Open a focused set of images for differential diagnosis and lecture preparation.
+              Choose a ready-made pathway when you already know the disease family or organ system you want to review.
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {focusPresets.map((preset) => (
-              <button
-                key={preset.id}
-                type="button"
-                onClick={() => applyPreset(preset)}
-                className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
-              >
-                {preset.title}
-              </button>
+          <div className="grid gap-4 lg:grid-cols-2">
+            {groupedFocusPresets.map((group) => (
+              <div key={group.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <div className="text-sm font-semibold text-slate-950">{group.title}</div>
+                <p className="mt-1 text-sm text-slate-600">{group.description}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {group.presets.map((preset) => (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      onClick={() => applyPreset(preset)}
+                      className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                    >
+                      {preset.title}
+                    </button>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -362,12 +509,8 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
             <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Sign-out image library</p>
             <h2 className="mt-1 text-xl font-semibold font-serif text-slate-900">Local visual evidence for simulation cases</h2>
             <p className="mt-2 text-sm text-slate-700">
-              {signoutCoverage.presentImages} of {signoutCoverage.totalImages} sign-out case images are stored locally.
+              Explore locally available sign-out case images used across simulation workflows.
             </p>
-          </div>
-          <div className="rounded-lg bg-slate-50 px-4 py-3 text-right">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Missing</div>
-            <div className="text-2xl font-semibold text-slate-900">{signoutCoverage.missingImages}</div>
           </div>
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
@@ -404,8 +547,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                   <h3 className="mt-3 text-sm font-semibold leading-5 text-slate-950">{image.title}</h3>
                   <p className="mt-2 text-sm leading-5 text-slate-700">{image.caption}</p>
                 </div>
-                <div className="flex items-center justify-between gap-3 border-t border-slate-100 pt-3 text-xs text-slate-500">
-                  <span>{Math.round(image.bytes / 1024).toLocaleString()} KB local</span>
+                <div className="border-t border-slate-100 pt-3 text-xs text-slate-500">
                   <a
                     href={image.sourceUrl}
                     target="_blank"
@@ -506,9 +648,6 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                 <div className="border-t border-slate-100 pt-3 text-xs leading-5 text-slate-500">
                   <div>{supplementalSourceLabel(image)}</div>
                   {image.sourceRelativePath && <div className="truncate" title={image.sourceRelativePath}>{image.sourceRelativePath}</div>}
-                  <div>
-                    {Math.round(image.bytes / 1024).toLocaleString()} KB {image.imageUrl ? 'external local' : 'local'} {image.extension.toUpperCase()}
-                  </div>
                 </div>
               </div>
             </article>

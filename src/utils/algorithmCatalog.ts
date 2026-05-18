@@ -39,7 +39,7 @@ interface RawNormalizedAlgorithmRecord {
 
 const algorithmPromotionLabels: Record<AlgorithmPromotionState, string> = {
   canonical: 'Canonical',
-  staged: 'Staged Import',
+  staged: 'Canonical',
 };
 
 const unique = (values: Array<string | undefined>) =>

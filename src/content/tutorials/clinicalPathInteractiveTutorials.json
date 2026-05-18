@@ -1,0 +1,434 @@
+[
+  {
+    "id": "cp-micro-methods-ast-studio",
+    "title": "Clinical Microbiology Methods and AST Studio",
+    "summary": "Bench-first microbiology review for culture workflow, organism identification, susceptibility testing, and escalation decisions.",
+    "body": "## Scope\nThis interactive studio stays inside the Clinical Pathology tutorial track and uses the same CP teaching surface as the rest of the app.\n\n## How to use it\n1. Start with specimen quality, media selection, atmosphere, and culture setup.\n2. Move through identification logic: microscopy, biochemical testing, MALDI-TOF, and targeted molecular assays.\n3. Close with susceptibility interpretation, critical reporting, and infection-control consequences.\n\n## Why it belongs here\nThis is not a separate product. It is the operational microbiology branch of the current CP study path.\n\n## Pair this with\n- `Case Tutorial: Medical Microbiology`\n- `Antimicrobial Susceptibility Testing: A Case Tutorial`\n- organism-specific bacteriology, mycology, virology, and parasitology tutorials already in the CP library\n\n## Learning target\nBy the end of the session, the learner should be able to connect specimen quality, organism workup, test selection, and AST reporting into one consult-level reasoning chain.",
+    "sourceRepo": "pthfndr_cp_interactive",
+    "sourceLabel": "P@thfndr Interactive CP",
+    "lane": "lab-studio",
+    "track": "clinical-path",
+    "promotionState": "canonical",
+    "category": "Clinical Microbiology",
+    "tags": [
+      "microbiology",
+      "bacteriology",
+      "mycology",
+      "virology",
+      "parasitology",
+      "AST",
+      "culture workflow",
+      "MALDI-TOF",
+      "PCR"
+    ],
+    "interactiveAssets": [
+      {
+        "id": "micro-methods-primary",
+        "title": "Methods and AST workspace",
+        "path": "cp-studios/clinical-micro-methods-ast.html",
+        "summary": "Primary embedded bench workflow for microbiology methods and susceptibility testing."
+      },
+      {
+        "id": "micro-cases-secondary",
+        "title": "Microbiology case dashboard",
+        "path": "cp-studios/microbiology-case-dashboard.html",
+        "summary": "Follow-on case-based microbiology dashboard for organism reasoning and applied workup."
+      }
+    ],
+    "cpGovernance": {
+      "abpathSpecVersion": "CP_2026_04_10",
+      "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+      "abpathRootTopic": "Medical Microbiology",
+      "abpathPrimaryPath": "Medical Microbiology > Bacteria, including Mycobacteria, Nocardia, and other Aerobic Actinomycetes > Identification Methods and Instrumentation",
+      "abpathPrimaryLevel": "C",
+      "abpathAnchorSet": [
+        "Medical Microbiology > Bacteria, including Mycobacteria, Nocardia, and other Aerobic Actinomycetes > Identification Methods and Instrumentation",
+        "Medical Microbiology > Fungi > Identification Methods and Instrumentation",
+        "Medical Microbiology > Viruses and Prions > Molecular Diagnostics for Viruses",
+        "Medical Microbiology > Parasites > Identification Methods and Instrumentation"
+      ],
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "abpathTestableTask": [
+        "recognize",
+        "interpret",
+        "troubleshoot",
+        "select-next-test",
+        "manage-critical-result"
+      ],
+      "abpathExamRisk": "high-yield",
+      "nearestValidReason": "workflow concept distributed across multiple spec nodes",
+      "abpathReviewStatus": "confirmed",
+      "boardMasteryFocusTitle": "Bench methods, organism workup, and susceptibility reporting",
+      "mustKnowConcepts": [
+        "Specimen quality determines whether bench workup is interpretable or misleading.",
+        "Gram stain, media choice, atmosphere, and incubation strategy narrow the workup before definitive identification.",
+        "MALDI-TOF, biochemical testing, and targeted molecular assays serve different roles and limits in organism identification.",
+        "AST interpretation changes therapy, stewardship, and infection-control communication."
+      ],
+      "mustNotMissPitfalls": [
+        "Treating a poor specimen as diagnostically valid.",
+        "Equating a single identification method with definitive susceptibility interpretation.",
+        "Reporting AST without considering organism identity or site-of-infection context.",
+        "Missing critical organism notification or infection-control implications."
+      ],
+      "classicBoardStemPatterns": [
+        "Recent procedure or healthcare exposure with resistant Gram-negative rod requiring AST-guided therapy.",
+        "Specimen quality problem where recollection is safer than over-interpretation.",
+        "Question contrasting phenotypic versus molecular identification methods."
+      ],
+      "calculationOrInterpretationTasks": [
+        "Interpret susceptible, intermediate, resistant, or dose-dependent AST categories in clinical context.",
+        "Select the next most useful identification or resistance workup step.",
+        "Explain when microbiology findings require urgent reporting beyond the final culture result."
+      ],
+      "commonWrongAnswerTraps": [
+        "Choosing the broadest antimicrobial instead of the best organism-directed option.",
+        "Assuming molecular detection replaces culture workflow in all settings.",
+        "Ignoring stewardship or infection-control consequences after recognizing resistance."
+      ]
+    },
+    "mcqs": [],
+    "flashcards": []
+  },
+  {
+    "id": "cp-flow-heme-studio",
+    "title": "Flow Cytometry and Hematopathology Studio",
+    "summary": "Integrated CP hematopathology review for flow plots, marrow-linked reasoning, and high-risk heme triage.",
+    "body": "## Scope\nThis studio is the native CP workspace for hematopathology and laboratory hematology pattern review.\n\n## What it adds\nThe existing CP library already covers red-cell, leukemia, coagulation, and thrombophilia tutorials. This studio adds the operational interpretation layer: how to read the plots, patterns, and marrow-linked artifacts when the learner has to reason through them in real time.\n\n## Use sequence\n1. Review the flow cytometry and case surface first.\n2. Use the supplemental heme review board only after the core pattern language feels stable.\n3. Return to the standard CP tutorials for retrieval, stem interpretation, and focused written case review.\n\n## Pair this with\n- `Hematopathology (CP) Case Tutorial: Acute Myeloid Leukemia with Myelodysplasia-Related Changes`\n- anemia, PNH, hemoglobinopathy, and benign hematology tutorials in the CP track\n\n## Learning target\nThe learner should be able to describe the artifact, interpret the likely disease category, state the next confirmatory study, and recognize when urgent escalation is required.",
+    "sourceRepo": "pthfndr_cp_interactive",
+    "sourceLabel": "P@thfndr Interactive CP",
+    "lane": "lab-studio",
+    "track": "clinical-path",
+    "promotionState": "canonical",
+    "category": "Hematopathology / Laboratory Hematology",
+    "tags": [
+      "hematopathology",
+      "laboratory hematology",
+      "flow cytometry",
+      "bone marrow",
+      "leukemia",
+      "lymphoma",
+      "CBC",
+      "smear interpretation"
+    ],
+    "interactiveAssets": [
+      {
+        "id": "flow-heme-primary",
+        "title": "Flow cytometry and heme cases",
+        "path": "cp-studios/flow-cytometry-sim-and-cases.html",
+        "summary": "Primary embedded flow and heme interpretation workspace."
+      },
+      {
+        "id": "heme-secondary",
+        "title": "Heme review board",
+        "path": "cp-studios/interactive-heme.html",
+        "summary": "Supplemental board-style heme and molecular review surface."
+      }
+    ],
+    "cpGovernance": {
+      "abpathSpecVersion": "CP_2026_04_10",
+      "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+      "abpathRootTopic": "Hematopathology for Clinical Pathology",
+      "abpathPrimaryPath": "Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > Flow Cytometry",
+      "abpathPrimaryLevel": "C",
+      "abpathAnchorSet": [
+        "Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > General Hematology Testing and Hematology Instruments",
+        "Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > Specimen Handling & Morphologic Methods > Peripheral Blood Smear Review",
+        "Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > Specimen Handling & Morphologic Methods > Bone Marrow Review",
+        "Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > Flow Cytometry > Myeloid Testing"
+      ],
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "abpathTestableTask": [
+        "recognize",
+        "interpret",
+        "troubleshoot",
+        "select-next-test",
+        "manage-critical-result"
+      ],
+      "abpathExamRisk": "high-yield",
+      "nearestValidReason": "interactive artifact teaches operational interpretation",
+      "abpathReviewStatus": "confirmed",
+      "boardMasteryFocusTitle": "Flow pattern recognition, marrow interpretation, and urgent hematopathology triage",
+      "mustKnowConcepts": [
+        "Peripheral blood, bone marrow, and flow cytometry are complementary rather than interchangeable sources of evidence.",
+        "Blast-rich, dysplastic, and lineage-restricted patterns change the urgency and next-study logic.",
+        "Flow interpretation is strongest when tied to morphology, CBC context, and marrow findings."
+      ],
+      "mustNotMissPitfalls": [
+        "Calling lineage or final diagnosis from phenotype alone without morphology.",
+        "Missing urgent leukemia or APL-style escalation cues.",
+        "Confusing reactive or treatment-related shifts with neoplastic populations."
+      ],
+      "classicBoardStemPatterns": [
+        "Pancytopenia with circulating blasts and marrow evaluation.",
+        "Abnormal flow plot requiring next-study selection rather than final overcall.",
+        "Case asking whether smear, marrow, or flow carries the deciding weight."
+      ],
+      "calculationOrInterpretationTasks": [
+        "Interpret how marrow, blood, and flow findings fit or conflict.",
+        "Select the next confirmatory study after recognizing an abnormal immunophenotypic pattern.",
+        "State when the pattern requires same-day escalation to the clinical team."
+      ],
+      "commonWrongAnswerTraps": [
+        "Treating flow as a standalone diagnosis instead of part of a workup.",
+        "Ignoring marrow context when confronted with an impressive plot.",
+        "Choosing a benign explanation for a pattern that should trigger leukemia escalation."
+      ]
+    },
+    "mcqs": [],
+    "flashcards": []
+  },
+  {
+    "id": "cp-dat-transfusion-studio",
+    "title": "DAT and Hemolytic Transfusion Reaction Studio",
+    "summary": "Focused blood bank tutorial for DAT interpretation, eluate logic, hemolysis workup, and transfusion safety escalation.",
+    "body": "## Scope\nThis studio stays inside the Blood Banking / Transfusion Medicine teaching lane and acts as the practical counterpart to the current transfusion reaction tutorials.\n\n## Use sequence\n1. Work through the DAT pattern and antibody logic.\n2. Tie the result to the immediate clinical problem: transfusion reaction, warm autoantibody, HDFN, or drug-related hemolysis.\n3. Close with the safety step: what to stop, who to notify, and what follow-up testing matters.\n\n## Pair this with\n- `Case Tutorial: Hemolytic Transfusion Reactions (Acute & Delayed)`\n- `Autoimmune Hemolytic Anemia (WAIHA, Cold Agglutinin, PCH, Drug-Induced)`\n- blood-group, compatibility testing, and HDFN tutorials in the CP track\n\n## Learning target\nThe learner should be able to interpret the DAT pattern, explain the likely mechanism, recommend the next laboratory step, and communicate the immediate patient-safety action.",
+    "sourceRepo": "pthfndr_cp_interactive",
+    "sourceLabel": "P@thfndr Interactive CP",
+    "lane": "lab-studio",
+    "track": "clinical-path",
+    "promotionState": "canonical",
+    "category": "Blood Banking / Transfusion Medicine",
+    "tags": [
+      "DAT",
+      "direct antiglobulin test",
+      "transfusion reaction",
+      "blood bank",
+      "compatibility testing",
+      "hemolysis",
+      "eluate",
+      "HDFN"
+    ],
+    "interactiveAssets": [
+      {
+        "id": "dat-primary",
+        "title": "DAT simulation",
+        "path": "cp-studios/dat-igg-sim-pro.html",
+        "summary": "Primary embedded DAT interpretation and transfusion-workup simulation."
+      }
+    ],
+    "cpGovernance": {
+      "abpathSpecVersion": "CP_2026_04_10",
+      "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+      "abpathRootTopic": "Blood Banking / Transfusion Medicine",
+      "abpathPrimaryPath": "Blood Banking/Transfusion Medicine > Clinical Practice > Autoimmune Hemolytic Anemia",
+      "abpathPrimaryLevel": "C",
+      "abpathAnchorSet": [
+        "Blood Banking/Transfusion Medicine > Clinical Practice",
+        "Blood Banking/Transfusion Medicine > Clinical Practice > Autoimmune Hemolytic Anemia",
+        "Blood Banking/Transfusion Medicine > Clinical Practice > Drug-Induced Immune Hemolytic Anemia"
+      ],
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "abpathTestableTask": [
+        "recognize",
+        "interpret",
+        "troubleshoot",
+        "select-next-test",
+        "manage-critical-result"
+      ],
+      "abpathExamRisk": "high-yield",
+      "nearestValidReason": "workflow concept distributed across multiple spec nodes",
+      "abpathReviewStatus": "confirmed",
+      "boardMasteryFocusTitle": "DAT interpretation, hemolysis workup, and transfusion-reaction safety logic",
+      "mustKnowConcepts": [
+        "DAT is an interpretation tool inside a larger hemolysis and reaction workup, not the final etiology by itself.",
+        "Eluate logic matters when distinguishing alloantibody-mediated from autoantibody-mediated processes.",
+        "Clerical check, repeat typing, hemolysis assessment, and antibody workup are tightly linked in high-risk reactions."
+      ],
+      "mustNotMissPitfalls": [
+        "Treating a positive DAT as a complete diagnosis without clinical and laboratory context.",
+        "Failing to stop the transfusion and begin the reaction workup immediately.",
+        "Ignoring a negative eluate in the wrong clinical setting."
+      ],
+      "classicBoardStemPatterns": [
+        "Acute fever, chills, flank pain, dark urine soon after transfusion.",
+        "Positive DAT with anemia and recent transfusion requiring alloantibody versus autoantibody reasoning.",
+        "Neonate or pregnancy-linked hemolysis question requiring HDFN framing."
+      ],
+      "calculationOrInterpretationTasks": [
+        "Interpret DAT IgG and complement patterns in context.",
+        "Select the next blood-bank workup step after a reaction pattern is recognized.",
+        "State the immediate safety action and escalation path."
+      ],
+      "commonWrongAnswerTraps": [
+        "Ordering esoteric follow-up testing before the core reaction workup is complete.",
+        "Confusing DAT positivity with proof of transfusion incompatibility in every case.",
+        "Missing the difference between urgent safety actions and later characterization steps."
+      ]
+    },
+    "mcqs": [],
+    "flashcards": []
+  },
+  {
+    "id": "cp-chemical-path-endocrine-studio",
+    "title": "Chemical Pathology Endocrine and Metabolic Studio",
+    "summary": "Interactive CP chemistry studio for endocrine pathway reasoning, metabolic interpretation, and method-aware clinical biochemistry review.",
+    "body": "## Scope\nThis studio is integrated into the Chemical Pathology tutorial lane as the endocrine and metabolic branch of CP teaching.\n\n## Use sequence\n1. Start in the master CAH view to compare pathways instead of memorizing isolated facts.\n2. Use the focused 21-hydroxylase variant when you want a narrower second pass.\n3. Tie the pathway back to laboratory interpretation: which analytes, which patterns, and which clinical consequence.\n\n## Pair this with\n- `Chemical Pathology: Advanced Clinical Biochemistry Dossier`\n- endocrine, metabolic, and assay-interference tutorials in the CP track\n\n## Learning target\nThe learner should be able to connect an endocrine or metabolic laboratory pattern to a biochemical pathway, recognize the likely diagnosis, and identify the next most useful confirmation strategy.",
+    "sourceRepo": "pthfndr_cp_interactive",
+    "sourceLabel": "P@thfndr Interactive CP",
+    "lane": "lab-studio",
+    "track": "clinical-path",
+    "promotionState": "canonical",
+    "category": "Chemical Pathology",
+    "tags": [
+      "chemical pathology",
+      "clinical chemistry",
+      "CAH",
+      "endocrine",
+      "metabolic pathway",
+      "clinical biochemistry",
+      "steroid pathway"
+    ],
+    "interactiveAssets": [
+      {
+        "id": "cah-master-primary",
+        "title": "CAH master studio",
+        "path": "cp-studios/cah-master-studio.html",
+        "summary": "Primary embedded endocrine pathway studio across major CAH patterns."
+      },
+      {
+        "id": "cah-21oh-secondary",
+        "title": "21-hydroxylase focus studio",
+        "path": "cp-studios/cah-21oh-studio.html",
+        "summary": "Focused follow-on drill for the highest-yield CAH subtype."
+      }
+    ],
+    "cpGovernance": {
+      "abpathSpecVersion": "CP_2026_04_10",
+      "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+      "abpathRootTopic": "Chemical Pathology",
+      "abpathPrimaryPath": "Chemical Pathology > The Adrenal Cortex > Adrenocortical Steroids > General Biochemistry and Metabolism of Adrenocortical Steroids",
+      "abpathPrimaryLevel": "C",
+      "abpathAnchorSet": [
+        "Chemical Pathology > The Adrenal Cortex > Adrenocortical Steroids > General Biochemistry and Metabolism of Adrenocortical Steroids",
+        "Chemical Pathology > The Adrenal Cortex > Disorders of the Adrenal Cortex",
+        "Chemical Pathology > Reproductive Related Disorder > Reproductive Tests > Dehydroepiandrosterone Sulfate (DHEAS)",
+        "Chemical Pathology > Reproductive Related Disorder > Reproductive Tests > Testosterone Precursors and Metabolites"
+      ],
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "abpathTestableTask": [
+        "recognize",
+        "interpret",
+        "calculate",
+        "select-next-test",
+        "quality-regulatory"
+      ],
+      "abpathExamRisk": "medium-yield",
+      "nearestValidReason": "disease narrower than CP spec",
+      "abpathReviewStatus": "confirmed",
+      "boardMasteryFocusTitle": "CAH pathway comparison and endocrine-metabolic chemistry interpretation",
+      "mustKnowConcepts": [
+        "Board-level endocrine chemistry is pattern interpretation, not memorization of one disease label.",
+        "A biochemical pathway is only useful if it predicts the expected laboratory profile and next test.",
+        "Method limits, specimen context, and assay design can distort endocrine interpretation."
+      ],
+      "mustNotMissPitfalls": [
+        "Claiming direct ABPath disease-node coverage when the spec governs the topic more broadly.",
+        "Reading a pathway diagram without translating it into testable analyte patterns.",
+        "Ignoring method and specimen limitations in endocrine interpretation."
+      ],
+      "classicBoardStemPatterns": [
+        "Infant or adolescent endocrine presentation with steroid-pattern interpretation.",
+        "Question asking which test best confirms the pathway-based suspicion.",
+        "Case where the biochemical pattern matters more than a memorized disease name."
+      ],
+      "calculationOrInterpretationTasks": [
+        "Interpret the expected hormone or precursor pattern from a blocked pathway.",
+        "Choose the next confirmatory chemistry test after recognizing the metabolic pattern.",
+        "Explain when assay or specimen issues could distort the expected interpretation."
+      ],
+      "commonWrongAnswerTraps": [
+        "Memorizing the syndrome name without linking it to analyte behavior.",
+        "Choosing a confirmatory test that does not actually resolve the biochemical uncertainty.",
+        "Assuming every endocrine teaching label is a literal ABPath node."
+      ]
+    },
+    "mcqs": [],
+    "flashcards": []
+  },
+  {
+    "id": "cp-immune-lipid-studio",
+    "title": "Immune Recognition and Lipid Metabolism Studio",
+    "summary": "Chemical pathology and immunology crossover review for allorecognition logic, lipid-disorder differentiation, and consult-level interpretation.",
+    "body": "## Scope\nThis tutorial extends the CP track into immune and metabolic pattern reasoning without forcing learners into a separate toolset.\n\n## Use sequence\n1. Work through indirect allorecognition to anchor transplant-immunology language.\n2. Compare familial hypercholesterolemia and familial chylomicronemia as distinct laboratory phenotypes.\n3. Return to the CP chemistry tutorials for retrieval and written interpretation practice.\n\n## Pair this with\n- `Chemical Pathology: Advanced Clinical Biochemistry Dossier`\n- HLA and transfusion-linked CP tutorials when transplant or compatibility context matters\n\n## Learning target\nThe learner should be able to explain the biologic mechanism, connect it to the observed laboratory profile, and state the clinically relevant downstream consequence without overclaiming direct ABPath topic coverage.",
+    "sourceRepo": "pthfndr_cp_interactive",
+    "sourceLabel": "P@thfndr Interactive CP",
+    "lane": "lab-studio",
+    "track": "clinical-path",
+    "promotionState": "canonical",
+    "category": "Chemical Pathology",
+    "tags": [
+      "chemical pathology",
+      "immunology",
+      "allorecognition",
+      "lipid metabolism",
+      "familial hypercholesterolemia",
+      "familial chylomicronemia",
+      "clinical chemistry",
+      "transplant immunology"
+    ],
+    "interactiveAssets": [
+      {
+        "id": "immune-lipid-primary",
+        "title": "Immune and lipid studio",
+        "path": "cp-studios/immune-lipid-teaching-studio.html",
+        "summary": "Primary embedded immunology and lipid-metabolism interpretation studio."
+      }
+    ],
+    "cpGovernance": {
+      "abpathSpecVersion": "CP_2026_04_10",
+      "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+      "abpathRootTopic": "Chemical Pathology + Blood Banking/Transfusion Medicine",
+      "abpathPrimaryPath": "Chemical Pathology > Lipids, Lipoproteins and Apolipoproteins",
+      "abpathPrimaryLevel": "C",
+      "abpathAnchorSet": [
+        "Chemical Pathology > Lipids, Lipoproteins and Apolipoproteins",
+        "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > HLA Antigens and Alleles",
+        "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > HLA Antigens and Alleles > Medical and Biological Significance of HLA"
+      ],
+      "abpathPrecisionMode": "cross-domain-governed",
+      "abpathAnchorConfidence": "moderate",
+      "abpathTestableTask": [
+        "recognize",
+        "interpret",
+        "select-next-test",
+        "quality-regulatory"
+      ],
+      "abpathExamRisk": "medium-yield",
+      "crossDomainJustification": "The lipid branch is governed by Chemical Pathology while the allorecognition branch borrows HLA significance from the transfusion and transplant side of CP. The tutorial is kept together because it teaches mechanism-linked interpretation across those adjacent CP domains.",
+      "abpathReviewStatus": "confirmed",
+      "boardMasteryFocusTitle": "Immune-significance crossover and lipid-pattern differentiation",
+      "mustKnowConcepts": [
+        "The official ABPath frame is broader than the local immune-lipid teaching label.",
+        "Allorecognition and lipid phenotypes are valuable because they teach mechanism-driven interpretation rather than isolated vocabulary.",
+        "The learner must separate official scope from board-mastery focus to avoid false precision."
+      ],
+      "mustNotMissPitfalls": [
+        "Assuming every local disease label is a direct ABPath CP node.",
+        "Blending chemistry and HLA logic without recognizing the cross-domain nature of the tutorial.",
+        "Reducing FH versus FCS to memorized buzzwords instead of phenotype interpretation."
+      ],
+      "classicBoardStemPatterns": [
+        "Question asking which phenotype implies atherogenic risk versus pancreatitis risk.",
+        "Scenario testing whether the learner understands mechanism rather than just the name of the syndrome.",
+        "Cross-domain stem where immune significance and chemistry interpretation are adjacent but not identical."
+      ],
+      "calculationOrInterpretationTasks": [
+        "Interpret the laboratory phenotype that best fits FH versus FCS.",
+        "State how mechanism changes the expected clinical consequence.",
+        "Identify when the chemistry frame is primary and the immune/HLA concept is supportive."
+      ],
+      "commonWrongAnswerTraps": [
+        "Treating chylomicron-driven hypertriglyceridemia as equivalent to LDL-driven atherosclerotic risk.",
+        "Overstating ABPath coverage beyond the governed CP frame.",
+        "Choosing a mechanistically incompatible diagnosis because the label sounds familiar."
+      ]
+    },
+    "mcqs": [],
+    "flashcards": []
+  }
+]

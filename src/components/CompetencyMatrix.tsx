@@ -14,6 +14,15 @@ interface CompetencyMatrixProps {
   onSectionChange: (section: Section) => void;
 }
 
+const learnerLevelBadgeLabels: Record<LearnerLevel, string> = {
+  PGY1: 'PGY1',
+  PGY2: 'PGY2',
+  PGY3: 'PGY3',
+  PGY4: 'PGY4',
+  PGY5_FELLOW: 'PGY5/Fellow',
+  ATTENDING: 'Attending',
+};
+
 const levelTone: Record<LearnerLevel, string> = {
   PGY1: 'bg-emerald-50 text-emerald-800 border-emerald-200',
   PGY2: 'bg-sky-50 text-sky-800 border-sky-200',
@@ -48,12 +57,48 @@ const statusTone: Record<CompetencyMatrixRecord['trust']['editorialStatus'], str
 
 const LevelBadge: React.FC<{ level: LearnerLevel; active?: boolean }> = ({ level, active = false }) => (
   <span className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${levelTone[level]} ${active ? 'ring-2 ring-offset-1 ring-slate-300' : ''}`}>
-    {learnerLevelLabels[level]}
+    {learnerLevelBadgeLabels[level]}
   </span>
 );
 
 const recordMatchesDomain = (record: CompetencyMatrixRecord, domain: CompetencyDomain | 'all') =>
   domain === 'all' || record.competencyDomains.includes(domain);
+
+const emptyGapClosureQueue = {
+  definition: '',
+  totals: {
+    allMissing: 0,
+    p0: 0,
+    p1: 0,
+    p2: 0,
+    p3: 0,
+  },
+  categorySummary: {} as Record<string, { category: string; p0: number }>,
+  p0Rows: [] as Array<{
+    id: string;
+    categoryId: string;
+    category: string;
+    path: string;
+    learnerLevel: string;
+    deliverables: string;
+    learningTreatment: string;
+    qaStandard: string;
+    title: string;
+  }>,
+  qualityGates: [] as string[],
+};
+
+const defaultReadinessLegend = {
+  complete: 'Card has sufficient structure and evidence to support active teaching use.',
+  'ready-for-review': 'Card structure is usable, but faculty review or targeted evidence completion is still pending.',
+  missing: 'Card still needs missing source-backed content, assets, or QA elements before promotion.',
+} as const;
+
+const fallbackLevelGuidance = {
+  intent: 'Keep the learner oriented to the current level and next safe educational action.',
+  interfaceMode: 'Compact guidance with explicit scope and expected evidence.',
+  expectedEvidence: 'Visible rationale, safe next step, and enough context to continue learning.',
+};
 
 const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) => {
   const [data, setData] = useState<CompetencyMatrixData | null>(null);
@@ -98,34 +143,58 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
     );
   }
 
-  if (!data) {
-    return (
-      <div className="rounded-lg border border-slate-200 bg-white p-6 text-slate-700">
-        <p>Loading Competency Matrix data…</p>
-      </div>
-    );
-  }
-
-  const {
-    apP0CardBatches,
-    apP0CardBatchReadiness,
-    apP0CardBatchSummary,
-    apP0BatchPromotionRows,
-    apP0GateBacklogRows,
-    apP0LearningQualityStandards,
-    apP0PromotionMilestones,
-    competencyDomains,
-    competencyMatrixRecords,
-    competencyMatrixSummary,
-    apDesignationCrosswalk,
-    cpRotationStandards,
-    learnerLevelLabels,
-    learnerLevelOrder,
-    levelModeGuidance,
-    signOutRubric,
-    sourceStandardDocuments,
-    apGapClosureQueue,
-  } = data;
+  const hasData = Boolean(data);
+  const apP0CardBatches = data?.apP0CardBatches ?? [];
+  const apP0CardBatchReadiness = data?.apP0CardBatchReadiness ?? {
+    batchCount: 0,
+    cardCount: 0,
+    completedGates: 0,
+    reviewReadyGates: 0,
+    missingGates: 0,
+    totalGates: 0,
+    percentComplete: 0,
+    percentReviewReady: 0,
+  };
+  const apP0CardBatchSummary = data?.apP0CardBatchSummary ?? {
+    batchCount: 0,
+    cardCount: 0,
+    completedGates: 0,
+    reviewReadyGates: 0,
+    missingGates: 0,
+    totalGates: 0,
+  };
+  const apP0BatchPromotionRows = data?.apP0BatchPromotionRows ?? [];
+  const apP0GateBacklogRows = data?.apP0GateBacklogRows ?? [];
+  const apP0LearningQualityStandards = data?.apP0LearningQualityStandards ?? [];
+  const apP0PromotionMilestones = data?.apP0PromotionMilestones ?? [];
+  const competencyDomains = data?.competencyDomains ?? [];
+  const competencyMatrixRecords = data?.competencyMatrixRecords ?? [];
+  const competencyMatrixSummary = data?.competencyMatrixSummary ?? {
+    totalCurriculumModules: 0,
+    validatedSpecialtySignoutImages: 0,
+    supplementalReferenceImages: 0,
+    normalizedTutorials: 0,
+    syllabusEntries: 0,
+    apWorkflowContractCases: 0,
+  };
+  const apDesignationCrosswalk = data?.apDesignationCrosswalk ?? [];
+  const cpRotationStandards = data?.cpRotationStandards ?? [];
+  const learnerLevelLabels = data?.learnerLevelLabels ?? learnerLevelBadgeLabels;
+  const learnerLevelOrder = data?.learnerLevelOrder ?? (Object.keys(learnerLevelBadgeLabels) as LearnerLevel[]);
+  const levelModeGuidance = data?.levelModeGuidance ?? {
+    PGY1: fallbackLevelGuidance,
+    PGY2: fallbackLevelGuidance,
+    PGY3: fallbackLevelGuidance,
+    PGY4: fallbackLevelGuidance,
+    PGY5_FELLOW: fallbackLevelGuidance,
+    ATTENDING: fallbackLevelGuidance,
+  };
+  const signOutRubric = data?.signOutRubric ?? {
+    title: 'Deterministic Sign-Out Rubric',
+    criteria: [],
+  };
+  const sourceStandardDocuments = data?.sourceStandardDocuments ?? [];
+  const apGapClosureQueue = data?.apGapClosureQueue ?? emptyGapClosureQueue;
 
   const filteredRecords = useMemo(() => {
     const lowered = query.trim().toLowerCase();
@@ -151,36 +220,47 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
         ...record.competencyDomains,
       ].some((value) => value.toLowerCase().includes(lowered));
     });
-  }, [query, selectedDomain, selectedLevel, showAvailableOnly]);
+  }, [competencyMatrixRecords, query, selectedDomain, selectedLevel, showAvailableOnly]);
 
-  const selectedRecord =
-    filteredRecords.find((record) => record.id === selectedRecordId) ??
-    filteredRecords[0] ??
-    competencyMatrixRecords.find((record) => record.id === selectedRecordId) ??
-    competencyMatrixRecords[0];
+  const selectedRecord = useMemo(
+    () =>
+      filteredRecords.find((record) => record.id === selectedRecordId) ??
+      filteredRecords[0] ??
+      competencyMatrixRecords.find((record) => record.id === selectedRecordId) ??
+      competencyMatrixRecords[0],
+    [competencyMatrixRecords, filteredRecords, selectedRecordId],
+  );
 
-  const levelCounts = learnerLevelOrder.map((level) => ({
-    level,
-    count: competencyMatrixRecords.filter((record) => record.learnerLevels.includes(level)).length,
-  }));
+  const levelCounts = useMemo(
+    () => learnerLevelOrder.map((level) => ({
+      level,
+      count: competencyMatrixRecords.filter((record) => record.learnerLevels.includes(level)).length,
+    })),
+    [competencyMatrixRecords, learnerLevelOrder],
+  );
 
-  const domainCounts = competencyDomains.map((domain) => ({
-    domain,
-    count: competencyMatrixRecords.filter((record) => record.learnerLevels.includes(selectedLevel) && record.competencyDomains.includes(domain)).length,
-  }));
+  const domainCounts = useMemo(
+    () => competencyDomains.map((domain) => ({
+      domain,
+      count: competencyMatrixRecords.filter(
+        (record) => record.learnerLevels.includes(selectedLevel) && record.competencyDomains.includes(domain),
+      ).length,
+    })),
+    [competencyDomains, competencyMatrixRecords, selectedLevel],
+  );
 
   const p0CategoryRows = useMemo(
     () => Object.entries(apGapClosureQueue.categorySummary)
       .filter(([, summary]) => summary.p0 > 0)
       .sort((a, b) => b[1].p0 - a[1].p0),
-    [],
+    [apGapClosureQueue.categorySummary],
   );
 
   const visibleP0Rows = useMemo(
     () => apGapClosureQueue.p0Rows
       .filter((row) => selectedP0Category === 'all' || row.categoryId === selectedP0Category)
       .slice(0, 24),
-    [selectedP0Category],
+    [apGapClosureQueue.p0Rows, selectedP0Category],
   );
 
   const visibleEntityCards = useMemo<ApP0CardBatchCard[]>(
@@ -188,8 +268,25 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
       .flatMap((batch) => batch.cards)
       .filter((card) => selectedP0Category === 'all' || card.sourceQueueId.startsWith(`${selectedP0Category}-`))
       .slice(0, 12),
-    [selectedP0Category],
+    [apP0CardBatches, selectedP0Category],
   );
+
+  if (!hasData) {
+    return (
+      <div className="rounded-lg border border-slate-200 bg-white p-6 text-slate-700">
+        <p>Loading Competency Matrix data…</p>
+      </div>
+    );
+  }
+
+  if (!selectedRecord) {
+    return (
+      <div className="rounded-lg border border-slate-200 bg-white p-6 text-slate-700">
+        <h2 className="text-base font-semibold text-slate-900">Competency Matrix unavailable</h2>
+        <p className="mt-2 text-sm">The matrix loaded without a valid record set. Refresh the page or review the competency payload.</p>
+      </div>
+    );
+  }
 
   const openRecord = (record: CompetencyMatrixRecord) => {
     if (record.linkedSection === Section.PATHOLOGY_CURRICULUM && record.linkedModuleId) {
@@ -201,7 +298,7 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
     onSectionChange(record.linkedSection);
   };
 
-  const guidance = levelModeGuidance[selectedLevel];
+  const guidance = levelModeGuidance[selectedLevel] ?? fallbackLevelGuidance;
   const availableCount = filteredRecords.filter((record) => record.availableNow).length;
   const gapCount = filteredRecords.length - availableCount;
   const batchReadiness = apP0CardBatchReadiness;
@@ -229,20 +326,21 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
       className: 'bg-amber-400',
     },
   ];
+  const readinessLegendCopy = apP0CardBatches[0]?.readinessLegend ?? defaultReadinessLegend;
   const readinessLegend = [
     {
       label: 'complete',
-      text: apP0CardBatches[0].readinessLegend.complete,
+      text: readinessLegendCopy.complete,
       className: 'bg-emerald-500',
     },
     {
       label: 'ready-for-review',
-      text: apP0CardBatches[0].readinessLegend['ready-for-review'],
+      text: readinessLegendCopy['ready-for-review'],
       className: 'bg-sky-500',
     },
     {
       label: 'missing',
-      text: apP0CardBatches[0].readinessLegend.missing,
+      text: readinessLegendCopy.missing,
       className: 'bg-amber-400',
     },
   ];

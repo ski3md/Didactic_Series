@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-16T02:09:26.827Z",
+  "generatedAt": "2026-05-18T01:21:20.316Z",
   "rule": "Tutorials are scored against ABPath AP and CP content specification topic/subtopic nodes using track-aware token, phrase, root, and acronym evidence. Every tutorial must have at least one primary mapping.",
   "sources": {
     "ap": "src/content/syllabus/parsed_topics_v3.raw.json",
@@ -8,16 +8,17 @@
     "cpExtractedText": "generated at runtime with pdftotext",
     "tutorials": [
       "src/content/tutorials/tutorials.normalized.json",
-      "src/content/downloads_imports/normalized/tutorials.normalized.json"
+      "src/content/downloads_imports/normalized/tutorials.normalized.json",
+      "src/content/tutorials/clinicalPathInteractiveTutorials.json"
     ],
     "labels": "reports/tutorial_label_validation.json"
   },
   "counts": {
-    "tutorials": 480,
+    "tutorials": 485,
     "specNodes": 6284,
     "apSpecNodes": 3863,
     "cpSpecNodes": 2421,
-    "mapped": 480,
+    "mapped": 485,
     "review": 0
   },
   "coverage": {
@@ -34,7 +35,7 @@
         "root": "Breast",
         "specNodeCount": 539,
         "coveredNodeCount": 86,
-        "primaryTutorialCount": 48
+        "primaryTutorialCount": 46
       },
       {
         "domain": "AP",
@@ -54,7 +55,7 @@
         "domain": "AP",
         "root": "Dermatopathology",
         "specNodeCount": 888,
-        "coveredNodeCount": 69,
+        "coveredNodeCount": 70,
         "primaryTutorialCount": 19
       },
       {
@@ -68,7 +69,7 @@
         "domain": "AP",
         "root": "Forensic Pathology",
         "specNodeCount": 38,
-        "coveredNodeCount": 4,
+        "coveredNodeCount": 3,
         "primaryTutorialCount": 3
       },
       {
@@ -96,7 +97,7 @@
         "domain": "AP",
         "root": "Male Reproductive",
         "specNodeCount": 397,
-        "coveredNodeCount": 46,
+        "coveredNodeCount": 45,
         "primaryTutorialCount": 15
       },
       {
@@ -131,36 +132,36 @@
         "domain": "CP",
         "root": "Blood Banking/Transfusion Medicine",
         "specNodeCount": 816,
-        "coveredNodeCount": 202,
-        "primaryTutorialCount": 130
+        "coveredNodeCount": 201,
+        "primaryTutorialCount": 127
       },
       {
         "domain": "CP",
         "root": "Chemical Pathology",
         "specNodeCount": 644,
-        "coveredNodeCount": 120,
-        "primaryTutorialCount": 59
+        "coveredNodeCount": 124,
+        "primaryTutorialCount": 61
       },
       {
         "domain": "CP",
         "root": "Hematopathology for Clinical Pathology",
         "specNodeCount": 282,
-        "coveredNodeCount": 63,
-        "primaryTutorialCount": 29
+        "coveredNodeCount": 76,
+        "primaryTutorialCount": 37
       },
       {
         "domain": "CP",
         "root": "Management and Informatics",
         "specNodeCount": 150,
-        "coveredNodeCount": 32,
-        "primaryTutorialCount": 9
+        "coveredNodeCount": 31,
+        "primaryTutorialCount": 8
       },
       {
         "domain": "CP",
         "root": "Medical Microbiology",
         "specNodeCount": 529,
-        "coveredNodeCount": 65,
-        "primaryTutorialCount": 40
+        "coveredNodeCount": 72,
+        "primaryTutorialCount": 41
       }
     ],
     "weakMappings": [],

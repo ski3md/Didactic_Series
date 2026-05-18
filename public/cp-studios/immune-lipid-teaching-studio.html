@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Teaching Studio — Indirect Allorecognition + FH vs FCS (Animations + Case Sims)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="description" content="Interactive studio with step-by-step animations and case-based simulations for indirect allorecognition and FH vs FCS. Accessible, autosaving, printable."/>
+<style>
+  :root{
+    --bg:#0e1117; --panel:#141b22; --fg:#e6edf3; --muted:#9aa4b2;
+    --accent:#7aa2f7; --ok:#58d68d; --warn:#fbd38d; --bad:#f7768e;
+    --card:#0f1520; --border:#2b3240; --chip:#1f2632; --shadow:0 10px 28px rgba(0,0,0,.35);
+    --btn:#273142; --btnH:#324257; --focus:#94a3b8
+  }
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans";}
+  a,a:visited{color:#8ab4ff}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  header{
+    position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#0f1520,#192235);
+    border-bottom:1px solid var(--border); padding:10px 14px; display:flex; gap:14px; align-items:center; flex-wrap:wrap
+  }
+  h1{margin:0;font-size:1.05rem}
+  .muted{color:var(--muted)}
+  .btn{background:var(--btn);color:var(--fg);border:1px solid var(--border);border-radius:10px;padding:8px 10px;cursor:pointer}
+  .btn:hover{background:var(--btnH)}
+  .btn.ok{background:#1e3a2f;border-color:#2c5d49}
+  .btn.warn{background:#5a4318;border-color:#7a5c21}
+  .chip{background:var(--chip);border:1px solid var(--border);padding:6px 10px;border-radius:999px}
+  .dock{display:flex;gap:8px;flex-wrap:wrap}
+  main{display:grid;grid-template-columns:340px 1fr;gap:14px;padding:14px}
+  @media (max-width: 1024px){ main{grid-template-columns:1fr} }
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:12px;min-height:140px}
+  .title{margin:.2rem 0 6px 0;font-weight:600}
+  .grid{display:grid;gap:12px}
+  .grid.two{grid-template-columns:repeat(2,1fr)}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .kpi{display:flex;justify-content:space-between;align-items:center;background:#0e1422;border:1px dashed var(--border);border-radius:10px;padding:8px 10px}
+  .status{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:10px}
+  .okS{background:#14271f;border:1px solid #2c5f48;color:#9fe5c9}
+  .badS{background:#2b1215;border:1px solid #7e2b34;color:#ffb8c0}
+  .warnS{background:#2b2411;border:1px solid #6f5d2a;color:#fde1a5}
+  input,select,textarea{background:#0f1520;color:var(--fg);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+  textarea{min-height:90px;width:100%}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .tabs .btn[aria-selected="true"]{background:#244663;border-color:#2f5b83}
+  .stage{background:#0b1322;border:1px solid var(--border);border-radius:12px;padding:12px;min-height:220px;position:relative;overflow:hidden}
+  /* High contrast */
+  .high-contrast{filter:contrast(1.15) saturate(1.05)}
+  /* Simple timeline dots */
+  .timeline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .dot{width:14px;height:14px;border-radius:50%;background:#334155;border:1px solid #475569}
+  .dot.active{background:#7aa2f7}
+  .progress{height:8px;background:#0b101a;border:1px solid var(--border);border-radius:999px;overflow:hidden}
+  .progress>div{height:100%;background:linear-gradient(90deg,#4dd0e1,#7aa2f7);width:0%}
+  /* SVG actors */
+  .actor{transition:transform .6s ease, opacity .6s ease}
+  .fade-in{opacity:1} .fade-out{opacity:0}
+  .toast{position:fixed;right:14px;bottom:14px;background:#0f1520;border:1px solid var(--border);border-radius:10px;padding:10px 12px;box-shadow:var(--shadow);z-index:9999}
+  .toast.hidden{display:none}
+  @media print{ header,.toast{display:none!important} body{background:white;color:black} .panel{box-shadow:none;border-color:#ccc}}
+</style>
+</head>
+<body>
+<header role="banner" aria-label="Top bar">
+  <h1>Teaching Studio <span class="chip">Indirect Allorecognition • FH vs FCS</span></h1>
+  <div class="dock" role="toolbar" aria-label="Global controls">
+    <button class="btn" id="btnAllo" aria-pressed="true" aria-controls="sectionAllo">Indirect Allorecognition</button>
+    <button class="btn" id="btnLipid" aria-pressed="false" aria-controls="sectionLipid">FH vs FCS</button>
+    <button class="btn" id="btnCases" aria-pressed="false" aria-controls="sectionCases">Case Simulations</button>
+    <button class="btn" id="btnNotes" aria-pressed="false" aria-controls="sectionNotes">Notes/Export</button>
+    <button class="btn ok" id="btnContrast" aria-pressed="false">High Contrast: Off</button>
+  </div>
+  <div class="muted" style="font-size:.9rem">Keyboard: <kbd>Space</kbd> Play/Pause • <kbd>←/→</kbd> Prev/Next step • <kbd>?</kbd> Help • Print/PDF from Notes</div>
+</header>
+
+<main>
+  <!-- LEFT NAV/HELP -->
+  <aside class="panel" role="complementary" aria-label="Help & Reasoning">
+    <h2 class="title">Help & Reasoning</h2>
+    <div class="card small">
+      <h3>Indirect Allorecognition</h3>
+      <ol>
+        <li><b>Acquisition:</b> Recipient APCs ingest donor debris.</li>
+        <li><b>Processing & Presentation:</b> Peptides loaded on <i>self‑MHC II</i>.</li>
+        <li><b>Recognition:</b> Host <b>CD4 T cells</b> see donor peptide in self groove → help, cytokines, chronic rejection pressure.</li>
+      </ol>
+    </div>
+    <div class="card small">
+      <h3>FH vs FCS (Core Differences)</h3>
+      <ul>
+        <li><b>FH:</b> AD, <b>LDLR</b> mutation → LDL↑ → tendon xanthomas, premature CAD.</li>
+        <li><b>FCS:</b> AR, <b>LPL</b> deficiency → chylomicrons↑ (TG↑↑) → pancreatitis risk, <u>not</u> premature CAD.</li>
+      </ul>
+    </div>
+    <div class="card small">
+      <h3>Controls</h3>
+      <p><b>Animations:</b> Play/Pause • Next/Prev • Scrub slider • Speed x0.5/1/2.</p>
+      <p><b>Cases:</b> Start timer • Choose answers • See rationale • Score auto‑saves.</p>
+    </div>
+  </aside>
+
+  <!-- RIGHT CONTENT -->
+  <section class="panel" id="sectionAllo" role="region" aria-label="Indirect Allorecognition Module">
+    <h2 class="title">Indirect Allorecognition — Animated Pathway</h2>
+    <div class="tabs" role="tablist" aria-label="Allorecognition tabs">
+      <button class="btn" role="tab" aria-selected="true" data-tab="alloAnim">Step‑by‑Step Animation</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="alloExplain">Concept Overview</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="alloQuiz">Quick Quiz</button>
+    </div>
+
+    <!-- Animation stage -->
+    <div id="alloAnim" class="card" role="tabpanel" aria-live="polite">
+      <div class="stage" id="alloStage" aria-label="Animation stage: APCs acquire donor debris, process, present, activate T cells">
+        <!-- Inline SVG actors: donor tissue, debris, APC, MHC, T cell -->
+        <svg viewBox="0 0 800 260" width="100%" height="220" aria-hidden="true">
+          <!-- donor graft -->
+          <rect x="10" y="40" width="160" height="120" rx="14" fill="#2c3e50" stroke="#3f4f67"/>
+          <text x="90" y="30" fill="#9aa4b2" text-anchor="middle" font-size="12">Donor graft (debris source)</text>
+
+          <!-- debris particles (animated along steps) -->
+          <circle id="debris1" class="actor fade-in" cx="190" cy="80" r="8" fill="#f59e0b" opacity="0"/>
+          <circle id="debris2" class="actor fade-in" cx="210" cy="120" r="6" fill="#f59e0b" opacity="0"/>
+
+          <!-- APC -->
+          <ellipse id="apc" class="actor fade-in" cx="420" cy="100" rx="60" ry="40" fill="#0ea5e9" opacity="0"></ellipse>
+          <text x="420" y="160" text-anchor="middle" font-size="12" fill="#9aa4b2">Host APC</text>
+
+          <!-- MHC II on APC -->
+          <rect id="mhc" class="actor fade-in" x="400" y="70" width="40" height="18" rx="4" fill="#60a5fa" opacity="0"/>
+          <!-- peptide sitting -->
+          <rect id="peptide" class="actor fade-in" x="405" y="74" width="30" height="10" rx="2" fill="#f59e0b" opacity="0"/>
+
+          <!-- CD4 T cell -->
+          <circle id="tcell" class="actor fade-in" cx="690" cy="100" r="32" fill="#22c55e" opacity="0"/>
+          <text x="690" y="160" text-anchor="middle" font-size="12" fill="#9aa4b2">CD4 T cell</text>
+
+          <!-- arrows -->
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#7aa2f7"></path>
+            </marker>
+          </defs>
+          <line id="arrow1" x1="170" y1="100" x2="340" y2="100" stroke="#7aa2f7" stroke-width="3" marker-end="url(#arrow)" opacity="0"/>
+          <line id="arrow2" x1="460" y1="100" x2="640" y2="100" stroke="#7aa2f7" stroke-width="3" marker-end="url(#arrow)" opacity="0"/>
+        </svg>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="alloPrev" aria-label="Previous step">⟵ Prev</button>
+        <button class="btn" id="alloPlay" aria-label="Play">▶ Play</button>
+        <button class="btn" id="alloPause" aria-label="Pause">⏸ Pause</button>
+        <button class="btn" id="alloNext" aria-label="Next step">Next ⟶</button>
+        <label class="row">Speed
+          <select id="alloSpeed" aria-label="Animation speed">
+            <option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option>
+          </select>
+        </label>
+        <label class="row" style="flex:1">Scrub <input type="range" id="alloScrub" min="0" max="3" step="1" style="width:100%"/></label>
+      </div>
+      <div class="timeline" aria-hidden="true"><div class="dot" id="aDot0"></div><div class="dot" id="aDot1"></div><div class="dot" id="aDot2"></div><div class="dot" id="aDot3"></div></div>
+      <div class="progress" style="margin-top:6px"><div id="alloProg"></div></div>
+      <div id="alloCaption" class="status warnS" style="margin-top:8px" role="status" aria-live="polite">Ready — Step 1: Acquisition of donor debris by host APC.</div>
+    </div>
+
+    <!-- Overview -->
+    <div id="alloExplain" class="card" role="tabpanel" hidden>
+      <details open><summary><b>Acquisition (Ingestion)</b></summary><p>Recipient APCs patrol near the graft and ingest shed donor debris (HLA fragments and other proteins).</p></details>
+      <details><summary><b>Processing & Presentation</b></summary><p>APCs process donor proteins into peptides and load them onto <b>self MHC II</b> for CD4 T‑cell surveillance.</p></details>
+      <details><summary><b>Recognition & Activation</b></summary><p>Host CD4 T cells recognize foreign peptide in self groove → provide help (cytokines, B‑cell support) → chronic rejection pressure.</p></details>
+    </div>
+
+    <!-- Quiz -->
+    <div id="alloQuiz" class="card" role="tabpanel" hidden>
+      <h3>Quick Check</h3>
+      <ol id="alloQuizList" class="small"></ol>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="alloGrade">Grade</button>
+        <span id="alloScore" class="status warnS">Not graded</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FH vs FCS MODULE -->
+  <section class="panel" id="sectionLipid" role="region" aria-label="FH vs FCS Module" hidden>
+    <h2 class="title">FH vs FCS — Animated Differences</h2>
+    <div class="tabs" role="tablist" aria-label="Lipids tabs">
+      <button class="btn" role="tab" aria-selected="true" data-tab="lipAnim">Step‑by‑Step Animation</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="lipCompare">Comparison & Rationale</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="lipQuiz">Quick Quiz</button>
+    </div>
+
+    <div id="lipAnim" class="card" role="tabpanel" aria-live="polite">
+      <div class="stage" id="lipStage" aria-label="Animation stage: LDL–LDLR clearance vs Chylomicron–LPL clearance">
+        <svg viewBox="0 0 900 260" width="100%" height="220" aria-hidden="true">
+          <!-- left: FH axis (LDLR) -->
+          <text x="130" y="24" font-size="12" fill="#9aa4b2">FH: LDLR pathway</text>
+          <rect x="20" y="40" width="220" height="160" rx="12" fill="#1f2937" stroke="#334155"/>
+          <!-- hepatocyte LDLR -->
+          <rect id="ldlr" class="actor" x="60" y="90" width="40" height="40" rx="5" fill="#60a5fa" opacity="1"/>
+          <text x="80" y="150" text-anchor="middle" font-size="11" fill="#9aa4b2">LDLR</text>
+          <!-- LDL particles -->
+          <circle id="ldl1" class="actor" cx="190" cy="80" r="10" fill="#f59e0b" opacity="1"/>
+          <circle id="ldl2" class="actor" cx="210" cy="120" r="10" fill="#f59e0b" opacity="1"/>
+          <!-- arrow to LDLR -->
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#7aa2f7"></path>
+            </marker>
+          </defs>
+          <line id="ldlArrow" x1="170" y1="100" x2="110" y2="110" stroke="#7aa2f7" stroke-width="3" marker-end="url(#arr)" opacity="1"/>
+
+          <!-- right: FCS axis (LPL) -->
+          <text x="640" y="24" font-size="12" fill="#9aa4b2">FCS: LPL pathway</text>
+          <rect x="520" y="40" width="360" height="160" rx="12" fill="#1f2937" stroke="#334155"/>
+          <!-- capillary LPL -->
+          <rect id="lpl" class="actor" x="560" y="90" width="40" height="40" rx="5" fill="#22c55e" opacity="1"/>
+          <text x="580" y="150" text-anchor="middle" font-size="11" fill="#9aa4b2">LPL</text>
+          <!-- Chylomicrons -->
+          <circle id="chy1" class="actor" cx="820" cy="80" r="14" fill="#f472b6" opacity="1"/>
+          <circle id="chy2" class="actor" cx="840" cy="120" r="14" fill="#f472b6" opacity="1"/>
+          <line id="chyArrow" x1="800" y1="100" x2="600" y2="110" stroke="#7aa2f7" stroke-width="3" marker-end="url(#arr)" opacity="1"/>
+        </svg>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="lipPrev" aria-label="Previous step">⟵ Prev</button>
+        <button class="btn" id="lipPlay" aria-label="Play">▶ Play</button>
+        <button class="btn" id="lipPause" aria-label="Pause">⏸ Pause</button>
+        <button class="btn" id="lipNext" aria-label="Next step">Next ⟶</button>
+        <label class="row">Speed
+          <select id="lipSpeed" aria-label="Animation speed">
+            <option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option>
+          </select>
+        </label>
+        <label class="row" style="flex:1">Scrub <input type="range" id="lipScrub" min="0" max="3" step="1" style="width:100%"/></label>
+      </div>
+      <div class="timeline"><div class="dot" id="lDot0"></div><div class="dot" id="lDot1"></div><div class="dot" id="lDot2"></div><div class="dot" id="lDot3"></div></div>
+      <div class="progress" style="margin-top:6px"><div id="lipProg"></div></div>
+      <div id="lipCaption" class="status warnS" style="margin-top:8px" role="status" aria-live="polite">Ready — Step 1: Normal LDL–LDLR clearance (FH disrupts this).</div>
+    </div>
+
+    <div id="lipCompare" class="card" role="tabpanel" hidden>
+      <h3>Why “Option C” is the key difference</h3>
+      <p><b>Correct:</b> <i>“FH is an autosomal dominant disorder caused by mutations in the LDLR gene, leading to elevated LDL.”</i></p>
+      <div class="grid two">
+        <div class="card small">
+          <h4>FH (Familial Hypercholesterolemia)</h4>
+          <ul>
+            <li><b>Inheritance:</b> Autosomal dominant (classically).</li>
+            <li><b>Gene/Defect:</b> LDLR mutation → ↓LDL uptake.</li>
+            <li><b>Lipid:</b> LDL ↑↑ (often > 190 mg/dL; homozygous much higher).</li>
+            <li><b>Clinical:</b> Tendon xanthomas, premature CAD.</li>
+          </ul>
+        </div>
+        <div class="card small">
+          <h4>FCS (Familial Chylomicronemia Syndrome)</h4>
+          <ul>
+            <li><b>Inheritance:</b> Autosomal recessive.</li>
+            <li><b>Gene/Defect:</b> LPL deficiency → chylomicrons accumulate.</li>
+            <li><b>Lipid:</b> TG ↑↑↑ (chylomicrons, pancreatitis risk).</li>
+            <li><b>Clinical:</b> No premature CAD (chylomicrons relatively non‑atherogenic in FCS).</li>
+          </ul>
+        </div>
+      </div>
+      <details class="small" style="margin-top:8px">
+        <summary>Why the other options are wrong</summary>
+        <ul>
+          <li><b>A:</b> LPL deficiency describes FCS, not FH.</li>
+          <li><b>B:</b> Strict dietary fat restriction is cornerstone for FCS, not sufficient for FH (often needs statins/PCSK9i).</li>
+          <li><b>D:</b> Tendon xanthomas + premature CAD are FH features, not FCS.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div id="lipQuiz" class="card" role="tabpanel" hidden>
+      <h3>Quick Check</h3>
+      <ol id="lipQuizList" class="small"></ol>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="lipGrade">Grade</button>
+        <span id="lipScore" class="status warnS">Not graded</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE SIMULATIONS (for both topics) -->
+  <section class="panel" id="sectionCases" role="region" aria-label="Case Simulations" hidden>
+    <h2 class="title">Case Simulations — Time‑boxed, with Rationale & Scoring</h2>
+    <div class="tabs" role="tablist" aria-label="Case tabs">
+      <button class="btn" role="tab" aria-selected="true" data-tab="caseAllo">Transplant (Indirect Pathway)</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="caseLipid">Lipid Disorders (FH vs FCS)</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="caseBank">Case Library / Import‑Export</button>
+    </div>
+
+    <!-- Allo cases -->
+    <div id="caseAllo" class="card" role="tabpanel" aria-live="polite">
+      <div class="grid two">
+        <div class="card">
+          <h3>Start a Scenario</h3>
+          <label>Timer (minutes)<input id="alloTimer" type="number" min="1" value="3"/></label>
+          <div class="row" style="margin-top:8px">
+            <button class="btn" id="startAlloCase">Start Random Allo Case</button>
+            <span class="kpi"><span>Clock</span><strong id="alloClock">—</strong></span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Your Decisions</h3>
+          <label>Most likely pathway involved?
+            <select id="alloChoice">
+              <option>Direct</option>
+              <option selected>Indirect</option>
+              <option>Both</option>
+            </select>
+          </label>
+          <label>Best next action (reflex/workup)?
+            <input id="alloAction" type="text" placeholder="e.g., Assess donor‑specific antibody; optimize immunosuppression"/>
+          </label>
+          <label>Reasoning
+            <textarea id="alloReason"></textarea>
+          </label>
+          <button class="btn ok" id="completeAlloCase">Complete</button>
+          <div id="alloResult" class="status warnS" style="margin-top:8px">Waiting…</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Scenario</h3>
+        <div id="alloVignette" class="small">Click “Start Random Allo Case”.</div>
+      </div>
+    </div>
+
+    <!-- Lipid cases -->
+    <div id="caseLipid" class="card" role="tabpanel" hidden aria-live="polite">
+      <div class="grid two">
+        <div class="card">
+          <h3>Start a Scenario</h3>
+          <label>Timer (minutes)<input id="lipTimer" type="number" min="1" value="3"/></label>
+          <div class="row" style="margin-top:8px">
+            <button class="btn" id="startLipCase">Start Random Lipid Case</button>
+            <span class="kpi"><span>Clock</span><strong id="lipClock">—</strong></span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Your Decisions</h3>
+          <label>Diagnosis
+            <select id="lipDx">
+              <option>FH</option><option>FCS</option><option>Multifactorial hypertriglyceridemia</option>
+            </select>
+          </label>
+          <label>First‑line management
+            <input id="lipMgmt" type="text" placeholder="e.g., Statin; Strict very‑low‑fat diet; Omega‑3; Apheresis (HoFH)"/>
+          </label>
+          <label>Reasoning
+            <textarea id="lipReason"></textarea>
+          </label>
+          <button class="btn ok" id="completeLipCase">Complete</button>
+          <div id="lipResult" class="status warnS" style="margin-top:8px">Waiting…</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Scenario</h3>
+        <div id="lipVignette" class="small">Click “Start Random Lipid Case”.</div>
+      </div>
+    </div>
+
+    <!-- Library -->
+    <div id="caseBank" class="card" role="tabpanel" hidden>
+      <h3>Library</h3>
+      <div class="grid two">
+        <div>
+          <h4>Allo Cases</h4>
+          <div id="bankAllo" class="small"></div>
+        </div>
+        <div>
+          <h4>Lipid Cases</h4>
+          <div id="bankLip" class="small"></div>
+        </div>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="exportCases">Export Library (JSON)</button>
+        <label class="btn">Import <input id="importCases" type="file" accept="application/json" class="sr-only"/></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTES / EXPORT -->
+  <section class="panel" id="sectionNotes" role="region" aria-label="Notes and Export" hidden>
+    <h2 class="title">Notes & Export</h2>
+    <textarea id="notesBox" placeholder="Type any teaching notes or case reflections here…"></textarea>
+    <div class="row" style="margin-top:8px">
+      <button class="btn" id="saveNotes">Save Notes</button>
+      <button class="btn" id="copyNotes">Copy</button>
+      <button class="btn" id="printAll">Print / PDF</button>
+      <span id="saveStatus" class="status warnS">Not saved</span>
+    </div>
+  </section>
+</main>
+
+<!-- toast -->
+<div id="toast" class="toast hidden" role="status" aria-live="polite">Autosaved.</div>
+
+<script>
+/* ===============================
+   Global helpers & autosave
+================================== */
+const $ = s=>document.querySelector(s), $$ = s=>Array.from(document.querySelectorAll(s));
+const storeKey='Studio_v1';
+const state = {
+  contrast:false,
+  active:'allo', // allo | lipid | cases | notes
+  // animation cursors
+  allo:{step:0,speed:1,playing:false},
+  lipid:{step:0,speed:1,playing:false},
+  // quizzes
+  alloQuizAns:{}, lipidQuizAns:{},
+  // cases
+  cases:{allo:[],lip:[]}, // library
+  run:{allo:null,lip:null}, // current run details
+  notes:''
+};
+function save(){ try{ localStorage.setItem(storeKey, JSON.stringify(state)); showToast(); }catch(e){} }
+function load(){ try{ const raw=localStorage.getItem(storeKey); if(raw) Object.assign(state, JSON.parse(raw)); }catch(e){} }
+function showToast(){ const t=$("#toast"); t.classList.remove('hidden'); setTimeout(()=>t.classList.add('hidden'),800); }
+load();
+
+/* ===============================
+   Navigation & contrast
+================================== */
+function showSection(idBtn){
+  const map={btnAllo:'sectionAllo',btnLipid:'sectionLipid',btnCases:'sectionCases',btnNotes:'sectionNotes'};
+  Object.entries(map).forEach(([btnId,secId])=>{
+    const on = btnId===idBtn;
+    $("#"+secId).hidden = !on;
+    const btn=$("#"+btnId); btn.setAttribute('aria-pressed', on?'true':'false');
+  });
+  state.active = idBtn==='btnAllo'?'allo':idBtn==='btnLipid'?'lipid':idBtn==='btnCases'?'cases':'notes'; save();
+}
+['btnAllo','btnLipid','btnCases','btnNotes'].forEach(id=>$("#"+id).addEventListener('click',()=>showSection(id)));
+showSection({allo:'btnAllo',lipid:'btnLipid',cases:'btnCases',notes:'btnNotes'}[state.active]||'btnAllo');
+
+$("#btnContrast").addEventListener('click',()=>{
+  state.contrast=!state.contrast; document.body.classList.toggle('high-contrast', state.contrast);
+  $("#btnContrast").textContent = 'High Contrast: '+(state.contrast?'On':'Off');
+  $("#btnContrast").setAttribute('aria-pressed', state.contrast?'true':'false');
+  save();
+});
+document.body.classList.toggle('high-contrast', state.contrast);
+$("#btnContrast").textContent = 'High Contrast: '+(state.contrast?'On':'Off');
+$("#btnContrast").setAttribute('aria-pressed', state.contrast?'true':'false');
+
+/* ===============================
+   Tabs show/hide utility
+================================== */
+function initTabs(scopeSel){
+  const scope=$(scopeSel);
+  const tabs = scope.querySelectorAll('[role="tab"]');
+  tabs.forEach(t=>{
+    t.addEventListener('click',()=>{
+      tabs.forEach(x=>x.setAttribute('aria-selected','false'));
+      t.setAttribute('aria-selected','true');
+      const id = t.dataset.tab;
+      scope.querySelectorAll('[role="tabpanel"]').forEach(p=>p.hidden=true);
+      scope.querySelector('#'+id).hidden=false;
+    });
+  });
+}
+initTabs('#sectionAllo'); initTabs('#sectionLipid'); initTabs('#sectionCases');
+
+/* ===============================
+   Indirect Allorecognition — Animation
+   Steps: 0 Acquisition → 1 Processing+MHC → 2 Presentation → 3 CD4 activation
+================================== */
+const alloActors = {
+  debris1:$("#debris1"), debris2:$("#debris2"),
+  apc:$("#apc"), mhc:$("#mhc"), peptide:$("#peptide"), tcell:$("#tcell"),
+  arr1:$("#arrow1"), arr2:$("#arrow2"),
+  dots:[$("#aDot0"),$("#aDot1"),$("#aDot2"),$("#aDot3")], prog:$("#alloProg"), cap:$("#alloCaption")
+};
+function setAlloStep(k){
+  state.allo.step = Math.max(0, Math.min(3,k));
+  const s=state.allo.step;
+  // reset
+  [alloActors.debris1,alloActors.debris2, alloActors.apc, alloActors.mhc, alloActors.peptide, alloActors.tcell].forEach(n=>n.style.opacity=0);
+  [alloActors.arr1,alloActors.arr2].forEach(n=>n.style.opacity=0);
+  // states
+  if(s>=0){
+    // debris appears & moves toward APC
+    alloActors.debris1.style.opacity=1; alloActors.debris2.style.opacity=1;
+    alloActors.debris1.setAttribute('cx', 190 + (s>0? 140:0));
+    alloActors.debris2.setAttribute('cx', 210 + (s>0? 120:0));
+    if(s===0) alloActors.cap.textContent='Step 1: Acquisition — Recipient APCs ingest donor debris near the graft.';
+  }
+  if(s>=1){
+    alloActors.apc.style.opacity=1; alloActors.arr1.style.opacity=1;
+    alloActors.mhc.style.opacity= (s>=2?1:0);
+    alloActors.peptide.style.opacity= (s>=2?1:0);
+    if(s===1) alloActors.cap.textContent='Step 2: Processing — APC degrades donor proteins and prepares MHC II.';
+  }
+  if(s>=2){
+    if(s===2) alloActors.cap.textContent='Step 3: Presentation — Donor peptide sits in self MHC II on the APC.';
+  }
+  if(s>=3){
+    alloActors.tcell.style.opacity=1; alloActors.arr2.style.opacity=1;
+    alloActors.cap.textContent='Step 4: Recognition — CD4 T cell recognizes donor peptide in self groove → help → chronic rejection pressure.';
+  }
+  // timeline
+  alloActors.dots.forEach((d,i)=>d.classList.toggle('active', i<=s));
+  alloActors.prog.style.width = ( (s+1)/4*100 )+'%';
+  $("#alloScrub").value = s;
+  save();
+}
+$("#alloPrev").addEventListener('click',()=>setAlloStep(state.allo.step-1));
+$("#alloNext").addEventListener('click',()=>setAlloStep(state.allo.step+1));
+$("#alloScrub").addEventListener('input',e=>setAlloStep(Number(e.target.value)));
+$("#alloSpeed").addEventListener('change',e=>{ state.allo.speed=Number(e.target.value); save(); });
+let alloTimer=null;
+$("#alloPlay").addEventListener('click',()=>{
+  clearInterval(alloTimer); state.allo.playing=true;
+  alloTimer=setInterval(()=>{ if(state.allo.step>=3){ clearInterval(alloTimer); state.allo.playing=false; save(); return; } setAlloStep(state.allo.step+1); }, 1500/state.allo.speed);
+});
+$("#alloPause").addEventListener('click',()=>{ clearInterval(alloTimer); state.allo.playing=false; save(); });
+setAlloStep(state.allo.step||0);
+
+/* ===============================
+   FH vs FCS — Animation
+   Steps: 0 normal LDL clearance; 1 FH (LDLR dysfunctional) LDL persists; 2 normal LPL clearance; 3 FCS (LPL absent) chylomicrons persist
+================================== */
+const lipActors = {
+  ldl1:$("#ldl1"), ldl2:$("#ldl2"), ldlr:$("#ldlr"), ldlArr:$("#ldlArrow"),
+  chy1:$("#chy1"), chy2:$("#chy2"), lpl:$("#lpl"), chyArr:$("#chyArrow"),
+  dots:[$("#lDot0"),$("#lDot1"),$("#lDot2"),$("#lDot3")], prog:$("#lipProg"), cap:$("#lipCaption")
+};
+function setLipStep(k){
+  state.lipid.step = Math.max(0, Math.min(3,k));
+  const s=state.lipid.step;
+  // reset positions
+  lipActors.ldl1.setAttribute('cx', 190); lipActors.ldl2.setAttribute('cx', 210);
+  lipActors.chy1.setAttribute('cx', 820); lipActors.chy2.setAttribute('cx', 840);
+  // states
+  if(s===0){
+    lipActors.cap.textContent='Step 1: Normal — LDL binds LDLR and is cleared.';
+    // move toward LDLR
+    lipActors.ldl1.setAttribute('cx', 120); lipActors.ldl2.setAttribute('cx', 130);
+  }
+  if(s===1){
+    lipActors.cap.textContent='Step 2: FH — LDLR defective → LDL remains high (accumulates).';
+    // LDL stays to the right (no movement)
+    lipActors.ldl1.setAttribute('cx', 190); lipActors.ldl2.setAttribute('cx', 210);
+  }
+  if(s===2){
+    lipActors.cap.textContent='Step 3: Normal — Chylomicrons meet LPL and are hydrolyzed.';
+    lipActors.chy1.setAttribute('cx', 610); lipActors.chy2.setAttribute('cx', 620);
+  }
+  if(s===3){
+    lipActors.cap.textContent='Step 4: FCS — LPL absent/deficient → chylomicrons persist → TG ↑↑ and pancreatitis risk.';
+    lipActors.chy1.setAttribute('cx', 820); lipActors.chy2.setAttribute('cx', 840);
+  }
+  lipActors.dots.forEach((d,i)=>d.classList.toggle('active', i<=s));
+  lipActors.prog.style.width = ( (s+1)/4*100 )+'%';
+  $("#lipScrub").value = s;
+  save();
+}
+$("#lipPrev").addEventListener('click',()=>setLipStep(state.lipid.step-1));
+$("#lipNext").addEventListener('click',()=>setLipStep(state.lipid.step+1));
+$("#lipScrub").addEventListener('input',e=>setLipStep(Number(e.target.value)));
+$("#lipSpeed").addEventListener('change',e=>{ state.lipid.speed=Number(e.target.value); save(); });
+let lipTimer=null;
+$("#lipPlay").addEventListener('click',()=>{
+  clearInterval(lipTimer); state.lipid.playing=true;
+  lipTimer=setInterval(()=>{ if(state.lipid.step>=3){ clearInterval(lipTimer); state.lipid.playing=false; save(); return; } setLipStep(state.lipid.step+1); }, 1500/state.lipid.speed);
+});
+$("#lipPause").addEventListener('click',()=>{ clearInterval(lipTimer); state.lipid.playing=false; save(); });
+setLipStep(state.lipid.step||0);
+
+/* ===============================
+   Quizzes (instant feedback + autosave)
+================================== */
+const alloQuiz = [
+  {q:'Which cell presents donor peptide on self MHC II in the indirect pathway?', opts:['Donor APC','Host APC','Endothelium'], a:1},
+  {q:'CD4 T‑cell recognition in indirect pathway sees:', opts:['Self MHC + donor peptide','Donor MHC + self peptide','No MHC'], a:0},
+  {q:'Why is the indirect pathway persistent?', opts:['Continuous antigen shedding','One‑time exposure','Only pre‑transplant'], a:0}
+];
+const lipQuiz = [
+  {q:'FH inheritance and primary gene?', opts:['AR, LPL','AD, LDLR','AD, APOE'], a:1},
+  {q:'FCS hallmark lipid abnormality?', opts:['LDL ↑','Chylomicrons/TG ↑↑↑','Lp(a) ↑'], a:1},
+  {q:'Which condition is classically tied to tendon xanthomas + premature CAD?', opts:['FCS','FH','Dysbetalipoproteinemia'], a:1}
+];
+function renderQuiz(containerId, data, bag){
+  const ul=$("#"+containerId); ul.innerHTML='';
+  data.forEach((it,idx)=>{
+    const li=document.createElement('li'); li.innerHTML=`<p>${idx+1}. ${it.q}</p>`;
+    it.opts.forEach((opt,i)=>{
+      const id=`${containerId}_q${idx}_${i}`;
+      const lab=document.createElement('label'); lab.style.display='block';
+      lab.innerHTML = `<input type="radio" name="${containerId}_q${idx}" id="${id}" value="${i}"> ${opt}`;
+      const inp=lab.querySelector('input');
+      inp.addEventListener('change',()=>{ bag[`q${idx}`]=i; save(); });
+      li.appendChild(lab);
+    });
+    ul.appendChild(li);
+  });
+}
+function gradeQuiz(data, bag, outId){
+  let correct=0; data.forEach((it,idx)=>{ if(Number(bag[`q${idx}`])===it.a) correct++; });
+  const pct = Math.round(correct/data.length*100);
+  const el=$("#"+outId); el.className='status '+(pct>=70?'okS':'badS'); el.textContent = `Score: ${correct}/${data.length} (${pct}%) — ${pct>=70?'PASS':'RETRY'}`;
+  save();
+}
+renderQuiz('alloQuizList', alloQuiz, state.alloQuizAns);
+renderQuiz('lipQuizList', lipQuiz, state.lipidQuizAns);
+$("#alloGrade").addEventListener('click',()=>gradeQuiz(alloQuiz, state.alloQuizAns, 'alloScore'));
+$("#lipGrade").addEventListener('click',()=>gradeQuiz(lipQuiz, state.lipidQuizAns, 'lipScore'));
+
+/* ===============================
+   Case Sim Engine (with timer + scoring)
+================================== */
+const defaultAlloCases = [
+  { id:'AL-01',
+    vignette:'A 42‑year‑old kidney recipient (6 months post‑Tx) develops rising creatinine and DSA negative; biopsy shows progressive fibrous intimal thickening (no C4d).',
+    key:'Indirect', rationale:'Chronic injury from CD4 help via indirect pathway; optimize chronic rejection immunosuppression; rule out non‑immune causes.' },
+  { id:'AL-02',
+    vignette:'Liver Tx day 30 with improving LFTs now rising slowly; mixed infiltrate, donor endothelium replaces over time; DSA transient, now negative.',
+    key:'Indirect', rationale:'Ongoing debris → indirect CD4 activation sustaining injury despite waning direct pathway.'},
+  { id:'AL-03',
+    vignette:'HLA‑identical sibling renal Tx with gradual decline in function over 1 year; no donor MHC mismatch.',
+    key:'Indirect', rationale:'Explains rejection despite HLA match: minor antigens via indirect presentation.'}
+];
+const defaultLipCases = [
+  { id:'LP-01',
+    vignette:'Teen with LDL‑C 260 mg/dL, tendon xanthomas, strong family history of early MI.',
+    dx:'FH', mgmt:'High‑intensity statin ± ezetimibe; consider PCSK9 inhibitor; cascade screening.',
+    rationale:'AD LDLR defect → LDL↑; xanthomas + premature CAD.' },
+  { id:'LP-02',
+    vignette:'3‑year‑old with recurrent abdominal pain; TG 6,000 mg/dL; eruptive xanthomas; pancreatitis.',
+    dx:'FCS', mgmt:'Very‑low‑fat diet; avoid TG‑raising meds; consider specialized therapies.',
+    rationale:'AR LPL deficiency → chylomicrons↑↑↑; pancreatitis risk; not premature CAD.' },
+  { id:'LP-03',
+    vignette:'Adult with TG 1,200 mg/dL, obesity, diabetes, alcohol use; no tendon xanthomas.',
+    dx:'Multifactorial hypertriglyceridemia', mgmt:'Address secondary causes; omega‑3; fibrate if needed.',
+    rationale:'Secondary factors drive TG; not monogenic FCS.' }
+];
+if(!state.cases.allo?.length) state.cases.allo = defaultAlloCases;
+if(!state.cases.lip?.length) state.cases.lip = defaultLipCases;
+function renderBanks(){
+  $("#bankAllo").innerHTML = state.cases.allo.map(c=>`<div class="card"><b>${c.id}</b><br>${c.vignette}</div>`).join('');
+  $("#bankLip").innerHTML  = state.cases.lip.map(c=>`<div class="card"><b>${c.id}</b><br>${c.vignette}</div>`).join('');
+}
+renderBanks();
+
+/* Allo run */
+let alloTick=null;
+$("#startAlloCase").addEventListener('click',()=>{
+  const c = state.cases.allo[Math.floor(Math.random()*state.cases.allo.length)];
+  state.run.allo = {case:c, secs: Number($("#alloTimer").value||3)*60, started: Date.now()};
+  $("#alloVignette").textContent = `${c.id}: ${c.vignette}`;
+  clearInterval(alloTick);
+  alloTick=setInterval(()=>{
+    state.run.allo.secs = Math.max(0, state.run.allo.secs-1);
+    $("#alloClock").textContent = `${Math.floor(state.run.allo.secs/60)}:${String(state.run.allo.secs%60).padStart(2,'0')}`;
+    if(state.run.allo.secs===0) clearInterval(alloTick);
+  },1000);
+  save();
+});
+$("#completeAlloCase").addEventListener('click',()=>{
+  if(!state.run.allo){ $("#alloResult").className='status badS'; $("#alloResult").textContent='Start a case first.'; return; }
+  const chosen=$("#alloChoice").value, act=$("#alloAction").value.trim(), reason=$("#alloReason").value.trim();
+  const correct = (chosen===state.run.allo.case.key);
+  $("#alloResult").className = 'status '+(correct?'okS':'badS');
+  $("#alloResult").innerHTML = (correct?'Correct ✓':'Consider again') + ` — Rationale: ${state.run.allo.case.rationale}`;
+  // stash outcome
+  state.run.allo.outcome = {chosen, act, reason, correct, timeUsed: (Number($("#alloTimer").value||3)*60 - state.run.allo.secs)};
+  save();
+});
+
+/* Lipid run */
+let lipTick=null;
+$("#startLipCase").addEventListener('click',()=>{
+  const c = state.cases.lip[Math.floor(Math.random()*state.cases.lip.length)];
+  state.run.lip = {case:c, secs: Number($("#lipTimer").value||3)*60, started: Date.now()};
+  $("#lipVignette").textContent = `${c.id}: ${c.vignette}`;
+  clearInterval(lipTick);
+  lipTick=setInterval(()=>{
+    state.run.lip.secs = Math.max(0, state.run.lip.secs-1);
+    $("#lipClock").textContent = `${Math.floor(state.run.lip.secs/60)}:${String(state.run.lip.secs%60).padStart(2,'0')}`;
+    if(state.run.lip.secs===0) clearInterval(lipTick);
+  },1000);
+  save();
+});
+$("#completeLipCase").addEventListener('click',()=>{
+  if(!state.run.lip){ $("#lipResult").className='status badS'; $("#lipResult").textContent='Start a case first.'; return; }
+  const dx=$("#lipDx").value, mgmt=$("#lipMgmt").value.trim(), reason=$("#lipReason").value.trim();
+  const correct = (dx===state.run.lip.case.dx);
+  $("#lipResult").className = 'status '+(correct?'okS':'badS');
+  $("#lipResult").innerHTML = (correct?'Correct ✓':'Reassess') + ` — Expected: ${state.run.lip.case.dx}; Suggested: ${state.run.lip.case.mgmt}. Rationale: ${state.run.lip.case.rationale}`;
+  state.run.lip.outcome = {dx, mgmt, reason, correct, timeUsed: (Number($("#lipTimer").value||3)*60 - state.run.lip.secs)};
+  save();
+});
+
+/* Import/Export library */
+$("#exportCases").addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify(state.cases,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='case_library.json'; a.click(); URL.revokeObjectURL(a.href);
+});
+$("#importCases").addEventListener('change',async e=>{
+  const f=e.target.files[0]; if(!f)return; const txt=await f.text(); const obj=JSON.parse(txt);
+  if(obj.allo && obj.lip){ state.cases=obj; renderBanks(); save(); alert('Imported ✓'); }
+  else alert('Invalid JSON: expecting {allo:[], lip:[]}.');
+});
+
+/* ===============================
+   Notes & Export
+================================== */
+$("#notesBox").value = state.notes||'';
+$("#saveNotes").addEventListener('click',()=>{ state.notes=$("#notesBox").value; $("#saveStatus").className='status okS'; $("#saveStatus").textContent='Saved ✓'; save(); });
+$("#copyNotes").addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText($("#notesBox").value); }catch(e){} });
+$("#printAll").addEventListener('click',()=>window.print());
+
+/* ===============================
+   Keyboard shortcuts
+================================== */
+window.addEventListener('keydown',e=>{
+  if(e.key==='?'){ alert('Keyboard: Space Play/Pause • ←/→ Prev/Next (current module) • 1=Allo 2=Lipid 3=Cases 4=Notes'); }
+  // module switch
+  if(e.key==='1'){ showSection('btnAllo'); }
+  if(e.key==='2'){ showSection('btnLipid'); }
+  if(e.key==='3'){ showSection('btnCases'); }
+  if(e.key==='4'){ showSection('btnNotes'); }
+  // animation controls based on active
+  if(['allo','lipid'].includes(state.active)){
+    const isAllo = state.active==='allo';
+    if(e.key===' '){ e.preventDefault(); (isAllo?$("#alloPlay"):$("#lipPlay")).click(); }
+    if(e.key==='ArrowLeft'){ (isAllo?$("#alloPrev"):$("#lipPrev")).click(); }
+    if(e.key==='ArrowRight'){ (isAllo?$("#alloNext"):$("#lipNext")).click(); }
+  }
+});
+</script>
+</body>
+</html>

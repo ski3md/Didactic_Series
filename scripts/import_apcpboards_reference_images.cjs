@@ -12,6 +12,11 @@ const OUT_PUBLIC_INDEX = path.join(ROOT, 'public', 'reference-images', 'apcpboar
 
 const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.tif', '.tiff']);
 const PDF_EXTENSION = '.pdf';
+const DOCX_EXTENSION = '.docx';
+const PPT_EXTENSIONS = new Set(['.ppt', '.pptx']);
+const ZIP_EXTENSIONS = new Set(['.zip']);
+const OFFICE_EXTENSIONS = new Set([DOCX_EXTENSION, ...PPT_EXTENSIONS]);
+const SUPPORTED_SOURCE_EXTENSIONS = new Set([...IMAGE_EXTENSIONS, PDF_EXTENSION, ...OFFICE_EXTENSIONS, ...ZIP_EXTENSIONS]);
 const SKIP_SEGMENTS = new Set([
   '#recycle',
   '$RECYCLE.BIN',
@@ -56,15 +61,23 @@ const includeRecycle = args.includes('--include-recycle');
 const includeScreenshots = args.includes('--include-screenshots');
 const includeAllImages = args.includes('--include-all-images') || args.includes('--all-images');
 const serveFromSource = args.includes('--serve-from-source');
+const appendExistingIndex = args.includes('--append-existing-index');
 const includeBroadPathologyMatches = !args.includes('--strict-histology-root');
 const includePdf = !args.includes('--no-pdf');
 const maxImagesPerPdf = Number(getArg('--max-images-per-pdf') || process.env.APCPBOARDS_MAX_IMAGES_PER_PDF || 3);
+const maxPdfPages = Number(getArg('--max-pdf-pages') || process.env.APCPBOARDS_MAX_PDF_PAGES || 40);
+const maxArchiveDepth = Number(getArg('--max-archive-depth') || process.env.APCPBOARDS_MAX_ARCHIVE_DEPTH || 2);
 
 const normalize = (value) =>
   String(value || '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, ' ')
     .trim();
+
+const logicalPath = (value) => {
+  const raw = String(value || '');
+  return raw.includes('::') ? raw.split('::').slice(-1)[0] : raw;
+};
 
 const specialtyFromText = (text) => {
   const value = normalize(text);
@@ -88,23 +101,23 @@ const specialtyFromText = (text) => {
 
 const titleFromFilename = (filePath) =>
   path
-    .basename(filePath, path.extname(filePath))
+    .basename(logicalPath(filePath), path.extname(logicalPath(filePath)))
     .replace(/[_-]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 
 const sourceDocumentFromPath = (filePath) => {
-  const base = path.basename(filePath, path.extname(filePath));
+  const base = path.basename(logicalPath(filePath), path.extname(logicalPath(filePath)));
   const match = base.match(/^(.+?)(?:_page\d+|_img\d+|_p\d+|$)/i);
   return (match?.[1] || base)
-    .replace(/\.(pdf|pptx?)$/i, '')
+    .replace(/\.(pdf|pptx?|docx)$/i, '')
     .replace(/[_-]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 };
 
 const pageNumberFromPath = (filePath) => {
-  const match = path.basename(filePath).match(/(?:^|[_-])page(\d+)(?:[_-]|$)/i);
+  const match = path.basename(logicalPath(filePath)).match(/(?:^|[_-])page(\d+)(?:[_-]|$)/i);
   return match ? Number(match[1]) : undefined;
 };
 
@@ -116,7 +129,7 @@ const captionFromSource = ({ specialty, sourcePath }) => {
   return `${specialtyLabel.charAt(0).toUpperCase()}${specialtyLabel.slice(1)} teaching image from ${documentTitle}${pageText}. Review morphology and ancillary-study context with the source material.`;
 };
 
-const isHistologyRoot = (filePath) => /(?:^|[/\\])histo(?:logy)?(?:[/\\]|$)/i.test(filePath);
+const isHistologyRoot = (filePath) => /(?:^|[/\\])histo(?:logy)?(?:[/\\]|$)/i.test(String(filePath || ''));
 
 const clinicallyRelevantPath = (filePath) => {
   const value = normalize(filePath);
@@ -207,6 +220,12 @@ const shouldIncludeImage = (filePath) => {
   return clinicallyRelevantPath(filePath);
 };
 
+const shouldIncludeDerivedSource = (filePath, containerPath) => {
+  if (shouldIncludeImage(filePath)) return true;
+  if (containerPath && shouldIncludeImage(containerPath)) return true;
+  return false;
+};
+
 const walk = (directory, depth = 0, output = []) => {
   if (depth > maxDepth || output.length >= maxFiles) return output;
   let entries = [];
@@ -225,7 +244,30 @@ const walk = (directory, depth = 0, output = []) => {
     }
     if (!entry.isFile()) continue;
     const ext = path.extname(entry.name).toLowerCase();
-    if ((IMAGE_EXTENSIONS.has(ext) || (includePdf && ext === PDF_EXTENSION)) && shouldIncludeImage(fullPath)) output.push(fullPath);
+    if (SUPPORTED_SOURCE_EXTENSIONS.has(ext) && shouldIncludeImage(fullPath)) output.push(fullPath);
+  }
+  return output;
+};
+
+const walkSupportedSources = (directory, depth = 0, output = []) => {
+  if (depth > maxDepth || output.length >= maxFiles) return output;
+  let entries = [];
+  try {
+    entries = fs.readdirSync(directory, { withFileTypes: true });
+  } catch (error) {
+    return output;
+  }
+  for (const entry of entries) {
+    if (output.length >= maxFiles) break;
+    const fullPath = path.join(directory, entry.name);
+    if (shouldSkip(fullPath)) continue;
+    if (entry.isDirectory()) {
+      walkSupportedSources(fullPath, depth + 1, output);
+      continue;
+    }
+    if (!entry.isFile()) continue;
+    const ext = path.extname(entry.name).toLowerCase();
+    if (SUPPORTED_SOURCE_EXTENSIONS.has(ext)) output.push(fullPath);
   }
   return output;
 };
@@ -256,8 +298,6 @@ const copyBrowserSafeImage = (sourcePath, outputPath) => {
   fs.copyFileSync(sourcePath, outputPath);
 };
 
-const sourceRelativePath = (sourceRoot, sourcePath) => path.relative(sourceRoot, sourcePath).split(path.sep).join('/');
-
 const sourceUrlForPath = (sourcePath) =>
   `/@fs${sourcePath
     .split(path.sep)
@@ -273,7 +313,12 @@ const extractPdfImages = (pdfPath) => {
   if (!includePdf || !pdfImagesAvailable()) return [];
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'pathfndr-local-pdf-images-'));
   const prefix = path.join(tempDir, 'image');
-  const result = spawnSync('pdfimages', ['-all', pdfPath, prefix], { encoding: 'utf8' });
+  const pdfArgs = ['-all'];
+  if (Number.isFinite(maxPdfPages) && maxPdfPages > 0) {
+    pdfArgs.push('-f', '1', '-l', String(maxPdfPages));
+  }
+  pdfArgs.push(pdfPath, prefix);
+  const result = spawnSync('pdfimages', pdfArgs, { encoding: 'utf8' });
   if (result.status !== 0) return [];
   return fs
     .readdirSync(tempDir)
@@ -291,8 +336,101 @@ const extractPdfImages = (pdfPath) => {
     .slice(0, maxImagesPerPdf);
 };
 
-const images = [];
-const seenDigests = new Set();
+const sofficeAvailable = () => {
+  const result = spawnSync('command', ['-v', 'soffice'], { shell: true, encoding: 'utf8' });
+  return result.status === 0;
+};
+
+const convertOfficeToPdf = (documentPath) => {
+  if (!sofficeAvailable()) return null;
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'pathfndr-local-office-pdf-'));
+  const result = spawnSync('soffice', ['--headless', '--convert-to', 'pdf', '--outdir', tempDir, documentPath], {
+    encoding: 'utf8',
+  });
+  if (result.status !== 0) return null;
+  const expectedPdf = path.join(tempDir, `${path.basename(documentPath, path.extname(documentPath))}.pdf`);
+  if (fs.existsSync(expectedPdf)) return expectedPdf;
+  const fallback = fs.readdirSync(tempDir).find((file) => file.toLowerCase().endsWith('.pdf'));
+  return fallback ? path.join(tempDir, fallback) : null;
+};
+
+const extractArchive = (archivePath) => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'pathfndr-local-archive-'));
+  let result = spawnSync('bsdtar', ['-xf', archivePath, '-C', tempDir], { encoding: 'utf8' });
+  if (result.status !== 0) {
+    result = spawnSync('unzip', ['-qq', archivePath, '-d', tempDir], { encoding: 'utf8' });
+  }
+  if (result.status !== 0) return null;
+  return tempDir;
+};
+
+const sourceRelativePath = (sourceRoot, sourcePath) => {
+  const raw = String(sourcePath || '');
+  if (!raw.includes('::')) return path.relative(sourceRoot, raw).split(path.sep).join('/');
+  const [containerPath, nestedPath] = raw.split('::');
+  const containerRelative = path.relative(sourceRoot, containerPath).split(path.sep).join('/');
+  const nestedRelative = nestedPath.split(path.sep).join('/');
+  return `${containerRelative}/${nestedRelative}`.replace(/\/+/g, '/');
+};
+
+const collectImportSources = ({ importPath, sourcePath, containerPath = sourcePath, archiveDepth = 0 }) => {
+  const ext = path.extname(logicalPath(sourcePath)).toLowerCase();
+  if (IMAGE_EXTENSIONS.has(ext)) {
+    if (!shouldIncludeDerivedSource(sourcePath, containerPath)) return [];
+    return [{ importPath, sourcePath, titleSuffix: '', sourceType: 'local-image' }];
+  }
+  if (ext === PDF_EXTENSION) {
+    if (!shouldIncludeDerivedSource(sourcePath, containerPath)) return [];
+    return extractPdfImages(importPath).map((imagePath, index) => ({
+      importPath: imagePath,
+      sourcePath,
+      titleSuffix: ` figure ${index + 1}`,
+      sourceType: 'pdf-extracted-image',
+    }));
+  }
+  if (OFFICE_EXTENSIONS.has(ext)) {
+    if (!shouldIncludeDerivedSource(sourcePath, containerPath)) return [];
+    const convertedPdf = convertOfficeToPdf(importPath);
+    if (!convertedPdf) return [];
+    return extractPdfImages(convertedPdf).map((imagePath, index) => ({
+      importPath: imagePath,
+      sourcePath,
+      titleSuffix: ` figure ${index + 1}`,
+      sourceType: `${ext.slice(1)}-extracted-image`,
+    }));
+  }
+  if (ZIP_EXTENSIONS.has(ext) && archiveDepth < maxArchiveDepth) {
+    if (!shouldIncludeDerivedSource(sourcePath, containerPath)) return [];
+    const extractedDir = extractArchive(importPath);
+    if (!extractedDir) return [];
+    const nestedFiles = walkSupportedSources(extractedDir, 0, []);
+    return nestedFiles.flatMap((nestedImportPath) => {
+      const nestedRelative = path.relative(extractedDir, nestedImportPath).split(path.sep).join('/');
+      const nestedSourcePath = `${sourcePath}::${nestedRelative}`;
+      return collectImportSources({
+        importPath: nestedImportPath,
+        sourcePath: nestedSourcePath,
+        containerPath: sourcePath,
+        archiveDepth: archiveDepth + 1,
+      });
+    });
+  }
+  return [];
+};
+
+const loadExistingImages = () => {
+  if (!appendExistingIndex || !fs.existsSync(OUT_INDEX)) return [];
+  try {
+    const parsed = JSON.parse(fs.readFileSync(OUT_INDEX, 'utf8'));
+    return Array.isArray(parsed.images) ? parsed.images : [];
+  } catch (error) {
+    return [];
+  }
+};
+
+const existingImages = loadExistingImages();
+const images = [...existingImages];
+const seenDigests = new Set(existingImages.map((image) => image.sha1).filter(Boolean));
 const missingRoots = [];
 const sourceFilesByRoot = [];
 
@@ -302,6 +440,11 @@ for (const sourceRoot of sourceRoots) {
     sourceFilesByRoot.push({ sourceRoot, files: [] });
     continue;
   }
+  const stat = fs.statSync(sourceRoot);
+  if (stat.isFile()) {
+    sourceFilesByRoot.push({ sourceRoot, files: SUPPORTED_SOURCE_EXTENSIONS.has(path.extname(sourceRoot).toLowerCase()) ? [sourceRoot] : [] });
+    continue;
+  }
   sourceFilesByRoot.push({ sourceRoot, files: walk(sourceRoot, 0, []) });
 }
 
@@ -309,16 +452,7 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
 
 for (const { sourceRoot, files } of sourceFilesByRoot) {
   for (const sourcePath of files) {
-    const sourceExt = path.extname(sourcePath).toLowerCase();
-    const importSources =
-      sourceExt === PDF_EXTENSION
-        ? extractPdfImages(sourcePath).map((imagePath, index) => ({
-            importPath: imagePath,
-            sourcePath,
-            titleSuffix: ` figure ${index + 1}`,
-            sourceType: 'pdf-extracted-image',
-          }))
-        : [{ importPath: sourcePath, sourcePath, titleSuffix: '', sourceType: 'local-image' }];
+    const importSources = collectImportSources({ importPath: sourcePath, sourcePath });
     for (const importSource of importSources) {
     let stat = null;
     try {
@@ -339,15 +473,16 @@ for (const { sourceRoot, files } of sourceFilesByRoot) {
     const fileName = `${safeTitle}-${digest.slice(0, 10)}${ext}`;
     const localRelativePath = path.posix.join('reference-library', 'local-teaching', specialty, fileName);
     const outputPath = path.join(ROOT, 'public', localRelativePath);
-    if (!dryRun && !serveFromSource) {
+    const canServeFromSource = serveFromSource && !String(importSource.importPath).startsWith(os.tmpdir());
+    if (!dryRun && !canServeFromSource) {
       if (!fs.existsSync(outputPath)) copyBrowserSafeImage(importSource.importPath, outputPath);
     }
     images.push({
       id: `local-teaching-${digest.slice(0, 16)}`,
       title,
       specialty,
-      localPath: serveFromSource ? '' : localRelativePath,
-      imageUrl: serveFromSource ? sourceUrlForPath(importSource.importPath) : undefined,
+      localPath: canServeFromSource ? '' : localRelativePath,
+      imageUrl: canServeFromSource ? sourceUrlForPath(importSource.importPath) : undefined,
       sourcePath,
       sourceRelativePath: sourceRelativePath(sourceRoot, sourcePath),
       sourceDocument: sourceDocumentFromPath(sourcePath),
@@ -371,10 +506,13 @@ const index = {
   sourceRoots,
   missingRoots,
   dryRun,
+  appendExistingIndex,
   includeAllImages,
   serveFromSource,
   includePdf,
   maxImagesPerPdf,
+  maxPdfPages,
+  maxArchiveDepth,
   maxDepth,
   maxFiles: Number.isFinite(maxFiles) ? maxFiles : 'all',
   imageCount: images.length,
@@ -393,10 +531,12 @@ const index = {
   images,
 };
 
-fs.mkdirSync(path.dirname(OUT_INDEX), { recursive: true });
-fs.writeFileSync(OUT_INDEX, `${JSON.stringify(index, null, 2)}\n`);
-fs.mkdirSync(path.dirname(OUT_PUBLIC_INDEX), { recursive: true });
-fs.writeFileSync(OUT_PUBLIC_INDEX, `${JSON.stringify(index, null, 2)}\n`);
+if (!dryRun) {
+  fs.mkdirSync(path.dirname(OUT_INDEX), { recursive: true });
+  fs.writeFileSync(OUT_INDEX, `${JSON.stringify(index, null, 2)}\n`);
+  fs.mkdirSync(path.dirname(OUT_PUBLIC_INDEX), { recursive: true });
+  fs.writeFileSync(OUT_PUBLIC_INDEX, `${JSON.stringify(index, null, 2)}\n`);
+}
 
 console.log(
   JSON.stringify(

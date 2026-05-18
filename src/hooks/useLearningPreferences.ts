@@ -4,12 +4,10 @@ const STORAGE_KEY = 'didactic_series_learning_preferences';
 
 export interface LearningPreferences {
   focusMode: boolean;
-  reduceMotion: boolean;
 }
 
 const DEFAULT_PREFERENCES: LearningPreferences = {
   focusMode: true,
-  reduceMotion: false,
 };
 
 const readStoredPreferences = (): LearningPreferences => {
@@ -48,9 +46,6 @@ export const useLearningPreferences = () => {
       preferences,
       toggleFocusMode: () => {
         setPreferences((current) => ({ ...current, focusMode: !current.focusMode }));
-      },
-      toggleReduceMotion: () => {
-        setPreferences((current) => ({ ...current, reduceMotion: !current.reduceMotion }));
       },
       setPreferences,
     }),

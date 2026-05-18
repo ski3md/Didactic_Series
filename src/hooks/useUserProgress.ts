@@ -2,11 +2,13 @@ import { useState, useEffect, useCallback } from 'react';
 import { Section, UserActivity } from '../types.ts';
 import { apiGetAllUserData } from '../api/mockApi.ts';
 import { trackSectionVisit } from '../utils/tracking.ts';
+import { inferInitialSectionFromLocation, useSectionNavigation } from './useSectionNavigation.ts';
 
 export const useUserProgress = (username: string | undefined) => {
-  const [currentSection, setCurrentSection] = useState<Section>(Section.HOME);
+  const [currentSection, setCurrentSection] = useState<Section>(() => inferInitialSectionFromLocation());
   const [visitedSections, setVisitedSections] = useState<Section[]>([]);
   const [isProgressLoading, setIsProgressLoading] = useState(true);
+  const navigation = useSectionNavigation(currentSection, setCurrentSection);
 
   useEffect(() => {
     const loadProgress = async () => {
@@ -20,12 +22,11 @@ export const useUserProgress = (username: string | undefined) => {
       try {
         const allUserData = await apiGetAllUserData();
         const currentUserData: UserActivity = allUserData[username] || {};
-        // Keep the landing experience on Home so users can choose between the
-        // didactic lecture library, the legacy lecture deck, and the rest of the module.
-        setVisitedSections(currentUserData.visitedSections || [Section.HOME]);
+        const initialSection = inferInitialSectionFromLocation();
+        setVisitedSections(currentUserData.visitedSections || [initialSection]);
       } catch (error) {
         console.error("Failed to load user progress:", error);
-        setVisitedSections([Section.HOME]);
+        setVisitedSections([inferInitialSectionFromLocation()]);
       } finally {
         setIsProgressLoading(false);
       }
@@ -37,6 +38,7 @@ export const useUserProgress = (username: string | undefined) => {
   const handleSectionChange = useCallback(async (section: Section) => {
     // Optimistically update UI
     setCurrentSection(section);
+    navigation.pushSection(section);
     window.scrollTo(0, 0); // Scroll to top on page change
     
     if (!username) return;
@@ -53,12 +55,13 @@ export const useUserProgress = (username: string | undefined) => {
       // Optional: Add UI to inform user that progress might not be saved
     }
 
-  }, [username, visitedSections]);
+  }, [navigation, username, visitedSections]);
 
   return {
     currentSection,
     handleSectionChange,
     visitedSections,
     isLoading: isProgressLoading,
+    navigation,
   };
 };

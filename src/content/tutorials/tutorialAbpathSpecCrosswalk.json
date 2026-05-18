@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-16T02:09:26.827Z",
+  "generatedAt": "2026-05-18T01:21:20.316Z",
   "rule": "Tutorials are scored against ABPath AP and CP content specification topic/subtopic nodes using track-aware token, phrase, root, and acronym evidence. Every tutorial must have at least one primary mapping.",
   "sources": {
     "ap": "src/content/syllabus/parsed_topics_v3.raw.json",
@@ -8,16 +8,17 @@
     "cpExtractedText": "generated at runtime with pdftotext",
     "tutorials": [
       "src/content/tutorials/tutorials.normalized.json",
-      "src/content/downloads_imports/normalized/tutorials.normalized.json"
+      "src/content/downloads_imports/normalized/tutorials.normalized.json",
+      "src/content/tutorials/clinicalPathInteractiveTutorials.json"
     ],
     "labels": "reports/tutorial_label_validation.json"
   },
   "counts": {
-    "tutorials": 480,
+    "tutorials": 485,
     "specNodes": 6284,
     "apSpecNodes": 3863,
     "cpSpecNodes": 2421,
-    "mapped": 480,
+    "mapped": 485,
     "review": 0
   },
   "crosswalk": [
@@ -11515,137 +11516,147 @@
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "ap-ap_breast-045e51df-600a-477e-aced-4e0447bfa0b7",
-        "domain": "AP",
-        "root": "Breast",
+        "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-bone-marrow",
+        "domain": "CP",
+        "root": "Hematopathology for Clinical Pathology",
         "path": [
-          "Breast",
-          "Lung Primary",
-          "Small Cell Carcinoma"
+          "Hematopathology for Clinical Pathology",
+          "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
+          "Bone Marrow"
         ],
-        "title": "Small Cell Carcinoma",
-        "difficulty": "AR",
-        "level": 2,
-        "score": 0.8796,
+        "title": "Bone Marrow",
+        "difficulty": "C",
+        "level": 3,
+        "score": 1.24,
         "confidence": "high",
         "evidenceTerms": [
-          "small",
-          "cell",
-          "carcinoma",
-          "lung"
+          "bone",
+          "marrow",
+          "normal"
         ],
-        "sourceLine": 5004
+        "sourceLine": 2365
       },
       "alternateMappings": [
         {
           "rank": 2,
-          "specId": "cp-bb-clinical-practice-anemia-in-oncology-patients",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-iron-deficiency-and-related-disorders",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Anemia in Oncology Patients"
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Iron Deficiency and Related Disorders"
           ],
-          "title": "Anemia in Oncology Patients",
+          "title": "Iron Deficiency and Related Disorders",
           "difficulty": "C",
           "level": 3,
-          "score": 0.8736,
+          "score": 1.1371,
           "confidence": "high",
           "evidenceTerms": [
-            "anemia",
-            "oncology",
-            "blood"
+            "iron",
+            "deficiency",
+            "related",
+            "non"
           ],
-          "sourceLine": 191
+          "sourceLine": 2374
         },
         {
           "rank": 3,
-          "specId": "ap-ap_endo-b8974adf-28da-4d4b-ae23-9b066727f4e4",
-          "domain": "AP",
-          "root": "Endocrine",
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-fluid-review-bone-marrow-review",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "The Endocrine System",
-            "The Skin and Nails",
-            "Other Lymphoid Cells",
-            "Bone Marrow"
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Fluid Review",
+            "Bone Marrow Review"
           ],
-          "title": "Bone Marrow",
+          "title": "Bone Marrow Review",
           "difficulty": "C",
-          "level": 3,
-          "score": 0.857,
+          "level": 4,
+          "score": 1.0836,
           "confidence": "high",
           "evidenceTerms": [
             "bone",
             "marrow",
-            "cell"
+            "hematology"
           ],
-          "sourceLine": 11890
+          "sourceLine": 2316
         },
         {
           "rank": 4,
-          "specId": "ap-ap_breast-a278ee5a-db3b-44e3-80db-584834326503",
-          "domain": "AP",
-          "root": "Breast",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-iron-deficiency-and-related-disorders-sideroblastic-ane",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Breast",
-            "Lung Primary",
-            "Biliary Cytopathology",
-            "Malignancy"
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Iron Deficiency and Related Disorders",
+            "Sideroblastic Anemias",
+            "Inherited"
           ],
-          "title": "Malignancy",
-          "difficulty": "AR",
-          "level": 3,
-          "score": 0.8569,
+          "title": "Inherited",
+          "difficulty": "F",
+          "level": 5,
+          "score": 1.0374,
           "confidence": "high",
           "evidenceTerms": [
-            "malignancy",
-            "lung"
+            "non",
+            "iron",
+            "deficiency",
+            "related",
+            "anemia"
           ],
-          "sourceLine": 5232
+          "sourceLine": 2377
         },
         {
           "rank": 5,
-          "specId": "ap-ap_forensic-917eefa5-18e2-4c5f-978c-bce32f4e69b9",
-          "domain": "AP",
-          "root": "Forensic Pathology",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-other-hemolytic-anemias-anemia-related-to-chronic-disea",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Forensic Pathology Topics for Anatomic Pathology Residents",
-            "Natural Deaths",
-            "Pediatric Deaths",
-            "Nutritional Deficiencies"
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Other Hemolytic Anemias",
+            "Anemia Related to Chronic Disease & Other Disorders"
           ],
-          "title": "Nutritional Deficiencies",
-          "difficulty": "AR",
-          "level": 3,
-          "score": 0.8048,
+          "title": "Anemia Related to Chronic Disease & Other Disorders",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.0178,
           "confidence": "high",
           "evidenceTerms": [
-            "nutritional",
-            "deficiencie"
+            "anemia",
+            "related",
+            "chronic",
+            "non"
           ],
-          "sourceLine": 9883
+          "sourceLine": 2392
         },
         {
           "rank": 6,
-          "specId": "ap-ap_breast-a59737ea-1ec0-4549-8776-6e33cb78e61b",
-          "domain": "AP",
-          "root": "Breast",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-iron-deficiency-and-related-disorders-erythrocyte-enzym",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Breast",
-            "Lung Primary",
-            "GI Primary"
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Iron Deficiency and Related Disorders",
+            "Erythrocyte Enzyme Disorders",
+            "Other Erythrocyte Enzyme Disorders"
           ],
-          "title": "GI Primary",
-          "difficulty": "F",
-          "level": 2,
-          "score": 0.7996,
+          "title": "Other Erythrocyte Enzyme Disorders",
+          "difficulty": "AR",
+          "level": 5,
+          "score": 1.0169,
           "confidence": "high",
           "evidenceTerms": [
-            "gi",
-            "lung"
+            "non",
+            "iron",
+            "deficiency",
+            "related"
           ],
-          "sourceLine": 4425
+          "sourceLine": 2385
         }
       ],
       "status": "mapped"
@@ -22613,30 +22624,6 @@
         },
         {
           "rank": 3,
-          "specId": "cp-cp-liver-disease-hepatic-enzymes-bilirubin",
-          "domain": "CP",
-          "root": "Chemical Pathology",
-          "path": [
-            "Chemical Pathology",
-            "Liver Disease",
-            "Hepatic Enzymes",
-            "Bilirubin"
-          ],
-          "title": "Bilirubin",
-          "difficulty": "C",
-          "level": 4,
-          "score": 1.3857,
-          "confidence": "high",
-          "evidenceTerms": [
-            "bilirubin",
-            "liver",
-            "hepatic",
-            "enzyme"
-          ],
-          "sourceLine": 1987
-        },
-        {
-          "rank": 4,
           "specId": "ap-ap_gi-90e30159-1990-4788-b535-a0a5bed8d7d0",
           "domain": "AP",
           "root": "Gastrointestinal",
@@ -22657,28 +22644,31 @@
           "sourceLine": 2367
         },
         {
-          "rank": 5,
-          "specId": "cp-cp-enzymes-liver-enzymes",
+          "rank": 4,
+          "specId": "cp-cp-liver-disease-hepatic-enzymes-bilirubin",
           "domain": "CP",
           "root": "Chemical Pathology",
           "path": [
             "Chemical Pathology",
-            "Enzymes",
-            "Liver Enzymes"
+            "Liver Disease",
+            "Hepatic Enzymes",
+            "Bilirubin"
           ],
-          "title": "Liver Enzymes",
-          "difficulty": "",
-          "level": 3,
-          "score": 1.2693,
+          "title": "Bilirubin",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.2857,
           "confidence": "high",
           "evidenceTerms": [
+            "bilirubin",
             "liver",
+            "hepatic",
             "enzyme"
           ],
-          "sourceLine": 1644
+          "sourceLine": 1987
         },
         {
-          "rank": 6,
+          "rank": 5,
           "specId": "ap-ap_gi-d6fcf6a2-1ead-4c7a-baf0-8ce15da3dd42",
           "domain": "AP",
           "root": "Gastrointestinal",
@@ -22704,6 +22694,32 @@
             "metabolic"
           ],
           "sourceLine": 2397
+        },
+        {
+          "rank": 6,
+          "specId": "ap-ap_gi-727f9c99-a112-4a4c-9a8b-ade2357cafb4",
+          "domain": "AP",
+          "root": "Gastrointestinal",
+          "path": [
+            "The Digestive System",
+            "The Liver and Biliary Tract",
+            "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+            "Viral hepatitis (Hepatitis A, B, & C)"
+          ],
+          "title": "Viral hepatitis (Hepatitis A, B, & C)",
+          "difficulty": "AR",
+          "level": 3,
+          "score": 1.2617,
+          "confidence": "high",
+          "evidenceTerms": [
+            "viral",
+            "hepatiti",
+            "liver",
+            "biliary",
+            "tract",
+            "metabolic"
+          ],
+          "sourceLine": 2398
         }
       ],
       "status": "mapped"
@@ -24852,149 +24868,148 @@
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "cp-bb-platelets",
+        "specId": "cp-hp-testing-in-hematology-and-hematopathology-alkaline-and-acid-electrophoresis-high-performance-liq",
         "domain": "CP",
-        "root": "Blood Banking/Transfusion Medicine",
+        "root": "Hematopathology for Clinical Pathology",
         "path": [
-          "Blood Banking/Transfusion Medicine",
-          "Platelets"
+          "Hematopathology for Clinical Pathology",
+          "Testing in Hematology and Hematopathology",
+          "Alkaline & Acid Electrophoresis",
+          "High Performance Liquid Chromatography (HPLC)"
         ],
-        "title": "Platelets",
-        "difficulty": "",
-        "level": 2,
-        "score": 1.2977,
+        "title": "High Performance Liquid Chromatography (HPLC)",
+        "difficulty": "AR",
+        "level": 4,
+        "score": 1.6916,
         "confidence": "high",
         "evidenceTerms": [
-          "platelet",
-          "blood",
-          "banking",
-          "transfusion"
+          "performance",
+          "liquid",
+          "chromatography",
+          "hplc",
+          "testing",
+          "electrophoresi"
         ],
-        "sourceLine": 1124
+        "sourceLine": 2303
       },
       "alternateMappings": [
         {
           "rank": 2,
-          "specId": "cp-hp-testing-in-hematology-and-hematopathology-alkaline-and-acid-electrophoresis-high-performance-liq",
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-bone-marrow-specimen-collection-and-processing-periphe",
           "domain": "CP",
           "root": "Hematopathology for Clinical Pathology",
           "path": [
             "Hematopathology for Clinical Pathology",
             "Testing in Hematology and Hematopathology",
-            "Alkaline & Acid Electrophoresis",
-            "High Performance Liquid Chromatography (HPLC)"
+            "Bone Marrow Specimen Collection and Processing",
+            "Peripheral Blood Smear Review"
           ],
-          "title": "High Performance Liquid Chromatography (HPLC)",
-          "difficulty": "AR",
+          "title": "Peripheral Blood Smear Review",
+          "difficulty": "C",
           "level": 4,
-          "score": 1.2316,
+          "score": 1.458,
           "confidence": "high",
           "evidenceTerms": [
-            "performance",
-            "liquid",
-            "chromatography",
-            "hplc",
-            "testing",
-            "electrophoresi"
+            "peripheral",
+            "blood",
+            "smear",
+            "testing"
           ],
-          "sourceLine": 2303
+          "sourceLine": 2314
         },
         {
           "rank": 3,
-          "specId": "cp-bb-clinical-practice-causes-management",
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-hemoglobinopathy-analysis",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Causes",
-            "Management"
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Hemoglobinopathy Analysis"
           ],
-          "title": "Management",
+          "title": "Hemoglobinopathy Analysis",
           "difficulty": "",
-          "level": 4,
-          "score": 1.1858,
+          "level": 3,
+          "score": 1.4061,
           "confidence": "high",
           "evidenceTerms": [
-            "blood",
-            "banking",
-            "transfusion",
-            "cause"
+            "hemoglobinopathy",
+            "analysi",
+            "testing"
           ],
-          "sourceLine": 194
+          "sourceLine": 2301
         },
         {
           "rank": 4,
-          "specId": "cp-bb-clinical-practice-causes",
+          "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-peripheral-blood",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Causes"
+            "Hematopathology for Clinical Pathology",
+            "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
+            "Peripheral Blood"
           ],
-          "title": "Causes",
+          "title": "Peripheral Blood",
           "difficulty": "C",
           "level": 3,
-          "score": 1.1258,
+          "score": 1.4007,
           "confidence": "high",
           "evidenceTerms": [
-            "cause",
+            "peripheral",
             "blood",
-            "banking",
-            "transfusion"
+            "normal"
           ],
-          "sourceLine": 192
+          "sourceLine": 2364
         },
         {
           "rank": 5,
-          "specId": "cp-bb-anemia-and-red-blood-cell-transfusion-the-bleeding-patient-the-patient-with-chronic-anemia",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-hemoglobinopathies-other-causes-of-anemia",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Anemia and Red Blood Cell Transfusion",
-            "The Bleeding Patient",
-            "The Patient with Chronic Anemia"
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Hemoglobinopathies",
+            "Other Causes of Anemia"
           ],
-          "title": "The Patient with Chronic Anemia",
-          "difficulty": "C",
+          "title": "Other Causes of Anemia",
+          "difficulty": "",
           "level": 4,
-          "score": 1.1057,
+          "score": 1.3779,
           "confidence": "high",
           "evidenceTerms": [
-            "chronic",
+            "other",
+            "cause",
             "anemia",
-            "blood",
-            "banking",
-            "transfusion",
-            "red",
-            "cell",
-            "bleeding"
+            "hemoglobinopathie"
           ],
-          "sourceLine": 523
+          "sourceLine": 2406
         },
         {
           "rank": 6,
-          "specId": "cp-cp-chromatography-gas-chromatography-liquid-chromatography",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-hemoglobinopathies-other-causes-of-anemia-other-nuutrit",
           "domain": "CP",
-          "root": "Chemical Pathology",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Chemical Pathology",
-            "Chromatography",
-            "Gas Chromatography",
-            "Liquid Chromatography"
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Hemoglobinopathies",
+            "Other Causes of Anemia",
+            "Other Nuutritional Deficiencies"
           ],
-          "title": "Liquid Chromatography",
-          "difficulty": "AR",
-          "level": 4,
-          "score": 1.0924,
+          "title": "Other Nuutritional Deficiencies",
+          "difficulty": "F",
+          "level": 5,
+          "score": 1.3594,
           "confidence": "high",
           "evidenceTerms": [
-            "liquid",
-            "chromatography"
+            "other",
+            "deficiencie",
+            "hemoglobinopathie",
+            "cause",
+            "anemia"
           ],
-          "sourceLine": 1502
+          "sourceLine": 2409
         }
       ],
       "status": "mapped"
@@ -27165,7 +27180,7 @@
         "title": "Susceptibility Testing",
         "difficulty": "F",
         "level": 4,
-        "score": 1.1726,
+        "score": 1.6326,
         "confidence": "high",
         "evidenceTerms": [
           "susceptibility",
@@ -27179,29 +27194,6 @@
       "alternateMappings": [
         {
           "rank": 2,
-          "specId": "cp-bb-clinical-practice-causes-management",
-          "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
-          "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Causes",
-            "Management"
-          ],
-          "title": "Management",
-          "difficulty": "",
-          "level": 4,
-          "score": 1.0774,
-          "confidence": "high",
-          "evidenceTerms": [
-            "blood",
-            "practice",
-            "cause"
-          ],
-          "sourceLine": 194
-        },
-        {
-          "rank": 3,
           "specId": "cp-mb-bacteria-including-mycobacteria-nocardia-and-other-aerobic-actinomycetes-gram-stain",
           "domain": "CP",
           "root": "Medical Microbiology",
@@ -27213,7 +27205,7 @@
           "title": "Gram stain",
           "difficulty": "AR",
           "level": 3,
-          "score": 0.9822,
+          "score": 1.4422,
           "confidence": "high",
           "evidenceTerms": [
             "gram",
@@ -27225,7 +27217,7 @@
           "sourceLine": 2692
         },
         {
-          "rank": 4,
+          "rank": 3,
           "specId": "cp-mb-molecular-susceptibility-testing",
           "domain": "CP",
           "root": "Medical Microbiology",
@@ -27236,7 +27228,7 @@
           "title": "Molecular Susceptibility Testing",
           "difficulty": "F",
           "level": 2,
-          "score": 0.9776,
+          "score": 1.4376,
           "confidence": "high",
           "evidenceTerms": [
             "susceptibility",
@@ -27247,7 +27239,7 @@
           "sourceLine": 2967
         },
         {
-          "rank": 5,
+          "rank": 4,
           "specId": "cp-mb-blood-and-tissue",
           "domain": "CP",
           "root": "Medical Microbiology",
@@ -27258,7 +27250,7 @@
           "title": "Blood and Tissue",
           "difficulty": "",
           "level": 2,
-          "score": 0.9078,
+          "score": 1.3678,
           "confidence": "high",
           "evidenceTerms": [
             "blood",
@@ -27268,7 +27260,7 @@
           "sourceLine": 3279
         },
         {
-          "rank": 6,
+          "rank": 5,
           "specId": "cp-mb-bacteria-including-mycobacteria-nocardia-and-other-aerobic-actinomycetes-culture",
           "domain": "CP",
           "root": "Medical Microbiology",
@@ -27280,7 +27272,7 @@
           "title": "Culture",
           "difficulty": "AR",
           "level": 3,
-          "score": 0.902,
+          "score": 1.362,
           "confidence": "high",
           "evidenceTerms": [
             "culture",
@@ -27289,6 +27281,30 @@
             "including"
           ],
           "sourceLine": 2700
+        },
+        {
+          "rank": 6,
+          "specId": "cp-mb-molecular-susceptibility-testing-mechanisms-of-resistance",
+          "domain": "CP",
+          "root": "Medical Microbiology",
+          "path": [
+            "Medical Microbiology",
+            "Molecular Susceptibility Testing",
+            "Mechanisms of Resistance"
+          ],
+          "title": "Mechanisms of Resistance",
+          "difficulty": "F",
+          "level": 3,
+          "score": 1.3547,
+          "confidence": "high",
+          "evidenceTerms": [
+            "resistance",
+            "medical",
+            "microbiology",
+            "susceptibility",
+            "testing"
+          ],
+          "sourceLine": 2968
         }
       ],
       "status": "mapped"
@@ -28084,7 +28100,7 @@
         "title": "Specimens for Mycobacteria",
         "difficulty": "AR",
         "level": 2,
-        "score": 1.825,
+        "score": 1.365,
         "confidence": "high",
         "evidenceTerms": [
           "mycobacteria",
@@ -28106,7 +28122,7 @@
           "title": "Molecular Susceptibility Testing",
           "difficulty": "F",
           "level": 2,
-          "score": 1.8,
+          "score": 1.34,
           "confidence": "high",
           "evidenceTerms": [
             "molecular",
@@ -28130,7 +28146,7 @@
           "title": "Culture",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.6159,
+          "score": 1.1559,
           "confidence": "high",
           "evidenceTerms": [
             "culture",
@@ -28154,7 +28170,7 @@
           "title": "Susceptibility Testing",
           "difficulty": "F",
           "level": 4,
-          "score": 1.5954,
+          "score": 1.1354,
           "confidence": "high",
           "evidenceTerms": [
             "susceptibility",
@@ -28176,7 +28192,7 @@
           "title": "Mycobacterium spp.",
           "difficulty": "",
           "level": 2,
-          "score": 1.5663,
+          "score": 1.1063,
           "confidence": "high",
           "evidenceTerms": [
             "mycobacterium",
@@ -28197,7 +28213,7 @@
           "title": "Acid Fast Stain & Modified Acid Fast Stain",
           "difficulty": "AR",
           "level": 2,
-          "score": 1.5638,
+          "score": 1.1038,
           "confidence": "high",
           "evidenceTerms": [
             "acid",
@@ -28536,7 +28552,7 @@
         "title": "Molecular Susceptibility Testing",
         "difficulty": "F",
         "level": 2,
-        "score": 1.22,
+        "score": 1.68,
         "confidence": "high",
         "evidenceTerms": [
           "molecular",
@@ -28561,7 +28577,7 @@
           "title": "Media",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.1572,
+          "score": 1.6172,
           "confidence": "high",
           "evidenceTerms": [
             "media",
@@ -28583,7 +28599,7 @@
           "title": "Culture",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.0915,
+          "score": 1.5515,
           "confidence": "high",
           "evidenceTerms": [
             "culture",
@@ -28608,7 +28624,7 @@
           "title": "Stains and Direct Examination",
           "difficulty": "",
           "level": 3,
-          "score": 1.0404,
+          "score": 1.5004,
           "confidence": "high",
           "evidenceTerms": [
             "stain",
@@ -28632,7 +28648,7 @@
           "title": "Media",
           "difficulty": "",
           "level": 3,
-          "score": 1.035,
+          "score": 1.495,
           "confidence": "high",
           "evidenceTerms": [
             "media",
@@ -28657,7 +28673,7 @@
           "title": "Stains and Direct Examination",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.0334,
+          "score": 1.4934,
           "confidence": "high",
           "evidenceTerms": [
             "stain",
@@ -29155,7 +29171,7 @@
         "title": "Adenovirus",
         "difficulty": "AR",
         "level": 6,
-        "score": 1.1356,
+        "score": 1.5956,
         "confidence": "high",
         "evidenceTerms": [
           "adenoviru",
@@ -29178,7 +29194,7 @@
           "title": "Rhinovirus",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.1243,
+          "score": 1.5843,
           "confidence": "high",
           "evidenceTerms": [
             "rhinoviru",
@@ -29201,7 +29217,7 @@
           "title": "Rhinovirus",
           "difficulty": "AR",
           "level": 4,
-          "score": 1.0691,
+          "score": 1.5291,
           "confidence": "high",
           "evidenceTerms": [
             "rhinoviru",
@@ -29213,70 +29229,74 @@
         },
         {
           "rank": 4,
-          "specId": "cp-mi-informatics-statistical-testing-sensitivity",
+          "specId": "cp-mb-viruses-and-prions-molecular-diagnostics-for-viruses",
           "domain": "CP",
-          "root": "Management and Informatics",
+          "root": "Medical Microbiology",
           "path": [
-            "Management and Informatics",
-            "Informatics",
-            "Statistical Testing",
-            "Sensitivity"
+            "Medical Microbiology",
+            "Viruses and Prions",
+            "Molecular Diagnostics for Viruses"
           ],
-          "title": "Sensitivity",
-          "difficulty": "C",
-          "level": 5,
-          "score": 1.006,
+          "title": "Molecular Diagnostics for Viruses",
+          "difficulty": "AR",
+          "level": 3,
+          "score": 1.2927,
           "confidence": "high",
           "evidenceTerms": [
-            "sensitivity",
-            "testing"
+            "molecular",
+            "diagnostic",
+            "viruse",
+            "microbiology"
           ],
-          "sourceLine": 3520
+          "sourceLine": 3148
         },
         {
           "rank": 5,
-          "specId": "cp-mi-informatics-statistical-testing-specificity",
+          "specId": "cp-mb-viruses-and-prions-rhinovirus-polio-virus",
           "domain": "CP",
-          "root": "Management and Informatics",
+          "root": "Medical Microbiology",
           "path": [
-            "Management and Informatics",
-            "Informatics",
-            "Statistical Testing",
-            "Specificity"
+            "Medical Microbiology",
+            "Viruses and Prions",
+            "Rhinovirus",
+            "Polio Virus"
           ],
-          "title": "Specificity",
-          "difficulty": "C",
-          "level": 5,
-          "score": 1.006,
+          "title": "Polio Virus",
+          "difficulty": "AR",
+          "level": 4,
+          "score": 1.2259,
           "confidence": "high",
           "evidenceTerms": [
-            "specificity",
-            "testing"
+            "viru",
+            "microbiology",
+            "viruse",
+            "rhinoviru"
           ],
-          "sourceLine": 3521
+          "sourceLine": 3158
         },
         {
           "rank": 6,
-          "specId": "cp-bb-infectious-hazards-of-transfusion-hepatitis-d-diagnosis",
+          "specId": "cp-mb-viruses-and-prions-ebola-virus-influenza-b-virus",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Medical Microbiology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Infectious Hazards of Transfusion",
-            "Hepatitis D",
-            "Diagnosis"
+            "Medical Microbiology",
+            "Viruses and Prions",
+            "Ebola Virus",
+            "Influenza B Virus"
           ],
-          "title": "Diagnosis",
-          "difficulty": "F",
-          "level": 5,
-          "score": 0.9754,
+          "title": "Influenza B Virus",
+          "difficulty": "AR",
+          "level": 4,
+          "score": 1.2253,
           "confidence": "high",
           "evidenceTerms": [
-            "diagnosi",
-            "infectiou",
-            "hepatiti"
+            "influenza",
+            "viru",
+            "microbiology",
+            "viruse"
           ],
-          "sourceLine": 819
+          "sourceLine": 3183
         }
       ],
       "status": "mapped"
@@ -29786,7 +29806,7 @@
         "title": "Medical Microbiology",
         "difficulty": "",
         "level": 0,
-        "score": 1.47,
+        "score": 1.93,
         "confidence": "high",
         "evidenceTerms": [
           "medical",
@@ -29808,7 +29828,7 @@
           "title": "Plasmodium falciparum",
           "difficulty": "AR",
           "level": 6,
-          "score": 1.3873,
+          "score": 1.8473,
           "confidence": "high",
           "evidenceTerms": [
             "plasmodium",
@@ -29821,52 +29841,6 @@
         },
         {
           "rank": 3,
-          "specId": "cp-cp-enzymes-liver-enzymes",
-          "domain": "CP",
-          "root": "Chemical Pathology",
-          "path": [
-            "Chemical Pathology",
-            "Enzymes",
-            "Liver Enzymes"
-          ],
-          "title": "Liver Enzymes",
-          "difficulty": "",
-          "level": 3,
-          "score": 1.2993,
-          "confidence": "high",
-          "evidenceTerms": [
-            "liver",
-            "enzyme"
-          ],
-          "sourceLine": 1644
-        },
-        {
-          "rank": 4,
-          "specId": "cp-hp-infections-with-manifestation-in-the-peripheral-blood-malaria-babesia",
-          "domain": "CP",
-          "root": "Hematopathology for Clinical Pathology",
-          "path": [
-            "Hematopathology for Clinical Pathology",
-            "Infections with Manifestation in the Peripheral Blood",
-            "Malaria",
-            "Babesia"
-          ],
-          "title": "Babesia",
-          "difficulty": "C",
-          "level": 4,
-          "score": 1.2564,
-          "confidence": "high",
-          "evidenceTerms": [
-            "babesia",
-            "infection",
-            "manifestation",
-            "peripheral",
-            "blood"
-          ],
-          "sourceLine": 2437
-        },
-        {
-          "rank": 5,
           "specId": "cp-mb-stenotrophomonas-maltophilia-borrelia-burgdorferi",
           "domain": "CP",
           "root": "Medical Microbiology",
@@ -29878,7 +29852,7 @@
           "title": "Borrelia burgdorferi",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.2197,
+          "score": 1.6797,
           "confidence": "high",
           "evidenceTerms": [
             "borrelia",
@@ -29889,27 +29863,72 @@
           "sourceLine": 2915
         },
         {
-          "rank": 6,
-          "specId": "cp-hp-infections-with-manifestation-in-the-peripheral-blood-malaria",
+          "rank": 4,
+          "specId": "cp-mb-fungi-molecular-diagnostics-for-fungi",
           "domain": "CP",
-          "root": "Hematopathology for Clinical Pathology",
+          "root": "Medical Microbiology",
           "path": [
-            "Hematopathology for Clinical Pathology",
-            "Infections with Manifestation in the Peripheral Blood",
-            "Malaria"
+            "Medical Microbiology",
+            "Fungi",
+            "Molecular Diagnostics for Fungi"
           ],
-          "title": "Malaria",
-          "difficulty": "C",
+          "title": "Molecular Diagnostics for Fungi",
+          "difficulty": "AR",
           "level": 3,
-          "score": 1.12,
+          "score": 1.4024,
+          "confidence": "high",
+          "evidenceTerms": [
+            "molecular",
+            "diagnostic",
+            "medical",
+            "microbiology"
+          ],
+          "sourceLine": 3025
+        },
+        {
+          "rank": 5,
+          "specId": "ap-ap_breast-622a685c-fba7-4408-bd6a-55387ce98793",
+          "domain": "AP",
+          "root": "Breast",
+          "path": [
+            "Breast",
+            "Lung Primary",
+            "Liver Cytopathology",
+            "Infections"
+          ],
+          "title": "Infections",
+          "difficulty": "F",
+          "level": 3,
+          "score": 0.6475,
           "confidence": "high",
           "evidenceTerms": [
             "infection",
-            "manifestation",
-            "peripheral",
-            "blood"
+            "liver"
           ],
-          "sourceLine": 2436
+          "sourceLine": 5176
+        },
+        {
+          "rank": 6,
+          "specId": "ap-ap_endo-aeaf352d-901c-4e19-ac16-45db6a5136ad",
+          "domain": "AP",
+          "root": "Endocrine",
+          "path": [
+            "The Endocrine System",
+            "The Skin and Nails",
+            "Other Lymphoid Cells",
+            "Peripheral Blood"
+          ],
+          "title": "Peripheral Blood",
+          "difficulty": "C",
+          "level": 3,
+          "score": 0.6294,
+          "confidence": "high",
+          "evidenceTerms": [
+            "peripheral",
+            "blood",
+            "other"
+          ],
+          "sourceLine": 11889
         }
       ],
       "status": "mapped"
@@ -35039,138 +35058,147 @@
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "ap-ap_breast-045e51df-600a-477e-aced-4e0447bfa0b7",
-        "domain": "AP",
-        "root": "Breast",
+        "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-bone-marrow",
+        "domain": "CP",
+        "root": "Hematopathology for Clinical Pathology",
         "path": [
-          "Breast",
-          "Lung Primary",
-          "Small Cell Carcinoma"
+          "Hematopathology for Clinical Pathology",
+          "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
+          "Bone Marrow"
         ],
-        "title": "Small Cell Carcinoma",
-        "difficulty": "AR",
-        "level": 2,
-        "score": 0.8796,
+        "title": "Bone Marrow",
+        "difficulty": "C",
+        "level": 3,
+        "score": 1.24,
         "confidence": "high",
         "evidenceTerms": [
-          "small",
-          "cell",
-          "carcinoma",
-          "lung"
+          "bone",
+          "marrow",
+          "normal"
         ],
-        "sourceLine": 5004
+        "sourceLine": 2365
       },
       "alternateMappings": [
         {
           "rank": 2,
-          "specId": "cp-bb-clinical-practice-anemia-in-oncology-patients",
-          "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
-          "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Anemia in Oncology Patients"
-          ],
-          "title": "Anemia in Oncology Patients",
-          "difficulty": "C",
-          "level": 3,
-          "score": 0.8736,
-          "confidence": "high",
-          "evidenceTerms": [
-            "anemia",
-            "oncology",
-            "blood"
-          ],
-          "sourceLine": 191
-        },
-        {
-          "rank": 3,
-          "specId": "ap-ap_endo-b8974adf-28da-4d4b-ae23-9b066727f4e4",
-          "domain": "AP",
-          "root": "Endocrine",
-          "path": [
-            "The Endocrine System",
-            "The Skin and Nails",
-            "Other Lymphoid Cells",
-            "Bone Marrow"
-          ],
-          "title": "Bone Marrow",
-          "difficulty": "C",
-          "level": 3,
-          "score": 0.857,
-          "confidence": "high",
-          "evidenceTerms": [
-            "bone",
-            "marrow",
-            "cell"
-          ],
-          "sourceLine": 11890
-        },
-        {
-          "rank": 4,
-          "specId": "ap-ap_forensic-917eefa5-18e2-4c5f-978c-bce32f4e69b9",
-          "domain": "AP",
-          "root": "Forensic Pathology",
-          "path": [
-            "Forensic Pathology Topics for Anatomic Pathology Residents",
-            "Natural Deaths",
-            "Pediatric Deaths",
-            "Nutritional Deficiencies"
-          ],
-          "title": "Nutritional Deficiencies",
-          "difficulty": "AR",
-          "level": 3,
-          "score": 0.8565,
-          "confidence": "high",
-          "evidenceTerms": [
-            "nutritional",
-            "deficiencie",
-            "topic"
-          ],
-          "sourceLine": 9883
-        },
-        {
-          "rank": 5,
-          "specId": "ap-ap_breast-a59737ea-1ec0-4549-8776-6e33cb78e61b",
-          "domain": "AP",
-          "root": "Breast",
-          "path": [
-            "Breast",
-            "Lung Primary",
-            "GI Primary"
-          ],
-          "title": "GI Primary",
-          "difficulty": "F",
-          "level": 2,
-          "score": 0.7996,
-          "confidence": "high",
-          "evidenceTerms": [
-            "gi",
-            "lung"
-          ],
-          "sourceLine": 4425
-        },
-        {
-          "rank": 6,
-          "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-bone-marrow",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-iron-deficiency-and-related-disorders",
           "domain": "CP",
           "root": "Hematopathology for Clinical Pathology",
           "path": [
             "Hematopathology for Clinical Pathology",
-            "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
-            "Bone Marrow"
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Iron Deficiency and Related Disorders"
           ],
-          "title": "Bone Marrow",
+          "title": "Iron Deficiency and Related Disorders",
           "difficulty": "C",
           "level": 3,
-          "score": 0.78,
+          "score": 1.1371,
+          "confidence": "high",
+          "evidenceTerms": [
+            "iron",
+            "deficiency",
+            "related",
+            "non"
+          ],
+          "sourceLine": 2374
+        },
+        {
+          "rank": 3,
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-bone-marrow-specimen-collection-and-processing-periphe",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Bone Marrow Specimen Collection and Processing",
+            "Peripheral Blood Smear Review"
+          ],
+          "title": "Peripheral Blood Smear Review",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.0844,
+          "confidence": "high",
+          "evidenceTerms": [
+            "blood",
+            "smear",
+            "hematology",
+            "bone",
+            "marrow"
+          ],
+          "sourceLine": 2314
+        },
+        {
+          "rank": 4,
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-fluid-review-bone-marrow-review",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Fluid Review",
+            "Bone Marrow Review"
+          ],
+          "title": "Bone Marrow Review",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.0836,
           "confidence": "high",
           "evidenceTerms": [
             "bone",
             "marrow",
-            "normal"
+            "hematology"
           ],
-          "sourceLine": 2365
+          "sourceLine": 2316
+        },
+        {
+          "rank": 5,
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-iron-deficiency-and-related-disorders-sideroblastic-ane",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Iron Deficiency and Related Disorders",
+            "Sideroblastic Anemias",
+            "Inherited"
+          ],
+          "title": "Inherited",
+          "difficulty": "F",
+          "level": 5,
+          "score": 1.0374,
+          "confidence": "high",
+          "evidenceTerms": [
+            "non",
+            "iron",
+            "deficiency",
+            "related",
+            "anemia"
+          ],
+          "sourceLine": 2377
+        },
+        {
+          "rank": 6,
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-other-hemolytic-anemias-anemia-related-to-chronic-disea",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Other Hemolytic Anemias",
+            "Anemia Related to Chronic Disease & Other Disorders"
+          ],
+          "title": "Anemia Related to Chronic Disease & Other Disorders",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.0178,
+          "confidence": "high",
+          "evidenceTerms": [
+            "anemia",
+            "related",
+            "chronic",
+            "non"
+          ],
+          "sourceLine": 2392
         }
       ],
       "status": "mapped"
@@ -46244,7 +46272,7 @@
         "title": "Bilirubin",
         "difficulty": "C",
         "level": 4,
-        "score": 1.5857,
+        "score": 1.4857,
         "confidence": "high",
         "evidenceTerms": [
           "bilirubin",
@@ -46268,7 +46296,7 @@
           "title": "Liver Enzymes",
           "difficulty": "",
           "level": 3,
-          "score": 1.4693,
+          "score": 1.3693,
           "confidence": "high",
           "evidenceTerms": [
             "liver",
@@ -46278,81 +46306,6 @@
         },
         {
           "rank": 3,
-          "specId": "cp-cp-liver-disease-disorders-of-bilirubin-metabolism-hepatic-viral-infections-chronic-viral-hepatitis",
-          "domain": "CP",
-          "root": "Chemical Pathology",
-          "path": [
-            "Chemical Pathology",
-            "Liver Disease",
-            "Disorders of Bilirubin Metabolism",
-            "Hepatic Viral Infections",
-            "Chronic Viral Hepatitis"
-          ],
-          "title": "Chronic Viral Hepatitis",
-          "difficulty": "C",
-          "level": 5,
-          "score": 1.411,
-          "confidence": "high",
-          "evidenceTerms": [
-            "chronic",
-            "viral",
-            "hepatiti",
-            "liver",
-            "bilirubin",
-            "hepatic"
-          ],
-          "sourceLine": 1972
-        },
-        {
-          "rank": 4,
-          "specId": "cp-cp-enzymes-aminotransferases-gamma-glutamyl-transferase",
-          "domain": "CP",
-          "root": "Chemical Pathology",
-          "path": [
-            "Chemical Pathology",
-            "Enzymes",
-            "Aminotransferases",
-            "Gamma-Glutamyl Transferase"
-          ],
-          "title": "Gamma-Glutamyl Transferase",
-          "difficulty": "C",
-          "level": 4,
-          "score": 1.3897,
-          "confidence": "high",
-          "evidenceTerms": [
-            "gamma",
-            "glutamyl",
-            "transferase",
-            "enzyme",
-            "aminotransferase"
-          ],
-          "sourceLine": 1647
-        },
-        {
-          "rank": 5,
-          "specId": "cp-cp-liver-disease-disorders-of-bilirubin-metabolism-alcoholic-liver-disease",
-          "domain": "CP",
-          "root": "Chemical Pathology",
-          "path": [
-            "Chemical Pathology",
-            "Liver Disease",
-            "Disorders of Bilirubin Metabolism",
-            "Alcoholic Liver Disease"
-          ],
-          "title": "Alcoholic Liver Disease",
-          "difficulty": "C",
-          "level": 4,
-          "score": 1.3864,
-          "confidence": "high",
-          "evidenceTerms": [
-            "alcoholic",
-            "liver",
-            "bilirubin"
-          ],
-          "sourceLine": 1974
-        },
-        {
-          "rank": 6,
           "specId": "ap-ap_gi-707c2bbf-8b3f-48bc-98e1-6c53de2ca0e7",
           "domain": "AP",
           "root": "Gastrointestinal",
@@ -46375,6 +46328,83 @@
             "metabolic"
           ],
           "sourceLine": 2386
+        },
+        {
+          "rank": 4,
+          "specId": "ap-ap_gi-6825d573-3be9-4f73-852b-5aaa9122f460",
+          "domain": "AP",
+          "root": "Gastrointestinal",
+          "path": [
+            "The Digestive System",
+            "The Liver and Biliary Tract",
+            "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+            "Hemochromatosis"
+          ],
+          "title": "Hemochromatosis",
+          "difficulty": "C",
+          "level": 3,
+          "score": 1.337,
+          "confidence": "high",
+          "evidenceTerms": [
+            "hemochromatosi",
+            "liver",
+            "biliary",
+            "tract",
+            "metabolic"
+          ],
+          "sourceLine": 2379
+        },
+        {
+          "rank": 5,
+          "specId": "cp-cp-liver-disease-disorders-of-bilirubin-metabolism-hepatic-viral-infections-chronic-viral-hepatitis",
+          "domain": "CP",
+          "root": "Chemical Pathology",
+          "path": [
+            "Chemical Pathology",
+            "Liver Disease",
+            "Disorders of Bilirubin Metabolism",
+            "Hepatic Viral Infections",
+            "Chronic Viral Hepatitis"
+          ],
+          "title": "Chronic Viral Hepatitis",
+          "difficulty": "C",
+          "level": 5,
+          "score": 1.311,
+          "confidence": "high",
+          "evidenceTerms": [
+            "chronic",
+            "viral",
+            "hepatiti",
+            "liver",
+            "bilirubin",
+            "hepatic"
+          ],
+          "sourceLine": 1972
+        },
+        {
+          "rank": 6,
+          "specId": "cp-cp-enzymes-aminotransferases-gamma-glutamyl-transferase",
+          "domain": "CP",
+          "root": "Chemical Pathology",
+          "path": [
+            "Chemical Pathology",
+            "Enzymes",
+            "Aminotransferases",
+            "Gamma-Glutamyl Transferase"
+          ],
+          "title": "Gamma-Glutamyl Transferase",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.2897,
+          "confidence": "high",
+          "evidenceTerms": [
+            "gamma",
+            "glutamyl",
+            "transferase",
+            "enzyme",
+            "aminotransferase"
+          ],
+          "sourceLine": 1647
         }
       ],
       "status": "mapped"
@@ -48828,144 +48858,144 @@
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "cp-bb-clinical-practice-causes-management",
+        "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-bone-marrow",
         "domain": "CP",
-        "root": "Blood Banking/Transfusion Medicine",
+        "root": "Hematopathology for Clinical Pathology",
         "path": [
-          "Blood Banking/Transfusion Medicine",
-          "Clinical Practice",
-          "Causes",
-          "Management"
+          "Hematopathology for Clinical Pathology",
+          "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
+          "Bone Marrow"
         ],
-        "title": "Management",
-        "difficulty": "",
-        "level": 4,
-        "score": 0.9974,
+        "title": "Bone Marrow",
+        "difficulty": "C",
+        "level": 3,
+        "score": 1.36,
         "confidence": "high",
         "evidenceTerms": [
-          "blood",
-          "practice",
-          "cause"
+          "bone",
+          "marrow",
+          "normal"
         ],
-        "sourceLine": 194
+        "sourceLine": 2365
       },
       "alternateMappings": [
         {
           "rank": 2,
-          "specId": "ap-ap_endo-b8974adf-28da-4d4b-ae23-9b066727f4e4",
-          "domain": "AP",
-          "root": "Endocrine",
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-basic-methods",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "The Endocrine System",
-            "The Skin and Nails",
-            "Other Lymphoid Cells",
-            "Bone Marrow"
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Basic Methods"
           ],
-          "title": "Bone Marrow",
-          "difficulty": "C",
+          "title": "Basic Methods",
+          "difficulty": "AR",
           "level": 3,
-          "score": 0.9569,
+          "score": 1.3422,
           "confidence": "high",
           "evidenceTerms": [
-            "bone",
-            "marrow",
-            "other",
-            "cell"
+            "basic",
+            "method",
+            "hematology"
           ],
-          "sourceLine": 11890
+          "sourceLine": 2324
         },
         {
           "rank": 3,
-          "specId": "ap-ap_endo-aeaf352d-901c-4e19-ac16-45db6a5136ad",
-          "domain": "AP",
-          "root": "Endocrine",
-          "path": [
-            "The Endocrine System",
-            "The Skin and Nails",
-            "Other Lymphoid Cells",
-            "Peripheral Blood"
-          ],
-          "title": "Peripheral Blood",
-          "difficulty": "C",
-          "level": 3,
-          "score": 0.9258,
-          "confidence": "high",
-          "evidenceTerms": [
-            "peripheral",
-            "blood",
-            "other",
-            "cell"
-          ],
-          "sourceLine": 11889
-        },
-        {
-          "rank": 4,
-          "specId": "cp-bb-clinical-practice-general-considerations-laboratory-features",
-          "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
-          "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "General Considerations",
-            "Laboratory Features"
-          ],
-          "title": "Laboratory Features",
-          "difficulty": "F",
-          "level": 4,
-          "score": 0.9157,
-          "confidence": "high",
-          "evidenceTerms": [
-            "feature",
-            "blood",
-            "practice"
-          ],
-          "sourceLine": 189
-        },
-        {
-          "rank": 5,
-          "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-bone-marrow",
+          "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-peripheral-blood",
           "domain": "CP",
           "root": "Hematopathology for Clinical Pathology",
           "path": [
             "Hematopathology for Clinical Pathology",
             "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
-            "Bone Marrow"
+            "Peripheral Blood"
           ],
-          "title": "Bone Marrow",
+          "title": "Peripheral Blood",
           "difficulty": "C",
           "level": 3,
-          "score": 0.9,
+          "score": 1.3207,
+          "confidence": "high",
+          "evidenceTerms": [
+            "peripheral",
+            "blood",
+            "normal"
+          ],
+          "sourceLine": 2364
+        },
+        {
+          "rank": 4,
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-bone-marrow-specimen-collection-and-processing-periphe",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Bone Marrow Specimen Collection and Processing",
+            "Peripheral Blood Smear Review"
+          ],
+          "title": "Peripheral Blood Smear Review",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.3186,
+          "confidence": "high",
+          "evidenceTerms": [
+            "peripheral",
+            "blood",
+            "smear",
+            "hematology",
+            "bone",
+            "marrow"
+          ],
+          "sourceLine": 2314
+        },
+        {
+          "rank": 5,
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-fluid-review-bone-marrow-review",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Fluid Review",
+            "Bone Marrow Review"
+          ],
+          "title": "Bone Marrow Review",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.2036,
           "confidence": "high",
           "evidenceTerms": [
             "bone",
             "marrow",
-            "normal"
+            "hematology"
           ],
-          "sourceLine": 2365
+          "sourceLine": 2316
         },
         {
           "rank": 6,
-          "specId": "cp-bb-clinical-practice-autoimmune-hemolytic-anemia-laboratory-features",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-iron-deficiency-and-related-disorders-sideroblastic-ane",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Autoimmune Hemolytic Anemia",
-            "Laboratory Features"
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Iron Deficiency and Related Disorders",
+            "Sideroblastic Anemias",
+            "Inherited"
           ],
-          "title": "Laboratory Features",
-          "difficulty": "AR",
+          "title": "Inherited",
+          "difficulty": "F",
           "level": 5,
-          "score": 0.8946,
+          "score": 1.1973,
           "confidence": "high",
           "evidenceTerms": [
-            "feature",
-            "blood",
-            "practice",
+            "iron",
+            "deficiency",
+            "sideroblastic",
             "anemia"
           ],
-          "sourceLine": 167
+          "sourceLine": 2377
         }
       ],
       "status": "mapped"
@@ -48984,150 +49014,148 @@
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "cp-bb-platelets",
+        "specId": "cp-hp-testing-in-hematology-and-hematopathology-alkaline-and-acid-electrophoresis-high-performance-liq",
         "domain": "CP",
-        "root": "Blood Banking/Transfusion Medicine",
+        "root": "Hematopathology for Clinical Pathology",
         "path": [
-          "Blood Banking/Transfusion Medicine",
-          "Platelets"
+          "Hematopathology for Clinical Pathology",
+          "Testing in Hematology and Hematopathology",
+          "Alkaline & Acid Electrophoresis",
+          "High Performance Liquid Chromatography (HPLC)"
         ],
-        "title": "Platelets",
-        "difficulty": "",
-        "level": 2,
-        "score": 1.2177,
+        "title": "High Performance Liquid Chromatography (HPLC)",
+        "difficulty": "AR",
+        "level": 4,
+        "score": 1.6116,
         "confidence": "high",
         "evidenceTerms": [
-          "platelet",
-          "blood",
-          "banking",
-          "transfusion"
+          "performance",
+          "liquid",
+          "chromatography",
+          "hplc",
+          "testing",
+          "electrophoresi"
         ],
-        "sourceLine": 1124
+        "sourceLine": 2303
       },
       "alternateMappings": [
         {
           "rank": 2,
-          "specId": "cp-hp-testing-in-hematology-and-hematopathology-alkaline-and-acid-electrophoresis-high-performance-liq",
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-bone-marrow-specimen-collection-and-processing-periphe",
           "domain": "CP",
           "root": "Hematopathology for Clinical Pathology",
           "path": [
             "Hematopathology for Clinical Pathology",
             "Testing in Hematology and Hematopathology",
-            "Alkaline & Acid Electrophoresis",
-            "High Performance Liquid Chromatography (HPLC)"
+            "Bone Marrow Specimen Collection and Processing",
+            "Peripheral Blood Smear Review"
           ],
-          "title": "High Performance Liquid Chromatography (HPLC)",
-          "difficulty": "AR",
+          "title": "Peripheral Blood Smear Review",
+          "difficulty": "C",
           "level": 4,
-          "score": 1.1516,
+          "score": 1.403,
           "confidence": "high",
           "evidenceTerms": [
-            "performance",
-            "liquid",
-            "chromatography",
-            "hplc",
-            "testing",
-            "electrophoresi"
+            "peripheral",
+            "blood",
+            "smear",
+            "testing"
           ],
-          "sourceLine": 2303
+          "sourceLine": 2314
         },
         {
           "rank": 3,
-          "specId": "cp-bb-clinical-practice-causes-management",
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-hemoglobinopathy-analysis",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Causes",
-            "Management"
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Hemoglobinopathy Analysis"
           ],
-          "title": "Management",
+          "title": "Hemoglobinopathy Analysis",
           "difficulty": "",
-          "level": 4,
-          "score": 1.1058,
+          "level": 3,
+          "score": 1.3261,
           "confidence": "high",
           "evidenceTerms": [
-            "blood",
-            "banking",
-            "transfusion",
-            "cause"
+            "hemoglobinopathy",
+            "analysi",
+            "testing"
           ],
-          "sourceLine": 194
+          "sourceLine": 2301
         },
         {
           "rank": 4,
-          "specId": "cp-bb-clinical-practice-causes",
+          "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-peripheral-blood",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Causes"
+            "Hematopathology for Clinical Pathology",
+            "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
+            "Peripheral Blood"
           ],
-          "title": "Causes",
+          "title": "Peripheral Blood",
           "difficulty": "C",
           "level": 3,
-          "score": 1.0458,
+          "score": 1.3207,
           "confidence": "high",
           "evidenceTerms": [
-            "cause",
+            "peripheral",
             "blood",
-            "banking",
-            "transfusion"
+            "normal"
           ],
-          "sourceLine": 192
+          "sourceLine": 2364
         },
         {
           "rank": 5,
-          "specId": "ap-ap_male_repro-1e911aee-5a60-445c-8b1e-99c88fa2a97f",
-          "domain": "AP",
-          "root": "Male Reproductive",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-hemoglobinopathies-other-causes-of-anemia",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Male Reproductive System",
-            "Normal Anatomy, Histology and Development",
-            "Hemoglobin Electrophoresis"
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Hemoglobinopathies",
+            "Other Causes of Anemia"
           ],
-          "title": "Hemoglobin Electrophoresis",
-          "difficulty": "F",
-          "level": 2,
-          "score": 1.0445,
+          "title": "Other Causes of Anemia",
+          "difficulty": "",
+          "level": 4,
+          "score": 1.2979,
           "confidence": "high",
           "evidenceTerms": [
-            "hemoglobin",
-            "electrophoresi",
-            "male",
-            "normal"
+            "other",
+            "cause",
+            "anemia",
+            "hemoglobinopathie"
           ],
-          "sourceLine": 17865
+          "sourceLine": 2406
         },
         {
           "rank": 6,
-          "specId": "cp-bb-anemia-and-red-blood-cell-transfusion-the-bleeding-patient-the-patient-with-chronic-anemia",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-hemoglobinopathies-other-causes-of-anemia-other-nuutrit",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Anemia and Red Blood Cell Transfusion",
-            "The Bleeding Patient",
-            "The Patient with Chronic Anemia"
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Hemoglobinopathies",
+            "Other Causes of Anemia",
+            "Other Nuutritional Deficiencies"
           ],
-          "title": "The Patient with Chronic Anemia",
-          "difficulty": "C",
-          "level": 4,
-          "score": 1.0257,
+          "title": "Other Nuutritional Deficiencies",
+          "difficulty": "F",
+          "level": 5,
+          "score": 1.2794,
           "confidence": "high",
           "evidenceTerms": [
-            "chronic",
-            "anemia",
-            "blood",
-            "banking",
-            "transfusion",
-            "red",
-            "cell",
-            "bleeding"
+            "other",
+            "deficiencie",
+            "hemoglobinopathie",
+            "cause",
+            "anemia"
           ],
-          "sourceLine": 523
+          "sourceLine": 2409
         }
       ],
       "status": "mapped"
@@ -51611,32 +51639,54 @@
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "cp-mi-laws-and-regulations-clia-proficiency-testing-pt",
+        "specId": "cp-cp-analytical-techniques-and-safety-safety",
         "domain": "CP",
-        "root": "Management and Informatics",
+        "root": "Chemical Pathology",
         "path": [
-          "Management and Informatics",
-          "Laws and Regulations",
-          "CLIA",
-          "Proficiency Testing (PT)"
+          "Chemical Pathology",
+          "Analytical Techniques and Safety",
+          "Safety"
         ],
-        "title": "Proficiency Testing (PT)",
+        "title": "Safety",
         "difficulty": "C",
-        "level": 4,
-        "score": 1.6448,
+        "level": 3,
+        "score": 1.7652,
         "confidence": "high",
         "evidenceTerms": [
-          "proficiency",
-          "testing",
-          "pt",
-          "prothrombin",
-          "time"
+          "safety",
+          "analytical",
+          "technique"
         ],
-        "sourceLine": 3445
+        "sourceLine": 1421
       },
       "alternateMappings": [
         {
           "rank": 2,
+          "specId": "cp-mi-laws-and-regulations-clia-proficiency-testing-pt",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Laws and Regulations",
+            "CLIA",
+            "Proficiency Testing (PT)"
+          ],
+          "title": "Proficiency Testing (PT)",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.6448,
+          "confidence": "high",
+          "evidenceTerms": [
+            "proficiency",
+            "testing",
+            "pt",
+            "prothrombin",
+            "time"
+          ],
+          "sourceLine": 3445
+        },
+        {
+          "rank": 3,
           "specId": "cp-mi-quality-management-communication-e-g-laboratory-reports-critical-values-interpretation",
           "domain": "CP",
           "root": "Management and Informatics",
@@ -51659,7 +51709,7 @@
           "sourceLine": 3357
         },
         {
-          "rank": 3,
+          "rank": 4,
           "specId": "cp-mi-safety-risk-classification-risk-mitigation-measures-root-cause-analysis",
           "domain": "CP",
           "root": "Management and Informatics",
@@ -51684,7 +51734,7 @@
           "sourceLine": 3394
         },
         {
-          "rank": 4,
+          "rank": 5,
           "specId": "cp-mi-informatics-document-control-systems",
           "domain": "CP",
           "root": "Management and Informatics",
@@ -51706,7 +51756,7 @@
           "sourceLine": 3517
         },
         {
-          "rank": 5,
+          "rank": 6,
           "specId": "cp-mi-quality-management-guidelines-quality-assurance-management-and-improvement",
           "domain": "CP",
           "root": "Management and Informatics",
@@ -51727,29 +51777,6 @@
             "improvement"
           ],
           "sourceLine": 3368
-        },
-        {
-          "rank": 6,
-          "specId": "cp-mi-informatics-types-of-systems-system-operations",
-          "domain": "CP",
-          "root": "Management and Informatics",
-          "path": [
-            "Management and Informatics",
-            "Informatics",
-            "Types of Systems",
-            "System Operations"
-          ],
-          "title": "System Operations",
-          "difficulty": "",
-          "level": 4,
-          "score": 1.5237,
-          "confidence": "high",
-          "evidenceTerms": [
-            "system",
-            "operation",
-            "type"
-          ],
-          "sourceLine": 3494
         }
       ],
       "status": "mapped"
@@ -52397,7 +52424,7 @@
         "title": "Susceptibility Testing",
         "difficulty": "F",
         "level": 4,
-        "score": 1.1726,
+        "score": 1.6326,
         "confidence": "high",
         "evidenceTerms": [
           "susceptibility",
@@ -52411,29 +52438,6 @@
       "alternateMappings": [
         {
           "rank": 2,
-          "specId": "cp-bb-clinical-practice-causes-management",
-          "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
-          "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Causes",
-            "Management"
-          ],
-          "title": "Management",
-          "difficulty": "",
-          "level": 4,
-          "score": 1.0774,
-          "confidence": "high",
-          "evidenceTerms": [
-            "blood",
-            "practice",
-            "cause"
-          ],
-          "sourceLine": 194
-        },
-        {
-          "rank": 3,
           "specId": "cp-mb-bacteria-including-mycobacteria-nocardia-and-other-aerobic-actinomycetes-gram-stain",
           "domain": "CP",
           "root": "Medical Microbiology",
@@ -52445,7 +52449,7 @@
           "title": "Gram stain",
           "difficulty": "AR",
           "level": 3,
-          "score": 0.9822,
+          "score": 1.4422,
           "confidence": "high",
           "evidenceTerms": [
             "gram",
@@ -52457,7 +52461,7 @@
           "sourceLine": 2692
         },
         {
-          "rank": 4,
+          "rank": 3,
           "specId": "cp-mb-molecular-susceptibility-testing",
           "domain": "CP",
           "root": "Medical Microbiology",
@@ -52468,7 +52472,7 @@
           "title": "Molecular Susceptibility Testing",
           "difficulty": "F",
           "level": 2,
-          "score": 0.9776,
+          "score": 1.4376,
           "confidence": "high",
           "evidenceTerms": [
             "susceptibility",
@@ -52479,7 +52483,7 @@
           "sourceLine": 2967
         },
         {
-          "rank": 5,
+          "rank": 4,
           "specId": "cp-mb-blood-and-tissue",
           "domain": "CP",
           "root": "Medical Microbiology",
@@ -52490,7 +52494,7 @@
           "title": "Blood and Tissue",
           "difficulty": "",
           "level": 2,
-          "score": 0.9078,
+          "score": 1.3678,
           "confidence": "high",
           "evidenceTerms": [
             "blood",
@@ -52500,7 +52504,7 @@
           "sourceLine": 3279
         },
         {
-          "rank": 6,
+          "rank": 5,
           "specId": "cp-mb-bacteria-including-mycobacteria-nocardia-and-other-aerobic-actinomycetes-culture",
           "domain": "CP",
           "root": "Medical Microbiology",
@@ -52512,7 +52516,7 @@
           "title": "Culture",
           "difficulty": "AR",
           "level": 3,
-          "score": 0.902,
+          "score": 1.362,
           "confidence": "high",
           "evidenceTerms": [
             "culture",
@@ -52521,6 +52525,30 @@
             "including"
           ],
           "sourceLine": 2700
+        },
+        {
+          "rank": 6,
+          "specId": "cp-mb-molecular-susceptibility-testing-mechanisms-of-resistance",
+          "domain": "CP",
+          "root": "Medical Microbiology",
+          "path": [
+            "Medical Microbiology",
+            "Molecular Susceptibility Testing",
+            "Mechanisms of Resistance"
+          ],
+          "title": "Mechanisms of Resistance",
+          "difficulty": "F",
+          "level": 3,
+          "score": 1.3547,
+          "confidence": "high",
+          "evidenceTerms": [
+            "resistance",
+            "medical",
+            "microbiology",
+            "susceptibility",
+            "testing"
+          ],
+          "sourceLine": 2968
         }
       ],
       "status": "mapped"
@@ -53324,7 +53352,7 @@
         "title": "Specimens for Mycobacteria",
         "difficulty": "AR",
         "level": 2,
-        "score": 1.825,
+        "score": 1.365,
         "confidence": "high",
         "evidenceTerms": [
           "mycobacteria",
@@ -53346,7 +53374,7 @@
           "title": "Molecular Susceptibility Testing",
           "difficulty": "F",
           "level": 2,
-          "score": 1.8,
+          "score": 1.34,
           "confidence": "high",
           "evidenceTerms": [
             "molecular",
@@ -53370,7 +53398,7 @@
           "title": "Culture",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.6159,
+          "score": 1.1559,
           "confidence": "high",
           "evidenceTerms": [
             "culture",
@@ -53394,7 +53422,7 @@
           "title": "Susceptibility Testing",
           "difficulty": "F",
           "level": 4,
-          "score": 1.5954,
+          "score": 1.1354,
           "confidence": "high",
           "evidenceTerms": [
             "susceptibility",
@@ -53416,7 +53444,7 @@
           "title": "Mycobacterium spp.",
           "difficulty": "",
           "level": 2,
-          "score": 1.5663,
+          "score": 1.1063,
           "confidence": "high",
           "evidenceTerms": [
             "mycobacterium",
@@ -53437,7 +53465,7 @@
           "title": "Acid Fast Stain & Modified Acid Fast Stain",
           "difficulty": "AR",
           "level": 2,
-          "score": 1.5638,
+          "score": 1.1038,
           "confidence": "high",
           "evidenceTerms": [
             "acid",
@@ -53783,7 +53811,7 @@
         "title": "Molecular Susceptibility Testing",
         "difficulty": "F",
         "level": 2,
-        "score": 1.22,
+        "score": 1.68,
         "confidence": "high",
         "evidenceTerms": [
           "molecular",
@@ -53808,7 +53836,7 @@
           "title": "Media",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.1572,
+          "score": 1.6172,
           "confidence": "high",
           "evidenceTerms": [
             "media",
@@ -53830,7 +53858,7 @@
           "title": "Culture",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.0915,
+          "score": 1.5515,
           "confidence": "high",
           "evidenceTerms": [
             "culture",
@@ -53855,7 +53883,7 @@
           "title": "Stains and Direct Examination",
           "difficulty": "",
           "level": 3,
-          "score": 1.0404,
+          "score": 1.5004,
           "confidence": "high",
           "evidenceTerms": [
             "stain",
@@ -53879,7 +53907,7 @@
           "title": "Media",
           "difficulty": "",
           "level": 3,
-          "score": 1.035,
+          "score": 1.495,
           "confidence": "high",
           "evidenceTerms": [
             "media",
@@ -53904,7 +53932,7 @@
           "title": "Stains and Direct Examination",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.0334,
+          "score": 1.4934,
           "confidence": "high",
           "evidenceTerms": [
             "stain",
@@ -54391,7 +54419,7 @@
         "title": "Adenovirus",
         "difficulty": "AR",
         "level": 6,
-        "score": 1.1356,
+        "score": 1.5956,
         "confidence": "high",
         "evidenceTerms": [
           "adenoviru",
@@ -54414,7 +54442,7 @@
           "title": "Rhinovirus",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.1243,
+          "score": 1.5843,
           "confidence": "high",
           "evidenceTerms": [
             "rhinoviru",
@@ -54437,7 +54465,7 @@
           "title": "Rhinovirus",
           "difficulty": "AR",
           "level": 4,
-          "score": 1.0691,
+          "score": 1.5291,
           "confidence": "high",
           "evidenceTerms": [
             "rhinoviru",
@@ -54449,70 +54477,74 @@
         },
         {
           "rank": 4,
-          "specId": "cp-mi-informatics-statistical-testing-sensitivity",
+          "specId": "cp-mb-viruses-and-prions-molecular-diagnostics-for-viruses",
           "domain": "CP",
-          "root": "Management and Informatics",
+          "root": "Medical Microbiology",
           "path": [
-            "Management and Informatics",
-            "Informatics",
-            "Statistical Testing",
-            "Sensitivity"
+            "Medical Microbiology",
+            "Viruses and Prions",
+            "Molecular Diagnostics for Viruses"
           ],
-          "title": "Sensitivity",
-          "difficulty": "C",
-          "level": 5,
-          "score": 1.006,
+          "title": "Molecular Diagnostics for Viruses",
+          "difficulty": "AR",
+          "level": 3,
+          "score": 1.2927,
           "confidence": "high",
           "evidenceTerms": [
-            "sensitivity",
-            "testing"
+            "molecular",
+            "diagnostic",
+            "viruse",
+            "microbiology"
           ],
-          "sourceLine": 3520
+          "sourceLine": 3148
         },
         {
           "rank": 5,
-          "specId": "cp-mi-informatics-statistical-testing-specificity",
+          "specId": "cp-mb-viruses-and-prions-rhinovirus-polio-virus",
           "domain": "CP",
-          "root": "Management and Informatics",
+          "root": "Medical Microbiology",
           "path": [
-            "Management and Informatics",
-            "Informatics",
-            "Statistical Testing",
-            "Specificity"
+            "Medical Microbiology",
+            "Viruses and Prions",
+            "Rhinovirus",
+            "Polio Virus"
           ],
-          "title": "Specificity",
-          "difficulty": "C",
-          "level": 5,
-          "score": 1.006,
+          "title": "Polio Virus",
+          "difficulty": "AR",
+          "level": 4,
+          "score": 1.2259,
           "confidence": "high",
           "evidenceTerms": [
-            "specificity",
-            "testing"
+            "viru",
+            "microbiology",
+            "viruse",
+            "rhinoviru"
           ],
-          "sourceLine": 3521
+          "sourceLine": 3158
         },
         {
           "rank": 6,
-          "specId": "cp-bb-infectious-hazards-of-transfusion-hepatitis-d-diagnosis",
+          "specId": "cp-mb-viruses-and-prions-ebola-virus-influenza-b-virus",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Medical Microbiology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Infectious Hazards of Transfusion",
-            "Hepatitis D",
-            "Diagnosis"
+            "Medical Microbiology",
+            "Viruses and Prions",
+            "Ebola Virus",
+            "Influenza B Virus"
           ],
-          "title": "Diagnosis",
-          "difficulty": "F",
-          "level": 5,
-          "score": 0.9754,
+          "title": "Influenza B Virus",
+          "difficulty": "AR",
+          "level": 4,
+          "score": 1.2253,
           "confidence": "high",
           "evidenceTerms": [
-            "diagnosi",
-            "infectiou",
-            "hepatiti"
+            "influenza",
+            "viru",
+            "microbiology",
+            "viruse"
           ],
-          "sourceLine": 819
+          "sourceLine": 3183
         }
       ],
       "status": "mapped"
@@ -55025,7 +55057,7 @@
         "title": "Plasmodium falciparum",
         "difficulty": "AR",
         "level": 6,
-        "score": 1.3873,
+        "score": 1.8473,
         "confidence": "high",
         "evidenceTerms": [
           "plasmodium",
@@ -55039,52 +55071,6 @@
       "alternateMappings": [
         {
           "rank": 2,
-          "specId": "cp-cp-enzymes-liver-enzymes",
-          "domain": "CP",
-          "root": "Chemical Pathology",
-          "path": [
-            "Chemical Pathology",
-            "Enzymes",
-            "Liver Enzymes"
-          ],
-          "title": "Liver Enzymes",
-          "difficulty": "",
-          "level": 3,
-          "score": 1.2993,
-          "confidence": "high",
-          "evidenceTerms": [
-            "liver",
-            "enzyme"
-          ],
-          "sourceLine": 1644
-        },
-        {
-          "rank": 3,
-          "specId": "cp-hp-infections-with-manifestation-in-the-peripheral-blood-malaria-babesia",
-          "domain": "CP",
-          "root": "Hematopathology for Clinical Pathology",
-          "path": [
-            "Hematopathology for Clinical Pathology",
-            "Infections with Manifestation in the Peripheral Blood",
-            "Malaria",
-            "Babesia"
-          ],
-          "title": "Babesia",
-          "difficulty": "C",
-          "level": 4,
-          "score": 1.2564,
-          "confidence": "high",
-          "evidenceTerms": [
-            "babesia",
-            "infection",
-            "manifestation",
-            "peripheral",
-            "blood"
-          ],
-          "sourceLine": 2437
-        },
-        {
-          "rank": 4,
           "specId": "cp-mb-stenotrophomonas-maltophilia-borrelia-burgdorferi",
           "domain": "CP",
           "root": "Medical Microbiology",
@@ -55096,7 +55082,7 @@
           "title": "Borrelia burgdorferi",
           "difficulty": "AR",
           "level": 3,
-          "score": 1.2197,
+          "score": 1.6797,
           "confidence": "high",
           "evidenceTerms": [
             "borrelia",
@@ -55107,52 +55093,91 @@
           "sourceLine": 2915
         },
         {
-          "rank": 5,
-          "specId": "cp-hp-infections-with-manifestation-in-the-peripheral-blood-malaria",
+          "rank": 3,
+          "specId": "cp-mb-fungi-molecular-diagnostics-for-fungi",
           "domain": "CP",
-          "root": "Hematopathology for Clinical Pathology",
+          "root": "Medical Microbiology",
           "path": [
-            "Hematopathology for Clinical Pathology",
-            "Infections with Manifestation in the Peripheral Blood",
-            "Malaria"
+            "Medical Microbiology",
+            "Fungi",
+            "Molecular Diagnostics for Fungi"
           ],
-          "title": "Malaria",
-          "difficulty": "C",
+          "title": "Molecular Diagnostics for Fungi",
+          "difficulty": "AR",
           "level": 3,
-          "score": 1.12,
+          "score": 1.4024,
           "confidence": "high",
           "evidenceTerms": [
-            "infection",
-            "manifestation",
-            "peripheral",
-            "blood"
+            "molecular",
+            "diagnostic",
+            "medical",
+            "microbiology"
           ],
-          "sourceLine": 2436
+          "sourceLine": 3025
+        },
+        {
+          "rank": 4,
+          "specId": "cp-mb-blood-and-tissue",
+          "domain": "CP",
+          "root": "Medical Microbiology",
+          "path": [
+            "Medical Microbiology",
+            "Blood and Tissue"
+          ],
+          "title": "Blood and Tissue",
+          "difficulty": "",
+          "level": 2,
+          "score": 1.3678,
+          "confidence": "high",
+          "evidenceTerms": [
+            "blood",
+            "medical",
+            "microbiology"
+          ],
+          "sourceLine": 3279
+        },
+        {
+          "rank": 5,
+          "specId": "ap-ap_dermpath-7cfd4c52-ba51-40fc-adfc-1d0411ad87b9",
+          "domain": "AP",
+          "root": "Dermatopathology",
+          "path": [
+            "Dermatopathology Topics for Anatomic Pathology Residents",
+            "Inflammatory Reaction Patterns",
+            "Ticks"
+          ],
+          "title": "Ticks",
+          "difficulty": "F",
+          "level": 2,
+          "score": 0.6608,
+          "confidence": "high",
+          "evidenceTerms": [
+            "tick",
+            "topic"
+          ],
+          "sourceLine": 7995
         },
         {
           "rank": 6,
-          "specId": "cp-bb-infectious-hazards-of-transfusion-chagas-disease-babesiosis-transmission",
-          "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "specId": "ap-ap_breast-622a685c-fba7-4408-bd6a-55387ce98793",
+          "domain": "AP",
+          "root": "Breast",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Infectious Hazards of Transfusion",
-            "Chagas Disease",
-            "Babesiosis",
-            "Transmission"
+            "Breast",
+            "Lung Primary",
+            "Liver Cytopathology",
+            "Infections"
           ],
-          "title": "Transmission",
-          "difficulty": "AR",
-          "level": 5,
-          "score": 1.0206,
+          "title": "Infections",
+          "difficulty": "F",
+          "level": 3,
+          "score": 0.6475,
           "confidence": "high",
           "evidenceTerms": [
-            "transmission",
-            "blood",
-            "transfusion",
-            "babesiosi"
+            "infection",
+            "liver"
           ],
-          "sourceLine": 893
+          "sourceLine": 5176
         }
       ],
       "status": "mapped"
@@ -55616,35 +55641,33 @@
         "title": "Case Tutorial: Molecular Techniques (PCR, FISH, NGS)",
         "sourceRepo": "abpath-advanced-board-prep-platform (3)",
         "sourcePath": "src/content/downloads_imports/raw/abpath_advanced_board_prep_export.raw.json",
-        "track": "cross-cutting",
-        "trackLabel": "Cross-Cutting",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
         "lane": "mixed"
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "ap-ap_dermpath-45957b86-f76d-4d8d-bc59-c36ca05b4c81",
-        "domain": "AP",
-        "root": "Dermatopathology",
+        "specId": "cp-hp-testing-in-hematology-and-hematopathology-molecular-testing",
+        "domain": "CP",
+        "root": "Hematopathology for Clinical Pathology",
         "path": [
-          "Dermatopathology Topics for Anatomic Pathology Residents",
-          "Inflammatory Reaction Patterns",
-          "Laboratory Techniques and Management",
-          "Next Generation Sequencing"
+          "Hematopathology for Clinical Pathology",
+          "Testing in Hematology and Hematopathology",
+          "Molecular Testing"
         ],
-        "title": "Next Generation Sequencing",
-        "difficulty": "AR",
+        "title": "Molecular Testing",
+        "difficulty": "",
         "level": 3,
         "score": 1.2639,
         "confidence": "high",
         "evidenceTerms": [
-          "next",
-          "generation",
-          "sequencing",
-          "topic",
-          "reaction",
-          "technique"
+          "molecular",
+          "testing",
+          "pcr",
+          "fish",
+          "ngs"
         ],
-        "sourceLine": 9465
+        "sourceLine": 2336
       },
       "alternateMappings": [
         {
@@ -55785,33 +55808,33 @@
         "title": "Case Tutorial: Solid Tumor Molecular Testing (Lung, Colon, Melanoma)",
         "sourceRepo": "abpath-advanced-board-prep-platform (3)",
         "sourcePath": "src/content/downloads_imports/raw/abpath_advanced_board_prep_export.raw.json",
-        "track": "surgical-path",
-        "trackLabel": "Surgical Pathology",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
         "lane": "mixed"
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "ap-ap_dermpath-45957b86-f76d-4d8d-bc59-c36ca05b4c81",
-        "domain": "AP",
-        "root": "Dermatopathology",
+        "specId": "cp-hp-testing-in-hematology-and-hematopathology-molecular-testing",
+        "domain": "CP",
+        "root": "Hematopathology for Clinical Pathology",
         "path": [
-          "Dermatopathology Topics for Anatomic Pathology Residents",
-          "Inflammatory Reaction Patterns",
-          "Laboratory Techniques and Management",
-          "Next Generation Sequencing"
+          "Hematopathology for Clinical Pathology",
+          "Testing in Hematology and Hematopathology",
+          "Molecular Testing"
         ],
-        "title": "Next Generation Sequencing",
-        "difficulty": "AR",
+        "title": "Molecular Testing",
+        "difficulty": "",
         "level": 3,
         "score": 1.6538,
         "confidence": "high",
         "evidenceTerms": [
-          "next",
-          "generation",
-          "sequencing",
-          "topic"
+          "molecular",
+          "testing",
+          "lung",
+          "colon",
+          "melanoma"
         ],
-        "sourceLine": 9465
+        "sourceLine": 2336
       },
       "alternateMappings": [
         {
@@ -55946,36 +55969,33 @@
         "title": "Hematolymphoid Molecular Testing: A Case Tutorial",
         "sourceRepo": "abpath-advanced-board-prep-platform (3)",
         "sourcePath": "src/content/downloads_imports/raw/abpath_advanced_board_prep_export.raw.json",
-        "track": "cross-cutting",
-        "trackLabel": "Cross-Cutting",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
         "lane": "mixed"
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "ap-ap_dermpath-56f88d6c-a5cd-4d13-ab53-d83d9e23f91c",
-        "domain": "AP",
-        "root": "Dermatopathology",
+        "specId": "cp-hp-testing-in-hematology-and-hematopathology-molecular-testing",
+        "domain": "CP",
+        "root": "Hematopathology for Clinical Pathology",
         "path": [
-          "Dermatopathology Topics for Anatomic Pathology Residents",
-          "Inflammatory Reaction Patterns",
-          "Laboratory Techniques and Management",
-          "Next Generation Sequencing",
-          "Mutational Analysis"
+          "Hematopathology for Clinical Pathology",
+          "Testing in Hematology and Hematopathology",
+          "Molecular Testing"
         ],
-        "title": "Mutational Analysis",
-        "difficulty": "AR",
-        "level": 4,
+        "title": "Molecular Testing",
+        "difficulty": "",
+        "level": 3,
         "score": 1.2366,
         "confidence": "high",
         "evidenceTerms": [
-          "mutational",
-          "analysi",
-          "topic",
-          "next",
-          "generation",
-          "sequencing"
+          "hematolymphoid",
+          "molecular",
+          "testing",
+          "lymphoid",
+          "leukemia"
         ],
-        "sourceLine": 9467
+        "sourceLine": 2336
       },
       "alternateMappings": [
         {
@@ -73095,151 +73115,143 @@
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "cp-bb-clinical-practice-anemia-in-oncology-patients",
+        "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-other-hemolytic-anemias-immune",
         "domain": "CP",
-        "root": "Blood Banking/Transfusion Medicine",
+        "root": "Hematopathology for Clinical Pathology",
         "path": [
-          "Blood Banking/Transfusion Medicine",
-          "Clinical Practice",
-          "Anemia in Oncology Patients"
+          "Hematopathology for Clinical Pathology",
+          "Non-Neoplastic Disorders of Erythrocytes",
+          "Other Hemolytic Anemias",
+          "Immune"
         ],
-        "title": "Anemia in Oncology Patients",
+        "title": "Immune",
         "difficulty": "C",
-        "level": 3,
-        "score": 1.2664,
+        "level": 5,
+        "score": 1.4616,
         "confidence": "high",
         "evidenceTerms": [
-          "anemia",
-          "oncology",
-          "blood",
-          "banking",
-          "transfusion"
+          "non",
+          "hemolytic",
+          "anemia"
         ],
-        "sourceLine": 191
+        "sourceLine": 2387
       },
       "alternateMappings": [
         {
           "rank": 2,
-          "specId": "cp-bb-clinical-practice-autoimmune-hemolytic-anemia",
+          "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-bone-marrow",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Autoimmune Hemolytic Anemia"
+            "Hematopathology for Clinical Pathology",
+            "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
+            "Bone Marrow"
           ],
-          "title": "Autoimmune Hemolytic Anemia",
-          "difficulty": "",
+          "title": "Bone Marrow",
+          "difficulty": "C",
           "level": 3,
-          "score": 1.2609,
+          "score": 1.44,
           "confidence": "high",
           "evidenceTerms": [
-            "autoimmune",
-            "hemolytic",
-            "anemia",
-            "blood",
-            "banking",
-            "transfusion"
+            "bone",
+            "marrow",
+            "normal"
           ],
-          "sourceLine": 154
+          "sourceLine": 2365
         },
         {
           "rank": 3,
-          "specId": "cp-bb-clinical-practice-causes-management",
+          "specId": "cp-hp-hemostasis-and-thrombosis-qualitative-issues-with-normal-platelet-counts-thrombocytopenia-immune",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Causes",
-            "Management"
+            "Hematopathology for Clinical Pathology",
+            "Hemostasis and Thrombosis",
+            "Qualitative Issues with Normal Platelet Counts",
+            "Thrombocytopenia",
+            "Immune"
           ],
-          "title": "Management",
-          "difficulty": "",
-          "level": 4,
-          "score": 1.1858,
+          "title": "Immune",
+          "difficulty": "C",
+          "level": 5,
+          "score": 1.3395,
           "confidence": "high",
           "evidenceTerms": [
-            "blood",
-            "banking",
-            "transfusion",
-            "cause"
+            "issue",
+            "normal",
+            "count"
           ],
-          "sourceLine": 194
+          "sourceLine": 2508
         },
         {
           "rank": 4,
-          "specId": "cp-bb-clinical-practice-causes",
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-bone-marrow-specimen-collection-and-processing-periphe",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Causes"
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Bone Marrow Specimen Collection and Processing",
+            "Peripheral Blood Smear Review"
           ],
-          "title": "Causes",
+          "title": "Peripheral Blood Smear Review",
           "difficulty": "C",
-          "level": 3,
-          "score": 1.1258,
+          "level": 4,
+          "score": 1.2704,
           "confidence": "high",
           "evidenceTerms": [
-            "cause",
+            "peripheral",
             "blood",
-            "banking",
-            "transfusion"
+            "smear",
+            "bone",
+            "marrow"
           ],
-          "sourceLine": 192
+          "sourceLine": 2314
         },
         {
           "rank": 5,
-          "specId": "cp-bb-anemia-and-red-blood-cell-transfusion",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-other-hemolytic-anemias-anemia-related-to-chronic-disea",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Anemia and Red Blood Cell Transfusion"
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Other Hemolytic Anemias",
+            "Anemia Related to Chronic Disease & Other Disorders"
           ],
-          "title": "Anemia and Red Blood Cell Transfusion",
-          "difficulty": "",
-          "level": 2,
-          "score": 1.0692,
+          "title": "Anemia Related to Chronic Disease & Other Disorders",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.2319,
           "confidence": "high",
           "evidenceTerms": [
             "anemia",
-            "red",
-            "blood",
-            "cell",
-            "transfusion",
-            "banking"
+            "chronic",
+            "non",
+            "hemolytic"
           ],
-          "sourceLine": 508
+          "sourceLine": 2392
         },
         {
           "rank": 6,
-          "specId": "cp-bb-clinical-practice-autoimmune-hemolytic-anemia-clinical-features",
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-basic-methods",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Autoimmune Hemolytic Anemia",
-            "Clinical Features"
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Basic Methods"
           ],
-          "title": "Clinical Features",
+          "title": "Basic Methods",
           "difficulty": "AR",
-          "level": 5,
-          "score": 1.0451,
+          "level": 3,
+          "score": 1.2187,
           "confidence": "high",
           "evidenceTerms": [
-            "feature",
-            "blood",
-            "banking",
-            "transfusion",
-            "autoimmune",
-            "hemolytic",
-            "anemia"
+            "basic",
+            "method"
           ],
-          "sourceLine": 166
+          "sourceLine": 2324
         }
       ],
       "status": "mapped"
@@ -75648,135 +75660,136 @@
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "cp-cp-electrophoresis",
+        "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-bone-marrow",
         "domain": "CP",
-        "root": "Chemical Pathology",
+        "root": "Hematopathology for Clinical Pathology",
         "path": [
-          "Chemical Pathology",
-          "Electrophoresis"
+          "Hematopathology for Clinical Pathology",
+          "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
+          "Bone Marrow"
         ],
-        "title": "Electrophoresis",
-        "difficulty": "",
-        "level": 2,
-        "score": 1.1438,
+        "title": "Bone Marrow",
+        "difficulty": "C",
+        "level": 3,
+        "score": 1.3636,
         "confidence": "high",
         "evidenceTerms": [
-          "electrophoresi"
+          "bone",
+          "marrow"
         ],
-        "sourceLine": 1487
+        "sourceLine": 2365
       },
       "alternateMappings": [
         {
           "rank": 2,
-          "specId": "cp-bb-clinical-practice-causes-management",
-          "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
-          "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Causes",
-            "Management"
-          ],
-          "title": "Management",
-          "difficulty": "",
-          "level": 4,
-          "score": 0.9241,
-          "confidence": "high",
-          "evidenceTerms": [
-            "blood",
-            "cause"
-          ],
-          "sourceLine": 194
-        },
-        {
-          "rank": 3,
-          "specId": "cp-bb-cell-and-tissue-therapy-overview-blood-vessel",
-          "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
-          "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Cell and Tissue Therapy",
-            "Overview",
-            "Blood Vessel"
-          ],
-          "title": "Blood Vessel",
-          "difficulty": "F",
-          "level": 4,
-          "score": 0.9078,
-          "confidence": "high",
-          "evidenceTerms": [
-            "blood",
-            "vessel",
-            "cell"
-          ],
-          "sourceLine": 367
-        },
-        {
-          "rank": 4,
-          "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-bone-marrow",
+          "specId": "cp-hp-infections-with-manifestation-in-the-peripheral-blood",
           "domain": "CP",
           "root": "Hematopathology for Clinical Pathology",
           "path": [
             "Hematopathology for Clinical Pathology",
-            "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
-            "Bone Marrow"
+            "Infections with Manifestation in the Peripheral Blood"
           ],
-          "title": "Bone Marrow",
-          "difficulty": "C",
-          "level": 3,
-          "score": 0.9036,
+          "title": "Infections with Manifestation in the Peripheral Blood",
+          "difficulty": "",
+          "level": 2,
+          "score": 1.2921,
           "confidence": "high",
           "evidenceTerms": [
+            "infection",
+            "peripheral",
+            "blood"
+          ],
+          "sourceLine": 2434
+        },
+        {
+          "rank": 3,
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-bone-marrow-specimen-collection-and-processing-periphe",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Bone Marrow Specimen Collection and Processing",
+            "Peripheral Blood Smear Review"
+          ],
+          "title": "Peripheral Blood Smear Review",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.2704,
+          "confidence": "high",
+          "evidenceTerms": [
+            "peripheral",
+            "blood",
+            "smear",
             "bone",
             "marrow"
           ],
-          "sourceLine": 2365
+          "sourceLine": 2314
+        },
+        {
+          "rank": 4,
+          "specId": "cp-hp-lymphoid-neoplasms-nodular-lymphocyte-predominant-classic",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Lymphoid Neoplasms",
+            "Nodular Lymphocyte Predominant",
+            "Classic"
+          ],
+          "title": "Classic",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.2295,
+          "confidence": "high",
+          "evidenceTerms": [
+            "classic"
+          ],
+          "sourceLine": 2606
         },
         {
           "rank": 5,
-          "specId": "cp-bb-apheresis-therapeutic-phlebotomy-red-cell-exchange-sickle-cell-disease",
+          "specId": "cp-hp-infections-with-manifestation-in-the-peripheral-blood-leukocyte-infections",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Apheresis",
-            "Therapeutic Phlebotomy",
-            "Red Cell Exchange",
-            "Sickle Cell Disease"
+            "Hematopathology for Clinical Pathology",
+            "Infections with Manifestation in the Peripheral Blood",
+            "Leukocyte Infections"
           ],
-          "title": "Sickle Cell Disease",
-          "difficulty": "AR",
-          "level": 5,
-          "score": 0.8864,
+          "title": "Leukocyte Infections",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.1842,
           "confidence": "high",
           "evidenceTerms": [
-            "sickle",
-            "cell",
-            "blood",
-            "red"
+            "infection",
+            "peripheral",
+            "blood"
           ],
-          "sourceLine": 604
+          "sourceLine": 2439
         },
         {
           "rank": 6,
-          "specId": "cp-bb-clinical-practice-causes",
+          "specId": "cp-hp-infections-with-manifestation-in-the-peripheral-blood-malaria",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Causes"
+            "Hematopathology for Clinical Pathology",
+            "Infections with Manifestation in the Peripheral Blood",
+            "Malaria"
           ],
-          "title": "Causes",
+          "title": "Malaria",
           "difficulty": "C",
           "level": 3,
-          "score": 0.8641,
+          "score": 1.1684,
           "confidence": "high",
           "evidenceTerms": [
-            "cause",
+            "infection",
+            "peripheral",
             "blood"
           ],
-          "sourceLine": 192
+          "sourceLine": 2436
         }
       ],
       "status": "mapped"
@@ -75927,26 +75940,27 @@
         },
         {
           "rank": 6,
-          "specId": "cp-bb-clinical-practice-causes-management",
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-other-hemolytic-anemias-immune",
           "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
+          "root": "Hematopathology for Clinical Pathology",
           "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Clinical Practice",
-            "Causes",
-            "Management"
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Other Hemolytic Anemias",
+            "Immune"
           ],
-          "title": "Management",
-          "difficulty": "",
-          "level": 4,
-          "score": 1.5748,
+          "title": "Immune",
+          "difficulty": "C",
+          "level": 5,
+          "score": 1.5808,
           "confidence": "high",
           "evidenceTerms": [
-            "blood",
-            "transfusion",
-            "cause"
+            "immune",
+            "other",
+            "hemolytic",
+            "anemia"
           ],
-          "sourceLine": 194
+          "sourceLine": 2387
         }
       ],
       "status": "mapped"
@@ -76695,6 +76709,761 @@
             "lung"
           ],
           "sourceLine": 5369
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-micro-methods-ast-studio",
+        "id": "cp-micro-methods-ast-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Clinical Microbiology Methods and AST Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-mb-bacteria-including-mycobacteria-nocardia-and-other-aerobic-actinomycetes-identification-methods-",
+        "domain": "CP",
+        "root": "Medical Microbiology",
+        "path": [
+          "Medical Microbiology",
+          "Bacteria, including Mycobacteria, Nocardia, and other Aerobic Actinomycetes",
+          "Identification Methods and Instrumentation"
+        ],
+        "title": "Identification Methods and Instrumentation",
+        "difficulty": "",
+        "level": 3,
+        "score": 1,
+        "confidence": "high",
+        "evidenceTerms": [
+          "identification",
+          "method",
+          "medical",
+          "microbiology"
+        ],
+        "sourceLine": 2699
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-mb-fungi-identification-methods-and-instrumentation",
+          "domain": "CP",
+          "root": "Medical Microbiology",
+          "path": [
+            "Medical Microbiology",
+            "Fungi",
+            "Identification Methods and Instrumentation"
+          ],
+          "title": "Identification Methods and Instrumentation",
+          "difficulty": "",
+          "level": 3,
+          "score": 0.96,
+          "confidence": "high",
+          "evidenceTerms": [
+            "identification",
+            "method",
+            "medical",
+            "microbiology"
+          ],
+          "sourceLine": 3017
+        },
+        {
+          "rank": 3,
+          "specId": "cp-mb-viruses-and-prions-molecular-diagnostics-for-viruses",
+          "domain": "CP",
+          "root": "Medical Microbiology",
+          "path": [
+            "Medical Microbiology",
+            "Viruses and Prions",
+            "Molecular Diagnostics for Viruses"
+          ],
+          "title": "Molecular Diagnostics for Viruses",
+          "difficulty": "AR",
+          "level": 3,
+          "score": 0.96,
+          "confidence": "high",
+          "evidenceTerms": [
+            "molecular",
+            "medical",
+            "microbiology"
+          ],
+          "sourceLine": 3148
+        },
+        {
+          "rank": 4,
+          "specId": "cp-mb-parasites-identification-methods-and-instrumentation",
+          "domain": "CP",
+          "root": "Medical Microbiology",
+          "path": [
+            "Medical Microbiology",
+            "Parasites",
+            "Identification Methods and Instrumentation"
+          ],
+          "title": "Identification Methods and Instrumentation",
+          "difficulty": "AR",
+          "level": 3,
+          "score": 0.96,
+          "confidence": "high",
+          "evidenceTerms": [
+            "identification",
+            "method",
+            "medical",
+            "microbiology"
+          ],
+          "sourceLine": 3241
+        },
+        {
+          "rank": 5,
+          "specId": "cp-mb",
+          "domain": "CP",
+          "root": "Medical Microbiology",
+          "path": [
+            "Medical Microbiology"
+          ],
+          "title": "Medical Microbiology",
+          "difficulty": "",
+          "level": 0,
+          "score": 2.075,
+          "confidence": "high",
+          "evidenceTerms": [
+            "medical",
+            "microbiology"
+          ],
+          "sourceLine": 2633
+        },
+        {
+          "rank": 6,
+          "specId": "cp-mb-molecular-susceptibility-testing",
+          "domain": "CP",
+          "root": "Medical Microbiology",
+          "path": [
+            "Medical Microbiology",
+            "Molecular Susceptibility Testing"
+          ],
+          "title": "Molecular Susceptibility Testing",
+          "difficulty": "F",
+          "level": 2,
+          "score": 1.825,
+          "confidence": "high",
+          "evidenceTerms": [
+            "molecular",
+            "susceptibility",
+            "testing",
+            "medical",
+            "microbiology"
+          ],
+          "sourceLine": 2967
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-flow-heme-studio",
+        "id": "cp-flow-heme-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Flow Cytometry and Hematopathology Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-hp-testing-in-hematology-and-hematopathology-flow-cytometry",
+        "domain": "CP",
+        "root": "Hematopathology for Clinical Pathology",
+        "path": [
+          "Hematopathology for Clinical Pathology",
+          "Testing in Hematology and Hematopathology",
+          "Flow Cytometry"
+        ],
+        "title": "Flow Cytometry",
+        "difficulty": "",
+        "level": 3,
+        "score": 1,
+        "confidence": "high",
+        "evidenceTerms": [
+          "flow",
+          "cytometry",
+          "hematopathology",
+          "hematology"
+        ],
+        "sourceLine": 2326
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-general-hematology-testing-and-hematology-instruments",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "General Hematology Testing and Hematology Instruments"
+          ],
+          "title": "General Hematology Testing and Hematology Instruments",
+          "difficulty": "",
+          "level": 3,
+          "score": 0.96,
+          "confidence": "high",
+          "evidenceTerms": [
+            "hematology",
+            "hematopathology"
+          ],
+          "sourceLine": 2293
+        },
+        {
+          "rank": 3,
+          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-hemoglobinopathies-pnh",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Non-Neoplastic Disorders of Erythrocytes",
+            "Hemoglobinopathies",
+            "PNH"
+          ],
+          "title": "PNH",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.623,
+          "confidence": "high",
+          "evidenceTerms": [
+            "pnh",
+            "paroxysmal",
+            "nocturnal",
+            "hemoglobinuria",
+            "hematopathology"
+          ],
+          "sourceLine": 2404
+        },
+        {
+          "rank": 4,
+          "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-bone-marrow",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
+            "Bone Marrow"
+          ],
+          "title": "Bone Marrow",
+          "difficulty": "C",
+          "level": 3,
+          "score": 1.5513,
+          "confidence": "high",
+          "evidenceTerms": [
+            "bone",
+            "marrow",
+            "hematopathology"
+          ],
+          "sourceLine": 2365
+        },
+        {
+          "rank": 5,
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-fluid-review-bone-marrow-review",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Fluid Review",
+            "Bone Marrow Review"
+          ],
+          "title": "Bone Marrow Review",
+          "difficulty": "C",
+          "level": 4,
+          "score": 1.5142,
+          "confidence": "high",
+          "evidenceTerms": [
+            "bone",
+            "marrow",
+            "hematopathology",
+            "hematology"
+          ],
+          "sourceLine": 2316
+        },
+        {
+          "rank": 6,
+          "specId": "cp-hp-testing-in-hematology-and-hematopathology-advanced-flow-cytometry",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Testing in Hematology and Hematopathology",
+            "Advanced Flow Cytometry"
+          ],
+          "title": "Advanced Flow Cytometry",
+          "difficulty": "F",
+          "level": 3,
+          "score": 1.5035,
+          "confidence": "high",
+          "evidenceTerms": [
+            "flow",
+            "cytometry",
+            "hematopathology",
+            "hematology"
+          ],
+          "sourceLine": 2331
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-dat-transfusion-studio",
+        "id": "cp-dat-transfusion-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "DAT and Hemolytic Transfusion Reaction Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-bb-clinical-practice-autoimmune-hemolytic-anemia",
+        "domain": "CP",
+        "root": "Blood Banking/Transfusion Medicine",
+        "path": [
+          "Blood Banking/Transfusion Medicine",
+          "Clinical Practice",
+          "Autoimmune Hemolytic Anemia"
+        ],
+        "title": "Autoimmune Hemolytic Anemia",
+        "difficulty": "",
+        "level": 3,
+        "score": 1,
+        "confidence": "high",
+        "evidenceTerms": [
+          "autoimmune",
+          "hemolytic",
+          "anemia",
+          "blood",
+          "banking",
+          "transfusion",
+          "medicine"
+        ],
+        "sourceLine": 154
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-bb-clinical-practice",
+          "domain": "CP",
+          "root": "Blood Banking/Transfusion Medicine",
+          "path": [
+            "Blood Banking/Transfusion Medicine",
+            "Clinical Practice"
+          ],
+          "title": "Clinical Practice",
+          "difficulty": "",
+          "level": 2,
+          "score": 0.96,
+          "confidence": "high",
+          "evidenceTerms": [
+            "blood",
+            "banking",
+            "transfusion",
+            "medicine"
+          ],
+          "sourceLine": 153
+        },
+        {
+          "rank": 3,
+          "specId": "cp-bb-clinical-practice-drug-induced-immune-hemolytic-anemia",
+          "domain": "CP",
+          "root": "Blood Banking/Transfusion Medicine",
+          "path": [
+            "Blood Banking/Transfusion Medicine",
+            "Clinical Practice",
+            "Drug-Induced Immune Hemolytic Anemia"
+          ],
+          "title": "Drug-Induced Immune Hemolytic Anemia",
+          "difficulty": "",
+          "level": 3,
+          "score": 0.96,
+          "confidence": "high",
+          "evidenceTerms": [
+            "drug",
+            "induced",
+            "hemolytic",
+            "anemia",
+            "blood",
+            "banking",
+            "transfusion",
+            "medicine"
+          ],
+          "sourceLine": 180
+        },
+        {
+          "rank": 4,
+          "specId": "cp-bb",
+          "domain": "CP",
+          "root": "Blood Banking/Transfusion Medicine",
+          "path": [
+            "Blood Banking/Transfusion Medicine"
+          ],
+          "title": "Blood Banking/Transfusion Medicine",
+          "difficulty": "",
+          "level": 0,
+          "score": 2.1,
+          "confidence": "high",
+          "evidenceTerms": [
+            "blood",
+            "banking",
+            "transfusion",
+            "medicine"
+          ],
+          "sourceLine": 150
+        },
+        {
+          "rank": 5,
+          "specId": "cp-bb-clinical-practice-autoimmune-hemolytic-anemia-warm-autoimmune-hemolytic-anemia",
+          "domain": "CP",
+          "root": "Blood Banking/Transfusion Medicine",
+          "path": [
+            "Blood Banking/Transfusion Medicine",
+            "Clinical Practice",
+            "Autoimmune Hemolytic Anemia",
+            "Warm Autoimmune Hemolytic Anemia"
+          ],
+          "title": "Warm Autoimmune Hemolytic Anemia",
+          "difficulty": "AR",
+          "level": 5,
+          "score": 1.8204,
+          "confidence": "high",
+          "evidenceTerms": [
+            "warm",
+            "autoimmune",
+            "hemolytic",
+            "anemia",
+            "blood",
+            "banking",
+            "transfusion",
+            "medicine"
+          ],
+          "sourceLine": 156
+        },
+        {
+          "rank": 6,
+          "specId": "cp-bb-clinical-practice-autoimmune-hemolytic-anemia-treatment-transfusion",
+          "domain": "CP",
+          "root": "Blood Banking/Transfusion Medicine",
+          "path": [
+            "Blood Banking/Transfusion Medicine",
+            "Clinical Practice",
+            "Autoimmune Hemolytic Anemia",
+            "Treatment/Transfusion"
+          ],
+          "title": "Treatment/Transfusion",
+          "difficulty": "AR",
+          "level": 5,
+          "score": 1.79,
+          "confidence": "high",
+          "evidenceTerms": [
+            "transfusion",
+            "blood",
+            "banking",
+            "medicine",
+            "autoimmune",
+            "hemolytic",
+            "anemia"
+          ],
+          "sourceLine": 168
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-chemical-path-endocrine-studio",
+        "id": "cp-chemical-path-endocrine-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Chemical Pathology Endocrine and Metabolic Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-cp-the-adrenal-cortex-disorders-of-the-adrenal-cortex",
+        "domain": "CP",
+        "root": "Chemical Pathology",
+        "path": [
+          "Chemical Pathology",
+          "The Adrenal Cortex",
+          "Disorders of the Adrenal Cortex"
+        ],
+        "title": "Disorders of the Adrenal Cortex",
+        "difficulty": "",
+        "level": 3,
+        "score": 0.96,
+        "confidence": "high",
+        "evidenceTerms": [
+          "chemical"
+        ],
+        "sourceLine": 2069
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-cp-clinical-chemistry-of-pregnancy",
+          "domain": "CP",
+          "root": "Chemical Pathology",
+          "path": [
+            "Chemical Pathology",
+            "Clinical Chemistry of Pregnancy"
+          ],
+          "title": "Clinical Chemistry of Pregnancy",
+          "difficulty": "",
+          "level": 2,
+          "score": 1.5462,
+          "confidence": "high",
+          "evidenceTerms": [
+            "chemistry",
+            "chemical"
+          ],
+          "sourceLine": 2119
+        },
+        {
+          "rank": 3,
+          "specId": "cp-cp-clinical-chemistry-of-pregnancy-laboratory-tests",
+          "domain": "CP",
+          "root": "Chemical Pathology",
+          "path": [
+            "Chemical Pathology",
+            "Clinical Chemistry of Pregnancy",
+            "Laboratory Tests"
+          ],
+          "title": "Laboratory Tests",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.5462,
+          "confidence": "high",
+          "evidenceTerms": [
+            "chemical",
+            "chemistry"
+          ],
+          "sourceLine": 2131
+        },
+        {
+          "rank": 4,
+          "specId": "cp-cp-carbohydrates-chemistry-of-carbohydrates",
+          "domain": "CP",
+          "root": "Chemical Pathology",
+          "path": [
+            "Chemical Pathology",
+            "Carbohydrates",
+            "Chemistry of Carbohydrates,"
+          ],
+          "title": "Chemistry of Carbohydrates,",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.4706,
+          "confidence": "high",
+          "evidenceTerms": [
+            "chemistry",
+            "chemical"
+          ],
+          "sourceLine": 1684
+        },
+        {
+          "rank": 5,
+          "specId": "cp-cp-chemical-pathology-specific-administration-and-laboratory-management-administration-and-laborato",
+          "domain": "CP",
+          "root": "Chemical Pathology",
+          "path": [
+            "Chemical Pathology",
+            "Chemical Pathology-Specific Administration and Laboratory Management",
+            "Administration and Laboratory Management in Clinical Chemistry"
+          ],
+          "title": "Administration and Laboratory Management in Clinical Chemistry",
+          "difficulty": "C",
+          "level": 3,
+          "score": 1.4541,
+          "confidence": "high",
+          "evidenceTerms": [
+            "chemistry",
+            "chemical"
+          ],
+          "sourceLine": 2272
+        },
+        {
+          "rank": 6,
+          "specId": "cp-cp-clinical-chemistry-of-pregnancy-human-pregnancy",
+          "domain": "CP",
+          "root": "Chemical Pathology",
+          "path": [
+            "Chemical Pathology",
+            "Clinical Chemistry of Pregnancy",
+            "Human Pregnancy"
+          ],
+          "title": "Human Pregnancy",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.3424,
+          "confidence": "high",
+          "evidenceTerms": [
+            "chemical",
+            "chemistry"
+          ],
+          "sourceLine": 2120
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-immune-lipid-studio",
+        "id": "cp-immune-lipid-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Immune Recognition and Lipid Metabolism Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-cp-lipids-lipoproteins-and-apolipoproteins",
+        "domain": "CP",
+        "root": "Chemical Pathology",
+        "path": [
+          "Chemical Pathology",
+          "Lipids, Lipoproteins and Apolipoproteins"
+        ],
+        "title": "Lipids, Lipoproteins and Apolipoproteins",
+        "difficulty": "",
+        "level": 2,
+        "score": 1,
+        "confidence": "high",
+        "evidenceTerms": [
+          "lipid",
+          "chemical"
+        ],
+        "sourceLine": 1731
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-bb-cell-and-tissue-therapy-hla-antigens-and-alleles",
+          "domain": "CP",
+          "root": "Blood Banking/Transfusion Medicine",
+          "path": [
+            "Blood Banking/Transfusion Medicine",
+            "Cell and Tissue Therapy",
+            "HLA Antigens and Alleles"
+          ],
+          "title": "HLA Antigens and Alleles",
+          "difficulty": "",
+          "level": 3,
+          "score": 0.96,
+          "confidence": "high",
+          "evidenceTerms": [
+            "hla",
+            "human",
+            "leukocyte",
+            "antigen",
+            "transfusion"
+          ],
+          "sourceLine": 296
+        },
+        {
+          "rank": 3,
+          "specId": "cp-cp-clinical-chemistry-of-pregnancy-human-pregnancy",
+          "domain": "CP",
+          "root": "Chemical Pathology",
+          "path": [
+            "Chemical Pathology",
+            "Clinical Chemistry of Pregnancy",
+            "Human Pregnancy"
+          ],
+          "title": "Human Pregnancy",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.6352,
+          "confidence": "high",
+          "evidenceTerms": [
+            "human",
+            "chemical",
+            "chemistry"
+          ],
+          "sourceLine": 2120
+        },
+        {
+          "rank": 4,
+          "specId": "cp-cp-porphyrins-and-disorders-of-porphyrin-metabolism-porphyrin-chemistry",
+          "domain": "CP",
+          "root": "Chemical Pathology",
+          "path": [
+            "Chemical Pathology",
+            "Porphyrins and Disorders of Porphyrin Metabolism",
+            "Porphyrin Chemistry"
+          ],
+          "title": "Porphyrin Chemistry",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.5699,
+          "confidence": "high",
+          "evidenceTerms": [
+            "chemistry",
+            "chemical",
+            "metabolism"
+          ],
+          "sourceLine": 1827
+        },
+        {
+          "rank": 5,
+          "specId": "cp-cp-clinical-chemistry-of-pregnancy",
+          "domain": "CP",
+          "root": "Chemical Pathology",
+          "path": [
+            "Chemical Pathology",
+            "Clinical Chemistry of Pregnancy"
+          ],
+          "title": "Clinical Chemistry of Pregnancy",
+          "difficulty": "",
+          "level": 2,
+          "score": 1.5462,
+          "confidence": "high",
+          "evidenceTerms": [
+            "chemistry",
+            "chemical"
+          ],
+          "sourceLine": 2119
+        },
+        {
+          "rank": 6,
+          "specId": "cp-cp-clinical-chemistry-of-pregnancy-laboratory-tests",
+          "domain": "CP",
+          "root": "Chemical Pathology",
+          "path": [
+            "Chemical Pathology",
+            "Clinical Chemistry of Pregnancy",
+            "Laboratory Tests"
+          ],
+          "title": "Laboratory Tests",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.5462,
+          "confidence": "high",
+          "evidenceTerms": [
+            "chemical",
+            "chemistry"
+          ],
+          "sourceLine": 2131
         }
       ],
       "status": "mapped"
