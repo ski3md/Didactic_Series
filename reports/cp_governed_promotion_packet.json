@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-05-20T11:02:43.140Z",
+  "source": {
+    "handoff": "reports/cp_truth_handoff_summary.json",
+    "reviewerPacket": "reports/cp_governed_exception_reviewer_packet.json"
+  },
+  "summary": {
+    "promoteCount": 5,
+    "groupedRootCount": 2,
+    "roots": {
+      "Hematopathology for Clinical Pathology": 3,
+      "Medical Microbiology": 2
+    }
+  },
+  "groupedQueue": {
+    "Medical Microbiology": [
+      {
+        "id": "respiratory-viruses",
+        "abpathPrecisionMode": "nearest-valid-deep",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "Didactics governance review",
+        "reviewAction": "Keep respiratory virus teaching under CP microbiology unless a narrower governed virus cluster is added later.",
+        "rationale": "respiratory-virus teaching spans multiple organism nodes, so the validated microbiology umbrella is safer than an AP pulmonary infection match"
+      },
+      {
+        "id": "topic-mb-3-a",
+        "abpathPrecisionMode": "nearest-valid-deep",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "Didactics governance review",
+        "reviewAction": "Keep respiratory virus teaching under CP microbiology unless a narrower governed virus cluster is added later.",
+        "rationale": "respiratory-virus teaching spans multiple organism nodes, so the validated microbiology umbrella is safer than an AP pulmonary infection match"
+      }
+    ],
+    "Hematopathology for Clinical Pathology": [
+      {
+        "id": "topic-mol-1",
+        "abpathPrecisionMode": "nearest-valid-deep",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "CP governance review",
+        "reviewAction": "Keep molecular methods teaching subordinate to the validated CP testing anchor.",
+        "rationale": "workflow concept distributed across multiple spec nodes"
+      },
+      {
+        "id": "topic-mol-2",
+        "abpathPrecisionMode": "cross-domain-governed",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "CP governance review",
+        "reviewAction": "Present the disease-site labels as board-mastery teaching focus under the CP molecular testing frame.",
+        "rationale": "This tutorial teaches method-centered molecular interpretation across disease sites; ABPath CP supports a governed testing anchor, but not a literal solid-tumor molecular node."
+      },
+      {
+        "id": "topic-mol-3",
+        "abpathPrecisionMode": "nearest-valid-deep",
+        "abpathAnchorConfidence": "high",
+        "reviewOwner": "CP governance review",
+        "reviewAction": "Promote under the CP hematopathology testing frame and keep entity-specific molecular labels subordinate.",
+        "rationale": "disease narrower than CP spec"
+      }
+    ]
+  }
+}
