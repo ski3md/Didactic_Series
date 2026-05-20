@@ -1172,6 +1172,8 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
     const lecture = getPromotedLectureById(effectiveDestination.itemId);
     return lecture ? getInteractivePromotedLecture(lecture.id) : undefined;
   }, [effectiveDestination.itemId, effectiveDestination.kind]);
+  const hasLectureTutorialSupport = Boolean(selectedLecture?.enhancement?.relatedTutorialQueries?.length);
+  const hasLectureReferenceSupport = Boolean(selectedLecture?.enhancement?.referenceFocusTerms?.length || selectedLecture?.tags?.length);
   useEffect(() => {
     persistLectureViewState({
       selectedId: selectedLecture?.id ?? '',
@@ -2132,6 +2134,39 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                             {item.category} ({item.count})
                           </span>
                         ))}
+                      </div>
+                    </div>
+                  )}
+                  {(hasLectureTutorialSupport || hasLectureReferenceSupport) && (
+                    <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+                      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                        <div className="max-w-3xl">
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Related review</div>
+                          <h4 className="mt-1 font-serif text-lg font-semibold text-slate-900">Optional follow-up review</h4>
+                          <p className="mt-2 text-sm leading-6 text-slate-600">
+                            Finish the signout sequence first. Open these afterward when you want matched tutorials or mapped morphology review.
+                          </p>
+                        </div>
+                        <div className="flex flex-wrap gap-3">
+                          {hasLectureTutorialSupport && (
+                            <button
+                              type="button"
+                              onClick={() => openTutorials()}
+                              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                            >
+                              Open related tutorial
+                            </button>
+                          )}
+                          {hasLectureReferenceSupport && (
+                            <button
+                              type="button"
+                              onClick={() => openReferenceLibrary()}
+                              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                            >
+                              Open mapped morphology review
+                            </button>
+                          )}
+                        </div>
                       </div>
                     </div>
                   )}

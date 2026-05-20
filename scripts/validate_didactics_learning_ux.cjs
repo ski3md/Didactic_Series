@@ -541,6 +541,19 @@ const evaluateHierarchySemantics = ({
     issues.push('Lecture detail does not clearly open with orientation before the signout sequence.');
   }
 
+  if (
+    appearsInOrder(lecturesTsx, [
+      /(Faculty run sheet|Signout brief)/,
+      /Signout sequence/,
+      /(Related diagnostic groups|Related review|Optional follow-up review)/,
+      /(Open related tutorial|Open mapped morphology review)/,
+    ])
+  ) {
+    passes.push('Lecture detail keeps optional follow-up review after the core signout sequence.');
+  } else {
+    issues.push('Lecture detail does not clearly keep optional follow-up review after the core signout sequence.');
+  }
+
   return { passes, issues };
 };
 
