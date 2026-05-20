@@ -83,8 +83,11 @@ describe('full 1000 execution ledger assets', () => {
       status: 'in_progress',
       statusBasis: 'exact_step_backfill',
     });
-    expect(t06?.completionEvidence.completedStepIds).toEqual(['W02-L1_CP_TRUTH-C01']);
-    expect(t06?.completionEvidence.remainingStepIds).toHaveLength(9);
+    expect(t06?.completionEvidence.completedStepIds).toEqual([
+      'W02-L1_CP_TRUTH-C01',
+      'W02-L1_CP_TRUTH-C02',
+    ]);
+    expect(t06?.completionEvidence.remainingStepIds).toHaveLength(8);
   });
 
   it('renders the required ledger sections and immediate next sequence', () => {
@@ -96,5 +99,8 @@ describe('full 1000 execution ledger assets', () => {
     expect(markdown).toContain('### T05 W01 Contracts and Proof');
     expect(ledger.immediateNextSequence).toHaveLength(2);
     expect(ledger.immediateNextSequence[0]).toBe('Freeze the W02 CP reviewed-versus-raw baseline.');
+    expect(ledger.immediateNextSequence[1]).toBe(
+      'Correct the two remaining duplicate-shadow source-map mismatches in T06 W02 CP Truth.',
+    );
   });
 });

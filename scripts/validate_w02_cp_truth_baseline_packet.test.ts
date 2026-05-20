@@ -47,11 +47,14 @@ describe('W02 CP truth baseline packet', () => {
   });
 
   it('keeps the proof bundle and baseline gate aligned to the opened tranche', () => {
-    expect(packet.execution.completedStepIds).toEqual(['W02-L1_CP_TRUTH-C01']);
+    expect(packet.execution.completedStepIds).toEqual([
+      'W02-L1_CP_TRUTH-C01',
+      'W02-L1_CP_TRUTH-C02',
+    ]);
     expect(packet.execution.proofCommands).toEqual([
       'npm run cp:precision:validate',
       'node scripts/validate_validated_mappings_manifest.cjs',
-      'npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
+      'npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
       'git diff --check',
     ]);
     expect(packet.completionGate.baselineGreen).toBe(true);

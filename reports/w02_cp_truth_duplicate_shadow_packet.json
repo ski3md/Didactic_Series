@@ -1,0 +1,158 @@
+{
+  "generatedAt": "2026-05-20T18:43:55.574Z",
+  "tranche": "T06 W02 CP Truth",
+  "source": {
+    "validatedManifest": "reports/validated_mappings_manifest.json",
+    "trancheLedger": "src/content/planning/full_1000_execution_ledger.json"
+  },
+  "summary": {
+    "duplicateShadowCount": 6,
+    "canonicalValidatedCount": 6,
+    "sourceMapReviewCount": 2,
+    "allDuplicatesHaveCanonicalValidatedPair": true
+  },
+  "actionBuckets": {
+    "safeDuplicateExclusions": [
+      "blood-banking-transfusion-medicine",
+      "clinical-practice",
+      "paroxysmal-nocturnal-hemoglobinuria",
+      "cell-and-tissue-therapy"
+    ],
+    "sourceMapReviewRequired": [
+      "anemia-in-oncology-patients",
+      "hla-antigens-and-alleles"
+    ]
+  },
+  "duplicatePairs": [
+    {
+      "id": "blood-banking-transfusion-medicine",
+      "shadowKey": "src/content/tutorials/tutorials.normalized.json::blood-banking-transfusion-medicine",
+      "canonicalKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::blood-banking-transfusion-medicine",
+      "shadowFile": "src/content/tutorials/tutorials.normalized.json",
+      "canonicalFile": "src/content/downloads_imports/normalized/tutorials.normalized.json",
+      "shadowTrack": "clinical-path",
+      "canonicalTrack": "clinical-path",
+      "shadowDomain": "CP",
+      "canonicalDomain": "CP",
+      "shadowPath": "Blood Banking/Transfusion Medicine > Clinical Practice > Causes > Management",
+      "canonicalPath": "Blood Banking/Transfusion Medicine > Clinical Practice > Causes > Management",
+      "shadowValidated": false,
+      "canonicalValidated": true,
+      "requiresSourceMapReview": false,
+      "mismatchNotes": []
+    },
+    {
+      "id": "clinical-practice",
+      "shadowKey": "src/content/tutorials/tutorials.normalized.json::clinical-practice",
+      "canonicalKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::clinical-practice",
+      "shadowFile": "src/content/tutorials/tutorials.normalized.json",
+      "canonicalFile": "src/content/downloads_imports/normalized/tutorials.normalized.json",
+      "shadowTrack": "clinical-path",
+      "canonicalTrack": "clinical-path",
+      "shadowDomain": "CP",
+      "canonicalDomain": "CP",
+      "shadowPath": "Blood Banking/Transfusion Medicine > Clinical Practice",
+      "canonicalPath": "Blood Banking/Transfusion Medicine > Clinical Practice",
+      "shadowValidated": false,
+      "canonicalValidated": true,
+      "requiresSourceMapReview": false,
+      "mismatchNotes": []
+    },
+    {
+      "id": "paroxysmal-nocturnal-hemoglobinuria",
+      "shadowKey": "src/content/tutorials/tutorials.normalized.json::paroxysmal-nocturnal-hemoglobinuria",
+      "canonicalKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::paroxysmal-nocturnal-hemoglobinuria",
+      "shadowFile": "src/content/tutorials/tutorials.normalized.json",
+      "canonicalFile": "src/content/downloads_imports/normalized/tutorials.normalized.json",
+      "shadowTrack": "clinical-path",
+      "canonicalTrack": "clinical-path",
+      "shadowDomain": "CP",
+      "canonicalDomain": "CP",
+      "shadowPath": "Blood Banking/Transfusion Medicine > Clinical Practice > Paroxysmal Nocturnal Hemoglobinuria",
+      "canonicalPath": "Blood Banking/Transfusion Medicine > Clinical Practice > Paroxysmal Nocturnal Hemoglobinuria",
+      "shadowValidated": false,
+      "canonicalValidated": true,
+      "requiresSourceMapReview": false,
+      "mismatchNotes": []
+    },
+    {
+      "id": "anemia-in-oncology-patients",
+      "shadowKey": "src/content/tutorials/tutorials.normalized.json::anemia-in-oncology-patients",
+      "canonicalKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::anemia-in-oncology-patients",
+      "shadowFile": "src/content/tutorials/tutorials.normalized.json",
+      "canonicalFile": "src/content/downloads_imports/normalized/tutorials.normalized.json",
+      "shadowTrack": "surgical-path",
+      "canonicalTrack": "clinical-path",
+      "shadowDomain": "CP",
+      "canonicalDomain": "CP",
+      "shadowPath": "Hematopathology for Clinical Pathology > Normal Anatomy, Histology, Hematopoiesis and Hemostasis > Bone Marrow",
+      "canonicalPath": "Hematopathology for Clinical Pathology > Non-Neoplastic Disorders of Erythrocytes > Other Hemolytic Anemias > Immune",
+      "shadowValidated": false,
+      "canonicalValidated": true,
+      "requiresSourceMapReview": true,
+      "mismatchNotes": [
+        "track surgical-path -> clinical-path",
+        "path changed"
+      ]
+    },
+    {
+      "id": "cell-and-tissue-therapy",
+      "shadowKey": "src/content/tutorials/tutorials.normalized.json::cell-and-tissue-therapy",
+      "canonicalKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::cell-and-tissue-therapy",
+      "shadowFile": "src/content/tutorials/tutorials.normalized.json",
+      "canonicalFile": "src/content/downloads_imports/normalized/tutorials.normalized.json",
+      "shadowTrack": "clinical-path",
+      "canonicalTrack": "clinical-path",
+      "shadowDomain": "CP",
+      "canonicalDomain": "CP",
+      "shadowPath": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy",
+      "canonicalPath": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy",
+      "shadowValidated": false,
+      "canonicalValidated": true,
+      "requiresSourceMapReview": false,
+      "mismatchNotes": []
+    },
+    {
+      "id": "hla-antigens-and-alleles",
+      "shadowKey": "src/content/tutorials/tutorials.normalized.json::hla-antigens-and-alleles",
+      "canonicalKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::hla-antigens-and-alleles",
+      "shadowFile": "src/content/tutorials/tutorials.normalized.json",
+      "canonicalFile": "src/content/downloads_imports/normalized/tutorials.normalized.json",
+      "shadowTrack": "surgical-path",
+      "canonicalTrack": "clinical-path",
+      "shadowDomain": "AP",
+      "canonicalDomain": "CP",
+      "shadowPath": "The Genitourinary System > Kidney > Medical Kidney Disease > End Stage Renal Disease",
+      "canonicalPath": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > HLA Antigens and Alleles",
+      "shadowValidated": false,
+      "canonicalValidated": true,
+      "requiresSourceMapReview": true,
+      "mismatchNotes": [
+        "track surgical-path -> clinical-path",
+        "domain AP -> CP",
+        "root Genitourinary -> Blood Banking/Transfusion Medicine",
+        "path changed"
+      ]
+    }
+  ],
+  "execution": {
+    "completedStepIds": [
+      "W02-L1_CP_TRUTH-C01",
+      "W02-L1_CP_TRUTH-C02"
+    ],
+    "proofCommands": [
+      "npm run cp:precision:validate",
+      "node scripts/validate_validated_mappings_manifest.cjs",
+      "npx vitest run scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts",
+      "git diff --check"
+    ]
+  },
+  "completionGate": {
+    "duplicateShadowQueueUnderstood": true,
+    "staleWhen": [
+      "the validated mappings manifest changes without regenerating this packet",
+      "the T06 completed step list changes without regenerating this packet",
+      "any duplicate-shadow row loses its canonical validated pair without regenerating this packet"
+    ]
+  }
+}

@@ -277,9 +277,8 @@ const TRANCHE_OVERRIDES = {
     status: 'in_progress',
     statusBasis: 'exact_step_backfill',
     completionEvidence: {
-      completedStepIds: ['W02-L1_CP_TRUTH-C01'],
+      completedStepIds: ['W02-L1_CP_TRUTH-C01', 'W02-L1_CP_TRUTH-C02'],
       remainingStepIds: [
-        'W02-L1_CP_TRUTH-C02',
         'W02-L1_CP_TRUTH-C03',
         'W02-L1_CP_TRUTH-C04',
         'W02-L1_CP_TRUTH-C05',
@@ -298,19 +297,20 @@ const TRANCHE_OVERRIDES = {
       'reports/validated_mappings_manifest.json',
       'reports/cp_truth_handoff_summary.json',
       'reports/w02_cp_truth_baseline_packet.json',
+      'reports/w02_cp_truth_duplicate_shadow_packet.json',
     ],
     proofCommands: [
       'npm run cp:precision:validate',
       'node scripts/validate_validated_mappings_manifest.cjs',
-      'npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts',
+      'npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts',
       'git diff --check',
     ],
     supportingProgress: [
       'W02 now starts from an explicit reviewed-versus-raw CP truth baseline instead of reusing the W01 closeout state implicitly.',
-      'The next T06 work should reconcile the six not-yet-reviewed rows and then refresh the reviewed truth outputs against that narrower gap.',
+      'The six non-promoted rows are now frozen as duplicate-shadow exclusions with validated canonical pairs, so the next T06 work can focus on the two source-map mismatches instead of treating all six rows as unresolved review debt.',
     ],
     summary:
-      'W02 CP truth is open with a written baseline packet that captures the current raw-versus-reviewed gap and the governed CP exception queue.',
+      'W02 CP truth is open with a written baseline packet and a duplicate-shadow packet that narrows the open source-map review to two mismatched rows.',
   },
 };
 
@@ -410,7 +410,7 @@ const buildLedger = () => {
       sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
       firstOpenWave: 'W02',
-      immediateNextAction: 'Use the new W02 CP truth baseline packet to reconcile the remaining raw-versus-reviewed mapping gap before moving to W02 content parity.',
+      immediateNextAction: 'Use the W02 CP truth duplicate-shadow packet to correct the two remaining source-map mismatches before moving to W02 content parity.',
     },
     completionDefinition: {
       terminalWave: 'W20',
@@ -421,7 +421,7 @@ const buildLedger = () => {
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
       'Freeze the W02 CP reviewed-versus-raw baseline.',
-      'Reconcile the remaining six not-yet-reviewed rows in T06 W02 CP Truth.',
+      'Correct the two remaining duplicate-shadow source-map mismatches in T06 W02 CP Truth.',
     ],
     tranches,
   };
