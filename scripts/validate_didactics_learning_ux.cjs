@@ -579,6 +579,18 @@ const evaluateHierarchySemantics = ({
     issues.push('Lecture detail does not clearly keep optional follow-up review after the core signout sequence.');
   }
 
+  if (
+    appearsInOrder(lecturesTsx, [
+      /Teaching Text/,
+      /StructuredTeachingContent/,
+      /Section guide/,
+    ])
+  ) {
+    passes.push('Lecture transcript keeps the section guide after the full teaching text.');
+  } else {
+    issues.push('Lecture transcript does not clearly keep the section guide after the full teaching text.');
+  }
+
   return { passes, issues };
 };
 

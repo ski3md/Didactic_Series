@@ -460,6 +460,9 @@ describe('validate_didactics_learning_ux helpers', () => {
         <div>Scope: Renal mass evaluation · diagnostic approach</div>
         <div>Next: open the first lecture</div>
         <button>Open Renal Mass Evaluation</button>
+        <div>Teaching Text</div>
+        <StructuredTeachingContent />
+        <div>Section guide</div>
       `,
       algorithmsTsx: `
         <div>Current review: Workups</div>
@@ -510,6 +513,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         expect.stringContaining('Curriculum module pages keep optional follow-up review after the core module framing.'),
         expect.stringContaining('Lecture detail opens with an orientation block'),
         expect.stringContaining('Lecture detail keeps optional follow-up review after the core signout sequence.'),
+        expect.stringContaining('Lecture transcript keeps the section guide after the full teaching text.'),
       ])
     );
   });
@@ -534,6 +538,8 @@ describe('validate_didactics_learning_ux helpers', () => {
         <button>Open related tutorial</button>
         <div>Signout sequence</div>
         <div>Faculty run sheet</div>
+        <div>Section guide</div>
+        <div>Teaching Text</div>
       `,
       algorithmsTsx: `
         <div>Major topic</div>
@@ -568,6 +574,7 @@ describe('validate_didactics_learning_ux helpers', () => {
           expect.stringContaining('Curriculum module pages do not clearly keep optional follow-up review after the core module framing.'),
           expect.stringContaining('Lecture detail does not clearly open with orientation before the signout sequence.'),
           expect.stringContaining('Lecture detail does not clearly keep optional follow-up review after the core signout sequence.'),
+          expect.stringContaining('Lecture transcript does not clearly keep the section guide after the full teaching text.'),
       ])
     );
   });
