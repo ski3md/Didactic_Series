@@ -1,0 +1,1353 @@
+# Full 1000 Execution Ledger
+
+A repo-native tranche ledger that reconciles the current live Didactic Series state against the full 20-wave / 1000-change program.
+
+## Current State
+
+- Branch: `main`
+- HEAD: `799b83d1`
+- Sync: `0/0 vs origin/main`
+- Repo state: `clean_synced`
+- First open wave: `W01`
+- Immediate next action: Backfill and formally close the remaining W01 tranches before opening W02 feature work.
+
+## Completion Definition
+
+- Terminal wave: `W20`
+- Required state: All W01 through W20 lane records are either landed or intentionally superseded, each wave ends with its required proof bundle, and the release-story outputs in W19/W20 are present.
+
+## Grouped Phases
+
+- **G1 Foundation and truth**: W01 Freeze the current truth baseline, W02 Reconcile raw mappings with reviewed mappings, W03 Publish the canonical CP study map. Exit when Truth artifacts, content parity baseline, and the canonical CP study map all agree.
+- **G2 Learner language and navigation**: W04 Replace internal wording with learner wording, W05 Make workspace switching calm and obvious, W06 Tighten study-flow continuity. Exit when Public study flow reads naturally and remains orientation-safe across route transitions.
+- **G3 Provenance and connected study tools**: W07 Show source provenance on study pages, W08 Connect tutorials, lectures, and workups, W09 Turn diagnostic maps into study tools, W10 Show stage and readiness clearly. Exit when Learners and reviewers can see trust, links, and readiness state directly on study surfaces.
+- **G4 Reviewer legibility and proof usability**: W11 Clarify competency and review language, W12 Make validator messages easier to act on, W13 Write review-ready explanations. Exit when Faculty, chair, and outside-review surfaces are understandable without implementation knowledge.
+- **G5 Product coherence**: W14 Deduplicate the study map, W15 Line up AP and CP study paths, W16 Publish reusable study paths. Exit when AP and CP feel like one product and the best paths are reusable assets.
+- **G6 External review packaging**: W17 Create faculty review packets, W18 Create manuscript support bundles. Exit when Strongest validated outputs are bundled for faculty review and manuscript support.
+- **G7 Release story and portfolio finish**: W19 Build the sponsor-ready roadmap, W20 Polish the portfolio and release story. Exit when Repo truth, reviewer proof, sponsor story, and reusable portfolio outputs all align.
+
+## Tranche Status Counts
+
+- Completed: 1
+- In progress: 4
+- Planned: 95
+
+## Immediate Next Sequence
+
+1. Backfill the tranche ledger from current live state.
+2. Formally close T02 W01 Content Parity.
+3. Formally close T03 W01 Learner UX.
+4. Formally close T04 W01 Workups and Routing.
+5. Formally close T05 W01 Contracts and Proof.
+6. Open W02 only after W01 is fully ledgered and proof-complete.
+
+## Tranche Map
+
+### T01 W01 CP Truth
+
+- Status: `completed`
+- Status basis: `exact_proof_bundle`
+- Goal: This lane settles the reviewed CP and AP teaching truth for freeze the current truth baseline.
+- Completed steps: 10
+- Remaining steps: 0
+- Evidence commits: `a0737af1 Freeze CP truth baseline snapshots`, `e281b31a Freeze CP governed exception snapshots`, `f145f8b4 Split CP exception reviewer action buckets`, `8c1999f6 Add CP truth handoff summary`, `28ee500a Add CP reviewer action packet`, `cb2c69f9 Add CP governed promotion packet`, `8b6f287a Add CP root priority summary`, `712e15c9 Add CP root execution checklist`, `8e85c92e Add CP root execution manifest`, `f4b8690d Add CP truth tranche closeout packet`
+- Evidence artifacts: `reports/cp_precision_governance_report.json`, `reports/validated_mappings_manifest.json`, `reports/cp_truth_handoff_summary.json`, `reports/cp_root_execution_manifest.json`, `reports/cp_truth_tranche_closeout_packet.json`
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npx vitest run scripts/validate_cp_truth_baseline_outputs.test.ts`, `npx vitest run scripts/validate_cp_truth_handoff_summary.test.ts`, `npx vitest run scripts/validate_cp_root_execution_manifest.test.ts`, `npx vitest run scripts/validate_cp_truth_tranche_closeout_packet.test.ts`, `git diff --check`
+- Summary: CP truth for W01 is effectively closed with a full baseline, exception queue, root-priority packet, execution manifest, and tranche closeout packet.
+
+### T02 W01 Content Parity
+
+- Status: `in_progress`
+- Status basis: `exact_step_backfill`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for freeze the current truth baseline.
+- Completed steps: 4
+- Remaining steps: 6
+- Evidence commits: `b6c2c480 Freeze content parity baseline snapshot`, `01032db0 Normalize CP curriculum tutorial source links`, `ad27fcce Align CP foundations content parity`, `15ff4f00 Align CP module cluster parity copy`
+- Evidence artifacts: `reports/content_consumption_journey_evaluation.json`
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Content parity has a frozen baseline, normalized CP source links, and aligned module copy, but the remaining rule, proof, test, drift-clearance, and handoff steps are still open.
+
+### T03 W01 Learner UX
+
+- Status: `in_progress`
+- Status basis: `supporting_commit_evidence_only`
+- Goal: This lane makes the study experience clearer and calmer for freeze the current truth baseline.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: `ce3a8d9b Govern curriculum follow-up review ordering`
+- Evidence artifacts: `reports/didactics_learning_ux_report.json`
+- Remaining owned files: `src/components/Home.tsx`, `src/components/ReferenceLibrary.tsx`, `src/components/CompetencyMatrix.tsx`
+- Proof commands: `npm run didactics:ux:validate`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts`, `git diff --check`
+- Summary: Learner UX has real W01 movement, but it still needs formal tranche closure against the owned Home, Reference Library, and Competency Matrix surfaces.
+
+  - Curriculum follow-up review ordering is already governed in PathologyCurriculum.
+  - The didactics UX validator/report lane is active, but the learner-UX tranche has not yet been formally backfilled against its owned file set.
+
+### T04 W01 Workups and Routing
+
+- Status: `in_progress`
+- Status basis: `supporting_commit_evidence_only`
+- Goal: This lane keeps workups and route behavior dependable for freeze the current truth baseline.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: `9bc73a67 Widen workups layout in focus mode`, `03bbd67a Densify clinical pathology workups grid`, `01caab57 Tighten workups sidebar plain-language rail`, `e41c04fc Tighten workups plain-language helper copy`
+- Evidence artifacts: `reports/didactics_learning_ux_report.json`
+- Remaining owned files: `src/utils/algorithmCatalog.ts`, `src/utils/algorithmNavigatorNavigation.ts`, `src/content/algorithms/algorithms.normalized.json`
+- Proof commands: `npm run didactics:ux:validate`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts`, `git diff --check`
+- Summary: Workups and routing have visible W01 improvements, but the tranche still needs formal backfill across the underlying route, catalog, test, and handoff surfaces.
+
+  - Clinical Pathology workups layout, density, and plain-language copy are already improved on live study surfaces.
+  - Routing/catalog parity, lane rules, focused route tests, reusable diagnostic-map output, and tranche handoff are still open.
+
+### T05 W01 Contracts and Proof
+
+- Status: `in_progress`
+- Status basis: `supporting_commit_evidence_only`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for freeze the current truth baseline.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: `90b6a327 Govern autonomous execution contract`, `799b83d1 Govern automation execution contract`
+- Evidence artifacts: `docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md`, `reports/didactics_learning_ux_report.json`
+- Remaining owned files: `docs/contracts/PTHFNDR_DIDACTICS_LEARNING_UX_CONTRACT.md`, `src/content/contracts/pthfndrDidacticsLearningUxContract.json`
+- Proof commands: `npm run didactics:ux:validate`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts`, `git diff --check`
+- Summary: Contracts and proof have meaningful W01 progress, but the tranche is not formally closed until the remaining contract surfaces and proof outputs are backfilled together.
+
+  - Autonomous execution and automation rules are now governed in the Codex alignment contract and validator.
+  - The tranche still needs a full W01 proof-baseline backfill, explicit report parity, remaining contract sync, and a formal proof handoff.
+
+### T06 W02 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for reconcile raw mappings with reviewed mappings.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T07 W02 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for reconcile raw mappings with reviewed mappings.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T08 W02 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for reconcile raw mappings with reviewed mappings.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T09 W02 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for reconcile raw mappings with reviewed mappings.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T10 W02 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for reconcile raw mappings with reviewed mappings.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T11 W03 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for publish the canonical cp study map.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T12 W03 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for publish the canonical cp study map.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T13 W03 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for publish the canonical cp study map.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T14 W03 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for publish the canonical cp study map.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T15 W03 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for publish the canonical cp study map.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T16 W04 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for replace internal wording with learner wording.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T17 W04 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for replace internal wording with learner wording.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T18 W04 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for replace internal wording with learner wording.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T19 W04 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for replace internal wording with learner wording.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T20 W04 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for replace internal wording with learner wording.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T21 W05 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for make workspace switching calm and obvious.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T22 W05 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for make workspace switching calm and obvious.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T23 W05 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for make workspace switching calm and obvious.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T24 W05 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for make workspace switching calm and obvious.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T25 W05 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for make workspace switching calm and obvious.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T26 W06 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for tighten study-flow continuity.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T27 W06 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for tighten study-flow continuity.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T28 W06 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for tighten study-flow continuity.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T29 W06 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for tighten study-flow continuity.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T30 W06 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for tighten study-flow continuity.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T31 W07 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for show source provenance on study pages.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T32 W07 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for show source provenance on study pages.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T33 W07 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for show source provenance on study pages.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T34 W07 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for show source provenance on study pages.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T35 W07 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for show source provenance on study pages.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T36 W08 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for connect tutorials, lectures, and workups.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T37 W08 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for connect tutorials, lectures, and workups.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T38 W08 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for connect tutorials, lectures, and workups.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T39 W08 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for connect tutorials, lectures, and workups.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T40 W08 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for connect tutorials, lectures, and workups.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T41 W09 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for turn diagnostic maps into study tools.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T42 W09 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for turn diagnostic maps into study tools.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T43 W09 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for turn diagnostic maps into study tools.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T44 W09 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for turn diagnostic maps into study tools.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T45 W09 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for turn diagnostic maps into study tools.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T46 W10 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for show stage and readiness clearly.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T47 W10 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for show stage and readiness clearly.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T48 W10 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for show stage and readiness clearly.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T49 W10 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for show stage and readiness clearly.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T50 W10 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for show stage and readiness clearly.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T51 W11 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for clarify competency and review language.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T52 W11 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for clarify competency and review language.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T53 W11 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for clarify competency and review language.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T54 W11 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for clarify competency and review language.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T55 W11 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for clarify competency and review language.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T56 W12 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for make validator messages easier to act on.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T57 W12 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for make validator messages easier to act on.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T58 W12 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for make validator messages easier to act on.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T59 W12 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for make validator messages easier to act on.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T60 W12 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for make validator messages easier to act on.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T61 W13 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for write review-ready explanations.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T62 W13 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for write review-ready explanations.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T63 W13 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for write review-ready explanations.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T64 W13 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for write review-ready explanations.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T65 W13 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for write review-ready explanations.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T66 W14 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for deduplicate the study map.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T67 W14 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for deduplicate the study map.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T68 W14 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for deduplicate the study map.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T69 W14 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for deduplicate the study map.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T70 W14 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for deduplicate the study map.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T71 W15 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for line up ap and cp study paths.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T72 W15 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for line up ap and cp study paths.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T73 W15 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for line up ap and cp study paths.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T74 W15 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for line up ap and cp study paths.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T75 W15 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for line up ap and cp study paths.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T76 W16 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for publish reusable study paths.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T77 W16 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for publish reusable study paths.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T78 W16 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for publish reusable study paths.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T79 W16 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for publish reusable study paths.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T80 W16 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for publish reusable study paths.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T81 W17 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for create faculty review packets.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T82 W17 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for create faculty review packets.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T83 W17 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for create faculty review packets.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T84 W17 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for create faculty review packets.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T85 W17 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for create faculty review packets.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T86 W18 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for create manuscript support bundles.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T87 W18 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for create manuscript support bundles.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T88 W18 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for create manuscript support bundles.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T89 W18 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for create manuscript support bundles.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T90 W18 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for create manuscript support bundles.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T91 W19 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for build the sponsor-ready roadmap.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T92 W19 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for build the sponsor-ready roadmap.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T93 W19 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for build the sponsor-ready roadmap.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T94 W19 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for build the sponsor-ready roadmap.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T95 W19 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for build the sponsor-ready roadmap.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T96 W20 CP Truth
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane settles the reviewed CP and AP teaching truth for polish the portfolio and release story.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T97 W20 Content Parity
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane brings the learner-facing content into line with the reviewed truth for polish the portfolio and release story.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T98 W20 Learner UX
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane makes the study experience clearer and calmer for polish the portfolio and release story.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T99 W20 Workups and Routing
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane keeps workups and route behavior dependable for polish the portfolio and release story.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
+
+### T100 W20 Contracts and Proof
+
+- Status: `planned`
+- Status basis: `not_started`
+- Goal: This lane turns the landed work into proof bundles and review-ready records for polish the portfolio and release story.
+- Completed steps: 0
+- Remaining steps: 10
+- Evidence commits: none
+- Evidence artifacts: none
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `git diff --check`
+- Summary: Not started in the formal tranche ledger yet.
