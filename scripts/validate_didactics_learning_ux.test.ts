@@ -112,7 +112,22 @@ describe('validate_didactics_learning_ux helpers', () => {
           case Section.DIDACTIC_ALGORITHMS: return <AlgorithmNavigator />;
         }
       `,
-      headerTsx: '<h1>{currentSection}</h1>',
+      headerTsx: `
+        const resolveHeaderTitle = (currentSection: Section): string => {
+          switch (currentSection) {
+            case Section.DIDACTIC_LECTURES:
+              return 'Lectures';
+            case Section.DIDACTIC_TUTORIALS:
+              return 'Tutorials';
+            case Section.DIDACTIC_ALGORITHMS:
+              return 'Workups';
+            default:
+              return currentSection;
+          }
+        };
+        const headerTitle = resolveHeaderTitle(currentSection);
+        <h1>{headerTitle}</h1>
+      `,
       sidebarTsx: `
         label: 'Curriculum'
         label: 'Lectures'
@@ -169,6 +184,43 @@ describe('validate_didactics_learning_ux helpers', () => {
         expect.stringContaining('Lectures does not show a landing-state workspace reset in Sidebar.'),
         expect.stringContaining('Workups does not show a landing-state workspace reset in Sidebar.'),
         expect.stringContaining('Lectures main-panel component lacks a visible workspace identity signal.'),
+      ])
+    );
+  });
+
+  it('flags headers that keep internal didactics labels instead of governed workspace names', () => {
+    const result = evaluateWorkspaceSemantics({
+      appTsx: `
+        <Header currentSection={displayedSection} />
+        switch (currentSection) {
+          case Section.DIDACTIC_LECTURES: return <DidacticLectures />;
+          case Section.DIDACTIC_TUTORIALS: return <DidacticTutorials />;
+          case Section.DIDACTIC_ALGORITHMS: return <AlgorithmNavigator />;
+        }
+      `,
+      headerTsx: `
+        const headerTitle = currentSection;
+        <h1>{headerTitle}</h1>
+      `,
+      sidebarTsx: `
+        label: 'Lectures'
+        pushStudyDestination('lectures', { kind: 'landing', previous: null })
+        label: 'Tutorials'
+        pushStudyDestination('tutorials', { kind: 'landing', previous: null })
+        label: 'Workups'
+        pushStudyDestination('algorithms', { kind: 'landing', previous: null })
+      `,
+      workspaceNavTsx: 'item.onActivate?.(); onSectionChange(item.section);',
+      componentTexts: {
+        lectures: 'Lectures Choose a teaching topic Resume last lecture',
+        tutorials: 'Tutorials Resume topic Open the reviewed topic instead',
+        algorithms: 'Workups Choose a diagnostic workup Diagnostic areas',
+      },
+    });
+
+    expect(result.issues).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('Header title is not clearly resolved through governed public workspace labels.'),
       ])
     );
   });

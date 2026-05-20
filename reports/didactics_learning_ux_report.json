@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T01:47:12.112Z",
+  "generatedAt": "2026-05-20T02:48:13.032Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -19,7 +19,8 @@
     "Algorithm learner copy avoids internal route jargon, framework labels, and routing-system phrasing.",
     "Static public topic labels are free of duplicate slash-format variants across current taxonomy surfaces.",
     "App passes the displayed section label into the shared header.",
-    "Header title is driven directly by the active section label.",
+    "Header resolves internal didactics section names into governed public workspace labels.",
+    "Header source no longer hard-codes internal didactics naming drift.",
     "Workspace switcher triggers destination activation before section change.",
     "Curriculum routes to PathologyCurriculum.",
     "Sidebar exposes Curriculum as a study workspace.",

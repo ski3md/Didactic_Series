@@ -13,6 +13,25 @@ interface HeaderProps {
   navigation?: SectionNavigationController;
 }
 
+const resolveHeaderTitle = (currentSection: Section): string => {
+  switch (currentSection) {
+    case Section.PATHOLOGY_CURRICULUM:
+      return 'Curriculum';
+    case Section.DIDACTIC_LECTURES:
+    case Section.LECTURE:
+      return 'Lectures';
+    case Section.DIDACTIC_TUTORIALS:
+      return 'Tutorials';
+    case Section.DIDACTIC_ALGORITHMS:
+      return 'Workups';
+    case Section.SIGN_OUT_SIMULATOR:
+    case Section.BREAST_SIGNOUT_MASTERCLASS:
+      return 'Sign-Out';
+    default:
+      return currentSection;
+  }
+};
+
 const Header: React.FC<HeaderProps> = ({
   currentSection,
   preferences,
@@ -27,6 +46,7 @@ const Header: React.FC<HeaderProps> = ({
     goForward: () => {},
     pushSection: () => {},
   };
+  const headerTitle = resolveHeaderTitle(currentSection);
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200 bg-white px-4 py-2.5">
       <div className="flex items-center gap-2">
@@ -59,7 +79,7 @@ const Header: React.FC<HeaderProps> = ({
         </div>
         <div className="min-w-0 flex-1">
           <p className="truncate text-[11px] font-semibold uppercase tracking-wide text-slate-500 sm:hidden">{BRAND.name}</p>
-          <h1 className="truncate text-sm font-semibold text-slate-900 md:text-base">{currentSection}</h1>
+          <h1 className="truncate text-sm font-semibold text-slate-900 md:text-base">{headerTitle}</h1>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <button

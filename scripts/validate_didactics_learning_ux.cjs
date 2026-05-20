@@ -621,10 +621,21 @@ const evaluateWorkspaceSemantics = ({
     issues.push('App does not pass the displayed section label into the shared header.');
   }
 
-  if (/<h1[^>]*>\{currentSection\}<\/h1>/.test(headerTsx)) {
-    passes.push('Header title is driven directly by the active section label.');
+  if (
+    /const resolveHeaderTitle = \(currentSection: Section\): string => \{[\s\S]*?case Section\.DIDACTIC_LECTURES:[\s\S]*?return 'Lectures';[\s\S]*?case Section\.DIDACTIC_TUTORIALS:[\s\S]*?return 'Tutorials';[\s\S]*?case Section\.DIDACTIC_ALGORITHMS:[\s\S]*?return 'Workups';/.test(headerTsx) &&
+    /<h1[^>]*>\{headerTitle\}<\/h1>/.test(headerTsx)
+  ) {
+    passes.push('Header resolves internal didactics section names into governed public workspace labels.');
+  } else if (/<h1[^>]*>\{currentSection\}<\/h1>/.test(headerTsx)) {
+    issues.push('Header still exposes raw internal section names instead of governed public workspace labels.');
   } else {
-    issues.push('Header title is not driven directly by the active section label.');
+    issues.push('Header title is not clearly resolved through governed public workspace labels.');
+  }
+
+  if (!/Didactic Lectures|Didactic Tutorials|Didactic Algorithms/.test(headerTsx)) {
+    passes.push('Header source no longer hard-codes internal didactics naming drift.');
+  } else {
+    issues.push('Header source still contains internal didactics naming drift.');
   }
 
   if (/item\.onActivate\?\.\(\);\s*onSectionChange\(item\.section\);/.test(workspaceNavTsx)) {
