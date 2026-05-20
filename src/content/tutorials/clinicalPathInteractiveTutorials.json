@@ -2,7 +2,7 @@
   {
     "id": "cp-micro-methods-ast-studio",
     "title": "Clinical Microbiology Methods and AST Studio",
-    "summary": "Bench-first microbiology review for culture workflow, organism identification, susceptibility testing, and escalation decisions.",
+    "summary": "CP foundations microbiology route for culture workflow, organism identification, susceptibility testing, and escalation decisions.",
     "body": "## Scope\nThis interactive studio stays inside the Clinical Pathology tutorial track and uses the same CP teaching surface as the rest of the app.\n\n## How to use it\n1. Start with specimen quality, media selection, atmosphere, and culture setup.\n2. Move through identification logic: microscopy, biochemical testing, MALDI-TOF, and targeted molecular assays.\n3. Close with susceptibility interpretation, critical reporting, and infection-control consequences.\n\n## Why it belongs here\nThis is not a separate product. It is the operational microbiology branch of the current CP study path.\n\n## Pair this with\n- `Case Tutorial: Medical Microbiology`\n- `Antimicrobial Susceptibility Testing: A Case Tutorial`\n- organism-specific bacteriology, mycology, virology, and parasitology tutorials already in the CP library\n\n## Learning target\nBy the end of the session, the learner should be able to connect specimen quality, organism workup, test selection, and AST reporting into one consult-level reasoning chain.",
     "sourceRepo": "pthfndr_cp_interactive",
     "sourceLabel": "P@thfndr Interactive CP",
@@ -183,7 +183,7 @@
   {
     "id": "cp-dat-transfusion-studio",
     "title": "DAT and Hemolytic Transfusion Reaction Studio",
-    "summary": "Focused blood bank tutorial for DAT interpretation, eluate logic, hemolysis workup, and transfusion safety escalation.",
+    "summary": "CP foundations transfusion route for DAT interpretation, eluate logic, hemolysis workup, and transfusion safety escalation.",
     "body": "## Scope\nThis studio stays inside the Blood Banking/Transfusion Medicine teaching lane and acts as the practical counterpart to the current transfusion reaction tutorials.\n\n## Use sequence\n1. Work through the DAT pattern and antibody logic.\n2. Tie the result to the immediate clinical problem: transfusion reaction, warm autoantibody, HDFN, or drug-related hemolysis.\n3. Close with the safety step: what to stop, who to notify, and what follow-up testing matters.\n\n## Pair this with\n- `Case Tutorial: Hemolytic Transfusion Reactions (Acute & Delayed)`\n- `Autoimmune Hemolytic Anemia (WAIHA, Cold Agglutinin, PCH, Drug-Induced)`\n- blood-group, compatibility testing, and HDFN tutorials in the CP track\n\n## Learning target\nThe learner should be able to interpret the DAT pattern, explain the likely mechanism, recommend the next laboratory step, and communicate the immediate patient-safety action.",
     "sourceRepo": "pthfndr_cp_interactive",
     "sourceLabel": "P@thfndr Interactive CP",
@@ -1102,7 +1102,7 @@
   {
     "id": "cp-chemical-path-endocrine-studio",
     "title": "Chemical Pathology Endocrine and Metabolic Studio",
-    "summary": "Interactive CP chemistry studio for endocrine pathway reasoning, metabolic interpretation, and method-aware clinical biochemistry review.",
+    "summary": "CP foundations chemistry route for endocrine pathway reasoning, metabolic interpretation, and method-aware clinical biochemistry review.",
     "body": "## Scope\nThis studio is integrated into the Chemical Pathology tutorial lane as the endocrine and metabolic branch of CP teaching.\n\n## Use sequence\n1. Start in the master CAH view to compare pathways instead of memorizing isolated facts.\n2. Use the focused 21-hydroxylase variant when you want a narrower second pass.\n3. Tie the pathway back to laboratory interpretation: which analytes, which patterns, and which clinical consequence.\n\n## Pair this with\n- `Chemical Pathology: Advanced Clinical Biochemistry Dossier`\n- endocrine, metabolic, and assay-interference tutorials in the CP track\n\n## Learning target\nThe learner should be able to connect an endocrine or metabolic laboratory pattern to a biochemical pathway, recognize the likely diagnosis, and identify the next most useful confirmation strategy.",
     "sourceRepo": "pthfndr_cp_interactive",
     "sourceLabel": "P@thfndr Interactive CP",

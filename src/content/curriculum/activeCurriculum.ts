@@ -355,7 +355,7 @@ export const activeCurriculumModules: ActiveCurriculumModule[] = [
   {
     moduleId: 'clinical-path-foundations',
     title: 'Clinical Pathology Foundations',
-    summary: 'CP lab-correlation, transfusion, coagulation, and hematology framing retained inside the broader pathology curriculum shell.',
+    summary: 'Canonical CP entry block linking bench microbiology, transfusion-reaction workup, and chemistry interpretation before deeper domain-specific review.',
     subspecialty: 'Clinical Pathology',
     boardPriority: 'core',
     promotionState: 'canonical',

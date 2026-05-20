@@ -252,8 +252,8 @@
       },
       "clinicalPathology": {
         "totalModules": 7,
-        "canonicalModules": 0,
-        "stagedModules": 7
+        "canonicalModules": 7,
+        "stagedModules": 0
       }
     },
     "tutorialLibrarySnapshot": {
@@ -264,7 +264,7 @@
       }
     },
     "parityRisks": [
-      "Clinical Pathology remains tutorial-first while all 7 CP curriculum modules are still staged.",
+      "Clinical Pathology remains tutorial-first even though all 7 CP curriculum modules are now canonical, so visible route framing still has to prove depth rather than imply it.",
       "Visible journey guidance can drift ahead of governed route readiness if source-map and content edits are not checkpointed together.",
       "Interactive CP growth can overstate parity unless curriculum, catalog, and journey surfaces freeze the same baseline counts."
     ],
@@ -274,6 +274,11 @@
       "Keep learner-UX validator and AlgorithmNavigator out of this tranche while the content baseline is still being frozen."
     ],
     "sourceLinkNormalization": {
+      "clinicalPathFoundations": [
+        "Clinical Microbiology Methods and AST Studio",
+        "Chemical Pathology Endocrine and Metabolic Studio",
+        "DAT and Hemolytic Transfusion Reaction Studio"
+      ],
       "hematologyAndRedCellCore": [
         "Flow Cytometry and Hematopathology Studio",
         "Case Tutorial: Paroxysmal Nocturnal Hemoglobinuria",
