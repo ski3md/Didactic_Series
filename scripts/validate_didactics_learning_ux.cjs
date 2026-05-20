@@ -1014,6 +1014,19 @@ const evaluateReferenceRouteSemantics = ({
     issues.push('Reference Library does not clearly open with study framing before deeper recognition and sign-out calibration cues.');
   }
 
+  if (
+    appearsInOrder(referenceTsx, [
+      /Training level guidance/,
+      /Diagnostic focus/,
+      /Review approach/,
+      /What to recognize/,
+    ])
+  ) {
+    passes.push('Reference Library keeps training-level guidance ordered from diagnostic focus to recognition targets.');
+  } else {
+    issues.push('Reference Library does not clearly keep training-level guidance ordered from diagnostic focus to recognition targets.');
+  }
+
   return { passes, issues };
 };
 

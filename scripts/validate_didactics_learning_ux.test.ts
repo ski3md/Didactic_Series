@@ -676,7 +676,9 @@ describe('validate_didactics_learning_ux helpers', () => {
       `,
       referenceTsx: `
         <div>Start here</div>
+        <div>Training level guidance</div>
         <div>Diagnostic focus</div>
+        <div>Review approach</div>
         <div>What to recognize</div>
         <div>What to show at sign-out</div>
         <div>Sign-out calibration</div>
@@ -685,13 +687,14 @@ describe('validate_didactics_learning_ux helpers', () => {
 
     expect(result.issues).toEqual([]);
     expect(result.passes).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Reference Library is rendered as a first-class didactics section in the app shell.'),
-        expect.stringContaining('Reference Library has a route-backed workspace mapping through didactics navigation.'),
-        expect.stringContaining('Reference Library copy avoids residual framework jargon on the public reference lane.'),
-        expect.stringContaining('Reference Library opens with study framing before deeper recognition and sign-out calibration cues.'),
-      ])
-    );
+        expect.arrayContaining([
+          expect.stringContaining('Reference Library is rendered as a first-class didactics section in the app shell.'),
+          expect.stringContaining('Reference Library has a route-backed workspace mapping through didactics navigation.'),
+          expect.stringContaining('Reference Library copy avoids residual framework jargon on the public reference lane.'),
+          expect.stringContaining('Reference Library opens with study framing before deeper recognition and sign-out calibration cues.'),
+          expect.stringContaining('Reference Library keeps training-level guidance ordered from diagnostic focus to recognition targets.'),
+        ])
+      );
   });
 
   it('flags reference-route drift when route wiring or public copy regresses into framework language', () => {
@@ -705,7 +708,9 @@ describe('validate_didactics_learning_ux helpers', () => {
       `,
       referenceTsx: `
         <div>Sign-out calibration</div>
+        <div>What to recognize</div>
         <div>Intent</div>
+        <div>Diagnostic focus</div>
         <div>Mode</div>
         <div>Start here</div>
         <div>Evidence</div>
@@ -713,11 +718,12 @@ describe('validate_didactics_learning_ux helpers', () => {
       `,
     });
 
-    expect(result.issues).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Reference Library is not clearly rendered as a first-class didactics section in the app shell.'),
-        expect.stringContaining('Reference Library is missing a complete route-backed workspace mapping through didactics navigation.'),
-        expect.stringContaining('Reference Library does not clearly open with study framing before deeper recognition and sign-out calibration cues.'),
+      expect(result.issues).toEqual(
+        expect.arrayContaining([
+          expect.stringContaining('Reference Library is not clearly rendered as a first-class didactics section in the app shell.'),
+          expect.stringContaining('Reference Library is missing a complete route-backed workspace mapping through didactics navigation.'),
+          expect.stringContaining('Reference Library does not clearly open with study framing before deeper recognition and sign-out calibration cues.'),
+          expect.stringContaining('Reference Library does not clearly keep training-level guidance ordered from diagnostic focus to recognition targets.'),
       ])
     );
   });
