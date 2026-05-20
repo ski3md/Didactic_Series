@@ -273,6 +273,15 @@
       "Use the frozen curriculum and CP interactive counts as the baseline for later T02 parity decisions.",
       "Keep learner-UX validator and AlgorithmNavigator out of this tranche while the content baseline is still being frozen."
     ],
+    "visibleClusterParity": {
+      "clinicalPathFoundations": "bench microbiology + transfusion-reaction workup + chemistry interpretation",
+      "hematologyAndRedCellCore": "flow-based heme triage + PNH + oncology-associated anemia + DAT-linked hemolysis",
+      "coagulationAndHemostasisCore": "bleeding-defect workup + immune thrombocytopenia + acquired inhibitor interpretation",
+      "transfusionAndCellularTherapyCore": "DAT reaction workup + transfusion-medicine review + platelet support + HLA matching",
+      "clinicalMicrobiologyCore": "bench methods and AST workflow + microbiology case review + susceptibility interpretation",
+      "chemicalPathologyCore": "endocrine-metabolic interpretation + immune-lipid crossover + advanced clinical biochemistry review",
+      "managementAndInformaticsCore": "finance + QC + validation + LIS workflow + laboratory safety reasoning"
+    },
     "sourceLinkNormalization": {
       "clinicalPathFoundations": [
         "Clinical Microbiology Methods and AST Studio",
@@ -307,7 +316,7 @@
     ],
     "weaknesses": [
       "Navigation labels and route depth are not always explicit enough for first-time users.",
-      "CP exists but is not yet governed with the same route-level contract rigor as AP.",
+      "CP still depends on tutorial clusters more than lecture/image parity, so route-level depth has to stay explicit in visible copy.",
       "Faculty QA, provenance badges, and learner analytics are not yet first-class across every pathway.",
       "Some staged content can appear close to canonical unless contract state is made visible."
     ],

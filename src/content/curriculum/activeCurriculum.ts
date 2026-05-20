@@ -374,7 +374,7 @@ export const activeCurriculumModules: ActiveCurriculumModule[] = [
   {
     moduleId: 'hematology-red-cell-core',
     title: 'Hematology and Red Cell Disorders',
-    summary: 'Canonical CP block for hemolysis, PNH, sickle-cell disease, anemia triage, flow-linked pattern recognition, and marrow-linked red-cell reasoning.',
+    summary: 'Canonical CP hematology block linking flow-based heme triage, PNH, oncology-associated anemia, and DAT-linked hemolysis reasoning.',
     subspecialty: 'Clinical Pathology',
     boardPriority: 'core',
     promotionState: 'canonical',
@@ -398,7 +398,7 @@ export const activeCurriculumModules: ActiveCurriculumModule[] = [
   {
     moduleId: 'coagulation-hemostasis-core',
     title: 'Coagulation and Hemostasis Core',
-    summary: 'Canonical CP block for bleeding, thrombosis, inhibitors, platelet dysfunction, and perioperative coagulation reasoning.',
+    summary: 'Canonical CP coagulation block linking bleeding-defect workup, immune thrombocytopenia, and acquired inhibitor interpretation.',
     subspecialty: 'Clinical Pathology',
     boardPriority: 'core',
     promotionState: 'canonical',
@@ -421,7 +421,7 @@ export const activeCurriculumModules: ActiveCurriculumModule[] = [
   {
     moduleId: 'transfusion-cellular-therapy-core',
     title: 'Transfusion and Cellular Therapy Core',
-    summary: 'Canonical CP block for blood-bank practice, transfusion reactions, platelet support, HLA matching, and cellular therapy complications.',
+    summary: 'Canonical CP transfusion block linking DAT reaction workup, transfusion-medicine review, platelet support, and HLA matching.',
     subspecialty: 'Clinical Pathology',
     boardPriority: 'core',
     promotionState: 'canonical',
@@ -445,7 +445,7 @@ export const activeCurriculumModules: ActiveCurriculumModule[] = [
   {
     moduleId: 'clinical-microbiology-core',
     title: 'Clinical Microbiology Core',
-    summary: 'Canonical CP block for specimen-to-bench workflow, organism identification, susceptibility testing, and communication of clinically actionable microbiology results.',
+    summary: 'Canonical CP microbiology block linking bench methods and AST workflow, core microbiology case review, and susceptibility interpretation.',
     subspecialty: 'Clinical Pathology',
     boardPriority: 'core',
     promotionState: 'canonical',
@@ -464,7 +464,7 @@ export const activeCurriculumModules: ActiveCurriculumModule[] = [
   {
     moduleId: 'chemical-pathology-core',
     title: 'Chemical Pathology Core',
-    summary: 'Canonical CP block for clinical biochemistry, endocrine-metabolic interpretation, method awareness, and consult-level chemistry reasoning.',
+    summary: 'Canonical CP chemistry block linking endocrine-metabolic interpretation, immune-lipid crossover, and advanced clinical biochemistry review.',
     subspecialty: 'Clinical Pathology',
     boardPriority: 'core',
     promotionState: 'canonical',
@@ -483,7 +483,7 @@ export const activeCurriculumModules: ActiveCurriculumModule[] = [
   {
     moduleId: 'management-informatics-core',
     title: 'Management and Informatics Core',
-    summary: 'Canonical CP block for QC interpretation, validation oversight, LIS workflow, laboratory safety, and finance-aware operational reasoning.',
+    summary: 'Canonical CP operations block linking finance, QC, validation, LIS workflow, and laboratory safety reasoning.',
     subspecialty: 'Clinical Pathology',
     boardPriority: 'core',
     promotionState: 'canonical',
