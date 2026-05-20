@@ -1,0 +1,140 @@
+{
+  "generatedAt": "2026-05-20T11:07:27.867Z",
+  "source": "reports/cp_root_priority_summary.json",
+  "summary": {
+    "rootCount": 6,
+    "topPriorityRoot": "Management and Informatics",
+    "proofCommands": [
+      "npm run cp:precision:validate",
+      "npx vitest run scripts/validate_cp_truth_baseline_outputs.test.ts",
+      "git diff --check"
+    ]
+  },
+  "checklist": [
+    {
+      "rank": 1,
+      "root": "Management and Informatics",
+      "reviewerActionCount": 3,
+      "promoteCount": 0,
+      "totalCount": 3,
+      "nextMoves": [
+        "Complete CP governance review for Management and Informatics."
+      ],
+      "reviewerIds": [
+        "cp-mgmt-break-even-studio",
+        "cp-mgmt-reagent-rental-studio",
+        "cp-mgmt-productivity-studio"
+      ],
+      "promoteIds": [],
+      "proofCommands": [
+        "npm run cp:precision:validate",
+        "npx vitest run scripts/validate_cp_truth_baseline_outputs.test.ts",
+        "git diff --check"
+      ]
+    },
+    {
+      "rank": 2,
+      "root": "Hematopathology for Clinical Pathology",
+      "reviewerActionCount": 1,
+      "promoteCount": 3,
+      "totalCount": 4,
+      "nextMoves": [
+        "Complete CP governance review for Hematopathology for Clinical Pathology.",
+        "Promote governed-ready Hematopathology for Clinical Pathology tutorials under the current CP anchor."
+      ],
+      "reviewerIds": [
+        "cp-flow-heme-studio"
+      ],
+      "promoteIds": [
+        "topic-mol-1",
+        "topic-mol-2",
+        "topic-mol-3"
+      ],
+      "proofCommands": [
+        "npm run cp:precision:validate",
+        "npx vitest run scripts/validate_cp_truth_baseline_outputs.test.ts",
+        "git diff --check"
+      ]
+    },
+    {
+      "rank": 3,
+      "root": "Medical Microbiology",
+      "reviewerActionCount": 1,
+      "promoteCount": 2,
+      "totalCount": 3,
+      "nextMoves": [
+        "Complete CP governance review for Medical Microbiology.",
+        "Promote governed-ready Medical Microbiology tutorials under the current CP anchor."
+      ],
+      "reviewerIds": [
+        "cp-micro-methods-ast-studio"
+      ],
+      "promoteIds": [
+        "respiratory-viruses",
+        "topic-mb-3-a"
+      ],
+      "proofCommands": [
+        "npm run cp:precision:validate",
+        "npx vitest run scripts/validate_cp_truth_baseline_outputs.test.ts",
+        "git diff --check"
+      ]
+    },
+    {
+      "rank": 4,
+      "root": "Blood Banking/Transfusion Medicine",
+      "reviewerActionCount": 1,
+      "promoteCount": 0,
+      "totalCount": 1,
+      "nextMoves": [
+        "Complete CP governance review for Blood Banking/Transfusion Medicine."
+      ],
+      "reviewerIds": [
+        "cp-dat-transfusion-studio"
+      ],
+      "promoteIds": [],
+      "proofCommands": [
+        "npm run cp:precision:validate",
+        "npx vitest run scripts/validate_cp_truth_baseline_outputs.test.ts",
+        "git diff --check"
+      ]
+    },
+    {
+      "rank": 5,
+      "root": "Chemical Pathology",
+      "reviewerActionCount": 1,
+      "promoteCount": 0,
+      "totalCount": 1,
+      "nextMoves": [
+        "Complete CP governance review for Chemical Pathology."
+      ],
+      "reviewerIds": [
+        "cp-chemical-path-endocrine-studio"
+      ],
+      "promoteIds": [],
+      "proofCommands": [
+        "npm run cp:precision:validate",
+        "npx vitest run scripts/validate_cp_truth_baseline_outputs.test.ts",
+        "git diff --check"
+      ]
+    },
+    {
+      "rank": 6,
+      "root": "Chemical Pathology + Blood Banking/Transfusion Medicine",
+      "reviewerActionCount": 1,
+      "promoteCount": 0,
+      "totalCount": 1,
+      "nextMoves": [
+        "Complete CP governance review for Chemical Pathology + Blood Banking/Transfusion Medicine."
+      ],
+      "reviewerIds": [
+        "cp-immune-lipid-studio"
+      ],
+      "promoteIds": [],
+      "proofCommands": [
+        "npm run cp:precision:validate",
+        "npx vitest run scripts/validate_cp_truth_baseline_outputs.test.ts",
+        "git diff --check"
+      ]
+    }
+  ]
+}
