@@ -79,6 +79,14 @@ interface WorkflowStartCard {
   focusTerms: string[];
 }
 
+interface MorphologyGatewayCard {
+  tag: string;
+  title: string;
+  description: string;
+  focusTerms: string[];
+  previewImages: SupplementalReferenceImage[];
+}
+
 const signoutImages = (signoutImageReferenceIndex.images ?? []) as SignoutReferenceImage[];
 const SUPPLEMENTAL_PAGE_SIZE = 60;
 const emptySupplementalManifest: SupplementalReferenceImageManifest = { imageCount: 0, images: [] };
@@ -143,13 +151,13 @@ const cleanDocumentTitle = (image: SupplementalReferenceImage) => {
       .replace(/\s+/g, ' ')
       .trim()
   );
+};
 
 const compactChecklist = (value: string) =>
   value
     .split(/[.;]/)
     .map((entry) => entry.trim())
     .filter(Boolean);
-};
 
 const supplementalCaption = (image: SupplementalReferenceImage) => {
   if (image.caption) {
@@ -279,6 +287,23 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
           )
         : filteredSupplementalImages,
     [filteredSupplementalImages, selectedMorphologyTag]
+  );
+  const morphologyGatewayCards = useMemo<MorphologyGatewayCard[]>(
+    () =>
+      supplementalMorphologyOptions.slice(0, 8).map((tag) => {
+        const previewImages = filteredSupplementalImages
+          .filter((image) => inferMorphologyTags(image.title, image.caption, image.sourceDocument).includes(tag))
+          .slice(0, 3);
+
+        return {
+          tag,
+          title: tag,
+          description: `Open a ${tag} differential review with example images and the closest morphology matches.`,
+          focusTerms: [tag, ...previewImages.map((image) => normalizePathologyTitle(image.title)).slice(0, 2)],
+          previewImages,
+        };
+      }),
+    [filteredSupplementalImages, supplementalMorphologyOptions]
   );
   const supplementalPageCount = Math.max(1, Math.ceil(filteredSupplementalImages.length / SUPPLEMENTAL_PAGE_SIZE));
   const visibleSupplementalImages = useMemo(
@@ -573,6 +598,70 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
           </div>
         </div>
       </Card>
+      {morphologyGatewayCards.length > 0 && (
+        <Card>
+          <div className="flex flex-col gap-5">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Morphology-first review</p>
+              <h2 className="mt-2 text-2xl font-semibold font-serif text-slate-950">Start with the closest pattern</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-700">
+                Choose a morphology pattern and jump directly into example images, differential thinking, and the most relevant review context.
+              </p>
+            </div>
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              {morphologyGatewayCards.map((card) => (
+                <button
+                  key={card.tag}
+                  type="button"
+                  onClick={() => {
+                    setSelectedMorphologyTag(card.tag);
+                    setSupplementalSearch(card.tag);
+                    applyPreset({
+                      title: `${card.title} differential`,
+                      description: card.description,
+                      focusTerms: card.focusTerms,
+                    });
+                  }}
+                  className="overflow-hidden rounded-2xl border border-slate-200 bg-white text-left transition hover:border-slate-300 hover:shadow-sm"
+                >
+                  <div className="grid grid-cols-3 gap-1 bg-slate-950 p-1">
+                    {card.previewImages.length > 0 ? (
+                      card.previewImages.map((image) => (
+                        <img
+                          key={image.id}
+                          src={supplementalImageSrc(image)}
+                          alt={normalizePathologyTitle(image.title)}
+                          className="h-24 w-full bg-slate-900 object-contain"
+                          loading="lazy"
+                        />
+                      ))
+                    ) : (
+                      <div className="col-span-3 flex h-24 items-center justify-center text-xs font-semibold uppercase tracking-wide text-slate-300">
+                        Preview pending
+                      </div>
+                    )}
+                  </div>
+                  <div className="space-y-2 p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Diagnostic approach</div>
+                    <div className="text-lg font-semibold capitalize text-slate-950">{card.title}</div>
+                    <p className="text-sm leading-6 text-slate-700">{card.description}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {card.focusTerms.slice(0, 3).map((term) => (
+                        <span
+                          key={`${card.tag}-${term}`}
+                          className="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-700"
+                        >
+                          {term}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </Card>
+      )}
       <Card>
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
