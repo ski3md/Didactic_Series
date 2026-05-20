@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-20T01:30:51.832Z",
-  "sourceFingerprint": "7dea4ad031d52cbdbe36bc627cd655c73a3c928d031c3d3019e7d1f47abb030f",
+  "generatedAt": "2026-05-20T10:43:43.231Z",
+  "sourceFingerprint": "f3489191f1c65b50d9e2b26ac203323bbcd2dd09d0095b520676ddfaba56d81e",
   "source": {
     "crosswalk": "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
     "cpGovernanceReport": "reports/cp_precision_governance_report.json",
@@ -14,6 +14,17 @@
     "validatedRowCount": 487,
     "governancePendingRowCount": 0,
     "excludedRowCount": 0,
+    "clinicalPathValidatedCount": 243,
+    "cpDomainValidatedCount": 285
+  },
+  "baselineSnapshot": {
+    "sourceFingerprint": "f3489191f1c65b50d9e2b26ac203323bbcd2dd09d0095b520676ddfaba56d81e",
+    "crosswalkTutorialCount": 493,
+    "crosswalkMappedCount": 493,
+    "cpGovernedTutorialCount": 13,
+    "cpGovernedModuleCount": 7,
+    "validatedTutorialCount": 487,
+    "governancePendingTutorialCount": 0,
     "clinicalPathValidatedCount": 243,
     "cpDomainValidatedCount": 285
   },

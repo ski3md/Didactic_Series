@@ -1,9 +1,38 @@
 {
-  "generatedAt": "2026-05-20T01:30:51.668Z",
+  "generatedAt": "2026-05-20T10:43:43.105Z",
   "source": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
   "tutorialCount": 13,
   "moduleCount": 7,
   "failureCount": 0,
+  "baselineSnapshot": {
+    "officialSource": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+    "tutorialsValidated": 13,
+    "modulesValidated": 7,
+    "failureCount": 0,
+    "precisionModes": {
+      "cross-domain-governed": 3,
+      "literal": 8,
+      "nearest-valid-deep": 9
+    },
+    "anchorConfidence": {
+      "high": 8,
+      "moderate": 12
+    },
+    "reviewStatus": {
+      "confirmed": 20
+    },
+    "officialRoots": {
+      "Blood Banking/Transfusion Medicine": 2,
+      "Chemical Pathology": 2,
+      "Chemical Pathology + Blood Banking/Transfusion Medicine": 1,
+      "Clinical Microbiology": 1,
+      "Hematopathology / Laboratory Hematology": 2,
+      "Hematopathology for Clinical Pathology": 1,
+      "Management and Informatics": 9,
+      "Medical Microbiology": 1,
+      "Multiple CP roots": 1
+    }
+  },
   "failures": [],
   "rows": [
     {

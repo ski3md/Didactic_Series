@@ -471,6 +471,18 @@ const sourceFingerprint = sha256(
   ].join('\n---\n')
 );
 
+const baselineSnapshot = {
+  sourceFingerprint,
+  crosswalkTutorialCount: crosswalkData.counts?.tutorials ?? tutorialRows.length,
+  crosswalkMappedCount: crosswalkData.counts?.mapped ?? tutorialRowsCanonical.length,
+  cpGovernedTutorialCount: cpGovernanceReport.tutorialCount ?? 0,
+  cpGovernedModuleCount: cpGovernanceReport.moduleCount ?? 0,
+  validatedTutorialCount: tutorialIdsValidated.length,
+  governancePendingTutorialCount: blockedTutorialIds.length,
+  clinicalPathValidatedCount: summary.clinicalPathValidatedCount,
+  cpDomainValidatedCount: summary.cpDomainValidatedCount,
+};
+
 const validatedManifest = {
   generatedAt: new Date().toISOString(),
   sourceFingerprint,
@@ -482,6 +494,7 @@ const validatedManifest = {
     tutorialLabelValidation: 'reports/tutorial_label_validation.json',
   },
   summary,
+  baselineSnapshot,
   tutorialKeysValidated,
   tutorialIdsValidated,
   blockedTutorialKeys,

@@ -146,6 +146,28 @@ const rows = [
   })),
 ];
 
+const summarizeBy = (items, keyFn) =>
+  Object.fromEntries(
+    Array.from(
+      items.reduce((map, item) => {
+        const key = keyFn(item);
+        map.set(key, (map.get(key) || 0) + 1);
+        return map;
+      }, new Map()).entries(),
+    ).sort(([a], [b]) => String(a).localeCompare(String(b))),
+  );
+
+const baselineSnapshot = {
+  officialSource: OFFICIAL_SOURCE,
+  tutorialsValidated: tutorials.length,
+  modulesValidated: Object.keys(modules).length,
+  failureCount: failures.length,
+  precisionModes: summarizeBy(rows, (row) => row.precisionMode),
+  anchorConfidence: summarizeBy(rows, (row) => row.anchorConfidence),
+  reviewStatus: summarizeBy(rows, (row) => row.reviewStatus),
+  officialRoots: summarizeBy(rows, (row) => row.officialRoot),
+};
+
 ensureDir(reportJsonPath);
 fs.writeFileSync(
   reportJsonPath,
@@ -156,6 +178,7 @@ fs.writeFileSync(
       tutorialCount: tutorials.length,
       moduleCount: Object.keys(modules).length,
       failureCount: failures.length,
+      baselineSnapshot,
       failures,
       rows,
     },
