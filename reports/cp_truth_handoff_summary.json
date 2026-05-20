@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-05-20T10:54:23.567Z",
+  "source": {
+    "cpGovernanceReport": "reports/cp_precision_governance_report.json",
+    "validatedManifest": "reports/validated_mappings_manifest.json",
+    "exceptionPacket": "reports/cp_governed_exception_reviewer_packet.json"
+  },
+  "baseline": {
+    "cpGovernedTutorials": 13,
+    "cpGovernedModules": 7,
+    "validatedTutorials": 487,
+    "governancePendingTutorials": 0,
+    "sourceFingerprint": "c1d6ff9c18b2ac0d5d6b7fef5010d47090c304968213f4d64d339fc55d65bf18"
+  },
+  "governedExceptionQueue": {
+    "total": 13,
+    "byPrecisionMode": {
+      "cross-domain-governed": 2,
+      "nearest-valid-deep": 11
+    },
+    "rootsCovered": {
+      "Blood Banking/Transfusion Medicine": 1,
+      "Chemical Pathology": 1,
+      "Chemical Pathology + Blood Banking/Transfusion Medicine": 1,
+      "Hematopathology for Clinical Pathology": 4,
+      "Management and Informatics": 3,
+      "Medical Microbiology": 3
+    },
+    "promoteUnderGovernedAnchor": [
+      "respiratory-viruses",
+      "topic-mb-3-a",
+      "topic-mol-1",
+      "topic-mol-2",
+      "topic-mol-3"
+    ],
+    "reviewerActionRequired": [
+      "cp-micro-methods-ast-studio",
+      "cp-flow-heme-studio",
+      "cp-dat-transfusion-studio",
+      "cp-mgmt-break-even-studio",
+      "cp-mgmt-reagent-rental-studio",
+      "cp-mgmt-productivity-studio",
+      "cp-chemical-path-endocrine-studio",
+      "cp-immune-lipid-studio"
+    ]
+  },
+  "currentStatus": {
+    "baselineGreen": true,
+    "nextReviewSurface": "reports/cp_governed_exception_reviewer_packet.md",
+    "tranche": "T01 W01 CP Truth"
+  }
+}
