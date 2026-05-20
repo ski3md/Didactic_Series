@@ -86,6 +86,16 @@ export interface TutorialTopicScope {
   root: string;
 }
 
+export interface TutorialLibraryParityBaseline {
+  totalTutorials: number;
+  byTrack: Record<TutorialTrack, number>;
+  clinicalPathInteractiveTutorials: {
+    totalTutorials: number;
+    interactiveAssetCount: number;
+    rootTopicCount: number;
+  };
+}
+
 const arraysMatchExactly = (left: string[], right: string[]) =>
   left.length === right.length && left.every((value, index) => value === right[index]);
 
@@ -753,4 +763,41 @@ export const findBestTutorialMatch = (
   }
 
   return bestMatch;
+};
+
+export const summarizeTutorialLibraryParityBaseline = (
+  tutorials: DidacticTutorialRecord[]
+): TutorialLibraryParityBaseline => {
+  const byTrack = tutorials.reduce(
+    (counts, tutorial) => {
+      counts[tutorial.track] += 1;
+      return counts;
+    },
+    {
+      'surgical-path': 0,
+      'clinical-path': 0,
+      'cross-cutting': 0,
+    } as Record<TutorialTrack, number>
+  );
+
+  const clinicalPathInteractiveTutorials = tutorials.filter(
+    (tutorial) => tutorial.track === 'clinical-path' && tutorial.sourceRepo === 'pthfndr_cp_interactive'
+  );
+
+  return {
+    totalTutorials: tutorials.length,
+    byTrack,
+    clinicalPathInteractiveTutorials: {
+      totalTutorials: clinicalPathInteractiveTutorials.length,
+      interactiveAssetCount: clinicalPathInteractiveTutorials.reduce(
+        (count, tutorial) => count + (tutorial.interactiveAssets?.length || 0),
+        0
+      ),
+      rootTopicCount: new Set(
+        clinicalPathInteractiveTutorials
+          .map((tutorial) => tutorial.abpathScope?.root)
+          .filter((root): root is string => Boolean(root))
+      ).size,
+    },
+  };
 };

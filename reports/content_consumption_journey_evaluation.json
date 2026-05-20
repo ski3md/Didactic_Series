@@ -233,6 +233,47 @@
       ]
     }
   ],
+  "contentBaseline": {
+    "wave": "W01",
+    "tranche": "T02",
+    "lane": "Content Parity",
+    "purpose": "Freeze the current learner-facing content baseline before source-map corrections and visible parity edits move together.",
+    "sourceFiles": [
+      "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+      "src/content/curriculum/activeCurriculum.ts",
+      "src/utils/tutorialLibraryCatalog.ts",
+      "reports/content_consumption_journey_evaluation.json"
+    ],
+    "curriculumSnapshot": {
+      "totalModules": 26,
+      "promotionStates": {
+        "canonical": 15,
+        "staged": 11
+      },
+      "clinicalPathology": {
+        "totalModules": 7,
+        "canonicalModules": 0,
+        "stagedModules": 7
+      }
+    },
+    "tutorialLibrarySnapshot": {
+      "clinicalPathInteractiveTutorials": {
+        "totalTutorials": 13,
+        "interactiveAssetCount": 16,
+        "rootTopicCount": 6
+      }
+    },
+    "parityRisks": [
+      "Clinical Pathology remains tutorial-first while all 7 CP curriculum modules are still staged.",
+      "Visible journey guidance can drift ahead of governed route readiness if source-map and content edits are not checkpointed together.",
+      "Interactive CP growth can overstate parity unless curriculum, catalog, and journey surfaces freeze the same baseline counts."
+    ],
+    "nextParityMoves": [
+      "Correct source links and reviewed teaching anchors before editing learner-facing parity copy.",
+      "Use the frozen curriculum and CP interactive counts as the baseline for later T02 parity decisions.",
+      "Keep learner-UX validator and AlgorithmNavigator out of this tranche while the content baseline is still being frozen."
+    ]
+  },
   "swot": {
     "strengths": [
       "The app already has a coherent learn-study-apply shell with lectures, curriculum, competency, images, and sign-out practice.",

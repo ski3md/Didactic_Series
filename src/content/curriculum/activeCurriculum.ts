@@ -511,3 +511,27 @@ export const activeCurriculumSubspecialties = [
   'Neuropathology',
   'Pediatric / Placental',
 ] as const;
+
+export const getActiveCurriculumBaselineSnapshot = () => {
+  const promotionStates = activeCurriculumModules.reduce(
+    (counts, module) => {
+      counts[module.promotionState] = (counts[module.promotionState] || 0) + 1;
+      return counts;
+    },
+    { canonical: 0, staged: 0 } as Record<'canonical' | 'staged', number>
+  );
+
+  const clinicalPathologyModules = activeCurriculumModules.filter(
+    (module) => module.subspecialty === 'Clinical Pathology'
+  );
+
+  return {
+    totalModules: activeCurriculumModules.length,
+    promotionStates,
+    clinicalPathology: {
+      totalModules: clinicalPathologyModules.length,
+      canonicalModules: clinicalPathologyModules.filter((module) => module.promotionState === 'canonical').length,
+      stagedModules: clinicalPathologyModules.filter((module) => module.promotionState === 'staged').length,
+    },
+  };
+};
