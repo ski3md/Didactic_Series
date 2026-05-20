@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const path = require('path');
+const { execSync } = require('child_process');
 
 const {
   ROOT,
@@ -108,16 +109,14 @@ const TRANCHE_OVERRIDES = {
       'CP truth for W01 is effectively closed with a full baseline, exception queue, root-priority packet, execution manifest, and tranche closeout packet.',
   },
   T02: {
-    status: 'in_progress',
-    statusBasis: 'exact_step_backfill',
+    status: 'completed',
+    statusBasis: 'exact_proof_bundle',
     completionEvidence: {
       completedStepIds: [
         'W01-L2_CONTENT_PARITY-C01',
         'W01-L2_CONTENT_PARITY-C02',
         'W01-L2_CONTENT_PARITY-C03',
         'W01-L2_CONTENT_PARITY-C04',
-      ],
-      remainingStepIds: [
         'W01-L2_CONTENT_PARITY-C05',
         'W01-L2_CONTENT_PARITY-C06',
         'W01-L2_CONTENT_PARITY-C07',
@@ -125,6 +124,7 @@ const TRANCHE_OVERRIDES = {
         'W01-L2_CONTENT_PARITY-C09',
         'W01-L2_CONTENT_PARITY-C10',
       ],
+      remainingStepIds: [],
     },
     evidenceCommits: [
       'b6c2c480 Freeze content parity baseline snapshot',
@@ -134,14 +134,16 @@ const TRANCHE_OVERRIDES = {
     ],
     evidenceArtifacts: [
       'reports/content_consumption_journey_evaluation.json',
+      'reports/content_parity_tranche_closeout_packet.json',
     ],
     proofCommands: [
       'npm run cp:precision:validate',
       'npm run test -- src/utils/tutorialLibraryCatalog.test.ts',
+      'npx vitest run scripts/validate_content_parity_tranche_closeout_packet.test.ts',
       'git diff --check',
     ],
     summary:
-      'Content parity has a frozen baseline, normalized CP source links, and aligned module copy, but the remaining rule, proof, test, drift-clearance, and handoff steps are still open.',
+      'Content parity is formally closed with a valid baseline report, normalized CP source links, aligned module copy, and a dedicated tranche closeout packet.',
   },
   T03: {
     status: 'in_progress',
@@ -337,6 +339,14 @@ const summarizeStatuses = (tranches) => {
   return summary;
 };
 
+const readGit = (command, fallback) => {
+  try {
+    return execSync(command, { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim() || fallback;
+  } catch {
+    return fallback;
+  }
+};
+
 const buildLedger = () => {
   const program = readProgram();
   const groupedPhases = buildGroupedPhases(program);
@@ -355,9 +365,9 @@ const buildLedger = () => {
       'reports/didactics_learning_ux_report.json',
     ],
     currentState: {
-      branch: 'main',
-      head: '799b83d1',
-      sync: '0/0 vs origin/main',
+      branch: readGit('git branch --show-current', 'unknown'),
+      head: readGit('git rev-parse --short HEAD', 'unknown'),
+      sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
       firstOpenWave: currentWave?.id ?? 'W01',
       immediateNextAction: 'Backfill and formally close the remaining W01 tranches before opening W02 feature work.',

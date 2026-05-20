@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-05-20T16:25:33.913Z",
+  "tranche": "T02 W01 Content Parity",
+  "source": {
+    "journeyReport": "reports/content_consumption_journey_evaluation.json",
+    "trancheLedger": "src/content/planning/full_1000_execution_ledger.json"
+  },
+  "baseline": {
+    "totalModules": 26,
+    "canonicalModules": 15,
+    "stagedModules": 11,
+    "clinicalPathCanonicalModules": 7,
+    "clinicalPathStagedModules": 0,
+    "clinicalPathTutorials": 13,
+    "clinicalPathInteractiveAssets": 16,
+    "clinicalPathRootTopics": 6
+  },
+  "parity": {
+    "visibleClusterCount": 7,
+    "normalizedSourceLinkGroups": 4,
+    "parityRisks": [
+      "Clinical Pathology remains tutorial-first even though all 7 CP curriculum modules are now canonical, so visible route framing still has to prove depth rather than imply it.",
+      "Visible journey guidance can drift ahead of governed route readiness if source-map and content edits are not checkpointed together.",
+      "Interactive CP growth can overstate parity unless curriculum, catalog, and journey surfaces freeze the same baseline counts."
+    ],
+    "nextParityMoves": [
+      "Correct source links and reviewed teaching anchors before editing learner-facing parity copy.",
+      "Use the frozen curriculum and CP interactive counts as the baseline for later T02 parity decisions.",
+      "Keep learner-UX validator and AlgorithmNavigator out of this tranche while the content baseline is still being frozen."
+    ]
+  },
+  "execution": {
+    "completedStepIds": [
+      "W01-L2_CONTENT_PARITY-C01",
+      "W01-L2_CONTENT_PARITY-C02",
+      "W01-L2_CONTENT_PARITY-C03",
+      "W01-L2_CONTENT_PARITY-C04",
+      "W01-L2_CONTENT_PARITY-C05",
+      "W01-L2_CONTENT_PARITY-C06",
+      "W01-L2_CONTENT_PARITY-C07",
+      "W01-L2_CONTENT_PARITY-C08",
+      "W01-L2_CONTENT_PARITY-C09",
+      "W01-L2_CONTENT_PARITY-C10"
+    ],
+    "proofCommands": [
+      "npm run cp:precision:validate",
+      "npm run test -- src/utils/tutorialLibraryCatalog.test.ts",
+      "npx vitest run scripts/validate_content_parity_tranche_closeout_packet.test.ts",
+      "git diff --check"
+    ]
+  },
+  "completionGate": {
+    "baselineGreen": true,
+    "staleWhen": [
+      "the curriculum or clinical-path tutorial baseline counts change without regenerating this packet",
+      "the visible cluster parity map changes without regenerating this packet",
+      "the normalized source-link groups change without regenerating this packet"
+    ]
+  }
+}

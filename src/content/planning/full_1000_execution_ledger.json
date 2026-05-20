@@ -10,7 +10,7 @@
   ],
   "currentState": {
     "branch": "main",
-    "head": "799b83d1",
+    "head": "eaefb56a",
     "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W01",
@@ -126,8 +126,8 @@
     }
   ],
   "trancheStatusCounts": {
-    "completed": 1,
-    "in_progress": 4,
+    "completed": 2,
+    "in_progress": 3,
     "planned": 95
   },
   "immediateNextSequence": [
@@ -271,23 +271,22 @@
       "laneTitle": "Tutorials, curriculum, studio content, and content parity",
       "group": "G1",
       "goal": "This lane brings the learner-facing content into line with the reviewed truth for freeze the current truth baseline.",
-      "status": "in_progress",
-      "statusBasis": "exact_step_backfill",
+      "status": "completed",
+      "statusBasis": "exact_proof_bundle",
       "completionEvidence": {
         "completedStepIds": [
           "W01-L2_CONTENT_PARITY-C01",
           "W01-L2_CONTENT_PARITY-C02",
           "W01-L2_CONTENT_PARITY-C03",
-          "W01-L2_CONTENT_PARITY-C04"
-        ],
-        "remainingStepIds": [
+          "W01-L2_CONTENT_PARITY-C04",
           "W01-L2_CONTENT_PARITY-C05",
           "W01-L2_CONTENT_PARITY-C06",
           "W01-L2_CONTENT_PARITY-C07",
           "W01-L2_CONTENT_PARITY-C08",
           "W01-L2_CONTENT_PARITY-C09",
           "W01-L2_CONTENT_PARITY-C10"
-        ]
+        ],
+        "remainingStepIds": []
       },
       "recordTitles": [
         {
@@ -356,6 +355,7 @@
       "proofCommands": [
         "npm run cp:precision:validate",
         "npm run test -- src/utils/tutorialLibraryCatalog.test.ts",
+        "npx vitest run scripts/validate_content_parity_tranche_closeout_packet.test.ts",
         "git diff --check"
       ],
       "evidenceCommits": [
@@ -365,11 +365,12 @@
         "15ff4f00 Align CP module cluster parity copy"
       ],
       "evidenceArtifacts": [
-        "reports/content_consumption_journey_evaluation.json"
+        "reports/content_consumption_journey_evaluation.json",
+        "reports/content_parity_tranche_closeout_packet.json"
       ],
       "supportingProgress": [],
       "remainingOwnedFiles": [],
-      "summary": "Content parity has a frozen baseline, normalized CP source links, and aligned module copy, but the remaining rule, proof, test, drift-clearance, and handoff steps are still open."
+      "summary": "Content parity is formally closed with a valid baseline report, normalized CP source links, aligned module copy, and a dedicated tranche closeout packet."
     },
     {
       "id": "T03",

@@ -33,8 +33,8 @@ describe('full 1000 execution ledger assets', () => {
 
   it('marks only the reconciled opening tranches as completed or in progress', () => {
     expect(ledger.trancheStatusCounts).toEqual({
-      completed: 1,
-      in_progress: 4,
+      completed: 2,
+      in_progress: 3,
       planned: 95,
     });
 
@@ -51,11 +51,11 @@ describe('full 1000 execution ledger assets', () => {
     expect(t01?.completionEvidence.remainingStepIds).toHaveLength(0);
 
     expect(t02).toMatchObject({
-      status: 'in_progress',
-      statusBasis: 'exact_step_backfill',
+      status: 'completed',
+      statusBasis: 'exact_proof_bundle',
     });
-    expect(t02?.completionEvidence.completedStepIds).toHaveLength(4);
-    expect(t02?.completionEvidence.remainingStepIds).toHaveLength(6);
+    expect(t02?.completionEvidence.completedStepIds).toHaveLength(10);
+    expect(t02?.completionEvidence.remainingStepIds).toHaveLength(0);
 
     expect(t05).toMatchObject({
       status: 'in_progress',

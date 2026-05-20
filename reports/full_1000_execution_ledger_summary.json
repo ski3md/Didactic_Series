@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-05-20T15:52:52.626Z",
+  "generatedAt": "2026-05-20T16:25:33.823Z",
   "currentState": {
     "branch": "main",
-    "head": "799b83d1",
+    "head": "eaefb56a",
     "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W01",
@@ -13,8 +13,8 @@
     "requiredState": "All W01 through W20 lane records are either landed or intentionally superseded, each wave ends with its required proof bundle, and the release-story outputs in W19/W20 are present."
   },
   "trancheStatusCounts": {
-    "completed": 1,
-    "in_progress": 4,
+    "completed": 2,
+    "in_progress": 3,
     "planned": 95
   },
   "firstOpenWave": "W01",
@@ -27,14 +27,6 @@
     "Open W02 only after W01 is fully ledgered and proof-complete."
   ],
   "inProgressTranches": [
-    {
-      "id": "T02",
-      "wave": "W01",
-      "lane": "L2_CONTENT_PARITY",
-      "statusBasis": "exact_step_backfill",
-      "completedSteps": 4,
-      "remainingSteps": 6
-    },
     {
       "id": "T03",
       "wave": "W01",

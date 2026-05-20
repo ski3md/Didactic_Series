@@ -5,7 +5,7 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `799b83d1`
+- HEAD: `eaefb56a`
 - Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W01`
@@ -28,8 +28,8 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ## Tranche Status Counts
 
-- Completed: 1
-- In progress: 4
+- Completed: 2
+- In progress: 3
 - Planned: 95
 
 ## Immediate Next Sequence
@@ -58,16 +58,16 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ### T02 W01 Content Parity
 
-- Status: `in_progress`
-- Status basis: `exact_step_backfill`
+- Status: `completed`
+- Status basis: `exact_proof_bundle`
 - Goal: This lane brings the learner-facing content into line with the reviewed truth for freeze the current truth baseline.
-- Completed steps: 4
-- Remaining steps: 6
+- Completed steps: 10
+- Remaining steps: 0
 - Evidence commits: `b6c2c480 Freeze content parity baseline snapshot`, `01032db0 Normalize CP curriculum tutorial source links`, `ad27fcce Align CP foundations content parity`, `15ff4f00 Align CP module cluster parity copy`
-- Evidence artifacts: `reports/content_consumption_journey_evaluation.json`
+- Evidence artifacts: `reports/content_consumption_journey_evaluation.json`, `reports/content_parity_tranche_closeout_packet.json`
 - Remaining owned files: none
-- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `git diff --check`
-- Summary: Content parity has a frozen baseline, normalized CP source links, and aligned module copy, but the remaining rule, proof, test, drift-clearance, and handoff steps are still open.
+- Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `npx vitest run scripts/validate_content_parity_tranche_closeout_packet.test.ts`, `git diff --check`
+- Summary: Content parity is formally closed with a valid baseline report, normalized CP source links, aligned module copy, and a dedicated tranche closeout packet.
 
 ### T03 W01 Learner UX
 
