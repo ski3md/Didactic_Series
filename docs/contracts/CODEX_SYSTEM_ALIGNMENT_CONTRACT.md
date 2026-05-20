@@ -50,6 +50,19 @@ When the user grants ongoing execution permission for a Didactic Series task:
 - when blocked, report the exact blocker and the minimum missing input needed to resume
 - preserve deterministic CLI-first execution, auditability, rollback awareness, and proof-producing behavior while continuing autonomously
 
+## Automation Rule
+
+When the user asks Didactic Series work to recur, wake up later, follow up automatically, monitor a condition, or continue on a schedule:
+
+- treat automation as a governed execution surface, not as an informal reminder
+- prefer the Codex automation surface over ad hoc notes or chat-only promises
+- prefer a heartbeat automation when the request is to resume or revisit the current thread
+- prefer a cron automation when the request is a detached recurring workspace job
+- inspect existing matching automation intent before creating a duplicate
+- preserve the current repo path, execution scope, and proof expectations inside the automation prompt
+- keep automation prompts task-specific, CLI-first, and artifact-producing
+- do not create recurring automation unless the user explicitly asks for a follow-up, reminder, monitor, repeated run, or scheduled continuation
+
 ## Truth-First Content Rule
 
 When pathology content, ABPath mappings, or governance anchors are involved:

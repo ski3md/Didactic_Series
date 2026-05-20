@@ -234,7 +234,7 @@ describe('validate_didactics_learning_ux helpers', () => {
     );
   });
 
-  it('accepts contract alignment semantics when autonomous execution and OpenClaw posture are explicit', () => {
+  it('accepts contract alignment semantics when autonomous execution, automation, and OpenClaw posture are explicit', () => {
     const result = evaluateContractAlignmentSemantics({
       agentsMd: `
         docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md
@@ -246,6 +246,11 @@ describe('validate_didactics_learning_ux helpers', () => {
         ## Autonomous Execution Rule
         continue through logically connected repo steps without repeatedly asking for \`proceed\`, \`continue\`, or equivalent confirmations
         pause only for destructive actions, irreversible mutations, missing credentials or secrets, materially changed legal or risk posture, truly ambiguous branch decisions, required external approval, or policy-bound clarification
+        ## Automation Rule
+        prefer a heartbeat automation when the request is to resume or revisit the current thread
+        prefer a cron automation when the request is a detached recurring workspace job
+        inspect existing matching automation intent before creating a duplicate
+        do not create recurring automation unless the user explicitly asks for a follow-up, reminder, monitor, repeated run, or scheduled continuation
         ## OpenClaw Execution Rule
         ## Parallel Lane Rule
       `,
@@ -291,12 +296,12 @@ describe('validate_didactics_learning_ux helpers', () => {
     expect(result.passes).toEqual(
       expect.arrayContaining([
         expect.stringContaining('AGENTS imports both the Codex system-alignment and OpenClaw execution contracts.'),
-        expect.stringContaining('Codex system alignment contract captures autonomous execution, public-text truth, OpenClaw posture, and parallel-lane ownership.'),
+        expect.stringContaining('Codex system alignment contract captures autonomous execution, automation posture, public-text truth, OpenClaw posture, and parallel-lane ownership.'),
       ]),
     );
   });
 
-  it('flags contract alignment drift when autonomous execution rules are missing', () => {
+  it('flags contract alignment drift when autonomous execution or automation rules are missing', () => {
     const result = evaluateContractAlignmentSemantics({
       agentsMd: `
         docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md
@@ -339,7 +344,7 @@ describe('validate_didactics_learning_ux helpers', () => {
 
     expect(result.issues).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Codex system alignment contract is missing one or more required autonomous-execution, public-text, OpenClaw, or parallel-lane rules.'),
+        expect.stringContaining('Codex system alignment contract is missing one or more required autonomous-execution, automation, public-text, OpenClaw, or parallel-lane rules.'),
       ]),
     );
   });

@@ -1055,12 +1055,17 @@ const evaluateContractAlignmentSemantics = ({
     codexAlignmentContractMd.includes('## Autonomous Execution Rule') &&
     codexAlignmentContractMd.includes('continue through logically connected repo steps without repeatedly asking for `proceed`, `continue`, or equivalent confirmations') &&
     codexAlignmentContractMd.includes('pause only for destructive actions, irreversible mutations, missing credentials or secrets, materially changed legal or risk posture, truly ambiguous branch decisions, required external approval, or policy-bound clarification') &&
+    codexAlignmentContractMd.includes('## Automation Rule') &&
+    codexAlignmentContractMd.includes('prefer a heartbeat automation when the request is to resume or revisit the current thread') &&
+    codexAlignmentContractMd.includes('prefer a cron automation when the request is a detached recurring workspace job') &&
+    codexAlignmentContractMd.includes('inspect existing matching automation intent before creating a duplicate') &&
+    codexAlignmentContractMd.includes('do not create recurring automation unless the user explicitly asks for a follow-up, reminder, monitor, repeated run, or scheduled continuation') &&
     codexAlignmentContractMd.includes('## OpenClaw Execution Rule') &&
     codexAlignmentContractMd.includes('## Parallel Lane Rule')
   ) {
-    passes.push('Codex system alignment contract captures autonomous execution, public-text truth, OpenClaw posture, and parallel-lane ownership.');
+    passes.push('Codex system alignment contract captures autonomous execution, automation posture, public-text truth, OpenClaw posture, and parallel-lane ownership.');
   } else {
-    issues.push('Codex system alignment contract is missing one or more required autonomous-execution, public-text, OpenClaw, or parallel-lane rules.');
+    issues.push('Codex system alignment contract is missing one or more required autonomous-execution, automation, public-text, OpenClaw, or parallel-lane rules.');
   }
 
   if (
