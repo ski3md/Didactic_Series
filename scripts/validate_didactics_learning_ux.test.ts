@@ -420,6 +420,10 @@ describe('validate_didactics_learning_ux helpers', () => {
   it('accepts objective-first hierarchy when core framing and content appear before optional follow-up links', () => {
     const result = evaluateHierarchySemantics({
       tutorialsTsx: `
+        <div>Current review: Tutorials</div>
+        <div>Resume last lesson</div>
+        <div>Browse topics</div>
+        <div>Open the topic list</div>
         <div>Major topic</div>
         <div>Scope: Blood Banking / Transfusion Medicine</div>
         <div>Next: open the first diagnostic focus</div>
@@ -472,6 +476,7 @@ describe('validate_didactics_learning_ux helpers', () => {
     expect(result.passes).toEqual(
       expect.arrayContaining([
         expect.stringContaining('Tutorial detail keeps diagnostic framing'),
+        expect.stringContaining('Tutorial landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.'),
         expect.stringContaining('Tutorial topic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Lecture topic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Workup topic overview exposes scope and a single obvious next action'),
@@ -519,6 +524,7 @@ describe('validate_didactics_learning_ux helpers', () => {
 
       expect(result.issues).toEqual(
         expect.arrayContaining([
+          expect.stringContaining('Tutorial landing does not clearly expose both a direct resume-or-start CTA and a browse CTA before the topic grid.'),
           expect.stringContaining('Tutorial topic overview does not clearly expose scope and a single obvious next action before the topic grid.'),
           expect.stringContaining('Lecture topic overview does not clearly expose scope and a single obvious next action before the review-set grid.'),
           expect.stringContaining('Workup topic overview does not clearly expose scope and a single obvious next action before the differential grid.'),

@@ -382,6 +382,19 @@ const evaluateHierarchySemantics = ({
 
   if (
     appearsInOrder(tutorialsTsx, [
+      /Current review:\s*Tutorials/,
+      /(Resume last lesson|Start here)/,
+      /(Browse topics|Open the topic list)/,
+      /Major topic/,
+    ])
+  ) {
+    passes.push('Tutorial landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.');
+  } else {
+    issues.push('Tutorial landing does not clearly expose both a direct resume-or-start CTA and a browse CTA before the topic grid.');
+  }
+
+  if (
+    appearsInOrder(tutorialsTsx, [
       /Major topic/,
       /Scope:/,
       /Next:\s*open the first (diagnostic focus|lesson)/,

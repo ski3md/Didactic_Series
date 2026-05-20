@@ -1033,6 +1033,50 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                     </button>
                   )}
                 </div>
+                <div className="mt-5 grid gap-3 lg:grid-cols-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (lastVisitedTutorial) {
+                        openTutorial(lastVisitedTutorial.id);
+                        return;
+                      }
+                      if (tutorialRoots[0]) {
+                        openTopicOverview(tutorialRoots[0]);
+                      }
+                    }}
+                    className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
+                  >
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      {lastVisitedTutorial ? 'Resume last lesson' : 'Start here'}
+                    </div>
+                    <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
+                      {lastVisitedTutorial?.title ?? normalizePublicStudyLabel(tutorialRoots[0] ?? 'Choose a major topic')}
+                    </div>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      {lastVisitedTutorial
+                        ? summarizeTutorialBoardFocus(lastVisitedTutorial)
+                        : 'Begin with the recommended topic and move into the first diagnostic focus.'}
+                    </p>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (tutorialRoots[0]) {
+                        openTopicOverview(tutorialRoots[0]);
+                      }
+                    }}
+                    className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
+                  >
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Browse topics</div>
+                    <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
+                      Open the topic list
+                    </div>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      Pick one major topic, then choose a single diagnostic focus inside it.
+                    </p>
+                  </button>
+                </div>
                 <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                   {tutorialRoots.slice(0, preferences.focusMode ? 3 : 4).map((root, index) => (
                     <button

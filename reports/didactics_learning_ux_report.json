@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T04:57:47.607Z",
+  "generatedAt": "2026-05-20T05:00:51.522Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -96,6 +96,7 @@
     "Curriculum launch actions use destination-specific labels instead of vague generic CTAs.",
     "Learner-facing copy uses pathology-native vernacular instead of generic educational jargon.",
     "Tutorial detail keeps diagnostic framing and recognition cues ahead of optional related review.",
+    "Tutorial landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.",
     "Tutorial topic overview exposes scope and a single obvious next action before the topic grid.",
     "Lecture topic overview exposes scope and a single obvious next action before the review-set grid.",
     "Workup topic overview exposes scope and a single obvious next action before the differential grid.",
