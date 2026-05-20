@@ -93,9 +93,10 @@ const DestinationNodeButton: React.FC<{
   eyebrow?: string;
   detail?: string;
   tone?: 'topic' | 'subtopic' | 'overview';
+  compact?: boolean;
   isActive: boolean;
   onClick: () => void;
-}> = ({ label, eyebrow, detail, tone = 'topic', isActive, onClick }) => (
+}> = ({ label, eyebrow, detail, tone = 'topic', compact = false, isActive, onClick }) => (
   <button
     type="button"
     onClick={onClick}
@@ -103,13 +104,13 @@ const DestinationNodeButton: React.FC<{
       isActive
         ? 'border-sky-400 bg-sky-50 text-sky-800'
         : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
-    } ${tone === 'subtopic' ? 'ml-2 w-[calc(100%-0.5rem)]' : ''}`}
+    } ${tone === 'subtopic' ? 'ml-2 w-[calc(100%-0.5rem)]' : ''} ${compact ? 'px-2.5 py-1.5' : ''}`}
   >
     <div className="flex items-start justify-between gap-2">
       <div className="min-w-0">
         {eyebrow ? <div className={`text-[10px] font-semibold uppercase tracking-wide ${isActive ? 'text-sky-700' : 'text-slate-500'}`}>{eyebrow}</div> : null}
-        <div className="truncate text-[13px] font-medium">{normalizePublicStudyLabel(label)}</div>
-        {detail ? <div className={`mt-0.5 text-[11px] ${isActive ? 'text-sky-700' : 'text-slate-500'}`}>{detail}</div> : null}
+        <div className={`${compact ? 'text-[12px]' : 'text-[13px]'} truncate font-medium`}>{normalizePublicStudyLabel(label)}</div>
+        {detail ? <div className={`mt-0.5 ${compact ? 'text-[10px]' : 'text-[11px]'} ${isActive ? 'text-sky-700' : 'text-slate-500'}`}>{detail}</div> : null}
       </div>
       <span className={`mt-1 h-2.5 w-2.5 flex-shrink-0 rounded-full ${isActive ? 'bg-sky-500' : tone === 'overview' ? 'bg-slate-300' : 'bg-slate-200'}`} />
     </div>
@@ -530,8 +531,8 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
         )}
         {activeWorkspaceSection === Section.DIDACTIC_ALGORITHMS && activeStudyWorkspace && (
           <DestinationTreePanel title={activeStudyWorkspace.title} subtitle={activeStudyWorkspace.subtitle}>
-            <DestinationTreeSectionLabel label="Workups" />
-            <div className="space-y-2">
+            <DestinationTreeSectionLabel label="Areas" />
+            <div className="space-y-1.5">
               {algorithmStudyTree.roots.map((category) => {
                 const isActive = activeAlgorithmCategory === category.id;
                 return (
@@ -548,17 +549,19 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                     }}
                     isActive={isActive}
                     label={category.label}
+                    compact
                   />
                 );
               })}
             </div>
             {activeAlgorithmCategory && (algorithmStudyTree.subtopicsByRoot[activeAlgorithmCategory] || []).length > 0 && (
-              <div className="mt-4 border-l border-slate-200 pl-3">
-                <DestinationTreeSectionLabel label="Subtopics" detail={normalizePublicStudyLabel(activeAlgorithmCategory)} />
-                <div className="mb-2">
+              <div className="mt-3 border-l border-slate-200 pl-2.5">
+                <DestinationTreeSectionLabel label="Choose one" detail={normalizePublicStudyLabel(activeAlgorithmCategory)} />
+                <div className="mb-1.5">
                   <DestinationNodeButton
-                    label="Start with overview"
+                    label="Start here"
                     tone="overview"
+                    compact
                     isActive={!activeAlgorithmSubtopic}
                     onClick={() => {
                       setActiveAlgorithmSubtopic(undefined);
@@ -570,7 +573,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                     }}
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   {(algorithmStudyTree.subtopicsByRoot[activeAlgorithmCategory] || []).map((entry) => {
                     const isActive = activeAlgorithmSubtopic === entry.id;
                     return (
@@ -588,6 +591,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                         isActive={isActive}
                         label={entry.label}
                         tone="subtopic"
+                        compact
                         detail={undefined}
                       />
                     );
