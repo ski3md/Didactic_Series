@@ -475,9 +475,9 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                 }}
                 className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
               >
-                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Start here</div>
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Browse areas</div>
                 <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
-                  {algorithmStudyTree.roots[0]?.label ?? 'Choose a diagnostic area'}
+                  Open the diagnostic areas
                 </div>
                 <p className="mt-2 text-sm text-slate-600">
                   Open one diagnostic area, narrow to a differential or workup, then start the diagnostic approach itself.

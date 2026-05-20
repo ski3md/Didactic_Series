@@ -394,6 +394,32 @@ const evaluateHierarchySemantics = ({
   }
 
   if (
+    appearsInOrder(lecturesTsx, [
+      /Current review:\s*Lectures/,
+      /(Resume last lecture|Start here)/,
+      /(Browse topics|Open the topic list)/,
+      /Major topics/,
+    ])
+  ) {
+    passes.push('Lecture landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.');
+  } else {
+    issues.push('Lecture landing does not clearly expose both a direct resume-or-start CTA and a browse CTA before the topic grid.');
+  }
+
+  if (
+    appearsInOrder(algorithmsTsx, [
+      /Current review:\s*Workups/,
+      /(Resume last workup|Return to topic)/,
+      /(Browse areas|Open the diagnostic areas)/,
+      /Diagnostic areas/,
+    ])
+  ) {
+    passes.push('Workup landing exposes a direct resume-or-start CTA and a browse CTA before the diagnostic-area grid.');
+  } else {
+    issues.push('Workup landing does not clearly expose both a direct resume-or-start CTA and a browse CTA before the diagnostic-area grid.');
+  }
+
+  if (
     appearsInOrder(tutorialsTsx, [
       /Major topic/,
       /Scope:/,
