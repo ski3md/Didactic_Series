@@ -382,6 +382,18 @@ const evaluateHierarchySemantics = ({
 
   if (
     appearsInOrder(tutorialsTsx, [
+      /(What to recognize|Common pitfall|References)/,
+      /(Related review|Optional follow-up review)/,
+      /(Morphology follow-up|Interactive review|Open full morphology review|Open interactive review)/,
+    ])
+  ) {
+    passes.push('Tutorial detail keeps optional follow-up review after the core lesson content.');
+  } else {
+    issues.push('Tutorial detail does not clearly keep optional follow-up review after the core lesson content.');
+  }
+
+  if (
+    appearsInOrder(tutorialsTsx, [
       /Current review:\s*Tutorials/,
       /(Resume last lesson|Start here)/,
       /(Browse topics|Open the topic list)/,

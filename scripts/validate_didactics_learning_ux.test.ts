@@ -434,6 +434,10 @@ describe('validate_didactics_learning_ux helpers', () => {
         <button>Open Case Tutorial: Donor Eligibility and Screening</button>
         {activeTutorial && activeTab === 'tutorial' && <div>Diagnostic approach</div>}
         {tutorialObjectivesSection && <div>What to recognize</div>}
+        <div>Related review</div>
+        <div>Optional follow-up review</div>
+        <div>Morphology follow-up</div>
+        <button>Open full morphology review</button>
         {activeTutorial.interactiveAssets && <div>Related review</div>}
       `,
       lecturesTsx: `
@@ -489,6 +493,7 @@ describe('validate_didactics_learning_ux helpers', () => {
     expect(result.passes).toEqual(
       expect.arrayContaining([
         expect.stringContaining('Tutorial detail keeps diagnostic framing'),
+        expect.stringContaining('Tutorial detail keeps optional follow-up review after the core lesson content.'),
         expect.stringContaining('Tutorial landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.'),
         expect.stringContaining('Lecture landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.'),
         expect.stringContaining('Workup landing exposes a direct resume-or-start CTA and a browse CTA before the diagnostic-area grid.'),
@@ -512,6 +517,8 @@ describe('validate_didactics_learning_ux helpers', () => {
         <button>Back to tutorials</button>
         <div>Major topic</div>
         <button>Back to topic</button>
+        <div>Related review</div>
+        <button>Open full morphology review</button>
         <div>Diagnostic focus</div>
         {activeTutorial.interactiveAssets && <div>Related review</div>}
         {activeTutorial && activeTab === 'tutorial' && <div>Diagnostic approach</div>}
@@ -548,6 +555,7 @@ describe('validate_didactics_learning_ux helpers', () => {
           expect.stringContaining('Tutorial topic overview does not clearly expose scope and a single obvious next action before the topic grid.'),
           expect.stringContaining('Lecture topic overview does not clearly expose scope and a single obvious next action before the review-set grid.'),
           expect.stringContaining('Workup topic overview does not clearly expose scope and a single obvious next action before the differential grid.'),
+          expect.stringContaining('Tutorial detail does not clearly keep optional follow-up review after the core lesson content.'),
           expect.stringContaining('Tutorial subtopic overview does not clearly expose scope and a single obvious next action before the lesson list.'),
           expect.stringContaining('Lecture subtopic overview does not clearly expose scope and a single obvious next action before the lecture list.'),
           expect.stringContaining('Workup subtopic overview does not clearly expose scope and a single obvious next action before the workup list.'),

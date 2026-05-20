@@ -1374,6 +1374,38 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
           )}
           {(currentMappedSupportImage || currentInteractiveAsset) && (
             <div className="mt-6 space-y-4">
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                  <div className="max-w-3xl">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Related review</div>
+                    <h4 className="mt-1 font-serif text-lg font-semibold text-slate-900">Optional follow-up review</h4>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      Keep the lesson primary. Open these afterward when you want a mapped morphology pass or an applied interactive review.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    {activeTutorial.mappedImageSupport && currentMappedSupportImage && (
+                      <button
+                        type="button"
+                        onClick={openReferenceReview}
+                        className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                      >
+                        Open full morphology review
+                      </button>
+                    )}
+                    {activeTutorial.interactiveAssets && activeTutorial.interactiveAssets.length > 0 && currentInteractiveAsset && (
+                      <a
+                        href={resolveAssetUrl(currentInteractiveAsset.path)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                      >
+                        Open interactive review
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
               {activeTutorial.mappedImageSupport && currentMappedSupportImage && (
                 <div className="rounded-2xl border border-slate-200 bg-white p-5">
                   <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
@@ -1386,15 +1418,6 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                           Review focus: <span className="font-medium text-slate-900">{activeTutorial.mappedImageSupport.imageQuery}</span>
                         </p>
                       )}
-                      <div className="mt-4">
-                        <button
-                          type="button"
-                          onClick={openReferenceReview}
-                          className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
-                        >
-                          Open full morphology review
-                        </button>
-                      </div>
                     </div>
                     <a
                       href={currentMappedSupportImage.sourceUrl ?? resolveAssetUrl(currentMappedSupportImage.src)}
@@ -1457,14 +1480,6 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                           Use this when you want an applied second pass through the same diagnostic focus after reading the lesson.
                         </p>
                       </div>
-                      <a
-                        href={resolveAssetUrl(currentInteractiveAsset.path)}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
-                      >
-                        Open interactive review
-                      </a>
                     </div>
                     {activeTutorial.interactiveAssets.length > 1 && (
                       <div className="mt-4 flex flex-wrap gap-2">
