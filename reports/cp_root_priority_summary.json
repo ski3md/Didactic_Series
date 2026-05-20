@@ -1,0 +1,174 @@
+{
+  "generatedAt": "2026-05-20T11:05:08.940Z",
+  "source": {
+    "reviewerActionPacket": "reports/cp_reviewer_action_packet.json",
+    "governedPromotionPacket": "reports/cp_governed_promotion_packet.json"
+  },
+  "summary": {
+    "rootCount": 6,
+    "totalReviewerActionRequired": 8,
+    "totalPromoteUnderGovernedAnchor": 5
+  },
+  "rankedRoots": [
+    {
+      "root": "Management and Informatics",
+      "reviewerActionRequired": [
+        {
+          "id": "cp-mgmt-break-even-studio",
+          "abpathPrecisionMode": "nearest-valid-deep",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "Didactics governance review",
+          "reviewAction": "Complete CP governance review before promotion.",
+          "rationale": "interactive artifact teaches operational interpretation"
+        },
+        {
+          "id": "cp-mgmt-reagent-rental-studio",
+          "abpathPrecisionMode": "nearest-valid-deep",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "Didactics governance review",
+          "reviewAction": "Complete CP governance review before promotion.",
+          "rationale": "modern entity not literal in spec"
+        },
+        {
+          "id": "cp-mgmt-productivity-studio",
+          "abpathPrecisionMode": "nearest-valid-deep",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "Didactics governance review",
+          "reviewAction": "Complete CP governance review before promotion.",
+          "rationale": "interactive artifact teaches operational interpretation"
+        }
+      ],
+      "promoteUnderGovernedAnchor": [],
+      "reviewerActionCount": 3,
+      "promoteCount": 0,
+      "totalCount": 3
+    },
+    {
+      "root": "Hematopathology for Clinical Pathology",
+      "reviewerActionRequired": [
+        {
+          "id": "cp-flow-heme-studio",
+          "abpathPrecisionMode": "nearest-valid-deep",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "Didactics governance review",
+          "reviewAction": "Complete CP governance review before promotion.",
+          "rationale": "interactive artifact teaches operational interpretation"
+        }
+      ],
+      "promoteUnderGovernedAnchor": [
+        {
+          "id": "topic-mol-1",
+          "abpathPrecisionMode": "nearest-valid-deep",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "CP governance review",
+          "reviewAction": "Keep molecular methods teaching subordinate to the validated CP testing anchor.",
+          "rationale": "workflow concept distributed across multiple spec nodes"
+        },
+        {
+          "id": "topic-mol-2",
+          "abpathPrecisionMode": "cross-domain-governed",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "CP governance review",
+          "reviewAction": "Present the disease-site labels as board-mastery teaching focus under the CP molecular testing frame.",
+          "rationale": "This tutorial teaches method-centered molecular interpretation across disease sites; ABPath CP supports a governed testing anchor, but not a literal solid-tumor molecular node."
+        },
+        {
+          "id": "topic-mol-3",
+          "abpathPrecisionMode": "nearest-valid-deep",
+          "abpathAnchorConfidence": "high",
+          "reviewOwner": "CP governance review",
+          "reviewAction": "Promote under the CP hematopathology testing frame and keep entity-specific molecular labels subordinate.",
+          "rationale": "disease narrower than CP spec"
+        }
+      ],
+      "reviewerActionCount": 1,
+      "promoteCount": 3,
+      "totalCount": 4
+    },
+    {
+      "root": "Medical Microbiology",
+      "reviewerActionRequired": [
+        {
+          "id": "cp-micro-methods-ast-studio",
+          "abpathPrecisionMode": "nearest-valid-deep",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "Didactics governance review",
+          "reviewAction": "Complete CP governance review before promotion.",
+          "rationale": "workflow concept distributed across multiple spec nodes"
+        }
+      ],
+      "promoteUnderGovernedAnchor": [
+        {
+          "id": "respiratory-viruses",
+          "abpathPrecisionMode": "nearest-valid-deep",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "Didactics governance review",
+          "reviewAction": "Keep respiratory virus teaching under CP microbiology unless a narrower governed virus cluster is added later.",
+          "rationale": "respiratory-virus teaching spans multiple organism nodes, so the validated microbiology umbrella is safer than an AP pulmonary infection match"
+        },
+        {
+          "id": "topic-mb-3-a",
+          "abpathPrecisionMode": "nearest-valid-deep",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "Didactics governance review",
+          "reviewAction": "Keep respiratory virus teaching under CP microbiology unless a narrower governed virus cluster is added later.",
+          "rationale": "respiratory-virus teaching spans multiple organism nodes, so the validated microbiology umbrella is safer than an AP pulmonary infection match"
+        }
+      ],
+      "reviewerActionCount": 1,
+      "promoteCount": 2,
+      "totalCount": 3
+    },
+    {
+      "root": "Blood Banking/Transfusion Medicine",
+      "reviewerActionRequired": [
+        {
+          "id": "cp-dat-transfusion-studio",
+          "abpathPrecisionMode": "nearest-valid-deep",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "Didactics governance review",
+          "reviewAction": "Complete CP governance review before promotion.",
+          "rationale": "workflow concept distributed across multiple spec nodes"
+        }
+      ],
+      "promoteUnderGovernedAnchor": [],
+      "reviewerActionCount": 1,
+      "promoteCount": 0,
+      "totalCount": 1
+    },
+    {
+      "root": "Chemical Pathology",
+      "reviewerActionRequired": [
+        {
+          "id": "cp-chemical-path-endocrine-studio",
+          "abpathPrecisionMode": "nearest-valid-deep",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "Didactics governance review",
+          "reviewAction": "Complete CP governance review before promotion.",
+          "rationale": "disease narrower than CP spec"
+        }
+      ],
+      "promoteUnderGovernedAnchor": [],
+      "reviewerActionCount": 1,
+      "promoteCount": 0,
+      "totalCount": 1
+    },
+    {
+      "root": "Chemical Pathology + Blood Banking/Transfusion Medicine",
+      "reviewerActionRequired": [
+        {
+          "id": "cp-immune-lipid-studio",
+          "abpathPrecisionMode": "cross-domain-governed",
+          "abpathAnchorConfidence": "moderate",
+          "reviewOwner": "Didactics governance review",
+          "reviewAction": "Complete CP governance review before promotion.",
+          "rationale": "The lipid branch is governed by Chemical Pathology while the allorecognition branch borrows HLA significance from the transfusion and transplant side of CP. The tutorial is kept together because it teaches mechanism-linked interpretation across those adjacent CP domains."
+        }
+      ],
+      "promoteUnderGovernedAnchor": [],
+      "reviewerActionCount": 1,
+      "promoteCount": 0,
+      "totalCount": 1
+    }
+  ]
+}
