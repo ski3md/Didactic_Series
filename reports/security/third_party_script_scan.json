@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-05-18T00:01:25.929Z",
+  "scannedAt": "2026-05-20T17:45:01.745Z",
   "summary": {
     "allowedDomains": [
       "images.ctfassets.net",
@@ -12,11 +12,75 @@
       "www.ncbi.nlm.nih.gov"
     ],
     "allowedSubstrings": [
-      "/openseadragon/images/"
+      "/openseadragon/images/",
+      "https://cdn.jsdelivr.net/npm/chart.js",
+      "https://cdn.tailwindcss.com"
     ],
-    "totalFiles": 193
+    "allowedInlineFiles": [
+      "public/cp-studios/cah-21oh-studio.html",
+      "public/cp-studios/cah-master-studio.html",
+      "public/cp-studios/clinical-micro-methods-ast.html",
+      "public/cp-studios/dat-igg-sim-pro.html",
+      "public/cp-studios/flow-cytometry-sim-and-cases.html",
+      "public/cp-studios/immune-lipid-teaching-studio.html",
+      "public/cp-studios/interactive-heme.html",
+      "public/cp-studios/management-informatics-command-center.html",
+      "public/cp-studios/microbiology-case-dashboard.html"
+    ],
+    "totalFiles": 237
   },
-  "allowed": [],
+  "allowed": [
+    {
+      "file": "/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/public/cp-studios/interactive-heme.html",
+      "src": "https://cdn.tailwindcss.com"
+    },
+    {
+      "file": "/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/public/cp-studios/interactive-heme.html",
+      "src": "https://cdn.jsdelivr.net/npm/chart.js"
+    }
+  ],
+  "allowedInline": [
+    {
+      "file": "/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/public/cp-studios/cah-21oh-studio.html",
+      "relativeFile": "public/cp-studios/cah-21oh-studio.html",
+      "snippet": "/* ====== Autosave & State ====== */ const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s)); const storeKey='CAH21_v1'; const state={contrast:false,active:'anim',anim:{mode:'normal',step:0,speed:1,playing:false},quiz:{},"
+    },
+    {
+      "file": "/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/public/cp-studios/cah-master-studio.html",
+      "relativeFile": "public/cp-studios/cah-master-studio.html",
+      "snippet": "/* ============================================================ State & helpers ============================================================ */ const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s)); const KEY='CAH_Ma"
+    },
+    {
+      "file": "/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/public/cp-studios/clinical-micro-methods-ast.html",
+      "relativeFile": "public/cp-studios/clinical-micro-methods-ast.html",
+      "snippet": "const modules = [ {id:'intro', label:'Welcome & How to Use', group:'Overview', render:intro}, {id:'culture', label:'Culture (plates & atmosphere)', group:'Identification Methods', render:culture}, {id:'blood', label:'Automated Blood Culture', g"
+    },
+    {
+      "file": "/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/public/cp-studios/dat-igg-sim-pro.html",
+      "relativeFile": "public/cp-studios/dat-igg-sim-pro.html",
+      "snippet": "/* ============================================================ STATE ============================================================ */ const state = { pattern:\"igg_only\", sampleType:\"EDTA\", washes:0, polyRun:false, iggRun:false, c3Run:false"
+    },
+    {
+      "file": "/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/public/cp-studios/flow-cytometry-sim-and-cases.html",
+      "relativeFile": "public/cp-studios/flow-cytometry-sim-and-cases.html",
+      "snippet": "// Case Simulator Module const CaseSimulator = { currentStep: 1, totalSteps: 8, zoomLevel: 100, quizAnswered: { step4: false, step7: false }, init: function() { this.setupStepNavigation(); this"
+    },
+    {
+      "file": "/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/public/cp-studios/immune-lipid-teaching-studio.html",
+      "relativeFile": "public/cp-studios/immune-lipid-teaching-studio.html",
+      "snippet": "/* =============================== Global helpers & autosave ================================== */ const $ = s=>document.querySelector(s), $$ = s=>Array.from(document.querySelectorAll(s)); const storeKey='Studio_v1'; const state = { contrast:fal"
+    },
+    {
+      "file": "/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/public/cp-studios/management-informatics-command-center.html",
+      "relativeFile": "public/cp-studios/management-informatics-command-center.html",
+      "snippet": "const topics = [ { id: 'break-even-analysis', navTitle: 'Break-even analysis', navSubtitle: 'Capital planning and in-house versus send-out logic', title: 'Break-even analysis and capital planning', "
+    },
+    {
+      "file": "/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/public/cp-studios/microbiology-case-dashboard.html",
+      "relativeFile": "public/cp-studios/microbiology-case-dashboard.html",
+      "snippet": "(function(win, doc){ 'use strict'; if (win.__CS_BOOTSTRAPPED__) return; // idempotent init win.__CS_BOOTSTRAPPED__ = true; function onReady(cb){ if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', cb, { once: true "
+    }
+  ],
   "alerts": [],
   "inline": [],
   "warnings": []

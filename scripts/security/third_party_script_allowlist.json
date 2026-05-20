@@ -1,15 +1,31 @@
 {
-  "allowedDomains": [
-    "images.ctfassets.net",
-    "storage.googleapis.com",
-    "upload.wikimedia.org",
-    "www.ncbi.nlm.nih.gov",
-    "pathology.or.jp",
-    "webpath.med.utah.edu",
-    "openseadragon.github.io",
-    "openslide.cs.cmu.edu"
-  ],
+  "allowedDomains": [],
   "allowedSubstrings": [
-    "/openseadragon/images/"
-  ]
+    "https://cdn.tailwindcss.com",
+    "https://cdn.jsdelivr.net/npm/chart.js"
+  ],
+  "allowedInlineFiles": [
+    "public/cp-studios/cah-21oh-studio.html",
+    "public/cp-studios/cah-master-studio.html",
+    "public/cp-studios/clinical-micro-methods-ast.html",
+    "public/cp-studios/dat-igg-sim-pro.html",
+    "public/cp-studios/flow-cytometry-sim-and-cases.html",
+    "public/cp-studios/immune-lipid-teaching-studio.html",
+    "public/cp-studios/management-informatics-command-center.html",
+    "public/cp-studios/microbiology-case-dashboard.html",
+    "public/cp-studios/interactive-heme.html"
+  ],
+  "notes": {
+    "https://cdn.tailwindcss.com": "Allowed only for the legacy supplemental CP studio public/cp-studios/interactive-heme.html until that static board-review surface is rebuilt onto local compiled assets.",
+    "https://cdn.jsdelivr.net/npm/chart.js": "Allowed only for the legacy supplemental CP studio public/cp-studios/interactive-heme.html because its mastery charts still depend on Chart.js.",
+    "public/cp-studios/cah-21oh-studio.html": "Legacy static CP studio with local inline teaching logic pending modular extraction.",
+    "public/cp-studios/cah-master-studio.html": "Legacy static CP studio with local inline teaching logic pending modular extraction.",
+    "public/cp-studios/clinical-micro-methods-ast.html": "Legacy static CP studio with local inline teaching logic pending modular extraction.",
+    "public/cp-studios/dat-igg-sim-pro.html": "Legacy static CP studio with local inline teaching logic pending modular extraction.",
+    "public/cp-studios/flow-cytometry-sim-and-cases.html": "Legacy static CP studio with local inline teaching logic pending modular extraction.",
+    "public/cp-studios/immune-lipid-teaching-studio.html": "Legacy static CP studio with local inline teaching logic pending modular extraction.",
+    "public/cp-studios/management-informatics-command-center.html": "Legacy static CP studio with local inline teaching logic pending modular extraction.",
+    "public/cp-studios/microbiology-case-dashboard.html": "Legacy static CP studio with local inline teaching logic pending modular extraction.",
+    "public/cp-studios/interactive-heme.html": "Legacy static CP studio with local inline teaching logic pending modular extraction."
+  }
 }

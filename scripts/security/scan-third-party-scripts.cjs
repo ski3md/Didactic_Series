@@ -23,6 +23,7 @@ const ALLOWLIST_DEFAULT = {
   allowedSubstrings: [
     '/openseadragon/images/',
   ],
+  allowedInlineFiles: [],
 };
 
 const SCAN_EXTENSIONS = new Set(['.html', '.js', '.jsx', '.ts', '.tsx', '.mjs']);
@@ -57,6 +58,7 @@ const isLocalUrl = (src = '') => {
 
 const getAllowedDomains = (allowlist) => new Set([...(allowlist.allowedDomains || []), ...ALLOWLIST_DEFAULT.allowedDomains]);
 const getAllowedSubstrings = (allowlist) => new Set([...(allowlist.allowedSubstrings || []), ...ALLOWLIST_DEFAULT.allowedSubstrings]);
+const getAllowedInlineFiles = (allowlist) => new Set([...(allowlist.allowedInlineFiles || []), ...ALLOWLIST_DEFAULT.allowedInlineFiles]);
 
 const readAllowlist = () => {
   if (!fs.existsSync(ALLOWLIST_PATH)) {
@@ -69,6 +71,7 @@ const readAllowlist = () => {
     return {
       allowedDomains: Array.isArray(parsed.allowedDomains) ? parsed.allowedDomains : ALLOWLIST_DEFAULT.allowedDomains,
       allowedSubstrings: Array.isArray(parsed.allowedSubstrings) ? parsed.allowedSubstrings : ALLOWLIST_DEFAULT.allowedSubstrings,
+      allowedInlineFiles: Array.isArray(parsed.allowedInlineFiles) ? parsed.allowedInlineFiles : ALLOWLIST_DEFAULT.allowedInlineFiles,
     };
   } catch (error) {
     console.warn(`[SECURITY] Failed to parse allowlist at ${ALLOWLIST_PATH}. Using defaults.`, error.message);
@@ -76,7 +79,8 @@ const readAllowlist = () => {
   }
 };
 
-const scanInlineScripts = (content, filePath, findings) => {
+const scanInlineScripts = (content, filePath, findings, allowInlineFiles) => {
+  const relativeFile = path.relative(ROOT_DIR, filePath).replace(/\\/g, '/');
   const inlineScriptRegex = /<script\b[^>]*>([\s\S]*?)<\/script>/gi;
   let match;
   while ((match = inlineScriptRegex.exec(content))) {
@@ -86,15 +90,21 @@ const scanInlineScripts = (content, filePath, findings) => {
       continue;
     }
     if (body.length > 0) {
-      findings.inline.push({
+      const inlineRecord = {
         file: filePath,
+        relativeFile,
         snippet: body.slice(0, 250).replace(/\s+/g, ' '),
-      });
+      };
+      if (allowInlineFiles.has(relativeFile)) {
+        findings.allowedInline.push(inlineRecord);
+      } else {
+        findings.inline.push(inlineRecord);
+      }
     }
   }
 };
 
-const scanFile = (filePath, findings, allowlistDomains, allowlistSubstrings) => {
+const scanFile = (filePath, findings, allowlistDomains, allowlistSubstrings, allowInlineFiles) => {
   findings.summary.totalFiles += 1;
   const content = fs.readFileSync(filePath, 'utf8');
 
@@ -134,10 +144,10 @@ const scanFile = (filePath, findings, allowlistDomains, allowlistSubstrings) => 
     }
   }
 
-  scanInlineScripts(content, filePath, findings);
+  scanInlineScripts(content, filePath, findings, allowInlineFiles);
 };
 
-const walk = (dir, findings, allowlistDomains, allowlistSubstrings) => {
+const walk = (dir, findings, allowlistDomains, allowlistSubstrings, allowInlineFiles) => {
   if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) {
     return;
   }
@@ -148,13 +158,13 @@ const walk = (dir, findings, allowlistDomains, allowlistSubstrings) => {
     }
     const target = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      walk(target, findings, allowlistDomains, allowlistSubstrings);
+      walk(target, findings, allowlistDomains, allowlistSubstrings, allowInlineFiles);
       continue;
     }
     if (!SCAN_EXTENSIONS.has(path.extname(entry.name).toLowerCase())) {
       continue;
     }
-    scanFile(target, findings, allowlistDomains, allowlistSubstrings);
+    scanFile(target, findings, allowlistDomains, allowlistSubstrings, allowInlineFiles);
   }
 };
 
@@ -172,6 +182,7 @@ const writeReport = (data) => {
   lines.push('');
   lines.push(`- Unknown external script sources: ${data.alerts.length}`);
   lines.push(`- Inline script blocks: ${data.inline.length}`);
+  lines.push(`- Allowed inline script blocks: ${data.allowedInline.length}`);
   lines.push(`- Allowed external script sources: ${data.allowed.length}`);
   lines.push(`- Non-HTTP script references: ${data.warnings.length}`);
   lines.push('');
@@ -198,6 +209,17 @@ const writeReport = (data) => {
     lines.push('');
   }
 
+  if (data.allowedInline.length) {
+    lines.push('### Allowed Inline Scripts');
+    for (const item of data.allowedInline.slice(0, 50)) {
+      lines.push(`- ${item.file}: ${item.snippet}`);
+    }
+    if (data.allowedInline.length > 50) {
+      lines.push(`- ... and ${data.allowedInline.length - 50} more`);
+    }
+    lines.push('');
+  }
+
   if (data.warnings.length) {
     lines.push('### Non-HTTP Script References');
     for (const item of data.warnings.slice(0, 50)) {
@@ -216,15 +238,18 @@ const main = () => {
   const allowlist = readAllowlist();
   const allowDomains = getAllowedDomains(allowlist);
   const allowSubstrings = getAllowedSubstrings(allowlist);
+  const allowInlineFiles = getAllowedInlineFiles(allowlist);
 
   const findings = {
     scannedAt: new Date().toISOString(),
     summary: {
       allowedDomains: [...allowDomains].sort(),
       allowedSubstrings: [...allowSubstrings].sort(),
+      allowedInlineFiles: [...allowInlineFiles].sort(),
       totalFiles: 0,
     },
     allowed: [],
+    allowedInline: [],
     alerts: [],
     inline: [],
     warnings: [],
@@ -243,16 +268,17 @@ const main = () => {
       continue;
     }
     if (fs.statSync(target).isFile()) {
-      scanFile(target, findings, allowDomains, allowSubstrings);
+      scanFile(target, findings, allowDomains, allowSubstrings, allowInlineFiles);
       continue;
     }
-    walk(target, findings, allowDomains, allowSubstrings);
+    walk(target, findings, allowDomains, allowSubstrings, allowInlineFiles);
   }
   writeReport(findings);
 
   console.log('[SECURITY] Script scan complete');
   console.log(`[SECURITY] Unknown external scripts: ${findings.alerts.length}`);
   console.log(`[SECURITY] Inline scripts: ${findings.inline.length}`);
+  console.log(`[SECURITY] Allowed inline scripts: ${findings.allowedInline.length}`);
   console.log(`[SECURITY] Allowed external scripts: ${findings.allowed.length}`);
   console.log(`[SECURITY] Non-HTTP references: ${findings.warnings.length}`);
 
