@@ -87,12 +87,19 @@ interface MorphologyGatewayCard {
   previewImages: SupplementalReferenceImage[];
   uncertainty: PathologyStateSignal;
   operationalState: PathologyStateSignal;
+  immunophenotype?: ImmunophenotypeBranch;
 }
 
 interface PathologyStateSignal {
   label: string;
   cue: string;
   tone: string;
+}
+
+interface ImmunophenotypeBranch {
+  title: string;
+  description: string;
+  markers: string[];
 }
 
 const signoutImages = (signoutImageReferenceIndex.images ?? []) as SignoutReferenceImage[];
@@ -242,6 +249,34 @@ const PATHOLOGY_GATEWAY_STATE_MAP: Record<
   },
 };
 
+const MORPHOLOGY_IMMUNOPHENOTYPE_MAP: Record<string, ImmunophenotypeBranch> = {
+  'small blue cell': {
+    title: 'Immunophenotype branch',
+    description: 'Sort the small round blue cell differential by lineage before naming a tumor.',
+    markers: ['CD99', 'desmin', 'myogenin', 'synaptophysin', 'TdT', 'keratin', 'WT1', 'NKX2.2'],
+  },
+  'clear cell': {
+    title: 'Immunophenotype branch',
+    description: 'Use site-defining markers early because clear cytoplasm alone is not specific.',
+    markers: ['PAX8', 'HNF1B', 'Napsin A', 'AMACR', 'GATA3', 'TTF1', 'CK7'],
+  },
+  'spindle cell': {
+    title: 'Immunophenotype branch',
+    description: 'Separate fibroblastic, myogenic, neural, epithelial, and vascular mimics with a directed panel.',
+    markers: ['STAT6', 'S100', 'SOX10', 'desmin', 'SMA', 'keratin', 'CD34', 'MUC4'],
+  },
+  papillary: {
+    title: 'Immunophenotype branch',
+    description: 'Choose a site-aware panel once the architecture points toward a papillary lesion.',
+    markers: ['WT1', 'PAX8', 'TTF1', 'thyroglobulin', 'GATA3', 'CK7'],
+  },
+  basaloid: {
+    title: 'Immunophenotype branch',
+    description: 'Basaloid tumors often need lineage confirmation before the wording becomes safe.',
+    markers: ['p40', 'p63', 'CK5/6', 'CD117', 'MYB', 'HPV ISH'],
+  },
+};
+
 const defaultPathologyState = (
   label: string,
   cue: string,
@@ -278,6 +313,27 @@ const inferPathologySignals = (...values: Array<string | undefined>) => {
   }
 
   return { uncertainty, operationalState };
+};
+
+const inferImmunophenotypeBranch = (...values: Array<string | undefined>) => {
+  const haystack = values.filter(Boolean).join(' ').toLowerCase();
+
+  if (/\bsmall cell\b|\bsmall blue\b|\bsmall round blue\b/.test(haystack)) {
+    return MORPHOLOGY_IMMUNOPHENOTYPE_MAP['small blue cell'];
+  }
+  if (/\bclear cell\b/.test(haystack)) {
+    return MORPHOLOGY_IMMUNOPHENOTYPE_MAP['clear cell'];
+  }
+  if (/\bspindle\b|\bsolitary fibrous\b|\bsft\b/.test(haystack)) {
+    return MORPHOLOGY_IMMUNOPHENOTYPE_MAP['spindle cell'];
+  }
+  if (/\bpapillary\b/.test(haystack)) {
+    return MORPHOLOGY_IMMUNOPHENOTYPE_MAP.papillary;
+  }
+  if (/\bbasaloid\b/.test(haystack)) {
+    return MORPHOLOGY_IMMUNOPHENOTYPE_MAP.basaloid;
+  }
+  return undefined;
 };
 
 const matchesSupplementalSearch = (image: SupplementalReferenceImage, searchTerm: string) => {
@@ -406,6 +462,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
           operationalState:
             PATHOLOGY_GATEWAY_STATE_MAP[tag]?.operationalState ??
             defaultPathologyState('Differential open', 'Use the closest mimics first', 'bg-violet-50 text-violet-900 border-violet-200'),
+          immunophenotype: MORPHOLOGY_IMMUNOPHENOTYPE_MAP[tag],
         };
       }),
     [filteredSupplementalImages, supplementalMorphologyOptions]
@@ -772,6 +829,22 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                         <div className="text-xs text-slate-600">{card.operationalState.cue}</div>
                       </div>
                     </div>
+                    {card.immunophenotype && (
+                      <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-3">
+                        <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{card.immunophenotype.title}</div>
+                        <div className="mt-1 text-xs leading-5 text-slate-700">{card.immunophenotype.description}</div>
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          {card.immunophenotype.markers.map((marker) => (
+                            <span
+                              key={`${card.tag}-${marker}`}
+                              className="rounded-full border border-sky-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-sky-900"
+                            >
+                              {marker}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                     <div className="flex flex-wrap gap-1.5">
                       {card.focusTerms.slice(0, 3).map((term) => (
                         <span
@@ -1212,6 +1285,12 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                   inferMorphologyTags(image.title, image.caption, image.sourceDocument).join(' '),
                   inferStain(image.title, image.caption, image.sourceDocument),
                 );
+                const immunophenotype = inferImmunophenotypeBranch(
+                  image.title,
+                  image.caption,
+                  image.sourceDocument,
+                  inferMorphologyTags(image.title, image.caption, image.sourceDocument).join(' '),
+                );
                 return (
                   <>
               <img
@@ -1255,6 +1334,22 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                     <div className="text-[11px] leading-4 text-slate-600">{operationalState.cue}</div>
                   </div>
                 </div>
+                {immunophenotype && (
+                  <div className="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-2">
+                    <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">{immunophenotype.title}</div>
+                    <div className="mt-1 text-[11px] leading-4 text-slate-700">{immunophenotype.description}</div>
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      {immunophenotype.markers.slice(0, 6).map((marker) => (
+                        <span
+                          key={`${image.id}-${marker}`}
+                          className="rounded-full border border-sky-200 bg-white px-2 py-0.5 text-[10px] font-semibold text-sky-900"
+                        >
+                          {marker}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 <div className="border-t border-slate-100 pt-2 text-[11px] leading-4 text-slate-500">
                   <div>{supplementalSourceLabel(image)}</div>
                   {image.sourceRelativePath && <div className="truncate" title={image.sourceRelativePath}>{image.sourceRelativePath}</div>}
