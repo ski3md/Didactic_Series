@@ -31,7 +31,6 @@ import {
   captureAndPersistPingTelemetry,
   isPingProbeVisible,
   isPingTelemetryRoute,
-  triggerPingBeacon,
 } from './utils/pingTelemetry.ts';
 import { trackSectionVisit } from './utils/tracking.ts';
 import { BRAND } from './utils/brand.ts';
@@ -148,13 +147,6 @@ const App: React.FC = () => {
   const isPingProbeRoute = isPingProbeVisible(window.location.search);
   const pathname = window.location.pathname.toLowerCase().replace(/\/+$/, '') || '/';
   const isAdminLoginRoute = pathname === '/didactics/admin';
-
-  useEffect(() => {
-    if (isPingTelemetry || isPingProbeRoute) {
-      return;
-    }
-    triggerPingBeacon();
-  }, [isPingTelemetry, isPingProbeRoute]);
 
   useEffect(() => {
     if (!isPingTelemetry) return;

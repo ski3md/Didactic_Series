@@ -33,80 +33,9 @@ export const isPingProbeVisible = (search = ''): boolean => {
   );
 };
 
-const LAST_PING_BEACON_GUARD_KEY = 'pathology_ping_last_beacon_guard';
-const BEACON_DUPLICATE_WINDOW_MS = 30_000;
-
-const buildPingBeaconSessionId = (): string => {
-  if (typeof window === 'undefined') return 'server';
-  const existing = window.localStorage.getItem('pathology_ping_session_id');
-  if (existing) return existing;
-  const generated = `s_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
-  try {
-    window.localStorage.setItem('pathology_ping_session_id', generated);
-  } catch {
-    return generated;
-  }
-  return generated;
-};
-
-const buildPingBeaconUrl = (sessionId: string): string => {
-  if (typeof window === 'undefined') return '';
-  const params = new URLSearchParams();
-  params.set('beacon', '1');
-  params.set('path', window.location.pathname);
-  params.set('query', window.location.search);
-  params.set('host', window.location.host);
-  params.set('ts', String(Date.now()));
-  params.set('sid', sessionId);
-  return `${window.location.origin}${import.meta.env.BASE_URL}ping-beacon.html?${params.toString()}`;
-};
-
-const shouldEmitBackgroundBeacon = (): boolean => {
-  if (typeof window === 'undefined') return false;
-  try {
-    const raw = window.localStorage.getItem(LAST_PING_BEACON_GUARD_KEY);
-    const lastTs = raw ? Number(raw) : NaN;
-    if (Number.isFinite(lastTs) && Date.now() - lastTs < BEACON_DUPLICATE_WINDOW_MS) {
-      return false;
-    }
-  } catch {
-    return true;
-  }
-  return true;
-};
-
-const recordBeaconEmission = () => {
-  if (typeof window === 'undefined') return;
-  try {
-    window.localStorage.setItem(LAST_PING_BEACON_GUARD_KEY, String(Date.now()));
-  } catch {
-    // Ignore storage guard failures.
-  }
-};
-
 export const triggerPingBeacon = (): void => {
-  if (typeof window === 'undefined' || typeof document === 'undefined') return;
-  if (!shouldEmitBackgroundBeacon()) return;
-
-  const sessionId = buildPingBeaconSessionId();
-  const beaconUrl = buildPingBeaconUrl(sessionId);
-  if (!beaconUrl) return;
-
-  recordBeaconEmission();
-  const frame = document.createElement('iframe');
-  frame.src = beaconUrl;
-  frame.setAttribute('aria-hidden', 'true');
-  frame.tabIndex = -1;
-  frame.title = 'pathology-telemetry-beacon';
-  frame.style.cssText = 'position:fixed;left:-10000px;width:0;height:0;opacity:0;';
-  frame.referrerPolicy = 'no-referrer';
-
-  const cleanup = () => {
-    frame.removeEventListener('load', cleanup);
-    frame.remove();
-  };
-  frame.addEventListener('load', cleanup);
-  document.body.appendChild(frame);
+  // The deployed didactics surface forbids framing via CSP (`frame-src 'none'`),
+  // so the old hidden-iframe beacon path must stay disabled.
 };
 
 const DEVICE_MODELS: [RegExp, string][] = [
