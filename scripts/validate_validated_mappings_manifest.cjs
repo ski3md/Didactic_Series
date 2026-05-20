@@ -483,6 +483,35 @@ const baselineSnapshot = {
   cpDomainValidatedCount: summary.cpDomainValidatedCount,
 };
 
+const cpGovernedExceptionRows = tutorialRowsCanonical.filter(
+  (row) =>
+    row.validatedForPromotion &&
+    (row.abpathDomain === 'CP' || row.track === 'clinical-path') &&
+    (
+      row.nearestValidReason ||
+      row.crossDomainJustification ||
+      row.facultyReviewReason ||
+      row.abpathAnchorConfidence === 'moderate' ||
+      row.abpathPrecisionMode === 'nearest-valid-deep' ||
+      row.abpathPrecisionMode === 'cross-domain-governed' ||
+      row.abpathPrecisionMode === 'local-teaching-only'
+    ),
+);
+
+baselineSnapshot.cpGovernedExceptionSnapshot = {
+  count: cpGovernedExceptionRows.length,
+  ids: cpGovernedExceptionRows.map((row) => row.id),
+  byPrecisionMode: Object.fromEntries(
+    Array.from(
+      cpGovernedExceptionRows.reduce((map, row) => {
+        const key = row.abpathPrecisionMode || 'literal-or-unspecified';
+        map.set(key, (map.get(key) || 0) + 1);
+        return map;
+      }, new Map()).entries(),
+    ).sort(([a], [b]) => String(a).localeCompare(String(b))),
+  ),
+};
+
 const validatedManifest = {
   generatedAt: new Date().toISOString(),
   sourceFingerprint,

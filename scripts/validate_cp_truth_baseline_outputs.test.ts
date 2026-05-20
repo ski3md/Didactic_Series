@@ -24,6 +24,7 @@ describe('cp truth baseline outputs', () => {
     expect(cpGovernanceReport.baselineSnapshot?.failureCount).toBe(cpGovernanceReport.failureCount);
     expect(cpGovernanceReport.baselineSnapshot?.precisionModes).toBeTruthy();
     expect(cpGovernanceReport.baselineSnapshot?.officialRoots).toBeTruthy();
+    expect(cpGovernanceReport.baselineSnapshot?.governedExceptionSnapshot).toBeTruthy();
   });
 
   it('keeps a compact validated-manifest baseline snapshot', () => {
@@ -35,5 +36,12 @@ describe('cp truth baseline outputs', () => {
       validatedManifest.summary.governancePendingRowCount,
     );
     expect(validatedManifest.baselineSnapshot?.sourceFingerprint).toBeTruthy();
+    expect(validatedManifest.baselineSnapshot?.cpGovernedExceptionSnapshot?.count).toBe(13);
+    expect(validatedManifest.baselineSnapshot?.cpGovernedExceptionSnapshot?.byPrecisionMode).toEqual(
+      expect.objectContaining({
+        'nearest-valid-deep': 11,
+        'cross-domain-governed': 2,
+      }),
+    );
   });
 });

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-20T10:43:43.231Z",
-  "sourceFingerprint": "f3489191f1c65b50d9e2b26ac203323bbcd2dd09d0095b520676ddfaba56d81e",
+  "generatedAt": "2026-05-20T10:46:22.132Z",
+  "sourceFingerprint": "c1d6ff9c18b2ac0d5d6b7fef5010d47090c304968213f4d64d339fc55d65bf18",
   "source": {
     "crosswalk": "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
     "cpGovernanceReport": "reports/cp_precision_governance_report.json",
@@ -18,7 +18,7 @@
     "cpDomainValidatedCount": 285
   },
   "baselineSnapshot": {
-    "sourceFingerprint": "f3489191f1c65b50d9e2b26ac203323bbcd2dd09d0095b520676ddfaba56d81e",
+    "sourceFingerprint": "c1d6ff9c18b2ac0d5d6b7fef5010d47090c304968213f4d64d339fc55d65bf18",
     "crosswalkTutorialCount": 493,
     "crosswalkMappedCount": 493,
     "cpGovernedTutorialCount": 13,
@@ -26,7 +26,29 @@
     "validatedTutorialCount": 487,
     "governancePendingTutorialCount": 0,
     "clinicalPathValidatedCount": 243,
-    "cpDomainValidatedCount": 285
+    "cpDomainValidatedCount": 285,
+    "cpGovernedExceptionSnapshot": {
+      "count": 13,
+      "ids": [
+        "respiratory-viruses",
+        "topic-mb-3-a",
+        "topic-mol-1",
+        "topic-mol-2",
+        "topic-mol-3",
+        "cp-micro-methods-ast-studio",
+        "cp-flow-heme-studio",
+        "cp-dat-transfusion-studio",
+        "cp-mgmt-break-even-studio",
+        "cp-mgmt-reagent-rental-studio",
+        "cp-mgmt-productivity-studio",
+        "cp-chemical-path-endocrine-studio",
+        "cp-immune-lipid-studio"
+      ],
+      "byPrecisionMode": {
+        "cross-domain-governed": 2,
+        "nearest-valid-deep": 11
+      }
+    }
   },
   "tutorialKeysValidated": [
     "src/content/tutorials/tutorials.normalized.json::bone-tumors-osteosarcoma-chondrosarcoma",

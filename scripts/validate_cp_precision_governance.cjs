@@ -168,6 +168,21 @@ const baselineSnapshot = {
   officialRoots: summarizeBy(rows, (row) => row.officialRoot),
 };
 
+const governedExceptionIds = rows
+  .filter(
+    (row) =>
+      row.anchorConfidence !== 'high' ||
+      row.precisionMode === 'nearest-valid-deep' ||
+      row.precisionMode === 'cross-domain-governed' ||
+      row.precisionMode === 'local-teaching-only',
+  )
+  .map((row) => row.id);
+
+baselineSnapshot.governedExceptionSnapshot = {
+  count: governedExceptionIds.length,
+  ids: governedExceptionIds,
+};
+
 ensureDir(reportJsonPath);
 fs.writeFileSync(
   reportJsonPath,

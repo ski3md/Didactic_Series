@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T10:43:43.105Z",
+  "generatedAt": "2026-05-20T10:46:21.993Z",
   "source": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
   "tutorialCount": 13,
   "moduleCount": 7,
@@ -31,6 +31,23 @@
       "Management and Informatics": 9,
       "Medical Microbiology": 1,
       "Multiple CP roots": 1
+    },
+    "governedExceptionSnapshot": {
+      "count": 12,
+      "ids": [
+        "cp-micro-methods-ast-studio",
+        "cp-flow-heme-studio",
+        "cp-dat-transfusion-studio",
+        "cp-mgmt-break-even-studio",
+        "cp-mgmt-reagent-rental-studio",
+        "cp-mgmt-productivity-studio",
+        "cp-chemical-path-endocrine-studio",
+        "cp-immune-lipid-studio",
+        "clinical-path-foundations",
+        "transfusion-cellular-therapy-core",
+        "clinical-microbiology-core",
+        "chemical-pathology-core"
+      ]
     }
   },
   "failures": [],
