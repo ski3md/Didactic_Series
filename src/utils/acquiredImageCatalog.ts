@@ -1,5 +1,6 @@
 import acquiredLectureImagesSource from '../content/images/acquiredLectureImages.json';
 import { StoredImage } from '../types.ts';
+import { inferMagnification, inferStain, normalizePathologyTitle } from './pathologyImageReview.ts';
 
 interface AcquiredLectureImageSource extends Omit<StoredImage, 'atlasCollection'> {
   originalUrl?: string;
@@ -48,12 +49,22 @@ export const getAcquiredLectureImages = (): StoredImage[] =>
   acquiredLectureImages.map((image) => ({
     ...image,
     src: withBaseUrl(image.src),
+    title: normalizePathologyTitle(image.title),
+    entity: image.entity ? normalizePathologyTitle(image.entity) : normalizePathologyTitle(image.title),
     description: cleanTeachingDescription(image.description, image.title),
-    tags: cleanTeachingTags(image.tags),
+    tags: Array.from(
+      new Set(
+        cleanTeachingTags(image.tags).concat([
+          inferStain(image.stain, image.title, image.description),
+          inferMagnification(image.title, image.description),
+        ]).filter(Boolean)
+      )
+    ),
     gcsPath: image.gcsPath || image.originalUrl || image.src,
     category: 'official',
     atlasCollection: 'acquired',
     readOnly: true,
+    magnification: image.magnification || inferMagnification(image.title, image.description),
   }));
 
 export const resolveAcquiredImageUrl = (url?: string) => {

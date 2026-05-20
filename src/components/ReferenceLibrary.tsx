@@ -17,6 +17,14 @@ import {
   signOutRubric,
   sourceStandardDocuments,
 } from '../content/competency/competencyMatrix.ts';
+import {
+  buildPathologySearchText,
+  inferMagnification,
+  inferMorphologyTags,
+  inferOrganSystem,
+  inferStain,
+  normalizePathologyTitle,
+} from '../utils/pathologyImageReview.ts';
 
 interface ReferenceLibraryProps {
   user: User | null;
@@ -154,9 +162,18 @@ const supplementalImageSrc = (image: SupplementalReferenceImage) => {
 const matchesSupplementalSearch = (image: SupplementalReferenceImage, searchTerm: string) => {
   const query = searchTerm.trim().toLowerCase();
   if (!query) return true;
-  return [image.title, image.specialty, image.sourceDocument, image.sourceRelativePath, image.sourcePath, image.caption]
-    .filter(Boolean)
-    .some((value) => String(value).toLowerCase().includes(query));
+  return buildPathologySearchText(
+    image.title,
+    image.specialty,
+    image.sourceDocument,
+    image.sourceRelativePath,
+    image.sourcePath,
+    image.caption,
+    ...inferMorphologyTags(image.title, image.caption, image.sourceDocument),
+    inferStain(image.title, image.caption, image.sourceDocument),
+    inferMagnification(image.title, image.caption, image.sourceDocument),
+    inferOrganSystem(image.specialty),
+  ).includes(query);
 };
 
 const collectionPresetMap: Record<
@@ -228,10 +245,35 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
       ),
     [selectedSupplementalSpecialty, supplementalImages, supplementalSearch]
   );
+  const supplementalMorphologyOptions = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          supplementalImages
+            .filter((image) => image.specialty === selectedSupplementalSpecialty)
+            .flatMap((image) => inferMorphologyTags(image.title, image.caption, image.sourceDocument))
+        )
+      ).sort(),
+    [selectedSupplementalSpecialty, supplementalImages]
+  );
+  const [selectedMorphologyTag, setSelectedMorphologyTag] = useState('');
+  const filteredSupplementalImagesWithMorphology = useMemo(
+    () =>
+      selectedMorphologyTag
+        ? filteredSupplementalImages.filter((image) =>
+            inferMorphologyTags(image.title, image.caption, image.sourceDocument).includes(selectedMorphologyTag)
+          )
+        : filteredSupplementalImages,
+    [filteredSupplementalImages, selectedMorphologyTag]
+  );
   const supplementalPageCount = Math.max(1, Math.ceil(filteredSupplementalImages.length / SUPPLEMENTAL_PAGE_SIZE));
   const visibleSupplementalImages = useMemo(
-    () => filteredSupplementalImages.slice((supplementalPage - 1) * SUPPLEMENTAL_PAGE_SIZE, supplementalPage * SUPPLEMENTAL_PAGE_SIZE),
-    [filteredSupplementalImages, supplementalPage]
+    () =>
+      filteredSupplementalImagesWithMorphology.slice(
+        (supplementalPage - 1) * SUPPLEMENTAL_PAGE_SIZE,
+        supplementalPage * SUPPLEMENTAL_PAGE_SIZE,
+      ),
+    [filteredSupplementalImagesWithMorphology, supplementalPage]
   );
   const focusIntentCompetencyLevel = useMemo(
     () =>
@@ -298,7 +340,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
 
   useEffect(() => {
     setSupplementalPage(1);
-  }, [selectedSupplementalSpecialty, supplementalSearch]);
+  }, [selectedSupplementalSpecialty, supplementalSearch, selectedMorphologyTag]);
 
   const focusPresets: FocusPreset[] = [
     ...(focusIntent?.focusTerms?.slice(0, 3).map((term) => ({
@@ -751,7 +793,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
           </div>
           <div className="rounded-lg bg-slate-50 px-4 py-3 text-right">
             <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Matches</div>
-            <div className="text-2xl font-semibold text-slate-900">{filteredSupplementalImages.length.toLocaleString()}</div>
+            <div className="text-2xl font-semibold text-slate-900">{filteredSupplementalImagesWithMorphology.length.toLocaleString()}</div>
           </div>
         </div>
         <div className="mt-4">
@@ -763,7 +805,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
             type="search"
             value={supplementalSearch}
             onChange={(event) => setSupplementalSearch(event.target.value)}
-            placeholder="Search diagnosis, folder, source, or caption"
+            placeholder="Search diagnosis, stain, magnification, morphology, WHO terms, or differential clues"
             className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-sky-300 focus:ring-2 focus:ring-sky-100"
           />
         </div>
@@ -783,9 +825,41 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
             </button>
           ))}
         </div>
+        {supplementalMorphologyOptions.length > 0 && (
+          <div className="mt-4">
+            <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Morphology-first filter</div>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => setSelectedMorphologyTag('')}
+                className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${
+                  selectedMorphologyTag === ''
+                    ? 'border-sky-300 bg-sky-50 text-sky-800'
+                    : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                }`}
+              >
+                All patterns
+              </button>
+              {supplementalMorphologyOptions.map((tag) => (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => setSelectedMorphologyTag(tag)}
+                  className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${
+                    selectedMorphologyTag === tag
+                      ? 'border-sky-300 bg-sky-50 text-sky-800'
+                      : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600">
           <div>
-            Showing page {supplementalPage} of {supplementalPageCount} ({visibleSupplementalImages.length.toLocaleString()} images)
+            Showing page {supplementalPage} of {Math.max(1, Math.ceil(filteredSupplementalImagesWithMorphology.length / SUPPLEMENTAL_PAGE_SIZE))} ({visibleSupplementalImages.length.toLocaleString()} images)
           </div>
           <div className="flex gap-2">
             <button
@@ -798,32 +872,42 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
             </button>
             <button
               type="button"
-              onClick={() => setSupplementalPage((page) => Math.min(supplementalPageCount, page + 1))}
-              disabled={supplementalPage === supplementalPageCount}
+              onClick={() => setSupplementalPage((page) => Math.min(Math.max(1, Math.ceil(filteredSupplementalImagesWithMorphology.length / SUPPLEMENTAL_PAGE_SIZE)), page + 1))}
+              disabled={supplementalPage === Math.max(1, Math.ceil(filteredSupplementalImagesWithMorphology.length / SUPPLEMENTAL_PAGE_SIZE))}
               className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 transition hover:border-slate-300 disabled:cursor-not-allowed disabled:opacity-50"
             >
               Next
             </button>
           </div>
         </div>
-        <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5">
           {visibleSupplementalImages.map((image) => (
-            <article key={image.id} className="overflow-hidden rounded-lg border border-slate-200 bg-white">
+            <article key={image.id} className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
               <img
                 src={supplementalImageSrc(image)}
                 alt={supplementalCaption(image)}
-                className="h-44 w-full bg-slate-100 object-cover"
+                className="h-44 w-full bg-slate-950 object-contain"
                 loading="lazy"
               />
-              <div className="space-y-3 p-4">
+              <div className="space-y-2 p-3">
                 <div>
-                  <span className="rounded-md bg-slate-100 px-2 py-1 text-xs font-semibold capitalize text-slate-700">
-                    {image.specialty.replace('-', ' ')}
-                  </span>
-                  <h3 className="mt-3 text-sm font-semibold leading-5 text-slate-950">{image.title}</h3>
-                  <p className="mt-2 text-sm leading-5 text-slate-700">{supplementalCaption(image)}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {[inferStain(image.title, image.caption, image.sourceDocument), inferMagnification(image.title, image.caption, image.sourceDocument), inferOrganSystem(image.specialty)]
+                      .filter(Boolean)
+                      .map((chip) => (
+                        <span key={chip} className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-700">
+                          {chip}
+                        </span>
+                      ))}
+                  </div>
+                  <h3 className="mt-2 text-sm font-semibold leading-5 text-slate-950">
+                    {normalizePathologyTitle(image.title)}
+                  </h3>
+                  <p className="mt-1 line-clamp-2 text-xs leading-4 text-slate-600">
+                    {inferMorphologyTags(image.title, image.caption, image.sourceDocument).slice(0, 4).join(' • ') || supplementalCaption(image)}
+                  </p>
                 </div>
-                <div className="border-t border-slate-100 pt-3 text-xs leading-5 text-slate-500">
+                <div className="border-t border-slate-100 pt-2 text-[11px] leading-4 text-slate-500">
                   <div>{supplementalSourceLabel(image)}</div>
                   {image.sourceRelativePath && <div className="truncate" title={image.sourceRelativePath}>{image.sourceRelativePath}</div>}
                 </div>

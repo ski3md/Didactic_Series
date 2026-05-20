@@ -5,6 +5,13 @@ import { getGalleryImages, updateImageMetadata, deleteImage } from '../utils/ima
 import { XCircleIcon, CloudArrowUpIcon, ShieldCheckIcon, EyeIcon, EditIcon } from './icons.tsx';
 import { ImageUploadForm } from './ImageUploadForm.tsx';
 import { ReferenceLibraryIntent } from '../utils/referenceLibraryNavigation.ts';
+import {
+  buildPathologySearchText,
+  inferMagnification,
+  inferMorphologyTags,
+  inferStain,
+  normalizePathologyTitle,
+} from '../utils/pathologyImageReview.ts';
 
 type CombinedImage = StoredImage & { isOfficial: boolean };
 
@@ -66,43 +73,35 @@ const ImageGrid: React.FC<{
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
       {images.map((image, index) => (
         <div key={`${image.atlasCollection || image.category}-${image.id}-${index}`} className="group relative">
-          <div
-            className="aspect-square w-full bg-slate-100 rounded-lg overflow-hidden cursor-pointer"
-            onClick={() => onImageClick(image)}
-          >
-            <img
-              src={image.src}
-              alt={image.title}
-              loading="lazy"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              onError={(e) => (e.currentTarget.src = imageFallback)}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="absolute bottom-0 left-0 p-2.5 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-full">
-              <h3 className="font-semibold text-sm leading-tight truncate">{image.title}</h3>
-              <div className="flex flex-wrap gap-1 mt-1">
-                {(image.tags || []).slice(0, 2).map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs bg-sky-500/80 text-white px-1.5 py-0.5 rounded"
-                  >
-                    {tag}
-                  </span>
-                ))}
+          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:border-slate-300 hover:shadow-md">
+            <div className="cursor-pointer bg-slate-950" onClick={() => onImageClick(image)}>
+              <img
+                src={image.src}
+                alt={image.title}
+                loading="lazy"
+                className="h-44 w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                onError={(e) => (e.currentTarget.src = imageFallback)}
+              />
+            </div>
+            <div className="space-y-2 p-3">
+              <div className="flex flex-wrap gap-1.5">
+                {[inferStain(image.title, image.description, ...(image.tags || [])), image.magnification || inferMagnification(image.title, image.description)]
+                  .filter(Boolean)
+                  .map((chip) => (
+                    <span key={chip} className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-700">
+                      {chip}
+                    </span>
+                  ))}
               </div>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onImageClick(image);
-                }}
-                className="mt-2 text-xs font-bold text-sky-300 hover:text-white transition-colors"
-                aria-label={`Review image for ${image.title}`}
-              >
-                Review Image →
-              </button>
+              <h3 className="line-clamp-2 text-sm font-semibold leading-5 text-slate-950">
+                {normalizePathologyTitle(image.entity || image.title)}
+              </h3>
+              <p className="line-clamp-2 text-xs leading-4 text-slate-600">
+                {[image.family, ...inferMorphologyTags(image.title, image.description, ...(image.tags || []))].filter(Boolean).slice(0, 3).join(' • ') || 'Pathology review image'}
+              </p>
             </div>
           </div>
           {image.isOfficial && (
@@ -346,14 +345,14 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user, focusIntent }) =>
     if (!lowered) {
       return true;
     }
-    return [
+    return buildPathologySearchText(
       image.title,
       image.description,
       image.entity || '',
       image.family || '',
       ...(image.tags || []),
       ...(image.cells || []),
-    ].some((value) => value.toLowerCase().includes(lowered));
+    ).includes(lowered);
   });
 
   return (
@@ -393,7 +392,7 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user, focusIntent }) =>
                     <p className="mt-1 text-sm text-slate-600">
                       {focusIntent?.title
                         ? `Focused on ${focusIntent.title}. Adjust or clear the search to review additional images.`
-                        : 'Browse the image library or narrow it with a quick search.'}
+                        : 'Browse the image library or narrow it with diagnosis, stain, magnification, morphology, or differential terms.'}
                     </p>
                   </div>
                   <label className="block lg:w-80">
@@ -402,7 +401,7 @@ const ImageGalleries: React.FC<ImageGalleriesProps> = ({ user, focusIntent }) =>
                       type="search"
                       value={searchQuery}
                       onChange={(event) => setSearchQuery(event.target.value)}
-                      placeholder="Search title, tag, entity, or cell"
+                      placeholder="Search diagnosis, stain, magnification, morphology, buzzword, or organ system"
                       className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-700 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
                     />
                   </label>
