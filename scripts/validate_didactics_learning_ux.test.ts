@@ -463,6 +463,8 @@ describe('validate_didactics_learning_ux helpers', () => {
         <div>Teaching Text</div>
         <StructuredTeachingContent />
         <div>Section guide</div>
+        <div>Full Lecture Text</div>
+        <div>References</div>
       `,
       algorithmsTsx: `
         <div>Current review: Workups</div>
@@ -516,6 +518,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         expect.stringContaining('Lecture detail opens with an orientation block'),
         expect.stringContaining('Lecture detail keeps optional follow-up review after the core signout sequence.'),
         expect.stringContaining('Lecture transcript keeps the section guide after the full teaching text.'),
+        expect.stringContaining('Lecture print export keeps references after the full lecture text.'),
       ])
     );
   });
@@ -542,6 +545,8 @@ describe('validate_didactics_learning_ux helpers', () => {
         <div>Faculty run sheet</div>
         <div>Section guide</div>
         <div>Teaching Text</div>
+        <div>References</div>
+        <div>Full Lecture Text</div>
       `,
       algorithmsTsx: `
         <div>Major topic</div>
@@ -580,6 +585,7 @@ describe('validate_didactics_learning_ux helpers', () => {
           expect.stringContaining('Lecture detail does not clearly open with orientation before the signout sequence.'),
           expect.stringContaining('Lecture detail does not clearly keep optional follow-up review after the core signout sequence.'),
           expect.stringContaining('Lecture transcript does not clearly keep the section guide after the full teaching text.'),
+          expect.stringContaining('Lecture print export does not clearly keep references after the full lecture text.'),
       ])
     );
   });

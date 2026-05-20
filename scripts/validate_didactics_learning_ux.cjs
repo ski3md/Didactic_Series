@@ -603,6 +603,17 @@ const evaluateHierarchySemantics = ({
     issues.push('Lecture transcript does not clearly keep the section guide after the full teaching text.');
   }
 
+  if (
+    appearsInOrder(lecturesTsx, [
+      /Full Lecture Text/,
+      /References/,
+    ])
+  ) {
+    passes.push('Lecture print export keeps references after the full lecture text.');
+  } else {
+    issues.push('Lecture print export does not clearly keep references after the full lecture text.');
+  }
+
   return { passes, issues };
 };
 

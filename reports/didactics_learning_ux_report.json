@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T05:17:10.184Z",
+  "generatedAt": "2026-05-20T10:20:12.086Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -112,7 +112,8 @@
     "Curriculum side rail keeps board blueprint ahead of optional follow-up review.",
     "Lecture detail opens with an orientation block before the signout sequence.",
     "Lecture detail keeps optional follow-up review after the core signout sequence.",
-    "Lecture transcript keeps the section guide after the full teaching text."
+    "Lecture transcript keeps the section guide after the full teaching text.",
+    "Lecture print export keeps references after the full lecture text."
   ],
   "failures": []
 }
