@@ -380,6 +380,19 @@ const evaluateHierarchySemantics = ({
     issues.push('Tutorial detail does not clearly keep diagnostic framing ahead of optional related review.');
   }
 
+  if (
+    appearsInOrder(tutorialsTsx, [
+      /Major topic/,
+      /Scope:/,
+      /Next:\s*open the first (diagnostic focus|lesson)/,
+      /Open .*|Back to tutorials/,
+    ])
+  ) {
+    passes.push('Tutorial topic overview exposes scope and a single obvious next action before the topic grid.');
+  } else {
+    issues.push('Tutorial topic overview does not clearly expose scope and a single obvious next action before the topic grid.');
+  }
+
   const algorithmWorkupIndex = indexOfPattern(algorithmsTsx, /<LectureAlgorithmPlayer\b/);
   const algorithmHeaderCueIndex = indexOfPattern(algorithmsTsx, /(Diagnostic focus|Workup controls)/);
   const algorithmRelatedReviewIndex = indexOfPattern(algorithmsTsx, /(Related review|Follow-up review|Optional follow-up review)/);

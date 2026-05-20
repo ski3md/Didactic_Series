@@ -1061,21 +1061,46 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
           {effectiveKind === 'topic_overview' && activeRoot && (
             <>
               <Card className="border-slate-200">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div className="max-w-4xl">
                     <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Major topic</div>
                     <h3 className="mt-2 font-serif text-2xl font-semibold text-slate-900">{normalizePublicStudyLabel(activeRoot)}</h3>
                     <p className="mt-2 text-sm text-slate-600">
                       Move through one diagnostic focus at a time, then open the strongest lesson in this topic.
                     </p>
+                    <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                      <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">
+                        Scope: {normalizePublicStudyLabel(activeSubtopics[0]?.label ?? activeTopicTutorials[0]?.title ?? activeRoot)}
+                      </span>
+                      <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">
+                        {activeSubtopics.length > 0 ? 'Next: open the first diagnostic focus' : 'Next: open the first lesson'}
+                      </span>
+                    </div>
                   </div>
-                  <button
-                    type="button"
-                    onClick={returnToTutorialLibrary}
-                    className="text-sm font-semibold text-slate-600 transition hover:text-slate-900"
-                  >
-                    Back to tutorials
-                  </button>
+                  <div className="flex flex-wrap items-center gap-3">
+                    {(activeSubtopics[0] || activeTopicTutorials[0]) && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          activeSubtopics[0]
+                            ? openSubtopicOverview(activeRoot, activeSubtopics[0].id)
+                            : activeTopicTutorials[0] && openTutorial(activeTopicTutorials[0].id)
+                        }
+                        className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                      >
+                        {activeSubtopics[0]
+                          ? `Open ${normalizePublicStudyLabel(activeSubtopics[0].label)}`
+                          : `Open ${activeTopicTutorials[0]?.title ?? 'lesson'}`}
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={returnToTutorialLibrary}
+                      className="text-sm font-semibold text-slate-600 transition hover:text-slate-900"
+                    >
+                      Back to tutorials
+                    </button>
+                  </div>
                 </div>
               </Card>
               <div className="grid gap-4 lg:grid-cols-2">

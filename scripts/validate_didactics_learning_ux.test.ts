@@ -420,6 +420,10 @@ describe('validate_didactics_learning_ux helpers', () => {
   it('accepts objective-first hierarchy when core framing and content appear before optional follow-up links', () => {
     const result = evaluateHierarchySemantics({
       tutorialsTsx: `
+        <div>Major topic</div>
+        <div>Scope: Blood Banking / Transfusion Medicine</div>
+        <div>Next: open the first diagnostic focus</div>
+        <button>Open Donor Evaluation</button>
         {activeTutorial && activeTab === 'tutorial' && <div>Diagnostic approach</div>}
         {tutorialObjectivesSection && <div>What to recognize</div>}
         {activeTutorial.interactiveAssets && <div>Related review</div>}
@@ -446,6 +450,7 @@ describe('validate_didactics_learning_ux helpers', () => {
     expect(result.passes).toEqual(
       expect.arrayContaining([
         expect.stringContaining('Tutorial detail keeps diagnostic framing'),
+        expect.stringContaining('Tutorial topic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Algorithm detail places the workup before optional tutorial'),
         expect.stringContaining('Curriculum module pages present patterns, board focus, workup, and diagnostic focus'),
         expect.stringContaining('Lecture detail opens with an orientation block'),
@@ -456,6 +461,8 @@ describe('validate_didactics_learning_ux helpers', () => {
   it('flags hierarchy drift when optional support appears before core content or objective framing disappears', () => {
     const result = evaluateHierarchySemantics({
       tutorialsTsx: `
+        <button>Back to tutorials</button>
+        <div>Major topic</div>
         {activeTutorial.interactiveAssets && <div>Related review</div>}
         {activeTutorial && activeTab === 'tutorial' && <div>Diagnostic approach</div>}
         {tutorialObjectivesSection && <div>What to recognize</div>}
@@ -477,12 +484,13 @@ describe('validate_didactics_learning_ux helpers', () => {
       `,
     });
 
-    expect(result.issues).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Tutorial detail does not clearly keep diagnostic framing ahead of optional related review.'),
-        expect.stringContaining('Algorithm detail does not clearly place the workup ahead of optional tutorial or review links.'),
-        expect.stringContaining('Curriculum module pages do not clearly present patterns, board focus, workup, and diagnostic focus in a stable reasoning order.'),
-        expect.stringContaining('Lecture detail does not clearly open with orientation before the signout sequence.'),
+      expect(result.issues).toEqual(
+        expect.arrayContaining([
+          expect.stringContaining('Tutorial detail does not clearly keep diagnostic framing ahead of optional related review.'),
+          expect.stringContaining('Tutorial topic overview does not clearly expose scope and a single obvious next action before the topic grid.'),
+          expect.stringContaining('Algorithm detail does not clearly place the workup ahead of optional tutorial or review links.'),
+          expect.stringContaining('Curriculum module pages do not clearly present patterns, board focus, workup, and diagnostic focus in a stable reasoning order.'),
+          expect.stringContaining('Lecture detail does not clearly open with orientation before the signout sequence.'),
       ])
     );
   });
