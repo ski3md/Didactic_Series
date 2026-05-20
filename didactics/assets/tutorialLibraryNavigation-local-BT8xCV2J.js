@@ -1,1 +1,0 @@
-var e=`didactic_series_selected_tutorial`,t=t=>{typeof window>`u`||window.sessionStorage.setItem(e,JSON.stringify(t))},n=()=>{if(typeof window>`u`)return null;let t=window.sessionStorage.getItem(e);if(!t)return null;window.sessionStorage.removeItem(e);try{return JSON.parse(t)}catch{return null}};export{t as n,n as t};

@@ -1,0 +1,1 @@
+var e=e=>{if(typeof window>`u`)return null;try{let t=window.sessionStorage.getItem(e);return t?JSON.parse(t):null}catch{return null}},t=(e,t)=>{if(!(typeof window>`u`))try{window.sessionStorage.setItem(e,JSON.stringify(t))}catch{}};export{t as n,e as t};

@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>CAH Master Studio — 21‑OH • 11β‑OH • 17α‑OH (Animations + Case Sims)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="description" content="Unified CAH teaching studio with tiled, accessible windows: animations for 21-OH, 11β-OH, 17α-OH; case simulations; autosave; PDF export."/>
+<style>
+  :root{
+    --bg:#0e1117; --panel:#141b22; --fg:#e6edf3; --muted:#9aa4b2;
+    --accent:#7aa2f7; --ok:#58d68d; --warn:#fbd38d; --bad:#f7768e;
+    --card:#0f1520; --border:#2b3240; --chip:#1f2632; --shadow:0 12px 28px rgba(0,0,0,.35);
+    --btn:#273142; --btnH:#324257; --focus:#94a3b8
+  }
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans";}
+  a,a:visited{color:#8ab4ff}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  header{
+    position:sticky;top:0;z-index:10000;background:linear-gradient(135deg,#0f1520,#1a2540);
+    border-bottom:1px solid var(--border); padding:10px 14px; display:flex; gap:14px; align-items:center; flex-wrap:wrap
+  }
+  h1{margin:0;font-size:1.05rem}
+  .muted{color:var(--muted)}
+  .btn{background:var(--btn);color:var(--fg);border:1px solid var(--border);border-radius:10px;padding:8px 10px;cursor:pointer}
+  .btn:hover{background:var(--btnH)}
+  .btn.ok{background:#1e3a2f;border-color:#2c5d49}
+  .chip{background:var(--chip);border:1px solid var(--border);padding:6px 10px;border-radius:999px}
+  .dock{display:flex;gap:8px;flex-wrap:wrap}
+  .toast{position:fixed;right:14px;bottom:14px;background:#0f1520;border:1px solid var(--border);border-radius:10px;padding:10px 12px;box-shadow:var(--shadow);z-index:99999}
+  .toast.hidden{display:none}
+  .high-contrast{filter:contrast(1.2) saturate(1.05)}
+
+  /* Floating windows (tileable) */
+  .win{
+    position:fixed; left:60px; top:110px; width:720px; height:520px; min-width:360px; min-height:280px;
+    background:var(--panel); border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden;
+  }
+  .win.hidden{display:none}
+  .win-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 10px;background:#101726;border-bottom:1px solid var(--border); cursor:move; user-select:none}
+  .win-title{font-size:.98rem}
+  .win-actions{display:flex;gap:6px}
+  .win-content{flex:1;overflow:auto;padding:12px}
+  .handle{position:absolute;width:16px;height:16px;right:4px;bottom:4px;border-right:2px solid #41506a;border-bottom:2px solid #41506a;cursor:nwse-resize}
+
+  /* When auto-layout tiles windows: */
+  .tile{left:0!important; top:0!important; border-radius:0; box-shadow:none; border-left:none; border-right:none}
+  [data-locked="true"]{cursor:not-allowed}
+
+  /* Shared UI elements */
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  input,select,textarea{background:#0f1520;color:var(--fg);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+  textarea{min-height:90px;width:100%}
+  .status{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:10px}
+  .okS{background:#14271f;border:1px solid #2c5f48;color:#9fe5c9}
+  .badS{background:#2b1215;border:1px solid #7e2b34;color:#ffb8c0}
+  .warnS{background:#2b2411;border:1px solid #6f5d2a;color:#fde1a5}
+  .timeline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .dot{width:16px;height:16px;border-radius:50%;background:#334155;border:1px solid #475569;box-shadow:0 0 0 0 rgba(122,162,247,0.6);animation:pulse 2s infinite}
+  .dot.active{background:#7aa2f7;box-shadow:0 0 12px 4px rgba(122,162,247,0.35)}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(122,162,247,0.6)}70%{box-shadow:0 0 0 16px rgba(122,162,247,0)}100%{box-shadow:0 0 0 0 rgba(122,162,247,0)}}
+  .progress{height:10px;background:#0b101a;border:1px solid var(--border);border-radius:999px;overflow:hidden}
+  .progress>div{height:100%;background:linear-gradient(90deg,#4dd0e1,#7aa2f7);width:0%}
+  .stage{background:#0b1322;border:1px solid var(--border);border-radius:12px;padding:12px;min-height:280px;position:relative;overflow:hidden}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .tabs .btn[aria-selected="true"]{background:#244663;border-color:#2f5b83}
+  .badgeX{fill:#f7768e;font-weight:700;filter:url(#glowRed);animation:shake .7s linear infinite}
+  @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-2px)}40%{transform:translateX(2px)}60%{transform:translateX(-2px)}80%{transform:translateX(2px)}}
+  .glowBlue{filter:url(#glowBlue)} .glowGreen{filter:url(#glowGreen)} .glowGold{filter:url(#glowGold)}
+  @media print{ header,.win:not(.printable),.toast{display:none!important} .printable{position:static!important;box-shadow:none;border:none} body{background:white;color:black} }
+</style>
+</head>
+<body>
+<header role="banner" aria-label="Top bar">
+  <h1>CAH Master Studio <span class="chip">21‑OH • 11β‑OH • 17α‑OH</span></h1>
+  <div class="dock" role="toolbar" aria-label="Window launcher">
+    <button class="btn" data-open="#win21">🧬 21‑OH (CYP21A2)</button>
+    <button class="btn" data-open="#win11">🧬 11β‑OH (CYP11B1)</button>
+    <button class="btn" data-open="#win17">🧬 17α‑OH (CYP17A1)</button>
+    <button class="btn" data-open="#winCases">📁 Case Simulations</button>
+    <button class="btn" data-open="#winRefs">📚 References</button>
+    <button class="btn" data-open="#winNotes">📝 Notes/PDF</button>
+    <button class="btn ok" id="btnToggleLayout" aria-pressed="true">Auto‑Layout: On</button>
+  </div>
+  <div class="muted" style="font-size:.9rem">
+    Keyboard: <kbd>1</kbd> 21‑OH • <kbd>2</kbd> 11β‑OH • <kbd>3</kbd> 17α‑OH • <kbd>4</kbd> Cases • <kbd>5</kbd> Refs • <kbd>6</kbd> Notes •
+    <kbd>Space</kbd> Play/Pause • <kbd>←/→</kbd> Prev/Next • <kbd>Esc</kbd> Minimize • High Contrast:
+    <button class="btn" id="btnContrast" aria-pressed="false">Off</button>
+  </div>
+</header>
+
+<!-- 21‑OH WINDOW -->
+<section id="win21" class="win" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="title21">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="title21">🧬 21‑Hydroxylase Deficiency — Bold Step‑by‑Step</div>
+    <div class="win-actions">
+      <button class="btn ghost sr-only" data-resize-inc aria-label="Increase window size by 10%">+ Size</button>
+      <button class="btn ghost sr-only" data-resize-dec aria-label="Decrease window size by 10%">− Size</button>
+      <button class="btn ghost sr-only" data-maximize aria-label="Maximize">Maximize</button>
+      <button class="btn ghost sr-only" data-restore aria-label="Restore">Restore</button>
+      <button class="btn ghost" data-minimize aria-label="Minimize">—</button>
+      <button class="btn ghost" data-close aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <div class="tabs" role="tablist">
+      <button class="btn" role="tab" aria-selected="true" data-tab="p21Anim">Animation</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="p21Overview">Overview</button>
+    </div>
+
+    <div id="p21Anim" role="tabpanel">
+      <div class="row" style="margin-bottom:6px">
+        <label class="row">Mode
+          <select id="mode21"><option value="normal">Normal</option><option value="def" selected>21‑OH deficiency</option></select>
+        </label>
+        <label class="row">Speed
+          <select id="spd21"><option>0.5</option><option selected>1</option><option>2</option></select>
+        </label>
+      </div>
+      <div class="stage" aria-label="21-OH animation stage">
+        <svg viewBox="0 0 940 300" width="100%" height="240" aria-hidden="true">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#7aa2f7"></path></marker>
+            <filter id="glowBlue"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#60a5fa"/></filter>
+            <filter id="glowGreen"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#22c55e"/></filter>
+            <filter id="glowGold"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#f59e0b"/></filter>
+            <filter id="glowRed"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#f7768e"/></filter>
+          </defs>
+
+          <text x="90" y="24" fill="#9aa4b2" font-size="12">Cholesterol</text>
+          <circle id="s21_chol" cx="90" cy="50" r="14" fill="#93c5fd" class="glowBlue"/>
+          <text x="270" y="24" fill="#9aa4b2" font-size="12">Progesterone</text>
+          <rect id="s21_prog" x="240" y="40" width="90" height="26" rx="6" fill="#334155"/>
+          <text x="470" y="24" fill="#9aa4b2" font-size="12">17‑hydroxyprogesterone (17‑OHP)</text>
+          <rect id="s21_17ohp" x="420" y="40" width="200" height="26" rx="6" fill="#334155"/>
+          <text x="710" y="24" fill="#9aa4b2" font-size="12">11‑deoxycortisol → Cortisol</text>
+          <rect id="s21_11dex" x="680" y="40" width="140" height="26" rx="6" fill="#334155"/>
+          <rect id="s21_cort" x="840" y="40" width="80" height="26" rx="6" fill="#22c55e"/>
+
+          <text x="270" y="170" fill="#9aa4b2" font-size="12">DOC → Aldosterone</text>
+          <rect id="s21_doc" x="240" y="180" width="140" height="26" rx="6" fill="#334155"/>
+          <rect id="s21_aldo" x="400" y="180" width="120" height="26" rx="6" fill="#22c55e"/>
+
+          <text x="700" y="170" fill="#9aa4b2" font-size="12">Androgens</text>
+          <rect id="s21_and" x="680" y="180" width="200" height="26" rx="6" fill="#f59e0b"/>
+
+          <!-- flow -->
+          <line id="s21_a1" x1="104" y1="50" x2="240" y2="53" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr)"/>
+          <line id="s21_a2" x1="330" y1="53" x2="420" y2="53" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr)"/>
+          <line id="s21_a3" x1="620" y1="53" x2="680" y2="53" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr)"/>
+          <line id="s21_a4" x1="820" y1="53" x2="840" y2="53" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr)"/>
+          <line id="s21_b1" x1="240" y1="193" x2="400" y2="193" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr)"/>
+          <line id="s21_shunt" x1="520" y1="66" x2="600" y2="180" stroke="#f59e0b" stroke-width="4" marker-end="url(#arr)" opacity="0"/>
+
+          <text id="s21_block" x="620" y="36" class="badgeX" font-size="22" opacity="0">✕ 21‑OH</text>
+          <text id="s21_acth" x="700" y="120" fill="#f59e0b" font-size="12" opacity="0">↓Cortisol → ↑ACTH → adrenal hyperplasia</text>
+        </svg>
+      </div>
+
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="s21_prev">⟵ Prev</button>
+        <button class="btn" id="s21_play">▶ Play</button>
+        <button class="btn" id="s21_pause">⏸ Pause</button>
+        <button class="btn" id="s21_next">Next ⟶</button>
+        <label class="row" style="flex:1">Scrub <input type="range" id="s21_scrub" min="0" max="4" step="1" style="width:100%"/></label>
+      </div>
+      <div class="timeline"><div class="dot" id="s21_d0"></div><div class="dot" id="s21_d1"></div><div class="dot" id="s21_d2"></div><div class="dot" id="s21_d3"></div><div class="dot" id="s21_d4"></div></div>
+      <div class="progress" style="margin-top:6px"><div id="s21_progbar"></div></div>
+      <div id="s21_caption" class="status warnS" role="status" aria-live="polite" style="margin-top:8px">Step 1: Cholesterol → progesterone (shared start).</div>
+    </div>
+
+    <div id="p21Overview" role="tabpanel" hidden class="card small">
+      <h3>Why the pattern looks this way</h3>
+      <ul>
+        <li><b>21‑OH (CYP21A2) block</b>: 17‑OHP ⇏ 11‑deoxycortisol; progesterone ⇏ DOC → **↓cortisol** (± **↓aldosterone**). Excess precursors → **androgen excess**; **↑17‑OHP** is the hallmark (screening marker). <em>(MSD; UpToDate; NEJM)</em></li>
+        <li><b>Phenotypes</b>: Salt‑wasting (hyponatremia/hyperkalemia), simple virilizing, nonclassic. <em>(UpToDate; NEJM)</em></li>
+      </ul>
+    </div>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- 11β‑OH WINDOW -->
+<section id="win11" class="win hidden" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="title11">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="title11">🧬 11β‑Hydroxylase Deficiency — Bold Step‑by‑Step</div>
+    <div class="win-actions">
+      <button class="btn ghost sr-only" data-resize-inc aria-label="Increase size">+ Size</button>
+      <button class="btn ghost sr-only" data-resize-dec aria-label="Decrease size">− Size</button>
+      <button class="btn ghost sr-only" data-maximize aria-label="Maximize">Maximize</button>
+      <button class="btn ghost sr-only" data-restore aria-label="Restore">Restore</button>
+      <button class="btn ghost" data-minimize aria-label="Minimize">—</button>
+      <button class="btn ghost" data-close aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <div class="tabs" role="tablist">
+      <button class="btn" role="tab" aria-selected="true" data-tab="p11Anim">Animation</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="p11Overview">Overview</button>
+    </div>
+
+    <div id="p11Anim" role="tabpanel">
+      <div class="row" style="margin-bottom:6px">
+        <label class="row">Speed <select id="spd11"><option>0.5</option><option selected>1</option><option>2</option></select></label>
+      </div>
+      <div class="stage" aria-label="11β animation stage">
+        <svg viewBox="0 0 1000 340" width="100%" height="260" aria-hidden="true">
+          <defs>
+            <marker id="arr2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#7aa2f7"/></marker>
+            <filter id="glowBlue2"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#60a5fa"/></filter>
+            <filter id="glowGreen2"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#22c55e"/></filter>
+            <filter id="glowGold2"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#f59e0b"/></filter>
+            <filter id="glowRed2"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#f7768e"/></filter>
+          </defs>
+
+          <text x="70" y="24" fill="#9aa4b2" font-size="12">17‑OHP</text>
+          <rect id="s11_17ohp" x="40" y="40" width="160" height="26" rx="6" fill="#334155"/>
+          <text x="290" y="24" fill="#9aa4b2" font-size="12">11‑deoxycortisol</text>
+          <rect id="s11_11dex" x="260" y="40" width="160" height="26" rx="6" fill="#60a5fa" class="glowBlue2"/>
+          <text x="500" y="24" fill="#9aa4b2" font-size="12">Cortisol</text>
+          <rect id="s11_cort" x="480" y="40" width="110" height="26" rx="6" fill="#22c55e"/>
+
+          <text x="70" y="170" fill="#9aa4b2" font-size="12">DOC</text>
+          <rect id="s11_doc" x="40" y="180" width="120" height="26" rx="6" fill="#60a5fa" class="glowBlue2"/>
+          <text x="220" y="170" fill="#9aa4b2" font-size="12">Corticosterone</text>
+          <rect id="s11_cortico" x="190" y="180" width="160" height="26" rx="6" fill="#334155"/>
+          <text x="400" y="170" fill="#9aa4b2" font-size="12">Aldosterone</text>
+          <rect id="s11_aldo" x="380" y="180" width="140" height="26" rx="6" fill="#22c55e"/>
+
+          <text x="720" y="170" fill="#9aa4b2" font-size="12">Androgens</text>
+          <rect id="s11_and" x="700" y="180" width="200" height="26" rx="6" fill="#f59e0b"/>
+
+          <line id="s11_a1" x1="200" y1="53" x2="260" y2="53" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr2)"/>
+          <line id="s11_a2" x1="420" y1="53" x2="480" y2="53" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr2)"/>
+          <line id="s11_b1" x1="160" y1="193" x2="190" y2="193" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr2)"/>
+          <line id="s11_b2" x1="350" y1="193" x2="380" y2="193" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr2)"/>
+
+          <text id="s11_block1" x="325" y="36" class="badgeX" font-size="22" opacity="0">✕ 11β‑OH</text>
+          <text id="s11_block2" x="255" y="172" class="badgeX" font-size="22" opacity="0">✕ 11β‑OH</text>
+        </svg>
+      </div>
+
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="s11_prev">⟵ Prev</button>
+        <button class="btn" id="s11_play">▶ Play</button>
+        <button class="btn" id="s11_pause">⏸ Pause</button>
+        <button class="btn" id="s11_next">Next ⟶</button>
+        <label class="row" style="flex:1">Scrub <input type="range" id="s11_scrub" min="0" max="4" step="1" style="width:100%"/></label>
+      </div>
+      <div class="timeline"><div class="dot" id="s11_d0"></div><div class="dot" id="s11_d1"></div><div class="dot" id="s11_d2"></div><div class="dot" id="s11_d3"></div><div class="dot" id="s11_d4"></div></div>
+      <div class="progress" style="margin-top:6px"><div id="s11_progbar"></div></div>
+      <div id="s11_caption" class="status warnS" role="status" aria-live="polite" style="margin-top:8px">Step 1: 17‑OHP → 11‑deoxycortisol (toward cortisol).</div>
+    </div>
+
+    <div id="p11Overview" role="tabpanel" hidden class="card small">
+      <h3>Why the pattern looks this way</h3>
+      <ul>
+        <li><b>11β‑OH (CYP11B1) block</b>: 11‑deoxycortisol & DOC accumulate; **DOC** acts as a mineralocorticoid → **HTN/hypoK**; **androgens ↑** (virilization/precocity). <em>(MSD; Medscape)</em></li>
+      </ul>
+    </div>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- 17α‑OH WINDOW -->
+<section id="win17" class="win hidden" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="title17">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="title17">🧬 17α‑Hydroxylase Deficiency — Bold Step‑by‑Step</div>
+    <div class="win-actions">
+      <button class="btn ghost sr-only" data-resize-inc aria-label="Increase size">+ Size</button>
+      <button class="btn ghost sr-only" data-resize-dec aria-label="Decrease size">− Size</button>
+      <button class="btn ghost sr-only" data-maximize aria-label="Maximize">Maximize</button>
+      <button class="btn ghost sr-only" data-restore aria-label="Restore">Restore</button>
+      <button class="btn ghost" data-minimize aria-label="Minimize">—</button>
+      <button class="btn ghost" data-close aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <div class="tabs" role="tablist">
+      <button class="btn" role="tab" aria-selected="true" data-tab="p17Anim">Animation</button>
+      <button class="btn" role="tab" aria-selected="false" data-tab="p17Overview">Overview</button>
+    </div>
+
+    <div id="p17Anim" role="tabpanel">
+      <div class="row" style="margin-bottom:6px">
+        <label class="row">Speed <select id="spd17"><option>0.5</option><option selected>1</option><option>2</option></select></label>
+      </div>
+      <div class="stage" aria-label="17α animation stage">
+        <svg viewBox="0 0 1000 340" width="100%" height="260" aria-hidden="true">
+          <defs>
+            <marker id="arr3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#7aa2f7"/></marker>
+            <filter id="glowBlue3"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#60a5fa"/></filter>
+            <filter id="glowGreen3"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#22c55e"/></filter>
+            <filter id="glowGold3"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#f59e0b"/></filter>
+            <filter id="glowRed"><feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#f7768e"/></filter>
+          </defs>
+
+          <text x="90" y="24" fill="#9aa4b2" font-size="12">Cholesterol</text>
+          <circle cx="90" cy="50" r="14" fill="#93c5fd" class="glowBlue"/>
+          <text x="270" y="24" fill="#9aa4b2" font-size="12">Progesterone</text>
+          <rect id="s17_prog" x="240" y="40" width="90" height="26" rx="6" fill="#334155"/>
+          <text x="470" y="24" fill="#9aa4b2" font-size="12">17‑OHP (blocked)</text>
+          <rect id="s17_17ohp" x="420" y="40" width="160" height="26" rx="6" fill="#334155"/>
+          <text id="s17_block" x="485" y="36" class="badgeX" font-size="22" opacity="0">✕ 17α‑OH</text>
+
+          <text x="270" y="170" fill="#9aa4b2" font-size="12">DOC / Corticosterone</text>
+          <rect id="s17_doc" x="240" y="180" width="200" height="26" rx="6" fill="#10b981"/>
+          <text x="500" y="170" fill="#9aa4b2" font-size="12">Aldosterone (downstream)</text>
+          <rect id="s17_aldo" x="470" y="180" width="140" height="26" rx="6" fill="#22c55e"/>
+
+          <text x="720" y="170" fill="#9aa4b2" font-size="12">Androgens (low)</text>
+          <rect id="s17_and" x="700" y="180" width="200" height="26" rx="6" fill="#334155"/>
+
+          <line id="s17_a1" x1="104" y1="50" x2="240" y2="53" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr3)"/>
+          <line id="s17_a2" x1="330" y1="53" x2="420" y2="53" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr3)"/>
+          <line id="s17_b1" x1="240" y1="193" x2="470" y2="193" stroke="#7aa2f7" stroke-width="4" marker-end="url(#arr3)"/>
+          <line id="s17_b2" x1="470" y1="193" x2="700" y2="193" stroke="#f59e0b" stroke-width="4" marker-end="url(#arr3)"/>
+
+        </svg>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="s17_prev">⟵ Prev</button>
+        <button class="btn" id="s17_play">▶ Play</button>
+        <button class="btn" id="s17_pause">⏸ Pause</button>
+        <button class="btn" id="s17_next">Next ⟶</button>
+        <label class="row" style="flex:1">Scrub <input type="range" id="s17_scrub" min="0" max="4" step="1" style="width:100%"/></label>
+      </div>
+      <div class="timeline"><div class="dot" id="s17_d0"></div><div class="dot" id="s17_d1"></div><div class="dot" id="s17_d2"></div><div class="dot" id="s17_d3"></div><div class="dot" id="s17_d4"></div></div>
+      <div class="progress" style="margin-top:6px"><div id="s17_progbar"></div></div>
+      <div id="s17_caption" class="status warnS" role="status" aria-live="polite" style="margin-top:8px">Step 1: Cholesterol → progesterone (shared start).</div>
+    </div>
+
+    <div id="p17Overview" role="tabpanel" hidden class="card small">
+      <h3>Why the pattern looks this way</h3>
+      <ul>
+        <li><b>17α‑OH (CYP17A1) block</b>: fail to make 17‑OH steroids → **↓cortisol & ↓androgens**; shunt to **DOC/corticosterone ↑** → **HTN/hypoK**; delayed puberty/amenorrhea/DSD. <em>(Medscape; MedlinePlus; J Clin Endocrinol Metab 2025; Endocrine 2024)</em></li>
+      </ul>
+    </div>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- CASES WINDOW -->
+<section id="winCases" class="win hidden" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="titleCases">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="titleCases">📁 Case Simulations — Timed, with Rationales</div>
+    <div class="win-actions">
+      <button class="btn ghost sr-only" data-resize-inc aria-label="Increase size">+ Size</button>
+      <button class="btn ghost sr-only" data-resize-dec aria-label="Decrease size">− Size</button>
+      <button class="btn ghost sr-only" data-maximize aria-label="Maximize">Maximize</button>
+      <button class="btn ghost sr-only" data-restore aria-label="Restore">Restore</button>
+      <button class="btn ghost" data-minimize aria-label="Minimize">—</button>
+      <button class="btn ghost" data-close aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <div class="grid two">
+      <div class="card">
+        <h3>Start Scenario</h3>
+        <label>Timer (minutes) <input id="caseTimer" type="number" min="1" value="3"/></label>
+        <div class="row" style="margin-top:8px">
+          <button class="btn" id="startCase">Start Random Case</button>
+          <span class="kpi"><span>Clock</span><strong id="caseClock">—</strong></span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Your Decisions</h3>
+        <label>Diagnosis
+          <select id="caseDx">
+            <option>21‑hydroxylase deficiency</option>
+            <option>11β‑hydroxylase deficiency</option>
+            <option>17α‑hydroxylase deficiency</option>
+          </select>
+        </label>
+        <label>Immediate management
+          <input id="caseMgmt" type="text" placeholder="e.g., hydrocortisone ± fludrocortisone; BP/K+ mgmt; sex steroids as indicated"/>
+        </label>
+        <label>Your reasoning
+          <textarea id="caseReason"></textarea>
+        </label>
+        <button class="btn ok" id="completeCase">Complete</button>
+        <div id="caseResult" class="status warnS" style="margin-top:8px">Waiting…</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Scenario</h3>
+      <div id="vignette" class="small">Click “Start Random Case”.</div>
+    </div>
+    <div class="card">
+      <h3>Library</h3>
+      <div id="bank" class="small"></div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="exportCases">Export Library (JSON)</button>
+        <label class="btn">Import <input id="importCases" type="file" accept="application/json" class="sr-only"/></label>
+      </div>
+    </div>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- REFERENCES WINDOW -->
+<section id="winRefs" class="win hidden" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="titleRefs">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="titleRefs">📚 References (click to open)</div>
+    <div class="win-actions">
+      <button class="btn ghost" data-minimize aria-label="Minimize">—</button>
+      <button class="btn ghost" data-close aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <div class="card small">
+      <ol>
+        <li><b>MSD (Merck) Manual Professional – CAH:</b> 21‑OH & 11β‑OH pathophysiology, mineralocorticoids, labs. <a target="_blank" rel="noopener" href="https://www.msdmanuals.com/professional/pediatrics/endocrine-disorders-in-children/congenital-adrenal-hyperplasia-caused-by-21-hydroxylase-deficiency">21‑OH</a> · <a target="_blank" rel="noopener" href="https://www.merckmanuals.com/professional/pediatrics/endocrine-disorders-in-children/congenital-adrenal-hyperplasia-caused-by-11beta-hydroxylase-deficiency">11β‑OH</a></li>
+        <li><b>UpToDate (2025):</b> Classic 21‑OHD — newborn screening (↑17‑OHP) and clinical forms. <a target="_blank" rel="noopener" href="https://www.uptodate.com/contents/classic-congenital-adrenal-hyperplasia-due-to-21-hydroxylase-deficiency-in-infants-and-children-clinical-manifestations-and-diagnosis/print">Link</a></li>
+        <li><b>NEJM Review (Merke & Auchus, 2020):</b> CAH due to 21‑OH — genetics & phenotype spectrum. <a target="_blank" rel="noopener" href="https://www.nejm.org/doi/pdf/10.1056/NEJMra1909786">Link</a></li>
+        <li><b>Medscape:</b> 17‑hydroxylase deficiency overview (HTN/hypoK; ↓sex steroids; delayed puberty). <a target="_blank" rel="noopener" href="https://emedicine.medscape.com/article/920532-overview">Link</a> · 11β‑OH deficiency (5–8% CAH; HTN; androgen excess). <a target="_blank" rel="noopener" href="https://emedicine.medscape.com/article/117012-overview">Link</a></li>
+        <li><b>MedlinePlus Genetics:</b> 17α‑hydroxylase/17,20‑lyase deficiency — inheritance & clinical features. <a target="_blank" rel="noopener" href="https://medlineplus.gov/genetics/condition/17-alpha-hydroxylase-17-20-lyase-deficiency/">Link</a></li>
+        <li><b>Recent literature:</b> 17‑OHD cohorts/meta‑analysis (HTN/hypoK; pubertal delay; DSD). <a target="_blank" rel="noopener" href="https://academic.oup.com/jcem/article/110/4/e1261/7876482">J Clin Endocrinol Metab 2025</a> · <a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s12020-024-03962-6">Endocrine 2024</a></li>
+      </ol>
+      <p class="muted">Educational tool; follow institutional guidelines and supervising clinician judgment.</p>
+    </div>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- NOTES/PDF WINDOW -->
+<section id="winNotes" class="win hidden" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="titleNotes">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="titleNotes">📝 Notes & PDF Export</div>
+    <div class="win-actions">
+      <button class="btn ghost" data-minimize aria-label="Minimize">—</button>
+      <button class="btn ghost" data-close aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <textarea id="notesBox" placeholder="Type teaching notes or case reflections here…"></textarea>
+    <div class="row" style="margin-top:8px">
+      <button class="btn" id="saveNotes">Save</button>
+      <button class="btn" id="copyNotes">Copy</button>
+      <button class="btn" id="printAll">Print / PDF</button>
+      <span id="saveStatus" class="status warnS">Not saved</span>
+    </div>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- TOAST -->
+<div id="toast" class="toast hidden" role="status" aria-live="polite">Autosaved.</div>
+
+<script>
+/* ============================================================
+   State & helpers
+============================================================ */
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const KEY='CAH_Master_v1';
+const state={autoLayout:true,contrast:false,openWins:['#win21'], // default open 21-OH
+  // animations:
+  a21:{mode:'def',step:0,speed:1,playing:false},
+  a11:{step:0,speed:1,playing:false},
+  a17:{step:0,speed:1,playing:false},
+  // cases & notes:
+  cases:{lib:[],run:null}, notes:''
+};
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); const t=$("#toast"); t.classList.remove('hidden'); setTimeout(()=>t.classList.add('hidden'),800);}catch(e){} }
+function load(){ try{ const raw=localStorage.getItem(KEY); if(raw) Object.assign(state, JSON.parse(raw)); }catch(e){} }
+load();
+
+/* ============================================================
+   Window manager: drag/resize, focus trap, auto-tiling
+============================================================ */
+function getOpenWins(){ return $$('.win').filter(w=>!w.classList.contains('hidden')); }
+function tileWindows(){
+  if(!state.autoLayout) return;
+  const opened=getOpenWins(); const headerBottom=document.querySelector('header').getBoundingClientRect().bottom;
+  const top=headerBottom, height=window.innerHeight-headerBottom;
+  // reset styles & lock drag/resize
+  $$('.win').forEach(w=>{
+    w.classList.remove('tile'); w.style.left=''; w.style.top=''; w.style.width=''; w.style.height='';
+    w.querySelector('[data-drag]')?.setAttribute('data-locked','false');
+    w.querySelector('.handle')?.setAttribute('data-locked','false');
+  });
+  if(opened.length===1){
+    const w=opened[0]; w.classList.add('tile');
+    w.style.left='0px'; w.style.top=top+'px'; w.style.width=window.innerWidth+'px'; w.style.height=height+'px';
+    w.querySelector('[data-drag]')?.setAttribute('data-locked','true');
+    w.querySelector('.handle')?.setAttribute('data-locked','true');
+  } else if(opened.length>=2){
+    const w1=opened[0], w2=opened[1];
+    [w1,w2].forEach(w=>{ w.classList.add('tile'); w.querySelector('[data-drag]')?.setAttribute('data-locked','true'); w.querySelector('.handle')?.setAttribute('data-locked','true'); });
+    w1.style.left='0px'; w1.style.top=top+'px'; w1.style.width=(window.innerWidth/2)+'px'; w1.style.height=height+'px';
+    w2.style.left=(window.innerWidth/2)+'px'; w2.style.top=top+'px'; w2.style.width=(window.innerWidth/2)+'px'; w2.style.height=height+'px';
+    // hide extras
+    for(let i=2;i<opened.length;i++){ opened[i].classList.add('hidden'); }
+  }
+}
+function activateFocusTrap(win){
+  const scope=win.querySelector('[data-focus-scope]')||win;
+  const handler=(e)=>{
+    if(e.key!=='Tab') return;
+    const f=Array.from(scope.querySelectorAll('a[href],button:not([disabled]),textarea,input,select,[tabindex]:not([tabindex="-1"])')).filter(n=>n.offsetParent!==null||getComputedStyle(n).position==='fixed');
+    if(!f.length) return; const first=f[0], last=f[f.length-1];
+    if(e.shiftKey && document.activeElement===first){ last.focus(); e.preventDefault(); }
+    else if(!e.shiftKey && document.activeElement===last){ first.focus(); e.preventDefault(); }
+  };
+  scope.addEventListener('keydown',handler); win._trap=handler;
+}
+function deactivateFocusTrap(win){ const scope=win.querySelector('[data-focus-scope]')||win; if(win._trap){ scope.removeEventListener('keydown',win._trap); delete win._trap; } }
+function openWin(sel){
+  const w=$(sel); if(!w) return;
+  w.classList.remove('hidden'); if(!state.openWins.includes(sel)) state.openWins.push(sel);
+  activateFocusTrap(w); w.focus(); if(state.autoLayout) tileWindows(); save();
+}
+function closeWin(win){
+  win.classList.add('hidden'); deactivateFocusTrap(win);
+  state.openWins = state.openWins.filter(x=>x !== '#'+win.id); if(state.autoLayout) tileWindows(); save();
+}
+function initWindow(win){
+  // restore open state
+  if(state.openWins.includes('#'+win.id)) win.classList.remove('hidden');
+  // drag
+  const bar=win.querySelector('[data-drag]'); let sx,sy,sl,st,dragging=false;
+  bar.addEventListener('mousedown',e=>{ if(e.button!==0) return; if(state.autoLayout && win.classList.contains('tile')) return;
+    dragging=true; sx=e.clientX; sy=e.clientY; const r=win.getBoundingClientRect(); sl=r.left; st=r.top; document.body.style.userSelect='none';
+  });
+  window.addEventListener('mousemove',e=>{ if(!dragging) return; win.style.left=(sl+(e.clientX-sx))+'px'; win.style.top=(st+(e.clientY-sy))+'px'; });
+  window.addEventListener('mouseup',()=>{ if(dragging){ dragging=false; document.body.style.userSelect=''; }});
+  // resize
+  const handle=win.querySelector('.handle'); let rx,ry,rw,rh,resizing=false;
+  handle.addEventListener('mousedown',e=>{ if(state.autoLayout && win.classList.contains('tile')) return;
+    resizing=true; rx=e.clientX; ry=e.clientY; const r=win.getBoundingClientRect(); rw=r.width; rh=r.height; e.stopPropagation();
+  });
+  window.addEventListener('mousemove',e=>{ if(!resizing) return; win.style.width=(rw+(e.clientX-rx))+'px'; win.style.height=(rh+(e.clientY-ry))+'px'; });
+  window.addEventListener('mouseup',()=>{ if(resizing){ resizing=false; }});
+  // SR-only resize buttons
+  win.querySelectorAll('[data-resize-inc]').forEach(b=>b.addEventListener('click',()=>{ const r=win.getBoundingClientRect(); win.style.width=(r.width*1.1)+'px'; win.style.height=(r.height*1.1)+'px'; }));
+  win.querySelectorAll('[data-resize-dec]').forEach(b=>b.addEventListener('click',()=>{ const r=win.getBoundingClientRect(); win.style.width=(r.width*0.9)+'px'; win.style.height=(r.height*0.9)+'px'; }));
+  win.querySelectorAll('[data-maximize]').forEach(b=>b.addEventListener('click',()=>{ const hb=document.querySelector('header').getBoundingClientRect().bottom; win.style.left='0px'; win.style.top=hb+'px'; win.style.width=window.innerWidth+'px'; win.style.height=(window.innerHeight-hb)+'px'; }));
+  win.querySelectorAll('[data-restore]').forEach(b=>b.addEventListener('click',()=>{ win.style.left='60px'; win.style.top='110px'; win.style.width='720px'; win.style.height='520px'; }));
+  // buttons
+  win.querySelector('[data-close]')?.addEventListener('click',()=>closeWin(win));
+  win.querySelector('[data-minimize]')?.addEventListener('click',()=>closeWin(win));
+  // Esc minimize
+  win.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeWin(win); }});
+}
+$$('.win').forEach(initWindow);
+$$('.dock [data-open]').forEach(b=>b.addEventListener('click',()=>openWin(b.getAttribute('data-open'))));
+window.addEventListener('resize',()=>{ if(state.autoLayout) tileWindows(); });
+$("#btnToggleLayout").addEventListener('click',()=>{
+  state.autoLayout=!state.autoLayout; $("#btnToggleLayout").textContent='Auto‑Layout: '+(state.autoLayout?'On':'Off'); $("#btnToggleLayout").setAttribute('aria-pressed', state.autoLayout?'true':'false');
+  if(state.autoLayout) tileWindows(); save();
+});
+document.body.classList.toggle('high-contrast', state.contrast);
+$("#btnContrast").addEventListener('click',()=>{ state.contrast=!state.contrast; document.body.classList.toggle('high-contrast', state.contrast); $("#btnContrast").textContent=state.contrast?'On':'Off'; $("#btnContrast").setAttribute('aria-pressed', state.contrast?'true':'false'); save(); });
+
+/* Open initial windows + tile */
+state.openWins.forEach(sel=>openWin(sel)); tileWindows();
+
+/* ============================================================
+   Tabs for each window
+============================================================ */
+function initTabs(scope){
+  const sc=$(scope); const tabs=sc.querySelectorAll('[role="tab"]');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.setAttribute('aria-selected','false')); t.setAttribute('aria-selected','true');
+    const id=t.dataset.tab; sc.querySelectorAll('[role="tabpanel"]').forEach(p=>p.hidden=true); sc.querySelector('#'+id).hidden=false;
+  }));
+}
+['#win21','#win11','#win17'].forEach(initTabs);
+
+/* ============================================================
+   Animations — 21‑OH, 11β‑OH, 17α‑OH
+============================================================ */
+/* 21‑OH steps:
+  0: Chol→Prog; 1: to 17‑OHP; 2: 21‑OH block (✕, shunt to androgens); 3: ↓Cortisol & ±↓Aldo; 4: Clinical summary.
+*/
+const A21={dots:[$("#s21_d0"),$("#s21_d1"),$("#s21_d2"),$("#s21_d3"),$("#s21_d4")], bar:$("#s21_progbar"), cap:$("#s21_caption"),
+           blk:$("#s21_block"), a3:$("#s21_a3"), sh:$("#s21_shunt"), acth:$("#s21_acth"), and:$("#s21_and"), aldo:$("#s21_aldo"), cort:$("#s21_cort")};
+function set21(k){
+  state.a21.step=Math.max(0,Math.min(4,k)); const s=state.a21.step, mode=$("#mode21").value;
+  A21.blk.style.opacity=0; A21.sh.style.opacity=0; A21.a3.style.opacity=1; A21.acth.style.opacity=0; A21.and.classList.remove('glowGold'); A21.cort.classList.remove('glowGreen');
+  if(s===0) A21.cap.textContent='Step 1: Cholesterol → progesterone (shared start).';
+  if(s===1) A21.cap.textContent='Step 2: 17‑hydroxyprogesterone forms.';
+  if(s===2){
+    if(mode==='def'){ A21.blk.style.opacity=1; A21.a3.style.opacity=0; A21.sh.style.opacity=1; A21.and.classList.add('glowGold'); A21.cap.textContent='Step 3: ✕ 21‑OH — ↑17‑OHP shunts to androgens.'; }
+    else { A21.cort.classList.add('glowGreen'); A21.cap.textContent='Step 3: Normal — 11‑deoxycortisol → cortisol.'; }
+  }
+  if(s===3){
+    if(mode==='def'){ A21.cap.textContent='Step 4: ↓Cortisol (±↓Aldo in salt‑wasting).'; A21.acth.style.opacity=1; }
+    else { A21.cap.textContent='Step 4: Normal aldosterone branch intact.'; }
+  }
+  if(s===4){
+    if(mode==='def'){ A21.cap.textContent='Step 5: Phenotypes — salt‑wasting / simple virilizing / nonclassic; newborn screen ↑17‑OHP.'; }
+    else { A21.cap.textContent='Step 5: Normal physiology complete.'; }
+  }
+  A21.dots.forEach((d,i)=>d.classList.toggle('active', i<=s)); A21.bar.style.width=((s+1)/5*100)+'%'; $("#s21_scrub").value=s; save();
+}
+$("#mode21").value=state.a21.mode; $("#mode21").addEventListener('change',e=>{ state.a21.mode=e.target.value; set21(state.a21.step); save(); });
+$("#spd21").value=String(state.a21.speed||1); $("#spd21").addEventListener('change',e=>{ state.a21.speed=Number(e.target.value); save(); });
+$("#s21_prev").addEventListener('click',()=>set21(state.a21.step-1));
+$("#s21_next").addEventListener('click',()=>set21(state.a21.step+1));
+$("#s21_scrub").addEventListener('input',e=>set21(Number(e.target.value)));
+let t21=null; $("#s21_play").addEventListener('click',()=>{ clearInterval(t21); t21=setInterval(()=>{ if(state.a21.step>=4){clearInterval(t21);return;} set21(state.a21.step+1); }, 1500/(state.a21.speed||1)); });
+$("#s21_pause").addEventListener('click',()=>{ clearInterval(t21); });
+set21(state.a21.step||0);
+
+/* 11β‑OH steps:
+  0: 17‑OHP→11‑deoxycortisol; 1: ✕ 11β‑OH (block to cortisol); 2: ✕ mineralocorticoid leg (DOC→corticosterone); 3: DOC mineralocorticoid → HTN/hypoK; 4: Androgens ↑.
+*/
+const A11={dots:[$("#s11_d0"),$("#s11_d1"),$("#s11_d2"),$("#s11_d3"),$("#s11_d4")], bar:$("#s11_progbar"), cap:$("#s11_caption"),
+           b1:$("#s11_block1"), b2:$("#s11_block2"), a2:$("#s11_a2"), bPath:$("#s11_b1"), and:$("#s11_and") };
+function set11(k){
+  state.a11.step=Math.max(0,Math.min(4,k)); const s=state.a11.step;
+  A11.b1.style.opacity=0; A11.b2.style.opacity=0; A11.a2.style.opacity=1; A11.bPath.style.opacity=1; A11.and.classList.remove('glowGold2');
+  if(s===0) A11.cap.textContent='Step 1: 17‑OHP → 11‑deoxycortisol.';
+  if(s===1){ A11.b1.style.opacity=1; A11.a2.style.opacity=0; A11.cap.textContent='Step 2: ✕ 11β‑OH — cannot form cortisol.'; }
+  if(s===2){ A11.b2.style.opacity=1; A11.bPath.style.opacity=0; A11.cap.textContent='Step 3: ✕ 11β‑OH at DOC→corticosterone — DOC accumulates.'; }
+  if(s===3) A11.cap.textContent='Step 4: DOC (mineralocorticoid) → HTN + hypokalemia.';
+  if(s===4){ A11.and.classList.add('glowGold2'); A11.cap.textContent='Step 5: Androgens ↑ → virilization / precocity.'; }
+  A11.dots.forEach((d,i)=>d.classList.toggle('active', i<=s)); A11.bar.style.width=((s+1)/5*100)+'%'; $("#s11_scrub").value=s; save();
+}
+$("#spd11").value=String(state.a11.speed||1); $("#spd11").addEventListener('change',e=>{ state.a11.speed=Number(e.target.value); save(); });
+$("#s11_prev").addEventListener('click',()=>set11(state.a11.step-1));
+$("#s11_next").addEventListener('click',()=>set11(state.a11.step+1));
+$("#s11_scrub").addEventListener('input',e=>set11(Number(e.target.value)));
+let t11=null; $("#s11_play").addEventListener('click',()=>{ clearInterval(t11); t11=setInterval(()=>{ if(state.a11.step>=4){clearInterval(t11);return;} set11(state.a11.step+1); }, 1500/(state.a11.speed||1)); });
+$("#s11_pause").addEventListener('click',()=>{ clearInterval(t11); });
+set11(state.a11.step||0);
+
+/* 17α‑OH steps:
+  0: Chol→Prog; 1: toward 17‑OH steroids; 2: ✕ 17α‑OH; 3: Shunt to DOC/corticosterone; 4: Clinical (HTN/hypoK; androgen deficiency; delayed puberty/DSD).
+*/
+const A17={dots:[$("#s17_d0"),$("#s17_d1"),$("#s17_d2"),$("#s17_d3"),$("#s17_d4")], bar:$("#s17_progbar"), cap:$("#s17_caption"), blk:$("#s17_block"), b2:$("#s17_b2")};
+function set17(k){
+  state.a17.step=Math.max(0,Math.min(4,k)); const s=state.a17.step;
+  A17.blk.style.opacity=0; A17.b2.style.opacity=1;
+  if(s===0) A17.cap.textContent='Step 1: Cholesterol → progesterone (shared start).';
+  if(s===1) A17.cap.textContent='Step 2: Path aims for 17‑OH steroids — but…';
+  if(s===2){ A17.blk.style.opacity=1; A17.cap.textContent='Step 3: ✕ 17α‑OH — no 17‑OH steroids; ↓cortisol & ↓androgens.'; }
+  if(s===3){ A17.b2.style.opacity=0; A17.cap.textContent='Step 4: Shunt → DOC/corticosterone ↑ (mineralocorticoids).'; }
+  if(s===4) A17.cap.textContent='Step 5: Clinical → HTN + hypoK; delayed puberty/amenorrhea/DSD (low androgens).';
+  A17.dots.forEach((d,i)=>d.classList.toggle('active', i<=s)); A17.bar.style.width=((s+1)/5*100)+'%'; $("#s17_scrub").value=s; save();
+}
+$("#spd17").value=String(state.a17.speed||1); $("#spd17").addEventListener('change',e=>{ state.a17.speed=Number(e.target.value); save(); });
+$("#s17_prev").addEventListener('click',()=>set17(state.a17.step-1));
+$("#s17_next").addEventListener('click',()=>set17(state.a17.step+1));
+$("#s17_scrub").addEventListener('input',e=>set17(Number(e.target.value)));
+let t17=null; $("#s17_play").addEventListener('click',()=>{ clearInterval(t17); t17=setInterval(()=>{ if(state.a17.step>=4){clearInterval(t17);return;} set17(state.a17.step+1); }, 1500/(state.a17.speed||1)); });
+$("#s17_pause").addEventListener('click',()=>{ clearInterval(t17); });
+set17(state.a17.step||0);
+
+/* ============================================================
+   Case simulations (randomized)
+============================================================ */
+const defaultCases=[
+  // 21‑OH (include for contrast)
+  { id:'21-SW-01', dx:'21‑hydroxylase deficiency',
+    vignette:'10‑day‑old with vomiting, dehydration, Na 124, K 6.7; newborn screen markedly ↑17‑OHP.',
+    mgmt:'Emergency IV hydrocortisone + isotonic saline; start fludrocortisone and salt as indicated.',
+    rationale:'21‑OH block → ↓cortisol/aldosterone; salt‑wasting crisis; ↑17‑OHP hallmark (MSD; UpToDate; NEJM).' },
+
+  // 11β‑OH
+  { id:'11-XX-01', dx:'11β‑hydroxylase deficiency',
+    vignette:'Newborn 46,XX with ambiguous genitalia; by childhood develops hypertension; labs: ↑11‑deoxycortisol & ↑DOC, androgens ↑.',
+    mgmt:'Physiologic glucocorticoid to suppress ACTH; manage BP & electrolytes; multidisciplinary DSD care.',
+    rationale:'CYP11B1 block → DOC mineralocorticoid activity (HTN/hypoK) + androgen excess (MSD; Medscape).' },
+  { id:'11-XY-02', dx:'11β‑hydroxylase deficiency',
+    vignette:'4‑year‑old boy with rapid growth, advanced bone age; BP 142/92; K+ 3.1; ↑11‑deoxycortisol.',
+    mgmt:'Glucocorticoid therapy; antihypertensives PRN; monitor growth.',
+    rationale:'Androgen excess + hypertension from DOC fits 11β‑OH (MSD; Medscape).' },
+
+  // 17α‑OH
+  { id:'17-XX-01', dx:'17α‑hydroxylase deficiency',
+    vignette:'16‑year‑old with primary amenorrhea, no secondary sexual characteristics; BP 160/96; K+ 2.8; very low sex steroids; elevated DOC/corticosterone.',
+    mgmt:'Glucocorticoid to suppress ACTH (↓DOC); treat HTN/hypoK; initiate sex steroid replacement.',
+    rationale:'CYP17A1 block → ↓androgens/cortisol; DOC/corticosterone excess drives HTN/hypoK; delayed puberty (Medscape; MedlinePlus; J Clin Endocrinol Metab 2025).' },
+  { id:'17-XY-02', dx:'17α‑hydroxylase deficiency',
+    vignette:'46,XY raised female with delayed puberty; HTN; very low testosterone/DHEA; undescended testes on imaging.',
+    mgmt:'Glucocorticoid; BP/K+ management; DSD team; individualized sex steroid therapy.',
+    rationale:'Severe androgen deficiency + mineralocorticoid excess typical of 17α‑OH (Medscape; MedlinePlus).' }
+];
+if(!state.cases.lib?.length) state.cases.lib=defaultCases;
+function renderBank(){ $("#bank").innerHTML=state.cases.lib.map(c=>`<div class="card"><b>${c.id}</b> — ${c.dx}<br>${c.vignette}</div>`).join(''); }
+renderBank();
+
+let tick=null;
+$("#startCase").addEventListener('click',()=>{
+  const c=state.cases.lib[Math.floor(Math.random()*state.cases.lib.length)];
+  state.cases.run={case:c,secs:Number($("#caseTimer").value||3)*60};
+  $("#vignette").textContent=`${c.id}: ${c.vignette}`;
+  clearInterval(tick);
+  tick=setInterval(()=>{ state.cases.run.secs=Math.max(0,state.cases.run.secs-1);
+    $("#caseClock").textContent=`${Math.floor(state.cases.run.secs/60)}:${String(state.cases.run.secs%60).padStart(2,'0')}`;
+    if(state.cases.run.secs===0) clearInterval(tick);
+  },1000);
+  save();
+});
+$("#completeCase").addEventListener('click',()=>{
+  if(!state.cases.run){ $("#caseResult").className='status badS'; $("#caseResult").textContent='Start a case first.'; return; }
+  const chosen=$("#caseDx").value, mgmt=$("#caseMgmt").value.trim(), reason=$("#caseReason").value.trim();
+  const correct = (chosen===state.cases.run.case.dx);
+  $("#caseResult").className='status '+(correct?'okS':'badS');
+  $("#caseResult").innerHTML=(correct?'Correct ✓':'Reassess')+` — Expected: <b>${state.cases.run.case.dx}</b>; Suggested: ${state.cases.run.case.mgmt}<br><i>${state.cases.run.case.rationale}</i>`;
+  state.cases.run.outcome={chosen,mgmt,reason,correct};
+  save();
+});
+$("#exportCases").addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify(state.cases.lib,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='CAH_Master_CaseLibrary.json'; a.click(); URL.revokeObjectURL(a.href);
+});
+$("#importCases").addEventListener('change',async e=>{
+  const f=e.target.files[0]; if(!f) return; const txt=await f.text(); const obj=JSON.parse(txt);
+  if(Array.isArray(obj)){ state.cases.lib=obj; renderBank(); save(); alert('Imported ✓'); } else alert('Invalid JSON: provide an array of cases.');
+});
+
+/* ============================================================
+   Notes & print
+============================================================ */
+$("#notesBox").value=state.notes||'';
+$("#saveNotes").addEventListener('click',()=>{ state.notes=$("#notesBox").value; $("#saveStatus").className='status okS'; $("#saveStatus").textContent='Saved ✓'; save(); });
+$("#copyNotes").addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText($("#notesBox").value); }catch(e){} });
+$("#printAll").addEventListener('click',()=>window.print());
+
+/* ============================================================
+   Keyboard shortcuts
+============================================================ */
+window.addEventListener('keydown',e=>{
+  if(e.key==='1') openWin('#win21');
+  if(e.key==='2') openWin('#win11');
+  if(e.key==='3') openWin('#win17');
+  if(e.key==='4') openWin('#winCases');
+  if(e.key==='5') openWin('#winRefs');
+  if(e.key==='6') openWin('#winNotes');
+  if(['#win21','#win11','#win17'].some(sel=>!$(sel).classList.contains('hidden'))){
+    // control currently focused window animation
+    const activeWin=document.activeElement.closest('.win')||getOpenWins()[0];
+    if(!activeWin) return;
+    if(activeWin.id==='win21'){
+      if(e.key===' '){ e.preventDefault(); $("#s21_play").click(); }
+      if(e.key==='ArrowLeft'){ $("#s21_prev").click(); }
+      if(e.key==='ArrowRight'){ $("#s21_next").click(); }
+    } else if(activeWin.id==='win11'){
+      if(e.key===' '){ e.preventDefault(); $("#s11_play").click(); }
+      if(e.key==='ArrowLeft'){ $("#s11_prev").click(); }
+      if(e.key==='ArrowRight'){ $("#s11_next").click(); }
+    } else if(activeWin.id==='win17'){
+      if(e.key===' '){ e.preventDefault(); $("#s17_play").click(); }
+      if(e.key==='ArrowLeft'){ $("#s17_prev").click(); }
+      if(e.key==='ArrowRight'){ $("#s17_next").click(); }
+    }
+  }
+});
+</script>
+</body>
+</html>

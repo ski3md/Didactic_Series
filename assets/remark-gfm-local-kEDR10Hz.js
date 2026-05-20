@@ -1,1 +1,0 @@
-import{n as e,t}from"./mdast-util-gfm-local-j_ZwP8ku.js";import{t as n}from"./micromark-extension-gfm-local-CQOnudfa.js";var r={};function i(i){let a=this,o=i||r,s=a.data(),c=s.micromarkExtensions||=[],l=s.fromMarkdownExtensions||=[],u=s.toMarkdownExtensions||=[];c.push(n(o)),l.push(t()),u.push(e(o))}export{i as t};

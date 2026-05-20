@@ -1,1 +1,0 @@
-var e=`didactic_series_selected_algorithm`,t=()=>{if(typeof window>`u`)return null;try{let t=window.sessionStorage.getItem(e);return t?(window.sessionStorage.removeItem(e),JSON.parse(t)):null}catch(e){return console.error(`Failed to consume algorithm navigator intent:`,e),null}};export{t};

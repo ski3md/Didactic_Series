@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Pathology Board Prep Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom Properties */
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --transition-speed: 0.3s;
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+        }
+        
+        /* Custom scrollbar */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Tab Styles */
+        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Navigation Styles */
+        .tab-btn { position: relative; transition: all var(--transition-speed) ease; }
+        .tab-btn.active { color: var(--primary-color); border-color: var(--primary-color); }
+
+        /* Card Styles */
+        .card { background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); transition: all var(--transition-speed) ease; }
+        .card:hover { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+
+        /* Button Styles */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 500; transition: all var(--transition-speed) ease; cursor: pointer; border: 1px solid transparent; outline: none; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { background-color: #2563eb; }
+        .btn-secondary { background-color: #e5e7eb; color: #374151; border-color: #d1d5db; }
+        .btn-secondary:hover { background-color: #d1d5db; }
+        
+        /* Case Study & Algorithm Styles */
+        .case-study { border-left: 4px solid var(--primary-color); background-color: #f0f9ff; padding: 1rem; margin-bottom: 1rem; border-radius: 0 8px 8px 0; }
+        .case-selection-btn { display: flex; width: 100%; text-align: left; padding: 0.75rem; border-radius: 6px; transition: background-color 0.2s ease; font-size: 0.875rem; }
+        .case-selection-btn:hover { background-color: #f9fafb; }
+        .case-selection-btn.selected { background-color: #eff6ff; color: var(--primary-color); font-weight: 600; }
+        .decision-node { background-color: white; border: 2px solid #e5e7eb; border-radius: 8px; padding: 1rem; margin-bottom: 0.5rem; transition: all 0.2s ease; cursor: pointer; }
+        .decision-node:hover { border-color: var(--primary-color); box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1); }
+        .decision-node.selected { border-color: var(--primary-color); background-color: #eff6ff; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2); }
+        .algorithm-node { cursor: pointer; transition: all 0.2s ease; }
+        .algorithm-node rect { transition: all 0.2s ease; }
+        .algorithm-node.active rect { filter: brightness(1.05); stroke: var(--primary-color); stroke-width: 3px; }
+
+        /* Flashcard Styles */
+        .flashcard { perspective: 1000px; height: 400px; position: relative; cursor: pointer; }
+        .flashcard-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+        .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+        .flashcard-front, .flashcard-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; }
+        .flashcard-front { border: 2px solid #e5e7eb; }
+        .flashcard-back { transform: rotateY(180deg); background-color: #eff6ff; border: 2px solid var(--primary-color); }
+
+        /* MCQ Styles */
+         .mcq-option { transition: all 0.2s ease; cursor: pointer; border: 2px solid #e5e7eb; border-radius: 8px; padding: 1rem; margin-bottom: 0.5rem; }
+        .mcq-option:hover { border-color: var(--primary-color); background-color: #eff6ff; }
+        .mcq-option.selected { border-color: var(--primary-color); background-color: #eff6ff; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2); }
+        .mcq-option.correct { background-color: #d1fae5; border-color: var(--success-color); }
+        .mcq-option.incorrect { background-color: #fee2e2; border-color: var(--error-color); }
+        .feedback-correct { border-left: 4px solid var(--success-color); background-color: #f0fdf4; }
+        .feedback-incorrect { border-left: 4px solid var(--error-color); background-color: #fef2f2; }
+
+        /* Notification Styles */
+        #notification-container { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
+        .notification { padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); animation: slideIn 0.3s ease-out; min-width: 300px; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+        .slide-out { animation: slideOut 0.3s ease-in forwards; }
+
+        /* Focus Styles */
+        *:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; border-radius: 2px; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-dna text-blue-600 text-2xl mr-3"></i>
+                    <h1 class="text-xl font-bold text-gray-900">Molecular Pathology Board Prep</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span id="user-info" class="text-sm text-gray-500">Guest</span>
+                    <img src="https://placehold.co/40x40/EFEFEF/AAAAAA?text=U" alt="Profile" class="w-10 h-10 rounded-full">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-10 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="tab-container" class="flex space-x-8 overflow-x-auto scrollbar-hide">
+                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap" data-tab="tutor">
+                    <i class="fas fa-user-md mr-2"></i>Tutor Mode
+                </button>
+                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap" data-tab="diagnostic-algorithms">
+                    <i class="fas fa-project-diagram mr-2"></i>Diagnostic Algorithms
+                </button>
+                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap" data-tab="case-based-learning">
+                    <i class="fas fa-stethoscope mr-2"></i>Case-Based Learning
+                </button>
+                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap" data-tab="flashcards">
+                    <i class="fas fa-clone mr-2"></i>Flashcards
+                </button>
+                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap" data-tab="progress">
+                    <i class="fas fa-chart-line mr-2"></i>Progress Tracker
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Tutor Mode Tab -->
+        <div id="tutor" class="tab-content">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                 <div class="lg:col-span-2">
+                    <div class="card p-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Welcome Back!</h2>
+                        <p class="text-gray-600 mb-6">Here is your personalized study plan for today. Let's focus on your identified areas for improvement.</p>
+                        <div id="study-plan-container">
+                            <!-- Dynamic study plan will be injected here -->
+                            <div class="text-center p-8 text-gray-500">
+                                <i class="fas fa-spinner fa-spin text-2xl"></i>
+                                <p class="mt-2">Generating your personalized study plan...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                     <div class="card p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                        <div class="space-y-3">
+                           <button id="tutor-review-due-cards" class="w-full btn btn-primary"><i class="fas fa-layer-group mr-2"></i>Review Due Flashcards</button>
+                           <button id="tutor-tackle-weak-case" class="w-full btn btn-secondary"><i class="fas fa-crosshairs mr-2"></i>Tackle a Weakest Case Area</button>
+                        </div>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">High-Yield Fact of the Day</h3>
+                        <div id="high-yield-fact" class="bg-purple-50 p-3 rounded-lg border-l-4 border-purple-400">
+                             <!-- Dynamic fact will be injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagnostic Algorithms Tab -->
+        <div id="diagnostic-algorithms" class="tab-content">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <div class="lg:col-span-3">
+                    <div class="card p-4">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4 ml-2">AML Diagnostic Algorithm</h2>
+                        <div id="algorithm-svg-container" class="w-full overflow-x-auto">
+                           <!-- SVG will be injected here -->
+                           <div class="text-center p-8 text-gray-500">
+                                <i class="fas fa-spinner fa-spin text-2xl"></i>
+                                <p class="mt-2">Loading Algorithm...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-1">
+                    <div id="algorithm-details-container" class="card p-6 sticky top-24">
+                        <div class="text-center text-gray-500">
+                            <i class="fas fa-mouse-pointer text-3xl mb-4"></i>
+                            <p>Click on a node in the algorithm to see detailed information and high-yield facts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case-Based Learning Tab -->
+        <div id="case-based-learning" class="tab-content">
+             <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <div class="lg:col-span-1">
+                    <div class="card p-4 sticky top-20">
+                         <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Select a Case</h3>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs font-medium text-gray-600">Study</span>
+                                <label for="mode-toggle" class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" value="" id="mode-toggle" class="sr-only peer">
+                                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
+                                </label>
+                                <span class="text-xs font-medium text-gray-600">Test</span>
+                            </div>
+                        </div>
+                        <div id="case-selection-container" class="space-y-4 max-h-[70vh] overflow-y-auto"></div>
+                    </div>
+                </div>
+                <div class="lg:col-span-3">
+                    <div id="case-display-container" class="card p-6 min-h-[500px]">
+                        <div class="text-center p-10 flex flex-col justify-center items-center h-full"><i class="fas fa-hand-pointer text-4xl text-gray-300 mb-6"></i><p class="text-gray-600">Please select a case from the list to begin.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flashcards Tab -->
+        <div id="flashcards" class="tab-content"></div>
+
+        <!-- Progress Tracker Tab -->
+        <div id="progress" class="tab-content">
+             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="card p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Performance by Category</h2>
+                        <canvas id="category-performance-chart"></canvas>
+                    </div>
+                    <div class="card p-6">
+                         <h2 class="text-xl font-bold text-gray-900 mb-4">Study Activity</h2>
+                         <div id="activity-heatmap-container" class="overflow-x-auto"></div>
+                    </div>
+                </div>
+                <div class="lg:col-span-1 space-y-6">
+                     <div class="card p-6 text-center">
+                         <h2 class="text-xl font-bold text-gray-900 mb-4">Overall Mastery</h2>
+                         <canvas id="overall-progress-chart"></canvas>
+                         <p id="overall-progress-text" class="mt-3 font-semibold text-gray-700"></p>
+                    </div>
+                    <div class="card p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Achievements</h2>
+                        <div id="achievements-container" class="space-y-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Notification container -->
+    <div id="notification-container"></div>
+    
+    <!-- Firebase and App Logic -->
+    <script type="module">
+        // Firebase Imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, collection, getDocs, writeBatch, Timestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- STATIC DATA ---
+        const caseData = [
+            // AML
+            { id: 'aml_t8_21', name: 'AML with t(8;21)', category: 'AML', image: 'https://placehold.co/600x400/e0f2fe/0c4a6e?text=AML+with+t(8;21)+Auer+Rods', casePresentation: 'A 25-year-old presents with fatigue and easy bruising. Bone marrow shows 30% large blasts with prominent Auer rods and perinuclear clearing. Flow cytometry is positive for CD34, CD117, MPO, CD19, and PAX5.', question: 'What is the characteristic cytogenetic finding for this entity?', options: {'A': 'inv(16)','B': 't(8;21)','C': 't(15;17)','D': 'Monosomy 7'}, correctAnswer: 'B', feedback: {'A': 'inv(16) defines another core-binding factor AML, often with eosinophilia.','B': 'Correct. t(8;21) creates the RUNX1-RUNX1T1 fusion. The co-expression of B-cell markers like CD19 and PAX5 is classic.','C': 't(15;17) is the hallmark of APL.','D': 'Monosomy 7 is a high-risk finding, not associated with this morphology.'}},
+            { id: 'aml_inv16', name: 'AML with inv(16)', category: 'AML', image: 'https://placehold.co/600x400/e0f2fe/0c4a6e?text=AML+with+inv(16)+Abnormal+Eos', casePresentation: 'A 40-year-old has leukocytosis with monocytosis and 25% blasts in the periphery. Bone marrow examination reveals a mix of myeloblasts, monoblasts, and striking atypical eosinophils with large, basophilic granules.', question: 'Which genetic abnormality is expected?', options: {'A': 't(8;21)','B': 't(9;11)','C': 'inv(16)','D': 'NPM1 mutation'}, correctAnswer: 'C', feedback: {'A': 't(8;21) AML does not typically have abnormal eosinophils or significant monocytosis.','B': 't(9;11) is common in AML with monocytic features but not the characteristic eosinophils.','C': 'Correct. The CBFB-MYH11 fusion resulting from inv(16) is pathognomonic for AML with abnormal eosinophils.','D': 'NPM1 mutations are common in AML but are not specifically linked to this morphology.'}},
+            { id: 'aml_apl', name: 'APL with t(15;17)', category: 'AML', image: 'https://placehold.co/600x400/e0f2fe/0c4a6e?text=APL+Faggot+Cells', casePresentation: 'A 35-year-old presents to the ED with severe bleeding from the gums and epistaxis. Labs show pancytopenia, prolonged PT/PTT, and low fibrinogen. Peripheral smear shows atypical promyelocytes with bilobed nuclei and cytoplasm packed with coarse granules.', question: 'What is the crucial first step in management?', options: {'A': 'Immediate induction chemotherapy with 7+3.','B': 'STAT platelet transfusion.','C': 'Administer All-trans retinoic acid (ATRA).','D': 'Bone marrow biopsy to confirm blast percentage.'}, correctAnswer: 'C', feedback: {'A': 'Standard chemotherapy can worsen the coagulopathy in APL.','B': 'Transfusions are needed, but treating the underlying cause is paramount.','C': 'Correct. APL is a medical emergency. Immediate treatment with ATRA is critical to induce differentiation of promyelocytes and reverse the life-threatening coagulopathy, even before genetic confirmation.','D': 'While a biopsy is needed for formal diagnosis, treatment should not be delayed.'}},
+            { id: 'aml_t9_11', name: 'AML with t(9;11)', category: 'AML', image: 'https://placehold.co/600x400/e0f2fe/0c4a6e?text=AML+Monoblasts', casePresentation: 'A 3-year-old child presents with gingival hyperplasia and skin infiltrates (leukemia cutis). The peripheral blood shows a high count of monoblasts with folded nuclei and abundant cytoplasm.', question: 'This presentation is strongly associated with which KMT2A (MLL) rearrangement?', options: {'A': 't(6;9)','B': 't(9;11)','C': 'inv(3)','D': 't(1;22)'}, correctAnswer: 'B', feedback: {'A': 't(6;9) is rare and associated with basophilia.','B': 'Correct. t(9;11) resulting in KMT2A-MLLT3 is a classic finding in pediatric and adult AML with monocytic differentiation, often with extramedullary disease.','C': 'inv(3) is associated with abnormal megakaryocytes and thrombocytosis.','D': 't(1;22) is seen in infant acute megakaryoblastic leukemia.'}},
+            { id: 'aml_npm1', name: 'AML with NPM1 mutation', category: 'AML', image: 'https://placehold.co/600x400/e0f2fe/0c4a6e?text=AML+Cup-like+Blasts', casePresentation: 'A 55-year-old female is diagnosed with AML. Cytogenetics are normal (46,XX). Molecular studies are performed. The blasts show a "cup-like" nuclear morphology.', question: 'A mutation in which gene confers a favorable prognosis in the absence of a FLT3-ITD mutation?', options: {'A': 'DNMT3A','B': 'RUNX1','C': 'ASXL1','D': 'NPM1'}, correctAnswer: 'D', feedback: {'A': 'DNMT3A mutations are common and generally associated with a worse prognosis.','B': 'RUNX1 mutations are an adverse prognostic marker.','C': 'ASXL1 mutations are associated with a poor prognosis.','D': 'Correct. In cytogenetically normal AML, an isolated NPM1 mutation is a favorable prognostic marker. The cup-like blast morphology is a strong clue.'}},
+            { id: 'aml_cebpa', name: 'AML with CEBPA mutation', category: 'AML', image: 'https://placehold.co/600x400/e0f2fe/0c4a6e?text=AML+CEBPA+Blasts', casePresentation: 'A 30-year-old is diagnosed with cytogenetically normal AML. The blasts are CD34 negative and HLA-DR negative. Molecular testing reveals a mutation.', question: 'A biallelic mutation in which of the following transcription factors is associated with this immunophenotype and a favorable prognosis?', options: {'A': 'TP53','B': 'FLT3','C': 'CEBPA','D': 'IDH2'}, correctAnswer: 'C', feedback: {'A': 'TP53 mutations are associated with poor prognosis.','B': 'FLT3-ITD mutations are associated with poor prognosis.','C': 'Correct. Biallelic CEBPA mutations define a specific AML entity with a favorable prognosis and often show an immunophenotype lacking stem cell markers (CD34-, HLA-DR-).','D': 'IDH mutations are common but not specifically linked to this phenotype.'}},
+            { id: 'aml_mdr', name: 'AML, Myelodysplasia-Related', category: 'AML', image: 'https://placehold.co/600x400/e0f2fe/0c4a6e?text=Dysplastic+Megakaryocyte', casePresentation: 'A 72-year-old man with a prior history of MDS presents with worsening pancytopenia. A bone marrow biopsy shows 25% myeloblasts and multilineage dysplasia, including pseudo-Pelger-Huet neutrophils and micromegakaryocytes. Cytogenetics show deletion 7q.', question: 'What is the most accurate diagnosis?', options: {'A': 'Therapy-related AML','B': 'AML with NPM1 mutation','C': 'AML with myelodysplasia-related changes','D': 'Acute erythroid leukemia'}, correctAnswer: 'C', feedback: {'A': 'Therapy-related AML requires a history of prior cytotoxic therapy, which is not given.','B': 'NPM1-mutated AML is typically de novo and has a different morphology.','C': 'Correct. A diagnosis of AML with a history of MDS or specific myelodysplasia-defining cytogenetic abnormalities (-7, del(5q), complex karyotype) falls into this adverse-risk category.','D': 'Acute erythroid leukemia has a predominance of erythroid precursors.'}},
+            
+            // ALL
+            { id: 'b_all_t12_21', name: 'B-ALL with t(12;21)', category: 'ALL', image: 'https://placehold.co/600x400/dbeafe/1e3a8a?text=B-ALL+Lymphoblasts', casePresentation: 'A 4-year-old boy presents with bone pain and fever. CBC shows anemia, thrombocytopenia, and 70% lymphoblasts. The blasts are small and express CD10, CD19, and TdT. Cytogenetics appear normal by karyotype.', question: 'What cryptic translocation, often missed by karyotype and detected by FISH or RT-PCR, is most common in this pediatric setting and carries a good prognosis?', options: {'A': 't(9;22); BCR-ABL1','B': 'KMT2A (MLL) rearrangement','C': 't(12;21); ETV6-RUNX1','D': 'Hyperdiploidy'}, correctAnswer: 'C', feedback: {'A': 'BCR-ABL1 is more common in adult ALL and carries a poor prognosis.','B': 'KMT2A rearrangements are common in infant ALL and have a poor prognosis.','C': 'Correct. ETV6-RUNX1 is the most common genetic subtype in pediatric B-ALL. It is often cytogenetically cryptic and is associated with a very favorable outcome.','D': 'Hyperdiploidy is also a common favorable risk feature but is a numerical, not a structural, change.'}},
+            { id: 'b_all_ph', name: 'B-ALL with t(9;22)', category: 'ALL', image: 'https://placehold.co/600x400/dbeafe/1e3a8a?text=B-ALL+Smear', casePresentation: 'A 60-year-old male is diagnosed with B-ALL. The blasts express CD10, CD19, and TdT. FISH analysis is performed.', question: 'The detection of which fusion gene has significant therapeutic implications, indicating targeted therapy with a tyrosine kinase inhibitor (TKI)?', options: {'A': 'ETV6-RUNX1','B': 'BCR-ABL1','C': 'TCF3-PBX1','D': 'KMT2A-AFF1'}, correctAnswer: 'B', feedback: {'A': 'This fusion is associated with pediatric B-ALL and good prognosis.','B': 'Correct. The t(9;22) or Philadelphia chromosome creates the BCR-ABL1 fusion gene. Its presence is a poor prognostic factor but makes the leukemia exquisitely sensitive to TKIs like imatinib or dasatinib.','C': 't(1;19) is another recurrent abnormality in B-ALL.','D': 'A common KMT2A fusion partner in B-ALL.'}},
+            { id: 'b_all_kmt2a', name: 'B-ALL with KMT2A rearranged', category: 'ALL', image: 'https://placehold.co/600x400/dbeafe/1e3a8a?text=Infant+B-ALL', casePresentation: 'An 8-month-old infant presents with extreme hyperleukocytosis and hepatosplenomegaly. The blasts express CD19 but are negative for CD10.', question: 'A rearrangement of which gene is characteristic of infant B-ALL and confers a very poor prognosis?', options: {'A': 'ETV6','B': 'PAX5','C': 'IKZF1','D': 'KMT2A (MLL)'}, correctAnswer: 'D', feedback: {'A': 'ETV6 is involved in the favorable t(12;21).','B': 'PAX5 alterations are common but do not define this entity.','C': 'IKZF1 deletions are a poor prognostic marker, especially in Ph+ ALL.','D': 'Correct. KMT2A (formerly MLL) rearrangements, often t(4;11), are the hallmark of infant B-ALL, which is typically CD10-negative and has a dismal outcome.'}},
+            { id: 'b_all_ph_like', name: 'B-ALL, BCR-ABL1-like', category: 'ALL', image: 'https://placehold.co/600x400/dbeafe/1e3a8a?text=Ph-like+ALL+GEP', casePresentation: 'An 18-year-old presents with B-ALL. Cytogenetics are normal and RT-PCR for BCR-ABL1 is negative. However, due to high-risk clinical features, gene expression profiling (GEP) is performed, revealing a gene signature similar to Ph-positive ALL.', question: 'This "Ph-like" signature is associated with a poor prognosis and mutations activating what signaling pathway?', options: {'A': 'Wnt signaling','B': 'Notch signaling','C': 'JAK/STAT signaling','D': 'Hedgehog signaling'}, correctAnswer: 'C', feedback: {'A': 'Wnt signaling is crucial in development but not the primary driver here.','B': 'Notch signaling is a key driver in T-ALL.','C': 'Correct. Ph-like ALL is characterized by a diverse range of genetic alterations (e.g., CRLF2 rearrangements, JAK2 mutations) that converge on activating the JAK/STAT and related kinase pathways, making them potential targets for TKIs.','D': 'Hedgehog signaling is not typically involved.'}},
+            { id: 't_all', name: 'T-ALL', category: 'ALL', image: 'https://placehold.co/600x400/dbeafe/1e3a8a?text=Mediastinal+Mass+X-Ray', casePresentation: 'A 17-year-old male presents with respiratory distress and a large anterior mediastinal mass on chest X-ray. Peripheral blood smear shows high numbers of blasts. Flow cytometry shows the blasts are positive for TdT, CD1a, CD2, CD3 (cytoplasmic), CD5, and CD7.', question: 'What is the diagnosis?', options: {'A': 'Primary Mediastinal Large B-cell Lymphoma','B': 'T-lymphoblastic Leukemia/Lymphoma','C': 'Nodular Sclerosis Hodgkin Lymphoma','D': 'Precursor B-ALL'}, correctAnswer: 'B', feedback: {'A': 'This is a B-cell lymphoma, also presenting with a mediastinal mass, but it would be negative for T-cell markers.','B': 'Correct. A mediastinal mass in an adolescent male is the classic presentation for T-ALL/LBL. The immunophenotype is diagnostic.','C': 'Hodgkin lymphoma can present this way, but the cells would not be sheets of blasts and would have a different immunophenotype (CD30+, CD15+).','D': 'The blasts in B-ALL would express B-cell markers like CD19 and CD10.'}},
+
+            // Translocation-Associated NHL
+            { id: 'fl', name: 'Follicular Lymphoma', category: 'Translocation-Associated NHL', image: 'https://placehold.co/600x400/e0e7ff/3730a3?text=Follicular+Lymphoma+Nodules', casePresentation: 'A 65-year-old female presents with painless, widespread lymphadenopathy. A lymph node biopsy shows a nodular proliferation of small, cleaved cells (centrocytes) and scattered large non-cleaved cells (centroblasts). IHC shows the cells are CD20+, CD10+, BCL6+, and BCL2+.', question: 'The characteristic overexpression of BCL2 in this lymphoma is due to which translocation?', options: {'A': 't(8;14)','B': 't(11;14)','C': 't(14;18)','D': 't(3;14)'}, correctAnswer: 'C', feedback: {'A': 't(8;14) involves MYC and is the hallmark of Burkitt lymphoma.','B': 't(11;14) involves Cyclin D1 (CCND1) and is seen in Mantle Cell Lymphoma.','C': 'Correct. The t(14;18) juxtaposes the BCL2 gene with the immunoglobulin heavy chain locus, leading to overexpression of the anti-apoptotic protein BCL2, which is key to the pathogenesis of Follicular Lymphoma.','D': 't(3;14) can be seen in some large B-cell lymphomas involving BCL6.'}},
+            { id: 'mcl', name: 'Mantle Cell Lymphoma', category: 'Translocation-Associated NHL', image: 'https://placehold.co/600x400/e0e7ff/3730a3?text=Mantle+Cell+Irregular+Nuclei', casePresentation: 'A 70-year-old male has lymphadenopathy and splenomegaly. Biopsy of a lymph node reveals a diffuse infiltrate of small to medium-sized lymphocytes with irregular nuclear contours. IHC staining is positive for CD20, CD5, and Cyclin D1.', question: 'The expression of Cyclin D1 is a result of which translocation?', options: {'A': 't(14;18)','B': 't(11;14)','C': 't(8;14)','D': 't(2;5)'}, correctAnswer: 'B', feedback: {'A': 't(14;18) is characteristic of Follicular Lymphoma (BCL2).','B': 'Correct. t(11;14) places the CCND1 gene (Cyclin D1) under the control of the IgH enhancer, leading to its overexpression, which is the molecular hallmark of Mantle Cell Lymphoma.','C': 't(8;14) is characteristic of Burkitt Lymphoma (MYC).','D': 't(2;5) is seen in Anaplastic Large Cell Lymphoma (ALK).'}},
+            { id: 'bl', name: 'Burkitt Lymphoma', category: 'Translocation-Associated NHL', image: 'https://placehold.co/600x400/e0e7ff/3730a3?text=Burkitt+Starry+Sky', casePresentation: 'An 8-year-old boy from Africa presents with a rapidly growing jaw mass. A biopsy shows a diffuse infiltrate of monomorphic, medium-sized cells with round nuclei, multiple nucleoli, and basophilic cytoplasm with lipid vacuoles. A "starry sky" pattern is prominent.', question: 'This aggressive lymphoma is defined by a translocation involving which oncogene?', options: {'A': 'BCL2','B': 'BCL6','C': 'MYC','D': 'CCND1'}, correctAnswer: 'C', feedback: {'A': 'BCL2 is involved in Follicular Lymphoma.','B': 'BCL6 is often involved in DLBCL.','C': 'Correct. Burkitt Lymphoma is defined by a translocation involving the MYC gene on chromosome 8, most commonly t(8;14).','D': 'CCND1 (Cyclin D1) is involved in Mantle Cell Lymphoma.'}},
+            { id: 'mzl', name: 'Marginal Zone Lymphoma', category: 'Translocation-Associated NHL', image: 'https://placehold.co/600x400/e0e7ff/3730a3?text=MALT+Lymphoepithelial+Lesions', casePresentation: 'A 60-year-old woman with a history of Sjogren syndrome presents with persistent parotid gland swelling. Biopsy reveals a dense lymphoid infiltrate with lymphoepithelial lesions. The cells are small B-cells that are CD20+ and CD5-.', question: 'This MALT lymphoma is often associated with which translocation?', options: {'A': 't(11;18); BIRC3-MALT1','B': 't(14;18); IGH-BCL2','C': 't(11;14); IGH-CCND1','D': 't(8;14); IGH-MYC'}, correctAnswer: 'A', feedback: {'A': 'Correct. The t(11;18) is the most specific translocation for MALT lymphoma and is associated with resistance to H. pylori eradication therapy (in gastric cases). It activates the NF-kB pathway.','B': 'This is the translocation for Follicular Lymphoma.','C': 'This is the translocation for Mantle Cell Lymphoma.','D': 'This is the translocation for Burkitt Lymphoma.'}},
+            
+            // DLBCL
+            { id: 'dldcl_nos', name: 'DLBCL, NOS', category: 'DLBCL', image: 'https://placehold.co/600x400/eef2ff/4338ca?text=DLBCL+NOS', casePresentation: 'A 68-year-old man presents with a rapidly enlarging cervical lymph node. Biopsy shows a diffuse infiltrate of large, atypical lymphocytes with vesicular nuclei, prominent nucleoli, and scant cytoplasm, completely effacing the normal architecture. The cells are CD20+, BCL6+, and MUM1+.', question: 'Based on the immunophenotype (Hans algorithm), what is the likely cell of origin?', options: {'A': 'Germinal Center B-cell (GCB)','B': 'Activated B-cell (ABC) / Non-GCB','C': 'Mantle Cell','D': 'Plasma Cell'}, correctAnswer: 'B', feedback: {'A': 'GCB-type DLBCL is typically CD10+ or BCL6+ and MUM1-.','B': 'Correct. The phenotype CD10-, BCL6+, MUM1+ is characteristic of the non-GCB or ABC subtype of DLBCL, which generally carries a worse prognosis than the GCB subtype.','C': 'Mantle Cell lymphoma would be Cyclin D1 positive.','D': 'Plasma cell neoplasms would express CD138 and lack CD20.'}},
+            { id: 'pmbl', name: 'Primary Mediastinal LBCL', category: 'DLBCL', image: 'https://placehold.co/600x400/eef2ff/4338ca?text=PMBL+Sclerosis', casePresentation: 'A 30-year-old woman presents with cough and shortness of breath. A chest CT reveals a large, bulky anterior mediastinal mass. Biopsy shows large cells with clear cytoplasm growing in a sclerotic background. The cells are positive for CD20, PAX5, and GATA3, but negative for CD10 and CD15. CD30 is weakly and heterogeneously positive.', question: 'This entity shows clinical and molecular overlap with which other lymphoma?', options: {'A': 'Follicular Lymphoma','B': 'Burkitt Lymphoma','C': 'Nodular Sclerosis Hodgkin Lymphoma','D': 'Mantle Cell Lymphoma'}, correctAnswer: 'C', feedback: {'A': 'Follicular lymphoma is typically a disease of older adults with a different morphology.','B': 'Burkitt lymphoma is extremely aggressive and has a different immunophenotype.','C': 'Correct. PMBL shares features with Nodular Sclerosis cHL, including mediastinal presentation, young adult female predilection, and sclerosis. It is considered a distinct entity but exists on a biological continuum.','D': 'Mantle cell lymphoma has a different morphology and is Cyclin D1+.'}},
+            { id: 'pcnsl', name: 'Primary CNS Lymphoma', category: 'DLBCL', image: 'https://placehold.co/600x400/eef2ff/4338ca?text=PCNSL+Brain+MRI', casePresentation: 'A 60-year-old immunocompetent patient presents with headaches and cognitive changes. An MRI shows a solitary, ring-enhancing lesion in the periventricular white matter. A stereotactic brain biopsy is performed.', question: 'What is the most likely diagnosis?', options: {'A': 'Glioblastoma','B': 'Toxoplasmosis','C': 'Progressive Multifocal Leukoencephalopathy (PML)','D': 'Diffuse Large B-cell Lymphoma'}, correctAnswer: 'D', feedback: {'A': 'Glioblastoma is a primary brain tumor but has a different histology (astrocytic).','B': 'Toxoplasmosis is a key differential, especially in immunocompromised patients, but lymphoma is more common in immunocompetent hosts.','C': 'PML is a demyelinating disease caused by JC virus.','D': 'Correct. In an immunocompetent patient, a solitary ring-enhancing periventricular mass is highly suspicious for Primary CNS Lymphoma, which is almost always a DLBCL.'}},
+            { id: 'hgbcl_dh', name: 'High-Grade B-cell, Double-Hit', category: 'DLBCL', image: 'https://placehold.co/600x400/eef2ff/4338ca?text=HGBCL+FISH', casePresentation: 'A 70-year-old presents with rapidly progressive B-symptoms and bulky disease. A lymph node biopsy shows features of DLBCL. Immunohistochemistry is positive for BCL2 (>70% of cells) and MYC (>40% of cells).', question: 'What follow-up test is mandatory to confirm the diagnosis of a "double-hit" lymphoma?', options: {'A': 'Flow cytometry','B': 'Gene expression profiling','C': 'FISH or cytogenetics for MYC and BCL2 rearrangements','D': 'EBV testing (EBER)'}, correctAnswer: 'C', feedback: {'A': 'Flow cytometry confirms the B-cell lineage but cannot detect translocations.','B': 'GEP can determine cell of origin but is not the standard for defining this entity.','C': 'Correct. "Double-hit" lymphoma is defined by the presence of chromosomal rearrangements of MYC and BCL2 (and/or BCL6), not just protein expression. FISH is essential for diagnosis.','D': 'EBER is for diagnosing EBV-positive lymphomas.'}},
+            { id: 'hgbcl_th', name: 'High-Grade B-cell, Triple-Hit', category: 'DLBCL', image: 'https://placehold.co/600x400/eef2ff/4338ca?text=HGBCL+Complex+Karyotype', casePresentation: 'A 65-year-old female is diagnosed with a very aggressive B-cell lymphoma. FISH studies return positive for rearrangements in MYC, BCL2, and BCL6.', question: 'What is the prognosis for this "triple-hit" lymphoma?', options: {'A': 'Favorable, similar to GCB-DLBCL','B': 'Intermediate, treatable with standard R-CHOP','C': 'Very poor, often refractory to standard and intensive therapies','D': 'Indolent, can be watched and waited'}, correctAnswer: 'C', feedback: {'A': 'The prognosis is significantly worse than standard DLBCL.','B': 'Triple-hit lymphomas are notoriously resistant to standard R-CHOP chemotherapy.','C': 'Correct. Lymphomas with rearrangements of all three major oncogenes (MYC, BCL2, BCL6) are termed "triple-hit" and carry an extremely aggressive clinical course and dismal prognosis.','D': 'This is one of the most aggressive lymphomas; observation is not an option.'}},
+            { id: 'ebv_dlbcl', name: 'EBV+ DLBCL, NOS', category: 'DLBCL', image: 'https://placehold.co/600x400/eef2ff/4338ca?text=EBER+ISH', casePresentation: 'An 80-year-old man with no known immunodeficiency presents with an ulcerating mass on his palate. Biopsy reveals a diffuse infiltrate of large B-cells. In situ hybridization for EBER is diffusely positive in the tumor cells.', question: 'What is the most likely diagnosis?', options: {'A': 'Burkitt Lymphoma','B': 'Plasmablastic Lymphoma','C': 'EBV+ DLBCL, NOS','D': 'Classic Hodgkin Lymphoma'}, correctAnswer: 'C', feedback: {'A': 'While some Burkitt cases are EBV+, the morphology and age are not typical.','B': 'Plasmablastic lymphoma is also EBV+, but it shows plasma cell differentiation and is more common in immunocompromised hosts.','C': 'Correct. This entity occurs in elderly patients who are thought to have immunosenescence, allowing for EBV-driven lymphoproliferation. EBER positivity is required for diagnosis.','D': 'Hodgkin lymphoma has different morphology and is only sometimes EBV+.'}},
+            { id: 'pbl', name: 'Plasmablastic Lymphoma', category: 'DLBCL', image: 'https://placehold.co/600x400/eef2ff/4338ca?text=Plasmablastic+Morphology', casePresentation: 'A 40-year-old HIV-positive male presents with a rapidly growing mass in the oral cavity. Biopsy shows sheets of large cells resembling immunoblasts or plasma cells. IHC shows the cells are CD138+, MUM1+, but negative for CD20 and PAX5. EBER is positive.', question: 'This aggressive lymphoma shows features of terminal B-cell differentiation and is strongly associated with what setting?', options: {'A': 'Pediatric patients','B': 'Immunocompetent elderly patients','C': 'Post-transplant patients','D': 'Immunodeficiency (especially HIV)'}, correctAnswer: 'D', feedback: {'A': 'PBL is rare in children.','B': 'While it can occur, it is much less common than in the immunocompromised.','C': 'Post-transplant lymphoproliferative disorders (PTLD) are a consideration, but HIV is the classic setting.','D': 'Correct. Plasmablastic lymphoma is an aggressive lymphoma of terminally differentiated B-cells, most commonly seen in the setting of HIV infection.'}},
+            
+            // Hodgkin & Related
+            { id: 'ns_chl', name: 'Nodular Sclerosis cHL', category: 'Hodgkin & Related', image: 'https://placehold.co/600x400/f5d0fe/701a75?text=NSHL+Lacunar+Cell', casePresentation: 'A 22-year-old female presents with a non-tender supraclavicular lymph node. Biopsy shows nodules of lymphoid tissue surrounded by dense collagen bands. Within the nodules are scattered large, atypical cells residing in clear spaces ("lacunar cells").', question: 'What is the classic immunophenotype of these atypical cells?', options: {'A': 'CD20+, CD45+','B': 'CD3+, CD5+','C': 'CD30+, CD15+, PAX5(dim)+','D': 'CD138+, CD56+'}, correctAnswer: 'C', feedback: {'A': 'This is a B-cell phenotype, but Hodgkin cells lose most B-cell markers.','B': 'This is a T-cell phenotype.','C': 'Correct. The lacunar cells are variants of Reed-Sternberg cells and characteristically express CD30 and CD15 and are weakly positive for PAX5, while being negative for CD20 and CD45.','D': 'This is a plasma cell phenotype.'}},
+            { id: 'mc_chl', name: 'Mixed Cellularity cHL', category: 'Hodgkin & Related', image: 'https://placehold.co/600x400/f5d0fe/701a75?text=MCHL+Reed-Sternberg+Cell', casePresentation: 'A 45-year-old man presents with B-symptoms. A lymph node biopsy shows a diffuse, mixed inflammatory background containing numerous classic, binucleated Reed-Sternberg cells.', question: 'Compared to Nodular Sclerosis cHL, this subtype is more frequently associated with:', options: {'A': 'Female gender','B': 'Mediastinal involvement','C': 'EBV infection','D': 'Younger age'}, correctAnswer: 'C', feedback: {'A': 'NS cHL has a female predominance.','B': 'NS cHL is the subtype most commonly associated with mediastinal masses.','C': 'Correct. Mixed Cellularity cHL is strongly associated with EBV, which is present in the Reed-Sternberg cells in about 70% of cases.','D': 'NS cHL has a peak incidence in young adults.'}},
+            { id: 'nlphl', name: 'NLPHL', category: 'Hodgkin & Related', image: 'https://placehold.co/600x400/f5d0fe/701a75?text=NLPHL+Popcorn+Cell', casePresentation: 'A 35-year-old male presents with a solitary, slow-growing cervical lymph node. Biopsy reveals a vaguely nodular pattern with scattered large, atypical cells possessing multilobated nuclei resembling "popcorn". These cells are found within a background of small B-lymphocytes.', question: 'What is the immunophenotype of the "popcorn" cells (LP cells)?', options: {'A': 'CD30+, CD15+, CD20-','B': 'CD20+, BCL6+, CD30-, CD15-','C': 'CD3+, CD5+, CD20-','D': 'Cyclin D1+, CD5+'}, correctAnswer: 'B', feedback: {'A': 'This is the phenotype of classic Hodgkin lymphoma Reed-Sternberg cells.','B': 'Correct. The Lymphocyte-predominant (LP) cells of NLPHL have a B-cell phenotype, strongly expressing CD20, CD45, and germinal center markers like BCL6, while being negative for the classic markers CD30 and CD15.','C': 'This is a T-cell phenotype.','D': 'This is the phenotype of Mantle Cell Lymphoma.'}},
+            { id: 'alcl_alk_pos', name: 'ALCL, ALK-positive', category: 'Hodgkin & Related', image: 'https://placehold.co/600x400/f5d0fe/701a75?text=ALCL+Hallmark+Cells', casePresentation: 'A 15-year-old male presents with fever, weight loss, and widespread lymphadenopathy. A lymph node biopsy shows cohesive sheets of very large, pleomorphic cells with horseshoe-shaped nuclei ("hallmark cells"). The cells are strongly and diffusely positive for CD30 and ALK protein.', question: 'The expression of ALK protein is most commonly due to which translocation?', options: {'A': 't(8;14)','B': 't(11;14)','C': 't(14;18)','D': 't(2;5)'}, correctAnswer: 'D', feedback: {'A': 'MYC translocation in Burkitt Lymphoma.','B': 'Cyclin D1 translocation in Mantle Cell Lymphoma.','C': 'BCL2 translocation in Follicular Lymphoma.','D': 'Correct. The t(2;5)(p23;q35) creates the NPM1-ALK fusion gene, leading to cytoplasmic and nuclear ALK protein expression. This is the defining feature of ALK-positive ALCL.'}},
+            { id: 'alcl_alk_neg', name: 'ALCL, ALK-negative', category: 'Hodgkin & Related', image: 'https://placehold.co/600x400/f5d0fe/701a75?text=ALCL+ALK-Negative', casePresentation: 'A 60-year-old male has a large, ulcerating skin mass. Biopsy shows large anaplastic cells that are strongly CD30 positive. IHC for ALK is negative. FISH studies for DUSP22 and TP63 are performed.', question: 'The absence of ALK expression in this CD30+ T-cell lymphoma portends what?', options: {'A': 'A better prognosis than ALK+ ALCL','B': 'A worse prognosis than ALK+ ALCL','C': 'An indolent clinical course','D': 'Association with breast implants'}, correctAnswer: 'B', feedback: {'A': 'Incorrect. ALK positivity is a favorable prognostic marker.','B': 'Correct. ALK-negative ALCL is a distinct entity that occurs in older adults and has a significantly worse prognosis than its ALK-positive counterpart. Some cases have DUSP22 rearrangements (better prognosis) or TP63 rearrangements (worse prognosis).','C': 'This is an aggressive lymphoma.','D': 'Breast implant-associated ALCL is a specific subtype that is also ALK-negative but has a different clinical context and excellent prognosis upon implant removal.'}},
+            
+            // Other Heme Neoplasms
+            { id: 'cll', name: 'CLL / SLL', category: 'Other Heme Neoplasms', image: 'https://placehold.co/600x400/dcfce7/14532d?text=CLL+Smudge+Cells', casePresentation: 'An asymptomatic 72-year-old has a CBC showing a white blood cell count of 55,000 with 90% mature-appearing lymphocytes. Smear shows numerous "smudge cells". Flow cytometry shows a monoclonal B-cell population that is CD19+, CD5+, CD23+, with dim CD20 and dim surface immunoglobulin.', question: 'Which of the following cytogenetic abnormalities is associated with the worst prognosis in this disease?', options: {'A': 'del(13q)','B': 'Trisomy 12','C': 'del(11q)','D': 'del(17p)'}, correctAnswer: 'D', feedback: {'A': 'Isolated del(13q) is the most common abnormality and confers the best prognosis.','B': 'Trisomy 12 is associated with an intermediate prognosis.','C': 'del(11q), involving the ATM gene, is associated with a poor prognosis.','D': 'Correct. del(17p), which results in loss of the TP53 tumor suppressor gene, is the single worst prognostic factor in CLL.'}},
+            { id: 'hcl', name: 'Hairy Cell Leukemia', category: 'Other Heme Neoplasms', image: 'https://placehold.co/600x400/dcfce7/14532d?text=Hairy+Cells', casePresentation: 'A 55-year-old man presents with pancytopenia and massive splenomegaly. A bone marrow biopsy is "dry tap". The biopsy core shows a diffuse, spaced-out infiltrate of small lymphocytes with oval nuclei and abundant pale cytoplasm ("fried egg" appearance). Cells are positive for CD20, CD11c, CD25, CD103, and Annexin A1.', question: 'A mutation in which gene is present in nearly all cases of this disease?', options: {'A': 'NOTCH1','B': 'BRAF V600E','C': 'MYD88','D': 'TP53'}, correctAnswer: 'B', feedback: {'A': 'NOTCH1 mutations are common in CLL.','B': 'Correct. The BRAF V600E mutation is a defining molecular feature of classic Hairy Cell Leukemia and is a useful diagnostic and therapeutic target.','C': 'MYD88 mutations are characteristic of Lymphoplasmacytic Lymphoma.','D': 'TP53 mutations are seen in many cancers and indicate poor prognosis.'}},
+            { id: 'tpll', name: 'T-PLL', category: 'Other Heme Neoplasms', image: 'https://placehold.co/600x400/dcfce7/14532d?text=T-PLL+Prolymphocytes', casePresentation: 'An 80-year-old female presents with marked leukocytosis (>200,000/uL), splenomegaly, and skin lesions. The circulating cells are small to medium-sized with round nuclei, prominent nucleoli, and basophilic cytoplasm. Flow cytometry shows a mature T-cell phenotype (CD2+, CD3+, CD7+) with co-expression of CD4 and CD8 in a subset.', question: 'This aggressive leukemia is frequently associated with abnormalities of which chromosome?', options: {'A': 'Chromosome 12 (Trisomy 12)','B': 'Chromosome 14 (inversion/translocation)','C': 'Chromosome 17 (del17p)','D': 'Chromosome 22 (t(9;22))'}, correctAnswer: 'B', feedback: {'A': 'Trisomy 12 is common in CLL.','B': 'Correct. Over 80% of T-PLL cases involve chromosome 14 abnormalities, most commonly inv(14) or t(14;14), which juxtapose the TCL1 gene next to the T-cell receptor enhancer, driving proliferation.','C': 'del(17p) is a common poor prognostic marker but not the defining feature.','D': 't(9;22) defines CML and a subset of ALL.'}},
+            { id: 'lgll', name: 'LGL Leukemia', category: 'Other Heme Neoplasms', image: 'https://placehold.co/600x400/dcfce7/14532d?text=Large+Granular+Lymphocytes', casePresentation: 'A 65-year-old woman with a history of rheumatoid arthritis presents with neutropenia and recurrent infections. A peripheral smear review shows an increase in lymphocytes with abundant pale cytoplasm containing distinct azurophilic granules. Flow cytometry confirms a clonal CD3+, CD8+, CD57+ T-cell population.', question: 'Mutations in which signaling pathway gene are found in a significant subset of T-LGL and are a major diagnostic marker?', options: {'A': 'JAK2','B': 'STAT3','C': 'BRAF','D': 'NOTCH1'}, correctAnswer: 'B', feedback: {'A': 'JAK2 V617F is the hallmark of myeloproliferative neoplasms like polycythemia vera.','B': 'Correct. Activating mutations in the STAT3 gene are found in 30-40% of T-LGL cases and are a key clonal marker for the disease.','C': 'BRAF V600E is seen in Hairy Cell Leukemia.','D': 'NOTCH1 mutations are associated with CLL and T-ALL.'}},
+            { id: 'mfss', name: 'Mycosis Fungoides/Sézary', category: 'Other Heme Neoplasms', image: 'https://placehold.co/600x400/dcfce7/14532d?text=Sezary-Lutzner+Cell', casePresentation: 'A 60-year-old male presents with diffuse, intensely pruritic erythroderma and generalized lymphadenopathy. A peripheral blood smear shows atypical lymphocytes with highly convoluted, cerebriform nuclei. Flow cytometry demonstrates a clonal CD3+, CD4+, CD7- T-cell population.', question: 'What is the diagnosis for this leukemic phase of a cutaneous T-cell lymphoma?', options: {'A': 'T-PLL','B': 'Sézary Syndrome','C': 'ATLL','D': 'Angioimmunoblastic T-cell Lymphoma'}, correctAnswer: 'B', feedback: {'A': 'T-PLL has different morphology and immunophenotype.','B': 'Correct. Sézary syndrome is defined by the triad of erythroderma, lymphadenopathy, and the presence of clonal Sézary cells in the blood. It represents the leukemic phase of Mycosis Fungoides.','C': 'ATLL is associated with HTLV-1 and has "flower cell" morphology.','D': 'AITL is a nodal T-cell lymphoma with a different presentation.'}},
+            { id: 'atll', name: 'ATLL', category: 'Other Heme Neoplasms', image: 'https://placehold.co/600x400/dcfce7/14532d?text=ATLL+Flower+Cell', casePresentation: 'A 50-year-old woman from southern Japan presents with skin lesions, lytic bone lesions with hypercalcemia, and lymphadenopathy. Her blood smear contains atypical lymphocytes with multilobated nuclei ("flower cells"). Serology is positive for HTLV-1.', question: 'What is the diagnosis?', options: {'A': 'Sézary Syndrome','B': 'T-PLL','C': 'Myeloma','D': 'Adult T-cell Leukemia/Lymphoma'}, correctAnswer: 'D', feedback: {'A': 'Sézary cells have cerebriform nuclei, not flower-like nuclei.','B': 'T-PLL typically has more prominent nucleoli and is HTLV-1 negative.','C': 'Myeloma causes hypercalcemia and lytic lesions but is a plasma cell neoplasm.','D': 'Correct. The combination of clinical features (hypercalcemia, lytic lesions), "flower cell" morphology, and positive HTLV-1 serology is pathognomonic for ATLL.'}},
+            { id: 'mm', name: 'Plasma Cell Myeloma', category: 'Other Heme Neoplasms', image: 'https://placehold.co/600x400/dcfce7/14532d?text=Myeloma+Sheets+of+Plasma+Cells', casePresentation: 'A 65-year-old male presents with bone pain, fatigue, and renal insufficiency. Serum protein electrophoresis shows an M-spike, and a bone marrow biopsy reveals sheets of plasma cells comprising 40% of the marrow cellularity.', question: 'Which of the following is NOT part of the CRAB criteria for symptomatic myeloma?', options: {'A': 'Hypercalcemia','B': 'Renal failure','C': 'Anemia','D': 'Bone marrow plasmacytosis >10%'}, correctAnswer: 'D', feedback: {'A': 'C for hyperCalcemia.','B': 'R for Renal failure.','C': 'A for Anemia.','D': 'Correct. While bone marrow plasmacytosis is required for diagnosis, it is not one of the CRAB criteria defining end-organ damage. The B is for Bone lesions.'}},
+        ];
+        
+        const diagnosticAlgorithms = {
+            aml: {
+                title: 'AML Diagnostic Algorithm',
+                svg: `
+                <svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6b7280"></path></marker>
+                    </defs>
+                    <style>
+                        .node-rect { fill: #fff; stroke: #9ca3af; stroke-width: 2; rx: 8; }
+                        .node-text { font-family: sans-serif; font-size: 12px; text-anchor: middle; dominant-baseline: middle; fill: #1f2937; }
+                        .path-line { stroke: #6b7280; stroke-width: 2; marker-end: url(#arrow); }
+                        .favorable { fill: #ecfdf5; stroke: #10b981; }
+                        .intermediate { fill: #fefce8; stroke: #f59e0b; }
+                        .adverse { fill: #feefee; stroke: #ef4444; }
+                    </style>
+                    <!-- Nodes -->
+                    <g class="algorithm-node" id="node-start"><rect x="300" y="20" width="200" height="50" class="node-rect" /><text x="400" y="45" class="node-text">Suspicion of Acute Leukemia</text></g>
+                    <g class="algorithm-node" id="node-bm"><rect x="300" y="110" width="200" height="50" class="node-rect" /><text x="400" y="135" class="node-text">Bone Marrow Biopsy / Aspirate</text></g>
+                    <g class="algorithm-node" id="node-lineage"><rect x="300" y="200" width="200" height="50" class="node-rect" /><text x="400" y="225" class="node-text">Lineage Assignment (Myeloid vs. Lymphoid)</text></g>
+                    <g class="algorithm-node" id="node-myeloid"><rect x="300" y="290" width="200" height="50" class="node-rect" /><text x="400" y="315" class="node-text">AML Confirmed (≥20% Blasts)</text></g>
+                    
+                    <g class="algorithm-node" id="node-favorable"><rect x="50" y="410" width="180" height="60" class="node-rect favorable" /><text x="140" y="430" class="node-text">Favorable Risk</text><text x="140" y="450" class="node-text">t(8;21), inv(16), t(15;17), NPM1, CEBPA</text></g>
+                    <g class="algorithm-node" id="node-intermediate"><rect x="310" y="410" width="180" height="60" class="node-rect intermediate" /><text x="400" y="430" class="node-text">Intermediate Risk</text><text x="400" y="450" class="node-text">Normal Cyto, +8, t(9;11)</text></g>
+                    <g class="algorithm-node" id="node-adverse"><rect x="570" y="410" width="180" height="60" class="node-rect adverse" /><text x="660" y="430" class="node-text">Adverse Risk</text><text x="660" y="450" class="node-text">Complex, -7, TP53, inv(3)</text></g>
+                    
+                    <!-- Paths -->
+                    <path class="path-line" d="M 400 70 L 400 110" />
+                    <path class="path-line" d="M 400 160 L 400 200" />
+                    <path class="path-line" d="M 400 250 L 400 290" />
+                    <path class="path-line" d="M 400 340 L 400 380 L 140 380 L 140 410" />
+                    <path class="path-line" d="M 400 340 L 400 410" />
+                    <path class="path-line" d="M 400 340 L 400 380 L 660 380 L 660 410" />
+                </svg>
+                `,
+                details: {
+                    'node-start': { title: 'Suspicion of Acute Leukemia', text: 'Patient presents with signs/symptoms like fatigue, fever, bleeding, or bone pain. CBC shows cytopenias or circulating blasts.'},
+                    'node-bm': { title: 'Bone Marrow Evaluation', text: 'A bone marrow aspirate and biopsy are essential. Key tests include morphology (blast count), cytochemistry (MPO, NSE), flow cytometry for immunophenotyping, conventional cytogenetics (karyotype), and molecular studies (FISH and NGS).'},
+                    'node-lineage': { title: 'Lineage Assignment', text: 'Flow cytometry and cytochemical stains are critical. Myeloid lineage is supported by MPO, CD117, CD13, CD33. Lymphoid lineage is supported by TdT, PAX5, CD19 (B-ALL) or CD3, CD7 (T-ALL).'},
+                    'node-myeloid': { title: 'AML Diagnosis', text: 'Defined by ≥20% myeloid blasts in the bone marrow or blood. Exception: AML with t(8;21), inv(16), or t(15;17) is diagnosed regardless of blast count.'},
+                    'node-favorable': { title: 'Favorable Risk AML', text: 'These entities generally respond well to standard chemotherapy. APL with t(15;17) is a medical emergency treated with ATRA and arsenic. Core-binding factor leukemias (t(8;21), inv(16)) have good outcomes. Isolated NPM1 or biallelic CEBPA mutations in normal karyotype AML are also favorable.'},
+                    'node-intermediate': { title: 'Intermediate Risk AML', text: 'This is a heterogeneous group, including AML with a normal karyotype (without favorable/adverse mutations) or trisomy 8. FLT3-ITD mutation moves an otherwise favorable NPM1-mutated case into this risk group.'},
+                    'node-adverse': { title: 'Adverse Risk AML', text: 'Associated with poor response to therapy and high relapse rates. Includes complex karyotypes (≥3 abnormalities), monosomies (-5, -7), inv(3), and mutations in TP53, ASXL1, or RUNX1. These patients are often candidates for allogeneic stem cell transplant.'},
+                }
+            }
+        };
+
+        const appState = {
+            db: null, auth: null, userId: null, isAuthReady: false,
+            currentTab: 'tutor', currentCaseId: null,
+            caseStudyMode: 'study', // 'study' or 'test'
+            flashcards: { deck: [], currentIndex: 0, currentDeck: [], deckName: 'all' },
+            caseStudies: {},
+            charts: {},
+
+            async init() { this.initFirebase(); this.setupEventListeners(); this.showTab(this.currentTab, true); },
+            initFirebase() {
+                try {
+                    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                    const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+                    if (!firebaseConfig.apiKey) { this.runLocalMode(); return; }
+                    const firebaseApp = initializeApp(firebaseConfig);
+                    this.db = getFirestore(firebaseApp); this.auth = getAuth(firebaseApp);
+                    onAuthStateChanged(this.auth, async (user) => {
+                        if (user) {
+                            this.userId = user.uid; this.isAuthReady = true;
+                            document.getElementById('user-info').textContent = `User: ${this.userId.substring(0, 8)}`;
+                            await this.loadUserData();
+                        } else { this.signIn(); }
+                    });
+                } catch (error) { console.error("Firebase init failed:", error); this.runLocalMode(); }
+            },
+            runLocalMode() {
+                console.warn("Firebase config not found. App will run in local mode.");
+                this.isAuthReady = true; 
+                this.loadFlashcardContent(); 
+                this.renderCaseSelection();
+                this.onDataLoaded();
+                this.showNotification("Running in local mode. Progress will not be saved.", "warning");
+            },
+            async signIn() {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) await signInWithCustomToken(this.auth, __initial_auth_token);
+                    else await signInAnonymously(this.auth);
+                } catch (error) { console.error("Error signing in:", error); }
+            },
+            async loadUserData() {
+                if (!this.userId || !this.db) { this.runLocalMode(); return; }
+                const flashcardsColRef = collection(this.db, `artifacts/${__app_id}/users/${this.userId}/flashcards`);
+                const fcSnapshot = await getDocs(flashcardsColRef);
+                if (fcSnapshot.empty) await this.seedInitialFlashcards();
+                else {
+                    const dbCards = fcSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    dbCards.forEach(card => { if (card.nextReview instanceof Timestamp) card.nextReview = card.nextReview.toDate(); });
+                    this.flashcards.deck = dbCards;
+                }
+                const caseProgressDoc = await getDoc(doc(this.db, `artifacts/${__app_id}/users/${this.userId}/case_progress`, 'progress'));
+                if (caseProgressDoc.exists()) this.caseStudies = caseProgressDoc.data();
+                const activityDoc = await getDoc(doc(this.db, `artifacts/${__app_id}/users/${this.userId}/user_activity`, 'activity'));
+                this.activityLog = activityDoc.exists() ? activityDoc.data().log : [];
+                this.onDataLoaded();
+            },
+            onDataLoaded() {
+                this.filterFlashcardDeck(); this.renderCaseSelection();
+                if (this.currentTab === 'tutor') this.renderTutorDashboard();
+                if (this.currentTab === 'progress') this.renderProgressDashboard();
+                if (this.currentTab === 'diagnostic-algorithms') this.renderDiagnosticAlgorithm();
+            },
+            async saveCaseProgress() { if (!this.userId || !this.db) return; await setDoc(doc(this.db, `artifacts/${__app_id}/users/${this.userId}/case_progress`, 'progress'), this.caseStudies); },
+            async seedInitialFlashcards() {
+                this.loadFlashcardContent(); if (!this.userId || !this.db) return; const batch = writeBatch(this.db);
+                const colRef = collection(this.db, `artifacts/${__app_id}/users/${this.userId}/flashcards`);
+                this.flashcards.deck.forEach(card => { const docRef = doc(colRef, card.id); batch.set(docRef, { ...card, nextReview: Timestamp.fromDate(card.nextReview) }); });
+                await batch.commit(); this.filterFlashcardDeck();
+            },
+            async updateFlashcardInDb(card) { if (!this.userId || !this.db) return; await setDoc(doc(this.db, `artifacts/${__app_id}/users/${this.userId}/flashcards`, card.id), { ...card, nextReview: Timestamp.fromDate(card.nextReview) }, { merge: true }); },
+            async logActivity(type, id) {
+                if (!this.userId || !this.db) return;
+                this.activityLog = this.activityLog || [];
+                const today = new Date().toISOString().split('T')[0];
+                this.activityLog.push({ date: today, type, id });
+                await setDoc(doc(this.db, `artifacts/${__app_id}/users/${this.userId}/user_activity`, 'activity'), { log: this.activityLog });
+            },
+            setupEventListeners() { 
+                document.getElementById('tab-container').addEventListener('click', (e) => { const btn = e.target.closest('.tab-btn'); if (btn) this.showTab(btn.dataset.tab); });
+                const modeToggle = document.getElementById('mode-toggle');
+                if (modeToggle) {
+                    modeToggle.addEventListener('change', (e) => {
+                        this.caseStudyMode = e.target.checked ? 'test' : 'study';
+                        this.showNotification(`Switched to ${this.caseStudyMode} mode.`, 'info');
+                        if (this.currentCaseId) {
+                            this.renderSelectedCase(this.currentCaseId);
+                        }
+                    });
+                }
+            },
+            showTab(tabName, isInitialLoad = false) {
+                if (!isInitialLoad && this.currentTab === tabName) return;
+                document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active', 'text-blue-600', 'border-blue-600'));
+                document.getElementById(tabName)?.classList.add('active');
+                document.querySelector(`.tab-btn[data-tab="${tabName}"]`)?.classList.add('active', 'text-blue-600', 'border-blue-600');
+                this.currentTab = tabName;
+                if (!this.isAuthReady) return;
+
+                switch(tabName) {
+                    case 'tutor': this.renderTutorDashboard(); break;
+                    case 'flashcards': if (!document.getElementById('flashcards').hasChildNodes() || isInitialLoad) this.renderFlashcardView(); break;
+                    case 'case-based-learning': if (isInitialLoad) this.renderCaseSelection(); break;
+                    case 'diagnostic-algorithms': this.renderDiagnosticAlgorithm(); break;
+                    case 'progress': this.renderProgressDashboard(); break;
+                }
+            },
+            showNotification(message, type = 'info') {
+                const container = document.getElementById('notification-container'); const notification = document.createElement('div');
+                const colors = { info: 'bg-blue-500 text-white', success: 'bg-green-500 text-white', warning: 'bg-yellow-500 text-white', error: 'bg-red-500 text-white' };
+                const icons = { info: 'fa-info-circle', success: 'fa-check-circle', warning: 'fa-exclamation-triangle', error: 'fa-bomb' };
+                notification.className = `notification ${colors[type]}`;
+                notification.innerHTML = `<div class="flex items-center"><i class="fas ${icons[type]} mr-3"></i><span>${message}</span></div>`;
+                container.appendChild(notification);
+                setTimeout(() => { notification.classList.add('slide-out'); notification.addEventListener('animationend', () => notification.remove()); }, 4000);
+            },
+            renderTutorDashboard() {
+                const planContainer = document.getElementById('study-plan-container');
+                const factContainer = document.getElementById('high-yield-fact');
+                const { dueCards, weakestCategory } = this.calculateProgressStats();
+                
+                let planHtml = `<h3 class="text-lg font-semibold text-gray-900 mb-3">Today's Focus</h3><div class="space-y-3">`;
+                if(dueCards.length > 0) {
+                    planHtml += `<div class="flex items-start p-3 bg-blue-50 rounded-lg"><i class="fas fa-clone text-blue-500 text-xl mr-4 mt-1"></i><div><p class="font-medium text-gray-800">Review Flashcards</p><p class="text-sm text-gray-600">You have ${dueCards.length} card(s) due for review. This is key for long-term retention.</p></div></div>`;
+                }
+                if(weakestCategory.name) {
+                    planHtml += `<div class="flex items-start p-3 bg-yellow-50 rounded-lg"><i class="fas fa-crosshairs text-yellow-500 text-xl mr-4 mt-1"></i><div><p class="font-medium text-gray-800">Strengthen Weakest Area</p><p class="text-sm text-gray-600">Your accuracy in <strong>${weakestCategory.name}</strong> cases is ${weakestCategory.accuracy}%. Tackle a case from this category to improve.</p></div></div>`;
+                }
+                if(dueCards.length === 0 && !weakestCategory.name) {
+                     planHtml += `<div class="flex items-start p-3 bg-green-50 rounded-lg"><i class="fas fa-check-circle text-green-500 text-xl mr-4 mt-1"></i><div><p class="font-medium text-gray-800">All Caught Up!</p><p class="text-sm text-gray-600">You have no due cards and solid performance across cases. Explore new material or try some hard flashcards.</p></div></div>`;
+                }
+                planHtml += '</div>';
+                planContainer.innerHTML = planHtml;
+
+                const randomFact = caseData[Math.floor(Math.random() * caseData.length)];
+                factContainer.innerHTML = `<p class="text-sm text-purple-800"><i class="fas fa-lightbulb mr-2"></i><strong>${randomFact.name}:</strong> ${Object.values(randomFact.feedback)[0]}</p>`;
+
+                document.getElementById('tutor-review-due-cards').onclick = () => { this.showTab('flashcards'); this.filterFlashcardDeck('due'); };
+                document.getElementById('tutor-tackle-weak-case').onclick = () => { if(weakestCategory.name) { this.showTab('case-based-learning'); const firstWeakCase = caseData.find(c => c.category === weakestCategory.name); if(firstWeakCase) this.renderSelectedCase(firstWeakCase.id); } };
+            },
+            renderDiagnosticAlgorithm() {
+                const algo = diagnosticAlgorithms.aml;
+                document.getElementById('algorithm-svg-container').innerHTML = algo.svg;
+                document.querySelectorAll('#algorithm-svg-container .algorithm-node').forEach(node => {
+                    node.addEventListener('click', () => {
+                        document.querySelectorAll('.algorithm-node').forEach(n => n.classList.remove('active'));
+                        node.classList.add('active');
+                        const details = algo.details[node.id];
+                        document.getElementById('algorithm-details-container').innerHTML = `
+                            <h3 class="font-bold text-lg mb-2 text-gray-800">${details.title}</h3>
+                            <p class="text-sm text-gray-600">${details.text}</p>
+                        `;
+                    });
+                });
+            },
+            renderCaseSelection() {
+                const container = document.getElementById('case-selection-container'); if (!container) return;
+                const groupedCases = caseData.reduce((acc, curr) => { (acc[curr.category] = acc[curr.category] || []).push(curr); return acc; }, {});
+                container.innerHTML = Object.entries(groupedCases).map(([category, cases]) => `<div><h4 class="font-bold text-sm text-gray-800 mb-2 px-2">${category}</h4><div class="space-y-1">${cases.map(caseItem => { const progress = this.caseStudies[caseItem.id]; let icon = '<i class="far fa-circle text-gray-400 w-5"></i>'; if (progress) { icon = progress.isCorrect ? '<i class="fas fa-check-circle text-green-500 w-5"></i>' : '<i class="fas fa-times-circle text-red-500 w-5"></i>'; } return `<button class="case-selection-btn" data-case-id="${caseItem.id}">${icon}<span class="flex-1">${caseItem.name}</span></button>`; }).join('')}</div></div>`).join('');
+                container.addEventListener('click', (e) => { const button = e.target.closest('.case-selection-btn'); if (button) this.renderSelectedCase(button.dataset.caseId); });
+            },
+            renderSelectedCase(caseId) {
+                this.currentCaseId = caseId; const caseItem = caseData.find(c => c.id === caseId); if (!caseItem) return;
+                const container = document.getElementById('case-display-container');
+                container.innerHTML = `
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">${caseItem.name}</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <div class="case-study">
+                                <h4 class="font-semibold text-blue-900 mb-2"><i class="fas fa-user-injured mr-2"></i>Patient Presentation</h4>
+                                <p class="text-sm text-blue-800">${caseItem.casePresentation}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="${caseItem.image}" alt="Primary source image for ${caseItem.name}" class="rounded-lg shadow-md w-full object-cover h-full">
+                        </div>
+                    </div>
+                    <h4 class="font-semibold text-gray-800 mb-3">${caseItem.question}</h4>
+                    <div id="current-case-options" class="space-y-2 mb-4">${Object.entries(caseItem.options).map(([key, value]) => `<div class="mcq-option" data-option="${key}"><strong>${key})</strong> ${value}</div>`).join('')}</div>
+                    <button id="current-case-submit" class="btn btn-primary">Submit Answer</button>
+                    <div id="current-case-feedback" class="hidden mt-6 p-4 rounded-lg"></div>
+                `;
+                document.querySelectorAll('.case-selection-btn').forEach(btn => btn.classList.remove('selected'));
+                document.querySelector(`.case-selection-btn[data-case-id="${caseId}"]`).classList.add('selected');
+                
+                const caseProgress = this.caseStudies[caseId];
+                if (caseProgress) {
+                    if (this.caseStudyMode === 'study') {
+                        this.updateCaseUIWithOptions(caseProgress);
+                    } else { // Test mode
+                        document.getElementById('current-case-submit').disabled = true;
+                        document.querySelectorAll('#current-case-options .mcq-option').forEach(opt => {
+                             if (opt.dataset.option === caseProgress.userAnswer) opt.classList.add('selected');
+                        });
+                    }
+                }
+                
+                container.querySelector('#current-case-options').addEventListener('click', (e) => { const option = e.target.closest('.mcq-option'); if (option) this.selectCaseOption(option); });
+                container.querySelector('#current-case-submit').addEventListener('click', () => this.checkCaseAnswer());
+            },
+            selectCaseOption(selectedOption) { if (document.getElementById('current-case-submit').disabled) return; document.querySelectorAll('#current-case-options .mcq-option').forEach(opt => opt.classList.remove('selected')); selectedOption.classList.add('selected'); },
+            async checkCaseAnswer() {
+                const caseItem = caseData.find(c => c.id === this.currentCaseId); const selectedOption = document.querySelector('#current-case-options .mcq-option.selected'); if (!selectedOption) { this.showNotification("Please select an answer.", "warning"); return; }
+                const userAnswer = selectedOption.dataset.option; const isCorrect = userAnswer === caseItem.correctAnswer;
+                this.caseStudies[this.currentCaseId] = { userAnswer, isCorrect }; 
+                
+                await this.saveCaseProgress(); 
+                await this.logActivity('case', this.currentCaseId); 
+                this.renderCaseSelection();
+
+                if (this.caseStudyMode === 'study') {
+                    this.updateCaseUIWithOptions({ userAnswer, isCorrect });
+                } else {
+                    document.getElementById('current-case-submit').disabled = true;
+                    this.showNotification(`Answer saved. Switch to Study Mode to review.`, 'info');
+                }
+            },
+            updateCaseUIWithOptions({ userAnswer, isCorrect }) {
+                const caseItem = caseData.find(c => c.id === this.currentCaseId); const feedbackDiv = document.getElementById('current-case-feedback');
+                document.querySelectorAll('#current-case-options .mcq-option').forEach(opt => { const optionLetter = opt.dataset.option; if (optionLetter === caseItem.correctAnswer) opt.classList.add('correct'); if (optionLetter === userAnswer && !isCorrect) opt.classList.add('incorrect'); });
+                feedbackDiv.innerHTML = `<p class="font-semibold">${isCorrect ? 'Correct!' : 'Incorrect.'}</p><p class="text-sm mt-1">${caseItem.feedback[userAnswer]}</p>`;
+                feedbackDiv.className = `mt-6 p-4 rounded-lg ${isCorrect ? 'feedback-correct text-green-800' : 'feedback-incorrect text-red-800'}`;
+                feedbackDiv.classList.remove('hidden'); document.getElementById('current-case-submit').disabled = true;
+            },
+            renderFlashcardView() { const container = document.getElementById('flashcards'); container.innerHTML = `<div class="flex flex-col lg:flex-row gap-6"><div class="lg:w-2/3"><div class="card p-6"><div class="flex justify-between items-center mb-4"><h2 class="text-2xl font-bold text-gray-900">Review Flashcards</h2><span id="deck-name" class="font-semibold text-gray-700">All Cards</span></div><div id="flashcard-container"></div><div id="flashcard-controls" class="mt-6 flex justify-between items-center"></div></div></div><div class="lg:w-1/3 space-y-6"><div class="card p-6"><h3 class="text-lg font-semibold text-gray-900 mb-4">Session Stats</h3><div id="session-stats"><p>Cards to review: <span id="review-count" class="font-bold">0</span></p></div></div><div class="card p-6"><h3 class="text-lg font-semibold text-gray-900 mb-4">Filter Deck</h3><select id="deckSelector" class="w-full border border-gray-300 rounded px-3 py-2 text-sm"><option value="all">All Cards</option><option value="due">Due for Review</option><option value="new">New Cards</option><option value="genetics">Genetics</option><option value="heme">Hematopathology</option></select></div></div></div>`; document.getElementById('deckSelector').addEventListener('change', (e) => this.filterFlashcardDeck(e.target.value)); this.renderCurrentCard(); },
+            filterFlashcardDeck(deckName = this.flashcards.deckName) {
+                this.flashcards.deckName = deckName; const now = new Date();
+                switch(deckName) { case 'due': this.flashcards.currentDeck = this.flashcards.deck.filter(c => c.nextReview <= now && c.reviews > 0); break; case 'new': this.flashcards.currentDeck = this.flashcards.deck.filter(c => c.reviews === 0); break; case 'genetics': case 'heme': this.flashcards.currentDeck = this.flashcards.deck.filter(c => c.category === deckName); break; default: this.flashcards.currentDeck = [...this.flashcards.deck]; }
+                this.flashcards.currentDeck.sort((a, b) => a.nextReview - b.nextReview); this.flashcards.currentIndex = 0; if (this.currentTab === 'flashcards') this.renderCurrentCard();
+            },
+            renderCurrentCard() {
+                const container = document.getElementById('flashcard-container'); const controls = document.getElementById('flashcard-controls'); const { currentDeck, currentIndex } = this.flashcards;
+                if (!currentDeck || currentDeck.length === 0) { container.innerHTML = `<div class="text-center p-10 h-[400px] flex items-center justify-center bg-gray-50 rounded-lg"><p class="text-gray-600">No cards in this deck. Try another filter!</p></div>`; controls.innerHTML = ''; document.getElementById('review-count').textContent = '0'; document.getElementById('deck-name').textContent = this.flashcards.deckName.charAt(0).toUpperCase() + this.flashcards.deckName.slice(1); return; }
+                const card = currentDeck[currentIndex];
+                container.innerHTML = `<div class="flashcard" id="flashcard-active"><div class="flashcard-inner"><div class="flashcard-front"><span class="absolute top-4 left-4 bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full">${card.category}</span><p class="text-xl font-semibold text-gray-800">${card.question}</p><span class="absolute bottom-4 text-sm text-gray-500"><i class="fas fa-hand-pointer mr-1"></i>Click to flip</span></div><div class="flashcard-back"><p class="text-lg font-medium text-gray-800">${card.answer}</p></div></div></div>`;
+                controls.innerHTML = `<button id="prev-card" class="btn btn-secondary"><i class="fas fa-arrow-left"></i></button><div id="rating-buttons" class="hidden space-x-2"><button data-rating="again" class="btn bg-red-100 text-red-700 hover:bg-red-200">Again (1d)</button><button data-rating="hard" class="btn bg-orange-100 text-orange-700 hover:bg-orange-200">Hard (3d)</button><button data-rating="good" class="btn bg-green-100 text-green-700 hover:bg-green-200">Good (7d)</button><button data-rating="easy" class="btn bg-blue-100 text-blue-700 hover:bg-blue-200">Easy (14d)</button></div><button id="next-card" class="btn btn-secondary"><i class="fas fa-arrow-right"></i></button>`;
+                document.getElementById('review-count').textContent = currentDeck.length; document.getElementById('deck-name').textContent = `${this.flashcards.deckName.charAt(0).toUpperCase() + this.flashcards.deckName.slice(1)} (${currentIndex + 1}/${currentDeck.length})`;
+                const fc = document.getElementById('flashcard-active'); fc.addEventListener('click', () => { fc.classList.toggle('flipped'); document.getElementById('rating-buttons').classList.toggle('hidden'); });
+                document.getElementById('prev-card').addEventListener('click', () => this.navigateCard('prev')); document.getElementById('next-card').addEventListener('click', () => this.navigateCard('next'));
+                document.getElementById('rating-buttons').addEventListener('click', (e) => { if (e.target.dataset.rating) this.rateCard(e.target.dataset.rating); });
+                document.getElementById('prev-card').disabled = currentIndex === 0; document.getElementById('next-card').disabled = currentIndex === currentDeck.length - 1;
+            },
+            navigateCard(direction) { const { currentDeck } = this.flashcards; if (direction === 'prev' && this.flashcards.currentIndex > 0) this.flashcards.currentIndex--; else if (direction === 'next' && this.flashcards.currentIndex < currentDeck.length - 1) this.flashcards.currentIndex++; this.renderCurrentCard(); },
+            async rateCard(rating) {
+                const card = this.flashcards.currentDeck[this.flashcards.currentIndex]; const intervals = { again: 1, hard: 3, good: 7, easy: 14 };
+                card.reviews = (card.reviews || 0) + 1; const nextDate = new Date(); nextDate.setDate(nextDate.getDate() + intervals[rating]); card.nextReview = nextDate;
+                await this.updateFlashcardInDb(card); await this.logActivity('flashcard', card.id);
+                this.showNotification(`Card marked as ${rating}. Next review in ${intervals[rating]} day(s).`, 'success');
+                if (this.flashcards.currentIndex < this.flashcards.currentDeck.length - 1) this.navigateCard('next'); else this.showNotification("You've completed this deck!", 'info');
+            },
+            loadFlashcardContent() { this.flashcards.deck = [ { id: 'gen1', question: "What is CML's genetic basis?", answer: "Philadelphia chromosome, t(9;22), creating BCR-ABL1 fusion.", category: 'genetics', reviews: 0, nextReview: new Date() }, { id: 'heme1', question: "What is the cell in Hodgkin Lymphoma?", answer: "The Reed-Sternberg cell.", category: 'heme', reviews: 0, nextReview: new Date() }, { id: 'heme2', question: "Translocation in Burkitt Lymphoma?", answer: "t(8;14), involving the MYC gene.", category: 'heme', reviews: 0, nextReview: new Date() }]; this.filterFlashcardDeck(); },
+            calculateProgressStats() {
+                const now = new Date();
+                const dueCards = this.flashcards.deck.filter(c => c.nextReview <= now);
+                const masteredCards = this.flashcards.deck.filter(c => (c.nextReview.getTime() - now.getTime()) / (1000 * 3600 * 24) > 14).length;
+                
+                const caseStats = Object.values(this.caseStudies).reduce((acc, curr) => { acc.total++; if(curr.isCorrect) acc.correct++; return acc; }, { total: 0, correct: 0});
+                
+                const statsByCategory = caseData.reduce((acc, c) => {
+                    if (!acc[c.category]) acc[c.category] = { total: 0, correct: 0 };
+                    acc[c.category].total++;
+                    const progress = this.caseStudies[c.id];
+                    if (progress && progress.isCorrect) acc[c.category].correct++;
+                    return acc;
+                }, {});
+
+                let weakestCategory = { name: null, accuracy: 101 };
+                for(const [cat, data] of Object.entries(statsByCategory)) {
+                    if(data.total > 0) {
+                        const accuracy = Math.round((data.correct / data.total) * 100);
+                        if (accuracy < weakestCategory.accuracy) weakestCategory = { name: cat, accuracy };
+                    }
+                }
+                if (weakestCategory.accuracy > 99) weakestCategory = { name: null };
+                
+                return { dueCards, masteredCards, caseStats, statsByCategory, weakestCategory };
+            },
+            renderProgressDashboard() {
+                const { masteredCards, caseStats, statsByCategory } = this.calculateProgressStats();
+                const totalItems = this.flashcards.deck.length + caseData.length;
+                const completedItems = masteredCards + caseStats.total;
+                
+                this.renderOverallProgressChart(completedItems, totalItems);
+                this.renderCategoryPerformanceChart(statsByCategory);
+                this.renderActivityHeatmap();
+                this.renderAchievements();
+            },
+            renderOverallProgressChart(completed, total) {
+                const ctx = document.getElementById('overall-progress-chart').getContext('2d');
+                if (this.charts.overall) this.charts.overall.destroy();
+                this.charts.overall = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: { labels: ['Mastered', 'Remaining'], datasets: [{ data: [completed, total - completed], backgroundColor: ['#10b981', '#e5e7eb'], borderWidth: 0 }] },
+                    options: { responsive: true, cutout: '70%', plugins: { legend: { display: false } } }
+                });
+                document.getElementById('overall-progress-text').textContent = `${completed} / ${total} Items Mastered`;
+            },
+            renderCategoryPerformanceChart(stats) {
+                const ctx = document.getElementById('category-performance-chart').getContext('2d');
+                if(this.charts.category) this.charts.category.destroy();
+                const labels = Object.keys(stats);
+                const data = labels.map(label => stats[label].total > 0 ? (stats[label].correct / stats[label].total) * 100 : 0);
+                this.charts.category = new Chart(ctx, {
+                    type: 'bar',
+                    data: { labels, datasets: [{ label: 'Accuracy', data, backgroundColor: '#3b82f6' }] },
+                    options: { indexAxis: 'y', scales: { x: { beginAtZero: true, max: 100, ticks: { callback: value => value + '%' } } }, plugins: { legend: { display: false } } }
+                });
+            },
+            renderActivityHeatmap() {
+                const container = document.getElementById('activity-heatmap-container');
+                const activityByDay = (this.activityLog || []).reduce((acc, log) => { acc[log.date] = (acc[log.date] || 0) + 1; return acc; }, {});
+                let html = '<div class="flex flex-col items-center"><div class="grid grid-flow-col grid-rows-7 gap-1">';
+                const endDate = new Date();
+                const startDate = new Date();
+                startDate.setDate(endDate.getDate() - 90); // 3 months view
+                for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+                    const dateString = d.toISOString().split('T')[0];
+                    const count = activityByDay[dateString] || 0;
+                    let colorClass = 'bg-gray-200';
+                    if (count > 0) colorClass = 'bg-green-200';
+                    if (count > 3) colorClass = 'bg-green-400';
+                    if (count > 6) colorClass = 'bg-green-600';
+                    html += `<div class="w-4 h-4 ${colorClass} rounded-sm" title="${dateString}: ${count} activities"></div>`;
+                }
+                html += '</div></div>';
+                container.innerHTML = html;
+            },
+            renderAchievements() {
+                const container = document.getElementById('achievements-container');
+                const { masteredCards, caseStats } = this.calculateProgressStats();
+                const achievements = [
+                    { id: 'case1', title: 'Case Explorer', desc: 'Complete your first case', achieved: caseStats.total > 0},
+                    { id: 'case10', title: 'Seasoned Detective', desc: 'Complete 10 cases', achieved: caseStats.total >= 10},
+                    { id: 'flash10', title: 'Memory Novice', desc: 'Master 10 flashcards', achieved: masteredCards >= 10},
+                ];
+                container.innerHTML = achievements.map(ach => `
+                    <div class="flex items-center p-2 rounded-lg ${ach.achieved ? 'bg-yellow-50' : 'bg-gray-100 opacity-60'}">
+                        <i class="fas fa-trophy text-2xl mr-3 ${ach.achieved ? 'text-yellow-500' : 'text-gray-400'}"></i>
+                        <div>
+                            <p class="font-semibold text-sm ${ach.achieved ? 'text-gray-800' : 'text-gray-500'}">${ach.title}</p>
+                            <p class="text-xs text-gray-500">${ach.desc}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => { appState.init(); });
+    </script>
+</body>
+</html>
+

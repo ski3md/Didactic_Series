@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Management and Informatics Command Center</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f8fafc;
+        --panel: #ffffff;
+        --panel-muted: #f1f5f9;
+        --line: #dbe4ee;
+        --text: #0f172a;
+        --text-soft: #475569;
+        --accent: #0f766e;
+        --accent-soft: #ccfbf1;
+        --accent-border: #99f6e4;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .shell {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        border-right: 1px solid var(--line);
+        background: #f8fafc;
+        padding: 18px 16px;
+      }
+
+      .eyebrow {
+        margin: 0 0 6px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #0f766e;
+      }
+
+      .sidebar h1 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.2;
+      }
+
+      .sidebar p {
+        margin: 10px 0 0;
+        font-size: 13px;
+        line-height: 1.55;
+        color: var(--text-soft);
+      }
+
+      .nav {
+        margin-top: 18px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .nav button {
+        width: 100%;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        border-radius: 8px;
+        padding: 12px 12px 11px;
+        text-align: left;
+        cursor: pointer;
+        transition: border-color 120ms ease, background 120ms ease;
+      }
+
+      .nav button:hover {
+        border-color: #94a3b8;
+      }
+
+      .nav button.active {
+        border-color: var(--accent-border);
+        background: var(--accent-soft);
+      }
+
+      .nav-title {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .nav-subtitle {
+        display: block;
+        margin-top: 4px;
+        font-size: 12px;
+        line-height: 1.45;
+        color: var(--text-soft);
+      }
+
+      .content {
+        padding: 24px;
+      }
+
+      .frame {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .scope-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .chip {
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--panel-muted);
+        padding: 6px 10px;
+        font-size: 12px;
+        color: var(--text-soft);
+      }
+
+      .hero {
+        display: grid;
+        gap: 18px;
+      }
+
+      .hero h2 {
+        margin: 0;
+        font-size: 28px;
+        line-height: 1.12;
+      }
+
+      .lede {
+        margin: 0;
+        max-width: 840px;
+        font-size: 15px;
+        line-height: 1.65;
+        color: var(--text-soft);
+      }
+
+      .grid {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 14px 15px;
+      }
+
+      .card h3,
+      .card h4 {
+        margin: 0 0 10px;
+        font-size: 14px;
+      }
+
+      .card p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--text-soft);
+      }
+
+      .list {
+        margin: 0;
+        padding-left: 18px;
+        display: grid;
+        gap: 8px;
+        font-size: 13px;
+        line-height: 1.55;
+        color: var(--text-soft);
+      }
+
+      .formula {
+        margin-top: 8px;
+        border-radius: 8px;
+        background: #0f172a;
+        color: #e2e8f0;
+        padding: 12px 14px;
+        font-size: 13px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        font-size: 12px;
+      }
+
+      .table th,
+      .table td {
+        border-bottom: 1px solid var(--line);
+        padding: 8px 10px;
+        text-align: left;
+      }
+
+      .table th {
+        color: var(--text-soft);
+        font-weight: 700;
+      }
+
+      .table td strong {
+        color: var(--text);
+      }
+
+      @media (max-width: 960px) {
+        .shell {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .grid.two {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <p class="eyebrow">Clinical Pathology</p>
+        <h1>Management and Informatics</h1>
+        <p>
+          First-wave command center for the strongest board-usable local topics: QC, lab operations, finance,
+          validation, LIS logic, and error reduction.
+        </p>
+        <p>
+          This local asset backs the eight Management and Informatics CP studios linked from the governed tutorial library.
+        </p>
+        <nav class="nav" id="topic-nav"></nav>
+      </aside>
+      <main class="content">
+        <section class="frame hero">
+          <div>
+            <p class="eyebrow" id="topic-eyebrow">Official ABPath Frame</p>
+            <h2 id="topic-title">Loading topic</h2>
+            <p class="lede" id="topic-summary"></p>
+            <div class="scope-bar">
+              <span class="chip" id="abpath-path"></span>
+              <span class="chip" id="focus-label"></span>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <h3>Why this matters</h3>
+              <p id="why-it-matters"></p>
+            </div>
+            <div class="card">
+              <h3>Common board trap</h3>
+              <p id="board-trap"></p>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <h3>Must know</h3>
+              <ul class="list" id="must-know"></ul>
+            </div>
+            <div class="card">
+              <h3>Interpretation tasks</h3>
+              <ul class="list" id="tasks"></ul>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <h3>Classic board stems</h3>
+              <ul class="list" id="board-stems"></ul>
+            </div>
+            <div class="card">
+              <h3>Wrong-answer traps</h3>
+              <ul class="list" id="wrong-answers"></ul>
+            </div>
+          </div>
+
+          <div class="card" id="formula-card" hidden>
+            <h3>Operational formula or decision frame</h3>
+            <div class="formula" id="formula-box"></div>
+          </div>
+
+          <div class="card" id="table-card" hidden>
+            <h3>Pattern table</h3>
+            <div id="table-box"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const topics = [
+        {
+          id: 'break-even-analysis',
+          navTitle: 'Break-even analysis',
+          navSubtitle: 'Capital planning and in-house versus send-out logic',
+          title: 'Break-even analysis and capital planning',
+          summary: 'Use contribution margin and expected volume to decide whether an instrument, assay, or internal workflow makes financial sense.',
+          abpathPath: 'Management and Informatics > Budgeting and Financial > Management of Unit Costs',
+          focusLabel: 'Financial and operational management',
+          whyItMatters:
+            'This is the lab-management version of next-best-step reasoning: the right answer depends on whether projected demand actually covers the fixed cost burden.',
+          boardTrap:
+            'Confusing revenue with contribution margin, or assuming internalization is always better than a send-out when fixed cost remains uncovered.',
+          mustKnow: [
+            'Break-even volume = fixed cost divided by contribution margin per test.',
+            'Contribution margin depends on reimbursement minus variable cost, not on total revenue alone.',
+            'Volume assumptions drive whether internalization is strategic or premature.',
+          ],
+          tasks: [
+            'Calculate break-even volume from fixed cost and contribution margin.',
+            'Compare send-out versus in-house testing under a projected monthly volume.',
+            'State whether a capital purchase is defensible under the current demand forecast.',
+          ],
+          boardStems: [
+            'A lab director is asked whether to internalize a molecular assay or keep it as a send-out.',
+            'A chemistry service considers an analyzer upgrade with known maintenance and reagent costs.',
+          ],
+          wrongAnswers: [
+            'Using gross reimbursement instead of net per-test contribution.',
+            'Subtracting fixed cost twice when estimating break-even volume.',
+          ],
+          formula: 'Break-even volume = Fixed cost / (Revenue per test - Variable cost per test)',
+        },
+        {
+          id: 'reagent-rental',
+          navTitle: 'Reagent rental',
+          navSubtitle: 'Instrument acquisition, throughput, and contract logic',
+          title: 'Instrument acquisition and reagent-rental decision logic',
+          summary: 'Reagent-rental decisions work only when expected volume, service burden, and contract structure align with actual lab demand.',
+          abpathPath: 'Management and Informatics > Budgeting and Financial',
+          focusLabel: 'Financial and operational management',
+          whyItMatters:
+            'Board stems love a superficially attractive acquisition option that becomes inefficient once throughput, maintenance, or low-volume economics are considered.',
+          boardTrap:
+            'Focusing on sticker price while ignoring service contracts, volume commitments, downtime coverage, or hidden reagent obligations.',
+          mustKnow: [
+            'Reagent-rental models shift capital burden into utilization-dependent operating cost.',
+            'Low-volume services may look cheaper up front but become inefficient under restrictive contracts.',
+            'Maintenance and throughput assumptions can change the right answer.',
+          ],
+          tasks: [
+            'Choose the most financially rational acquisition path for the stated volume.',
+            'Explain which contract term most threatens long-term sustainability.',
+          ],
+          boardStems: [
+            'A community hospital chooses between direct analyzer purchase and reagent rental.',
+            'A service line expansion creates a throughput mismatch with the current platform.',
+          ],
+          wrongAnswers: [
+            'Assuming rental is always the low-risk option.',
+            'Ignoring maintenance downtime or throughput bottlenecks.',
+          ],
+          formula: 'Decision frame: compare effective cost per reportable test after service, throughput, and contract minimums are included.',
+        },
+        {
+          id: 'levey-jennings',
+          navTitle: 'Levey-Jennings',
+          navSubtitle: 'Shifts, trends, bias, and acceptability',
+          title: 'Levey-Jennings interpretation and QC response',
+          summary: 'The chart is only useful if you translate the pattern into a decision: accept the run, troubleshoot, or hold patient results.',
+          abpathPath: 'Management and Informatics > Quality Management',
+          focusLabel: 'Quality management and quality control',
+          whyItMatters:
+            'This is operational CP in its purest form: pattern recognition linked to whether patient results can safely be released.',
+          boardTrap:
+            'Calling every outlier a trend, or releasing results despite a sustained shift that clearly implies systematic error.',
+          mustKnow: [
+            'Mean, SD, and CV define the control frame before pattern interpretation begins.',
+            'A trend suggests gradual drift; a shift suggests an abrupt bias change.',
+            'Multi-level controls help distinguish random from systematic problems.',
+          ],
+          tasks: [
+            'Identify whether the pattern reflects random error, drift, or systematic shift.',
+            'Decide whether the run is acceptable or patient results should be held.',
+          ],
+          boardStems: [
+            'Control values drift over several days before a patient critical value is reported.',
+            'Low and high controls both move in the same direction after maintenance.',
+          ],
+          wrongAnswers: [
+            'Confusing imprecision with bias.',
+            'Treating a persistent shift as if it were an isolated warning point.',
+          ],
+          table: {
+            headers: ['Pattern', 'Meaning', 'Immediate response'],
+            rows: [
+              ['Gradual drift', 'Trend or calibration wear', 'Investigate calibration or reagent stability before release'],
+              ['Abrupt shift', 'Systematic bias after maintenance or lot change', 'Hold results and confirm control recovery'],
+              ['Single isolated outlier', 'Possible random event', 'Check rule context before rejecting the run'],
+            ],
+          },
+        },
+        {
+          id: 'westgard-rules',
+          navTitle: 'Westgard rules',
+          navSubtitle: 'Rule recognition and QC troubleshooting',
+          title: 'Westgard rule interpretation and QC troubleshooting',
+          summary: 'Westgard rules convert control patterns into explicit accept-or-reject logic and make QC response less subjective.',
+          abpathPath: 'Management and Informatics > Quality Management',
+          focusLabel: 'Quality management and quality control',
+          whyItMatters:
+            'This is a classic exam area because it blends pattern recognition, statistical meaning, and patient-safety decision making.',
+          boardTrap:
+            'Rejecting or accepting a run without understanding whether the flagged pattern implies random or systematic error.',
+          mustKnow: [
+            '1-2s is commonly a warning rule, not always a hard rejection by itself.',
+            '2-2s, 4-1s, and 10x suggest systematic error.',
+            'R-4s is the classic random-error pattern across paired controls.',
+          ],
+          tasks: [
+            'Name the violated Westgard rule.',
+            'Choose whether to accept, repeat, recalibrate, or fully troubleshoot the run.',
+          ],
+          boardStems: [
+            'Two controls exceed the same-side 2 SD boundary.',
+            'One control is high and another low in the same run with wide separation.',
+          ],
+          wrongAnswers: [
+            'Treating 1-2s as an automatic final rejection in every setup.',
+            'Misclassifying R-4s as systematic rather than random error.',
+          ],
+          table: {
+            headers: ['Rule', 'Signal', 'Likely error type'],
+            rows: [
+              ['1-3s', 'One control beyond 3 SD', 'Reject run; major error'],
+              ['2-2s', 'Two consecutive controls beyond 2 SD on same side', 'Systematic error'],
+              ['R-4s', 'Two controls differ by more than 4 SD in one run', 'Random error'],
+              ['10x', 'Ten consecutive controls on one side of mean', 'Persistent systematic bias'],
+            ],
+          },
+        },
+        {
+          id: 'staff-productivity',
+          navTitle: 'Staff productivity',
+          navSubtitle: 'FTE efficiency, throughput, and staffing logic',
+          title: 'Staff productivity and staffing efficiency',
+          summary: 'Operational productivity is not the same as raw busyness: it must be interpreted against turnaround time, complexity, and safety.',
+          abpathPath: 'Management and Informatics > Budgeting and Financial',
+          focusLabel: 'Financial and operational management',
+          whyItMatters:
+            'The exam tests whether you can recognize when staffing looks lean but is actually unsafe or bottlenecked.',
+          boardTrap:
+            'Calling a service efficient just because volume is high, while missing worsening turnaround time or error risk.',
+          mustKnow: [
+            'Productivity measures only matter in context of complexity, staffing mix, and service expectations.',
+            'Turnaround time and quality performance may expose a hidden staffing problem.',
+            'FTE reductions can worsen patient-facing performance even if budget pressure is real.',
+          ],
+          tasks: [
+            'Compare two staffing scenarios and identify the true bottleneck.',
+            'Explain when apparent efficiency threatens quality or turnaround time.',
+          ],
+          boardStems: [
+            'A lab director reviews productivity metrics during service expansion.',
+            'A section appears overproductive on paper but develops reporting delays.',
+          ],
+          wrongAnswers: [
+            'Using specimen volume alone as a productivity verdict.',
+            'Ignoring quality degradation while praising throughput.',
+          ],
+        },
+        {
+          id: 'validation-versus-verification',
+          navTitle: 'Validation vs verification',
+          navSubtitle: 'Implementation oversight and regulatory fit',
+          title: 'Method validation versus verification',
+          summary: 'The core question is whether the lab is proving a fundamentally new method or confirming local performance of an established one.',
+          abpathPath: 'Management and Informatics > Test Development and Validation > Verification and Validation',
+          focusLabel: 'Regulation and oversight',
+          whyItMatters:
+            'This is the operational bridge between chemistry, regulation, and patient safety. The wrong oversight path means the assay enters service under the wrong evidence standard.',
+          boardTrap:
+            'Calling every new platform implementation a full validation, or under-scoping work when a modified or lab-developed method really needs broader proof.',
+          mustKnow: [
+            'Verification confirms local performance of an existing validated or cleared method.',
+            'Validation is broader and is required when the method claim is new, modified, or lab-developed.',
+            'Precision, reportable range, and accuracy planning depend on the implementation scenario.',
+          ],
+          tasks: [
+            'Choose whether a scenario requires verification or full validation.',
+            'Select the most important performance study for a described assay rollout.',
+          ],
+          boardStems: [
+            'An FDA-cleared assay is transferred to a new platform in the same lab.',
+            'A method is modified beyond manufacturer claims and must enter service safely.',
+          ],
+          wrongAnswers: [
+            'Using verification language for a materially modified test.',
+            'Ignoring reportable range and precision in rollout planning.',
+          ],
+        },
+        {
+          id: 'lis-interfacing',
+          navTitle: 'LIS interfacing',
+          navSubtitle: 'Reference-lab workflow and system-level error reduction',
+          title: 'LIS interfacing and systems rationale',
+          summary: 'A good interface removes manual transcription risk, improves turnaround, and supports more reliable downstream reporting.',
+          abpathPath: 'Management and Informatics > Informatics > Laboratory Information Systems (LIS)',
+          focusLabel: 'Informatics and laboratory systems',
+          whyItMatters:
+            'Informatics questions are usually really patient-safety questions wearing a systems hat.',
+          boardTrap:
+            'Thinking of the LIS as clerical infrastructure rather than as a control point for data integrity and reporting safety.',
+          mustKnow: [
+            'Interfaces reduce manual entry risk and preserve structured result flow.',
+            'Reference-lab connectivity matters most when volume and complexity increase.',
+            'The right informatics intervention is often the one that prevents downstream transcription or routing errors.',
+          ],
+          tasks: [
+            'Identify the informatics intervention that most reduces error in a workflow stem.',
+            'Explain why an interface is safer than manual result entry in the described scenario.',
+          ],
+          boardStems: [
+            'A send-out workflow generates repeated transcription mistakes.',
+            'A high-volume service line needs safer result exchange with a reference laboratory.',
+          ],
+          wrongAnswers: [
+            'Optimizing convenience while leaving transcription risk in place.',
+            'Treating middleware or interfaces as optional when they directly reduce error.',
+          ],
+        },
+        {
+          id: 'major-laboratory-errors',
+          navTitle: 'Major lab errors',
+          navSubtitle: 'Pre-analytic vulnerability and intervention priority',
+          title: 'Major sources of laboratory errors',
+          summary: 'The most important question is where the preventable harm lives: collection, labeling, transport, analysis, or reporting.',
+          abpathPath: 'Management and Informatics > Safety > Patient Safety',
+          focusLabel: 'Workflow and operational error control',
+          whyItMatters:
+            'Board stems often expect you to recognize that the dominant safety risk is upstream of the analyzer.',
+          boardTrap:
+            'Over-focusing on analytic precision while missing that most serious routine errors arise in pre-analytic handling and handoff.',
+          mustKnow: [
+            'Pre-analytic failures often dominate total error burden.',
+            'Specimen labeling and handoff problems can invalidate otherwise perfect analytic work.',
+            'The highest-yield intervention is not always in the analytic phase.',
+          ],
+          tasks: [
+            'Classify the error phase correctly.',
+            'Choose the intervention most likely to reduce recurrent laboratory harm.',
+          ],
+          boardStems: [
+            'An unexpected result traces back to collection or labeling failure.',
+            'A quality review asks where laboratory errors most often originate.',
+          ],
+          wrongAnswers: [
+            'Blaming the analyzer for a clear pre-analytic problem.',
+            'Choosing advanced QC action when the root issue is specimen handling.',
+          ],
+        },
+      ];
+
+      const elements = {
+        nav: document.getElementById('topic-nav'),
+        eyebrow: document.getElementById('topic-eyebrow'),
+        title: document.getElementById('topic-title'),
+        summary: document.getElementById('topic-summary'),
+        abpathPath: document.getElementById('abpath-path'),
+        focusLabel: document.getElementById('focus-label'),
+        whyItMatters: document.getElementById('why-it-matters'),
+        boardTrap: document.getElementById('board-trap'),
+        mustKnow: document.getElementById('must-know'),
+        tasks: document.getElementById('tasks'),
+        boardStems: document.getElementById('board-stems'),
+        wrongAnswers: document.getElementById('wrong-answers'),
+        formulaCard: document.getElementById('formula-card'),
+        formulaBox: document.getElementById('formula-box'),
+        tableCard: document.getElementById('table-card'),
+        tableBox: document.getElementById('table-box'),
+      };
+
+      const renderList = (target, items) => {
+        target.innerHTML = '';
+        items.forEach((item) => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          target.appendChild(li);
+        });
+      };
+
+      const renderTable = (table) => {
+        if (!table) {
+          elements.tableCard.hidden = true;
+          elements.tableBox.innerHTML = '';
+          return;
+        }
+        const headerRow = table.headers.map((item) => `<th>${item}</th>`).join('');
+        const rows = table.rows
+          .map((row) => `<tr>${row.map((cell, index) => (index === 0 ? `<td><strong>${cell}</strong></td>` : `<td>${cell}</td>`)).join('')}</tr>`)
+          .join('');
+        elements.tableBox.innerHTML = `<table class="table"><thead><tr>${headerRow}</tr></thead><tbody>${rows}</tbody></table>`;
+        elements.tableCard.hidden = false;
+      };
+
+      const renderTopic = (topicId) => {
+        const topic = topics.find((item) => item.id === topicId) || topics[0];
+        elements.eyebrow.textContent = 'Official ABPath Frame';
+        elements.title.textContent = topic.title;
+        elements.summary.textContent = topic.summary;
+        elements.abpathPath.textContent = topic.abpathPath;
+        elements.focusLabel.textContent = topic.focusLabel;
+        elements.whyItMatters.textContent = topic.whyItMatters;
+        elements.boardTrap.textContent = topic.boardTrap;
+        renderList(elements.mustKnow, topic.mustKnow);
+        renderList(elements.tasks, topic.tasks);
+        renderList(elements.boardStems, topic.boardStems);
+        renderList(elements.wrongAnswers, topic.wrongAnswers);
+
+        if (topic.formula) {
+          elements.formulaCard.hidden = false;
+          elements.formulaBox.textContent = topic.formula;
+        } else {
+          elements.formulaCard.hidden = true;
+          elements.formulaBox.textContent = '';
+        }
+
+        renderTable(topic.table);
+
+        Array.from(elements.nav.querySelectorAll('button')).forEach((button) => {
+          button.classList.toggle('active', button.dataset.topicId === topic.id);
+        });
+
+        if (window.location.hash !== `#${topic.id}`) {
+          history.replaceState(null, '', `#${topic.id}`);
+        }
+      };
+
+      topics.forEach((topic) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.topicId = topic.id;
+        button.innerHTML = `<span class="nav-title">${topic.navTitle}</span><span class="nav-subtitle">${topic.navSubtitle}</span>`;
+        button.addEventListener('click', () => renderTopic(topic.id));
+        elements.nav.appendChild(button);
+      });
+
+      const initialTopicId = window.location.hash.replace(/^#/, '') || topics[0].id;
+      renderTopic(initialTopicId);
+      window.addEventListener('hashchange', () => renderTopic(window.location.hash.replace(/^#/, '') || topics[0].id));
+    </script>
+  </body>
+</html>

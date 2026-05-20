@@ -1,1 +1,0 @@
-function e(e){if(e)throw e}export{e as t};

@@ -1,0 +1,947 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>DAT Simulation Pro — A11y Focus Trap + SR‑only Resize + Auto‑Layout</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="description" content="Interactive DAT (Coombs) simulation with accessible focus trap, SR-only resize helpers, auto tiling layout, pattern switcher, image grading, eluate mini-sim, case builder."/>
+<style>
+  /* ---------- THEME ---------- */
+  :root{
+    --bg:#0E1117; --panel:#141A22; --fg:#E6EDF3; --muted:#9AA4B2;
+    --accent:#7AA2F7; --accent2:#5EEAD4; --warn:#FBD38D; --bad:#F7768E; --ok:#58D68D;
+    --card:#0f1520; --border:#2B3240; --chip:#1F2632; --shadow:0 10px 28px rgba(0,0,0,.35);
+    --btn:#273142; --btnH:#324257; --focus:#94a3b8;
+  }
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans";}
+  *{box-sizing:border-box}
+  a,a:visited{color:#8ab4ff}
+  kbd{background:#1b2434;border:1px solid var(--border);border-bottom-color:#121826;color:#cbd5e1;border-radius:6px;padding:1px 5px;font-size:.85em}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  /* ---------- TOP BAR / DOCK ---------- */
+  header{
+    position:sticky;top:0;z-index:9999;background:linear-gradient(135deg,#0f1520,#182233);
+    border-bottom:1px solid var(--border);padding:10px 14px;display:flex;gap:16px;align-items:center;flex-wrap:wrap
+  }
+  header h1{margin:0;font-size:1.1rem}
+  .dock{display:flex;flex-wrap:wrap;gap:8px}
+  .dock .btn{padding:8px 10px}
+  .muted{color:var(--muted)}
+  /* ---------- BUTTONS / CHIPS ---------- */
+  .btn{
+    background:var(--btn);color:var(--fg);border:1px solid var(--border);border-radius:10px;cursor:pointer;user-select:none;
+    box-shadow:none;transition:.15s background, .15s transform;display:inline-flex;align-items:center;gap:8px
+  }
+  .btn:hover{background:var(--btnH)}
+  .btn:active{transform:translateY(1px)}
+  .btn.primary{background:#244663;border-color:#2f5b83}
+  .btn.ok{background:#1e3a2f;border-color:#2c5d49}
+  .btn.warn{background:#5a4318;border-color:#7a5c21}
+  .btn.danger{background:#5a1f25;border-color:#7f2c35}
+  .btn.ghost{background:transparent}
+  .chip{background:var(--chip);border:1px solid var(--border);padding:6px 10px;border-radius:999px}
+  /* ---------- FLOATING WINDOWS (tileable) ---------- */
+  .win{
+    position:fixed;left:60px;top:110px;width:560px;height:420px;min-width:360px;min-height:280px;
+    background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;overflow:hidden;resize:none /* custom handle below */
+  }
+  .win.tile{ /* when auto-layout tiles these windows, we remove drag affordance */
+    left:0!important; top:0!important; border-radius:0; box-shadow:none; border-left:none; border-right:none;
+  }
+  .win:focus{outline:2px solid var(--focus);outline-offset:-2px}
+  .win.hidden{display:none}
+  .win-bar{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 10px;background:#101726;border-bottom:1px solid var(--border);
+    cursor:move;user-select:none
+  }
+  .win-bar[data-locked="true"]{cursor:not-allowed}
+  .win-title{font-size:.98rem}
+  .win-actions{display:flex;gap:6px}
+  .win-content{flex:1;overflow:auto;padding:12px}
+  .handle{position:absolute;width:16px;height:16px;right:4px;bottom:4px;border-right:2px solid #41506a;border-bottom:2px solid #41506a;cursor:nwse-resize}
+  .handle[data-locked="true"]{display:none}
+  /* ---------- LAYOUT ELEMENTS ---------- */
+  .grid{display:grid;gap:12px}
+  .grid.two{grid-template-columns:repeat(2,1fr)}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px}
+  .title{margin:.2rem 0 6px 0;font-weight:600}
+  .small{font-size:.92rem}
+  .kpi{display:flex;justify-content:space-between;align-items:center;background:#0e1422;border:1px dashed var(--border);border-radius:10px;padding:8px 10px}
+  .status{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:10px;font-size:.9rem}
+  .okS{background:#14271f;border:1px solid #2c5f48;color:#9fe5c9}
+  .badS{background:#2b1215;border:1px solid #7e2b34;color:#ffb8c0}
+  .warnS{background:#2b2411;border:1px solid #6f5d2a;color:#fde1a5}
+  .progress{height:10px;background:#0b101a;border:1px solid var(--border);border-radius:999px;overflow:hidden}
+  .progress>div{height:100%;background:linear-gradient(90deg,#4dd0e1,#7aa2f7);width:0%}
+  /* ---------- GEL/TUBE VISUALS (SVG injected) ---------- */
+  .vis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .well-label{text-align:center;color:var(--muted);font-size:.85rem;margin-top:4px}
+  /* ---------- IMAGE GRADING ---------- */
+  .grade-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .imgCard{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#0d1421}
+  .imgCard .cap{padding:6px 8px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+  .options label{display:flex;gap:6px;margin:4px 0}
+  /* ---------- FORMS ---------- */
+  input[type="text"],input[type="number"],select,textarea{background:#0f1520;color:var(--fg);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+  textarea{min-height:100px;width:100%}
+  /* ---------- TOAST ---------- */
+  .toast{position:fixed;right:14px;bottom:14px;background:#0f1520;border:1px solid var(--border);border-radius:10px;padding:10px 12px;box-shadow:var(--shadow);z-index:99999}
+  .toast.hidden{display:none}
+  /* ---------- PRINT ---------- */
+  @media print{
+    header,.win:not(.printable),.toast{display:none!important}
+    .printable{position:static!important;box-shadow:none;border:none}
+    body{background:white;color:black}
+  }
+</style>
+</head>
+<body>
+<header role="banner" aria-label="Top bar">
+  <h1>DAT Simulation Pro <span class="chip">A11y Focus Trap • SR‑only Resize • Auto‑Layout</span></h1>
+  <div class="dock" role="toolbar" aria-label="Window launcher">
+    <button class="btn" data-open="#winPattern" aria-controls="winPattern" aria-label="Open Pattern Switcher"><span>🎛️</span> Pattern Switcher</button>
+    <button class="btn" data-open="#winSim" aria-controls="winSim" aria-label="Open Main Simulation"><span>🧪</span> Simulation</button>
+    <button class="btn" data-open="#winEluate" aria-controls="winEluate" aria-label="Open Eluate Mini-sim"><span>🧫</span> Eluate Mini‑Sim</button>
+    <button class="btn" data-open="#winImages" aria-controls="winImages" aria-label="Open Image Grading"><span>🖼️</span> Image Grading</button>
+    <button class="btn" data-open="#winCases" aria-controls="winCases" aria-label="Open Case Builder"><span>📁</span> Case Builder</button>
+    <button class="btn" data-open="#winRefs" aria-controls="winRefs" aria-label="Open References"><span>📚</span> References</button>
+    <button class="btn ghost" id="btnResetAll" aria-label="Reset all state and window positions">↺ Reset</button>
+    <button class="btn ok" id="btnToggleLayout" aria-pressed="true" aria-label="Toggle auto-layout tiling">Auto‑Layout: On</button>
+  </div>
+  <div class="muted small">
+    <b>Keyboard:</b> <kbd>Tab</kbd> moves within an open window (focus trap). <kbd>Shift</kbd>+<kbd>Tab</kbd> cycles backwards.  
+    <kbd>Esc</kbd> minimizes the focused window. Use “Import/Export session” in Pattern Switcher to resume later.
+  </div>
+</header>
+
+<!-- ==================== WINDOWS ==================== -->
+
+<!-- PATTERN SWITCHER -->
+<section id="winPattern" class="win tileable" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="titlePattern">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="titlePattern">🎛️ Pattern Switcher (auto‑updates reflex & report)</div>
+    <div class="win-actions">
+      <button class="btn ghost sr-only" data-resize-inc aria-label="Increase window size by 10%">+ Size</button>
+      <button class="btn ghost sr-only" data-resize-dec aria-label="Decrease window size by 10%">− Size</button>
+      <button class="btn ghost sr-only" data-maximize aria-label="Maximize window to full screen">Maximize</button>
+      <button class="btn ghost sr-only" data-restore aria-label="Restore window to previous size">Restore</button>
+      <button class="btn ghost" data-minimize aria-label="Minimize window">—</button>
+      <button class="btn ghost" data-close aria-label="Close window">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <p class="sr-only" id="patternHelp">This window lets you pick the DAT outcome pattern. It updates the gel visualization, reflex advice, and the draft report. Use Tab to move between controls. Press Escape to minimize.</p>
+    <div class="grid two">
+      <div class="card">
+        <h3 class="title">Select DAT outcome</h3>
+        <div role="group" aria-labelledby="patternGroup" class="grid" aria-describedby="whyP">
+          <label class="row"><input type="radio" name="pattern" value="igg_only" checked/> IgG+ / C3d− (IgG‑only)</label>
+          <label class="row"><input type="radio" name="pattern" value="c3_only"/> IgG− / C3d+ (Complement‑only)</label>
+          <label class="row"><input type="radio" name="pattern" value="both"/> IgG+ / C3d+ (Both)</label>
+          <label class="row"><input type="radio" name="pattern" value="neg"/> Both negative</label>
+        </div>
+        <details class="small">
+          <summary id="whyP">Help & Reasoning</summary>
+          <p><b>Why this step?</b> The **pattern** determines which sensitizing agent is bound (IgG vs complement) and drives your **reflex choices** and **differential**.</p>
+          <ul>
+            <li><b>IgG‑only:</b> wAIHA, HDFN, DHTR, passive IgG (IVIG/RhIG), drug‑induced.</li>
+            <li><b>Complement‑only:</b> CAD/CAS (IgM), PCH (biphasic IgG leaves C3d on cells).</li>
+            <li><b>Both:</b> wAIHA common; also mixed AIHA/DHTR—interpret with context.</li>
+          </ul>
+          <p><i>Bench tip:</i> Use EDTA samples and adequate washing to avoid artifactual results.</p>
+        </details>
+      </div>
+      <div class="card">
+        <h3 class="title">Clinical context</h3>
+        <div class="grid" aria-describedby="ctxWhy">
+          <label class="row">Transfused ≤30 days?
+            <select id="ctxTransfused"><option value="no" selected>No</option><option value="yes">Yes</option></select>
+          </label>
+          <label class="row">Newborn (HDFN)?
+            <select id="ctxNewborn"><option value="no" selected>No</option><option value="yes">Yes</option></select>
+          </label>
+          <label class="row">Cold features?
+            <select id="ctxCold"><option value="no" selected>No</option><option value="yes">Yes</option></select>
+          </label>
+          <label class="row">Recent IVIG/RhIG?
+            <select id="ctxPassive"><option value="no" selected>No</option><option value="yes">Yes</option></select>
+          </label>
+          <label class="row">Suspect drug exposure?
+            <select id="ctxDrug"><option value="no" selected>No</option><option value="yes">Yes</option></select>
+          </label>
+        </div>
+        <p class="small muted" id="ctxWhy"><b>Why?</b> These toggles steer reflexes: eluate (post‑transfusion/HDFN), cold testing (C3d‑only), or consider passive/drug effects.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="title">Live gel/column visualization</h3>
+      <div class="vis-grid" aria-label="Gel card">
+        <div><svg id="polySVG" viewBox="0 0 100 160" width="100%" height="220" aria-label="Polyspecific AHG well"></svg><div class="well-label">Polyspecific AHG</div></div>
+        <div><svg id="iggSVG" viewBox="0 0 100 160" width="100%" height="220" aria-label="Anti-IgG well"></svg><div class="well-label">Anti‑IgG</div></div>
+        <div><svg id="c3SVG" viewBox="0 0 100 160" width="100%" height="220" aria-label="Anti-C3d well"></svg><div class="well-label">Anti‑C3d</div></div>
+      </div>
+      <p class="small muted"><b>Reasoning:</b> Positive reactions remain trapped in the gel (column agglutination). Tube or gel strength (0–4+) supports severity tracking but doesn’t define specificity.</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3 class="title">Reflex testing advice</h3>
+        <div id="reflexAdvice" class="small" aria-live="polite"></div>
+      </div>
+      <div class="card">
+        <h3 class="title">Draft report</h3>
+        <textarea id="reportBox" aria-label="Draft report"></textarea>
+        <div class="row" style="margin-top:8px">
+          <button class="btn ok" id="btnCopyReport">Copy</button>
+          <button class="btn" id="btnPrintReport">Print/PDF</button>
+          <button class="btn ghost" id="btnExportState">Export session</button>
+          <label class="btn ghost">Import <input type="file" id="importState" accept="application/json" class="sr-only"/></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- SIMULATION -->
+<section id="winSim" class="win tileable hidden" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="titleSim">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="titleSim">🧪 Simulation (Pre‑analytics → Polyspecific → Monospecific → QC)</div>
+    <div class="win-actions">
+      <button class="btn ghost sr-only" data-resize-inc aria-label="Increase window size by 10%">+ Size</button>
+      <button class="btn ghost sr-only" data-resize-dec aria-label="Decrease window size by 10%">− Size</button>
+      <button class="btn ghost sr-only" data-maximize aria-label="Maximize window to full screen">Maximize</button>
+      <button class="btn ghost sr-only" data-restore aria-label="Restore window to previous size">Restore</button>
+      <button class="btn ghost" data-minimize aria-label="Minimize window">—</button>
+      <button class="btn ghost" data-close aria-label="Close window">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <details class="card small" open>
+      <summary>Help & Reasoning</summary>
+      <ul>
+        <li><b>Pre‑analytics:</b> EDTA prevents in‑vitro complement; ≥3 washes remove unbound Ig/complement that would **neutralize AHG**.</li>
+        <li><b>Polyspecific → Monospecific:</b> Positive screen reflexes to anti‑IgG and anti‑C3d to define the **coating pattern**.</li>
+        <li><b>QC:</b> If negative, **check cells must agglutinate** to validate active AHG and adequate washing.</li>
+      </ul>
+    </details>
+    <div class="grid two">
+      <div class="card">
+        <h3 class="title">1) Pre‑analytics</h3>
+        <div class="grid">
+          <label>Sample Type
+            <select id="sampleType">
+              <option value="EDTA" selected>EDTA whole blood (recommended)</option>
+              <option value="Clotted">Clotted blood (risk: complement artifacts)</option>
+            </select>
+          </label>
+          <div class="kpi">
+            <span>Wash cycles</span>
+            <strong><span id="washCount">0</span> / 3+</strong>
+          </div>
+          <div class="row">
+            <button class="btn" id="btnWash">Wash</button>
+            <button class="btn ghost" id="btnResetWash">Reset</button>
+          </div>
+          <div id="washStatus" class="small muted" aria-live="polite">
+            ≥3 washes reduce unbound Ig/complement; EDTA prevents in‑vitro complement binding.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="title">2) Polyspecific AHG screen</h3>
+        <div class="grid two">
+          <div>
+            <svg id="polySVG2" viewBox="0 0 100 160" width="100%" height="220" aria-label="Polyspecific well"></svg>
+            <div class="well-label">Polyspecific AHG</div>
+          </div>
+          <div class="grid">
+            <div class="row">
+              <button class="btn primary" id="btnRunPoly">Run polyspecific</button>
+              <span id="polyStatus" class="status warnS">Awaiting</span>
+            </div>
+            <div class="small muted">If positive, reflex to monospecific anti‑IgG and anti‑C3d.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="title">3) Monospecifics & QC</h3>
+        <div class="grid three">
+          <div>
+            <svg id="iggSVG2" viewBox="0 0 100 160" width="100%" height="220" aria-label="Anti-IgG well"></svg>
+            <div class="well-label">Anti‑IgG</div>
+            <div class="row"><button class="btn" id="btnRunIgG">Run anti‑IgG</button><span id="iggStatus" class="status warnS">Awaiting</span></div>
+          </div>
+          <div>
+            <svg id="c3SVG2" viewBox="0 0 100 160" width="100%" height="220" aria-label="Anti-C3d well"></svg>
+            <div class="well-label">Anti‑C3d</div>
+            <div class="row"><button class="btn" id="btnRunC3d">Run anti‑C3d</button><span id="c3dStatus" class="status warnS">Awaiting</span></div>
+          </div>
+          <div class="grid">
+            <div class="kpi"><span>Pattern</span><strong id="patternTxt">—</strong></div>
+            <div class="progress" aria-label="Completion"><div id="progressBar"></div></div>
+            <button class="btn ghost" id="btnCheckCells">Add check cells to negative</button>
+            <div id="checkCellStatus" class="small muted">Negative reactions must validate with IgG‑sensitized check cells.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="title">4) Pitfalls</h3>
+        <ul class="small">
+          <li><b>Under‑washing</b> / delayed AHG → false‑negative (neutralization).</li>
+          <li><b>Clotted sample + cold autoagglutinins</b> → spurious complement; prefer EDTA.</li>
+          <li><b>Inactive AHG / missing check cells</b> invalidates a negative result.</li>
+          <li><b>DAT ≠ etiology:</b> correlate with hemolysis and clinical data.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- ELUATE MINI-SIM -->
+<section id="winEluate" class="win tileable hidden" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="titleElu">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="titleElu">🧫 Eluate Mini‑Sim — “last wash” must be negative</div>
+    <div class="win-actions">
+      <button class="btn ghost sr-only" data-resize-inc aria-label="Increase window size by 10%">+ Size</button>
+      <button class="btn ghost sr-only" data-resize-dec aria-label="Decrease window size by 10%">− Size</button>
+      <button class="btn ghost sr-only" data-maximize aria-label="Maximize window to full screen">Maximize</button>
+      <button class="btn ghost sr-only" data-restore aria-label="Restore window to previous size">Restore</button>
+      <button class="btn ghost" data-minimize aria-label="Minimize window">—</button>
+      <button class="btn ghost" data-close aria-label="Close window">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <details class="card small" open>
+      <summary>Help & Reasoning</summary>
+      <p><b>Why eluate?</b> If IgG coats RBCs (and the patient was transfused recently or is a newborn), antibody may be detectable only **on the cells**. Elution releases bound IgG to test its specificity. The **last wash** must be **negative** to prove no residual plasma antibody contaminates the eluate.</p>
+    </details>
+    <div class="grid two">
+      <div class="card">
+        <h3 class="title">Pre‑check</h3>
+        <div class="small">Eluate is most useful when **IgG‑DAT is positive** and there’s **recent transfusion** or **HDFN** concern.</div>
+        <div class="kpi"><span>Current pattern</span><strong id="eluPattern">—</strong></div>
+        <div class="kpi"><span>Transfused ≤30 d / Newborn</span><strong id="eluCtx">—</strong></div>
+      </div>
+      <div class="card">
+        <h3 class="title">Workflow</h3>
+        <ol class="small">
+          <li>Wash DAT‑positive RBCs <b>≥3×</b> (EDTA). <button class="btn" id="eluWash">Wash</button> <span id="eluWashCnt" class="chip">0</span></li>
+          <li>Test <b>last wash supernatant</b> → must be <b>negative</b>. <button class="btn" id="eluTestLastWash">Test last wash</button> <span id="eluLastWash" class="status warnS">Not tested</span></li>
+          <li>If last wash is negative, perform <b>acid elution</b>. <button class="btn primary" id="eluRun" disabled>Elute</button></li>
+          <li>Test the <b>eluate</b> against a panel → interpret. <span id="eluResult" class="status warnS">Pending</span></li>
+        </ol>
+        <div class="small muted">A <b>negative eluate</b> with IgG‑DAT+ may suggest drug‑mediated <b>NIPA</b> or a low‑incidence antigen; correlate clinically.</div>
+      </div>
+    </div>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- IMAGE GRADING -->
+<section id="winImages" class="win tileable hidden" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="titleImg">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="titleImg">🖼️ Image Grading — Grade 0–4+</div>
+    <div class="win-actions">
+      <button class="btn ghost sr-only" data-resize-inc aria-label="Increase window size by 10%">+ Size</button>
+      <button class="btn ghost sr-only" data-resize-dec aria-label="Decrease window size by 10%">− Size</button>
+      <button class="btn ghost sr-only" data-maximize aria-label="Maximize window to full screen">Maximize</button>
+      <button class="btn ghost sr-only" data-restore aria-label="Restore window to previous size">Restore</button>
+      <button class="btn ghost" data-minimize aria-label="Minimize window">—</button>
+      <button class="btn ghost" data-close aria-label="Close window">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <details class="card small" open>
+      <summary>Help & Reasoning</summary>
+      <p><b>Why grade?</b> Reaction strength helps track **severity** or **treatment response**. It doesn’t confer specificity but augments your interpretation.</p>
+    </details>
+    <div class="grid two">
+      <div class="card">
+        <h3 class="title">Practice set</h3>
+        <div id="imgArea" class="imgCard" aria-live="polite" style="text-align:center">
+          <div id="imgMount" style="padding:8px"></div>
+          <div class="cap">Synthetic gel images (replace with real photos in code). Alt text included.</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 class="title">Your grade</h3>
+        <div class="options small" role="group" aria-label="Select grade">
+          <label><input type="radio" name="grade" value="0"> 0 (Negative)</label>
+          <label><input type="radio" name="grade" value="1"> 1+</label>
+          <label><input type="radio" name="grade" value="2"> 2+</label>
+          <label><input type="radio" name="grade" value="3"> 3+</label>
+          <label><input type="radio" name="grade" value="4"> 4+</label>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <button class="btn primary" id="btnCheckGrade">Check</button>
+          <button class="btn" id="btnNextImg">Next</button>
+        </div>
+        <div id="gradeFeedback" class="status warnS" role="status" aria-live="polite" style="margin-top:8px">Pick a grade and click Check.</div>
+      </div>
+    </div>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- CASE BUILDER -->
+<section id="winCases" class="win tileable hidden" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="titleCases">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="titleCases">📁 Case Builder — Timeboxed decisions + PDF export</div>
+    <div class="win-actions">
+      <button class="btn ghost sr-only" data-resize-inc aria-label="Increase window size by 10%">+ Size</button>
+      <button class="btn ghost sr-only" data-resize-dec aria-label="Decrease window size by 10%">− Size</button>
+      <button class="btn ghost sr-only" data-maximize aria-label="Maximize window to full screen">Maximize</button>
+      <button class="btn ghost sr-only" data-restore aria-label="Restore window to previous size">Restore</button>
+      <button class="btn ghost" data-minimize aria-label="Minimize window">—</button>
+      <button class="btn ghost" data-close aria-label="Close window">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <details class="card small" open>
+      <summary>Help & Reasoning</summary>
+      <p><b>Why cases?</b> Time‑boxed decisions simulate real bench and clinical pressures, reinforcing **pattern→reflex→interpretation** reasoning and QC discipline.</p>
+    </details>
+    <div class="grid two">
+      <div class="card">
+        <h3 class="title">New vignette</h3>
+        <div class="grid">
+          <label>Case title <input id="caseTitle" type="text" placeholder="e.g., Post‑transfusion hemolysis"/></label>
+          <label>Scenario <textarea id="caseScenario" placeholder="Age/sex, symptoms, hemolysis labs, transfusion history..."></textarea></label>
+          <label>DAT findings <input id="caseDAT" type="text" placeholder="e.g., Poly+, IgG+, C3d−"/></label>
+          <label>Timer (minutes) <input id="caseTimer" type="number" min="1" value="3"/></label>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <button class="btn primary" id="btnStartCase">Start</button>
+          <button class="btn" id="btnSaveCase">Save to library</button>
+          <label class="btn ghost">Load JSON <input type="file" id="loadCases" accept="application/json" class="sr-only"/></label>
+          <button class="btn ghost" id="btnExportCases">Export library</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3 class="title">Decision pad</h3>
+        <div class="kpi"><span>Timer</span><strong id="caseClock">—</strong></div>
+        <div class="grid">
+          <label>Chosen pattern
+            <select id="caseChoicePattern">
+              <option>IgG+ / C3d−</option><option>IgG− / C3d+</option><option>IgG+ / C3d+</option><option>Negative</option>
+            </select>
+          </label>
+          <label>Reflex tests (semicolon‑separated)
+            <input id="caseReflex" type="text" placeholder="e.g., Eluate; Cold agglutinin titer; DL test"/>
+          </label>
+          <label>Interpretation notes <textarea id="caseNotes" placeholder="Reasoning, pitfalls, QC..."></textarea></label>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <button class="btn ok" id="btnCompleteCase">Complete</button>
+          <button class="btn" id="btnPrintPortfolio" title="Opens a print view; use Save as PDF">Export PDF</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3 class="title">Library</h3>
+      <div id="caseList" class="small">No saved cases yet.</div>
+    </div>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- REFERENCES -->
+<section id="winRefs" class="win hidden" tabindex="-1" role="dialog" aria-modal="false" aria-labelledby="titleRefs">
+  <div class="win-bar" data-drag>
+    <div class="win-title" id="titleRefs">📚 References & Disclaimers</div>
+    <div class="win-actions">
+      <button class="btn ghost sr-only" data-resize-inc aria-label="Increase window size by 10%">+ Size</button>
+      <button class="btn ghost sr-only" data-resize-dec aria-label="Decrease window size by 10%">− Size</button>
+      <button class="btn ghost sr-only" data-maximize aria-label="Maximize window to full screen">Maximize</button>
+      <button class="btn ghost sr-only" data-restore aria-label="Restore window to previous size">Restore</button>
+      <button class="btn ghost" data-minimize aria-label="Minimize window">—</button>
+      <button class="btn ghost" data-close aria-label="Close window">✕</button>
+    </div>
+  </div>
+  <div class="win-content" data-focus-scope>
+    <p class="small">View the internal “References” window from earlier build for full links; this UI preserves them in the Pattern Switcher’s advisory, Sim help, and Eluate help content.</p>
+    <p class="small">Disclaimer: Educational only; follow your institutional SOPs/AABB guidance and medical director oversight.</p>
+  </div>
+  <div class="handle" data-resize></div>
+</section>
+
+<!-- TOAST -->
+<div id="toast" class="toast hidden" role="status" aria-live="polite">Autosaved.</div>
+
+<script>
+/* ============================================================
+   STATE
+============================================================ */
+const state = {
+  pattern:"igg_only",
+  sampleType:"EDTA",
+  washes:0,
+  polyRun:false, iggRun:false, c3Run:false,
+  polyPos:null, iggPos:null, c3Pos:null,
+  checkCells:false,
+  ctx:{transfused:"no",newborn:"no",cold:"no",passive:"no",drug:"no"},
+  report:"",
+  // Eluate
+  elu:{washes:0,lastWashTested:false,lastWashNeg:false,done:false,result:null},
+  // Image grading
+  img:{index:0,answer:null},
+  // Case builder
+  cases:[], currentCase:null, timer:null, timeLeft:0,
+  // Layout
+  autoLayout:true
+};
+const storeKey='DAT_Pro_A11y_v1';
+
+/* ============================================================
+   UTIL
+============================================================ */
+const $ = sel => document.querySelector(sel);
+const $$ = sel => Array.from(document.querySelectorAll(sel));
+function save(){ try{ localStorage.setItem(storeKey, JSON.stringify(state)); showToast(); }catch(e){} }
+function load(){ try{ const raw=localStorage.getItem(storeKey); if(raw){ Object.assign(state, JSON.parse(raw)); } }catch(e){} }
+function showToast(){ const t=$("#toast"); t.classList.remove('hidden'); setTimeout(()=>t.classList.add('hidden'),800); }
+function clamp(n,min,max){ return Math.max(min, Math.min(max,n)); }
+
+/* ============================================================
+   ACCESSIBLE FOCUS TRAP (per window)
+============================================================ */
+const focusTraps = new Map();
+function getFocusable(el){
+  return Array.from(el.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'))
+    .filter(n=>n.offsetParent!==null || getComputedStyle(n).position==='fixed');
+}
+function activateFocusTrap(win){
+  const scope = win.querySelector('[data-focus-scope]') || win;
+  const handler = (e)=>{
+    if(e.key!=='Tab') return;
+    const f = getFocusable(scope);
+    if(!f.length) return;
+    const first=f[0], last=f[f.length-1];
+    if(e.shiftKey && document.activeElement===first){ last.focus(); e.preventDefault(); }
+    else if(!e.shiftKey && document.activeElement===last){ first.focus(); e.preventDefault(); }
+  };
+  scope.addEventListener('keydown', handler);
+  focusTraps.set(win, handler);
+  // set aria-modal if it is the only tiled window
+  win.setAttribute('aria-modal', isOnlyOneTiled(win) ? 'true':'false');
+  // initial focus hint
+  const candidates=getFocusable(scope); if(candidates.length) candidates[0].focus();
+}
+function deactivateFocusTrap(win){
+  const scope = win.querySelector('[data-focus-scope]') || win;
+  const h = focusTraps.get(win);
+  if(h){ scope.removeEventListener('keydown',h); focusTraps.delete(win); }
+  win.setAttribute('aria-modal','false');
+}
+function isOnlyOneTiled(win){
+  const opened = getOpenTileables();
+  return opened.length===1 && opened[0]===win;
+}
+
+/* ============================================================
+   DRAG/RESIZE + SR-ONLY RESIZE HELPERS
+============================================================ */
+function initWindow(win){
+  const id=win.id;
+  // drag
+  const bar=win.querySelector('[data-drag]');
+  let sx,sy,sl,st,dragging=false;
+  bar.addEventListener('mousedown',e=>{
+    if(e.button!==0 || state.autoLayout && win.classList.contains('tile')) return;
+    dragging=true; sx=e.clientX; sy=e.clientY; const r=win.getBoundingClientRect(); sl=r.left; st=r.top; document.body.style.userSelect='none';
+  });
+  window.addEventListener('mousemove',e=>{
+    if(!dragging) return; win.style.left=(sl+(e.clientX-sx))+'px'; win.style.top=(st+(e.clientY-sy))+'px';
+  });
+  window.addEventListener('mouseup',()=>{ if(dragging){ dragging=false; document.body.style.userSelect=''; }});
+
+  // resize corner
+  const handle=win.querySelector('[data-resize]');
+  let rx,ry,rw,rh,resizing=false;
+  handle.addEventListener('mousedown',e=>{
+    if(state.autoLayout && win.classList.contains('tile')) return;
+    resizing=true; rx=e.clientX; ry=e.clientY; const r=win.getBoundingClientRect(); rw=r.width; rh=r.height; e.stopPropagation();
+  });
+  window.addEventListener('mousemove',e=>{
+    if(!resizing) return;
+    const nw=clamp(rw+(e.clientX-rx), 360, window.innerWidth-40), nh=clamp(rh+(e.clientY-ry), 260, window.innerHeight-40);
+    win.style.width=nw+'px'; win.style.height=nh+'px';
+  });
+  window.addEventListener('mouseup',()=>{ if(resizing){ resizing=false; }});
+
+  // SR-only resize helpers
+  win.querySelectorAll('[data-resize-inc]').forEach(b=>b.addEventListener('click',()=>{
+    if(state.autoLayout && win.classList.contains('tile')) return;
+    const r=win.getBoundingClientRect(); win.style.width=(r.width*1.1)+'px'; win.style.height=(r.height*1.1)+'px';
+  }));
+  win.querySelectorAll('[data-resize-dec]').forEach(b=>b.addEventListener('click',()=>{
+    if(state.autoLayout && win.classList.contains('tile')) return;
+    const r=win.getBoundingClientRect(); win.style.width=(r.width*0.9)+'px'; win.style.height=(r.height*0.9)+'px';
+  }));
+  win.querySelectorAll('[data-maximize]').forEach(b=>b.addEventListener('click',()=>maximizeWindow(win)));
+  win.querySelectorAll('[data-restore]').forEach(b=>b.addEventListener('click',()=>restoreWindow(win)));
+
+  // controls
+  win.querySelector('[data-close]').addEventListener('click',()=>{ closeWindow(win); });
+  win.querySelector('[data-minimize]').addEventListener('click',()=>{ minimizeWindow(win); });
+
+  // ESC to minimize
+  win.addEventListener('keydown',e=>{ if(e.key==='Escape'){ minimizeWindow(win); }});
+}
+function maximizeWindow(win){
+  win.style.left='0px'; win.style.top=(document.querySelector('header').getBoundingClientRect().bottom)+'px';
+  win.style.width=window.innerWidth+'px'; win.style.height=(window.innerHeight - document.querySelector('header').getBoundingClientRect().bottom)+'px';
+}
+function restoreWindow(win){
+  win.removeAttribute('style');
+}
+function closeWindow(win){
+  win.classList.add('hidden'); deactivateFocusTrap(win); tileWindows();
+}
+function minimizeWindow(win){
+  win.classList.add('hidden'); deactivateFocusTrap(win); tileWindows();
+}
+
+/* ============================================================
+   OPEN/CLOSE + AUTO-LAYOUT TILING
+============================================================ */
+function getOpenTileables(){
+  return $$('.win.tileable').filter(w=>!w.classList.contains('hidden'));
+}
+function tileWindows(){
+  const opened = getOpenTileables();
+  const headerBottom = document.querySelector('header').getBoundingClientRect().bottom;
+  const top = headerBottom;
+  const height = window.innerHeight - headerBottom;
+
+  // Reset all to floating defaults
+  $$('.win').forEach(w=>{
+    w.classList.remove('tile');
+    w.querySelector('[data-drag]').setAttribute('data-locked','false');
+    w.querySelector('.handle').setAttribute('data-locked','false');
+    w.style.removeProperty('left'); w.style.removeProperty('top'); w.style.removeProperty('width'); w.style.removeProperty('height');
+  });
+
+  if(!state.autoLayout || opened.length===0){ return; }
+
+  if(opened.length===1){
+    const w=opened[0]; w.classList.add('tile'); w.style.left='0px'; w.style.top=top+'px'; w.style.width=window.innerWidth+'px'; w.style.height=height+'px';
+    w.querySelector('[data-drag]').setAttribute('data-locked','true');
+    w.querySelector('.handle').setAttribute('data-locked','true');
+  } else if(opened.length>=2){
+    const w1=opened[0], w2=opened[1];
+    [w1,w2].forEach(w=>{ w.classList.add('tile'); w.querySelector('[data-drag]').setAttribute('data-locked','true'); w.querySelector('.handle').setAttribute('data-locked','true'); });
+    w1.style.left='0px'; w1.style.top=top+'px'; w1.style.width=(window.innerWidth/2)+'px'; w1.style.height=height+'px';
+    w2.style.left=(window.innerWidth/2)+'px'; w2.style.top=top+'px'; w2.style.width=(window.innerWidth/2)+'px'; w2.style.height=height+'px';
+    // Any extra windows will remain floating and hidden by default
+    for(let i=2;i<opened.length;i++){ opened[i].classList.add('hidden'); deactivateFocusTrap(opened[i]); }
+  }
+}
+
+function openWindow(win){
+  win.classList.remove('hidden');
+  if(state.autoLayout && win.classList.contains('tileable')) tileWindows();
+  activateFocusTrap(win);
+  win.focus();
+}
+
+$$('.dock [data-open]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const w=$(b.getAttribute('data-open'));
+    openWindow(w);
+  });
+});
+
+$('#btnToggleLayout').addEventListener('click',()=>{
+  state.autoLayout=!state.autoLayout; $('#btnToggleLayout').textContent = 'Auto‑Layout: '+(state.autoLayout?'On':'Off'); $('#btnToggleLayout').setAttribute('aria-pressed', state.autoLayout?'true':'false');
+  if(state.autoLayout) tileWindows();
+  else {
+    // unlock drag/resize on currently opened
+    getOpenTileables().forEach(w=>{
+      w.classList.remove('tile');
+      w.querySelector('[data-drag]').setAttribute('data-locked','false');
+      w.querySelector('.handle').setAttribute('data-locked','false');
+    });
+  }
+  save();
+});
+
+window.addEventListener('resize',()=>{ if(state.autoLayout) tileWindows(); });
+
+/* ============================================================
+   SVG WELL DRAWING
+============================================================ */
+function drawWell(svg, positive, mode='gel', strength=2){
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  const bg = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  bg.setAttribute('x',2);bg.setAttribute('y',2);bg.setAttribute('rx',10);bg.setAttribute('width',96);bg.setAttribute('height',156);
+  bg.setAttribute('fill','#121927');bg.setAttribute('stroke','#2B3240');svg.appendChild(bg);
+  if(mode==='gel'){
+    const pellet = document.createElementNS('http://www.w3.org/2000/svg','ellipse');
+    pellet.setAttribute('cx',50); pellet.setAttribute('cy',140); pellet.setAttribute('rx',30); pellet.setAttribute('ry',7);
+    pellet.setAttribute('fill', positive? '#d1fae5':'#cbd5e1'); svg.appendChild(pellet);
+    if(positive){
+      const h = 20 + strength*12;
+      const gel = document.createElementNS('http://www.w3.org/2000/svg','rect');
+      gel.setAttribute('x',18); gel.setAttribute('y', 30); gel.setAttribute('width',64); gel.setAttribute('height', h);
+      gel.setAttribute('fill','url(#dots)'); gel.setAttribute('opacity','0.9'); svg.appendChild(gel);
+    }
+  } else {
+    const tube = document.createElementNS('http://www.w3.org/2000/svg','path');
+    tube.setAttribute('d','M20 4 h60 v130 a30 30 0 0 1 -60 0 z');tube.setAttribute('fill','#0b1322');tube.setAttribute('stroke','#2B3240');
+    svg.appendChild(tube);
+    const pellet = document.createElementNS('http://www.w3.org/2000/svg','ellipse');
+    pellet.setAttribute('cx',50); pellet.setAttribute('cy',130); pellet.setAttribute('rx',28); pellet.setAttribute('ry',12);
+    pellet.setAttribute('fill', positive? '#d1fae5':'#cbd5e1'); svg.appendChild(pellet);
+    if(positive){
+      const cloud = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      cloud.setAttribute('cx',50); cloud.setAttribute('cy', 70); cloud.setAttribute('r', 10+strength*6);
+      cloud.setAttribute('fill','rgba(200,210,230,.65)'); svg.appendChild(cloud);
+    }
+  }
+}
+
+/* ============================================================
+   PATTERN RENDERING + REFLEX + REPORT
+============================================================ */
+function renderPatternWells(){
+  const patt=state.pattern;
+  const isPolyPos = patt!=='neg';
+  drawWell($("#polySVG"), isPolyPos, 'gel', 3);
+  drawWell($("#iggSVG"), patt==='igg_only'||patt==='both', 'gel', patt==='both'?3:2);
+  drawWell($("#c3SVG"), patt==='c3_only'||patt==='both', 'gel', patt==='both'?3:2);
+
+  drawWell($("#polySVG2"), isPolyPos, 'gel', 3);
+  drawWell($("#iggSVG2"), patt==='igg_only'||patt==='both', 'gel', patt==='both'?3:2);
+  drawWell($("#c3SVG2"), patt==='c3_only'||patt==='both', 'gel', patt==='both'?3:2);
+
+  setStatus($("#polyStatus"), isPolyPos ? 'ok' : 'bad', isPolyPos? 'Positive' : 'Negative');
+  setStatus($("#iggStatus"), (patt==='igg_only'||patt==='both') ? 'ok' : 'bad', (patt==='igg_only'||patt==='both') ? 'IgG positive' : 'IgG negative');
+  setStatus($("#c3dStatus"), (patt==='c3_only'||patt==='both') ? 'ok' : 'bad', (patt==='c3_only'||patt==='both') ? 'C3d positive' : 'C3d negative');
+  $("#patternTxt").textContent = patt==='igg_only' ? 'IgG+ / C3d− (IgG‑only)' : patt==='c3_only' ? 'IgG− / C3d+ (Complement‑only)' : patt==='both' ? 'IgG+ / C3d+ (Both)' : 'Both negative';
+
+  $("#eluPattern").textContent=$("#patternTxt").textContent;
+  $("#eluCtx").textContent= `${state.ctx.transfused==='yes'?'Transfused':''} ${state.ctx.newborn==='yes'?'Newborn':''}`.trim() || '—';
+}
+function setStatus(el, type, txt){ el.classList.remove('okS','badS','warnS'); if(type==='ok') el.classList.add('okS'); else if(type==='bad') el.classList.add('badS'); else el.classList.add('warnS'); el.textContent=txt; }
+
+function renderReflex(){
+  const r=$("#reflexAdvice"); const p=state.pattern; const c=state.ctx;
+  const lines=[];
+  if(p==='igg_only'){
+    lines.push('• Pattern <b>IgG‑only</b> → consider wAIHA, HDFN, DHTR, passive IgG (IVIG/RhIG), drug‑induced.');
+    if(c.transfused==='yes') lines.push('• Recent transfusion → <b>Eluate</b> recommended to recover RBC‑bound alloantibody.');
+    if(c.newborn==='yes') lines.push('• Newborn → <b>Eluate</b> for maternal IgG specificity (HDFN).');
+    if(c.passive==='yes') lines.push('• IVIG/RhIG → possible passive IgG; correlate clinically.');
+    if(c.drug==='yes') lines.push('• Suspect drug → consider drug‑induced immune hemolysis; <b>NIPA</b> can give IgG‑DAT+ with negative eluate.');
+  }else if(p==='c3_only'){
+    lines.push('• Pattern <b>Complement‑only</b> → order <b>cold agglutinin titer</b> + <b>thermal amplitude</b> (CAD/CAS).');
+    lines.push('• If PCH suspected (child, hemoglobinuria after cold) → <b>Donath‑Landsteiner</b> test.');
+  }else if(p==='both'){
+    lines.push('• Pattern <b>IgG + C3d</b> → wAIHA common; consider mixed AIHA or DHTR; eluate post‑transfusion.');
+  }else{
+    lines.push('• Both negative → ensure <b>check cells</b> validate negative; consider non‑immune hemolysis or rare DAT‑negative AIHA; repeat if indicated.');
+  }
+  if(state.washes<3) lines.push('• QC: increase washes to ≥3 to avoid AHG neutralization.');
+  if(state.sampleType==='Clotted') lines.push('• QC: clotted sample can cause complement artifacts; prefer <b>EDTA</b>.');
+  r.innerHTML = lines.map(x=>`<div>${x}</div>`).join('');
+}
+function generateReport(){
+  const pattText = $("#patternTxt").textContent || '—';
+  const report =
+`Direct antiglobulin test (DAT):
+• Polyspecific AHG: ${state.pattern==='neg'?'NEGATIVE':'POSITIVE'}
+• Monospecific: anti‑IgG: ${state.pattern==='igg_only'||state.pattern==='both'?'POSITIVE':'NEGATIVE'}; anti‑C3d: ${state.pattern==='c3_only'||state.pattern==='both'?'POSITIVE':'NEGATIVE'}
+
+Interpretation:
+• ${pattText.includes('IgG+ / C3d−')?'RBCs sensitized with IgG only.' : pattText.includes('IgG− / C3d+')?'RBCs sensitized with complement (C3d) only.' : pattText.includes('IgG+ / C3d+')?'RBCs sensitized with IgG and complement.' : 'Negative monospecifics; validate with check cells and correlate clinically.'}
+
+Context & reflex:
+• Transfused ≤30 d: ${state.ctx.transfused.toUpperCase()} • Newborn/HDFN: ${state.ctx.newborn.toUpperCase()} • Cold features: ${state.ctx.cold.toUpperCase()}
+• Passive IgG: ${state.ctx.passive.toUpperCase()} • Drug exposure: ${state.ctx.drug.toUpperCase()}
+• See Reflex advice for recommended next steps.`;
+  const box=$("#reportBox");
+  if(!box.value || box.value.startsWith('Direct antiglobulin test')) box.value = report;
+  state.report = box.value; save();
+}
+
+/* PATTERN SWITCHER bindings */
+$$('input[name="pattern"]').forEach(r=>{
+  r.addEventListener('change',()=>{ state.pattern=r.value; renderPatternWells(); renderReflex(); generateReport(); save(); });
+});
+["ctxTransfused","ctxNewborn","ctxCold","ctxPassive","ctxDrug"].forEach(id=>{
+  $("#"+id).addEventListener('change',e=>{ const map={ctxTransfused:'transfused',ctxNewborn:'newborn',ctxCold:'cold',ctxPassive:'passive',ctxDrug:'drug'}; state.ctx[map[id]]=e.target.value; renderReflex(); generateReport(); save(); });
+});
+$("#reportBox").addEventListener('input',()=>{ state.report=$("#reportBox").value; save(); });
+$("#btnCopyReport").addEventListener('click',async()=>{ try{ await navigator.clipboard.writeText($("#reportBox").value); $("#btnCopyReport").textContent='Copied ✓'; setTimeout(()=>$("#btnCopyReport").textContent='Copy',800);}catch(e){} });
+$("#btnPrintReport").addEventListener('click',()=>{ const w=window.open('','_blank'); w.document.write(`<html><head><title>DAT report</title></head><body><pre>${($("#reportBox").value).replace(/[<>&]/g,m=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[m]))}</pre></body></html>`); w.document.close(); w.focus(); w.print(); });
+$("#btnExportState").addEventListener('click',()=>{ const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='DAT_session.json'; a.click(); URL.revokeObjectURL(a.href); });
+$("#importState").addEventListener('change',async e=>{ const f=e.target.files[0]; if(!f)return; const txt=await f.text(); Object.assign(state, JSON.parse(txt)); location.reload(); });
+
+/* ============================================================
+   SIMULATION BINDINGS
+============================================================ */
+$("#sampleType").addEventListener('change',e=>{ state.sampleType=e.target.value; renderReflex(); save(); });
+$("#btnWash").addEventListener('click',()=>{ state.washes=Math.min(10,state.washes+1); $("#washCount").textContent=state.washes; if(state.washes>=3) $("#washStatus").innerHTML='Washing adequate (≥3). Proceed to AHG testing.'; renderReflex(); save(); });
+$("#btnResetWash").addEventListener('click',()=>{ state.washes=0; $("#washCount").textContent=0; $("#washStatus").innerHTML='≥3 washes reduce unbound Ig/complement; EDTA prevents in‑vitro complement binding.'; renderReflex(); save(); });
+$("#btnRunPoly").addEventListener('click',()=>{ state.polyRun=true; state.polyPos = state.pattern!=='neg'; renderPatternWells(); save(); });
+$("#btnRunIgG").addEventListener('click',()=>{ state.iggRun=true; state.iggPos = (state.pattern==='igg_only'||state.pattern==='both'); renderPatternWells(); save(); });
+$("#btnRunC3d").addEventListener('click',()=>{ state.c3Run=true; state.c3Pos = (state.pattern==='c3_only'||state.pattern==='both'); renderPatternWells(); save(); });
+$("#btnCheckCells").addEventListener('click',()=>{ state.checkCells=true; $("#checkCellStatus").textContent='Check cells agglutinate → negative test is valid.'; save(); });
+
+/* ============================================================
+   ELUATE MINI-SIM
+============================================================ */
+$("#eluWash").addEventListener('click',()=>{ state.elu.washes=Math.min(10,(state.elu.washes||0)+1); $("#eluWashCnt").textContent=state.elu.washes; save(); });
+$("#eluTestLastWash").addEventListener('click',()=>{
+  state.elu.lastWashTested=true;
+  const neg = (state.elu.washes||0) >= 3;
+  state.elu.lastWashNeg = neg;
+  setStatus($("#eluLastWash"), neg?'ok':'bad', neg? 'Last wash: NEGATIVE (valid)':'Last wash: POSITIVE → Rewash required');
+  $("#eluRun").disabled = !neg;
+  save();
+});
+$("#eluRun").addEventListener('click',()=>{
+  if(!state.elu.lastWashNeg) return;
+  state.elu.done=true;
+  let res='Negative';
+  if(state.pattern==='igg_only' && (state.ctx.transfused==='yes'||state.ctx.newborn==='yes')) res='Positive';
+  if(state.ctx.drug==='yes') res='Negative';
+  setStatus($("#eluResult"), res==='Positive'?'ok':'bad', 'Eluate: '+res);
+  save();
+});
+
+/* ============================================================
+   IMAGE GRADING
+============================================================ */
+const imageAssets = [
+  {grade:0, alt:'Gel column with clear pellet at bottom; no agglutinate', draw:(svg)=>{drawWell(svg,false,'gel',0)}},
+  {grade:1, alt:'Gel with faint dispersed agglutinates; small band', draw:(svg)=>{drawWell(svg,true,'gel',1)}},
+  {grade:2, alt:'Gel with moderate agglutinate band mid column', draw:(svg)=>{drawWell(svg,true,'gel',2)}},
+  {grade:3, alt:'Gel with strong agglutinate band high in column', draw:(svg)=>{drawWell(svg,true,'gel',3)}},
+  {grade:4, alt:'Gel with dense agglutinate near top, minimal pellet', draw:(svg)=>{drawWell(svg,true,'gel',4)}},
+];
+function renderRandomImage(){
+  const idx = Math.floor(Math.random()*imageAssets.length);
+  state.img.index = idx; state.img.answer=null; save();
+  const mount=$("#imgMount"); mount.innerHTML='';
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.setAttribute('viewBox','0 0 100 160'); svg.setAttribute('width','180'); svg.setAttribute('height','280'); svg.setAttribute('role','img'); svg.setAttribute('aria-label', imageAssets[idx].alt);
+  // pattern defs
+  const defs=document.createElementNS('http://www.w3.org/2000/svg','defs'); const pat=document.createElementNS('http://www.w3.org/2000/svg','pattern'); pat.setAttribute('id','dots'); pat.setAttribute('patternUnits','userSpaceOnUse'); pat.setAttribute('width','8'); pat.setAttribute('height','8');
+  const c=document.createElementNS('http://www.w3.org/2000/svg','circle'); c.setAttribute('cx','3'); c.setAttribute('cy','3'); c.setAttribute('r','2'); c.setAttribute('fill','#9aa4b2'); pat.appendChild(c); defs.appendChild(pat); svg.appendChild(defs);
+  mount.appendChild(svg);
+  imageAssets[idx].draw(svg);
+  $("#gradeFeedback").className='status warnS'; $("#gradeFeedback").textContent='Pick a grade and click Check.';
+}
+$$('input[name="grade"]').forEach(r=>{ r.addEventListener('change',()=>{ state.img.answer=Number(r.value); save(); }); });
+$("#btnCheckGrade").addEventListener('click',()=>{
+  if(state.img.answer==null) return;
+  const truth=imageAssets[state.img.index].grade;
+  const fb=$("#gradeFeedback");
+  if(Number(state.img.answer)===truth){ fb.className='status okS'; fb.textContent='Correct ✓'; }
+  else { fb.className='status badS'; fb.textContent=`Not quite. Expected ${truth}+.`; }
+});
+$("#btnNextImg").addEventListener('click',()=>{ $$('input[name="grade"]').forEach(r=>r.checked=false); renderRandomImage(); });
+
+/* ============================================================
+   CASE BUILDER
+============================================================ */
+function renderCaseList(){
+  const el=$("#caseList");
+  if(!state.cases.length){ el.textContent='No saved cases yet.'; return; }
+  el.innerHTML = state.cases.map((c,i)=>`<div class="card small"><b>${i+1}. ${c.title}</b><br/>${c.scenario ? c.scenario.slice(0,140)+'…':''}
+  <div class="row" style="margin-top:6px">
+    <button class="btn" data-run="${i}">Run</button>
+    <button class="btn" data-del="${i}">Delete</button>
+  </div></div>`).join('');
+  el.querySelectorAll('[data-run]').forEach(b=>b.addEventListener('click',()=>startCase(state.cases[Number(b.dataset.run)])));
+  el.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>{ state.cases.splice(Number(b.dataset.del),1); save(); renderCaseList(); }));
+}
+function startCase(c){
+  state.currentCase = { ...c, start: new Date().toISOString(), decisions: {} };
+  state.timeLeft = (Number(c.timer)||3)*60;
+  updateClock();
+  if(state.timer) clearInterval(state.timer);
+  state.timer = setInterval(()=>{ state.timeLeft=Math.max(0,state.timeLeft-1); updateClock(); if(state.timeLeft===0){ clearInterval(state.timer); alert('Time up! Record your decisions.'); }},1000);
+  $("#caseTitle").value=c.title; $("#caseScenario").value=c.scenario; $("#caseDAT").value=c.dat; $("#caseTimer").value=c.timer;
+}
+function updateClock(){ $("#caseClock").textContent = state.timeLeft? `${Math.floor(state.timeLeft/60)}:${(state.timeLeft%60).toString().padStart(2,'0')}` : '—'; }
+$("#btnStartCase").addEventListener('click',()=>{
+  const c={title:$("#caseTitle").value||'Untitled', scenario:$("#caseScenario").value||'', dat:$("#caseDAT").value||'', timer:$("#caseTimer").value||3};
+  startCase(c);
+});
+$("#btnSaveCase").addEventListener('click',()=>{
+  const c={title:$("#caseTitle").value||'Untitled', scenario:$("#caseScenario").value||'', dat:$("#caseDAT").value||'', timer:$("#caseTimer").value||3};
+  state.cases.push(c); save(); renderCaseList();
+});
+$("#btnCompleteCase").addEventListener('click',()=>{
+  if(!state.currentCase){ alert('Start or run a case first.'); return; }
+  state.currentCase.decisions = {
+    pattern: $("#caseChoicePattern").value,
+    reflex: $("#caseReflex").value,
+    notes: $("#caseNotes").value,
+    end: new Date().toISOString(),
+    timeUsed: ((Number(state.currentCase.timer)||3)*60 - state.timeLeft)
+  };
+  clearInterval(state.timer); state.timer=null; save();
+  alert('Case recorded. Include in PDF via Export.');
+});
+$("#btnExportCases").addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify(state.cases,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='DAT_case_library.json'; a.click(); URL.revokeObjectURL(a.href);
+});
+$("#loadCases").addEventListener('change',async e=>{
+  const f=e.target.files[0]; if(!f)return; const txt=await f.text(); const arr=JSON.parse(txt); if(Array.isArray(arr)){ state.cases=arr; save(); renderCaseList(); }
+});
+$("#btnPrintPortfolio").addEventListener('click',()=>{
+  const html = `
+  <html><head><title>DAT Portfolio</title>
+  <style>body{font:14px system-ui} h2{margin:.2rem 0} .case{border:1px solid #ccc;padding:8px;border-radius:8px;margin:8px 0}</style>
+  </head><body class="printable">
+    <h1>DAT Portfolio</h1>
+    <h2>Draft Report</h2><pre>${($("#reportBox").value||'').replace(/[<>&]/g,m=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[m]))}</pre>
+    <h2>Cases</h2>
+    ${state.cases.map((c,i)=>`<div class="case"><b>${i+1}. ${c.title}</b><br/>
+      <i>DAT:</i> ${c.dat||''}<br/><i>Scenario:</i> ${c.scenario||''}<br/>
+    </div>`).join('')}
+  </body></html>`;
+  const w=window.open('','_blank'); w.document.write(html); w.document.close(); w.focus(); w.print();
+});
+
+/* ============================================================
+   INIT
+============================================================ */
+function init(){
+  load();
+  // prepare all windows
+  $$('.win').forEach(initWindow);
+  // default open Pattern Switcher (fills screen); Sim remains available
+  openWindow($('#winPattern'));
+
+  // pattern + reflex initial
+  renderPatternWells(); renderReflex(); generateReport();
+  // image grading init
+  renderRandomImage();
+  // case list
+  renderCaseList();
+
+  // set toggler state
+  $('#btnToggleLayout').textContent = 'Auto‑Layout: '+(state.autoLayout?'On':'Off');
+  $('#btnToggleLayout').setAttribute('aria-pressed', state.autoLayout?'true':'false');
+  // tile once after open
+  tileWindows();
+}
+init();
+</script>
+</body>
+</html>

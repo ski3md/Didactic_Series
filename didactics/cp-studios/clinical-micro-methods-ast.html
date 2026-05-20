@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Clinical Micro Methods & AST — Interactive Dashboard</title>
+<style>
+  :root{--bg:#0b1020;--panel:#121931;--ink:#eaf1ff;--muted:#a9b4d6;--accent:#55d3b3;--accent2:#6aa9ff;--bad:#ff6b6b;--ok:#ffd56a;--good:#56f1a7}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial,sans-serif}
+  header{padding:16px 18px;background:linear-gradient(90deg,var(--panel),#0e1e3f)}
+  h1{margin:0;font-size:1.3rem}
+  #wrap{display:grid;grid-template-columns:320px 1fr;gap:14px;height:calc(100% - 68px)}
+  nav{background:var(--panel);overflow:auto;padding:10px}
+  main{overflow:auto;padding:10px}
+  .group{margin:8px 0}
+  .group h3{color:#b9c7ff;font-size:0.95rem;margin:10px 8px}
+  .item{width:100%;text-align:left;border:none;border-radius:10px;padding:10px 12px;margin:6px 0;background:#0f1a36;color:var(--ink);cursor:pointer}
+  .item.active{outline:2px solid var(--accent);background:#0e254f}
+  .card{background:var(--panel);border-radius:14px;padding:14px;margin:10px 0;box-shadow:0 0 0 1px rgba(255,255,255,0.06) inset}
+  .row{display:flex;gap:14px;flex-wrap:wrap}
+  .col{flex:1;min-width:300px}
+  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .pill{padding:4px 8px;border-radius:8px;background:#0f1a36;color:var(--muted);font-size:12px}
+  .btn{border:none;border-radius:10px;padding:8px 12px;background:var(--accent);color:#052018;font-weight:600;cursor:pointer}
+  .btn.ghost{background:transparent;color:var(--accent);outline:1px solid var(--accent)}
+  .slider{accent-color:var(--accent)}
+  .legend{font-size:12px;color:var(--muted)}
+  .kbd{font-family:ui-monospace,Consolas,Menlo,monospace;background:#0e254f;color:#cfe0ff;padding:1px 6px;border-radius:6px}
+  .monospace{font-family:ui-monospace,Consolas,Menlo,monospace}
+  svg{max-width:100%;height:auto}
+  .plate{background:#071126;border-radius:50%;width:360px;height:360px;position:relative;box-shadow:inset 0 0 80px rgba(85,211,179,0.15),0 0 0 1px rgba(255,255,255,0.05)}
+  .disk{position:absolute;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#06101a}
+  .disk.bac{background:#ffd56a}
+  .disk.opt{background:#6aa9ff}
+  .zone{position:absolute;border:2px dashed rgba(255,255,255,0.18);border-radius:50%;pointer-events:none}
+  .tube{width:90px;height:260px;border-radius:16px 16px 6px 6px;background:linear-gradient(180deg,#0c1630,#0a1329);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.08);position:relative}
+  .liquid{position:absolute;bottom:0;left:0;right:0;border-radius:0 0 6px 6px}
+  .callout{border-left:3px solid var(--accent2);padding-left:10px;margin:8px 0;color:#cfe0ff}
+  .spectra{height:220px;background:#08122a;border-radius:10px;position:relative}
+  .bar{position:absolute;bottom:0;width:6px;background:linear-gradient(180deg,#49dcb1,#1f7e66)}
+  .matrix{display:grid;grid-template-columns:repeat(12,1fr);gap:6px}
+  .well{height:26px;border-radius:6px;background:#0c1630;display:flex;align-items:center;justify-content:center;font-size:12px;color:#8fb}
+  .well.hit{background:#2a6}
+  .qc{padding:6px 8px;border-radius:8px;background:#0f1a36}
+  .help{color:#bfe3ff}
+</style>
+</head>
+<body>
+<header>
+  <h1>Clinical Micro Methods & AST — Interactive Dashboard</h1>
+  <div class="legend">Keyboard: <span class="kbd">←</span>/<span class="kbd">→</span> to switch modules · <span class="kbd">Space</span> to trigger the primary animation in a module.</div>
+</header>
+<div id="wrap">
+  <nav id="nav"></nav>
+  <main id="main"></main>
+</div>
+<script>
+const modules = [
+  {id:'intro', label:'Welcome & How to Use', group:'Overview', render:intro},
+  {id:'culture', label:'Culture (plates & atmosphere)', group:'Identification Methods', render:culture},
+  {id:'blood', label:'Automated Blood Culture', group:'Identification Methods', render:blood},
+  {id:'autoid', label:'Automated Bacterial ID', group:'Identification Methods', render:autoID},
+  {id:'maldi', label:'MALDI-TOF MS', group:'Identification Methods', render:maldi},
+  {id:'pcr', label:'Targeted Molecular (PCR)', group:'Identification Methods', render:pcr},
+  {id:'seq', label:'Sequence-based ID (16S/NGS)', group:'Identification Methods', render:seqID},
+
+  {id:'betalac', label:'β-lactamase (Nitrocefin)', group:'Key Tests', render:betalac},
+  {id:'bilesol', label:'Bile Solubility', group:'Key Tests', render:bileSol},
+  {id:'catalase', label:'Catalase', group:'Key Tests', render:catalase},
+  {id:'clo', label:'CLO / Urea Breath (H. pylori)', group:'Key Tests', render:clo},
+  {id:'coag', label:'Coagulase', group:'Key Tests', render:coag},
+  {id:'opto', label:'Optochin Susceptibility', group:'Key Tests', render:opto},
+  {id:'oxidase', label:'Oxidase', group:'Key Tests', render:oxidase},
+  {id:'pyr', label:'PYR', group:'Key Tests', render:pyr},
+  {id:'urease', label:'Urease', group:'Key Tests', render:urease},
+  {id:'motility', label:'Motility', group:'Key Tests', render:motility},
+  {id:'indole', label:'Indole', group:'Key Tests', render:indole},
+  {id:'bacitracin', label:'Bacitracin (A disk)', group:'Key Tests', render:bacitracin},
+  {id:'onpg', label:'β-galactosidase (ONPG)', group:'Key Tests', render:onpg},
+  {id:'bileesculin', label:'Bile Esculin', group:'Key Tests', render:bileEsculin},
+  {id:'camp', label:'CAMP test', group:'Key Tests', render:camp},
+  {id:'esculin', label:'Esculin Hydrolysis', group:'Key Tests', render:esculin},
+  {id:'hippurate', label:'Hippurate Hydrolysis', group:'Key Tests', render:hippurate},
+  {id:'nitrate', label:'Nitrate/Nitrite Reduction', group:'Key Tests', render:nitrate},
+  {id:'salt', label:'Salt Tolerance (6.5% NaCl)', group:'Key Tests', render:salt},
+  {id:'tsi', label:'TSI/KIA Slant', group:'Key Tests', render:tsi},
+
+  {id:'clsi', label:'CLSI Standards (M100/M02/M07)', group:'AST', render:clsi},
+  {id:'bmd', label:'Broth Microdilution (MIC)', group:'AST', render:bmd},
+  {id:'kb', label:'Kirby–Bauer (Disk Diffusion)', group:'AST', render:kb},
+  {id:'etest', label:'E‑test (Gradient MIC)', group:'AST', render:etest},
+  {id:'molast', label:'Molecular AST', group:'AST', render:molast},
+  {id:'report', label:'Interpretation & Reporting', group:'AST', render:report}
+];
+
+const nav = document.getElementById('nav');
+const main = document.getElementById('main');
+
+function mount(){
+  // group by category
+  const groups=[...new Set(modules.map(m=>m.group))];
+  nav.innerHTML = groups.map(g=>{
+    const items = modules.filter(m=>m.group===g).map((m,i)=>`<button class="item" data-id="${m.id}">${m.label}</button>`).join('');
+    return `<div class="group"><h3>${g}</h3>${items}</div>`;
+  }).join('');
+  nav.addEventListener('click',e=>{ if(e.target.classList.contains('item')) select(e.target.dataset.id); });
+  select('intro');
+}
+
+function select(id){
+  [...nav.querySelectorAll('.item')].forEach(b=>b.classList.toggle('active', b.dataset.id===id));
+  const m = modules.find(x=>x.id===id);
+  main.innerHTML = m.render();
+  if(window.afterMount) afterMount(id);
+}
+
+function intro(){return `
+<section>
+  <div class="card">
+    <h2>How to Use This Dashboard</h2>
+    <p>Choose a module on the left. Most modules include a mini-simulation, result readout, and annotated help text with clinical pearls and QC tips. This is a <strong>teaching tool</strong>—not for patient reporting. Always follow your local SOPs, CLSI/EUCAST, and manufacturer IFUs.</p>
+    <div class="legend">Tip: Press <span class="kbd">Space</span> inside a module to trigger the primary animation.</div>
+  </div>
+</section>`}
+
+// --- Identification Methods ---
+function culture(){return `
+<section>
+  <div class="card">
+    <h2>Culture — plates & atmosphere</h2>
+    <div class="controls">
+      <label class="pill">Medium
+        <select id="med">
+          <option value="BAP">Blood agar (BAP)</option>
+          <option value="MAC">MacConkey (MAC)</option>
+          <option value="CHOC">Chocolate (CHOC)</option>
+          <option value="ANA">CDC Anaerobe BAP</option>
+        </select>
+      </label>
+      <label class="pill">Atmosphere
+        <select id="atm">
+          <option value="air">Ambient air</option>
+          <option value="co2">5% CO₂</option>
+          <option value="ana">Anaerobic</option>
+        </select>
+      </label>
+      <label class="pill">Hours <input id="hrs" class="slider" type="range" min="0" max="72" value="18"></label>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="plate" id="plateA"></div>
+      </div>
+      <div class="col">
+        <div class="callout">
+          <strong>Concept:</strong> Growth depends on nutrients and atmosphere. Toggle to see colony density and morphology evolve (e.g., alpha-hemolysis on BAP; LF vs NLF on MAC).<br><span class="legend">Educational model only.</span>
+        </div>
+        <div id="cultRead"></div>
+      </div>
+    </div>
+  </div>
+</section>`}
+
+function blood(){return `
+<section>
+  <div class="card">
+    <h2>Automated Blood Culture (flagging & TTD)</h2>
+    <div class="controls">
+      <label class="pill">System
+        <select id="bcSys">
+          <option value="virt">BacT/ALERT VIRTUO</option>
+          <option value="fx">BD BACTEC FX</option>
+        </select>
+      </label>
+      <label class="pill">Initial CFU/mL <input id="inoc" class="slider" type="range" min="1" max="1000" value="50"></label>
+      <button class="btn" id="bcRun">Simulate 24 h</button>
+    </div>
+    <svg id="bcChart" viewBox="0 0 700 280" style="background:#08122a;border-radius:12px"></svg>
+    <div class="legend">Shows conceptual CO₂ production curve and <em>time to detection (TTD)</em> differences between systems based on published comparisons.</div>
+  </div>
+</section>`}
+
+function autoID(){return `
+<section>
+  <div class="card">
+    <h2>Automated Bacterial Identification (biochemical cards)</h2>
+    <div class="controls">
+      <label class="pill">Panel: 
+        <select id="panel">
+          <option>VITEK 2 GN</option>
+          <option>VITEK 2 GP</option>
+          <option>BD Phoenix</option>
+          <option>MicroScan WalkAway</option>
+        </select>
+      </label>
+      <label class="pill">Organism
+        <select id="orgAuto">
+          <option value="ecoli">E. coli</option>
+          <option value="psau">P. aeruginosa</option>
+          <option value="saureus">S. aureus</option>
+          <option value="strepb">S. agalactiae</option>
+        </select>
+      </label>
+      <button class="btn" id="autoSim">Generate</button>
+    </div>
+    <div class="matrix" id="bioMat"></div>
+    <div class="legend">Conceptual biochemical reactivity grid with a mock probability report and 
+    caution that rare isolates may mis-ID and require confirmation (e.g., MALDI/16S).</div>
+  </div>
+</section>`}
+
+function maldi(){return `
+<section>
+  <div class="card">
+    <h2>MALDI‑TOF MS — spectral matching</h2>
+    <div class="controls">
+      <label class="pill">Sample
+        <select id="maldiSample">
+          <option value="ecoli">E. coli</option>
+          <option value="saureus">S. aureus</option>
+          <option value="bcereus">B. cereus</option>
+          <option value="candida">Candida albicans</option>
+        </select>
+      </label>
+      <button class="btn" id="maldiRun">Acquire spectrum</button>
+    </div>
+    <div class="spectra" id="maldiSpec"></div>
+    <div id="maldiMatch" class="qc"></div>
+  </div>
+</section>`}
+
+function pcr(){return `
+<section>
+  <div class="card">
+    <h2>Targeted Molecular Assays (PCR)</h2>
+    <div class="controls">
+      <label class="pill">Target
+        <select id="prt">
+          <option value="mecA">mecA (MRSA)</option>
+          <option value="vanA">vanA (VRE)</option>
+          <option value="kpc">blaKPC (Klebsiella pneumoniae carbapenemase)</option>
+        </select>
+      </label>
+      <label class="pill">Template copies <input id="copies" type="range" min="0" max="6" value="3" class="slider"></label>
+      <button class="btn" id="pcrRun">Run qPCR</button>
+    </div>
+    <svg id="pcrChart" viewBox="0 0 700 280" style="background:#08122a;border-radius:12px"></svg>
+    <div class="legend">Simulated amplification curves with Ct shifting by template load; demonstrates rapid genotypic resistance calls.</div>
+  </div>
+</section>`}
+
+function seqID(){return `
+<section>
+  <div class="card">
+    <h2>Sequence‑based ID (16S rRNA / NGS)</h2>
+    <div class="controls">
+      <label class="pill">Query isolate
+        <select id="seqIso">
+          <option value="close">Closely related species</option>
+          <option value="distant">Distant species</option>
+          <option value="mixed">Mixed amplicon</option>
+        </select>
+      </label>
+      <label class="pill">Identity threshold <input id="iden" type="range" min="95" max="100" value="98.7" step="0.1" class="slider"></label>
+    </div>
+    <div id="seqReport" class="code"></div>
+    <div class="legend">Demonstrates genus vs species calls, ambiguity, and when to escalate to whole‑genome or long‑read methods.</div>
+  </div>
+</section>`}
+
+// --- Key Tests ---
+function betalac(){return `
+<section>
+  <div class="card">
+    <h2>β‑lactamase (Nitrocefin)</h2>
+    <div class="row">
+      <div class="col">
+        <div class="tube"><div id="nitro" class="liquid" style="height:40%;background:#f2d56b"></div></div>
+        <div class="controls"><label class="pill">Enzyme activity <input id="blact" type="range" min="0" max="100" value="0" class="slider"></label></div>
+      </div>
+      <div class="col"><div class="help">Increase activity to see <em>yellow → red</em> color change. Positive within 1–2 min indicates β‑lactamase production (e.g., <em>N. gonorrhoeae, H. influenzae, Moraxella</em>), noting method limitations and QC requirements.</div><div id="nitroTxt" class="legend"></div></div>
+    </div>
+  </div>
+</section>`}
+
+function bileSol(){return `
+<section>
+  <div class="card">
+    <h2>Bile Solubility (S. pneumoniae)</h2>
+    <div class="controls"><label class="pill">Add deoxycholate <input id="bileAdd" type="checkbox"></label></div>
+    <div class="row">
+      <div class="col"><div class="tube"><div id="bilePellet" class="liquid" style="height:28%;background:#88a3c9"></div></div></div>
+      <div class="col"><div class="help">With bile, pneumococcal autolysins activate → clearing of suspension (positive); viridans streptococci remain turbid (negative). Use with optochin for ID workflow.</div><div id="bileTxt" class="legend"></div></div>
+    </div>
+  </div>
+</section>`}
+
+function catalase(){return `
+<section>
+  <div class="card">
+    <h2>Catalase</h2>
+    <div class="controls"><label class="pill">% H₂O₂ <input id="h2o2" type="range" min="3" max="30" value="3" class="slider"></label> <label class="pill">Cell mass <input id="cells" type="range" min="1" max="10" value="3" class="slider"></label> <button class="btn" id="catRun">Add peroxide</button></div>
+    <div class="row">
+      <div class="col"><div class="plate" id="catSlide"></div></div>
+      <div class="col"><div class="help">Rapid bubbles = positive (e.g., <em>Staphylococcus</em>); no bubbles = negative (e.g., <em>Streptococcus</em>). Avoid blood agar carryover (false positives).</div></div>
+    </div>
+  </div>
+</section>`}
+
+function clo(){return `
+<section>
+  <div class="card">
+    <h2>CLO (Rapid urease) / Urea Breath (H. pylori)</h2>
+    <div class="row">
+      <div class="col"><div class="tube"><div id="cloMed" class="liquid" style="height:50%;background:#6b7bd6"></div></div>
+        <div class="controls"><label class="pill">Urease load <input id="ureLoad" type="range" min="0" max="100" value="20" class="slider"></label> <button class="btn" id="cloRun">Incubate</button></div>
+      </div>
+      <div class="col"><div class="help">Rapid urease from <em>H. pylori</em> turns biopsy media pink; non‑invasive UBT detects labeled CO₂ after urea ingestion—used for test of cure (hold PPI 2 weeks; abx/bismuth 4 weeks).</div></div>
+    </div>
+  </div>
+</section>`}
+
+function coag(){return `
+<section>
+  <div class="card">
+    <h2>Coagulase (slide & tube)</h2>
+    <div class="controls"><label class="pill">Bound (slide) <input id="slideCg" type="checkbox" checked></label> <label class="pill">Free (tube) <input id="tubeCg" type="checkbox" checked></label></div>
+    <div class="row">
+      <div class="col"><div class="plate" id="slidePlate"></div></div>
+      <div class="col"><div class="tube"><div id="clot" class="liquid" style="height:40%;background:#88a3c9"></div></div><div class="legend" id="coagTxt"></div></div>
+    </div>
+  </div>
+</section>`}
+
+function opto(){return `
+<section>
+  <div class="card">
+    <h2>Optochin Susceptibility (P‑disk)</h2>
+    <div class="controls"><label class="pill">Zone size (mm) <input id="optZ" type="range" min="0" max="20" value="14" class="slider"></label></div>
+    <div class="row" style="align-items:center">
+      <div class="col"><div class="plate" id="optPlate"><div class="disk opt" style="left:158px;top:158px">P</div><div id="optZone" class="zone" style="left:100px;top:100px;width:160px;height:160px"></div></div></div>
+      <div class="col"><div class="help">≥14 mm (with 6 mm disk) on BAP in 5% CO₂ supports <em>S. pneumoniae</em>; smaller or no zone suggests viridans streptococci. Confirm with bile solubility.</div></div>
+    </div>
+  </div>
+</section>`}
+
+function oxidase(){return `
+<section>
+  <div class="card">
+    <h2>Oxidase</h2>
+    <div class="controls"><label class="pill">Reagent (TMPD) freshness <input id="oxFresh" type="range" min="0" max="100" value="80" class="slider"></label> <button class="btn" id="oxRun">Touch colony</button></div>
+    <div class="row">
+      <div class="col"><div class="plate" id="oxPlate"></div></div>
+      <div class="col"><div class="help">Deep purple within seconds = oxidase positive (e.g., <em>Pseudomonas, Neisseria, Vibrio</em>). Enterobacterales are negative. Read promptly to avoid false positives.</div></div>
+    </div>
+  </div>
+</section>`}
+
+function pyr(){return `
+<section>
+  <div class="card">
+    <h2>PYR</h2>
+    <div class="controls"><label class="pill">Enzyme activity <input id="pyrAct" type="range" min="0" max="100" value="60" class="slider"></label> <button class="btn" id="pyrRun">Develop</button></div>
+    <div class="row">
+      <div class="col"><div class="tube"><div id="pyrDisk" class="liquid" style="height:20%;background:#8899bb"></div></div></div>
+      <div class="col"><div class="help">Cherry‑red = positive (e.g., <em>Streptococcus pyogenes</em>, <em>Enterococcus</em>); negative in many viridans streptococci.</div></div>
+    </div>
+  </div>
+</section>`}
+
+function urease(){return `
+<section>
+  <div class="card">
+    <h2>Urease</h2>
+    <div class="controls"><label class="pill">Urease expression <input id="urex" type="range" min="0" max="100" value="50" class="slider"></label></div>
+    <div class="row"><div class="col"><div class="tube"><div id="ureBroth" class="liquid" style="height:50%;background:#6b7bd6"></div></div></div><div class="col"><div class="help">Phenol red broth turns pink with ammonia (e.g., <em>Proteus</em> strong positive; <em>Klebsiella</em> variable).</div></div></div>
+  </div>
+</section>`}
+
+function motility(){return `
+<section>
+  <div class="card">
+    <h2>Motility (SIM / semi‑solid)</h2>
+    <div class="controls"><label class="pill">Flagella presence <input id="flag" type="range" min="0" max="100" value="50" class="slider"></label></div>
+    <svg id="motSvg" viewBox="0 0 600 220" style="background:#08122a;border-radius:12px"></svg>
+  </div>
+</section>`}
+
+function indole(){return `
+<section>
+  <div class="card">
+    <h2>Indole (Kovac’s)</h2>
+    <div class="controls"><label class="pill">Tryptophanase <input id="indAct" type="range" min="0" max="100" value="70" class="slider"></label> <button class="btn" id="indRun">Add Kovac’s</button></div>
+    <div class="row"><div class="col"><div class="tube"><div id="indLayer" class="liquid" style="height:20%;background:#2b3a66"></div></div></div><div class="col"><div class="help">Red ring = positive (e.g., <em>E. coli</em>); no ring = negative (e.g., <em>Klebsiella</em>).</div></div></div>
+  </div>
+</section>`}
+
+function bacitracin(){return `
+<section>
+  <div class="card">
+    <h2>Bacitracin Susceptibility (A disk)</h2>
+    <div class="controls"><label class="pill">Zone (mm) <input id="bacZ" type="range" min="0" max="20" value="12" class="slider"></label></div>
+    <div class="row" style="align-items:center">
+      <div class="col"><div class="plate" id="bacPlate"><div class="disk bac" style="left:158px;top:158px">A</div><div id="bacZone" class="zone" style="left:110px;top:110px;width:140px;height:140px"></div></div></div>
+      <div class="col"><div class="help">Classically used to presumptively identify <em>S. pyogenes</em> (sensitive) from other β‑hemolytic streptococci; verify with PYR and antigen testing.</div></div>
+    </div>
+  </div>
+</section>`}
+
+function onpg(){return `
+<section>
+  <div class="card">
+    <h2>β‑galactosidase (ONPG)</h2>
+    <div class="controls"><label class="pill">Lac operon state <input id="lacState" type="range" min="0" max="100" value="40" class="slider"></label></div>
+    <div class="row"><div class="col"><div class="tube"><div id="onpgBroth" class="liquid" style="height:50%;background:#8899bb"></div></div></div><div class="col"><div class="help">Yellow = ONPG positive (late lactose fermenters with β‑galactosidase but lacking permease).</div></div></div>
+  </div>
+</section>`}
+
+function bileEsculin(){return `
+<section>
+  <div class="card">
+    <h2>Bile‑Esculin</h2>
+    <div class="controls"><label class="pill">Esculinase <input id="escAct" type="range" min="0" max="100" value="80" class="slider"></label></div>
+    <div class="row"><div class="col"><div class="tube"><div id="escSlant" class="liquid" style="height:60%;background:#384a6e"></div></div></div><div class="col"><div class="help">Blackening = esculetin–iron complex (Enterococcus / group D streptococci) in presence of bile.</div></div></div>
+  </div>
+</section>`}
+
+function camp(){return `
+<section>
+  <div class="card">
+    <h2>CAMP Test</h2>
+    <div class="controls"><label class="pill">CAMP factor <input id="campAct" type="range" min="0" max="100" value="70" class="slider"></label></div>
+    <svg id="campSvg" viewBox="0 0 600 220" style="background:#08122a;border-radius:12px"></svg>
+    <div class="legend">Arrowhead hemolysis at junction with β‑lysin producing <em>S. aureus</em> indicates <em>S. agalactiae</em>.</div>
+  </div>
+</section>`}
+
+function esculin(){return `
+<section>
+  <div class="card">
+    <h2>Esculin Hydrolysis (disk)</h2>
+    <div class="controls"><label class="pill">Esculinase <input id="escDiskAct" type="range" min="0" max="100" value="50" class="slider"></label></div>
+    <div class="row"><div class="col"><div class="plate" id="escPlate"></div></div><div class="col"><div class="help">Demonstrates esculin hydrolysis concept without bile selectivity.</div></div></div>
+  </div>
+</section>`}
+
+function hippurate(){return `
+<section>
+  <div class="card">
+    <h2>Hippurate Hydrolysis</h2>
+    <div class="controls"><label class="pill">Hippuricase <input id="hipAct" type="range" min="0" max="100" value="60" class="slider"></label> <button class="btn" id="hipRun">Add ninhydrin</button></div>
+    <div class="row"><div class="col"><div class="tube"><div id="hipTube" class="liquid" style="height:50%;background:#8899bb"></div></div></div><div class="col"><div class="help">Purple after ninhydrin = positive (e.g., <em>Campylobacter jejuni</em>, <em>S. agalactiae</em>, <em>Listeria monocytogenes</em>, <em>Gardnerella</em>).</div></div></div>
+  </div>
+</section>`}
+
+function nitrate(){return `
+<section>
+  <div class="card">
+    <h2>Nitrate/Nitrite Reduction</h2>
+    <div class="controls"><label class="pill">Pathway
+      <select id="nitPath">
+        <option value="none">No reduction</option>
+        <option value="nitrite">Nitrate → Nitrite</option>
+        <option value="gas">Denitrification to N₂</option>
+      </select></label>
+      <button class="btn" id="nitDev">Add A+B</button>
+      <button class="btn ghost" id="nitZn">Add Zinc</button>
+    </div>
+    <div class="row"><div class="col"><div class="tube"><div id="nitBroth" class="liquid" style="height:60%;background:#8899bb"></div></div></div><div class="col"><div id="nitTxt" class="legend"></div></div></div>
+  </div>
+</section>`}
+
+function salt(){return `
+<section>
+  <div class="card">
+    <h2>Salt Tolerance (6.5% NaCl)</h2>
+    <div class="controls"><label class="pill">Growth potential <input id="saltGrow" type="range" min="0" max="100" value="70" class="slider"></label></div>
+    <div class="row"><div class="col"><div class="tube"><div id="saltBroth" class="liquid" style="height:60%;background:#6b7bd6"></div></div></div><div class="col"><div class="help">Turbidity/yellowing indicates growth in 6.5% NaCl (typical for <em>Enterococcus</em>), helps distinguish from <em>Streptococcus bovis/gallolyticus</em>.</div></div></div>
+  </div>
+</section>`}
+
+function tsi(){return `
+<section>
+  <div class="card">
+    <h2>TSI/KIA Slant Interpreter</h2>
+    <div class="controls">
+      <label class="pill">Glucose <input id="glc" type="checkbox" checked></label>
+      <label class="pill">Lactose <input id="lac" type="checkbox"></label>
+      <label class="pill">Sucrose <input id="suc" type="checkbox"></label>
+      <label class="pill">H₂S <input id="h2s" type="checkbox"></label>
+      <label class="pill">Gas <input id="gas" type="checkbox"></label>
+    </div>
+    <svg id="tsiSvg" viewBox="0 0 600 260" style="background:#08122a;border-radius:12px"></svg>
+    <div id="tsiTxt" class="legend"></div>
+  </div>
+</section>`}
+
+// --- AST ---
+function clsi(){return `
+<section>
+  <div class="card">
+    <h2>CLSI Standards (M100 · M02 · M07)</h2>
+    <div class="callout">Always interpret disk diffusion and MIC values against the <strong>current CLSI M100</strong> tables, using standardized methods M02 (disk) and M07 (dilution). Breakpoints change—replace old tables annually.</div>
+    <div class="legend">Links and key reminders included in the host response message.</div>
+  </div>
+</section>`}
+
+function bmd(){return `
+<section>
+  <div class="card">
+    <h2>Broth Microdilution (MIC)</h2>
+    <div class="controls"><label class="pill">MIC (true) <input id="trueMic" type="range" min="0.06" max="64" value="1" step="0.06" class="slider"></label> <button class="btn" id="bmdRun">Incubate</button></div>
+    <div id="bmdPanel" class="matrix" style="grid-template-columns:repeat(12,1fr)"></div>
+    <div id="bmdTxt" class="legend"></div>
+  </div>
+</section>`}
+
+function kb(){return `
+<section>
+  <div class="card">
+    <h2>Kirby–Bauer (Disk Diffusion)</h2>
+    <div class="controls"><label class="pill">Zone (mm) <input id="kbZone" type="range" min="6" max="40" value="22" class="slider"></label> <button class="btn" id="kbMeasure">Measure</button></div>
+    <div class="row" style="align-items:center">
+      <div class="col"><div class="plate" id="kbPlate"><div class="disk" style="left:158px;top:158px;background:#49dcb1">ABX</div><div id="kbRing" class="zone" style="left:88px;top:88px;width:180px;height:180px"></div></div></div>
+      <div class="col"><div id="kbTxt" class="legend"></div></div>
+    </div>
+  </div>
+</section>`}
+
+function etest(){return `
+<section>
+  <div class="card">
+    <h2>E‑test (Gradient MIC)</h2>
+    <div class="controls"><label class="pill">True MIC (µg/mL) <input id="eMic" type="range" min="0.016" max="64" value="0.5" step="0.016" class="slider"></label></div>
+    <svg id="eSvg" viewBox="0 0 600 260" style="background:#08122a;border-radius:12px"></svg>
+    <div id="eTxt" class="legend"></div>
+  </div>
+</section>`}
+
+function molast(){return `
+<section>
+  <div class="card">
+    <h2>Molecular AST (genotype → phenotype)</h2>
+    <div class="controls">
+      <label class="pill"><input type="checkbox" id="mecA" checked> mecA</label>
+      <label class="pill"><input type="checkbox" id="vanA"> vanA</label>
+      <label class="pill"><input type="checkbox" id="kpc"> blaKPC</label>
+    </div>
+    <div id="molTxt" class="legend"></div>
+  </div>
+</section>`}
+
+function report(){return `
+<section>
+  <div class="card">
+    <h2>AST Interpretation & Reporting</h2>
+    <div class="help">Demonstrates selective/cascade reporting logic and the <span class="monospace">S / I / R</span> framework using mock breakpoints. Always verify with current CLSI M100 tables and your LIS rules.</div>
+    <div class="controls"><button class="btn" id="repSim">Simulate</button></div>
+    <div id="repTxt" class="legend"></div>
+  </div>
+</section>`}
+
+// afterMount handlers wire the interactions
+window.afterMount = (id)=>{
+  if(id==='culture') setupCulture();
+  if(id==='blood') setupBlood();
+  if(id==='autoid') setupAutoID();
+  if(id==='maldi') setupMALDI();
+  if(id==='pcr') setupPCR();
+  if(id==='seq') setupSeq();
+
+  if(id==='betalac') setupBeta();
+  if(id==='bilesol') setupBileSol();
+  if(id==='catalase') setupCatalase();
+  if(id==='clo') setupCLO();
+  if(id==='coag') setupCoag();
+  if(id==='opto') setupOpto();
+  if(id==='oxidase') setupOxidase();
+  if(id==='pyr') setupPYR();
+  if(id==='urease') setupUrease();
+  if(id==='motility') setupMotility();
+  if(id==='indole') setupIndole();
+  if(id==='bacitracin') setupBac();
+  if(id==='onpg') setupONPG();
+  if(id==='bileesculin') setupBileEsc();
+  if(id==='camp') setupCAMP();
+  if(id==='esculin') setupEsculin();
+  if(id==='hippurate') setupHippurate();
+  if(id==='nitrate') setupNitrate();
+  if(id==='salt') setupSalt();
+  if(id==='tsi') setupTSI();
+
+  if(id==='bmd') setupBMD();
+  if(id==='kb') setupKB();
+  if(id==='etest') setupETest();
+  if(id==='molast') setupMol();
+  if(id==='report') setupReport();
+}
+
+// --- implementations ---
+function setupCulture(){
+  const plate=document.getElementById('plateA');
+  const med=document.getElementById('med');
+  const atm=document.getElementById('atm');
+  const hrs=document.getElementById('hrs');
+  const read=document.getElementById('cultRead');
+  function draw(){
+    plate.innerHTML='';
+    const h=parseInt(hrs.value);
+    // seed some colonies depending on medium & atmosphere
+    const n = Math.min(200, Math.floor(h*3));
+    for(let i=0;i<n;i++){
+      const d=document.createElement('div');
+      const x=Math.random()*320+20; const y=Math.random()*320+20;
+      const r=1+Math.random()* (h/36);
+      d.style.position='absolute'; d.style.left=(x-r)+'px'; d.style.top=(y-r)+'px'; d.style.width=(2*r)+'px'; d.style.height=(2*r)+'px'; d.style.borderRadius='50%';
+      let color='#9fb4ff';
+      if(med.value==='BAP') color = (Math.random()<0.5?'#a3b9ff':'#90ff90');
+      if(med.value==='MAC') color = (Math.random()<0.5?'#ff8dd2':'#a9a9a9'); // LF pink vs NLF gray
+      if(med.value==='CHOC') color = '#d6e0ff';
+      if(med.value==='ANA') color = '#b3d6c6';
+      d.style.background=color; plate.appendChild(d);
+    }
+    read.innerHTML = `<div class="qc">Medium: <strong>${med.value}</strong> · Atmosphere: <strong>${atm.value}</strong> · Incubation: <strong>${h} h</strong></div>`;
+  }
+  med.oninput=draw; atm.oninput=draw; hrs.oninput=draw; draw();
+}
+
+function setupBlood(){
+  const svg=document.getElementById('bcChart');
+  const sys=document.getElementById('bcSys');
+  const inoc=document.getElementById('inoc');
+  const btn=document.getElementById('bcRun');
+  function run(){
+    svg.innerHTML='';
+    const width=700, height=280, pad=40;
+    const ax=document.createElementNS(svg.namespaceURI,'path');
+    ax.setAttribute('d',`M ${pad} ${height-pad} H ${width-pad} M ${pad} ${height-pad} V ${pad}`);
+    ax.setAttribute('stroke','#345'); ax.setAttribute('fill','none'); svg.appendChild(ax);
+    const label=document.createElementNS(svg.namespaceURI,'text'); label.setAttribute('x',pad+6); label.setAttribute('y',pad+16); label.setAttribute('fill','#9fd0ff'); label.textContent='CO₂ signal'; svg.appendChild(label);
+    const pts=200; const inoc0=parseInt(inoc.value);
+    const ttd = (sys.value==='virt'? 14:16) - Math.log10(inoc0+1); // conceptual shift
+    function sig(t){ const k=0.7; return 1/(1+Math.exp(-k*(t-ttd))); }
+    let d=''; for(let i=0;i<=pts;i++){ const t=i/pts*24; const x=pad+(width-2*pad)*(t/24); const y=height-pad - (height-2*pad)*sig(t); d += (i?'L':'M')+x+' '+y; }
+    const p=document.createElementNS(svg.namespaceURI,'path'); p.setAttribute('d',d); p.setAttribute('stroke','#49dcb1'); p.setAttribute('fill','none'); p.setAttribute('stroke-width','2'); svg.appendChild(p);
+    const tline=document.createElementNS(svg.namespaceURI,'line'); const x=pad+(width-2*pad)*(ttd/24); tline.setAttribute('x1',x); tline.setAttribute('x2',x); tline.setAttribute('y1',pad); tline.setAttribute('y2',height-pad); tline.setAttribute('stroke','#ffb86b'); tline.setAttribute('stroke-dasharray','4 4'); svg.appendChild(tline);
+    const txt=document.createElementNS(svg.namespaceURI,'text'); txt.setAttribute('x',x+6); txt.setAttribute('y',pad+16); txt.setAttribute('fill','#ffb86b'); txt.textContent=`TTD ≈ ${ttd.toFixed(1)} h`; svg.appendChild(txt);
+  }
+  btn.onclick=run; run();
+}
+
+function setupAutoID(){
+  const mat=document.getElementById('bioMat');
+  const orgSel=document.getElementById('orgAuto');
+  const btn=document.getElementById('autoSim');
+  function make(){
+    mat.innerHTML='';
+    const tests=Array.from({length:48},(_,i)=>i);
+    tests.forEach(i=>{ const w=document.createElement('div'); w.className='well'; if(Math.random()<0.6) w.classList.add('hit'); w.textContent=i+1; mat.appendChild(w); });
+    const rep=document.createElement('div'); rep.className='qc'; rep.innerHTML=`<strong>Predicted ID:</strong> ${orgSel.options[orgSel.selectedIndex].text} — Confidence 97% (mock)`; mat.appendChild(rep);
+  }
+  btn.onclick=make; make();
+}
+
+function setupMALDI(){
+  const host=document.getElementById('maldiSpec');
+  const sel=document.getElementById('maldiSample');
+  const btn=document.getElementById('maldiRun');
+  function run(){
+    host.innerHTML='';
+    for(let i=0;i<80;i++){
+      const b=document.createElement('div'); b.className='bar';
+      const x= i*7+10; b.style.left=x+'px'; b.style.width='6px';
+      const h = Math.random()*180 + (sel.value==='ecoli' && i%9===0?60:0);
+      b.style.height=h+'px'; host.appendChild(b);
+    }
+    const qc=document.getElementById('maldiMatch');
+    qc.innerHTML = `<strong>Top match:</strong> ${sel.options[sel.selectedIndex].text} · Score 2.23 (ID secure)`;
+  }
+  btn.onclick=run; run();
+}
+
+function setupPCR(){
+  const svg=document.getElementById('pcrChart');
+  const copies=document.getElementById('copies');
+  const btn=document.getElementById('pcrRun');
+  function draw(){
+    svg.innerHTML='';
+    const width=700, height=280, pad=40; const cycles=40;
+    const ax=document.createElementNS(svg.namespaceURI,'path'); ax.setAttribute('d',`M ${pad} ${height-pad} H ${width-pad} M ${pad} ${height-pad} V ${pad}`); ax.setAttribute('stroke','#345'); ax.setAttribute('fill','none'); svg.appendChild(ax);
+    const c0 = Math.pow(10, parseInt(copies.value));
+    function fl(cyc){ const E=1.8; const n = c0*(E**cyc); return Math.min(1, n/(1e8)); }
+    let d=''; for(let i=0;i<=cycles;i++){ const x=pad+(width-2*pad)*(i/cycles); const y=height-pad - (height-2*pad)*fl(i); d+=(i?'L':'M')+x+' '+y; }
+    const p=document.createElementNS(svg.namespaceURI,'path'); p.setAttribute('d',d); p.setAttribute('stroke','#6aa9ff'); p.setAttribute('fill','none'); p.setAttribute('stroke-width','2'); svg.appendChild(p);
+    // Ct as 0.1 fluorescence threshold
+    const Ct = Math.max(1, Math.min(38, Math.log(0.1/c0)/Math.log(1/1.8)));
+    const x=pad+(width-2*pad)*(Ct/cycles); const tline=document.createElementNS(svg.namespaceURI,'line'); tline.setAttribute('x1',x); tline.setAttribute('x2',x); tline.setAttribute('y1',pad); tline.setAttribute('y2',height-pad); tline.setAttribute('stroke','#ffb86b'); tline.setAttribute('stroke-dasharray','4 4'); svg.appendChild(tline);
+    const txt=document.createElementNS(svg.namespaceURI,'text'); txt.setAttribute('x',x+6); txt.setAttribute('y',pad+16); txt.setAttribute('fill','#ffb86b'); txt.textContent=`Ct ≈ ${Ct.toFixed(1)}`; svg.appendChild(txt);
+  }
+  btn.onclick=draw; draw();
+}
+
+function setupSeq(){
+  const rpt=document.getElementById('seqReport');
+  const iso=document.getElementById('seqIso');
+  const thr=document.getElementById('iden');
+  function update(){
+    const t=parseFloat(thr.value);
+    let msg='';
+    if(iso.value==='close'){
+      msg = (t<=99.0? 'Genus-level ID; species ambiguous (98.5–99% 16S identity). Consider additional loci or MALDI.':'Species-level ID probable.');
+    } else if(iso.value==='distant'){
+      msg='Clear species-level match well above threshold.';
+    } else {
+      msg='Mixed amplicon pattern; deconvolute by cloning or long-read sequencing.';
+    }
+    rpt.textContent = `Threshold ${t}% → ${msg}`;
+  }
+  iso.oninput=update; thr.oninput=update; update();
+}
+
+function setupBeta(){
+  const liq=document.getElementById('nitro'); const range=document.getElementById('blact'); const txt=document.getElementById('nitroTxt');
+  function upd(){ const v=parseInt(range.value); const c = v>5? '#d44a5e':'#f2d56b'; liq.style.background=c; txt.textContent = v>5? 'Positive (yellow→red)': 'Negative'; }
+  range.oninput=upd; upd();
+}
+
+function setupBileSol(){
+  const chk=document.getElementById('bileAdd'); const pellet=document.getElementById('bilePellet'); const txt=document.getElementById('bileTxt');
+  function upd(){ pellet.style.height= chk.checked? '5%':'28%'; txt.textContent = chk.checked? 'Positive: clearing (pneumococcus)':'Negative: remains turbid (viridans)'; }
+  chk.oninput=upd; upd();
+}
+
+function setupCatalase(){
+  const slide=document.getElementById('catSlide'); const h2o2=document.getElementById('h2o2'); const cells=document.getElementById('cells'); const btn=document.getElementById('catRun');
+  function run(){ slide.innerHTML=''; const n = parseInt(cells.value)*20; for(let i=0;i<n;i++){ const b=document.createElement('div'); b.style.position='absolute'; b.style.left=(150+Math.random()*60)+'px'; b.style.top=(150+Math.random()*60)+'px'; const r=Math.random()* (parseInt(h2o2.value)/6); b.style.width=b.style.height=(2+r)+'px'; b.style.borderRadius='50%'; b.style.background='#bfe3ff'; slide.appendChild(b);} }
+  btn.onclick=run; run();
+}
+
+function setupCLO(){
+  const load=document.getElementById('ureLoad'); const med=document.getElementById('cloMed'); const btn=document.getElementById('cloRun');
+  function run(){ const v=parseInt(load.value); med.style.background = v>10? '#ff8cc2':'#6b7bd6'; }
+  btn.onclick=run; run();
+}
+
+function setupCoag(){
+  const slide=document.getElementById('slidePlate'); const tube=document.getElementById('clot'); const s=document.getElementById('slideCg'); const t=document.getElementById('tubeCg'); const txt=document.getElementById('coagTxt');
+  function upd(){ slide.innerHTML=''; if(s.checked){ for(let i=0;i<30;i++){ const c=document.createElement('div'); c.style.position='absolute'; c.style.left=(120+Math.random()*120)+'px'; c.style.top=(120+Math.random()*120)+'px'; c.style.width=c.style.height=(4+Math.random()*10)+'px'; c.style.borderRadius='50%'; c.style.background='#ffb86b'; slide.appendChild(c);} }
+    tube.style.height= t.checked? '70%':'40%'; tube.style.background= t.checked? '#b673a5':'#88a3c9'; txt.textContent = `${s.checked?'Slide positive (clumping)':'Slide negative'} · ${t.checked?'Tube positive (clot)':'Tube negative'}`; }
+  s.oninput=upd; t.oninput=upd; upd();
+}
+
+function setupOpto(){
+  const z=document.getElementById('optZ'); const zone=document.getElementById('optZone'); function upd(){ const r=parseInt(z.value)*4; zone.style.left=(180-r)+'px'; zone.style.top=(180-r)+'px'; zone.style.width=(2*r)+'px'; zone.style.height=(2*r)+'px'; } z.oninput=upd; upd(); }
+
+function setupOxidase(){
+  const plate=document.getElementById('oxPlate'); const fresh=document.getElementById('oxFresh'); const btn=document.getElementById('oxRun');
+  function run(){ plate.innerHTML=''; const c = parseInt(fresh.value)>30? '#6e4af2':'#444'; for(let i=0;i<80;i++){ const dot=document.createElement('div'); dot.style.position='absolute'; dot.style.left=(Math.random()*320+20)+'px'; dot.style.top=(Math.random()*320+20)+'px'; dot.style.width=dot.style.height='6px'; dot.style.borderRadius='50%'; dot.style.background=c; plate.appendChild(dot);} }
+  btn.onclick=run; run();
+}
+
+function setupPYR(){ const disk=document.getElementById('pyrDisk'); const act=document.getElementById('pyrAct'); const btn=document.getElementById('pyrRun'); function run(){ const v=parseInt(act.value); disk.style.background = v>20? '#ff6688':'#8899bb'; } btn.onclick=run; run(); }
+
+function setupUrease(){ const b=document.getElementById('ureBroth'); const x=document.getElementById('urex'); function upd(){ b.style.background = parseInt(x.value)>30? '#ff8cc2':'#6b7bd6'; } x.oninput=upd; upd(); }
+
+function setupMotility(){ const svg=document.getElementById('motSvg'); const flag=document.getElementById('flag'); function draw(){ svg.innerHTML=''; const p=document.createElementNS(svg.namespaceURI,'rect'); p.setAttribute('x',280); p.setAttribute('y',10); p.setAttribute('width',8); p.setAttribute('height',200); p.setAttribute('fill','#6aa9ff'); svg.appendChild(p); for(let i=0;i<120;i++){ const y=10+Math.random()*200; const spread = parseInt(flag.value)/2; const x=280 + (Math.random()-0.5)*spread; const c=document.createElementNS(svg.namespaceURI,'circle'); c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',2); c.setAttribute('fill','#bfe3ff'); svg.appendChild(c);} } flag.oninput=draw; draw(); }
+
+function setupIndole(){ const lay=document.getElementById('indLayer'); const act=document.getElementById('indAct'); const btn=document.getElementById('indRun'); function run(){ lay.style.background = parseInt(act.value)>20? '#c25555':'#2b3a66'; } btn.onclick=run; run(); }
+
+function setupBac(){ const z=document.getElementById('bacZ'); const zone=document.getElementById('bacZone'); function upd(){ const r=parseInt(z.value)*3.5; zone.style.left=(180-r)+'px'; zone.style.top=(180-r)+'px'; zone.style.width=(2*r)+'px'; zone.style.height=(2*r)+'px'; } z.oninput=upd; upd(); }
+
+function setupONPG(){ const b=document.getElementById('onpgBroth'); const s=document.getElementById('lacState'); function upd(){ b.style.background = parseInt(s.value)>30? '#ffd56a':'#8899bb'; } s.oninput=upd; upd(); }
+
+function setupBileEsc(){ const s=document.getElementById('escAct'); const sl=document.getElementById('escSlant'); function upd(){ sl.style.background = parseInt(s.value)>20? '#222':'#384a6e'; } s.oninput=upd; upd(); }
+
+function setupCAMP(){ const svg=document.getElementById('campSvg'); const act=document.getElementById('campAct'); function draw(){ svg.innerHTML=''; // central S. aureus streak
+    const center=document.createElementNS(svg.namespaceURI,'rect'); center.setAttribute('x',280); center.setAttribute('y',20); center.setAttribute('width',6); center.setAttribute('height',180); center.setAttribute('fill','#ffb86b'); svg.appendChild(center);
+    // GBS streak below forming arrowhead
+    const path=document.createElementNS(svg.namespaceURI,'path'); const w= parseInt(act.value)/2; path.setAttribute('d',`M 160 140 L 440 140 L 300 ${140+w} Z`); path.setAttribute('fill','rgba(255,255,255,0.1)'); path.setAttribute('stroke','#bfe3ff'); svg.appendChild(path);
+  } act.oninput=draw; draw(); }
+
+function setupEsculin(){ const plate=document.getElementById('escPlate'); const act=document.getElementById('escDiskAct'); function upd(){ plate.innerHTML=''; const dark = parseInt(act.value)>40; for(let i=0;i<100;i++){ const d=document.createElement('div'); d.style.position='absolute'; d.style.left=(Math.random()*320+20)+'px'; d.style.top=(Math.random()*320+20)+'px'; d.style.width=d.style.height='6px'; d.style.borderRadius='50%'; d.style.background = dark? '#222':'#9fb4ff'; plate.appendChild(d);} } act.oninput=upd; upd(); }
+
+function setupHippurate(){ const t=document.getElementById('hipTube'); const a=document.getElementById('hipAct'); const btn=document.getElementById('hipRun'); function run(){ t.style.background = parseInt(a.value)>20? '#7840a8':'#8899bb'; } btn.onclick=run; run(); }
+
+function setupNitrate(){ const bro=document.getElementById('nitBroth'); const path=document.getElementById('nitPath'); const dev=document.getElementById('nitDev'); const zn=document.getElementById('nitZn'); const txt=document.getElementById('nitTxt'); function addAB(){ const p=path.value; if(p==='nitrite'){ bro.style.background='#c25555'; txt.textContent='Red after A+B = nitrate→nitrite (positive).'; } else { bro.style.background='#8899bb'; txt.textContent='No color after A+B → add zinc.'; } } function addZinc(){ const p=path.value; if(p==='none'){ bro.style.background='#c25555'; txt.textContent='Red after zinc = unreduced nitrate (negative).'; } else if(p==='gas'){ bro.style.background='#8899bb'; txt.textContent='No color after zinc = reduced beyond nitrite (positive).'; } else { txt.textContent='—'; }
+  } dev.onclick=addAB; zn.onclick=addZinc; }
+
+function setupSalt(){ const b=document.getElementById('saltBroth'); const g=document.getElementById('saltGrow'); function upd(){ const pos = parseInt(g.value)>20; b.style.background = pos? '#ffd56a':'#6b7bd6'; } g.oninput=upd; upd(); }
+
+function setupTSI(){ const svg=document.getElementById('tsiSvg'); const glc=document.getElementById('glc'); const lac=document.getElementById('lac'); const suc=document.getElementById('suc'); const h2s=document.getElementById('h2s'); const gas=document.getElementById('gas'); const txt=document.getElementById('tsiTxt'); function draw(){ svg.innerHTML=''; // slant and butt
+    const sl=document.createElementNS(svg.namespaceURI,'rect'); sl.setAttribute('x',260); sl.setAttribute('y',40); sl.setAttribute('width',80); sl.setAttribute('height',160); sl.setAttribute('fill', (lac.checked||suc.checked)? '#ffd56a' : glc.checked? '#ffd56a':'#a44'); svg.appendChild(sl);
+    const butt=document.createElementNS(svg.namespaceURI,'rect'); butt.setAttribute('x',260); butt.setAttribute('y',160); butt.setAttribute('width',80); butt.setAttribute('height',40); butt.setAttribute('fill', glc.checked? '#ffd56a':'#a44'); svg.appendChild(butt);
+    if(h2s.checked){ const blk=document.createElementNS(svg.namespaceURI,'rect'); blk.setAttribute('x',260); blk.setAttribute('y',180); blk.setAttribute('width',80); blk.setAttribute('height',20); blk.setAttribute('fill','#222'); svg.appendChild(blk); }
+    if(gas.checked){ for(let i=0;i<6;i++){ const b=document.createElementNS(svg.namespaceURI,'circle'); b.setAttribute('cx',300+Math.random()*20); b.setAttribute('cy',160+Math.random()*30); b.setAttribute('r',3+Math.random()*4); b.setAttribute('fill','#fff'); svg.appendChild(b);} }
+    let call='';
+    if(lac.checked||suc.checked){ call='A/A (yellow slant/yellow butt): lactose and/or sucrose fermented;'; }
+    else if(glc.checked){ call='K/A (red slant/yellow butt): glucose only;'; }
+    else { call='K/K (red/red): no carbohydrate fermentation;'; }
+    if(h2s.checked) call += ' H₂S positive;'; if(gas.checked) call += ' gas present;';
+    txt.textContent=call;
+  } [glc,lac,suc,h2s,gas].forEach(e=>e.oninput=draw); draw(); }
+
+function setupBMD(){ const panel=document.getElementById('bmdPanel'); const mic=document.getElementById('trueMic'); const btn=document.getElementById('bmdRun'); const txt=document.getElementById('bmdTxt'); function run(){ panel.innerHTML=''; const dil=[0.06,0.125,0.25,0.5,1,2,4,8,16,32,64,128]; const tm=parseFloat(mic.value); let called=null; dil.forEach(c=>{ const w=document.createElement('div'); w.className='well'; if(c>=tm){ w.classList.add('hit'); if(called===null) called=c; } w.textContent=c; panel.appendChild(w); }); txt.textContent = `Visual MIC (first clear well) ≈ ${called}`; } btn.onclick=run; run(); }
+
+function setupKB(){ const z=document.getElementById('kbZone'); const ring=document.getElementById('kbRing'); const btn=document.getElementById('kbMeasure'); const txt=document.getElementById('kbTxt'); function upd(){ const d=parseInt(z.value); const r=d*3; ring.style.left=(180-r)+'px'; ring.style.top=(180-r)+'px'; ring.style.width=(2*r)+'px'; ring.style.height=(2*r)+'px'; } function call(){ txt.textContent = `Measured zone: ${z.value} mm → interpret per CLSI M100 table.`; } z.oninput=upd; btn.onclick=call; upd(); call(); }
+
+function setupETest(){ const svg=document.getElementById('eSvg'); const mic=document.getElementById('eMic'); const txt=document.getElementById('eTxt'); function draw(){ svg.innerHTML=''; const strip=document.createElementNS(svg.namespaceURI,'rect'); strip.setAttribute('x',290); strip.setAttribute('y',10); strip.setAttribute('width',20); strip.setAttribute('height',220); strip.setAttribute('fill','#ddd'); svg.appendChild(strip); const halo=document.createElementNS(svg.namespaceURI,'ellipse'); const w = 220 - Math.log(parseFloat(mic.value)+1)*40; halo.setAttribute('cx',300); halo.setAttribute('cy',120); halo.setAttribute('rx',w); halo.setAttribute('ry',60); halo.setAttribute('fill','rgba(255,255,255,0.08)'); halo.setAttribute('stroke','#bfe3ff'); svg.appendChild(halo); txt.textContent=`Elliptical edge intersects scale near MIC ≈ ${parseFloat(mic.value).toFixed(3)}`; } mic.oninput=draw; draw(); }
+
+function setupMol(){ const mec=document.getElementById('mecA'); const van=document.getElementById('vanA'); const kpc=document.getElementById('kpc'); const txt=document.getElementById('molTxt'); function upd(){ let pred=[]; if(mec.checked) pred.push('Oxacillin/nafcillin R; consider ceftaroline rules'); if(van.checked) pred.push('Vancomycin R (Enterococcus)'); if(kpc.checked) pred.push('Carbapenem R; consider ceftazidime-avibactam'); if(pred.length===0) pred=['No acquired resistance gene detected (phenotype may still be resistant by other mechanisms).']; txt.textContent=pred.join(' · ');} [mec,van,kpc].forEach(x=>x.oninput=upd); upd(); }
+
+function setupReport(){ const btn=document.getElementById('repSim'); const txt=document.getElementById('repTxt'); function run(){ txt.innerHTML = 'Selective reporting example: For <em>E. coli</em> UTI, report nitrofurantoin and TMP-SMX first; hold fluoroquinolones for escalation. Cascade example: if ceftriaxone R, auto-add carbapenem susceptibility.'; } btn.onclick=run; run(); }
+
+// keyboard shortcuts
+window.addEventListener('keydown',e=>{
+  const items=[...nav.querySelectorAll('.item')]; const idx=items.findIndex(b=>b.classList.contains('active'));
+  if(e.key==='ArrowRight'){ const n=(idx+1)%items.length; select(items[n].dataset.id); }
+  if(e.key==='ArrowLeft'){ const n=(idx-1+items.length)%items.length; select(items[n].dataset.id); }
+  if(e.key===' '){ const b=main.querySelector('.btn'); if(b){ b.click(); e.preventDefault(); } }
+});
+
+mount();
+</script>
+</body>
+</html>
