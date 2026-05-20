@@ -584,19 +584,19 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                 </div>
               )}
             </Card>
-            <div className="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
+            <div className="grid gap-4 xl:grid-cols-3 2xl:grid-cols-4">
               {activeAlgorithmSubtopics.length > 0 ? (
                 activeAlgorithmSubtopics.map((scope, index) => (
                   <button
                     key={scope.id}
                     type="button"
                     onClick={() => openAlgorithmSubtopicOverview(activeAlgorithmRoot, scope.id)}
-                  className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
+                  className="rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
                   >
                     <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                         {index === 0 ? 'Start here' : 'Differential / workup'}
                       </div>
-                      <div className="mt-3 font-serif text-xl font-semibold text-slate-900">{scope.label}</div>
+                      <div className="mt-2 font-serif text-lg font-semibold leading-snug text-slate-900">{scope.label}</div>
                     <div className="mt-2 text-sm text-slate-600">
                       {filteredEntries.filter((entry) => entry.patternFamily === scope.id).length} workup
                       {filteredEntries.filter((entry) => entry.patternFamily === scope.id).length === 1 ? '' : 's'}
