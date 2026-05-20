@@ -419,6 +419,19 @@ const evaluateHierarchySemantics = ({
     issues.push('Lecture subtopic overview does not clearly expose scope and a single obvious next action before the lecture list.');
   }
 
+  if (
+    appearsInOrder(algorithmsTsx, [
+      /Workups/,
+      /Scope:/,
+      /Next:\s*open the first workup/,
+      /Open .*|Start here/,
+    ])
+  ) {
+    passes.push('Workup subtopic overview exposes scope and a single obvious next action before the workup list.');
+  } else {
+    issues.push('Workup subtopic overview does not clearly expose scope and a single obvious next action before the workup list.');
+  }
+
   const algorithmWorkupIndex = indexOfPattern(algorithmsTsx, /<LectureAlgorithmPlayer\b/);
   const algorithmHeaderCueIndex = indexOfPattern(algorithmsTsx, /(Diagnostic focus|Workup controls)/);
   const algorithmRelatedReviewIndex = indexOfPattern(algorithmsTsx, /(Related review|Follow-up review|Optional follow-up review)/);

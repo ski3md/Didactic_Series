@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T04:51:09.045Z",
+  "generatedAt": "2026-05-20T04:53:09.582Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -99,6 +99,7 @@
     "Tutorial topic overview exposes scope and a single obvious next action before the topic grid.",
     "Tutorial subtopic overview exposes scope and a single obvious next action before the lesson list.",
     "Lecture subtopic overview exposes scope and a single obvious next action before the lecture list.",
+    "Workup subtopic overview exposes scope and a single obvious next action before the workup list.",
     "Algorithm detail places the workup before optional tutorial or review links.",
     "Curriculum module pages present patterns, board focus, workup, and diagnostic focus in a stable reasoning order.",
     "Lecture detail opens with an orientation block before the signout sequence."

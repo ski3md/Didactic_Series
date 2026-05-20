@@ -633,6 +633,14 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                       Requested from {returnToCurriculumLabel}: {launchRequestedTopic}
                     </p>
                   )}
+                  <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                    <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">
+                      Scope: {activeSubtopicEntries[0]?.title ?? activeAlgorithmSubtopic.label}
+                    </span>
+                    <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">
+                      Next: open the first workup
+                    </span>
+                  </div>
                 </div>
                 <div className="min-w-[220px] rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Start here</div>

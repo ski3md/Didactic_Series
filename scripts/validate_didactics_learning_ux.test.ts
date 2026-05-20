@@ -441,6 +441,10 @@ describe('validate_didactics_learning_ux helpers', () => {
         <button>Open Renal Mass Evaluation</button>
       `,
       algorithmsTsx: `
+        <div>Workups</div>
+        <div>Scope: QC failure response</div>
+        <div>Next: open the first workup</div>
+        <button>Open QC Failure Response</button>
         <div>Diagnostic focus</div>
         <LectureAlgorithmPlayer />
         <div>Related review</div>
@@ -461,6 +465,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         expect.stringContaining('Tutorial topic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Tutorial subtopic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Lecture subtopic overview exposes scope and a single obvious next action'),
+        expect.stringContaining('Workup subtopic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Algorithm detail places the workup before optional tutorial'),
         expect.stringContaining('Curriculum module pages present patterns, board focus, workup, and diagnostic focus'),
         expect.stringContaining('Lecture detail opens with an orientation block'),
@@ -485,6 +490,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         <div>Faculty run sheet</div>
       `,
       algorithmsTsx: `
+        <div>Start here</div>
         <button>Open related tutorial</button>
         <div>Diagnostic focus</div>
         <div>Related review</div>
@@ -502,6 +508,7 @@ describe('validate_didactics_learning_ux helpers', () => {
           expect.stringContaining('Tutorial topic overview does not clearly expose scope and a single obvious next action before the topic grid.'),
           expect.stringContaining('Tutorial subtopic overview does not clearly expose scope and a single obvious next action before the lesson list.'),
           expect.stringContaining('Lecture subtopic overview does not clearly expose scope and a single obvious next action before the lecture list.'),
+          expect.stringContaining('Workup subtopic overview does not clearly expose scope and a single obvious next action before the workup list.'),
           expect.stringContaining('Algorithm detail does not clearly place the workup ahead of optional tutorial or review links.'),
           expect.stringContaining('Curriculum module pages do not clearly present patterns, board focus, workup, and diagnostic focus in a stable reasoning order.'),
           expect.stringContaining('Lecture detail does not clearly open with orientation before the signout sequence.'),
