@@ -7,6 +7,12 @@
       "buildoutStatus": "promotion-ready seed depth",
       "contractWarnings": [],
       "sourceSpecRoot": "Blood Banking/Transfusion Medicine",
+      "sourceRealizationMode": "native-spec-root",
+      "sourceAnchorBasis": "raw-cp-spec-root",
+      "representativeAnchorBasis": "raw-cp-spec-root",
+      "tutorialCountBasis": "batch-plus-raw-tutorial-data",
+      "availableInteractiveTutorialCount": 13,
+      "availableGovernedTutorialRowCount": 0,
       "levelMix": [
         "AR",
         "C",
@@ -137,11 +143,15 @@
     {
       "domainId": "hp",
       "contentArea": "Hematopathology / Laboratory Hematology",
-      "buildoutStatus": "source-thin scaffold",
-      "contractWarnings": [
-        "Current structured CP seed provides 5 source anchors; add deeper source anchors and operational cases before canonical launch."
-      ],
+      "buildoutStatus": "promotion-ready seed depth",
+      "contractWarnings": [],
       "sourceSpecRoot": "Hematopathology",
+      "sourceRealizationMode": "native-spec-root",
+      "sourceAnchorBasis": "raw-cp-spec-root",
+      "representativeAnchorBasis": "raw-cp-spec-root",
+      "tutorialCountBasis": "batch-plus-raw-tutorial-data",
+      "availableInteractiveTutorialCount": 0,
+      "availableGovernedTutorialRowCount": 0,
       "levelMix": [
         "AR",
         "C"
@@ -227,11 +237,15 @@
     {
       "domainId": "mb",
       "contentArea": "Clinical Microbiology",
-      "buildoutStatus": "source-thin scaffold",
-      "contractWarnings": [
-        "Current structured CP seed provides 5 source anchors; add deeper source anchors and operational cases before canonical launch."
-      ],
+      "buildoutStatus": "promotion-ready seed depth",
+      "contractWarnings": [],
       "sourceSpecRoot": "Microbiology",
+      "sourceRealizationMode": "native-spec-root",
+      "sourceAnchorBasis": "raw-cp-spec-root",
+      "representativeAnchorBasis": "raw-cp-spec-root",
+      "tutorialCountBasis": "batch-plus-raw-tutorial-data",
+      "availableInteractiveTutorialCount": 0,
+      "availableGovernedTutorialRowCount": 0,
       "levelMix": [
         "AR",
         "C"
@@ -318,11 +332,15 @@
     {
       "domainId": "cp",
       "contentArea": "Chemical Pathology",
-      "buildoutStatus": "source-thin scaffold",
-      "contractWarnings": [
-        "Current structured CP seed provides 9 source anchors; add deeper source anchors and operational cases before canonical launch."
-      ],
+      "buildoutStatus": "promotion-ready seed depth",
+      "contractWarnings": [],
       "sourceSpecRoot": "Chemical Pathology",
+      "sourceRealizationMode": "native-spec-root",
+      "sourceAnchorBasis": "raw-cp-spec-root",
+      "representativeAnchorBasis": "raw-cp-spec-root",
+      "tutorialCountBasis": "batch-plus-raw-tutorial-data",
+      "availableInteractiveTutorialCount": 0,
+      "availableGovernedTutorialRowCount": 0,
       "levelMix": [
         "C"
       ],
@@ -422,6 +440,136 @@
           "sourceAnchors": 8,
           "tutorials": 1,
           "mcqs": 5,
+          "flashcards": 10,
+          "operationalCases": 5
+        }
+      },
+      "promotionGate": "Promote when source anchors, tutorial/assessment assets, operational artifacts, safety actions, and remediation routing all pass validation."
+    },
+    {
+      "domainId": "mi",
+      "contentArea": "Management and Informatics",
+      "buildoutStatus": "promotion-ready seed depth",
+      "contractWarnings": [
+        "Management and Informatics is currently realized through governed tutorial coverage because the active raw CP spec seed does not expose a native `mi` root."
+      ],
+      "sourceSpecRoot": "Management and Informatics",
+      "sourceRealizationMode": "synthetic-governed-recovery",
+      "sourceAnchorBasis": "tutorial-abpath-coverage-by-root",
+      "representativeAnchorBasis": "validated-management-tutorial-primary-paths",
+      "tutorialCountBasis": "interactive-tutorial-records",
+      "availableInteractiveTutorialCount": 8,
+      "availableGovernedTutorialRowCount": 16,
+      "algorithmCountBasis": "curriculum-topic-declarations-vs-normalized-algorithm-routes",
+      "declaredAlgorithmTopicCount": 4,
+      "availableAlgorithmRouteCount": 4,
+      "levelMix": [
+        "AR",
+        "C"
+      ],
+      "sourceAnchorCount": 150,
+      "representativeAnchors": [
+        {
+          "id": "mi-derived-8",
+          "title": "Standard Deviation",
+          "level": "C",
+          "path": "Management and Informatics > Informatics > Statistical Testing > Standard Deviation"
+        },
+        {
+          "id": "mi-derived-4",
+          "title": "Negative Predictive Value",
+          "level": "C",
+          "path": "Management and Informatics > Informatics > Statistical Testing > Negative Predictive Value"
+        },
+        {
+          "id": "mi-derived-16",
+          "title": "Patient Safety",
+          "level": "C",
+          "path": "Management and Informatics > Safety > Patient Safety"
+        },
+        {
+          "id": "mi-derived-6",
+          "title": "CAP",
+          "level": "C",
+          "path": "Management and Informatics > Laws and Regulations > CLIA > CAP"
+        },
+        {
+          "id": "mi-derived-7",
+          "title": "Biological Hazard",
+          "level": "C",
+          "path": "Management and Informatics > Safety > Risk Classification > Biological Hazard"
+        },
+        {
+          "id": "mi-derived-9",
+          "title": "Management of Unit Costs",
+          "level": "C",
+          "path": "Management and Informatics > Budgeting and Financial > Management of Unit Costs"
+        },
+        {
+          "id": "mi-derived-13",
+          "title": "Budgeting and Financial",
+          "level": "C",
+          "path": "Management and Informatics > Budgeting and Financial"
+        },
+        {
+          "id": "mi-derived-12",
+          "title": "Quality Management",
+          "level": "C",
+          "path": "Management and Informatics > Quality Management"
+        },
+        {
+          "id": "mi-derived-14",
+          "title": "Verification and Validation",
+          "level": "C",
+          "path": "Management and Informatics > Test Development and Validation > Verification and Validation"
+        },
+        {
+          "id": "mi-derived-15",
+          "title": "Laboratory Information Systems (LIS)",
+          "level": "C",
+          "path": "Management and Informatics > Informatics > Laboratory Information Systems (LIS)"
+        }
+      ],
+      "availableTutorialCount": 8,
+      "availableMcqCount": 12,
+      "availableFlashcardCount": 11,
+      "contractParameters": {
+        "scope": [
+          "Keep content scoped to Management and Informatics.",
+          "Teach laboratory medicine as consultation and operations, not as isolated fact recall.",
+          "Declare C/AR/F level and rotation context for every promoted CP asset."
+        ],
+        "consumptionPathways": [
+          "Curriculum module -> tutorial -> operational artifact -> consult question -> remediation.",
+          "Competency matrix -> CP domain -> case/consult -> faculty or answer-key feedback.",
+          "Daily review queue -> CP artifact interpretation -> spaced recall."
+        ],
+        "requiredAssets": [
+          "QC chart",
+          "Westgard pattern",
+          "validation plan",
+          "LIS workflow",
+          "budget worksheet",
+          "patient-safety vignette",
+          "case vignette with clinical decision point",
+          "deterministic answer key with escalation threshold"
+        ],
+        "assessmentGates": [
+          "Recognition of the specimen/result/artifact.",
+          "Correct interpretation with limitations.",
+          "Appropriate next test or workflow recommendation.",
+          "Critical value or patient-safety escalation when indicated.",
+          "Clear consult note or laboratory communication."
+        ],
+        "safetyCriticalActions": [
+          "hold unsafe patient results",
+          "escalate workflow or reporting risk",
+          "correct high-yield pre-analytic or informatics failures"
+        ],
+        "minimums": {
+          "sourceAnchors": 10,
+          "tutorials": 5,
+          "mcqs": 10,
           "flashcards": 10,
           "operationalCases": 5
         }

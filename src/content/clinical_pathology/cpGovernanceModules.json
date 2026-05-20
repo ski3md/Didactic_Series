@@ -157,7 +157,7 @@
   "transfusion-cellular-therapy-core": {
     "abpathSpecVersion": "CP_2026_04_10",
     "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
-    "abpathRootTopic": "Blood Banking / Transfusion Medicine",
+    "abpathRootTopic": "Blood Banking/Transfusion Medicine",
     "abpathPrimaryPath": "Blood Banking/Transfusion Medicine > Clinical Practice",
     "abpathPrimaryLevel": "C",
     "abpathAnchorSet": [
@@ -254,6 +254,58 @@
       "Choosing a definitive test that bypasses specimen quality logic.",
       "Treating AST as detached from stewardship and communication.",
       "Using a narrow microbiology method outside its proper interpretive scope."
+    ]
+  },
+  "management-informatics-core": {
+    "abpathSpecVersion": "CP_2026_04_10",
+    "abpathSourceUrl": "https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf",
+    "abpathRootTopic": "Management and Informatics",
+    "abpathPrimaryPath": "Management and Informatics > Quality Management",
+    "abpathPrimaryLevel": "C",
+    "abpathAnchorSet": [
+      "Management and Informatics > Quality Management",
+      "Management and Informatics > Test Development and Validation > Verification and Validation",
+      "Management and Informatics > Informatics > Laboratory Information Systems (LIS)",
+      "Management and Informatics > Safety > Patient Safety",
+      "Management and Informatics > Budgeting and Financial"
+    ],
+    "abpathPrecisionMode": "literal",
+    "abpathAnchorConfidence": "high",
+    "abpathTestableTask": [
+      "recognize",
+      "interpret",
+      "calculate",
+      "troubleshoot",
+      "quality-regulatory"
+    ],
+    "abpathExamRisk": "high-yield",
+    "abpathReviewStatus": "confirmed",
+    "boardMasteryFocusTitle": "QC interpretation, validation oversight, LIS logic, laboratory safety, and finance-aware operations",
+    "mustKnowConcepts": [
+      "Management and Informatics is tested as operational CP reasoning rather than generic administration.",
+      "QC, validation, LIS workflow, patient safety, and finance decisions are all board-relevant because they change what the lab can safely report or implement.",
+      "The strongest answer is usually the safest operational decision, not the most abstract management term."
+    ],
+    "mustNotMissPitfalls": [
+      "Treating management content as low-yield background knowledge.",
+      "Separating statistical interpretation from patient-facing laboratory consequences.",
+      "Ignoring when finance, quality, and safety reasoning all touch the same decision."
+    ],
+    "classicBoardStemPatterns": [
+      "QC chart or Westgard pattern requiring a release-versus-hold decision.",
+      "Method rollout question asking whether the scenario requires validation or verification.",
+      "Workflow or LIS stem where a systems change reduces recurrent reporting error.",
+      "Lab-management finance stem requiring break-even or acquisition reasoning."
+    ],
+    "calculationOrInterpretationTasks": [
+      "Interpret QC and statistical signals into the correct operational action.",
+      "Choose the appropriate oversight or workflow intervention for a management scenario.",
+      "Calculate or explain the financial threshold that changes the laboratory decision."
+    ],
+    "commonWrongAnswerTraps": [
+      "Choosing a mathematically neat answer that ignores patient safety.",
+      "Treating pre-analytic or reporting errors as if they were analyzer problems.",
+      "Memorizing management vocabulary without linking it to a lab action."
     ]
   },
   "chemical-pathology-core": {

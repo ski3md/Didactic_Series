@@ -17,9 +17,41 @@ const manifestSourcePath = path.join(root, 'src/content/tutorials/validatedMappi
 const CP_SPEC_URL = 'https://abpath.org/wp-content/uploads/2026/04/Content-Specifications-CP_final_04102026.pdf';
 const KNOWN_CONFLICT_IDS = new Set(['topic-mol-1', 'topic-mol-2', 'topic-mol-3']);
 
-const MANUAL_CP_TUTORIAL_OVERRIDES = {
+const MANUAL_TUTORIAL_OVERRIDES = {
+  'cardiac-markers-troponin-bnp': {
+    track: 'clinical-path',
+    abpathDomain: 'CP',
+    abpathRoot: 'Chemical Pathology',
+    abpathPrimaryPath:
+      'Chemical Pathology > Cardiac Function > Cardiac Troponin I and T > Brain Natriuretic Peptide and NT-proBNP',
+    abpathSpecVersion: 'CP_2026_04_10',
+    abpathPrecisionMode: 'literal',
+    abpathAnchorConfidence: 'high',
+    abpathReviewStatus: 'confirmed',
+    abpathExamRisk: 'high-yield',
+    abpathTestableTask: ['recognize', 'interpret', 'select-next-test', 'manage-critical-result'],
+    reviewOwner: 'Didactics governance review',
+    reviewAction: 'Promote under the CP cardiac-marker anchor rather than the AP infarct noun match.',
+  },
+  'respiratory-viruses': {
+    track: 'clinical-path',
+    abpathDomain: 'CP',
+    abpathRoot: 'Medical Microbiology',
+    abpathPrimaryPath: 'Medical Microbiology > Viruses and Prions > Specific Viruses',
+    abpathSpecVersion: 'CP_2026_04_10',
+    abpathPrecisionMode: 'nearest-valid-deep',
+    abpathAnchorConfidence: 'moderate',
+    abpathReviewStatus: 'confirmed',
+    abpathExamRisk: 'high-yield',
+    abpathTestableTask: ['recognize', 'interpret', 'select-next-test', 'quality-regulatory'],
+    nearestValidReason:
+      'respiratory-virus teaching spans multiple organism nodes, so the validated microbiology umbrella is safer than an AP pulmonary infection match',
+    reviewOwner: 'Didactics governance review',
+    reviewAction: 'Keep respiratory virus teaching under CP microbiology unless a narrower governed virus cluster is added later.',
+  },
   'topic-mol-1': {
     track: 'clinical-path',
+    abpathDomain: 'CP',
     abpathRoot: 'Hematopathology for Clinical Pathology',
     abpathPrimaryPath: 'Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > Molecular Testing',
     abpathSpecVersion: 'CP_2026_04_10',
@@ -34,6 +66,7 @@ const MANUAL_CP_TUTORIAL_OVERRIDES = {
   },
   'topic-mol-2': {
     track: 'clinical-path',
+    abpathDomain: 'CP',
     abpathRoot: 'Hematopathology for Clinical Pathology',
     abpathPrimaryPath: 'Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > Molecular Testing',
     abpathSpecVersion: 'CP_2026_04_10',
@@ -49,6 +82,7 @@ const MANUAL_CP_TUTORIAL_OVERRIDES = {
   },
   'topic-mol-3': {
     track: 'clinical-path',
+    abpathDomain: 'CP',
     abpathRoot: 'Hematopathology for Clinical Pathology',
     abpathPrimaryPath: 'Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > Molecular Testing',
     abpathSpecVersion: 'CP_2026_04_10',
@@ -61,6 +95,103 @@ const MANUAL_CP_TUTORIAL_OVERRIDES = {
     reviewOwner: 'CP governance review',
     reviewAction: 'Promote under the CP hematopathology testing frame and keep entity-specific molecular labels subordinate.',
   },
+  'topic-cp-4-b': {
+    track: 'clinical-path',
+    abpathDomain: 'CP',
+    abpathRoot: 'Chemical Pathology',
+    abpathPrimaryPath:
+      'Chemical Pathology > Cardiac Function > Cardiac Troponin I and T > Brain Natriuretic Peptide and NT-proBNP',
+    abpathSpecVersion: 'CP_2026_04_10',
+    abpathPrecisionMode: 'literal',
+    abpathAnchorConfidence: 'high',
+    abpathReviewStatus: 'confirmed',
+    abpathExamRisk: 'high-yield',
+    abpathTestableTask: ['recognize', 'interpret', 'select-next-test', 'manage-critical-result'],
+    reviewOwner: 'Didactics governance review',
+    reviewAction: 'Promote under the CP cardiac-marker anchor rather than the AP infarct noun match.',
+  },
+  'topic-cp-8-a': {
+    track: 'clinical-path',
+    abpathDomain: 'CP',
+    abpathRoot: 'Chemical Pathology',
+    abpathPrimaryPath: 'Chemical Pathology > Thyroid > Thyroid Dysfunction',
+    abpathSpecVersion: 'CP_2026_04_10',
+    abpathPrecisionMode: 'literal',
+    abpathAnchorConfidence: 'high',
+    abpathReviewStatus: 'confirmed',
+    abpathExamRisk: 'high-yield',
+    abpathTestableTask: ['recognize', 'interpret', 'select-next-test', 'quality-regulatory'],
+    reviewOwner: 'Didactics governance review',
+    reviewAction: 'Promote under CP thyroid-function testing rather than the AP organ-system noun match.',
+  },
+  'topic-mb-3-a': {
+    track: 'clinical-path',
+    abpathDomain: 'CP',
+    abpathRoot: 'Medical Microbiology',
+    abpathPrimaryPath: 'Medical Microbiology > Viruses and Prions > Specific Viruses',
+    abpathSpecVersion: 'CP_2026_04_10',
+    abpathPrecisionMode: 'nearest-valid-deep',
+    abpathAnchorConfidence: 'moderate',
+    abpathReviewStatus: 'confirmed',
+    abpathExamRisk: 'high-yield',
+    abpathTestableTask: ['recognize', 'interpret', 'select-next-test', 'quality-regulatory'],
+    nearestValidReason:
+      'respiratory-virus teaching spans multiple organism nodes, so the validated microbiology umbrella is safer than an AP pulmonary infection match',
+    reviewOwner: 'Didactics governance review',
+    reviewAction: 'Keep respiratory virus teaching under CP microbiology unless a narrower governed virus cluster is added later.',
+  },
+  'topic-AP_ROOT': {
+    track: 'surgical-path',
+    abpathDomain: 'AP',
+    abpathRoot: 'Neuropathology',
+    abpathPrimaryPath:
+      'Neuropathology Topics for Anatomic Pathology Residents > General: Neuroanatomy, Histology, Pathologic Responses, and Diagnostic Considerations > Neuroanatomy > Apoptosis',
+    abpathPrecisionMode: 'literal',
+    abpathAnchorConfidence: 'high',
+    abpathReviewStatus: 'confirmed',
+    abpathExamRisk: 'high-yield',
+    abpathTestableTask: ['recognize', 'interpret'],
+    reviewOwner: 'Didactics governance review',
+    reviewAction: 'Treat this import as AP fundamentals until the upstream normalized track metadata is corrected.',
+  },
+};
+
+const splitGovernanceTasks = (value) =>
+  Array.isArray(value)
+    ? value
+    : String(value || '')
+        .split('|')
+        .map((part) => part.trim())
+        .filter(Boolean);
+
+const normalizeGovernanceOverride = (row) => {
+  if (!row) return null;
+
+  const precisionMode = row.precisionMode || row.abpathPrecisionMode;
+  const reason = row.reason || '';
+
+  return {
+    track: row.track,
+    abpathDomain: row.abpathDomain,
+    abpathRoot: row.officialRoot || row.abpathRoot || row.abpathRootTopic,
+    abpathPrimaryPath: row.officialPrimaryPath || row.abpathPrimaryPath,
+    abpathSpecVersion: row.abpathSpecVersion || 'CP_2026_04_10',
+    abpathPrecisionMode: precisionMode,
+    abpathAnchorConfidence: row.anchorConfidence || row.abpathAnchorConfidence,
+    abpathReviewStatus: row.reviewStatus || row.abpathReviewStatus,
+    abpathExamRisk: row.examRisk || row.abpathExamRisk,
+    abpathTestableTask: splitGovernanceTasks(row.testableTasks || row.abpathTestableTask),
+    nearestValidReason:
+      precisionMode === 'nearest-valid-deep' && reason ? reason : row.nearestValidReason,
+    crossDomainJustification:
+      precisionMode === 'cross-domain-governed' && reason
+        ? reason
+        : row.crossDomainJustification,
+    facultyReviewReason:
+      precisionMode === 'local-teaching-only' && reason ? reason : row.facultyReviewReason,
+    reviewOwner: row.reviewOwner,
+    reviewAction: row.reviewAction,
+  };
 };
 
 const readJson = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -118,7 +249,9 @@ for (const entry of crosswalkData.crosswalk || []) {
   const labelRow = labelValidationById.get(tutorialId);
   const interactiveGovernance = interactiveGovernanceById.get(tutorialId);
   const cpGovernanceRow = cpGovernanceRowsById.get(tutorialId);
-  const override = MANUAL_CP_TUTORIAL_OVERRIDES[tutorialId];
+  const override =
+    normalizeGovernanceOverride(cpGovernanceRow) ||
+    MANUAL_TUTORIAL_OVERRIDES[tutorialId];
 
   const crosswalkPrimaryPath = Array.isArray(entry.primaryMapping?.path)
     ? entry.primaryMapping.path.join(' > ')
@@ -126,9 +259,11 @@ for (const entry of crosswalkData.crosswalk || []) {
   const sourceAnchorExists = Boolean(entry.primaryMapping?.root && crosswalkPrimaryPath);
   const hasKnownConflict = KNOWN_CONFLICT_IDS.has(tutorialId) && !override;
 
-  const cpLikeSource = Boolean(interactiveGovernance || override);
+  const cpLikeSource = Boolean(interactiveGovernance || override?.abpathDomain === 'CP');
   const track = override?.track || entry.tutorial.track || labelRow?.track || 'surgical-path';
-  const abpathDomain = override?.abpathSpecVersion ? 'CP' : interactiveGovernance ? 'CP' : entry.primaryMapping?.domain || 'AP';
+  const abpathDomain =
+    override?.abpathDomain ||
+    (override?.abpathSpecVersion ? 'CP' : interactiveGovernance ? 'CP' : entry.primaryMapping?.domain || 'AP');
   const abpathRoot = override?.abpathRoot || interactiveGovernance?.abpathRootTopic || entry.primaryMapping?.root || '';
   const abpathPrimaryPath =
     override?.abpathPrimaryPath || interactiveGovernance?.abpathPrimaryPath || crosswalkPrimaryPath;

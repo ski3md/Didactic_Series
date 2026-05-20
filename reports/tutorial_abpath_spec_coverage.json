@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-18T01:21:20.316Z",
+  "generatedAt": "2026-05-18T19:20:49.619Z",
   "rule": "Tutorials are scored against ABPath AP and CP content specification topic/subtopic nodes using track-aware token, phrase, root, and acronym evidence. Every tutorial must have at least one primary mapping.",
   "sources": {
     "ap": "src/content/syllabus/parsed_topics_v3.raw.json",
@@ -14,11 +14,11 @@
     "labels": "reports/tutorial_label_validation.json"
   },
   "counts": {
-    "tutorials": 485,
+    "tutorials": 493,
     "specNodes": 6284,
     "apSpecNodes": 3863,
     "cpSpecNodes": 2421,
-    "mapped": 485,
+    "mapped": 493,
     "review": 0
   },
   "coverage": {
@@ -111,7 +111,7 @@
         "domain": "AP",
         "root": "Pediatric Pathology",
         "specNodeCount": 115,
-        "coveredNodeCount": 13,
+        "coveredNodeCount": 14,
         "primaryTutorialCount": 3
       },
       {
@@ -153,8 +153,8 @@
         "domain": "CP",
         "root": "Management and Informatics",
         "specNodeCount": 150,
-        "coveredNodeCount": 31,
-        "primaryTutorialCount": 8
+        "coveredNodeCount": 37,
+        "primaryTutorialCount": 16
       },
       {
         "domain": "CP",

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-18T01:21:20.316Z",
+  "generatedAt": "2026-05-18T19:20:49.619Z",
   "rule": "Tutorials are scored against ABPath AP and CP content specification topic/subtopic nodes using track-aware token, phrase, root, and acronym evidence. Every tutorial must have at least one primary mapping.",
   "sources": {
     "ap": "src/content/syllabus/parsed_topics_v3.raw.json",
@@ -14,11 +14,11 @@
     "labels": "reports/tutorial_label_validation.json"
   },
   "counts": {
-    "tutorials": 485,
+    "tutorials": 493,
     "specNodes": 6284,
     "apSpecNodes": 3863,
     "cpSpecNodes": 2421,
-    "mapped": 485,
+    "mapped": 493,
     "review": 0
   },
   "crosswalk": [
@@ -55641,33 +55641,35 @@
         "title": "Case Tutorial: Molecular Techniques (PCR, FISH, NGS)",
         "sourceRepo": "abpath-advanced-board-prep-platform (3)",
         "sourcePath": "src/content/downloads_imports/raw/abpath_advanced_board_prep_export.raw.json",
-        "track": "clinical-path",
-        "trackLabel": "Clinical Pathology",
+        "track": "cross-cutting",
+        "trackLabel": "Cross-Cutting",
         "lane": "mixed"
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "cp-hp-testing-in-hematology-and-hematopathology-molecular-testing",
-        "domain": "CP",
-        "root": "Hematopathology for Clinical Pathology",
+        "specId": "ap-ap_dermpath-45957b86-f76d-4d8d-bc59-c36ca05b4c81",
+        "domain": "AP",
+        "root": "Dermatopathology",
         "path": [
-          "Hematopathology for Clinical Pathology",
-          "Testing in Hematology and Hematopathology",
-          "Molecular Testing"
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Laboratory Techniques and Management",
+          "Next Generation Sequencing"
         ],
-        "title": "Molecular Testing",
-        "difficulty": "",
+        "title": "Next Generation Sequencing",
+        "difficulty": "AR",
         "level": 3,
         "score": 1.2639,
         "confidence": "high",
         "evidenceTerms": [
-          "molecular",
-          "testing",
-          "pcr",
-          "fish",
-          "ngs"
+          "next",
+          "generation",
+          "sequencing",
+          "topic",
+          "reaction",
+          "technique"
         ],
-        "sourceLine": 2336
+        "sourceLine": 9465
       },
       "alternateMappings": [
         {
@@ -55808,33 +55810,33 @@
         "title": "Case Tutorial: Solid Tumor Molecular Testing (Lung, Colon, Melanoma)",
         "sourceRepo": "abpath-advanced-board-prep-platform (3)",
         "sourcePath": "src/content/downloads_imports/raw/abpath_advanced_board_prep_export.raw.json",
-        "track": "clinical-path",
-        "trackLabel": "Clinical Pathology",
+        "track": "surgical-path",
+        "trackLabel": "Surgical Pathology",
         "lane": "mixed"
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "cp-hp-testing-in-hematology-and-hematopathology-molecular-testing",
-        "domain": "CP",
-        "root": "Hematopathology for Clinical Pathology",
+        "specId": "ap-ap_dermpath-45957b86-f76d-4d8d-bc59-c36ca05b4c81",
+        "domain": "AP",
+        "root": "Dermatopathology",
         "path": [
-          "Hematopathology for Clinical Pathology",
-          "Testing in Hematology and Hematopathology",
-          "Molecular Testing"
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Laboratory Techniques and Management",
+          "Next Generation Sequencing"
         ],
-        "title": "Molecular Testing",
-        "difficulty": "",
+        "title": "Next Generation Sequencing",
+        "difficulty": "AR",
         "level": 3,
         "score": 1.6538,
         "confidence": "high",
         "evidenceTerms": [
-          "molecular",
-          "testing",
-          "lung",
-          "colon",
-          "melanoma"
+          "next",
+          "generation",
+          "sequencing",
+          "topic"
         ],
-        "sourceLine": 2336
+        "sourceLine": 9465
       },
       "alternateMappings": [
         {
@@ -55969,33 +55971,36 @@
         "title": "Hematolymphoid Molecular Testing: A Case Tutorial",
         "sourceRepo": "abpath-advanced-board-prep-platform (3)",
         "sourcePath": "src/content/downloads_imports/raw/abpath_advanced_board_prep_export.raw.json",
-        "track": "clinical-path",
-        "trackLabel": "Clinical Pathology",
+        "track": "cross-cutting",
+        "trackLabel": "Cross-Cutting",
         "lane": "mixed"
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "cp-hp-testing-in-hematology-and-hematopathology-molecular-testing",
-        "domain": "CP",
-        "root": "Hematopathology for Clinical Pathology",
+        "specId": "ap-ap_dermpath-56f88d6c-a5cd-4d13-ab53-d83d9e23f91c",
+        "domain": "AP",
+        "root": "Dermatopathology",
         "path": [
-          "Hematopathology for Clinical Pathology",
-          "Testing in Hematology and Hematopathology",
-          "Molecular Testing"
+          "Dermatopathology Topics for Anatomic Pathology Residents",
+          "Inflammatory Reaction Patterns",
+          "Laboratory Techniques and Management",
+          "Next Generation Sequencing",
+          "Mutational Analysis"
         ],
-        "title": "Molecular Testing",
-        "difficulty": "",
-        "level": 3,
+        "title": "Mutational Analysis",
+        "difficulty": "AR",
+        "level": 4,
         "score": 1.2366,
         "confidence": "high",
         "evidenceTerms": [
-          "hematolymphoid",
-          "molecular",
-          "testing",
-          "lymphoid",
-          "leukemia"
+          "mutational",
+          "analysi",
+          "topic",
+          "next",
+          "generation",
+          "sequencing"
         ],
-        "sourceLine": 2336
+        "sourceLine": 9467
       },
       "alternateMappings": [
         {
@@ -77179,6 +77184,1119 @@
             "anemia"
           ],
           "sourceLine": 168
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-mgmt-break-even-studio",
+        "id": "cp-mgmt-break-even-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Management and Informatics: Break-Even Analysis Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-mi-informatics",
+        "domain": "CP",
+        "root": "Management and Informatics",
+        "path": [
+          "Management and Informatics",
+          "Informatics"
+        ],
+        "title": "Informatics",
+        "difficulty": "",
+        "level": 2,
+        "score": 2.135,
+        "confidence": "high",
+        "evidenceTerms": [
+          "informatic"
+        ],
+        "sourceLine": 3479
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-mi",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics"
+          ],
+          "title": "Management and Informatics",
+          "difficulty": "",
+          "level": 0,
+          "score": 2.075,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3347
+        },
+        {
+          "rank": 3,
+          "specId": "cp-mi-finance-billing-and-coding-management-of-unit-costs",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Finance, Billing and Coding",
+            "Management of Unit Costs"
+          ],
+          "title": "Management of Unit Costs",
+          "difficulty": "F",
+          "level": 3,
+          "score": 1.5713,
+          "confidence": "high",
+          "evidenceTerms": [
+            "unit",
+            "cost",
+            "informatic",
+            "finance"
+          ],
+          "sourceLine": 3420
+        },
+        {
+          "rank": 4,
+          "specId": "cp-mi-informatics-types-of-systems-system-operations",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics",
+            "Types of Systems",
+            "System Operations"
+          ],
+          "title": "System Operations",
+          "difficulty": "",
+          "level": 4,
+          "score": 1.5409,
+          "confidence": "high",
+          "evidenceTerms": [
+            "operation",
+            "informatic"
+          ],
+          "sourceLine": 3494
+        },
+        {
+          "rank": 5,
+          "specId": "ap-ap_male_repro-65a5b05b-d374-49b5-a6cf-d1e079f7fbfe",
+          "domain": "AP",
+          "root": "Male Reproductive",
+          "path": [
+            "Male Reproductive System",
+            "Normal Anatomy, Histology and Development",
+            "Chemistry"
+          ],
+          "title": "Chemistry",
+          "difficulty": "AR",
+          "level": 2,
+          "score": 0.4928,
+          "confidence": "medium",
+          "evidenceTerms": [
+            "chemistry"
+          ],
+          "sourceLine": 17971
+        },
+        {
+          "rank": 6,
+          "specId": "ap-ap_pediatric-de9acb47-2696-44e1-8700-02a78fc81c5c",
+          "domain": "AP",
+          "root": "Pediatric Pathology",
+          "path": [
+            "Pediatric Pathology Topics for Anatomic Pathology Residents",
+            "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+            "Perinatal Pathology: Fetal/Neonatal Pathophysiology",
+            "Associations",
+            "Sequence"
+          ],
+          "title": "Sequence",
+          "difficulty": "AR",
+          "level": 4,
+          "score": 0.3915,
+          "confidence": "medium",
+          "evidenceTerms": [
+            "sequence"
+          ],
+          "sourceLine": 15491
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-mgmt-reagent-rental-studio",
+        "id": "cp-mgmt-reagent-rental-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Management and Informatics: Reagent Rental Decision Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-mi-informatics",
+        "domain": "CP",
+        "root": "Management and Informatics",
+        "path": [
+          "Management and Informatics",
+          "Informatics"
+        ],
+        "title": "Informatics",
+        "difficulty": "",
+        "level": 2,
+        "score": 2.135,
+        "confidence": "high",
+        "evidenceTerms": [
+          "informatic"
+        ],
+        "sourceLine": 3479
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-mi",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics"
+          ],
+          "title": "Management and Informatics",
+          "difficulty": "",
+          "level": 0,
+          "score": 2.075,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3347
+        },
+        {
+          "rank": 3,
+          "specId": "cp-mi-informatics-types-of-systems-system-operations",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics",
+            "Types of Systems",
+            "System Operations"
+          ],
+          "title": "System Operations",
+          "difficulty": "",
+          "level": 4,
+          "score": 1.5409,
+          "confidence": "high",
+          "evidenceTerms": [
+            "operation",
+            "informatic"
+          ],
+          "sourceLine": 3494
+        },
+        {
+          "rank": 4,
+          "specId": "ap-ap_breast-065f00f7-9ee8-45bc-bc3e-d44e85e8283d",
+          "domain": "AP",
+          "root": "Breast",
+          "path": [
+            "Breast",
+            "Normal Cytology",
+            "Immediate Evaluation Techniques",
+            "Acquisition"
+          ],
+          "title": "Acquisition",
+          "difficulty": "F",
+          "level": 3,
+          "score": 0.541,
+          "confidence": "medium",
+          "evidenceTerms": [
+            "acquisition"
+          ],
+          "sourceLine": 6262
+        },
+        {
+          "rank": 5,
+          "specId": "ap-ap_male_repro-65a5b05b-d374-49b5-a6cf-d1e079f7fbfe",
+          "domain": "AP",
+          "root": "Male Reproductive",
+          "path": [
+            "Male Reproductive System",
+            "Normal Anatomy, Histology and Development",
+            "Chemistry"
+          ],
+          "title": "Chemistry",
+          "difficulty": "AR",
+          "level": 2,
+          "score": 0.4928,
+          "confidence": "medium",
+          "evidenceTerms": [
+            "chemistry"
+          ],
+          "sourceLine": 17971
+        },
+        {
+          "rank": 6,
+          "specId": "ap-ap_pediatric-de9acb47-2696-44e1-8700-02a78fc81c5c",
+          "domain": "AP",
+          "root": "Pediatric Pathology",
+          "path": [
+            "Pediatric Pathology Topics for Anatomic Pathology Residents",
+            "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+            "Perinatal Pathology: Fetal/Neonatal Pathophysiology",
+            "Associations",
+            "Sequence"
+          ],
+          "title": "Sequence",
+          "difficulty": "AR",
+          "level": 4,
+          "score": 0.3915,
+          "confidence": "medium",
+          "evidenceTerms": [
+            "sequence"
+          ],
+          "sourceLine": 15491
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-mgmt-levey-jennings-studio",
+        "id": "cp-mgmt-levey-jennings-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Management and Informatics: Levey-Jennings QC Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-mi-quality-management",
+        "domain": "CP",
+        "root": "Management and Informatics",
+        "path": [
+          "Management and Informatics",
+          "Quality Management"
+        ],
+        "title": "Quality Management",
+        "difficulty": "",
+        "level": 2,
+        "score": 1,
+        "confidence": "high",
+        "evidenceTerms": [
+          "quality",
+          "informatic"
+        ],
+        "sourceLine": 3350
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-mi-informatics-statistical-testing-standard-deviation",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics",
+            "Statistical Testing",
+            "Standard Deviation"
+          ],
+          "title": "Standard Deviation",
+          "difficulty": "C",
+          "level": 5,
+          "score": 0.96,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3525
+        },
+        {
+          "rank": 3,
+          "specId": "cp-mi-informatics",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics"
+          ],
+          "title": "Informatics",
+          "difficulty": "",
+          "level": 2,
+          "score": 2.135,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3479
+        },
+        {
+          "rank": 4,
+          "specId": "cp-mi",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics"
+          ],
+          "title": "Management and Informatics",
+          "difficulty": "",
+          "level": 0,
+          "score": 2.075,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3347
+        },
+        {
+          "rank": 5,
+          "specId": "cp-mi-quality-management-ongoing-quality-control-verification-and-validation",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Quality Management",
+            "Ongoing Quality Control",
+            "Verification and Validation"
+          ],
+          "title": "Verification and Validation",
+          "difficulty": "AR",
+          "level": 4,
+          "score": 1.6809,
+          "confidence": "high",
+          "evidenceTerms": [
+            "verification",
+            "validation",
+            "informatic",
+            "quality",
+            "control"
+          ],
+          "sourceLine": 3354
+        },
+        {
+          "rank": 6,
+          "specId": "cp-mi-informatics-types-of-systems",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics",
+            "Types of Systems"
+          ],
+          "title": "Types of Systems",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.6762,
+          "confidence": "high",
+          "evidenceTerms": [
+            "type",
+            "informatic"
+          ],
+          "sourceLine": 3486
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-mgmt-westgard-studio",
+        "id": "cp-mgmt-westgard-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Management and Informatics: Westgard Rules Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-mi-quality-management",
+        "domain": "CP",
+        "root": "Management and Informatics",
+        "path": [
+          "Management and Informatics",
+          "Quality Management"
+        ],
+        "title": "Quality Management",
+        "difficulty": "",
+        "level": 2,
+        "score": 1,
+        "confidence": "high",
+        "evidenceTerms": [
+          "quality",
+          "informatic"
+        ],
+        "sourceLine": 3350
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-mi-informatics-statistical-testing-standard-deviation",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics",
+            "Statistical Testing",
+            "Standard Deviation"
+          ],
+          "title": "Standard Deviation",
+          "difficulty": "C",
+          "level": 5,
+          "score": 0.96,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3525
+        },
+        {
+          "rank": 3,
+          "specId": "cp-mi-safety",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Safety"
+          ],
+          "title": "Safety",
+          "difficulty": "",
+          "level": 2,
+          "score": 2.135,
+          "confidence": "high",
+          "evidenceTerms": [
+            "safety",
+            "informatic"
+          ],
+          "sourceLine": 3375
+        },
+        {
+          "rank": 4,
+          "specId": "cp-mi-informatics",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics"
+          ],
+          "title": "Informatics",
+          "difficulty": "",
+          "level": 2,
+          "score": 2.135,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3479
+        },
+        {
+          "rank": 5,
+          "specId": "cp-mi",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics"
+          ],
+          "title": "Management and Informatics",
+          "difficulty": "",
+          "level": 0,
+          "score": 2.075,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3347
+        },
+        {
+          "rank": 6,
+          "specId": "cp-mi-safety-patient-safety",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Safety",
+            "Patient Safety"
+          ],
+          "title": "Patient Safety",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.885,
+          "confidence": "high",
+          "evidenceTerms": [
+            "safety",
+            "informatic"
+          ],
+          "sourceLine": 3376
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-mgmt-productivity-studio",
+        "id": "cp-mgmt-productivity-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Management and Informatics: Staff Productivity Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-mi-safety-patient-safety",
+        "domain": "CP",
+        "root": "Management and Informatics",
+        "path": [
+          "Management and Informatics",
+          "Safety",
+          "Patient Safety"
+        ],
+        "title": "Patient Safety",
+        "difficulty": "",
+        "level": 3,
+        "score": 0.96,
+        "confidence": "high",
+        "evidenceTerms": [
+          "informatic"
+        ],
+        "sourceLine": 3376
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-mi-informatics",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics"
+          ],
+          "title": "Informatics",
+          "difficulty": "",
+          "level": 2,
+          "score": 2.135,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3479
+        },
+        {
+          "rank": 3,
+          "specId": "cp-mi",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics"
+          ],
+          "title": "Management and Informatics",
+          "difficulty": "",
+          "level": 0,
+          "score": 2.075,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3347
+        },
+        {
+          "rank": 4,
+          "specId": "cp-mi-quality-management",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Quality Management"
+          ],
+          "title": "Quality Management",
+          "difficulty": "",
+          "level": 2,
+          "score": 1.825,
+          "confidence": "high",
+          "evidenceTerms": [
+            "quality",
+            "informatic"
+          ],
+          "sourceLine": 3350
+        },
+        {
+          "rank": 5,
+          "specId": "cp-mi-informatics-types-of-systems-system-operations",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics",
+            "Types of Systems",
+            "System Operations"
+          ],
+          "title": "System Operations",
+          "difficulty": "",
+          "level": 4,
+          "score": 1.6632,
+          "confidence": "high",
+          "evidenceTerms": [
+            "system",
+            "operation",
+            "informatic"
+          ],
+          "sourceLine": 3494
+        },
+        {
+          "rank": 6,
+          "specId": "cp-mi-quality-management-communication-e-g-laboratory-reports-critical-values-interpretation",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Quality Management",
+            "Communication (e.g., Laboratory Reports, Critical Values)",
+            "Interpretation"
+          ],
+          "title": "Interpretation",
+          "difficulty": "",
+          "level": 4,
+          "score": 1.5127,
+          "confidence": "high",
+          "evidenceTerms": [
+            "interpretation",
+            "informatic",
+            "quality"
+          ],
+          "sourceLine": 3357
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-mgmt-validation-verification-studio",
+        "id": "cp-mgmt-validation-verification-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Management and Informatics: Validation vs Verification Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-mi-quality-management",
+        "domain": "CP",
+        "root": "Management and Informatics",
+        "path": [
+          "Management and Informatics",
+          "Quality Management"
+        ],
+        "title": "Quality Management",
+        "difficulty": "",
+        "level": 2,
+        "score": 0.96,
+        "confidence": "high",
+        "evidenceTerms": [
+          "quality",
+          "informatic"
+        ],
+        "sourceLine": 3350
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-mi-informatics",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics"
+          ],
+          "title": "Informatics",
+          "difficulty": "",
+          "level": 2,
+          "score": 2.135,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3479
+        },
+        {
+          "rank": 3,
+          "specId": "cp-mi",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics"
+          ],
+          "title": "Management and Informatics",
+          "difficulty": "",
+          "level": 0,
+          "score": 2.075,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3347
+        },
+        {
+          "rank": 4,
+          "specId": "cp-mi-quality-management-oversight-of-quality",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Quality Management",
+            "Oversight of Quality"
+          ],
+          "title": "Oversight of Quality",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.91,
+          "confidence": "high",
+          "evidenceTerms": [
+            "oversight",
+            "quality",
+            "informatic"
+          ],
+          "sourceLine": 3362
+        },
+        {
+          "rank": 5,
+          "specId": "cp-mi-quality-management-ongoing-quality-control-verification-and-validation",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Quality Management",
+            "Ongoing Quality Control",
+            "Verification and Validation"
+          ],
+          "title": "Verification and Validation",
+          "difficulty": "AR",
+          "level": 4,
+          "score": 1.6009,
+          "confidence": "high",
+          "evidenceTerms": [
+            "verification",
+            "validation",
+            "informatic",
+            "quality"
+          ],
+          "sourceLine": 3354
+        },
+        {
+          "rank": 6,
+          "specId": "cp-mi-quality-management-communication-e-g-laboratory-reports-critical-values-interpretation",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Quality Management",
+            "Communication (e.g., Laboratory Reports, Critical Values)",
+            "Interpretation"
+          ],
+          "title": "Interpretation",
+          "difficulty": "",
+          "level": 4,
+          "score": 1.5977,
+          "confidence": "high",
+          "evidenceTerms": [
+            "interpretation",
+            "informatic",
+            "quality"
+          ],
+          "sourceLine": 3357
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-mgmt-lis-studio",
+        "id": "cp-mgmt-lis-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Management and Informatics: LIS Interfacing Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-mi-informatics",
+        "domain": "CP",
+        "root": "Management and Informatics",
+        "path": [
+          "Management and Informatics",
+          "Informatics"
+        ],
+        "title": "Informatics",
+        "difficulty": "",
+        "level": 2,
+        "score": 0.96,
+        "confidence": "high",
+        "evidenceTerms": [
+          "informatic"
+        ],
+        "sourceLine": 3479
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-mi-safety",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Safety"
+          ],
+          "title": "Safety",
+          "difficulty": "",
+          "level": 2,
+          "score": 2.135,
+          "confidence": "high",
+          "evidenceTerms": [
+            "safety",
+            "informatic"
+          ],
+          "sourceLine": 3375
+        },
+        {
+          "rank": 3,
+          "specId": "cp-mi",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics"
+          ],
+          "title": "Management and Informatics",
+          "difficulty": "",
+          "level": 0,
+          "score": 2.075,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3347
+        },
+        {
+          "rank": 4,
+          "specId": "cp-mi-safety-patient-safety",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Safety",
+            "Patient Safety"
+          ],
+          "title": "Patient Safety",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.885,
+          "confidence": "high",
+          "evidenceTerms": [
+            "safety",
+            "informatic"
+          ],
+          "sourceLine": 3376
+        },
+        {
+          "rank": 5,
+          "specId": "cp-mi-informatics-types-of-systems-laboratory-information-systems-lis-middleware-data-integrity-result",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics",
+            "Types of Systems",
+            "Laboratory Information Systems (LIS)",
+            "Middleware, Data Integrity, Result Reporting"
+          ],
+          "title": "Middleware, Data Integrity, Result Reporting",
+          "difficulty": "AR",
+          "level": 6,
+          "score": 1.6437,
+          "confidence": "high",
+          "evidenceTerms": [
+            "middleware",
+            "data",
+            "integrity",
+            "reporting",
+            "informatic",
+            "system",
+            "li"
+          ],
+          "sourceLine": 3489
+        },
+        {
+          "rank": 6,
+          "specId": "cp-mi-safety-risk-classification",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Safety",
+            "Risk Classification"
+          ],
+          "title": "Risk Classification",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.6181,
+          "confidence": "high",
+          "evidenceTerms": [
+            "risk",
+            "informatic",
+            "safety"
+          ],
+          "sourceLine": 3397
+        }
+      ],
+      "status": "mapped"
+    },
+    {
+      "tutorial": {
+        "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-mgmt-lab-errors-studio",
+        "id": "cp-mgmt-lab-errors-studio",
+        "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+        "title": "Management and Informatics: Major Sources of Laboratory Errors Studio",
+        "sourceRepo": "pthfndr_cp_interactive",
+        "sourcePath": "",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
+        "lane": "lab-studio"
+      },
+      "primaryMapping": {
+        "rank": 1,
+        "specId": "cp-mi-safety-patient-safety",
+        "domain": "CP",
+        "root": "Management and Informatics",
+        "path": [
+          "Management and Informatics",
+          "Safety",
+          "Patient Safety"
+        ],
+        "title": "Patient Safety",
+        "difficulty": "",
+        "level": 3,
+        "score": 1,
+        "confidence": "high",
+        "evidenceTerms": [
+          "safety",
+          "informatic"
+        ],
+        "sourceLine": 3376
+      },
+      "alternateMappings": [
+        {
+          "rank": 2,
+          "specId": "cp-mi-quality-management",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Quality Management"
+          ],
+          "title": "Quality Management",
+          "difficulty": "",
+          "level": 2,
+          "score": 0.96,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3350
+        },
+        {
+          "rank": 3,
+          "specId": "cp-mi-safety",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Safety"
+          ],
+          "title": "Safety",
+          "difficulty": "",
+          "level": 2,
+          "score": 2.16,
+          "confidence": "high",
+          "evidenceTerms": [
+            "safety",
+            "informatic"
+          ],
+          "sourceLine": 3375
+        },
+        {
+          "rank": 4,
+          "specId": "cp-mi-informatics",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Informatics"
+          ],
+          "title": "Informatics",
+          "difficulty": "",
+          "level": 2,
+          "score": 2.135,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3479
+        },
+        {
+          "rank": 5,
+          "specId": "cp-mi",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics"
+          ],
+          "title": "Management and Informatics",
+          "difficulty": "",
+          "level": 0,
+          "score": 2.075,
+          "confidence": "high",
+          "evidenceTerms": [
+            "informatic"
+          ],
+          "sourceLine": 3347
+        },
+        {
+          "rank": 6,
+          "specId": "cp-mi-safety-risk-classification",
+          "domain": "CP",
+          "root": "Management and Informatics",
+          "path": [
+            "Management and Informatics",
+            "Safety",
+            "Risk Classification"
+          ],
+          "title": "Risk Classification",
+          "difficulty": "",
+          "level": 3,
+          "score": 1.6431,
+          "confidence": "high",
+          "evidenceTerms": [
+            "risk",
+            "informatic",
+            "safety"
+          ],
+          "sourceLine": 3397
         }
       ],
       "status": "mapped"

@@ -20,6 +20,7 @@ const ROOT_ALLOWLIST = new Set([
   'Hematopathology for Clinical Pathology',
   'Microbiology',
   'Medical Microbiology',
+  'Management and Informatics',
   'Chemical Pathology',
   'HLA Antigens and Alleles',
 ]);

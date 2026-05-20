@@ -1,25 +1,25 @@
 {
   "version": "tutorial-label-validation.v1",
-  "generatedAt": "2026-05-18T13:38:10.291Z",
+  "generatedAt": "2026-05-18T19:18:21.758Z",
   "rule": "Every visible tutorial label must be supported by source, title, body, tag, category, or id evidence; blind fallback labels require review.",
   "counts": {
-    "totalTutorials": 485,
-    "passed": 485,
+    "totalTutorials": 493,
+    "passed": 493,
     "reviewRequired": 0,
     "byTrack": {
       "Surgical Pathology": 220,
-      "Clinical Pathology": 237,
+      "Clinical Pathology": 245,
       "Cross-Cutting": 28
     },
     "byLane": {
       "Board Prep Tutorials": 190,
-      "Clinical Lab Studios": 5,
+      "Clinical Lab Studios": 13,
       "Core Pattern Tutorials": 26,
       "Tutorial Library": 261,
       "Granuloma Tutorials": 3
     },
     "byConfidence": {
-      "high": 468,
+      "high": 476,
       "medium": 17
     }
   },
@@ -6274,6 +6274,334 @@
         "direct antiglobulin test",
         "transfusion reaction",
         "blood bank"
+      ],
+      "confidence": "high",
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "id": "cp-mgmt-break-even-studio",
+      "title": "Management and Informatics: Break-Even Analysis Studio",
+      "dataset": "clinical-path-interactive",
+      "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+      "sourceRepo": "pthfndr_cp_interactive",
+      "sourceLabel": "P@thfndr Interactive CP",
+      "lane": "lab-studio",
+      "laneLabel": "Clinical Lab Studios",
+      "track": "clinical-path",
+      "trackLabel": "Clinical Pathology",
+      "promotion": "staged",
+      "promotionLabel": "Available",
+      "category": "Management and Informatics",
+      "tags": [
+        "management and informatics",
+        "break-even",
+        "finance",
+        "laboratory operations",
+        "unit cost",
+        "capital planning"
+      ],
+      "topicChips": [
+        "Clinical Pathology",
+        "Clinical Lab Studios",
+        "Available",
+        "Management and Informatics",
+        "management and informatics",
+        "break-even"
+      ],
+      "evidenceTerms": [
+        "declared-track:clinical-path",
+        "management and informatics",
+        "break-even",
+        "finance",
+        "laboratory operations"
+      ],
+      "confidence": "high",
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "id": "cp-mgmt-reagent-rental-studio",
+      "title": "Management and Informatics: Reagent Rental Decision Studio",
+      "dataset": "clinical-path-interactive",
+      "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+      "sourceRepo": "pthfndr_cp_interactive",
+      "sourceLabel": "P@thfndr Interactive CP",
+      "lane": "lab-studio",
+      "laneLabel": "Clinical Lab Studios",
+      "track": "clinical-path",
+      "trackLabel": "Clinical Pathology",
+      "promotion": "staged",
+      "promotionLabel": "Available",
+      "category": "Management and Informatics",
+      "tags": [
+        "management and informatics",
+        "reagent rental",
+        "finance",
+        "analyzer acquisition",
+        "laboratory operations"
+      ],
+      "topicChips": [
+        "Clinical Pathology",
+        "Clinical Lab Studios",
+        "Available",
+        "Management and Informatics",
+        "management and informatics",
+        "reagent rental"
+      ],
+      "evidenceTerms": [
+        "declared-track:clinical-path",
+        "management and informatics",
+        "reagent rental",
+        "finance",
+        "analyzer acquisition"
+      ],
+      "confidence": "high",
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "id": "cp-mgmt-levey-jennings-studio",
+      "title": "Management and Informatics: Levey-Jennings QC Studio",
+      "dataset": "clinical-path-interactive",
+      "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+      "sourceRepo": "pthfndr_cp_interactive",
+      "sourceLabel": "P@thfndr Interactive CP",
+      "lane": "lab-studio",
+      "laneLabel": "Clinical Lab Studios",
+      "track": "clinical-path",
+      "trackLabel": "Clinical Pathology",
+      "promotion": "staged",
+      "promotionLabel": "Available",
+      "category": "Management and Informatics",
+      "tags": [
+        "management and informatics",
+        "quality control",
+        "Levey-Jennings",
+        "QC chart",
+        "mean",
+        "SD",
+        "CV"
+      ],
+      "topicChips": [
+        "Clinical Pathology",
+        "Clinical Lab Studios",
+        "Available",
+        "Management and Informatics",
+        "management and informatics",
+        "quality control"
+      ],
+      "evidenceTerms": [
+        "declared-track:clinical-path",
+        "management and informatics",
+        "quality control",
+        "Levey-Jennings",
+        "QC chart"
+      ],
+      "confidence": "high",
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "id": "cp-mgmt-westgard-studio",
+      "title": "Management and Informatics: Westgard Rules Studio",
+      "dataset": "clinical-path-interactive",
+      "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+      "sourceRepo": "pthfndr_cp_interactive",
+      "sourceLabel": "P@thfndr Interactive CP",
+      "lane": "lab-studio",
+      "laneLabel": "Clinical Lab Studios",
+      "track": "clinical-path",
+      "trackLabel": "Clinical Pathology",
+      "promotion": "staged",
+      "promotionLabel": "Available",
+      "category": "Management and Informatics",
+      "tags": [
+        "management and informatics",
+        "Westgard",
+        "quality control",
+        "random error",
+        "systematic error",
+        "QC troubleshooting"
+      ],
+      "topicChips": [
+        "Clinical Pathology",
+        "Clinical Lab Studios",
+        "Available",
+        "Management and Informatics",
+        "management and informatics",
+        "Westgard"
+      ],
+      "evidenceTerms": [
+        "declared-track:clinical-path",
+        "management and informatics",
+        "Westgard",
+        "quality control",
+        "random error"
+      ],
+      "confidence": "high",
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "id": "cp-mgmt-productivity-studio",
+      "title": "Management and Informatics: Staff Productivity Studio",
+      "dataset": "clinical-path-interactive",
+      "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+      "sourceRepo": "pthfndr_cp_interactive",
+      "sourceLabel": "P@thfndr Interactive CP",
+      "lane": "lab-studio",
+      "laneLabel": "Clinical Lab Studios",
+      "track": "clinical-path",
+      "trackLabel": "Clinical Pathology",
+      "promotion": "staged",
+      "promotionLabel": "Available",
+      "category": "Management and Informatics",
+      "tags": [
+        "management and informatics",
+        "staff productivity",
+        "throughput",
+        "FTE",
+        "laboratory operations",
+        "turnaround time"
+      ],
+      "topicChips": [
+        "Clinical Pathology",
+        "Clinical Lab Studios",
+        "Available",
+        "Management and Informatics",
+        "management and informatics",
+        "staff productivity"
+      ],
+      "evidenceTerms": [
+        "declared-track:clinical-path",
+        "management and informatics",
+        "staff productivity",
+        "throughput",
+        "FTE"
+      ],
+      "confidence": "high",
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "id": "cp-mgmt-validation-verification-studio",
+      "title": "Management and Informatics: Validation vs Verification Studio",
+      "dataset": "clinical-path-interactive",
+      "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+      "sourceRepo": "pthfndr_cp_interactive",
+      "sourceLabel": "P@thfndr Interactive CP",
+      "lane": "lab-studio",
+      "laneLabel": "Clinical Lab Studios",
+      "track": "clinical-path",
+      "trackLabel": "Clinical Pathology",
+      "promotion": "staged",
+      "promotionLabel": "Available",
+      "category": "Management and Informatics",
+      "tags": [
+        "management and informatics",
+        "validation",
+        "verification",
+        "method implementation",
+        "regulation",
+        "quality management"
+      ],
+      "topicChips": [
+        "Clinical Pathology",
+        "Clinical Lab Studios",
+        "Available",
+        "Management and Informatics",
+        "management and informatics",
+        "validation"
+      ],
+      "evidenceTerms": [
+        "declared-track:clinical-path",
+        "management and informatics",
+        "validation",
+        "verification",
+        "method implementation"
+      ],
+      "confidence": "high",
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "id": "cp-mgmt-lis-studio",
+      "title": "Management and Informatics: LIS Interfacing Studio",
+      "dataset": "clinical-path-interactive",
+      "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+      "sourceRepo": "pthfndr_cp_interactive",
+      "sourceLabel": "P@thfndr Interactive CP",
+      "lane": "lab-studio",
+      "laneLabel": "Clinical Lab Studios",
+      "track": "clinical-path",
+      "trackLabel": "Clinical Pathology",
+      "promotion": "staged",
+      "promotionLabel": "Available",
+      "category": "Management and Informatics",
+      "tags": [
+        "management and informatics",
+        "LIS",
+        "interfacing",
+        "middleware",
+        "reference laboratory",
+        "informatics"
+      ],
+      "topicChips": [
+        "Clinical Pathology",
+        "Clinical Lab Studios",
+        "Available",
+        "Management and Informatics",
+        "management and informatics",
+        "LIS"
+      ],
+      "evidenceTerms": [
+        "declared-track:clinical-path",
+        "management and informatics",
+        "LIS",
+        "interfacing",
+        "middleware"
+      ],
+      "confidence": "high",
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "id": "cp-mgmt-lab-errors-studio",
+      "title": "Management and Informatics: Major Sources of Laboratory Errors Studio",
+      "dataset": "clinical-path-interactive",
+      "file": "src/content/tutorials/clinicalPathInteractiveTutorials.json",
+      "sourceRepo": "pthfndr_cp_interactive",
+      "sourceLabel": "P@thfndr Interactive CP",
+      "lane": "lab-studio",
+      "laneLabel": "Clinical Lab Studios",
+      "track": "clinical-path",
+      "trackLabel": "Clinical Pathology",
+      "promotion": "staged",
+      "promotionLabel": "Available",
+      "category": "Management and Informatics",
+      "tags": [
+        "management and informatics",
+        "patient safety",
+        "pre-analytic error",
+        "labeling",
+        "handoff",
+        "workflow"
+      ],
+      "topicChips": [
+        "Clinical Pathology",
+        "Clinical Lab Studios",
+        "Available",
+        "Management and Informatics",
+        "management and informatics",
+        "patient safety"
+      ],
+      "evidenceTerms": [
+        "declared-track:clinical-path",
+        "management and informatics",
+        "patient safety",
+        "pre-analytic error",
+        "labeling"
       ],
       "confidence": "high",
       "status": "pass",
