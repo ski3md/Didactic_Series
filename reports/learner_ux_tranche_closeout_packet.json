@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-05-20T17:15:55.606Z",
+  "tranche": "T03 W01 Learner UX",
+  "source": {
+    "uxReport": "reports/didactics_learning_ux_report.json",
+    "trancheLedger": "src/content/planning/full_1000_execution_ledger.json",
+    "ownedSurfaces": [
+      "src/components/Home.tsx",
+      "src/components/ReferenceLibrary.tsx",
+      "src/components/CompetencyMatrix.tsx"
+    ]
+  },
+  "validator": {
+    "passCount": 114,
+    "failureCount": 0,
+    "referencePassCount": 6
+  },
+  "learnerFlow": {
+    "home": {
+      "masterclassStartHereCount": 1,
+      "hasSecondaryRoutes": true,
+      "hasClinicalPathTutorialRoute": true
+    },
+    "referenceLibrary": {
+      "hasStartHere": true,
+      "hasReviewChoiceTitle": true,
+      "opensWithStudyFraming": true,
+      "guidanceOrderIsStable": true
+    },
+    "competencyMatrix": {
+      "hasLearnerFocus": true,
+      "referenceButtonCount": 2,
+      "hasReferenceGuideTitle": true,
+      "filterPrompts": {
+        "search": true,
+        "domain": true,
+        "readyNowOnly": true
+      }
+    }
+  },
+  "execution": {
+    "completedStepIds": [
+      "W01-L3_LEARNER_UX-C01",
+      "W01-L3_LEARNER_UX-C02",
+      "W01-L3_LEARNER_UX-C03",
+      "W01-L3_LEARNER_UX-C04",
+      "W01-L3_LEARNER_UX-C05",
+      "W01-L3_LEARNER_UX-C06",
+      "W01-L3_LEARNER_UX-C07",
+      "W01-L3_LEARNER_UX-C08",
+      "W01-L3_LEARNER_UX-C09",
+      "W01-L3_LEARNER_UX-C10"
+    ],
+    "proofCommands": [
+      "npm run didactics:ux:validate",
+      "npm run test -- src/components/Home.test.tsx",
+      "npx vitest run scripts/validate_didactics_learning_ux.test.ts scripts/validate_learner_ux_tranche_closeout_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts",
+      "git diff --check"
+    ]
+  },
+  "completionGate": {
+    "baselineGreen": true,
+    "staleWhen": [
+      "the didactics learner UX report changes without regenerating this packet",
+      "the owned learner UX surfaces lose their governed Start here, reference, or filter signals without regenerating this packet",
+      "the tranche ledger status or completed step list changes without regenerating this packet"
+    ]
+  }
+}

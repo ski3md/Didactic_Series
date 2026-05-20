@@ -5,7 +5,7 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `eaefb56a`
+- HEAD: `67400d5c`
 - Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W01`
@@ -28,18 +28,16 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ## Tranche Status Counts
 
-- Completed: 2
-- In progress: 3
+- Completed: 3
+- In progress: 2
 - Planned: 95
 
 ## Immediate Next Sequence
 
 1. Backfill the tranche ledger from current live state.
-2. Formally close T02 W01 Content Parity.
-3. Formally close T03 W01 Learner UX.
-4. Formally close T04 W01 Workups and Routing.
-5. Formally close T05 W01 Contracts and Proof.
-6. Open W02 only after W01 is fully ledgered and proof-complete.
+2. Formally close T04 W01 Workups and Routing.
+3. Formally close T05 W01 Contracts and Proof.
+4. Open W02 only after W01 is fully ledgered and proof-complete.
 
 ## Tranche Map
 
@@ -71,19 +69,19 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ### T03 W01 Learner UX
 
-- Status: `in_progress`
-- Status basis: `supporting_commit_evidence_only`
+- Status: `completed`
+- Status basis: `exact_proof_bundle`
 - Goal: This lane makes the study experience clearer and calmer for freeze the current truth baseline.
-- Completed steps: 0
-- Remaining steps: 10
-- Evidence commits: `ce3a8d9b Govern curriculum follow-up review ordering`
-- Evidence artifacts: `reports/didactics_learning_ux_report.json`
-- Remaining owned files: `src/components/Home.tsx`, `src/components/ReferenceLibrary.tsx`, `src/components/CompetencyMatrix.tsx`
-- Proof commands: `npm run didactics:ux:validate`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts`, `git diff --check`
-- Summary: Learner UX has real W01 movement, but it still needs formal tranche closure against the owned Home, Reference Library, and Competency Matrix surfaces.
+- Completed steps: 10
+- Remaining steps: 0
+- Evidence commits: `f2c40f7e Govern landing entry cues across didactics workspaces`, `ce3a8d9b Govern curriculum follow-up review ordering`, `d0a5a61b Govern reference library opening order`, `601d390a Govern reference training guidance ordering`, `67400d5c Close T02 content parity tranche`
+- Evidence artifacts: `reports/didactics_learning_ux_report.json`, `reports/learner_ux_tranche_closeout_packet.json`
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts scripts/validate_learner_ux_tranche_closeout_packet.test.ts`, `git diff --check`
+- Summary: Learner UX is formally closed with validator-backed owned-surface signals from Home, Reference Library, and Competency Matrix plus a dedicated tranche closeout packet.
 
-  - Curriculum follow-up review ordering is already governed in PathologyCurriculum.
-  - The didactics UX validator/report lane is active, but the learner-UX tranche has not yet been formally backfilled against its owned file set.
+  - Home, Reference Library, and Competency Matrix now contribute a formal learner-UX closeout packet instead of staying as implicit owned-surface evidence only.
+  - The didactics UX validator/report lane and the tranche ledger now agree on a closed W01 learner-UX bundle.
 
 ### T04 W01 Workups and Routing
 

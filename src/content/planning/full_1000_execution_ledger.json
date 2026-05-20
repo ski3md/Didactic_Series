@@ -10,7 +10,7 @@
   ],
   "currentState": {
     "branch": "main",
-    "head": "eaefb56a",
+    "head": "67400d5c",
     "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W01",
@@ -126,14 +126,12 @@
     }
   ],
   "trancheStatusCounts": {
-    "completed": 2,
-    "in_progress": 3,
+    "completed": 3,
+    "in_progress": 2,
     "planned": 95
   },
   "immediateNextSequence": [
     "Backfill the tranche ledger from current live state.",
-    "Formally close T02 W01 Content Parity.",
-    "Formally close T03 W01 Learner UX.",
     "Formally close T04 W01 Workups and Routing.",
     "Formally close T05 W01 Contracts and Proof.",
     "Open W02 only after W01 is fully ledgered and proof-complete."
@@ -382,11 +380,10 @@
       "laneTitle": "Learner wording, navigation, study flow, and reference-page clarity",
       "group": "G1",
       "goal": "This lane makes the study experience clearer and calmer for freeze the current truth baseline.",
-      "status": "in_progress",
-      "statusBasis": "supporting_commit_evidence_only",
+      "status": "completed",
+      "statusBasis": "exact_proof_bundle",
       "completionEvidence": {
-        "completedStepIds": [],
-        "remainingStepIds": [
+        "completedStepIds": [
           "W01-L3_LEARNER_UX-C01",
           "W01-L3_LEARNER_UX-C02",
           "W01-L3_LEARNER_UX-C03",
@@ -397,7 +394,8 @@
           "W01-L3_LEARNER_UX-C08",
           "W01-L3_LEARNER_UX-C09",
           "W01-L3_LEARNER_UX-C10"
-        ]
+        ],
+        "remainingStepIds": []
       },
       "recordTitles": [
         {
@@ -466,25 +464,27 @@
       ],
       "proofCommands": [
         "npm run didactics:ux:validate",
-        "npx vitest run scripts/validate_didactics_learning_ux.test.ts",
+        "npm run test -- src/components/Home.test.tsx",
+        "npx vitest run scripts/validate_didactics_learning_ux.test.ts scripts/validate_learner_ux_tranche_closeout_packet.test.ts",
         "git diff --check"
       ],
       "evidenceCommits": [
-        "ce3a8d9b Govern curriculum follow-up review ordering"
+        "f2c40f7e Govern landing entry cues across didactics workspaces",
+        "ce3a8d9b Govern curriculum follow-up review ordering",
+        "d0a5a61b Govern reference library opening order",
+        "601d390a Govern reference training guidance ordering",
+        "67400d5c Close T02 content parity tranche"
       ],
       "evidenceArtifacts": [
-        "reports/didactics_learning_ux_report.json"
+        "reports/didactics_learning_ux_report.json",
+        "reports/learner_ux_tranche_closeout_packet.json"
       ],
       "supportingProgress": [
-        "Curriculum follow-up review ordering is already governed in PathologyCurriculum.",
-        "The didactics UX validator/report lane is active, but the learner-UX tranche has not yet been formally backfilled against its owned file set."
+        "Home, Reference Library, and Competency Matrix now contribute a formal learner-UX closeout packet instead of staying as implicit owned-surface evidence only.",
+        "The didactics UX validator/report lane and the tranche ledger now agree on a closed W01 learner-UX bundle."
       ],
-      "remainingOwnedFiles": [
-        "src/components/Home.tsx",
-        "src/components/ReferenceLibrary.tsx",
-        "src/components/CompetencyMatrix.tsx"
-      ],
-      "summary": "Learner UX has real W01 movement, but it still needs formal tranche closure against the owned Home, Reference Library, and Competency Matrix surfaces."
+      "remainingOwnedFiles": [],
+      "summary": "Learner UX is formally closed with validator-backed owned-surface signals from Home, Reference Library, and Competency Matrix plus a dedicated tranche closeout packet."
     },
     {
       "id": "T04",

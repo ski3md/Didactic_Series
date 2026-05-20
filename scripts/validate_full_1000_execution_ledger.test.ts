@@ -33,13 +33,14 @@ describe('full 1000 execution ledger assets', () => {
 
   it('marks only the reconciled opening tranches as completed or in progress', () => {
     expect(ledger.trancheStatusCounts).toEqual({
-      completed: 2,
-      in_progress: 3,
+      completed: 3,
+      in_progress: 2,
       planned: 95,
     });
 
     const t01 = ledger.tranches.find((tranche) => tranche.id === 'T01');
     const t02 = ledger.tranches.find((tranche) => tranche.id === 'T02');
+    const t03 = ledger.tranches.find((tranche) => tranche.id === 'T03');
     const t05 = ledger.tranches.find((tranche) => tranche.id === 'T05');
     const t06 = ledger.tranches.find((tranche) => tranche.id === 'T06');
 
@@ -56,6 +57,13 @@ describe('full 1000 execution ledger assets', () => {
     });
     expect(t02?.completionEvidence.completedStepIds).toHaveLength(10);
     expect(t02?.completionEvidence.remainingStepIds).toHaveLength(0);
+
+    expect(t03).toMatchObject({
+      status: 'completed',
+      statusBasis: 'exact_proof_bundle',
+    });
+    expect(t03?.completionEvidence.completedStepIds).toHaveLength(10);
+    expect(t03?.completionEvidence.remainingStepIds).toHaveLength(0);
 
     expect(t05).toMatchObject({
       status: 'in_progress',
@@ -74,6 +82,6 @@ describe('full 1000 execution ledger assets', () => {
     expect(markdown).toContain('## Immediate Next Sequence');
     expect(markdown).toContain('### T01 W01 CP Truth');
     expect(markdown).toContain('### T05 W01 Contracts and Proof');
-    expect(ledger.immediateNextSequence).toHaveLength(6);
+    expect(ledger.immediateNextSequence).toHaveLength(4);
   });
 });

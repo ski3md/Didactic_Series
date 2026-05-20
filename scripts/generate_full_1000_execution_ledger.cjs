@@ -146,11 +146,10 @@ const TRANCHE_OVERRIDES = {
       'Content parity is formally closed with a valid baseline report, normalized CP source links, aligned module copy, and a dedicated tranche closeout packet.',
   },
   T03: {
-    status: 'in_progress',
-    statusBasis: 'supporting_commit_evidence_only',
+    status: 'completed',
+    statusBasis: 'exact_proof_bundle',
     completionEvidence: {
-      completedStepIds: [],
-      remainingStepIds: [
+      completedStepIds: [
         'W01-L3_LEARNER_UX-C01',
         'W01-L3_LEARNER_UX-C02',
         'W01-L3_LEARNER_UX-C03',
@@ -162,29 +161,32 @@ const TRANCHE_OVERRIDES = {
         'W01-L3_LEARNER_UX-C09',
         'W01-L3_LEARNER_UX-C10',
       ],
+      remainingStepIds: [],
     },
     evidenceCommits: [
+      'f2c40f7e Govern landing entry cues across didactics workspaces',
       'ce3a8d9b Govern curriculum follow-up review ordering',
+      'd0a5a61b Govern reference library opening order',
+      '601d390a Govern reference training guidance ordering',
+      '67400d5c Close T02 content parity tranche',
     ],
     evidenceArtifacts: [
       'reports/didactics_learning_ux_report.json',
+      'reports/learner_ux_tranche_closeout_packet.json',
     ],
     proofCommands: [
       'npm run didactics:ux:validate',
-      'npx vitest run scripts/validate_didactics_learning_ux.test.ts',
+      'npm run test -- src/components/Home.test.tsx',
+      'npx vitest run scripts/validate_didactics_learning_ux.test.ts scripts/validate_learner_ux_tranche_closeout_packet.test.ts',
       'git diff --check',
     ],
-    remainingOwnedFiles: [
-      'src/components/Home.tsx',
-      'src/components/ReferenceLibrary.tsx',
-      'src/components/CompetencyMatrix.tsx',
-    ],
+    remainingOwnedFiles: [],
     supportingProgress: [
-      'Curriculum follow-up review ordering is already governed in PathologyCurriculum.',
-      'The didactics UX validator/report lane is active, but the learner-UX tranche has not yet been formally backfilled against its owned file set.',
+      'Home, Reference Library, and Competency Matrix now contribute a formal learner-UX closeout packet instead of staying as implicit owned-surface evidence only.',
+      'The didactics UX validator/report lane and the tranche ledger now agree on a closed W01 learner-UX bundle.',
     ],
     summary:
-      'Learner UX has real W01 movement, but it still needs formal tranche closure against the owned Home, Reference Library, and Competency Matrix surfaces.',
+      'Learner UX is formally closed with validator-backed owned-surface signals from Home, Reference Library, and Competency Matrix plus a dedicated tranche closeout packet.',
   },
   T04: {
     status: 'in_progress',
@@ -381,8 +383,6 @@ const buildLedger = () => {
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
       'Backfill the tranche ledger from current live state.',
-      'Formally close T02 W01 Content Parity.',
-      'Formally close T03 W01 Learner UX.',
       'Formally close T04 W01 Workups and Routing.',
       'Formally close T05 W01 Contracts and Proof.',
       'Open W02 only after W01 is fully ledgered and proof-complete.',
