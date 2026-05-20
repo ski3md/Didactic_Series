@@ -1,0 +1,97 @@
+{
+  "generatedAt": "2026-05-20T10:56:26.711Z",
+  "source": {
+    "handoff": "reports/cp_truth_handoff_summary.json",
+    "reviewerPacket": "reports/cp_governed_exception_reviewer_packet.json"
+  },
+  "summary": {
+    "reviewerActionCount": 8,
+    "groupedRootCount": 6,
+    "roots": {
+      "Blood Banking/Transfusion Medicine": 1,
+      "Chemical Pathology": 1,
+      "Chemical Pathology + Blood Banking/Transfusion Medicine": 1,
+      "Hematopathology for Clinical Pathology": 1,
+      "Management and Informatics": 3,
+      "Medical Microbiology": 1
+    }
+  },
+  "groupedQueue": {
+    "Medical Microbiology": [
+      {
+        "id": "cp-micro-methods-ast-studio",
+        "abpathPrecisionMode": "nearest-valid-deep",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "Didactics governance review",
+        "reviewAction": "Complete CP governance review before promotion.",
+        "rationale": "workflow concept distributed across multiple spec nodes"
+      }
+    ],
+    "Hematopathology for Clinical Pathology": [
+      {
+        "id": "cp-flow-heme-studio",
+        "abpathPrecisionMode": "nearest-valid-deep",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "Didactics governance review",
+        "reviewAction": "Complete CP governance review before promotion.",
+        "rationale": "interactive artifact teaches operational interpretation"
+      }
+    ],
+    "Blood Banking/Transfusion Medicine": [
+      {
+        "id": "cp-dat-transfusion-studio",
+        "abpathPrecisionMode": "nearest-valid-deep",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "Didactics governance review",
+        "reviewAction": "Complete CP governance review before promotion.",
+        "rationale": "workflow concept distributed across multiple spec nodes"
+      }
+    ],
+    "Management and Informatics": [
+      {
+        "id": "cp-mgmt-break-even-studio",
+        "abpathPrecisionMode": "nearest-valid-deep",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "Didactics governance review",
+        "reviewAction": "Complete CP governance review before promotion.",
+        "rationale": "interactive artifact teaches operational interpretation"
+      },
+      {
+        "id": "cp-mgmt-reagent-rental-studio",
+        "abpathPrecisionMode": "nearest-valid-deep",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "Didactics governance review",
+        "reviewAction": "Complete CP governance review before promotion.",
+        "rationale": "modern entity not literal in spec"
+      },
+      {
+        "id": "cp-mgmt-productivity-studio",
+        "abpathPrecisionMode": "nearest-valid-deep",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "Didactics governance review",
+        "reviewAction": "Complete CP governance review before promotion.",
+        "rationale": "interactive artifact teaches operational interpretation"
+      }
+    ],
+    "Chemical Pathology": [
+      {
+        "id": "cp-chemical-path-endocrine-studio",
+        "abpathPrecisionMode": "nearest-valid-deep",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "Didactics governance review",
+        "reviewAction": "Complete CP governance review before promotion.",
+        "rationale": "disease narrower than CP spec"
+      }
+    ],
+    "Chemical Pathology + Blood Banking/Transfusion Medicine": [
+      {
+        "id": "cp-immune-lipid-studio",
+        "abpathPrecisionMode": "cross-domain-governed",
+        "abpathAnchorConfidence": "moderate",
+        "reviewOwner": "Didactics governance review",
+        "reviewAction": "Complete CP governance review before promotion.",
+        "rationale": "The lipid branch is governed by Chemical Pathology while the allorecognition branch borrows HLA significance from the transfusion and transplant side of CP. The tutorial is kept together because it teaches mechanism-linked interpretation across those adjacent CP domains."
+      }
+    ]
+  }
+}
