@@ -1017,6 +1017,10 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                     <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Tutorials</div>
                     <h3 className="font-serif text-xl font-semibold text-slate-900">Major topics</h3>
                     <p className="mt-1 text-sm text-slate-600">Choose a topic, then open the diagnostic focus you want to study.</p>
+                    <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                      <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">Current review: Tutorials</span>
+                      <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">Next: choose one major topic</span>
+                    </div>
                   </div>
                   {lastVisitedTutorial && (
                     <button

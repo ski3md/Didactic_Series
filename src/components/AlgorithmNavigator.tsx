@@ -400,6 +400,10 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                   <p className="mt-2 text-sm leading-6 text-slate-600">
                     Choose a diagnostic area, narrow to one differential or workup, then open the approach you want to review.
                   </p>
+                  <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                    <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">Current review: Workups</span>
+                    <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">Next: open one diagnostic area</span>
+                  </div>
                 </div>
                 <div className="min-w-[220px] rounded-2xl border border-sky-100 bg-sky-50 px-4 py-3">
                   <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Current area</div>

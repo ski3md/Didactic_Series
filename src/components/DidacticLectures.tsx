@@ -1491,6 +1491,10 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                     <p className="mt-2 text-sm leading-6 text-slate-600">
                       Open one topic, choose a teaching session, and stay with it until you are ready to switch.
                     </p>
+                    <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                      <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">Current review: Lectures</span>
+                      <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">Next: open one topic</span>
+                    </div>
                   </div>
                   <div className="grid min-w-[16rem] gap-2 text-sm text-slate-600">
                     <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">

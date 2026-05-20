@@ -140,9 +140,9 @@ describe('validate_didactics_learning_ux helpers', () => {
       workspaceNavTsx: 'item.onActivate?.(); onSectionChange(item.section);',
       componentTexts: {
         curriculum: 'Start here Common diagnostic patterns Choose another module',
-        lectures: 'Workspace: Lectures Guided lecture workspace Continue where you left off',
-        tutorials: 'Tutorials Resume topic Open validated topic instead',
-        algorithms: 'Workups Choose a diagnostic workup Diagnostic areas',
+        lectures: 'Lectures Choose a teaching topic Current review: Lectures Next: open one topic Continue where you left off',
+        tutorials: 'Tutorials Resume topic Current review: Tutorials Next: choose one major topic Open the reviewed topic instead',
+        algorithms: 'Workups Choose a diagnostic workup Diagnostic areas Current review: Workups Next: open one diagnostic area',
       },
     });
 
@@ -184,6 +184,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         expect.stringContaining('Lectures does not show a landing-state workspace reset in Sidebar.'),
         expect.stringContaining('Workups does not show a landing-state workspace reset in Sidebar.'),
         expect.stringContaining('Lectures main-panel component lacks a visible workspace identity signal.'),
+        expect.stringContaining('Lectures landing is missing a compact current-review and next-step summary.'),
       ])
     );
   });

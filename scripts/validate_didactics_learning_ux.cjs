@@ -57,6 +57,7 @@ const WORKSPACE_EXPECTATIONS = [
     componentName: 'DidacticLectures',
     destinationWorkspace: 'lectures',
     componentIdentityPatterns: [/\bLectures\b/, /\bChoose a teaching topic\b/, /\bResume last lecture\b/],
+    landingSummaryPatterns: [/Current review:\s*Lectures/, /Next:\s*open one topic/],
   },
   {
     workspaceKey: 'tutorials',
@@ -65,6 +66,7 @@ const WORKSPACE_EXPECTATIONS = [
     componentName: 'DidacticTutorials',
     destinationWorkspace: 'tutorials',
     componentIdentityPatterns: [/\bTutorials\b/, /\bResume topic\b/, /\bOpen the reviewed topic instead\b/],
+    landingSummaryPatterns: [/Current review:\s*Tutorials/, /Next:\s*choose one major topic/],
   },
   {
     workspaceKey: 'algorithms',
@@ -73,6 +75,7 @@ const WORKSPACE_EXPECTATIONS = [
     componentName: 'AlgorithmNavigator',
     destinationWorkspace: 'algorithms',
     componentIdentityPatterns: [/\bWorkups\b/, /\bDiagnostic areas\b/, /\bChoose a diagnostic workup\b/],
+    landingSummaryPatterns: [/Current review:\s*Workups/, /Next:\s*open one diagnostic area/],
   },
 ];
 
@@ -675,6 +678,16 @@ const evaluateWorkspaceSemantics = ({
       passes.push(`${workspace.label} exposes visible workspace identity in its main-panel component.`);
     } else {
       issues.push(`${workspace.label} main-panel component lacks a visible workspace identity signal.`);
+    }
+
+    if (!workspace.landingSummaryPatterns) {
+      continue;
+    }
+
+    if (workspace.landingSummaryPatterns.every((pattern) => pattern.test(componentText))) {
+      passes.push(`${workspace.label} landing exposes a compact current-review and next-step summary.`);
+    } else {
+      issues.push(`${workspace.label} landing is missing a compact current-review and next-step summary.`);
     }
   }
 
