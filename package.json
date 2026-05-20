@@ -9,6 +9,7 @@
     "build": "vite build",
     "build:didactics": "VITE_BASE_PATH=/didactics/ VITE_OUT_DIR=dist/didactics vite build && node scripts/configure_didactics_pages.cjs && node scripts/sanitize_didactics_dist.cjs --path dist --max-bytes 100000000 --drop-source-articles --verbose",
     "sync:didactics-tunnel": "npm run build:didactics && rsync -a --delete dist/ /Users/ski_mini/.cloudflared/pthfndr-didactics-dist/",
+    "serve:didactics-tunnel-origin": "node scripts/serve_didactics_tunnel_origin.cjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "security:scan-scripts": "node scripts/security/scan-third-party-scripts.cjs",
