@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-05-20T11:11:05.604Z",
+  "tranche": "T01 W01 CP Truth",
+  "source": {
+    "handoff": "reports/cp_truth_handoff_summary.json",
+    "reviewerAction": "reports/cp_reviewer_action_packet.json",
+    "governedPromotion": "reports/cp_governed_promotion_packet.json",
+    "rootPriority": "reports/cp_root_priority_summary.json",
+    "checklist": "reports/cp_root_execution_checklist.json",
+    "manifest": "reports/cp_root_execution_manifest.json"
+  },
+  "baseline": {
+    "cpGovernedTutorials": 13,
+    "cpGovernedModules": 7,
+    "validatedTutorials": 487,
+    "governancePendingTutorials": 0,
+    "sourceFingerprint": "c1d6ff9c18b2ac0d5d6b7fef5010d47090c304968213f4d64d339fc55d65bf18"
+  },
+  "queue": {
+    "total": 13,
+    "reviewerActionRequired": 8,
+    "promoteUnderGovernedAnchor": 5,
+    "rootsRepresented": 6
+  },
+  "execution": {
+    "topPriorityRoot": "Management and Informatics",
+    "proofCommands": [
+      "npm run cp:precision:validate",
+      "npx vitest run scripts/validate_cp_truth_baseline_outputs.test.ts",
+      "git diff --check"
+    ],
+    "sourceFingerprint": "c1d6ff9c18b2ac0d5d6b7fef5010d47090c304968213f4d64d339fc55d65bf18"
+  },
+  "completionGate": {
+    "baselineGreen": true,
+    "staleWhen": [
+      "the source fingerprint no longer matches the current CP truth handoff summary",
+      "the root count no longer matches the current CP root execution checklist",
+      "the top priority root changes without regenerating this manifest"
+    ]
+  }
+}
