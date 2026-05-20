@@ -181,8 +181,8 @@ describe('validate_didactics_learning_ux helpers', () => {
     expect(result.issues).toEqual(
       expect.arrayContaining([
         expect.stringContaining('Workspace switcher does not clearly activate destination state before section change.'),
-        expect.stringContaining('Lectures does not show a landing-state workspace reset in Sidebar.'),
-        expect.stringContaining('Workups does not show a landing-state workspace reset in Sidebar.'),
+        expect.stringContaining('Lectures does not show a landing-state workspace reset in Sidebar using shared authority.'),
+        expect.stringContaining('Workups does not show a landing-state workspace reset in Sidebar using shared authority.'),
         expect.stringContaining('Lectures main-panel component lacks a visible workspace identity signal.'),
         expect.stringContaining('Lectures landing is missing a compact current-review and next-step summary.'),
       ])

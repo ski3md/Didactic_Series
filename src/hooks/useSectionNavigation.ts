@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Section } from '../types.ts';
 import { canGoBackWithinStudyWorkspace } from '../utils/studyDestinationState.ts';
+import { 
+  WorkspaceKey, 
+  getWorkspaceKeyForSection, 
+  getSectionForWorkspaceKey 
+} from '../utils/didacticWorkspaces.ts';
 
 interface NavigationEntry {
   id: string;
@@ -52,38 +57,11 @@ const didacticsBasePath = (pathname: string): string => {
 };
 
 const workspaceKeyForSection = (section: Section): string | null => {
-  switch (section) {
-    case Section.PATHOLOGY_CURRICULUM:
-      return 'curriculum';
-    case Section.LECTURE:
-    case Section.DIDACTIC_LECTURES:
-      return 'lectures';
-    case Section.DIDACTIC_TUTORIALS:
-      return 'tutorials';
-    case Section.DIDACTIC_ALGORITHMS:
-      return 'algorithms';
-    case Section.REFERENCE_LIBRARY:
-      return 'reference';
-    default:
-      return null;
-  }
+  return getWorkspaceKeyForSection(section);
 };
 
 const sectionForWorkspaceKey = (workspace: string | null): Section | null => {
-  switch ((workspace || '').toLowerCase()) {
-    case 'curriculum':
-      return Section.PATHOLOGY_CURRICULUM;
-    case 'lectures':
-      return Section.DIDACTIC_LECTURES;
-    case 'tutorials':
-      return Section.DIDACTIC_TUTORIALS;
-    case 'algorithms':
-      return Section.DIDACTIC_ALGORITHMS;
-    case 'reference':
-      return Section.REFERENCE_LIBRARY;
-    default:
-      return null;
-  }
+  return getSectionForWorkspaceKey(workspace);
 };
 
 const sectionFromLocation = (): Section => {

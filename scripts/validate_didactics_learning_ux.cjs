@@ -45,15 +45,19 @@ const CURRICULUM_GENERIC_CTA_RULES = [
 const WORKSPACE_EXPECTATIONS = [
   {
     workspaceKey: 'curriculum',
+    workspaceKeyLiteral: 'WorkspaceKey.CURRICULUM',
     sectionLiteral: 'Section.PATHOLOGY_CURRICULUM',
     label: 'Curriculum',
+    labelLiteral: 'WORKSPACE_LABELS[WorkspaceKey.CURRICULUM]',
     componentName: 'PathologyCurriculum',
     componentIdentityPatterns: [/\bStart here\b/, /\bCommon diagnostic patterns\b/, /\bChoose another module\b/],
   },
   {
     workspaceKey: 'lectures',
+    workspaceKeyLiteral: 'WorkspaceKey.LECTURES',
     sectionLiteral: 'Section.DIDACTIC_LECTURES',
     label: 'Lectures',
+    labelLiteral: 'WORKSPACE_LABELS[WorkspaceKey.LECTURES]',
     componentName: 'DidacticLectures',
     destinationWorkspace: 'lectures',
     componentIdentityPatterns: [/\bLectures\b/, /\bChoose a teaching topic\b/, /\bResume last lecture\b/],
@@ -61,8 +65,10 @@ const WORKSPACE_EXPECTATIONS = [
   },
   {
     workspaceKey: 'tutorials',
+    workspaceKeyLiteral: 'WorkspaceKey.TUTORIALS',
     sectionLiteral: 'Section.DIDACTIC_TUTORIALS',
     label: 'Tutorials',
+    labelLiteral: 'WORKSPACE_LABELS[WorkspaceKey.TUTORIALS]',
     componentName: 'DidacticTutorials',
     destinationWorkspace: 'tutorials',
     componentIdentityPatterns: [/\bTutorials\b/, /\bResume topic\b/, /\bOpen the reviewed topic instead\b/],
@@ -70,8 +76,10 @@ const WORKSPACE_EXPECTATIONS = [
   },
   {
     workspaceKey: 'algorithms',
+    workspaceKeyLiteral: 'WorkspaceKey.ALGORITHMS',
     sectionLiteral: 'Section.DIDACTIC_ALGORITHMS',
     label: 'Workups',
+    labelLiteral: 'WORKSPACE_LABELS[WorkspaceKey.ALGORITHMS]',
     componentName: 'AlgorithmNavigator',
     destinationWorkspace: 'algorithms',
     componentIdentityPatterns: [/\bWorkups\b/, /\bDiagnostic areas\b/, /\bChoose a diagnostic workup\b/],
@@ -437,10 +445,11 @@ const evaluateWorkspaceRoutingSemantics = ({
       label: 'Lectures',
       componentText: lecturesTsx,
       workspace: 'lectures',
+      workspaceKeyLiteral: 'WorkspaceKey.LECTURES',
       consumeIntentPattern: /consumeLectureLibraryIntent\(\)/,
-      restorePattern: /restoreStudyDestination\('lectures'\)/,
-      activeTabPattern: /setStudyDestinationActiveTab\('lectures',\s*activeMode\)/,
-      destinationChangePattern: /if\s*\(nextDestination\?\.workspace\s*===\s*'lectures'\)/,
+      restorePattern: /restoreStudyDestination\((WorkspaceKey\.LECTURES|'lectures')\)/,
+      activeTabPattern: /setStudyDestinationActiveTab\((WorkspaceKey\.LECTURES|'lectures'),\s*activeMode\)/,
+      destinationChangePattern: /if\s*\(nextDestination\?\.workspace\s*===\s*(WorkspaceKey\.LECTURES|'lectures')\)/,
       navigationText: lectureNavigationTs,
       navigationQueryPattern: /query\?:\s*string/,
     },
@@ -448,10 +457,11 @@ const evaluateWorkspaceRoutingSemantics = ({
       label: 'Tutorials',
       componentText: tutorialsTsx,
       workspace: 'tutorials',
+      workspaceKeyLiteral: 'WorkspaceKey.TUTORIALS',
       consumeIntentPattern: /consumeTutorialLibraryIntent\(\)/,
-      restorePattern: /restoreStudyDestination\('tutorials'\)/,
-      activeTabPattern: /setStudyDestinationActiveTab\('tutorials',\s*activeTab\)/,
-      destinationChangePattern: /if\s*\(nextDestination\?\.workspace\s*===\s*'tutorials'\)/,
+      restorePattern: /restoreStudyDestination\((WorkspaceKey\.TUTORIALS|'tutorials')\)/,
+      activeTabPattern: /setStudyDestinationActiveTab\((WorkspaceKey\.TUTORIALS|'tutorials'),\s*activeTab\)/,
+      destinationChangePattern: /if\s*\(nextDestination\?\.workspace\s*===\s*(WorkspaceKey\.TUTORIALS|'tutorials')\)/,
       navigationText: tutorialNavigationTs,
       navigationQueryPattern: /query\?:\s*string/,
     },
@@ -459,10 +469,11 @@ const evaluateWorkspaceRoutingSemantics = ({
       label: 'Workups',
       componentText: algorithmsTsx,
       workspace: 'algorithms',
+      workspaceKeyLiteral: 'WorkspaceKey.ALGORITHMS',
       consumeIntentPattern: /consumeAlgorithmNavigatorIntent\(\)/,
-      restorePattern: /restoreStudyDestination\('algorithms'\)/,
+      restorePattern: /restoreStudyDestination\((WorkspaceKey\.ALGORITHMS|'algorithms')\)/,
       activeTabPattern: /writeAlgorithmNavigatorState\(\s*\{/,
-      destinationChangePattern: /if\s*\(nextDestination\?\.workspace\s*===\s*'algorithms'\)/,
+      destinationChangePattern: /if\s*\(nextDestination\?\.workspace\s*===\s*(WorkspaceKey\.ALGORITHMS|'algorithms')\)/,
       navigationText: algorithmNavigationTs,
       navigationQueryPattern: /query\?:\s*string/,
     },
@@ -506,19 +517,19 @@ const evaluateWorkspaceRoutingSemantics = ({
     issues.push('Tutorials does not clearly resolve query-routed intents into visible destination views.');
   }
 
-  if (/if\s*\(intent\.track\)/.test(lecturesTsx) && /pushStudyDestination\('lectures',\s*\{[\s\S]*kind:\s*'topic_overview'/.test(lecturesTsx)) {
+  if (/if\s*\(intent\.track\)/.test(lecturesTsx) && /pushStudyDestination\((WorkspaceKey\.LECTURES|'lectures'),\s*\{[\s\S]*kind:\s*'topic_overview'/.test(lecturesTsx)) {
     passes.push('Lectures resolves routed intents into a lecture workspace overview before detail.');
   } else {
     issues.push('Lectures does not clearly resolve routed intents into a lecture workspace overview.');
   }
 
-  if (/if\s*\(intent\.category\)/.test(algorithmsTsx) && /pushStudyDestination\('algorithms',\s*\{[\s\S]*kind:\s*intent\.patternFamily\s*\?\s*'subtopic_overview'\s*:\s*'topic_overview'/.test(algorithmsTsx)) {
+  if (/if\s*\(intent\.category\)/.test(algorithmsTsx) && /pushStudyDestination\((WorkspaceKey\.ALGORITHMS|'algorithms'),\s*\{[\s\S]*kind:\s*intent\.patternFamily\s*\?\s*'subtopic_overview'\s*:\s*'topic_overview'/.test(algorithmsTsx)) {
     passes.push('Workups resolves routed intents into governed algorithm topic or subtopic views.');
   } else {
     issues.push('Workups does not clearly resolve routed intents into governed topic or subtopic views.');
   }
 
-  const workspaceLandingResetCount = (sidebarTsx.match(/pushStudyDestination\('(lectures|tutorials|algorithms)',\s*\{\s*kind:\s*'landing',\s*previous:\s*null\s*\}\)/g) || []).length;
+  const workspaceLandingResetCount = (sidebarTsx.match(/pushStudyDestination\((WorkspaceKey\.(LECTURES|TUTORIALS|ALGORITHMS)|'(lectures|tutorials|algorithms)'),\s*\{\s*kind:\s*'landing',\s*previous:\s*null\s*\}\)/g) || []).length;
   if (workspaceLandingResetCount >= 3) {
     passes.push('Sidebar resets each didactics workspace to a fresh landing state before cross-workspace navigation.');
   } else {
@@ -526,10 +537,10 @@ const evaluateWorkspaceRoutingSemantics = ({
   }
 
   for (const workspace of workspaceRoutingExpectations) {
-    const readPattern = new RegExp(`readStudyDestination\\('${workspace.workspace}'\\)`);
-    const pushPattern = new RegExp(`pushStudyDestination\\('${workspace.workspace}'`);
+    const readPattern = new RegExp(`readStudyDestination\\((${escapeRegExp(workspace.workspaceKeyLiteral)}|'${workspace.workspace}')\\)`);
+    const pushPattern = new RegExp(`pushStudyDestination\\((${escapeRegExp(workspace.workspaceKeyLiteral)}|'${workspace.workspace}')`);
     const resetPattern = new RegExp(
-      `pushStudyDestination\\('${workspace.workspace}',\\s*\\{\\s*kind:\\s*'landing',\\s*previous:\\s*null\\s*\\}\\)`
+      `pushStudyDestination\\((${escapeRegExp(workspace.workspaceKeyLiteral)}|'${workspace.workspace}'),\\s*\\{\\s*kind:\\s*'landing',\\s*previous:\\s*null\\s*\\}\\)`
     );
 
     if (readPattern.test(sidebarTsx) && pushPattern.test(sidebarTsx)) {
@@ -676,21 +687,21 @@ const evaluateWorkspaceSemantics = ({
       issues.push(`${workspace.label} is not routed to ${workspace.componentName} in App.`);
     }
 
-    const sidebarLabelPattern = new RegExp(`label:\\s*'${workspace.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}'`);
+    const sidebarLabelPattern = new RegExp(`label:\\s*(${escapeRegExp(workspace.labelLiteral)}|'${workspace.label}')`);
     if (sidebarLabelPattern.test(sidebarTsx)) {
-      passes.push(`Sidebar exposes ${workspace.label} as a study workspace.`);
+      passes.push(`Sidebar exposes ${workspace.label} as a study workspace using shared authority.`);
     } else {
-      issues.push(`Sidebar is missing the ${workspace.label} workspace label.`);
+      issues.push(`Sidebar is missing the ${workspace.label} workspace label or shared authority.`);
     }
 
     if (workspace.destinationWorkspace) {
       const activationPattern = new RegExp(
-        `label:\\s*'${workspace.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}'[\\s\\S]*?pushStudyDestination\\('${workspace.destinationWorkspace}',\\s*\\{[\\s\\S]*?kind:\\s*'landing'[\\s\\S]*?previous:\\s*null`,
+        `label:\\s*(${escapeRegExp(workspace.labelLiteral)}|'${workspace.label}')[\\s\\S]*?pushStudyDestination\\((${escapeRegExp(workspace.workspaceKeyLiteral)}|'${workspace.workspaceKey}'),\\s*\\{[\\s\\S]*?kind:\\s*'landing'[\\s\\S]*?previous:\\s*null`,
       );
       if (activationPattern.test(sidebarTsx)) {
-        passes.push(`${workspace.label} resets its workspace destination to a landing state on switch.`);
+        passes.push(`${workspace.label} resets its workspace destination to a landing state using shared authority.`);
       } else {
-        issues.push(`${workspace.label} does not show a landing-state workspace reset in Sidebar.`);
+        issues.push(`${workspace.label} does not show a landing-state workspace reset in Sidebar using shared authority.`);
       }
     }
 
@@ -776,8 +787,8 @@ const evaluateReferenceRouteSemantics = ({
   }
 
   if (
-    /case Section\.REFERENCE_LIBRARY:\s*return 'reference';/.test(sectionNavTs) &&
-    /case 'reference':\s*return Section\.REFERENCE_LIBRARY;/.test(sectionNavTs) &&
+    (/case Section\.REFERENCE_LIBRARY:\s*return (WorkspaceKey\.REFERENCE|'reference');/.test(sectionNavTs) || /return getWorkspaceKeyForSection\(section\);/.test(sectionNavTs)) &&
+    (/case (WorkspaceKey\.REFERENCE|'reference'):\s*return Section\.REFERENCE_LIBRARY;/.test(sectionNavTs) || /return getSectionForWorkspaceKey\(workspace\);/.test(sectionNavTs)) &&
     /case Section\.REFERENCE_LIBRARY:\s*\{[\s\S]*\?workspace=\$\{workspace\}/.test(sectionNavTs)
   ) {
     passes.push('Reference Library has a route-backed workspace mapping through didactics navigation.');

@@ -30,6 +30,7 @@ import {
   STUDY_DESTINATION_EVENT,
 } from '../utils/studyDestinationState.ts';
 import { clearAlgorithmNavigatorLaunchContext } from '../utils/algorithmNavigatorNavigation.ts';
+import { WorkspaceKey, WORKSPACE_LABELS } from '../utils/didacticWorkspaces.ts';
 
 interface SidebarProps {
   currentSection: Section;
@@ -128,14 +129,14 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
     const { isSidebarOpen, toggleSidebar } = useUIState();
     const [tutorialRootOptions, setTutorialRootOptions] = useState<StudySubtopicScope[]>([]);
     const [tutorialSubtopicsByRoot, setTutorialSubtopicsByRoot] = useState<Record<string, StudySubtopicScope[]>>({});
-    const [activeTutorialRoot, setActiveTutorialRoot] = useState<string | undefined>(() => readStudyDestination('tutorials').majorTopicId);
-    const [activeTutorialSubtopic, setActiveTutorialSubtopic] = useState<string | undefined>(() => readStudyDestination('tutorials').subtopicId);
+    const [activeTutorialRoot, setActiveTutorialRoot] = useState<string | undefined>(() => readStudyDestination(WorkspaceKey.TUTORIALS).majorTopicId);
+    const [activeTutorialSubtopic, setActiveTutorialSubtopic] = useState<string | undefined>(() => readStudyDestination(WorkspaceKey.TUTORIALS).subtopicId);
     const lectureStudyTree = buildLectureStudyTree(promotedLectures);
     const algorithmStudyTree = buildAlgorithmStudyTree(didacticAlgorithms);
-    const [activeLectureRoot, setActiveLectureRoot] = useState<string | undefined>(() => readStudyDestination('lectures').majorTopicId);
-    const [activeLectureSubtopic, setActiveLectureSubtopic] = useState<string | undefined>(() => readStudyDestination('lectures').subtopicId);
-    const [activeAlgorithmCategory, setActiveAlgorithmCategory] = useState<string | undefined>(() => readStudyDestination('algorithms').majorTopicId);
-    const [activeAlgorithmSubtopic, setActiveAlgorithmSubtopic] = useState<string | undefined>(() => readStudyDestination('algorithms').subtopicId);
+    const [activeLectureRoot, setActiveLectureRoot] = useState<string | undefined>(() => readStudyDestination(WorkspaceKey.LECTURES).majorTopicId);
+    const [activeLectureSubtopic, setActiveLectureSubtopic] = useState<string | undefined>(() => readStudyDestination(WorkspaceKey.LECTURES).subtopicId);
+    const [activeAlgorithmCategory, setActiveAlgorithmCategory] = useState<string | undefined>(() => readStudyDestination(WorkspaceKey.ALGORITHMS).majorTopicId);
+    const [activeAlgorithmSubtopic, setActiveAlgorithmSubtopic] = useState<string | undefined>(() => readStudyDestination(WorkspaceKey.ALGORITHMS).subtopicId);
     const [activeCurriculumModuleId, setActiveCurriculumModuleId] = useState<string>(() => readCurriculumViewState()?.selectedId ?? '');
     const activeWorkspaceSection = resolveStudyWorkspaceSection(currentSection);
     const isStudyActive = [
@@ -153,33 +154,33 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
       Section.BREAST_SIGNOUT_MASTERCLASS,
     ].includes(currentSection);
     const foundationWorkspaceItems = [
-      { section: Section.PATHOLOGY_CURRICULUM, label: 'Curriculum' },
+      { section: Section.PATHOLOGY_CURRICULUM, label: WORKSPACE_LABELS[WorkspaceKey.CURRICULUM] },
     ];
     const reviewWorkspaceItems = [
       {
         section: Section.DIDACTIC_LECTURES,
-        label: 'Lectures',
+        label: WORKSPACE_LABELS[WorkspaceKey.LECTURES],
         onActivate: () => {
-          const nextDestination = pushStudyDestination('lectures', { kind: 'landing', previous: null });
+          const nextDestination = pushStudyDestination(WorkspaceKey.LECTURES, { kind: 'landing', previous: null });
           setActiveLectureRoot(nextDestination.majorTopicId);
           setActiveLectureSubtopic(nextDestination.subtopicId);
         },
       },
       {
         section: Section.DIDACTIC_TUTORIALS,
-        label: 'Tutorials',
+        label: WORKSPACE_LABELS[WorkspaceKey.TUTORIALS],
         onActivate: () => {
-          const nextDestination = pushStudyDestination('tutorials', { kind: 'landing', previous: null });
+          const nextDestination = pushStudyDestination(WorkspaceKey.TUTORIALS, { kind: 'landing', previous: null });
           setActiveTutorialRoot(nextDestination.majorTopicId);
           setActiveTutorialSubtopic(nextDestination.subtopicId);
         },
       },
       {
         section: Section.DIDACTIC_ALGORITHMS,
-        label: 'Workups',
+        label: WORKSPACE_LABELS[WorkspaceKey.ALGORITHMS],
         onActivate: () => {
           clearAlgorithmNavigatorLaunchContext();
-          const nextDestination = pushStudyDestination('algorithms', { kind: 'landing', previous: null });
+          const nextDestination = pushStudyDestination(WorkspaceKey.ALGORITHMS, { kind: 'landing', previous: null });
           setActiveAlgorithmCategory(nextDestination.majorTopicId);
           setActiveAlgorithmSubtopic(nextDestination.subtopicId);
         },
@@ -192,22 +193,22 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
       switch (activeWorkspaceSection) {
         case Section.PATHOLOGY_CURRICULUM:
           return {
-            title: 'Curriculum',
+            title: WORKSPACE_LABELS[WorkspaceKey.CURRICULUM],
             subtitle: 'Pick a topic.',
           };
         case Section.DIDACTIC_LECTURES:
           return {
-            title: 'Lectures',
+            title: WORKSPACE_LABELS[WorkspaceKey.LECTURES],
             subtitle: 'Pick a lecture topic.',
           };
         case Section.DIDACTIC_TUTORIALS:
           return {
-            title: 'Tutorials',
+            title: WORKSPACE_LABELS[WorkspaceKey.TUTORIALS],
             subtitle: 'Pick a tutorial topic.',
           };
         case Section.DIDACTIC_ALGORITHMS:
           return {
-            title: 'Workups',
+            title: WORKSPACE_LABELS[WorkspaceKey.ALGORITHMS],
             subtitle: 'Pick a workup.',
           };
         default:
@@ -220,7 +221,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
         return;
       }
       let isMounted = true;
-      const tutorialDestination = readStudyDestination('tutorials');
+      const tutorialDestination = readStudyDestination(WorkspaceKey.TUTORIALS);
       setActiveTutorialRoot(tutorialDestination.majorTopicId);
       setActiveTutorialSubtopic(tutorialDestination.subtopicId);
       void loadDidacticTutorials().then((tutorials) => {
@@ -249,19 +250,19 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
       };
 
       const syncSidebarDestination = () => {
-        const tutorialDestination = readStudyDestination('tutorials');
+        const tutorialDestination = readStudyDestination(WorkspaceKey.TUTORIALS);
         setActiveTutorialRoot(tutorialDestination.majorTopicId);
         setActiveTutorialSubtopic(
           readValidSubtopic(tutorialDestination.subtopicId, tutorialSubtopicsByRoot, tutorialDestination.majorTopicId)
         );
 
-        const lectureDestination = readStudyDestination('lectures');
+        const lectureDestination = readStudyDestination(WorkspaceKey.LECTURES);
         setActiveLectureRoot(lectureDestination.majorTopicId);
         setActiveLectureSubtopic(
           readValidSubtopic(lectureDestination.subtopicId, lectureStudyTree.subtopicsByRoot, lectureDestination.majorTopicId)
         );
 
-        const algorithmDestination = readStudyDestination('algorithms');
+        const algorithmDestination = readStudyDestination(WorkspaceKey.ALGORITHMS);
         setActiveAlgorithmCategory(algorithmDestination.majorTopicId);
         setActiveAlgorithmSubtopic(
           readValidSubtopic(
@@ -404,7 +405,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                     onClick={() => {
                       setActiveTutorialRoot(root.id);
                       setActiveTutorialSubtopic(undefined);
-                      pushStudyDestination('tutorials', {
+                      pushStudyDestination(WorkspaceKey.TUTORIALS, {
                         kind: 'topic_overview',
                         majorTopicId: root.id,
                       });
@@ -426,7 +427,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                     isActive={!activeTutorialSubtopic}
                     onClick={() => {
                       setActiveTutorialSubtopic(undefined);
-                      pushStudyDestination('tutorials', {
+                      pushStudyDestination(WorkspaceKey.TUTORIALS, {
                         kind: 'topic_overview',
                         majorTopicId: activeTutorialRoot,
                       });
@@ -442,7 +443,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                         key={`${activeTutorialRoot}-${scope.id}`}
                         onClick={() => {
                           setActiveTutorialSubtopic(scope.id);
-                          pushStudyDestination('tutorials', {
+                          pushStudyDestination(WorkspaceKey.TUTORIALS, {
                             kind: 'subtopic_overview',
                             majorTopicId: activeTutorialRoot,
                             subtopicId: scope.id,
@@ -473,7 +474,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                     onClick={() => {
                       setActiveLectureRoot(root.id);
                       setActiveLectureSubtopic(undefined);
-                      pushStudyDestination('lectures', {
+                      pushStudyDestination(WorkspaceKey.LECTURES, {
                         kind: 'topic_overview',
                         majorTopicId: root.id,
                       });
@@ -495,7 +496,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                     isActive={!activeLectureSubtopic}
                     onClick={() => {
                       setActiveLectureSubtopic(undefined);
-                      pushStudyDestination('lectures', {
+                      pushStudyDestination(WorkspaceKey.LECTURES, {
                         kind: 'topic_overview',
                         majorTopicId: activeLectureRoot,
                       });
@@ -509,7 +510,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                       key={`${activeLectureRoot}-${scope.id}`}
                       onClick={() => {
                         setActiveLectureSubtopic(scope.id);
-                        pushStudyDestination('lectures', {
+                        pushStudyDestination(WorkspaceKey.LECTURES, {
                           kind: 'subtopic_overview',
                           majorTopicId: activeLectureRoot,
                           subtopicId: scope.id,
@@ -539,7 +540,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                     onClick={() => {
                       setActiveAlgorithmCategory(category.id);
                       setActiveAlgorithmSubtopic(undefined);
-                      pushStudyDestination('algorithms', {
+                      pushStudyDestination(WorkspaceKey.ALGORITHMS, {
                         kind: 'topic_overview',
                         majorTopicId: category.id,
                       });
@@ -561,7 +562,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                     isActive={!activeAlgorithmSubtopic}
                     onClick={() => {
                       setActiveAlgorithmSubtopic(undefined);
-                      pushStudyDestination('algorithms', {
+                      pushStudyDestination(WorkspaceKey.ALGORITHMS, {
                         kind: 'topic_overview',
                         majorTopicId: activeAlgorithmCategory,
                       });
@@ -577,7 +578,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                         key={entry.id}
                         onClick={() => {
                           setActiveAlgorithmSubtopic(entry.id);
-                          pushStudyDestination('algorithms', {
+                          pushStudyDestination(WorkspaceKey.ALGORITHMS, {
                             kind: 'subtopic_overview',
                             majorTopicId: activeAlgorithmCategory,
                             subtopicId: entry.id,

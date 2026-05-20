@@ -1,6 +1,11 @@
 import { Section, type ActiveStudyDestination, type StudyWorkspace } from '../types.ts';
 import { clearAlgorithmNavigatorLaunchContext } from './algorithmNavigatorNavigation.ts';
 import { readSessionState, writeSessionState } from './viewStateStorage.ts';
+import { 
+  WorkspaceKey, 
+  getStudyWorkspaceForSection, 
+  getSectionForWorkspaceKey 
+} from './didacticWorkspaces.ts';
 
 const STORAGE_KEY = 'didactic_series_study_destinations';
 export const STUDY_DESTINATION_EVENT = 'didactics-study-destination-change';
@@ -32,28 +37,11 @@ const writeAllStudyDestinations = (value: StoredStudyDestinations) => {
 };
 
 export const workspaceForSection = (section: Section): StudyWorkspace | null => {
-  switch (section) {
-    case Section.LECTURE:
-    case Section.DIDACTIC_LECTURES:
-      return 'lectures';
-    case Section.DIDACTIC_TUTORIALS:
-      return 'tutorials';
-    case Section.DIDACTIC_ALGORITHMS:
-      return 'algorithms';
-    default:
-      return null;
-  }
+  return getStudyWorkspaceForSection(section);
 };
 
 export const sectionForWorkspace = (workspace: StudyWorkspace): Section => {
-  switch (workspace) {
-    case 'tutorials':
-      return Section.DIDACTIC_TUTORIALS;
-    case 'lectures':
-      return Section.DIDACTIC_LECTURES;
-    case 'algorithms':
-      return Section.DIDACTIC_ALGORITHMS;
-  }
+  return getSectionForWorkspaceKey(workspace) ?? Section.HOME;
 };
 
 export const readStudyDestination = (workspace: StudyWorkspace): ActiveStudyDestination =>
