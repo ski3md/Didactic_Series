@@ -128,7 +128,7 @@ const AppContent: React.FC<{
           onToggleFocusMode={toggleFocusMode}
           navigation={navigation}
         />
-        <main className={`flex-1 overflow-y-auto ${displayedSection === Section.LECTURE ? '' : preferences.focusMode ? 'mx-auto w-full max-w-5xl p-4 sm:p-5 lg:p-6' : 'mx-auto w-full max-w-7xl p-4 sm:p-6 md:p-8 lg:p-10'}`}>
+        <main className={`flex-1 overflow-y-auto ${displayedSection === Section.LECTURE ? '' : preferences.focusMode ? 'mx-auto w-full max-w-5xl p-4 sm:p-5 lg:p-6' : 'w-full p-4 sm:p-6 md:p-8 lg:p-10'}`}>
           <WorkspaceErrorBoundary sectionName={displayedSection} onNavigate={onSectionSelect}>
             {renderSection()}
           </WorkspaceErrorBoundary>
