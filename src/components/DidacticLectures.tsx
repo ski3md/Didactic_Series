@@ -1677,6 +1677,14 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                     <p className="mt-3 text-sm text-slate-700">
                       Open the lecture below and work straight through the signout-focused sections.
                     </p>
+                    <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                      <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">
+                        Scope: {activeLectureSubtopicItems[0]?.tags?.slice(0, 4).join(' · ') || activeLectureSubtopicItems[0]?.category || activeLectureSubtopic.label}
+                      </span>
+                      <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">
+                        Next: open the first lecture
+                      </span>
+                    </div>
                   </div>
                   {activeLectureSubtopicItems[0] && (
                     <button
