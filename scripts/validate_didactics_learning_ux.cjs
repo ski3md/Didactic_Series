@@ -525,6 +525,26 @@ const evaluateWorkspaceRoutingSemantics = ({
     issues.push('Sidebar does not reset every didactics workspace to a fresh landing state before cross-workspace navigation.');
   }
 
+  for (const workspace of workspaceRoutingExpectations) {
+    const readPattern = new RegExp(`readStudyDestination\\('${workspace.workspace}'\\)`);
+    const pushPattern = new RegExp(`pushStudyDestination\\('${workspace.workspace}'`);
+    const resetPattern = new RegExp(
+      `pushStudyDestination\\('${workspace.workspace}',\\s*\\{\\s*kind:\\s*'landing',\\s*previous:\\s*null\\s*\\}\\)`
+    );
+
+    if (readPattern.test(sidebarTsx) && pushPattern.test(sidebarTsx)) {
+      passes.push(`Sidebar uses the shared study-destination contract for ${workspace.workspace}.`);
+    } else {
+      issues.push(`Sidebar does not use the shared study-destination contract for ${workspace.workspace}.`);
+    }
+
+    if (resetPattern.test(sidebarTsx)) {
+      passes.push(`Sidebar applies the canonical landing reset for ${workspace.workspace}.`);
+    } else {
+      issues.push(`Sidebar is missing the canonical landing reset for ${workspace.workspace}.`);
+    }
+  }
+
   if (/item\.onActivate\?\.\(\);\s*onSectionChange\(item\.section\);/.test(workspaceNavTsx)) {
     passes.push('Workspace switch clicks activate routed workspace state before section selection changes.');
   } else {

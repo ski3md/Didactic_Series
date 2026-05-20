@@ -260,8 +260,11 @@ describe('validate_didactics_learning_ux helpers', () => {
         if (nextDestination?.workspace === 'algorithms') { setDestination(nextDestination); }
       `,
       sidebarTsx: `
+        readStudyDestination('lectures')
         pushStudyDestination('lectures', { kind: 'landing', previous: null })
+        readStudyDestination('tutorials')
         pushStudyDestination('tutorials', { kind: 'landing', previous: null })
+        readStudyDestination('algorithms')
         pushStudyDestination('algorithms', { kind: 'landing', previous: null })
       `,
       workspaceNavTsx: 'item.onActivate?.(); onSectionChange(item.section);',

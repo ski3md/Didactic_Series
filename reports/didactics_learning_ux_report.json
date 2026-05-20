@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T03:13:01.348Z",
+  "generatedAt": "2026-05-20T04:21:51.472Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -73,6 +73,12 @@
     "Lectures resolves routed intents into a lecture workspace overview before detail.",
     "Workups resolves routed intents into governed algorithm topic or subtopic views.",
     "Sidebar resets each didactics workspace to a fresh landing state before cross-workspace navigation.",
+    "Sidebar uses the shared study-destination contract for lectures.",
+    "Sidebar applies the canonical landing reset for lectures.",
+    "Sidebar uses the shared study-destination contract for tutorials.",
+    "Sidebar applies the canonical landing reset for tutorials.",
+    "Sidebar uses the shared study-destination contract for algorithms.",
+    "Sidebar applies the canonical landing reset for algorithms.",
     "Workspace switch clicks activate routed workspace state before section selection changes.",
     "Study destination history preserves pathname, query string, and hash for refresh stability.",
     "Study destination writes routed workspace state into browser history for refresh and back-forward restore.",
