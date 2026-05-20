@@ -1,0 +1,190 @@
+{
+  "generatedAt": "2026-05-20T10:51:21.287Z",
+  "source": "reports/validated_mappings_manifest.json",
+  "summary": {
+    "exceptionCount": 13,
+    "byPrecisionMode": {
+      "cross-domain-governed": 2,
+      "nearest-valid-deep": 11
+    },
+    "byRoot": {
+      "Blood Banking/Transfusion Medicine": 1,
+      "Chemical Pathology": 1,
+      "Chemical Pathology + Blood Banking/Transfusion Medicine": 1,
+      "Hematopathology for Clinical Pathology": 4,
+      "Management and Informatics": 3,
+      "Medical Microbiology": 3
+    }
+  },
+  "rows": [
+    {
+      "id": "respiratory-viruses",
+      "key": "src/content/tutorials/tutorials.normalized.json::respiratory-viruses",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Medical Microbiology",
+      "abpathPrimaryPath": "Medical Microbiology > Viruses and Prions > Specific Viruses",
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "Didactics governance review",
+      "reviewAction": "Keep respiratory virus teaching under CP microbiology unless a narrower governed virus cluster is added later.",
+      "rationale": "respiratory-virus teaching spans multiple organism nodes, so the validated microbiology umbrella is safer than an AP pulmonary infection match"
+    },
+    {
+      "id": "topic-mb-3-a",
+      "key": "src/content/downloads_imports/normalized/tutorials.normalized.json::topic-mb-3-a",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Medical Microbiology",
+      "abpathPrimaryPath": "Medical Microbiology > Viruses and Prions > Specific Viruses",
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "Didactics governance review",
+      "reviewAction": "Keep respiratory virus teaching under CP microbiology unless a narrower governed virus cluster is added later.",
+      "rationale": "respiratory-virus teaching spans multiple organism nodes, so the validated microbiology umbrella is safer than an AP pulmonary infection match"
+    },
+    {
+      "id": "topic-mol-1",
+      "key": "src/content/downloads_imports/normalized/tutorials.normalized.json::topic-mol-1",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Hematopathology for Clinical Pathology",
+      "abpathPrimaryPath": "Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > Molecular Testing",
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "CP governance review",
+      "reviewAction": "Keep molecular methods teaching subordinate to the validated CP testing anchor.",
+      "rationale": "workflow concept distributed across multiple spec nodes"
+    },
+    {
+      "id": "topic-mol-2",
+      "key": "src/content/downloads_imports/normalized/tutorials.normalized.json::topic-mol-2",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Hematopathology for Clinical Pathology",
+      "abpathPrimaryPath": "Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > Molecular Testing",
+      "abpathPrecisionMode": "cross-domain-governed",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "CP governance review",
+      "reviewAction": "Present the disease-site labels as board-mastery teaching focus under the CP molecular testing frame.",
+      "rationale": "This tutorial teaches method-centered molecular interpretation across disease sites; ABPath CP supports a governed testing anchor, but not a literal solid-tumor molecular node."
+    },
+    {
+      "id": "topic-mol-3",
+      "key": "src/content/downloads_imports/normalized/tutorials.normalized.json::topic-mol-3",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Hematopathology for Clinical Pathology",
+      "abpathPrimaryPath": "Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > Molecular Testing",
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "high",
+      "reviewOwner": "CP governance review",
+      "reviewAction": "Promote under the CP hematopathology testing frame and keep entity-specific molecular labels subordinate.",
+      "rationale": "disease narrower than CP spec"
+    },
+    {
+      "id": "cp-micro-methods-ast-studio",
+      "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-micro-methods-ast-studio",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Medical Microbiology",
+      "abpathPrimaryPath": "Medical Microbiology > Bacteria, including Mycobacteria, Nocardia, and other Aerobic Actinomycetes > Identification Methods and Instrumentation",
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "Didactics governance review",
+      "reviewAction": "Complete CP governance review before promotion.",
+      "rationale": "workflow concept distributed across multiple spec nodes"
+    },
+    {
+      "id": "cp-flow-heme-studio",
+      "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-flow-heme-studio",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Hematopathology for Clinical Pathology",
+      "abpathPrimaryPath": "Hematopathology for Clinical Pathology > Testing in Hematology and Hematopathology > Flow Cytometry",
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "Didactics governance review",
+      "reviewAction": "Complete CP governance review before promotion.",
+      "rationale": "interactive artifact teaches operational interpretation"
+    },
+    {
+      "id": "cp-dat-transfusion-studio",
+      "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-dat-transfusion-studio",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Blood Banking/Transfusion Medicine",
+      "abpathPrimaryPath": "Blood Banking/Transfusion Medicine > Clinical Practice > Autoimmune Hemolytic Anemia",
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "Didactics governance review",
+      "reviewAction": "Complete CP governance review before promotion.",
+      "rationale": "workflow concept distributed across multiple spec nodes"
+    },
+    {
+      "id": "cp-mgmt-break-even-studio",
+      "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-mgmt-break-even-studio",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Management and Informatics",
+      "abpathPrimaryPath": "Management and Informatics > Budgeting and Financial > Management of Unit Costs",
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "Didactics governance review",
+      "reviewAction": "Complete CP governance review before promotion.",
+      "rationale": "interactive artifact teaches operational interpretation"
+    },
+    {
+      "id": "cp-mgmt-reagent-rental-studio",
+      "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-mgmt-reagent-rental-studio",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Management and Informatics",
+      "abpathPrimaryPath": "Management and Informatics > Budgeting and Financial",
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "Didactics governance review",
+      "reviewAction": "Complete CP governance review before promotion.",
+      "rationale": "modern entity not literal in spec"
+    },
+    {
+      "id": "cp-mgmt-productivity-studio",
+      "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-mgmt-productivity-studio",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Management and Informatics",
+      "abpathPrimaryPath": "Management and Informatics > Budgeting and Financial",
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "Didactics governance review",
+      "reviewAction": "Complete CP governance review before promotion.",
+      "rationale": "interactive artifact teaches operational interpretation"
+    },
+    {
+      "id": "cp-chemical-path-endocrine-studio",
+      "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-chemical-path-endocrine-studio",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Chemical Pathology",
+      "abpathPrimaryPath": "Chemical Pathology > The Adrenal Cortex > Adrenocortical Steroids > General Biochemistry and Metabolism of Adrenocortical Steroids",
+      "abpathPrecisionMode": "nearest-valid-deep",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "Didactics governance review",
+      "reviewAction": "Complete CP governance review before promotion.",
+      "rationale": "disease narrower than CP spec"
+    },
+    {
+      "id": "cp-immune-lipid-studio",
+      "key": "src/content/tutorials/clinicalPathInteractiveTutorials.json::cp-immune-lipid-studio",
+      "track": "clinical-path",
+      "abpathDomain": "CP",
+      "abpathRoot": "Chemical Pathology + Blood Banking/Transfusion Medicine",
+      "abpathPrimaryPath": "Chemical Pathology > Lipids, Lipoproteins and Apolipoproteins",
+      "abpathPrecisionMode": "cross-domain-governed",
+      "abpathAnchorConfidence": "moderate",
+      "reviewOwner": "Didactics governance review",
+      "reviewAction": "Complete CP governance review before promotion.",
+      "rationale": "The lipid branch is governed by Chemical Pathology while the allorecognition branch borrows HLA significance from the transfusion and transplant side of CP. The tutorial is kept together because it teaches mechanism-linked interpretation across those adjacent CP domains."
+    }
+  ]
+}
