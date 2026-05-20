@@ -85,6 +85,14 @@ interface MorphologyGatewayCard {
   description: string;
   focusTerms: string[];
   previewImages: SupplementalReferenceImage[];
+  uncertainty: PathologyStateSignal;
+  operationalState: PathologyStateSignal;
+}
+
+interface PathologyStateSignal {
+  label: string;
+  cue: string;
+  tone: string;
 }
 
 const signoutImages = (signoutImageReferenceIndex.images ?? []) as SignoutReferenceImage[];
@@ -179,6 +187,97 @@ const supplementalImageSrc = (image: SupplementalReferenceImage) => {
   if (image.imageUrl?.startsWith('/@fs/')) return `${import.meta.env.BASE_URL.replace(/\/$/, '')}${image.imageUrl}`;
   if (image.imageUrl) return image.imageUrl;
   return `${import.meta.env.BASE_URL}${image.localPath}`;
+};
+
+const PATHOLOGY_GATEWAY_STATE_MAP: Record<
+  string,
+  {
+    uncertainty: PathologyStateSignal;
+    operationalState: PathologyStateSignal;
+  }
+> = {
+  'spindle cell': {
+    uncertainty: { label: 'Differential only', cue: 'Broad mimic set', tone: 'bg-amber-50 text-amber-900 border-amber-200' },
+    operationalState: { label: 'Ancillary pending', cue: 'Stain panel likely', tone: 'bg-sky-50 text-sky-900 border-sky-200' },
+  },
+  papillary: {
+    uncertainty: { label: 'Favored pattern', cue: 'Architecture leads first', tone: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+    operationalState: { label: 'Differential open', cue: 'Compare organ-specific mimics', tone: 'bg-violet-50 text-violet-900 border-violet-200' },
+  },
+  basaloid: {
+    uncertainty: { label: 'Suspicious pattern', cue: 'Avoid early closure', tone: 'bg-rose-50 text-rose-900 border-rose-200' },
+    operationalState: { label: 'Consensus helpful', cue: 'High-risk mimic zone', tone: 'bg-orange-50 text-orange-900 border-orange-200' },
+  },
+  mucinous: {
+    uncertainty: { label: 'Favored pattern', cue: 'Correlate context', tone: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+    operationalState: { label: 'Site check pending', cue: 'Primary versus spread', tone: 'bg-sky-50 text-sky-900 border-sky-200' },
+  },
+  'clear cell': {
+    uncertainty: { label: 'Suspicious pattern', cue: 'Mimics stay open', tone: 'bg-rose-50 text-rose-900 border-rose-200' },
+    operationalState: { label: 'Molecular pending', cue: 'Classification may shift', tone: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
+  },
+  biphasic: {
+    uncertainty: { label: 'Differential only', cue: 'Two-compartment review', tone: 'bg-amber-50 text-amber-900 border-amber-200' },
+    operationalState: { label: 'Consensus needed', cue: 'Pattern split matters', tone: 'bg-orange-50 text-orange-900 border-orange-200' },
+  },
+  necrotic: {
+    uncertainty: { label: 'Cannot exclude', cue: 'Artifact and grade both matter', tone: 'bg-rose-50 text-rose-900 border-rose-200' },
+    operationalState: { label: 'Deeper review pending', cue: 'Necrosis changes wording', tone: 'bg-orange-50 text-orange-900 border-orange-200' },
+  },
+  granulomatous: {
+    uncertainty: { label: 'Descriptive first', cue: 'Name the reaction pattern', tone: 'bg-slate-100 text-slate-900 border-slate-300' },
+    operationalState: { label: 'Stain correlation pending', cue: 'AFB and GMS often decide', tone: 'bg-sky-50 text-sky-900 border-sky-200' },
+  },
+  'small blue cell': {
+    uncertainty: { label: 'Differential only', cue: 'Do not force a single call', tone: 'bg-amber-50 text-amber-900 border-amber-200' },
+    operationalState: { label: 'Ancillary pending', cue: 'Immunophenotype drives next step', tone: 'bg-sky-50 text-sky-900 border-sky-200' },
+  },
+  oncocytic: {
+    uncertainty: { label: 'Descriptive first', cue: 'Cytoplasm is not diagnosis', tone: 'bg-slate-100 text-slate-900 border-slate-300' },
+    operationalState: { label: 'Differential open', cue: 'Use site and stain context', tone: 'bg-violet-50 text-violet-900 border-violet-200' },
+  },
+  'gland-forming': {
+    uncertainty: { label: 'Favored pattern', cue: 'Architecture supports gland origin', tone: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+    operationalState: { label: 'Staging check pending', cue: 'Invasion wording matters', tone: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
+  },
+};
+
+const defaultPathologyState = (
+  label: string,
+  cue: string,
+  tone = 'bg-slate-100 text-slate-900 border-slate-300'
+): PathologyStateSignal => ({ label, cue, tone });
+
+const inferPathologySignals = (...values: Array<string | undefined>) => {
+  const haystack = values.filter(Boolean).join(' ').toLowerCase();
+
+  let uncertainty = defaultPathologyState('Descriptive first', 'Name the pattern before closure');
+  if (/\bfavor|\bfavoured|\bfavored\b/.test(haystack)) {
+    uncertainty = defaultPathologyState('Favored pattern', 'Most likely diagnosis is visible', 'bg-emerald-50 text-emerald-900 border-emerald-200');
+  } else if (/\bsuspicious|\batypical|\bconcerning\b/.test(haystack)) {
+    uncertainty = defaultPathologyState('Suspicious pattern', 'Escalate before final wording', 'bg-rose-50 text-rose-900 border-rose-200');
+  } else if (/\bcannot exclude|\bdefer|\bindeterminate\b/.test(haystack)) {
+    uncertainty = defaultPathologyState('Cannot exclude', 'Keep the wording open', 'bg-rose-50 text-rose-900 border-rose-200');
+  } else if (/\bdifferential|\bmimic|\bversus\b/.test(haystack)) {
+    uncertainty = defaultPathologyState('Differential only', 'Mimics still active', 'bg-amber-50 text-amber-900 border-amber-200');
+  } else if (/\bdescriptive|\breactive|\bgranulomatous\b/.test(haystack)) {
+    uncertainty = defaultPathologyState('Descriptive first', 'Reaction pattern leads first', 'bg-slate-100 text-slate-900 border-slate-300');
+  }
+
+  let operationalState = defaultPathologyState('Reviewed example', 'Ready for teaching review', 'bg-emerald-50 text-emerald-900 border-emerald-200');
+  if (/\bfrozen\b/.test(haystack)) {
+    operationalState = defaultPathologyState('Frozen pending permanent', 'Use limited-call language', 'bg-orange-50 text-orange-900 border-orange-200');
+  } else if (/\bmolecular|\bkras|\bngs|\bmutation|\bbiomarker\b/.test(haystack)) {
+    operationalState = defaultPathologyState('Molecular pending', 'Result may change classification', 'bg-indigo-50 text-indigo-900 border-indigo-200');
+  } else if (/\bck7|\bpax8|\bttf1|\bgata3|\bafb|\bgms|\bpas|\bimmun/i.test(haystack)) {
+    operationalState = defaultPathologyState('Ancillary pending', 'Stain evidence is part of the workup', 'bg-sky-50 text-sky-900 border-sky-200');
+  } else if (/\bcompare|\bmimic|\bdifferential|\bversus\b/.test(haystack)) {
+    operationalState = defaultPathologyState('Differential open', 'Compare close look-alikes', 'bg-violet-50 text-violet-900 border-violet-200');
+  } else if (/\bdiscordance|\bqa|\bsafety critical\b/.test(haystack)) {
+    operationalState = defaultPathologyState('QA flagged', 'High-cost miss pattern', 'bg-rose-50 text-rose-900 border-rose-200');
+  }
+
+  return { uncertainty, operationalState };
 };
 
 const matchesSupplementalSearch = (image: SupplementalReferenceImage, searchTerm: string) => {
@@ -301,6 +400,12 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
           description: `Open a ${tag} differential review with example images and the closest morphology matches.`,
           focusTerms: [tag, ...previewImages.map((image) => normalizePathologyTitle(image.title)).slice(0, 2)],
           previewImages,
+          uncertainty:
+            PATHOLOGY_GATEWAY_STATE_MAP[tag]?.uncertainty ??
+            defaultPathologyState('Differential only', 'Pattern opens the workup', 'bg-amber-50 text-amber-900 border-amber-200'),
+          operationalState:
+            PATHOLOGY_GATEWAY_STATE_MAP[tag]?.operationalState ??
+            defaultPathologyState('Differential open', 'Use the closest mimics first', 'bg-violet-50 text-violet-900 border-violet-200'),
         };
       }),
     [filteredSupplementalImages, supplementalMorphologyOptions]
@@ -644,7 +749,29 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                   <div className="space-y-2 p-4">
                     <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Diagnostic approach</div>
                     <div className="text-lg font-semibold capitalize text-slate-950">{card.title}</div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {[card.uncertainty, card.operationalState].map((signal) => (
+                        <span
+                          key={`${card.tag}-${signal.label}`}
+                          className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${signal.tone}`}
+                        >
+                          {signal.label}
+                        </span>
+                      ))}
+                    </div>
                     <p className="text-sm leading-6 text-slate-700">{card.description}</p>
+                    <div className="grid gap-2 sm:grid-cols-2">
+                      <div className="rounded-xl bg-slate-50 px-3 py-2">
+                        <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Uncertainty state</div>
+                        <div className="mt-1 text-sm font-semibold text-slate-900">{card.uncertainty.label}</div>
+                        <div className="text-xs text-slate-600">{card.uncertainty.cue}</div>
+                      </div>
+                      <div className="rounded-xl bg-slate-50 px-3 py-2">
+                        <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Operational state</div>
+                        <div className="mt-1 text-sm font-semibold text-slate-900">{card.operationalState.label}</div>
+                        <div className="text-xs text-slate-600">{card.operationalState.cue}</div>
+                      </div>
+                    </div>
                     <div className="flex flex-wrap gap-1.5">
                       {card.focusTerms.slice(0, 3).map((term) => (
                         <span
@@ -1076,6 +1203,17 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
         <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5">
           {visibleSupplementalImages.map((image) => (
             <article key={image.id} className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+              {(() => {
+                const { uncertainty, operationalState } = inferPathologySignals(
+                  image.title,
+                  image.caption,
+                  image.sourceDocument,
+                  image.sourceRelativePath,
+                  inferMorphologyTags(image.title, image.caption, image.sourceDocument).join(' '),
+                  inferStain(image.title, image.caption, image.sourceDocument),
+                );
+                return (
+                  <>
               <img
                 src={supplementalImageSrc(image)}
                 alt={supplementalCaption(image)}
@@ -1092,6 +1230,11 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                           {chip}
                         </span>
                       ))}
+                    {[uncertainty, operationalState].map((signal) => (
+                      <span key={`${image.id}-${signal.label}`} className={`rounded-md border px-2 py-0.5 text-[11px] font-semibold ${signal.tone}`}>
+                        {signal.label}
+                      </span>
+                    ))}
                   </div>
                   <h3 className="mt-2 text-sm font-semibold leading-5 text-slate-950">
                     {normalizePathologyTitle(image.title)}
@@ -1100,11 +1243,26 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                     {inferMorphologyTags(image.title, image.caption, image.sourceDocument).slice(0, 4).join(' • ') || supplementalCaption(image)}
                   </p>
                 </div>
+                <div className="grid gap-2 sm:grid-cols-2">
+                  <div className="rounded-lg bg-slate-50 px-2.5 py-2">
+                    <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Uncertainty</div>
+                    <div className="mt-1 text-xs font-semibold text-slate-900">{uncertainty.label}</div>
+                    <div className="text-[11px] leading-4 text-slate-600">{uncertainty.cue}</div>
+                  </div>
+                  <div className="rounded-lg bg-slate-50 px-2.5 py-2">
+                    <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Workflow state</div>
+                    <div className="mt-1 text-xs font-semibold text-slate-900">{operationalState.label}</div>
+                    <div className="text-[11px] leading-4 text-slate-600">{operationalState.cue}</div>
+                  </div>
+                </div>
                 <div className="border-t border-slate-100 pt-2 text-[11px] leading-4 text-slate-500">
                   <div>{supplementalSourceLabel(image)}</div>
                   {image.sourceRelativePath && <div className="truncate" title={image.sourceRelativePath}>{image.sourceRelativePath}</div>}
                 </div>
               </div>
+                  </>
+                );
+              })()}
             </article>
           ))}
         </div>
