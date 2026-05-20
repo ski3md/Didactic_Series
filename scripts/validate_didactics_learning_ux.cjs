@@ -82,8 +82,8 @@ const WORKSPACE_EXPECTATIONS = [
     labelLiteral: 'WORKSPACE_LABELS[WorkspaceKey.ALGORITHMS]',
     componentName: 'AlgorithmNavigator',
     destinationWorkspace: 'algorithms',
-    componentIdentityPatterns: [/\bWorkups\b/, /\bDiagnostic areas\b/, /\bChoose a diagnostic workup\b/],
-    landingSummaryPatterns: [/Current review:\s*Workups/, /Next:\s*open one diagnostic area/],
+    componentIdentityPatterns: [/\bWorkups\b/, /\bAreas\b/, /\bChoose a workup\b/],
+    landingSummaryPatterns: [/Current review:\s*Workups/, /Next:\s*open one area/],
   },
 ];
 
@@ -422,8 +422,8 @@ const evaluateHierarchySemantics = ({
     appearsInOrder(algorithmsTsx, [
       /Current review:\s*Workups/,
       /(Resume last workup|Return to topic)/,
-      /(Browse areas|Open the diagnostic areas)/,
-      /Diagnostic areas/,
+      /(Browse areas|Open the areas)/,
+      /Areas/,
     ])
   ) {
     passes.push('Workup landing exposes a direct resume-or-start CTA and a browse CTA before the diagnostic-area grid.');
@@ -461,7 +461,7 @@ const evaluateHierarchySemantics = ({
     appearsInOrder(algorithmsTsx, [
       /Major topic/,
       /Scope:/,
-      /Next:\s*open the first (differential or workup|workup)/,
+      /Next:\s*open the first (group|path)/,
       /Open .*|Back to workups/,
     ])
   ) {
@@ -500,7 +500,7 @@ const evaluateHierarchySemantics = ({
     appearsInOrder(algorithmsTsx, [
       /Workups/,
       /Scope:/,
-      /Next:\s*open the first workup/,
+      /Next:\s*open the first path/,
       /Open .*|Start here/,
     ])
   ) {

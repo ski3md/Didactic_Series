@@ -150,7 +150,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         curriculum: 'Start here Common diagnostic patterns Choose another module',
         lectures: 'Lectures Choose a teaching topic Current review: Lectures Next: open one topic Continue where you left off',
         tutorials: 'Tutorials Resume topic Current review: Tutorials Next: choose one major topic Open the reviewed topic instead',
-        algorithms: 'Workups Choose a diagnostic workup Diagnostic areas Current review: Workups Next: open one diagnostic area',
+        algorithms: 'Workups Choose a workup Areas Current review: Workups Next: open one area',
       },
     });
 
@@ -223,7 +223,7 @@ describe('validate_didactics_learning_ux helpers', () => {
       componentTexts: {
         lectures: 'Lectures Choose a teaching topic Resume last lecture',
         tutorials: 'Tutorials Resume topic Open the reviewed topic instead',
-        algorithms: 'Workups Choose a diagnostic workup Diagnostic areas',
+        algorithms: 'Workups Choose a workup Areas',
       },
     });
 
@@ -588,16 +588,16 @@ describe('validate_didactics_learning_ux helpers', () => {
         <div>Current review: Workups</div>
         <div>Resume last workup</div>
         <div>Browse areas</div>
-        <div>Open the diagnostic areas</div>
-        <div>Diagnostic areas</div>
+        <div>Open the areas</div>
+        <div>Areas</div>
         <div>Major topic</div>
         <div>Scope: QC failure response</div>
-        <div>Next: open the first differential or workup</div>
+        <div>Next: open the first group</div>
         <button>Open QC failure response</button>
         <button>Back to workups</button>
         <div>Workups</div>
         <div>Scope: QC failure response</div>
-        <div>Next: open the first workup</div>
+        <div>Next: open the first path</div>
         <button>Open QC Failure Response</button>
         <div>Diagnostic focus</div>
         <LectureAlgorithmPlayer />

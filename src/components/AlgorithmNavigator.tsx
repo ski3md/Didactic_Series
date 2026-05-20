@@ -246,8 +246,8 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
   );
   const activeAlgorithmOverview =
     activeAlgorithmRoot === 'Clinical Pathology'
-      ? 'Clinical Pathology diagnostic workups for QC response, method oversight, LIS safety, and assay-planning decisions.'
-      : 'Choose one differential or workup to review.';
+      ? 'Clinical Pathology study paths for QC response, method checks, LIS safety, and assay planning.'
+      : 'Choose one group to review.';
   const landingResumeLabel = formatAlgorithmDestinationLabel(previousDestination, entries);
   const activeNodeCount = selectedAlgorithm ? Object.keys(selectedAlgorithm.nodes).length : 0;
   const activePitfalls = selectedAlgorithm ? collectAlgorithmPitfalls(selectedAlgorithm) : [];
@@ -396,19 +396,19 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
               <div className="grid gap-6 xl:grid-cols-[minmax(0,1.6fr)_minmax(240px,0.8fr)] xl:items-start">
                 <div className="min-w-0">
                   <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Workups</div>
-                  <h2 className="mt-2 font-serif text-2xl font-semibold text-slate-900">Choose a diagnostic workup</h2>
+                  <h2 className="mt-2 font-serif text-2xl font-semibold text-slate-900">Choose a workup</h2>
                   <p className="mt-2 text-sm leading-6 text-slate-600">
-                    Choose a diagnostic area, narrow to one differential or workup, then open the approach you want to review.
+                    Open an area, choose a group or path, then open the approach you want to review.
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2 text-sm">
                     <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">Current review: Workups</span>
-                    <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">Next: open one diagnostic area</span>
+                    <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">Next: open one area</span>
                   </div>
                 </div>
                 <div className="rounded-2xl border border-sky-100 bg-sky-50 px-4 py-3 xl:justify-self-end">
                   <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Current area</div>
                   <div className="mt-2 text-sm font-semibold text-slate-900">Workups</div>
-                  <div className="mt-1 text-sm text-slate-600">{algorithmStudyTree.roots.length} diagnostic areas ready</div>
+                  <div className="mt-1 text-sm text-slate-600">{algorithmStudyTree.roots.length} areas ready</div>
                 </div>
               </div>
             </Card>
@@ -461,7 +461,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                   {shouldPreferCurriculumReturn
                     ? 'Go back to the review set that opened this page.'
                     : previousDestination
-                    ? 'Return to the last diagnostic workup you opened without going back through the full list.'
+                    ? 'Return to the last path you opened without going back through the full list.'
                     : 'Your last algorithm page will appear here after you open one.'}
                 </p>
               </button>
@@ -477,15 +477,15 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
               >
                 <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Browse areas</div>
                 <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
-                  Open the diagnostic areas
+                  Open the areas
                 </div>
                 <p className="mt-2 text-sm text-slate-600">
-                  Open one diagnostic area, narrow to a differential or workup, then start the diagnostic approach itself.
+                  Open an area, choose a group or path, then start the diagnostic approach itself.
                 </p>
               </button>
             </div>
             <div className="space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic areas</div>
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Areas</div>
               <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                 {algorithmStudyTree.roots.slice(0, preferences.focusMode ? 3 : 4).map((root) => (
                 <button
@@ -496,7 +496,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                 >
                   <div className="font-semibold text-slate-900">{root.label}</div>
                   <div className="mt-2 text-sm text-slate-600">
-                    {(algorithmStudyTree.subtopicsByRoot[root.id] ?? []).length} differentials or workups
+                    {(algorithmStudyTree.subtopicsByRoot[root.id] ?? []).length} groups or paths
                   </div>
                 </button>
               ))}
@@ -524,7 +524,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                       Scope: {activeAlgorithmSubtopics[0]?.label ?? filteredEntries[0]?.title ?? activeAlgorithmRoot}
                     </span>
                     <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">
-                      {activeAlgorithmSubtopics.length > 0 ? 'Next: open the first differential or workup' : 'Next: open the first workup'}
+                      {activeAlgorithmSubtopics.length > 0 ? 'Next: open the first group' : 'Next: open the first path'}
                     </span>
                   </div>
                 </div>
@@ -555,7 +555,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
               </div>
               {activeAlgorithmSubtopics.length > 0 && familyLeadEntry && (
                 <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Review next</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Open next</div>
                   <div className="mt-2 text-sm font-semibold text-slate-900">{activeAlgorithmSubtopics[0].label}</div>
                   <div className="mt-1 text-sm text-slate-600">Then review {familyLeadEntry.title}.</div>
                 </div>
@@ -594,15 +594,15 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                   className="rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
                   >
                     <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        {index === 0 ? 'Start here' : 'Differential / workup'}
+                        {index === 0 ? 'Start here' : 'Group'}
                       </div>
                       <div className="mt-2 font-serif text-lg font-semibold leading-snug text-slate-900">{scope.label}</div>
                     <div className="mt-2 text-sm text-slate-600">
-                      {filteredEntries.filter((entry) => entry.patternFamily === scope.id).length} workup
+                      {filteredEntries.filter((entry) => entry.patternFamily === scope.id).length} path
                       {filteredEntries.filter((entry) => entry.patternFamily === scope.id).length === 1 ? '' : 's'}
                     </div>
                     <div className="mt-2 text-xs text-slate-500">
-                      {filteredEntries.find((entry) => entry.patternFamily === scope.id)?.title ?? 'Open this differential'}
+                      {filteredEntries.find((entry) => entry.patternFamily === scope.id)?.title ?? 'Open this section'}
                     </div>
                   </button>
                 ))
@@ -610,12 +610,12 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                 <div className="space-y-4 xl:col-span-2 2xl:col-span-3">
                   <Card>
                     <p className="text-slate-700">
-                      No narrower differentials are listed for this diagnostic area. Open one of the workups directly.
+                      No smaller groups are listed for this area. Open one of the paths directly.
                     </p>
                   </Card>
                   {filteredEntries.length === 0 ? (
                     <Card>
-                      <p className="text-slate-600">No diagnostic workups are currently available in this area.</p>
+                      <p className="text-slate-600">No study paths are currently available in this area.</p>
                     </Card>
                   ) : (
                     <div className="space-y-4">
@@ -624,10 +624,10 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                           key={entry.id}
                           type="button"
                           onClick={() => openAlgorithmDetail(entry.id)}
-                          className="w-full rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
-                        >
+                        className="w-full rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
+                      >
                           <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                            {index === 0 ? 'Start here' : 'Diagnostic workup'}
+                            {index === 0 ? 'Start here' : 'Study path'}
                           </div>
                           <h3 className="mt-2 font-serif text-lg font-semibold text-slate-900">{entry.title}</h3>
                           <p className="mt-2 text-sm text-slate-600">{entry.summary}</p>
@@ -651,7 +651,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                     {activeAlgorithmRoot} {'>'} {activeAlgorithmSubtopic.label}
                   </p>
                   <p className="mt-2 text-sm text-slate-500">
-                    {activeSubtopicEntries.length} diagnostic workup{activeSubtopicEntries.length === 1 ? '' : 's'} in this differential.
+                    {activeSubtopicEntries.length} study path{activeSubtopicEntries.length === 1 ? '' : 's'} in this section.
                   </p>
                   {launchRequestedTopic && (
                     <p className="mt-2 text-sm text-slate-500">
@@ -663,15 +663,15 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                       Scope: {activeSubtopicEntries[0]?.title ?? activeAlgorithmSubtopic.label}
                     </span>
                     <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">
-                      Next: open the first workup
+                      Next: open the first path
                     </span>
                   </div>
                 </div>
                 <div className="min-w-[220px] rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Start here</div>
                   <div className="mt-2 text-sm font-semibold text-slate-900">{activeSubtopicEntries[0]?.title ?? 'Open a workup'}</div>
-                  <div className="mt-1 text-sm text-slate-600">Open the main diagnostic workup.</div>
-                  <div className="mt-2 text-xs text-slate-500">You can return to the differential, diagnostic area, or review set.</div>
+                  <div className="mt-1 text-sm text-slate-600">Open the main study path.</div>
+                  <div className="mt-2 text-xs text-slate-500">You can return to the group, area, or review set.</div>
                 </div>
               </div>
             </Card>
@@ -684,7 +684,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                   className="w-full rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
                 >
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    {index === 0 ? 'Start here' : 'Diagnostic workup'}
+                    {index === 0 ? 'Start here' : 'Study path'}
                   </div>
                   <h3 className="mt-3 font-serif text-xl font-semibold text-slate-900">{entry.title}</h3>
                   <p className="mt-2 text-sm text-slate-600">{entry.summary}</p>
@@ -714,14 +714,14 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
               onClick={openTopicFromDetail}
               className="rounded-md border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-sky-300 hover:text-sky-800"
             >
-              Diagnostic areas
+              Areas
             </button>
             <button
               type="button"
               onClick={openRouteFamily}
               className="rounded-md border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-sky-300 hover:text-sky-800"
             >
-              This differential
+              Group
             </button>
             {launchedFromCurriculum && (
               <button
