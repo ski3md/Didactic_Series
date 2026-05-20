@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T05:14:49.318Z",
+  "generatedAt": "2026-05-20T05:17:10.184Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -109,6 +109,7 @@
     "Algorithm detail places the workup before optional tutorial or review links.",
     "Curriculum module pages present patterns, board focus, workup, and diagnostic focus in a stable reasoning order.",
     "Curriculum module pages keep optional follow-up review after the core module framing.",
+    "Curriculum side rail keeps board blueprint ahead of optional follow-up review.",
     "Lecture detail opens with an orientation block before the signout sequence.",
     "Lecture detail keeps optional follow-up review after the core signout sequence.",
     "Lecture transcript keeps the section guide after the full teaching text."

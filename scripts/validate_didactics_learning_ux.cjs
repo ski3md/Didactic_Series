@@ -556,6 +556,18 @@ const evaluateHierarchySemantics = ({
   }
 
   if (
+    appearsInOrder(curriculumTsx, [
+      /selectedModule\.cpGovernance[\s\S]*?Board blueprint/,
+      /selectedModule\.lectures\.length > 1[\s\S]*?Related review/,
+      /Optional follow-up review/,
+    ])
+  ) {
+    passes.push('Curriculum side rail keeps board blueprint ahead of optional follow-up review.');
+  } else {
+    issues.push('Curriculum side rail does not clearly keep board blueprint ahead of optional follow-up review.');
+  }
+
+  if (
     appearsInOrder(lecturesTsx, [
       /(Faculty run sheet|Signout brief)/,
       /Signout sequence/,
