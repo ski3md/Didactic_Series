@@ -40,7 +40,7 @@ export const levelModeGuidance: Record<LearnerLevel, {
   expectedEvidence: string;
 }> = {
   PGY1: {
-    intent: 'Build a normal-to-abnormal mental model before diagnostic closure.',
+    intent: 'Normal baseline; pattern deviation; exclude mimics; commit a safe first differential.',
     interfaceMode: 'Guided hints, glossary language, normal histology contrast, and specimen orientation.',
     expectedEvidence: 'Recognizes tissue, pattern, stain, and one safe next step.',
   },
@@ -310,7 +310,7 @@ export const competencyMatrixRecords: CompetencyMatrixRecord[] = [
 
 export const signOutRubric: AssessmentRubric = {
   id: 'deterministic-signout-rubric-v1',
-  title: 'Deterministic Sign-Out Rubric',
+  title: 'Diagnostic Safety Checklist',
   appliesTo: 'signout',
   criteria: [
     {

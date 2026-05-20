@@ -71,6 +71,14 @@ interface FocusPreset {
   focusTerms: string[];
 }
 
+interface WorkflowStartCard {
+  id: string;
+  label: string;
+  title: string;
+  description: string;
+  focusTerms: string[];
+}
+
 const signoutImages = (signoutImageReferenceIndex.images ?? []) as SignoutReferenceImage[];
 const SUPPLEMENTAL_PAGE_SIZE = 60;
 const emptySupplementalManifest: SupplementalReferenceImageManifest = { imageCount: 0, images: [] };
@@ -135,6 +143,12 @@ const cleanDocumentTitle = (image: SupplementalReferenceImage) => {
       .replace(/\s+/g, ' ')
       .trim()
   );
+
+const compactChecklist = (value: string) =>
+  value
+    .split(/[.;]/)
+    .map((entry) => entry.trim())
+    .filter(Boolean);
 };
 
 const supplementalCaption = (image: SupplementalReferenceImage) => {
@@ -423,6 +437,51 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
     },
   ];
 
+  const workflowStartCards: WorkflowStartCard[] = [
+    {
+      id: 'unknown-case',
+      label: 'Case-first',
+      title: 'Start unknown case',
+      description: 'Open an image set, name the pattern, and commit the first safe differential.',
+      focusTerms: ['unknown case', 'pattern recognition', 'differential diagnosis'],
+    },
+    {
+      id: 'differential-drill',
+      label: 'Differential',
+      title: 'Differential drill',
+      description: 'Review look-alikes by morphology and sort the mimics before diagnosis.',
+      focusTerms: ['differential', 'spindle cell', 'papillary', 'clear cell'],
+    },
+    {
+      id: 'frozen',
+      label: 'Intraoperative',
+      title: 'Frozen section simulation',
+      description: 'Practice limited-sample calls, deferrals, and frozen-versus-permanent safety language.',
+      focusTerms: ['frozen section', 'defer', 'discordance', 'safety critical'],
+    },
+    {
+      id: 'immunostain',
+      label: 'Ancillary',
+      title: 'Immunostain interpretation',
+      description: 'Use stains as diagnostic evidence instead of post-hoc decoration.',
+      focusTerms: ['immunostain', 'CK7', 'GATA3', 'TTF1', 'PAX8'],
+    },
+    {
+      id: 'molecular',
+      label: 'Molecular',
+      title: 'Molecular correlation',
+      description: 'Link morphology to biomarker, mutation, and classification consequences.',
+      focusTerms: ['molecular', 'KRAS', 'WHO classification', 'biomarker'],
+    },
+    {
+      id: 'cyto-histo',
+      label: 'Correlation',
+      title: 'Cytology-histology concordance',
+      description: 'Review how the same entity looks across specimen type and preparation.',
+      focusTerms: ['cytology', 'histology', 'correlation'],
+    },
+  ];
+
   const groupedFocusPresets = [
     {
       id: 'differentials',
@@ -491,6 +550,31 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
       </Card>
       <Card>
         <div className="flex flex-col gap-5">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Case-first review</p>
+            <h2 className="mt-2 text-2xl font-semibold font-serif text-slate-950">Start from the pathology task, not the document shelf</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-700">
+              Choose the review mode that matches how pathologists actually work: unknown case, differential drill, frozen section, stains, or molecular correlation.
+            </p>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {workflowStartCards.map((card) => (
+              <button
+                key={card.id}
+                type="button"
+                onClick={() => applyPreset({ title: card.title, description: card.description, focusTerms: card.focusTerms })}
+                className="rounded-2xl border border-slate-200 bg-white p-4 text-left transition hover:border-slate-300 hover:shadow-sm"
+              >
+                <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">{card.label}</div>
+                <div className="mt-2 text-lg font-semibold text-slate-950">{card.title}</div>
+                <p className="mt-2 text-sm leading-6 text-slate-700">{card.description}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+      </Card>
+      <Card>
+        <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="max-w-4xl">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Study and sign-out calibration</p>
@@ -536,28 +620,47 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
               <div className="mt-4 grid gap-3 md:grid-cols-3">
                 <div className="rounded-xl bg-slate-50 p-4">
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic focus</div>
-                  <p className="mt-2 text-sm text-slate-800">{diagnosticFocusText}</p>
+                  <ul className="mt-2 space-y-1 text-sm text-slate-800">
+                    {compactChecklist(diagnosticFocusText).map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
                 <div className="rounded-xl bg-slate-50 p-4">
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Review approach</div>
-                  <p className="mt-2 text-sm text-slate-800">{competencyGuidance.interfaceMode}</p>
+                  <ul className="mt-2 space-y-1 text-sm text-slate-800">
+                    {compactChecklist(competencyGuidance.interfaceMode).map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
                 <div className="rounded-xl bg-slate-50 p-4">
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">What to recognize</div>
-                  <p className="mt-2 text-sm text-slate-800">{recognitionTargetText}</p>
+                  <ul className="mt-2 space-y-1 text-sm text-slate-800">
+                    {compactChecklist(recognitionTargetText).map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
 
             <div className="rounded-2xl border border-slate-200 bg-white p-4">
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Sign-out calibration</div>
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic safety</div>
               <h3 className="mt-2 text-lg font-semibold text-slate-950">{signOutRubric.title}</h3>
               <p className="mt-2 text-sm text-slate-600">
                 These checkpoints make attending-style review concrete and keep downstream feedback tied to the actual sign-out task.
               </p>
               <div className="mt-4 space-y-2">
                 {signOutRubric.criteria.map((criterion) => (
-                  <div key={criterion.id} className="rounded-xl bg-slate-50 px-3 py-3">
+                  <div
+                    key={criterion.id}
+                    className={`rounded-xl px-3 py-3 ${
+                      criterion.safetyCritical
+                        ? 'border-l-4 border-amber-500 bg-amber-50'
+                        : 'bg-slate-50'
+                    }`}
+                  >
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div className="text-sm font-semibold text-slate-900">{criterion.label}</div>
                       <div className="text-xs font-semibold text-slate-500">
@@ -565,8 +668,9 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                       </div>
                     </div>
                     {criterion.safetyCritical && (
-                      <div className="mt-2 text-xs font-semibold uppercase tracking-wide text-amber-700">Safety critical</div>
+                      <div className="mt-2 text-xs font-semibold uppercase tracking-wide text-amber-800">Safety critical review point</div>
                     )}
+                    <p className="mt-2 text-sm text-slate-700">{criterion.feedbackPrompt}</p>
                   </div>
                 ))}
               </div>
@@ -696,9 +800,9 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
         <div className="flex flex-col gap-5">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Quick pathways</p>
-            <h2 className="mt-1 text-xl font-semibold font-serif text-slate-900">Browse by differential or service</h2>
+            <h2 className="mt-1 text-xl font-semibold font-serif text-slate-900">Browse by morphology, differential, or service</h2>
             <p className="mt-2 text-sm text-slate-700">
-              Choose a ready-made pathway when you already know the disease family or organ system you want to review.
+              Choose a ready-made pathway when you already know the disease family, morphology, or organ system you want to review.
             </p>
           </div>
           <div className="grid gap-4 lg:grid-cols-2">

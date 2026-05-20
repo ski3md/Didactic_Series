@@ -804,7 +804,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         <div>Review approach</div>
         <div>What to recognize</div>
         <div>What to show at sign-out</div>
-        <div>Sign-out calibration</div>
+        <div>Diagnostic safety</div>
       `,
     });
 
@@ -830,7 +830,7 @@ describe('validate_didactics_learning_ux helpers', () => {
           return 'reference';
       `,
       referenceTsx: `
-        <div>Sign-out calibration</div>
+        <div>Diagnostic safety</div>
         <div>What to recognize</div>
         <div>Intent</div>
         <div>Diagnostic focus</div>

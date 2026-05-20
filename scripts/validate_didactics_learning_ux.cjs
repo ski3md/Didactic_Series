@@ -1006,7 +1006,7 @@ const evaluateReferenceRouteSemantics = ({
       /Start here/,
       /Diagnostic focus/,
       /What to recognize/,
-      /Sign-out calibration/,
+      /Diagnostic safety/,
     ])
   ) {
     passes.push('Reference Library opens with study framing before deeper recognition and sign-out calibration cues.');
