@@ -1,0 +1,1559 @@
+{
+  "generatedAt": "2026-05-20T01:04:57.415Z",
+  "totalRecords": 1000,
+  "laneCount": 5,
+  "waveCount": 20,
+  "laneSummaries": [
+    {
+      "id": "L1_CP_TRUTH",
+      "title": "CP truth, ABPath anchors, source mapping, and review status",
+      "recordCount": 200,
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 80
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 60
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 20
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 20
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 20
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 100
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 80
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "id": "L2_CONTENT_PARITY",
+      "title": "Tutorials, curriculum, studio content, and content parity",
+      "recordCount": 200,
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 80
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 20
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 20
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 60
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 20
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 140
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 20
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 20
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "id": "L3_LEARNER_UX",
+      "title": "Learner wording, navigation, study flow, and reference-page clarity",
+      "recordCount": 200,
+      "contentOutputs": [
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 40
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 20
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 100
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 20
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 20
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 100
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 40
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 40
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "id": "L4_WORKUPS_ROUTING",
+      "title": "Workups, diagnostic paths, route behavior, and workup tests",
+      "recordCount": 200,
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 80
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 40
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 20
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 20
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 20
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 20
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 100
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 40
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 40
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "id": "L5_CONTRACTS_VALIDATORS",
+      "title": "Contracts, checks, reports, proof files, and release evidence",
+      "recordCount": 200,
+      "contentOutputs": [
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 100
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 40
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 20
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 40
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "manuscript",
+          "count": 40
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 120
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 40
+        }
+      ]
+    }
+  ],
+  "waveSummaries": [
+    {
+      "id": "W01",
+      "title": "Freeze the current truth baseline",
+      "group": "G1",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W02",
+      "title": "Reconcile raw mappings with reviewed mappings",
+      "group": "G1",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W03",
+      "title": "Publish the canonical CP study map",
+      "group": "G1",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W04",
+      "title": "Replace internal wording with learner wording",
+      "group": "G2",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W05",
+      "title": "Make workspace switching calm and obvious",
+      "group": "G2",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W06",
+      "title": "Tighten study-flow continuity",
+      "group": "G2",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W07",
+      "title": "Show source provenance on study pages",
+      "group": "G3",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W08",
+      "title": "Connect tutorials, lectures, and workups",
+      "group": "G3",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W09",
+      "title": "Turn diagnostic maps into study tools",
+      "group": "G3",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W10",
+      "title": "Show stage and readiness clearly",
+      "group": "G3",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W11",
+      "title": "Clarify competency and review language",
+      "group": "G4",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W12",
+      "title": "Make validator messages easier to act on",
+      "group": "G4",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W13",
+      "title": "Write review-ready explanations",
+      "group": "G4",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W14",
+      "title": "Deduplicate the study map",
+      "group": "G5",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W15",
+      "title": "Line up AP and CP study paths",
+      "group": "G5",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W16",
+      "title": "Publish reusable study paths",
+      "group": "G5",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W17",
+      "title": "Create faculty review packets",
+      "group": "G6",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W18",
+      "title": "Create manuscript support bundles",
+      "group": "G6",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W19",
+      "title": "Build the sponsor-ready roadmap",
+      "group": "G7",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "id": "W20",
+      "title": "Polish the portfolio and release story",
+      "group": "G7",
+      "recordCount": 50,
+      "artifactCoverage": {
+        "learnerFacing": true,
+        "proofValidator": true,
+        "sponsorReviewer": true,
+        "demoProduct": true
+      },
+      "contentOutputs": [
+        {
+          "contentOutput": "BOARD_PREP_ASSET",
+          "count": 12
+        },
+        {
+          "contentOutput": "DEMO_ARTIFACT",
+          "count": 5
+        },
+        {
+          "contentOutput": "FACULTY_REVIEW_PACKET",
+          "count": 11
+        },
+        {
+          "contentOutput": "LEARNER_COPY",
+          "count": 10
+        },
+        {
+          "contentOutput": "MANUSCRIPT_ASSET",
+          "count": 2
+        },
+        {
+          "contentOutput": "PRODUCT_POSITIONING_ASSET",
+          "count": 4
+        },
+        {
+          "contentOutput": "SPONSOR_PACKET_ASSET",
+          "count": 6
+        }
+      ],
+      "reuseTargets": [
+        {
+          "reuseTarget": "Didactic_Series",
+          "count": 22
+        },
+        {
+          "reuseTarget": "manuscript",
+          "count": 2
+        },
+        {
+          "reuseTarget": "portfolio",
+          "count": 15
+        },
+        {
+          "reuseTarget": "Projection_Atlas",
+          "count": 5
+        },
+        {
+          "reuseTarget": "sponsor_packet",
+          "count": 6
+        }
+      ]
+    }
+  ],
+  "overallContentOutputs": [
+    {
+      "contentOutput": "BOARD_PREP_ASSET",
+      "count": 240
+    },
+    {
+      "contentOutput": "DEMO_ARTIFACT",
+      "count": 100
+    },
+    {
+      "contentOutput": "FACULTY_REVIEW_PACKET",
+      "count": 220
+    },
+    {
+      "contentOutput": "LEARNER_COPY",
+      "count": 200
+    },
+    {
+      "contentOutput": "MANUSCRIPT_ASSET",
+      "count": 40
+    },
+    {
+      "contentOutput": "PRODUCT_POSITIONING_ASSET",
+      "count": 80
+    },
+    {
+      "contentOutput": "SPONSOR_PACKET_ASSET",
+      "count": 120
+    }
+  ],
+  "overallReuseTargets": [
+    {
+      "reuseTarget": "Didactic_Series",
+      "count": 440
+    },
+    {
+      "reuseTarget": "manuscript",
+      "count": 40
+    },
+    {
+      "reuseTarget": "portfolio",
+      "count": 300
+    },
+    {
+      "reuseTarget": "Projection_Atlas",
+      "count": 100
+    },
+    {
+      "reuseTarget": "sponsor_packet",
+      "count": 120
+    }
+  ]
+}

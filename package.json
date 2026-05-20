@@ -69,6 +69,8 @@
     "images:validate-rendered": "node scripts/validate_rendered_image_placeholders.cjs",
     "neuro:import-authorized-images": "node scripts/import_authorized_neuro_atlas_images.cjs",
     "batch:next-10": "node scripts/run_next_ten_migration_steps.cjs",
+    "planning:next1000": "node scripts/generate_next_1000_major_changes.cjs",
+    "planning:next1000:validate": "node scripts/validate_next_1000_major_changes.cjs",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "deploy:didactics": "npm run build:didactics && gh-pages -d dist"

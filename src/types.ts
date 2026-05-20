@@ -420,6 +420,11 @@ export interface LectureAlgorithmNode {
   relatedTutorialQuery?: string;
   relatedImageTerms?: string[];
   stopConditions?: string[];
+  workedExamples?: Array<{
+    title: string;
+    steps: string[];
+    takeaway?: string;
+  }>;
 }
 
 export interface LectureAlgorithmRecord {
@@ -798,4 +803,156 @@ export interface ActiveCurriculumModule {
   assessmentTopics: string[];
   competency?: LearnerCompetencyMetadata;
   cpGovernance?: CPGovernanceContract;
+}
+
+export const NEXT_1000_LANE_IDS = [
+  'L1_CP_TRUTH',
+  'L2_CONTENT_PARITY',
+  'L3_LEARNER_UX',
+  'L4_WORKUPS_ROUTING',
+  'L5_CONTRACTS_VALIDATORS',
+] as const;
+
+export type LaneId = typeof NEXT_1000_LANE_IDS[number];
+
+export const NEXT_1000_WAVE_IDS = [
+  'W01', 'W02', 'W03', 'W04', 'W05',
+  'W06', 'W07', 'W08', 'W09', 'W10',
+  'W11', 'W12', 'W13', 'W14', 'W15',
+  'W16', 'W17', 'W18', 'W19', 'W20',
+] as const;
+
+export type WaveId = typeof NEXT_1000_WAVE_IDS[number];
+
+export const NEXT_1000_CHANGE_STATUSES = [
+  'planned',
+  'historical-precondition',
+  'blocked',
+  'ready-next',
+] as const;
+
+export type ChangeStatus = typeof NEXT_1000_CHANGE_STATUSES[number];
+
+export const NEXT_1000_CONTENT_OUTPUTS = [
+  'NONE',
+  'LEARNER_COPY',
+  'FACULTY_REVIEW_PACKET',
+  'BOARD_PREP_ASSET',
+  'DEMO_ARTIFACT',
+  'MANUSCRIPT_ASSET',
+  'SPONSOR_PACKET_ASSET',
+  'PRODUCT_POSITIONING_ASSET',
+] as const;
+
+export type ContentOutput = typeof NEXT_1000_CONTENT_OUTPUTS[number];
+
+export const NEXT_1000_AUDIENCES = [
+  'learner',
+  'faculty',
+  'recruiter',
+  'chair',
+  'reviewer',
+  'product_lead',
+  'self',
+] as const;
+
+export type Audience = typeof NEXT_1000_AUDIENCES[number];
+
+export const NEXT_1000_REUSE_TARGETS = [
+  'Didactic_Series',
+  'DERC',
+  'Projection_Atlas',
+  'Frozens',
+  'sponsor_packet',
+  'manuscript',
+  'portfolio',
+] as const;
+
+export type ReuseTarget = typeof NEXT_1000_REUSE_TARGETS[number];
+
+export const NEXT_1000_VALUE_LEVELS = ['low', 'moderate', 'high'] as const;
+
+export type ValueLevel = typeof NEXT_1000_VALUE_LEVELS[number];
+
+export const NEXT_1000_PROOF_STYLES = [
+  'CLI_ONLY',
+  'CLI_FIRST',
+  'CLI_PLUS_BROWSER_LAST_STEP',
+] as const;
+
+export type ProofStyle = typeof NEXT_1000_PROOF_STYLES[number];
+
+export interface Next1000ChangeRecord {
+  id: string;
+  wave: WaveId;
+  lane: LaneId;
+  title: string;
+  why_this_matters: string;
+  current_problem: string;
+  done_when: string;
+  required_files: string[];
+  do_not_touch: string[];
+  contracts: string[];
+  depends_on: string[];
+  proof_commands: string[];
+  status: ChangeStatus;
+  wave_sync_rule: string;
+  proof_style: ProofStyle;
+  content_output: ContentOutput;
+  audience: Audience;
+  reuse_target: ReuseTarget;
+  public_safe: boolean;
+  phi_safe: boolean;
+  career_value: ValueLevel;
+  product_value: ValueLevel;
+}
+
+export interface Next1000WaveSummary {
+  id: WaveId;
+  title: string;
+  group: string;
+  recordCount: number;
+  artifactCoverage: {
+    learnerFacing: boolean;
+    proofValidator: boolean;
+    sponsorReviewer: boolean;
+    demoProduct: boolean;
+  };
+  contentOutputs: Array<{ contentOutput: ContentOutput; count: number }>;
+  reuseTargets: Array<{ reuseTarget: ReuseTarget; count: number }>;
+}
+
+export interface Next1000LaneSummary {
+  id: LaneId;
+  title: string;
+  recordCount: number;
+  contentOutputs: Array<{ contentOutput: ContentOutput; count: number }>;
+  reuseTargets: Array<{ reuseTarget: ReuseTarget; count: number }>;
+}
+
+export interface Next1000Program {
+  title: string;
+  summary: string;
+  lanes: Array<{
+    id: LaneId;
+    public_label: string;
+    title: string;
+    wave_goal_prefix: string;
+    expected_outputs: string[];
+  }>;
+  waves: Array<{
+    id: WaveId;
+    title: string;
+    group: string;
+    goal: string;
+    wave_sync_rule: string;
+    prerequisites: string[];
+  }>;
+  wave_groups: Array<{
+    id: string;
+    title: string;
+    waves: WaveId[];
+    focus: string;
+  }>;
+  records: Next1000ChangeRecord[];
 }
