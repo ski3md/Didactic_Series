@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-05-20T10:39:12.517Z",
+  "totalSteps": 100,
+  "trancheCount": 10,
+  "targetWaves": [
+    "W01",
+    "W02"
+  ],
+  "laneOrder": [
+    "L1_CP_TRUTH",
+    "L2_CONTENT_PARITY",
+    "L3_LEARNER_UX",
+    "L4_WORKUPS_ROUTING",
+    "L5_CONTRACTS_VALIDATORS"
+  ],
+  "immediateNextTranches": [
+    {
+      "id": "T01",
+      "wave": "W01",
+      "lane": "L1_CP_TRUTH",
+      "goal": "This lane settles the reviewed CP and AP teaching truth for freeze the current truth baseline."
+    },
+    {
+      "id": "T02",
+      "wave": "W01",
+      "lane": "L2_CONTENT_PARITY",
+      "goal": "This lane brings the learner-facing content into line with the reviewed truth for freeze the current truth baseline."
+    },
+    {
+      "id": "T03",
+      "wave": "W01",
+      "lane": "L3_LEARNER_UX",
+      "goal": "This lane makes the study experience clearer and calmer for freeze the current truth baseline."
+    }
+  ]
+}
