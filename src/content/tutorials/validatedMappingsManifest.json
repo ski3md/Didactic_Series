@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-20T01:22:33.617Z",
-  "sourceFingerprint": "1f45867b20868fb9622e0eac3e7101757cbfbb1ddef3760dcc26806cebb6f92c",
+  "generatedAt": "2026-05-20T01:30:51.832Z",
+  "sourceFingerprint": "7dea4ad031d52cbdbe36bc627cd655c73a3c928d031c3d3019e7d1f47abb030f",
   "source": {
     "crosswalk": "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
     "cpGovernanceReport": "reports/cp_precision_governance_report.json",
