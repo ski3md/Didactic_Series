@@ -22,6 +22,7 @@ const sidebarPath = path.join(root, 'src/components/Sidebar.tsx');
 const workspaceNavPath = path.join(root, 'src/components/DidacticWorkspaceNav.tsx');
 const appPath = path.join(root, 'src/App.tsx');
 const referencePath = path.join(root, 'src/components/ReferenceLibrary.tsx');
+const pathologyCognitionPath = path.join(root, 'src/utils/pathologyCognition.ts');
 const stateStoragePath = path.join(root, 'src/utils/viewStateStorage.ts');
 const studyDestinationStatePath = path.join(root, 'src/utils/studyDestinationState.ts');
 const sectionNavPath = path.join(root, 'src/hooks/useSectionNavigation.ts');
@@ -1030,6 +1031,62 @@ const evaluateReferenceRouteSemantics = ({
   return { passes, issues };
 };
 
+const evaluateReferenceCognitionSemantics = ({ referenceTsx = '', pathologyCognitionTs = '' } = {}) => {
+  const issues = [];
+  const passes = [];
+  const cognitionSurface = `${referenceTsx}\n${pathologyCognitionTs}`;
+
+  if (
+    appearsInOrder(cognitionSurface, [
+      /Uncertainty state/,
+      /Operational state/,
+      /Reasoning progression/,
+      /pattern/,
+      /compartment/,
+      /differential/,
+      /ancillary/,
+      /wording/,
+      /Immunophenotype branch/,
+    ]) &&
+    appearsInOrder(cognitionSurface, [
+      /Uncertainty/,
+      /Workflow state/,
+      /Reasoning progression/,
+      /pattern/,
+      /compartment/,
+      /differential/,
+      /ancillary/,
+      /wording/,
+      /Immunophenotype branch/,
+    ]) &&
+    /Sort the small round blue cell differential by lineage before naming a tumor\./.test(cognitionSurface) &&
+    /Use site-defining markers early because clear cytoplasm alone is not specific\./.test(cognitionSurface) &&
+    /Separate fibroblastic, myogenic, neural, epithelial, and vascular mimics with a directed panel\./.test(cognitionSurface) &&
+    /Choose a site-aware panel once the architecture points toward a papillary lesion\./.test(cognitionSurface) &&
+    /Basaloid tumors often need lineage confirmation before the wording becomes safe\./.test(cognitionSurface)
+  ) {
+    passes.push('Reference Library keeps pathology-native immunophenotype branches attached to reasoning-progression labels.');
+  } else {
+    issues.push('Reference Library does not clearly keep pathology-native immunophenotype branches attached to reasoning-progression labels.');
+  }
+
+  const markerClusters = [
+    [/CD99/, /desmin/, /NKX2\.2/],
+    [/PAX8/, /HNF1B/, /GATA3/],
+    [/STAT6/, /SOX10/, /MUC4/],
+    [/WT1/, /TTF1/, /thyroglobulin/],
+    [/p40/, /CK5\/6/, /MYB/],
+  ];
+
+  if (markerClusters.every((cluster) => cluster.every((pattern) => pattern.test(cognitionSurface)))) {
+    passes.push('Reference Library immunophenotype branches retain representative marker scaffolds for morphology-first review.');
+  } else {
+    issues.push('Reference Library immunophenotype branches are missing representative marker scaffolds for morphology-first review.');
+  }
+
+  return { passes, issues };
+};
+
 const evaluateContractAlignmentSemantics = ({
   agentsMd = '',
   codexAlignmentContractMd = '',
@@ -1154,6 +1211,7 @@ const runValidation = ({
   workspaceNavTsx,
   appTsx,
   referenceTsx,
+  pathologyCognitionTs,
   stateStorageTs,
   studyDestinationStateTs,
   sectionNavTs,
@@ -1366,6 +1424,13 @@ const runValidation = ({
   passes.push(...referenceRouteSemantics.passes);
   failures.push(...referenceRouteSemantics.issues);
 
+  const referenceCognitionSemantics = evaluateReferenceCognitionSemantics({
+    referenceTsx,
+    pathologyCognitionTs,
+  });
+  passes.push(...referenceCognitionSemantics.passes);
+  failures.push(...referenceCognitionSemantics.issues);
+
   const contractAlignmentSemantics = evaluateContractAlignmentSemantics({
     agentsMd,
     codexAlignmentContractMd,
@@ -1440,6 +1505,7 @@ const loadInputsFromDisk = () => {
   const workspaceNavTsx = fs.readFileSync(workspaceNavPath, 'utf8');
   const appTsx = fs.readFileSync(appPath, 'utf8');
   const referenceTsx = fs.readFileSync(referencePath, 'utf8');
+  const pathologyCognitionTs = fs.readFileSync(pathologyCognitionPath, 'utf8');
   const stateStorageTs = fs.readFileSync(stateStoragePath, 'utf8');
   const studyDestinationStateTs = fs.readFileSync(studyDestinationStatePath, 'utf8');
   const sectionNavTs = fs.readFileSync(sectionNavPath, 'utf8');
@@ -1476,6 +1542,7 @@ const loadInputsFromDisk = () => {
     workspaceNavTsx,
     appTsx,
     referenceTsx,
+    pathologyCognitionTs,
     stateStorageTs,
     studyDestinationStateTs,
     sectionNavTs,
@@ -1515,6 +1582,7 @@ module.exports = {
   evaluatePlainLanguageSemantics,
   evaluateHierarchySemantics,
   evaluateReferenceBoundarySemantics,
+  evaluateReferenceCognitionSemantics,
   evaluateReferenceRouteSemantics,
   evaluateWorkspaceSemantics,
   evaluateWorkspaceRoutingSemantics,

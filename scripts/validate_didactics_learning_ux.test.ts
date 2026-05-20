@@ -8,6 +8,7 @@ const {
   evaluateHierarchySemantics,
   evaluateRefreshAndHistorySemantics,
   evaluateReferenceBoundarySemantics,
+  evaluateReferenceCognitionSemantics,
   evaluateReferenceRouteSemantics,
   evaluateWorkspaceRoutingSemantics,
   evaluateWorkspaceSemantics,
@@ -64,6 +65,10 @@ const {
     curriculumTsx?: string;
     lecturesTsx?: string;
     algorithmsTsx?: string;
+  }) => { passes: string[]; issues: string[] };
+  evaluateReferenceCognitionSemantics: (input: {
+    referenceTsx?: string;
+    pathologyCognitionTs?: string;
   }) => { passes: string[]; issues: string[] };
   evaluateReferenceRouteSemantics: (input: {
     appTsx?: string;
@@ -847,6 +852,84 @@ describe('validate_didactics_learning_ux helpers', () => {
           expect.stringContaining('Reference Library is missing a complete route-backed workspace mapping through didactics navigation.'),
           expect.stringContaining('Reference Library does not clearly open with study framing before deeper recognition and sign-out calibration cues.'),
           expect.stringContaining('Reference Library does not clearly keep training-level guidance ordered from diagnostic focus to recognition targets.'),
+      ])
+    );
+  });
+
+  it('accepts pathology-native reference cognition surfaces for immunophenotype branches and reasoning progression', () => {
+    const result = evaluateReferenceCognitionSemantics({
+      referenceTsx: `
+        <div>Uncertainty state</div>
+        <div>Operational state</div>
+        <div>Reasoning progression</div>
+        <div>pattern</div>
+        <div>compartment</div>
+        <div>differential</div>
+        <div>ancillary</div>
+        <div>wording</div>
+        <div>Immunophenotype branch</div>
+        <div>Uncertainty</div>
+        <div>Workflow state</div>
+        <div>Reasoning progression</div>
+        <div>pattern</div>
+        <div>compartment</div>
+        <div>differential</div>
+        <div>ancillary</div>
+        <div>wording</div>
+        <div>Immunophenotype branch</div>
+      `,
+      pathologyCognitionTs: `
+        Sort the small round blue cell differential by lineage before naming a tumor.
+        CD99
+        desmin
+        NKX2.2
+        Use site-defining markers early because clear cytoplasm alone is not specific.
+        PAX8
+        HNF1B
+        GATA3
+        Separate fibroblastic, myogenic, neural, epithelial, and vascular mimics with a directed panel.
+        STAT6
+        SOX10
+        MUC4
+        Choose a site-aware panel once the architecture points toward a papillary lesion.
+        WT1
+        TTF1
+        thyroglobulin
+        Basaloid tumors often need lineage confirmation before the wording becomes safe.
+        p40
+        CK5/6
+        MYB
+      `,
+    });
+
+    expect(result.issues).toEqual([]);
+    expect(result.passes).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('Reference Library keeps pathology-native immunophenotype branches attached to reasoning-progression labels.'),
+        expect.stringContaining('Reference Library immunophenotype branches retain representative marker scaffolds for morphology-first review.'),
+      ])
+    );
+  });
+
+  it('flags reference cognition drift when reasoning labels detach from immunophenotype branches', () => {
+    const result = evaluateReferenceCognitionSemantics({
+      referenceTsx: `
+        <div>Operational state</div>
+        <div>Uncertainty state</div>
+        <div>pattern</div>
+        <div>Lineage branch</div>
+        <div>Sort the differential with a marker panel.</div>
+        <div>CD99</div>
+        <div>desmin</div>
+        <div>Uncertainty</div>
+        <div>Workflow state</div>
+      `,
+    });
+
+    expect(result.issues).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('Reference Library does not clearly keep pathology-native immunophenotype branches attached to reasoning-progression labels.'),
+        expect.stringContaining('Reference Library immunophenotype branches are missing representative marker scaffolds for morphology-first review.'),
       ])
     );
   });

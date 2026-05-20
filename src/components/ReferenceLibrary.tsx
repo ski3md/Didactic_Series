@@ -25,6 +25,12 @@ import {
   inferStain,
   normalizePathologyTitle,
 } from '../utils/pathologyImageReview.ts';
+import {
+  getPathologyCognition,
+  type ImmunophenotypeBranch,
+  type PathologyStateSignal,
+  type ReasoningProgressionStep,
+} from '../utils/pathologyCognition.ts';
 
 interface ReferenceLibraryProps {
   user: User | null;
@@ -88,18 +94,7 @@ interface MorphologyGatewayCard {
   uncertainty: PathologyStateSignal;
   operationalState: PathologyStateSignal;
   immunophenotype?: ImmunophenotypeBranch;
-}
-
-interface PathologyStateSignal {
-  label: string;
-  cue: string;
-  tone: string;
-}
-
-interface ImmunophenotypeBranch {
-  title: string;
-  description: string;
-  markers: string[];
+  reasoningProgression: ReasoningProgressionStep[];
 }
 
 const signoutImages = (signoutImageReferenceIndex.images ?? []) as SignoutReferenceImage[];
@@ -194,146 +189,6 @@ const supplementalImageSrc = (image: SupplementalReferenceImage) => {
   if (image.imageUrl?.startsWith('/@fs/')) return `${import.meta.env.BASE_URL.replace(/\/$/, '')}${image.imageUrl}`;
   if (image.imageUrl) return image.imageUrl;
   return `${import.meta.env.BASE_URL}${image.localPath}`;
-};
-
-const PATHOLOGY_GATEWAY_STATE_MAP: Record<
-  string,
-  {
-    uncertainty: PathologyStateSignal;
-    operationalState: PathologyStateSignal;
-  }
-> = {
-  'spindle cell': {
-    uncertainty: { label: 'Differential only', cue: 'Broad mimic set', tone: 'bg-amber-50 text-amber-900 border-amber-200' },
-    operationalState: { label: 'Ancillary pending', cue: 'Stain panel likely', tone: 'bg-sky-50 text-sky-900 border-sky-200' },
-  },
-  papillary: {
-    uncertainty: { label: 'Favored pattern', cue: 'Architecture leads first', tone: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
-    operationalState: { label: 'Differential open', cue: 'Compare organ-specific mimics', tone: 'bg-violet-50 text-violet-900 border-violet-200' },
-  },
-  basaloid: {
-    uncertainty: { label: 'Suspicious pattern', cue: 'Avoid early closure', tone: 'bg-rose-50 text-rose-900 border-rose-200' },
-    operationalState: { label: 'Consensus helpful', cue: 'High-risk mimic zone', tone: 'bg-orange-50 text-orange-900 border-orange-200' },
-  },
-  mucinous: {
-    uncertainty: { label: 'Favored pattern', cue: 'Correlate context', tone: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
-    operationalState: { label: 'Site check pending', cue: 'Primary versus spread', tone: 'bg-sky-50 text-sky-900 border-sky-200' },
-  },
-  'clear cell': {
-    uncertainty: { label: 'Suspicious pattern', cue: 'Mimics stay open', tone: 'bg-rose-50 text-rose-900 border-rose-200' },
-    operationalState: { label: 'Molecular pending', cue: 'Classification may shift', tone: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
-  },
-  biphasic: {
-    uncertainty: { label: 'Differential only', cue: 'Two-compartment review', tone: 'bg-amber-50 text-amber-900 border-amber-200' },
-    operationalState: { label: 'Consensus needed', cue: 'Pattern split matters', tone: 'bg-orange-50 text-orange-900 border-orange-200' },
-  },
-  necrotic: {
-    uncertainty: { label: 'Cannot exclude', cue: 'Artifact and grade both matter', tone: 'bg-rose-50 text-rose-900 border-rose-200' },
-    operationalState: { label: 'Deeper review pending', cue: 'Necrosis changes wording', tone: 'bg-orange-50 text-orange-900 border-orange-200' },
-  },
-  granulomatous: {
-    uncertainty: { label: 'Descriptive first', cue: 'Name the reaction pattern', tone: 'bg-slate-100 text-slate-900 border-slate-300' },
-    operationalState: { label: 'Stain correlation pending', cue: 'AFB and GMS often decide', tone: 'bg-sky-50 text-sky-900 border-sky-200' },
-  },
-  'small blue cell': {
-    uncertainty: { label: 'Differential only', cue: 'Do not force a single call', tone: 'bg-amber-50 text-amber-900 border-amber-200' },
-    operationalState: { label: 'Ancillary pending', cue: 'Immunophenotype drives next step', tone: 'bg-sky-50 text-sky-900 border-sky-200' },
-  },
-  oncocytic: {
-    uncertainty: { label: 'Descriptive first', cue: 'Cytoplasm is not diagnosis', tone: 'bg-slate-100 text-slate-900 border-slate-300' },
-    operationalState: { label: 'Differential open', cue: 'Use site and stain context', tone: 'bg-violet-50 text-violet-900 border-violet-200' },
-  },
-  'gland-forming': {
-    uncertainty: { label: 'Favored pattern', cue: 'Architecture supports gland origin', tone: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
-    operationalState: { label: 'Staging check pending', cue: 'Invasion wording matters', tone: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
-  },
-};
-
-const MORPHOLOGY_IMMUNOPHENOTYPE_MAP: Record<string, ImmunophenotypeBranch> = {
-  'small blue cell': {
-    title: 'Immunophenotype branch',
-    description: 'Sort the small round blue cell differential by lineage before naming a tumor.',
-    markers: ['CD99', 'desmin', 'myogenin', 'synaptophysin', 'TdT', 'keratin', 'WT1', 'NKX2.2'],
-  },
-  'clear cell': {
-    title: 'Immunophenotype branch',
-    description: 'Use site-defining markers early because clear cytoplasm alone is not specific.',
-    markers: ['PAX8', 'HNF1B', 'Napsin A', 'AMACR', 'GATA3', 'TTF1', 'CK7'],
-  },
-  'spindle cell': {
-    title: 'Immunophenotype branch',
-    description: 'Separate fibroblastic, myogenic, neural, epithelial, and vascular mimics with a directed panel.',
-    markers: ['STAT6', 'S100', 'SOX10', 'desmin', 'SMA', 'keratin', 'CD34', 'MUC4'],
-  },
-  papillary: {
-    title: 'Immunophenotype branch',
-    description: 'Choose a site-aware panel once the architecture points toward a papillary lesion.',
-    markers: ['WT1', 'PAX8', 'TTF1', 'thyroglobulin', 'GATA3', 'CK7'],
-  },
-  basaloid: {
-    title: 'Immunophenotype branch',
-    description: 'Basaloid tumors often need lineage confirmation before the wording becomes safe.',
-    markers: ['p40', 'p63', 'CK5/6', 'CD117', 'MYB', 'HPV ISH'],
-  },
-};
-
-const defaultPathologyState = (
-  label: string,
-  cue: string,
-  tone = 'bg-slate-100 text-slate-900 border-slate-300'
-): PathologyStateSignal => ({ label, cue, tone });
-
-const inferPathologySignals = (...values: Array<string | undefined>) => {
-  const haystack = values.filter(Boolean).join(' ').toLowerCase();
-
-  let uncertainty = defaultPathologyState('Descriptive first', 'Name the pattern before closure');
-  if (/\bfavor|\bfavoured|\bfavored\b/.test(haystack)) {
-    uncertainty = defaultPathologyState('Favored pattern', 'Most likely diagnosis is visible', 'bg-emerald-50 text-emerald-900 border-emerald-200');
-  } else if (/\bsuspicious|\batypical|\bconcerning\b/.test(haystack)) {
-    uncertainty = defaultPathologyState('Suspicious pattern', 'Escalate before final wording', 'bg-rose-50 text-rose-900 border-rose-200');
-  } else if (/\bcannot exclude|\bdefer|\bindeterminate\b/.test(haystack)) {
-    uncertainty = defaultPathologyState('Cannot exclude', 'Keep the wording open', 'bg-rose-50 text-rose-900 border-rose-200');
-  } else if (/\bdifferential|\bmimic|\bversus\b/.test(haystack)) {
-    uncertainty = defaultPathologyState('Differential only', 'Mimics still active', 'bg-amber-50 text-amber-900 border-amber-200');
-  } else if (/\bdescriptive|\breactive|\bgranulomatous\b/.test(haystack)) {
-    uncertainty = defaultPathologyState('Descriptive first', 'Reaction pattern leads first', 'bg-slate-100 text-slate-900 border-slate-300');
-  }
-
-  let operationalState = defaultPathologyState('Reviewed example', 'Ready for teaching review', 'bg-emerald-50 text-emerald-900 border-emerald-200');
-  if (/\bfrozen\b/.test(haystack)) {
-    operationalState = defaultPathologyState('Frozen pending permanent', 'Use limited-call language', 'bg-orange-50 text-orange-900 border-orange-200');
-  } else if (/\bmolecular|\bkras|\bngs|\bmutation|\bbiomarker\b/.test(haystack)) {
-    operationalState = defaultPathologyState('Molecular pending', 'Result may change classification', 'bg-indigo-50 text-indigo-900 border-indigo-200');
-  } else if (/\bck7|\bpax8|\bttf1|\bgata3|\bafb|\bgms|\bpas|\bimmun/i.test(haystack)) {
-    operationalState = defaultPathologyState('Ancillary pending', 'Stain evidence is part of the workup', 'bg-sky-50 text-sky-900 border-sky-200');
-  } else if (/\bcompare|\bmimic|\bdifferential|\bversus\b/.test(haystack)) {
-    operationalState = defaultPathologyState('Differential open', 'Compare close look-alikes', 'bg-violet-50 text-violet-900 border-violet-200');
-  } else if (/\bdiscordance|\bqa|\bsafety critical\b/.test(haystack)) {
-    operationalState = defaultPathologyState('QA flagged', 'High-cost miss pattern', 'bg-rose-50 text-rose-900 border-rose-200');
-  }
-
-  return { uncertainty, operationalState };
-};
-
-const inferImmunophenotypeBranch = (...values: Array<string | undefined>) => {
-  const haystack = values.filter(Boolean).join(' ').toLowerCase();
-
-  if (/\bsmall cell\b|\bsmall blue\b|\bsmall round blue\b/.test(haystack)) {
-    return MORPHOLOGY_IMMUNOPHENOTYPE_MAP['small blue cell'];
-  }
-  if (/\bclear cell\b/.test(haystack)) {
-    return MORPHOLOGY_IMMUNOPHENOTYPE_MAP['clear cell'];
-  }
-  if (/\bspindle\b|\bsolitary fibrous\b|\bsft\b/.test(haystack)) {
-    return MORPHOLOGY_IMMUNOPHENOTYPE_MAP['spindle cell'];
-  }
-  if (/\bpapillary\b/.test(haystack)) {
-    return MORPHOLOGY_IMMUNOPHENOTYPE_MAP.papillary;
-  }
-  if (/\bbasaloid\b/.test(haystack)) {
-    return MORPHOLOGY_IMMUNOPHENOTYPE_MAP.basaloid;
-  }
-  return undefined;
 };
 
 const matchesSupplementalSearch = (image: SupplementalReferenceImage, searchTerm: string) => {
@@ -449,6 +304,11 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
         const previewImages = filteredSupplementalImages
           .filter((image) => inferMorphologyTags(image.title, image.caption, image.sourceDocument).includes(tag))
           .slice(0, 3);
+        const cognition = getPathologyCognition(
+          tag,
+          ...previewImages.map((image) => image.title),
+          ...previewImages.map((image) => image.caption),
+        );
 
         return {
           tag,
@@ -456,13 +316,14 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
           description: `Open a ${tag} differential review with example images and the closest morphology matches.`,
           focusTerms: [tag, ...previewImages.map((image) => normalizePathologyTitle(image.title)).slice(0, 2)],
           previewImages,
-          uncertainty:
-            PATHOLOGY_GATEWAY_STATE_MAP[tag]?.uncertainty ??
-            defaultPathologyState('Differential only', 'Pattern opens the workup', 'bg-amber-50 text-amber-900 border-amber-200'),
-          operationalState:
-            PATHOLOGY_GATEWAY_STATE_MAP[tag]?.operationalState ??
-            defaultPathologyState('Differential open', 'Use the closest mimics first', 'bg-violet-50 text-violet-900 border-violet-200'),
-          immunophenotype: MORPHOLOGY_IMMUNOPHENOTYPE_MAP[tag],
+          uncertainty: cognition.uncertaintyState,
+          operationalState: cognition.operationalState,
+          immunophenotype: cognition.immunophenotypeBranch,
+          reasoningProgression: cognition.reasoningProgression.map((step) => ({
+            key: step.key,
+            label: step.label,
+            cue: step.guidance,
+          })),
         };
       }),
     [filteredSupplementalImages, supplementalMorphologyOptions]
@@ -827,6 +688,22 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                         <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Operational state</div>
                         <div className="mt-1 text-sm font-semibold text-slate-900">{card.operationalState.label}</div>
                         <div className="text-xs text-slate-600">{card.operationalState.cue}</div>
+                      </div>
+                    </div>
+                    <div className="rounded-xl border border-slate-200 bg-white px-3 py-3">
+                      <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Reasoning progression</div>
+                      <div className="mt-3 grid gap-2">
+                        {card.reasoningProgression.map((step, index) => (
+                          <div key={`${card.tag}-${step.key}`} className="grid grid-cols-[auto,1fr] gap-2">
+                            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-sky-100 text-[11px] font-semibold text-sky-900">
+                              {index + 1}
+                            </span>
+                            <div className="rounded-lg bg-slate-50 px-3 py-2">
+                              <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">{step.label}</div>
+                              <div className="mt-1 text-xs leading-5 text-slate-700">{step.cue}</div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
                     {card.immunophenotype && (
@@ -1277,7 +1154,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
           {visibleSupplementalImages.map((image) => (
             <article key={image.id} className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
               {(() => {
-                const { uncertainty, operationalState } = inferPathologySignals(
+                const cognition = getPathologyCognition(
                   image.title,
                   image.caption,
                   image.sourceDocument,
@@ -1285,12 +1162,12 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                   inferMorphologyTags(image.title, image.caption, image.sourceDocument).join(' '),
                   inferStain(image.title, image.caption, image.sourceDocument),
                 );
-                const immunophenotype = inferImmunophenotypeBranch(
-                  image.title,
-                  image.caption,
-                  image.sourceDocument,
-                  inferMorphologyTags(image.title, image.caption, image.sourceDocument).join(' '),
-                );
+                const { uncertaintyState: uncertainty, operationalState, immunophenotypeBranch: immunophenotype } = cognition;
+                const reasoningProgression = cognition.reasoningProgression.map((step) => ({
+                  key: step.key,
+                  label: step.label,
+                  cue: step.guidance,
+                }));
                 return (
                   <>
               <img
@@ -1332,6 +1209,22 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                     <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Workflow state</div>
                     <div className="mt-1 text-xs font-semibold text-slate-900">{operationalState.label}</div>
                     <div className="text-[11px] leading-4 text-slate-600">{operationalState.cue}</div>
+                  </div>
+                </div>
+                <div className="rounded-lg border border-slate-200 bg-white px-2.5 py-2">
+                  <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Reasoning progression</div>
+                  <div className="mt-2 grid gap-2">
+                    {reasoningProgression.map((step, index) => (
+                      <div key={`${image.id}-${step.key}`} className="grid grid-cols-[auto,1fr] gap-2">
+                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-900">
+                          {index + 1}
+                        </span>
+                        <div className="rounded-md bg-slate-50 px-2 py-1.5">
+                          <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">{step.label}</div>
+                          <div className="mt-0.5 text-[11px] leading-4 text-slate-700">{step.cue}</div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 {immunophenotype && (
