@@ -7,15 +7,39 @@ const root = process.cwd();
 const cpSpecPath = path.join(root, 'src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json');
 const cpBatchPath = path.join(root, 'src/content/downloads_imports/raw/cp_content_specification_batch_ready.raw.json');
 const apLectureContractPath = path.join(root, 'src/content/lectures/lectureAbpathContracts.json');
+const cpInteractiveTutorialsPath = path.join(root, 'src/content/tutorials/clinicalPathInteractiveTutorials.json');
+const validatedManifestPath = path.join(root, 'src/content/tutorials/validatedMappingsManifest.json');
+const tutorialCoveragePath = path.join(root, 'reports/tutorial_abpath_spec_coverage.json');
+const activeCurriculumPath = path.join(root, 'src/content/curriculum/activeCurriculum.ts');
+const algorithmsPath = path.join(root, 'src/content/algorithms/algorithms.normalized.json');
 
 const journeyJsonPath = path.join(root, 'reports/content_consumption_journey_evaluation.json');
 const journeyMdPath = path.join(root, 'reports/content_consumption_journey_evaluation.md');
 const worldContractPath = path.join(root, 'src/content/contracts/worldClassFreeResourceContract.json');
 const cpContractPath = path.join(root, 'src/content/clinical_pathology/cpContentContracts.json');
+const learningUxContractPath = path.join(root, 'src/content/contracts/pthfndrDidacticsLearningUxContract.json');
 const cpReportPath = path.join(root, 'reports/clinical_pathology_contract_parameters.md');
 const cpCsvPath = path.join(root, 'reports/clinical_pathology_contract_parameters.csv');
 
 const ensureDir = (filePath) => fs.mkdirSync(path.dirname(filePath), { recursive: true });
+const readJson = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));
+const readText = (filePath) => fs.readFileSync(filePath, 'utf8');
+
+const extractModuleAlgorithmTopics = (curriculumText, moduleId) => {
+  const match = curriculumText.match(new RegExp(`moduleId: '${moduleId}'[\\s\\S]*?algorithmTopics: \\[(.*?)\\]`));
+  if (!match) {
+    return [];
+  }
+  return [...match[1].matchAll(/'([^']+)'/g)].map((entry) => entry[1]);
+};
+
+const countImplementedAlgorithmRoutes = (algorithms, topics) => {
+  const normalizedTopics = topics.map((topic) => topic.toLowerCase());
+  return algorithms.filter((algorithm) => {
+    const haystack = `${algorithm.title || ''} ${algorithm.patternFamily || ''} ${algorithm.category || ''}`.toLowerCase();
+    return normalizedTopics.some((topic) => haystack.includes(topic));
+  }).length;
+};
 
 const journeyDefinitions = [
   {
@@ -277,6 +301,13 @@ const cpDomainRules = {
     safetyCriticalActions: ['critical organism notification', 'infection-control escalation', 'avoid low-value tests from poor specimens'],
     minimums: { sourceAnchors: 5, tutorials: 1, mcqs: 5, flashcards: 10, operationalCases: 5 },
   },
+  mi: {
+    contentArea: 'Management and Informatics',
+    consultationTasks: ['QC interpretation', 'validation-versus-verification oversight', 'LIS/workflow redesign', 'finance-aware laboratory planning'],
+    operationalArtifacts: ['QC chart', 'Westgard pattern', 'validation plan', 'LIS workflow', 'budget worksheet', 'patient-safety vignette'],
+    safetyCriticalActions: ['hold unsafe patient results', 'escalate workflow or reporting risk', 'correct high-yield pre-analytic or informatics failures'],
+    minimums: { sourceAnchors: 10, tutorials: 5, mcqs: 10, flashcards: 10, operationalCases: 5 },
+  },
   cp: {
     contentArea: 'Chemical Pathology',
     consultationTasks: ['critical value adjudication', 'delta check interpretation', 'method interference recognition', 'test utilization'],
@@ -286,26 +317,70 @@ const cpDomainRules = {
   },
 };
 
+const summarizeAssessmentDeficits = (counts, minimums) => {
+  const deficits = [];
+  if ((counts.tutorials || 0) < minimums.tutorials) {
+    deficits.push(`tutorials ${counts.tutorials || 0}/${minimums.tutorials}`);
+  }
+  if ((counts.mcqs || 0) < minimums.mcqs) {
+    deficits.push(`MCQs ${counts.mcqs || 0}/${minimums.mcqs}`);
+  }
+  if ((counts.flashcards || 0) < minimums.flashcards) {
+    deficits.push(`flashcards ${counts.flashcards || 0}/${minimums.flashcards}`);
+  }
+  return deficits;
+};
+
+const classifyCpBuildoutStatus = ({ sourceAnchorCount, minimums, sourceRealizationMode, counts }) => {
+  if (sourceAnchorCount < minimums.sourceAnchors) {
+    return 'source-thin scaffold';
+  }
+  if (sourceRealizationMode === 'native-spec-root') {
+    return 'promotion-ready seed depth';
+  }
+  const assessmentDeficits = summarizeAssessmentDeficits(counts, minimums);
+  return assessmentDeficits.length === 0 ? 'promotion-ready seed depth' : 'governed recovery scaffold';
+};
+
 const makeCpContracts = () => {
-  const cpSpec = JSON.parse(fs.readFileSync(cpSpecPath, 'utf8'));
-  const batchTutorials = JSON.parse(fs.readFileSync(cpBatchPath, 'utf8'));
+  const cpSpec = readJson(cpSpecPath);
+  const batchTutorials = readJson(cpBatchPath);
+  const cpInteractiveTutorials = readJson(cpInteractiveTutorialsPath);
+  const validatedManifest = readJson(validatedManifestPath);
+  const tutorialCoverage = readJson(tutorialCoveragePath);
+  const activeCurriculum = readText(activeCurriculumPath);
+  const algorithms = readJson(algorithmsPath);
   const topics = flattenCpTopics(cpSpec.SYLLABUS_DATA);
   const mcqs = cpSpec.MCQS || [];
   const flashcards = cpSpec.FLASHCARDS || [];
   const tutorialData = cpSpec.TUTORIAL_DATA || {};
-
-  return cpSpec.SYLLABUS_DATA.map((root) => {
+  const generatedDomains = cpSpec.SYLLABUS_DATA.map((root) => {
     const rule = cpDomainRules[root.id];
     const domainTopics = topics.filter((topic) => topic.id === root.id || topic.id?.startsWith(`${root.id}-`));
     const domainTutorials = batchTutorials.filter((item) => {
       const haystack = `${item.topic} ${item.tutorial?.title || ''}`.toLowerCase();
       return root.id === 'bb'
         ? /blood|transfusion|platelet|hla|tissue|anticoag|coag|hemolytic|rhig/i.test(haystack)
+        : root.id === 'mi'
+          ? /management|informatics|quality|westgard|validation|verification|lis|budget|safety/i.test(haystack)
         : haystack.includes(rule.contentArea.toLowerCase().split('/')[0]);
     });
-    const buildoutStatus = domainTopics.length >= 10 ? 'promotion-ready seed depth' : 'source-thin scaffold';
+    const availableTutorialCount =
+      domainTutorials.length + Object.values(tutorialData).filter((item) => item?.topicId?.startsWith(root.id)).length;
+    const availableMcqCount = mcqs.filter((item) => String(item.topicId || '').startsWith(root.id)).length;
+    const availableFlashcardCount = flashcards.filter((item) => String(item.topicId || '').startsWith(root.id)).length;
+    const buildoutStatus = classifyCpBuildoutStatus({
+      sourceAnchorCount: domainTopics.length,
+      minimums: rule.minimums,
+      sourceRealizationMode: 'native-spec-root',
+      counts: {
+        tutorials: availableTutorialCount,
+        mcqs: availableMcqCount,
+        flashcards: availableFlashcardCount,
+      },
+    });
     const contractWarnings =
-      domainTopics.length >= 10
+      domainTopics.length >= rule.minimums.sourceAnchors
         ? []
         : [
             `Current structured CP seed provides ${domainTopics.length} source anchors; add deeper source anchors and operational cases before canonical launch.`,
@@ -317,12 +392,18 @@ const makeCpContracts = () => {
       buildoutStatus,
       contractWarnings,
       sourceSpecRoot: root.title,
+      sourceRealizationMode: 'native-spec-root',
+      sourceAnchorBasis: 'raw-cp-spec-root',
+      representativeAnchorBasis: 'raw-cp-spec-root',
+      tutorialCountBasis: 'batch-plus-raw-tutorial-data',
+      availableInteractiveTutorialCount: availableTutorialCount,
+      availableGovernedTutorialRowCount: 0,
       levelMix: Array.from(new Set(domainTopics.map((topic) => topic.level))).sort(),
       sourceAnchorCount: domainTopics.length,
       representativeAnchors: domainTopics.slice(0, 12),
-      availableTutorialCount: domainTutorials.length + Object.values(tutorialData).filter((item) => item?.topicId?.startsWith(root.id)).length,
-      availableMcqCount: mcqs.filter((item) => String(item.topicId || '').startsWith(root.id)).length,
-      availableFlashcardCount: flashcards.filter((item) => String(item.topicId || '').startsWith(root.id)).length,
+      availableTutorialCount,
+      availableMcqCount,
+      availableFlashcardCount,
       contractParameters: {
         scope: [
           `Keep content scoped to ${rule.contentArea}.`,
@@ -353,6 +434,142 @@ const makeCpContracts = () => {
         'Promote when source anchors, tutorial/assessment assets, operational artifacts, safety actions, and remediation routing all pass validation.',
     };
   });
+
+  const hasManagementDomain = generatedDomains.some((domain) => domain.domainId === 'mi');
+  if (hasManagementDomain) {
+    return generatedDomains;
+  }
+
+  const miRule = cpDomainRules.mi;
+  const miCoverage = (tutorialCoverage.coverage?.byRoot || []).find(
+    (row) => row.root === 'Management and Informatics' && row.domain === 'CP'
+  );
+  const miInteractiveTutorials = cpInteractiveTutorials.filter(
+    (row) => row.cpGovernance?.abpathRootTopic === 'Management and Informatics'
+  );
+  const miValidatedRows = (validatedManifest.rows || []).filter(
+    (row) =>
+      row.canonicalForId &&
+      row.validatedForPromotion &&
+      row.abpathRoot === 'Management and Informatics'
+  );
+  const representativeAnchors = Array.from(
+    new Map(
+      miValidatedRows
+        .map((row, index) => [
+          row.abpathPrimaryPath,
+          {
+            id: `mi-derived-${index + 1}`,
+            title: String(row.abpathPrimaryPath || 'Management and Informatics').split(' > ').at(-1) || 'Management and Informatics',
+            level: 'C',
+            path: row.abpathPrimaryPath || 'Management and Informatics',
+          },
+        ])
+        .filter(([pathValue]) => Boolean(pathValue))
+    ).values()
+  ).slice(0, 12);
+  const miAvailableInteractiveTutorialCount = miInteractiveTutorials.length;
+  const miAvailableGovernedTutorialRowCount = miValidatedRows.length;
+  const miAvailableTutorialCount = miAvailableInteractiveTutorialCount;
+  const miDeclaredAlgorithmTopics = extractModuleAlgorithmTopics(activeCurriculum, 'management-informatics-core');
+  const miAvailableAlgorithmRouteCount = countImplementedAlgorithmRoutes(algorithms, miDeclaredAlgorithmTopics);
+  const miAvailableMcqCount = miInteractiveTutorials.reduce(
+    (total, tutorial) => total + (tutorial.mcqs || []).length,
+    0,
+  );
+  const miAvailableFlashcardCount = miInteractiveTutorials.reduce(
+    (total, tutorial) => total + (tutorial.flashcards || []).length,
+    0,
+  );
+  const miAssessmentDeficits = summarizeAssessmentDeficits(
+    {
+      tutorials: miAvailableTutorialCount,
+      mcqs: miAvailableMcqCount,
+      flashcards: miAvailableFlashcardCount,
+    },
+    miRule.minimums,
+  );
+  const miSourceAnchorCount = miCoverage?.specNodeCount || representativeAnchors.length;
+  const miBuildoutStatus = classifyCpBuildoutStatus({
+    sourceAnchorCount: miSourceAnchorCount,
+    minimums: miRule.minimums,
+    sourceRealizationMode: 'synthetic-governed-recovery',
+    counts: {
+      tutorials: miAvailableTutorialCount,
+      mcqs: miAvailableMcqCount,
+      flashcards: miAvailableFlashcardCount,
+    },
+  });
+
+  generatedDomains.push({
+    domainId: 'mi',
+    contentArea: miRule.contentArea,
+    buildoutStatus: miBuildoutStatus,
+    contractWarnings: [
+      'Management and Informatics is currently realized through governed tutorial coverage because the active raw CP spec seed does not expose a native `mi` root.',
+      ...(miSourceAnchorCount >= miRule.minimums.sourceAnchors
+        ? []
+        : [
+            `Current governed Management and Informatics seed provides ${miSourceAnchorCount} source anchors; add deeper source anchors and operational cases before canonical launch.`,
+          ]),
+      ...(miAssessmentDeficits.length
+        ? [
+            `Assessment coverage remains below contract minimums: ${miAssessmentDeficits.join(', ')}.`,
+          ]
+        : []),
+      ...(miDeclaredAlgorithmTopics.length > miAvailableAlgorithmRouteCount
+        ? [
+            `Algorithm coverage remains declared-only in part: ${miAvailableAlgorithmRouteCount}/${miDeclaredAlgorithmTopics.length} curriculum MI algorithm routes are currently implemented.`,
+          ]
+        : []),
+    ],
+    sourceSpecRoot: 'Management and Informatics',
+    sourceRealizationMode: 'synthetic-governed-recovery',
+    sourceAnchorBasis: 'tutorial-abpath-coverage-by-root',
+    representativeAnchorBasis: 'validated-management-tutorial-primary-paths',
+    tutorialCountBasis: 'interactive-tutorial-records',
+    availableInteractiveTutorialCount: miAvailableInteractiveTutorialCount,
+    availableGovernedTutorialRowCount: miAvailableGovernedTutorialRowCount,
+    algorithmCountBasis: 'curriculum-topic-declarations-vs-normalized-algorithm-routes',
+    declaredAlgorithmTopicCount: miDeclaredAlgorithmTopics.length,
+    availableAlgorithmRouteCount: miAvailableAlgorithmRouteCount,
+    levelMix: ['AR', 'C'],
+    sourceAnchorCount: miSourceAnchorCount,
+    representativeAnchors,
+    availableTutorialCount: miAvailableTutorialCount,
+    availableMcqCount: miAvailableMcqCount,
+    availableFlashcardCount: miAvailableFlashcardCount,
+    contractParameters: {
+      scope: [
+        `Keep content scoped to ${miRule.contentArea}.`,
+        'Teach laboratory medicine as consultation and operations, not as isolated fact recall.',
+        'Declare C/AR/F level and rotation context for every promoted CP asset.',
+      ],
+      consumptionPathways: [
+        'Curriculum module -> tutorial -> operational artifact -> consult question -> remediation.',
+        'Competency matrix -> CP domain -> case/consult -> faculty or answer-key feedback.',
+        'Daily review queue -> CP artifact interpretation -> spaced recall.',
+      ],
+      requiredAssets: [
+        ...miRule.operationalArtifacts,
+        'case vignette with clinical decision point',
+        'deterministic answer key with escalation threshold',
+      ],
+      assessmentGates: [
+        'Recognition of the specimen/result/artifact.',
+        'Correct interpretation with limitations.',
+        'Appropriate next test or workflow recommendation.',
+        'Critical value or patient-safety escalation when indicated.',
+        'Clear consult note or laboratory communication.',
+      ],
+      safetyCriticalActions: miRule.safetyCriticalActions,
+      minimums: miRule.minimums,
+    },
+    promotionGate:
+      'Promote when source anchors, tutorial/assessment assets, operational artifacts, safety actions, and remediation routing all pass validation.',
+  });
+
+  return generatedDomains;
 };
 
 const writeMarkdown = (journeys, swot, worldContract, cpContracts) => {
@@ -450,8 +667,10 @@ const writeCpMarkdown = (cpContracts) => {
 
 const main = () => {
   const apLectureContract = JSON.parse(fs.readFileSync(apLectureContractPath, 'utf8'));
+  const learningUxContract = JSON.parse(fs.readFileSync(learningUxContractPath, 'utf8'));
   const swot = summarizeSwot(journeyDefinitions);
   const cpContracts = makeCpContracts();
+  const learningUxGateLabel = 'learning UX';
   const worldContract = {
     version: 'world-class-free-resource-contract.v1',
     purpose:
@@ -462,13 +681,19 @@ const main = () => {
       'src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json',
       'src/content/downloads_imports/raw/cp_content_specification_batch_ready.raw.json',
       'competency matrix and active curriculum surfaces',
+      'src/content/contracts/pthfndrDidacticsLearningUxContract.json',
     ],
     globalGates: {
-      requiredRouteContracts: ['scope', 'source anchors', 'learner level', 'asset readiness', 'assessment evidence', 'remediation path', 'trust/provenance'],
+      requiredRouteContracts: ['scope', 'source anchors', 'learner level', 'asset readiness', 'assessment evidence', 'remediation path', 'trust/provenance', learningUxGateLabel],
+      learningUxGateLabel,
+      learningUxContractVersion: learningUxContract.version,
+      learningUxContractSurface: learningUxContract.productSurface,
       promotionRule:
         'No learner-facing route is canonical unless it declares scope, source anchors, level, required assets, assessment evidence, remediation route, and validation command.',
       freeResourceTrustRule:
         'Free does not mean informal: every promoted asset must expose provenance, editorial status, last-reviewed date, and a deterministic route back to source contracts.',
+      learningUxRule:
+        `Every promoted learner route on ${learningUxContract.productSurface} must satisfy the didactics learning UX contract so workspace labels, navigation state, and visible teaching context stay truthful and consistent.`,
       learningScienceRule:
         'Every pathway must include retrieval practice, interleaving or comparison, feedback, and a spaced-review or remediation output.',
     },

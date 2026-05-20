@@ -23,3 +23,19 @@ Before any corpus inventory, indexing, mapping, or promotion work in this repo, 
 ```text
 /Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/docs/contracts/CORPUS_REALIZATION_CONTRACT.md
 ```
+
+## Codex system alignment contract
+
+Before substantial Codex execution in this repo, also obey:
+
+```text
+/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md
+```
+
+## OpenClaw execution contract
+
+Before any OpenClaw-assisted execution for this repo, also obey:
+
+```text
+/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/SKI-CORTEX/contracts/openclaw_parallel_execution_contract.md
+```

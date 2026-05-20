@@ -12,6 +12,135 @@
     "sustained_engagement",
     "trust_and_authority"
   ],
+  "semanticClarity": {
+    "plainLanguage": {
+      "forbiddenPublicLabels": [
+        "Active workspace",
+        "Open workspace",
+        "workspace cue",
+        "destination tree",
+        "workspace landing",
+        "validated topic",
+        "subtopic overview"
+      ]
+    },
+    "antiMetaNarration": {
+      "forbiddenPublicPhrases": [
+        "I'm going to",
+        "I confirmed",
+        "The likely win is",
+        "Let me",
+        "Next tranche",
+        "Highest-value slice",
+        "The agent determined",
+        "Implementation details",
+        "Fallback path"
+      ]
+    },
+    "intentionalClicks": {
+      "required": [
+        "establish_expectation",
+        "preserve_context",
+        "advance_reasoning_path",
+        "reduce_cognitive_load"
+      ],
+      "forbiddenVagueLabels": [
+        "Learn more",
+        "Continue",
+        "Resources",
+        "Workups",
+        "Practice"
+      ],
+      "allowedGovernedLabels": [
+        {
+          "label": "Workups",
+          "allowedOnlyWhen": [
+            "workspace_switcher",
+            "breadcrumb",
+            "destination_heading"
+          ],
+          "rule": "The governed Workups label may name the active diagnostic-workup lane, but it must not be reused as a generic CTA or route hint."
+        }
+      ]
+    },
+    "cognitiveContinuityOrder": [
+      "orientation",
+      "morphologic_recognition",
+      "differential_diagnosis",
+      "confirmatory_studies",
+      "reporting_or_staging",
+      "pitfalls",
+      "retention_or_practice"
+    ],
+    "ontologySeparation": {
+      "mustSeparate": [
+        "morphologic_patterns",
+        "specimen_types",
+        "workflow_actions",
+        "learning_modes",
+        "reporting_tools",
+        "disease_entities"
+      ]
+    },
+    "pathologyVernacular": {
+      "prefer": [
+        "morphology_centered_terminology",
+        "diagnostic_workflow_terminology",
+        "signout_terminology",
+        "board_prep_terminology",
+        "cap_who_ajcc_aligned_language",
+        "residency_and_fellowship_training_language"
+      ],
+      "avoid": [
+        "corporate_edtech_language",
+        "generic_lms_terminology",
+        "software_abstraction_language",
+        "competency_framework_jargon",
+        "ai_generated_abstraction",
+        "non_pathology_educational_phrasing"
+      ],
+      "preferredVerbs": [
+        "Review",
+        "Compare",
+        "Distinguish",
+        "Recognize",
+        "Correlate",
+        "Stage",
+        "Grade",
+        "Classify",
+        "Confirm",
+        "Evaluate",
+        "Work up",
+        "Sign out",
+        "Interpret",
+        "Approach"
+      ],
+      "discouragedVerbs": [
+        "Explore",
+        "Discover",
+        "Unlock",
+        "Learn about",
+        "Engage with",
+        "Mastery pathway",
+        "Competency progression"
+      ],
+      "discouragedPublicPhrases": [
+        "learning goal",
+        "basic ancillary logic",
+        "rotation-level organ-system differential diagnosis"
+      ]
+    },
+    "referenceLane": {
+      "discouragedPublicPhrases": [
+        "Intent",
+        "Mode",
+        "Evidence",
+        "competency mapping",
+        "competency view",
+        "rubric anchors"
+      ]
+    }
+  },
   "pageArchitecture": {
     "requiredRegions": [
       {
@@ -306,12 +435,26 @@
     }
   },
   "routeAcceptanceGates": [
-    "Every didactics destination route must show an orientation frame before the main instructional body.",
-    "Every selected tutorial or teaching session must open as a destination view rather than remaining only a list-card highlight.",
-    "Every route must preserve state on resume unless a user intentionally resets context.",
-    "Every wrong answer must expose explanation plus remediation routing.",
-    "Every core didactics page must make the AP versus CP scope obvious within one viewport.",
-    "Every interactive surface must preserve stable control placement and predictable navigation outcomes."
+    "Every didactics workspace change must visibly change the main panel.",
+    "The sidebar must clearly separate workspace switching from topic navigation.",
+    "Only the active workspace tree may stay expanded.",
+    "Landing pages must be guided and actionable.",
+    "Topic overviews must stay scoped and avoid unrelated library dump behavior.",
+    "Selected tutorials, lectures, and algorithms must open true destination views.",
+    "Duplicate public taxonomy labels must be eliminated.",
+    "The header, breadcrumb, and main panel must agree on workspace identity.",
+    "Learners must be able to return from item detail to subtopic, topic, and workspace landing predictably.",
+    "Active study content must reach the learner without redundant header clutter displacing the lesson."
+  ],
+  "routeFailureClasses": [
+    "workspace click with no visible main-panel change",
+    "duplicated public topic labels",
+    "mixed workspace identity in the same viewport",
+    "main panel showing catalog scaffolding instead of active study content",
+    "sidebar showing too much global taxonomy for the current task",
+    "redundant headers displacing the actual lesson",
+    "route context drifting away from the selected module, topic, or workspace",
+    "learner-facing meta jargon that explains the software structure instead of the study task"
   ],
   "uiUxAuditChecklist": [
     "Can a new user identify current location within 3 seconds?",

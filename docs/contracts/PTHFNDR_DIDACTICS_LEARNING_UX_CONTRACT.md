@@ -1,9 +1,10 @@
 # P@thfndr Didactics Learning UX Contract
 
 ## Purpose
-This contract governs how `/didactics` should behave as a learning environment, not just as a webpage.
+This contract governs how `/didactics` must behave as a learning environment.
 
-The goal is to reduce cognitive load, accelerate orientation, preserve diagnostic reasoning flow, reinforce memory encoding, improve error recovery, sustain engagement through long study sessions, and increase trust in the platform.
+The goal is not merely to look polished.
+The goal is to remove software friction from learning, preserve orientation, accelerate diagnostic reasoning, and keep the learner inside a stable study flow.
 
 ## Prime Rule
 The interface should disappear psychologically.
@@ -15,7 +16,7 @@ The learner should feel:
 - rewarded
 - intellectually engaged
 
-The learner should not feel like they are managing software overhead.
+The learner should not feel like they are managing software overhead, debugging navigation, or translating the site architecture for themselves.
 
 ## Core Outcomes
 Every didactics route must optimize for:
@@ -28,74 +29,379 @@ Every didactics route must optimize for:
 - long-session stability
 - trust and authority
 
-## Required Page Regions
-Every major didactics destination route should resolve into four clear regions:
+## Plain-Language Contract
+Learner-facing text must describe study actions in plain language.
 
-1. Orientation zone:
-   Where am I? Why does this matter? What should I do next?
-2. Working zone:
-   The main active learning task.
-3. Support zone:
-   Pearls, pitfalls, differentials, hover-linked support, and optional deep dives.
-4. Feedback zone:
-   Progress, mastery updates, alerts, remediation, and next recommended work.
+Prefer:
+- topic
+- lesson
+- group
+- study path
+- next step
+- time estimate
+- common trap
 
-Recommended spatial model:
-- Left sidebar: navigation and context
-- Main panel: active work
-- Right panel: pearls and pitfalls
-- Bottom dock: notes and review queue
+Avoid on public learner-facing pages:
+- workspace narration when a simple section name will do
+- governance language
+- systems language
+- architecture metaphors
+- route jargon
+- internal implementation labels
+- technical counting language such as `decision nodes`
 
-## Visual Hierarchy Contract
-The learner must understand three things within one viewport:
+If a phrase sounds like it belongs in an internal design review instead of a study session, rewrite it.
 
-1. where they are
-2. what matters most
-3. what to do next
+Plain-language failures include learner-facing labels or helper copy such as:
+- `Active workspace`
+- `Open workspace`
+- `workspace cue`
+- `destination tree`
+- `workspace landing`
+- `validated topic`
+- `subtopic overview`
 
-Use:
-- H1 for page mission
-- H2 for module or domain
-- H3 for active section or task
-- body text for actionable content
+These may be acceptable as internal implementation concepts.
+They are not acceptable as public study guidance unless a genuine medical teaching meaning is being expressed.
 
-Forbidden:
-- equal visual weight everywhere
-- dense walls of text above the fold
-- inconsistent spacing that blurs hierarchy
+## Anti-Meta / Anti-Self-Narration Contract
+Never expose internal reasoning, implementation narration, self-awareness, or workflow commentary on learner-facing surfaces.
 
-## Navigation Contract
-Core navigation must remain stable.
+Forbidden public phrasing includes:
+- `I'm going to`
+- `I confirmed`
+- `The likely win is`
+- `Let me`
+- `Next tranche`
+- `Highest-value slice`
+- `The agent determined`
+- `Implementation details`
+- `Fallback path`
 
-Persistent navigation should include:
-- Home
-- Dashboard
-- Didactics
-- Cases
-- Weak Areas
-- Search
-- Progress
-- Settings
+These belong in:
+- logs
+- developer notes
+- governance artifacts
+- internal execution traces
+
+They do not belong in:
+- participant interfaces
+- educational pages
+- reviewer flows
+- manuscripts
+- onboarding screens
+
+Convert internal process language into direct instructional or informational language.
+
+## Intentional Click Contract
+Every clickable element must:
+1. establish expectation
+2. preserve context
+3. advance the current reasoning path
+4. reduce cognitive load
+
+Each click target should make all of the following obvious:
+- current learner state
+- expected destination
+- why this is the next logical step
+- what context persists
+- what the learner can do next
+
+Avoid vague or decorative click labels such as:
+- `Learn more`
+- `Continue`
+- `Resources`
+- `Workups`
+- `Practice`
+
+Exception:
+- the governed workspace label `Workups` is allowed only when it truthfully names the active diagnostic-workup lane in the workspace switcher, breadcrumb, or destination heading
+- `Workups` must not be reused as a generic CTA, teaser button, or unlabeled route hint outside that governed workspace identity
+
+Prefer labels that reveal the destination and reason to click, such as:
+- `Review Spindle Cell Differential`
+- `Compare NIFTP vs Encapsulated FVPTC`
+- `Open CAP Synoptic Checklist`
+- `Start 5-Question GI Practice Set`
+- `Review Margin Assessment Criteria`
+
+The learner should be able to predict the destination before clicking.
+
+## Cognitive Continuity Contract
+Every page must preserve a coherent learning chain:
+
+orientation
+-> morphologic recognition
+-> differential diagnosis
+-> confirmatory studies
+-> reporting or staging
+-> pitfalls
+-> retention or practice
+
+Do not interrupt this chain with:
+- unrelated modules
+- mixed taxonomies
+- marketing surfaces
+- random navigation chips
+- parallel learning modes that do not advance the current task
+
+## Ontology Separation Contract
+Do not mix fundamentally different concept types in the same visual cluster.
+
+Keep separate:
+- morphologic patterns
+- specimen types
+- workflow actions
+- learning modes
+- reporting tools
+- disease entities
+
+If these concepts are not all needed for the current task, remove or defer them rather than giving them equal visual weight.
+
+## Elimination Of Unnecessary Labels
+Do not label elements whose purpose is already obvious from layout and context.
+
+Avoid:
+- redundant headers
+- repetitive section titles
+- over-explanation
+- instructional clutter
+- UI narration
+
+When structure alone communicates meaning, remove the label.
+
+## Anti-Semantic-Crowding Contract
+Do not present multiple conceptual systems with equal visual weight unless they truly belong to the same task.
+
+The primary task must dominate visually.
+
+Secondary material should be:
+- collapsed
+- below the fold
+- progressively revealed
+- or shown only when context requires it
+
+When the page goal is immediate task entry, anything not supporting trust, comprehension, or immediate action is a distraction.
+
+## Human-Like Study Navigation Contract
+Navigation should feel like expert attending guidance during board preparation.
+
+The learner should feel:
+- progressively oriented
+- contextually guided
+- never abandoned
+- never overloaded
+- never forced to infer the next step
+
+Each click should feel like:
+`Of course this is what I should look at next.`
+
+## Pathology Vernacular Normalization Contract
+All learner-facing terminology must sound natural in AP/CP training, signout, and board preparation.
+
+Prefer:
+- morphology-centered terminology
+- diagnostic workflow terminology
+- signout terminology
+- board-prep terminology
+- CAP, WHO, and AJCC aligned language
+- phrases used by residents, fellows, and attendings
+
+Avoid:
+- corporate EdTech language
+- generic LMS terminology
+- software abstraction language
+- competency-framework jargon
+- AI-generated abstraction
+- generic educational phrasing that is not pathology-native
+
+Use language that sounds like:
+- real pathology signout
+- attending teaching
+- board review
+- subspecialty preview
+- diagnostic workup discussion
+
+Replace educational-abstraction labels with pathology-native labels.
+
+Examples:
+- `Learning goal` -> `Diagnostic focus`, `Board-relevant focus`, or `What you should recognize`
+- `basic ancillary logic` -> `Initial immunostain approach`, `Common confirmatory studies`, or `How the diagnosis is confirmed`
+- `Build rotation-level organ-system differential diagnosis` -> `Develop organ-based differentials` or `Work through common board-style differentials`
+
+Prefer verbs such as:
+- Review
+- Compare
+- Distinguish
+- Recognize
+- Correlate
+- Stage
+- Grade
+- Classify
+- Confirm
+- Evaluate
+- Work up
+- Sign out
+- Interpret
+- Approach
+
+Avoid verbs such as:
+- Explore
+- Discover
+- Unlock
+- Learn about
+- Engage with
+- Mastery pathway
+- Competency progression
+
+Every label, button, section title, and navigation element should answer:
+`Would this sound natural during pathology training or board preparation?`
+
+## System-Level Frictionless Learning Rule
+At any moment, the learner must be able to answer within one viewport:
+
+1. where am I
+2. what is the current study workspace
+3. what topic or subtopic is active
+4. what should I do next
+5. what changed as a result of my last click
+
+If any of these are ambiguous, the route fails contract.
+
+## Workspace Ownership Contract
+The didactics experience has four governed study workspaces:
+- Curriculum
+- Lectures
+- Tutorials
+- Workups
 
 Rules:
-- never move core navigation locations casually
-- use icon and text together
-- highlight current location clearly
+- one workspace owns the main panel at a time
+- workspace selection must be visually explicit
+- the page title, heading, and main-panel content must agree on the active workspace
+- a workspace click must never behave like a passive filter mutation
+- a workspace click must always produce a visible content-state change in the main panel
 
-Breadcrumbs are required for deeper content routes.
+Forbidden:
+- keeping the same main-panel landing state after a workspace switch
+- showing a Tutorials-branded header while a different workspace is active
+- allowing hidden state to own the route while the visible UI implies something else
 
-Example:
-`CP > Transfusion Medicine > Hemolytic Reactions > DAT Interpretation`
+## Sidebar Partition Contract
+The left sidebar is a constrained navigation surface, not a mixed control dump.
+
+It must be divided into this order:
+
+1. global product identity
+2. workspace switcher
+3. active workspace destination tree
+4. optional secondary actions
+
+Rules:
+- workspace switching and topic selection must be visually separated
+- only the active workspace's destination tree should be expanded
+- inactive workspaces must not dump their topic taxonomies into the same persistent list
+- topic trees must narrow with selection rather than continuously broadcasting the full library
+
+Forbidden:
+- mixing workspace controls and all topic families into one undifferentiated stack
+- showing the full topic universe when a scoped topic tree is expected
+- making the learner infer which controls affect navigation versus filtering
+
+## Main Panel Singularity Contract
+Only active study material belongs in the main panel.
+
+The main panel must render exactly one of:
+- workspace landing
+- topic overview
+- subtopic overview
+- item detail
+
+Rules:
+- landing must be guided, not empty
+- topic overview must be scoped, not a full library dump
+- subtopic overview must show only content within that subtopic
+- item detail must foreground the study material, not surrounding catalog chrome
+
+Forbidden:
+- dead-end prompts such as "choose from the sidebar" without meaningful landing guidance
+- persistent catalog clutter above active study material
+- redundant headers that restate navigation without advancing learning
+
+## Immediate Response Contract
+Every meaningful learner click must produce an immediate, visible response.
+
+Examples:
+- workspace selected
+- topic selected
+- subtopic selected
+- tutorial selected
+- algorithm selected
+- back selected
+
+Visible response means at least one of:
+- heading changes
+- breadcrumb changes
+- active tree changes
+- main-panel content changes
+- route state changes with clear active emphasis
+
+If a click appears successful but the visible content does not change, the route fails contract.
+
+## First-Time Learner Contract
+An unfamiliar user must be able to enter `/didactics` and orient without prior training.
+
+The landing experience must communicate:
+- what this part of the platform is for
+- where to begin
+- how to continue prior work
+- how to move from broad topic selection into focused study
+
+The first-time learner should not need to:
+- decode internal architecture
+- guess whether a click worked
+- differentiate hidden route state from visible route state
+- reconcile duplicate labels or inconsistent naming
+
+## Taxonomy Integrity Contract
+The learning taxonomy must behave as stable teaching structure.
+
+Rules:
+- duplicate or near-duplicate public labels are forbidden
+- topic labels must be normalized across sidebar, heading, cards, and detail views
+- board-facing labels and ABPath-facing labels may coexist, but their relationship must be explicit
+
+Forbidden:
+- duplicate public labels such as parallel slash-format variants
+- inconsistent workspace naming between sidebar and content header
+- exposing internal staging language or implementation metaphors on the public surface
+- exposing UI-architecture labels such as `destination tree`, `workspace landing`, or `subtopic overview` on the public learner surface
 
 ## Destination View Contract
-Selecting a tutorial, lecture, case, or teaching session must open a destination view.
-
-It should not remain only a highlighted card in a library list.
+Selecting a tutorial, lecture, algorithm, case, or teaching session must open a true destination view.
 
 Every destination view must provide:
-- clear route back to the source library
+- route back to its parent overview
 - preserved prior state
 - immediate scope framing
+- visible workspace identity
+- topic and subtopic context
+
+The learner should never wonder whether they are still in a catalog, in a topic overview, or inside the actual lesson.
+
+## Orientation Frame Contract
+At the top of every study destination view, show the minimal orientation frame before the main body:
+- workspace
+- topic or module
+- item title
+- concise scope line
+- ABPath scope or governed content frame when applicable
+- why it matters
+- common trap when relevant
+- estimated effort when relevant
+
+This frame must be compact.
+It should orient the learner, not push the teaching content below the fold.
 
 ## Cognitive Load Contract
 Do not reveal everything at once.
@@ -112,80 +418,32 @@ Preferred information buckets:
 - Differential
 - Pitfalls
 
-Avoid one long undifferentiated teaching block when structured clusters would work.
+Avoid:
+- one long undifferentiated teaching block
+- stacked summary banners above live content
+- redundant labels that compete with the active task
 
-## Immediate Context Contract
-At the top of every tutorial or teaching-session destination view, show:
-- ABPath Scope
-- Why It Matters
-- Common Board Trap
-- Estimated Time
-- Difficulty
+## Stability Contract
+Educational medical software must feel trustworthy before it feels impressive.
 
-The learner should never need to hunt for the basic framing.
+Forbidden:
+- layout jumping
+- flashing
+- inconsistent controls
+- lost progress
+- route resets that discard learner context
+- workspace switches that visually fail to resolve
 
-## State Awareness Contract
-The platform must remember, when feasible:
-- last module
-- scroll position
-- filters
-- notes
-- pending reviews
-- weak topics
+## Navigation Truthfulness Contract
+Visible navigation must tell the truth about system state.
 
-The platform should feel continuous, not reset-happy.
+Rules:
+- if `Tutorials` is active, the main heading and visible content must reflect Tutorials
+- if `Workups` is active, the main heading and visible content must reflect Workups
+- if a topic is selected, only that topic's governed content should dominate the main panel
+- the back path must mirror the learner's actual journey
 
-## Feedback Loop Contract
-Every meaningful action should generate feedback.
-
-Examples:
-- answer submitted
-- mastery updated
-- progress changed
-- review scheduled
-
-Without feedback, engagement collapses.
-
-## Error-Centered Learning Contract
-Incorrect answers are higher-value learning events than correct ones.
-
-Every wrong answer must produce:
-- an explanation
-- why distractors are wrong
-- linked remediation
-- related follow-up questions or review queue
-
-## Adaptive Learning Contract
-The system should eventually adjust:
-- difficulty
-- pace
-- topic order
-- question type
-
-Based on:
-- fatigue
-- accuracy
-- time to answer
-- recent performance
-
-## Visual Language Contract
-Typography:
-- maximum 2 fonts
-- readable line height
-- 60-90 character reading width
-
-Colors:
-- green = mastered or correct
-- red = unsafe or incorrect
-- yellow = caution
-- blue = informational
-- purple = advanced or experimental
-
-Do not overload colors with multiple unrelated meanings.
-
-Icons:
-- must use one consistent icon family
-- must reinforce meaning, not decorate randomly
+The system must not rely on hidden session state to contradict the visible page.
 
 ## Accessibility Contract
 Must support:
@@ -193,16 +451,9 @@ Must support:
 - screen readers
 - scalable text
 - contrast compliance
-- reduced motion mode
+- reduced motion compatibility
 
-## Stability Contract
-Forbidden:
-- layout jumping
-- flashing
-- inconsistent controls
-- lost progress
-
-Educational medical software must feel trustworthy before it feels impressive.
+Accessibility support must not be implemented as decorative clutter or surface noise.
 
 ## Trust and Information Integrity Contract
 Every route should expose or inherit:
@@ -213,11 +464,28 @@ Every route should expose or inherit:
 
 Users must trust both the content and the platform behavior.
 
+## Permanent Failure Classes
+The following are system-level failures and must be treated as contract violations:
+- these failure names must stay aligned with the machine-readable `routeFailureClasses` in `src/content/contracts/pthfndrDidacticsLearningUxContract.json`
+- workspace click with no visible main-panel change
+- duplicated public topic labels
+- mixed workspace identity in the same viewport
+- main panel showing catalog scaffolding instead of active study content
+- sidebar showing too much global taxonomy for the current task
+- redundant headers displacing the actual lesson
+- route context drifting away from the selected module, topic, or workspace
+- learner-facing meta jargon that explains the software structure instead of the study task
+
 ## Acceptance Gates
-This contract is satisfied only when:
-- every didactics route shows an orientation frame before the main body
-- every selected tutorial or teaching session opens as a destination page
-- every route preserves state on return unless intentionally reset
-- every incorrect answer exposes explanation plus remediation
-- AP versus CP scope is obvious within one viewport
-- controls remain stable and predictable across the learning surface
+This contract is satisfied only when all of the following are true:
+- these gate names must stay aligned with the machine-readable `routeAcceptanceGates` in `src/content/contracts/pthfndrDidacticsLearningUxContract.json`
+- every didactics workspace change visibly changes the main panel
+- the sidebar clearly separates workspace switching from topic navigation
+- only the active workspace tree is expanded
+- landing pages are guided and actionable
+- topic overviews are scoped and do not dump unrelated library content
+- selected tutorials, lectures, and algorithms open true destination views
+- duplicate public taxonomy labels are eliminated
+- the header, breadcrumb, and main panel agree on workspace identity
+- the learner can return from item detail to subtopic, topic, and workspace landing predictably
+- active study content reaches the learner without redundant header clutter displacing it
