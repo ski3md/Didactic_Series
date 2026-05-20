@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-05-20T11:09:05.058Z",
+  "source": {
+    "handoff": "reports/cp_truth_handoff_summary.json",
+    "checklist": "reports/cp_root_execution_checklist.json"
+  },
+  "truthBaseline": {
+    "sourceFingerprint": "c1d6ff9c18b2ac0d5d6b7fef5010d47090c304968213f4d64d339fc55d65bf18",
+    "cpGovernedTutorials": 13,
+    "cpGovernedModules": 7,
+    "validatedTutorials": 487,
+    "governancePendingTutorials": 0
+  },
+  "executionView": {
+    "rootCount": 6,
+    "topPriorityRoot": "Management and Informatics",
+    "proofCommands": [
+      "npm run cp:precision:validate",
+      "npx vitest run scripts/validate_cp_truth_baseline_outputs.test.ts",
+      "git diff --check"
+    ]
+  },
+  "staleWhen": [
+    "the source fingerprint no longer matches the current CP truth handoff summary",
+    "the root count no longer matches the current CP root execution checklist",
+    "the top priority root changes without regenerating this manifest"
+  ]
+}
