@@ -5,7 +5,7 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `67400d5c`
+- HEAD: `3aa9565d`
 - Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W01`
@@ -28,16 +28,14 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ## Tranche Status Counts
 
-- Completed: 3
-- In progress: 2
+- Completed: 4
+- In progress: 1
 - Planned: 95
 
 ## Immediate Next Sequence
 
-1. Backfill the tranche ledger from current live state.
-2. Formally close T04 W01 Workups and Routing.
-3. Formally close T05 W01 Contracts and Proof.
-4. Open W02 only after W01 is fully ledgered and proof-complete.
+1. Formally close T05 W01 Contracts and Proof.
+2. Open W02 only after W01 is fully ledgered and proof-complete.
 
 ## Tranche Map
 
@@ -85,19 +83,19 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ### T04 W01 Workups and Routing
 
-- Status: `in_progress`
-- Status basis: `supporting_commit_evidence_only`
+- Status: `completed`
+- Status basis: `exact_proof_bundle`
 - Goal: This lane keeps workups and route behavior dependable for freeze the current truth baseline.
-- Completed steps: 0
-- Remaining steps: 10
+- Completed steps: 10
+- Remaining steps: 0
 - Evidence commits: `9bc73a67 Widen workups layout in focus mode`, `03bbd67a Densify clinical pathology workups grid`, `01caab57 Tighten workups sidebar plain-language rail`, `e41c04fc Tighten workups plain-language helper copy`
-- Evidence artifacts: `reports/didactics_learning_ux_report.json`
-- Remaining owned files: `src/utils/algorithmCatalog.ts`, `src/utils/algorithmNavigatorNavigation.ts`, `src/content/algorithms/algorithms.normalized.json`
-- Proof commands: `npm run didactics:ux:validate`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts`, `git diff --check`
-- Summary: Workups and routing have visible W01 improvements, but the tranche still needs formal backfill across the underlying route, catalog, test, and handoff surfaces.
+- Evidence artifacts: `reports/didactics_learning_ux_report.json`, `reports/workups_routing_tranche_closeout_packet.json`
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts scripts/validate_workups_routing_tranche_closeout_packet.test.ts`, `git diff --check`
+- Summary: Workups and routing are formally closed with validator-backed route signals, catalog proof, and a dedicated tranche closeout packet.
 
-  - Clinical Pathology workups layout, density, and plain-language copy are already improved on live study surfaces.
-  - Routing/catalog parity, lane rules, focused route tests, reusable diagnostic-map output, and tranche handoff are still open.
+  - AlgorithmNavigator, algorithmCatalog, and algorithmNavigatorNavigation now contribute a formal routing baseline instead of staying as implicit evidence only.
+  - The workups UX validator/report lane and the tranche ledger now agree on a closed W01 workups-and-routing bundle.
 
 ### T05 W01 Contracts and Proof
 

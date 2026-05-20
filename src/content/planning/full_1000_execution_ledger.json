@@ -10,7 +10,7 @@
   ],
   "currentState": {
     "branch": "main",
-    "head": "67400d5c",
+    "head": "3aa9565d",
     "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W01",
@@ -126,13 +126,11 @@
     }
   ],
   "trancheStatusCounts": {
-    "completed": 3,
-    "in_progress": 2,
+    "completed": 4,
+    "in_progress": 1,
     "planned": 95
   },
   "immediateNextSequence": [
-    "Backfill the tranche ledger from current live state.",
-    "Formally close T04 W01 Workups and Routing.",
     "Formally close T05 W01 Contracts and Proof.",
     "Open W02 only after W01 is fully ledgered and proof-complete."
   ],
@@ -496,11 +494,10 @@
       "laneTitle": "Workups, diagnostic paths, route behavior, and workup tests",
       "group": "G1",
       "goal": "This lane keeps workups and route behavior dependable for freeze the current truth baseline.",
-      "status": "in_progress",
-      "statusBasis": "supporting_commit_evidence_only",
+      "status": "completed",
+      "statusBasis": "exact_proof_bundle",
       "completionEvidence": {
-        "completedStepIds": [],
-        "remainingStepIds": [
+        "completedStepIds": [
           "W01-L4_WORKUPS_ROUTING-C01",
           "W01-L4_WORKUPS_ROUTING-C02",
           "W01-L4_WORKUPS_ROUTING-C03",
@@ -511,7 +508,8 @@
           "W01-L4_WORKUPS_ROUTING-C08",
           "W01-L4_WORKUPS_ROUTING-C09",
           "W01-L4_WORKUPS_ROUTING-C10"
-        ]
+        ],
+        "remainingStepIds": []
       },
       "recordTitles": [
         {
@@ -580,7 +578,8 @@
       ],
       "proofCommands": [
         "npm run didactics:ux:validate",
-        "npx vitest run scripts/validate_didactics_learning_ux.test.ts",
+        "npm run test -- src/utils/algorithmCatalog.test.ts",
+        "npx vitest run scripts/validate_didactics_learning_ux.test.ts scripts/validate_workups_routing_tranche_closeout_packet.test.ts",
         "git diff --check"
       ],
       "evidenceCommits": [
@@ -590,18 +589,15 @@
         "e41c04fc Tighten workups plain-language helper copy"
       ],
       "evidenceArtifacts": [
-        "reports/didactics_learning_ux_report.json"
+        "reports/didactics_learning_ux_report.json",
+        "reports/workups_routing_tranche_closeout_packet.json"
       ],
       "supportingProgress": [
-        "Clinical Pathology workups layout, density, and plain-language copy are already improved on live study surfaces.",
-        "Routing/catalog parity, lane rules, focused route tests, reusable diagnostic-map output, and tranche handoff are still open."
+        "AlgorithmNavigator, algorithmCatalog, and algorithmNavigatorNavigation now contribute a formal routing baseline instead of staying as implicit evidence only.",
+        "The workups UX validator/report lane and the tranche ledger now agree on a closed W01 workups-and-routing bundle."
       ],
-      "remainingOwnedFiles": [
-        "src/utils/algorithmCatalog.ts",
-        "src/utils/algorithmNavigatorNavigation.ts",
-        "src/content/algorithms/algorithms.normalized.json"
-      ],
-      "summary": "Workups and routing have visible W01 improvements, but the tranche still needs formal backfill across the underlying route, catalog, test, and handoff surfaces."
+      "remainingOwnedFiles": [],
+      "summary": "Workups and routing are formally closed with validator-backed route signals, catalog proof, and a dedicated tranche closeout packet."
     },
     {
       "id": "T05",

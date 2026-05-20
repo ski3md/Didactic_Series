@@ -189,11 +189,10 @@ const TRANCHE_OVERRIDES = {
       'Learner UX is formally closed with validator-backed owned-surface signals from Home, Reference Library, and Competency Matrix plus a dedicated tranche closeout packet.',
   },
   T04: {
-    status: 'in_progress',
-    statusBasis: 'supporting_commit_evidence_only',
+    status: 'completed',
+    statusBasis: 'exact_proof_bundle',
     completionEvidence: {
-      completedStepIds: [],
-      remainingStepIds: [
+      completedStepIds: [
         'W01-L4_WORKUPS_ROUTING-C01',
         'W01-L4_WORKUPS_ROUTING-C02',
         'W01-L4_WORKUPS_ROUTING-C03',
@@ -205,6 +204,7 @@ const TRANCHE_OVERRIDES = {
         'W01-L4_WORKUPS_ROUTING-C09',
         'W01-L4_WORKUPS_ROUTING-C10',
       ],
+      remainingStepIds: [],
     },
     evidenceCommits: [
       '9bc73a67 Widen workups layout in focus mode',
@@ -214,23 +214,21 @@ const TRANCHE_OVERRIDES = {
     ],
     evidenceArtifacts: [
       'reports/didactics_learning_ux_report.json',
+      'reports/workups_routing_tranche_closeout_packet.json',
     ],
     proofCommands: [
       'npm run didactics:ux:validate',
-      'npx vitest run scripts/validate_didactics_learning_ux.test.ts',
+      'npm run test -- src/utils/algorithmCatalog.test.ts',
+      'npx vitest run scripts/validate_didactics_learning_ux.test.ts scripts/validate_workups_routing_tranche_closeout_packet.test.ts',
       'git diff --check',
     ],
-    remainingOwnedFiles: [
-      'src/utils/algorithmCatalog.ts',
-      'src/utils/algorithmNavigatorNavigation.ts',
-      'src/content/algorithms/algorithms.normalized.json',
-    ],
+    remainingOwnedFiles: [],
     supportingProgress: [
-      'Clinical Pathology workups layout, density, and plain-language copy are already improved on live study surfaces.',
-      'Routing/catalog parity, lane rules, focused route tests, reusable diagnostic-map output, and tranche handoff are still open.',
+      'AlgorithmNavigator, algorithmCatalog, and algorithmNavigatorNavigation now contribute a formal routing baseline instead of staying as implicit evidence only.',
+      'The workups UX validator/report lane and the tranche ledger now agree on a closed W01 workups-and-routing bundle.',
     ],
     summary:
-      'Workups and routing have visible W01 improvements, but the tranche still needs formal backfill across the underlying route, catalog, test, and handoff surfaces.',
+      'Workups and routing are formally closed with validator-backed route signals, catalog proof, and a dedicated tranche closeout packet.',
   },
   T05: {
     status: 'in_progress',
@@ -382,8 +380,6 @@ const buildLedger = () => {
     groupedPhases,
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
-      'Backfill the tranche ledger from current live state.',
-      'Formally close T04 W01 Workups and Routing.',
       'Formally close T05 W01 Contracts and Proof.',
       'Open W02 only after W01 is fully ledgered and proof-complete.',
     ],

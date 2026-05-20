@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-05-20T18:24:52.435Z",
+  "tranche": "T04 W01 Workups and Routing",
+  "source": {
+    "uxReport": "reports/didactics_learning_ux_report.json",
+    "trancheLedger": "src/content/planning/full_1000_execution_ledger.json",
+    "ownedSurfaces": [
+      "src/components/AlgorithmNavigator.tsx",
+      "src/utils/algorithmCatalog.ts",
+      "src/utils/algorithmNavigatorNavigation.ts",
+      "src/content/algorithms/algorithms.normalized.json"
+    ]
+  },
+  "validator": {
+    "passCount": 114,
+    "failureCount": 0,
+    "workupPassCount": 14
+  },
+  "routingBaseline": {
+    "totalAlgorithms": 14,
+    "clinicalPathAlgorithms": 12,
+    "distinctCategories": 3,
+    "clinicalPathPatternFamilies": 12,
+    "firstClinicalPathPatternFamily": "QC Failure Response"
+  },
+  "routingSignals": {
+    "navigatorConsumesIntent": true,
+    "navigatorPushesTopicAndSubtopicDestinations": true,
+    "navigatorWritesState": true,
+    "navigatorRehydratesPopstate": true,
+    "navigatorUsesStudyDestinationEvents": true,
+    "catalogExposesClinicalPathRouteFamilies": true,
+    "navigationPersistsLaunchContext": true
+  },
+  "browserCheckpoint": {
+    "route": "http://127.0.0.1:4179/Didactic_Series/didactics/?workspace=algorithms",
+    "expectedVisibleText": [
+      "Clinical Pathology",
+      "QC Failure Response",
+      "Validation vs Verification"
+    ]
+  },
+  "execution": {
+    "completedStepIds": [
+      "W01-L4_WORKUPS_ROUTING-C01",
+      "W01-L4_WORKUPS_ROUTING-C02",
+      "W01-L4_WORKUPS_ROUTING-C03",
+      "W01-L4_WORKUPS_ROUTING-C04",
+      "W01-L4_WORKUPS_ROUTING-C05",
+      "W01-L4_WORKUPS_ROUTING-C06",
+      "W01-L4_WORKUPS_ROUTING-C07",
+      "W01-L4_WORKUPS_ROUTING-C08",
+      "W01-L4_WORKUPS_ROUTING-C09",
+      "W01-L4_WORKUPS_ROUTING-C10"
+    ],
+    "proofCommands": [
+      "npm run didactics:ux:validate",
+      "npm run test -- src/utils/algorithmCatalog.test.ts",
+      "npx vitest run scripts/validate_didactics_learning_ux.test.ts scripts/validate_workups_routing_tranche_closeout_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts",
+      "git diff --check"
+    ]
+  },
+  "completionGate": {
+    "baselineGreen": true,
+    "staleWhen": [
+      "the didactics learner UX report changes without regenerating this packet",
+      "the algorithm catalog, algorithm navigation helper, or normalized algorithm baseline changes without regenerating this packet",
+      "the tranche ledger status or completed step list changes without regenerating this packet"
+    ]
+  }
+}

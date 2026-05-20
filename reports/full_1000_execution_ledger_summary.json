@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-05-20T17:15:55.510Z",
+  "generatedAt": "2026-05-20T18:24:52.355Z",
   "currentState": {
     "branch": "main",
-    "head": "67400d5c",
+    "head": "3aa9565d",
     "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W01",
@@ -13,26 +13,16 @@
     "requiredState": "All W01 through W20 lane records are either landed or intentionally superseded, each wave ends with its required proof bundle, and the release-story outputs in W19/W20 are present."
   },
   "trancheStatusCounts": {
-    "completed": 3,
-    "in_progress": 2,
+    "completed": 4,
+    "in_progress": 1,
     "planned": 95
   },
   "firstOpenWave": "W01",
   "immediateNextSequence": [
-    "Backfill the tranche ledger from current live state.",
-    "Formally close T04 W01 Workups and Routing.",
     "Formally close T05 W01 Contracts and Proof.",
     "Open W02 only after W01 is fully ledgered and proof-complete."
   ],
   "inProgressTranches": [
-    {
-      "id": "T04",
-      "wave": "W01",
-      "lane": "L4_WORKUPS_ROUTING",
-      "statusBasis": "supporting_commit_evidence_only",
-      "completedSteps": 0,
-      "remainingSteps": 10
-    },
     {
       "id": "T05",
       "wave": "W01",
