@@ -34,8 +34,8 @@ describe('full 1000 execution ledger assets', () => {
   it('marks only the reconciled opening tranches as completed or in progress', () => {
     expect(ledger.trancheStatusCounts).toEqual({
       completed: 5,
-      in_progress: 0,
-      planned: 95,
+      in_progress: 1,
+      planned: 94,
     });
 
     const t01 = ledger.tranches.find((tranche) => tranche.id === 'T01');
@@ -80,9 +80,11 @@ describe('full 1000 execution ledger assets', () => {
     expect(t05?.completionEvidence.completedStepIds).toHaveLength(10);
     expect(t05?.completionEvidence.remainingStepIds).toHaveLength(0);
     expect(t06).toMatchObject({
-      status: 'planned',
-      statusBasis: 'not_started',
+      status: 'in_progress',
+      statusBasis: 'exact_step_backfill',
     });
+    expect(t06?.completionEvidence.completedStepIds).toEqual(['W02-L1_CP_TRUTH-C01']);
+    expect(t06?.completionEvidence.remainingStepIds).toHaveLength(9);
   });
 
   it('renders the required ledger sections and immediate next sequence', () => {
@@ -92,7 +94,7 @@ describe('full 1000 execution ledger assets', () => {
     expect(markdown).toContain('## Immediate Next Sequence');
     expect(markdown).toContain('### T01 W01 CP Truth');
     expect(markdown).toContain('### T05 W01 Contracts and Proof');
-    expect(ledger.immediateNextSequence).toHaveLength(1);
-    expect(ledger.immediateNextSequence[0]).toBe('Open T06 W02 CP Truth.');
+    expect(ledger.immediateNextSequence).toHaveLength(2);
+    expect(ledger.immediateNextSequence[0]).toBe('Freeze the W02 CP reviewed-versus-raw baseline.');
   });
 });

@@ -273,6 +273,45 @@ const TRANCHE_OVERRIDES = {
     summary:
       'Contracts and proof are formally closed with contract-alignment proof, reusable closeout output, and a dedicated tranche closeout packet.',
   },
+  T06: {
+    status: 'in_progress',
+    statusBasis: 'exact_step_backfill',
+    completionEvidence: {
+      completedStepIds: ['W02-L1_CP_TRUTH-C01'],
+      remainingStepIds: [
+        'W02-L1_CP_TRUTH-C02',
+        'W02-L1_CP_TRUTH-C03',
+        'W02-L1_CP_TRUTH-C04',
+        'W02-L1_CP_TRUTH-C05',
+        'W02-L1_CP_TRUTH-C06',
+        'W02-L1_CP_TRUTH-C07',
+        'W02-L1_CP_TRUTH-C08',
+        'W02-L1_CP_TRUTH-C09',
+        'W02-L1_CP_TRUTH-C10',
+      ],
+    },
+    evidenceCommits: [
+      '1834a833 Close T05 contracts and proof tranche',
+    ],
+    evidenceArtifacts: [
+      'reports/cp_precision_governance_report.json',
+      'reports/validated_mappings_manifest.json',
+      'reports/cp_truth_handoff_summary.json',
+      'reports/w02_cp_truth_baseline_packet.json',
+    ],
+    proofCommands: [
+      'npm run cp:precision:validate',
+      'node scripts/validate_validated_mappings_manifest.cjs',
+      'npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts',
+      'git diff --check',
+    ],
+    supportingProgress: [
+      'W02 now starts from an explicit reviewed-versus-raw CP truth baseline instead of reusing the W01 closeout state implicitly.',
+      'The next T06 work should reconcile the six not-yet-reviewed rows and then refresh the reviewed truth outputs against that narrower gap.',
+    ],
+    summary:
+      'W02 CP truth is open with a written baseline packet that captures the current raw-versus-reviewed gap and the governed CP exception queue.',
+  },
 };
 
 const trancheId = (index) => `T${String(index).padStart(2, '0')}`;
@@ -370,8 +409,8 @@ const buildLedger = () => {
       head: readGit('git rev-parse --short HEAD', 'unknown'),
       sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
-      firstOpenWave: currentWave?.id ?? 'W01',
-      immediateNextAction: 'Open W02 only after the fully closed W01 ledger and proof bundle are preserved as the baseline.',
+      firstOpenWave: 'W02',
+      immediateNextAction: 'Use the new W02 CP truth baseline packet to reconcile the remaining raw-versus-reviewed mapping gap before moving to W02 content parity.',
     },
     completionDefinition: {
       terminalWave: 'W20',
@@ -381,7 +420,8 @@ const buildLedger = () => {
     groupedPhases,
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
-      'Open T06 W02 CP Truth.',
+      'Freeze the W02 CP reviewed-versus-raw baseline.',
+      'Reconcile the remaining six not-yet-reviewed rows in T06 W02 CP Truth.',
     ],
     tranches,
   };

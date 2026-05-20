@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-20T18:31:06.197Z",
+  "generatedAt": "2026-05-20T18:38:50.297Z",
   "currentState": {
     "branch": "main",
-    "head": "a0dda088",
+    "head": "1834a833",
     "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
-    "firstOpenWave": "W01",
-    "immediateNextAction": "Open W02 only after the fully closed W01 ledger and proof bundle are preserved as the baseline."
+    "firstOpenWave": "W02",
+    "immediateNextAction": "Use the new W02 CP truth baseline packet to reconcile the remaining raw-versus-reviewed mapping gap before moving to W02 content parity."
   },
   "completionDefinition": {
     "terminalWave": "W20",
@@ -14,12 +14,22 @@
   },
   "trancheStatusCounts": {
     "completed": 5,
-    "in_progress": 0,
-    "planned": 95
+    "in_progress": 1,
+    "planned": 94
   },
-  "firstOpenWave": "W01",
+  "firstOpenWave": "W02",
   "immediateNextSequence": [
-    "Open T06 W02 CP Truth."
+    "Freeze the W02 CP reviewed-versus-raw baseline.",
+    "Reconcile the remaining six not-yet-reviewed rows in T06 W02 CP Truth."
   ],
-  "inProgressTranches": []
+  "inProgressTranches": [
+    {
+      "id": "T06",
+      "wave": "W02",
+      "lane": "L1_CP_TRUTH",
+      "statusBasis": "exact_step_backfill",
+      "completedSteps": 1,
+      "remainingSteps": 9
+    }
+  ]
 }

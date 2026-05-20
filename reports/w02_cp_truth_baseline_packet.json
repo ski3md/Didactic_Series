@@ -1,0 +1,68 @@
+{
+  "generatedAt": "2026-05-20T18:38:50.406Z",
+  "tranche": "T06 W02 CP Truth",
+  "source": {
+    "crosswalk": "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
+    "validatedManifest": "reports/validated_mappings_manifest.json",
+    "cpGovernanceReport": "reports/cp_precision_governance_report.json",
+    "cpTruthHandoff": "reports/cp_truth_handoff_summary.json",
+    "trancheLedger": "src/content/planning/full_1000_execution_ledger.json"
+  },
+  "baseline": {
+    "rawCrosswalkTutorialCount": 493,
+    "rawCrosswalkMappedCount": 493,
+    "manifestTotalRows": 493,
+    "reviewedForPromotionRows": 487,
+    "notYetReviewedRows": 6,
+    "cpReviewedRows": 285,
+    "cpGovernedTutorials": 13,
+    "cpGovernedModules": 7,
+    "sourceFingerprint": "897a0038d338f2b4e59218bc5df00162452050819b043bfd37e478be2f8c7da1"
+  },
+  "reconciliationGap": {
+    "rawVsReviewedGap": 6,
+    "currentNotReviewedIds": [
+      "blood-banking-transfusion-medicine",
+      "clinical-practice",
+      "paroxysmal-nocturnal-hemoglobinuria",
+      "anemia-in-oncology-patients",
+      "cell-and-tissue-therapy",
+      "hla-antigens-and-alleles"
+    ],
+    "cpGovernedExceptionCount": 13,
+    "cpGovernedExceptionIds": [
+      "respiratory-viruses",
+      "topic-mb-3-a",
+      "topic-mol-1",
+      "topic-mol-2",
+      "topic-mol-3",
+      "cp-micro-methods-ast-studio",
+      "cp-flow-heme-studio",
+      "cp-dat-transfusion-studio",
+      "cp-mgmt-break-even-studio",
+      "cp-mgmt-reagent-rental-studio",
+      "cp-mgmt-productivity-studio",
+      "cp-chemical-path-endocrine-studio",
+      "cp-immune-lipid-studio"
+    ]
+  },
+  "execution": {
+    "completedStepIds": [
+      "W02-L1_CP_TRUTH-C01"
+    ],
+    "proofCommands": [
+      "npm run cp:precision:validate",
+      "node scripts/validate_validated_mappings_manifest.cjs",
+      "npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts",
+      "git diff --check"
+    ]
+  },
+  "completionGate": {
+    "baselineGreen": true,
+    "staleWhen": [
+      "the crosswalk, validated manifest, or CP governance report changes without regenerating this packet",
+      "the reviewed-versus-raw row counts change without regenerating this packet",
+      "the tranche ledger status or completed step list changes without regenerating this packet"
+    ]
+  }
+}

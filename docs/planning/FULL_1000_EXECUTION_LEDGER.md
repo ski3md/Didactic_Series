@@ -5,11 +5,11 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `a0dda088`
+- HEAD: `1834a833`
 - Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
-- First open wave: `W01`
-- Immediate next action: Open W02 only after the fully closed W01 ledger and proof bundle are preserved as the baseline.
+- First open wave: `W02`
+- Immediate next action: Use the new W02 CP truth baseline packet to reconcile the remaining raw-versus-reviewed mapping gap before moving to W02 content parity.
 
 ## Completion Definition
 
@@ -29,12 +29,13 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Tranche Status Counts
 
 - Completed: 5
-- In progress: 0
-- Planned: 95
+- In progress: 1
+- Planned: 94
 
 ## Immediate Next Sequence
 
-1. Open T06 W02 CP Truth.
+1. Freeze the W02 CP reviewed-versus-raw baseline.
+2. Reconcile the remaining six not-yet-reviewed rows in T06 W02 CP Truth.
 
 ## Tranche Map
 
@@ -114,16 +115,19 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ### T06 W02 CP Truth
 
-- Status: `planned`
-- Status basis: `not_started`
+- Status: `in_progress`
+- Status basis: `exact_step_backfill`
 - Goal: This lane settles the reviewed CP and AP teaching truth for reconcile raw mappings with reviewed mappings.
-- Completed steps: 0
-- Remaining steps: 10
-- Evidence commits: none
-- Evidence artifacts: none
+- Completed steps: 1
+- Remaining steps: 9
+- Evidence commits: `1834a833 Close T05 contracts and proof tranche`
+- Evidence artifacts: `reports/cp_precision_governance_report.json`, `reports/validated_mappings_manifest.json`, `reports/cp_truth_handoff_summary.json`, `reports/w02_cp_truth_baseline_packet.json`
 - Remaining owned files: none
-- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `git diff --check`
-- Summary: Not started in the formal tranche ledger yet.
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts`, `git diff --check`
+- Summary: W02 CP truth is open with a written baseline packet that captures the current raw-versus-reviewed gap and the governed CP exception queue.
+
+  - W02 now starts from an explicit reviewed-versus-raw CP truth baseline instead of reusing the W01 closeout state implicitly.
+  - The next T06 work should reconcile the six not-yet-reviewed rows and then refresh the reviewed truth outputs against that narrower gap.
 
 ### T07 W02 Content Parity
 
