@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T02:52:17.822Z",
+  "generatedAt": "2026-05-20T02:56:54.665Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -18,6 +18,7 @@
     "Didactics routes use chunked grouped panels rather than unstructured text walls.",
     "Algorithm learner copy avoids internal route jargon, framework labels, and routing-system phrasing.",
     "Static public topic labels are free of duplicate slash-format variants across current taxonomy surfaces.",
+    "Sidebar and tutorial study surfaces share the same public label normalization rules.",
     "App passes the displayed section label into the shared header.",
     "Header resolves internal didactics section names into governed public workspace labels.",
     "Header source no longer hard-codes internal didactics naming drift.",

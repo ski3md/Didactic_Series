@@ -45,6 +45,7 @@ import {
   STUDY_DESTINATION_EVENT,
 } from '../utils/studyDestinationState.ts';
 import type { ValidatedMappingsManifest } from '../types.ts';
+import { normalizePublicStudyLabel, normalizePublicStudyPath } from '../utils/studyLabeling.ts';
 
 const TUTORIAL_VIEW_STATE_KEY = 'pthfndr-didactics-tutorial-view-state';
 
@@ -861,8 +862,8 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                     <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Official ABPath Scope</div>
                     <div className="mt-3 grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
                       <div>
-                        <div className="text-sm font-semibold text-slate-900">{activeTutorial.cpGovernance.abpathRootTopic}</div>
-                        <div className="mt-1 text-sm text-slate-600">{activeTutorial.cpGovernance.abpathPrimaryPath}</div>
+                        <div className="text-sm font-semibold text-slate-900">{normalizePublicStudyLabel(activeTutorial.cpGovernance.abpathRootTopic)}</div>
+                        <div className="mt-1 text-sm text-slate-600">{normalizePublicStudyPath(activeTutorial.cpGovernance.abpathPrimaryPath)}</div>
                         <div className="mt-3 flex flex-wrap gap-2">
                           <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">{activeTutorial.cpGovernance.abpathSpecVersion}</span>
                           <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">{activeTutorial.cpGovernance.abpathPrimaryLevel}</span>
@@ -932,8 +933,8 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">ABPath scope</div>
                   <div className="mt-3 grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
                     <div>
-                      <div className="text-sm font-semibold text-slate-900">{activeTutorial.abpathScope.root}</div>
-                      <div className="mt-1 text-sm text-slate-600">{activeTutorial.abpathScope.primaryPath}</div>
+                      <div className="text-sm font-semibold text-slate-900">{normalizePublicStudyLabel(activeTutorial.abpathScope.root)}</div>
+                      <div className="mt-1 text-sm text-slate-600">{normalizePublicStudyPath(activeTutorial.abpathScope.primaryPath)}</div>
                     </div>
                     <div>
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">ABPath target</div>
@@ -1043,11 +1044,11 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                         {index === 0 ? 'Start here' : 'Major topic'}
                       </div>
-                      <div className="font-semibold text-slate-900">{root}</div>
+                      <div className="font-semibold text-slate-900">{normalizePublicStudyLabel(root)}</div>
                       <div className="mt-2 text-sm text-slate-600">{(tutorialsByRoot[root] ?? []).length} tutorial{(tutorialsByRoot[root] ?? []).length === 1 ? '' : 's'}</div>
                       <div className="mt-2 text-sm text-slate-600">
                         {(subtopicsByRoot[root] ?? []).length > 0
-                          ? `${(subtopicsByRoot[root] ?? [])[0]?.label ?? 'First diagnostic focus'} is ready first.`
+                          ? `${normalizePublicStudyLabel((subtopicsByRoot[root] ?? [])[0]?.label ?? 'First diagnostic focus')} is ready first.`
                           : summarizeTutorialScope((tutorialsByRoot[root] ?? [])[0] ?? null)}
                       </div>
                     </button>
@@ -1063,7 +1064,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Major topic</div>
-                    <h3 className="mt-2 font-serif text-2xl font-semibold text-slate-900">{activeRoot}</h3>
+                    <h3 className="mt-2 font-serif text-2xl font-semibold text-slate-900">{normalizePublicStudyLabel(activeRoot)}</h3>
                     <p className="mt-2 text-sm text-slate-600">
                       Move through one diagnostic focus at a time, then open the strongest lesson in this topic.
                     </p>
@@ -1089,7 +1090,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                         {index === 0 ? 'Start here' : 'Diagnostic focus'}
                       </div>
-                      <div className="mt-3 font-serif text-xl font-semibold text-slate-900">{scope.label}</div>
+                      <div className="mt-3 font-serif text-xl font-semibold text-slate-900">{normalizePublicStudyLabel(scope.label)}</div>
                       <p className="mt-2 text-sm text-slate-600">
                         {scope.tutorials.length} tutorial{scope.tutorials.length === 1 ? '' : 's'} in this area.
                       </p>
@@ -1139,8 +1140,8 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic focus</div>
-                    <h3 className="mt-2 font-serif text-2xl font-semibold text-slate-900">{activeSubtopicEntry.label}</h3>
-                    <p className="mt-2 text-sm text-slate-600">{activeRoot}</p>
+                    <h3 className="mt-2 font-serif text-2xl font-semibold text-slate-900">{normalizePublicStudyLabel(activeSubtopicEntry.label)}</h3>
+                    <p className="mt-2 text-sm text-slate-600">{normalizePublicStudyLabel(activeRoot)}</p>
                   </div>
                   <button
                     type="button"
@@ -1165,7 +1166,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                           {index === 0 ? 'Start here' : 'Lesson'}
                         </div>
                         <h3 className="mt-2 font-serif text-lg font-semibold text-slate-900">{tutorial.title}</h3>
-                        <p className="mt-2 text-sm text-slate-600">{tutorial.abpathScope?.primaryPath ?? tutorial.summary}</p>
+                        <p className="mt-2 text-sm text-slate-600">{normalizePublicStudyPath(tutorial.abpathScope?.primaryPath) || tutorial.summary}</p>
                         {!preferences.focusMode && <p className="mt-3 text-sm text-slate-600">{tutorial.summary}</p>}
                       </div>
                       <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">

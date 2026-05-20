@@ -1066,6 +1066,16 @@ const runValidation = ({
     failures,
   );
 
+  ensure(
+    sidebarTsx.includes('normalizePublicStudyLabel(') &&
+      tutorialsTsx.includes('normalizePublicStudyLabel(') &&
+      tutorialsTsx.includes('normalizePublicStudyPath('),
+    'Sidebar and tutorial study surfaces share the same public label normalization rules.',
+    'Sidebar and tutorial study surfaces do not clearly share the same public label normalization rules.',
+    passes,
+    failures,
+  );
+
   const workspaceSemantics = evaluateWorkspaceSemantics({
     appTsx,
     headerTsx,

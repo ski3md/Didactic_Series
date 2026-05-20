@@ -23,6 +23,7 @@ import {
   buildTutorialStudyTree,
   type StudySubtopicScope,
 } from '../utils/studyCatalogScopes.ts';
+import { normalizePublicStudyLabel } from '../utils/studyLabeling.ts';
 import {
   pushStudyDestination,
   readStudyDestination,
@@ -86,14 +87,6 @@ const DestinationTreeSectionLabel: React.FC<{ label: string; detail?: string }> 
   </div>
 );
 
-const normalizeSidebarLabel = (label: string) =>
-  label
-    .replace(/_/g, ' ')
-    .replace(/\s*\/\s*/g, ' / ')
-    .replace(/\s*>\s*/g, ' > ')
-    .replace(/\s+/g, ' ')
-    .trim();
-
 const DestinationNodeButton: React.FC<{
   label: string;
   eyebrow?: string;
@@ -114,7 +107,7 @@ const DestinationNodeButton: React.FC<{
     <div className="flex items-start justify-between gap-2">
       <div className="min-w-0">
         {eyebrow ? <div className={`text-[10px] font-semibold uppercase tracking-wide ${isActive ? 'text-sky-700' : 'text-slate-500'}`}>{eyebrow}</div> : null}
-        <div className="truncate text-[13px] font-medium">{normalizeSidebarLabel(label)}</div>
+        <div className="truncate text-[13px] font-medium">{normalizePublicStudyLabel(label)}</div>
         {detail ? <div className={`mt-0.5 text-[11px] ${isActive ? 'text-sky-700' : 'text-slate-500'}`}>{detail}</div> : null}
       </div>
       <span className={`mt-1 h-2.5 w-2.5 flex-shrink-0 rounded-full ${isActive ? 'bg-sky-500' : tone === 'overview' ? 'bg-slate-300' : 'bg-slate-200'}`} />
@@ -425,7 +418,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
             </div>
             {activeTutorialRoot && (tutorialSubtopicsByRoot[activeTutorialRoot] || []).length > 0 && (
               <div className="mt-4 border-l border-slate-200 pl-3">
-                <DestinationTreeSectionLabel label="Subtopics" detail={normalizeSidebarLabel(activeTutorialRoot)} />
+                <DestinationTreeSectionLabel label="Subtopics" detail={normalizePublicStudyLabel(activeTutorialRoot)} />
                 <div className="mb-2">
                   <DestinationNodeButton
                     label="Start with overview"
@@ -494,7 +487,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
             </div>
             {activeLectureRoot && (lectureStudyTree.subtopicsByRoot[activeLectureRoot] || []).length > 0 && (
               <div className="mt-4 border-l border-slate-200 pl-3">
-                <DestinationTreeSectionLabel label="Subtopics" detail={normalizeSidebarLabel(activeLectureRoot)} />
+                <DestinationTreeSectionLabel label="Subtopics" detail={normalizePublicStudyLabel(activeLectureRoot)} />
                 <div className="mb-2">
                   <DestinationNodeButton
                     label="Start with overview"
@@ -560,7 +553,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
             </div>
             {activeAlgorithmCategory && (algorithmStudyTree.subtopicsByRoot[activeAlgorithmCategory] || []).length > 0 && (
               <div className="mt-4 border-l border-slate-200 pl-3">
-                <DestinationTreeSectionLabel label="Subtopics" detail={normalizeSidebarLabel(activeAlgorithmCategory)} />
+                <DestinationTreeSectionLabel label="Subtopics" detail={normalizePublicStudyLabel(activeAlgorithmCategory)} />
                 <div className="mb-2">
                   <DestinationNodeButton
                     label="Start with overview"
