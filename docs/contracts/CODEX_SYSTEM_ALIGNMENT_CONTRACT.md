@@ -39,6 +39,17 @@ When the user says `proceed`, `implement`, or otherwise signals forward motion:
 - keep the implementation narrow and local to this repo
 - do not stop at a plan if the next executable step is clear
 
+## Autonomous Execution Rule
+
+When the user grants ongoing execution permission for a Didactic Series task:
+
+- treat that permission as persistent authorization for directly related analysis, planning, implementation, validation, refinement, testing, documentation, export generation, cleanup, and artifact production
+- continue through logically connected repo steps without repeatedly asking for `proceed`, `continue`, or equivalent confirmations
+- prefer the next conservative non-destructive step automatically when uncertainty is low to moderate
+- pause only for destructive actions, irreversible mutations, missing credentials or secrets, materially changed legal or risk posture, truly ambiguous branch decisions, required external approval, or policy-bound clarification
+- when blocked, report the exact blocker and the minimum missing input needed to resume
+- preserve deterministic CLI-first execution, auditability, rollback awareness, and proof-producing behavior while continuing autonomously
+
 ## Truth-First Content Rule
 
 When pathology content, ABPath mappings, or governance anchors are involved:
@@ -124,6 +135,7 @@ Codex work in Didactic Series should be:
 - contract-aware
 - validator-backed
 - narrow in scope
+- autonomous when direction is already clear
 - forward-moving when direction is clear
 
 If these priorities conflict, prefer repo truth and reversible execution over speed.

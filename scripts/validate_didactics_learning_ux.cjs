@@ -1052,12 +1052,15 @@ const evaluateContractAlignmentSemantics = ({
   if (
     codexAlignmentContractMd.includes('## Public Text Rule') &&
     codexAlignmentContractMd.includes('The governed `Workups` workspace label is allowed only when it truthfully names the diagnostic-workup lane.') &&
+    codexAlignmentContractMd.includes('## Autonomous Execution Rule') &&
+    codexAlignmentContractMd.includes('continue through logically connected repo steps without repeatedly asking for `proceed`, `continue`, or equivalent confirmations') &&
+    codexAlignmentContractMd.includes('pause only for destructive actions, irreversible mutations, missing credentials or secrets, materially changed legal or risk posture, truly ambiguous branch decisions, required external approval, or policy-bound clarification') &&
     codexAlignmentContractMd.includes('## OpenClaw Execution Rule') &&
     codexAlignmentContractMd.includes('## Parallel Lane Rule')
   ) {
-    passes.push('Codex system alignment contract captures public-text truth, OpenClaw posture, and parallel-lane ownership.');
+    passes.push('Codex system alignment contract captures autonomous execution, public-text truth, OpenClaw posture, and parallel-lane ownership.');
   } else {
-    issues.push('Codex system alignment contract is missing one or more required public-text, OpenClaw, or parallel-lane rules.');
+    issues.push('Codex system alignment contract is missing one or more required autonomous-execution, public-text, OpenClaw, or parallel-lane rules.');
   }
 
   if (

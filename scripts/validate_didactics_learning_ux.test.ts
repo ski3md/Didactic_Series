@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 const require = createRequire(import.meta.url);
 const {
   collectPublicTopicLabels,
+  evaluateContractAlignmentSemantics,
   evaluateHierarchySemantics,
   evaluateRefreshAndHistorySemantics,
   evaluateReferenceBoundarySemantics,
@@ -19,6 +20,13 @@ const {
     algorithmCatalog?: Array<Record<string, string>>;
     curriculumCatalogText?: string;
   }) => Array<{ label: string; source: string }>;
+  evaluateContractAlignmentSemantics: (input: {
+    agentsMd?: string;
+    codexAlignmentContractMd?: string;
+    learningUxContractMd?: string;
+    contract?: Record<string, unknown>;
+    adapterYaml?: string;
+  }) => { passes: string[]; issues: string[] };
   evaluateWorkspaceSemantics: (input: {
     appTsx?: string;
     headerTsx?: string;
@@ -223,6 +231,116 @@ describe('validate_didactics_learning_ux helpers', () => {
       expect.arrayContaining([
         expect.stringContaining('Header title is not clearly resolved through governed public workspace labels.'),
       ])
+    );
+  });
+
+  it('accepts contract alignment semantics when autonomous execution and OpenClaw posture are explicit', () => {
+    const result = evaluateContractAlignmentSemantics({
+      agentsMd: `
+        docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md
+        /Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/SKI-CORTEX/contracts/openclaw_parallel_execution_contract.md
+      `,
+      codexAlignmentContractMd: `
+        ## Public Text Rule
+        The governed \`Workups\` workspace label is allowed only when it truthfully names the diagnostic-workup lane.
+        ## Autonomous Execution Rule
+        continue through logically connected repo steps without repeatedly asking for \`proceed\`, \`continue\`, or equivalent confirmations
+        pause only for destructive actions, irreversible mutations, missing credentials or secrets, materially changed legal or risk posture, truly ambiguous branch decisions, required external approval, or policy-bound clarification
+        ## OpenClaw Execution Rule
+        ## Parallel Lane Rule
+      `,
+      learningUxContractMd: `
+        Exception:
+        the governed workspace label \`Workups\` is allowed only when it truthfully names the active diagnostic-workup lane
+        \`Workups\` must not be reused as a generic CTA
+      `,
+      contract: {
+        semanticClarity: {
+          intentionalClicks: {
+            allowedGovernedLabels: [
+              {
+                label: 'Workups',
+                allowedOnlyWhen: ['workspace_switcher', 'breadcrumb', 'destination_heading'],
+              },
+            ],
+          },
+        },
+      },
+      adapterYaml: `
+        execution_profile:
+          primary_interface: codex
+          bounded_parallel_interface: openclaw
+          promotion_authority: codex
+        contracts:
+          - docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md
+          - docs/contracts/PTHFNDR_DIDACTICS_LEARNING_UX_CONTRACT.md
+          - src/content/contracts/pthfndrDidacticsLearningUxContract.json
+          - scripts/validate_didactics_learning_ux.cjs
+        verification:
+          - npm run didactics:ux:validate
+          - npx vitest run scripts/validate_didactics_learning_ux.test.ts
+          - git diff --check
+        boundaries:
+          - keep the governed Workups label only as workspace identity, never as a generic CTA
+        integration_notes:
+          - Treat Workups as a governed workspace label, not a generic public action label.
+      `,
+    });
+
+    expect(result.issues).toEqual([]);
+    expect(result.passes).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('AGENTS imports both the Codex system-alignment and OpenClaw execution contracts.'),
+        expect.stringContaining('Codex system alignment contract captures autonomous execution, public-text truth, OpenClaw posture, and parallel-lane ownership.'),
+      ]),
+    );
+  });
+
+  it('flags contract alignment drift when autonomous execution rules are missing', () => {
+    const result = evaluateContractAlignmentSemantics({
+      agentsMd: `
+        docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md
+        /Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/SKI-CORTEX/contracts/openclaw_parallel_execution_contract.md
+      `,
+      codexAlignmentContractMd: `
+        ## Public Text Rule
+        The governed \`Workups\` workspace label is allowed only when it truthfully names the diagnostic-workup lane.
+        ## OpenClaw Execution Rule
+        ## Parallel Lane Rule
+      `,
+      learningUxContractMd: `
+        Exception:
+        the governed workspace label \`Workups\` is allowed only when it truthfully names the active diagnostic-workup lane
+        \`Workups\` must not be reused as a generic CTA
+      `,
+      contract: {
+        semanticClarity: {
+          intentionalClicks: {
+            allowedGovernedLabels: [
+              {
+                label: 'Workups',
+                allowedOnlyWhen: ['workspace_switcher', 'breadcrumb', 'destination_heading'],
+              },
+            ],
+          },
+        },
+      },
+      adapterYaml: `
+        execution_profile:
+          primary_interface: codex
+          bounded_parallel_interface: openclaw
+          promotion_authority: codex
+        contracts:
+          - docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md
+          - docs/contracts/PTHFNDR_DIDACTICS_LEARNING_UX_CONTRACT.md
+          - src/content/contracts/pthfndrDidacticsLearningUxContract.json
+      `,
+    });
+
+    expect(result.issues).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('Codex system alignment contract is missing one or more required autonomous-execution, public-text, OpenClaw, or parallel-lane rules.'),
+      ]),
     );
   });
 
