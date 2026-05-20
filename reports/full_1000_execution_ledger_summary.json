@@ -1,35 +1,25 @@
 {
-  "generatedAt": "2026-05-20T18:24:52.355Z",
+  "generatedAt": "2026-05-20T18:31:06.197Z",
   "currentState": {
     "branch": "main",
-    "head": "3aa9565d",
+    "head": "a0dda088",
     "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W01",
-    "immediateNextAction": "Backfill and formally close the remaining W01 tranches before opening W02 feature work."
+    "immediateNextAction": "Open W02 only after the fully closed W01 ledger and proof bundle are preserved as the baseline."
   },
   "completionDefinition": {
     "terminalWave": "W20",
     "requiredState": "All W01 through W20 lane records are either landed or intentionally superseded, each wave ends with its required proof bundle, and the release-story outputs in W19/W20 are present."
   },
   "trancheStatusCounts": {
-    "completed": 4,
-    "in_progress": 1,
+    "completed": 5,
+    "in_progress": 0,
     "planned": 95
   },
   "firstOpenWave": "W01",
   "immediateNextSequence": [
-    "Formally close T05 W01 Contracts and Proof.",
-    "Open W02 only after W01 is fully ledgered and proof-complete."
+    "Open T06 W02 CP Truth."
   ],
-  "inProgressTranches": [
-    {
-      "id": "T05",
-      "wave": "W01",
-      "lane": "L5_CONTRACTS_VALIDATORS",
-      "statusBasis": "supporting_commit_evidence_only",
-      "completedSteps": 0,
-      "remainingSteps": 10
-    }
-  ]
+  "inProgressTranches": []
 }

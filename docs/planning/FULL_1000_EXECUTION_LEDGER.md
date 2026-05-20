@@ -5,11 +5,11 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `3aa9565d`
+- HEAD: `a0dda088`
 - Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W01`
-- Immediate next action: Backfill and formally close the remaining W01 tranches before opening W02 feature work.
+- Immediate next action: Open W02 only after the fully closed W01 ledger and proof bundle are preserved as the baseline.
 
 ## Completion Definition
 
@@ -28,14 +28,13 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ## Tranche Status Counts
 
-- Completed: 4
-- In progress: 1
+- Completed: 5
+- In progress: 0
 - Planned: 95
 
 ## Immediate Next Sequence
 
-1. Formally close T05 W01 Contracts and Proof.
-2. Open W02 only after W01 is fully ledgered and proof-complete.
+1. Open T06 W02 CP Truth.
 
 ## Tranche Map
 
@@ -99,19 +98,19 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ### T05 W01 Contracts and Proof
 
-- Status: `in_progress`
-- Status basis: `supporting_commit_evidence_only`
+- Status: `completed`
+- Status basis: `exact_proof_bundle`
 - Goal: This lane turns the landed work into proof bundles and review-ready records for freeze the current truth baseline.
-- Completed steps: 0
-- Remaining steps: 10
-- Evidence commits: `90b6a327 Govern autonomous execution contract`, `799b83d1 Govern automation execution contract`
-- Evidence artifacts: `docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md`, `reports/didactics_learning_ux_report.json`
-- Remaining owned files: `docs/contracts/PTHFNDR_DIDACTICS_LEARNING_UX_CONTRACT.md`, `src/content/contracts/pthfndrDidacticsLearningUxContract.json`
-- Proof commands: `npm run didactics:ux:validate`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts`, `git diff --check`
-- Summary: Contracts and proof have meaningful W01 progress, but the tranche is not formally closed until the remaining contract surfaces and proof outputs are backfilled together.
+- Completed steps: 10
+- Remaining steps: 0
+- Evidence commits: `90b6a327 Govern autonomous execution contract`, `799b83d1 Govern automation execution contract`, `75ab5692 Close T03 learner UX tranche`, `a0dda088 Close T04 workups and routing tranche`
+- Evidence artifacts: `docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md`, `reports/didactics_learning_ux_report.json`, `reports/contracts_proof_tranche_closeout_packet.json`
+- Remaining owned files: none
+- Proof commands: `npm run didactics:ux:validate`, `npm run resource:contracts:validate`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts scripts/validate_contracts_proof_tranche_closeout_packet.test.ts`, `git diff --check`
+- Summary: Contracts and proof are formally closed with contract-alignment proof, reusable closeout output, and a dedicated tranche closeout packet.
 
-  - Autonomous execution and automation rules are now governed in the Codex alignment contract and validator.
-  - The tranche still needs a full W01 proof-baseline backfill, explicit report parity, remaining contract sync, and a formal proof handoff.
+  - The Codex alignment contract, learner UX contract markdown, machine-readable contract JSON, and validator now contribute a formal proof bundle instead of staying as implicit alignment evidence only.
+  - W01 contract and proof surfaces now agree on autonomous execution, automation posture, governed Workups language, and bounded OpenClaw posture.
 
 ### T06 W02 CP Truth
 

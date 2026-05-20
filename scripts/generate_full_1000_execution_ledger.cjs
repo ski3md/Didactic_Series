@@ -231,11 +231,10 @@ const TRANCHE_OVERRIDES = {
       'Workups and routing are formally closed with validator-backed route signals, catalog proof, and a dedicated tranche closeout packet.',
   },
   T05: {
-    status: 'in_progress',
-    statusBasis: 'supporting_commit_evidence_only',
+    status: 'completed',
+    statusBasis: 'exact_proof_bundle',
     completionEvidence: {
-      completedStepIds: [],
-      remainingStepIds: [
+      completedStepIds: [
         'W01-L5_CONTRACTS_VALIDATORS-C01',
         'W01-L5_CONTRACTS_VALIDATORS-C02',
         'W01-L5_CONTRACTS_VALIDATORS-C03',
@@ -247,30 +246,32 @@ const TRANCHE_OVERRIDES = {
         'W01-L5_CONTRACTS_VALIDATORS-C09',
         'W01-L5_CONTRACTS_VALIDATORS-C10',
       ],
+      remainingStepIds: [],
     },
     evidenceCommits: [
       '90b6a327 Govern autonomous execution contract',
       '799b83d1 Govern automation execution contract',
+      '75ab5692 Close T03 learner UX tranche',
+      'a0dda088 Close T04 workups and routing tranche',
     ],
     evidenceArtifacts: [
       'docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md',
       'reports/didactics_learning_ux_report.json',
+      'reports/contracts_proof_tranche_closeout_packet.json',
     ],
     proofCommands: [
       'npm run didactics:ux:validate',
-      'npx vitest run scripts/validate_didactics_learning_ux.test.ts',
+      'npm run resource:contracts:validate',
+      'npx vitest run scripts/validate_didactics_learning_ux.test.ts scripts/validate_contracts_proof_tranche_closeout_packet.test.ts',
       'git diff --check',
     ],
-    remainingOwnedFiles: [
-      'docs/contracts/PTHFNDR_DIDACTICS_LEARNING_UX_CONTRACT.md',
-      'src/content/contracts/pthfndrDidacticsLearningUxContract.json',
-    ],
+    remainingOwnedFiles: [],
     supportingProgress: [
-      'Autonomous execution and automation rules are now governed in the Codex alignment contract and validator.',
-      'The tranche still needs a full W01 proof-baseline backfill, explicit report parity, remaining contract sync, and a formal proof handoff.',
+      'The Codex alignment contract, learner UX contract markdown, machine-readable contract JSON, and validator now contribute a formal proof bundle instead of staying as implicit alignment evidence only.',
+      'W01 contract and proof surfaces now agree on autonomous execution, automation posture, governed Workups language, and bounded OpenClaw posture.',
     ],
     summary:
-      'Contracts and proof have meaningful W01 progress, but the tranche is not formally closed until the remaining contract surfaces and proof outputs are backfilled together.',
+      'Contracts and proof are formally closed with contract-alignment proof, reusable closeout output, and a dedicated tranche closeout packet.',
   },
 };
 
@@ -370,7 +371,7 @@ const buildLedger = () => {
       sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
       firstOpenWave: currentWave?.id ?? 'W01',
-      immediateNextAction: 'Backfill and formally close the remaining W01 tranches before opening W02 feature work.',
+      immediateNextAction: 'Open W02 only after the fully closed W01 ledger and proof bundle are preserved as the baseline.',
     },
     completionDefinition: {
       terminalWave: 'W20',
@@ -380,8 +381,7 @@ const buildLedger = () => {
     groupedPhases,
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
-      'Formally close T05 W01 Contracts and Proof.',
-      'Open W02 only after W01 is fully ledgered and proof-complete.',
+      'Open T06 W02 CP Truth.',
     ],
     tranches,
   };
