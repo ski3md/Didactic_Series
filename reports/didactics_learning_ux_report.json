@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T10:20:12.086Z",
+  "generatedAt": "2026-05-20T10:22:57.893Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -46,6 +46,7 @@
     "Reference Library is rendered as a first-class didactics section in the app shell.",
     "Reference Library has a route-backed workspace mapping through didactics navigation.",
     "Reference Library copy avoids residual framework jargon on the public reference lane.",
+    "Reference Library opens with study framing before deeper recognition and sign-out calibration cues.",
     "AGENTS imports both the Codex system-alignment and OpenClaw execution contracts.",
     "Codex system alignment contract captures public-text truth, OpenClaw posture, and parallel-lane ownership.",
     "Learning UX markdown contract distinguishes the governed Workups lane label from vague public CTAs.",

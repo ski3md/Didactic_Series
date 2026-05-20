@@ -675,10 +675,11 @@ describe('validate_didactics_learning_ux helpers', () => {
         }
       `,
       referenceTsx: `
+        <div>Start here</div>
         <div>Diagnostic focus</div>
-        <div>What to review</div>
+        <div>What to recognize</div>
         <div>What to show at sign-out</div>
-        <div>Sign-out standards</div>
+        <div>Sign-out calibration</div>
       `,
     });
 
@@ -688,6 +689,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         expect.stringContaining('Reference Library is rendered as a first-class didactics section in the app shell.'),
         expect.stringContaining('Reference Library has a route-backed workspace mapping through didactics navigation.'),
         expect.stringContaining('Reference Library copy avoids residual framework jargon on the public reference lane.'),
+        expect.stringContaining('Reference Library opens with study framing before deeper recognition and sign-out calibration cues.'),
       ])
     );
   });
@@ -702,8 +704,10 @@ describe('validate_didactics_learning_ux helpers', () => {
           return 'reference';
       `,
       referenceTsx: `
+        <div>Sign-out calibration</div>
         <div>Intent</div>
         <div>Mode</div>
+        <div>Start here</div>
         <div>Evidence</div>
         <div>Reference context for competency mapping</div>
       `,
@@ -713,6 +717,7 @@ describe('validate_didactics_learning_ux helpers', () => {
       expect.arrayContaining([
         expect.stringContaining('Reference Library is not clearly rendered as a first-class didactics section in the app shell.'),
         expect.stringContaining('Reference Library is missing a complete route-backed workspace mapping through didactics navigation.'),
+        expect.stringContaining('Reference Library does not clearly open with study framing before deeper recognition and sign-out calibration cues.'),
       ])
     );
   });

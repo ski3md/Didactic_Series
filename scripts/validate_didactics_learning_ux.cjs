@@ -1001,6 +1001,19 @@ const evaluateReferenceRouteSemantics = ({
     );
   }
 
+  if (
+    appearsInOrder(referenceTsx, [
+      /Start here/,
+      /Diagnostic focus/,
+      /What to recognize/,
+      /Sign-out calibration/,
+    ])
+  ) {
+    passes.push('Reference Library opens with study framing before deeper recognition and sign-out calibration cues.');
+  } else {
+    issues.push('Reference Library does not clearly open with study framing before deeper recognition and sign-out calibration cues.');
+  }
+
   return { passes, issues };
 };
 
