@@ -1,10 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import Card from './ui/Card.tsx';
 import { Section, User, UserActivity } from '../types.ts';
-import {
-  MicroscopeIcon, EyeIcon, 
-  BookOpenIcon, SparklesIcon, AcademicCapIcon
-} from './icons.tsx';
 import { useUserProgress } from '../hooks/useUserProgress.ts';
 import { getAllUserData } from '../utils/tracking.ts';
 import { modules } from '../data/modules.ts';
@@ -276,7 +272,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
       return;
     }
     if (kind === 'cp-quiz') {
-      openTutorialLibrary('hematology coagulation transfusion blood bank', 'clinical-path');
+      openTutorialLibrary('hematology coagulation transfusion blood bank microbiology chemistry management informatics', 'clinical-path');
       return;
     }
     openCurriculumModule('clinical-path-foundations');
@@ -287,14 +283,6 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
     onSectionChange(Section.COMPETENCY_MATRIX);
   };
     
-  const practiceSections = [
-    { section: Section.COMPETENCY_MATRIX, description: 'PGY-level progression map, rubrics, and gap-closure targets.', icon: <AcademicCapIcon className="h-5 w-5" /> },
-    { section: Section.REFERENCE_LIBRARY, description: 'Histology and ancillary images for the current teaching topic.', icon: <BookOpenIcon className="h-5 w-5" /> },
-    { section: Section.SIGN_OUT_SIMULATOR, description: 'Case-based application after lecture or tutorial study.', icon: <MicroscopeIcon className="h-5 w-5" /> },
-    { section: Section.SYLLABUS_EXPLORER, description: 'Review the related AP topics and board objectives.', icon: <AcademicCapIcon className="h-5 w-5" /> },
-    { section: Section.VISUAL_CHALLENGE, description: 'Short morphology drill when you want a visual reset instead of a long reading block.', icon: <EyeIcon className="h-5 w-5" /> },
-    { section: Section.LECTURE, description: 'Granulomatous disease lecture deck.', icon: <SparklesIcon className="h-5 w-5" /> },
-  ];
   const breastGynHighlights = activeCurriculumModules.filter((module) =>
     ['breast-core', 'gynecologic-core'].includes(module.moduleId)
   );
@@ -311,7 +299,15 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
     ['renal-testicular-core', 'lower-gu-bladder-core', 'upper-gi-staged', 'colorectal-staged'].includes(module.moduleId)
   );
   const clinicalPathHighlights = activeCurriculumModules.filter((module) =>
-    ['clinical-path-foundations', 'hematology-red-cell-core', 'coagulation-hemostasis-core', 'transfusion-cellular-therapy-core'].includes(module.moduleId)
+    [
+      'clinical-path-foundations',
+      'hematology-red-cell-core',
+      'coagulation-hemostasis-core',
+      'transfusion-cellular-therapy-core',
+      'clinical-microbiology-core',
+      'chemical-pathology-core',
+      'management-informatics-core',
+    ].includes(module.moduleId)
   );
   const dashboardLectureIds = ['bladder_path_core_principles', 'renal_mass_eval', 'testicular_mass_eval'];
   const dashboardLectures = dashboardLectureIds
@@ -346,8 +342,8 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
     {
       key: 'cp',
       title: 'Clinical pathology',
-      description: 'Use the CP track when you need heme, coagulation, and transfusion flow.',
-      actionLabel: 'Open CP Foundations',
+      description: 'Use the CP track when you need heme, coagulation, transfusion, microbiology, chemistry, or management and informatics.',
+      actionLabel: 'Open CP curriculum',
       action: () => openCurriculumModule('clinical-path-foundations'),
     },
     {
@@ -396,36 +392,10 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
     },
     {
       key: 'cp-lane',
-      title: 'Heme / Coag / Transfusion',
+      title: 'Clinical Pathology',
       modules: clinicalPathHighlights,
       actionLabel: 'Open lane',
       action: () => openCurriculumModule('clinical-path-foundations'),
-    },
-  ];
-  const studyUtilities = [
-    {
-      key: 'lectures',
-      title: 'Lectures',
-      ariaLabel: 'Lecture Sprint',
-      action: () => openLectureLibrary(curatedPromotedLectures.find((lecture) => lecture.id === 'bladder_path_core_principles')),
-    },
-    {
-      key: 'tutorials',
-      title: 'Tutorials',
-      ariaLabel: 'Tutorials',
-      action: () => openTutorialLibrary(undefined, 'all'),
-    },
-    {
-      key: 'atlas',
-      title: 'Reference Library',
-      ariaLabel: 'Reference Library',
-      action: () => onSectionChange(Section.REFERENCE_LIBRARY),
-    },
-    {
-      key: 'algorithms',
-      title: 'Algorithms',
-      ariaLabel: 'Algorithms',
-      action: () => openAlgorithmNavigator('algo_bladder_triage', 'bladder_path_core_principles'),
     },
   ];
   const assessmentRoutes = [
@@ -563,17 +533,17 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
             </button>
             <button
               type="button"
+              onClick={() => openAssessmentPathway('cp-quiz')}
+              className="block w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-sky-300 hover:bg-sky-50"
+            >
+              Clinical pathology tutorials
+            </button>
+            <button
+              type="button"
               onClick={() => openTutorialLibrary(undefined, 'surgical-path')}
               className="block w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-sky-300 hover:bg-sky-50"
             >
               Case tutorials
-            </button>
-            <button
-              type="button"
-              onClick={() => onSectionChange(Section.REFERENCE_LIBRARY)}
-              className="block w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-sky-300 hover:bg-sky-50"
-            >
-              Reference library
             </button>
             <button
               type="button"

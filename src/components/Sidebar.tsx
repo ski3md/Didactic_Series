@@ -11,7 +11,6 @@ import {
   LogoutIcon,
   ChevronLeftIcon,
 } from './icons.tsx';
-import { prefetchCompetencyMatrixPayload } from '../utils/competencyMatrixLoader.ts';
 import DidacticWorkspaceNav from './DidacticWorkspaceNav.tsx';
 import { loadDidacticTutorials } from '../utils/tutorialLibraryCatalog.ts';
 import { didacticAlgorithms } from '../utils/algorithmCatalog.ts';
@@ -29,6 +28,7 @@ import {
   readStudyDestination,
   STUDY_DESTINATION_EVENT,
 } from '../utils/studyDestinationState.ts';
+import { clearAlgorithmNavigatorLaunchContext } from '../utils/algorithmNavigatorNavigation.ts';
 
 interface SidebarProps {
   currentSection: Section;
@@ -65,6 +65,72 @@ const NavLink: React.FC<{
   );
 };
 
+const DestinationTreePanel: React.FC<{
+  title: string;
+  subtitle: string;
+  children: React.ReactNode;
+}> = ({ title, subtitle, children }) => (
+  <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+    <div className="mb-3">
+      <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{title}</p>
+      <p className="mt-1 text-xs text-slate-600">{subtitle}</p>
+    </div>
+    {children}
+  </div>
+);
+
+const DestinationTreeSectionLabel: React.FC<{ label: string; detail?: string }> = ({ label, detail }) => (
+  <div className="mb-2 flex items-center justify-between gap-2">
+    <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{label}</p>
+    {detail ? <p className="text-[11px] text-slate-500">{detail}</p> : null}
+  </div>
+);
+
+const normalizeSidebarLabel = (label: string) =>
+  label
+    .replace(/_/g, ' ')
+    .replace(/\s*\/\s*/g, ' / ')
+    .replace(/\s*>\s*/g, ' > ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const DestinationNodeButton: React.FC<{
+  label: string;
+  eyebrow?: string;
+  detail?: string;
+  tone?: 'topic' | 'subtopic' | 'overview';
+  isActive: boolean;
+  onClick: () => void;
+}> = ({ label, eyebrow, detail, tone = 'topic', isActive, onClick }) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className={`w-full rounded-lg border px-3 py-2 text-left transition ${
+      isActive
+        ? 'border-sky-400 bg-sky-50 text-sky-800'
+        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
+    } ${tone === 'subtopic' ? 'ml-2 w-[calc(100%-0.5rem)]' : ''}`}
+  >
+    <div className="flex items-start justify-between gap-2">
+      <div className="min-w-0">
+        {eyebrow ? <div className={`text-[10px] font-semibold uppercase tracking-wide ${isActive ? 'text-sky-700' : 'text-slate-500'}`}>{eyebrow}</div> : null}
+        <div className="truncate text-[13px] font-medium">{normalizeSidebarLabel(label)}</div>
+        {detail ? <div className={`mt-0.5 text-[11px] ${isActive ? 'text-sky-700' : 'text-slate-500'}`}>{detail}</div> : null}
+      </div>
+      <span className={`mt-1 h-2.5 w-2.5 flex-shrink-0 rounded-full ${isActive ? 'bg-sky-500' : tone === 'overview' ? 'bg-slate-300' : 'bg-slate-200'}`} />
+    </div>
+  </button>
+);
+
+const resolveStudyWorkspaceSection = (section: Section): Section => {
+  switch (section) {
+    case Section.LECTURE:
+      return Section.DIDACTIC_LECTURES;
+    default:
+      return section;
+  }
+};
+
 const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user, onLogout, preferences }) => {
     const { isSidebarOpen, toggleSidebar } = useUIState();
     const [tutorialRootOptions, setTutorialRootOptions] = useState<StudySubtopicScope[]>([]);
@@ -78,6 +144,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
     const [activeAlgorithmCategory, setActiveAlgorithmCategory] = useState<string | undefined>(() => readStudyDestination('algorithms').majorTopicId);
     const [activeAlgorithmSubtopic, setActiveAlgorithmSubtopic] = useState<string | undefined>(() => readStudyDestination('algorithms').subtopicId);
     const [activeCurriculumModuleId, setActiveCurriculumModuleId] = useState<string>(() => readCurriculumViewState()?.selectedId ?? '');
+    const activeWorkspaceSection = resolveStudyWorkspaceSection(currentSection);
     const isStudyActive = [
       Section.HOME,
       Section.PATHOLOGY_CURRICULUM,
@@ -94,7 +161,6 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
     ].includes(currentSection);
     const foundationWorkspaceItems = [
       { section: Section.PATHOLOGY_CURRICULUM, label: 'Curriculum' },
-      { section: Section.COMPETENCY_MATRIX, label: 'Competency' },
     ];
     const reviewWorkspaceItems = [
       {
@@ -117,8 +183,9 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
       },
       {
         section: Section.DIDACTIC_ALGORITHMS,
-        label: 'Algorithms',
+        label: 'Workups',
         onActivate: () => {
+          clearAlgorithmNavigatorLaunchContext();
           const nextDestination = pushStudyDestination('algorithms', { kind: 'landing', previous: null });
           setActiveAlgorithmCategory(nextDestination.majorTopicId);
           setActiveAlgorithmSubtopic(nextDestination.subtopicId);
@@ -128,6 +195,32 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
     const signOutWorkspaceItems = [
       { section: Section.SIGN_OUT_SIMULATOR, label: 'Sign-Out cases' },
     ];
+    const activeStudyWorkspace = (() => {
+      switch (activeWorkspaceSection) {
+        case Section.PATHOLOGY_CURRICULUM:
+          return {
+            title: 'Curriculum',
+            subtitle: 'Pick a topic.',
+          };
+        case Section.DIDACTIC_LECTURES:
+          return {
+            title: 'Lectures',
+            subtitle: 'Pick a lecture topic.',
+          };
+        case Section.DIDACTIC_TUTORIALS:
+          return {
+            title: 'Tutorials',
+            subtitle: 'Pick a tutorial topic.',
+          };
+        case Section.DIDACTIC_ALGORITHMS:
+          return {
+            title: 'Workups',
+            subtitle: 'Pick a workup.',
+          };
+        default:
+          return null;
+      }
+    })();
 
     useEffect(() => {
       if (currentSection !== Section.DIDACTIC_TUTORIALS) {
@@ -262,20 +355,24 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
           icon={<AcademicCapIcon className="h-5 w-5" />}
         />
         {isStudyActive && (
-          <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
-            <div className="space-y-2">
-              <DidacticWorkspaceNav
-                activeSection={currentSection}
-                onSectionChange={onSectionChange}
-                orientation="vertical"
-                items={foundationWorkspaceItems.concat(reviewWorkspaceItems)}
-                compact
-              />
+          <div className="ml-4 rounded-xl border border-slate-200 bg-white p-3 shadow-sm shadow-slate-200/50">
+            <div className="mb-3">
+              <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Study here</p>
+              <p className="mt-1 text-xs text-slate-600">Pick the next kind of review.</p>
             </div>
+            <DidacticWorkspaceNav
+              activeSection={activeWorkspaceSection}
+              onSectionChange={onSectionChange}
+              orientation="vertical"
+              items={foundationWorkspaceItems.concat(reviewWorkspaceItems)}
+              compact
+              variant="workspace"
+            />
           </div>
         )}
-        {currentSection === Section.PATHOLOGY_CURRICULUM && (
-          <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+        {activeWorkspaceSection === Section.PATHOLOGY_CURRICULUM && activeStudyWorkspace && (
+          <DestinationTreePanel title={activeStudyWorkspace.title} subtitle={activeStudyWorkspace.subtitle}>
+            <DestinationTreeSectionLabel label="Topics" />
             <div className="max-h-[24rem] space-y-1 overflow-y-auto pr-1">
               {activeCurriculumModules.map((module) => {
                 const isActive = activeCurriculumModuleId === module.moduleId;
@@ -300,17 +397,17 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                 );
               })}
             </div>
-          </div>
+          </DestinationTreePanel>
         )}
-        {currentSection === Section.DIDACTIC_TUTORIALS && tutorialRootOptions.length > 0 && (
-          <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+        {activeWorkspaceSection === Section.DIDACTIC_TUTORIALS && tutorialRootOptions.length > 0 && activeStudyWorkspace && (
+          <DestinationTreePanel title={activeStudyWorkspace.title} subtitle={activeStudyWorkspace.subtitle}>
+            <DestinationTreeSectionLabel label="Topics" />
             <div className="space-y-2">
               {tutorialRootOptions.map((root) => {
                 const isActive = activeTutorialRoot === root.id;
                 return (
-                  <button
+                  <DestinationNodeButton
                     key={root.id}
-                    type="button"
                     onClick={() => {
                       setActiveTutorialRoot(root.id);
                       setActiveTutorialSubtopic(undefined);
@@ -320,22 +417,20 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                       });
                       onSectionChange(Section.DIDACTIC_TUTORIALS);
                     }}
-                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] font-medium transition ${
-                      isActive
-                        ? 'border-sky-400 bg-sky-50 text-sky-800'
-                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
-                    }`}
-                  >
-                    {root.label}
-                  </button>
+                    isActive={isActive}
+                    label={root.label}
+                  />
                 );
               })}
             </div>
             {activeTutorialRoot && (tutorialSubtopicsByRoot[activeTutorialRoot] || []).length > 0 && (
-              <div className="mt-4 border-t border-slate-200 pt-3">
+              <div className="mt-4 border-l border-slate-200 pl-3">
+                <DestinationTreeSectionLabel label="Subtopics" detail={normalizeSidebarLabel(activeTutorialRoot)} />
                 <div className="mb-2">
-                  <button
-                    type="button"
+                  <DestinationNodeButton
+                    label="Start with overview"
+                    tone="overview"
+                    isActive={!activeTutorialSubtopic}
                     onClick={() => {
                       setActiveTutorialSubtopic(undefined);
                       pushStudyDestination('tutorials', {
@@ -344,22 +439,14 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                       });
                       onSectionChange(Section.DIDACTIC_TUTORIALS);
                     }}
-                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
-                      !activeTutorialSubtopic
-                        ? 'border-sky-400 bg-sky-50 text-sky-800'
-                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
-                    }`}
-                  >
-                    Topic overview
-                  </button>
+                  />
                 </div>
                 <div className="space-y-2">
                   {(tutorialSubtopicsByRoot[activeTutorialRoot] || []).map((scope) => {
                     const isActive = activeTutorialSubtopic === scope.id;
                     return (
-                      <button
+                      <DestinationNodeButton
                         key={`${activeTutorialRoot}-${scope.id}`}
-                        type="button"
                         onClick={() => {
                           setActiveTutorialSubtopic(scope.id);
                           pushStudyDestination('tutorials', {
@@ -369,30 +456,27 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                           });
                           onSectionChange(Section.DIDACTIC_TUTORIALS);
                         }}
-                        className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
-                          isActive
-                            ? 'border-sky-400 bg-sky-50 text-sky-800'
-                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
-                        }`}
-                      >
-                        {scope.label}
-                      </button>
+                        isActive={isActive}
+                        label={scope.label}
+                        tone="subtopic"
+                        detail={undefined}
+                      />
                     );
                   })}
                 </div>
               </div>
             )}
-          </div>
+          </DestinationTreePanel>
         )}
-        {currentSection === Section.DIDACTIC_LECTURES && lectureStudyTree.roots.length > 0 && (
-          <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+        {activeWorkspaceSection === Section.DIDACTIC_LECTURES && lectureStudyTree.roots.length > 0 && activeStudyWorkspace && (
+          <DestinationTreePanel title={activeStudyWorkspace.title} subtitle={activeStudyWorkspace.subtitle}>
+            <DestinationTreeSectionLabel label="Topics" />
             <div className="space-y-2">
               {lectureStudyTree.roots.map((root) => {
                 const isActive = activeLectureRoot === root.id;
                 return (
-                  <button
+                  <DestinationNodeButton
                     key={root.id}
-                    type="button"
                     onClick={() => {
                       setActiveLectureRoot(root.id);
                       setActiveLectureSubtopic(undefined);
@@ -402,22 +486,20 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                       });
                       onSectionChange(Section.DIDACTIC_LECTURES);
                     }}
-                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] font-medium transition ${
-                      isActive
-                        ? 'border-sky-400 bg-sky-50 text-sky-800'
-                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
-                    }`}
-                  >
-                    {root.label}
-                  </button>
+                    isActive={isActive}
+                    label={root.label}
+                  />
                 );
               })}
             </div>
             {activeLectureRoot && (lectureStudyTree.subtopicsByRoot[activeLectureRoot] || []).length > 0 && (
-              <div className="mt-4 border-t border-slate-200 pt-3">
+              <div className="mt-4 border-l border-slate-200 pl-3">
+                <DestinationTreeSectionLabel label="Subtopics" detail={normalizeSidebarLabel(activeLectureRoot)} />
                 <div className="mb-2">
-                  <button
-                    type="button"
+                  <DestinationNodeButton
+                    label="Start with overview"
+                    tone="overview"
+                    isActive={!activeLectureSubtopic}
                     onClick={() => {
                       setActiveLectureSubtopic(undefined);
                       pushStudyDestination('lectures', {
@@ -426,20 +508,12 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                       });
                       onSectionChange(Section.DIDACTIC_LECTURES);
                     }}
-                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
-                      !activeLectureSubtopic
-                        ? 'border-sky-400 bg-sky-50 text-sky-800'
-                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
-                    }`}
-                  >
-                    Overview
-                  </button>
+                  />
                 </div>
                 <div className="space-y-2">
                   {(lectureStudyTree.subtopicsByRoot[activeLectureRoot] || []).map((scope) => (
-                    <button
+                    <DestinationNodeButton
                       key={`${activeLectureRoot}-${scope.id}`}
-                      type="button"
                       onClick={() => {
                         setActiveLectureSubtopic(scope.id);
                         pushStudyDestination('lectures', {
@@ -449,29 +523,26 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                         });
                         onSectionChange(Section.DIDACTIC_LECTURES);
                       }}
-                      className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
-                        activeLectureSubtopic === scope.id
-                          ? 'border-sky-400 bg-sky-50 text-sky-800'
-                          : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
-                      }`}
-                    >
-                      {scope.label}
-                    </button>
+                      isActive={activeLectureSubtopic === scope.id}
+                      label={scope.label}
+                      tone="subtopic"
+                      detail={undefined}
+                    />
                   ))}
                 </div>
               </div>
             )}
-          </div>
+          </DestinationTreePanel>
         )}
-        {currentSection === Section.DIDACTIC_ALGORITHMS && (
-          <div className="ml-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+        {activeWorkspaceSection === Section.DIDACTIC_ALGORITHMS && activeStudyWorkspace && (
+          <DestinationTreePanel title={activeStudyWorkspace.title} subtitle={activeStudyWorkspace.subtitle}>
+            <DestinationTreeSectionLabel label="Workups" />
             <div className="space-y-2">
               {algorithmStudyTree.roots.map((category) => {
                 const isActive = activeAlgorithmCategory === category.id;
                 return (
-                  <button
+                  <DestinationNodeButton
                     key={category.id}
-                    type="button"
                     onClick={() => {
                       setActiveAlgorithmCategory(category.id);
                       setActiveAlgorithmSubtopic(undefined);
@@ -481,22 +552,20 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                       });
                       onSectionChange(Section.DIDACTIC_ALGORITHMS);
                     }}
-                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] font-medium transition ${
-                      isActive
-                        ? 'border-sky-400 bg-sky-50 text-sky-800'
-                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
-                    }`}
-                  >
-                    {category.label}
-                  </button>
+                    isActive={isActive}
+                    label={category.label}
+                  />
                 );
               })}
             </div>
             {activeAlgorithmCategory && (algorithmStudyTree.subtopicsByRoot[activeAlgorithmCategory] || []).length > 0 && (
-              <div className="mt-4 border-t border-slate-200 pt-3">
+              <div className="mt-4 border-l border-slate-200 pl-3">
+                <DestinationTreeSectionLabel label="Subtopics" detail={normalizeSidebarLabel(activeAlgorithmCategory)} />
                 <div className="mb-2">
-                  <button
-                    type="button"
+                  <DestinationNodeButton
+                    label="Start with overview"
+                    tone="overview"
+                    isActive={!activeAlgorithmSubtopic}
                     onClick={() => {
                       setActiveAlgorithmSubtopic(undefined);
                       pushStudyDestination('algorithms', {
@@ -505,22 +574,14 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                       });
                       onSectionChange(Section.DIDACTIC_ALGORITHMS);
                     }}
-                    className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
-                      !activeAlgorithmSubtopic
-                        ? 'border-sky-400 bg-sky-50 text-sky-800'
-                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
-                    }`}
-                  >
-                    Overview
-                  </button>
+                  />
                 </div>
                 <div className="space-y-2">
                   {(algorithmStudyTree.subtopicsByRoot[activeAlgorithmCategory] || []).map((entry) => {
                     const isActive = activeAlgorithmSubtopic === entry.id;
                     return (
-                      <button
+                      <DestinationNodeButton
                         key={entry.id}
-                        type="button"
                         onClick={() => {
                           setActiveAlgorithmSubtopic(entry.id);
                           pushStudyDestination('algorithms', {
@@ -530,28 +591,18 @@ const Sidebar: React.FC<SidebarProps> = ({ currentSection, onSectionChange, user
                           });
                           onSectionChange(Section.DIDACTIC_ALGORITHMS);
                         }}
-                        className={`w-full rounded-lg border px-3 py-2 text-left text-[13px] transition ${
-                          isActive
-                            ? 'border-sky-400 bg-sky-50 text-sky-800'
-                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
-                        }`}
-                      >
-                        {entry.label}
-                      </button>
+                        isActive={isActive}
+                        label={entry.label}
+                        tone="subtopic"
+                        detail={undefined}
+                      />
                     );
                   })}
                 </div>
               </div>
             )}
-          </div>
+          </DestinationTreePanel>
         )}
-        <NavLink
-          label="Images"
-          ariaLabel="Reference Library"
-          isActive={currentSection === Section.REFERENCE_LIBRARY}
-          onClick={() => onSectionChange(Section.REFERENCE_LIBRARY)}
-          icon={<BookOpenIcon className="h-5 w-5" />}
-        />
         <NavLink
           label="Sign-Out"
           ariaLabel="Pathology Sign-Out Workflows"

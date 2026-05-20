@@ -37,10 +37,10 @@ class WorkspaceErrorBoundary extends React.Component<
     if (this.state.hasError) {
       return (
         <div className="rounded-xl border border-amber-200 bg-white p-6 shadow-sm">
-          <div className="text-xs font-semibold uppercase tracking-wide text-amber-700">Workspace Recovery</div>
-          <h2 className="mt-2 text-xl font-semibold text-slate-950">{this.props.sectionName} hit a rendering problem.</h2>
+          <div className="text-xs font-semibold uppercase tracking-wide text-amber-700">Study page error</div>
+          <h2 className="mt-2 text-xl font-semibold text-slate-950">{this.props.sectionName} could not open correctly.</h2>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-700">
-            The app kept the navigation surface alive so you can move to another workspace instead of losing your place.
+            Try reopening this page, or move to another study area and come back.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <button
@@ -48,14 +48,14 @@ class WorkspaceErrorBoundary extends React.Component<
               onClick={() => this.setState({ hasError: false })}
               className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-900"
             >
-              Retry workspace
+              Try again
             </button>
             <button
               type="button"
               onClick={() => this.props.onNavigate(Section.DIDACTIC_LECTURES)}
               className="rounded-md border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-800 transition hover:border-sky-300 hover:bg-sky-100"
             >
-              Go to Didactics
+              Open Lectures
             </button>
             <button
               type="button"

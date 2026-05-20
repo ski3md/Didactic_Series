@@ -6,6 +6,12 @@ interface StudyDestinationResolverInput {
   subtopicsByRoot: Record<string, Array<{ id: string }>>;
   isValidItemId: (itemId?: string) => boolean;
   isGovernancePendingItemId?: (itemId?: string) => boolean;
+  resolveItemLocation?: (
+    itemId: string
+  ) => {
+    majorTopicId?: string;
+    subtopicId?: string;
+  } | null;
 }
 
 export interface ResolvedStudyDestination {
@@ -34,6 +40,7 @@ export const resolveStudyDestinationForRender = ({
   subtopicsByRoot,
   isValidItemId,
   isGovernancePendingItemId,
+  resolveItemLocation,
 }: StudyDestinationResolverInput): ResolvedStudyDestination => {
   if (destination.kind === 'landing') {
     return {
@@ -137,10 +144,19 @@ export const resolveStudyDestinationForRender = ({
   }
 
   if (destination.kind === 'item_detail' && isValidItemId(destination.itemId)) {
+    const resolvedLocation = destination.itemId ? resolveItemLocation?.(destination.itemId) : null;
+    const normalizedDestination = resolvedLocation
+      ? {
+          ...destination,
+          majorTopicId: resolvedLocation.majorTopicId ?? destination.majorTopicId,
+          subtopicId: resolvedLocation.subtopicId ?? destination.subtopicId,
+        }
+      : destination;
+
     return {
-      destination,
+      destination: normalizedDestination,
       renderedKind: 'item_detail',
-      resolved: false,
+      resolved: normalizedDestination !== destination,
       governancePending: false,
     };
   }

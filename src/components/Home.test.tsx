@@ -123,4 +123,29 @@ describe('Home', () => {
     );
     expect(onSectionChange).toHaveBeenCalledWith(Section.DIDACTIC_LECTURES);
   });
+
+  it('routes CP checks into the broader clinical pathology tutorial lane', async () => {
+    const user = userEvent.setup();
+    const onSectionChange = vi.fn();
+
+    render(<Home onSectionChange={onSectionChange} user={null} preferences={preferences} />);
+
+    await user.click(screen.getByRole('button', { name: /Clinical pathology tutorials/i }));
+
+    expect(mocks.setTutorialLibraryIntent).toHaveBeenCalledWith(
+      expect.objectContaining({
+        track: 'clinical-path',
+        query: expect.stringContaining('management informatics'),
+      })
+    );
+    expect(onSectionChange).toHaveBeenCalledWith(Section.DIDACTIC_TUTORIALS);
+  });
+
+  it('does not surface the reference library as a direct learner-first home route', () => {
+    const onSectionChange = vi.fn();
+
+    render(<Home onSectionChange={onSectionChange} user={null} preferences={preferences} />);
+
+    expect(screen.queryByRole('button', { name: /reference library/i })).not.toBeInTheDocument();
+  });
 });

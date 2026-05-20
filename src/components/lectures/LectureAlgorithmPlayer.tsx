@@ -48,7 +48,7 @@ const LectureAlgorithmPlayer: React.FC<LectureAlgorithmPlayerProps> = ({
   if (!currentNode) {
     return (
       <Card>
-        <p className="text-sm text-rose-700">The selected algorithm node could not be found. Restart the pathway.</p>
+        <p className="text-sm text-rose-700">This diagnostic step could not be loaded. Restart the workup.</p>
       </Card>
     );
   }
@@ -96,7 +96,7 @@ const LectureAlgorithmPlayer: React.FC<LectureAlgorithmPlayerProps> = ({
             className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-left transition hover:border-sky-300 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <div className="font-semibold text-slate-900">
-              {node.type === 'morphology_gate' && !allMorphologyConfirmed ? 'Verify features to proceed' : option.label}
+              {node.type === 'morphology_gate' && !allMorphologyConfirmed ? 'Confirm the findings before moving on' : option.label}
             </div>
             {option.rationale && <div className="mt-1 text-sm text-slate-600">{option.rationale}</div>}
           </button>
@@ -107,12 +107,14 @@ const LectureAlgorithmPlayer: React.FC<LectureAlgorithmPlayerProps> = ({
 
   return (
     <div className="space-y-5">
-      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+      <div className="rounded-xl border border-slate-200 bg-white p-4">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic approach</div>
-            <h3 className="mt-1 text-2xl font-semibold font-serif text-slate-900">{algorithm.title}</h3>
-            <p className="mt-2 text-sm text-slate-700">{algorithm.summary}</p>
+            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Workup controls</div>
+            <div className="mt-1 text-sm font-semibold text-slate-900">{currentNode.title}</div>
+            <div className="mt-1 text-xs text-slate-500">
+              {history.length === 0 ? 'Starting point' : `${history.length} completed step${history.length === 1 ? '' : 's'}`}
+            </div>
           </div>
           <div className="flex flex-wrap gap-2">
             <button
@@ -144,13 +146,13 @@ const LectureAlgorithmPlayer: React.FC<LectureAlgorithmPlayerProps> = ({
       </div>
 
       <Card>
-        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic decision</div>
+        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Current step</div>
         <h4 className="mt-2 text-2xl font-semibold font-serif text-slate-900">{currentNode.title}</h4>
         <p className="mt-3 text-sm text-slate-700 whitespace-pre-line">{currentNode.description}</p>
 
         {currentNode.recommendedInitialIHC && currentNode.recommendedInitialIHC.length > 0 && (
           <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Recommended initial studies</div>
+            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Initial workup</div>
             <div className="mt-3 flex flex-wrap gap-2">
               {currentNode.recommendedInitialIHC.map((item) => (
                 <span key={item} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">
@@ -190,7 +192,7 @@ const LectureAlgorithmPlayer: React.FC<LectureAlgorithmPlayerProps> = ({
           <div className="mt-5 grid gap-4 lg:grid-cols-3">
             {currentNode.confirmatoryStudies && currentNode.confirmatoryStudies.length > 0 && (
               <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Confirmatory studies</div>
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Ancillary studies</div>
                 <ul className="mt-3 space-y-2 text-sm text-slate-700">
                   {currentNode.confirmatoryStudies.map((study) => (
                     <li key={study}>• {study}</li>
@@ -221,6 +223,30 @@ const LectureAlgorithmPlayer: React.FC<LectureAlgorithmPlayerProps> = ({
           </div>
         )}
 
+        {currentNode.workedExamples && currentNode.workedExamples.length > 0 && (
+          <div className="mt-5 space-y-4">
+            {currentNode.workedExamples.map((example) => (
+              <div key={example.title} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Worked example</div>
+                <div className="mt-2 text-base font-semibold text-slate-900">{example.title}</div>
+                <ol className="mt-3 space-y-2 text-sm text-slate-700">
+                  {example.steps.map((step, index) => (
+                    <li key={`${example.title}-${index}`} className="flex gap-3">
+                      <span className="w-5 shrink-0 font-semibold text-slate-500">{index + 1}.</span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+                {example.takeaway && (
+                  <div className="mt-3 rounded-lg bg-white px-3 py-2 text-sm text-slate-700">
+                    <span className="font-semibold text-slate-900">Takeaway:</span> {example.takeaway}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
         <div className="mt-6">{renderNodeActions(currentNode)}</div>
 
         {(currentNode.relatedTutorialQuery || currentNode.relatedImageTerms?.length) && (
@@ -231,7 +257,7 @@ const LectureAlgorithmPlayer: React.FC<LectureAlgorithmPlayerProps> = ({
                 onClick={() => onOpenTutorial(currentNode.relatedTutorialQuery!)}
                 className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
               >
-                Open supporting tutorial
+                Open related tutorial
               </button>
             )}
             {currentNode.relatedImageTerms && currentNode.relatedImageTerms.length > 0 && onOpenReference && (
@@ -240,7 +266,7 @@ const LectureAlgorithmPlayer: React.FC<LectureAlgorithmPlayerProps> = ({
                 onClick={() => onOpenReference(currentNode.relatedImageTerms!)}
                 className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
               >
-                Open image comparison
+                Open image review
               </button>
             )}
           </div>
@@ -258,7 +284,7 @@ const LectureAlgorithmPlayer: React.FC<LectureAlgorithmPlayerProps> = ({
               <div key={card.entityId} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                 <div className="text-base font-semibold text-slate-900">{card.entityId}</div>
                 <p className="mt-2 text-sm text-slate-700">{card.summary}</p>
-                <div className="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Critical differential</div>
+                <div className="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Important alternatives</div>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {card.criticalDifferential.map((item) => (
                     <span key={item} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">

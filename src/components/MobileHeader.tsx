@@ -7,6 +7,7 @@ import { useUserProgress } from "../hooks/useUserProgress.ts";
 import { useAuth } from "../hooks/useAuth.ts";
 import { Section } from "../types.ts";
 import { useUIState } from '../hooks/useUIState.ts';
+import { resetStudyWorkspaceEntry } from '../utils/studyDestinationState.ts';
 
 interface MobileHeaderProps {
   onSectionChange: (section: Section) => void;
@@ -27,8 +28,11 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({ onSectionChange, onLogout }
   }, [visitedSections]);
 
   const handleNavClick = (section: Section) => {
+    resetStudyWorkspaceEntry(section);
     onSectionChange(section);
-    toggleSidebar();
+    if (isSidebarOpen) {
+      toggleSidebar();
+    }
   };
 
   return (
@@ -49,24 +53,38 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({ onSectionChange, onLogout }
             </a>
             <a
               href="#"
-              onClick={(e) => { e.preventDefault(); handleNavClick(Section.REFERENCE_LIBRARY); }}
+              onClick={(e) => { e.preventDefault(); handleNavClick(Section.PATHOLOGY_CURRICULUM); }}
               className="text-gray-800 hover:text-primary-600"
             >
-              Gallery
+              Curriculum
             </a>
             <a
               href="#"
-              onClick={(e) => { e.preventDefault(); handleNavClick(Section.REFERENCE_LIBRARY); }}
+              onClick={(e) => { e.preventDefault(); handleNavClick(Section.DIDACTIC_LECTURES); }}
               className="text-gray-800 hover:text-primary-600"
             >
-              Case Library
+              Lectures
             </a>
             <a
               href="#"
-              onClick={(e) => { e.preventDefault(); handleNavClick(Section.REFERENCE_LIBRARY); }}
+              onClick={(e) => { e.preventDefault(); handleNavClick(Section.DIDACTIC_TUTORIALS); }}
               className="text-gray-800 hover:text-primary-600"
             >
-              References
+              Tutorials
+            </a>
+            <a
+              href="#"
+              onClick={(e) => { e.preventDefault(); handleNavClick(Section.DIDACTIC_ALGORITHMS); }}
+              className="text-gray-800 hover:text-primary-600"
+            >
+              Workups
+            </a>
+            <a
+              href="#"
+              onClick={(e) => { e.preventDefault(); handleNavClick(Section.SIGN_OUT_SIMULATOR); }}
+              className="text-gray-800 hover:text-primary-600"
+            >
+              Sign-Out
             </a>
 
             {user && (

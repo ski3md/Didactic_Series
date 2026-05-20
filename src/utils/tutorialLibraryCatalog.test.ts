@@ -1,6 +1,34 @@
 import { describe, expect, it } from 'vitest';
-import { toAbpathScopeFromManifestRow, validateDidacticGovernanceManifest } from './tutorialLibraryCatalog.ts';
+import {
+  findBestTutorialMatch,
+  getTutorialMappedImageSupport,
+  toAbpathScopeFromManifestRow,
+  validateDidacticGovernanceManifest,
+} from './tutorialLibraryCatalog.ts';
+import type { DidacticTutorialRecord } from './tutorialLibraryCatalog.ts';
 import type { ValidatedMappingManifestRow, ValidatedMappingsManifest } from '../types.ts';
+
+const buildMiniTutorial = (overrides: Partial<DidacticTutorialRecord>): DidacticTutorialRecord => ({
+  id: 'tutorial',
+  title: 'Base tutorial',
+  summary: 'Summary text',
+  body: 'Detailed body content',
+  lane: 'mixed',
+  laneLabel: 'Tutorial Library',
+  track: 'surgical-path',
+  trackLabel: 'Surgical Pathology',
+  promotionState: 'canonical',
+  promotionLabel: 'Canonical',
+  sourceRepo: 'board_prep',
+  sourceLabel: 'Board Prep Library',
+  topicChips: [],
+  tags: [],
+  mcqCount: 0,
+  flashcardCount: 0,
+  mcqs: [],
+  flashcards: [],
+  ...overrides,
+});
 
 describe('toAbpathScopeFromManifestRow', () => {
   it('derives CP scope from the validated manifest row instead of raw crosswalk text', () => {
@@ -142,5 +170,47 @@ describe('validateDidacticGovernanceManifest', () => {
     };
 
     expect(() => validateDidacticGovernanceManifest(manifest)).toThrow(/manifest drift detected/i);
+  });
+});
+
+describe('getTutorialMappedImageSupport', () => {
+  it('returns existing curriculum-mapped image support for surgical pathology tutorials', () => {
+    const support = getTutorialMappedImageSupport('ap-soft-tissue-bone');
+
+    expect(support).toBeDefined();
+    expect(support?.moduleTitles).toContain('Spindle Cell Differential');
+    expect((support?.images.length ?? 0) > 0).toBe(true);
+    expect(support?.images[0]).toMatchObject({
+      id: expect.any(String),
+      title: expect.any(String),
+      src: expect.any(String),
+    });
+  });
+
+  it('matches query terms inside a constrained track selection', () => {
+    const clinicalTutorial = buildMiniTutorial({
+      id: 'clinical-niftp',
+      title: 'NIFTP interpretation review',
+      summary: 'clinical pathology example',
+      track: 'clinical-path',
+      trackLabel: 'Clinical Pathology',
+      lane: 'lab-studio',
+      laneLabel: 'Clinical Pathology',
+    });
+    const surgicalTutorial = buildMiniTutorial({
+      id: 'surgical-niftp',
+      title: 'NIFTP interpretation review',
+      summary: 'surgical pathology example',
+      track: 'surgical-path',
+      trackLabel: 'Surgical Pathology',
+      lane: 'core-patterns',
+      laneLabel: 'Core Pattern Tutorials',
+    });
+
+    const match = findBestTutorialMatch([surgicalTutorial, clinicalTutorial], ['NIFTP'], {
+      track: 'clinical-path',
+    });
+
+    expect(match?.id).toBe('clinical-niftp');
   });
 });

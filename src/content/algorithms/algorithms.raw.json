@@ -277,5 +277,1640 @@
                 ]
             }
         }
+    },
+    {
+        "id": "cp-mi-qc-failure-response",
+        "title": "QC Failure Response",
+        "category": "Clinical Pathology",
+        "summary": "Operational triage for a QC failure: characterize the control pattern, protect patient reporting, and choose the next corrective action.",
+        "routeAliases": [
+            "qc failure",
+            "quality control failure",
+            "qc troubleshooting"
+        ],
+        "startNodeId": "q1",
+        "nodes": {
+            "q1": {
+                "id": "q1",
+                "type": "start",
+                "title": "Start",
+                "description": "Pause auto-release for the affected assay or bench, confirm which control level failed, and review the most recent Levey-Jennings pattern before touching patient samples.",
+                "options": [
+                    {
+                        "label": "Characterize the QC signal",
+                        "nextNodeId": "q2"
+                    }
+                ]
+            },
+            "q2": {
+                "id": "q2",
+                "type": "decision",
+                "title": "Decision: characterize the QC signal",
+                "description": "Separate isolated random-error patterns from systematic failure and post-change instability.",
+                "options": [
+                    {
+                        "label": "Single control point outside limits without a broader pattern",
+                        "nextNodeId": "q3",
+                        "rationale": "A lone miss may reflect random error, but patient reporting still stays on hold until you verify the run."
+                    },
+                    {
+                        "label": "Shift, trend, or multirule violation across levels or runs",
+                        "nextNodeId": "q4",
+                        "rationale": "This pattern is more consistent with systematic error and needs broader containment."
+                    },
+                    {
+                        "label": "Failure appeared after calibration, reagent lot change, or maintenance",
+                        "nextNodeId": "q5",
+                        "rationale": "Post-change instability often needs verification logic before routine testing resumes."
+                    }
+                ]
+            },
+            "q3": {
+                "id": "q3",
+                "type": "result",
+                "title": "Result: random-error check with reporting hold",
+                "description": "Repeat the affected control level, inspect preparation and instrument handling, and resume patient testing only after the rerun is acceptable.",
+                "confirmatoryStudies": [
+                    "Repeat control material at the failed level",
+                    "Review recent Levey-Jennings position for the same level"
+                ],
+                "pearls": [
+                    "A single isolated miss is not a free pass to release patient results.",
+                    "Random-error thinking still starts with containment."
+                ],
+                "pitfalls": [
+                    "Do not ignore a failed control because one other level remained in range.",
+                    "Do not rerun patient samples before the control problem is resolved."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Levey-Jennings QC Studio"
+            },
+            "q4": {
+                "id": "q4",
+                "type": "result",
+                "title": "Result: systematic-error response",
+                "description": "Treat the event as a probable method or instrument problem, broaden the hold, and use rule-based troubleshooting before restarting the assay.",
+                "confirmatoryStudies": [
+                    "Review Westgard rule pattern across all affected control levels",
+                    "Inspect calibration status, reagent integrity, and recent maintenance events"
+                ],
+                "pearls": [
+                    "Shift and trend patterns matter more than any single point.",
+                    "A multirule event is an assay-process problem until proven otherwise."
+                ],
+                "pitfalls": [
+                    "Do not correct a systematic problem by repeated blind reruns.",
+                    "Do not restart patient reporting without documenting the corrective action."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Westgard Rules Studio"
+            },
+            "q5": {
+                "id": "q5",
+                "type": "decision",
+                "title": "Decision: post-change instability",
+                "description": "If the failure followed a method change event, decide whether the problem is already patient-facing or still confined to verification work.",
+                "options": [
+                    {
+                        "label": "Patient results may already be affected or the assay is safety-critical",
+                        "nextNodeId": "q6",
+                        "rationale": "Escalation and communication come before routine restart."
+                    },
+                    {
+                        "label": "No patient reporting yet; the issue is contained within startup verification",
+                        "nextNodeId": "q7",
+                        "rationale": "You can stay in verification mode while proving the assay is stable."
+                    }
+                ]
+            },
+            "q6": {
+                "id": "q6",
+                "type": "stop",
+                "title": "Stop: protect patients and escalate",
+                "description": "Hold affected reporting, notify supervisory leadership, assess whether corrected reports or clinician communication are needed, and document the event as a patient-safety issue.",
+                "stopConditions": [
+                    "Critical-value workflow may be affected",
+                    "Previously released patient results may be unreliable",
+                    "The assay cannot be stabilized promptly"
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Major Sources of Laboratory Errors Studio"
+            },
+            "q7": {
+                "id": "q7",
+                "type": "result",
+                "title": "Result: complete verification before restart",
+                "description": "Finish the defined verification plan, confirm acceptable control performance after the corrective action, and document restart criteria before patient testing resumes.",
+                "confirmatoryStudies": [
+                    "Verification checks appropriate to the post-change event",
+                    "Documented restart criteria after corrective action"
+                ],
+                "pearls": [
+                    "Validation and verification are operational decisions, not interchangeable labels.",
+                    "A stable control recovery needs documented acceptance criteria."
+                ],
+                "pitfalls": [
+                    "Do not treat a post-change QC failure as routine noise.",
+                    "Do not relabel validation work as verification just to shorten the restart path."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Validation vs Verification Studio"
+            }
+        }
+    },
+    {
+        "id": "cp-mi-validation-verification-triage",
+        "title": "Validation-Versus-Verification Triage",
+        "category": "Clinical Pathology",
+        "summary": "Choose the right oversight path when a lab is bringing on a test, modifying an assay, or restarting a changed method.",
+        "routeAliases": [
+            "validation vs verification",
+            "validation verification triage",
+            "verification pathway"
+        ],
+        "startNodeId": "v1",
+        "nodes": {
+            "v1": {
+                "id": "v1",
+                "type": "start",
+                "title": "Start",
+                "description": "Define what changed before choosing the oversight frame: a new test claim, a modified method, or a local implementation of an already established method.",
+                "options": [
+                    {
+                        "label": "Classify the implementation scenario",
+                        "nextNodeId": "v2"
+                    }
+                ]
+            },
+            "v2": {
+                "id": "v2",
+                "type": "decision",
+                "title": "Decision: what kind of change is this?",
+                "description": "Separate truly new or materially altered claims from local confirmation of expected performance.",
+                "options": [
+                    {
+                        "label": "The lab is implementing an established method without materially changing the claim",
+                        "nextNodeId": "v3",
+                        "rationale": "This usually favors local verification rather than full validation."
+                    },
+                    {
+                        "label": "The method, specimen use, reportable range, or intended use has materially changed",
+                        "nextNodeId": "v4",
+                        "rationale": "A material claim change pushes the oversight path toward validation."
+                    },
+                    {
+                        "label": "The scope of change is still unclear or poorly documented",
+                        "nextNodeId": "v5",
+                        "rationale": "You need to stop and define the claim before pretending the oversight path is obvious."
+                    }
+                ]
+            },
+            "v3": {
+                "id": "v3",
+                "type": "result",
+                "title": "Result: verification pathway",
+                "description": "Use a local verification plan that confirms the method performs as expected in your setting before go-live.",
+                "confirmatoryStudies": [
+                    "Precision, accuracy, and reportable performance checks appropriate to the local implementation",
+                    "Documented acceptance criteria before release"
+                ],
+                "pearls": [
+                    "Verification confirms expected performance in a local environment.",
+                    "The claim is not being reinvented; it is being proven locally."
+                ],
+                "pitfalls": [
+                    "Do not treat verification as optional because the method is familiar.",
+                    "Do not skip documentation just because the assay is already in common use elsewhere."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Validation vs Verification Studio"
+            },
+            "v4": {
+                "id": "v4",
+                "type": "result",
+                "title": "Result: validation pathway",
+                "description": "Use a validation plan when the lab is establishing or materially altering the test claim, then define the studies needed before clinical release.",
+                "confirmatoryStudies": [
+                    "Validation studies matched to the changed claim",
+                    "Risk-aware review of analytical performance before patient reporting"
+                ],
+                "pearls": [
+                    "A changed claim means the burden of proof is larger than local verification.",
+                    "Validation is about defending a new or altered use, not just generating paperwork."
+                ],
+                "pitfalls": [
+                    "Do not relabel material method changes as verification to save time.",
+                    "Do not go live before the altered claim has explicit supporting evidence."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Validation vs Verification Studio"
+            },
+            "v5": {
+                "id": "v5",
+                "type": "stop",
+                "title": "Stop: define the claim before proceeding",
+                "description": "Pause the rollout, clarify intended use and method changes, and document the scope with laboratory leadership before choosing verification or validation.",
+                "stopConditions": [
+                    "Intended use is ambiguous",
+                    "Method changes are not fully documented",
+                    "Leadership approval or oversight scope is unresolved"
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Major Sources of Laboratory Errors Studio"
+            }
+        }
+    },
+    {
+        "id": "cp-mi-lis-workflow-redesign",
+        "title": "LIS Workflow Redesign",
+        "category": "Clinical Pathology",
+        "summary": "Redesign an unsafe reporting workflow by deciding whether interfacing, middleware, or process redesign is the highest-yield safety intervention.",
+        "routeAliases": [
+            "lis interfacing",
+            "workflow redesign",
+            "lab information system workflow"
+        ],
+        "startNodeId": "l1",
+        "nodes": {
+            "l1": {
+                "id": "l1",
+                "type": "start",
+                "title": "Start",
+                "description": "Map the current result path from instrument or source system to the final report, and identify where repeated manual handling occurs.",
+                "options": [
+                    {
+                        "label": "Classify the workflow vulnerability",
+                        "nextNodeId": "l2"
+                    }
+                ]
+            },
+            "l2": {
+                "id": "l2",
+                "type": "decision",
+                "title": "Decision: what is the main workflow failure mode?",
+                "description": "Choose the intervention by matching it to the dominant risk rather than defaulting to a favorite informatics tool.",
+                "options": [
+                    {
+                        "label": "Repeated manual transcription or copy-forward between systems",
+                        "nextNodeId": "l3",
+                        "rationale": "Structured interfacing is strongest when the recurring risk is transcription or data-transfer error."
+                    },
+                    {
+                        "label": "Rule-based routing, reflexing, or queue management is inconsistent across cases",
+                        "nextNodeId": "l4",
+                        "rationale": "Middleware is useful when the safety gain depends on standardized decision logic between systems."
+                    },
+                    {
+                        "label": "The failure is mostly handoff design, staffing, or local process confusion",
+                        "nextNodeId": "l5",
+                        "rationale": "Not every unsafe workflow is solved by another software layer."
+                    }
+                ]
+            },
+            "l3": {
+                "id": "l3",
+                "type": "result",
+                "title": "Result: interface the workflow",
+                "description": "Use LIS or source-system interfacing to remove repeated manual entry and preserve structured result transmission.",
+                "confirmatoryStudies": [
+                    "Map source-to-destination fields and exception handling",
+                    "Verify that critical result and corrected report paths survive the interface"
+                ],
+                "pearls": [
+                    "An interface is a patient-safety intervention when it removes recurring transcription risk.",
+                    "Structured connectivity is strongest when the same manual step is repeated at scale."
+                ],
+                "pitfalls": [
+                    "Do not treat manual entry as operationally equivalent to interfacing.",
+                    "Do not ignore exception-path behavior while celebrating the primary happy path."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: LIS Interfacing Studio"
+            },
+            "l4": {
+                "id": "l4",
+                "type": "result",
+                "title": "Result: standardize with middleware or rules logic",
+                "description": "Use middleware or governed rules logic when the main hazard is inconsistent routing, reflex behavior, or queue prioritization across repeated cases.",
+                "confirmatoryStudies": [
+                    "Documented routing and reflex rules",
+                    "Validation or verification of rule behavior before clinical use"
+                ],
+                "pearls": [
+                    "Middleware helps when the risk lives in inconsistent operational decisions between systems.",
+                    "Standardized rules are safer than ad hoc human memory for repetitive pathways."
+                ],
+                "pitfalls": [
+                    "Do not add rules logic without proving the edge cases.",
+                    "Do not assume middleware fixes a process that was never mapped clearly."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Validation vs Verification Studio"
+            },
+            "l5": {
+                "id": "l5",
+                "type": "result",
+                "title": "Result: redesign the local process first",
+                "description": "Redesign the handoff, staffing, or communication workflow when the main failure is local process design rather than missing software connectivity.",
+                "confirmatoryStudies": [
+                    "Defined ownership for each handoff step",
+                    "A documented safer-state workflow before reintroducing automation"
+                ],
+                "pearls": [
+                    "A bad process wrapped in software is still a bad process.",
+                    "Workflow clarity is often the first safety intervention."
+                ],
+                "pitfalls": [
+                    "Do not buy informatics complexity to avoid naming the real process flaw.",
+                    "Do not leave corrected-report or critical-value ownership ambiguous."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Major Sources of Laboratory Errors Studio"
+            }
+        }
+    },
+    {
+        "id": "cp-mi-finance-aware-assay-planning",
+        "title": "Finance-Aware Assay Planning",
+        "category": "Clinical Pathology",
+        "summary": "Plan an assay rollout by balancing break-even logic, acquisition structure, and operational burden before bringing testing in-house.",
+        "routeAliases": [
+            "assay planning",
+            "reagent rental",
+            "break even analysis"
+        ],
+        "startNodeId": "f1",
+        "nodes": {
+            "f1": {
+                "id": "f1",
+                "type": "start",
+                "title": "Start",
+                "description": "Frame the proposed assay around forecasted volume, contribution margin, acquisition structure, and who will absorb the new operational workload.",
+                "options": [
+                    {
+                        "label": "Choose the dominant planning constraint",
+                        "nextNodeId": "f2"
+                    }
+                ]
+            },
+            "f2": {
+                "id": "f2",
+                "type": "decision",
+                "title": "Decision: what is the main planning constraint?",
+                "description": "Pick the operational bottleneck before committing to in-house rollout or a platform contract.",
+                "options": [
+                    {
+                        "label": "Projected volume remains below break-even for internalization",
+                        "nextNodeId": "f3",
+                        "rationale": "A weak volume forecast is often the clearest reason to delay internal rollout."
+                    },
+                    {
+                        "label": "Volume is plausible, but the acquisition model may hide downstream cost or lock-in",
+                        "nextNodeId": "f4",
+                        "rationale": "Reagent-rental and related structures can look attractive until the contract terms are unpacked."
+                    },
+                    {
+                        "label": "The apparent financial win may collapse under staffing, turnaround, or quality burden",
+                        "nextNodeId": "f5",
+                        "rationale": "An assay can be mathematically viable and still operationally unsound."
+                    }
+                ]
+            },
+            "f3": {
+                "id": "f3",
+                "type": "result",
+                "title": "Result: keep as send-out or defer rollout",
+                "description": "If the projected volume remains well below break-even, the safer immediate decision is often to continue send-out testing or delay launch until utilization changes.",
+                "confirmatoryStudies": [
+                    "Break-even calculation using fixed cost and contribution margin",
+                    "Volume forecast tied to realistic test demand"
+                ],
+                "workedExamples": [
+                    {
+                        "title": "Break-even volume",
+                        "steps": [
+                            "Set fixed annual cost at $120,000.",
+                            "Set reimbursement at $55 per test and variable cost at $15 per test.",
+                            "Calculate contribution margin: $55 - $15 = $40 per test.",
+                            "Calculate break-even volume: $120,000 / $40 = 3,000 tests per year.",
+                            "If projected demand is 1,800 tests per year, the assay remains below break-even."
+                        ],
+                        "takeaway": "A strong reimbursement number does not justify internal rollout when realistic demand remains well below the break-even volume."
+                    }
+                ],
+                "pearls": [
+                    "A financially attractive reimbursement rate does not rescue low-volume internalization.",
+                    "Break-even is an operational decision tool, not just a formula exercise."
+                ],
+                "pitfalls": [
+                    "Do not internalize testing just because the reimbursement looks strong.",
+                    "Do not ignore fixed cost recovery when judging apparent profitability."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Break-Even Analysis Studio"
+            },
+            "f4": {
+                "id": "f4",
+                "type": "result",
+                "title": "Result: interrogate the acquisition structure",
+                "description": "Compare reagent-rental and direct-purchase logic using total per-reportable-test cost, service obligations, and contract drag before choosing a platform path.",
+                "confirmatoryStudies": [
+                    "Total cost comparison across acquisition models",
+                    "Review of service, minimum-volume, and reagent-commitment terms"
+                ],
+                "workedExamples": [
+                    {
+                        "title": "Reagent-rental versus direct purchase",
+                        "steps": [
+                            "Estimate direct purchase annualized instrument cost at $40,000 and variable reagent cost at $18 per reportable test.",
+                            "Estimate reagent-rental instrument cost at $0 upfront but variable reagent cost at $28 per reportable test plus a 2,500-test minimum.",
+                            "At 3,000 tests per year, direct purchase total cost is $40,000 + (3,000 x $18) = $94,000.",
+                            "At 3,000 tests per year, reagent rental total cost is 3,000 x $28 = $84,000 before service and contract penalties.",
+                            "Recheck the comparison once service fees, minimum-volume penalties, and reagent commitment clauses are added."
+                        ],
+                        "takeaway": "The cheaper-looking platform on first pass may stop being favorable once contract drag and real utilization are included."
+                    }
+                ],
+                "pearls": [
+                    "Reagent rental can reduce upfront capital pressure while increasing downstream operational constraint.",
+                    "The acquisition model matters because it changes the real cost of each reportable result."
+                ],
+                "pitfalls": [
+                    "Do not assume reagent rental is automatically the low-risk option.",
+                    "Do not compare platforms without looking at the contract terms that shape real utilization."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Reagent Rental Decision Studio"
+            },
+            "f5": {
+                "id": "f5",
+                "type": "result",
+                "title": "Result: stop for operational capacity review",
+                "description": "Reassess staffing, turnaround expectations, and quality burden before rollout when the hidden constraint is workforce or process capacity rather than purchase price alone.",
+                "confirmatoryStudies": [
+                    "Staffing and throughput review for the affected section",
+                    "Turnaround-time and quality-risk assessment for the proposed workflow"
+                ],
+                "pearls": [
+                    "A mathematically favorable assay can still fail if the section cannot absorb it safely.",
+                    "Productivity metrics need quality and turnaround context to be meaningful."
+                ],
+                "pitfalls": [
+                    "Do not use raw volume as the only proxy for readiness.",
+                    "Do not call a rollout efficient if it depends on fragile staffing workarounds."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Staff Productivity Studio"
+            }
+        }
+    },
+    {
+        "id": "cp-foundations-anemia-workup",
+        "title": "Anemia Workup and Hemolysis Triage",
+        "category": "Clinical Pathology",
+        "summary": "Use CBC indices, reticulocyte response, and hemolysis cues to decide whether anemia reflects blood loss or hemolysis, reduced production, or urgent marrow pathology.",
+        "routeAliases": [
+            "anemia workup",
+            "hemolysis triage",
+            "red cell triage"
+        ],
+        "startNodeId": "a1",
+        "nodes": {
+            "a1": {
+                "id": "a1",
+                "type": "start",
+                "title": "Start",
+                "description": "Begin with hemoglobin, MCV, reticulocyte response, smear clues, and whether other blood cell lines are also abnormal.",
+                "options": [
+                    {
+                        "label": "Classify the anemia frame",
+                        "nextNodeId": "a2"
+                    }
+                ]
+            },
+            "a2": {
+                "id": "a2",
+                "type": "decision",
+                "title": "Decision: what is the first diagnostic frame?",
+                "description": "Separate increased red-cell loss from impaired production and from patterns that need urgent marrow-level escalation.",
+                "options": [
+                    {
+                        "label": "Reticulocytes are appropriately elevated or hemolysis or blood-loss clues are present",
+                        "nextNodeId": "a3",
+                        "rationale": "A brisk marrow response pushes the differential toward red-cell loss rather than failure to produce."
+                    },
+                    {
+                        "label": "Reticulocytes are low or inappropriately normal, suggesting a production problem",
+                        "nextNodeId": "a4",
+                        "rationale": "Poor marrow response reframes the workup around iron, nutrient, kidney, endocrine, inflammatory, or marrow causes."
+                    },
+                    {
+                        "label": "Additional cytopenias, circulating blasts, or marked smear dysplasia raise concern for marrow pathology",
+                        "nextNodeId": "a5",
+                        "rationale": "This pattern should not be flattened into routine outpatient anemia workup."
+                    }
+                ]
+            },
+            "a3": {
+                "id": "a3",
+                "type": "result",
+                "title": "Result: hemolysis or blood-loss pathway",
+                "description": "Confirm whether the elevated reticulocyte response reflects hemolysis or active blood loss, then choose targeted follow-up studies rather than broad screening.",
+                "confirmatoryStudies": [
+                    "Reticulocyte count with smear review",
+                    "LDH, indirect bilirubin, and haptoglobin",
+                    "DAT when immune hemolysis is plausible"
+                ],
+                "pearls": [
+                    "Reticulocytosis is a physiologic clue, not the final diagnosis.",
+                    "DAT belongs in the hemolysis branch, not the default anemia screen."
+                ],
+                "pitfalls": [
+                    "Do not call anemia hypoproliferative when the reticulocyte response is clearly brisk.",
+                    "Do not miss immune hemolysis when the smear and chemistry pattern already support red-cell destruction."
+                ],
+                "relatedTutorialQuery": "DAT and Hemolytic Transfusion Reaction Studio"
+            },
+            "a4": {
+                "id": "a4",
+                "type": "decision",
+                "title": "Decision: what kind of production problem is most likely?",
+                "description": "Use indices and context to distinguish iron-restricted states from macrocytic or marrow-linked patterns.",
+                "options": [
+                    {
+                        "label": "Microcytosis or iron-restricted physiology is most likely",
+                        "nextNodeId": "a6",
+                        "rationale": "Iron deficiency, inflammation, and related states stay near the top when the indices point that way."
+                    },
+                    {
+                        "label": "Macrocytosis, multilineage abnormalities, or renal or endocrine context changes the frame",
+                        "nextNodeId": "a7",
+                        "rationale": "Macrocytic and broader cytopenic patterns often need nutrient, systemic, or marrow-level reasoning."
+                    }
+                ]
+            },
+            "a5": {
+                "id": "a5",
+                "type": "stop",
+                "title": "Stop: urgent marrow or hematopathology escalation",
+                "description": "Pause routine anemia sorting and escalate when blasts, pancytopenia, or strong dysplasia suggest a marrow-centered process that needs same-day hematopathology reasoning.",
+                "stopConditions": [
+                    "Blasts or highly suspicious immature forms on smear",
+                    "Pancytopenia or multilineage failure pattern",
+                    "Marked dysplasia or other concern for acute leukemia or marrow infiltration"
+                ],
+                "relatedTutorialQuery": "Flow Cytometry and Hematopathology Studio"
+            },
+            "a6": {
+                "id": "a6",
+                "type": "result",
+                "title": "Result: iron-restricted or microcytic production pathway",
+                "description": "Use iron studies and clinical context to decide whether the anemia reflects true iron deficiency, inflammatory restriction, or a less common microcytic disorder.",
+                "confirmatoryStudies": [
+                    "Ferritin and transferrin saturation or iron studies",
+                    "Peripheral smear review for microcytic morphology",
+                    "Targeted hemoglobinopathy testing when history or indices support it"
+                ],
+                "pearls": [
+                    "Low MCV narrows the frame, but ferritin and context still matter.",
+                    "Microcytosis is a routing clue, not proof of one single diagnosis."
+                ],
+                "pitfalls": [
+                    "Do not collapse all microcytic anemia into iron deficiency without iron studies.",
+                    "Do not forget that inflammation can mimic iron deficiency in the lab pattern."
+                ]
+            },
+            "a7": {
+                "id": "a7",
+                "type": "result",
+                "title": "Result: macrocytic or marrow-linked production pathway",
+                "description": "Check nutrient, renal, endocrine, medication, and marrow-linked causes when the anemia pattern is macrocytic or broader than isolated iron restriction.",
+                "confirmatoryStudies": [
+                    "B12 and folate assessment when clinically appropriate",
+                    "Renal or endocrine context review with chemistry correlation",
+                    "Marrow-directed evaluation if cytopenias or dysplasia persist"
+                ],
+                "pearls": [
+                    "Macrocytosis broadens the workup beyond simple iron logic.",
+                    "Production failure that involves more than one cell line deserves a marrow-level frame."
+                ],
+                "pitfalls": [
+                    "Do not stop at MCV without looking at the rest of the CBC and smear.",
+                    "Do not defer marrow escalation when persistent cytopenias and dysplasia are already visible."
+                ],
+                "relatedTutorialQuery": "Flow Cytometry and Hematopathology Studio"
+            }
+        }
+    },
+    {
+        "id": "cp-foundations-bleeding-diatathesis-triage",
+        "title": "Bleeding Diathesis and Coagulation Test Interpretation",
+        "category": "Clinical Pathology",
+        "summary": "Use bleeding pattern, platelet data, and coagulation screening tests to decide whether the problem is primary hemostasis, factor pathway dysfunction, or unstable systemic coagulopathy.",
+        "routeAliases": [
+            "bleeding diathesis triage",
+            "coagulation test interpretation",
+            "hemostasis triage"
+        ],
+        "startNodeId": "b1",
+        "nodes": {
+            "b1": {
+                "id": "b1",
+                "type": "start",
+                "title": "Start",
+                "description": "Anchor the workup in the bleeding pattern, medication history, platelet count, and initial PT, aPTT, fibrinogen, and smear context.",
+                "options": [
+                    {
+                        "label": "Classify the hemostatic problem",
+                        "nextNodeId": "b2"
+                    }
+                ]
+            },
+            "b2": {
+                "id": "b2",
+                "type": "decision",
+                "title": "Decision: where does the pattern point first?",
+                "description": "Distinguish platelet or von Willebrand-type bleeding from factor pathway problems and unstable systemic coagulopathy.",
+                "options": [
+                    {
+                        "label": "Mucocutaneous bleeding, platelet abnormalities, or von Willebrand-type pattern",
+                        "nextNodeId": "b3",
+                        "rationale": "Primary hemostasis problems usually declare themselves through the bleeding pattern before factor studies solve the case."
+                    },
+                    {
+                        "label": "PT or aPTT abnormalities suggest a factor pathway or inhibitor problem",
+                        "nextNodeId": "b4",
+                        "rationale": "Screening tests now become the main routing tool."
+                    },
+                    {
+                        "label": "Active or unstable bleeding with broad coagulopathy concern",
+                        "nextNodeId": "b5",
+                        "rationale": "When the patient is unstable, triage and support move faster than elegant diagnostic sequencing."
+                    }
+                ]
+            },
+            "b3": {
+                "id": "b3",
+                "type": "result",
+                "title": "Result: primary hemostasis pathway",
+                "description": "Prioritize platelet count and smear review, medication exposure, and von Willebrand testing when the pattern fits primary hemostasis rather than coagulation-factor deficiency.",
+                "confirmatoryStudies": [
+                    "Platelet count with peripheral smear review",
+                    "von Willebrand antigen and activity testing when indicated",
+                    "Medication and qualitative platelet dysfunction review"
+                ],
+                "pearls": [
+                    "The bleeding pattern matters as much as the screening numbers.",
+                    "Normal PT and aPTT do not exclude clinically important platelet or von Willebrand disorders."
+                ],
+                "pitfalls": [
+                    "Do not order factor cascades first when the history already points to primary hemostasis.",
+                    "Do not ignore medication-related platelet dysfunction."
+                ]
+            },
+            "b4": {
+                "id": "b4",
+                "type": "decision",
+                "title": "Decision: what do the screening tests imply?",
+                "description": "Use the PT and aPTT pattern to separate intrinsic-pathway issues from broader consumptive or multifactor abnormalities.",
+                "options": [
+                    {
+                        "label": "Isolated aPTT abnormality or targeted factor or inhibitor question",
+                        "nextNodeId": "b6",
+                        "rationale": "A focused intrinsic-pathway problem often needs mixing-study logic and factor-directed follow-up."
+                    },
+                    {
+                        "label": "Multiple screening tests are abnormal or fibrinogen is low",
+                        "nextNodeId": "b7",
+                        "rationale": "Combined abnormalities broaden the frame toward systemic coagulopathy."
+                    }
+                ]
+            },
+            "b5": {
+                "id": "b5",
+                "type": "stop",
+                "title": "Stop: unstable bleeding or systemic coagulopathy response",
+                "description": "Escalate immediately when the patient has unstable bleeding, suspected DIC, severe liver-related coagulopathy, or a situation where supportive transfusion decisions cannot wait.",
+                "stopConditions": [
+                    "Hemodynamic instability or major active bleeding",
+                    "Possible DIC or severe multifactor coagulopathy",
+                    "Immediate component-support decisions are required"
+                ]
+            },
+            "b6": {
+                "id": "b6",
+                "type": "result",
+                "title": "Result: factor deficiency or inhibitor pathway",
+                "description": "Use mixing-study logic and targeted factor evaluation when the main clue is an isolated aPTT or a narrower factor-pathway problem.",
+                "confirmatoryStudies": [
+                    "Mixing study when appropriate",
+                    "Targeted factor assays or inhibitor evaluation",
+                    "Clinical review for anticoagulant exposure"
+                ],
+                "pearls": [
+                    "An isolated screening-test abnormality should narrow the follow-up rather than trigger indiscriminate testing.",
+                    "Mixing studies answer a routing question: deficiency versus inhibitor."
+                ],
+                "pitfalls": [
+                    "Do not interpret an abnormal aPTT without considering anticoagulant effect.",
+                    "Do not skip targeted follow-up once the screening pattern is already focused."
+                ]
+            },
+            "b7": {
+                "id": "b7",
+                "type": "result",
+                "title": "Result: consumptive or multifactor coagulopathy pathway",
+                "description": "Broaden the frame to DIC, liver-related dysfunction, dilutional states, or other multifactor causes when several screening studies move together.",
+                "confirmatoryStudies": [
+                    "Fibrinogen and broader coagulation-panel correlation",
+                    "Clinical review for DIC, liver dysfunction, massive transfusion, or anticoagulant exposure",
+                    "Supportive transfusion planning when clinically indicated"
+                ],
+                "pearls": [
+                    "Multiple abnormal screening tests usually mean the problem is larger than a single factor deficiency.",
+                    "The clinical context decides whether the next step is diagnosis, support, or both."
+                ],
+                "pitfalls": [
+                    "Do not force a single-factor explanation onto a global coagulopathy pattern.",
+                    "Do not separate coagulation interpretation from the severity of active bleeding."
+                ],
+                "relatedTutorialQuery": "DAT and Hemolytic Transfusion Reaction Studio"
+            }
+        }
+    },
+    {
+        "id": "cp-foundations-specimen-to-result-workflow",
+        "title": "Specimen-to-Result CP Workflow",
+        "category": "Clinical Pathology",
+        "summary": "Move a Clinical Pathology request from specimen quality triage and specimen integrity through bench selection, result interpretation, and safe reporting without skipping preanalytic or postanalytic safeguards.",
+        "routeAliases": [
+            "specimen to result workflow",
+            "critical reporting workflow",
+            "bench selection workflow"
+        ],
+        "startNodeId": "s1",
+        "nodes": {
+            "s1": {
+                "id": "s1",
+                "type": "start",
+                "title": "Start",
+                "description": "Confirm patient identity, specimen integrity, and the clinical question before choosing a bench pathway or releasing any result.",
+                "options": [
+                    {
+                        "label": "Check whether the specimen is fit for use",
+                        "nextNodeId": "s2"
+                    }
+                ]
+            },
+            "s2": {
+                "id": "s2",
+                "type": "decision",
+                "title": "Decision: is the specimen usable for the requested question?",
+                "description": "A flawed specimen should redirect the workflow before deeper bench reasoning begins.",
+                "options": [
+                    {
+                        "label": "Misidentification, contamination, or collection-quality problems make the sample unsafe",
+                        "nextNodeId": "s3",
+                        "rationale": "Preanalytic failure is still the highest-yield finding when the specimen itself is compromised."
+                    },
+                    {
+                        "label": "The specimen is acceptable, but the next step depends on the testing lane",
+                        "nextNodeId": "s4",
+                        "rationale": "Once integrity is acceptable, the question becomes which CP branch should own the workup."
+                    }
+                ]
+            },
+            "s3": {
+                "id": "s3",
+                "type": "stop",
+                "title": "Stop: recollect or correct before testing",
+                "description": "Do not push a bad specimen through the lab. Resolve identity or collection issues, communicate the problem, and recollect when needed.",
+                "stopConditions": [
+                    "Identity mismatch or unlabeled specimen",
+                    "Collection or contamination problem invalidates interpretation",
+                    "The specimen quality makes downstream testing misleading"
+                ],
+                "relatedTutorialQuery": "Management and Informatics: Major Sources of Laboratory Errors Studio"
+            },
+            "s4": {
+                "id": "s4",
+                "type": "decision",
+                "title": "Decision: which CP lane owns the next action?",
+                "description": "Route the specimen into the branch where the main interpretive or safety question actually lives.",
+                "options": [
+                    {
+                        "label": "Culture setup, organism workup, or susceptibility logic is central",
+                        "nextNodeId": "s5",
+                        "rationale": "Microbiology workflow depends on specimen quality, media strategy, and AST consequences."
+                    },
+                    {
+                        "label": "Chemistry or endocrine interpretation and critical-result management are central",
+                        "nextNodeId": "s6",
+                        "rationale": "Chemistry workups often pivot on analyte interpretation and method-aware critical reporting."
+                    },
+                    {
+                        "label": "Identity-sensitive blood bank or hemolysis-related reasoning is central",
+                        "nextNodeId": "s7",
+                        "rationale": "Transfusion and DAT-linked problems should stay inside their safety-sensitive workflow."
+                    },
+                    {
+                        "label": "The weak point is the interface, handoff, or reporting chain itself",
+                        "nextNodeId": "s8",
+                        "rationale": "Sometimes the specimen is fine and the danger lives in the workflow."
+                    }
+                ]
+            },
+            "s5": {
+                "id": "s5",
+                "type": "result",
+                "title": "Result: microbiology bench workflow",
+                "description": "Proceed through specimen-quality review, organism workup, and AST interpretation when microbiology owns the main diagnostic and reporting task.",
+                "confirmatoryStudies": [
+                    "Specimen-quality assessment before deep interpretation",
+                    "Bench identification pathway matched to organism class",
+                    "AST interpretation tied to stewardship and reporting consequences"
+                ],
+                "pearls": [
+                    "Microbiology workflow begins with specimen quality, not just the organism result.",
+                    "AST categories matter because they change downstream treatment and communication."
+                ],
+                "pitfalls": [
+                    "Do not over-interpret a poor specimen.",
+                    "Do not separate AST interpretation from organism identity and reporting consequence."
+                ],
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio"
+            },
+            "s6": {
+                "id": "s6",
+                "type": "result",
+                "title": "Result: chemistry interpretation and critical-result path",
+                "description": "Use chemistry or endocrine interpretation logic when the central problem is analyte meaning, method consequence, or critical-value management.",
+                "confirmatoryStudies": [
+                    "Context-aware analyte interpretation",
+                    "Method or specimen considerations that change result trust",
+                    "Critical-result escalation when clinically required"
+                ],
+                "pearls": [
+                    "A chemistry result is only useful when you trust both the specimen and the method context.",
+                    "Critical-result communication is part of the workflow, not an afterthought."
+                ],
+                "pitfalls": [
+                    "Do not treat chemistry interpretation as detached from specimen or method quality.",
+                    "Do not release a critical result without the appropriate communication pathway."
+                ],
+                "relatedTutorialQuery": "Chemical Pathology Endocrine and Metabolic Studio"
+            },
+            "s7": {
+                "id": "s7",
+                "type": "result",
+                "title": "Result: transfusion or hemolysis-sensitive pathway",
+                "description": "Keep identity-sensitive compatibility and hemolysis workups inside blood bank or DAT-guided reasoning when the risk of wrong-patient or reaction harm is central.",
+                "confirmatoryStudies": [
+                    "Identity and compatibility review",
+                    "DAT-linked hemolysis workup when clinically indicated",
+                    "Transfusion-safety communication for urgent events"
+                ],
+                "pearls": [
+                    "Blood bank workflow is safety-first because the specimen identity burden is unusually high.",
+                    "Hemolysis questions change rapidly when transfusion exposure is part of the history."
+                ],
+                "pitfalls": [
+                    "Do not flatten blood bank problems into generic chemistry or hematology workflows.",
+                    "Do not ignore identity-sensitive safeguards when compatibility questions are in play."
+                ],
+                "relatedTutorialQuery": "DAT and Hemolytic Transfusion Reaction Studio"
+            },
+            "s8": {
+                "id": "s8",
+                "type": "result",
+                "title": "Result: workflow or reporting redesign pathway",
+                "description": "Address interface, middleware, or handoff weakness when the specimen and bench work are sound but the reporting chain is still unsafe.",
+                "confirmatoryStudies": [
+                    "Map the manual handoff or interface vulnerability",
+                    "Decide whether redesign, interfacing, or middleware is the highest-yield fix",
+                    "Document the reporting risk being reduced"
+                ],
+                "pearls": [
+                    "A technically correct result can still become unsafe in the reporting chain.",
+                    "Workflow repair belongs in the CP reasoning surface because it changes patient safety."
+                ],
+                "pitfalls": [
+                    "Do not treat postanalytic risk as less important than bench accuracy.",
+                    "Do not patch a systemic reporting weakness with repeated manual workarounds."
+                ],
+                "relatedTutorialQuery": "Management and Informatics: LIS Interfacing Studio"
+            }
+        }
+    },
+    {
+        "id": "cp-transfusion-reaction-triage",
+        "title": "Transfusion Reaction Triage",
+        "category": "Clinical Pathology",
+        "summary": "Use immediate symptom pattern, transfusion-safety steps, and blood-bank reasoning to separate hemolytic, febrile or allergic, and pulmonary or volume-overload transfusion reactions.",
+        "routeAliases": [
+            "transfusion reaction workup",
+            "hemolytic transfusion reaction",
+            "trali taco transfusion reactions"
+        ],
+        "startNodeId": "tr1",
+        "nodes": {
+            "tr1": {
+                "id": "tr1",
+                "type": "start",
+                "title": "Start",
+                "description": "Begin when new symptoms arise during or shortly after transfusion and frame the event first as a transfusion-safety problem rather than a generic anemia or chemistry question.",
+                "options": [
+                    {
+                        "label": "Classify the reaction pattern and immediate safety risk",
+                        "nextNodeId": "tr2"
+                    }
+                ]
+            },
+            "tr2": {
+                "id": "tr2",
+                "type": "decision",
+                "title": "Decision: is this an active transfusion-safety event?",
+                "description": "Treat fever, chills, dyspnea, hypotension, flank pain, dark urine, urticaria, or rapid cardiopulmonary change during or after transfusion as a true reaction pathway until proven otherwise.",
+                "options": [
+                    {
+                        "label": "Symptoms developed during or soon after transfusion and could reflect reaction harm",
+                        "nextNodeId": "tr3",
+                        "rationale": "Wrong-patient exposure, hemolysis, pulmonary injury, and severe hypersensitivity must be contained before deeper classification."
+                    },
+                    {
+                        "label": "The pattern is not convincingly linked to transfusion timing or safety risk",
+                        "nextNodeId": "tr8",
+                        "rationale": "If the event does not behave like a transfusion reaction, do not force it into blood-bank triage."
+                    }
+                ]
+            },
+            "tr3": {
+                "id": "tr3",
+                "type": "stop",
+                "title": "Stop: stop transfusion and escalate immediately",
+                "description": "Stop the transfusion, maintain IV access, notify the blood bank and clinical team, and begin clerical and specimen-identity review before pursuing detailed classification.",
+                "stopConditions": [
+                    "Possible hemolysis, hypotension, or respiratory compromise",
+                    "Identity-sensitive blood-bank harm cannot be excluded",
+                    "A reaction workup must begin before routine product continuation"
+                ],
+                "relatedTutorialQuery": "Hazards of Transfusion"
+            },
+            "tr4": {
+                "id": "tr4",
+                "type": "decision",
+                "title": "Decision: what is the dominant reaction pattern?",
+                "description": "After the transfusion is stopped and the event is escalated, separate hemolytic patterns from febrile or allergic reactions and from respiratory or volume-overload hazards.",
+                "options": [
+                    {
+                        "label": "Fever, chills, flank pain, dark urine, hemolysis labs, or compatibility-error clues dominate",
+                        "nextNodeId": "tr5",
+                        "rationale": "This pattern needs immediate blood-bank and DAT-linked reasoning."
+                    },
+                    {
+                        "label": "Urticaria, pruritus, fever, or anaphylactoid features dominate without clear hemolysis",
+                        "nextNodeId": "tr6",
+                        "rationale": "This favors febrile nonhemolytic, allergic, or anaphylactic reaction pathways."
+                    },
+                    {
+                        "label": "Dyspnea, hypoxemia, pulmonary edema, or circulatory-overload features dominate",
+                        "nextNodeId": "tr7",
+                        "rationale": "TRALI and TACO have immediate patient-safety consequences that outrun serologic detail."
+                    }
+                ]
+            },
+            "tr5": {
+                "id": "tr5",
+                "type": "result",
+                "title": "Result: hemolytic transfusion reaction workup",
+                "description": "Proceed through clerical check, repeat blood-bank compatibility review, hemolysis assessment, and DAT or eluate logic when immune hemolysis is plausible.",
+                "confirmatoryStudies": [
+                    "Clerical and patient-unit identity check",
+                    "Repeat ABO/Rh or compatibility review as indicated",
+                    "Hemolysis assessment with DAT-linked workup when clinically indicated"
+                ],
+                "pearls": [
+                    "DAT is a workup tool inside a broader transfusion-reaction pathway, not the whole diagnosis.",
+                    "Identity review belongs early because wrong-patient harm changes everything."
+                ],
+                "pitfalls": [
+                    "Do not continue classification while the transfusion is still running.",
+                    "Do not treat a positive DAT as a complete answer without hemolysis and compatibility context."
+                ],
+                "relatedTutorialQuery": "DAT and Hemolytic Transfusion Reaction Studio"
+            },
+            "tr6": {
+                "id": "tr6",
+                "type": "result",
+                "title": "Result: febrile, allergic, or anaphylactic reaction pathway",
+                "description": "Reframe the event around febrile nonhemolytic, allergic, or anaphylactic reaction logic and choose the next safest blood-bank and clinical response.",
+                "confirmatoryStudies": [
+                    "Reaction-pattern review without overcalling hemolysis",
+                    "Clinical correlation for allergic versus febrile versus anaphylactic features",
+                    "Blood-bank documentation and product-safety follow-up"
+                ],
+                "pearls": [
+                    "Not every transfusion reaction is hemolytic, but every real reaction still needs structured safety handling.",
+                    "The main task is safe classification plus the right immediate response."
+                ],
+                "pitfalls": [
+                    "Do not default every fever to acute hemolysis.",
+                    "Do not dismiss severe allergic or anaphylactic patterns as minor reactions."
+                ],
+                "relatedTutorialQuery": "Febrile, Allergic, and Anaphylactic Reactions"
+            },
+            "tr7": {
+                "id": "tr7",
+                "type": "result",
+                "title": "Result: pulmonary or circulatory hazard pathway",
+                "description": "Differentiate TRALI from TACO when respiratory decompensation or overload signs dominate and escalate because the patient-safety consequence is immediate.",
+                "confirmatoryStudies": [
+                    "Clinical assessment of respiratory timing and volume status",
+                    "Transfusion history and product context",
+                    "Blood-bank documentation with urgent clinical communication"
+                ],
+                "pearls": [
+                    "TRALI and TACO are safety-first classifications before they are board-style vocabulary items.",
+                    "Respiratory deterioration after transfusion should stay in the transfusion-hazard lane."
+                ],
+                "pitfalls": [
+                    "Do not collapse pulmonary transfusion hazards into a generic cardiopulmonary differential.",
+                    "Do not delay escalation while waiting for perfect subtype certainty."
+                ],
+                "relatedTutorialQuery": "Transfusion-Related Acute Lung Injury (TRALI)"
+            },
+            "tr8": {
+                "id": "tr8",
+                "type": "stop",
+                "title": "Stop: route away from transfusion-reaction triage",
+                "description": "If transfusion timing, symptom pattern, and safety context do not support a true reaction pathway, leave this lane and return to the broader CP workup that best fits the case.",
+                "stopConditions": [
+                    "No convincing transfusion-linked temporal relationship",
+                    "Symptoms are better explained by a non-transfusion process",
+                    "Identity-sensitive blood-bank harm is not the central risk"
+                ],
+                "relatedTutorialQuery": "blood banking transfusion medicine"
+            }
+        }
+    },
+    {
+        "id": "cp-transfusion-crossmatch-workup",
+        "title": "Crossmatch Workup",
+        "category": "Clinical Pathology",
+        "summary": "Stepwise blood-bank algorithm for crossmatch incompatibility, specimen identification checks, antibody-screen correlation, and safe unit-selection escalation.",
+        "routeAliases": [
+            "compatibility workup",
+            "alloantibody workup",
+            "transfusion compatibility"
+        ],
+        "startNodeId": "cx1",
+        "nodes": {
+            "cx1": {
+                "id": "cx1",
+                "type": "start",
+                "title": "Start",
+                "description": "A red-cell unit request reaches the blood bank with a crossmatch problem, incompatibility concern, or unexpected serologic mismatch.",
+                "relatedTutorialQuery": "blood banking transfusion medicine",
+                "options": [
+                    {
+                        "label": "Begin crossmatch workup",
+                        "nextNodeId": "cx2"
+                    }
+                ]
+            },
+            "cx2": {
+                "id": "cx2",
+                "type": "decision",
+                "title": "Decision: active reaction versus routine pretransfusion problem",
+                "description": "Decide whether this is a routine compatibility issue or an acute transfusion-safety event requiring immediate reaction workflow.",
+                "relatedTutorialQuery": "DAT and Hemolytic Transfusion Reaction Studio",
+                "options": [
+                    {
+                        "label": "Active transfusion reaction or new hemolysis concern",
+                        "nextNodeId": "cx3",
+                        "rationale": "Route first to immediate safety actions and reaction workup."
+                    },
+                    {
+                        "label": "Routine pretransfusion incompatibility or crossmatch discrepancy",
+                        "nextNodeId": "cx4",
+                        "rationale": "Proceed with compatibility-focused serologic workup."
+                    }
+                ]
+            },
+            "cx3": {
+                "id": "cx3",
+                "type": "result",
+                "title": "Result: reaction safety path first",
+                "description": "Stop transfusion if running, maintain venous access, notify the blood bank and clinical team, perform clerical check, and collect the post-transfusion workup before resuming compatibility logic.",
+                "relatedTutorialQuery": "DAT and Hemolytic Transfusion Reaction Studio",
+                "diagnosis": "Immediate transfusion-safety escalation required",
+                "pearls": [
+                    "Do not continue routine compatibility reasoning before reaction triage.",
+                    "Clerical error and acute hemolysis must be excluded early."
+                ],
+                "pitfalls": [
+                    "Treating a possible hemolytic reaction as a routine crossmatch nuisance.",
+                    "Delaying blood-bank notification while chasing serologies."
+                ]
+            },
+            "cx4": {
+                "id": "cx4",
+                "type": "decision",
+                "title": "Decision: specimen identity and ABO/Rh consistency",
+                "description": "Confirm patient and sample identification, prior blood-bank history, current ABO/Rh typing, and whether the discrepancy is explainable by a clerical or specimen problem.",
+                "relatedTutorialQuery": "blood banking transfusion medicine",
+                "options": [
+                    {
+                        "label": "ABO/Rh or identification inconsistency present",
+                        "nextNodeId": "cx5",
+                        "rationale": "Possible wrong blood in tube, mislabeled sample, or clerical mismatch."
+                    },
+                    {
+                        "label": "Identity and ABO/Rh are internally consistent",
+                        "nextNodeId": "cx6",
+                        "rationale": "Move to antibody-screen and compatibility interpretation."
+                    }
+                ]
+            },
+            "cx5": {
+                "id": "cx5",
+                "type": "stop",
+                "title": "Stop: resolve specimen or clerical problem",
+                "description": "Hold release, repeat identification checks, obtain a new properly labeled sample if needed, and restart pretransfusion testing only after the identity problem is closed.",
+                "relatedTutorialQuery": "blood banking transfusion medicine",
+                "stopConditions": [
+                    "Wrong blood in tube suspected",
+                    "Sample labeling discrepancy",
+                    "ABO/Rh mismatch unexplained by known transfusion history"
+                ]
+            },
+            "cx6": {
+                "id": "cx6",
+                "type": "decision",
+                "title": "Decision: antibody-screen or crossmatch pattern",
+                "description": "Interpret whether the incompatibility is screen-positive, broad, or DAT or autocontrol-linked, and decide whether the pattern is more consistent with alloantibody, warm autoantibody, or a non-antibody explanation.",
+                "relatedTutorialQuery": "red cell immunology and compatibility testing",
+                "options": [
+                    {
+                        "label": "Findings support alloantibody or specific compatibility issue",
+                        "nextNodeId": "cx7",
+                        "rationale": "Proceed with antigen-focused compatibility strategy."
+                    },
+                    {
+                        "label": "Broad incompatibility, DAT or autocontrol issue, or recent-transfusion complexity",
+                        "nextNodeId": "cx8",
+                        "rationale": "Escalate into DAT-linked or autoantibody-aware workup."
+                    }
+                ]
+            },
+            "cx7": {
+                "id": "cx7",
+                "type": "result",
+                "title": "Result: antigen-negative compatible-unit path",
+                "description": "Complete panel correlation, select antigen-negative units when indicated, and issue the safest compatible product with documented serologic rationale.",
+                "relatedTutorialQuery": "red cell immunology and compatibility testing",
+                "diagnosis": "Alloantibody-mediated compatibility workup favored",
+                "confirmatoryStudies": [
+                    "Antibody identification panel",
+                    "Targeted antigen typing or phenotype correlation"
+                ],
+                "pearls": [
+                    "Compatibility logic should match the specific antibody pattern.",
+                    "Release should be tied to the safest serologically supportable unit choice."
+                ],
+                "pitfalls": [
+                    "Issuing uncategorized incompatible units before finishing focused antibody reasoning.",
+                    "Confusing screen positivity with autoantibody by default."
+                ]
+            },
+            "cx8": {
+                "id": "cx8",
+                "type": "result",
+                "title": "Result: DAT-linked or complex compatibility escalation",
+                "description": "Use DAT, autocontrol, eluate context, and recent transfusion history to determine whether the safest path is autoantibody-aware selection, specialist escalation, or risk-managed release.",
+                "relatedTutorialQuery": "DAT and Hemolytic Transfusion Reaction Studio",
+                "diagnosis": "Complex crossmatch discrepancy requiring escalated blood-bank interpretation",
+                "confirmatoryStudies": [
+                    "DAT or autocontrol correlation",
+                    "Eluate or recent-transfusion contextual workup as indicated"
+                ],
+                "pearls": [
+                    "DAT positivity alone does not prove acute incompatibility.",
+                    "Recent transfusion can change how broad reactivity is interpreted."
+                ],
+                "pitfalls": [
+                    "Treating every broad incompatibility as an alloantibody problem.",
+                    "Skipping escalation when safe unit selection remains uncertain."
+                ]
+            }
+        }
+    },
+    {
+        "id": "cp-micro-specimen-quality-triage",
+        "title": "Clinical Microbiology Specimen Quality Triage",
+        "category": "Clinical Pathology",
+        "summary": "Decide whether a microbiology specimen is acceptable for culture or molecular workup, when recollection is safer, and when a limited bench path can still yield a trustworthy result.",
+        "routeAliases": [
+            "specimen quality triage",
+            "clinical microbiology specimen quality",
+            "gram stain specimen triage"
+        ],
+        "startNodeId": "ms1",
+        "nodes": {
+            "ms1": {
+                "id": "ms1",
+                "type": "start",
+                "title": "Start",
+                "description": "Begin with the specimen itself before focusing on the organism. In microbiology, source quality and transport conditions often determine whether any downstream interpretation is worth trusting.",
+                "options": [
+                    {
+                        "label": "Assess source quality, collection context, and transport integrity",
+                        "nextNodeId": "ms2"
+                    }
+                ]
+            },
+            "ms2": {
+                "id": "ms2",
+                "type": "decision",
+                "title": "Decision: is the specimen fit for microbiology interpretation?",
+                "description": "Use specimen source, contamination risk, transport delay, and adequacy to decide whether the sample should be worked up, cautiously limited, or rejected.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "options": [
+                    {
+                        "label": "Poor source control, heavy contamination risk, or transport failure makes the sample misleading",
+                        "nextNodeId": "ms3",
+                        "rationale": "A compromised microbiology specimen should be stopped before the learner overinterprets colonizers or degraded material."
+                    },
+                    {
+                        "label": "The sample is usable, but source quality changes how broad the workup should be",
+                        "nextNodeId": "ms4",
+                        "rationale": "Some specimens are acceptable but still require bench restraint and source-aware interpretation."
+                    }
+                ]
+            },
+            "ms3": {
+                "id": "ms3",
+                "type": "stop",
+                "title": "Stop: reject or recollect before bench interpretation",
+                "description": "Document the quality problem, communicate the limitation, and obtain a better specimen when the current sample cannot support safe microbiology interpretation.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "stopConditions": [
+                    "Collection quality or contamination risk invalidates interpretation",
+                    "Transport delay or handling failure undermines organism recovery",
+                    "Source labeling or specimen adequacy is not trustworthy"
+                ]
+            },
+            "ms4": {
+                "id": "ms4",
+                "type": "decision",
+                "title": "Decision: what is the next safest microbiology bench path?",
+                "description": "Once the specimen is usable, choose whether the next move is direct Gram-stain and culture triage, a narrower source-specific bench path, or a molecular-first approach.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "options": [
+                    {
+                        "label": "Direct culture and source-aware organism workup are appropriate",
+                        "nextNodeId": "ms5",
+                        "rationale": "Good-quality routine specimens can move into organism identification workflow."
+                    },
+                    {
+                        "label": "The sample is usable but high-risk for misleading overgrowth or source ambiguity",
+                        "nextNodeId": "ms6",
+                        "rationale": "This lane needs constrained interpretation and explicit contamination awareness."
+                    },
+                    {
+                        "label": "The main value is rapid molecular detection rather than broad culture interpretation",
+                        "nextNodeId": "ms7",
+                        "rationale": "Some specimens are best routed toward focused molecular or syndromic testing."
+                    }
+                ]
+            },
+            "ms5": {
+                "id": "ms5",
+                "type": "result",
+                "title": "Result: proceed to organism identification workflow",
+                "description": "Move the case into morphology, colony, MALDI-TOF, or other organism-identification logic because the specimen quality supports a standard microbiology workup.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "diagnosis": "Specimen quality supports full microbiology bench interpretation",
+                "confirmatoryStudies": [
+                    "Source-aware culture setup and Gram-stain review",
+                    "Organism identification pathway matched to the recovered isolate"
+                ],
+                "pearls": [
+                    "Specimen quality is part of the diagnosis because it determines whether an isolate is clinically meaningful.",
+                    "A strong specimen lets the learner focus on organism reasoning instead of contamination defense."
+                ],
+                "pitfalls": [
+                    "Do not skip source context once growth appears convincing.",
+                    "Do not separate bench choice from the actual specimen type."
+                ]
+            },
+            "ms6": {
+                "id": "ms6",
+                "type": "result",
+                "title": "Result: limited interpretation with contamination caution",
+                "description": "Use a narrower reporting frame when the specimen is usable but vulnerable to colonizer noise, mixed flora confusion, or source-quality limitations.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "diagnosis": "Specimen quality allows only constrained microbiology interpretation",
+                "confirmatoryStudies": [
+                    "Correlation with source and clinical syndrome",
+                    "Selective workup of dominant or clearly significant organisms"
+                ],
+                "pearls": [
+                    "Not every usable specimen deserves a maximal workup.",
+                    "Constrained interpretation is often safer than false precision."
+                ],
+                "pitfalls": [
+                    "Do not overcall mixed or low-quality recovery as true infection.",
+                    "Do not let bench enthusiasm outrun source credibility."
+                ]
+            },
+            "ms7": {
+                "id": "ms7",
+                "type": "result",
+                "title": "Result: molecular-first or targeted rapid-detection path",
+                "description": "Route toward rapid molecular or syndromic testing when specimen quality is adequate and the main clinical value is timely pathogen detection rather than a full conventional culture pathway.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "diagnosis": "Specimen quality supports targeted rapid microbiology testing",
+                "confirmatoryStudies": [
+                    "Focused molecular assay selection",
+                    "Correlation with specimen source and expected pathogen class"
+                ],
+                "pearls": [
+                    "A molecular-first path is still governed by specimen quality.",
+                    "Rapid detection helps most when it answers a clinically urgent question."
+                ],
+                "pitfalls": [
+                    "Do not treat every specimen as equally suited for syndromic testing.",
+                    "Do not ignore source-quality limitations just because a rapid platform is available."
+                ]
+            }
+        }
+    },
+    {
+        "id": "cp-micro-ast-interpretation",
+        "title": "AST Interpretation",
+        "category": "Clinical Pathology",
+        "summary": "Interpret antimicrobial susceptibility results only after organism identity, source context, and reporting consequences are aligned, then decide when to suppress, escalate, or communicate a high-risk result.",
+        "routeAliases": [
+            "antimicrobial susceptibility testing",
+            "susceptibility interpretation",
+            "ast stewardship"
+        ],
+        "startNodeId": "ast1",
+        "nodes": {
+            "ast1": {
+                "id": "ast1",
+                "type": "start",
+                "title": "Start",
+                "description": "Begin AST interpretation only after the organism and source are credible enough that the susceptibility profile will affect real treatment decisions.",
+                "options": [
+                    {
+                        "label": "Frame the isolate, source, and reporting stakes before reading categories",
+                        "nextNodeId": "ast2"
+                    }
+                ]
+            },
+            "ast2": {
+                "id": "ast2",
+                "type": "decision",
+                "title": "Decision: is the organism-source pairing trustworthy enough for AST reporting?",
+                "description": "Susceptibility categories are only meaningful when the isolate itself is clinically relevant and the specimen source supports treatment-level interpretation.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "options": [
+                    {
+                        "label": "The isolate is probably contaminant or source relevance is weak",
+                        "nextNodeId": "ast3",
+                        "rationale": "AST can mislead stewardship if the organism should not be driving therapy."
+                    },
+                    {
+                        "label": "The isolate is clinically meaningful and ready for susceptibility interpretation",
+                        "nextNodeId": "ast4",
+                        "rationale": "Now the learner can interpret categories in the right clinical frame."
+                    }
+                ]
+            },
+            "ast3": {
+                "id": "ast3",
+                "type": "stop",
+                "title": "Stop: do not over-report AST on a weak isolate",
+                "description": "Reassess source relevance or recollect rather than pushing susceptibility data that could falsely imply a treatable pathogen.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "stopConditions": [
+                    "Isolate likely reflects contamination or colonization",
+                    "Specimen source does not support treatment-driving interpretation",
+                    "AST reporting would create more confusion than value"
+                ]
+            },
+            "ast4": {
+                "id": "ast4",
+                "type": "decision",
+                "title": "Decision: what kind of AST reporting problem is this?",
+                "description": "Separate routine interpretable results from resistant, suppressed, or escalation-worthy patterns before final reporting.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "options": [
+                    {
+                        "label": "The profile is straightforward and internally consistent for routine reporting",
+                        "nextNodeId": "ast5",
+                        "rationale": "A routine pattern can move into standard source-aware reporting."
+                    },
+                    {
+                        "label": "The profile suggests resistance mechanism, suppression rule, or stewardship-sensitive escalation",
+                        "nextNodeId": "ast6",
+                        "rationale": "Complex or high-risk AST patterns need a more deliberate interpretation path."
+                    }
+                ]
+            },
+            "ast5": {
+                "id": "ast5",
+                "type": "result",
+                "title": "Result: routine AST reporting path",
+                "description": "Report the susceptibility profile in a source-aware way, keeping the organism identity, likely therapy relevance, and local bench conventions aligned.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "diagnosis": "Routine AST interpretation supports direct reporting",
+                "confirmatoryStudies": [
+                    "AST category review matched to organism identity",
+                    "Source-aware selection of reportable agents"
+                ],
+                "pearls": [
+                    "AST categories are not free-floating facts; they belong to a specific organism and source.",
+                    "Routine results still deserve reporting discipline."
+                ],
+                "pitfalls": [
+                    "Do not report every tested drug if the source or organism context makes some misleading.",
+                    "Do not detach susceptibility categories from the isolate that generated them."
+                ]
+            },
+            "ast6": {
+                "id": "ast6",
+                "type": "decision",
+                "title": "Decision: is this mainly a resistance-pattern problem or a reporting-governance problem?",
+                "description": "Some AST cases are hard because the organism is resistant; others are hard because selective suppression or communication rules control what should be released.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "options": [
+                    {
+                        "label": "Resistance mechanism or multidrug-resistance concern dominates",
+                        "nextNodeId": "ast7",
+                        "rationale": "This needs escalation around resistant phenotype interpretation and stewardship impact."
+                    },
+                    {
+                        "label": "Selective reporting, suppression, or communication rules dominate",
+                        "nextNodeId": "ast8",
+                        "rationale": "This needs a reporting-governance frame more than a pure resistance frame."
+                    }
+                ]
+            },
+            "ast7": {
+                "id": "ast7",
+                "type": "result",
+                "title": "Result: resistant phenotype escalation path",
+                "description": "Escalate when the AST pattern suggests multidrug resistance, discordant phenotype concerns, or a high-stakes treatment implication that should not be treated as routine.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "diagnosis": "AST interpretation suggests resistant phenotype requiring higher-level review",
+                "confirmatoryStudies": [
+                    "Phenotype review in light of organism identity",
+                    "Additional susceptibility or resistance-confirmation workup when indicated",
+                    "Timely clinical communication for high-risk findings"
+                ],
+                "pearls": [
+                    "High-risk AST patterns are part interpretation problem and part communication problem.",
+                    "Stewardship consequence is one reason these results matter."
+                ],
+                "pitfalls": [
+                    "Do not bury resistant patterns inside routine release language.",
+                    "Do not overcall a mechanism without respecting the organism context."
+                ]
+            },
+            "ast8": {
+                "id": "ast8",
+                "type": "result",
+                "title": "Result: selective reporting and stewardship path",
+                "description": "Use suppression logic, selective release, and source-aware communication when the main task is deciding what the clinician should actually see and act on.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "diagnosis": "AST reporting requires stewardship-aware selective release",
+                "confirmatoryStudies": [
+                    "Review of suppression and selective-reporting policy",
+                    "Clinical communication of the most actionable agents or restrictions"
+                ],
+                "pearls": [
+                    "Selective AST reporting is a patient-safety and stewardship tool, not just a formatting choice.",
+                    "What is withheld can matter as much as what is shown."
+                ],
+                "pitfalls": [
+                    "Do not release technically available AST data that undermines stewardship policy.",
+                    "Do not forget that suppression rules still need clear clinical communication."
+                ]
+            }
+        }
+    },
+    {
+        "id": "cp-micro-organism-identification-workflow",
+        "title": "Organism Identification Workflow",
+        "category": "Clinical Pathology",
+        "summary": "Choose the next safest organism-identification path by combining Gram stain, growth pattern, source context, and bench method selection before attaching clinical meaning or susceptibility consequences.",
+        "routeAliases": [
+            "microbiology organism identification",
+            "maldi tof workflow",
+            "gram stain identification"
+        ],
+        "startNodeId": "oid1",
+        "nodes": {
+            "oid1": {
+                "id": "oid1",
+                "type": "start",
+                "title": "Start",
+                "description": "Begin organism identification only after the specimen is good enough to support microbiology interpretation, then decide which bench signal should drive the next step.",
+                "options": [
+                    {
+                        "label": "Integrate source context with the first bench clues",
+                        "nextNodeId": "oid2"
+                    }
+                ]
+            },
+            "oid2": {
+                "id": "oid2",
+                "type": "decision",
+                "title": "Decision: what is the strongest early identification signal?",
+                "description": "Use Gram stain, colony pattern, growth conditions, or rapid platform fit to determine the next identification branch instead of reflexively applying every method.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "options": [
+                    {
+                        "label": "Gram stain or colony pattern already narrows the organism class",
+                        "nextNodeId": "oid3",
+                        "rationale": "Morphology and growth pattern can often choose the bench path before higher-complexity testing."
+                    },
+                    {
+                        "label": "The isolate needs a faster or more definitive platform-directed identification step",
+                        "nextNodeId": "oid4",
+                        "rationale": "Some organisms are best clarified through MALDI-TOF or a targeted rapid method."
+                    }
+                ]
+            },
+            "oid3": {
+                "id": "oid3",
+                "type": "decision",
+                "title": "Decision: is the morphology-source pairing coherent?",
+                "description": "Decide whether the observed pattern matches a plausible pathogen-source story or whether mixed growth, contamination concern, or unexpected morphology should slow the interpretation.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "options": [
+                    {
+                        "label": "Pattern is coherent and can proceed through a standard organism workup",
+                        "nextNodeId": "oid5",
+                        "rationale": "A consistent early pattern supports a conventional identification branch."
+                    },
+                    {
+                        "label": "Pattern is mixed, unexpected, or contamination-prone",
+                        "nextNodeId": "oid6",
+                        "rationale": "Incoherent patterns need restrained interpretation and source re-check before naming the organism."
+                    }
+                ]
+            },
+            "oid4": {
+                "id": "oid4",
+                "type": "result",
+                "title": "Result: rapid-platform or targeted identification path",
+                "description": "Move to MALDI-TOF, focused biochemical logic, or another targeted rapid method when the next identification step should maximize clarity without unnecessary bench sprawl.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "diagnosis": "Targeted rapid identification path favored",
+                "confirmatoryStudies": [
+                    "Platform-directed identification matched to organism class",
+                    "Source-aware correlation before final naming"
+                ],
+                "pearls": [
+                    "The fastest method is useful only when it is the right method for the organism class.",
+                    "Rapid identification still depends on bench coherence and source logic."
+                ],
+                "pitfalls": [
+                    "Do not choose a platform just because it is available.",
+                    "Do not let a rapid result outrun source credibility."
+                ]
+            },
+            "oid5": {
+                "id": "oid5",
+                "type": "result",
+                "title": "Result: standard organism workup path",
+                "description": "Proceed through a conventional morphology, colony, and focused identification pathway because the early bench pattern and specimen source support a stable organism story.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "diagnosis": "Standard organism-identification workflow supported",
+                "confirmatoryStudies": [
+                    "Focused morphology and colony review",
+                    "Follow-on identification matched to the narrowed organism class"
+                ],
+                "pearls": [
+                    "Good organism identification is a sequence of narrowing decisions, not a jump straight to a label.",
+                    "Source context protects against overreading a plausible-looking isolate."
+                ],
+                "pitfalls": [
+                    "Do not skip the narrowing steps once the broad class is known.",
+                    "Do not treat every colony as equally clinically meaningful."
+                ]
+            },
+            "oid6": {
+                "id": "oid6",
+                "type": "result",
+                "title": "Result: constrained organism-identification path",
+                "description": "Use a limited or cautious identification frame when mixed growth, contamination concern, or source mismatch makes full organism naming unsafe or low-yield.",
+                "relatedTutorialQuery": "Clinical Microbiology Methods and AST Studio",
+                "diagnosis": "Organism identification requires constrained interpretation",
+                "confirmatoryStudies": [
+                    "Selective follow-up on dominant or source-plausible isolates",
+                    "Clinical or specimen-quality correlation before final release"
+                ],
+                "pearls": [
+                    "Sometimes the right answer is a restrained workup, not maximal organism naming.",
+                    "A cautious organism ID path can prevent false downstream AST confidence."
+                ],
+                "pitfalls": [
+                    "Do not force full identification out of mixed or low-trust growth.",
+                    "Do not separate naming decisions from contamination risk."
+                ]
+            }
+        }
     }
 ]

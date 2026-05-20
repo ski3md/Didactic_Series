@@ -16,7 +16,7 @@ const LectureKnowledgePack: React.FC<LectureKnowledgePackProps> = ({ entityCards
           <Card key={card.entityId}>
             <div className="space-y-4">
               <div>
-                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic criteria</div>
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">What to recognize</div>
                 <h3 className="mt-1 text-2xl font-semibold font-serif text-slate-900">{card.entityId}</h3>
                 <p className="mt-2 text-sm text-slate-700">{card.summary}</p>
               </div>
@@ -31,7 +31,7 @@ const LectureKnowledgePack: React.FC<LectureKnowledgePackProps> = ({ entityCards
                   </ul>
                 </div>
                 <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">IHC / Patterns</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Ancillary studies</div>
                   <ul className="mt-3 space-y-2 text-sm text-slate-700">
                     {card.keyIHC.positive.map((item) => (
                       <li key={`pos-${item}`}>• Positive: {item}</li>
@@ -70,7 +70,7 @@ const LectureKnowledgePack: React.FC<LectureKnowledgePackProps> = ({ entityCards
 
               <div className="grid gap-4 lg:grid-cols-2">
                 <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Critical differential</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Important alternatives</div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {card.criticalDifferential.map((item) => (
                       <span key={item} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">
@@ -80,7 +80,7 @@ const LectureKnowledgePack: React.FC<LectureKnowledgePackProps> = ({ entityCards
                   </div>
                 </div>
                 <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Prognosis / management</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Reporting / management</div>
                   <div className="mt-2 text-sm font-semibold text-slate-900">{card.prognosis.tier}</div>
                   <ul className="mt-3 space-y-2 text-sm text-slate-700">
                     {card.managementImplications.map((item) => (

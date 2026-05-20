@@ -10,10 +10,12 @@ import { activeCurriculumModules, activeCurriculumSubspecialties } from '../cont
 import { setLectureLibraryIntent } from '../utils/lectureLibraryNavigation.ts';
 import { setReferenceLibraryIntent } from '../utils/referenceLibraryNavigation.ts';
 import { setTutorialLibraryIntent } from '../utils/tutorialLibraryNavigation.ts';
+import { setAlgorithmNavigatorIntent } from '../utils/algorithmNavigatorNavigation.ts';
 import { consumeCurriculumIntent } from '../utils/curriculumNavigation.ts';
 import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
 import { getGuPilotEnhancement } from '../content/lectures/guPilotEnhancements.ts';
-import { deriveModuleCompetency, learnerLevelLabels } from '../content/competency/competencyMatrix.ts';
+import { deriveModuleCompetency } from '../content/competency/competencyMatrix.ts';
+import { resolveDidacticAlgorithmIntent, resolveDidacticAlgorithmRoutes } from '../utils/algorithmCatalog.ts';
 import {
   CURRICULUM_SIDEBAR_EVENT,
   readCurriculumViewState,
@@ -26,17 +28,18 @@ interface PathologyCurriculumProps {
   preferences: LearningPreferences;
 }
 
-const priorityLabels: Record<ActiveCurriculumPriority, string> = {
-  core: 'Core',
-  'high-yield': 'High Yield',
-  advanced: 'Advanced',
-};
-
 const promotionLabels: Record<ActiveCurriculumPromotionState, string> = {
-  canonical: 'Ready',
-  staged: 'Buildout',
+  canonical: 'Ready now',
+  staged: 'Adding now',
   archived: 'Archived',
 };
+
+const cpFeaturedModuleIds = [
+  'clinical-path-foundations',
+  'hematology-red-cell-core',
+  'chemical-pathology-core',
+  'management-informatics-core',
+] as const;
 
 const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChange, preferences }) => {
   const [selectedId, setSelectedId] = useState(activeCurriculumModules[0]?.moduleId ?? '');
@@ -171,7 +174,18 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
       if (!lowered) {
         return true;
       }
-      return [module.title, module.summary, module.subspecialty, ...module.patternFamilies, ...module.specimenContexts]
+      return [
+        module.title,
+        module.summary,
+        module.subspecialty,
+        ...module.patternFamilies,
+        ...module.specimenContexts,
+        ...module.referenceFocusTerms,
+        ...module.tutorialTopics,
+        ...module.syllabusTopics,
+        ...module.algorithmTopics,
+        ...module.assessmentTopics,
+      ]
         .some((value) => value.toLowerCase().includes(lowered));
     });
   }, [domainFilter, patternFilter, promotionFilter, priorityFilter, query, specimenFilter, subspecialtyFilter]);
@@ -204,10 +218,26 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
   }, [filteredModules, hasActiveRefinement, selectedId, showAllModules]);
 
   const selectedModule = filteredModules.find((module) => module.moduleId === selectedId) ?? filteredModules[0];
+  const selectedModuleResolvedAlgorithms = useMemo(
+    () =>
+      selectedModule
+        ? resolveDidacticAlgorithmRoutes(selectedModule.algorithmTopics, selectedModule.subspecialty)
+        : [],
+    [selectedModule]
+  );
+  const selectedModuleUnresolvedAlgorithmTopics = useMemo(() => {
+    if (!selectedModule) {
+      return [];
+    }
+    const resolvedTopicSet = new Set(selectedModuleResolvedAlgorithms.map((route) => route.requestedTopic));
+    return selectedModule.algorithmTopics.filter((topic) => !resolvedTopicSet.has(topic));
+  }, [selectedModule, selectedModuleResolvedAlgorithms]);
   const nextUpModules = useMemo(() => {
     const canonicalModules = activeCurriculumModules.filter((module) => module.promotionState === 'canonical');
     if (domainFilter === 'cp') {
-      return canonicalModules.filter((module) => module.subspecialty === 'Clinical Pathology').slice(0, 3);
+      return cpFeaturedModuleIds
+        .map((moduleId) => canonicalModules.find((module) => module.moduleId === moduleId))
+        .filter(Boolean) as ActiveCurriculumModule[];
     }
     if (domainFilter === 'ap') {
       return canonicalModules.filter((module) => module.subspecialty !== 'Clinical Pathology').slice(0, 3);
@@ -257,6 +287,24 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
     onSectionChange(Section.DIDACTIC_TUTORIALS);
   };
 
+  const openAlgorithms = (module: ActiveCurriculumModule, topic?: string) => {
+    const targetTopic = topic || module.algorithmTopics[0] || module.title;
+    const intent = resolveDidacticAlgorithmIntent(targetTopic, module.subspecialty);
+
+    setAlgorithmNavigatorIntent({
+      ...(intent ?? {
+        category: module.subspecialty,
+        query: targetTopic,
+      }),
+      sourceModuleId: module.moduleId,
+      sourceModuleTitle: module.title,
+      sourceModuleSummary: module.summary,
+      sourceSubspecialty: module.subspecialty,
+      sourceRequestedTopic: targetTopic,
+    });
+    onSectionChange(Section.DIDACTIC_ALGORITHMS);
+  };
+
   const primaryLecture = selectedModule?.lectures[0];
   const selectedModuleCompetency = selectedModule ? deriveModuleCompetency(selectedModule) : null;
   const primaryLectureEnhancement = getGuPilotEnhancement(primaryLecture?.id ?? '');
@@ -294,13 +342,40 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
     onSectionChange(Section.SIGN_OUT_SIMULATOR);
   };
 
+  const primaryTutorialTopic = selectedModule?.tutorialTopics[0]?.replace(/\s+/g, ' ').trim();
+  const primaryAlgorithmTopic = selectedModuleResolvedAlgorithms[0]?.requestedTopic?.replace(/\s+/g, ' ').trim();
+  const primaryAssessmentTopic =
+    selectedModule?.assessmentTopics[0]?.replace(/\s+/g, ' ').trim() || primaryTutorialTopic;
+  const primaryPatternLabel = selectedModule?.patternFamilies[0]?.replace(/\s+/g, ' ').trim();
+  const normalizedTutorialTopic = primaryTutorialTopic?.toLowerCase();
+  const normalizedAssessmentTopic = primaryAssessmentTopic?.toLowerCase();
+  const displayAutonomyTarget =
+    selectedModuleCompetency?.autonomyTarget?.toLowerCase() === 'guided'
+      ? 'Foundations review'
+      : selectedModuleCompetency?.autonomyTarget;
+  const lectureActionLabel = primaryLecture?.label ? `Review ${primaryLecture.label}` : 'Review foundations';
+  const tutorialActionLabel =
+    normalizedTutorialTopic === 'pattern-first sign-out'
+      ? 'Review diagnostic approach'
+      : primaryTutorialTopic
+        ? `Review ${primaryTutorialTopic}`
+        : 'Review differential diagnosis';
+  const algorithmActionLabel = primaryAlgorithmTopic ? `Review ${primaryAlgorithmTopic}` : 'Review initial workup';
+  const imageActionLabel = primaryPatternLabel ? `Review ${primaryPatternLabel} morphology` : 'Review morphology';
+  const assessmentActionLabel =
+    normalizedAssessmentTopic === 'introductory unknowns'
+      ? 'Start introductory unknown cases'
+      : primaryAssessmentTopic
+        ? `Start practice in ${primaryAssessmentTopic}`
+        : 'Start board-style questions';
+
   const launchCards = selectedModule
     ? (() => {
         const cards = {
           lecture: {
             key: 'lecture',
-            label: 'Lecture',
-            buttonLabel: 'Start lecture',
+            label: 'Foundations review',
+            buttonLabel: lectureActionLabel,
             onClick: () =>
               openLecture(primaryLecture?.id, primaryLecture?.label, {
                 initialMode: primaryLectureEnhancement?.defaultMode ?? 'overview',
@@ -309,29 +384,36 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
           },
           tutorial: {
             key: 'tutorial',
-            label: 'Tutorial',
-            buttonLabel: 'Open tutorial',
+            label: 'Diagnostic approach',
+            buttonLabel: tutorialActionLabel,
             onClick: () => openTutorials(selectedModule),
             disabled: selectedModule.tutorialTopics.length === 0,
           },
+          algorithm: {
+            key: 'algorithm',
+            label: 'Initial workup',
+            buttonLabel: algorithmActionLabel,
+            onClick: () => openAlgorithms(selectedModule),
+            disabled: selectedModuleResolvedAlgorithms.length === 0,
+          },
           atlas: {
             key: 'atlas',
-            label: 'Image Review',
-            buttonLabel: 'Open images',
+            label: 'Morphology review',
+            buttonLabel: imageActionLabel,
             onClick: () => openReferenceLibrary(selectedModule),
             disabled: selectedModule.referenceFocusTerms.length === 0,
           },
           assessment: {
             key: 'assessment',
-            label: 'Practice',
-            buttonLabel: 'Start practice',
+            label: normalizedAssessmentTopic === 'introductory unknowns' ? 'Unknown cases' : 'Board-style questions',
+            buttonLabel: assessmentActionLabel,
             onClick: () => openAssessment(selectedModule),
             disabled: selectedModule.assessmentTopics.length === 0,
           },
         };
 
         if (selectedModule.subspecialty === 'Clinical Pathology') {
-          return [cards.tutorial, cards.assessment, cards.atlas, cards.lecture];
+          return [cards.tutorial, cards.algorithm, cards.assessment, cards.atlas, cards.lecture];
         }
 
         if (selectedModule.boardPriority === 'advanced') {
@@ -347,22 +429,6 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
     : [];
   const firstAvailableLaunchCard = launchCards.find((card) => !card.disabled);
   const secondaryLaunchCards = launchCards.filter((card) => !card.disabled && card.key !== firstAvailableLaunchCard?.key).slice(0, 3);
-  const availableNow = selectedModule
-    ? [
-        selectedModule.lectures.length > 0 ? 'Lecture' : null,
-        selectedModule.tutorialTopics.length > 0 ? 'Tutorial' : null,
-        selectedModule.referenceFocusTerms.length > 0 ? 'Image Review' : null,
-        selectedModule.assessmentTopics.length > 0 ? 'Practice' : null,
-      ].filter(Boolean) as string[]
-    : [];
-  const buildoutRoutes = selectedModule
-    ? [
-        selectedModule.lectures.length === 0 && selectedModule.plannedAssets.includes('lectures') ? 'Lecture' : null,
-        selectedModule.tutorialTopics.length === 0 && selectedModule.plannedAssets.includes('tutorials') ? 'Tutorial' : null,
-        selectedModule.referenceFocusTerms.length === 0 && selectedModule.plannedAssets.includes('images') ? 'Image Review' : null,
-        selectedModule.assessmentTopics.length === 0 && selectedModule.plannedAssets.includes('assessment') ? 'Practice' : null,
-      ].filter(Boolean) as string[]
-    : [];
   const nearbyModules = selectedModule
     ? selectedModule.subspecialty === 'Clinical Pathology'
       ? clinicalPathModules
@@ -419,7 +485,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
             </div>
             <div className="flex w-full flex-col gap-3 sm:flex-row xl:w-auto xl:min-w-[30rem]">
               <label className="block flex-1">
-                <span className="sr-only">Search modules</span>
+                <span className="sr-only">Search topics</span>
                 <input
                   type="search"
                   value={query}
@@ -427,7 +493,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                     setQuery(event.target.value);
                     setShowAllModules(false);
                   }}
-                  placeholder="Search modules"
+                  placeholder="Search topics"
                   className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-700 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
                 />
               </label>
@@ -437,7 +503,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                   onClick={() => setShowAdvancedFilters((current) => !current)}
                   className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
                 >
-                  {showAdvancedFilters ? 'Hide refine' : 'Refine'}
+                  {showAdvancedFilters ? 'Hide filters' : 'Filter'}
                 </button>
                 {hasActiveRefinement && (
                   <button
@@ -452,7 +518,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
             </div>
           </div>
 
-          <div className="grid gap-3 md:grid-cols-3">
+          <div className={`grid gap-3 ${nextUpModules.length > 3 ? 'md:grid-cols-2 xl:grid-cols-4' : 'md:grid-cols-3'}`}>
             {nextUpModules.map((module) => (
                 <button
                   key={module.moduleId}
@@ -476,7 +542,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
           {showAdvancedFilters && (
             <div className="grid gap-3 lg:grid-cols-3">
               <label className="block">
-                <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Subspecialty</span>
+                <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Service</span>
                 <select
                   value={subspecialtyFilter}
                   onChange={(event) => {
@@ -492,7 +558,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                 </select>
               </label>
               <label className="block">
-                <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Priority</span>
+                <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Board focus</span>
                 <select
                   value={priorityFilter}
                   onChange={(event) => {
@@ -508,7 +574,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                 </select>
               </label>
               <label className="block">
-                <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Availability</span>
+                <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Coverage</span>
                 <select
                   value={promotionFilter}
                   onChange={(event) => {
@@ -517,9 +583,9 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                   }}
                   className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-700 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
                 >
-                  <option value="all">All modules</option>
+                  <option value="all">All topics</option>
                   <option value="canonical">Ready now</option>
-                  <option value="staged">Buildout</option>
+                  <option value="staged">Still being added</option>
                   <option value="archived">Archived</option>
                 </select>
               </label>
@@ -534,7 +600,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
           <div className="space-y-4">
           <div className="flex items-center justify-between px-1">
             <div className="text-sm font-medium text-slate-600">
-              {hasActiveRefinement ? `${filteredModules.length} modules` : 'Available modules'}
+              {hasActiveRefinement ? `${filteredModules.length} topics` : 'Topics'}
             </div>
             {!hasActiveRefinement && filteredModules.length > visibleModules.length && (
               <button
@@ -596,14 +662,6 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                   <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-800">
                     {selectedModule.subspecialty}
                   </span>
-                  {selectedModuleCompetency && (
-                    <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-800">
-                      {learnerLevelLabels[selectedModuleCompetency.primaryLevel]} primary
-                    </span>
-                  )}
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
-                    {priorityLabels[selectedModule.boardPriority]}
-                  </span>
                   <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
                     {promotionLabels[selectedModule.promotionState]}
                   </span>
@@ -614,7 +672,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                     onClick={() => setIsModuleFocusView(false)}
                     className="shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
                   >
-                    Change module
+                    Back to topics
                   </button>
                 )}
               </div>
@@ -626,20 +684,21 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                 </div>
                 {selectedModule.promotionState !== 'canonical' && (
                   <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-medium text-amber-800">
-                    Some routes are still being built.
+                    Some study links are still being added.
                   </div>
                 )}
               </div>
 
               {firstAvailableLaunchCard && (
                 <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                  <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div className="max-w-3xl">
-                      <div className="text-2xl font-semibold text-slate-900">{firstAvailableLaunchCard.buttonLabel}</div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Start here</div>
+                      <div className="mt-1 text-2xl font-semibold text-slate-900">{firstAvailableLaunchCard.label}</div>
                       <div className="mt-2 text-sm leading-6 text-slate-600">
                         {isPatternBlock
-                          ? 'Use the nearest teaching entry point for this block.'
-                          : 'Open the strongest first pass for this module and stay in that lane until the core pattern feels stable.'}
+                          ? 'Start with the closest pattern here, then build the differential.'
+                          : 'Start here first, then move to supporting review only after the main pattern is clear.'}
                       </div>
                     </div>
                     {secondaryLaunchCards.length > 0 && (
@@ -669,38 +728,44 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
 
               <div className="mt-6 grid gap-4 xl:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
                 <div className="space-y-4">
-                  <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">At a glance</div>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {[...selectedModule.patternFamilies, ...selectedModule.specimenContexts].slice(0, 7).map((item) => (
-                        <span key={item} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
-                          {item}
-                        </span>
-                      ))}
+                  {(selectedModule.patternFamilies.length > 0 || selectedModule.specimenContexts.length > 0) && (
+                    <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                      {selectedModule.patternFamilies.length > 0 && (
+                        <div>
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Common diagnostic patterns</div>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {selectedModule.patternFamilies.slice(0, 6).map((item) => (
+                              <span key={item} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                                {item}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {selectedModule.specimenContexts.length > 0 && (
+                        <div className={selectedModule.patternFamilies.length > 0 ? 'mt-5' : ''}>
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Common workflow contexts</div>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {selectedModule.specimenContexts.slice(0, 4).map((item) => (
+                              <span key={item} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                                {item}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {availableNow.map((item) => (
-                        <span key={item} className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-                          {item}
-                        </span>
-                      ))}
-                      {buildoutRoutes.map((item) => (
-                        <span key={item} className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  )}
 
                   {selectedModule.cpGovernance && (
                     <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Why this matters</div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">What to recognize</div>
                       <div className="mt-3 text-lg font-semibold text-slate-900">
                         {selectedModule.cpGovernance.boardMasteryFocusTitle}
                       </div>
                       <div className="mt-4 grid gap-4 lg:grid-cols-2">
                         <div>
-                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Must know</div>
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">High-yield points</div>
                           <ul className="mt-2 space-y-2 text-sm leading-6 text-slate-700">
                             {selectedModule.cpGovernance.mustKnowConcepts.slice(0, 3).map((item) => (
                               <li key={item}>{item}</li>
@@ -708,7 +773,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                           </ul>
                         </div>
                         <div>
-                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Do not miss</div>
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Common pitfalls</div>
                           <ul className="mt-2 space-y-2 text-sm leading-6 text-slate-700">
                             {selectedModule.cpGovernance.mustNotMissPitfalls.slice(0, 2).map((item) => (
                               <li key={item}>{item}</li>
@@ -719,28 +784,56 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                     </div>
                   )}
 
+                  {(selectedModuleResolvedAlgorithms.length > 0 || selectedModuleUnresolvedAlgorithmTopics.length > 0) && (
+                    <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Initial workup</div>
+                      {selectedModuleResolvedAlgorithms.length > 0 ? (
+                        <div className="mt-3 flex flex-wrap gap-3">
+                          {selectedModuleResolvedAlgorithms.map((route) => (
+                            <button
+                              key={route.selectedId}
+                              type="button"
+                              onClick={() => openAlgorithms(selectedModule, route.requestedTopic)}
+                              className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-left transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900"
+                            >
+                              <div className="text-sm font-semibold text-slate-900">{route.requestedTopic}</div>
+                              <div className="mt-1 text-xs text-slate-500">Open workup</div>
+                            </button>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="mt-3 text-sm leading-6 text-slate-600">
+                          Workup topics are queued for this module, but the guided routes are still being wired into the navigator.
+                        </p>
+                      )}
+                      {selectedModuleUnresolvedAlgorithmTopics.length > 0 && (
+                        <div className="mt-4">
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Still being added</div>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {selectedModuleUnresolvedAlgorithmTopics.map((topic) => (
+                              <span
+                                key={topic}
+                                className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700"
+                              >
+                                {topic}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
                   {selectedModuleCompetency && (
                     <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                       <div className="flex flex-wrap items-start justify-between gap-3">
-                        <div>
-                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Competency target</div>
+                        <div className="max-w-3xl">
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic focus</div>
                           <p className="mt-2 text-sm leading-6 text-slate-700">{selectedModuleCompetency.milestoneOutcome}</p>
                         </div>
                         <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700">
-                          {selectedModuleCompetency.autonomyTarget}
+                          {displayAutonomyTarget}
                         </span>
-                      </div>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {selectedModuleCompetency.learnerLevels.map((level) => (
-                          <span key={level} className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-800">
-                            {learnerLevelLabels[level]}
-                          </span>
-                        ))}
-                        {selectedModuleCompetency.competencyDomains.slice(0, 5).map((domain) => (
-                          <span key={domain} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700">
-                            {domain}
-                          </span>
-                        ))}
                       </div>
                     </div>
                   )}
@@ -749,7 +842,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                 <div className="space-y-4">
                   {selectedModule.cpGovernance && (
                     <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Official ABPath scope</div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Board blueprint</div>
                       <div className="mt-3 text-sm font-semibold text-slate-900">{selectedModule.cpGovernance.abpathRootTopic}</div>
                       <div className="mt-2 text-sm leading-6 text-slate-600">{selectedModule.cpGovernance.abpathPrimaryPath}</div>
                       <div className="mt-4 flex flex-wrap gap-2">
@@ -767,7 +860,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                         </span>
                       </div>
                       <div className="mt-4">
-                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Testable tasks</div>
+                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Board-style tasks</div>
                         <div className="mt-2 flex flex-wrap gap-2">
                           {selectedModule.cpGovernance.abpathTestableTask.map((task) => (
                             <span key={task} className="rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-sky-800">
@@ -781,7 +874,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
 
                   {selectedModule.lectures.length > 1 && (
                     <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Linked lectures</div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Related review</div>
                       <div className="mt-3 flex flex-wrap gap-3">
                         {selectedModule.lectures.map((lecture) => (
                           <button
@@ -805,7 +898,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
 
               {nearbyModules.length > 1 && (
                 <div className="mt-6">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Continue with</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Next topics</div>
                   <div className="mt-3 flex flex-wrap gap-3">
                     {nearbyModules
                       .filter((module) => module.moduleId !== selectedModule.moduleId)
@@ -836,7 +929,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
           </div>
         ) : (
           <Card>
-            <p className="text-slate-600">No modules matched the current filters.</p>
+            <p className="text-slate-600">No topics match your filters.</p>
           </Card>
         )}
       </div>

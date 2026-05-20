@@ -166,21 +166,21 @@ const writeProgressStore = (store: Record<string, LectureStudyProgress>) => {
 };
 
 const modeLabels: Record<LecturePlayerMode, string> = {
-  overview: 'Overview',
+  overview: 'Foundations Review',
   algorithm: 'Diagnostic Approach',
   tissue: 'Microscopy',
-  knowledge: 'Diagnostic Criteria',
-  check: 'Questions',
-  transcript: 'Full Text',
+  knowledge: 'Ancillary Studies',
+  check: 'Board-Style Questions',
+  transcript: 'Teaching Text',
 };
 
 const modeGuidance: Record<LecturePlayerMode, string> = {
-  overview: 'Teach the session.',
-  algorithm: 'Work through the diagnostic decision points.',
+  overview: 'Start with the main signout points.',
+  algorithm: 'Work through the diagnostic approach.',
   tissue: 'Review the paired microscopic images.',
-  knowledge: 'Review the diagnostic criteria and reporting implications.',
-  check: 'Ask learner-facing questions.',
-  transcript: 'Read the complete lecture narrative.',
+  knowledge: 'Review the stains, molecular findings, and reporting implications.',
+  check: 'Work through board-style questions.',
+  transcript: 'Read the full teaching text.',
 };
 
 const getLectureExportFilename = (title: string) =>
@@ -532,6 +532,55 @@ const slideFallbackVisualAids: Record<string, Record<string, SlideVisualAid>> = 
 
 const getSlideVisualAid = (lectureId: string, slide: InteractiveLectureRecord['slides'][number]) =>
   slide.visualAid ?? slideFallbackVisualAids[lectureId]?.[slide.title];
+
+const slideTypeLabels: Record<InteractiveLectureRecord['slides'][number]['type'], string> = {
+  intro: 'Opening frame',
+  framework: 'Signout framework',
+  anatomy: 'Anatomic context',
+  network: 'Diagnostic network',
+  algorithm: 'Decision checkpoint',
+  tissue_layer: 'Microscopy checkpoint',
+  knowledge_pack: 'Ancillary checkpoint',
+  pitfall: 'Common trap',
+  workflow: 'Workflow checkpoint',
+  quick_check: 'Recall checkpoint',
+  summary: 'Closing synthesis',
+  grading: 'Grading checkpoint',
+  staging: 'Staging checkpoint',
+  variant: 'Variant checkpoint',
+  mimic: 'Mimic checkpoint',
+  ihc: 'Ancillary checkpoint',
+};
+
+const slideTypePrompts: Record<InteractiveLectureRecord['slides'][number]['type'], string> = {
+  intro: 'Name the signout problem before revealing the teaching point.',
+  framework: 'Use the mapped image to anchor the diagnostic framework.',
+  anatomy: 'Orient the specimen and anatomic compartment before naming the lesion.',
+  network: 'Place this finding inside the broader diagnostic network before revealing.',
+  algorithm: 'Call the next branch in the algorithm from morphology first.',
+  tissue_layer: 'Read the slide in order before opening the explanation.',
+  knowledge_pack: 'Commit to the key ancillary clue before revealing it.',
+  pitfall: 'State the overcall or undercall risk before reveal.',
+  workflow: 'Say which report element changes management first.',
+  quick_check: 'Answer the checkpoint aloud before revealing.',
+  summary: 'Close the case in signout language before reveal.',
+  grading: 'Decide the grading hinge before revealing the answer.',
+  staging: 'Identify the staging threshold before reveal.',
+  variant: 'Name the variant logic before opening the explanation.',
+  mimic: 'Commit to the mimic split before revealing the teaching point.',
+  ihc: 'Choose the morphology-led stain question before reveal.',
+};
+
+const getSlideContextLine = (
+  slide: InteractiveLectureRecord['slides'][number],
+  visualAid?: SlideVisualAid
+) => visualAid?.caption ?? slideTypePrompts[slide.type] ?? 'Review the mapped image before revealing the teaching point.';
+
+const getEntityContextLine = (item: EntityReviewItem) =>
+  item.summary ??
+  item.visualAids[0]?.caption ??
+  item.morphology[0] ??
+  'Use morphology first, then ancillary studies, then the reporting consequence.';
 
 const guWhoEntities = guWhoEntityManifest.entities as GuWhoEntityDescriptor[];
 
@@ -1003,26 +1052,6 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
   };
 
   useEffect(() => {
-    persistLectureViewState({
-      selectedId: selectedLecture?.id ?? '',
-      majorTopicId: effectiveDestination.majorTopicId,
-      subtopicId: effectiveDestination.subtopicId,
-      activeMode,
-      activeQuestionIndex: 0,
-      initialNodeId: initialNodeId,
-      initialLayerSetId: initialLayerSetId,
-    });
-  }, [
-    activeMode,
-    effectiveDestination.itemId,
-    effectiveDestination.majorTopicId,
-    effectiveDestination.subtopicId,
-    initialNodeId,
-    initialLayerSetId,
-    selectedLecture?.id,
-  ]);
-
-  useEffect(() => {
     const intent = consumeLectureLibraryIntent();
     const restoredDestination = restoreStudyDestination('lectures');
     setDestination(restoredDestination);
@@ -1143,6 +1172,25 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
     const lecture = getPromotedLectureById(effectiveDestination.itemId);
     return lecture ? getInteractivePromotedLecture(lecture.id) : undefined;
   }, [effectiveDestination.itemId, effectiveDestination.kind]);
+  useEffect(() => {
+    persistLectureViewState({
+      selectedId: selectedLecture?.id ?? '',
+      majorTopicId: effectiveDestination.majorTopicId,
+      subtopicId: effectiveDestination.subtopicId,
+      activeMode,
+      activeQuestionIndex: 0,
+      initialNodeId,
+      initialLayerSetId,
+    });
+  }, [
+    activeMode,
+    effectiveDestination.itemId,
+    effectiveDestination.majorTopicId,
+    effectiveDestination.subtopicId,
+    initialNodeId,
+    initialLayerSetId,
+    selectedLecture?.id,
+  ]);
   const activeLectureRoot = effectiveDestination.majorTopicId;
   const activeLectureSubtopics = useMemo(
     () => (activeLectureRoot ? lectureStudyTree.subtopicsByRoot[activeLectureRoot] ?? [] : []),
@@ -1195,6 +1243,10 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
   }, [selectedLecture]);
 
   const selectedProgress = selectedLecture ? progressStore[selectedLecture.id] ?? emptyProgress() : emptyProgress();
+  const resumeLecture = useMemo(() => {
+    const previousItemId = effectiveDestination.previous?.itemId;
+    return previousItemId ? getPromotedLectureById(previousItemId) : undefined;
+  }, [effectiveDestination.previous?.itemId]);
 
   useEffect(() => {
     setRevealedSlideIds({});
@@ -1272,6 +1324,28 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
     }
     return selectedLecture.slides.map((slide) => getSlideVisualAid(selectedLecture.id, slide)).find(Boolean);
   }, [selectedLecture]);
+  const recommendedLectureRoot = useMemo(
+    () => effectiveDestination.previous?.majorTopicId ?? lectureStudyTree.roots[0]?.id,
+    [effectiveDestination.previous?.majorTopicId, lectureStudyTree.roots]
+  );
+  const recommendedLectureRootLabel = useMemo(
+    () => lectureStudyTree.roots.find((root) => root.id === recommendedLectureRoot)?.label ?? recommendedLectureRoot,
+    [lectureStudyTree.roots, recommendedLectureRoot]
+  );
+  const lectureScopeLine = useMemo(() => {
+    if (!selectedLecture) {
+      return '';
+    }
+    return selectedLecture.tags?.slice(0, 4).join(' · ') || selectedLecture.category || 'General review';
+  }, [selectedLecture]);
+  const lecturePitfallPreview = useMemo(
+    () => selectedLecture?.enhancement?.pitfalls?.[0]?.title ?? null,
+    [selectedLecture]
+  );
+  const nextLectureMode = useMemo(() => {
+    const activeIndex = studyPath.indexOf(activeMode);
+    return activeIndex >= 0 ? studyPath[activeIndex + 1] ?? null : studyPath[0] ?? null;
+  }, [activeMode, studyPath]);
 
   const entityCategoryCounts = useMemo(() => {
     const counts = new Map<string, number>();
@@ -1329,7 +1403,6 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
       },
     ];
   }, [entityReviewItems, learningTargets, primaryVisualAid, selectedLecture]);
-
   const exportLecturePdf = () => {
     if (!selectedLecture || typeof window === 'undefined') {
       return;
@@ -1346,6 +1419,18 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
     window.addEventListener('afterprint', restoreTitle);
     window.print();
     window.setTimeout(restoreTitle, 1000);
+  };
+
+  const openResumeLecture = () => {
+    if (resumeLecture) {
+      selectLecture(resumeLecture.id, {
+        mode: effectiveDestination.previous?.activeTab as LecturePlayerMode | undefined,
+      });
+      return;
+    }
+    if (recommendedLectureRoot) {
+      openLectureTopicOverview(recommendedLectureRoot);
+    }
   };
 
   const openTutorials = (queryText?: string) => {
@@ -1399,48 +1484,68 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
           {effectiveKind === 'landing' && (
             <>
               <Card>
-                <h2 className="font-serif text-2xl font-semibold text-slate-950">Lecture learning paths</h2>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  Continue a topic, resume an active session, or choose a major path from the sidebar.
-                </p>
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="max-w-3xl">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Lectures</p>
+                    <h2 className="mt-2 font-serif text-2xl font-semibold text-slate-950">Choose a teaching topic</h2>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      Open one topic, choose a teaching session, and stay with it until you are ready to switch.
+                    </p>
+                  </div>
+                  <div className="grid min-w-[16rem] gap-2 text-sm text-slate-600">
+                    <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+                      <span className="font-semibold text-slate-900">{lectureStudyTree.roots.length}</span> topics
+                    </div>
+                    <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+                      <span className="font-semibold text-slate-900">
+                        {resumeLecture ? 'Resume last lecture' : 'Recommended topic'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-5 grid gap-3 lg:grid-cols-2">
+                  <button
+                    type="button"
+                    onClick={openResumeLecture}
+                    className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
+                  >
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      {resumeLecture ? 'Resume last lecture' : 'Start here'}
+                    </div>
+                    <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
+                      {resumeLecture?.title ?? recommendedLectureRootLabel ?? 'Open a lecture topic'}
+                    </div>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      {resumeLecture?.summary ?? 'Begin with the recommended topic and move into the first teaching session.'}
+                    </p>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (recommendedLectureRoot) {
+                        openLectureTopicOverview(recommendedLectureRoot);
+                      }
+                    }}
+                    className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
+                  >
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Browse topics</div>
+                    <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
+                      Open the topic list
+                    </div>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      Pick one topic, then choose a single teaching session inside it.
+                    </p>
+                  </button>
+                </div>
               </Card>
-              <div className="grid gap-4 lg:grid-cols-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (effectiveDestination.previous?.itemId) {
-                      replaceStudyDestination(effectiveDestination.previous);
-                      setDestination(effectiveDestination.previous);
-                    }
-                  }}
-                  disabled={!effectiveDestination.previous?.itemId}
-                  className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300 disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Resume</div>
-                  <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
-                    {effectiveDestination.previous?.itemId
-                      ? getPromotedLectureById(effectiveDestination.previous.itemId)?.title ?? 'Last lecture'
-                      : 'Choose a lecture topic'}
-                  </div>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const firstRoot = lectureStudyTree.roots[0]?.id;
-                    if (firstRoot) {
-                      openLectureTopicOverview(firstRoot);
-                    }
-                  }}
-                  className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
-                >
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Resume topic</div>
-                  <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
-                    {lectureStudyTree.roots[0]?.label ?? 'Open a lecture topic'}
-                  </div>
-                </button>
-              </div>
               <Card>
-                <h3 className="font-serif text-xl font-semibold text-slate-900">Recommended major topics</h3>
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Major topics</p>
+                    <h3 className="mt-1 font-serif text-xl font-semibold text-slate-900">Recommended major topics</h3>
+                  </div>
+                  <p className="text-sm text-slate-600">Pick one topic, then choose a single teaching session inside it.</p>
+                </div>
                 <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                   {lectureStudyTree.roots.slice(0, preferences.focusMode ? 4 : 6).map((root) => (
                     <button
@@ -1451,8 +1556,9 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                     >
                       <div className="font-semibold text-slate-900">{root.label}</div>
                       <div className="mt-2 text-sm text-slate-600">
-                        {(lectureStudyTree.subtopicsByRoot[root.id] ?? []).length} sessions
+                        {(lectureStudyTree.subtopicsByRoot[root.id] ?? []).length} teaching sets
                       </div>
+                      <div className="mt-3 text-sm font-semibold text-sky-700">Open review set</div>
                     </button>
                   ))}
                 </div>
@@ -1463,14 +1569,40 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
           {effectiveKind === 'topic_overview' && activeLectureRoot && (
             <>
               <Card>
-                <h2 className="font-serif text-2xl font-semibold text-slate-950">{activeLectureRoot}</h2>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  Confirm the scope quickly, then open one teaching session within this topic.
-                </p>
-                <p className="mt-3 text-sm font-medium text-slate-700">
-                  Scope: {activeLectureSubtopics[0]?.label ?? activeLectureRecords[0]?.title ?? activeLectureRoot}
-                </p>
-                <p className="mt-1 text-xs text-slate-600">All tracks are aligned to the selected topic lane.</p>
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                  <div className="max-w-4xl">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Lectures</p>
+                    <h2 className="mt-2 font-serif text-2xl font-semibold text-slate-950">{activeLectureRoot}</h2>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      Confirm the scope, then choose the next review set in this topic.
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                      <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">
+                        Scope: {activeLectureSubtopics[0]?.label ?? activeLectureRecords[0]?.title ?? activeLectureRoot}
+                      </span>
+                      <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">
+                        {activeLectureSubtopics.length > 0 ? 'Next: open the first review set' : 'Next: open the first lecture'}
+                      </span>
+                    </div>
+                  </div>
+                  {(activeLectureSubtopics[0] || activeLectureRecords[0]) && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        activeLectureSubtopics[0]
+                          ? openLectureSubtopicOverview(activeLectureRoot, activeLectureSubtopics[0].id)
+                          : activeLectureRecords[0] &&
+                            selectLecture(activeLectureRecords[0].id, {
+                              mode: 'overview',
+                              initialLayerSetId: getInteractivePromotedLecture(activeLectureRecords[0].id)?.tissueLayerSets[0]?.id,
+                            })
+                      }
+                      className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                    >
+                      {activeLectureSubtopics[0] ? `Open ${activeLectureSubtopics[0].label}` : `Open ${activeLectureRecords[0]?.title ?? 'lecture'}`}
+                    </button>
+                  )}
+                </div>
               </Card>
               {activeLectureSubtopics.length > 0 ? (
                 <div className="grid gap-4 lg:grid-cols-2">
@@ -1482,7 +1614,7 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                       className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
                     >
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        {index === 0 ? 'Start here' : 'Session lane'}
+                        {index === 0 ? 'Start here' : 'Review set'}
                       </div>
                       <div className="mt-3 font-serif text-xl font-semibold text-slate-900">{subtopic.label}</div>
                     </button>
@@ -1492,7 +1624,7 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                 <div className="space-y-4">
                   <Card>
                     <p className="text-slate-700">
-                      No explicit session lanes are defined for this major lecture topic. Open directly from the topic-scoped lecture list below.
+                      No smaller review sets are defined for this topic. Choose directly from the lecture list below.
                     </p>
                   </Card>
                   {activeLectureRecords.length === 0 ? (
@@ -1531,10 +1663,32 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
           {effectiveKind === 'subtopic_overview' && activeLectureRoot && activeLectureSubtopic && (
             <>
               <Card>
-                <h2 className="font-serif text-2xl font-semibold text-slate-950">{activeLectureSubtopic.label}</h2>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {activeLectureRoot} {'>'} {activeLectureSubtopic.label}
-                </p>
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                  <div className="max-w-4xl">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Lectures</p>
+                    <h2 className="mt-2 font-serif text-2xl font-semibold text-slate-950">{activeLectureSubtopic.label}</h2>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      {activeLectureRoot} {'>'} {activeLectureSubtopic.label}
+                    </p>
+                    <p className="mt-3 text-sm text-slate-700">
+                      Open the lecture below and work straight through the signout-focused sections.
+                    </p>
+                  </div>
+                  {activeLectureSubtopicItems[0] && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        selectLecture(activeLectureSubtopicItems[0].id, {
+                          mode: 'overview',
+                          initialLayerSetId: getInteractivePromotedLecture(activeLectureSubtopicItems[0].id)?.tissueLayerSets[0]?.id,
+                        })
+                      }
+                      className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                    >
+                      Open {activeLectureSubtopicItems[0].title}
+                    </button>
+                  )}
+                </div>
               </Card>
               {activeLectureSubtopicItems.map((lecture) => (
                 <button
@@ -1549,10 +1703,10 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                   className="w-full rounded-xl border border-slate-200 bg-white p-5 text-left shadow-sm transition-all hover:border-sky-300 hover:shadow-md"
                 >
                   <div className="max-w-4xl">
-                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Teaching session</div>
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Start here</div>
                     <h3 className="mt-3 font-serif text-xl font-semibold leading-snug text-slate-900">{lecture.title}</h3>
                     <p className="mt-2 text-sm font-medium text-slate-800">
-                      Scope: {lecture.tags?.slice(0, 4).join(' · ') || lecture.category || 'General review'}
+                      Scope: {lecture.tags?.slice(0, 4).join(' · ') || lecture.category || 'General pathology review'}
                     </p>
                     {!preferences.focusMode && lecture.summary && <p className="mt-3 text-sm leading-6 text-slate-600">{lecture.summary}</p>}
                     <div className="mt-2 text-sm font-semibold text-sky-700">Open</div>
@@ -1565,7 +1719,7 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
       ) : (
           <div className="space-y-6">
             <Card className="!mb-0">
-              <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={returnToLectureList}
@@ -1583,17 +1737,23 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                   Export PDF
                 </button>
               </div>
-              <div className="max-w-4xl">
-                <div className="flex flex-wrap items-center gap-2">
-                  <p className="text-sm font-semibold uppercase tracking-wide text-sky-700">
-                    {selectedLecture.category ?? 'Lecture'}
-                  </p>
+              <div className="max-w-5xl">
+                <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <span className="text-sky-700">Lectures</span>
+                  {selectedLecture.category && (
+                    <>
+                      <span aria-hidden="true">/</span>
+                      <span>{selectedLecture.category}</span>
+                    </>
+                  )}
                 </div>
-                <h2 className="mt-3 font-serif text-4xl font-semibold leading-tight text-slate-900">{selectedLecture.title}</h2>
-                {selectedLecture.summary && <p className="mt-4 max-w-4xl text-base text-slate-600">{selectedLecture.summary}</p>}
+                <h2 className="mt-2 font-serif text-3xl font-semibold leading-tight text-slate-900">{selectedLecture.title}</h2>
+                <p className="mt-3 max-w-4xl text-sm leading-6 text-slate-600">
+                  {selectedLecture.summary ?? 'Start with the main morphologic problem, then move directly into the signout sequence.'}
+                </p>
               </div>
 
-              <div className="mt-7 border-t border-slate-200 pt-5">
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-4">
                 <div className="flex flex-wrap gap-2" aria-label="Lecture sections">
                   {studyPath.map((mode) => {
                     const isActive = activeMode === mode;
@@ -1614,283 +1774,346 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                     );
                   })}
                 </div>
+                {nextLectureMode && (
+                  <button
+                    type="button"
+                    onClick={() => setActiveMode(nextLectureMode)}
+                    className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                  >
+                    Open {modeLabels[nextLectureMode]}
+                  </button>
+                )}
               </div>
             </Card>
 
             {activeMode === 'overview' && (
               <div className="space-y-6">
                 <section className="rounded-lg border border-slate-200 bg-white shadow-sm">
-                  <div className="grid gap-0 xl:grid-cols-[minmax(0,1fr)_22rem]">
-                    <div className="p-5 sm:p-6">
+                  <div className="grid gap-6 p-5 sm:p-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)]">
+                    <div className="space-y-4">
                       <div className="flex items-center gap-3">
                         <SparklesIcon className="h-6 w-6 text-sky-700" />
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Live teaching view</p>
-                          <h3 className="mt-1 font-serif text-2xl font-semibold text-slate-950">Faculty run sheet</h3>
+                          <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Start here</p>
+                          <h3 className="mt-1 font-serif text-lg font-semibold text-slate-950">Opening slide</h3>
                         </div>
                       </div>
-                      <div className="mt-6 grid gap-4 lg:grid-cols-2">
-                        {facultyRunSheet.map((item) => (
-                          <div key={`${item.time}-${item.title}`} className="border-l-2 border-sky-300 pl-4">
-                            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">{item.time}</div>
-                            <div className="mt-1 text-base font-semibold text-slate-950">{item.title}</div>
-                            <p className="mt-1 text-sm leading-6 text-slate-700">{item.text}</p>
-                          </div>
-                        ))}
-                      </div>
+                      {primaryVisualAid ? (
+                        <div className={teachingImageFrameClass}>
+                          {renderPrimaryVisual(primaryVisualAid)}
+                        </div>
+                      ) : (
+                        <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm leading-6 text-slate-600">
+                          Lecture image mapping is still being attached for this opening slide.
+                        </div>
+                      )}
                     </div>
-                    <aside className="border-t border-slate-200 bg-slate-50 p-5 xl:border-l xl:border-t-0">
-                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Session at a glance</div>
-                      <div className="mt-4 grid grid-cols-2 gap-3">
-                        {lectureMetrics.map((metric) => (
-                          <div key={metric.label} className="rounded-md border border-slate-200 bg-white px-3 py-3">
-                            <div className="text-2xl font-semibold text-slate-950">{metric.value}</div>
-                            <div className="mt-1 text-xs leading-4 text-slate-600">{metric.label}</div>
-                          </div>
-                        ))}
+                    <aside className="space-y-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                      <div>
+                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Signout brief</div>
+                        <p className="mt-2 text-sm leading-6 text-slate-700">
+                          {primaryVisualAid?.caption ??
+                            'Read the mapped image first, then move directly into the signout sequence below.'}
+                        </p>
                       </div>
-                      {entityCategoryCounts.length > 0 && (
-                        <div className="mt-5">
-                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic groups</div>
-                          <div className="mt-3 space-y-2">
-                            {entityCategoryCounts.slice(0, 6).map((item) => (
-                              <div key={item.category} className="flex items-center justify-between gap-3 text-sm">
-                                <span className="text-slate-700">{item.category}</span>
-                                <span className="font-semibold text-slate-950">{item.count}</span>
-                              </div>
-                            ))}
+                      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
+                        <div className="rounded-md border border-slate-200 bg-white px-3 py-3">
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Focus</div>
+                          <p className="mt-2 text-sm leading-6 text-slate-700">{lectureScopeLine}</p>
+                        </div>
+                        {primaryVisualAid?.stain && (
+                          <div className="rounded-md border border-slate-200 bg-white px-3 py-3">
+                            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Stain</div>
+                            <p className="mt-2 text-sm font-semibold text-slate-900">{primaryVisualAid.stain}</p>
                           </div>
+                        )}
+                      </div>
+                      <div className="rounded-md border border-slate-200 bg-white px-3 py-3">
+                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Teaching flow</div>
+                        <div className="mt-3 space-y-3">
+                          {facultyRunSheet.slice(0, 3).map((item) => (
+                            <div key={`${item.time}-${item.title}`} className="border-l-2 border-sky-300 pl-3">
+                              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">{item.time}</div>
+                              <div className="mt-1 text-sm font-semibold text-slate-950">{item.title}</div>
+                              <p className="mt-1 text-sm leading-6 text-slate-700">{item.text}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      {(lecturePitfallPreview ||
+                        selectedLecture.quickChecks.length + selectedLecture.flashcards.length + selectedLecture.mcqs.length > 0) && (
+                        <div className="flex flex-wrap gap-2">
+                          {lecturePitfallPreview && (
+                            <span className="rounded-full bg-amber-50 px-3 py-1 text-sm font-medium text-amber-800">
+                              Common trap: {lecturePitfallPreview}
+                            </span>
+                          )}
+                          {selectedLecture.quickChecks.length + selectedLecture.flashcards.length + selectedLecture.mcqs.length > 0 && (
+                            <span className="rounded-full bg-white px-3 py-1 text-sm font-medium text-slate-700">
+                              Questions later: {selectedLecture.quickChecks.length + selectedLecture.flashcards.length + selectedLecture.mcqs.length}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                      {nextLectureMode && (
+                        <div className="rounded-md border border-slate-200 bg-white px-3 py-3">
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Next section</div>
+                          <button
+                            type="button"
+                            onClick={() => setActiveMode(nextLectureMode)}
+                            className="mt-3 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                          >
+                            Open {modeLabels[nextLectureMode]}
+                          </button>
                         </div>
                       )}
                     </aside>
                   </div>
                 </section>
 
-                <section className="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-                  <div className="space-y-6">
-                    {primaryVisualAid && (
-                      <div>
-                        <div className="mb-3">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Opening image</p>
-                          <h3 className="mt-1 font-serif text-2xl font-semibold text-slate-950">Image first.</h3>
-                        </div>
-                        {renderPrimaryVisual(primaryVisualAid, { showCaption: false })}
-                      </div>
-                    )}
-                    {selectedLecture.slides.length > 0 && (
-                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 shadow-sm" data-testid="lecture-teaching-sequence">
-                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Teaching sequence</div>
-                        <div className="mt-3 divide-y divide-slate-200">
-                          {selectedLecture.slides.map((slide, index) => {
-                            const slideRevealId = `${selectedLecture.id}-sequence-${index}`;
-                            const isRevealed = Boolean(revealedSlideIds[slideRevealId]);
-                            const revealLabel = isRevealed ? 'Hide teaching point' : 'Reveal teaching point';
-                            const slideVisualAid = getSlideVisualAid(selectedLecture.id, slide);
+                <section className="space-y-4">
+                  {selectedLecture.slides.length > 0 && (
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 shadow-sm" data-testid="lecture-teaching-sequence">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Signout sequence</div>
+                      <div className="mt-3 divide-y divide-slate-200">
+                        {selectedLecture.slides.map((slide, index) => {
+                          const slideRevealId = `${selectedLecture.id}-sequence-${index}`;
+                          const isRevealed = Boolean(revealedSlideIds[slideRevealId]);
+                          const revealLabel = isRevealed ? 'Hide signout point' : 'Show signout point';
+                          const slideVisualAid = getSlideVisualAid(selectedLecture.id, slide);
 
-                            return (
-                              <article
-                                key={slideRevealId}
-                                data-testid={`lecture-slide-step-${index + 1}`}
-                                className="grid gap-3 py-4 md:grid-cols-[2.5rem_minmax(0,1fr)]"
-                              >
-                                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold text-slate-700">
-                                  {index + 1}
-                                </div>
-                                <div className="space-y-3">
-                                  <div className="flex flex-wrap items-center justify-between gap-3">
-                                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                                      Slide {index + 1}
-                                    </div>
-                                    <button
-                                      type="button"
-                                      data-testid={`lecture-slide-reveal-${index + 1}`}
-                                      aria-expanded={isRevealed}
-                                      onClick={() =>
-                                        setRevealedSlideIds((current) => ({
-                                          ...current,
-                                          [slideRevealId]: !current[slideRevealId],
-                                        }))
-                                      }
-                                      className={`rounded-md border px-3 py-1.5 text-xs font-semibold transition ${
-                                        isRevealed
-                                          ? 'border-slate-300 bg-white text-slate-700 hover:border-slate-400'
-                                          : 'border-sky-300 bg-sky-50 text-sky-800 hover:bg-sky-100'
-                                      }`}
-                                    >
-                                      {revealLabel}
-                                    </button>
-                                  </div>
-
-                                  {slideVisualAid ? (
-                                    <div className={teachingImageFrameClass}>
-                                      {renderSlideVisualAid({ ...slide, visualAid: slideVisualAid }, {
-                                        showCaption: isRevealed,
-                                        imageClassName: teachingImageClass,
-                                      })}
-                                    </div>
-                                  ) : (
-                                    <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm text-slate-600">
-                                      No image has been assigned to this slide.
-                                    </div>
-                                  )}
-
-                                  {isRevealed && (
-                                    <div className="rounded-lg border border-slate-200 bg-white p-4">
-                                      <div className="font-semibold text-slate-950">{slide.title}</div>
-                                      {slide.content && <p className="mt-2 text-sm leading-6 text-slate-700">{slide.content}</p>}
-                                    </div>
-                                  )}
-                                </div>
-                              </article>
-                            );
-                          })}
-                          {entityReviewItems.length > 0 && (
-                            <div className="py-5">
-                              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                                Entity-by-entity microscopy
+                          return (
+                            <article
+                              key={slideRevealId}
+                              data-testid={`lecture-slide-step-${index + 1}`}
+                              className="grid gap-3 py-4 md:grid-cols-[2.5rem_minmax(0,1fr)]"
+                            >
+                              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold text-slate-700">
+                                {index + 1}
                               </div>
-                              <div className="mt-3 divide-y divide-slate-200">
-                                {entityReviewItems.map((item, index) => {
-                                  const entityStepNumber = selectedLecture.slides.length + index + 1;
-                                  const entityRevealId = `${selectedLecture.id}-entity-${item.id}`;
-                                  const isRevealed = Boolean(revealedSlideIds[entityRevealId]);
-                                  const revealLabel = isRevealed ? 'Hide diagnosis' : 'Reveal diagnosis';
+                              <div className="space-y-3">
+                                <div className="flex flex-wrap items-center justify-between gap-3">
+                                  <div>
+                                    <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                                      <span>{slideTypeLabels[slide.type] ?? `Slide ${index + 1}`}</span>
+                                      {slideVisualAid?.stain && (
+                                        <span className="rounded-full bg-slate-100 px-2 py-0.5 normal-case tracking-normal text-slate-600">
+                                          {slideVisualAid.stain}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <h4 className="mt-2 font-serif text-xl font-semibold leading-snug text-slate-950">
+                                      {slide.title}
+                                    </h4>
+                                    <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-700">
+                                      {getSlideContextLine(slide, slideVisualAid)}
+                                    </p>
+                                  </div>
+                                  <button
+                                    type="button"
+                                    data-testid={`lecture-slide-reveal-${index + 1}`}
+                                    aria-expanded={isRevealed}
+                                    onClick={() =>
+                                      setRevealedSlideIds((current) => ({
+                                        ...current,
+                                        [slideRevealId]: !current[slideRevealId],
+                                      }))
+                                    }
+                                    className={`rounded-md border px-3 py-1.5 text-xs font-semibold transition ${
+                                      isRevealed
+                                        ? 'border-slate-300 bg-white text-slate-700 hover:border-slate-400'
+                                        : 'border-sky-300 bg-sky-50 text-sky-800 hover:bg-sky-100'
+                                    }`}
+                                  >
+                                    {revealLabel}
+                                  </button>
+                                </div>
 
-                                  return (
-                                    <article
-                                      key={entityRevealId}
-                                      data-testid={`lecture-entity-step-${index + 1}`}
-                                      className="grid gap-3 py-4 md:grid-cols-[2.5rem_minmax(0,1fr)]"
-                                    >
-                                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold text-slate-700">
-                                        {entityStepNumber}
-                                      </div>
-                                      <div className="space-y-3">
-                                        <div className="flex flex-wrap items-center justify-between gap-3">
-                                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                                            Entity {index + 1}
-                                          </div>
-                                          <button
-                                            type="button"
-                                            data-testid={`lecture-entity-reveal-${index + 1}`}
-                                            aria-expanded={isRevealed}
-                                            onClick={() =>
-                                              setRevealedSlideIds((current) => ({
-                                                ...current,
-                                                [entityRevealId]: !current[entityRevealId],
-                                              }))
-                                            }
-                                            className={`rounded-md border px-3 py-1.5 text-xs font-semibold transition ${
-                                              isRevealed
-                                                ? 'border-slate-300 bg-white text-slate-700 hover:border-slate-400'
-                                                : 'border-sky-300 bg-sky-50 text-sky-800 hover:bg-sky-100'
-                                            }`}
-                                          >
-                                            {revealLabel}
-                                          </button>
-                                        </div>
+                                {slideVisualAid ? (
+                                  <div className={teachingImageFrameClass}>
+                                    {renderSlideVisualAid({ ...slide, visualAid: slideVisualAid }, {
+                                      showCaption: isRevealed,
+                                      imageClassName: teachingImageClass,
+                                    })}
+                                  </div>
+                                ) : (
+                                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm text-slate-600">
+                                    This slide image is still being added.
+                                  </div>
+                                )}
 
-                                        {item.visualAids.length > 0 ? (
-                                          <div className="grid gap-3">
-                                            {item.visualAids.map((aid) => (
-                                              <div key={`${item.id}-teaching-${aid.imageUrl}`} className={teachingImageFrameClass}>
-                                                {renderDescriptorVisualAid(aid, item.entity, {
-                                                  showCaption: isRevealed,
-                                                  imageClassName: teachingImageClass,
-                                                })}
-                                              </div>
-                                            ))}
-                                          </div>
-                                        ) : (
-                                          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm text-slate-600">
-                                            No image has been assigned to this entity.
-                                          </div>
-                                        )}
+                                {isRevealed && (
+                                  <div className="rounded-lg border border-slate-200 bg-white p-4">
+                                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Signout point</div>
+                                    {slide.content && <p className="mt-2 text-sm leading-6 text-slate-700">{slide.content}</p>}
+                                  </div>
+                                )}
+                              </div>
+                            </article>
+                          );
+                        })}
+                        {entityReviewItems.length > 0 && (
+                          <div className="py-5">
+                            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                              Case-by-case review
+                            </div>
+                            <div className="mt-3 divide-y divide-slate-200">
+                              {entityReviewItems.map((item, index) => {
+                                const entityStepNumber = selectedLecture.slides.length + index + 1;
+                                const entityRevealId = `${selectedLecture.id}-entity-${item.id}`;
+                                const isRevealed = Boolean(revealedSlideIds[entityRevealId]);
+                                const revealLabel = isRevealed ? 'Hide diagnosis' : 'Show diagnosis';
 
-                                        {isRevealed && (
-                                          <div className="rounded-lg border border-slate-200 bg-white p-4">
-                                            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                                              <span>{item.category}</span>
-                                              {item.family && (
-                                                <span className="rounded-full bg-slate-100 px-2 py-0.5 normal-case tracking-normal text-slate-600">
-                                                  {item.family}
-                                                </span>
-                                              )}
-                                            </div>
-                                            <h4 className="mt-2 font-serif text-xl font-semibold leading-snug text-slate-950">
-                                              {item.entity}
-                                            </h4>
-                                            {item.summary && <p className="mt-2 text-sm leading-6 text-slate-700">{item.summary}</p>}
-                                            <div className="mt-4 grid gap-4 text-sm text-slate-700 md:grid-cols-2">
-                                              <div>
-                                                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Microscopic findings</div>
-                                                <ul className="mt-2 space-y-1.5">
-                                                  {item.morphology.map((finding) => (
-                                                    <li key={`${item.id}-teaching-morph-${finding}`}>• {finding}</li>
-                                                  ))}
-                                                </ul>
-                                              </div>
-                                              <div>
-                                                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Ancillary studies</div>
-                                                <ul className="mt-2 space-y-1.5">
-                                                  {item.ancillary.map((study) => (
-                                                    <li key={`${item.id}-teaching-ancillary-${study}`}>• {study}</li>
-                                                  ))}
-                                                </ul>
-                                              </div>
-                                            </div>
-                                            {item.differentials.length > 0 && (
-                                              <div className="mt-3 flex flex-wrap gap-2">
-                                                {item.differentials.map((differential) => (
-                                                  <span
-                                                    key={`${item.id}-teaching-dx-${differential}`}
-                                                    className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600"
-                                                  >
-                                                    {differential}
-                                                  </span>
-                                                ))}
-                                              </div>
+                                return (
+                                  <article
+                                    key={entityRevealId}
+                                    data-testid={`lecture-entity-step-${index + 1}`}
+                                    className="grid gap-3 py-4 md:grid-cols-[2.5rem_minmax(0,1fr)]"
+                                  >
+                                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold text-slate-700">
+                                      {entityStepNumber}
+                                    </div>
+                                    <div className="space-y-3">
+                                      <div className="flex flex-wrap items-center justify-between gap-3">
+                                        <div>
+                                          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                                            <span>Case {index + 1}</span>
+                                            <span className="rounded-full bg-slate-100 px-2 py-0.5 normal-case tracking-normal text-slate-600">
+                                              {item.category}
+                                            </span>
+                                            {item.family && (
+                                              <span className="rounded-full bg-slate-100 px-2 py-0.5 normal-case tracking-normal text-slate-600">
+                                                {item.family}
+                                              </span>
                                             )}
                                           </div>
-                                        )}
+                                          <h4 className="mt-2 font-serif text-xl font-semibold leading-snug text-slate-950">
+                                            {item.entity}
+                                          </h4>
+                                          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-700">
+                                            {getEntityContextLine(item)}
+                                          </p>
+                                          {item.differentials.length > 0 && (
+                                            <div className="mt-2 flex flex-wrap gap-2">
+                                              {item.differentials.slice(0, 3).map((differential) => (
+                                                <span
+                                                  key={`${item.id}-preview-dx-${differential}`}
+                                                  className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600"
+                                                >
+                                                  {differential}
+                                                </span>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                        <button
+                                          type="button"
+                                          data-testid={`lecture-entity-reveal-${index + 1}`}
+                                          aria-expanded={isRevealed}
+                                          onClick={() =>
+                                            setRevealedSlideIds((current) => ({
+                                              ...current,
+                                              [entityRevealId]: !current[entityRevealId],
+                                            }))
+                                          }
+                                          className={`rounded-md border px-3 py-1.5 text-xs font-semibold transition ${
+                                            isRevealed
+                                              ? 'border-slate-300 bg-white text-slate-700 hover:border-slate-400'
+                                              : 'border-sky-300 bg-sky-50 text-sky-800 hover:bg-sky-100'
+                                          }`}
+                                        >
+                                          {revealLabel}
+                                        </button>
                                       </div>
-                                    </article>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </div>
 
-                  <div className="space-y-6">
-                    <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Learner objectives</div>
-                      <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
-                        {learningTargets.slice(0, 5).map((target) => (
-                          <li key={target} className="flex gap-2">
-                            <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-sky-600" />
-                            <span>{target}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    {entityCategoryCounts.length > 0 && (
-                      <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Entity coverage</div>
-                        <div className="mt-3 space-y-2">
-                          {entityCategoryCounts.map((item) => (
-                            <div key={`coverage-${item.category}`} className="flex items-center justify-between gap-3 text-sm">
-                              <span className="text-slate-700">{item.category}</span>
-                              <span className="font-semibold text-slate-950">{item.count}</span>
+                                      {item.visualAids.length > 0 ? (
+                                        <div className="grid gap-3">
+                                          {item.visualAids.map((aid) => (
+                                            <div key={`${item.id}-teaching-${aid.imageUrl}`} className={teachingImageFrameClass}>
+                                              {renderDescriptorVisualAid(aid, item.entity, {
+                                                showCaption: isRevealed,
+                                                imageClassName: teachingImageClass,
+                                              })}
+                                            </div>
+                                          ))}
+                                        </div>
+                                      ) : (
+                                        <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm text-slate-600">
+                                          This case image is still being added.
+                                        </div>
+                                      )}
+
+                                      {isRevealed && (
+                                        <div className="rounded-lg border border-slate-200 bg-white p-4">
+                                          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                                            <span>{item.category}</span>
+                                            {item.family && (
+                                              <span className="rounded-full bg-slate-100 px-2 py-0.5 normal-case tracking-normal text-slate-600">
+                                                {item.family}
+                                              </span>
+                                            )}
+                                          </div>
+                                          <h4 className="mt-2 font-serif text-xl font-semibold leading-snug text-slate-950">
+                                            {item.entity}
+                                          </h4>
+                                          {item.summary && <p className="mt-2 text-sm leading-6 text-slate-700">{item.summary}</p>}
+                                          <div className="mt-4 grid gap-4 text-sm text-slate-700 md:grid-cols-2">
+                                            <div>
+                                              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Microscopic findings</div>
+                                              <ul className="mt-2 space-y-1.5">
+                                                {item.morphology.map((finding) => (
+                                                  <li key={`${item.id}-teaching-morph-${finding}`}>• {finding}</li>
+                                                ))}
+                                              </ul>
+                                            </div>
+                                            <div>
+                                              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Ancillary studies</div>
+                                              <ul className="mt-2 space-y-1.5">
+                                                {item.ancillary.map((study) => (
+                                                  <li key={`${item.id}-teaching-ancillary-${study}`}>• {study}</li>
+                                                ))}
+                                              </ul>
+                                            </div>
+                                          </div>
+                                          {item.differentials.length > 0 && (
+                                            <div className="mt-3 flex flex-wrap gap-2">
+                                              {item.differentials.map((differential) => (
+                                                <span
+                                                  key={`${item.id}-teaching-dx-${differential}`}
+                                                  className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600"
+                                                >
+                                                  {differential}
+                                                </span>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </article>
+                                );
+                              })}
                             </div>
-                          ))}
-                        </div>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
+                  {entityCategoryCounts.length > 0 && (
+                    <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Related diagnostic groups</div>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {entityCategoryCounts.map((item) => (
+                          <span
+                            key={`coverage-${item.category}`}
+                            className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700"
+                          >
+                            {item.category} ({item.count})
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </section>
               </div>
             )}
@@ -1971,28 +2194,12 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
               <Card>
                 <h3 className="mb-4 flex items-center text-xl font-semibold font-serif text-slate-900">
                   <DocumentTextIcon className="mr-3 h-6 w-6 text-sky-600" />
-                  Transcript
+                  Teaching Text
                 </h3>
-                <div className="mb-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                  <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                    <div className="max-w-3xl">
-                      <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Teaching session text</div>
-                      <p className="mt-2 text-sm leading-6 text-slate-600">
-                        The full lecture narrative is organized below into readable teaching blocks so the session stays useful during longer review.
-                      </p>
-                    </div>
-                    <div className="grid min-w-[12rem] gap-3 sm:grid-cols-2">
-                      <div className="rounded-xl border border-slate-200 bg-white p-3">
-                        <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Sections</div>
-                        <div className="mt-2 text-2xl font-semibold text-slate-900">{lectureBodySections.length || '--'}</div>
-                      </div>
-                      <div className="rounded-xl border border-slate-200 bg-white p-3">
-                        <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Mode</div>
-                        <div className="mt-2 text-sm font-semibold text-slate-900">Full lecture text</div>
-                      </div>
-                    </div>
-                  </div>
-                  {lectureBodySections.length > 0 && (
+                <StructuredTeachingContent content={selectedLecture.body} compact />
+                {lectureBodySections.length > 0 && (
+                  <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Section guide</div>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {lectureBodySections.slice(0, 10).map((section, index) => (
                         <span
@@ -2003,9 +2210,8 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                         </span>
                       ))}
                     </div>
-                  )}
-                </div>
-                <StructuredTeachingContent content={selectedLecture.body} compact />
+                  </div>
+                )}
               </Card>
             )}
 

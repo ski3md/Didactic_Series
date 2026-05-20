@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { User } from '../types.ts';
+import { LearnerLevel, User } from '../types.ts';
 import SectionHeader from './ui/SectionHeader.tsx';
 import Card from './ui/Card.tsx';
 import ImageGalleries from './ImageGalleries.tsx';
@@ -8,6 +8,15 @@ import { consumeReferenceLibraryIntent, ReferenceLibraryIntent } from '../utils/
 import { getAtlasCollectionSummaries } from '../utils/atlasImageCatalog.ts';
 import { readSessionState, writeSessionState } from '../utils/viewStateStorage.ts';
 import signoutImageReferenceIndex from '../content/signout_sims/signout_image_reference_index.json';
+import {
+  apDesignationCrosswalk,
+  cpRotationStandards,
+  learnerLevelLabels,
+  learnerLevelOrder,
+  levelModeGuidance,
+  signOutRubric,
+  sourceStandardDocuments,
+} from '../content/competency/competencyMatrix.ts';
 
 interface ReferenceLibraryProps {
   user: User | null;
@@ -65,6 +74,15 @@ interface ReferenceLibraryViewState {
   supplementalSearch: string;
   supplementalPage: number;
 }
+
+const learnerLevelTone: Record<LearnerLevel, string> = {
+  PGY1: 'bg-emerald-50 text-emerald-800 border-emerald-200',
+  PGY2: 'bg-sky-50 text-sky-800 border-sky-200',
+  PGY3: 'bg-indigo-50 text-indigo-800 border-indigo-200',
+  PGY4: 'bg-violet-50 text-violet-800 border-violet-200',
+  PGY5_FELLOW: 'bg-amber-50 text-amber-800 border-amber-200',
+  ATTENDING: 'bg-slate-100 text-slate-800 border-slate-300',
+};
 
 const normalizeReferenceKey = (value?: string) =>
   (value || '')
@@ -180,6 +198,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
   const [selectedSupplementalSpecialty, setSelectedSupplementalSpecialty] = useState('breast');
   const [supplementalSearch, setSupplementalSearch] = useState('');
   const [supplementalPage, setSupplementalPage] = useState(1);
+  const [selectedCompetencyLevel, setSelectedCompetencyLevel] = useState<LearnerLevel>('PGY1');
   const [supplementalManifest, setSupplementalManifest] = useState<SupplementalReferenceImageManifest>(emptySupplementalManifest);
   const atlasSummaries = getAtlasCollectionSummaries();
   const supplementalImages = useMemo(() => supplementalManifest.images ?? [], [supplementalManifest]);
@@ -214,6 +233,16 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
     () => filteredSupplementalImages.slice((supplementalPage - 1) * SUPPLEMENTAL_PAGE_SIZE, supplementalPage * SUPPLEMENTAL_PAGE_SIZE),
     [filteredSupplementalImages, supplementalPage]
   );
+  const focusIntentCompetencyLevel = useMemo(
+    () =>
+      focusIntent?.focusTerms?.find((term): term is LearnerLevel =>
+        learnerLevelOrder.includes(term as LearnerLevel)
+      ) ?? null,
+    [focusIntent]
+  );
+  const competencyGuidance = levelModeGuidance[selectedCompetencyLevel];
+  const diagnosticFocusText = competencyGuidance.intent;
+  const recognitionTargetText = competencyGuidance.expectedEvidence;
 
   useEffect(() => {
     const intent = consumeReferenceLibraryIntent();
@@ -226,6 +255,12 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
       setSupplementalPage(storedView.supplementalPage);
     }
   }, []);
+
+  useEffect(() => {
+    if (focusIntentCompetencyLevel) {
+      setSelectedCompetencyLevel(focusIntentCompetencyLevel);
+    }
+  }, [focusIntentCompetencyLevel]);
 
   useEffect(() => {
     writeSessionState<ReferenceLibraryViewState>(REFERENCE_LIBRARY_VIEW_STATE_KEY, {
@@ -389,9 +424,9 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
 
   return (
     <div className="animate-fade-in space-y-8">
-      <SectionHeader 
+      <SectionHeader
         title="Reference Library"
-        subtitle="Review histology and ancillary images for teaching and diagnostic comparison."
+        subtitle="Review histology, gross, and ancillary images for study and sign-out comparison."
         icon={<BookOpenIcon className="h-10 w-10" />}
       />
       <Card className="overflow-hidden border-sky-200 bg-gradient-to-r from-sky-50 via-white to-emerald-50">
@@ -405,11 +440,154 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
           </div>
           {focusIntent && (
             <div className="rounded-2xl border border-sky-200 bg-white/90 px-4 py-3 text-sm text-slate-700 shadow-sm">
-              <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Current pathway</div>
+              <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Current review context</div>
               <div className="mt-1 font-semibold text-slate-950">{focusIntent.title}</div>
               {focusIntent.summary && <div className="mt-1 text-slate-600">{focusIntent.summary}</div>}
             </div>
           )}
+        </div>
+      </Card>
+      <Card>
+        <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div className="max-w-4xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Study and sign-out calibration</p>
+              <h2 className="mt-2 text-2xl font-semibold font-serif text-slate-950">Reference context for pathology review</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-700">
+                Keep the source documents, training-level expectations, AP designation rules, CP rotation standards, and sign-out checkpoints together while you review a case or image set.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+              {[
+                ['Documents', sourceStandardDocuments.length],
+                ['AP rules', apDesignationCrosswalk.length],
+                ['CP standards', cpRotationStandards.length],
+                ['Sign-out checks', signOutRubric.criteria.length],
+              ].map(([label, value]) => (
+                <div key={label} className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">{label}</div>
+                  <div className="mt-1 text-2xl font-semibold text-slate-950">{value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid gap-4 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+            <div className="rounded-2xl border border-slate-200 bg-white p-4">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Training level guidance</div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {learnerLevelOrder.map((level) => (
+                  <button
+                    key={level}
+                    type="button"
+                    onClick={() => setSelectedCompetencyLevel(level)}
+                    className={`rounded-full border px-3 py-2 text-sm font-semibold transition ${
+                      selectedCompetencyLevel === level
+                        ? learnerLevelTone[level]
+                        : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
+                    }`}
+                  >
+                    {learnerLevelLabels[level]}
+                  </button>
+                ))}
+              </div>
+              <div className="mt-4 grid gap-3 md:grid-cols-3">
+                <div className="rounded-xl bg-slate-50 p-4">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic focus</div>
+                  <p className="mt-2 text-sm text-slate-800">{diagnosticFocusText}</p>
+                </div>
+                <div className="rounded-xl bg-slate-50 p-4">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Review approach</div>
+                  <p className="mt-2 text-sm text-slate-800">{competencyGuidance.interfaceMode}</p>
+                </div>
+                <div className="rounded-xl bg-slate-50 p-4">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">What to recognize</div>
+                  <p className="mt-2 text-sm text-slate-800">{recognitionTargetText}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-white p-4">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Sign-out calibration</div>
+              <h3 className="mt-2 text-lg font-semibold text-slate-950">{signOutRubric.title}</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                These checkpoints make attending-style review concrete and keep downstream feedback tied to the actual sign-out task.
+              </p>
+              <div className="mt-4 space-y-2">
+                {signOutRubric.criteria.map((criterion) => (
+                  <div key={criterion.id} className="rounded-xl bg-slate-50 px-3 py-3">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div className="text-sm font-semibold text-slate-900">{criterion.label}</div>
+                      <div className="text-xs font-semibold text-slate-500">
+                        Pass {criterion.passingScore}/{criterion.maxScore}
+                      </div>
+                    </div>
+                    {criterion.safetyCritical && (
+                      <div className="mt-2 text-xs font-semibold uppercase tracking-wide text-amber-700">Safety critical</div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-2">
+            {sourceStandardDocuments.map((document) => (
+              <article key={document.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">{document.scope}</div>
+                    <h3 className="mt-1 text-base font-semibold text-slate-950">{document.shortTitle}</h3>
+                  </div>
+                  <span className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-slate-700">{document.pageCount} pages</span>
+                </div>
+                <p className="mt-2 text-sm leading-6 text-slate-700">{document.publicationContext}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {document.mappedLearnerLevels.map((level) => (
+                    <span
+                      key={`${document.id}-${level}`}
+                      className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${learnerLevelTone[level]}`}
+                    >
+                      {learnerLevelLabels[level]}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Why it matters here</div>
+                <ul className="mt-2 space-y-1 text-sm text-slate-700">
+                  {document.appUse.slice(0, 2).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+
+          <div className="grid gap-4 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+            <div className="rounded-2xl border border-slate-200 bg-white p-4">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">AP designation crosswalk</div>
+              <div className="mt-3 space-y-3">
+                {apDesignationCrosswalk.map((item) => (
+                  <div key={item.designation} className="rounded-xl bg-slate-50 p-3">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="rounded-full bg-slate-900 px-2.5 py-1 text-xs font-semibold text-white">{item.designation}</span>
+                      <span className="text-sm font-semibold text-slate-950">{item.label}</span>
+                    </div>
+                    <p className="mt-2 text-sm text-slate-700">{item.appRule}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-white p-4">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">CP rotation standards</div>
+              <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                {cpRotationStandards.map((standard) => (
+                  <div key={standard} className="rounded-xl bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-800">
+                    {standard}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </Card>
       <div className="grid gap-4 xl:grid-cols-3">
@@ -658,8 +836,8 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
         <div className="rounded-2xl border border-sky-200 bg-sky-50 px-5 py-4">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Lecture focus</p>
-              <h2 className="mt-1 text-xl font-semibold font-serif text-slate-900">{focusIntent.title ?? 'Module context'}</h2>
+              <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Current review context</p>
+              <h2 className="mt-1 text-xl font-semibold font-serif text-slate-900">{focusIntent.title ?? 'Study context'}</h2>
               {focusIntent.summary && <p className="mt-2 text-sm text-slate-700">{focusIntent.summary}</p>}
             </div>
             <button
@@ -667,10 +845,10 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
               onClick={() => setFocusIntent(null)}
               className="rounded-full border border-sky-200 bg-white px-3 py-1.5 text-sm font-medium text-sky-800 transition hover:border-sky-300 hover:bg-sky-100"
             >
-              Clear Focus
+              Clear context
             </button>
           </div>
-          <div className="mt-4 grid gap-4 lg:grid-cols-3">
+          <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {focusIntent.focusTerms && focusIntent.focusTerms.length > 0 && (
               <div>
                 <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Image search terms</h3>
@@ -698,6 +876,16 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                 <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Curriculum topics</h3>
                 <ul className="mt-2 space-y-1 text-sm text-slate-700">
                   {focusIntent.syllabusTopics.slice(0, 3).map((topic) => (
+                    <li key={topic}>• {topic}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {focusIntent.algorithmTopics && focusIntent.algorithmTopics.length > 0 && (
+              <div>
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic pathway</h3>
+                <ul className="mt-2 space-y-1 text-sm text-slate-700">
+                  {focusIntent.algorithmTopics.slice(0, 3).map((topic) => (
                     <li key={topic}>• {topic}</li>
                   ))}
                 </ul>

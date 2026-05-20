@@ -49,7 +49,7 @@ const LectureTissueLayers: React.FC<LectureTissueLayersProps> = ({
     if (!teachingSteps.length) {
       return null;
     }
-    return `Field ${stepIndex + 1} of ${teachingSteps.length}`;
+    return `Step ${stepIndex + 1} of ${teachingSteps.length}`;
   }, [stepIndex, teachingSteps.length]);
 
   if (!selectedSet) {
@@ -122,7 +122,7 @@ const LectureTissueLayers: React.FC<LectureTissueLayersProps> = ({
                 showWsi ? 'border-sky-400 bg-sky-50 text-sky-800' : 'border-slate-200 bg-white text-slate-600'
               }`}
             >
-              {showWsi ? 'Hide zoomable slide' : 'Open zoomable slide'}
+              {showWsi ? 'Hide whole slide' : 'Open whole slide'}
             </button>
           )}
         </div>
@@ -132,7 +132,7 @@ const LectureTissueLayers: React.FC<LectureTissueLayersProps> = ({
         <Card>
           <div className="flex flex-col gap-4">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Zoomable slide</div>
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Whole slide</div>
               <h4 className="mt-1 text-xl font-semibold font-serif text-slate-900">{selectedSet.optionalWsi.title}</h4>
               <p className="mt-2 text-sm text-slate-700">{selectedSet.optionalWsi.description}</p>
             </div>
@@ -145,7 +145,7 @@ const LectureTissueLayers: React.FC<LectureTissueLayersProps> = ({
               <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Slide review</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">How to review it</div>
                     {stepCountLabel && <div className="mt-1 text-sm font-semibold text-slate-900">{stepCountLabel}</div>}
                   </div>
                   <div className="flex gap-2">
@@ -178,18 +178,18 @@ const LectureTissueLayers: React.FC<LectureTissueLayersProps> = ({
         <Card>
           <div className="space-y-4">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Microscopy checklist</div>
-              <h4 className="mt-1 text-xl font-semibold font-serif text-slate-900">Image assets pending faculty attachment</h4>
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Microscopy review</div>
+              <h4 className="mt-1 text-xl font-semibold font-serif text-slate-900">Images are still being added</h4>
               <p className="mt-2 text-sm leading-6 text-slate-700">
-                This lecture has an ABPath-aligned microscopy plan before licensed H&E, gross, IHC, or WSI images are attached.
-                Use the checklist below to teach the inspection sequence without implying an image has already been validated.
+                This lecture already has a microscopy review plan, even though the teaching images are not attached yet.
+                Use the steps below to guide your slide review until the images are available.
               </p>
             </div>
             {teachingSteps.length > 0 && (
               <div className="grid gap-3 md:grid-cols-2">
                 {teachingSteps.map((step, index) => (
-                  <div key={`${selectedSet.id}-step-${index}`} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Field {index + 1}</div>
+                    <div key={`${selectedSet.id}-step-${index}`} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Step {index + 1}</div>
                     <p className="mt-2 text-sm leading-6 text-slate-700">{step}</p>
                   </div>
                 ))}
@@ -237,7 +237,7 @@ const LectureTissueLayers: React.FC<LectureTissueLayersProps> = ({
               )}
               {showPitfalls && (
                 <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-amber-700">Pitfall layer</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-amber-700">Common pitfalls</div>
                   <p className="mt-3 text-sm text-slate-700">{image.pitfallNote}</p>
                 </div>
               )}

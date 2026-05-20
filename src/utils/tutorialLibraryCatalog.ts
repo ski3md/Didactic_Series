@@ -5,11 +5,15 @@ import tutorialAbpathSpecCrosswalkUrl from '../content/tutorials/tutorialAbpathS
 import validatedMappingsManifestUrl from '../content/tutorials/validatedMappingsManifest.json?url';
 import type {
   CPGovernanceContract,
+  StoredImage,
   TutorialAbpathScope,
   ValidatedMappingManifestRow,
   ValidatedMappingsManifest,
 } from '../types.ts';
 import { resolveExactClinicalPathScope } from './clinicalPathAbpathScope.ts';
+import { surgicalPathCurriculumModules } from '../content/curriculum/surgicalPathCurriculum.ts';
+import { getCuratedAtlasImages } from '../../utils/curatedHistologyAtlas.ts';
+import { getPromotedGranulomatousAtlasImages } from '../../utils/promotedGranulomatousAtlas.ts';
 
 export type TutorialLane = 'board-prep' | 'core-patterns' | 'granuloma' | 'lab-studio' | 'mixed';
 export type TutorialTrack = 'surgical-path' | 'clinical-path' | 'cross-cutting';
@@ -35,6 +39,21 @@ export interface TutorialInteractiveAsset {
   summary: string;
 }
 
+export interface TutorialMappedImageAsset {
+  id: string;
+  title: string;
+  src: string;
+  description: string;
+  sourceUrl?: string;
+  atlasCollection?: StoredImage['atlasCollection'];
+}
+
+export interface TutorialMappedImageSupport {
+  imageQuery?: string;
+  moduleTitles: string[];
+  images: TutorialMappedImageAsset[];
+}
+
 export interface DidacticTutorialRecord {
   id: string;
   title: string;
@@ -56,6 +75,7 @@ export interface DidacticTutorialRecord {
   mcqs: TutorialMCQ[];
   flashcards: TutorialFlashcard[];
   interactiveAssets?: TutorialInteractiveAsset[];
+  mappedImageSupport?: TutorialMappedImageSupport;
   cpGovernance?: CPGovernanceContract;
   abpathScope?: TutorialAbpathScope;
 }
@@ -134,6 +154,56 @@ const promotionConfig: Record<TutorialPromotionState, { label: string }> = {
   canonical: { label: 'Canonical' },
   staged: { label: 'Canonical' },
 };
+
+const atlasImagesById = new Map(
+  [...getCuratedAtlasImages(), ...getPromotedGranulomatousAtlasImages()].map((image) => [image.id, image] as const)
+);
+
+const tutorialMappedImageSupportById = (() => {
+  const supportByTutorialId = new Map<string, TutorialMappedImageSupport>();
+
+  surgicalPathCurriculumModules.forEach((module) => {
+    if (module.linkedTutorialIds.length === 0 || module.linkedImageIds.length === 0) {
+      return;
+    }
+
+    const mappedImages = module.linkedImageIds
+      .map((imageId) => atlasImagesById.get(imageId))
+      .filter((image): image is StoredImage => Boolean(image))
+      .map((image) => ({
+        id: image.id,
+        title: image.title,
+        src: image.src,
+        description: image.description,
+        sourceUrl: image.sourceUrl,
+        atlasCollection: image.atlasCollection,
+      }));
+
+    if (mappedImages.length === 0) {
+      return;
+    }
+
+    module.linkedTutorialIds.forEach((tutorialId) => {
+      const existing = supportByTutorialId.get(tutorialId);
+      const existingTitles = new Set(existing?.moduleTitles ?? []);
+      const existingImages = new Set(existing?.images.map((image) => image.id) ?? []);
+      supportByTutorialId.set(tutorialId, {
+        imageQuery: existing?.imageQuery ?? module.navigationIntents?.images?.query,
+        moduleTitles: existingTitles.has(module.title)
+          ? Array.from(existingTitles)
+          : [...existingTitles, module.title],
+        images: [
+          ...(existing?.images ?? []),
+          ...mappedImages.filter((image) => !existingImages.has(image.id)),
+        ],
+      });
+    });
+  });
+
+  return supportByTutorialId;
+})();
+
+export const getTutorialMappedImageSupport = (tutorialId: string) => tutorialMappedImageSupportById.get(tutorialId);
 
 const CLINICAL_PATH_KEYWORDS = [
   'abnormal coagulation',
@@ -464,6 +534,7 @@ const normalizeTutorial = (
     mcqs: record.mcqs || [],
     flashcards: record.flashcards || [],
     interactiveAssets: record.interactiveAssets,
+    mappedImageSupport: tutorialMappedImageSupportById.get(record.id),
     cpGovernance: record.cpGovernance,
     abpathScope,
   };
@@ -620,19 +691,35 @@ export const loadTutorialSubtopicsByRoot = async (): Promise<Record<string, Tuto
   );
 };
 
-export const findBestTutorialMatch = (tutorials: DidacticTutorialRecord[], terms: string[]) => {
+type TutorialMatchFilters = {
+  track?: TutorialTrack | 'all';
+  lane?: TutorialLane | 'all';
+};
+
+export const findBestTutorialMatch = (
+  tutorials: DidacticTutorialRecord[],
+  terms: string[],
+  filters: TutorialMatchFilters = {}
+) => {
+  const trackFilter = filters.track ?? 'all';
+  const laneFilter = filters.lane ?? 'all';
+  const filterScope = tutorials.filter(
+    (tutorial) => (trackFilter === 'all' || tutorial.track === trackFilter) && (laneFilter === 'all' || tutorial.lane === laneFilter)
+  );
+  const searchableTutorials = filterScope.length > 0 ? filterScope : tutorials;
+
   const normalizedTerms = terms
     .map((term) => term.trim().toLowerCase())
     .filter(Boolean);
 
   if (normalizedTerms.length === 0) {
-    return tutorials[0];
+    return searchableTutorials[0];
   }
 
-  let bestMatch = tutorials[0];
+  let bestMatch = searchableTutorials[0];
   let bestScore = -1;
 
-  for (const tutorial of tutorials) {
+  for (const tutorial of searchableTutorials) {
     const haystack = [
       tutorial.title,
       tutorial.summary,

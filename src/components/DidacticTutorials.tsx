@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Card from './ui/Card.tsx';
 import MarkdownContent from './ui/MarkdownContent.tsx';
-import { DocumentTextIcon, SparklesIcon } from './icons.tsx';
+import { BookOpenIcon, DocumentTextIcon, SparklesIcon } from './icons.tsx';
 import {
   deriveTutorialSubtopic,
   findBestTutorialMatch,
@@ -9,9 +9,11 @@ import {
   getDidacticTutorialById,
   loadDidacticTutorialCatalog,
   type DidacticTutorialRecord,
+  type TutorialLane,
   type TutorialTrack,
 } from '../utils/tutorialLibraryCatalog.ts';
 import { consumeTutorialLibraryIntent } from '../utils/tutorialLibraryNavigation.ts';
+import { setReferenceLibraryIntent } from '../utils/referenceLibraryNavigation.ts';
 import { getAnswerChoiceReasoning } from '../utils/answerChoiceReasoning.ts';
 import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
 import {
@@ -52,6 +54,7 @@ interface TutorialViewState {
   rootFilter: 'all' | string;
   subtopicFilter: 'all' | string;
   trackFilter: 'all' | TutorialTrack;
+  laneFilter: 'all' | TutorialLane;
   showAllTutorials: boolean;
   activeTab: TutorialTab;
   flashcardIndex: number;
@@ -66,6 +69,7 @@ const TUTORIAL_VIEW_STATE_DEFAULTS: TutorialViewState = {
   rootFilter: 'all',
   subtopicFilter: 'all',
   trackFilter: 'all',
+  laneFilter: 'all',
   showAllTutorials: true,
   activeTab: 'snapshot',
   flashcardIndex: 0,
@@ -205,12 +209,55 @@ const parseTutorialSessionSections = (content: string): TutorialSessionSection[]
     .filter((section): section is TutorialSessionSection => Boolean(section?.content));
 };
 
-const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) => {
+const VIEW_KIND_LABELS: Record<ActiveStudyDestination['kind'], string> = {
+  landing: 'Topic list',
+  topic_overview: 'Major topic',
+  subtopic_overview: 'Diagnostic focus',
+  item_detail: 'Lesson',
+};
+
+const summarizeTutorialScope = (tutorial: DidacticTutorialRecord | null) => {
+  if (!tutorial) {
+    return 'Choose a topic to begin.';
+  }
+  return tutorial.abpathScope?.primaryPath ?? tutorial.summary;
+};
+
+const summarizeTutorialBoardFocus = (tutorial: DidacticTutorialRecord | null) => {
+  if (!tutorial) {
+    return 'Choose a lesson to see the board-relevant focus.';
+  }
+  return tutorial.cpGovernance?.boardMasteryFocusTitle ?? tutorial.abpathScope?.title ?? tutorial.summary;
+};
+
+const summarizeTutorialPitfall = (tutorial: DidacticTutorialRecord | null) => {
+  if (!tutorial) {
+    return 'Board traps will appear here once you open a lesson.';
+  }
+  return (
+    tutorial.cpGovernance?.mustNotMissPitfalls?.[0] ??
+    'Watch for the most testable mimic before moving into flashcards or board-style questions.'
+  );
+};
+
+const findLastVisitedTutorialId = (entry?: ActiveStudyDestination | null): string | null => {
+  if (!entry) {
+    return null;
+  }
+  if (entry.workspace === 'tutorials' && entry.itemId) {
+    return entry.itemId;
+  }
+  return findLastVisitedTutorialId(entry.previous);
+};
+
+const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSectionChange }) => {
   const [tutorials, setTutorials] = useState<DidacticTutorialRecord[]>([]);
   const [governanceManifest, setGovernanceManifest] = useState<ValidatedMappingsManifest | null>(null);
   const [destination, setDestination] = useState<ActiveStudyDestination>(() =>
     getDefaultStudyDestination('tutorials')
   );
+  const [trackFilter, setTrackFilter] = useState<TutorialTrack | 'all'>('all');
+  const [laneFilter, setLaneFilter] = useState<TutorialLane | 'all'>('all');
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<TutorialTab>('snapshot');
   const [flashcardIndex, setFlashcardIndex] = useState(0);
@@ -219,6 +266,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
   const [showRationale, setShowRationale] = useState(false);
   const [interactiveAssetIndex, setInteractiveAssetIndex] = useState(0);
+  const [supportImageIndex, setSupportImageIndex] = useState(0);
   const [visualMode, setVisualMode] = useState<DidacticsVisualMode>('cockpit_dashboard');
   const [questionSessionMap, setQuestionSessionMap] = useState<Record<string, QuestionSessionRecord[]>>({});
   const [readinessInputs, setReadinessInputs] = useState<BoardPassingPredictorInputs>(DEFAULT_READINESS_INPUTS);
@@ -248,6 +296,14 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
       if (!isMounted) {
         return;
       }
+
+      const persistedViewState = readSessionState<TutorialViewState>(TUTORIAL_VIEW_STATE_KEY);
+      const resolvedTrackFilter = (intent?.track ?? persistedViewState?.trackFilter ?? 'all') as TutorialTrack | 'all';
+      const resolvedLaneFilter = (intent?.lane ?? persistedViewState?.laneFilter ?? 'all') as TutorialLane | 'all';
+
+      setTrackFilter(resolvedTrackFilter);
+      setLaneFilter(resolvedLaneFilter);
+
       setTutorials(loadedTutorials);
       setGovernanceManifest(loadedCatalog.governanceManifest);
       const restoredDestination = restoreStudyDestination('tutorials');
@@ -306,7 +362,13 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
       }
 
       if (intent?.query) {
-        const matchedTutorial = findBestTutorialMatch(loadedTutorials, [intent.query]);
+        const queryScope = loadedTutorials.filter(
+          (tutorial) =>
+            (resolvedTrackFilter === 'all' || tutorial.track === resolvedTrackFilter) &&
+            (resolvedLaneFilter === 'all' || tutorial.lane === resolvedLaneFilter)
+        );
+        const matchedTutorial =
+          findBestTutorialMatch(queryScope.length > 0 ? queryScope : loadedTutorials, [intent.query]);
         if (matchedTutorial) {
           const nextDestination: ActiveStudyDestination = {
             workspace: 'tutorials',
@@ -373,8 +435,17 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
     };
   }, []);
 
+  const scopedTutorials = useMemo(() => {
+    if (trackFilter === 'all' && laneFilter === 'all') {
+      return tutorials;
+    }
+    return tutorials.filter(
+      (tutorial) => (trackFilter === 'all' || tutorial.track === trackFilter) && (laneFilter === 'all' || tutorial.lane === laneFilter)
+    );
+  }, [laneFilter, tutorials, trackFilter]);
+
   const tutorialsByRoot = useMemo(() => {
-    return tutorials.reduce<Record<string, DidacticTutorialRecord[]>>((accumulator, tutorial) => {
+    return scopedTutorials.reduce<Record<string, DidacticTutorialRecord[]>>((accumulator, tutorial) => {
       const root = tutorial.abpathScope?.root;
       if (!root) {
         return accumulator;
@@ -383,10 +454,10 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
       accumulator[root].push(tutorial);
       return accumulator;
     }, {});
-  }, [tutorials]);
+  }, [scopedTutorials]);
 
   const subtopicsByRoot = useMemo(() => {
-    return tutorials.reduce<Record<string, { id: string; label: string; tutorials: DidacticTutorialRecord[] }[]>>((accumulator, tutorial) => {
+    return scopedTutorials.reduce<Record<string, { id: string; label: string; tutorials: DidacticTutorialRecord[] }[]>>((accumulator, tutorial) => {
       const root = tutorial.abpathScope?.root;
       const scope = deriveTutorialSubtopic(tutorial);
       if (!root || !scope) {
@@ -401,7 +472,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
       }
       return accumulator;
     }, {});
-  }, [tutorials]);
+  }, [scopedTutorials]);
 
   const tutorialRoots = useMemo(() => Object.keys(tutorialsByRoot).sort((left, right) => left.localeCompare(right)), [tutorialsByRoot]);
   const resolvedDestination = useMemo(
@@ -412,11 +483,11 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
         subtopicsByRoot: Object.fromEntries(
           Object.entries(subtopicsByRoot).map(([rootId, entries]) => [rootId, entries.map((entry) => ({ id: entry.id }))])
         ),
-        isValidItemId: (itemId) => Boolean(itemId && tutorials.some((tutorial) => tutorial.id === itemId)),
+        isValidItemId: (itemId) => Boolean(itemId && scopedTutorials.some((tutorial) => tutorial.id === itemId)),
         isGovernancePendingItemId: (itemId) =>
           Boolean(itemId && governanceManifest?.rows.find((row) => row.id === itemId && row.governancePending)),
       }),
-    [destination, tutorialRoots, subtopicsByRoot, tutorials, governanceManifest]
+    [destination, tutorialRoots, subtopicsByRoot, scopedTutorials, governanceManifest]
   );
   const effectiveDestination = resolvedDestination.destination;
   const effectiveKind = resolvedDestination.renderedKind;
@@ -455,10 +526,23 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
   const activeSubtopics = activeRoot ? (subtopicsByRoot[activeRoot] ?? []).slice().sort((left, right) => left.label.localeCompare(right.label)) : [];
   const activeSubtopicEntry = activeSubtopics.find((entry) => entry.id === activeSubtopic) ?? null;
   const activeSubtopicTutorials = activeSubtopicEntry?.tutorials ?? [];
+  const leadTopicTutorial = activeTopicTutorials[0] ?? null;
+  const leadSubtopicTutorial = activeSubtopicTutorials[0] ?? null;
   const activeTutorial =
     effectiveDestination.kind === 'item_detail' && effectiveDestination.itemId
-      ? tutorials.find((tutorial) => tutorial.id === effectiveDestination.itemId) ?? null
+      ? scopedTutorials.find((tutorial) => tutorial.id === effectiveDestination.itemId) ?? null
       : null;
+  const lastVisitedTutorial = useMemo(() => {
+    const candidateId =
+      findLastVisitedTutorialId(effectiveDestination.previous) ??
+      findLastVisitedTutorialId(destination.previous);
+    return candidateId ? scopedTutorials.find((tutorial) => tutorial.id === candidateId) ?? null : null;
+  }, [destination.previous, effectiveDestination.previous, scopedTutorials]);
+  const recommendedTopic = activeRoot ?? lastVisitedTutorial?.abpathScope?.root ?? tutorialRoots[0] ?? null;
+  const recommendedTopicTutorials = recommendedTopic ? tutorialsByRoot[recommendedTopic] ?? [] : [];
+  const recommendedSubtopics = recommendedTopic ? subtopicsByRoot[recommendedTopic] ?? [] : [];
+  const recommendedSubtopic = recommendedSubtopics[0] ?? null;
+  const recommendedTutorial = recommendedSubtopic?.tutorials[0] ?? recommendedTopicTutorials[0] ?? null;
   const currentFlashcard = activeTutorial?.flashcards[flashcardIndex] ?? null;
   const currentQuestion = activeTutorial?.mcqs[questionIndex] ?? null;
   const activeRecallPrompts = useMemo(() => {
@@ -521,6 +605,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
     setFlashcardRevealed(false);
     setSelectedChoice(null);
     setShowRationale(false);
+    setSupportImageIndex(0);
     setQuestionStartedAt(Date.now());
   }, [activeTutorial?.id]);
 
@@ -548,11 +633,19 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
     setQuestionStartedAt(Date.now());
   }, [activeTutorial?.id, questionIndex]);
 
-  const resolveInteractiveAssetUrl = (assetPath: string) =>
-    `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${assetPath.replace(/^\/+/, '')}`;
+  const resolveAssetUrl = (assetPath: string) => {
+    if (/^(https?:)?\/\//i.test(assetPath) || assetPath.startsWith('data:') || assetPath.startsWith('/')) {
+      return assetPath;
+    }
+    return `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${assetPath.replace(/^\/+/, '')}`;
+  };
 
   const currentInteractiveAsset =
     activeTutorial?.interactiveAssets?.[Math.min(interactiveAssetIndex, (activeTutorial.interactiveAssets?.length || 1) - 1)] ?? null;
+  const currentMappedSupportImage =
+    activeTutorial?.mappedImageSupport?.images?.[
+      Math.min(supportImageIndex, (activeTutorial.mappedImageSupport?.images.length || 1) - 1)
+    ] ?? null;
   const tutorialSessionSections = useMemo(
     () => (activeTutorial ? parseTutorialSessionSections(activeTutorial.body) : []),
     [activeTutorial]
@@ -565,7 +658,6 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
     (section) =>
       !['Clinical Vignette', 'Learning Objectives', 'Teaching Points', 'References'].includes(section.label)
   );
-
   const renderTabButton = (tab: TutorialTab, label: string) => {
     const isActive = activeTab === tab;
     return (
@@ -608,7 +700,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
   };
 
   const openTutorial = (tutorialId: string) => {
-    const tutorial = tutorials.find((entry) => entry.id === tutorialId);
+    const tutorial = scopedTutorials.find((entry) => entry.id === tutorialId);
     if (!tutorial) {
       return;
     }
@@ -649,6 +741,28 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
     setDestination(nextDestination);
   };
 
+  const openReferenceReview = () => {
+    if (!activeTutorial) {
+      return;
+    }
+
+    const mappedFocusTerms = [
+      activeTutorial.mappedImageSupport?.imageQuery,
+      ...(activeTutorial.mappedImageSupport?.moduleTitles ?? []),
+      activeTutorial.abpathScope?.topic,
+      activeTutorial.category,
+    ].filter(Boolean) as string[];
+
+    setReferenceLibraryIntent({
+      title: activeTutorial.title,
+      summary: 'Mapped morphology and reference review launched from the current tutorial.',
+      focusTerms: mappedFocusTerms,
+      tutorialTopics: [activeTutorial.title],
+      syllabusTopics: activeTutorial.abpathScope?.topic ? [activeTutorial.abpathScope.topic] : [],
+    });
+    onSectionChange(Section.REFERENCE_LIBRARY);
+  };
+
   const returnToTutorialLibrary = () => {
     const previousDestination = effectiveDestination.previous ?? getDefaultStudyDestination('tutorials');
     replaceStudyDestination(previousDestination);
@@ -663,7 +777,8 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
       selectedId: activeTutorial?.id ?? '',
       rootFilter: activeRoot ?? 'all',
       subtopicFilter: activeSubtopic ?? 'all',
-      trackFilter: (activeTutorial?.trackLabel as TutorialTrack | undefined) ?? 'all',
+      trackFilter: activeTutorial?.track ?? 'all',
+      laneFilter: activeTutorial?.lane ?? 'all',
       showAllTutorials: effectiveKind === 'landing' || activeTab === 'snapshot',
       activeTab,
       flashcardIndex,
@@ -681,6 +796,8 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
     questionIndex,
     interactiveAssetIndex,
     visualMode,
+    trackFilter,
+    laneFilter,
   ]);
 
   return (
@@ -692,8 +809,8 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
         </Card>
       ) : activeTutorial ? (
         <div className="space-y-6">
-          <Card>
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <Card className="border-slate-200">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <button
                 type="button"
                 onClick={returnToTutorialLibrary}
@@ -701,41 +818,43 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
               >
                 Back
               </button>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="max-w-5xl">
-                <h2 className="mt-2 font-serif text-2xl font-semibold leading-tight text-slate-900">{activeTutorial.title}</h2>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {activeTutorial.abpathScope?.primaryPath ?? activeTutorial.summary}
-                </p>
+              <div className="flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">Tutorials</span>
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">{VIEW_KIND_LABELS[effectiveKind]}</span>
               </div>
             </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {renderTabButton('snapshot', 'Snapshot')}
-              {renderTabButton('tutorial', 'Tutorial')}
+            <div className="mt-4 max-w-4xl">
+              <h2 className="mt-2 font-serif text-2xl font-semibold leading-tight text-slate-900">{activeTutorial.title}</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{activeTutorial.abpathScope?.primaryPath ?? activeTutorial.summary}</p>
+              <p className="mt-3 text-sm text-slate-700">
+                {activeTutorial.abpathScope?.root ?? 'Tutorial'} <span className="text-slate-400">/</span>{' '}
+                {deriveTutorialSubtopic(activeTutorial)?.label ?? 'Current lesson'}
+              </p>
+            </div>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {renderTabButton('snapshot', 'Overview')}
+              {renderTabButton('tutorial', 'Lesson')}
               {renderTabButton('flashcards', 'Flashcards')}
-              {renderTabButton('quiz', 'Quick Check')}
+              {renderTabButton('quiz', 'Board-style questions')}
             </div>
           </Card>
 
           {activeTab === 'snapshot' && (
             <Card>
-                <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">ABPath scope & study framing</p>
-              <div className="mt-3 grid gap-3 md:grid-cols-2">
-                <p className="text-sm text-slate-700">
-                  <span className="font-semibold">ABPath scope:</span>{' '}
-                  {activeTutorial?.abpathScope?.primaryPath || activeTutorial?.abpathScope?.root || activeTutorial?.title}
-                </p>
-                <p className="text-sm text-slate-700">
-                  <span className="font-semibold">Study sequence:</span>{' '}
-                  {activeTutorial?.trackLabel ? `${activeTutorial.trackLabel} → ${activeTutorial.summary}` : activeTutorial?.summary}
-                </p>
-              </div>
-                  <p className="mt-2 text-xs text-slate-500">Why It Matters · Common Board Trap · Estimated time and difficulty are tracked in this module.</p>
-              <h3 className="mb-4 flex items-center text-xl font-semibold font-serif text-slate-900">
+              <h3 className="mb-4 flex items-center text-lg font-semibold font-serif text-slate-900">
                 <SparklesIcon className="mr-3 h-6 w-6 text-sky-600" />
-                Snapshot
+                Overview
               </h3>
+              <div className="mb-5 grid gap-4 lg:grid-cols-2">
+                <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic focus</div>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">{summarizeTutorialBoardFocus(activeTutorial)}</p>
+                </div>
+                <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Common pitfall</div>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">{summarizeTutorialPitfall(activeTutorial)}</p>
+                </div>
+              </div>
               {activeTutorial.cpGovernance && (
                 <div className="mb-5 space-y-4">
                   <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
@@ -775,7 +894,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                     </div>
                     <div className="mt-4">
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Anchor set</div>
-                      <ul className="mt-3 space-y-2 text-sm text-slate-700">
+                      <ul className="mt-2 space-y-1.5 text-sm text-slate-700">
                         {activeTutorial.cpGovernance.abpathAnchorSet.map((anchor) => (
                           <li key={anchor}>{anchor}</li>
                         ))}
@@ -784,10 +903,10 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                   </div>
                   <div className="rounded-2xl border border-slate-200 bg-white p-5">
                     <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Board-Mastery Teaching Focus</div>
-                    <div className="mt-3 text-base font-semibold text-slate-900">
+                    <div className="mt-2 text-base font-semibold text-slate-900">
                       {activeTutorial.cpGovernance.boardMasteryFocusTitle}
                     </div>
-                    <div className="mt-4 grid gap-4 lg:grid-cols-2">
+                    <div className="mt-3 grid gap-4 lg:grid-cols-2">
                       <div>
                         <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Must know concepts</div>
                         <ul className="mt-2 space-y-2 text-sm text-slate-700">
@@ -810,7 +929,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
               )}
               {!activeTutorial.cpGovernance && activeTutorial.abpathScope && (
                 <div className="mb-5 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Official ABPath Scope</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">ABPath scope</div>
                   <div className="mt-3 grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
                     <div>
                       <div className="text-sm font-semibold text-slate-900">{activeTutorial.abpathScope.root}</div>
@@ -824,6 +943,9 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                 </div>
               )}
               <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  Before you open the lesson
+                </div>
                 <ul className="space-y-2 text-sm text-slate-700">
                   {activeRecallPrompts.map((prompt) => (
                     <li key={prompt}>{prompt}</li>
@@ -847,24 +969,24 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
               </button>
             </div>
             <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5">
-              <div className="text-xs font-semibold uppercase tracking-wide text-amber-800">Governance pending</div>
+              <div className="text-xs font-semibold uppercase tracking-wide text-amber-800">Review pending</div>
               <h2 className="mt-3 font-serif text-2xl font-semibold text-slate-900">{governancePendingTutorial.title}</h2>
               <p className="mt-3 text-sm leading-6 text-slate-700">
-                This tutorial is not in the validated promotion set yet, so it is blocked from canonical `/didactics` routing until the ABPath mapping review is completed.
+                This tutorial is waiting on review, so it is not yet available in the main study path.
               </p>
               <div className="mt-4 grid gap-3 md:grid-cols-2">
                 <div className="rounded-xl border border-amber-200 bg-white p-4">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Mapped fallback domain</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Closest reviewed area</div>
                   <div className="mt-2 text-sm font-semibold text-slate-900">{governancePendingTutorial.abpathRoot}</div>
                   <div className="mt-1 text-sm text-slate-600">{governancePendingTutorial.abpathPrimaryPath}</div>
                 </div>
                 <div className="rounded-xl border border-amber-200 bg-white p-4">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Review action</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">What needs review</div>
                   <div className="mt-2 text-sm font-semibold text-slate-900">
                     {governancePendingTutorial.reviewAction ?? 'Resolve validated ABPath anchor before promotion'}
                   </div>
                   <div className="mt-1 text-sm text-slate-600">
-                    Owner: {governancePendingTutorial.reviewOwner ?? 'CP governance review'}
+                    Review lead: {governancePendingTutorial.reviewOwner ?? 'CP governance review'}
                   </div>
                 </div>
               </div>
@@ -879,7 +1001,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                   onClick={() => openTopicOverview(governancePendingTutorial.abpathRoot)}
                   className="mt-5 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
                 >
-                  Open validated topic instead
+                  Open the reviewed topic instead
                 </button>
               )}
             </div>
@@ -889,76 +1011,40 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
         <div className="space-y-6">
           {effectiveKind === 'landing' && (
             <>
-              <Card className="border-slate-200">
-                <h2 className="font-serif text-2xl font-semibold text-slate-900">Tutorials</h2>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  Resume a lesson or open a major topic from the sidebar.
-                </p>
-              </Card>
-              <div className="grid gap-4 lg:grid-cols-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (effectiveDestination.previous?.itemId) {
-                      setDestination(effectiveDestination.previous);
-                      replaceStudyDestination(effectiveDestination.previous);
-                    }
-                  }}
-                  disabled={!effectiveDestination.previous?.itemId}
-                  className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300 disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Resume</div>
-                  <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
-                    {effectiveDestination.previous?.itemId
-                      ? tutorials.find((tutorial) => tutorial.id === effectiveDestination.previous?.itemId)?.title ?? 'Last tutorial'
-                      : 'Choose a topic to begin'}
-                  </div>
-                  <p className="mt-2 text-sm text-slate-600">
-                    {effectiveDestination.previous?.itemId
-                      ? 'Return to your last active tutorial.'
-                      : 'Your active study item will appear here once you open one.'}
-                  </p>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const continueTopic = tutorialRoots[0];
-                    if (continueTopic) {
-                      openTopicOverview(continueTopic);
-                    }
-                  }}
-                  className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
-                >
-                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Resume topic</div>
-                  <div className="mt-3 font-serif text-xl font-semibold text-slate-900">
-                    {tutorialRoots[0] ?? 'Open a major topic'}
-                  </div>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Continue from the current topic map.
-                  </p>
-                </button>
-              </div>
               <Card>
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex flex-wrap items-end justify-between gap-3">
                   <div>
-                    <h3 className="font-serif text-xl font-semibold text-slate-900">Recommended major topics</h3>
-                    <p className="mt-1 text-sm text-slate-600">Open a major topic to start your focused lane.</p>
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Tutorials</div>
+                    <h3 className="font-serif text-xl font-semibold text-slate-900">Major topics</h3>
+                    <p className="mt-1 text-sm text-slate-600">Choose a topic, then open the diagnostic focus you want to study.</p>
                   </div>
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
-                    {tutorialRoots.length} topics
-                  </span>
+                  {lastVisitedTutorial && (
+                    <button
+                      type="button"
+                      onClick={() => openTutorial(lastVisitedTutorial.id)}
+                      className="text-sm font-semibold text-slate-600 transition hover:text-slate-900"
+                    >
+                      Resume {lastVisitedTutorial.title}
+                    </button>
+                  )}
                 </div>
                 <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                  {tutorialRoots.slice(0, preferences.focusMode ? 4 : 6).map((root) => (
+                  {tutorialRoots.slice(0, preferences.focusMode ? 3 : 4).map((root, index) => (
                     <button
                       key={root}
                       type="button"
                       onClick={() => openTopicOverview(root)}
                       className="rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
                     >
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        {index === 0 ? 'Start here' : 'Major topic'}
+                      </div>
                       <div className="font-semibold text-slate-900">{root}</div>
+                      <div className="mt-2 text-sm text-slate-600">{(tutorialsByRoot[root] ?? []).length} tutorial{(tutorialsByRoot[root] ?? []).length === 1 ? '' : 's'}</div>
                       <div className="mt-2 text-sm text-slate-600">
-                        {(tutorialsByRoot[root] ?? []).length} tutorial{(tutorialsByRoot[root] ?? []).length === 1 ? '' : 's'}
+                        {(subtopicsByRoot[root] ?? []).length > 0
+                          ? `${(subtopicsByRoot[root] ?? [])[0]?.label ?? 'First diagnostic focus'} is ready first.`
+                          : summarizeTutorialScope((tutorialsByRoot[root] ?? [])[0] ?? null)}
                       </div>
                     </button>
                   ))}
@@ -970,22 +1056,21 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
           {effectiveKind === 'topic_overview' && activeRoot && (
             <>
               <Card className="border-slate-200">
-                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                  <div className="max-w-4xl">
-                    <h2 className="font-serif text-2xl font-semibold text-slate-900">{activeRoot}</h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
-                      Review this ABPath topic by moving through one subtopic at a time, then opening the strongest tutorial inside that lane.
-                    </p>
-                    <p className="mt-3 text-sm font-medium text-slate-700">
-                      Scope: {activeTopicTutorials[0]?.abpathScope?.root ?? activeRoot}
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Major topic</div>
+                    <h3 className="mt-2 font-serif text-2xl font-semibold text-slate-900">{activeRoot}</h3>
+                    <p className="mt-2 text-sm text-slate-600">
+                      Move through one diagnostic focus at a time, then open the strongest lesson in this topic.
                     </p>
                   </div>
-                  <div className="flex flex-wrap gap-2 text-xs font-medium text-slate-600">
-                    <span className="rounded-full bg-slate-100 px-3 py-1">{activeSubtopics.length} subtopics</span>
-                    <span className="rounded-full bg-slate-100 px-3 py-1">
-                      {activeTopicTutorials.length} tutorial{activeTopicTutorials.length === 1 ? '' : 's'}
-                    </span>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={returnToTutorialLibrary}
+                    className="text-sm font-semibold text-slate-600 transition hover:text-slate-900"
+                  >
+                    Back to tutorials
+                  </button>
                 </div>
               </Card>
               <div className="grid gap-4 lg:grid-cols-2">
@@ -998,19 +1083,22 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                       className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
                     >
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        {index === 0 ? 'Open first subtopic' : 'Subtopic'}
+                        {index === 0 ? 'Start here' : 'Diagnostic focus'}
                       </div>
                       <div className="mt-3 font-serif text-xl font-semibold text-slate-900">{scope.label}</div>
                       <p className="mt-2 text-sm text-slate-600">
-                        {scope.tutorials.length} tutorial{scope.tutorials.length === 1 ? '' : 's'} in this lane.
+                        {scope.tutorials.length} tutorial{scope.tutorials.length === 1 ? '' : 's'} in this area.
                       </p>
+                      {index === 0 && (
+                        <div className="mt-3 text-sm font-semibold text-sky-700">Open first diagnostic focus</div>
+                      )}
                     </button>
                   ))
                 ) : (
                   <div className="lg:col-span-2 space-y-4">
                     <Card>
                       <p className="text-slate-700">
-                        No finer subtopics are defined. Open a tutorial from this topic list.
+                        No narrower diagnostic focus is defined here yet. Open a lesson from this topic list.
                       </p>
                     </Card>
                     {activeTopicTutorials.length === 0 ? (
@@ -1024,10 +1112,10 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                             key={tutorial.id}
                             type="button"
                             onClick={() => openTutorial(tutorial.id)}
-                            className="w-full rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
-                          >
+                          className="w-full rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
+                        >
                             <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                              {index === 0 ? 'Open first item' : 'Item'}
+                              {index === 0 ? 'Start here' : 'Lesson'}
                             </div>
                             <h3 className="mt-2 font-serif text-lg font-semibold text-slate-900">{tutorial.title}</h3>
                             <p className="mt-2 text-sm text-slate-600">{tutorial.summary}</p>
@@ -1044,11 +1132,20 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
           {effectiveKind === 'subtopic_overview' && activeRoot && activeSubtopicEntry && (
             <>
               <Card className="border-slate-200">
-                <h2 className="font-serif text-2xl font-semibold text-slate-900">{activeSubtopicEntry.label}</h2>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {activeRoot} {'>'} {activeSubtopicEntry.label}
-                </p>
-                <p className="mt-3 text-sm text-slate-700">Open one item to practice this lane.</p>
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic focus</div>
+                    <h3 className="mt-2 font-serif text-2xl font-semibold text-slate-900">{activeSubtopicEntry.label}</h3>
+                    <p className="mt-2 text-sm text-slate-600">{activeRoot}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={returnToTutorialLibrary}
+                    className="text-sm font-semibold text-slate-600 transition hover:text-slate-900"
+                  >
+                    Back to topic
+                  </button>
+                </div>
               </Card>
               <div className="space-y-4">
                 {activeSubtopicTutorials.map((tutorial, index) => (
@@ -1061,7 +1158,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                     <div className="flex items-start justify-between gap-4">
                       <div className="min-w-0">
                         <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                          {index === 0 ? 'Open first item' : 'Item'}
+                          {index === 0 ? 'Start here' : 'Lesson'}
                         </div>
                         <h3 className="mt-2 font-serif text-lg font-semibold text-slate-900">{tutorial.title}</h3>
                         <p className="mt-2 text-sm text-slate-600">{tutorial.abpathScope?.primaryPath ?? tutorial.summary}</p>
@@ -1071,7 +1168,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                         {tutorial.trackLabel}
                       </span>
                     </div>
-                    <div className="mt-4 text-sm font-semibold text-sky-700">Open</div>
+                    <div className="mt-4 text-sm font-semibold text-sky-700">{index === 0 ? 'Open first lesson' : 'Open lesson'}</div>
                   </button>
                 ))}
               </div>
@@ -1086,7 +1183,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
           <div className="mb-6 flex flex-col gap-3 border-b border-slate-200 pb-5 sm:flex-row sm:items-center sm:justify-between">
             <h3 className="flex items-center text-xl font-semibold font-serif text-slate-900">
               <DocumentTextIcon className="mr-3 h-6 w-6 text-sky-600" />
-              Case Tutorial
+              Lesson
             </h3>
             <div className="flex flex-wrap gap-2 text-xs font-medium text-slate-600">
               <span className="rounded-full bg-slate-100 px-3 py-1">{activeTutorial.abpathScope?.root ?? activeTutorial.trackLabel}</span>
@@ -1098,14 +1195,14 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
           <div className="mb-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
               <div className="max-w-3xl">
-                <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Teaching session</div>
+                <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Open with this context</div>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
-                  Move through the case in order, then use flashcards and quick check once the anchor concepts are stable.
+                  Read the case first, decide what you should recognize, then move to follow-up review only after the main lesson is clear.
                 </p>
               </div>
               <div className="grid min-w-[15rem] gap-3 sm:grid-cols-3 lg:min-w-[20rem]">
                 <div className="rounded-xl border border-slate-200 bg-white p-3">
-                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Sections</div>
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Lesson sections</div>
                   <div className="mt-2 text-2xl font-semibold text-slate-900">{tutorialSessionSections.length || '--'}</div>
                 </div>
                 <div className="rounded-xl border border-slate-200 bg-white p-3">
@@ -1113,75 +1210,22 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                   <div className="mt-2 text-2xl font-semibold text-slate-900">{activeTutorial.flashcardCount}</div>
                 </div>
                 <div className="rounded-xl border border-slate-200 bg-white p-3">
-                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Quick check</div>
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Board-style questions</div>
                   <div className="mt-2 text-2xl font-semibold text-slate-900">{activeTutorial.mcqCount}</div>
                 </div>
               </div>
             </div>
-            {tutorialSessionSections.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-2">
-                {tutorialSessionSections.map((section, index) => (
-                  <span
-                    key={section.id}
-                    className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
-                  >
-                    {index + 1}. {section.label}
-                  </span>
-                ))}
+            <div className="mt-4 grid gap-4 xl:grid-cols-2">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">What to recognize</div>
+                <p className="mt-3 text-sm leading-6 text-slate-700">{summarizeTutorialBoardFocus(activeTutorial)}</p>
               </div>
-            )}
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Common pitfall</div>
+                <p className="mt-3 text-sm leading-6 text-slate-700">{summarizeTutorialPitfall(activeTutorial)}</p>
+              </div>
+            </div>
           </div>
-          {activeTutorial.interactiveAssets && activeTutorial.interactiveAssets.length > 0 && currentInteractiveAsset && (
-                    <div className="mb-8 space-y-4">
-                      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                        <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-                          <div>
-                            <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Interactive lab</div>
-                            <h4 className="mt-2 text-lg font-semibold text-slate-900">{currentInteractiveAsset.title}</h4>
-                            <p className="mt-2 text-sm text-slate-600">{currentInteractiveAsset.summary}</p>
-                          </div>
-                          <a
-                            href={resolveInteractiveAssetUrl(currentInteractiveAsset.path)}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
-                          >
-                            Open interactive view
-                          </a>
-                        </div>
-                        {activeTutorial.interactiveAssets.length > 1 && (
-                          <div className="mt-4 flex flex-wrap gap-2">
-                            {activeTutorial.interactiveAssets.map((asset, index) => {
-                              const isActive = index === interactiveAssetIndex;
-                              return (
-                                <button
-                                  key={asset.id}
-                                  type="button"
-                                  onClick={() => setInteractiveAssetIndex(index)}
-                                  className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
-                                    isActive
-                                      ? 'border-sky-400 bg-sky-50 text-sky-800'
-                                      : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
-                                  }`}
-                                >
-                                  {asset.title}
-                                </button>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
-                        <iframe
-                                key={`${activeTutorial.id}-${currentInteractiveAsset.id}`}
-                          title={currentInteractiveAsset.title}
-                          src={resolveInteractiveAssetUrl(currentInteractiveAsset.path)}
-                          className="h-[860px] w-full border-0 bg-white"
-                          loading="lazy"
-                        />
-                      </div>
-                    </div>
-                  )}
           {tutorialVignetteSection && (
             <div className="mb-6 rounded-2xl border border-sky-200 bg-sky-50/70 p-6">
               <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Clinical vignette</div>
@@ -1194,7 +1238,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
             <div className="mb-6 grid gap-4 xl:grid-cols-2">
               {tutorialObjectivesSection && (
                 <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Learning objectives</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">What to recognize</div>
                   <div className="mt-3">
                     <MarkdownContent content={tutorialObjectivesSection.content} className="[&>*:first-child]:mt-0" />
                   </div>
@@ -1202,7 +1246,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
               )}
               {tutorialTeachingPointsSection && (
                 <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Teaching points</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic pearls</div>
                   <div className="mt-3">
                     <MarkdownContent content={tutorialTeachingPointsSection.content} className="[&>*:first-child]:mt-0" />
                   </div>
@@ -1235,6 +1279,135 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
               </div>
             </div>
           )}
+          {(currentMappedSupportImage || currentInteractiveAsset) && (
+            <div className="mt-6 space-y-4">
+              {activeTutorial.mappedImageSupport && currentMappedSupportImage && (
+                <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+                    <div className="max-w-3xl">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Morphology follow-up</div>
+                      <h4 className="mt-2 text-lg font-semibold text-slate-900">{currentMappedSupportImage.title}</h4>
+                      <p className="mt-2 text-sm text-slate-600">{currentMappedSupportImage.description}</p>
+                      {activeTutorial.mappedImageSupport.imageQuery && (
+                        <p className="mt-3 text-sm text-slate-600">
+                          Review focus: <span className="font-medium text-slate-900">{activeTutorial.mappedImageSupport.imageQuery}</span>
+                        </p>
+                      )}
+                      <div className="mt-4">
+                        <button
+                          type="button"
+                          onClick={openReferenceReview}
+                          className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                        >
+                          Open full morphology review
+                        </button>
+                      </div>
+                    </div>
+                    <a
+                      href={currentMappedSupportImage.sourceUrl ?? resolveAssetUrl(currentMappedSupportImage.src)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                    >
+                      Open full image
+                    </a>
+                  </div>
+                  {activeTutorial.mappedImageSupport.moduleTitles.length > 0 && (
+                    <p className="mt-4 text-sm text-slate-600">
+                      Linked module: <span className="font-medium text-slate-900">{activeTutorial.mappedImageSupport.moduleTitles[0]}</span>
+                    </p>
+                  )}
+                  <div className="mt-5 grid gap-5 xl:grid-cols-[minmax(0,18rem)_minmax(0,1fr)]">
+                    {activeTutorial.mappedImageSupport.images.length > 1 && (
+                      <div className="space-y-2 xl:max-h-[32rem] xl:overflow-auto xl:pr-1">
+                        {activeTutorial.mappedImageSupport.images.map((image, index) => {
+                          const isActive = index === supportImageIndex;
+                          return (
+                            <button
+                              key={image.id}
+                              type="button"
+                              onClick={() => setSupportImageIndex(index)}
+                              className={`w-full rounded-2xl border p-3 text-left transition ${
+                                isActive
+                                  ? 'border-sky-300 bg-sky-50'
+                                  : 'border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white'
+                              }`}
+                            >
+                              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Image {index + 1}</div>
+                              <div className="mt-2 text-sm font-semibold text-slate-900">{image.title}</div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                    <div className="space-y-4">
+                      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+                        <img
+                          src={resolveAssetUrl(currentMappedSupportImage.src)}
+                          alt={currentMappedSupportImage.title}
+                          className="h-[28rem] w-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {activeTutorial.interactiveAssets && activeTutorial.interactiveAssets.length > 0 && currentInteractiveAsset && (
+                <div className="space-y-4">
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                    <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+                      <div className="max-w-3xl">
+                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Interactive review</div>
+                        <h4 className="mt-2 text-lg font-semibold text-slate-900">{currentInteractiveAsset.title}</h4>
+                        <p className="mt-2 text-sm text-slate-600">
+                          Use this when you want an applied second pass through the same diagnostic focus after reading the lesson.
+                        </p>
+                      </div>
+                      <a
+                        href={resolveAssetUrl(currentInteractiveAsset.path)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                      >
+                        Open interactive review
+                      </a>
+                    </div>
+                    {activeTutorial.interactiveAssets.length > 1 && (
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {activeTutorial.interactiveAssets.map((asset, index) => {
+                          const isActive = index === interactiveAssetIndex;
+                          return (
+                            <button
+                              key={asset.id}
+                              type="button"
+                              onClick={() => setInteractiveAssetIndex(index)}
+                              className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                                isActive
+                                  ? 'border-sky-400 bg-sky-50 text-sky-800'
+                                  : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
+                              }`}
+                            >
+                              {asset.title}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                  <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+                    <iframe
+                      key={`${activeTutorial.id}-${currentInteractiveAsset.id}`}
+                      title={currentInteractiveAsset.title}
+                      src={resolveAssetUrl(currentInteractiveAsset.path)}
+                      className="h-[860px] w-full border-0 bg-white"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </Card>
       )}
 
@@ -1242,7 +1415,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                 <Card>
                   <h3 className="mb-4 flex items-center text-xl font-semibold font-serif text-slate-900">
                     <BookOpenIcon className="mr-3 h-6 w-6 text-sky-600" />
-                    Flashcard Review
+                    Flashcards
                   </h3>
                   {currentFlashcard ? (
                     <div className="space-y-4">
@@ -1259,7 +1432,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                             onClick={() => setFlashcardRevealed(true)}
                             className="mt-4 rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-700"
                           >
-                            Reveal Answer
+                            Show answer
                           </button>
                         )}
                       </div>
@@ -1298,7 +1471,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences }) =>
                 <Card>
                   <h3 className="mb-4 flex items-center text-xl font-semibold font-serif text-slate-900">
                     <SparklesIcon className="mr-3 h-6 w-6 text-sky-600" />
-                    Quick Check
+                    Board-style questions
                   </h3>
                   {currentQuestion ? (
                     <div className="space-y-5">

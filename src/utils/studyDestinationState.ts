@@ -1,4 +1,5 @@
 import { Section, type ActiveStudyDestination, type StudyWorkspace } from '../types.ts';
+import { clearAlgorithmNavigatorLaunchContext } from './algorithmNavigatorNavigation.ts';
 import { readSessionState, writeSessionState } from './viewStateStorage.ts';
 
 const STORAGE_KEY = 'didactic_series_study_destinations';
@@ -32,10 +33,11 @@ const writeAllStudyDestinations = (value: StoredStudyDestinations) => {
 
 export const workspaceForSection = (section: Section): StudyWorkspace | null => {
   switch (section) {
-    case Section.DIDACTIC_TUTORIALS:
-      return 'tutorials';
+    case Section.LECTURE:
     case Section.DIDACTIC_LECTURES:
       return 'lectures';
+    case Section.DIDACTIC_TUTORIALS:
+      return 'tutorials';
     case Section.DIDACTIC_ALGORITHMS:
       return 'algorithms';
     default:
@@ -127,6 +129,21 @@ export const pushStudyDestination = (
   };
   replaceStudyDestination(destination, { replaceHistory: false });
   return destination;
+};
+
+export const resetStudyWorkspaceEntry = (section: Section): ActiveStudyDestination | null => {
+  switch (section) {
+    case Section.LECTURE:
+    case Section.DIDACTIC_LECTURES:
+      return pushStudyDestination('lectures', { kind: 'landing', previous: null });
+    case Section.DIDACTIC_TUTORIALS:
+      return pushStudyDestination('tutorials', { kind: 'landing', previous: null });
+    case Section.DIDACTIC_ALGORITHMS:
+      clearAlgorithmNavigatorLaunchContext();
+      return pushStudyDestination('algorithms', { kind: 'landing', previous: null });
+    default:
+      return null;
+  }
 };
 
 export const setStudyDestinationActiveTab = (

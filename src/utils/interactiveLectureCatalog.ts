@@ -59,9 +59,9 @@ const normalizeLecture = (lecture: PromotedLectureRecord): InteractivePromotedLe
     flashcards: embeddedFlashcards.length > 0 ? embeddedFlashcards : abpathAugmentation.flashcards,
     enhancement,
     algorithms: algorithms.length > 0 ? algorithms : abpathAugmentation.algorithms,
-    tissueLayerSets: (enhancement?.tissueLayerSets.length ?? 0) > 0 ? enhancement!.tissueLayerSets : abpathAugmentation.tissueLayerSets,
-    entityCards: (enhancement?.entityCards.length ?? 0) > 0 ? enhancement!.entityCards : abpathAugmentation.entityCards,
-    quickChecks: (enhancement?.quickChecks.length ?? 0) > 0 ? enhancement!.quickChecks : abpathAugmentation.quickChecks,
+    tissueLayerSets: (enhancement?.tissueLayerSets?.length ?? 0) > 0 ? enhancement!.tissueLayerSets : abpathAugmentation.tissueLayerSets,
+    entityCards: (enhancement?.entityCards?.length ?? 0) > 0 ? enhancement!.entityCards : abpathAugmentation.entityCards,
+    quickChecks: (enhancement?.quickChecks?.length ?? 0) > 0 ? enhancement!.quickChecks : abpathAugmentation.quickChecks,
     defaultMode: enhancement?.defaultMode ?? 'overview',
   };
 };

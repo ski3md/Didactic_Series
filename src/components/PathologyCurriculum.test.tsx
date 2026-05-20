@@ -59,7 +59,7 @@ describe('PathologyCurriculum', () => {
     Object.values(mocks).forEach((mock) => mock.mockReset());
   });
 
-  it('uses a compact module list and shows a buildout notice for staged modules', async () => {
+  it('uses a compact topic list and shows an adding-now notice for staged topics', async () => {
     const user = userEvent.setup();
     render(<PathologyCurriculum onSectionChange={vi.fn()} preferences={preferences} />);
 
@@ -70,8 +70,8 @@ describe('PathologyCurriculum', () => {
     await user.type(screen.getByRole('searchbox', { name: /Search/i }), 'Skin / Melanocytic');
     await user.click(screen.getAllByRole('button', { name: /Skin \/ Melanocytic Staged Module/i })[0]);
 
-    expect(screen.getByText('Some routes are still being built.')).toBeInTheDocument();
-    expect(screen.getAllByText('Buildout').length).toBeGreaterThan(0);
+    expect(screen.getByText('Some study links are still being added.')).toBeInTheDocument();
+    expect(screen.getAllByText('Adding now').length).toBeGreaterThan(0);
   });
 
   it('routes a canonical module into its linked lecture', async () => {
@@ -81,7 +81,7 @@ describe('PathologyCurriculum', () => {
     render(<PathologyCurriculum onSectionChange={onSectionChange} preferences={preferences} />);
 
     await user.click(screen.getAllByRole('button', { name: /Breast Core Module/i })[0]);
-    await user.click(screen.getByRole('button', { name: /Start lecture/i }));
+    await user.click(screen.getByRole('button', { name: /Review Breast Pathology: Core Principles/i }));
 
     expect(mocks.setLectureLibraryIntent).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -90,5 +90,25 @@ describe('PathologyCurriculum', () => {
       })
     );
     expect(onSectionChange).toHaveBeenCalledWith(Section.DIDACTIC_LECTURES);
+  });
+
+  it('preserves curriculum module context when launching an algorithm', async () => {
+    const user = userEvent.setup();
+    const onSectionChange = vi.fn();
+
+    render(<PathologyCurriculum onSectionChange={onSectionChange} preferences={preferences} />);
+
+    await user.click(screen.getByRole('button', { name: 'CP' }));
+    await user.click(screen.getByRole('button', { name: /Transfusion and Cellular Therapy Core Clinical Pathology Ready/i }));
+    await user.click(screen.getAllByRole('button', { name: /transfusion reaction triage/i })[1]);
+
+    expect(mocks.setAlgorithmNavigatorIntent).toHaveBeenCalledWith(
+      expect.objectContaining({
+        selectedId: 'cp-transfusion-reaction-triage',
+        sourceModuleId: 'transfusion-cellular-therapy-core',
+        sourceModuleTitle: 'Transfusion and Cellular Therapy Core',
+      })
+    );
+    expect(onSectionChange).toHaveBeenCalledWith(Section.DIDACTIC_ALGORITHMS);
   });
 });

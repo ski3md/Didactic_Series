@@ -139,7 +139,7 @@ const autonomyByPrimaryLevel: Record<LearnerLevel, AutonomyTarget> = {
 };
 
 const milestoneByPrimaryLevel: Record<LearnerLevel, string> = {
-  PGY1: 'Orient to tissue, specimen, vocabulary, and benign-versus-abnormal visual cues.',
+  PGY1: 'Orient to tissue, specimen, vocabulary, and histomorphologic features that separate benign from atypical, neoplastic, malignant, and invasive processes.',
   PGY2: 'Build rotation-level organ-system differential diagnosis and basic ancillary logic.',
   PGY3: 'Produce complete draft reports with staging, synoptic, IHC, and pitfall handling.',
   PGY4: 'Demonstrate near-independent prioritization, sign-out quality, and error recovery.',

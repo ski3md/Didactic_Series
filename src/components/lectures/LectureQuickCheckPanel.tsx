@@ -3,6 +3,12 @@ import Card from '../ui/Card.tsx';
 import { Flashcard, LectureQuickCheck, MCQ } from '../../types.ts';
 import { getAnswerChoiceReasoning } from '../../utils/answerChoiceReasoning.ts';
 
+const checkpointTypeLabel: Record<LectureQuickCheck['checkpointType'], string> = {
+  mcq: 'Board-style question',
+  'oral-recall': 'Rapid recall',
+  'morphology-check': 'Morphology check',
+};
+
 interface LectureQuickCheckPanelProps {
   checks: LectureQuickCheck[];
   flashcards: Flashcard[];
@@ -37,7 +43,7 @@ const LectureQuickCheckPanel: React.FC<LectureQuickCheckPanelProps> = ({
   return (
     <div className="space-y-6">
       <Card>
-        <h3 className="text-xl font-semibold font-serif text-slate-900">Quick checks</h3>
+        <h3 className="text-xl font-semibold font-serif text-slate-900">Board-style questions</h3>
         <div className="mt-4 space-y-4">
           {checks.map((check) => {
             const revealed = revealedChecks.includes(check.id);
@@ -47,7 +53,7 @@ const LectureQuickCheckPanel: React.FC<LectureQuickCheckPanelProps> = ({
               <div key={check.id} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                 <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                   <div>
-                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">{check.checkpointType}</div>
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">{checkpointTypeLabel[check.checkpointType]}</div>
                     <div className="mt-1 text-base font-semibold text-slate-900">{check.prompt}</div>
                   </div>
                   <button
@@ -62,7 +68,7 @@ const LectureQuickCheckPanel: React.FC<LectureQuickCheckPanelProps> = ({
                     }}
                     className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
                   >
-                    {revealed ? 'Hide cue' : 'Reveal cue'}
+                    {revealed ? 'Hide hint' : 'Show hint'}
                   </button>
                 </div>
 
@@ -152,8 +158,8 @@ const LectureQuickCheckPanel: React.FC<LectureQuickCheckPanelProps> = ({
         <Card>
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Flashcard drill</div>
-              <h3 className="mt-1 text-xl font-semibold font-serif text-slate-900">One concept at a time</h3>
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Unknown cases</div>
+              <h3 className="mt-1 text-xl font-semibold font-serif text-slate-900">Review one high-yield point at a time</h3>
             </div>
             <div className="flex gap-2">
               <button
@@ -181,14 +187,14 @@ const LectureQuickCheckPanel: React.FC<LectureQuickCheckPanelProps> = ({
             </div>
           </div>
           <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-6">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Prompt</div>
+            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Question</div>
             <div className="mt-2 text-lg font-semibold text-slate-900">{currentFlashcard.front}</div>
             <button
               type="button"
               onClick={() => setFlashcardRevealed((current) => !current)}
               className="mt-4 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
             >
-              {flashcardRevealed ? 'Hide answer' : 'Reveal answer'}
+              {flashcardRevealed ? 'Hide answer' : 'Show answer'}
             </button>
             {flashcardRevealed && (
               <div className="mt-4 rounded-xl bg-white px-4 py-3 text-sm text-slate-700">{currentFlashcard.back}</div>
@@ -199,7 +205,7 @@ const LectureQuickCheckPanel: React.FC<LectureQuickCheckPanelProps> = ({
 
       {bundledMcqs.length > 0 && (
         <Card>
-          <h3 className="text-xl font-semibold font-serif text-slate-900">Additional review questions</h3>
+          <h3 className="text-xl font-semibold font-serif text-slate-900">Additional board-style questions</h3>
           <div className="mt-4 grid gap-4 lg:grid-cols-2">
             {bundledMcqs.map((mcq) => (
               <div key={`${mcq.topic}-${mcq.question}`} className="rounded-xl border border-slate-200 bg-slate-50 p-4">

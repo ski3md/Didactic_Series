@@ -466,6 +466,34 @@ export const activeCurriculumModules: ActiveCurriculumModule[] = [
     assessmentTopics: ['clinical chemistry interpretation', 'assay interference and metabolic pattern case'],
     cpGovernance: cpGovernanceModules['chemical-pathology-core'],
   },
+  {
+    moduleId: 'management-informatics-core',
+    title: 'Management and Informatics Core',
+    summary: 'Canonical CP block for QC interpretation, validation oversight, LIS workflow, laboratory safety, and finance-aware operational reasoning.',
+    subspecialty: 'Clinical Pathology',
+    boardPriority: 'core',
+    promotionState: 'canonical',
+    recommendedOrder: 22,
+    patternFamilies: ['management and informatics', 'quality control', 'laboratory operations'],
+    specimenContexts: ['QC chart', 'LIS workflow', 'validation plan', 'budget worksheet'],
+    plannedAssets: ['tutorials', 'algorithms', 'assessment'],
+    lectures: [],
+    referenceFocusTerms: ['management and informatics', 'Westgard', 'Levey-Jennings', 'validation', 'verification', 'LIS', 'patient safety', 'break-even'],
+    tutorialTopics: [
+      'Management and Informatics: Break-Even Analysis Studio',
+      'Management and Informatics: Reagent Rental Decision Studio',
+      'Management and Informatics: Levey-Jennings QC Studio',
+      'Management and Informatics: Westgard Rules Studio',
+      'Management and Informatics: Staff Productivity Studio',
+      'Management and Informatics: Validation vs Verification Studio',
+      'Management and Informatics: LIS Interfacing Studio',
+      'Management and Informatics: Major Sources of Laboratory Errors Studio'
+    ],
+    syllabusTopics: ['management and informatics', 'quality management', 'laboratory information systems', 'patient safety', 'budgeting and financial'],
+    algorithmTopics: ['QC failure response', 'validation-versus-verification triage', 'LIS workflow redesign', 'finance-aware assay planning'],
+    assessmentTopics: ['Westgard and QC interpretation', 'method rollout oversight case', 'LIS safety workflow case', 'break-even management drill'],
+    cpGovernance: cpGovernanceModules['management-informatics-core'],
+  },
 ];
 
 export const activeCurriculumSubspecialties = [
