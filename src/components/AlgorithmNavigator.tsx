@@ -393,8 +393,8 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
         {effectiveKind === 'landing' && (
           <>
             <Card>
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="max-w-3xl">
+              <div className="grid gap-6 xl:grid-cols-[minmax(0,1.6fr)_minmax(240px,0.8fr)] xl:items-start">
+                <div className="min-w-0">
                   <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Workups</div>
                   <h2 className="mt-2 font-serif text-2xl font-semibold text-slate-900">Choose a diagnostic workup</h2>
                   <p className="mt-2 text-sm leading-6 text-slate-600">
@@ -405,7 +405,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                     <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">Next: open one diagnostic area</span>
                   </div>
                 </div>
-                <div className="min-w-[220px] rounded-2xl border border-sky-100 bg-sky-50 px-4 py-3">
+                <div className="rounded-2xl border border-sky-100 bg-sky-50 px-4 py-3 xl:justify-self-end">
                   <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Current area</div>
                   <div className="mt-2 text-sm font-semibold text-slate-900">Workups</div>
                   <div className="mt-1 text-sm text-slate-600">{algorithmStudyTree.roots.length} diagnostic areas ready</div>
@@ -414,8 +414,8 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
             </Card>
             {launchedFromCurriculum && (
               <Card>
-                <div className="flex flex-wrap items-start justify-between gap-4">
-                  <div className="max-w-3xl">
+                <div className="grid gap-6 xl:grid-cols-[minmax(0,1.6fr)_auto] xl:items-start">
+                  <div className="min-w-0">
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Opened from</div>
                     <div className="mt-2 font-serif text-xl font-semibold text-slate-900">{returnToCurriculumLabel}</div>
                     <p className="mt-2 text-sm leading-6 text-slate-600">
@@ -435,7 +435,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                 </div>
               </Card>
             )}
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
               <button
                 type="button"
                 onClick={() => {
@@ -507,8 +507,8 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
         {effectiveKind === 'topic_overview' && activeAlgorithmRoot && (
           <>
             <Card>
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="max-w-3xl">
+              <div className="grid gap-6 xl:grid-cols-[minmax(0,1.6fr)_auto] xl:items-start">
+                <div className="min-w-0">
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Major topic</div>
                   <h2 className="mt-2 font-serif text-2xl font-semibold text-slate-900">{activeAlgorithmRoot}</h2>
                   <p className="mt-2 text-sm leading-6 text-slate-600">
@@ -584,7 +584,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                 </div>
               )}
             </Card>
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
               {activeAlgorithmSubtopics.length > 0 ? (
                 activeAlgorithmSubtopics.map((scope, index) => (
                   <button
@@ -607,7 +607,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                   </button>
                 ))
               ) : (
-                <div className="lg:col-span-2 space-y-4">
+                <div className="space-y-4 xl:col-span-2 2xl:col-span-3">
                   <Card>
                     <p className="text-slate-700">
                       No narrower differentials are listed for this diagnostic area. Open one of the workups directly.
@@ -643,8 +643,8 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
         {effectiveKind === 'subtopic_overview' && activeAlgorithmRoot && activeAlgorithmSubtopic && (
           <>
             <Card>
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="max-w-3xl">
+              <div className="grid gap-6 xl:grid-cols-[minmax(0,1.6fr)_minmax(240px,0.8fr)] xl:items-start">
+                <div className="min-w-0">
                   <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Workups</div>
                   <h2 className="mt-2 font-serif text-2xl font-semibold text-slate-900">{activeAlgorithmSubtopic.label}</h2>
                   <p className="mt-2 text-sm leading-6 text-slate-600">

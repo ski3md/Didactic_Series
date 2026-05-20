@@ -48,6 +48,10 @@ const AppContent: React.FC<{
       : currentSection === Section.ADMIN && !user?.isAdmin
         ? Section.DIDACTIC_LECTURES
         : currentSection;
+  const prefersWideWorkspaceShell =
+    displayedSection === Section.DIDACTIC_ALGORITHMS ||
+    displayedSection === Section.PATHOLOGY_CURRICULUM ||
+    displayedSection === Section.COMPETENCY_MATRIX;
 
   // Effect to set initial sidebar state based on screen size and handle resizing
   useEffect(() => {
@@ -128,7 +132,17 @@ const AppContent: React.FC<{
           onToggleFocusMode={toggleFocusMode}
           navigation={navigation}
         />
-        <main className={`flex-1 overflow-y-auto ${displayedSection === Section.LECTURE ? '' : preferences.focusMode ? 'mx-auto w-full max-w-5xl p-4 sm:p-5 lg:p-6' : 'w-full p-4 sm:p-6 md:p-8 lg:p-10'}`}>
+        <main
+          className={`flex-1 overflow-y-auto ${
+            displayedSection === Section.LECTURE
+              ? ''
+              : preferences.focusMode
+                ? prefersWideWorkspaceShell
+                  ? 'w-full p-4 sm:p-5 lg:p-6'
+                  : 'mx-auto w-full max-w-5xl p-4 sm:p-5 lg:p-6'
+                : 'w-full p-4 sm:p-6 md:p-8 lg:p-10'
+          }`}
+        >
           <WorkspaceErrorBoundary sectionName={displayedSection} onNavigate={onSectionSelect}>
             {renderSection()}
           </WorkspaceErrorBoundary>
