@@ -394,6 +394,32 @@ const evaluateHierarchySemantics = ({
   }
 
   if (
+    appearsInOrder(lecturesTsx, [
+      /Major topic/,
+      /Scope:/,
+      /Next:\s*open the first (review set|lecture)/,
+      /Open .*|Back to lectures/,
+    ])
+  ) {
+    passes.push('Lecture topic overview exposes scope and a single obvious next action before the review-set grid.');
+  } else {
+    issues.push('Lecture topic overview does not clearly expose scope and a single obvious next action before the review-set grid.');
+  }
+
+  if (
+    appearsInOrder(algorithmsTsx, [
+      /Major topic/,
+      /Scope:/,
+      /Next:\s*open the first (differential or workup|workup)/,
+      /Open .*|Back to workups/,
+    ])
+  ) {
+    passes.push('Workup topic overview exposes scope and a single obvious next action before the differential grid.');
+  } else {
+    issues.push('Workup topic overview does not clearly expose scope and a single obvious next action before the differential grid.');
+  }
+
+  if (
     appearsInOrder(tutorialsTsx, [
       /Diagnostic focus/,
       /Scope:/,

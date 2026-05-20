@@ -509,7 +509,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
             <Card>
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="max-w-3xl">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Workups</div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Major topic</div>
                   <h2 className="mt-2 font-serif text-2xl font-semibold text-slate-900">{activeAlgorithmRoot}</h2>
                   <p className="mt-2 text-sm leading-6 text-slate-600">
                     {activeAlgorithmOverview}
@@ -519,22 +519,47 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                       Requested from {returnToCurriculumLabel}: {launchRequestedTopic}
                     </p>
                   )}
+                  <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                    <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">
+                      Scope: {activeAlgorithmSubtopics[0]?.label ?? filteredEntries[0]?.title ?? activeAlgorithmRoot}
+                    </span>
+                    <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">
+                      {activeAlgorithmSubtopics.length > 0 ? 'Next: open the first differential or workup' : 'Next: open the first workup'}
+                    </span>
+                  </div>
                 </div>
-                <div className="min-w-[220px] rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Review next</div>
-                  <div className="mt-2 text-sm font-semibold text-slate-900">
-                    {activeAlgorithmSubtopics[0]?.label ?? filteredEntries[0]?.title ?? 'Open a workup'}
-                  </div>
-                  <div className="mt-1 text-sm text-slate-600">
-                    {activeAlgorithmSubtopics.length > 0
-                      ? 'Choose one differential or workup.'
-                      : 'This diagnostic area opens directly into the available workups.'}
-                  </div>
-                  {activeAlgorithmSubtopics.length > 0 && familyLeadEntry && (
-                    <div className="mt-2 text-xs text-slate-500">Then review {familyLeadEntry.title}</div>
+                <div className="flex min-w-[220px] flex-wrap items-center gap-3">
+                  {(activeAlgorithmSubtopics[0] || filteredEntries[0]) && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        activeAlgorithmSubtopics[0]
+                          ? openAlgorithmSubtopicOverview(activeAlgorithmRoot, activeAlgorithmSubtopics[0].id)
+                          : filteredEntries[0] && openAlgorithmDetail(filteredEntries[0].id)
+                      }
+                      className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                    >
+                      {activeAlgorithmSubtopics[0]
+                        ? `Open ${activeAlgorithmSubtopics[0].label}`
+                        : `Open ${filteredEntries[0]?.title ?? 'workup'}`}
+                    </button>
                   )}
+                  <button
+                    type="button"
+                    onClick={returnToAlgorithmLane}
+                    className="text-sm font-semibold text-slate-600 transition hover:text-slate-900"
+                  >
+                    Back to workups
+                  </button>
                 </div>
               </div>
+              {activeAlgorithmSubtopics.length > 0 && familyLeadEntry && (
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Review next</div>
+                  <div className="mt-2 text-sm font-semibold text-slate-900">{activeAlgorithmSubtopics[0].label}</div>
+                  <div className="mt-1 text-sm text-slate-600">Then review {familyLeadEntry.title}.</div>
+                </div>
+              )}
               {launchedFromCurriculum && (
                 <div className="mt-4 flex flex-wrap items-center gap-3">
                   <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">

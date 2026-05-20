@@ -1575,7 +1575,7 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
               <Card>
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                   <div className="max-w-4xl">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Lectures</p>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Major topic</p>
                     <h2 className="mt-2 font-serif text-2xl font-semibold text-slate-950">{activeLectureRoot}</h2>
                     <p className="mt-2 text-sm leading-6 text-slate-600">
                       Confirm the scope, then choose the next review set in this topic.
@@ -1589,23 +1589,32 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
                       </span>
                     </div>
                   </div>
-                  {(activeLectureSubtopics[0] || activeLectureRecords[0]) && (
+                  <div className="flex flex-wrap items-center gap-3">
+                    {(activeLectureSubtopics[0] || activeLectureRecords[0]) && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          activeLectureSubtopics[0]
+                            ? openLectureSubtopicOverview(activeLectureRoot, activeLectureSubtopics[0].id)
+                            : activeLectureRecords[0] &&
+                              selectLecture(activeLectureRecords[0].id, {
+                                mode: 'overview',
+                                initialLayerSetId: getInteractivePromotedLecture(activeLectureRecords[0].id)?.tissueLayerSets[0]?.id,
+                              })
+                        }
+                        className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                      >
+                        {activeLectureSubtopics[0] ? `Open ${activeLectureSubtopics[0].label}` : `Open ${activeLectureRecords[0]?.title ?? 'lecture'}`}
+                      </button>
+                    )}
                     <button
                       type="button"
-                      onClick={() =>
-                        activeLectureSubtopics[0]
-                          ? openLectureSubtopicOverview(activeLectureRoot, activeLectureSubtopics[0].id)
-                          : activeLectureRecords[0] &&
-                            selectLecture(activeLectureRecords[0].id, {
-                              mode: 'overview',
-                              initialLayerSetId: getInteractivePromotedLecture(activeLectureRecords[0].id)?.tissueLayerSets[0]?.id,
-                            })
-                      }
-                      className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                      onClick={returnToLectureList}
+                      className="text-sm font-semibold text-slate-600 transition hover:text-slate-900"
                     >
-                      {activeLectureSubtopics[0] ? `Open ${activeLectureSubtopics[0].label}` : `Open ${activeLectureRecords[0]?.title ?? 'lecture'}`}
+                      Back to lectures
                     </button>
-                  )}
+                  </div>
                 </div>
               </Card>
               {activeLectureSubtopics.length > 0 ? (

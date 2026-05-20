@@ -433,6 +433,11 @@ describe('validate_didactics_learning_ux helpers', () => {
         {activeTutorial.interactiveAssets && <div>Related review</div>}
       `,
       lecturesTsx: `
+        <div>Major topic</div>
+        <div>Scope: Renal neoplasia</div>
+        <div>Next: open the first review set</div>
+        <button>Open Renal mass workup</button>
+        <button>Back to lectures</button>
         <div>Faculty run sheet</div>
         <div>Signout sequence</div>
         <div>Lectures</div>
@@ -441,6 +446,11 @@ describe('validate_didactics_learning_ux helpers', () => {
         <button>Open Renal Mass Evaluation</button>
       `,
       algorithmsTsx: `
+        <div>Major topic</div>
+        <div>Scope: QC failure response</div>
+        <div>Next: open the first differential or workup</div>
+        <button>Open QC failure response</button>
+        <button>Back to workups</button>
         <div>Workups</div>
         <div>Scope: QC failure response</div>
         <div>Next: open the first workup</div>
@@ -463,6 +473,8 @@ describe('validate_didactics_learning_ux helpers', () => {
       expect.arrayContaining([
         expect.stringContaining('Tutorial detail keeps diagnostic framing'),
         expect.stringContaining('Tutorial topic overview exposes scope and a single obvious next action'),
+        expect.stringContaining('Lecture topic overview exposes scope and a single obvious next action'),
+        expect.stringContaining('Workup topic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Tutorial subtopic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Lecture subtopic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Workup subtopic overview exposes scope and a single obvious next action'),
@@ -485,11 +497,13 @@ describe('validate_didactics_learning_ux helpers', () => {
         {tutorialObjectivesSection && <div>What to recognize</div>}
       `,
       lecturesTsx: `
+        <div>Major topic</div>
         <button>Back to topic</button>
         <div>Signout sequence</div>
         <div>Faculty run sheet</div>
       `,
       algorithmsTsx: `
+        <div>Major topic</div>
         <div>Start here</div>
         <button>Open related tutorial</button>
         <div>Diagnostic focus</div>
@@ -506,6 +520,8 @@ describe('validate_didactics_learning_ux helpers', () => {
       expect(result.issues).toEqual(
         expect.arrayContaining([
           expect.stringContaining('Tutorial topic overview does not clearly expose scope and a single obvious next action before the topic grid.'),
+          expect.stringContaining('Lecture topic overview does not clearly expose scope and a single obvious next action before the review-set grid.'),
+          expect.stringContaining('Workup topic overview does not clearly expose scope and a single obvious next action before the differential grid.'),
           expect.stringContaining('Tutorial subtopic overview does not clearly expose scope and a single obvious next action before the lesson list.'),
           expect.stringContaining('Lecture subtopic overview does not clearly expose scope and a single obvious next action before the lecture list.'),
           expect.stringContaining('Workup subtopic overview does not clearly expose scope and a single obvious next action before the workup list.'),
