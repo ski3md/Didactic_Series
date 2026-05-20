@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T04:45:58.023Z",
+  "generatedAt": "2026-05-20T04:48:40.481Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -97,6 +97,7 @@
     "Learner-facing copy uses pathology-native vernacular instead of generic educational jargon.",
     "Tutorial detail keeps diagnostic framing and recognition cues ahead of optional related review.",
     "Tutorial topic overview exposes scope and a single obvious next action before the topic grid.",
+    "Tutorial subtopic overview exposes scope and a single obvious next action before the lesson list.",
     "Algorithm detail places the workup before optional tutorial or review links.",
     "Curriculum module pages present patterns, board focus, workup, and diagnostic focus in a stable reasoning order.",
     "Lecture detail opens with an orientation block before the signout sequence."

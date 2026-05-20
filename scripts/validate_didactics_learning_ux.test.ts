@@ -424,6 +424,10 @@ describe('validate_didactics_learning_ux helpers', () => {
         <div>Scope: Blood Banking / Transfusion Medicine</div>
         <div>Next: open the first diagnostic focus</div>
         <button>Open Donor Evaluation</button>
+        <div>Diagnostic focus</div>
+        <div>Scope: Blood Banking / Transfusion Medicine > Donor Evaluation</div>
+        <div>Next: open the first lesson</div>
+        <button>Open Case Tutorial: Donor Eligibility and Screening</button>
         {activeTutorial && activeTab === 'tutorial' && <div>Diagnostic approach</div>}
         {tutorialObjectivesSection && <div>What to recognize</div>}
         {activeTutorial.interactiveAssets && <div>Related review</div>}
@@ -451,6 +455,7 @@ describe('validate_didactics_learning_ux helpers', () => {
       expect.arrayContaining([
         expect.stringContaining('Tutorial detail keeps diagnostic framing'),
         expect.stringContaining('Tutorial topic overview exposes scope and a single obvious next action'),
+        expect.stringContaining('Tutorial subtopic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Algorithm detail places the workup before optional tutorial'),
         expect.stringContaining('Curriculum module pages present patterns, board focus, workup, and diagnostic focus'),
         expect.stringContaining('Lecture detail opens with an orientation block'),
@@ -463,6 +468,8 @@ describe('validate_didactics_learning_ux helpers', () => {
       tutorialsTsx: `
         <button>Back to tutorials</button>
         <div>Major topic</div>
+        <button>Back to topic</button>
+        <div>Diagnostic focus</div>
         {activeTutorial.interactiveAssets && <div>Related review</div>}
         {activeTutorial && activeTab === 'tutorial' && <div>Diagnostic approach</div>}
         {tutorialObjectivesSection && <div>What to recognize</div>}
@@ -486,8 +493,8 @@ describe('validate_didactics_learning_ux helpers', () => {
 
       expect(result.issues).toEqual(
         expect.arrayContaining([
-          expect.stringContaining('Tutorial detail does not clearly keep diagnostic framing ahead of optional related review.'),
           expect.stringContaining('Tutorial topic overview does not clearly expose scope and a single obvious next action before the topic grid.'),
+          expect.stringContaining('Tutorial subtopic overview does not clearly expose scope and a single obvious next action before the lesson list.'),
           expect.stringContaining('Algorithm detail does not clearly place the workup ahead of optional tutorial or review links.'),
           expect.stringContaining('Curriculum module pages do not clearly present patterns, board focus, workup, and diagnostic focus in a stable reasoning order.'),
           expect.stringContaining('Lecture detail does not clearly open with orientation before the signout sequence.'),

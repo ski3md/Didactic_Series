@@ -1162,19 +1162,38 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
           {effectiveKind === 'subtopic_overview' && activeRoot && activeSubtopicEntry && (
             <>
               <Card className="border-slate-200">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div className="max-w-4xl">
                     <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Diagnostic focus</div>
                     <h3 className="mt-2 font-serif text-2xl font-semibold text-slate-900">{normalizePublicStudyLabel(activeSubtopicEntry.label)}</h3>
                     <p className="mt-2 text-sm text-slate-600">{normalizePublicStudyLabel(activeRoot)}</p>
+                    <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                      <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">
+                        Scope: {normalizePublicStudyPath(activeSubtopicTutorials[0]?.abpathScope?.primaryPath) || normalizePublicStudyLabel(activeSubtopicEntry.label)}
+                      </span>
+                      <span className="rounded-full bg-sky-50 px-3 py-1 font-medium text-sky-800">
+                        Next: open the first lesson
+                      </span>
+                    </div>
                   </div>
-                  <button
-                    type="button"
-                    onClick={returnToTutorialLibrary}
-                    className="text-sm font-semibold text-slate-600 transition hover:text-slate-900"
-                  >
-                    Back to topic
-                  </button>
+                  <div className="flex flex-wrap items-center gap-3">
+                    {activeSubtopicTutorials[0] && (
+                      <button
+                        type="button"
+                        onClick={() => openTutorial(activeSubtopicTutorials[0].id)}
+                        className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                      >
+                        Open {activeSubtopicTutorials[0].title}
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={returnToTutorialLibrary}
+                      className="text-sm font-semibold text-slate-600 transition hover:text-slate-900"
+                    >
+                      Back to topic
+                    </button>
+                  </div>
                 </div>
               </Card>
               <div className="space-y-4">
