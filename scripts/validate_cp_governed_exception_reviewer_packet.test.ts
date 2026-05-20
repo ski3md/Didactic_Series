@@ -21,6 +21,8 @@ describe('cp governed exception reviewer packet', () => {
       'cross-domain-governed': 2,
       'nearest-valid-deep': 11,
     });
+    expect(packet.summary.actionBuckets.promoteUnderGovernedAnchor).toHaveLength(5);
+    expect(packet.summary.actionBuckets.reviewerActionRequired).toHaveLength(8);
   });
 
   it('keeps rationale on every reviewer-packet row', () => {

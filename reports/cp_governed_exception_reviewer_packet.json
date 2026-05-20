@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T10:51:21.287Z",
+  "generatedAt": "2026-05-20T10:52:12.603Z",
   "source": "reports/validated_mappings_manifest.json",
   "summary": {
     "exceptionCount": 13,
@@ -14,6 +14,25 @@
       "Hematopathology for Clinical Pathology": 4,
       "Management and Informatics": 3,
       "Medical Microbiology": 3
+    },
+    "actionBuckets": {
+      "promoteUnderGovernedAnchor": [
+        "respiratory-viruses",
+        "topic-mb-3-a",
+        "topic-mol-1",
+        "topic-mol-2",
+        "topic-mol-3"
+      ],
+      "reviewerActionRequired": [
+        "cp-micro-methods-ast-studio",
+        "cp-flow-heme-studio",
+        "cp-dat-transfusion-studio",
+        "cp-mgmt-break-even-studio",
+        "cp-mgmt-reagent-rental-studio",
+        "cp-mgmt-productivity-studio",
+        "cp-chemical-path-endocrine-studio",
+        "cp-immune-lipid-studio"
+      ]
     }
   },
   "rows": [

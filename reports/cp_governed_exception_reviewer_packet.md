@@ -1,6 +1,6 @@
 # CP Governed Exception Reviewer Packet
 
-Generated: 2026-05-20T10:51:21.287Z
+Generated: 2026-05-20T10:52:12.603Z
 
 Source: `reports/validated_mappings_manifest.json`
 
@@ -9,6 +9,8 @@ Source: `reports/validated_mappings_manifest.json`
 - Exception tutorials: 13
 - Precision modes: cross-domain-governed (2), nearest-valid-deep (11)
 - Roots covered: Blood Banking/Transfusion Medicine (1), Chemical Pathology (1), Chemical Pathology + Blood Banking/Transfusion Medicine (1), Hematopathology for Clinical Pathology (4), Management and Informatics (3), Medical Microbiology (3)
+- Promote under current governed anchor: 5
+- Reviewer action still required: 8
 
 ## Review Queue
 

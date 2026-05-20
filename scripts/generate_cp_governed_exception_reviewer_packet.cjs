@@ -44,6 +44,14 @@ const payload = {
     exceptionCount: rows.length,
     byPrecisionMode: sortObject(byPrecisionMode),
     byRoot: sortObject(byRoot),
+    actionBuckets: {
+      promoteUnderGovernedAnchor: rows
+        .filter((row) => !/Complete CP governance review before promotion/i.test(row.reviewAction || ''))
+        .map((row) => row.id),
+      reviewerActionRequired: rows
+        .filter((row) => /Complete CP governance review before promotion/i.test(row.reviewAction || ''))
+        .map((row) => row.id),
+    },
   },
   rows: rows.map((row) => ({
     id: row.id,
@@ -76,6 +84,8 @@ const markdown = [
   `- Exception tutorials: ${payload.summary.exceptionCount}`,
   `- Precision modes: ${Object.entries(payload.summary.byPrecisionMode).map(([k, v]) => `${k} (${v})`).join(', ')}`,
   `- Roots covered: ${Object.entries(payload.summary.byRoot).map(([k, v]) => `${k} (${v})`).join(', ')}`,
+  `- Promote under current governed anchor: ${payload.summary.actionBuckets.promoteUnderGovernedAnchor.length}`,
+  `- Reviewer action still required: ${payload.summary.actionBuckets.reviewerActionRequired.length}`,
   '',
   '## Review Queue',
   '',
