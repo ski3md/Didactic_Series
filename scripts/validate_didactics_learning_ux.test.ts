@@ -486,6 +486,8 @@ describe('validate_didactics_learning_ux helpers', () => {
         {selectedModule.cpGovernance && <div>Board-relevant focus</div>}
         {selectedModuleResolvedAlgorithms.length > 0 && <div>Initial workup</div>}
         {selectedModuleCompetency && <div>Diagnostic focus</div>}
+        {selectedModule.lectures.length > 1 && <div>Related review</div>}
+        <div>Optional follow-up review</div>
       `,
     });
 
@@ -505,6 +507,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         expect.stringContaining('Workup subtopic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Algorithm detail places the workup before optional tutorial'),
         expect.stringContaining('Curriculum module pages present patterns, board focus, workup, and diagnostic focus'),
+        expect.stringContaining('Curriculum module pages keep optional follow-up review after the core module framing.'),
         expect.stringContaining('Lecture detail opens with an orientation block'),
         expect.stringContaining('Lecture detail keeps optional follow-up review after the core signout sequence.'),
       ])
@@ -542,6 +545,7 @@ describe('validate_didactics_learning_ux helpers', () => {
       `,
       curriculumTsx: `
         {selectedModuleResolvedAlgorithms.length > 0 && <div>Initial workup</div>}
+        {selectedModule.lectures.length > 1 && <div>Related review</div>}
         {selectedModule.patternFamilies.length > 0 && <div>Common diagnostic patterns</div>}
         {selectedModuleCompetency && <div>Diagnostic focus</div>}
       `,
@@ -561,6 +565,7 @@ describe('validate_didactics_learning_ux helpers', () => {
           expect.stringContaining('Workup subtopic overview does not clearly expose scope and a single obvious next action before the workup list.'),
           expect.stringContaining('Algorithm detail does not clearly place the workup ahead of optional tutorial or review links.'),
           expect.stringContaining('Curriculum module pages do not clearly present patterns, board focus, workup, and diagnostic focus in a stable reasoning order.'),
+          expect.stringContaining('Curriculum module pages do not clearly keep optional follow-up review after the core module framing.'),
           expect.stringContaining('Lecture detail does not clearly open with orientation before the signout sequence.'),
           expect.stringContaining('Lecture detail does not clearly keep optional follow-up review after the core signout sequence.'),
       ])

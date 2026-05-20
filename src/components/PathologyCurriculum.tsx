@@ -875,6 +875,10 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                   {selectedModule.lectures.length > 1 && (
                     <div className="rounded-2xl border border-slate-200 bg-white p-5">
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Related review</div>
+                      <div className="mt-1 text-lg font-semibold text-slate-900">Optional follow-up review</div>
+                      <p className="mt-2 text-sm leading-6 text-slate-600">
+                        Keep the module focus primary. Open these afterward when you want a longer teaching review of the same area.
+                      </p>
                       <div className="mt-3 flex flex-wrap gap-3">
                         {selectedModule.lectures.map((lecture) => (
                           <button

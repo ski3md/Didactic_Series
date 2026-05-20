@@ -543,6 +543,19 @@ const evaluateHierarchySemantics = ({
   }
 
   if (
+    appearsInOrder(curriculumTsx, [
+      /selectedModuleResolvedAlgorithms\.length > 0[\s\S]*?Initial workup/,
+      /selectedModuleCompetency[\s\S]*?Diagnostic focus/,
+      /selectedModule\.lectures\.length > 1[\s\S]*?Related review/,
+      /Optional follow-up review/,
+    ])
+  ) {
+    passes.push('Curriculum module pages keep optional follow-up review after the core module framing.');
+  } else {
+    issues.push('Curriculum module pages do not clearly keep optional follow-up review after the core module framing.');
+  }
+
+  if (
     appearsInOrder(lecturesTsx, [
       /(Faculty run sheet|Signout brief)/,
       /Signout sequence/,

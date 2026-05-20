@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T05:10:16.847Z",
+  "generatedAt": "2026-05-20T05:12:39.732Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -108,6 +108,7 @@
     "Workup subtopic overview exposes scope and a single obvious next action before the workup list.",
     "Algorithm detail places the workup before optional tutorial or review links.",
     "Curriculum module pages present patterns, board focus, workup, and diagnostic focus in a stable reasoning order.",
+    "Curriculum module pages keep optional follow-up review after the core module framing.",
     "Lecture detail opens with an orientation block before the signout sequence.",
     "Lecture detail keeps optional follow-up review after the core signout sequence."
   ],
