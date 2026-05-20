@@ -272,6 +272,25 @@
       "Correct source links and reviewed teaching anchors before editing learner-facing parity copy.",
       "Use the frozen curriculum and CP interactive counts as the baseline for later T02 parity decisions.",
       "Keep learner-UX validator and AlgorithmNavigator out of this tranche while the content baseline is still being frozen."
+    ],
+    "sourceLinkNormalization": {
+      "hematologyAndRedCellCore": [
+        "Flow Cytometry and Hematopathology Studio",
+        "Case Tutorial: Paroxysmal Nocturnal Hemoglobinuria",
+        "Anemia in Oncology Patients: A Case Tutorial",
+        "Autoimmune Hemolytic Anemia (WAIHA, Cold Agglutinin, PCH, Drug-Induced)"
+      ],
+      "coagulationAndHemostasisCore": [
+        "Case Tutorial: Bleeding from Coagulation Defects",
+        "Immune Thrombocytopenia (ITP) Case Tutorial",
+        "Acquired Coagulation Factor Inhibitors: A Case Tutorial"
+      ],
+      "transfusionAndCellularTherapyCore": [
+        "DAT and Hemolytic Transfusion Reaction Studio",
+        "Blood Banking / Transfusion Medicine: Advanced Pathology Dossier",
+        "Corrected Platelet Count Increment (CCI)",
+        "Case Tutorial: HLA Antigens and Alleles"
+      ]
     ]
   },
   "swot": {

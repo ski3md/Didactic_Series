@@ -99,6 +99,17 @@ export interface TutorialLibraryParityBaseline {
 const arraysMatchExactly = (left: string[], right: string[]) =>
   left.length === right.length && left.every((value, index) => value === right[index]);
 
+const normalizeTutorialLookupTerm = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/^case tutorial:\s*/g, '')
+    .replace(/: a case tutorial$/g, '')
+    .replace(/\(itp\)/g, 'itp')
+    .replace(/\(cci\)/g, 'cci')
+    .replace(/[^\w\s]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
 export const validateDidacticGovernanceManifest = (manifest: ValidatedMappingsManifest) => {
   const canonicalRows = manifest.rows.filter((row) => row.canonicalForId);
   const validatedRows = canonicalRows.filter((row) => row.validatedForPromotion);
@@ -719,7 +730,7 @@ export const findBestTutorialMatch = (
   const searchableTutorials = filterScope.length > 0 ? filterScope : tutorials;
 
   const normalizedTerms = terms
-    .map((term) => term.trim().toLowerCase())
+    .map((term) => normalizeTutorialLookupTerm(term))
     .filter(Boolean);
 
   if (normalizedTerms.length === 0) {
@@ -730,6 +741,9 @@ export const findBestTutorialMatch = (
   let bestScore = -1;
 
   for (const tutorial of searchableTutorials) {
+    const normalizedTitle = normalizeTutorialLookupTerm(tutorial.title);
+    const normalizedCategory = normalizeTutorialLookupTerm(tutorial.category || '');
+    const normalizedTags = tutorial.tags.map((tag) => normalizeTutorialLookupTerm(tag));
     const haystack = [
       tutorial.title,
       tutorial.summary,
@@ -739,18 +753,28 @@ export const findBestTutorialMatch = (
     ]
       .join(' ')
       .toLowerCase();
+    const normalizedHaystack = normalizeTutorialLookupTerm(haystack);
 
     const score = normalizedTerms.reduce((total, term) => {
-      if (tutorial.title.toLowerCase().includes(term)) {
+      if (normalizedTitle === term) {
+        return total + 10;
+      }
+      if (normalizedTitle.includes(term)) {
         return total + 6;
       }
-      if ((tutorial.category || '').toLowerCase().includes(term)) {
+      if (normalizedCategory === term) {
+        return total + 5;
+      }
+      if (normalizedCategory.includes(term)) {
         return total + 4;
       }
-      if (tutorial.tags.some((tag) => tag.toLowerCase().includes(term))) {
+      if (normalizedTags.some((tag) => tag === term)) {
+        return total + 4;
+      }
+      if (normalizedTags.some((tag) => tag.includes(term))) {
         return total + 3;
       }
-      if (haystack.includes(term)) {
+      if (normalizedHaystack.includes(term)) {
         return total + 1;
       }
       return total;
