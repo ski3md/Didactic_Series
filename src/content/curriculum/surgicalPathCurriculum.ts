@@ -411,7 +411,7 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
   buildModule({
     moduleId: 'renal-and-testicular-core',
     title: 'Renal and Testicular Core Module',
-    summary: 'High-yield GU block linking renal mass workup, papillary and eosinophilic differentials, seminoma versus NSGCT, and stromal tumor pitfalls.',
+    summary: 'High-yield genitourinary block linking renal mass workup, papillary and eosinophilic differentials, seminoma versus NSGCT, and stromal tumor pitfalls.',
     subspecialty: 'Genitourinary',
     patternFamilies: ['clear-cell', 'papillary', 'oncocytic', 'small-round-blue-cell'],
     specimenContexts: ['biopsy', 'resection', 'margin', 'frozen-section'],
@@ -442,8 +442,8 @@ export const surgicalPathCurriculumModules: SurgicalPathModule[] = [
   }),
   buildModule({
     moduleId: 'lower-gu-core',
-    title: 'Lower GU Core Module',
-    summary: 'Planned boards block for prostate, bladder, urethra, and penile pathology, with current GU assets staged behind broader renal and testicular coverage.',
+    title: 'Lower Genitourinary Core Module',
+    summary: 'Planned boards block for prostate, bladder, urethra, and penile pathology, with current genitourinary assets staged behind broader renal and testicular coverage.',
     subspecialty: 'Genitourinary',
     patternFamilies: ['papillary', 'glandular'],
     specimenContexts: ['biopsy', 'resection', 'margin', 'lymph-node'],

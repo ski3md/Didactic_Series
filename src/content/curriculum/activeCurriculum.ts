@@ -67,7 +67,7 @@ export const activeCurriculumModules: ActiveCurriculumModule[] = [
   {
     moduleId: 'small-round-blue-cell-differential',
     title: 'Small Round Blue Cell Differential',
-    summary: 'Compact pattern block for round-blue-cell lesions across GU, mesenchymal, neuro, and pediatric contexts.',
+    summary: 'Compact pattern block for round-blue-cell lesions across genitourinary, mesenchymal, neuro, and pediatric contexts.',
     subspecialty: 'Foundations',
     boardPriority: 'high-yield',
     promotionState: 'staged',
@@ -157,7 +157,7 @@ export const activeCurriculumModules: ActiveCurriculumModule[] = [
   {
     moduleId: 'renal-testicular-core',
     title: 'Renal and Testicular Core Module',
-    summary: 'Clear-cell, papillary, oncocytic, seminomatous, and germ-cell high-yield diagnostics anchored to the existing GU lectures.',
+    summary: 'Clear-cell, papillary, oncocytic, seminomatous, and germ-cell high-yield diagnostics anchored to the existing genitourinary lectures.',
     subspecialty: 'Genitourinary',
     boardPriority: 'core',
     promotionState: 'canonical',
@@ -174,7 +174,7 @@ export const activeCurriculumModules: ActiveCurriculumModule[] = [
   },
   {
     moduleId: 'lower-gu-bladder-core',
-    title: 'Lower GU and Bladder Core Module',
+    title: 'Lower Genitourinary and Bladder Core Module',
     summary: 'High-yield bladder teaching block built around papillary grading, CIS, TURBT staging, and invasive urothelial carcinoma.',
     subspecialty: 'Genitourinary',
     boardPriority: 'high-yield',
