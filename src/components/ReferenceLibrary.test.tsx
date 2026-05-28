@@ -194,4 +194,11 @@ describe('ReferenceLibrary', () => {
     expect(await screen.findByText('Morphology-first review')).toBeInTheDocument();
     expect(screen.getAllByRole('button', { name: /small blue cell/i }).length).toBeGreaterThan(0);
   });
+
+  it('uses Genitourinary instead of GU on the public Reference Library surface', async () => {
+    render(<ReferenceLibrary user={null} />);
+
+    expect(await screen.findAllByRole('button', { name: /Genitourinary/i })).not.toHaveLength(0);
+    expect(screen.queryByRole('button', { name: /^GU$/i })).not.toBeInTheDocument();
+  });
 });

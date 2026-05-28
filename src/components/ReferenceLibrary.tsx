@@ -151,6 +151,11 @@ const titleCase = (value: string) =>
     .replace(/\bPdf\b/g, 'PDF')
     .replace(/\bH&e\b/g, 'H&E');
 
+const normalizeReferenceLibraryPublicLabel = (value: string) =>
+  value
+    .replace(/^GU\b/g, 'Genitourinary')
+    .replace(/\bGU\b/g, 'Genitourinary');
+
 const cleanDocumentTitle = (image: SupplementalReferenceImage) => {
   const sourceName = image.sourceDocument || image.sourcePath.split('/').pop() || image.title;
   return titleCase(
@@ -512,7 +517,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
     },
     {
       id: 'preset-gu',
-      title: 'GU',
+      title: 'Genitourinary',
       description: 'Genitourinary pathology comparison',
       focusTerms: ['renal', 'bladder', 'urothelial', 'seminoma'],
     },
@@ -1060,7 +1065,9 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                   : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-900'
               }`}
             >
-              {specialty.replace(/ Pathology Sign-Out Simulations| Sign-Out Simulations/g, '')}
+              {normalizeReferenceLibraryPublicLabel(
+                specialty.replace(/ Pathology Sign-Out Simulations| Sign-Out Simulations/g, '')
+              )}
             </button>
           ))}
         </div>
