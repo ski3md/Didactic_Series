@@ -32,6 +32,13 @@ export interface PromotedLectureRecord extends ImportedLectureRecord {
   sourceLabel: string;
 }
 
+const normalizeLectureCategory = (category: string | null) => {
+  if (category === 'GU Pathology') {
+    return 'Genitourinary Pathology';
+  }
+  return category;
+};
+
 const curatedLectures = ([
   ...(curatedLectureData as ImportedLectureRecord[]),
   ...(customLectureData as ImportedLectureRecord[]),
@@ -39,6 +46,7 @@ const curatedLectures = ([
 ])
   .map((lecture) => ({
   ...lecture,
+  category: normalizeLectureCategory(lecture.category),
   lectureTrack: 'curated' as const,
   sourceLabel: lecture.sourceRepo === 'didactic_series' ? 'P@thfndr Local' : 'Curated GU Imports',
 }));
@@ -47,6 +55,7 @@ const corePrinciplesLectures = (downloadsLectureData as ImportedLectureRecord[])
   .filter((lecture) => lecture.sourceRepo === 'ioc-next-app')
   .map((lecture) => ({
     ...lecture,
+    category: normalizeLectureCategory(lecture.category),
     lectureTrack: 'core-principles' as const,
     sourceLabel: 'Core Principles Series',
   }));
