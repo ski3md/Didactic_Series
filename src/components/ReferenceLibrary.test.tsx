@@ -85,6 +85,8 @@ describe('ReferenceLibrary', () => {
   it('renders morphology gateway immunophenotype guidance for small blue cell review', async () => {
     render(<ReferenceLibrary user={null} />);
 
+    expect(await screen.findByText('Morphology-first review')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /start with the closest pattern/i })).toBeInTheDocument();
     const gatewayButton = (await screen.findAllByRole('button', { name: /small blue cell/i }))[0];
     expect(within(gatewayButton).getByText('Immunophenotype branch')).toBeInTheDocument();
     expect(
@@ -148,5 +150,48 @@ describe('ReferenceLibrary', () => {
     expect(screen.getByRole('heading', { name: /small blue cell differential/i })).toBeInTheDocument();
     expect(screen.getByDisplayValue('small blue cell')).toBeInTheDocument();
     expect(screen.getAllByText('small blue cell').length).toBeGreaterThan(0);
+  });
+
+  it('falls back to a morphology-ready specialty when the cold default has no morphology tags', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({
+          imageCount: 2,
+          images: [
+            {
+              id: 'breast-plain-1',
+              title: 'breast teaching image H&E',
+              specialty: 'breast',
+              localPath: 'reference-images/breast-plain-1.png',
+              sourcePath: 'reference-images/breast-plain-1.png',
+              bytes: 1200,
+              extension: 'png',
+              caption: 'Routine breast teaching image without morphology-tag keywords.',
+              sourceDocument: 'breast_reference.pdf',
+              pageNumber: 2,
+            },
+            {
+              id: 'thoracic-small-blue-1',
+              title: 'small blue cell thoracic biopsy CK7 40x',
+              specialty: 'thoracic',
+              localPath: 'reference-images/thoracic-small-blue-1.png',
+              sourcePath: 'reference-images/thoracic-small-blue-1.png',
+              bytes: 1500,
+              extension: 'png',
+              caption: 'Differential remains broad and immunostain workup is pending before lineage assignment.',
+              sourceDocument: 'thoracic_small_blue_review.pdf',
+              pageNumber: 6,
+            },
+          ],
+        }),
+      })
+    );
+
+    render(<ReferenceLibrary user={null} />);
+
+    expect(await screen.findByText('Morphology-first review')).toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: /small blue cell/i }).length).toBeGreaterThan(0);
   });
 });

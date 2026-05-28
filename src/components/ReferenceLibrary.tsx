@@ -101,6 +101,8 @@ const signoutImages = (signoutImageReferenceIndex.images ?? []) as SignoutRefere
 const SUPPLEMENTAL_PAGE_SIZE = 60;
 const emptySupplementalManifest: SupplementalReferenceImageManifest = { imageCount: 0, images: [] };
 const REFERENCE_LIBRARY_VIEW_STATE_KEY = 'didactic_series_reference_library_view_state';
+const DEFAULT_SUPPLEMENTAL_SPECIALTY = 'thoracic';
+const MORPHOLOGY_READY_SPECIALTY_PREFERENCE = ['thoracic', 'genitourinary', 'general'];
 
 interface ReferenceLibraryViewState {
   selectedSignoutSpecialty: string;
@@ -191,6 +193,31 @@ const supplementalImageSrc = (image: SupplementalReferenceImage) => {
   return `${import.meta.env.BASE_URL}${image.localPath}`;
 };
 
+const specialtyHasMorphologyTags = (images: SupplementalReferenceImage[], specialty: string) =>
+  images.some(
+    (image) =>
+      image.specialty === specialty &&
+      inferMorphologyTags(image.title, image.caption, image.sourceDocument).length > 0
+  );
+
+const getMorphologyReadySpecialty = (images: SupplementalReferenceImage[], currentSpecialty: string) => {
+  if (specialtyHasMorphologyTags(images, currentSpecialty)) {
+    return currentSpecialty;
+  }
+
+  for (const specialty of MORPHOLOGY_READY_SPECIALTY_PREFERENCE) {
+    if (specialtyHasMorphologyTags(images, specialty)) {
+      return specialty;
+    }
+  }
+
+  const firstTaggedSpecialty = Array.from(new Set(images.map((image) => image.specialty))).find((specialty) =>
+    specialtyHasMorphologyTags(images, specialty)
+  );
+
+  return firstTaggedSpecialty ?? currentSpecialty;
+};
+
 const matchesSupplementalSearch = (image: SupplementalReferenceImage, searchTerm: string) => {
   const query = searchTerm.trim().toLowerCase();
   if (!query) return true;
@@ -244,11 +271,12 @@ const collectionPresetMap: Record<
 const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
   const [focusIntent, setFocusIntent] = useState<ReferenceLibraryIntent | null>(null);
   const [selectedSignoutSpecialty, setSelectedSignoutSpecialty] = useState('GU Pathology Sign-Out Simulations');
-  const [selectedSupplementalSpecialty, setSelectedSupplementalSpecialty] = useState('breast');
+  const [selectedSupplementalSpecialty, setSelectedSupplementalSpecialty] = useState(DEFAULT_SUPPLEMENTAL_SPECIALTY);
   const [supplementalSearch, setSupplementalSearch] = useState('');
   const [supplementalPage, setSupplementalPage] = useState(1);
   const [selectedCompetencyLevel, setSelectedCompetencyLevel] = useState<LearnerLevel>('PGY1');
   const [supplementalManifest, setSupplementalManifest] = useState<SupplementalReferenceImageManifest>(emptySupplementalManifest);
+  const [hasStoredSupplementalSelection, setHasStoredSupplementalSelection] = useState(false);
   const atlasSummaries = getAtlasCollectionSummaries();
   const supplementalImages = useMemo(() => supplementalManifest.images ?? [], [supplementalManifest]);
   const signoutSpecialties = useMemo(
@@ -357,6 +385,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
       setSelectedSupplementalSpecialty(storedView.selectedSupplementalSpecialty);
       setSupplementalSearch(storedView.supplementalSearch);
       setSupplementalPage(storedView.supplementalPage);
+      setHasStoredSupplementalSelection(Boolean(storedView.selectedSupplementalSpecialty));
     }
   }, []);
 
@@ -399,6 +428,22 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (supplementalImages.length === 0) {
+      return;
+    }
+
+    const availableSpecialties = new Set(supplementalImages.map((image) => image.specialty));
+    if (hasStoredSupplementalSelection && availableSpecialties.has(selectedSupplementalSpecialty)) {
+      return;
+    }
+
+    const morphologyReadySpecialty = getMorphologyReadySpecialty(supplementalImages, selectedSupplementalSpecialty);
+    if (morphologyReadySpecialty !== selectedSupplementalSpecialty) {
+      setSelectedSupplementalSpecialty(morphologyReadySpecialty);
+    }
+  }, [hasStoredSupplementalSelection, selectedSupplementalSpecialty, supplementalImages]);
 
   useEffect(() => {
     setSupplementalPage(1);
