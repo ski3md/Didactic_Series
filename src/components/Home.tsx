@@ -334,9 +334,9 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
   const alternateRoutes = [
     {
       key: 'systems',
-      title: 'GU, GI, and visceral systems',
+      title: 'Genitourinary, GI, and visceral systems',
       description: 'Move into organ systems after the core breast and gyn pass.',
-      actionLabel: 'Open GU Core',
+      actionLabel: 'Open Genitourinary Core',
       action: () => openCurriculumModule('renal-testicular-core'),
     },
     {
@@ -364,7 +364,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
     },
     {
       key: 'gu-gi',
-      title: 'GU / GI',
+      title: 'Genitourinary / GI',
       modules: guGiHighlights,
       actionLabel: 'Open lane',
       action: () => openCurriculumModule('renal-testicular-core'),
@@ -451,7 +451,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
             step: '2',
             title: 'Teach from the overview',
             text: 'Use the teaching sequence and microscopy review as the session structure.',
-            label: 'Start GU WHO testis',
+            label: 'Start Genitourinary WHO testis',
             action: () => openLectureLibrary(masterclassLectures.find((lecture) => lecture.id === 'testicular_who_complete_pathology') as PromotedLectureRecord | undefined),
           },
           {
@@ -529,7 +529,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
               onClick={() => openCurriculumModule('renal-testicular-core')}
               className="block w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-sky-300 hover:bg-sky-50"
             >
-              GU curriculum
+              Genitourinary curriculum
             </button>
             <button
               type="button"

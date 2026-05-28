@@ -148,4 +148,15 @@ describe('Home', () => {
 
     expect(screen.queryByRole('button', { name: /reference library/i })).not.toBeInTheDocument();
   });
+
+  it('uses Genitourinary instead of GU on learner-facing home labels', () => {
+    const onSectionChange = vi.fn();
+
+    render(<Home onSectionChange={onSectionChange} user={null} preferences={preferences} />);
+
+    expect(screen.getByText('Start Genitourinary WHO testis')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Genitourinary curriculum/i })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /^GU curriculum$/i })).not.toBeInTheDocument();
+    expect(screen.queryByText(/^Start GU WHO testis$/i)).not.toBeInTheDocument();
+  });
 });
