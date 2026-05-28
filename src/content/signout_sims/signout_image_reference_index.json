@@ -7,7 +7,7 @@
     {
       "caseId": "gu-prostate-acinar-biopsy-gg1",
       "title": "Prostate needle biopsy: acinar adenocarcinoma, Grade Group 1",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "biopsy",
       "localPath": "reference-library/gu-signout/prostate-acinar-adenocarcinoma-cc0.jpg",
       "publicPath": "reference-library/gu-signout/prostate-acinar-adenocarcinoma-cc0.jpg",
@@ -22,7 +22,7 @@
     {
       "caseId": "gu-prostate-gg2-pattern4",
       "title": "Prostate biopsy: acinar adenocarcinoma with Gleason pattern 4",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "biopsy",
       "localPath": "reference-library/gu-signout/prostate-gleason-pattern-4-cc-by-sa.jpg",
       "publicPath": "reference-library/gu-signout/prostate-gleason-pattern-4-cc-by-sa.jpg",
@@ -37,7 +37,7 @@
     {
       "caseId": "gu-prostate-bph-turp",
       "title": "Prostate chips: benign prostatic hyperplasia",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "gross-only",
       "localPath": "reference-library/gu-signout/benign-prostatic-hyperplasia-he.jpg",
       "publicPath": "reference-library/gu-signout/benign-prostatic-hyperplasia-he.jpg",
@@ -52,7 +52,7 @@
     {
       "caseId": "gu-bladder-cis-biopsy",
       "title": "Bladder biopsy: urothelial carcinoma in situ",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "biopsy",
       "localPath": "reference-library/acquired/acb2acd39c28a2d6b7bfde044242534a38455554.jpg",
       "publicPath": "reference-library/acquired/acb2acd39c28a2d6b7bfde044242534a38455554.jpg",
@@ -67,7 +67,7 @@
     {
       "caseId": "gu-punlmp-turbt",
       "title": "TURBT: papillary urothelial neoplasm of low malignant potential",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/8bc41cfcae3544f0afd8790c7b8709cb7f05facd.jpg",
       "publicPath": "reference-library/acquired/8bc41cfcae3544f0afd8790c7b8709cb7f05facd.jpg",
@@ -82,7 +82,7 @@
     {
       "caseId": "gu-high-grade-papillary-uc-turbt",
       "title": "TURBT: high-grade papillary urothelial carcinoma",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/d07852f6c51d3828ffa4852a51af8d3b63811c6b.jpg",
       "publicPath": "reference-library/acquired/d07852f6c51d3828ffa4852a51af8d3b63811c6b.jpg",
@@ -97,7 +97,7 @@
     {
       "caseId": "gu-bcg-cystitis-mimic",
       "title": "Bladder biopsy after BCG: granulomatous cystitis",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "biopsy",
       "localPath": "reference-library/acquired/0da1ef85d0eea13811da587680b1a8128c8c376c.jpg",
       "publicPath": "reference-library/acquired/0da1ef85d0eea13811da587680b1a8128c8c376c.jpg",
@@ -112,7 +112,7 @@
     {
       "caseId": "gu-clear-cell-rcc-nephrectomy",
       "title": "Nephrectomy: clear cell renal cell carcinoma",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/b7b9c4be75283aec75932847b81906b4813cdda6.jpg",
       "publicPath": "reference-library/acquired/b7b9c4be75283aec75932847b81906b4813cdda6.jpg",
@@ -127,7 +127,7 @@
     {
       "caseId": "gu-renal-oncocytoma-partial",
       "title": "Partial nephrectomy: renal oncocytoma",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/6e3a581809c77e5e07ef776938f90a32b769b42c.jpg",
       "publicPath": "reference-library/acquired/6e3a581809c77e5e07ef776938f90a32b769b42c.jpg",
@@ -142,7 +142,7 @@
     {
       "caseId": "gu-chromophobe-rcc-partial",
       "title": "Partial nephrectomy: chromophobe renal cell carcinoma",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/f2d4b77a5a21b97efb7f55782e5368f202366527.jpg",
       "publicPath": "reference-library/acquired/f2d4b77a5a21b97efb7f55782e5368f202366527.jpg",
@@ -157,7 +157,7 @@
     {
       "caseId": "gu-seminoma-orchiectomy",
       "title": "Radical orchiectomy: seminoma",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/09c2b02a11432b772cbcf1232bf63f0126d54046.jpg",
       "publicPath": "reference-library/acquired/09c2b02a11432b772cbcf1232bf63f0126d54046.jpg",
@@ -172,7 +172,7 @@
     {
       "caseId": "gu-mixed-gct-orchiectomy",
       "title": "Radical orchiectomy: mixed germ cell tumor",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/0ffcbe55f6f0a30fff8b666360ae6b84241a513c.jpg",
       "publicPath": "reference-library/acquired/0ffcbe55f6f0a30fff8b666360ae6b84241a513c.jpg",
@@ -187,7 +187,7 @@
     {
       "caseId": "gu-postpubertal-teratoma",
       "title": "Testis tumor: postpubertal teratoma component",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/5151456af2836466487c394803538b23efca4e21.jpg",
       "publicPath": "reference-library/acquired/5151456af2836466487c394803538b23efca4e21.jpg",
@@ -202,7 +202,7 @@
     {
       "caseId": "gu-spermatocytic-tumor",
       "title": "Radical orchiectomy: spermatocytic tumor",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/aaf3b9f768b72a37b8c081b7dec8fb45c480c667.jpg",
       "publicPath": "reference-library/acquired/aaf3b9f768b72a37b8c081b7dec8fb45c480c667.jpg",
@@ -217,7 +217,7 @@
     {
       "caseId": "gu-sertoli-cell-tumor",
       "title": "Testis tumor: Sertoli cell tumor",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/9414772ae243ff1072c6882912ef051e3215a6d5.jpg",
       "publicPath": "reference-library/acquired/9414772ae243ff1072c6882912ef051e3215a6d5.jpg",
@@ -232,7 +232,7 @@
     {
       "caseId": "gu-pein-biopsy",
       "title": "Penile biopsy: high-grade penile intraepithelial neoplasia",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "biopsy",
       "localPath": "reference-library/acquired/640ce6ac3f070f9088f98b5fe0be01de5b4ea032.jpg",
       "publicPath": "reference-library/acquired/640ce6ac3f070f9088f98b5fe0be01de5b4ea032.jpg",
@@ -247,7 +247,7 @@
     {
       "caseId": "gu-penile-scc-penectomy",
       "title": "Penectomy: invasive squamous cell carcinoma",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/80952ef17f815a861ec261d55813f2922438d876.jpg",
       "publicPath": "reference-library/acquired/80952ef17f815a861ec261d55813f2922438d876.jpg",
@@ -262,7 +262,7 @@
     {
       "caseId": "gu-penile-verrucous-carcinoma",
       "title": "Penectomy: verrucous squamous cell carcinoma",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "resection",
       "localPath": "reference-library/acquired/7c54defbfdeadce7a32ddede50df8a5ae394ccd5.jpg",
       "publicPath": "reference-library/acquired/7c54defbfdeadce7a32ddede50df8a5ae394ccd5.jpg",
@@ -277,7 +277,7 @@
     {
       "caseId": "gu-extramammary-paget-penile",
       "title": "Penoscrotal skin biopsy: extramammary Paget disease",
-      "specialty": "GU Pathology Sign-Out Simulations",
+      "specialty": "Genitourinary Pathology Sign-Out Simulations",
       "workflow": "biopsy",
       "localPath": "reference-library/acquired/b89023112b03385c53cc05ee6752380d3aa52aeb.jpg",
       "publicPath": "reference-library/acquired/b89023112b03385c53cc05ee6752380d3aa52aeb.jpg",

@@ -8,10 +8,10 @@ vi.mock('./BreastSignoutMasterclass.tsx', () => ({
 }));
 
 describe('GUSignOutSims', () => {
-  it('uses Genitourinary Pathology instead of GU Pathology on the directory surface', () => {
+  it('uses Genitourinary instead of GU Pathology on the directory surface', () => {
     render(<GUSignOutSims />);
 
-    expect(screen.getByText('Genitourinary Pathology')).toBeInTheDocument();
+    expect(screen.getByText('Genitourinary')).toBeInTheDocument();
     expect(screen.queryByText('GU Pathology')).not.toBeInTheDocument();
   });
 });

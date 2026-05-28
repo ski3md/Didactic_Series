@@ -275,7 +275,7 @@ const collectionPresetMap: Record<
 
 const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
   const [focusIntent, setFocusIntent] = useState<ReferenceLibraryIntent | null>(null);
-  const [selectedSignoutSpecialty, setSelectedSignoutSpecialty] = useState('GU Pathology Sign-Out Simulations');
+  const [selectedSignoutSpecialty, setSelectedSignoutSpecialty] = useState('Genitourinary Pathology Sign-Out Simulations');
   const [selectedSupplementalSpecialty, setSelectedSupplementalSpecialty] = useState(DEFAULT_SUPPLEMENTAL_SPECIALTY);
   const [supplementalSearch, setSupplementalSearch] = useState('');
   const [supplementalPage, setSupplementalPage] = useState(1);

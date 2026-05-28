@@ -200,5 +200,6 @@ describe('ReferenceLibrary', () => {
 
     expect(await screen.findAllByRole('button', { name: /Genitourinary/i })).not.toHaveLength(0);
     expect(screen.queryByRole('button', { name: /^GU$/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /GU Pathology/i })).not.toBeInTheDocument();
   });
 });
