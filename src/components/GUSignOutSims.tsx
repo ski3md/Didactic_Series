@@ -89,7 +89,7 @@ const specialtyLabel = (title: string) =>
     .replace(/ pathology sign-out simulations/i, '')
     .replace(/ sign-out simulations/i, '')
     .replace(/^GI$/, 'GI Pathology')
-    .replace(/^GU$/, 'GU Pathology');
+    .replace(/^GU$/, 'Genitourinary Pathology');
 
 const breastCurriculum = breastCurriculumData as { cases?: Array<{ id: string }> };
 const breastAssets = breastAssetData as { assets?: Array<{ caseId: string }> };
