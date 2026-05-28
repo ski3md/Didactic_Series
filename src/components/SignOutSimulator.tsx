@@ -194,7 +194,7 @@ const SignOutSimulator: React.FC<{ user: User | null; onSectionChange?: (section
         {
             id: 'specialty' as const,
             title: 'Subspecialty Sign-Out',
-            description: 'Breast, GI, GU, gynecologic, thoracic, head and neck, heme, cytology, bone and soft tissue, and neuropathology.',
+            description: 'Breast, GI, genitourinary, gynecologic, thoracic, head and neck, heme, cytology, bone and soft tissue, and neuropathology.',
             meta: 'Open a subspecialty page',
         },
         {
