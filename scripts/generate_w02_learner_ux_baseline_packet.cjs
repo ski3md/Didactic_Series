@@ -71,6 +71,21 @@ const payload = {
       'PathologyCurriculum.test.tsx asserts CP source-link map orientation and linked tutorial or operational-studio start guidance.',
       'validate_w02_learner_ux_baseline_packet.test.ts asserts UX rules and focused checks stay green.',
     ],
+    reusableStartHereOutput: {
+      name: 'W02 source-linked CP learner start-here guide',
+      routeUse:
+        'Start at Home, open a CP pathway, use the linked CP tutorial or operational studio, then move to supporting review.',
+      ownedSurfaces: ['Home', 'Pathology Curriculum', 'Reference Library', 'Competency Matrix'],
+      publicSafe: true,
+    },
+    driftIsolation: {
+      nextWordingRisk:
+        'Later learner-UX or routing work could shorten CP labels and hide the reviewed source-link guard.',
+      containment:
+        'Keep reviewed-source-link wording visible whenever CP learners are moved from overview, curriculum, reference, or competency surfaces into tutorials or operational studios.',
+      nextTrancheGuard:
+        'T09 Workups and Routing may improve route behavior, but must not alter CP source-link normalization, CP root counts, or source-truth mappings without regenerating T07 and T08 proof.',
+    },
   },
   execution: {
     completedStepIds: [
@@ -81,12 +96,11 @@ const payload = {
       'W02-L3_LEARNER_UX-C05',
       'W02-L3_LEARNER_UX-C06',
       'W02-L3_LEARNER_UX-C07',
-    ],
-    remainingStepIds: [
       'W02-L3_LEARNER_UX-C08',
       'W02-L3_LEARNER_UX-C09',
       'W02-L3_LEARNER_UX-C10',
     ],
+    remainingStepIds: [],
     proofCommands: [
       'npm run didactics:ux:validate',
       'npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx',
@@ -136,12 +150,18 @@ const md = [
   ...Object.entries(payload.baseline.uxRules).map(([key, value]) => `- UX rule ${key}: ${value ? 'PASS' : 'FAIL'}`),
   ...Object.entries(payload.baseline.focusedUxChecks).map(([key, value]) => `- Focused UX check ${key}: ${value ? 'PASS' : 'FAIL'}`),
   ...payload.baseline.targetedTestCoverage.map((item) => `- Targeted test coverage: ${item}`),
+  `- Reusable output: ${payload.baseline.reusableStartHereOutput.name}`,
+  `- Reusable route use: ${payload.baseline.reusableStartHereOutput.routeUse}`,
+  `- Reusable public safe: ${payload.baseline.reusableStartHereOutput.publicSafe ? 'yes' : 'no'}`,
+  `- Next wording risk: ${payload.baseline.driftIsolation.nextWordingRisk}`,
+  `- Drift containment: ${payload.baseline.driftIsolation.containment}`,
+  `- Next tranche guard: ${payload.baseline.driftIsolation.nextTrancheGuard}`,
   ...payload.baseline.ownedSurfaces.map((surface) => `- Owned surface: ${surface}`),
   '',
   '## Execution',
   '',
   `- Completed step ids: ${payload.execution.completedStepIds.join(', ')}`,
-  `- Remaining step ids: ${payload.execution.remainingStepIds.join(', ')}`,
+  `- Remaining step ids: ${payload.execution.remainingStepIds.length ? payload.execution.remainingStepIds.join(', ') : 'none'}`,
   `- Proof commands: ${payload.execution.proofCommands.map((cmd) => `\`${cmd}\``).join(', ')}`,
   '',
   '## Completion Gate',

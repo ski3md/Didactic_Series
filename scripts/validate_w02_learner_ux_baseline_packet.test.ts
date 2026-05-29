@@ -25,6 +25,17 @@ const packet = require('../reports/w02_learner_ux_baseline_packet.json') as {
     uxRules: Record<string, boolean>;
     focusedUxChecks: Record<string, boolean>;
     targetedTestCoverage: string[];
+    reusableStartHereOutput: {
+      name: string;
+      routeUse: string;
+      ownedSurfaces: string[];
+      publicSafe: boolean;
+    };
+    driftIsolation: {
+      nextWordingRisk: string;
+      containment: string;
+      nextTrancheGuard: string;
+    };
   };
   execution: {
     completedStepIds: string[];
@@ -67,6 +78,12 @@ describe('W02 learner UX baseline packet', () => {
     expect(Object.values(packet.baseline.focusedUxChecks).every(Boolean)).toBe(true);
     expect(packet.baseline.targetedTestCoverage).toHaveLength(3);
     expect(packet.baseline.targetedTestCoverage.join(' ')).toContain('PathologyCurriculum.test.tsx');
+    expect(packet.baseline.reusableStartHereOutput.name).toBe('W02 source-linked CP learner start-here guide');
+    expect(packet.baseline.reusableStartHereOutput.routeUse).toContain('linked CP tutorial or operational studio');
+    expect(packet.baseline.reusableStartHereOutput.ownedSurfaces).toHaveLength(4);
+    expect(packet.baseline.reusableStartHereOutput.publicSafe).toBe(true);
+    expect(packet.baseline.driftIsolation.nextWordingRisk).toContain('hide the reviewed source-link guard');
+    expect(packet.baseline.driftIsolation.nextTrancheGuard).toContain('T09 Workups and Routing');
   });
 
   it('keeps T08 scoped to baseline work until UI wording changes land', () => {
@@ -78,8 +95,11 @@ describe('W02 learner UX baseline packet', () => {
       'W02-L3_LEARNER_UX-C05',
       'W02-L3_LEARNER_UX-C06',
       'W02-L3_LEARNER_UX-C07',
+      'W02-L3_LEARNER_UX-C08',
+      'W02-L3_LEARNER_UX-C09',
+      'W02-L3_LEARNER_UX-C10',
     ]);
-    expect(packet.execution.remainingStepIds).toHaveLength(3);
+    expect(packet.execution.remainingStepIds).toHaveLength(0);
     expect(packet.execution.proofCommands).toContain('npm run didactics:ux:validate');
     expect(packet.completionGate.baselineGreen).toBe(true);
     expect(packet.completionGate.staleWhen).toHaveLength(3);

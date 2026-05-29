@@ -1,6 +1,6 @@
 # W02 Learner UX Baseline Packet
 
-Generated: 2026-05-29T23:06:09.178Z
+Generated: 2026-05-29T23:13:57.527Z
 
 Tranche: T08 W02 Learner UX
 Status: in_progress
@@ -39,6 +39,12 @@ Status: in_progress
 - Targeted test coverage: Home.test.tsx asserts reviewed CP source-link wording and the reviewed CP tutorial-check route label.
 - Targeted test coverage: PathologyCurriculum.test.tsx asserts CP source-link map orientation and linked tutorial or operational-studio start guidance.
 - Targeted test coverage: validate_w02_learner_ux_baseline_packet.test.ts asserts UX rules and focused checks stay green.
+- Reusable output: W02 source-linked CP learner start-here guide
+- Reusable route use: Start at Home, open a CP pathway, use the linked CP tutorial or operational studio, then move to supporting review.
+- Reusable public safe: yes
+- Next wording risk: Later learner-UX or routing work could shorten CP labels and hide the reviewed source-link guard.
+- Drift containment: Keep reviewed-source-link wording visible whenever CP learners are moved from overview, curriculum, reference, or competency surfaces into tutorials or operational studios.
+- Next tranche guard: T09 Workups and Routing may improve route behavior, but must not alter CP source-link normalization, CP root counts, or source-truth mappings without regenerating T07 and T08 proof.
 - Owned surface: src/components/Home.tsx
 - Owned surface: src/components/PathologyCurriculum.tsx
 - Owned surface: src/components/ReferenceLibrary.tsx
@@ -46,8 +52,8 @@ Status: in_progress
 
 ## Execution
 
-- Completed step ids: W02-L3_LEARNER_UX-C01, W02-L3_LEARNER_UX-C02, W02-L3_LEARNER_UX-C03, W02-L3_LEARNER_UX-C04, W02-L3_LEARNER_UX-C05, W02-L3_LEARNER_UX-C06, W02-L3_LEARNER_UX-C07
-- Remaining step ids: W02-L3_LEARNER_UX-C08, W02-L3_LEARNER_UX-C09, W02-L3_LEARNER_UX-C10
+- Completed step ids: W02-L3_LEARNER_UX-C01, W02-L3_LEARNER_UX-C02, W02-L3_LEARNER_UX-C03, W02-L3_LEARNER_UX-C04, W02-L3_LEARNER_UX-C05, W02-L3_LEARNER_UX-C06, W02-L3_LEARNER_UX-C07, W02-L3_LEARNER_UX-C08, W02-L3_LEARNER_UX-C09, W02-L3_LEARNER_UX-C10
+- Remaining step ids: none
 - Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `npx vitest run scripts/validate_w02_learner_ux_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
 
 ## Completion Gate

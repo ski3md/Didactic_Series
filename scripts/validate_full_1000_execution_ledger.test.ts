@@ -33,8 +33,8 @@ describe('full 1000 execution ledger assets', () => {
 
   it('marks the reconciled opening tranches as completed and opens T07 from proof', () => {
     expect(ledger.trancheStatusCounts).toEqual({
-      completed: 7,
-      in_progress: 1,
+      completed: 8,
+      in_progress: 0,
       planned: 92,
     });
 
@@ -118,8 +118,8 @@ describe('full 1000 execution ledger assets', () => {
     expect(t07?.completionEvidence.remainingStepIds).toHaveLength(0);
 
     expect(t08).toMatchObject({
-      status: 'in_progress',
-      statusBasis: 'learner_ux_rules_checks_packet',
+      status: 'completed',
+      statusBasis: 'exact_proof_bundle',
     });
     expect(t08?.completionEvidence.completedStepIds).toEqual([
       'W02-L3_LEARNER_UX-C01',
@@ -129,8 +129,11 @@ describe('full 1000 execution ledger assets', () => {
       'W02-L3_LEARNER_UX-C05',
       'W02-L3_LEARNER_UX-C06',
       'W02-L3_LEARNER_UX-C07',
+      'W02-L3_LEARNER_UX-C08',
+      'W02-L3_LEARNER_UX-C09',
+      'W02-L3_LEARNER_UX-C10',
     ]);
-    expect(t08?.completionEvidence.remainingStepIds).toHaveLength(3);
+    expect(t08?.completionEvidence.remainingStepIds).toHaveLength(0);
   });
 
   it('renders the required ledger sections and immediate next sequence', () => {
@@ -142,8 +145,8 @@ describe('full 1000 execution ledger assets', () => {
     expect(markdown).toContain('### T05 W01 Contracts and Proof');
     expect(ledger.immediateNextSequence).toHaveLength(5);
     expect(ledger.immediateNextSequence[0]).toBe(
-      'Continue T08 W02 Learner UX from reports/w02_learner_ux_baseline_packet.json.',
+      'Open T09 W02 Workups and Routing from reports/w02_learner_ux_closeout_packet.json.',
     );
-    expect(ledger.immediateNextSequence[4]).toBe('Do not open T09 until T08 is proof-complete or intentionally superseded.');
+    expect(ledger.immediateNextSequence[4]).toBe('Do not open T10 until T09 is proof-complete or intentionally superseded.');
   });
 });

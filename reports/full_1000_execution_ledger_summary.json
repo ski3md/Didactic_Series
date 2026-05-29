@@ -1,38 +1,29 @@
 {
-  "generatedAt": "2026-05-29T23:06:34.814Z",
+  "generatedAt": "2026-05-29T23:13:58.029Z",
   "currentState": {
     "branch": "main",
-    "head": "9e635a81",
-    "sync": "1/0 vs origin/main",
+    "head": "2a7fcbc5",
+    "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
-    "immediateNextAction": "Continue T08 W02 Learner UX from the baseline packet while preserving the T07 source-link map."
+    "immediateNextAction": "Open T09 W02 Workups and Routing from the closed T08 learner-UX handoff packet."
   },
   "completionDefinition": {
     "terminalWave": "W20",
     "requiredState": "All W01 through W20 lane records are either landed or intentionally superseded, each wave ends with its required proof bundle, and the release-story outputs in W19/W20 are present."
   },
   "trancheStatusCounts": {
-    "completed": 7,
-    "in_progress": 1,
+    "completed": 8,
+    "in_progress": 0,
     "planned": 92
   },
   "firstOpenWave": "W02",
   "immediateNextSequence": [
-    "Continue T08 W02 Learner UX from reports/w02_learner_ux_baseline_packet.json.",
-    "Preserve the T07 source-link map while improving learner-facing orientation and wording.",
-    "Run the T08 learner-UX proof commands before workups/routing work begins.",
-    "Close T08 with a bounded learner-UX proof packet and ledger update.",
-    "Do not open T09 until T08 is proof-complete or intentionally superseded."
+    "Open T09 W02 Workups and Routing from reports/w02_learner_ux_closeout_packet.json.",
+    "Preserve the T07 source-link map and T08 learner source-link wording while improving route behavior.",
+    "Run the T09 workups/routing proof commands before contracts/proof work begins.",
+    "Close T09 with a bounded workups/routing proof packet and ledger update.",
+    "Do not open T10 until T09 is proof-complete or intentionally superseded."
   ],
-  "inProgressTranches": [
-    {
-      "id": "T08",
-      "wave": "W02",
-      "lane": "L3_LEARNER_UX",
-      "statusBasis": "learner_ux_rules_checks_packet",
-      "completedSteps": 7,
-      "remainingSteps": 3
-    }
-  ]
+  "inProgressTranches": []
 }

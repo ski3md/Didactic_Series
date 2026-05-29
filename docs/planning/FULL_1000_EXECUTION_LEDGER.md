@@ -5,11 +5,11 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `9e635a81`
-- Sync: `1/0 vs origin/main`
+- HEAD: `2a7fcbc5`
+- Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W02`
-- Immediate next action: Continue T08 W02 Learner UX from the baseline packet while preserving the T07 source-link map.
+- Immediate next action: Open T09 W02 Workups and Routing from the closed T08 learner-UX handoff packet.
 
 ## Completion Definition
 
@@ -28,17 +28,17 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ## Tranche Status Counts
 
-- Completed: 7
-- In progress: 1
+- Completed: 8
+- In progress: 0
 - Planned: 92
 
 ## Immediate Next Sequence
 
-1. Continue T08 W02 Learner UX from reports/w02_learner_ux_baseline_packet.json.
-2. Preserve the T07 source-link map while improving learner-facing orientation and wording.
-3. Run the T08 learner-UX proof commands before workups/routing work begins.
-4. Close T08 with a bounded learner-UX proof packet and ledger update.
-5. Do not open T09 until T08 is proof-complete or intentionally superseded.
+1. Open T09 W02 Workups and Routing from reports/w02_learner_ux_closeout_packet.json.
+2. Preserve the T07 source-link map and T08 learner source-link wording while improving route behavior.
+3. Run the T09 workups/routing proof commands before contracts/proof work begins.
+4. Close T09 with a bounded workups/routing proof packet and ledger update.
+5. Do not open T10 until T09 is proof-complete or intentionally superseded.
 
 ## Tranche Map
 
@@ -161,21 +161,23 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ### T08 W02 Learner UX
 
-- Status: `in_progress`
-- Status basis: `learner_ux_rules_checks_packet`
+- Status: `completed`
+- Status basis: `exact_proof_bundle`
 - Goal: This lane makes the study experience clearer and calmer for reconcile raw mappings with reviewed mappings.
-- Completed steps: 7
-- Remaining steps: 3
+- Completed steps: 10
+- Remaining steps: 0
 - Evidence commits: none
-- Evidence artifacts: `reports/w02_content_parity_closeout_packet.json`, `reports/didactics_learning_ux_report.json`, `reports/w02_learner_ux_baseline_packet.json`
+- Evidence artifacts: `reports/w02_content_parity_closeout_packet.json`, `reports/didactics_learning_ux_report.json`, `reports/w02_learner_ux_baseline_packet.json`, `reports/w02_learner_ux_closeout_packet.json`
 - Remaining owned files: none
-- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `npx vitest run scripts/validate_w02_learner_ux_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
-- Summary: W02 learner UX is open with learner path clarity, page-flow guidance, plain wording, UX rules, focused checks, and targeted test coverage tied to the closed T07 content-parity proof; reusable output, drift isolation, and closeout proof remain bounded inside T08.
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `npx vitest run scripts/validate_w02_learner_ux_baseline_packet.test.ts scripts/validate_w02_learner_ux_closeout_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
+- Summary: W02 learner UX is formally closed with learner path clarity, page-flow guidance, plain wording, UX rules, focused checks, targeted test coverage, reusable output, drift isolation, and a T09 handoff tied to the closed T07 content-parity proof.
 
   - T08 now opens from the closed T07 content-parity handoff instead of editing learner wording before content parity proof exists.
   - The learner-UX baseline freezes the current didactics UX validator state and owned surfaces before W02 wording changes begin.
   - Home, Pathology Curriculum, Reference Library, and Competency Matrix now orient CP learners around reviewed source-linked tutorials or operational studios.
   - The T08 packet now carries learner-UX rules, focused UX checks, and targeted component assertions for the CP source-link wording.
+  - The reusable start-here output and wording-risk guard are packaged for W02 routing work.
+  - The T08 closeout packet hands T09 a guard against reopening CP source-link or source-truth decisions.
   - The T07 source-link map and reviewed CP truth lock are explicit learner-UX guardrails.
 
 ### T09 W02 Workups and Routing

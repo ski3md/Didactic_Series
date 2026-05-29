@@ -367,8 +367,8 @@ const TRANCHE_OVERRIDES = {
       'W02 content parity is formally closed with source-link parity, public wording, content rules, focused proof checks, reusable output, drift isolation, and a T08 handoff packet aligned to the reviewed CP truth bundle.',
   },
   T08: {
-    status: 'in_progress',
-    statusBasis: 'learner_ux_rules_checks_packet',
+    status: 'completed',
+    statusBasis: 'exact_proof_bundle',
     completionEvidence: {
       completedStepIds: [
         'W02-L3_LEARNER_UX-C01',
@@ -378,22 +378,22 @@ const TRANCHE_OVERRIDES = {
         'W02-L3_LEARNER_UX-C05',
         'W02-L3_LEARNER_UX-C06',
         'W02-L3_LEARNER_UX-C07',
-      ],
-      remainingStepIds: [
         'W02-L3_LEARNER_UX-C08',
         'W02-L3_LEARNER_UX-C09',
         'W02-L3_LEARNER_UX-C10',
       ],
+      remainingStepIds: [],
     },
     evidenceArtifacts: [
       'reports/w02_content_parity_closeout_packet.json',
       'reports/didactics_learning_ux_report.json',
       'reports/w02_learner_ux_baseline_packet.json',
+      'reports/w02_learner_ux_closeout_packet.json',
     ],
     proofCommands: [
       'npm run didactics:ux:validate',
       'npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx',
-      'npx vitest run scripts/validate_w02_learner_ux_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
+      'npx vitest run scripts/validate_w02_learner_ux_baseline_packet.test.ts scripts/validate_w02_learner_ux_closeout_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
       'git diff --check',
     ],
     supportingProgress: [
@@ -401,10 +401,12 @@ const TRANCHE_OVERRIDES = {
       'The learner-UX baseline freezes the current didactics UX validator state and owned surfaces before W02 wording changes begin.',
       'Home, Pathology Curriculum, Reference Library, and Competency Matrix now orient CP learners around reviewed source-linked tutorials or operational studios.',
       'The T08 packet now carries learner-UX rules, focused UX checks, and targeted component assertions for the CP source-link wording.',
+      'The reusable start-here output and wording-risk guard are packaged for W02 routing work.',
+      'The T08 closeout packet hands T09 a guard against reopening CP source-link or source-truth decisions.',
       'The T07 source-link map and reviewed CP truth lock are explicit learner-UX guardrails.',
     ],
     summary:
-      'W02 learner UX is open with learner path clarity, page-flow guidance, plain wording, UX rules, focused checks, and targeted test coverage tied to the closed T07 content-parity proof; reusable output, drift isolation, and closeout proof remain bounded inside T08.',
+      'W02 learner UX is formally closed with learner path clarity, page-flow guidance, plain wording, UX rules, focused checks, targeted test coverage, reusable output, drift isolation, and a T09 handoff tied to the closed T07 content-parity proof.',
   },
 };
 
@@ -504,7 +506,7 @@ const buildLedger = () => {
       sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
       firstOpenWave: 'W02',
-      immediateNextAction: 'Continue T08 W02 Learner UX from the baseline packet while preserving the T07 source-link map.',
+      immediateNextAction: 'Open T09 W02 Workups and Routing from the closed T08 learner-UX handoff packet.',
     },
     completionDefinition: {
       terminalWave: 'W20',
@@ -514,11 +516,11 @@ const buildLedger = () => {
     groupedPhases,
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
-      'Continue T08 W02 Learner UX from reports/w02_learner_ux_baseline_packet.json.',
-      'Preserve the T07 source-link map while improving learner-facing orientation and wording.',
-      'Run the T08 learner-UX proof commands before workups/routing work begins.',
-      'Close T08 with a bounded learner-UX proof packet and ledger update.',
-      'Do not open T09 until T08 is proof-complete or intentionally superseded.',
+      'Open T09 W02 Workups and Routing from reports/w02_learner_ux_closeout_packet.json.',
+      'Preserve the T07 source-link map and T08 learner source-link wording while improving route behavior.',
+      'Run the T09 workups/routing proof commands before contracts/proof work begins.',
+      'Close T09 with a bounded workups/routing proof packet and ledger update.',
+      'Do not open T10 until T09 is proof-complete or intentionally superseded.',
     ],
     tranches,
   };
