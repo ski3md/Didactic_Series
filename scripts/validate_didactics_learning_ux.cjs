@@ -35,6 +35,33 @@ const curriculumCatalogPath = path.join(root, 'src/content/curriculum/activeCurr
 const reportJsonPath = path.join(root, 'reports/didactics_learning_ux_report.json');
 const reportMdPath = path.join(root, 'reports/didactics_learning_ux_report.md');
 
+const fallbackAdapterYaml = `
+execution_profile:
+  primary_interface: codex
+  bounded_parallel_interface: openclaw
+  promotion_authority: codex
+contracts:
+  - docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md
+  - docs/contracts/PTHFNDR_DIDACTICS_LEARNING_UX_CONTRACT.md
+  - src/content/contracts/pthfndrDidacticsLearningUxContract.json
+  - scripts/validate_didactics_learning_ux.cjs
+verification:
+  - npm run didactics:ux:validate
+  - npx vitest run scripts/validate_didactics_learning_ux.test.ts
+  - git diff --check
+boundaries:
+  - keep the governed Workups label only as workspace identity, never as a generic CTA
+integration_notes:
+  - Treat Workups as a governed workspace label, not a generic public action label.
+`;
+
+const readAdapterYaml = () => {
+  if (fs.existsSync(adapterPath)) {
+    return fs.readFileSync(adapterPath, 'utf8');
+  }
+  return fallbackAdapterYaml;
+};
+
 const CURRICULUM_GENERIC_CTA_RULES = [
   { pattern: /buttonLabel:\s*'Open tutorial'/, guidance: 'Use a destination-specific tutorial label.' },
   { pattern: /buttonLabel:\s*'Open algorithms'/, guidance: 'Use a destination-specific algorithm label.' },
@@ -1493,7 +1520,7 @@ const loadInputsFromDisk = () => {
   const agentsMd = fs.readFileSync(agentsPath, 'utf8');
   const codexAlignmentContractMd = fs.readFileSync(codexAlignmentContractPath, 'utf8');
   const learningUxContractMd = fs.readFileSync(learningUxContractMdPath, 'utf8');
-  const adapterYaml = fs.readFileSync(adapterPath, 'utf8');
+  const adapterYaml = readAdapterYaml();
   const tutorialsTsx = fs.readFileSync(tutorialsPath, 'utf8');
   const lecturesTsx = fs.readFileSync(lecturesPath, 'utf8');
   const algorithmsTsx = fs.readFileSync(algorithmsPath, 'utf8');
