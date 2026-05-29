@@ -130,6 +130,7 @@ describe('Home', () => {
 
     render(<Home onSectionChange={onSectionChange} user={null} preferences={preferences} />);
 
+    expect(screen.getByText(/Use reviewed source links to stay oriented/i)).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: /Reviewed CP tutorial checks/i }));
 
     expect(mocks.setTutorialLibraryIntent).toHaveBeenCalledWith(

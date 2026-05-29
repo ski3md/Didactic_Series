@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T22:36:22.842Z",
+  "generatedAt": "2026-05-29T23:06:09.178Z",
   "tranche": "T08 W02 Learner UX",
   "status": "in_progress",
   "source": {
@@ -31,19 +31,39 @@
       "Reference Library keeps CP review anchored to source-linked tutorials or operational studios.",
       "Competency Matrix tells learners to keep reviewed CP source links attached to each next study action."
     ],
-    "plainWordingGuard": "Learner-facing wording may clarify orientation and next action, but must not alter CP source-link normalization, CP root counts, or source-truth mappings."
+    "plainWordingGuard": "Learner-facing wording may clarify orientation and next action, but must not alter CP source-link normalization, CP root counts, or source-truth mappings.",
+    "uxRules": {
+      "preserveT07SourceLinkMap": true,
+      "noCpTruthMutation": true,
+      "cpLearnerPathMustNameReviewedLinks": true,
+      "cpOperationalStudioLanguageRequired": true,
+      "sourceLinkedPracticeLanguageRequired": true
+    },
+    "focusedUxChecks": {
+      "homeMentionsReviewedSourceLinks": true,
+      "homeCpChecksUseReviewedLabel": true,
+      "curriculumMentionsReviewedSourceLinkMap": true,
+      "curriculumCpStartHereMentionsLinkedTutorialOrStudio": true,
+      "referenceAnchorsCpToSourceLinkedStudio": true,
+      "competencyKeepsCpSourceLinksAttached": true
+    },
+    "targetedTestCoverage": [
+      "Home.test.tsx asserts reviewed CP source-link wording and the reviewed CP tutorial-check route label.",
+      "PathologyCurriculum.test.tsx asserts CP source-link map orientation and linked tutorial or operational-studio start guidance.",
+      "validate_w02_learner_ux_baseline_packet.test.ts asserts UX rules and focused checks stay green."
+    ]
   },
   "execution": {
     "completedStepIds": [
       "W02-L3_LEARNER_UX-C01",
       "W02-L3_LEARNER_UX-C02",
       "W02-L3_LEARNER_UX-C03",
-      "W02-L3_LEARNER_UX-C04"
-    ],
-    "remainingStepIds": [
+      "W02-L3_LEARNER_UX-C04",
       "W02-L3_LEARNER_UX-C05",
       "W02-L3_LEARNER_UX-C06",
-      "W02-L3_LEARNER_UX-C07",
+      "W02-L3_LEARNER_UX-C07"
+    ],
+    "remainingStepIds": [
       "W02-L3_LEARNER_UX-C08",
       "W02-L3_LEARNER_UX-C09",
       "W02-L3_LEARNER_UX-C10"

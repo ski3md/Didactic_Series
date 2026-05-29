@@ -22,6 +22,9 @@ const packet = require('../reports/w02_learner_ux_baseline_packet.json') as {
     learnerUxFocus: string;
     learnerPathClarity: string[];
     plainWordingGuard: string;
+    uxRules: Record<string, boolean>;
+    focusedUxChecks: Record<string, boolean>;
+    targetedTestCoverage: string[];
   };
   execution: {
     completedStepIds: string[];
@@ -60,6 +63,10 @@ describe('W02 learner UX baseline packet', () => {
     expect(packet.baseline.learnerPathClarity).toHaveLength(4);
     expect(packet.baseline.learnerPathClarity.join(' ')).toContain('operational studio');
     expect(packet.baseline.plainWordingGuard).toContain('must not alter CP source-link normalization');
+    expect(Object.values(packet.baseline.uxRules).every(Boolean)).toBe(true);
+    expect(Object.values(packet.baseline.focusedUxChecks).every(Boolean)).toBe(true);
+    expect(packet.baseline.targetedTestCoverage).toHaveLength(3);
+    expect(packet.baseline.targetedTestCoverage.join(' ')).toContain('PathologyCurriculum.test.tsx');
   });
 
   it('keeps T08 scoped to baseline work until UI wording changes land', () => {
@@ -68,8 +75,11 @@ describe('W02 learner UX baseline packet', () => {
       'W02-L3_LEARNER_UX-C02',
       'W02-L3_LEARNER_UX-C03',
       'W02-L3_LEARNER_UX-C04',
+      'W02-L3_LEARNER_UX-C05',
+      'W02-L3_LEARNER_UX-C06',
+      'W02-L3_LEARNER_UX-C07',
     ]);
-    expect(packet.execution.remainingStepIds).toHaveLength(6);
+    expect(packet.execution.remainingStepIds).toHaveLength(3);
     expect(packet.execution.proofCommands).toContain('npm run didactics:ux:validate');
     expect(packet.completionGate.baselineGreen).toBe(true);
     expect(packet.completionGate.staleWhen).toHaveLength(3);

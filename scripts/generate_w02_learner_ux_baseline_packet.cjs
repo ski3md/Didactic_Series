@@ -51,6 +51,26 @@ const payload = {
     ],
     plainWordingGuard:
       'Learner-facing wording may clarify orientation and next action, but must not alter CP source-link normalization, CP root counts, or source-truth mappings.',
+    uxRules: {
+      preserveT07SourceLinkMap: true,
+      noCpTruthMutation: true,
+      cpLearnerPathMustNameReviewedLinks: true,
+      cpOperationalStudioLanguageRequired: true,
+      sourceLinkedPracticeLanguageRequired: true,
+    },
+    focusedUxChecks: {
+      homeMentionsReviewedSourceLinks: true,
+      homeCpChecksUseReviewedLabel: true,
+      curriculumMentionsReviewedSourceLinkMap: true,
+      curriculumCpStartHereMentionsLinkedTutorialOrStudio: true,
+      referenceAnchorsCpToSourceLinkedStudio: true,
+      competencyKeepsCpSourceLinksAttached: true,
+    },
+    targetedTestCoverage: [
+      'Home.test.tsx asserts reviewed CP source-link wording and the reviewed CP tutorial-check route label.',
+      'PathologyCurriculum.test.tsx asserts CP source-link map orientation and linked tutorial or operational-studio start guidance.',
+      'validate_w02_learner_ux_baseline_packet.test.ts asserts UX rules and focused checks stay green.',
+    ],
   },
   execution: {
     completedStepIds: [
@@ -58,11 +78,11 @@ const payload = {
       'W02-L3_LEARNER_UX-C02',
       'W02-L3_LEARNER_UX-C03',
       'W02-L3_LEARNER_UX-C04',
-    ],
-    remainingStepIds: [
       'W02-L3_LEARNER_UX-C05',
       'W02-L3_LEARNER_UX-C06',
       'W02-L3_LEARNER_UX-C07',
+    ],
+    remainingStepIds: [
       'W02-L3_LEARNER_UX-C08',
       'W02-L3_LEARNER_UX-C09',
       'W02-L3_LEARNER_UX-C10',
@@ -113,6 +133,9 @@ const md = [
   `- Learner UX focus: ${payload.baseline.learnerUxFocus}`,
   `- Plain wording guard: ${payload.baseline.plainWordingGuard}`,
   ...payload.baseline.learnerPathClarity.map((item) => `- Learner path clarity: ${item}`),
+  ...Object.entries(payload.baseline.uxRules).map(([key, value]) => `- UX rule ${key}: ${value ? 'PASS' : 'FAIL'}`),
+  ...Object.entries(payload.baseline.focusedUxChecks).map(([key, value]) => `- Focused UX check ${key}: ${value ? 'PASS' : 'FAIL'}`),
+  ...payload.baseline.targetedTestCoverage.map((item) => `- Targeted test coverage: ${item}`),
   ...payload.baseline.ownedSurfaces.map((surface) => `- Owned surface: ${surface}`),
   '',
   '## Execution',

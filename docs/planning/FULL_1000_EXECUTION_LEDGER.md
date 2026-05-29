@@ -5,8 +5,8 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `e3845bb4`
-- Sync: `1/0 vs origin/main`
+- HEAD: `cca73403`
+- Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W02`
 - Immediate next action: Continue T08 W02 Learner UX from the baseline packet while preserving the T07 source-link map.
@@ -162,19 +162,20 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ### T08 W02 Learner UX
 
 - Status: `in_progress`
-- Status basis: `learner_path_wording_packet`
+- Status basis: `learner_ux_rules_checks_packet`
 - Goal: This lane makes the study experience clearer and calmer for reconcile raw mappings with reviewed mappings.
-- Completed steps: 4
-- Remaining steps: 6
+- Completed steps: 7
+- Remaining steps: 3
 - Evidence commits: none
 - Evidence artifacts: `reports/w02_content_parity_closeout_packet.json`, `reports/didactics_learning_ux_report.json`, `reports/w02_learner_ux_baseline_packet.json`
 - Remaining owned files: none
 - Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `npx vitest run scripts/validate_w02_learner_ux_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
-- Summary: W02 learner UX is open with learner path clarity, page-flow guidance, and plain wording tied to the closed T07 content-parity proof; UX rules, checks, reusable output, drift isolation, and closeout proof remain bounded inside T08.
+- Summary: W02 learner UX is open with learner path clarity, page-flow guidance, plain wording, UX rules, focused checks, and targeted test coverage tied to the closed T07 content-parity proof; reusable output, drift isolation, and closeout proof remain bounded inside T08.
 
   - T08 now opens from the closed T07 content-parity handoff instead of editing learner wording before content parity proof exists.
   - The learner-UX baseline freezes the current didactics UX validator state and owned surfaces before W02 wording changes begin.
   - Home, Pathology Curriculum, Reference Library, and Competency Matrix now orient CP learners around reviewed source-linked tutorials or operational studios.
+  - The T08 packet now carries learner-UX rules, focused UX checks, and targeted component assertions for the CP source-link wording.
   - The T07 source-link map and reviewed CP truth lock are explicit learner-UX guardrails.
 
 ### T09 W02 Workups and Routing

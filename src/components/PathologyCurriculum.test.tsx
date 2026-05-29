@@ -117,7 +117,9 @@ describe('PathologyCurriculum', () => {
     render(<PathologyCurriculum onSectionChange={onSectionChange} preferences={preferences} />);
 
     await user.click(screen.getByRole('button', { name: 'CP' }));
+    expect(screen.getByText(/CP study paths keep the reviewed source-link map intact/i)).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: /Transfusion and Cellular Therapy Core Clinical Pathology Ready/i }));
+    expect(screen.getByText(/linked CP tutorial or operational studio/i)).toBeInTheDocument();
     await user.click(screen.getAllByRole('button', { name: /transfusion reaction triage/i })[1]);
 
     expect(mocks.setAlgorithmNavigatorIntent).toHaveBeenCalledWith(
