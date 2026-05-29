@@ -1,0 +1,111 @@
+{
+  "generatedAt": "2026-05-29T21:38:07.589Z",
+  "tranche": "T07 W02 Content Parity",
+  "status": "in_progress",
+  "source": {
+    "t06Closeout": "reports/w02_cp_truth_closeout_packet.json",
+    "t06MappingCoverage": "reports/w02_cp_truth_mapping_coverage_packet.json",
+    "contentJourneyReport": "reports/content_consumption_journey_evaluation.json",
+    "validatedMappingsManifest": "reports/validated_mappings_manifest.json"
+  },
+  "authority": {
+    "t06Closed": true,
+    "t06StatusBasis": "exact_proof_bundle",
+    "t06NextTranche": "T07 W02 Content Parity",
+    "t06Guard": "Do not change source-truth mappings inside T07 unless T06 proof packets are regenerated first."
+  },
+  "baseline": {
+    "contentBaselineWave": "W01",
+    "contentBaselineTranche": "T02",
+    "currentWave": "W02",
+    "curriculumModules": 26,
+    "canonicalModules": 15,
+    "stagedModules": 11,
+    "clinicalPathCanonicalModules": 7,
+    "clinicalPathStagedModules": 0,
+    "clinicalPathInteractiveTutorials": 13,
+    "clinicalPathInteractiveAssets": 16,
+    "clinicalPathRootTopics": 6
+  },
+  "truthAlignment": {
+    "cpDomainValidatedRows": 285,
+    "cpGovernedRows": 23,
+    "cpCrosswalkRows": 262,
+    "cpRootCount": 6,
+    "cpRoots": [
+      "Blood Banking/Transfusion Medicine",
+      "Chemical Pathology",
+      "Hematopathology for Clinical Pathology",
+      "Management and Informatics",
+      "Medical Microbiology",
+      "Chemical Pathology + Blood Banking/Transfusion Medicine"
+    ],
+    "canonicalCpManifestRows": 285,
+    "unmappedValidatedCpRows": 0,
+    "missingReviewOwnerRows": 0
+  },
+  "contentParityOverlay": {
+    "visibleClusterCount": 7,
+    "sourceLinkNormalizationGroups": 4,
+    "visibleClusterIds": [
+      "clinicalPathFoundations",
+      "hematologyAndRedCellCore",
+      "coagulationAndHemostasisCore",
+      "transfusionAndCellularTherapyCore",
+      "clinicalMicrobiologyCore",
+      "chemicalPathologyCore",
+      "managementAndInformaticsCore"
+    ],
+    "normalizedSourceLinkGroupIds": [
+      "clinicalPathFoundations",
+      "hematologyAndRedCellCore",
+      "coagulationAndHemostasisCore",
+      "transfusionAndCellularTherapyCore"
+    ],
+    "parityRisks": [
+      "Clinical Pathology remains tutorial-first even though all 7 CP curriculum modules are now canonical, so visible route framing still has to prove depth rather than imply it.",
+      "Visible journey guidance can drift ahead of governed route readiness if source-map and content edits are not checkpointed together.",
+      "Interactive CP growth can overstate parity unless curriculum, catalog, and journey surfaces freeze the same baseline counts."
+    ],
+    "nextParityMoves": [
+      "Correct source links and reviewed teaching anchors before editing learner-facing parity copy.",
+      "Use the frozen curriculum and CP interactive counts as the baseline for later T02 parity decisions.",
+      "Keep learner-UX validator and AlgorithmNavigator out of this tranche while the content baseline is still being frozen."
+    ],
+    "unresolvedW02ContentGaps": [
+      "The reusable content-consumption report still carries the W01/T02 baseline identity, so T07 needs a W02-specific parity overlay before learner-facing copy changes.",
+      "Only four visible cluster groups currently have explicit source-link normalization groups, so the remaining CP curriculum clusters need content-parity review before T07 closeout.",
+      "The closed T06 truth packet freezes six CP roots, while content parity still presents seven visible CP clusters; T07 must preserve the pedagogic cluster split without changing source truth."
+    ]
+  },
+  "execution": {
+    "completedStepIds": [
+      "W02-L2_CONTENT_PARITY-C01"
+    ],
+    "remainingStepIds": [
+      "W02-L2_CONTENT_PARITY-C02",
+      "W02-L2_CONTENT_PARITY-C03",
+      "W02-L2_CONTENT_PARITY-C04",
+      "W02-L2_CONTENT_PARITY-C05",
+      "W02-L2_CONTENT_PARITY-C06",
+      "W02-L2_CONTENT_PARITY-C07",
+      "W02-L2_CONTENT_PARITY-C08",
+      "W02-L2_CONTENT_PARITY-C09",
+      "W02-L2_CONTENT_PARITY-C10"
+    ],
+    "proofCommands": [
+      "npm run cp:precision:validate",
+      "npm run test -- src/utils/tutorialLibraryCatalog.test.ts",
+      "npx vitest run scripts/validate_w02_content_parity_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts",
+      "git diff --check"
+    ]
+  },
+  "completionGate": {
+    "baselineGreen": true,
+    "staleWhen": [
+      "T06 closeout or mapping coverage changes without regenerating this packet",
+      "content_consumption_journey_evaluation.json contentBaseline changes without regenerating this packet",
+      "validated_mappings_manifest.json CP canonical rows change without regenerating this packet"
+    ]
+  }
+}

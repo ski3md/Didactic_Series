@@ -323,6 +323,43 @@ const TRANCHE_OVERRIDES = {
     summary:
       'W02 CP truth is formally closed with reviewed-versus-raw baseline proof, duplicate-shadow exclusions, targeted CP mapping coverage, and a T07 handoff packet.',
   },
+  T07: {
+    status: 'in_progress',
+    statusBasis: 'baseline_packet',
+    completionEvidence: {
+      completedStepIds: ['W02-L2_CONTENT_PARITY-C01'],
+      remainingStepIds: [
+        'W02-L2_CONTENT_PARITY-C02',
+        'W02-L2_CONTENT_PARITY-C03',
+        'W02-L2_CONTENT_PARITY-C04',
+        'W02-L2_CONTENT_PARITY-C05',
+        'W02-L2_CONTENT_PARITY-C06',
+        'W02-L2_CONTENT_PARITY-C07',
+        'W02-L2_CONTENT_PARITY-C08',
+        'W02-L2_CONTENT_PARITY-C09',
+        'W02-L2_CONTENT_PARITY-C10',
+      ],
+    },
+    evidenceArtifacts: [
+      'reports/content_consumption_journey_evaluation.json',
+      'reports/w02_cp_truth_closeout_packet.json',
+      'reports/w02_cp_truth_mapping_coverage_packet.json',
+      'reports/w02_content_parity_baseline_packet.json',
+    ],
+    proofCommands: [
+      'npm run cp:precision:validate',
+      'npm run test -- src/utils/tutorialLibraryCatalog.test.ts',
+      'npx vitest run scripts/validate_w02_content_parity_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
+      'git diff --check',
+    ],
+    supportingProgress: [
+      'T07 now opens from the closed T06 CP truth handoff instead of reusing W01 content parity state implicitly.',
+      'The W02 content parity baseline freezes CP modules, interactive tutorials, reviewed CP roots, and remaining visible-cluster/source-link gaps before learner-facing content edits.',
+      'Source-truth mappings remain locked for T07 unless the T06 proof bundle is regenerated first.',
+    ],
+    summary:
+      'W02 content parity is open with a baseline packet aligned to the reviewed CP truth bundle; learner-facing source-link and study-page parity work remains bounded inside T07.',
+  },
 };
 
 const trancheId = (index) => `T${String(index).padStart(2, '0')}`;
@@ -421,7 +458,7 @@ const buildLedger = () => {
       sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
       firstOpenWave: 'W02',
-      immediateNextAction: 'Open T07 W02 Content Parity from the closed T06 CP truth handoff packet.',
+      immediateNextAction: 'Continue T07 W02 Content Parity by aligning source links and visible study-page parity to the W02 baseline packet.',
     },
     completionDefinition: {
       terminalWave: 'W20',
@@ -431,8 +468,8 @@ const buildLedger = () => {
     groupedPhases,
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
-      'Open T07 W02 Content Parity from reports/w02_cp_truth_closeout_packet.json.',
-      'Refresh the W02 content parity baseline against the closed CP truth proof bundle.',
+      'Continue T07 W02 Content Parity from reports/w02_content_parity_baseline_packet.json.',
+      'Align learner-facing source links to the reviewed W02 CP truth coverage without changing source-truth mappings.',
       'Align learner-facing tutorial and curriculum content to the reviewed W02 mapping coverage.',
       'Run the T07 content-parity proof commands before learner-UX work begins.',
       'Close T07 with a bounded content-parity proof packet and ledger update.',

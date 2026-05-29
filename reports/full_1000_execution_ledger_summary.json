@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-29T21:28:54.017Z",
+  "generatedAt": "2026-05-29T21:38:07.738Z",
   "currentState": {
     "branch": "main",
-    "head": "b445d4b6",
-    "sync": "1/0 vs origin/main",
+    "head": "2553db3b",
+    "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
-    "immediateNextAction": "Open T07 W02 Content Parity from the closed T06 CP truth handoff packet."
+    "immediateNextAction": "Continue T07 W02 Content Parity by aligning source links and visible study-page parity to the W02 baseline packet."
   },
   "completionDefinition": {
     "terminalWave": "W20",
@@ -14,16 +14,25 @@
   },
   "trancheStatusCounts": {
     "completed": 6,
-    "in_progress": 0,
-    "planned": 94
+    "in_progress": 1,
+    "planned": 93
   },
   "firstOpenWave": "W02",
   "immediateNextSequence": [
-    "Open T07 W02 Content Parity from reports/w02_cp_truth_closeout_packet.json.",
-    "Refresh the W02 content parity baseline against the closed CP truth proof bundle.",
+    "Continue T07 W02 Content Parity from reports/w02_content_parity_baseline_packet.json.",
+    "Align learner-facing source links to the reviewed W02 CP truth coverage without changing source-truth mappings.",
     "Align learner-facing tutorial and curriculum content to the reviewed W02 mapping coverage.",
     "Run the T07 content-parity proof commands before learner-UX work begins.",
     "Close T07 with a bounded content-parity proof packet and ledger update."
   ],
-  "inProgressTranches": []
+  "inProgressTranches": [
+    {
+      "id": "T07",
+      "wave": "W02",
+      "lane": "L2_CONTENT_PARITY",
+      "statusBasis": "baseline_packet",
+      "completedSteps": 1,
+      "remainingSteps": 9
+    }
+  ]
 }

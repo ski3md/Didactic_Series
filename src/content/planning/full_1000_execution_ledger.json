@@ -10,11 +10,11 @@
   ],
   "currentState": {
     "branch": "main",
-    "head": "b445d4b6",
-    "sync": "1/0 vs origin/main",
+    "head": "2553db3b",
+    "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
-    "immediateNextAction": "Open T07 W02 Content Parity from the closed T06 CP truth handoff packet."
+    "immediateNextAction": "Continue T07 W02 Content Parity by aligning source links and visible study-page parity to the W02 baseline packet."
   },
   "completionDefinition": {
     "terminalWave": "W20",
@@ -127,12 +127,12 @@
   ],
   "trancheStatusCounts": {
     "completed": 6,
-    "in_progress": 0,
-    "planned": 94
+    "in_progress": 1,
+    "planned": 93
   },
   "immediateNextSequence": [
-    "Open T07 W02 Content Parity from reports/w02_cp_truth_closeout_packet.json.",
-    "Refresh the W02 content parity baseline against the closed CP truth proof bundle.",
+    "Continue T07 W02 Content Parity from reports/w02_content_parity_baseline_packet.json.",
+    "Align learner-facing source links to the reviewed W02 CP truth coverage without changing source-truth mappings.",
     "Align learner-facing tutorial and curriculum content to the reviewed W02 mapping coverage.",
     "Run the T07 content-parity proof commands before learner-UX work begins.",
     "Close T07 with a bounded content-parity proof packet and ledger update."
@@ -854,12 +854,13 @@
       "laneTitle": "Tutorials, curriculum, studio content, and content parity",
       "group": "G1",
       "goal": "This lane brings the learner-facing content into line with the reviewed truth for reconcile raw mappings with reviewed mappings.",
-      "status": "planned",
-      "statusBasis": "not_started",
+      "status": "in_progress",
+      "statusBasis": "baseline_packet",
       "completionEvidence": {
-        "completedStepIds": [],
+        "completedStepIds": [
+          "W02-L2_CONTENT_PARITY-C01"
+        ],
         "remainingStepIds": [
-          "W02-L2_CONTENT_PARITY-C01",
           "W02-L2_CONTENT_PARITY-C02",
           "W02-L2_CONTENT_PARITY-C03",
           "W02-L2_CONTENT_PARITY-C04",
@@ -939,13 +940,23 @@
       "proofCommands": [
         "npm run cp:precision:validate",
         "npm run test -- src/utils/tutorialLibraryCatalog.test.ts",
+        "npx vitest run scripts/validate_w02_content_parity_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts",
         "git diff --check"
       ],
       "evidenceCommits": [],
-      "evidenceArtifacts": [],
-      "supportingProgress": [],
+      "evidenceArtifacts": [
+        "reports/content_consumption_journey_evaluation.json",
+        "reports/w02_cp_truth_closeout_packet.json",
+        "reports/w02_cp_truth_mapping_coverage_packet.json",
+        "reports/w02_content_parity_baseline_packet.json"
+      ],
+      "supportingProgress": [
+        "T07 now opens from the closed T06 CP truth handoff instead of reusing W01 content parity state implicitly.",
+        "The W02 content parity baseline freezes CP modules, interactive tutorials, reviewed CP roots, and remaining visible-cluster/source-link gaps before learner-facing content edits.",
+        "Source-truth mappings remain locked for T07 unless the T06 proof bundle is regenerated first."
+      ],
       "remainingOwnedFiles": [],
-      "summary": "Not started in the formal tranche ledger yet."
+      "summary": "W02 content parity is open with a baseline packet aligned to the reviewed CP truth bundle; learner-facing source-link and study-page parity work remains bounded inside T07."
     },
     {
       "id": "T08",

@@ -31,11 +31,11 @@ describe('full 1000 execution ledger assets', () => {
     expect(ledger.groupedPhases[6]).toMatchObject({ id: 'G7', waves: ['W19', 'W20'] });
   });
 
-  it('marks the reconciled opening tranches as completed before T07 opens', () => {
+  it('marks the reconciled opening tranches as completed and opens T07 from proof', () => {
     expect(ledger.trancheStatusCounts).toEqual({
       completed: 6,
-      in_progress: 0,
-      planned: 94,
+      in_progress: 1,
+      planned: 93,
     });
 
     const t01 = ledger.tranches.find((tranche) => tranche.id === 'T01');
@@ -44,6 +44,7 @@ describe('full 1000 execution ledger assets', () => {
     const t04 = ledger.tranches.find((tranche) => tranche.id === 'T04');
     const t05 = ledger.tranches.find((tranche) => tranche.id === 'T05');
     const t06 = ledger.tranches.find((tranche) => tranche.id === 'T06');
+    const t07 = ledger.tranches.find((tranche) => tranche.id === 'T07');
 
     expect(t01).toMatchObject({
       status: 'completed',
@@ -96,6 +97,13 @@ describe('full 1000 execution ledger assets', () => {
       'W02-L1_CP_TRUTH-C10',
     ]);
     expect(t06?.completionEvidence.remainingStepIds).toHaveLength(0);
+
+    expect(t07).toMatchObject({
+      status: 'in_progress',
+      statusBasis: 'baseline_packet',
+    });
+    expect(t07?.completionEvidence.completedStepIds).toEqual(['W02-L2_CONTENT_PARITY-C01']);
+    expect(t07?.completionEvidence.remainingStepIds).toHaveLength(9);
   });
 
   it('renders the required ledger sections and immediate next sequence', () => {
@@ -107,7 +115,7 @@ describe('full 1000 execution ledger assets', () => {
     expect(markdown).toContain('### T05 W01 Contracts and Proof');
     expect(ledger.immediateNextSequence).toHaveLength(5);
     expect(ledger.immediateNextSequence[0]).toBe(
-      'Open T07 W02 Content Parity from reports/w02_cp_truth_closeout_packet.json.',
+      'Continue T07 W02 Content Parity from reports/w02_content_parity_baseline_packet.json.',
     );
     expect(ledger.immediateNextSequence[4]).toBe('Close T07 with a bounded content-parity proof packet and ledger update.');
   });
