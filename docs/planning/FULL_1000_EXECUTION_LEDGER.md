@@ -5,8 +5,8 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `2553db3b`
-- Sync: `0/0 vs origin/main`
+- HEAD: `e752e6e2`
+- Sync: `1/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W02`
 - Immediate next action: Continue T07 W02 Content Parity by aligning source links and visible study-page parity to the W02 baseline packet.

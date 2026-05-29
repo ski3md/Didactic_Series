@@ -10,8 +10,8 @@
   ],
   "currentState": {
     "branch": "main",
-    "head": "2553db3b",
-    "sync": "0/0 vs origin/main",
+    "head": "e752e6e2",
+    "sync": "1/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
     "immediateNextAction": "Continue T07 W02 Content Parity by aligning source links and visible study-page parity to the W02 baseline packet."
