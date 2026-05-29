@@ -69,6 +69,31 @@ describe('toAbpathScopeFromManifestRow', () => {
       sourceLine: null,
     });
   });
+
+  it('keeps Lung Primary rows from leaking under the Breast public topic', () => {
+    const row: ValidatedMappingManifestRow = {
+      id: 'ap-lung-primary',
+      title: 'AP: Lung Primary',
+      file: 'src/content/tutorials/tutorials.normalized.json',
+      track: 'surgical-path',
+      sourceType: 'crosswalk',
+      abpathDomain: 'AP',
+      sourceAnchorExists: true,
+      validatedForPromotion: true,
+      governancePending: false,
+      promotionStatus: 'validated',
+      canonicalForId: true,
+      canonicalSourceKey: 'src/content/tutorials/tutorials.normalized.json::ap-lung-primary',
+      abpathRoot: 'Breast',
+      abpathPrimaryPath: 'Breast > Lung Primary > Carcinoma',
+      conflictFlags: [],
+    };
+
+    const scope = toAbpathScopeFromManifestRow(row);
+
+    expect(scope?.root).toBe('Lung Primary');
+    expect(scope?.primaryPath).toBe('Breast > Lung Primary > Carcinoma');
+  });
 });
 
 describe('validateDidacticGovernanceManifest', () => {

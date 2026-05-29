@@ -469,10 +469,11 @@ const toAbpathScope = (mapping?: CrosswalkPrimaryMapping | null): TutorialAbpath
   if (!mapping) {
     return undefined;
   }
+  const publicRoot = resolvePublicAbpathRoot(mapping.root, mapping.path);
 
   return {
     domain: mapping.domain,
-    root: mapping.root,
+    root: publicRoot,
     primaryPath: mapping.path.join(' > '),
     title: mapping.title,
     confidence: mapping.confidence,
@@ -487,10 +488,11 @@ export const toAbpathScopeFromManifestRow = (row?: ValidatedMappingManifestRow |
   if (!row?.abpathRoot || !row.abpathPrimaryPath) {
     return undefined;
   }
+  const publicRoot = resolvePublicAbpathRoot(row.abpathRoot, row.abpathPrimaryPath.split(' > '));
 
   return {
     domain: row.abpathDomain,
-    root: row.abpathRoot,
+    root: publicRoot,
     primaryPath: row.abpathPrimaryPath,
     title: row.abpathPrimaryPath.split(' > ').at(-1) || row.abpathRoot,
     confidence:
@@ -507,6 +509,17 @@ export const toAbpathScopeFromManifestRow = (row?: ValidatedMappingManifestRow |
         : 'ABPath Anatomic Pathology Content Specifications',
     sourceLine: null,
   };
+};
+
+const resolvePublicAbpathRoot = (root: string, pathSegments: string[]) => {
+  const normalizedSegments = pathSegments.map((segment) => segment.trim()).filter(Boolean);
+  const secondSegment = normalizedSegments[1];
+
+  if (root === 'Breast' && secondSegment === 'Lung Primary') {
+    return 'Lung Primary';
+  }
+
+  return root;
 };
 
 const buildTopicChips = (
