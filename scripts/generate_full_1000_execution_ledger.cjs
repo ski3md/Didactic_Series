@@ -368,13 +368,15 @@ const TRANCHE_OVERRIDES = {
   },
   T08: {
     status: 'in_progress',
-    statusBasis: 'baseline_packet',
+    statusBasis: 'learner_path_wording_packet',
     completionEvidence: {
-      completedStepIds: ['W02-L3_LEARNER_UX-C01'],
-      remainingStepIds: [
+      completedStepIds: [
+        'W02-L3_LEARNER_UX-C01',
         'W02-L3_LEARNER_UX-C02',
         'W02-L3_LEARNER_UX-C03',
         'W02-L3_LEARNER_UX-C04',
+      ],
+      remainingStepIds: [
         'W02-L3_LEARNER_UX-C05',
         'W02-L3_LEARNER_UX-C06',
         'W02-L3_LEARNER_UX-C07',
@@ -397,10 +399,11 @@ const TRANCHE_OVERRIDES = {
     supportingProgress: [
       'T08 now opens from the closed T07 content-parity handoff instead of editing learner wording before content parity proof exists.',
       'The learner-UX baseline freezes the current didactics UX validator state and owned surfaces before W02 wording changes begin.',
+      'Home, Pathology Curriculum, Reference Library, and Competency Matrix now orient CP learners around reviewed source-linked tutorials or operational studios.',
       'The T07 source-link map and reviewed CP truth lock are explicit learner-UX guardrails.',
     ],
     summary:
-      'W02 learner UX is open with a baseline packet tied to the closed T07 content-parity proof; learner path clarity, page flow, plain wording, UX rules, checks, reusable output, drift isolation, and closeout proof remain bounded inside T08.',
+      'W02 learner UX is open with learner path clarity, page-flow guidance, and plain wording tied to the closed T07 content-parity proof; UX rules, checks, reusable output, drift isolation, and closeout proof remain bounded inside T08.',
   },
 };
 

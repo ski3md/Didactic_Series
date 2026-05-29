@@ -1,6 +1,6 @@
 # W02 Learner UX Baseline Packet
 
-Generated: 2026-05-29T22:02:54.142Z
+Generated: 2026-05-29T22:36:22.842Z
 
 Tranche: T08 W02 Learner UX
 Status: in_progress
@@ -20,6 +20,11 @@ Status: in_progress
 - UX pass count: 118
 - UX failure count: 0
 - Learner UX focus: Improve orientation and plain wording while preserving the T07 source-link map and reviewed CP truth lock.
+- Plain wording guard: Learner-facing wording may clarify orientation and next action, but must not alter CP source-link normalization, CP root counts, or source-truth mappings.
+- Learner path clarity: Home frames CP as a source-linked pathway rather than a generic tutorial shelf.
+- Learner path clarity: Pathology Curriculum tells learners to use the linked CP tutorial or operational studio before supporting review.
+- Learner path clarity: Reference Library keeps CP review anchored to source-linked tutorials or operational studios.
+- Learner path clarity: Competency Matrix tells learners to keep reviewed CP source links attached to each next study action.
 - Owned surface: src/components/Home.tsx
 - Owned surface: src/components/PathologyCurriculum.tsx
 - Owned surface: src/components/ReferenceLibrary.tsx
@@ -27,8 +32,8 @@ Status: in_progress
 
 ## Execution
 
-- Completed step ids: W02-L3_LEARNER_UX-C01
-- Remaining step ids: W02-L3_LEARNER_UX-C02, W02-L3_LEARNER_UX-C03, W02-L3_LEARNER_UX-C04, W02-L3_LEARNER_UX-C05, W02-L3_LEARNER_UX-C06, W02-L3_LEARNER_UX-C07, W02-L3_LEARNER_UX-C08, W02-L3_LEARNER_UX-C09, W02-L3_LEARNER_UX-C10
+- Completed step ids: W02-L3_LEARNER_UX-C01, W02-L3_LEARNER_UX-C02, W02-L3_LEARNER_UX-C03, W02-L3_LEARNER_UX-C04
+- Remaining step ids: W02-L3_LEARNER_UX-C05, W02-L3_LEARNER_UX-C06, W02-L3_LEARNER_UX-C07, W02-L3_LEARNER_UX-C08, W02-L3_LEARNER_UX-C09, W02-L3_LEARNER_UX-C10
 - Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `npx vitest run scripts/validate_w02_learner_ux_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
 
 ## Completion Gate

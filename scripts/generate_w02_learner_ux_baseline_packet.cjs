@@ -43,13 +43,23 @@ const payload = {
     ],
     learnerUxFocus:
       'Improve orientation and plain wording while preserving the T07 source-link map and reviewed CP truth lock.',
+    learnerPathClarity: [
+      'Home frames CP as a source-linked pathway rather than a generic tutorial shelf.',
+      'Pathology Curriculum tells learners to use the linked CP tutorial or operational studio before supporting review.',
+      'Reference Library keeps CP review anchored to source-linked tutorials or operational studios.',
+      'Competency Matrix tells learners to keep reviewed CP source links attached to each next study action.',
+    ],
+    plainWordingGuard:
+      'Learner-facing wording may clarify orientation and next action, but must not alter CP source-link normalization, CP root counts, or source-truth mappings.',
   },
   execution: {
-    completedStepIds: ['W02-L3_LEARNER_UX-C01'],
-    remainingStepIds: [
+    completedStepIds: [
+      'W02-L3_LEARNER_UX-C01',
       'W02-L3_LEARNER_UX-C02',
       'W02-L3_LEARNER_UX-C03',
       'W02-L3_LEARNER_UX-C04',
+    ],
+    remainingStepIds: [
       'W02-L3_LEARNER_UX-C05',
       'W02-L3_LEARNER_UX-C06',
       'W02-L3_LEARNER_UX-C07',
@@ -101,6 +111,8 @@ const md = [
   `- UX pass count: ${payload.baseline.passCount}`,
   `- UX failure count: ${payload.baseline.failureCount}`,
   `- Learner UX focus: ${payload.baseline.learnerUxFocus}`,
+  `- Plain wording guard: ${payload.baseline.plainWordingGuard}`,
+  ...payload.baseline.learnerPathClarity.map((item) => `- Learner path clarity: ${item}`),
   ...payload.baseline.ownedSurfaces.map((surface) => `- Owned surface: ${surface}`),
   '',
   '## Execution',

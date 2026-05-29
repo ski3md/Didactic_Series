@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-05-29T22:03:12.805Z",
+  "generatedAt": "2026-05-29T22:36:23.022Z",
   "currentState": {
     "branch": "main",
-    "head": "712ec551",
-    "sync": "4/0 vs origin/main",
+    "head": "47d730ff",
+    "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
     "immediateNextAction": "Continue T08 W02 Learner UX from the baseline packet while preserving the T07 source-link map."
@@ -30,9 +30,9 @@
       "id": "T08",
       "wave": "W02",
       "lane": "L3_LEARNER_UX",
-      "statusBasis": "baseline_packet",
-      "completedSteps": 1,
-      "remainingSteps": 9
+      "statusBasis": "learner_path_wording_packet",
+      "completedSteps": 4,
+      "remainingSteps": 6
     }
   ]
 }

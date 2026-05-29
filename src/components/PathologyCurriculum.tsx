@@ -615,7 +615,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                 <h3 className="mt-2 text-2xl font-semibold">Start with the pattern, then build the differential.</h3>
               </div>
               <p className="max-w-2xl text-sm leading-6 text-slate-300">
-                Use these gateways for unknown-case review, boards prep, frozen-section triage, and rapid contrastive practice.
+                Use these gateways for unknown-case review, boards prep, frozen-section triage, and rapid contrastive practice. CP study paths keep the reviewed source-link map intact while you move between clusters.
               </p>
             </div>
             <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
@@ -808,7 +808,9 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                       <div className="mt-2 text-sm leading-6 text-slate-600">
                         {isPatternBlock
                           ? 'Start with the closest pattern here, then build the differential.'
-                          : 'Start here first, then move to supporting review only after the main pattern is clear.'}
+                          : selectedModule.subspecialty === 'Clinical Pathology'
+                            ? 'Start here first, then use the linked CP tutorial or operational studio before moving to supporting review.'
+                            : 'Start here first, then move to supporting review only after the main pattern is clear.'}
                       </div>
                     </div>
                     {secondaryLaunchCards.length > 0 && (

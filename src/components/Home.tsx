@@ -342,7 +342,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
     {
       key: 'cp',
       title: 'Clinical pathology',
-      description: 'Use the CP track when you need heme, coagulation, transfusion, microbiology, chemistry, or management and informatics.',
+      description: 'Use the CP track when you need heme, coagulation, transfusion, microbiology, chemistry, or management and informatics. Each route keeps the reviewed CP source links visible.',
       actionLabel: 'Open CP curriculum',
       action: () => openCurriculumModule('clinical-path-foundations'),
     },
@@ -433,7 +433,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
           A simple path for lecture, image review, and practice.
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-slate-650">
-          Start with a lecture. Use the microscopy review during teaching. Move to questions after the didactic pass.
+          Start with a lecture or CP pathway. Use reviewed source links to stay oriented, then move to questions or cases after the teaching pass.
         </p>
       </header>
 
@@ -457,7 +457,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
           {
             step: '3',
             title: 'Apply after teaching',
-            text: 'Move to cases or visual drill only after the didactic pass.',
+            text: 'Move to cases, CP checks, or visual drill only after the source-linked teaching pass is clear.',
             label: 'Open practice',
             action: () => openAssessmentPathway('ap-signout'),
           },
@@ -536,7 +536,7 @@ const Home: React.FC<HomeProps> = ({ onSectionChange, user, preferences }) => {
               onClick={() => openAssessmentPathway('cp-quiz')}
               className="block w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-sky-300 hover:bg-sky-50"
             >
-              Clinical pathology tutorials
+              Reviewed CP tutorial checks
             </button>
             <button
               type="button"

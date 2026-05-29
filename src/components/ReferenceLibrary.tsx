@@ -634,7 +634,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Start here</p>
             <h2 className="mt-2 text-2xl font-semibold font-serif text-slate-950">Choose the kind of review you want</h2>
             <p className="mt-2 text-sm leading-6 text-slate-700">
-              Use lecture images for recap, histology comparison for morphology drills, or granulomatous sets for focused differentials.
+              Use lecture images for recap, histology comparison for morphology drills, or granulomatous sets for focused differentials. When you are reviewing CP material, keep the source-linked tutorial or operational studio as the anchor.
             </p>
           </div>
           {focusIntent && (
@@ -652,7 +652,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Case-first review</p>
             <h2 className="mt-2 text-2xl font-semibold font-serif text-slate-950">Start from the pathology task, not the document shelf</h2>
             <p className="mt-2 text-sm leading-6 text-slate-700">
-              Choose the review mode that matches how pathologists actually work: unknown case, differential drill, frozen section, stains, or molecular correlation.
+              Choose the review mode that matches how pathologists actually work: unknown case, differential drill, frozen section, stains, molecular correlation, or CP source-linked interpretation.
             </p>
           </div>
           <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">

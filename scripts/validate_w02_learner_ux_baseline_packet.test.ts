@@ -20,6 +20,8 @@ const packet = require('../reports/w02_learner_ux_baseline_packet.json') as {
     failureCount: number;
     ownedSurfaces: string[];
     learnerUxFocus: string;
+    learnerPathClarity: string[];
+    plainWordingGuard: string;
   };
   execution: {
     completedStepIds: string[];
@@ -55,11 +57,19 @@ describe('W02 learner UX baseline packet', () => {
       'src/components/CompetencyMatrix.tsx',
     ]);
     expect(packet.baseline.learnerUxFocus).toContain('preserving the T07 source-link map');
+    expect(packet.baseline.learnerPathClarity).toHaveLength(4);
+    expect(packet.baseline.learnerPathClarity.join(' ')).toContain('operational studio');
+    expect(packet.baseline.plainWordingGuard).toContain('must not alter CP source-link normalization');
   });
 
   it('keeps T08 scoped to baseline work until UI wording changes land', () => {
-    expect(packet.execution.completedStepIds).toEqual(['W02-L3_LEARNER_UX-C01']);
-    expect(packet.execution.remainingStepIds).toHaveLength(9);
+    expect(packet.execution.completedStepIds).toEqual([
+      'W02-L3_LEARNER_UX-C01',
+      'W02-L3_LEARNER_UX-C02',
+      'W02-L3_LEARNER_UX-C03',
+      'W02-L3_LEARNER_UX-C04',
+    ]);
+    expect(packet.execution.remainingStepIds).toHaveLength(6);
     expect(packet.execution.proofCommands).toContain('npm run didactics:ux:validate');
     expect(packet.completionGate.baselineGreen).toBe(true);
     expect(packet.completionGate.staleWhen).toHaveLength(3);

@@ -130,7 +130,7 @@ describe('Home', () => {
 
     render(<Home onSectionChange={onSectionChange} user={null} preferences={preferences} />);
 
-    await user.click(screen.getByRole('button', { name: /Clinical pathology tutorials/i }));
+    await user.click(screen.getByRole('button', { name: /Reviewed CP tutorial checks/i }));
 
     expect(mocks.setTutorialLibraryIntent).toHaveBeenCalledWith(
       expect.objectContaining({

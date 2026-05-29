@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T22:02:54.142Z",
+  "generatedAt": "2026-05-29T22:36:22.842Z",
   "tranche": "T08 W02 Learner UX",
   "status": "in_progress",
   "source": {
@@ -24,16 +24,23 @@
       "src/components/ReferenceLibrary.tsx",
       "src/components/CompetencyMatrix.tsx"
     ],
-    "learnerUxFocus": "Improve orientation and plain wording while preserving the T07 source-link map and reviewed CP truth lock."
+    "learnerUxFocus": "Improve orientation and plain wording while preserving the T07 source-link map and reviewed CP truth lock.",
+    "learnerPathClarity": [
+      "Home frames CP as a source-linked pathway rather than a generic tutorial shelf.",
+      "Pathology Curriculum tells learners to use the linked CP tutorial or operational studio before supporting review.",
+      "Reference Library keeps CP review anchored to source-linked tutorials or operational studios.",
+      "Competency Matrix tells learners to keep reviewed CP source links attached to each next study action."
+    ],
+    "plainWordingGuard": "Learner-facing wording may clarify orientation and next action, but must not alter CP source-link normalization, CP root counts, or source-truth mappings."
   },
   "execution": {
     "completedStepIds": [
-      "W02-L3_LEARNER_UX-C01"
-    ],
-    "remainingStepIds": [
+      "W02-L3_LEARNER_UX-C01",
       "W02-L3_LEARNER_UX-C02",
       "W02-L3_LEARNER_UX-C03",
-      "W02-L3_LEARNER_UX-C04",
+      "W02-L3_LEARNER_UX-C04"
+    ],
+    "remainingStepIds": [
       "W02-L3_LEARNER_UX-C05",
       "W02-L3_LEARNER_UX-C06",
       "W02-L3_LEARNER_UX-C07",

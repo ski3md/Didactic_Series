@@ -284,7 +284,7 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
               </div>
               <p className="mt-3 text-sm text-slate-700">{guidance.intent}</p>
               <p className="mt-2 text-sm text-slate-500">
-                Detailed training guidance, source standards, and AP/CP expectations live on the reference page.
+                Detailed training guidance, source standards, and AP/CP expectations live on the reference page. For CP, keep the reviewed source-link map attached to each next study action.
               </p>
             </div>
           </div>
@@ -313,7 +313,7 @@ const CompetencyMatrix: React.FC<CompetencyMatrixProps> = ({ onSectionChange }) 
             <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Reference page</div>
             <h2 className="mt-2 font-serif text-2xl font-semibold text-slate-950">Review source standards and scoring guides when you need them</h2>
             <p className="mt-2 max-w-4xl text-sm leading-6 text-slate-700">
-              Open the reference library for source documents, level guidance, AP designation rules, CP rotation standards, and sign-out scoring details.
+              Open the reference library for source documents, level guidance, AP designation rules, CP rotation standards, and sign-out scoring details without changing the reviewed CP source links.
             </p>
           </div>
           <button

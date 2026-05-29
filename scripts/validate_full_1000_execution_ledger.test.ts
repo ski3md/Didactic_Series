@@ -119,10 +119,15 @@ describe('full 1000 execution ledger assets', () => {
 
     expect(t08).toMatchObject({
       status: 'in_progress',
-      statusBasis: 'baseline_packet',
+      statusBasis: 'learner_path_wording_packet',
     });
-    expect(t08?.completionEvidence.completedStepIds).toEqual(['W02-L3_LEARNER_UX-C01']);
-    expect(t08?.completionEvidence.remainingStepIds).toHaveLength(9);
+    expect(t08?.completionEvidence.completedStepIds).toEqual([
+      'W02-L3_LEARNER_UX-C01',
+      'W02-L3_LEARNER_UX-C02',
+      'W02-L3_LEARNER_UX-C03',
+      'W02-L3_LEARNER_UX-C04',
+    ]);
+    expect(t08?.completionEvidence.remainingStepIds).toHaveLength(6);
   });
 
   it('renders the required ledger sections and immediate next sequence', () => {
