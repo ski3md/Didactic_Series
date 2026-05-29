@@ -643,6 +643,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
 
   const currentInteractiveAsset =
     activeTutorial?.interactiveAssets?.[Math.min(interactiveAssetIndex, (activeTutorial.interactiveAssets?.length || 1) - 1)] ?? null;
+  const currentInteractiveAssetUrl = currentInteractiveAsset ? resolveAssetUrl(currentInteractiveAsset.path) : '';
   const currentMappedSupportImage =
     activeTutorial?.mappedImageSupport?.images?.[
       Math.min(supportImageIndex, (activeTutorial.mappedImageSupport?.images.length || 1) - 1)
@@ -1395,7 +1396,7 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                     )}
                     {activeTutorial.interactiveAssets && activeTutorial.interactiveAssets.length > 0 && currentInteractiveAsset && (
                       <a
-                        href={resolveAssetUrl(currentInteractiveAsset.path)}
+                        href={currentInteractiveAssetUrl}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
@@ -1503,14 +1504,31 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                       </div>
                     )}
                   </div>
-                  <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
-                    <iframe
-                      key={`${activeTutorial.id}-${currentInteractiveAsset.id}`}
-                      title={currentInteractiveAsset.title}
-                      src={resolveAssetUrl(currentInteractiveAsset.path)}
-                      className="h-[860px] w-full border-0 bg-white"
-                      loading="lazy"
-                    />
+                  <div className="rounded-2xl border border-sky-200 bg-gradient-to-br from-sky-50 via-white to-slate-50 p-6">
+                    <div className="max-w-3xl">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Launch required</div>
+                      <h5 className="mt-2 text-lg font-semibold text-slate-900">Open the DAT simulation as a full review workspace</h5>
+                      <p className="mt-2 text-sm leading-6 text-slate-600">
+                        Interactive CP studios run as standalone same-origin workspaces so the site can keep strict anti-framing security
+                        headers. Launch the simulation when you are ready for the applied DAT interpretation pass.
+                      </p>
+                    </div>
+                    <div className="mt-5 flex flex-wrap gap-3">
+                      <a
+                        href={currentInteractiveAssetUrl}
+                        className="inline-flex items-center justify-center rounded-full bg-sky-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-800"
+                      >
+                        Open DAT simulation
+                      </a>
+                      <a
+                        href={currentInteractiveAssetUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                      >
+                        Open in new tab
+                      </a>
+                    </div>
                   </div>
                 </div>
               )}

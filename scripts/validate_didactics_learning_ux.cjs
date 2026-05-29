@@ -420,6 +420,12 @@ const evaluateHierarchySemantics = ({
     issues.push('Tutorial detail does not clearly keep optional follow-up review after the core lesson content.');
   }
 
+  if (!/<iframe\b/i.test(tutorialsTsx) && /Open DAT simulation/.test(tutorialsTsx)) {
+    passes.push('Tutorial interactive review launches standalone CP studios instead of embedding anti-framed workspaces.');
+  } else {
+    issues.push('Tutorial interactive review still risks embedding a standalone CP studio in an iframe.');
+  }
+
   if (
     appearsInOrder(tutorialsTsx, [
       /Current review:\s*Tutorials/,

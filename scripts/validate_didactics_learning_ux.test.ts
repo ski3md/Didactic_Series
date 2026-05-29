@@ -578,6 +578,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         <div>Morphology follow-up</div>
         <button>Open full morphology review</button>
         {activeTutorial.interactiveAssets && <div>Related review</div>}
+        <a>Open DAT simulation</a>
       `,
       lecturesTsx: `
         <div>Current review: Lectures</div>
@@ -641,6 +642,7 @@ describe('validate_didactics_learning_ux helpers', () => {
       expect.arrayContaining([
         expect.stringContaining('Tutorial detail keeps diagnostic framing'),
         expect.stringContaining('Tutorial detail keeps optional follow-up review after the core lesson content.'),
+        expect.stringContaining('Tutorial interactive review launches standalone CP studios'),
         expect.stringContaining('Tutorial landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.'),
         expect.stringContaining('Lecture landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.'),
         expect.stringContaining('Workup landing exposes a direct resume-or-start CTA and a browse CTA before the diagnostic-area grid.'),
