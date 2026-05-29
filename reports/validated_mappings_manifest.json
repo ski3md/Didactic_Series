@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-29T04:37:01.992Z",
-  "sourceFingerprint": "d3933b484d29247ea2d23a0f28c1bb25760c89c76dec31353dd4cd4c214fbb24",
+  "generatedAt": "2026-05-29T04:50:09.375Z",
+  "sourceFingerprint": "7a9be9723179ea277f74f9d31503166ed3aa04a2f3e4176a846d09c32c4794f7",
   "source": {
     "crosswalk": "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
     "cpGovernanceReport": "reports/cp_precision_governance_report.json",
@@ -18,7 +18,7 @@
     "cpDomainValidatedCount": 285
   },
   "baselineSnapshot": {
-    "sourceFingerprint": "d3933b484d29247ea2d23a0f28c1bb25760c89c76dec31353dd4cd4c214fbb24",
+    "sourceFingerprint": "7a9be9723179ea277f74f9d31503166ed3aa04a2f3e4176a846d09c32c4794f7",
     "crosswalkTutorialCount": 493,
     "crosswalkMappedCount": 493,
     "cpGovernedTutorialCount": 13,

@@ -579,6 +579,10 @@ describe('validate_didactics_learning_ux helpers', () => {
         <button>Open full morphology review</button>
         {activeTutorial.interactiveAssets && <div>Related review</div>}
         <a>Open DAT simulation</a>
+        <div>Official ABPath Scope</div>
+        <div>Reviewed source decision</div>
+        <div>Review rule</div>
+        <div>Board-Mastery Teaching Focus</div>
       `,
       lecturesTsx: `
         <div>Current review: Lectures</div>
@@ -643,6 +647,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         expect.stringContaining('Tutorial detail keeps diagnostic framing'),
         expect.stringContaining('Tutorial detail keeps optional follow-up review after the core lesson content.'),
         expect.stringContaining('Tutorial interactive review launches standalone CP studios'),
+        expect.stringContaining('Tutorial CP truth wording shows the reviewed source decision and review rule'),
         expect.stringContaining('Tutorial landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.'),
         expect.stringContaining('Lecture landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.'),
         expect.stringContaining('Workup landing exposes a direct resume-or-start CTA and a browse CTA before the diagnostic-area grid.'),

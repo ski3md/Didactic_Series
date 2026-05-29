@@ -30,6 +30,8 @@ describe('W02 CP truth duplicate shadow packet', () => {
       'W02-L1_CP_TRUTH-C01',
       'W02-L1_CP_TRUTH-C02',
       'W02-L1_CP_TRUTH-C03',
+      'W02-L1_CP_TRUTH-C04',
+      'W02-L1_CP_TRUTH-C05',
     ]);
     expect(packet.execution.proofCommands).toEqual([
       'npm run cp:precision:validate',

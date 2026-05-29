@@ -87,8 +87,10 @@ describe('full 1000 execution ledger assets', () => {
       'W02-L1_CP_TRUTH-C01',
       'W02-L1_CP_TRUTH-C02',
       'W02-L1_CP_TRUTH-C03',
+      'W02-L1_CP_TRUTH-C04',
+      'W02-L1_CP_TRUTH-C05',
     ]);
-    expect(t06?.completionEvidence.remainingStepIds).toHaveLength(7);
+    expect(t06?.completionEvidence.remainingStepIds).toHaveLength(5);
   });
 
   it('renders the required ledger sections and immediate next sequence', () => {
@@ -98,13 +100,16 @@ describe('full 1000 execution ledger assets', () => {
     expect(markdown).toContain('## Immediate Next Sequence');
     expect(markdown).toContain('### T01 W01 CP Truth');
     expect(markdown).toContain('### T05 W01 Contracts and Proof');
-    expect(ledger.immediateNextSequence).toHaveLength(3);
+    expect(ledger.immediateNextSequence).toHaveLength(4);
     expect(ledger.immediateNextSequence[0]).toBe('Freeze the W02 CP reviewed-versus-raw baseline.');
     expect(ledger.immediateNextSequence[1]).toBe(
       'Correct the duplicate-shadow source-map mismatches in T06 W02 CP Truth.',
     );
     expect(ledger.immediateNextSequence[2]).toBe(
-      'Continue T06 W02 CP Truth with public truth wording and review-rule proof before moving to W02 content parity.',
+      'Lock public reviewed-source wording and review-rule proof in T06 W02 CP Truth.',
+    );
+    expect(ledger.immediateNextSequence[3]).toBe(
+      'Expand repeatable T06 truth checks before moving to W02 content parity.',
     );
   });
 });

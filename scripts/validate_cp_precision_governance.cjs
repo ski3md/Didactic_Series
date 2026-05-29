@@ -108,9 +108,21 @@ Object.entries(modules).forEach(([moduleId, governance]) => {
 });
 
 const officialIndex = tutorialsUi.indexOf('Official ABPath Scope');
+const reviewedDecisionIndex = tutorialsUi.indexOf('Reviewed source decision');
+const reviewRuleIndex = tutorialsUi.indexOf('Review rule');
 const boardIndex = tutorialsUi.indexOf('Board-Mastery Teaching Focus');
 if (officialIndex === -1 || boardIndex === -1 || officialIndex > boardIndex) {
   failures.push('tutorial UI does not render Official ABPath Scope before Board-Mastery Teaching Focus');
+}
+if (
+  reviewedDecisionIndex === -1 ||
+  reviewRuleIndex === -1 ||
+  boardIndex === -1 ||
+  officialIndex > reviewedDecisionIndex ||
+  reviewedDecisionIndex > reviewRuleIndex ||
+  reviewRuleIndex > boardIndex
+) {
+  failures.push('tutorial UI does not render reviewed source decision and review rule before Board-Mastery Teaching Focus');
 }
 
 const rows = [

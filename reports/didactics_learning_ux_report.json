@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T04:42:42.828Z",
+  "generatedAt": "2026-05-29T04:50:09.201Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -102,6 +102,7 @@
     "Tutorial detail keeps diagnostic framing and recognition cues ahead of optional related review.",
     "Tutorial detail keeps optional follow-up review after the core lesson content.",
     "Tutorial interactive review launches standalone CP studios instead of embedding anti-framed workspaces.",
+    "Tutorial CP truth wording shows the reviewed source decision and review rule before board-mastery focus.",
     "Tutorial landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.",
     "Lecture landing exposes a direct resume-or-start CTA and a browse CTA before the topic grid.",
     "Workup landing exposes a direct resume-or-start CTA and a browse CTA before the diagnostic-area grid.",

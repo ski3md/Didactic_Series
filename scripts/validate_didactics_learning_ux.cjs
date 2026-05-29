@@ -428,6 +428,19 @@ const evaluateHierarchySemantics = ({
 
   if (
     appearsInOrder(tutorialsTsx, [
+      /Official ABPath Scope/,
+      /Reviewed source decision/,
+      /Review rule/,
+      /Board-Mastery Teaching Focus/,
+    ])
+  ) {
+    passes.push('Tutorial CP truth wording shows the reviewed source decision and review rule before board-mastery focus.');
+  } else {
+    issues.push('Tutorial CP truth wording does not clearly show reviewed source decision and review rule before board-mastery focus.');
+  }
+
+  if (
+    appearsInOrder(tutorialsTsx, [
       /Current review:\s*Tutorials/,
       /(Resume last lesson|Start here)/,
       /(Browse topics|Open the topic list)/,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T04:36:40.813Z",
+  "generatedAt": "2026-05-29T04:49:58.088Z",
   "tranche": "T06 W02 CP Truth",
   "source": {
     "crosswalk": "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
@@ -17,7 +17,7 @@
     "cpReviewedRows": 285,
     "cpGovernedTutorials": 13,
     "cpGovernedModules": 7,
-    "sourceFingerprint": "8a15ba39fbad39b05fd3840f8db616b3708c6157295bdaadee0961d71e3cc4e7"
+    "sourceFingerprint": "7630f2405778d841d88f6bd2d08e756726e8a831a9cd31b8d9a08cd982e603fc"
   },
   "reconciliationGap": {
     "rawVsReviewedGap": 6,
@@ -50,7 +50,9 @@
     "completedStepIds": [
       "W02-L1_CP_TRUTH-C01",
       "W02-L1_CP_TRUTH-C02",
-      "W02-L1_CP_TRUTH-C03"
+      "W02-L1_CP_TRUTH-C03",
+      "W02-L1_CP_TRUTH-C04",
+      "W02-L1_CP_TRUTH-C05"
     ],
     "proofCommands": [
       "npm run cp:precision:validate",

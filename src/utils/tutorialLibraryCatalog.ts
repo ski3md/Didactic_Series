@@ -54,6 +54,13 @@ export interface TutorialMappedImageSupport {
   images: TutorialMappedImageAsset[];
 }
 
+export interface TutorialSourceTruth {
+  statusLabel: string;
+  sourceDecision: string;
+  reviewRule: string;
+  reviewer: string;
+}
+
 export interface DidacticTutorialRecord {
   id: string;
   title: string;
@@ -78,6 +85,7 @@ export interface DidacticTutorialRecord {
   mappedImageSupport?: TutorialMappedImageSupport;
   cpGovernance?: CPGovernanceContract;
   abpathScope?: TutorialAbpathScope;
+  sourceTruth?: TutorialSourceTruth;
 }
 
 export interface TutorialTopicScope {
@@ -534,6 +542,14 @@ const normalizeTutorial = (
   const exactCpScope = track === 'clinical-path' ? resolveExactClinicalPathScope(record) : undefined;
   const manifestScope = toAbpathScopeFromManifestRow(manifestRow);
   const abpathScope = manifestScope ?? exactCpScope ?? toAbpathScope(crosswalkByKey.get(crosswalkKey));
+  const sourceTruth = manifestRow?.validatedForPromotion && manifestRow.abpathRoot && manifestRow.abpathPrimaryPath
+    ? {
+        statusLabel: manifestRow.abpathReviewStatus === 'confirmed' ? 'Reviewed source decision' : 'Source decision under review',
+        sourceDecision: `Study this lesson under ${manifestRow.abpathDomain} truth: ${manifestRow.abpathPrimaryPath}.`,
+        reviewRule: manifestRow.reviewAction || 'Keep this lesson tied to its reviewed ABPath source decision before promotion.',
+        reviewer: manifestRow.reviewOwner || 'Didactics governance review',
+      }
+    : undefined;
   return {
     id: record.id,
     title: record.title,
@@ -558,6 +574,7 @@ const normalizeTutorial = (
     mappedImageSupport: tutorialMappedImageSupportById.get(record.id),
     cpGovernance: record.cpGovernance,
     abpathScope,
+    sourceTruth,
   };
 };
 
