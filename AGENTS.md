@@ -32,6 +32,14 @@ Before substantial Codex execution in this repo, also obey:
 /Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md
 ```
 
+## Compressed checkpoint reporting contract
+
+For progress updates, workflow polling, repeated `proceed` turns, and closeouts, also obey:
+
+```text
+/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/docs/contracts/COMPRESSED_CHECKPOINT_REPORTING_CONTRACT.md
+```
+
 ## OpenClaw execution contract
 
 Before any OpenClaw-assisted execution for this repo, also obey:

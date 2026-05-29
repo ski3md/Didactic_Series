@@ -16,6 +16,7 @@ Didactic Series already imports the following higher-order contracts and must ke
 - `/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/SKI-CORTEX/contracts/universal_cli_first_token_optimization_contract.md`
 - `docs/contracts/SEMANTIC_DIRTINESS_SYNTHESIS_CONTRACT.md`
 - `docs/contracts/CORPUS_REALIZATION_CONTRACT.md`
+- `docs/contracts/COMPRESSED_CHECKPOINT_REPORTING_CONTRACT.md`
 
 This contract is additive.
 It does not replace those files.
@@ -93,6 +94,16 @@ When answering what remains, what changed, or what the next blocker is:
 - answer from current repo artifacts, validators, reports, and contracts first
 - do not guess from memory when local evidence exists
 - distinguish green gates from unresolved drift or dirty-state noise
+
+## Compressed Checkpoint Reporting Rule
+
+When reporting progress, workflow state, or repeated tranche execution:
+
+- report decision state, not command narration
+- use compact checkpoint summaries for tranche, proof, commit, workflow, blocker, and next action
+- do not narrate routine preflight, staging, sleep, polling, or generator commands unless their output changes the decision state
+- keep final closeouts contract-compliant but concise
+- preserve `docs/contracts/COMPRESSED_CHECKPOINT_REPORTING_CONTRACT.md` as the detailed persistent reporting contract
 
 ## Validation Rule
 
