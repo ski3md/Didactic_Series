@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-05-29T22:02:54.142Z",
+  "tranche": "T08 W02 Learner UX",
+  "status": "in_progress",
+  "source": {
+    "t07Closeout": "reports/w02_content_parity_closeout_packet.json",
+    "didacticsUxReport": "reports/didactics_learning_ux_report.json"
+  },
+  "authority": {
+    "t07Closed": true,
+    "t07NextTranche": "T08 W02 Learner UX",
+    "t07Guard": "Do not alter CP source-link normalization, CP root counts, or source-truth mappings inside T08 without regenerating the T07 proof bundle.",
+    "sourceLinkNormalizationGroups": 7,
+    "visibleClusterCount": 7,
+    "cpRootCount": 6
+  },
+  "baseline": {
+    "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
+    "passCount": 118,
+    "failureCount": 0,
+    "ownedSurfaces": [
+      "src/components/Home.tsx",
+      "src/components/PathologyCurriculum.tsx",
+      "src/components/ReferenceLibrary.tsx",
+      "src/components/CompetencyMatrix.tsx"
+    ],
+    "learnerUxFocus": "Improve orientation and plain wording while preserving the T07 source-link map and reviewed CP truth lock."
+  },
+  "execution": {
+    "completedStepIds": [
+      "W02-L3_LEARNER_UX-C01"
+    ],
+    "remainingStepIds": [
+      "W02-L3_LEARNER_UX-C02",
+      "W02-L3_LEARNER_UX-C03",
+      "W02-L3_LEARNER_UX-C04",
+      "W02-L3_LEARNER_UX-C05",
+      "W02-L3_LEARNER_UX-C06",
+      "W02-L3_LEARNER_UX-C07",
+      "W02-L3_LEARNER_UX-C08",
+      "W02-L3_LEARNER_UX-C09",
+      "W02-L3_LEARNER_UX-C10"
+    ],
+    "proofCommands": [
+      "npm run didactics:ux:validate",
+      "npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx",
+      "npx vitest run scripts/validate_w02_learner_ux_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts",
+      "git diff --check"
+    ]
+  },
+  "completionGate": {
+    "baselineGreen": true,
+    "staleWhen": [
+      "T07 closeout changes without regenerating this packet",
+      "didactics_learning_ux_report.json changes without regenerating this packet",
+      "T08 learner-UX owned surfaces change without regenerating this packet"
+    ]
+  }
+}

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-29T22:01:14.345Z",
+  "generatedAt": "2026-05-29T22:02:54.338Z",
   "currentState": {
     "branch": "main",
-    "head": "40c1f0df",
-    "sync": "2/0 vs origin/main",
+    "head": "046aad76",
+    "sync": "3/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
-    "immediateNextAction": "Open T08 W02 Learner UX from the closed T07 content-parity handoff packet."
+    "immediateNextAction": "Continue T08 W02 Learner UX from the baseline packet while preserving the T07 source-link map."
   },
   "completionDefinition": {
     "terminalWave": "W20",
@@ -14,16 +14,25 @@
   },
   "trancheStatusCounts": {
     "completed": 7,
-    "in_progress": 0,
-    "planned": 93
+    "in_progress": 1,
+    "planned": 92
   },
   "firstOpenWave": "W02",
   "immediateNextSequence": [
-    "Open T08 W02 Learner UX from reports/w02_content_parity_closeout_packet.json.",
+    "Continue T08 W02 Learner UX from reports/w02_learner_ux_baseline_packet.json.",
     "Preserve the T07 source-link map while improving learner-facing orientation and wording.",
     "Run the T08 learner-UX proof commands before workups/routing work begins.",
     "Close T08 with a bounded learner-UX proof packet and ledger update.",
     "Do not open T09 until T08 is proof-complete or intentionally superseded."
   ],
-  "inProgressTranches": []
+  "inProgressTranches": [
+    {
+      "id": "T08",
+      "wave": "W02",
+      "lane": "L3_LEARNER_UX",
+      "statusBasis": "baseline_packet",
+      "completedSteps": 1,
+      "remainingSteps": 9
+    }
+  ]
 }

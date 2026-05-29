@@ -366,6 +366,42 @@ const TRANCHE_OVERRIDES = {
     summary:
       'W02 content parity is formally closed with source-link parity, public wording, content rules, focused proof checks, reusable output, drift isolation, and a T08 handoff packet aligned to the reviewed CP truth bundle.',
   },
+  T08: {
+    status: 'in_progress',
+    statusBasis: 'baseline_packet',
+    completionEvidence: {
+      completedStepIds: ['W02-L3_LEARNER_UX-C01'],
+      remainingStepIds: [
+        'W02-L3_LEARNER_UX-C02',
+        'W02-L3_LEARNER_UX-C03',
+        'W02-L3_LEARNER_UX-C04',
+        'W02-L3_LEARNER_UX-C05',
+        'W02-L3_LEARNER_UX-C06',
+        'W02-L3_LEARNER_UX-C07',
+        'W02-L3_LEARNER_UX-C08',
+        'W02-L3_LEARNER_UX-C09',
+        'W02-L3_LEARNER_UX-C10',
+      ],
+    },
+    evidenceArtifacts: [
+      'reports/w02_content_parity_closeout_packet.json',
+      'reports/didactics_learning_ux_report.json',
+      'reports/w02_learner_ux_baseline_packet.json',
+    ],
+    proofCommands: [
+      'npm run didactics:ux:validate',
+      'npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx',
+      'npx vitest run scripts/validate_w02_learner_ux_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
+      'git diff --check',
+    ],
+    supportingProgress: [
+      'T08 now opens from the closed T07 content-parity handoff instead of editing learner wording before content parity proof exists.',
+      'The learner-UX baseline freezes the current didactics UX validator state and owned surfaces before W02 wording changes begin.',
+      'The T07 source-link map and reviewed CP truth lock are explicit learner-UX guardrails.',
+    ],
+    summary:
+      'W02 learner UX is open with a baseline packet tied to the closed T07 content-parity proof; learner path clarity, page flow, plain wording, UX rules, checks, reusable output, drift isolation, and closeout proof remain bounded inside T08.',
+  },
 };
 
 const trancheId = (index) => `T${String(index).padStart(2, '0')}`;
@@ -464,7 +500,7 @@ const buildLedger = () => {
       sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
       firstOpenWave: 'W02',
-      immediateNextAction: 'Open T08 W02 Learner UX from the closed T07 content-parity handoff packet.',
+      immediateNextAction: 'Continue T08 W02 Learner UX from the baseline packet while preserving the T07 source-link map.',
     },
     completionDefinition: {
       terminalWave: 'W20',
@@ -474,7 +510,7 @@ const buildLedger = () => {
     groupedPhases,
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
-      'Open T08 W02 Learner UX from reports/w02_content_parity_closeout_packet.json.',
+      'Continue T08 W02 Learner UX from reports/w02_learner_ux_baseline_packet.json.',
       'Preserve the T07 source-link map while improving learner-facing orientation and wording.',
       'Run the T08 learner-UX proof commands before workups/routing work begins.',
       'Close T08 with a bounded learner-UX proof packet and ledger update.',

@@ -5,11 +5,11 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `40c1f0df`
-- Sync: `2/0 vs origin/main`
+- HEAD: `046aad76`
+- Sync: `3/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W02`
-- Immediate next action: Open T08 W02 Learner UX from the closed T07 content-parity handoff packet.
+- Immediate next action: Continue T08 W02 Learner UX from the baseline packet while preserving the T07 source-link map.
 
 ## Completion Definition
 
@@ -29,12 +29,12 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Tranche Status Counts
 
 - Completed: 7
-- In progress: 0
-- Planned: 93
+- In progress: 1
+- Planned: 92
 
 ## Immediate Next Sequence
 
-1. Open T08 W02 Learner UX from reports/w02_content_parity_closeout_packet.json.
+1. Continue T08 W02 Learner UX from reports/w02_learner_ux_baseline_packet.json.
 2. Preserve the T07 source-link map while improving learner-facing orientation and wording.
 3. Run the T08 learner-UX proof commands before workups/routing work begins.
 4. Close T08 with a bounded learner-UX proof packet and ledger update.
@@ -161,16 +161,20 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ### T08 W02 Learner UX
 
-- Status: `planned`
-- Status basis: `not_started`
+- Status: `in_progress`
+- Status basis: `baseline_packet`
 - Goal: This lane makes the study experience clearer and calmer for reconcile raw mappings with reviewed mappings.
-- Completed steps: 0
-- Remaining steps: 10
+- Completed steps: 1
+- Remaining steps: 9
 - Evidence commits: none
-- Evidence artifacts: none
+- Evidence artifacts: `reports/w02_content_parity_closeout_packet.json`, `reports/didactics_learning_ux_report.json`, `reports/w02_learner_ux_baseline_packet.json`
 - Remaining owned files: none
-- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `git diff --check`
-- Summary: Not started in the formal tranche ledger yet.
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/components/Home.test.tsx src/components/PathologyCurriculum.test.tsx`, `npx vitest run scripts/validate_w02_learner_ux_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
+- Summary: W02 learner UX is open with a baseline packet tied to the closed T07 content-parity proof; learner path clarity, page flow, plain wording, UX rules, checks, reusable output, drift isolation, and closeout proof remain bounded inside T08.
+
+  - T08 now opens from the closed T07 content-parity handoff instead of editing learner wording before content parity proof exists.
+  - The learner-UX baseline freezes the current didactics UX validator state and owned surfaces before W02 wording changes begin.
+  - The T07 source-link map and reviewed CP truth lock are explicit learner-UX guardrails.
 
 ### T09 W02 Workups and Routing
 
