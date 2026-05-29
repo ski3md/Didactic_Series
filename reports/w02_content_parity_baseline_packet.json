@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:57:56.136Z",
+  "generatedAt": "2026-05-29T21:59:32.651Z",
   "tranche": "T07 W02 Content Parity",
   "status": "in_progress",
   "source": {
@@ -81,17 +81,42 @@
       "Public wording, content rules, and closeout proof still need to be refreshed before learner-UX work begins."
     ]
   },
+  "publicWording": {
+    "sourceDecisionLine": "Use the reviewed CP truth packet as the source-link authority; do not present generated or duplicate-shadow rows as separate learner destinations.",
+    "clusterSplitLine": "Seven learner-facing CP clusters remain acceptable because they are teaching pathways over six reviewed CP roots, not new source-truth roots.",
+    "learnerPromise": "Each CP cluster names the tutorial, operational studio, or case-study route that supports the visible study path.",
+    "avoidedLanguage": [
+      "raw mapping",
+      "duplicate-shadow destination",
+      "source-truth mutation"
+    ]
+  },
+  "contentRules": {
+    "sourceTruthLocked": true,
+    "sourceTruthAuthority": "reports/w02_cp_truth_closeout_packet.json",
+    "noSourceTruthEditsInsideT07": true,
+    "allVisibleClustersHaveSourceLinks": true,
+    "preserveSixRootsSevenClusters": true,
+    "publicStudyPageRule": "Learner-facing CP parity copy may clarify route support, but must not create new CP roots or promote duplicate-shadow rows."
+  },
+  "focusedProofChecks": {
+    "t06AuthorityGreen": true,
+    "cpTruthCoverageGreen": true,
+    "manifestCanonicalCpRowsMatchCoverage": true,
+    "visibleClusterSourceLinksGreen": true,
+    "contentRulesGreen": true
+  },
   "execution": {
     "completedStepIds": [
       "W02-L2_CONTENT_PARITY-C01",
       "W02-L2_CONTENT_PARITY-C02",
-      "W02-L2_CONTENT_PARITY-C03"
-    ],
-    "remainingStepIds": [
+      "W02-L2_CONTENT_PARITY-C03",
       "W02-L2_CONTENT_PARITY-C04",
       "W02-L2_CONTENT_PARITY-C05",
       "W02-L2_CONTENT_PARITY-C06",
-      "W02-L2_CONTENT_PARITY-C07",
+      "W02-L2_CONTENT_PARITY-C07"
+    ],
+    "remainingStepIds": [
       "W02-L2_CONTENT_PARITY-C08",
       "W02-L2_CONTENT_PARITY-C09",
       "W02-L2_CONTENT_PARITY-C10"

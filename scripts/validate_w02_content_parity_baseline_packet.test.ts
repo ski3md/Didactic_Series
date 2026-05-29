@@ -35,6 +35,20 @@ const packet = require('../reports/w02_content_parity_baseline_packet.json') as 
     missingSourceLinkGroups: string[];
     unresolvedW02ContentGaps: string[];
   };
+  publicWording: {
+    sourceDecisionLine: string;
+    clusterSplitLine: string;
+    learnerPromise: string;
+    avoidedLanguage: string[];
+  };
+  contentRules: {
+    sourceTruthLocked: boolean;
+    noSourceTruthEditsInsideT07: boolean;
+    allVisibleClustersHaveSourceLinks: boolean;
+    preserveSixRootsSevenClusters: boolean;
+    publicStudyPageRule: string;
+  };
+  focusedProofChecks: Record<string, boolean>;
   execution: {
     completedStepIds: string[];
     remainingStepIds: string[];
@@ -77,12 +91,26 @@ describe('W02 content parity baseline packet', () => {
     expect(packet.contentParityOverlay.sourceLinkNormalizationGroups).toBe(7);
     expect(packet.contentParityOverlay.missingSourceLinkGroups).toHaveLength(0);
     expect(packet.contentParityOverlay.unresolvedW02ContentGaps).toHaveLength(2);
+    expect(packet.publicWording.sourceDecisionLine).toContain('reviewed CP truth packet');
+    expect(packet.publicWording.clusterSplitLine).toContain('six reviewed CP roots');
+    expect(packet.publicWording.learnerPromise).toContain('supports the visible study path');
+    expect(packet.publicWording.avoidedLanguage).toContain('source-truth mutation');
+    expect(packet.contentRules.sourceTruthLocked).toBe(true);
+    expect(packet.contentRules.noSourceTruthEditsInsideT07).toBe(true);
+    expect(packet.contentRules.allVisibleClustersHaveSourceLinks).toBe(true);
+    expect(packet.contentRules.preserveSixRootsSevenClusters).toBe(true);
+    expect(packet.contentRules.publicStudyPageRule).toContain('must not create new CP roots');
+    expect(Object.values(packet.focusedProofChecks).every(Boolean)).toBe(true);
     expect(packet.execution.completedStepIds).toEqual([
       'W02-L2_CONTENT_PARITY-C01',
       'W02-L2_CONTENT_PARITY-C02',
       'W02-L2_CONTENT_PARITY-C03',
+      'W02-L2_CONTENT_PARITY-C04',
+      'W02-L2_CONTENT_PARITY-C05',
+      'W02-L2_CONTENT_PARITY-C06',
+      'W02-L2_CONTENT_PARITY-C07',
     ]);
-    expect(packet.execution.remainingStepIds).toHaveLength(7);
+    expect(packet.execution.remainingStepIds).toHaveLength(3);
     expect(packet.execution.proofCommands).toContain('npm run test -- src/utils/tutorialLibraryCatalog.test.ts');
     expect(packet.completionGate.baselineGreen).toBe(true);
     expect(packet.completionGate.staleWhen).toHaveLength(3);

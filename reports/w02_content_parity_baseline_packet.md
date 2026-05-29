@@ -1,6 +1,6 @@
 # W02 Content Parity Baseline Packet
 
-Generated: 2026-05-29T21:57:56.136Z
+Generated: 2026-05-29T21:59:32.651Z
 
 Tranche: T07 W02 Content Parity
 Status: in_progress
@@ -49,10 +49,34 @@ Status: in_progress
 - W02 content gap: The seven learner-facing CP clusters intentionally sit above six reviewed CP roots, so T07 must preserve the teaching split without changing source truth.
 - W02 content gap: Public wording, content rules, and closeout proof still need to be refreshed before learner-UX work begins.
 
+## Public Wording
+
+- Source decision: Use the reviewed CP truth packet as the source-link authority; do not present generated or duplicate-shadow rows as separate learner destinations.
+- Cluster split: Seven learner-facing CP clusters remain acceptable because they are teaching pathways over six reviewed CP roots, not new source-truth roots.
+- Learner promise: Each CP cluster names the tutorial, operational studio, or case-study route that supports the visible study path.
+- Avoided language: raw mapping, duplicate-shadow destination, source-truth mutation
+
+## Content Rules
+
+- Source truth locked: yes
+- Source truth authority: reports/w02_cp_truth_closeout_packet.json
+- No source-truth edits inside T07: yes
+- All visible clusters have source links: yes
+- Preserve six roots and seven clusters: yes
+- Public study-page rule: Learner-facing CP parity copy may clarify route support, but must not create new CP roots or promote duplicate-shadow rows.
+
+## Focused Proof Checks
+
+- t06AuthorityGreen: PASS
+- cpTruthCoverageGreen: PASS
+- manifestCanonicalCpRowsMatchCoverage: PASS
+- visibleClusterSourceLinksGreen: PASS
+- contentRulesGreen: PASS
+
 ## Execution
 
-- Completed step ids: W02-L2_CONTENT_PARITY-C01, W02-L2_CONTENT_PARITY-C02, W02-L2_CONTENT_PARITY-C03
-- Remaining step ids: W02-L2_CONTENT_PARITY-C04, W02-L2_CONTENT_PARITY-C05, W02-L2_CONTENT_PARITY-C06, W02-L2_CONTENT_PARITY-C07, W02-L2_CONTENT_PARITY-C08, W02-L2_CONTENT_PARITY-C09, W02-L2_CONTENT_PARITY-C10
+- Completed step ids: W02-L2_CONTENT_PARITY-C01, W02-L2_CONTENT_PARITY-C02, W02-L2_CONTENT_PARITY-C03, W02-L2_CONTENT_PARITY-C04, W02-L2_CONTENT_PARITY-C05, W02-L2_CONTENT_PARITY-C06, W02-L2_CONTENT_PARITY-C07
+- Remaining step ids: W02-L2_CONTENT_PARITY-C08, W02-L2_CONTENT_PARITY-C09, W02-L2_CONTENT_PARITY-C10
 - Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `npx vitest run scripts/validate_w02_content_parity_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
 
 ## Completion Gate
