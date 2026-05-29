@@ -58,7 +58,7 @@
     "resource:contracts": "node scripts/generate_world_class_resource_contracts.cjs",
     "resource:contracts:validate": "node scripts/validate_world_class_resource_contracts.cjs",
     "cp:precision:validate": "node scripts/validate_cp_precision_governance.cjs && node scripts/validate_validated_mappings_manifest.cjs",
-    "didactics:ux:validate": "node scripts/validate_didactics_learning_ux.cjs",
+    "didactics:ux:validate": "node scripts/validate_didactics_learning_ux.cjs && npm run didactics:labels:validate",
     "didactics:labels:validate": "node scripts/validate_genitourinary_public_labels.cjs",
     "hygiene:validate": "node scripts/validate_generated_artifact_policy.cjs",
     "drift:validate": "node scripts/validate_repo_drift_contract.cjs && npm run hygiene:validate",
