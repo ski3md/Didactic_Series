@@ -5,11 +5,11 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `2abacda2`
-- Sync: `1/0 vs origin/main`
+- HEAD: `7692f2ac`
+- Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W02`
-- Immediate next action: Open T09 W02 Workups and Routing from the closed T08 learner-UX handoff packet.
+- Immediate next action: Continue T09 W02 Workups and Routing from the routing baseline packet.
 
 ## Completion Definition
 
@@ -29,12 +29,12 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Tranche Status Counts
 
 - Completed: 8
-- In progress: 0
-- Planned: 92
+- In progress: 1
+- Planned: 91
 
 ## Immediate Next Sequence
 
-1. Open T09 W02 Workups and Routing from reports/w02_learner_ux_closeout_packet.json.
+1. Continue T09 W02 Workups and Routing from reports/w02_workups_routing_baseline_packet.json.
 2. Preserve the T07 source-link map and T08 learner source-link wording while improving route behavior.
 3. Run the T09 workups/routing proof commands before contracts/proof work begins.
 4. Close T09 with a bounded workups/routing proof packet and ledger update.
@@ -182,16 +182,20 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ### T09 W02 Workups and Routing
 
-- Status: `planned`
-- Status basis: `not_started`
+- Status: `in_progress`
+- Status basis: `routing_baseline_packet`
 - Goal: This lane keeps workups and route behavior dependable for reconcile raw mappings with reviewed mappings.
-- Completed steps: 0
-- Remaining steps: 10
+- Completed steps: 3
+- Remaining steps: 7
 - Evidence commits: none
-- Evidence artifacts: none
+- Evidence artifacts: `reports/w02_learner_ux_closeout_packet.json`, `reports/didactics_learning_ux_report.json`, `reports/w02_workups_routing_baseline_packet.json`
 - Remaining owned files: none
-- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `git diff --check`
-- Summary: Not started in the formal tranche ledger yet.
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `npx vitest run scripts/validate_w02_workups_routing_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
+- Summary: W02 workups and routing is open with a CP algorithm routing baseline tied to the closed T08 learner-UX guard; workup wording, route rules, checks, reusable output, drift isolation, and closeout proof remain bounded inside T09.
+
+  - T09 now opens from the closed T08 learner-UX handoff instead of changing routing before learner-source-link wording is protected.
+  - The routing baseline freezes 12 Clinical Pathology algorithm routes and their aliases while preserving the seven CP learner clusters over six reviewed CP roots.
+  - Unsupported CP topics remain guarded against heuristic fallback into unrelated algorithm routes.
 
 ### T10 W02 Contracts and Proof
 

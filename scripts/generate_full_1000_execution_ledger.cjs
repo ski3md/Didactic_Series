@@ -408,6 +408,44 @@ const TRANCHE_OVERRIDES = {
     summary:
       'W02 learner UX is formally closed with learner path clarity, page-flow guidance, plain wording, UX rules, focused checks, targeted test coverage, reusable output, drift isolation, and a T09 handoff tied to the closed T07 content-parity proof.',
   },
+  T09: {
+    status: 'in_progress',
+    statusBasis: 'routing_baseline_packet',
+    completionEvidence: {
+      completedStepIds: [
+        'W02-L4_WORKUPS_ROUTING-C01',
+        'W02-L4_WORKUPS_ROUTING-C02',
+        'W02-L4_WORKUPS_ROUTING-C03',
+      ],
+      remainingStepIds: [
+        'W02-L4_WORKUPS_ROUTING-C04',
+        'W02-L4_WORKUPS_ROUTING-C05',
+        'W02-L4_WORKUPS_ROUTING-C06',
+        'W02-L4_WORKUPS_ROUTING-C07',
+        'W02-L4_WORKUPS_ROUTING-C08',
+        'W02-L4_WORKUPS_ROUTING-C09',
+        'W02-L4_WORKUPS_ROUTING-C10',
+      ],
+    },
+    evidenceArtifacts: [
+      'reports/w02_learner_ux_closeout_packet.json',
+      'reports/didactics_learning_ux_report.json',
+      'reports/w02_workups_routing_baseline_packet.json',
+    ],
+    proofCommands: [
+      'npm run didactics:ux:validate',
+      'npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts',
+      'npx vitest run scripts/validate_w02_workups_routing_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
+      'git diff --check',
+    ],
+    supportingProgress: [
+      'T09 now opens from the closed T08 learner-UX handoff instead of changing routing before learner-source-link wording is protected.',
+      'The routing baseline freezes 12 Clinical Pathology algorithm routes and their aliases while preserving the seven CP learner clusters over six reviewed CP roots.',
+      'Unsupported CP topics remain guarded against heuristic fallback into unrelated algorithm routes.',
+    ],
+    summary:
+      'W02 workups and routing is open with a CP algorithm routing baseline tied to the closed T08 learner-UX guard; workup wording, route rules, checks, reusable output, drift isolation, and closeout proof remain bounded inside T09.',
+  },
 };
 
 const trancheId = (index) => `T${String(index).padStart(2, '0')}`;
@@ -506,7 +544,7 @@ const buildLedger = () => {
       sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
       firstOpenWave: 'W02',
-      immediateNextAction: 'Open T09 W02 Workups and Routing from the closed T08 learner-UX handoff packet.',
+      immediateNextAction: 'Continue T09 W02 Workups and Routing from the routing baseline packet.',
     },
     completionDefinition: {
       terminalWave: 'W20',
@@ -516,7 +554,7 @@ const buildLedger = () => {
     groupedPhases,
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
-      'Open T09 W02 Workups and Routing from reports/w02_learner_ux_closeout_packet.json.',
+      'Continue T09 W02 Workups and Routing from reports/w02_workups_routing_baseline_packet.json.',
       'Preserve the T07 source-link map and T08 learner source-link wording while improving route behavior.',
       'Run the T09 workups/routing proof commands before contracts/proof work begins.',
       'Close T09 with a bounded workups/routing proof packet and ledger update.',

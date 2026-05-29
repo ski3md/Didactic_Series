@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-29T23:14:19.600Z",
+  "generatedAt": "2026-05-29T23:24:50.098Z",
   "currentState": {
     "branch": "main",
-    "head": "2abacda2",
-    "sync": "1/0 vs origin/main",
+    "head": "7692f2ac",
+    "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
-    "immediateNextAction": "Open T09 W02 Workups and Routing from the closed T08 learner-UX handoff packet."
+    "immediateNextAction": "Continue T09 W02 Workups and Routing from the routing baseline packet."
   },
   "completionDefinition": {
     "terminalWave": "W20",
@@ -14,16 +14,25 @@
   },
   "trancheStatusCounts": {
     "completed": 8,
-    "in_progress": 0,
-    "planned": 92
+    "in_progress": 1,
+    "planned": 91
   },
   "firstOpenWave": "W02",
   "immediateNextSequence": [
-    "Open T09 W02 Workups and Routing from reports/w02_learner_ux_closeout_packet.json.",
+    "Continue T09 W02 Workups and Routing from reports/w02_workups_routing_baseline_packet.json.",
     "Preserve the T07 source-link map and T08 learner source-link wording while improving route behavior.",
     "Run the T09 workups/routing proof commands before contracts/proof work begins.",
     "Close T09 with a bounded workups/routing proof packet and ledger update.",
     "Do not open T10 until T09 is proof-complete or intentionally superseded."
   ],
-  "inProgressTranches": []
+  "inProgressTranches": [
+    {
+      "id": "T09",
+      "wave": "W02",
+      "lane": "L4_WORKUPS_ROUTING",
+      "statusBasis": "routing_baseline_packet",
+      "completedSteps": 3,
+      "remainingSteps": 7
+    }
+  ]
 }

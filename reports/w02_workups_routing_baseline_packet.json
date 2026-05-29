@@ -1,0 +1,198 @@
+{
+  "generatedAt": "2026-05-29T23:24:49.865Z",
+  "tranche": "T09 W02 Workups and Routing",
+  "status": "in_progress",
+  "source": {
+    "t08Closeout": "reports/w02_learner_ux_closeout_packet.json",
+    "algorithms": "src/content/algorithms/algorithms.normalized.json",
+    "algorithmCatalog": "src/utils/algorithmCatalog.ts",
+    "algorithmNavigatorNavigation": "src/utils/algorithmNavigatorNavigation.ts"
+  },
+  "authority": {
+    "t08Closed": true,
+    "t08NextTranche": "T09 W02 Workups and Routing",
+    "t08Guard": "Do not alter CP source-link normalization, CP root counts, learner source-link wording, or source-truth mappings inside T09 without regenerating T07 and T08 proof.",
+    "sourceLinkNormalizationGroups": 7,
+    "visibleClusterCount": 7,
+    "cpRootCount": 6
+  },
+  "baseline": {
+    "totalAlgorithms": 14,
+    "clinicalPathologyAlgorithms": 12,
+    "clinicalPathologyRouteAliases": 36,
+    "clinicalPathologyAlgorithmIds": [
+      "cp-foundations-anemia-workup",
+      "cp-foundations-bleeding-diatathesis-triage",
+      "cp-foundations-specimen-to-result-workflow",
+      "cp-mi-finance-aware-assay-planning",
+      "cp-mi-lis-workflow-redesign",
+      "cp-mi-qc-failure-response",
+      "cp-mi-validation-verification-triage",
+      "cp-micro-ast-interpretation",
+      "cp-micro-organism-identification-workflow",
+      "cp-micro-specimen-quality-triage",
+      "cp-transfusion-crossmatch-workup",
+      "cp-transfusion-reaction-triage"
+    ],
+    "routingEntryFiles": [
+      "src/components/AlgorithmNavigator.tsx",
+      "src/utils/algorithmCatalog.ts",
+      "src/utils/algorithmNavigatorNavigation.ts",
+      "src/content/algorithms/algorithms.normalized.json"
+    ]
+  },
+  "routeSourceLinks": {
+    "preserveLearnerSourceLinkWording": true,
+    "preserveT07SourceLinkMap": true,
+    "preserveT08LearnerWording": true,
+    "routeAliasesCarryCpOperationalLanguage": true,
+    "representativeRoutes": [
+      {
+        "id": "cp-mi-qc-failure-response",
+        "title": "QC Failure Response",
+        "aliases": [
+          "qc failure",
+          "quality control failure",
+          "qc troubleshooting"
+        ]
+      },
+      {
+        "id": "cp-mi-validation-verification-triage",
+        "title": "Validation-Versus-Verification Triage",
+        "aliases": [
+          "validation vs verification",
+          "validation verification triage",
+          "verification pathway"
+        ]
+      },
+      {
+        "id": "cp-mi-lis-workflow-redesign",
+        "title": "LIS Workflow Redesign",
+        "aliases": [
+          "lis interfacing",
+          "workflow redesign",
+          "lab information system workflow"
+        ]
+      },
+      {
+        "id": "cp-mi-finance-aware-assay-planning",
+        "title": "Finance-Aware Assay Planning",
+        "aliases": [
+          "assay planning",
+          "reagent rental",
+          "break even analysis"
+        ]
+      },
+      {
+        "id": "cp-foundations-anemia-workup",
+        "title": "Anemia Workup and Hemolysis Triage",
+        "aliases": [
+          "anemia workup",
+          "hemolysis triage",
+          "red cell triage"
+        ]
+      },
+      {
+        "id": "cp-foundations-bleeding-diatathesis-triage",
+        "title": "Bleeding Diathesis and Coagulation Test Interpretation",
+        "aliases": [
+          "bleeding diathesis triage",
+          "coagulation test interpretation",
+          "hemostasis triage"
+        ]
+      },
+      {
+        "id": "cp-foundations-specimen-to-result-workflow",
+        "title": "Specimen-to-Result CP Workflow",
+        "aliases": [
+          "specimen to result workflow",
+          "critical reporting workflow",
+          "bench selection workflow"
+        ]
+      },
+      {
+        "id": "cp-transfusion-reaction-triage",
+        "title": "Transfusion Reaction Triage",
+        "aliases": [
+          "transfusion reaction workup",
+          "hemolytic transfusion reaction",
+          "trali taco transfusion reactions"
+        ]
+      },
+      {
+        "id": "cp-transfusion-crossmatch-workup",
+        "title": "Crossmatch Workup",
+        "aliases": [
+          "compatibility workup",
+          "alloantibody workup",
+          "transfusion compatibility"
+        ]
+      },
+      {
+        "id": "cp-micro-specimen-quality-triage",
+        "title": "Clinical Microbiology Specimen Quality Triage",
+        "aliases": [
+          "specimen quality triage",
+          "clinical microbiology specimen quality",
+          "gram stain specimen triage"
+        ]
+      },
+      {
+        "id": "cp-micro-ast-interpretation",
+        "title": "AST Interpretation",
+        "aliases": [
+          "antimicrobial susceptibility testing",
+          "susceptibility interpretation",
+          "ast stewardship"
+        ]
+      },
+      {
+        "id": "cp-micro-organism-identification-workflow",
+        "title": "Organism Identification Workflow",
+        "aliases": [
+          "microbiology organism identification",
+          "maldi tof workflow",
+          "gram stain identification"
+        ]
+      }
+    ]
+  },
+  "workupParity": {
+    "cpRouteCoverageGreen": true,
+    "managementAndInformaticsRoutes": 4,
+    "foundationsRoutes": 3,
+    "transfusionRoutes": 2,
+    "microbiologyRoutes": 3,
+    "unsupportedRouteGuard": "Unimplemented CP topics must not fall back heuristically to unrelated algorithm routes."
+  },
+  "execution": {
+    "completedStepIds": [
+      "W02-L4_WORKUPS_ROUTING-C01",
+      "W02-L4_WORKUPS_ROUTING-C02",
+      "W02-L4_WORKUPS_ROUTING-C03"
+    ],
+    "remainingStepIds": [
+      "W02-L4_WORKUPS_ROUTING-C04",
+      "W02-L4_WORKUPS_ROUTING-C05",
+      "W02-L4_WORKUPS_ROUTING-C06",
+      "W02-L4_WORKUPS_ROUTING-C07",
+      "W02-L4_WORKUPS_ROUTING-C08",
+      "W02-L4_WORKUPS_ROUTING-C09",
+      "W02-L4_WORKUPS_ROUTING-C10"
+    ],
+    "proofCommands": [
+      "npm run didactics:ux:validate",
+      "npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts",
+      "npx vitest run scripts/validate_w02_workups_routing_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts",
+      "git diff --check"
+    ]
+  },
+  "completionGate": {
+    "baselineGreen": true,
+    "staleWhen": [
+      "T08 closeout changes without regenerating this packet",
+      "algorithms.normalized.json changes without regenerating this packet",
+      "algorithm routing tests change without regenerating this packet"
+    ]
+  }
+}

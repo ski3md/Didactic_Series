@@ -34,8 +34,8 @@ describe('full 1000 execution ledger assets', () => {
   it('marks the reconciled opening tranches as completed and opens T07 from proof', () => {
     expect(ledger.trancheStatusCounts).toEqual({
       completed: 8,
-      in_progress: 0,
-      planned: 92,
+      in_progress: 1,
+      planned: 91,
     });
 
     const t01 = ledger.tranches.find((tranche) => tranche.id === 'T01');
@@ -46,6 +46,7 @@ describe('full 1000 execution ledger assets', () => {
     const t06 = ledger.tranches.find((tranche) => tranche.id === 'T06');
     const t07 = ledger.tranches.find((tranche) => tranche.id === 'T07');
     const t08 = ledger.tranches.find((tranche) => tranche.id === 'T08');
+    const t09 = ledger.tranches.find((tranche) => tranche.id === 'T09');
 
     expect(t01).toMatchObject({
       status: 'completed',
@@ -134,6 +135,17 @@ describe('full 1000 execution ledger assets', () => {
       'W02-L3_LEARNER_UX-C10',
     ]);
     expect(t08?.completionEvidence.remainingStepIds).toHaveLength(0);
+
+    expect(t09).toMatchObject({
+      status: 'in_progress',
+      statusBasis: 'routing_baseline_packet',
+    });
+    expect(t09?.completionEvidence.completedStepIds).toEqual([
+      'W02-L4_WORKUPS_ROUTING-C01',
+      'W02-L4_WORKUPS_ROUTING-C02',
+      'W02-L4_WORKUPS_ROUTING-C03',
+    ]);
+    expect(t09?.completionEvidence.remainingStepIds).toHaveLength(7);
   });
 
   it('renders the required ledger sections and immediate next sequence', () => {
@@ -145,7 +157,7 @@ describe('full 1000 execution ledger assets', () => {
     expect(markdown).toContain('### T05 W01 Contracts and Proof');
     expect(ledger.immediateNextSequence).toHaveLength(5);
     expect(ledger.immediateNextSequence[0]).toBe(
-      'Open T09 W02 Workups and Routing from reports/w02_learner_ux_closeout_packet.json.',
+      'Continue T09 W02 Workups and Routing from reports/w02_workups_routing_baseline_packet.json.',
     );
     expect(ledger.immediateNextSequence[4]).toBe('Do not open T10 until T09 is proof-complete or intentionally superseded.');
   });
