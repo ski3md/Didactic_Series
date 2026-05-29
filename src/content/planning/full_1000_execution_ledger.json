@@ -10,8 +10,8 @@
   ],
   "currentState": {
     "branch": "main",
-    "head": "046aad76",
-    "sync": "3/0 vs origin/main",
+    "head": "712ec551",
+    "sync": "4/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
     "immediateNextAction": "Continue T08 W02 Learner UX from the baseline packet while preserving the T07 source-link map."
