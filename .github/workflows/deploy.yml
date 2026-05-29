@@ -31,6 +31,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Validate didactics UX contract
+        run: npm run didactics:ux:validate
+
       - name: Build didactics site
         run: npm run build:didactics
         env:
