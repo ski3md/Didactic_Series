@@ -74,6 +74,20 @@ describe('PathologyCurriculum', () => {
     expect(screen.getAllByText('Adding now').length).toBeGreaterThan(0);
   });
 
+  it('opens morphology-first gateways into pattern curriculum modules', async () => {
+    const user = userEvent.setup();
+    render(<PathologyCurriculum onSectionChange={vi.fn()} preferences={preferences} />);
+
+    expect(screen.getByText('Morphology-first curriculum')).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: 'Open morphology gateway: Small Round Blue Cell Differential' }));
+
+    expect(screen.getByRole('heading', { name: 'Small Round Blue Cell Differential' })).toBeInTheDocument();
+    expect(screen.getByText(/genitourinary, mesenchymal, neuro, and pediatric contexts/i)).toBeInTheDocument();
+    expect(screen.getByText('Common diagnostic patterns')).toBeInTheDocument();
+    expect(screen.getByText('small round blue cell')).toBeInTheDocument();
+  });
+
   it('routes a canonical module into its linked lecture', async () => {
     const user = userEvent.setup();
     const onSectionChange = vi.fn();

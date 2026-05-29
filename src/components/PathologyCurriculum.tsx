@@ -41,6 +41,13 @@ const cpFeaturedModuleIds = [
   'management-informatics-core',
 ] as const;
 
+const morphologyEntryModuleIds = [
+  'clear-cell-differential',
+  'papillary-lesion-differential',
+  'spindle-cell-differential',
+  'small-round-blue-cell-differential',
+] as const;
+
 const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChange, preferences }) => {
   const [selectedId, setSelectedId] = useState(activeCurriculumModules[0]?.moduleId ?? '');
   const [query, setQuery] = useState('');
@@ -244,6 +251,27 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
     }
     return canonicalModules.slice(0, 3);
   }, [domainFilter]);
+  const morphologyEntryModules = useMemo(
+    () =>
+      morphologyEntryModuleIds
+        .map((moduleId) => activeCurriculumModules.find((module) => module.moduleId === moduleId))
+        .filter(Boolean) as ActiveCurriculumModule[],
+    []
+  );
+
+  const openMorphologyModule = (module: ActiveCurriculumModule) => {
+    setSelectedId(module.moduleId);
+    setQuery('');
+    setDomainFilter('ap');
+    setSubspecialtyFilter(module.subspecialty);
+    setPriorityFilter('all');
+    setPromotionFilter('all');
+    setPatternFilter(module.patternFamilies[0] ?? 'all');
+    setSpecimenFilter('all');
+    setShowAdvancedFilters(false);
+    setShowAllModules(false);
+    setIsModuleFocusView(true);
+  };
 
   const openLecture = (
     lectureId?: string,
@@ -537,6 +565,40 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                 <div className="mt-1 text-sm text-slate-600">{module.subspecialty}</div>
               </button>
             ))}
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-slate-950 p-5 text-white">
+            <div className="flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-200">
+                  Morphology-first curriculum
+                </div>
+                <h3 className="mt-2 text-2xl font-semibold">Start with the pattern, then build the differential.</h3>
+              </div>
+              <p className="max-w-2xl text-sm leading-6 text-slate-300">
+                Use these gateways for unknown-case review, boards prep, frozen-section triage, and rapid contrastive practice.
+              </p>
+            </div>
+            <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              {morphologyEntryModules.map((module) => {
+                const primaryPattern = module.patternFamilies[0] ?? module.title;
+                return (
+                  <button
+                    key={module.moduleId}
+                    type="button"
+                    aria-label={`Open morphology gateway: ${module.title}`}
+                    onClick={() => openMorphologyModule(module)}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-4 text-left transition hover:border-sky-300 hover:bg-sky-300/10"
+                  >
+                    <div className="text-sm font-semibold uppercase tracking-wide text-sky-100">{primaryPattern}</div>
+                    <div className="mt-2 text-lg font-semibold text-white">{module.title}</div>
+                    <div className="mt-2 text-xs font-medium text-slate-300">
+                      {module.referenceFocusTerms.slice(0, 3).join(' / ')}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {showAdvancedFilters && (
