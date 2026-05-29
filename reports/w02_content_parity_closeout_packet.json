@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-05-29T22:01:14.153Z",
+  "tranche": "T07 W02 Content Parity",
+  "status": "completed",
+  "statusBasis": "exact_proof_bundle",
+  "source": {
+    "baselinePacket": "reports/w02_content_parity_baseline_packet.json",
+    "contentJourneyReport": "reports/content_consumption_journey_evaluation.json",
+    "trancheLedger": "src/content/planning/full_1000_execution_ledger.json"
+  },
+  "completedStepIds": [
+    "W02-L2_CONTENT_PARITY-C01",
+    "W02-L2_CONTENT_PARITY-C02",
+    "W02-L2_CONTENT_PARITY-C03",
+    "W02-L2_CONTENT_PARITY-C04",
+    "W02-L2_CONTENT_PARITY-C05",
+    "W02-L2_CONTENT_PARITY-C06",
+    "W02-L2_CONTENT_PARITY-C07",
+    "W02-L2_CONTENT_PARITY-C08",
+    "W02-L2_CONTENT_PARITY-C09",
+    "W02-L2_CONTENT_PARITY-C10"
+  ],
+  "remainingStepIds": [],
+  "reusableOutput": {
+    "name": "W02 CP content-parity study map overlay",
+    "artifact": "reports/w02_content_parity_baseline_packet.json",
+    "publicSafe": true,
+    "reuseTarget": "Didactic_Series",
+    "summary": "A W02-specific CP content parity overlay that maps seven learner-facing CP clusters onto the reviewed six-root CP truth packet without changing source truth."
+  },
+  "driftIsolation": {
+    "sourceTruthLocked": true,
+    "noSourceTruthEditsInsideT07": true,
+    "allVisibleClustersHaveSourceLinks": true,
+    "preserveSixRootsSevenClusters": true,
+    "remainingDriftRisk": "T08 learner-UX work may change wording or layout, but must preserve the T07 source-link map and source-truth lock."
+  },
+  "proofBundle": {
+    "baselineGreen": true,
+    "focusedProofChecksGreen": true,
+    "visibleClusterCount": 7,
+    "sourceLinkNormalizationGroups": 7,
+    "missingSourceLinkGroups": 0,
+    "cpRootCount": 6,
+    "cpDomainValidatedRows": 285
+  },
+  "handoffToNextTranche": {
+    "nextTranche": "T08 W02 Learner UX",
+    "nextAction": "Start learner-UX work from the closed T07 content-parity source-link map and preserve the reviewed CP truth lock.",
+    "requiredGuard": "Do not alter CP source-link normalization, CP root counts, or source-truth mappings inside T08 without regenerating the T07 proof bundle."
+  },
+  "completionGate": {
+    "t07Closed": true,
+    "staleWhen": [
+      "T07 ledger status changes without regenerating this packet",
+      "w02_content_parity_baseline_packet.json changes without regenerating this packet",
+      "content_consumption_journey_evaluation.json contentBaseline changes without regenerating this packet"
+    ]
+  }
+}

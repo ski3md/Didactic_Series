@@ -1,38 +1,29 @@
 {
-  "generatedAt": "2026-05-29T21:59:32.844Z",
+  "generatedAt": "2026-05-29T22:01:14.345Z",
   "currentState": {
     "branch": "main",
-    "head": "a543cc2f",
-    "sync": "1/0 vs origin/main",
+    "head": "40c1f0df",
+    "sync": "2/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
-    "immediateNextAction": "Continue T07 W02 Content Parity by refreshing reusable output, drift isolation, and closeout proof."
+    "immediateNextAction": "Open T08 W02 Learner UX from the closed T07 content-parity handoff packet."
   },
   "completionDefinition": {
     "terminalWave": "W20",
     "requiredState": "All W01 through W20 lane records are either landed or intentionally superseded, each wave ends with its required proof bundle, and the release-story outputs in W19/W20 are present."
   },
   "trancheStatusCounts": {
-    "completed": 6,
-    "in_progress": 1,
+    "completed": 7,
+    "in_progress": 0,
     "planned": 93
   },
   "firstOpenWave": "W02",
   "immediateNextSequence": [
-    "Continue T07 W02 Content Parity from reports/w02_content_parity_baseline_packet.json.",
-    "Refresh reusable W02 content-parity output against the reviewed CP truth packet.",
-    "Isolate the remaining next drift source before closeout.",
-    "Run the T07 content-parity proof commands before learner-UX work begins.",
-    "Close T07 with a bounded content-parity proof packet and ledger update."
+    "Open T08 W02 Learner UX from reports/w02_content_parity_closeout_packet.json.",
+    "Preserve the T07 source-link map while improving learner-facing orientation and wording.",
+    "Run the T08 learner-UX proof commands before workups/routing work begins.",
+    "Close T08 with a bounded learner-UX proof packet and ledger update.",
+    "Do not open T09 until T08 is proof-complete or intentionally superseded."
   ],
-  "inProgressTranches": [
-    {
-      "id": "T07",
-      "wave": "W02",
-      "lane": "L2_CONTENT_PARITY",
-      "statusBasis": "content_rules_proof_packet",
-      "completedSteps": 7,
-      "remainingSteps": 3
-    }
-  ]
+  "inProgressTranches": []
 }

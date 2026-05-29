@@ -324,8 +324,8 @@ const TRANCHE_OVERRIDES = {
       'W02 CP truth is formally closed with reviewed-versus-raw baseline proof, duplicate-shadow exclusions, targeted CP mapping coverage, and a T07 handoff packet.',
   },
   T07: {
-    status: 'in_progress',
-    statusBasis: 'content_rules_proof_packet',
+    status: 'completed',
+    statusBasis: 'exact_proof_bundle',
     completionEvidence: {
       completedStepIds: [
         'W02-L2_CONTENT_PARITY-C01',
@@ -335,23 +335,23 @@ const TRANCHE_OVERRIDES = {
         'W02-L2_CONTENT_PARITY-C05',
         'W02-L2_CONTENT_PARITY-C06',
         'W02-L2_CONTENT_PARITY-C07',
-      ],
-      remainingStepIds: [
         'W02-L2_CONTENT_PARITY-C08',
         'W02-L2_CONTENT_PARITY-C09',
         'W02-L2_CONTENT_PARITY-C10',
       ],
+      remainingStepIds: [],
     },
     evidenceArtifacts: [
       'reports/content_consumption_journey_evaluation.json',
       'reports/w02_cp_truth_closeout_packet.json',
       'reports/w02_cp_truth_mapping_coverage_packet.json',
       'reports/w02_content_parity_baseline_packet.json',
+      'reports/w02_content_parity_closeout_packet.json',
     ],
     proofCommands: [
       'npm run cp:precision:validate',
       'npm run test -- src/utils/tutorialLibraryCatalog.test.ts',
-      'npx vitest run scripts/validate_w02_content_parity_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
+      'npx vitest run scripts/validate_w02_content_parity_baseline_packet.test.ts scripts/validate_w02_content_parity_closeout_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
       'git diff --check',
     ],
     supportingProgress: [
@@ -359,10 +359,12 @@ const TRANCHE_OVERRIDES = {
       'The W02 content parity baseline freezes CP modules, interactive tutorials, reviewed CP roots, and all seven visible CP source-link groups before learner-facing content edits.',
       'The seven learner-facing CP clusters now have explicit source-link normalization while preserving the six-root reviewed CP truth structure.',
       'The W02 parity packet now carries public wording, source-truth lock rules, and focused proof checks for the CP cluster/root split.',
+      'A reusable W02 CP content-parity study map overlay now packages the seven-cluster/six-root relationship for later learner-UX work.',
+      'The T07 closeout packet hands T08 a green proof bundle and a guard against reopening source-link or source-truth decisions.',
       'Source-truth mappings remain locked for T07 unless the T06 proof bundle is regenerated first.',
     ],
     summary:
-      'W02 content parity is open with source-link parity, public wording, content rules, and focused proof checks aligned to the reviewed CP truth bundle; reusable output, drift isolation, and closeout proof remain bounded inside T07.',
+      'W02 content parity is formally closed with source-link parity, public wording, content rules, focused proof checks, reusable output, drift isolation, and a T08 handoff packet aligned to the reviewed CP truth bundle.',
   },
 };
 
@@ -462,7 +464,7 @@ const buildLedger = () => {
       sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
       firstOpenWave: 'W02',
-      immediateNextAction: 'Continue T07 W02 Content Parity by refreshing reusable output, drift isolation, and closeout proof.',
+      immediateNextAction: 'Open T08 W02 Learner UX from the closed T07 content-parity handoff packet.',
     },
     completionDefinition: {
       terminalWave: 'W20',
@@ -472,11 +474,11 @@ const buildLedger = () => {
     groupedPhases,
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
-      'Continue T07 W02 Content Parity from reports/w02_content_parity_baseline_packet.json.',
-      'Refresh reusable W02 content-parity output against the reviewed CP truth packet.',
-      'Isolate the remaining next drift source before closeout.',
-      'Run the T07 content-parity proof commands before learner-UX work begins.',
-      'Close T07 with a bounded content-parity proof packet and ledger update.',
+      'Open T08 W02 Learner UX from reports/w02_content_parity_closeout_packet.json.',
+      'Preserve the T07 source-link map while improving learner-facing orientation and wording.',
+      'Run the T08 learner-UX proof commands before workups/routing work begins.',
+      'Close T08 with a bounded learner-UX proof packet and ledger update.',
+      'Do not open T09 until T08 is proof-complete or intentionally superseded.',
     ],
     tranches,
   };
