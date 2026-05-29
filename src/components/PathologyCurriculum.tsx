@@ -15,6 +15,7 @@ import { consumeCurriculumIntent } from '../utils/curriculumNavigation.ts';
 import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
 import { getGuPilotEnhancement } from '../content/lectures/guPilotEnhancements.ts';
 import { deriveModuleCompetency } from '../content/competency/competencyMatrix.ts';
+import { getPathologyCognition, type ImmunophenotypeBranch } from '../utils/pathologyCognition.ts';
 import { resolveDidacticAlgorithmIntent, resolveDidacticAlgorithmRoutes } from '../utils/algorithmCatalog.ts';
 import {
   CURRICULUM_SIDEBAR_EVENT,
@@ -47,6 +48,32 @@ const morphologyEntryModuleIds = [
   'spindle-cell-differential',
   'small-round-blue-cell-differential',
 ] as const;
+
+const ImmunophenotypeMarkerRow: React.FC<{
+  branch: ImmunophenotypeBranch;
+  className?: string;
+  tone?: 'dark' | 'light';
+}> = ({ branch, className = '', tone = 'dark' }) => (
+  <div className={className}>
+    <div className={`text-[11px] font-semibold uppercase tracking-wide ${tone === 'dark' ? 'text-sky-200' : 'text-sky-800'}`}>
+      {branch.title}
+    </div>
+    <div className="mt-2 flex flex-wrap gap-1.5">
+      {branch.markers.slice(0, 8).map((marker) => (
+        <span
+          key={marker}
+          className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${
+            tone === 'dark'
+              ? 'border-sky-200 bg-white text-sky-900'
+              : 'border-sky-200 bg-white/80 text-sky-950'
+          }`}
+        >
+          {marker}
+        </span>
+      ))}
+    </div>
+  </div>
+);
 
 const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChange, preferences }) => {
   const [selectedId, setSelectedId] = useState(activeCurriculumModules[0]?.moduleId ?? '');
@@ -230,6 +257,18 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
       selectedModule
         ? resolveDidacticAlgorithmRoutes(selectedModule.algorithmTopics, selectedModule.subspecialty)
         : [],
+    [selectedModule]
+  );
+  const selectedModuleImmunophenotypeBranch = useMemo(
+    () =>
+      selectedModule
+        ? getPathologyCognition(
+            selectedModule.title,
+            selectedModule.summary,
+            selectedModule.patternFamilies.join(' '),
+            selectedModule.referenceFocusTerms.join(' ')
+          ).immunophenotypeBranch
+        : undefined,
     [selectedModule]
   );
   const selectedModuleUnresolvedAlgorithmTopics = useMemo(() => {
@@ -582,6 +621,12 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
             <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
               {morphologyEntryModules.map((module) => {
                 const primaryPattern = module.patternFamilies[0] ?? module.title;
+                const immunophenotypeBranch = getPathologyCognition(
+                  module.title,
+                  module.summary,
+                  module.patternFamilies.join(' '),
+                  module.referenceFocusTerms.join(' ')
+                ).immunophenotypeBranch;
                 return (
                   <button
                     key={module.moduleId}
@@ -595,6 +640,9 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                     <div className="mt-2 text-xs font-medium text-slate-300">
                       {module.referenceFocusTerms.slice(0, 3).join(' / ')}
                     </div>
+                    {immunophenotypeBranch && (
+                      <ImmunophenotypeMarkerRow branch={immunophenotypeBranch} className="mt-3" />
+                    )}
                   </button>
                 );
               })}
@@ -843,6 +891,22 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
                           </ul>
                         </div>
                       </div>
+                    </div>
+                  )}
+
+                  {selectedModuleImmunophenotypeBranch && (
+                    <div className="rounded-2xl border border-sky-200 bg-sky-50 p-5">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-sky-800">
+                        Immunophenotype branch
+                      </div>
+                      <div className="mt-2 text-sm leading-6 text-sky-950">
+                        {selectedModuleImmunophenotypeBranch.description}
+                      </div>
+                      <ImmunophenotypeMarkerRow
+                        branch={selectedModuleImmunophenotypeBranch}
+                        className="mt-4"
+                        tone="light"
+                      />
                     </div>
                   )}
 

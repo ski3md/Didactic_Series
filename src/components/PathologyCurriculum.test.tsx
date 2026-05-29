@@ -79,6 +79,8 @@ describe('PathologyCurriculum', () => {
     render(<PathologyCurriculum onSectionChange={vi.fn()} preferences={preferences} />);
 
     expect(screen.getByText('Morphology-first curriculum')).toBeInTheDocument();
+    expect(screen.getAllByText('PAX8').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Immunophenotype branch').length).toBeGreaterThan(0);
 
     await user.click(screen.getByRole('button', { name: 'Open morphology gateway: Small Round Blue Cell Differential' }));
 
@@ -86,6 +88,8 @@ describe('PathologyCurriculum', () => {
     expect(screen.getByText(/genitourinary, mesenchymal, neuro, and pediatric contexts/i)).toBeInTheDocument();
     expect(screen.getByText('Common diagnostic patterns')).toBeInTheDocument();
     expect(screen.getByText('small round blue cell')).toBeInTheDocument();
+    expect(screen.getByText(/Sort the small round blue cell differential by lineage/i)).toBeInTheDocument();
+    expect(screen.getByText('NKX2.2')).toBeInTheDocument();
   });
 
   it('routes a canonical module into its linked lecture', async () => {
