@@ -13,6 +13,7 @@ const {
   evaluateWorkspaceRoutingSemantics,
   evaluateWorkspaceSemantics,
   findDuplicatePublicTopicLabels,
+  readAdapterYaml,
   toSlashVariantKey,
 } = require('./validate_didactics_learning_ux.cjs') as {
   collectPublicTopicLabels: (input: {
@@ -78,6 +79,7 @@ const {
   findDuplicatePublicTopicLabels: (
     entries: Array<{ label: string; source: string }>
   ) => Array<{ normalizedKey: string; entries: Array<{ label: string; source: string }> }>;
+  readAdapterYaml: () => string;
   toSlashVariantKey: (label: string) => string | null;
 };
 
@@ -90,6 +92,15 @@ describe('validate_didactics_learning_ux helpers', () => {
       'blood banking / transfusion medicine'
     );
     expect(toSlashVariantKey('Clinical Pathology')).toBeNull();
+  });
+
+  it('uses a repo-local fallback adapter when the SKI-CORTEX checkout is absent', () => {
+    const adapterYaml = readAdapterYaml();
+
+    expect(adapterYaml).toContain('primary_interface: codex');
+    expect(adapterYaml).toContain('bounded_parallel_interface: openclaw');
+    expect(adapterYaml).toContain('docs/contracts/CODEX_SYSTEM_ALIGNMENT_CONTRACT.md');
+    expect(adapterYaml).toContain('npm run didactics:ux:validate');
   });
 
   it('flags duplicate public topic labels when slash-format variants drift across surfaces', () => {

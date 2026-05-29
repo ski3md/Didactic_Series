@@ -1615,6 +1615,7 @@ module.exports = {
   evaluateWorkspaceRoutingSemantics,
   findDuplicatePublicTopicLabels,
   normalizeComparableLabel,
+  readAdapterYaml,
   runValidation,
   toSlashVariantKey,
 };
