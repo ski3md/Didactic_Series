@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-05-29T23:06:09.398Z",
+  "generatedAt": "2026-05-29T23:06:34.814Z",
   "currentState": {
     "branch": "main",
-    "head": "cca73403",
-    "sync": "0/0 vs origin/main",
+    "head": "9e635a81",
+    "sync": "1/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
     "immediateNextAction": "Continue T08 W02 Learner UX from the baseline packet while preserving the T07 source-link map."
