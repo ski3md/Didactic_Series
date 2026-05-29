@@ -6,14 +6,23 @@ const path = require('path');
 const root = process.cwd();
 const t08CloseoutPath = path.join(root, 'reports/w02_learner_ux_closeout_packet.json');
 const algorithmsPath = path.join(root, 'src/content/algorithms/algorithms.normalized.json');
+const algorithmNavigatorPath = path.join(root, 'src/components/AlgorithmNavigator.tsx');
+const learningUxContractMdPath = path.join(root, 'docs/contracts/PTHFNDR_DIDACTICS_LEARNING_UX_CONTRACT.md');
+const learningUxContractJsonPath = path.join(root, 'src/content/contracts/pthfndrDidacticsLearningUxContract.json');
+const uxValidatorPath = path.join(root, 'scripts/validate_didactics_learning_ux.cjs');
 const outJsonPath = path.join(root, 'reports/w02_workups_routing_baseline_packet.json');
 const outMdPath = path.join(root, 'reports/w02_workups_routing_baseline_packet.md');
 
 const readJson = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));
+const readText = (filePath) => fs.readFileSync(filePath, 'utf8');
 const ensureDir = (filePath) => fs.mkdirSync(path.dirname(filePath), { recursive: true });
 
 const t08Closeout = readJson(t08CloseoutPath);
 const algorithms = readJson(algorithmsPath);
+const algorithmNavigator = readText(algorithmNavigatorPath);
+const learningUxContractMd = readText(learningUxContractMdPath);
+const learningUxContractJson = readJson(learningUxContractJsonPath);
+const uxValidator = readText(uxValidatorPath);
 const cpAlgorithms = algorithms.filter((algorithm) => algorithm.category === 'Clinical Pathology');
 const cpRouteAliases = cpAlgorithms.flatMap((algorithm) =>
   (algorithm.routeAliases || []).map((alias) => ({
@@ -23,6 +32,23 @@ const cpRouteAliases = cpAlgorithms.flatMap((algorithm) =>
   }))
 );
 const cpAlgorithmIds = cpAlgorithms.map((algorithm) => algorithm.id).sort();
+const workupChecks = {
+  benchFacingCopyPresent:
+    algorithmNavigator.includes('bench-facing path') &&
+    algorithmNavigator.includes('live lab question') &&
+    algorithmNavigator.includes('safest next check') &&
+    algorithmNavigator.includes('result decision'),
+  markdownContractLocksRule:
+    learningUxContractMd.includes('## Workups Routing Rule') &&
+    learningUxContractMd.includes('start from the live lab or bench-facing problem') &&
+    learningUxContractMd.includes('choose the safest next check'),
+  machineContractLocksRule:
+    learningUxContractJson.semanticClarity?.workupsRouting?.rule?.includes('bench-facing problem solving') &&
+    learningUxContractJson.semanticClarity?.workupsRouting?.requiredPublicSignals?.includes('safest next check'),
+  validatorLocksRule:
+    uxValidator.includes('Workups routing copy frames Clinical Pathology as bench-facing decision work') &&
+    uxValidator.includes('Machine-readable UX contract locks the bench-facing Workups routing rule.'),
+};
 
 const payload = {
   generatedAt: new Date().toISOString(),
@@ -74,16 +100,17 @@ const payload = {
     unsupportedRouteGuard:
       'Unimplemented CP topics must not fall back heuristically to unrelated algorithm routes.',
   },
+  workupChecks,
   execution: {
     completedStepIds: [
       'W02-L4_WORKUPS_ROUTING-C01',
       'W02-L4_WORKUPS_ROUTING-C02',
       'W02-L4_WORKUPS_ROUTING-C03',
-    ],
-    remainingStepIds: [
       'W02-L4_WORKUPS_ROUTING-C04',
       'W02-L4_WORKUPS_ROUTING-C05',
       'W02-L4_WORKUPS_ROUTING-C06',
+    ],
+    remainingStepIds: [
       'W02-L4_WORKUPS_ROUTING-C07',
       'W02-L4_WORKUPS_ROUTING-C08',
       'W02-L4_WORKUPS_ROUTING-C09',
@@ -92,6 +119,7 @@ const payload = {
     proofCommands: [
       'npm run didactics:ux:validate',
       'npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts',
+      'npx vitest run scripts/validate_didactics_learning_ux.test.ts',
       'npx vitest run scripts/validate_w02_workups_routing_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
       'git diff --check',
     ],
@@ -101,7 +129,8 @@ const payload = {
       t08Closeout.status === 'completed' &&
       t08Closeout.handoffToNextTranche.nextTranche === 'T09 W02 Workups and Routing' &&
       cpAlgorithms.length >= 12 &&
-      cpRouteAliases.length > 0,
+      cpRouteAliases.length > 0 &&
+      Object.values(workupChecks).every(Boolean),
     staleWhen: [
       'T08 closeout changes without regenerating this packet',
       'algorithms.normalized.json changes without regenerating this packet',
@@ -149,6 +178,13 @@ const md = [
   `- Transfusion routes: ${payload.workupParity.transfusionRoutes}`,
   `- Microbiology routes: ${payload.workupParity.microbiologyRoutes}`,
   `- Unsupported route guard: ${payload.workupParity.unsupportedRouteGuard}`,
+  '',
+  '## Workup Checks',
+  '',
+  `- Bench-facing copy present: ${payload.workupChecks.benchFacingCopyPresent ? 'yes' : 'no'}`,
+  `- Markdown contract locks rule: ${payload.workupChecks.markdownContractLocksRule ? 'yes' : 'no'}`,
+  `- Machine contract locks rule: ${payload.workupChecks.machineContractLocksRule ? 'yes' : 'no'}`,
+  `- Validator locks rule: ${payload.workupChecks.validatorLocksRule ? 'yes' : 'no'}`,
   '',
   '## Execution',
   '',

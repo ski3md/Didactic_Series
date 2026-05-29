@@ -34,6 +34,12 @@ const packet = require('../reports/w02_workups_routing_baseline_packet.json') as
     microbiologyRoutes: number;
     unsupportedRouteGuard: string;
   };
+  workupChecks: {
+    benchFacingCopyPresent: boolean;
+    markdownContractLocksRule: boolean;
+    machineContractLocksRule: boolean;
+    validatorLocksRule: boolean;
+  };
   execution: {
     completedStepIds: string[];
     remainingStepIds: string[];
@@ -74,13 +80,26 @@ describe('W02 workups routing baseline packet', () => {
     expect(packet.workupParity.unsupportedRouteGuard).toContain('must not fall back heuristically');
   });
 
-  it('keeps T09 scoped to routing baseline work before wording and closeout', () => {
+  it('locks repeatable checks for bench-facing CP workup routing language', () => {
+    expect(packet.workupChecks).toEqual({
+      benchFacingCopyPresent: true,
+      markdownContractLocksRule: true,
+      machineContractLocksRule: true,
+      validatorLocksRule: true,
+    });
+    expect(packet.execution.proofCommands).toContain('npx vitest run scripts/validate_didactics_learning_ux.test.ts');
+  });
+
+  it('keeps T09 scoped to workup routing checks before reusable output and closeout', () => {
     expect(packet.execution.completedStepIds).toEqual([
       'W02-L4_WORKUPS_ROUTING-C01',
       'W02-L4_WORKUPS_ROUTING-C02',
       'W02-L4_WORKUPS_ROUTING-C03',
+      'W02-L4_WORKUPS_ROUTING-C04',
+      'W02-L4_WORKUPS_ROUTING-C05',
+      'W02-L4_WORKUPS_ROUTING-C06',
     ]);
-    expect(packet.execution.remainingStepIds).toHaveLength(7);
+    expect(packet.execution.remainingStepIds).toHaveLength(4);
     expect(packet.execution.proofCommands).toContain(
       'npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts',
     );

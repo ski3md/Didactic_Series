@@ -1,6 +1,6 @@
 # W02 Workups and Routing Baseline Packet
 
-Generated: 2026-05-29T23:24:49.865Z
+Generated: 2026-05-29T23:50:29.497Z
 
 Tranche: T09 W02 Workups and Routing
 Status: in_progress
@@ -48,11 +48,18 @@ Status: in_progress
 - Microbiology routes: 3
 - Unsupported route guard: Unimplemented CP topics must not fall back heuristically to unrelated algorithm routes.
 
+## Workup Checks
+
+- Bench-facing copy present: yes
+- Markdown contract locks rule: yes
+- Machine contract locks rule: yes
+- Validator locks rule: yes
+
 ## Execution
 
-- Completed step ids: W02-L4_WORKUPS_ROUTING-C01, W02-L4_WORKUPS_ROUTING-C02, W02-L4_WORKUPS_ROUTING-C03
-- Remaining step ids: W02-L4_WORKUPS_ROUTING-C04, W02-L4_WORKUPS_ROUTING-C05, W02-L4_WORKUPS_ROUTING-C06, W02-L4_WORKUPS_ROUTING-C07, W02-L4_WORKUPS_ROUTING-C08, W02-L4_WORKUPS_ROUTING-C09, W02-L4_WORKUPS_ROUTING-C10
-- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `npx vitest run scripts/validate_w02_workups_routing_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
+- Completed step ids: W02-L4_WORKUPS_ROUTING-C01, W02-L4_WORKUPS_ROUTING-C02, W02-L4_WORKUPS_ROUTING-C03, W02-L4_WORKUPS_ROUTING-C04, W02-L4_WORKUPS_ROUTING-C05, W02-L4_WORKUPS_ROUTING-C06
+- Remaining step ids: W02-L4_WORKUPS_ROUTING-C07, W02-L4_WORKUPS_ROUTING-C08, W02-L4_WORKUPS_ROUTING-C09, W02-L4_WORKUPS_ROUTING-C10
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts`, `npx vitest run scripts/validate_w02_workups_routing_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
 
 ## Completion Gate
 
