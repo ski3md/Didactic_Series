@@ -416,9 +416,9 @@ const TRANCHE_OVERRIDES = {
         'W02-L4_WORKUPS_ROUTING-C01',
         'W02-L4_WORKUPS_ROUTING-C02',
         'W02-L4_WORKUPS_ROUTING-C03',
+        'W02-L4_WORKUPS_ROUTING-C04',
       ],
       remainingStepIds: [
-        'W02-L4_WORKUPS_ROUTING-C04',
         'W02-L4_WORKUPS_ROUTING-C05',
         'W02-L4_WORKUPS_ROUTING-C06',
         'W02-L4_WORKUPS_ROUTING-C07',
@@ -442,9 +442,10 @@ const TRANCHE_OVERRIDES = {
       'T09 now opens from the closed T08 learner-UX handoff instead of changing routing before learner-source-link wording is protected.',
       'The routing baseline freezes 12 Clinical Pathology algorithm routes and their aliases while preserving the seven CP learner clusters over six reviewed CP roots.',
       'Unsupported CP topics remain guarded against heuristic fallback into unrelated algorithm routes.',
+      'Workup topic and group overview copy now explains CP routing as bench-facing problem solving instead of abstract area navigation.',
     ],
     summary:
-      'W02 workups and routing is open with a CP algorithm routing baseline tied to the closed T08 learner-UX guard; workup wording, route rules, checks, reusable output, drift isolation, and closeout proof remain bounded inside T09.',
+      'W02 workups and routing is open with a CP algorithm routing baseline tied to the closed T08 learner-UX guard; workup wording is now public-facing, while route rules, checks, reusable output, drift isolation, and closeout proof remain bounded inside T09.',
   },
 };
 

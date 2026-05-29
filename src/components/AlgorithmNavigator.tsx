@@ -246,8 +246,16 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
   );
   const activeAlgorithmOverview =
     activeAlgorithmRoot === 'Clinical Pathology'
-      ? 'Clinical Pathology study paths for QC response, method checks, LIS safety, and assay planning.'
+      ? 'Choose the CP problem you are trying to solve, then walk through the result, specimen, method, or operations decision.'
       : 'Choose one group to review.';
+  const activeAlgorithmReviewCue =
+    activeAlgorithmRoot === 'Clinical Pathology'
+      ? 'Use this as a bench-facing path: identify the problem, choose the safest next check, then document the result decision.'
+      : 'Use this as a diagnostic path: start with the closest pattern, then narrow the next step.';
+  const activeSubtopicReviewCue =
+    activeAlgorithmRoot === 'Clinical Pathology'
+      ? 'Start with the live lab question, then follow the decision points in order.'
+      : 'Start with the closest diagnostic pattern, then follow the decision points in order.';
   const landingResumeLabel = formatAlgorithmDestinationLabel(previousDestination, entries);
   const activeNodeCount = selectedAlgorithm ? Object.keys(selectedAlgorithm.nodes).length : 0;
   const activePitfalls = selectedAlgorithm ? collectAlgorithmPitfalls(selectedAlgorithm) : [];
@@ -514,6 +522,9 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                   <p className="mt-2 text-sm leading-6 text-slate-600">
                     {activeAlgorithmOverview}
                   </p>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    {activeAlgorithmReviewCue}
+                  </p>
                   {launchRequestedTopic && (
                     <p className="mt-2 text-sm text-slate-500">
                       Requested from {returnToCurriculumLabel}: {launchRequestedTopic}
@@ -558,6 +569,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Open next</div>
                   <div className="mt-2 text-sm font-semibold text-slate-900">{activeAlgorithmSubtopics[0].label}</div>
                   <div className="mt-1 text-sm text-slate-600">Then review {familyLeadEntry.title}.</div>
+                  <div className="mt-1 text-sm text-slate-500">{activeAlgorithmReviewCue}</div>
                 </div>
               )}
               {launchedFromCurriculum && (
@@ -650,6 +662,9 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                   <p className="mt-2 text-sm leading-6 text-slate-600">
                     {activeAlgorithmRoot} {'>'} {activeAlgorithmSubtopic.label}
                   </p>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    {activeSubtopicReviewCue}
+                  </p>
                   <p className="mt-2 text-sm text-slate-500">
                     {activeSubtopicEntries.length} study path{activeSubtopicEntries.length === 1 ? '' : 's'} in this section.
                   </p>
@@ -671,7 +686,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Start here</div>
                   <div className="mt-2 text-sm font-semibold text-slate-900">{activeSubtopicEntries[0]?.title ?? 'Open a workup'}</div>
                   <div className="mt-1 text-sm text-slate-600">Open the main study path.</div>
-                  <div className="mt-2 text-xs text-slate-500">You can return to the group, area, or review set.</div>
+                  <div className="mt-2 text-xs text-slate-500">Follow the workup first; supporting lectures and references stay optional.</div>
                 </div>
               </div>
             </Card>
