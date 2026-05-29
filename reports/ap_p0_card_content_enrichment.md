@@ -1,23 +1,23 @@
 # AP P0 Card Content Enrichment
 
-Generated: 2026-05-16T03:32:51.781Z
+Generated: 2026-05-29T20:31:41.486Z
 
 Every AP P0 card now has a deterministic draft entity card, retrieval answer key, and visual inspection sequence. These are marked ready-for-review rather than complete because faculty source verification, image/license attachment, reviewer, and review date remain required before canonical release.
 
 ## Summary
 
-- Cards enriched: 279
-- Total gates: 1395
+- Cards enriched: 267
+- Total gates: 1335
 - Complete gates: 0
-- Review-ready gates: 1116
-- Missing gates: 279
+- Review-ready gates: 1068
+- Missing gates: 267
 - Review-ready percent: 80%
 
 ## Batch Results
 
 | Batch file | Cards | Complete gates | Review-ready gates | Missing gates | Review-ready |
 | --- | --- | --- | --- | --- | --- |
-| `src/content/competency/apP0BreastCardBatch.ts` | 19 | 0 | 76 | 19 | 80% |
+| `src/content/competency/apP0BreastCardBatch.ts` | 7 | 0 | 28 | 7 | 80% |
 | `src/content/competency/apP0CvAutopsyCardBatch.ts` | 24 | 0 | 96 | 24 | 80% |
 | `src/content/competency/apP0CvAutopsyCardBatch2.ts` | 24 | 0 | 96 | 24 | 80% |
 | `src/content/competency/apP0CvAutopsyCardBatch3.ts` | 24 | 0 | 96 | 24 | 80% |

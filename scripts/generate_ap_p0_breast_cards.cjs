@@ -80,7 +80,12 @@ const breastRows = (queue.p0Rows || [])
     return String(a.path).localeCompare(String(b.path));
   });
 
+const isBreastParserSpillover = (row) => String(row.path || '').startsWith('Breast > Lung Primary');
+const breastParserSpilloverRows = breastRows.filter(isBreastParserSpillover);
+const breastEntityRows = breastRows.filter((row) => !isBreastParserSpillover(row));
+
 const selectedRows = breastRows
+  .filter((row) => !isBreastParserSpillover(row))
   .filter((row) => !existingSourceQueueIds.has(row.id))
   .slice(0, 24);
 
@@ -253,15 +258,19 @@ const output = {
   sourcePlan: 'reports/ap_gap_closure_plan.json',
   sourceQueue: 'src/content/competency/apGapClosureQueue.ts',
   excludedExistingSourceQueueIds: existingSourceQueueIds.size,
+  excludedParserSpilloverRows: breastParserSpilloverRows.length,
+  excludedParserSpilloverRule: 'Exclude AP parser spillover paths that begin with Breast > Lung Primary from the Breast entity-card product.',
   facultyPacketPath: 'reports/ap_p0_breast_card_batch_faculty_packet.md',
   facultyPacketCsvPath: 'reports/ap_p0_breast_card_batch_faculty_packet.csv',
   batchName: 'P0 breast entity card batch',
-  batchStrategy: 'All available unassigned P0 Breast rows, capped at 24, converted into normal-comparator and concordance-aware draft scaffolds with five readiness gates.',
+  batchStrategy: 'All available unassigned P0 Breast rows, excluding Lung Primary parser spillover, capped at 24, converted into normal-comparator and concordance-aware draft scaffolds with five readiness gates.',
   status: 'draft breast scaffolds awaiting taxonomy QA, source-backed content, visual anchors, retrieval answer keys, and faculty review metadata',
   categoryCoverage: {
     categoryId: 'ap_breast',
     category: 'Breast',
     queueP0Rows: breastRows.length,
+    parserSpilloverRowsExcluded: breastParserSpilloverRows.length,
+    eligibleBreastP0Rows: breastEntityRows.length,
     selectedCards: cards.length,
   },
   batchReadiness,
@@ -335,6 +344,10 @@ Status: ${output.status}
 Batch strategy: ${output.batchStrategy}
 
 Source P0 breast rows: ${breastRows.length}
+
+Excluded parser spillover rows: ${breastParserSpilloverRows.length}
+
+Eligible breast P0 rows: ${breastEntityRows.length}
 
 Selected cards: ${cards.length}
 
@@ -421,6 +434,8 @@ fs.writeFileSync(packetCsvPath, packetCsv);
 
 console.log(JSON.stringify({
   sourceP0BreastRows: breastRows.length,
+  eligibleBreastP0Rows: breastEntityRows.length,
+  excludedParserSpilloverRows: breastParserSpilloverRows.length,
   selectedCards: cards.length,
   excludedExistingSourceQueueIds: existingSourceQueueIds.size,
   gatesPerCard: Math.min(...cards.map((card) => card.gateStatuses.length)),

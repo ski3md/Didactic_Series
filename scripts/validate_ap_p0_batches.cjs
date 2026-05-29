@@ -55,6 +55,7 @@ const REQUIRED_READINESS_FIELDS = [
 ];
 const EXPECTED_GATE_COUNT = 5;
 const BATCH_FILE_PATTERN = /^apP0.*CardBatch\d*\.ts$/;
+const BREAST_LUNG_PRIMARY_SPILLOVER_PREFIX = 'Breast > Lung Primary';
 
 function isBlank(value) {
   if (value === null || value === undefined) return true;
@@ -381,6 +382,19 @@ function validateBatchFile(filePath) {
   });
 
   const gateCount = Object.values(gateStatusCounts).reduce((sum, count) => sum + count, 0);
+  const breastLungPrimarySpilloverCards = /breast/i.test(`${batch.batchName || ''} ${relativePath}`)
+    ? cards.filter((card) => String(card.apSpecPath || '').startsWith(BREAST_LUNG_PRIMARY_SPILLOVER_PREFIX))
+    : [];
+
+  for (const card of breastLungPrimarySpilloverCards) {
+    issues.push({
+      severity: 'error',
+      code: 'breast-lung-primary-parser-spillover',
+      file: relativePath,
+      cardId: card.id || null,
+      message: `Breast P0 batch includes Lung Primary parser spillover path: ${card.apSpecPath}`,
+    });
+  }
 
   return {
     file: relativePath,

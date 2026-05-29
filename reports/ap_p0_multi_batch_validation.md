@@ -1,15 +1,15 @@
 # AP P0 Multi-Batch Validation
 
-Generated: 2026-05-16T03:34:26.761Z
+Generated: 2026-05-29T20:31:52.180Z
 Source pattern: `src/content/competency/apP0*CardBatch.ts`
 
 ## Summary
 
 - Batch files: 13
 - Parsed batch files: 13
-- Cards: 279
-- Gate statuses: 1395
-- Gate counts by status: ready-for-review: 1116, missing: 279
+- Cards: 267
+- Gate statuses: 1335
+- Gate counts by status: ready-for-review: 1068, missing: 267
 - Completion: 0% complete, 80% ready-for-review, 20% missing
 - Duplicate card IDs across batches: 0
 - Duplicate sourceQueueIds across batches: 0
@@ -23,7 +23,7 @@ Source pattern: `src/content/competency/apP0*CardBatch.ts`
 
 | File | Batch | Cards | Gates | Gate status counts | Issues |
 | --- | --- | --- | --- | --- | --- |
-| `src/content/competency/apP0BreastCardBatch.ts` | P0 breast entity card batch | 19 | 95 | ready-for-review: 76, missing: 19 | 0 |
+| `src/content/competency/apP0BreastCardBatch.ts` | P0 breast entity card batch | 7 | 35 | ready-for-review: 28, missing: 7 | 0 |
 | `src/content/competency/apP0CvAutopsyCardBatch.ts` | P0 cardiovascular/autopsy entity card batch | 24 | 120 | ready-for-review: 96, missing: 24 | 0 |
 | `src/content/competency/apP0CvAutopsyCardBatch2.ts` | P0 cardiovascular/autopsy entity card batch 2 | 24 | 120 | ready-for-review: 96, missing: 24 | 0 |
 | `src/content/competency/apP0CvAutopsyCardBatch3.ts` | P0 cardiovascular/autopsy entity card batch 3 | 24 | 120 | ready-for-review: 96, missing: 24 | 0 |

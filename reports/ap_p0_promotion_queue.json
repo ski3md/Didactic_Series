@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-16T03:34:28.193Z",
+  "generatedAt": "2026-05-29T20:31:52.580Z",
   "sourcePattern": "src/content/competency/apP0*CardBatch.ts",
   "summary": {
     "batchCount": 13,
-    "cardCount": 279,
+    "cardCount": 267,
     "completeGates": 0,
-    "readyForReviewGates": 1116,
-    "missingGates": 279,
-    "totalGates": 1395
+    "readyForReviewGates": 1068,
+    "missingGates": 267,
+    "totalGates": 1335
   },
   "learningQualityStandards": [
     {
@@ -39,8 +39,8 @@
   "gateBacklog": [
     {
       "label": "Faculty review",
-      "cards": 279,
-      "missing": 279,
+      "cards": 267,
+      "missing": 267,
       "readyForReview": 0,
       "complete": 0
     }
@@ -50,11 +50,11 @@
       "file": "src/content/competency/apP0BreastCardBatch.ts",
       "batchName": "P0 breast entity card batch",
       "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardCount": 19,
+      "cardCount": 7,
       "gateCounts": {
         "complete": 0,
-        "ready-for-review": 76,
-        "missing": 19
+        "ready-for-review": 28,
+        "missing": 7
       }
     },
     {
@@ -327,9 +327,9 @@
       "file": "src/content/competency/apP0BreastCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
       "cardIndex": 6,
-      "cardId": "p0-breast-card-06-3a0a1c98-5417-4a39-b0fe-b81ca4cafc2d",
-      "sourceQueueId": "ap_breast-3a0a1c98-5417-4a39-b0fe-b81ca4cafc2d",
-      "title": "Drug and Therapy Changes",
+      "cardId": "p0-breast-card-06-fe908fb0-3f26-4218-b27f-15b4d8241a74",
+      "sourceQueueId": "ap_breast-fe908fb0-3f26-4218-b27f-15b4d8241a74",
+      "title": "Normal Cytology",
       "category": "Breast",
       "rotation": "Breast pathology",
       "learnerLevel": "PGY1-PGY2",
@@ -353,319 +353,7 @@
       "file": "src/content/competency/apP0BreastCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
       "cardIndex": 7,
-      "cardId": "p0-breast-card-07-1021aa23-ea15-4038-861e-7a80e806821d",
-      "sourceQueueId": "ap_breast-1021aa23-ea15-4038-861e-7a80e806821d",
-      "title": "Shunt and Foreign Body Reactions",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 8,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 8,
-      "cardId": "p0-breast-card-08-6bffa019-efd2-4760-8ff0-00dac30a64c5",
-      "sourceQueueId": "ap_breast-6bffa019-efd2-4760-8ff0-00dac30a64c5",
-      "title": "Reactive Pleocytosis (e.g., Mollaret)",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 9,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 9,
-      "cardId": "p0-breast-card-09-6b18e9dc-c078-495e-8853-37cb9329dea2",
-      "sourceQueueId": "ap_breast-6b18e9dc-c078-495e-8853-37cb9329dea2",
-      "title": "Fungal (e.g., Candida)",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 10,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 10,
-      "cardId": "p0-breast-card-10-7ddcbb0f-8aaa-46f2-b77d-a3e1f31def7d",
-      "sourceQueueId": "ap_breast-7ddcbb0f-8aaa-46f2-b77d-a3e1f31def7d",
-      "title": "Parasitic (e.g., Schistosoma)",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 11,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 11,
-      "cardId": "p0-breast-card-11-5fa2507f-a7c7-4230-83ad-18c3a342a164",
-      "sourceQueueId": "ap_breast-5fa2507f-a7c7-4230-83ad-18c3a342a164",
-      "title": "Viral (e.g., Polyoma)",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 12,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 12,
-      "cardId": "p0-breast-card-12-37b48393-6e98-42df-ae1f-af8812b75ecf",
-      "sourceQueueId": "ap_breast-37b48393-6e98-42df-ae1f-af8812b75ecf",
-      "title": "Infections",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 13,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 13,
-      "cardId": "p0-breast-card-13-8164ef68-6102-440f-982c-d5c07a9bbc74",
-      "sourceQueueId": "ap_breast-8164ef68-6102-440f-982c-d5c07a9bbc74",
-      "title": "Bacterial / Mycobacterial",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 14,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 14,
-      "cardId": "p0-breast-card-14-c9016898-a487-48e6-be1f-b6f813c7e5b3",
-      "sourceQueueId": "ap_breast-c9016898-a487-48e6-be1f-b6f813c7e5b3",
-      "title": "Endoscopic Brushings",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 15,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 15,
-      "cardId": "p0-breast-card-15-90f3726b-a2dc-4b50-a0d2-fbf7c9f34e2f",
-      "sourceQueueId": "ap_breast-90f3726b-a2dc-4b50-a0d2-fbf7c9f34e2f",
-      "title": "Indications / Techniques",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 16,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 16,
-      "cardId": "p0-breast-card-16-60c26c37-80e6-487b-a8ba-258ad30bde2f",
-      "sourceQueueId": "ap_breast-60c26c37-80e6-487b-a8ba-258ad30bde2f",
-      "title": "Indications for Evaluation",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 17,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 17,
-      "cardId": "p0-breast-card-17-a749573e-6763-45b2-bf7f-7092d22f98d4",
-      "sourceQueueId": "ap_breast-a749573e-6763-45b2-bf7f-7092d22f98d4",
-      "title": "Epithelial Myoepithelial Carcinoma",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 18,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 18,
-      "cardId": "p0-breast-card-18-fe908fb0-3f26-4218-b27f-15b4d8241a74",
-      "sourceQueueId": "ap_breast-fe908fb0-3f26-4218-b27f-15b4d8241a74",
-      "title": "Normal Cytology",
-      "category": "Breast",
-      "rotation": "Breast pathology",
-      "learnerLevel": "PGY1-PGY2",
-      "editorialStatus": "draft-content-ready-for-review",
-      "missingGateCount": 1,
-      "readyForReviewGateCount": 4,
-      "completeGateCount": 0,
-      "nextGateId": "faculty-review",
-      "nextGateLabel": "Faculty review",
-      "nextGateStatus": "missing",
-      "nextGateEvidence": "Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached.",
-      "learningStandardIds": [
-        "dual-coding",
-        "faculty-calibrated-safety"
-      ],
-      "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
-    },
-    {
-      "rank": 19,
-      "batchName": "P0 breast entity card batch",
-      "file": "src/content/competency/apP0BreastCardBatch.ts",
-      "facultyPacketPath": "reports/ap_p0_breast_card_batch_faculty_packet.md",
-      "cardIndex": 19,
-      "cardId": "p0-breast-card-19-807f09d4-89f3-42fd-856e-5be0f851413c",
+      "cardId": "p0-breast-card-07-807f09d4-89f3-42fd-856e-5be0f851413c",
       "sourceQueueId": "ap_breast-807f09d4-89f3-42fd-856e-5be0f851413c",
       "title": "Normal Anatomy, History, and Development",
       "category": "Breast",
@@ -686,7 +374,7 @@
       "facultyAction": "Resolve Faculty review: Breast faculty reviewer, source citation, image/license status, biomarker/synoptic check when relevant, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 20,
+      "rank": 8,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -712,7 +400,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 21,
+      "rank": 9,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -738,7 +426,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 22,
+      "rank": 10,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -764,7 +452,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 23,
+      "rank": 11,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -790,7 +478,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 24,
+      "rank": 12,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -816,7 +504,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 25,
+      "rank": 13,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -842,7 +530,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 26,
+      "rank": 14,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -868,7 +556,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 27,
+      "rank": 15,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -894,7 +582,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 28,
+      "rank": 16,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -920,7 +608,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 29,
+      "rank": 17,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -946,7 +634,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 30,
+      "rank": 18,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -972,7 +660,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 31,
+      "rank": 19,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -998,7 +686,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 32,
+      "rank": 20,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1024,7 +712,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 33,
+      "rank": 21,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1050,7 +738,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 34,
+      "rank": 22,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1076,7 +764,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 35,
+      "rank": 23,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1102,7 +790,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 36,
+      "rank": 24,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1128,7 +816,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 37,
+      "rank": 25,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1154,7 +842,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 38,
+      "rank": 26,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1180,7 +868,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 39,
+      "rank": 27,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1206,7 +894,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 40,
+      "rank": 28,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1232,7 +920,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 41,
+      "rank": 29,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1258,7 +946,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 42,
+      "rank": 30,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1284,7 +972,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 43,
+      "rank": 31,
       "batchName": "P0 cardiovascular/autopsy entity card batch",
       "file": "src/content/competency/apP0CvAutopsyCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_faculty_packet.md",
@@ -1310,7 +998,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 44,
+      "rank": 32,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1336,7 +1024,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 45,
+      "rank": 33,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1362,7 +1050,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 46,
+      "rank": 34,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1388,7 +1076,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 47,
+      "rank": 35,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1414,7 +1102,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 48,
+      "rank": 36,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1440,7 +1128,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 49,
+      "rank": 37,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1466,7 +1154,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 50,
+      "rank": 38,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1492,7 +1180,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 51,
+      "rank": 39,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1518,7 +1206,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 52,
+      "rank": 40,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1544,7 +1232,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 53,
+      "rank": 41,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1570,7 +1258,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 54,
+      "rank": 42,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1596,7 +1284,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 55,
+      "rank": 43,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1622,7 +1310,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 56,
+      "rank": 44,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1648,7 +1336,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 57,
+      "rank": 45,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1674,7 +1362,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 58,
+      "rank": 46,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1700,7 +1388,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 59,
+      "rank": 47,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1726,7 +1414,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 60,
+      "rank": 48,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1752,7 +1440,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 61,
+      "rank": 49,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1778,7 +1466,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 62,
+      "rank": 50,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1804,7 +1492,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 63,
+      "rank": 51,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1830,7 +1518,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 64,
+      "rank": 52,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1856,7 +1544,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 65,
+      "rank": 53,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1882,7 +1570,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 66,
+      "rank": 54,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1908,7 +1596,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 67,
+      "rank": 55,
       "batchName": "P0 cardiovascular/autopsy entity card batch 2",
       "file": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_2_faculty_packet.md",
@@ -1934,7 +1622,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 68,
+      "rank": 56,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -1960,7 +1648,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 69,
+      "rank": 57,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -1986,7 +1674,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 70,
+      "rank": 58,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2012,7 +1700,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 71,
+      "rank": 59,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2038,7 +1726,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 72,
+      "rank": 60,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2064,7 +1752,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 73,
+      "rank": 61,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2090,7 +1778,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 74,
+      "rank": 62,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2116,7 +1804,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 75,
+      "rank": 63,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2142,7 +1830,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 76,
+      "rank": 64,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2168,7 +1856,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 77,
+      "rank": 65,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2194,7 +1882,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 78,
+      "rank": 66,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2220,7 +1908,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 79,
+      "rank": 67,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2246,7 +1934,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 80,
+      "rank": 68,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2272,7 +1960,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 81,
+      "rank": 69,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2298,7 +1986,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 82,
+      "rank": 70,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2324,7 +2012,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 83,
+      "rank": 71,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2350,7 +2038,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 84,
+      "rank": 72,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2376,7 +2064,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 85,
+      "rank": 73,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2402,7 +2090,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 86,
+      "rank": 74,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2428,7 +2116,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 87,
+      "rank": 75,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2454,7 +2142,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 88,
+      "rank": 76,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2480,7 +2168,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 89,
+      "rank": 77,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2506,7 +2194,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 90,
+      "rank": 78,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2532,7 +2220,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 91,
+      "rank": 79,
       "batchName": "P0 cardiovascular/autopsy entity card batch 3",
       "file": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
       "facultyPacketPath": "reports/ap_p0_cv_autopsy_card_batch_3_faculty_packet.md",
@@ -2558,7 +2246,7 @@
       "facultyAction": "Resolve Faculty review: Cardiovascular/autopsy faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 92,
+      "rank": 80,
       "batchName": "P0 cardiovascular/autopsy taxonomy review completion batch",
       "file": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_taxonomy_review_card_batch_faculty_packet.md",
@@ -2585,7 +2273,7 @@
       "facultyAction": "Resolve Faculty review: Faculty taxonomy decision, source citation, image/license status, reviewer, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 93,
+      "rank": 81,
       "batchName": "P0 cardiovascular/autopsy taxonomy review completion batch",
       "file": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_taxonomy_review_card_batch_faculty_packet.md",
@@ -2612,7 +2300,7 @@
       "facultyAction": "Resolve Faculty review: Faculty taxonomy decision, source citation, image/license status, reviewer, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 94,
+      "rank": 82,
       "batchName": "P0 cardiovascular/autopsy taxonomy review completion batch",
       "file": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_cv_taxonomy_review_card_batch_faculty_packet.md",
@@ -2639,7 +2327,7 @@
       "facultyAction": "Resolve Faculty review: Faculty taxonomy decision, source citation, image/license status, reviewer, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 95,
+      "rank": 83,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2664,7 +2352,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 96,
+      "rank": 84,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2689,7 +2377,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 97,
+      "rank": 85,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2714,7 +2402,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 98,
+      "rank": 86,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2739,7 +2427,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 99,
+      "rank": 87,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2764,7 +2452,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 100,
+      "rank": 88,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2789,7 +2477,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 101,
+      "rank": 89,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2814,7 +2502,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 102,
+      "rank": 90,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2839,7 +2527,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 103,
+      "rank": 91,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2864,7 +2552,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 104,
+      "rank": 92,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2889,7 +2577,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 105,
+      "rank": 93,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2914,7 +2602,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 106,
+      "rank": 94,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2939,7 +2627,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 107,
+      "rank": 95,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2964,7 +2652,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 108,
+      "rank": 96,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -2989,7 +2677,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 109,
+      "rank": 97,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -3014,7 +2702,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 110,
+      "rank": 98,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -3039,7 +2727,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 111,
+      "rank": 99,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -3064,7 +2752,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 112,
+      "rank": 100,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -3089,7 +2777,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 113,
+      "rank": 101,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -3114,7 +2802,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 114,
+      "rank": 102,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -3139,7 +2827,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 115,
+      "rank": 103,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -3164,7 +2852,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 116,
+      "rank": 104,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -3189,7 +2877,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 117,
+      "rank": 105,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -3214,7 +2902,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 118,
+      "rank": 106,
       "batchName": "P0 core entity card batch 1",
       "file": "src/content/competency/apP0EntityCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_entity_card_batch_1_faculty_packet.md",
@@ -3239,7 +2927,7 @@
       "facultyAction": "Resolve Faculty review: Reviewer, source citation, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 119,
+      "rank": 107,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3265,7 +2953,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 120,
+      "rank": 108,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3291,7 +2979,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 121,
+      "rank": 109,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3317,7 +3005,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 122,
+      "rank": 110,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3343,7 +3031,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 123,
+      "rank": 111,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3369,7 +3057,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 124,
+      "rank": 112,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3395,7 +3083,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 125,
+      "rank": 113,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3421,7 +3109,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 126,
+      "rank": 114,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3447,7 +3135,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 127,
+      "rank": 115,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3473,7 +3161,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 128,
+      "rank": 116,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3499,7 +3187,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 129,
+      "rank": 117,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3525,7 +3213,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 130,
+      "rank": 118,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3551,7 +3239,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 131,
+      "rank": 119,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3577,7 +3265,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 132,
+      "rank": 120,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3603,7 +3291,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 133,
+      "rank": 121,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3629,7 +3317,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 134,
+      "rank": 122,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3655,7 +3343,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 135,
+      "rank": 123,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3681,7 +3369,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 136,
+      "rank": 124,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3707,7 +3395,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 137,
+      "rank": 125,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3733,7 +3421,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 138,
+      "rank": 126,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3759,7 +3447,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 139,
+      "rank": 127,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3785,7 +3473,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 140,
+      "rank": 128,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3811,7 +3499,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 141,
+      "rank": 129,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3837,7 +3525,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 142,
+      "rank": 130,
       "batchName": "P0 dermatopathology entity card batch",
       "file": "src/content/competency/apP0DermpathCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_dermpath_card_batch_faculty_packet.md",
@@ -3863,7 +3551,7 @@
       "facultyAction": "Resolve Faculty review: Dermatopathology reviewer, source citation, image/license status, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 143,
+      "rank": 131,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -3889,7 +3577,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 144,
+      "rank": 132,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -3915,7 +3603,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 145,
+      "rank": 133,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -3941,7 +3629,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 146,
+      "rank": 134,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -3967,7 +3655,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 147,
+      "rank": 135,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -3993,7 +3681,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 148,
+      "rank": 136,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4019,7 +3707,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 149,
+      "rank": 137,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4045,7 +3733,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 150,
+      "rank": 138,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4071,7 +3759,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 151,
+      "rank": 139,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4097,7 +3785,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 152,
+      "rank": 140,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4123,7 +3811,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 153,
+      "rank": 141,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4149,7 +3837,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 154,
+      "rank": 142,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4175,7 +3863,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 155,
+      "rank": 143,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4201,7 +3889,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 156,
+      "rank": 144,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4227,7 +3915,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 157,
+      "rank": 145,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4253,7 +3941,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 158,
+      "rank": 146,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4279,7 +3967,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 159,
+      "rank": 147,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4305,7 +3993,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 160,
+      "rank": 148,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4331,7 +4019,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 161,
+      "rank": 149,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4357,7 +4045,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 162,
+      "rank": 150,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4383,7 +4071,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 163,
+      "rank": 151,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4409,7 +4097,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 164,
+      "rank": 152,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4435,7 +4123,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 165,
+      "rank": 153,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4461,7 +4149,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 166,
+      "rank": 154,
       "batchName": "P0 endocrine entity card batch",
       "file": "src/content/competency/apP0EndocrineCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_faculty_packet.md",
@@ -4487,7 +4175,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 167,
+      "rank": 155,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4514,7 +4202,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 168,
+      "rank": 156,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4541,7 +4229,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 169,
+      "rank": 157,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4568,7 +4256,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 170,
+      "rank": 158,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4595,7 +4283,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 171,
+      "rank": 159,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4622,7 +4310,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 172,
+      "rank": 160,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4649,7 +4337,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 173,
+      "rank": 161,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4676,7 +4364,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 174,
+      "rank": 162,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4703,7 +4391,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 175,
+      "rank": 163,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4730,7 +4418,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 176,
+      "rank": 164,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4757,7 +4445,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 177,
+      "rank": 165,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4784,7 +4472,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 178,
+      "rank": 166,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4811,7 +4499,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 179,
+      "rank": 167,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4838,7 +4526,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 180,
+      "rank": 168,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4865,7 +4553,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 181,
+      "rank": 169,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4892,7 +4580,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 182,
+      "rank": 170,
       "batchName": "P0 endocrine entity card batch 2",
       "file": "src/content/competency/apP0EndocrineCardBatch2.ts",
       "facultyPacketPath": "reports/ap_p0_endocrine_card_batch_2_faculty_packet.md",
@@ -4919,7 +4607,7 @@
       "facultyAction": "Resolve Faculty review: Endocrine faculty/taxonomy reviewer, source citation, image/license or reassignment status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 183,
+      "rank": 171,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -4945,7 +4633,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 184,
+      "rank": 172,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -4971,7 +4659,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 185,
+      "rank": 173,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -4997,7 +4685,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 186,
+      "rank": 174,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5023,7 +4711,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 187,
+      "rank": 175,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5049,7 +4737,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 188,
+      "rank": 176,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5075,7 +4763,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 189,
+      "rank": 177,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5101,7 +4789,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 190,
+      "rank": 178,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5127,7 +4815,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 191,
+      "rank": 179,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5153,7 +4841,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 192,
+      "rank": 180,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5179,7 +4867,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 193,
+      "rank": 181,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5205,7 +4893,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 194,
+      "rank": 182,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5231,7 +4919,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 195,
+      "rank": 183,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5257,7 +4945,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 196,
+      "rank": 184,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5283,7 +4971,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 197,
+      "rank": 185,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5309,7 +4997,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 198,
+      "rank": 186,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5335,7 +5023,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 199,
+      "rank": 187,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5361,7 +5049,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 200,
+      "rank": 188,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5387,7 +5075,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 201,
+      "rank": 189,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5413,7 +5101,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 202,
+      "rank": 190,
       "batchName": "P0 gastrointestinal entity card batch",
       "file": "src/content/competency/apP0GiCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_gi_card_batch_faculty_packet.md",
@@ -5439,7 +5127,7 @@
       "facultyAction": "Resolve Faculty review: GI faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 203,
+      "rank": 191,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5465,7 +5153,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 204,
+      "rank": 192,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5491,7 +5179,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 205,
+      "rank": 193,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5517,7 +5205,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 206,
+      "rank": 194,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5543,7 +5231,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 207,
+      "rank": 195,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5569,7 +5257,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 208,
+      "rank": 196,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5595,7 +5283,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 209,
+      "rank": 197,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5621,7 +5309,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 210,
+      "rank": 198,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5647,7 +5335,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 211,
+      "rank": 199,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5673,7 +5361,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 212,
+      "rank": 200,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5699,7 +5387,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 213,
+      "rank": 201,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5725,7 +5413,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 214,
+      "rank": 202,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5751,7 +5439,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 215,
+      "rank": 203,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5777,7 +5465,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 216,
+      "rank": 204,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5803,7 +5491,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 217,
+      "rank": 205,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5829,7 +5517,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 218,
+      "rank": 206,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5855,7 +5543,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 219,
+      "rank": 207,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5881,7 +5569,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 220,
+      "rank": 208,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5907,7 +5595,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 221,
+      "rank": 209,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5933,7 +5621,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 222,
+      "rank": 210,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5959,7 +5647,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 223,
+      "rank": 211,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -5985,7 +5673,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 224,
+      "rank": 212,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -6011,7 +5699,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 225,
+      "rank": 213,
       "batchName": "P0 male reproductive entity card batch",
       "file": "src/content/competency/apP0MaleReproCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_male_repro_card_batch_faculty_packet.md",
@@ -6037,7 +5725,7 @@
       "facultyAction": "Resolve Faculty review: Male GU/reproductive faculty reviewer, source citation, image/license status, editorial decision, and review date are not yet attached."
     },
     {
-      "rank": 226,
+      "rank": 214,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6063,7 +5751,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 227,
+      "rank": 215,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6089,7 +5777,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 228,
+      "rank": 216,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6115,7 +5803,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 229,
+      "rank": 217,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6141,7 +5829,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 230,
+      "rank": 218,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6167,7 +5855,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 231,
+      "rank": 219,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6193,7 +5881,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 232,
+      "rank": 220,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6219,7 +5907,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 233,
+      "rank": 221,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6245,7 +5933,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 234,
+      "rank": 222,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6271,7 +5959,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 235,
+      "rank": 223,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6297,7 +5985,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 236,
+      "rank": 224,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6323,7 +6011,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 237,
+      "rank": 225,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6349,7 +6037,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 238,
+      "rank": 226,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6375,7 +6063,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 239,
+      "rank": 227,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6401,7 +6089,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 240,
+      "rank": 228,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6427,7 +6115,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 241,
+      "rank": 229,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6453,7 +6141,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 242,
+      "rank": 230,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6479,7 +6167,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 243,
+      "rank": 231,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6505,7 +6193,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 244,
+      "rank": 232,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6531,7 +6219,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 245,
+      "rank": 233,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6557,7 +6245,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 246,
+      "rank": 234,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6583,7 +6271,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 247,
+      "rank": 235,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6609,7 +6297,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 248,
+      "rank": 236,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6635,7 +6323,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 249,
+      "rank": 237,
       "batchName": "P0 pediatric/perinatal entity card batch",
       "file": "src/content/competency/apP0PediatricCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_pediatric_card_batch_faculty_packet.md",
@@ -6661,7 +6349,7 @@
       "facultyAction": "Resolve Faculty review: Pediatric/perinatal faculty reviewer, source citation, image/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 250,
+      "rank": 238,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6686,7 +6374,7 @@
       "facultyAction": "Resolve Faculty review: soft tissue/bone/joint pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 251,
+      "rank": 239,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6711,7 +6399,7 @@
       "facultyAction": "Resolve Faculty review: soft tissue/bone/joint pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 252,
+      "rank": 240,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6736,7 +6424,7 @@
       "facultyAction": "Resolve Faculty review: soft tissue/bone/joint pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 253,
+      "rank": 241,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6761,7 +6449,7 @@
       "facultyAction": "Resolve Faculty review: soft tissue/bone/joint pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 254,
+      "rank": 242,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6786,7 +6474,7 @@
       "facultyAction": "Resolve Faculty review: soft tissue/bone/joint pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 255,
+      "rank": 243,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6811,7 +6499,7 @@
       "facultyAction": "Resolve Faculty review: soft tissue/bone/joint pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 256,
+      "rank": 244,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6836,7 +6524,7 @@
       "facultyAction": "Resolve Faculty review: soft tissue/bone/joint pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 257,
+      "rank": 245,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6861,7 +6549,7 @@
       "facultyAction": "Resolve Faculty review: soft tissue/bone/joint pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 258,
+      "rank": 246,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6886,7 +6574,7 @@
       "facultyAction": "Resolve Faculty review: soft tissue/bone/joint pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 259,
+      "rank": 247,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6911,7 +6599,7 @@
       "facultyAction": "Resolve Faculty review: soft tissue/bone/joint pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 260,
+      "rank": 248,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6936,7 +6624,7 @@
       "facultyAction": "Resolve Faculty review: soft tissue/bone/joint pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 261,
+      "rank": 249,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6961,7 +6649,7 @@
       "facultyAction": "Resolve Faculty review: head and neck pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 262,
+      "rank": 250,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -6986,7 +6674,7 @@
       "facultyAction": "Resolve Faculty review: head and neck pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 263,
+      "rank": 251,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7011,7 +6699,7 @@
       "facultyAction": "Resolve Faculty review: head and neck pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 264,
+      "rank": 252,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7036,7 +6724,7 @@
       "facultyAction": "Resolve Faculty review: head and neck pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 265,
+      "rank": 253,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7061,7 +6749,7 @@
       "facultyAction": "Resolve Faculty review: head and neck pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 266,
+      "rank": 254,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7086,7 +6774,7 @@
       "facultyAction": "Resolve Faculty review: cytopathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 267,
+      "rank": 255,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7111,7 +6799,7 @@
       "facultyAction": "Resolve Faculty review: cytopathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 268,
+      "rank": 256,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7136,7 +6824,7 @@
       "facultyAction": "Resolve Faculty review: cytopathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 269,
+      "rank": 257,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7161,7 +6849,7 @@
       "facultyAction": "Resolve Faculty review: cytopathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 270,
+      "rank": 258,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7186,7 +6874,7 @@
       "facultyAction": "Resolve Faculty review: forensic pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 271,
+      "rank": 259,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7211,7 +6899,7 @@
       "facultyAction": "Resolve Faculty review: forensic pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 272,
+      "rank": 260,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7236,7 +6924,7 @@
       "facultyAction": "Resolve Faculty review: forensic pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 273,
+      "rank": 261,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7261,7 +6949,7 @@
       "facultyAction": "Resolve Faculty review: forensic pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 274,
+      "rank": 262,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7286,7 +6974,7 @@
       "facultyAction": "Resolve Faculty review: neuropathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 275,
+      "rank": 263,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7311,7 +6999,7 @@
       "facultyAction": "Resolve Faculty review: neuropathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 276,
+      "rank": 264,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7336,7 +7024,7 @@
       "facultyAction": "Resolve Faculty review: neuropathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 277,
+      "rank": 265,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7361,7 +7049,7 @@
       "facultyAction": "Resolve Faculty review: neuropathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 278,
+      "rank": 266,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",
@@ -7386,7 +7074,7 @@
       "facultyAction": "Resolve Faculty review: pulmonary pathology reviewer, source citation, asset/license status, editorial decision, and last-reviewed date are not yet attached."
     },
     {
-      "rank": 279,
+      "rank": 267,
       "batchName": "P0 small-domain entity card batch",
       "file": "src/content/competency/apP0SmallDomainsCardBatch.ts",
       "facultyPacketPath": "reports/ap_p0_small_domains_card_batch_faculty_packet.md",

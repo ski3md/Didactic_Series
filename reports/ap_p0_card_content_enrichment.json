@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-05-16T03:32:51.781Z",
+  "generatedAt": "2026-05-29T20:31:41.486Z",
   "rule": "Attach deterministic draft entity-card content, retrieval answer keys, and visual inspection sequences to every AP P0 card while preserving faculty review as the canonical release gate.",
   "files": [
     {
       "file": "src/content/competency/apP0BreastCardBatch.ts",
       "batchName": "P0 breast entity card batch",
-      "cards": 19,
+      "cards": 7,
       "readiness": {
         "completedGates": 0,
-        "reviewReadyGates": 76,
-        "missingGates": 19,
-        "totalGates": 95,
+        "reviewReadyGates": 28,
+        "missingGates": 7,
+        "totalGates": 35,
         "percentComplete": 0,
         "percentReviewReady": 80
       }
@@ -173,11 +173,11 @@
     }
   ],
   "summary": {
-    "cards": 279,
+    "cards": 267,
     "completedGates": 0,
-    "reviewReadyGates": 1116,
-    "missingGates": 279,
-    "totalGates": 1395,
+    "reviewReadyGates": 1068,
+    "missingGates": 267,
+    "totalGates": 1335,
     "percentComplete": 0,
     "percentReviewReady": 80
   }
