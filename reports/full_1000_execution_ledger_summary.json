@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-29T21:38:32.220Z",
+  "generatedAt": "2026-05-29T21:57:56.326Z",
   "currentState": {
     "branch": "main",
-    "head": "e752e6e2",
-    "sync": "1/0 vs origin/main",
+    "head": "98ddb84b",
+    "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
-    "immediateNextAction": "Continue T07 W02 Content Parity by aligning source links and visible study-page parity to the W02 baseline packet."
+    "immediateNextAction": "Continue T07 W02 Content Parity by refreshing public wording, content rules, reusable output, drift isolation, and closeout proof."
   },
   "completionDefinition": {
     "terminalWave": "W20",
@@ -20,8 +20,8 @@
   "firstOpenWave": "W02",
   "immediateNextSequence": [
     "Continue T07 W02 Content Parity from reports/w02_content_parity_baseline_packet.json.",
-    "Align learner-facing source links to the reviewed W02 CP truth coverage without changing source-truth mappings.",
-    "Align learner-facing tutorial and curriculum content to the reviewed W02 mapping coverage.",
+    "Refresh public wording against the reviewed W02 CP truth coverage without changing source-truth mappings.",
+    "Lock the content rules and focused proof checks to the refreshed W02 parity packet.",
     "Run the T07 content-parity proof commands before learner-UX work begins.",
     "Close T07 with a bounded content-parity proof packet and ledger update."
   ],
@@ -30,9 +30,9 @@
       "id": "T07",
       "wave": "W02",
       "lane": "L2_CONTENT_PARITY",
-      "statusBasis": "baseline_packet",
-      "completedSteps": 1,
-      "remainingSteps": 9
+      "statusBasis": "source_link_parity_packet",
+      "completedSteps": 3,
+      "remainingSteps": 7
     }
   ]
 }

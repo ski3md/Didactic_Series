@@ -325,12 +325,14 @@ const TRANCHE_OVERRIDES = {
   },
   T07: {
     status: 'in_progress',
-    statusBasis: 'baseline_packet',
+    statusBasis: 'source_link_parity_packet',
     completionEvidence: {
-      completedStepIds: ['W02-L2_CONTENT_PARITY-C01'],
-      remainingStepIds: [
+      completedStepIds: [
+        'W02-L2_CONTENT_PARITY-C01',
         'W02-L2_CONTENT_PARITY-C02',
         'W02-L2_CONTENT_PARITY-C03',
+      ],
+      remainingStepIds: [
         'W02-L2_CONTENT_PARITY-C04',
         'W02-L2_CONTENT_PARITY-C05',
         'W02-L2_CONTENT_PARITY-C06',
@@ -354,11 +356,12 @@ const TRANCHE_OVERRIDES = {
     ],
     supportingProgress: [
       'T07 now opens from the closed T06 CP truth handoff instead of reusing W01 content parity state implicitly.',
-      'The W02 content parity baseline freezes CP modules, interactive tutorials, reviewed CP roots, and remaining visible-cluster/source-link gaps before learner-facing content edits.',
+      'The W02 content parity baseline freezes CP modules, interactive tutorials, reviewed CP roots, and all seven visible CP source-link groups before learner-facing content edits.',
+      'The seven learner-facing CP clusters now have explicit source-link normalization while preserving the six-root reviewed CP truth structure.',
       'Source-truth mappings remain locked for T07 unless the T06 proof bundle is regenerated first.',
     ],
     summary:
-      'W02 content parity is open with a baseline packet aligned to the reviewed CP truth bundle; learner-facing source-link and study-page parity work remains bounded inside T07.',
+      'W02 content parity is open with source-link and study-page parity aligned to the reviewed CP truth bundle; public wording, rules, reusable output, drift isolation, and closeout proof remain bounded inside T07.',
   },
 };
 
@@ -458,7 +461,7 @@ const buildLedger = () => {
       sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
       firstOpenWave: 'W02',
-      immediateNextAction: 'Continue T07 W02 Content Parity by aligning source links and visible study-page parity to the W02 baseline packet.',
+      immediateNextAction: 'Continue T07 W02 Content Parity by refreshing public wording, content rules, reusable output, drift isolation, and closeout proof.',
     },
     completionDefinition: {
       terminalWave: 'W20',
@@ -469,8 +472,8 @@ const buildLedger = () => {
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
       'Continue T07 W02 Content Parity from reports/w02_content_parity_baseline_packet.json.',
-      'Align learner-facing source links to the reviewed W02 CP truth coverage without changing source-truth mappings.',
-      'Align learner-facing tutorial and curriculum content to the reviewed W02 mapping coverage.',
+      'Refresh public wording against the reviewed W02 CP truth coverage without changing source-truth mappings.',
+      'Lock the content rules and focused proof checks to the refreshed W02 parity packet.',
       'Run the T07 content-parity proof commands before learner-UX work begins.',
       'Close T07 with a bounded content-parity proof packet and ledger update.',
     ],

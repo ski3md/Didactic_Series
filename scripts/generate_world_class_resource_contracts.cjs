@@ -263,6 +263,103 @@ const summarizeSwot = (journeys) => ({
     'World-class execution should be deterministic: every route must declare scope, source anchors, learner level, required assets, assessment evidence, remediation path, and validation command before promotion.',
 });
 
+const makeContentBaseline = () => ({
+  wave: 'W02',
+  tranche: 'T07',
+  lane: 'Content Parity',
+  purpose:
+    'Keep learner-facing CP content aligned to the reviewed W02 source-truth packet while source-truth mappings remain locked.',
+  sourceFiles: [
+    'src/content/tutorials/clinicalPathInteractiveTutorials.json',
+    'src/content/curriculum/activeCurriculum.ts',
+    'src/utils/tutorialLibraryCatalog.ts',
+    'reports/content_consumption_journey_evaluation.json',
+  ],
+  curriculumSnapshot: {
+    totalModules: 26,
+    promotionStates: {
+      canonical: 15,
+      staged: 11,
+    },
+    clinicalPathology: {
+      totalModules: 7,
+      canonicalModules: 7,
+      stagedModules: 0,
+    },
+  },
+  tutorialLibrarySnapshot: {
+    clinicalPathInteractiveTutorials: {
+      totalTutorials: 13,
+      interactiveAssetCount: 16,
+      rootTopicCount: 6,
+    },
+  },
+  parityRisks: [
+    'Clinical Pathology remains tutorial-first even though all 7 CP curriculum modules are canonical, so visible route framing must show exactly which tutorial or operational artifact supports each cluster.',
+    'The seven learner-facing CP clusters intentionally sit above six reviewed CP roots, so parity proof must preserve the teaching split without changing source truth.',
+    'Interactive CP growth can overstate parity unless curriculum, catalog, and journey surfaces freeze the same baseline counts.',
+  ],
+  nextParityMoves: [
+    'Use the reviewed W02 CP truth packet as the source-link authority before editing learner-facing parity copy.',
+    'Keep all seven CP visible clusters paired with explicit tutorial or case-study links before T07 closeout.',
+    'Keep learner-UX validator and AlgorithmNavigator out of this tranche while content parity is being aligned.',
+  ],
+  visibleClusterParity: {
+    clinicalPathFoundations: 'bench microbiology + transfusion-reaction workup + chemistry interpretation',
+    hematologyAndRedCellCore: 'flow-based heme triage + PNH + oncology-associated anemia + DAT-linked hemolysis',
+    coagulationAndHemostasisCore: 'bleeding-defect workup + immune thrombocytopenia + acquired inhibitor interpretation',
+    transfusionAndCellularTherapyCore: 'DAT reaction workup + transfusion-medicine review + platelet support + HLA matching',
+    clinicalMicrobiologyCore: 'bench methods and AST workflow + microbiology case review + susceptibility interpretation',
+    chemicalPathologyCore: 'endocrine-metabolic interpretation + immune-lipid crossover + advanced clinical biochemistry review',
+    managementAndInformaticsCore: 'finance + QC + validation + LIS workflow + laboratory safety reasoning',
+  },
+  sourceLinkNormalization: {
+    clinicalPathFoundations: [
+      'Clinical Microbiology Methods and AST Studio',
+      'Chemical Pathology Endocrine and Metabolic Studio',
+      'DAT and Hemolytic Transfusion Reaction Studio',
+    ],
+    hematologyAndRedCellCore: [
+      'Flow Cytometry and Hematopathology Studio',
+      'Case Tutorial: Paroxysmal Nocturnal Hemoglobinuria',
+      'Anemia in Oncology Patients: A Case Tutorial',
+      'Autoimmune Hemolytic Anemia (WAIHA, Cold Agglutinin, PCH, Drug-Induced)',
+    ],
+    coagulationAndHemostasisCore: [
+      'Case Tutorial: Bleeding from Coagulation Defects',
+      'Immune Thrombocytopenia (ITP) Case Tutorial',
+      'Acquired Coagulation Factor Inhibitors: A Case Tutorial',
+    ],
+    transfusionAndCellularTherapyCore: [
+      'DAT and Hemolytic Transfusion Reaction Studio',
+      'Blood Banking / Transfusion Medicine: Advanced Pathology Dossier',
+      'Corrected Platelet Count Increment (CCI)',
+      'Case Tutorial: HLA Antigens and Alleles',
+    ],
+    clinicalMicrobiologyCore: [
+      'Clinical Microbiology Methods and AST Studio',
+      'Case Tutorial: Aerobic and Anaerobic Bacteria',
+      'Case Tutorial: Infectious Diseases and Syndromes',
+      'Susceptibility Testing Tutorial',
+    ],
+    chemicalPathologyCore: [
+      'Chemical Pathology Endocrine and Metabolic Studio',
+      'Immune Recognition and Lipid Metabolism Studio',
+      'Chemistry, Immunology & Toxicology: Advanced Pathology Dossier',
+    ],
+    managementAndInformaticsCore: [
+      'Management and Informatics: Break-Even Analysis Studio',
+      'Management and Informatics: Reagent Rental Decision Studio',
+      'Management and Informatics: Levey-Jennings QC Studio',
+      'Management and Informatics: Westgard Rules Studio',
+      'Management and Informatics: Staff Productivity Studio',
+      'Management and Informatics: Validation vs Verification Studio',
+      'Management and Informatics: LIS Interfacing Studio',
+      'Management and Informatics: Major Sources of Laboratory Errors Studio',
+    ],
+  },
+});
+
 const flattenCpTopics = (roots) => {
   const output = [];
   const visit = (node, ancestors = []) => {
@@ -669,6 +766,7 @@ const main = () => {
   const apLectureContract = JSON.parse(fs.readFileSync(apLectureContractPath, 'utf8'));
   const learningUxContract = JSON.parse(fs.readFileSync(learningUxContractPath, 'utf8'));
   const swot = summarizeSwot(journeyDefinitions);
+  const contentBaseline = makeContentBaseline();
   const cpContracts = makeCpContracts();
   const learningUxGateLabel = 'learning UX';
   const worldContract = {
@@ -712,7 +810,10 @@ const main = () => {
   };
 
   [journeyJsonPath, journeyMdPath, worldContractPath, cpContractPath, cpReportPath, cpCsvPath].forEach(ensureDir);
-  fs.writeFileSync(journeyJsonPath, `${JSON.stringify({ journeys: journeyDefinitions, swot, worldContractSummary: worldContract.globalGates }, null, 2)}\n`);
+  fs.writeFileSync(
+    journeyJsonPath,
+    `${JSON.stringify({ journeys: journeyDefinitions, contentBaseline, swot, worldContractSummary: worldContract.globalGates }, null, 2)}\n`
+  );
   fs.writeFileSync(worldContractPath, `${JSON.stringify(worldContract, null, 2)}\n`);
   fs.writeFileSync(cpContractPath, `${JSON.stringify({ version: 'clinical-pathology-contract.v1', domains: cpContracts }, null, 2)}\n`);
   writeMarkdown(journeyDefinitions, swot, worldContract, cpContracts);

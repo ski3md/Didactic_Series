@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:38:07.589Z",
+  "generatedAt": "2026-05-29T21:57:56.136Z",
   "tranche": "T07 W02 Content Parity",
   "status": "in_progress",
   "source": {
@@ -15,8 +15,8 @@
     "t06Guard": "Do not change source-truth mappings inside T07 unless T06 proof packets are regenerated first."
   },
   "baseline": {
-    "contentBaselineWave": "W01",
-    "contentBaselineTranche": "T02",
+    "contentBaselineWave": "W02",
+    "contentBaselineTranche": "T07",
     "currentWave": "W02",
     "curriculumModules": 26,
     "canonicalModules": 15,
@@ -46,7 +46,7 @@
   },
   "contentParityOverlay": {
     "visibleClusterCount": 7,
-    "sourceLinkNormalizationGroups": 4,
+    "sourceLinkNormalizationGroups": 7,
     "visibleClusterIds": [
       "clinicalPathFoundations",
       "hematologyAndRedCellCore",
@@ -60,31 +60,34 @@
       "clinicalPathFoundations",
       "hematologyAndRedCellCore",
       "coagulationAndHemostasisCore",
-      "transfusionAndCellularTherapyCore"
+      "transfusionAndCellularTherapyCore",
+      "clinicalMicrobiologyCore",
+      "chemicalPathologyCore",
+      "managementAndInformaticsCore"
     ],
     "parityRisks": [
-      "Clinical Pathology remains tutorial-first even though all 7 CP curriculum modules are now canonical, so visible route framing still has to prove depth rather than imply it.",
-      "Visible journey guidance can drift ahead of governed route readiness if source-map and content edits are not checkpointed together.",
+      "Clinical Pathology remains tutorial-first even though all 7 CP curriculum modules are canonical, so visible route framing must show exactly which tutorial or operational artifact supports each cluster.",
+      "The seven learner-facing CP clusters intentionally sit above six reviewed CP roots, so parity proof must preserve the teaching split without changing source truth.",
       "Interactive CP growth can overstate parity unless curriculum, catalog, and journey surfaces freeze the same baseline counts."
     ],
     "nextParityMoves": [
-      "Correct source links and reviewed teaching anchors before editing learner-facing parity copy.",
-      "Use the frozen curriculum and CP interactive counts as the baseline for later T02 parity decisions.",
-      "Keep learner-UX validator and AlgorithmNavigator out of this tranche while the content baseline is still being frozen."
+      "Use the reviewed W02 CP truth packet as the source-link authority before editing learner-facing parity copy.",
+      "Keep all seven CP visible clusters paired with explicit tutorial or case-study links before T07 closeout.",
+      "Keep learner-UX validator and AlgorithmNavigator out of this tranche while content parity is being aligned."
     ],
+    "missingSourceLinkGroups": [],
     "unresolvedW02ContentGaps": [
-      "The reusable content-consumption report still carries the W01/T02 baseline identity, so T07 needs a W02-specific parity overlay before learner-facing copy changes.",
-      "Only four visible cluster groups currently have explicit source-link normalization groups, so the remaining CP curriculum clusters need content-parity review before T07 closeout.",
-      "The closed T06 truth packet freezes six CP roots, while content parity still presents seven visible CP clusters; T07 must preserve the pedagogic cluster split without changing source truth."
+      "The seven learner-facing CP clusters intentionally sit above six reviewed CP roots, so T07 must preserve the teaching split without changing source truth.",
+      "Public wording, content rules, and closeout proof still need to be refreshed before learner-UX work begins."
     ]
   },
   "execution": {
     "completedStepIds": [
-      "W02-L2_CONTENT_PARITY-C01"
+      "W02-L2_CONTENT_PARITY-C01",
+      "W02-L2_CONTENT_PARITY-C02",
+      "W02-L2_CONTENT_PARITY-C03"
     ],
     "remainingStepIds": [
-      "W02-L2_CONTENT_PARITY-C02",
-      "W02-L2_CONTENT_PARITY-C03",
       "W02-L2_CONTENT_PARITY-C04",
       "W02-L2_CONTENT_PARITY-C05",
       "W02-L2_CONTENT_PARITY-C06",

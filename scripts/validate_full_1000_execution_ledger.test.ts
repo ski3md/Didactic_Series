@@ -100,10 +100,14 @@ describe('full 1000 execution ledger assets', () => {
 
     expect(t07).toMatchObject({
       status: 'in_progress',
-      statusBasis: 'baseline_packet',
+      statusBasis: 'source_link_parity_packet',
     });
-    expect(t07?.completionEvidence.completedStepIds).toEqual(['W02-L2_CONTENT_PARITY-C01']);
-    expect(t07?.completionEvidence.remainingStepIds).toHaveLength(9);
+    expect(t07?.completionEvidence.completedStepIds).toEqual([
+      'W02-L2_CONTENT_PARITY-C01',
+      'W02-L2_CONTENT_PARITY-C02',
+      'W02-L2_CONTENT_PARITY-C03',
+    ]);
+    expect(t07?.completionEvidence.remainingStepIds).toHaveLength(7);
   });
 
   it('renders the required ledger sections and immediate next sequence', () => {

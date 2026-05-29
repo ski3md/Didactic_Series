@@ -5,11 +5,11 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `e752e6e2`
-- Sync: `1/0 vs origin/main`
+- HEAD: `98ddb84b`
+- Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W02`
-- Immediate next action: Continue T07 W02 Content Parity by aligning source links and visible study-page parity to the W02 baseline packet.
+- Immediate next action: Continue T07 W02 Content Parity by refreshing public wording, content rules, reusable output, drift isolation, and closeout proof.
 
 ## Completion Definition
 
@@ -35,8 +35,8 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Immediate Next Sequence
 
 1. Continue T07 W02 Content Parity from reports/w02_content_parity_baseline_packet.json.
-2. Align learner-facing source links to the reviewed W02 CP truth coverage without changing source-truth mappings.
-3. Align learner-facing tutorial and curriculum content to the reviewed W02 mapping coverage.
+2. Refresh public wording against the reviewed W02 CP truth coverage without changing source-truth mappings.
+3. Lock the content rules and focused proof checks to the refreshed W02 parity packet.
 4. Run the T07 content-parity proof commands before learner-UX work begins.
 5. Close T07 with a bounded content-parity proof packet and ledger update.
 
@@ -141,18 +141,19 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ### T07 W02 Content Parity
 
 - Status: `in_progress`
-- Status basis: `baseline_packet`
+- Status basis: `source_link_parity_packet`
 - Goal: This lane brings the learner-facing content into line with the reviewed truth for reconcile raw mappings with reviewed mappings.
-- Completed steps: 1
-- Remaining steps: 9
+- Completed steps: 3
+- Remaining steps: 7
 - Evidence commits: none
 - Evidence artifacts: `reports/content_consumption_journey_evaluation.json`, `reports/w02_cp_truth_closeout_packet.json`, `reports/w02_cp_truth_mapping_coverage_packet.json`, `reports/w02_content_parity_baseline_packet.json`
 - Remaining owned files: none
 - Proof commands: `npm run cp:precision:validate`, `npm run test -- src/utils/tutorialLibraryCatalog.test.ts`, `npx vitest run scripts/validate_w02_content_parity_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
-- Summary: W02 content parity is open with a baseline packet aligned to the reviewed CP truth bundle; learner-facing source-link and study-page parity work remains bounded inside T07.
+- Summary: W02 content parity is open with source-link and study-page parity aligned to the reviewed CP truth bundle; public wording, rules, reusable output, drift isolation, and closeout proof remain bounded inside T07.
 
   - T07 now opens from the closed T06 CP truth handoff instead of reusing W01 content parity state implicitly.
-  - The W02 content parity baseline freezes CP modules, interactive tutorials, reviewed CP roots, and remaining visible-cluster/source-link gaps before learner-facing content edits.
+  - The W02 content parity baseline freezes CP modules, interactive tutorials, reviewed CP roots, and all seven visible CP source-link groups before learner-facing content edits.
+  - The seven learner-facing CP clusters now have explicit source-link normalization while preserving the six-root reviewed CP truth structure.
   - Source-truth mappings remain locked for T07 unless the T06 proof bundle is regenerated first.
 
 ### T08 W02 Learner UX

@@ -39,6 +39,16 @@ const normalizedVisibleClusters = Object.keys(visibleClusterParity);
 const cpCanonicalManifestRows = (manifest.rows || []).filter(
   (row) => row.abpathDomain === 'CP' && row.validatedForPromotion && row.canonicalForId
 );
+const missingSourceLinkGroups = normalizedVisibleClusters.filter((clusterId) => !normalizedLinkGroups.includes(clusterId));
+const unresolvedW02ContentGaps = [
+  ...(missingSourceLinkGroups.length
+    ? [
+        `Missing source-link normalization groups: ${missingSourceLinkGroups.join(', ')}.`,
+      ]
+    : []),
+  'The seven learner-facing CP clusters intentionally sit above six reviewed CP roots, so T07 must preserve the teaching split without changing source truth.',
+  'Public wording, content rules, and closeout proof still need to be refreshed before learner-UX work begins.',
+];
 
 const payload = {
   generatedAt: new Date().toISOString(),
@@ -86,17 +96,16 @@ const payload = {
     normalizedSourceLinkGroupIds: normalizedLinkGroups,
     parityRisks: contentBaseline.parityRisks,
     nextParityMoves: contentBaseline.nextParityMoves,
-    unresolvedW02ContentGaps: [
-      'The reusable content-consumption report still carries the W01/T02 baseline identity, so T07 needs a W02-specific parity overlay before learner-facing copy changes.',
-      'Only four visible cluster groups currently have explicit source-link normalization groups, so the remaining CP curriculum clusters need content-parity review before T07 closeout.',
-      'The closed T06 truth packet freezes six CP roots, while content parity still presents seven visible CP clusters; T07 must preserve the pedagogic cluster split without changing source truth.',
-    ],
+    missingSourceLinkGroups,
+    unresolvedW02ContentGaps,
   },
   execution: {
-    completedStepIds: ['W02-L2_CONTENT_PARITY-C01'],
-    remainingStepIds: [
+    completedStepIds: [
+      'W02-L2_CONTENT_PARITY-C01',
       'W02-L2_CONTENT_PARITY-C02',
       'W02-L2_CONTENT_PARITY-C03',
+    ],
+    remainingStepIds: [
       'W02-L2_CONTENT_PARITY-C04',
       'W02-L2_CONTENT_PARITY-C05',
       'W02-L2_CONTENT_PARITY-C06',
@@ -120,7 +129,8 @@ const payload = {
       t06Coverage.coverage.cpDomainValidatedRows === 285 &&
       t06Coverage.coverage.cpRootCount === 6 &&
       cpTutorials.totalTutorials === 13 &&
-      curriculum.clinicalPathology.canonicalModules === 7,
+      curriculum.clinicalPathology.canonicalModules === 7 &&
+      missingSourceLinkGroups.length === 0,
     staleWhen: [
       'T06 closeout or mapping coverage changes without regenerating this packet',
       'content_consumption_journey_evaluation.json contentBaseline changes without regenerating this packet',
@@ -146,7 +156,7 @@ const md = [
   '',
   '## Baseline',
   '',
-  `- Prior content baseline identity: ${payload.baseline.contentBaselineWave}/${payload.baseline.contentBaselineTranche}`,
+  `- Content baseline identity: ${payload.baseline.contentBaselineWave}/${payload.baseline.contentBaselineTranche}`,
   `- Current wave: ${payload.baseline.currentWave}`,
   `- Curriculum modules: ${payload.baseline.curriculumModules}`,
   `- Canonical modules: ${payload.baseline.canonicalModules}`,
@@ -172,6 +182,7 @@ const md = [
   '',
   `- Visible CP cluster groups: ${payload.contentParityOverlay.visibleClusterCount}`,
   `- Source-link normalization groups: ${payload.contentParityOverlay.sourceLinkNormalizationGroups}`,
+  `- Missing source-link groups: ${payload.contentParityOverlay.missingSourceLinkGroups.length}`,
   ...payload.contentParityOverlay.unresolvedW02ContentGaps.map((gap) => `- W02 content gap: ${gap}`),
   '',
   '## Execution',

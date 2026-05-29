@@ -234,10 +234,10 @@
     }
   ],
   "contentBaseline": {
-    "wave": "W01",
-    "tranche": "T02",
+    "wave": "W02",
+    "tranche": "T07",
     "lane": "Content Parity",
-    "purpose": "Freeze the current learner-facing content baseline before source-map corrections and visible parity edits move together.",
+    "purpose": "Keep learner-facing CP content aligned to the reviewed W02 source-truth packet while source-truth mappings remain locked.",
     "sourceFiles": [
       "src/content/tutorials/clinicalPathInteractiveTutorials.json",
       "src/content/curriculum/activeCurriculum.ts",
@@ -264,14 +264,14 @@
       }
     },
     "parityRisks": [
-      "Clinical Pathology remains tutorial-first even though all 7 CP curriculum modules are now canonical, so visible route framing still has to prove depth rather than imply it.",
-      "Visible journey guidance can drift ahead of governed route readiness if source-map and content edits are not checkpointed together.",
+      "Clinical Pathology remains tutorial-first even though all 7 CP curriculum modules are canonical, so visible route framing must show exactly which tutorial or operational artifact supports each cluster.",
+      "The seven learner-facing CP clusters intentionally sit above six reviewed CP roots, so parity proof must preserve the teaching split without changing source truth.",
       "Interactive CP growth can overstate parity unless curriculum, catalog, and journey surfaces freeze the same baseline counts."
     ],
     "nextParityMoves": [
-      "Correct source links and reviewed teaching anchors before editing learner-facing parity copy.",
-      "Use the frozen curriculum and CP interactive counts as the baseline for later T02 parity decisions.",
-      "Keep learner-UX validator and AlgorithmNavigator out of this tranche while the content baseline is still being frozen."
+      "Use the reviewed W02 CP truth packet as the source-link authority before editing learner-facing parity copy.",
+      "Keep all seven CP visible clusters paired with explicit tutorial or case-study links before T07 closeout.",
+      "Keep learner-UX validator and AlgorithmNavigator out of this tranche while content parity is being aligned."
     ],
     "visibleClusterParity": {
       "clinicalPathFoundations": "bench microbiology + transfusion-reaction workup + chemistry interpretation",
@@ -304,6 +304,27 @@
         "Blood Banking / Transfusion Medicine: Advanced Pathology Dossier",
         "Corrected Platelet Count Increment (CCI)",
         "Case Tutorial: HLA Antigens and Alleles"
+      ],
+      "clinicalMicrobiologyCore": [
+        "Clinical Microbiology Methods and AST Studio",
+        "Case Tutorial: Aerobic and Anaerobic Bacteria",
+        "Case Tutorial: Infectious Diseases and Syndromes",
+        "Susceptibility Testing Tutorial"
+      ],
+      "chemicalPathologyCore": [
+        "Chemical Pathology Endocrine and Metabolic Studio",
+        "Immune Recognition and Lipid Metabolism Studio",
+        "Chemistry, Immunology & Toxicology: Advanced Pathology Dossier"
+      ],
+      "managementAndInformaticsCore": [
+        "Management and Informatics: Break-Even Analysis Studio",
+        "Management and Informatics: Reagent Rental Decision Studio",
+        "Management and Informatics: Levey-Jennings QC Studio",
+        "Management and Informatics: Westgard Rules Studio",
+        "Management and Informatics: Staff Productivity Studio",
+        "Management and Informatics: Validation vs Verification Studio",
+        "Management and Informatics: LIS Interfacing Studio",
+        "Management and Informatics: Major Sources of Laboratory Errors Studio"
       ]
     }
   },
@@ -316,7 +337,7 @@
     ],
     "weaknesses": [
       "Navigation labels and route depth are not always explicit enough for first-time users.",
-      "CP still depends on tutorial clusters more than lecture/image parity, so route-level depth has to stay explicit in visible copy.",
+      "CP exists but is not yet governed with the same route-level contract rigor as AP.",
       "Faculty QA, provenance badges, and learner analytics are not yet first-class across every pathway.",
       "Some staged content can appear close to canonical unless contract state is made visible."
     ],
@@ -345,9 +366,12 @@
       "trust/provenance",
       "learning UX"
     ],
+    "learningUxGateLabel": "learning UX",
+    "learningUxContractVersion": "pthfndr-didactics-learning-ux-contract.v1",
+    "learningUxContractSurface": "/didactics",
     "promotionRule": "No learner-facing route is canonical unless it declares scope, source anchors, level, required assets, assessment evidence, remediation route, and validation command.",
     "freeResourceTrustRule": "Free does not mean informal: every promoted asset must expose provenance, editorial status, last-reviewed date, and a deterministic route back to source contracts.",
-    "learningUxRule": "Every promoted learner route must satisfy the didactics learning UX contract so workspace labels, navigation state, and visible teaching context stay truthful and consistent.",
+    "learningUxRule": "Every promoted learner route on /didactics must satisfy the didactics learning UX contract so workspace labels, navigation state, and visible teaching context stay truthful and consistent.",
     "learningScienceRule": "Every pathway must include retrieval practice, interleaving or comparison, feedback, and a spaced-review or remediation output."
   }
 }

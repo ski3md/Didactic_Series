@@ -32,6 +32,7 @@ const packet = require('../reports/w02_content_parity_baseline_packet.json') as 
   contentParityOverlay: {
     visibleClusterCount: number;
     sourceLinkNormalizationGroups: number;
+    missingSourceLinkGroups: string[];
     unresolvedW02ContentGaps: string[];
   };
   execution: {
@@ -55,8 +56,8 @@ describe('W02 content parity baseline packet', () => {
   });
 
   it('freezes the W02 content baseline against the reviewed CP truth bundle', () => {
-    expect(packet.baseline.contentBaselineWave).toBe('W01');
-    expect(packet.baseline.contentBaselineTranche).toBe('T02');
+    expect(packet.baseline.contentBaselineWave).toBe('W02');
+    expect(packet.baseline.contentBaselineTranche).toBe('T07');
     expect(packet.baseline.currentWave).toBe('W02');
     expect(packet.baseline.clinicalPathCanonicalModules).toBe(7);
     expect(packet.baseline.clinicalPathStagedModules).toBe(0);
@@ -73,10 +74,15 @@ describe('W02 content parity baseline packet', () => {
 
   it('keeps T07 scoped to a baseline packet until learner-facing parity changes land', () => {
     expect(packet.contentParityOverlay.visibleClusterCount).toBe(7);
-    expect(packet.contentParityOverlay.sourceLinkNormalizationGroups).toBe(4);
-    expect(packet.contentParityOverlay.unresolvedW02ContentGaps).toHaveLength(3);
-    expect(packet.execution.completedStepIds).toEqual(['W02-L2_CONTENT_PARITY-C01']);
-    expect(packet.execution.remainingStepIds).toHaveLength(9);
+    expect(packet.contentParityOverlay.sourceLinkNormalizationGroups).toBe(7);
+    expect(packet.contentParityOverlay.missingSourceLinkGroups).toHaveLength(0);
+    expect(packet.contentParityOverlay.unresolvedW02ContentGaps).toHaveLength(2);
+    expect(packet.execution.completedStepIds).toEqual([
+      'W02-L2_CONTENT_PARITY-C01',
+      'W02-L2_CONTENT_PARITY-C02',
+      'W02-L2_CONTENT_PARITY-C03',
+    ]);
+    expect(packet.execution.remainingStepIds).toHaveLength(7);
     expect(packet.execution.proofCommands).toContain('npm run test -- src/utils/tutorialLibraryCatalog.test.ts');
     expect(packet.completionGate.baselineGreen).toBe(true);
     expect(packet.completionGate.staleWhen).toHaveLength(3);
