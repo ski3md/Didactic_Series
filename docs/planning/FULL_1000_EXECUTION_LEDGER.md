@@ -5,7 +5,7 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `51d61c37`
+- HEAD: `fdae3a1d`
 - Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W02`
@@ -185,18 +185,19 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 - Status: `in_progress`
 - Status basis: `routing_baseline_packet`
 - Goal: This lane keeps workups and route behavior dependable for reconcile raw mappings with reviewed mappings.
-- Completed steps: 4
-- Remaining steps: 6
+- Completed steps: 5
+- Remaining steps: 5
 - Evidence commits: none
 - Evidence artifacts: `reports/w02_learner_ux_closeout_packet.json`, `reports/didactics_learning_ux_report.json`, `reports/w02_workups_routing_baseline_packet.json`
 - Remaining owned files: none
 - Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `npx vitest run scripts/validate_w02_workups_routing_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
-- Summary: W02 workups and routing is open with a CP algorithm routing baseline tied to the closed T08 learner-UX guard; workup wording is now public-facing, while route rules, checks, reusable output, drift isolation, and closeout proof remain bounded inside T09.
+- Summary: W02 workups and routing is open with a CP algorithm routing baseline tied to the closed T08 learner-UX guard; workup wording and route rules are now public-facing, while checks, reusable output, drift isolation, and closeout proof remain bounded inside T09.
 
   - T09 now opens from the closed T08 learner-UX handoff instead of changing routing before learner-source-link wording is protected.
   - The routing baseline freezes 12 Clinical Pathology algorithm routes and their aliases while preserving the seven CP learner clusters over six reviewed CP roots.
   - Unsupported CP topics remain guarded against heuristic fallback into unrelated algorithm routes.
   - Workup topic and group overview copy now explains CP routing as bench-facing problem solving instead of abstract area navigation.
+  - The UX contract, machine-readable contract, and validator now lock the bench-facing Clinical Pathology workup routing rule.
 
 ### T10 W02 Contracts and Proof
 

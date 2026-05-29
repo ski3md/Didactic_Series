@@ -259,6 +259,7 @@ describe('validate_didactics_learning_ux helpers', () => {
       codexAlignmentContractMd: `
         ## Public Text Rule
         The governed \`Workups\` workspace label is allowed only when it truthfully names the diagnostic-workup lane.
+        Clinical Pathology Workups overview copy must frame routing as bench-facing problem solving
         ## Autonomous Execution Rule
         continue through logically connected repo steps without repeatedly asking for \`proceed\`, \`continue\`, or equivalent confirmations
         pause only for destructive actions, irreversible mutations, missing credentials or secrets, materially changed legal or risk posture, truly ambiguous branch decisions, required external approval, or policy-bound clarification
@@ -274,6 +275,9 @@ describe('validate_didactics_learning_ux helpers', () => {
         Exception:
         the governed workspace label \`Workups\` is allowed only when it truthfully names the active diagnostic-workup lane
         \`Workups\` must not be reused as a generic CTA
+        ## Workups Routing Rule
+        start from the live lab or bench-facing problem
+        choose the safest next check
       `,
       contract: {
         semanticClarity: {
@@ -284,6 +288,11 @@ describe('validate_didactics_learning_ux helpers', () => {
                 allowedOnlyWhen: ['workspace_switcher', 'breadcrumb', 'destination_heading'],
               },
             ],
+          },
+          workupsRouting: {
+            rule: 'Clinical Pathology workup overview copy must frame the lane as bench-facing problem solving rather than abstract route browsing.',
+            requiredPublicSignals: ['bench-facing path', 'live lab question', 'safest next check', 'result decision'],
+            secondarySupportRule: 'Supporting lectures, tutorials, and reference links must stay secondary to the active workup.',
           },
         },
       },
@@ -313,6 +322,8 @@ describe('validate_didactics_learning_ux helpers', () => {
       expect.arrayContaining([
         expect.stringContaining('AGENTS imports both the Codex system-alignment and OpenClaw execution contracts.'),
         expect.stringContaining('Codex system alignment contract captures autonomous execution, automation posture, public-text truth, OpenClaw posture, and parallel-lane ownership.'),
+        expect.stringContaining('Learning UX markdown contract distinguishes the governed Workups lane'),
+        expect.stringContaining('Machine-readable UX contract locks the bench-facing Workups routing rule.'),
       ]),
     );
   });
@@ -619,11 +630,14 @@ describe('validate_didactics_learning_ux helpers', () => {
         <div>Major topic</div>
         <div>Scope: QC failure response</div>
         <div>Next: open the first group</div>
+        <div>Use this as a bench-facing path: identify the problem, choose the safest next check, then document the result decision.</div>
         <button>Open QC failure response</button>
         <button>Back to workups</button>
         <div>Workups</div>
         <div>Scope: QC failure response</div>
         <div>Next: open the first path</div>
+        <div>Start with the live lab question, then follow the decision points in order.</div>
+        <div>Follow the workup first; supporting lectures and references stay optional.</div>
         <button>Open QC Failure Response</button>
         <div>Diagnostic focus</div>
         <LectureAlgorithmPlayer />
@@ -657,6 +671,7 @@ describe('validate_didactics_learning_ux helpers', () => {
         expect.stringContaining('Tutorial subtopic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Lecture subtopic overview exposes scope and a single obvious next action'),
         expect.stringContaining('Workup subtopic overview exposes scope and a single obvious next action'),
+        expect.stringContaining('Workups routing copy frames Clinical Pathology as bench-facing decision work'),
         expect.stringContaining('Algorithm detail places the workup before optional tutorial'),
         expect.stringContaining('Curriculum module pages present patterns, board focus, workup, and diagnostic focus'),
         expect.stringContaining('Curriculum module pages keep optional follow-up review after the core module framing.'),

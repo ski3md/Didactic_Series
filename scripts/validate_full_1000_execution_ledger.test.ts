@@ -145,8 +145,9 @@ describe('full 1000 execution ledger assets', () => {
       'W02-L4_WORKUPS_ROUTING-C02',
       'W02-L4_WORKUPS_ROUTING-C03',
       'W02-L4_WORKUPS_ROUTING-C04',
+      'W02-L4_WORKUPS_ROUTING-C05',
     ]);
-    expect(t09?.completionEvidence.remainingStepIds).toHaveLength(6);
+    expect(t09?.completionEvidence.remainingStepIds).toHaveLength(5);
   });
 
   it('renders the required ledger sections and immediate next sequence', () => {

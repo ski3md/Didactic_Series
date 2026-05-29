@@ -118,6 +118,17 @@ Exception:
 - the governed workspace label `Workups` is allowed only when it truthfully names the active diagnostic-workup lane in the workspace switcher, breadcrumb, or destination heading
 - `Workups` must not be reused as a generic CTA, teaser button, or unlabeled route hint outside that governed workspace identity
 
+## Workups Routing Rule
+The Workups lane must read like a diagnostic or bench-facing decision path, not an abstract route browser.
+
+For Clinical Pathology workups, public topic and group overview copy must:
+- start from the live lab or bench-facing problem
+- ask the learner to choose the safest next check
+- keep result, specimen, method, operations, and documentation decisions visible
+- keep supporting lectures, tutorials, and reference links secondary to the active workup
+
+Do not describe Clinical Pathology workups only as generic areas, groups, paths, routes, or navigation buckets when the page can state the bench-facing decision being reviewed.
+
 Prefer labels that reveal the destination and reason to click, such as:
 - `Review Spindle Cell Differential`
 - `Compare NIFTP vs Encapsulated FVPTC`

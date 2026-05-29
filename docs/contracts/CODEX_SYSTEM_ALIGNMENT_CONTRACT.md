@@ -87,6 +87,9 @@ Therefore:
 The governed `Workups` workspace label is allowed only when it truthfully names the diagnostic-workup lane.
 Do not reuse `Workups` as a generic CTA, teaser label, or fallback public route hint.
 
+Clinical Pathology Workups overview copy must frame routing as bench-facing problem solving:
+start from the live lab question, choose the safest next check, and keep result decisions visible.
+
 ## Evidence-First Status Rule
 
 When answering what remains, what changed, or what the next blocker is:

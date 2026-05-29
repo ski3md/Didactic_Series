@@ -556,6 +556,19 @@ const evaluateHierarchySemantics = ({
     issues.push('Workup subtopic overview does not clearly expose scope and a single obvious next action before the workup list.');
   }
 
+  const workupsRoutingSignals = [
+    /bench-facing path/,
+    /live lab question/,
+    /safest next check/,
+    /result decision/,
+    /supporting lectures and references stay optional/,
+  ];
+  if (workupsRoutingSignals.every((pattern) => pattern.test(algorithmsTsx))) {
+    passes.push('Workups routing copy frames Clinical Pathology as bench-facing decision work with optional support kept secondary.');
+  } else {
+    issues.push('Workups routing copy does not yet enforce bench-facing CP decision language and secondary support ordering.');
+  }
+
   const algorithmWorkupIndex = indexOfPattern(algorithmsTsx, /<LectureAlgorithmPlayer\b/);
   const algorithmHeaderCueIndex = indexOfPattern(algorithmsTsx, /(Diagnostic focus|Workup controls)/);
   const algorithmRelatedReviewIndex = indexOfPattern(algorithmsTsx, /(Related review|Follow-up review|Optional follow-up review)/);
@@ -1155,6 +1168,7 @@ const evaluateContractAlignmentSemantics = ({
   if (
     codexAlignmentContractMd.includes('## Public Text Rule') &&
     codexAlignmentContractMd.includes('The governed `Workups` workspace label is allowed only when it truthfully names the diagnostic-workup lane.') &&
+    codexAlignmentContractMd.includes('Clinical Pathology Workups overview copy must frame routing as bench-facing problem solving') &&
     codexAlignmentContractMd.includes('## Autonomous Execution Rule') &&
     codexAlignmentContractMd.includes('continue through logically connected repo steps without repeatedly asking for `proceed`, `continue`, or equivalent confirmations') &&
     codexAlignmentContractMd.includes('pause only for destructive actions, irreversible mutations, missing credentials or secrets, materially changed legal or risk posture, truly ambiguous branch decisions, required external approval, or policy-bound clarification') &&
@@ -1174,11 +1188,14 @@ const evaluateContractAlignmentSemantics = ({
   if (
     learningUxContractMd.includes('Exception:') &&
     learningUxContractMd.includes('the governed workspace label `Workups` is allowed only when it truthfully names the active diagnostic-workup lane') &&
-    learningUxContractMd.includes('`Workups` must not be reused as a generic CTA')
+    learningUxContractMd.includes('`Workups` must not be reused as a generic CTA') &&
+    learningUxContractMd.includes('## Workups Routing Rule') &&
+    learningUxContractMd.includes('start from the live lab or bench-facing problem') &&
+    learningUxContractMd.includes('choose the safest next check')
   ) {
-    passes.push('Learning UX markdown contract distinguishes the governed Workups lane label from vague public CTAs.');
+    passes.push('Learning UX markdown contract distinguishes the governed Workups lane label and locks bench-facing Workups routing rules.');
   } else {
-    issues.push('Learning UX markdown contract does not clearly distinguish the governed Workups label from vague public CTAs.');
+    issues.push('Learning UX markdown contract does not clearly distinguish the governed Workups label or bench-facing Workups routing rules.');
   }
 
   const governedWorkupsLabels = contract.semanticClarity?.intentionalClicks?.allowedGovernedLabels || [];
@@ -1195,6 +1212,20 @@ const evaluateContractAlignmentSemantics = ({
     passes.push('Machine-readable UX contract preserves the governed Workups-label exception.');
   } else {
     issues.push('Machine-readable UX contract is missing the governed Workups-label exception.');
+  }
+
+  const workupsRoutingContract = contract.semanticClarity?.workupsRouting || {};
+  if (
+    workupsRoutingContract.rule?.includes('bench-facing problem solving') &&
+    Array.isArray(workupsRoutingContract.requiredPublicSignals) &&
+    ['bench-facing path', 'live lab question', 'safest next check', 'result decision'].every((signal) =>
+      workupsRoutingContract.requiredPublicSignals.includes(signal)
+    ) &&
+    workupsRoutingContract.secondarySupportRule?.includes('secondary to the active workup')
+  ) {
+    passes.push('Machine-readable UX contract locks the bench-facing Workups routing rule.');
+  } else {
+    issues.push('Machine-readable UX contract is missing the bench-facing Workups routing rule.');
   }
 
   if (

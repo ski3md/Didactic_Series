@@ -63,6 +63,16 @@
         }
       ]
     },
+    "workupsRouting": {
+      "rule": "Clinical Pathology workup overview copy must frame the lane as bench-facing problem solving rather than abstract route browsing.",
+      "requiredPublicSignals": [
+        "bench-facing path",
+        "live lab question",
+        "safest next check",
+        "result decision"
+      ],
+      "secondarySupportRule": "Supporting lectures, tutorials, and reference links must stay secondary to the active workup."
+    },
     "cognitiveContinuityOrder": [
       "orientation",
       "morphologic_recognition",

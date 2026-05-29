@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T23:36:37.352Z",
+  "generatedAt": "2026-05-29T23:42:32.683Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -52,8 +52,9 @@
     "Reference Library immunophenotype branches retain representative marker scaffolds for morphology-first review.",
     "AGENTS imports both the Codex system-alignment and OpenClaw execution contracts.",
     "Codex system alignment contract captures autonomous execution, automation posture, public-text truth, OpenClaw posture, and parallel-lane ownership.",
-    "Learning UX markdown contract distinguishes the governed Workups lane label from vague public CTAs.",
+    "Learning UX markdown contract distinguishes the governed Workups lane label and locks bench-facing Workups routing rules.",
     "Machine-readable UX contract preserves the governed Workups-label exception.",
+    "Machine-readable UX contract locks the bench-facing Workups routing rule.",
     "Adapter declares Codex as primary authority with bounded OpenClaw parallel execution.",
     "Adapter points to the current Didactic contract and validator truth surfaces.",
     "Adapter defines a lane-relevant validation bundle for didactics UX contract work.",
@@ -112,6 +113,7 @@
     "Tutorial subtopic overview exposes scope and a single obvious next action before the lesson list.",
     "Lecture subtopic overview exposes scope and a single obvious next action before the lecture list.",
     "Workup subtopic overview exposes scope and a single obvious next action before the workup list.",
+    "Workups routing copy frames Clinical Pathology as bench-facing decision work with optional support kept secondary.",
     "Algorithm detail places the workup before optional tutorial or review links.",
     "Curriculum module pages present patterns, board focus, workup, and diagnostic focus in a stable reasoning order.",
     "Curriculum module pages keep optional follow-up review after the core module framing.",
