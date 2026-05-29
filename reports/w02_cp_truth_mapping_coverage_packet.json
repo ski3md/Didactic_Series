@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-05-29T21:27:01.521Z",
+  "tranche": "T06 W02 CP Truth",
+  "source": {
+    "validatedManifest": "reports/validated_mappings_manifest.json",
+    "cpGovernanceReport": "reports/cp_precision_governance_report.json",
+    "trancheLedger": "src/content/planning/full_1000_execution_ledger.json"
+  },
+  "coverage": {
+    "cpDomainValidatedRows": 285,
+    "cpGovernedRows": 23,
+    "cpCrosswalkRows": 262,
+    "cpRootCount": 6,
+    "roots": {
+      "Blood Banking/Transfusion Medicine": 123,
+      "Chemical Pathology": 63,
+      "Hematopathology for Clinical Pathology": 39,
+      "Management and Informatics": 16,
+      "Medical Microbiology": 43,
+      "Chemical Pathology + Blood Banking/Transfusion Medicine": 1
+    },
+    "sourceTypes": {
+      "crosswalk": 262,
+      "cp-governance": 10,
+      "interactive-cp": 13
+    },
+    "precisionModes": {
+      "missing": 262,
+      "literal": 10,
+      "nearest-valid-deep": 11,
+      "cross-domain-governed": 2
+    },
+    "reviewStatuses": {
+      "missing": 262,
+      "confirmed": 23
+    }
+  },
+  "reviewability": {
+    "missingReviewOwnerCount": 0,
+    "missingReviewOwnerIds": [],
+    "unmappedValidatedCpCount": 0,
+    "unmappedValidatedCpIds": [],
+    "duplicateShadowCount": 6
+  },
+  "driftRisks": {
+    "governedExceptionCount": 13,
+    "crosswalkRowsWithoutExplicitReviewStatus": 262,
+    "sourceFingerprint": "c684605d093a1ab14ee41f8fd0db31993ef91c8218da1f9ef044c5c35c25b11e"
+  },
+  "execution": {
+    "completedStepIds": [
+      "W02-L1_CP_TRUTH-C01",
+      "W02-L1_CP_TRUTH-C02",
+      "W02-L1_CP_TRUTH-C03",
+      "W02-L1_CP_TRUTH-C04",
+      "W02-L1_CP_TRUTH-C05",
+      "W02-L1_CP_TRUTH-C06",
+      "W02-L1_CP_TRUTH-C07",
+      "W02-L1_CP_TRUTH-C08",
+      "W02-L1_CP_TRUTH-C09",
+      "W02-L1_CP_TRUTH-C10"
+    ],
+    "proofCommands": [
+      "npm run cp:precision:validate",
+      "node scripts/validate_validated_mappings_manifest.cjs",
+      "npx vitest run scripts/validate_w02_cp_truth_mapping_coverage_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts",
+      "git diff --check"
+    ]
+  },
+  "completionGate": {
+    "targetedMappingCoverageGreen": true,
+    "staleWhen": [
+      "the validated mappings manifest changes without regenerating this packet",
+      "the CP governance report changes without regenerating this packet",
+      "the T06 completed step list changes without regenerating this packet"
+    ]
+  }
+}

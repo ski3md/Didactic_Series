@@ -1,6 +1,6 @@
 # W02 CP Truth Duplicate Shadow Packet
 
-Generated: 2026-05-29T05:02:31.655Z
+Generated: 2026-05-29T21:27:01.424Z
 
 Tranche: T06 W02 CP Truth
 
@@ -51,8 +51,8 @@ Tranche: T06 W02 CP Truth
 
 ## Execution
 
-- Completed step ids: W02-L1_CP_TRUTH-C01, W02-L1_CP_TRUTH-C02, W02-L1_CP_TRUTH-C03, W02-L1_CP_TRUTH-C04, W02-L1_CP_TRUTH-C05, W02-L1_CP_TRUTH-C06
-- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `npx vitest run scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
+- Completed step ids: W02-L1_CP_TRUTH-C01, W02-L1_CP_TRUTH-C02, W02-L1_CP_TRUTH-C03, W02-L1_CP_TRUTH-C04, W02-L1_CP_TRUTH-C05, W02-L1_CP_TRUTH-C06, W02-L1_CP_TRUTH-C07, W02-L1_CP_TRUTH-C08, W02-L1_CP_TRUTH-C09, W02-L1_CP_TRUTH-C10
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `npx vitest run scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_mapping_coverage_packet.test.ts scripts/validate_w02_cp_truth_closeout_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
 
 ## Completion Gate
 

@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-05-29T21:27:01.610Z",
+  "tranche": "T06 W02 CP Truth",
+  "status": "completed",
+  "statusBasis": "exact_proof_bundle",
+  "source": {
+    "trancheLedger": "src/content/planning/full_1000_execution_ledger.json",
+    "baselinePacket": "reports/w02_cp_truth_baseline_packet.json",
+    "duplicateShadowPacket": "reports/w02_cp_truth_duplicate_shadow_packet.json",
+    "mappingCoveragePacket": "reports/w02_cp_truth_mapping_coverage_packet.json"
+  },
+  "completedStepIds": [
+    "W02-L1_CP_TRUTH-C01",
+    "W02-L1_CP_TRUTH-C02",
+    "W02-L1_CP_TRUTH-C03",
+    "W02-L1_CP_TRUTH-C04",
+    "W02-L1_CP_TRUTH-C05",
+    "W02-L1_CP_TRUTH-C06",
+    "W02-L1_CP_TRUTH-C07",
+    "W02-L1_CP_TRUTH-C08",
+    "W02-L1_CP_TRUTH-C09",
+    "W02-L1_CP_TRUTH-C10"
+  ],
+  "remainingStepIds": [],
+  "proofBundle": {
+    "baselineGreen": true,
+    "duplicateShadowQueueUnderstood": true,
+    "targetedMappingCoverageGreen": true,
+    "sourceMapReviewCount": 0,
+    "cpDomainValidatedRows": 285,
+    "cpRootCount": 6
+  },
+  "handoffToNextTranche": {
+    "nextTranche": "T07 W02 Content Parity",
+    "nextAction": "Start W02 content parity from the reviewed CP truth baseline, duplicate-shadow exclusions, and targeted CP mapping coverage packet.",
+    "requiredGuard": "Do not change source-truth mappings inside T07 unless T06 proof packets are regenerated first."
+  },
+  "completionGate": {
+    "t06Closed": true,
+    "staleWhen": [
+      "the T06 ledger status changes without regenerating this packet",
+      "any W02 CP truth proof packet changes without regenerating this packet",
+      "T07 begins before this packet reports a closed T06 handoff"
+    ]
+  }
+}

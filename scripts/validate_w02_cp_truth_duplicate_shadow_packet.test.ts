@@ -33,11 +33,15 @@ describe('W02 CP truth duplicate shadow packet', () => {
       'W02-L1_CP_TRUTH-C04',
       'W02-L1_CP_TRUTH-C05',
       'W02-L1_CP_TRUTH-C06',
+      'W02-L1_CP_TRUTH-C07',
+      'W02-L1_CP_TRUTH-C08',
+      'W02-L1_CP_TRUTH-C09',
+      'W02-L1_CP_TRUTH-C10',
     ]);
     expect(packet.execution.proofCommands).toEqual([
       'npm run cp:precision:validate',
       'node scripts/validate_validated_mappings_manifest.cjs',
-      'npx vitest run scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
+      'npx vitest run scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_mapping_coverage_packet.test.ts scripts/validate_w02_cp_truth_closeout_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
       'git diff --check',
     ]);
     expect(packet.completionGate.duplicateShadowQueueUnderstood).toBe(true);

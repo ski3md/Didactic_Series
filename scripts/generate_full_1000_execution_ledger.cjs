@@ -274,8 +274,8 @@ const TRANCHE_OVERRIDES = {
       'Contracts and proof are formally closed with contract-alignment proof, reusable closeout output, and a dedicated tranche closeout packet.',
   },
   T06: {
-    status: 'in_progress',
-    statusBasis: 'exact_step_backfill',
+    status: 'completed',
+    statusBasis: 'exact_proof_bundle',
     completionEvidence: {
       completedStepIds: [
         'W02-L1_CP_TRUTH-C01',
@@ -284,16 +284,16 @@ const TRANCHE_OVERRIDES = {
         'W02-L1_CP_TRUTH-C04',
         'W02-L1_CP_TRUTH-C05',
         'W02-L1_CP_TRUTH-C06',
-      ],
-      remainingStepIds: [
         'W02-L1_CP_TRUTH-C07',
         'W02-L1_CP_TRUTH-C08',
         'W02-L1_CP_TRUTH-C09',
         'W02-L1_CP_TRUTH-C10',
       ],
+      remainingStepIds: [],
     },
     evidenceCommits: [
       '1834a833 Close T05 contracts and proof tranche',
+      '12a10343 Expand W02 CP truth checks',
     ],
     evidenceArtifacts: [
       'reports/cp_precision_governance_report.json',
@@ -301,11 +301,13 @@ const TRANCHE_OVERRIDES = {
       'reports/cp_truth_handoff_summary.json',
       'reports/w02_cp_truth_baseline_packet.json',
       'reports/w02_cp_truth_duplicate_shadow_packet.json',
+      'reports/w02_cp_truth_mapping_coverage_packet.json',
+      'reports/w02_cp_truth_closeout_packet.json',
     ],
     proofCommands: [
       'npm run cp:precision:validate',
       'node scripts/validate_validated_mappings_manifest.cjs',
-      'npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts',
+      'npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_mapping_coverage_packet.test.ts scripts/validate_w02_cp_truth_closeout_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
       'git diff --check',
     ],
     supportingProgress: [
@@ -315,9 +317,11 @@ const TRANCHE_OVERRIDES = {
       'Tutorial study pages now show a learner-facing reviewed source decision and review rule before board-mastery framing.',
       'The CP truth validator and didactics UX validator now enforce the public wording and review-rule order.',
       'A dedicated W02 CP truth check now verifies public reviewed-source wording, sourceTruth derivation, duplicate-shadow alignment, and CP review ownership.',
+      'A targeted W02 mapping coverage packet now freezes CP-domain roots, source-type mix, reviewability, and the remaining drift risk before content parity opens.',
+      'The W02 CP truth closeout packet hands T07 a green proof bundle with explicit guardrails against source-truth edits inside content parity.',
     ],
     summary:
-      'W02 CP truth is open with source-map mismatches cleared, public reviewed-source wording locked, and repeatable truth checks expanded.',
+      'W02 CP truth is formally closed with reviewed-versus-raw baseline proof, duplicate-shadow exclusions, targeted CP mapping coverage, and a T07 handoff packet.',
   },
 };
 
@@ -417,7 +421,7 @@ const buildLedger = () => {
       sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
       firstOpenWave: 'W02',
-      immediateNextAction: 'Continue T06 W02 CP Truth by adding targeted mapping coverage before moving to reusable board-prep output.',
+      immediateNextAction: 'Open T07 W02 Content Parity from the closed T06 CP truth handoff packet.',
     },
     completionDefinition: {
       terminalWave: 'W20',
@@ -427,11 +431,11 @@ const buildLedger = () => {
     groupedPhases,
     trancheStatusCounts: summarizeStatuses(tranches),
     immediateNextSequence: [
-      'Freeze the W02 CP reviewed-versus-raw baseline.',
-      'Correct the duplicate-shadow source-map mismatches in T06 W02 CP Truth.',
-      'Lock public reviewed-source wording and review-rule proof in T06 W02 CP Truth.',
-      'Expand repeatable T06 truth checks before moving to W02 content parity.',
-      'Add targeted W02 mapping coverage before refreshing reusable board-prep output.',
+      'Open T07 W02 Content Parity from reports/w02_cp_truth_closeout_packet.json.',
+      'Refresh the W02 content parity baseline against the closed CP truth proof bundle.',
+      'Align learner-facing tutorial and curriculum content to the reviewed W02 mapping coverage.',
+      'Run the T07 content-parity proof commands before learner-UX work begins.',
+      'Close T07 with a bounded content-parity proof packet and ledger update.',
     ],
     tranches,
   };

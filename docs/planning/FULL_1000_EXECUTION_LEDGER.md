@@ -5,11 +5,11 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `a6268b22`
+- HEAD: `8d847e81`
 - Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W02`
-- Immediate next action: Continue T06 W02 CP Truth by adding targeted mapping coverage before moving to reusable board-prep output.
+- Immediate next action: Open T07 W02 Content Parity from the closed T06 CP truth handoff packet.
 
 ## Completion Definition
 
@@ -28,17 +28,17 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ## Tranche Status Counts
 
-- Completed: 5
-- In progress: 1
+- Completed: 6
+- In progress: 0
 - Planned: 94
 
 ## Immediate Next Sequence
 
-1. Freeze the W02 CP reviewed-versus-raw baseline.
-2. Correct the duplicate-shadow source-map mismatches in T06 W02 CP Truth.
-3. Lock public reviewed-source wording and review-rule proof in T06 W02 CP Truth.
-4. Expand repeatable T06 truth checks before moving to W02 content parity.
-5. Add targeted W02 mapping coverage before refreshing reusable board-prep output.
+1. Open T07 W02 Content Parity from reports/w02_cp_truth_closeout_packet.json.
+2. Refresh the W02 content parity baseline against the closed CP truth proof bundle.
+3. Align learner-facing tutorial and curriculum content to the reviewed W02 mapping coverage.
+4. Run the T07 content-parity proof commands before learner-UX work begins.
+5. Close T07 with a bounded content-parity proof packet and ledger update.
 
 ## Tranche Map
 
@@ -118,16 +118,16 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 
 ### T06 W02 CP Truth
 
-- Status: `in_progress`
-- Status basis: `exact_step_backfill`
+- Status: `completed`
+- Status basis: `exact_proof_bundle`
 - Goal: This lane settles the reviewed CP and AP teaching truth for reconcile raw mappings with reviewed mappings.
-- Completed steps: 6
-- Remaining steps: 4
-- Evidence commits: `1834a833 Close T05 contracts and proof tranche`
-- Evidence artifacts: `reports/cp_precision_governance_report.json`, `reports/validated_mappings_manifest.json`, `reports/cp_truth_handoff_summary.json`, `reports/w02_cp_truth_baseline_packet.json`, `reports/w02_cp_truth_duplicate_shadow_packet.json`
+- Completed steps: 10
+- Remaining steps: 0
+- Evidence commits: `1834a833 Close T05 contracts and proof tranche`, `12a10343 Expand W02 CP truth checks`
+- Evidence artifacts: `reports/cp_precision_governance_report.json`, `reports/validated_mappings_manifest.json`, `reports/cp_truth_handoff_summary.json`, `reports/w02_cp_truth_baseline_packet.json`, `reports/w02_cp_truth_duplicate_shadow_packet.json`, `reports/w02_cp_truth_mapping_coverage_packet.json`, `reports/w02_cp_truth_closeout_packet.json`
 - Remaining owned files: none
-- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts`, `git diff --check`
-- Summary: W02 CP truth is open with source-map mismatches cleared, public reviewed-source wording locked, and repeatable truth checks expanded.
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_mapping_coverage_packet.test.ts scripts/validate_w02_cp_truth_closeout_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
+- Summary: W02 CP truth is formally closed with reviewed-versus-raw baseline proof, duplicate-shadow exclusions, targeted CP mapping coverage, and a T07 handoff packet.
 
   - W02 now starts from an explicit reviewed-versus-raw CP truth baseline instead of reusing the W01 closeout state implicitly.
   - The six non-promoted rows are frozen as duplicate-shadow exclusions with validated canonical pairs instead of unresolved review debt.
@@ -135,6 +135,8 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
   - Tutorial study pages now show a learner-facing reviewed source decision and review rule before board-mastery framing.
   - The CP truth validator and didactics UX validator now enforce the public wording and review-rule order.
   - A dedicated W02 CP truth check now verifies public reviewed-source wording, sourceTruth derivation, duplicate-shadow alignment, and CP review ownership.
+  - A targeted W02 mapping coverage packet now freezes CP-domain roots, source-type mix, reviewability, and the remaining drift risk before content parity opens.
+  - The W02 CP truth closeout packet hands T07 a green proof bundle with explicit guardrails against source-truth edits inside content parity.
 
 ### T07 W02 Content Parity
 
