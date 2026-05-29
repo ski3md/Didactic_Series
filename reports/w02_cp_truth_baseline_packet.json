@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T04:49:58.088Z",
+  "generatedAt": "2026-05-29T05:02:31.441Z",
   "tranche": "T06 W02 CP Truth",
   "source": {
     "crosswalk": "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
@@ -17,7 +17,7 @@
     "cpReviewedRows": 285,
     "cpGovernedTutorials": 13,
     "cpGovernedModules": 7,
-    "sourceFingerprint": "7630f2405778d841d88f6bd2d08e756726e8a831a9cd31b8d9a08cd982e603fc"
+    "sourceFingerprint": "7a9be9723179ea277f74f9d31503166ed3aa04a2f3e4176a846d09c32c4794f7"
   },
   "reconciliationGap": {
     "rawVsReviewedGap": 6,
@@ -52,12 +52,13 @@
       "W02-L1_CP_TRUTH-C02",
       "W02-L1_CP_TRUTH-C03",
       "W02-L1_CP_TRUTH-C04",
-      "W02-L1_CP_TRUTH-C05"
+      "W02-L1_CP_TRUTH-C05",
+      "W02-L1_CP_TRUTH-C06"
     ],
     "proofCommands": [
       "npm run cp:precision:validate",
       "node scripts/validate_validated_mappings_manifest.cjs",
-      "npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts",
+      "npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts scripts/validate_full_1000_execution_ledger.test.ts",
       "git diff --check"
     ]
   },

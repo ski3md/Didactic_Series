@@ -53,11 +53,12 @@ describe('W02 CP truth baseline packet', () => {
       'W02-L1_CP_TRUTH-C03',
       'W02-L1_CP_TRUTH-C04',
       'W02-L1_CP_TRUTH-C05',
+      'W02-L1_CP_TRUTH-C06',
     ]);
     expect(packet.execution.proofCommands).toEqual([
       'npm run cp:precision:validate',
       'node scripts/validate_validated_mappings_manifest.cjs',
-      'npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
+      'npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
       'git diff --check',
     ]);
     expect(packet.completionGate.baselineGreen).toBe(true);

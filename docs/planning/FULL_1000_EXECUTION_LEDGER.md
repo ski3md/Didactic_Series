@@ -5,11 +5,11 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `9d15ed3b`
+- HEAD: `cb333c28`
 - Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W02`
-- Immediate next action: Continue T06 W02 CP Truth by expanding repeatable truth checks before moving to W02 content parity.
+- Immediate next action: Continue T06 W02 CP Truth by adding targeted mapping coverage before moving to reusable board-prep output.
 
 ## Completion Definition
 
@@ -38,6 +38,7 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 2. Correct the duplicate-shadow source-map mismatches in T06 W02 CP Truth.
 3. Lock public reviewed-source wording and review-rule proof in T06 W02 CP Truth.
 4. Expand repeatable T06 truth checks before moving to W02 content parity.
+5. Add targeted W02 mapping coverage before refreshing reusable board-prep output.
 
 ## Tranche Map
 
@@ -120,19 +121,20 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 - Status: `in_progress`
 - Status basis: `exact_step_backfill`
 - Goal: This lane settles the reviewed CP and AP teaching truth for reconcile raw mappings with reviewed mappings.
-- Completed steps: 5
-- Remaining steps: 5
+- Completed steps: 6
+- Remaining steps: 4
 - Evidence commits: `1834a833 Close T05 contracts and proof tranche`
 - Evidence artifacts: `reports/cp_precision_governance_report.json`, `reports/validated_mappings_manifest.json`, `reports/cp_truth_handoff_summary.json`, `reports/w02_cp_truth_baseline_packet.json`, `reports/w02_cp_truth_duplicate_shadow_packet.json`
 - Remaining owned files: none
-- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts`, `git diff --check`
-- Summary: W02 CP truth is open with source-map mismatches cleared and public reviewed-source wording locked to validator-backed review rules.
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts`, `git diff --check`
+- Summary: W02 CP truth is open with source-map mismatches cleared, public reviewed-source wording locked, and repeatable truth checks expanded.
 
   - W02 now starts from an explicit reviewed-versus-raw CP truth baseline instead of reusing the W01 closeout state implicitly.
   - The six non-promoted rows are frozen as duplicate-shadow exclusions with validated canonical pairs instead of unresolved review debt.
   - The two duplicate-shadow source-map mismatches now resolve to the same CP anchors as their canonical rows.
   - Tutorial study pages now show a learner-facing reviewed source decision and review rule before board-mastery framing.
   - The CP truth validator and didactics UX validator now enforce the public wording and review-rule order.
+  - A dedicated W02 CP truth check now verifies public reviewed-source wording, sourceTruth derivation, duplicate-shadow alignment, and CP review ownership.
 
 ### T07 W02 Content Parity
 

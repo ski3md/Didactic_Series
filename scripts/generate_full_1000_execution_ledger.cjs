@@ -283,9 +283,9 @@ const TRANCHE_OVERRIDES = {
         'W02-L1_CP_TRUTH-C03',
         'W02-L1_CP_TRUTH-C04',
         'W02-L1_CP_TRUTH-C05',
+        'W02-L1_CP_TRUTH-C06',
       ],
       remainingStepIds: [
-        'W02-L1_CP_TRUTH-C06',
         'W02-L1_CP_TRUTH-C07',
         'W02-L1_CP_TRUTH-C08',
         'W02-L1_CP_TRUTH-C09',
@@ -305,7 +305,7 @@ const TRANCHE_OVERRIDES = {
     proofCommands: [
       'npm run cp:precision:validate',
       'node scripts/validate_validated_mappings_manifest.cjs',
-      'npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts',
+      'npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts',
       'git diff --check',
     ],
     supportingProgress: [
@@ -314,9 +314,10 @@ const TRANCHE_OVERRIDES = {
       'The two duplicate-shadow source-map mismatches now resolve to the same CP anchors as their canonical rows.',
       'Tutorial study pages now show a learner-facing reviewed source decision and review rule before board-mastery framing.',
       'The CP truth validator and didactics UX validator now enforce the public wording and review-rule order.',
+      'A dedicated W02 CP truth check now verifies public reviewed-source wording, sourceTruth derivation, duplicate-shadow alignment, and CP review ownership.',
     ],
     summary:
-      'W02 CP truth is open with source-map mismatches cleared and public reviewed-source wording locked to validator-backed review rules.',
+      'W02 CP truth is open with source-map mismatches cleared, public reviewed-source wording locked, and repeatable truth checks expanded.',
   },
 };
 
@@ -416,7 +417,7 @@ const buildLedger = () => {
       sync: `${readGit('git rev-list --left-right --count HEAD...origin/main', 'UNKNOWN').replace(/\s+/g, '/')} vs origin/main`,
       repoState: 'clean_synced',
       firstOpenWave: 'W02',
-      immediateNextAction: 'Continue T06 W02 CP Truth by expanding repeatable truth checks before moving to W02 content parity.',
+      immediateNextAction: 'Continue T06 W02 CP Truth by adding targeted mapping coverage before moving to reusable board-prep output.',
     },
     completionDefinition: {
       terminalWave: 'W20',
@@ -430,6 +431,7 @@ const buildLedger = () => {
       'Correct the duplicate-shadow source-map mismatches in T06 W02 CP Truth.',
       'Lock public reviewed-source wording and review-rule proof in T06 W02 CP Truth.',
       'Expand repeatable T06 truth checks before moving to W02 content parity.',
+      'Add targeted W02 mapping coverage before refreshing reusable board-prep output.',
     ],
     tranches,
   };

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-29T04:49:57.982Z",
+  "generatedAt": "2026-05-29T05:02:31.286Z",
   "currentState": {
     "branch": "main",
-    "head": "9d15ed3b",
+    "head": "cb333c28",
     "sync": "0/0 vs origin/main",
     "repoState": "clean_synced",
     "firstOpenWave": "W02",
-    "immediateNextAction": "Continue T06 W02 CP Truth by expanding repeatable truth checks before moving to W02 content parity."
+    "immediateNextAction": "Continue T06 W02 CP Truth by adding targeted mapping coverage before moving to reusable board-prep output."
   },
   "completionDefinition": {
     "terminalWave": "W20",
@@ -22,7 +22,8 @@
     "Freeze the W02 CP reviewed-versus-raw baseline.",
     "Correct the duplicate-shadow source-map mismatches in T06 W02 CP Truth.",
     "Lock public reviewed-source wording and review-rule proof in T06 W02 CP Truth.",
-    "Expand repeatable T06 truth checks before moving to W02 content parity."
+    "Expand repeatable T06 truth checks before moving to W02 content parity.",
+    "Add targeted W02 mapping coverage before refreshing reusable board-prep output."
   ],
   "inProgressTranches": [
     {
@@ -30,8 +31,8 @@
       "wave": "W02",
       "lane": "L1_CP_TRUTH",
       "statusBasis": "exact_step_backfill",
-      "completedSteps": 5,
-      "remainingSteps": 5
+      "completedSteps": 6,
+      "remainingSteps": 4
     }
   ]
 }

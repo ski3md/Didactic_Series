@@ -1,6 +1,6 @@
 # W02 CP Truth Baseline Packet
 
-Generated: 2026-05-29T04:49:58.088Z
+Generated: 2026-05-29T05:02:31.441Z
 
 Tranche: T06 W02 CP Truth
 
@@ -14,7 +14,7 @@ Tranche: T06 W02 CP Truth
 - CP reviewed rows: 285
 - CP governed tutorials: 13
 - CP governed modules: 7
-- Source fingerprint: 7630f2405778d841d88f6bd2d08e756726e8a831a9cd31b8d9a08cd982e603fc
+- Source fingerprint: 7a9be9723179ea277f74f9d31503166ed3aa04a2f3e4176a846d09c32c4794f7
 
 ## Reconciliation Gap
 
@@ -25,8 +25,8 @@ Tranche: T06 W02 CP Truth
 
 ## Execution
 
-- Completed step ids: W02-L1_CP_TRUTH-C01, W02-L1_CP_TRUTH-C02, W02-L1_CP_TRUTH-C03, W02-L1_CP_TRUTH-C04, W02-L1_CP_TRUTH-C05
-- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
+- Completed step ids: W02-L1_CP_TRUTH-C01, W02-L1_CP_TRUTH-C02, W02-L1_CP_TRUTH-C03, W02-L1_CP_TRUTH-C04, W02-L1_CP_TRUTH-C05, W02-L1_CP_TRUTH-C06
+- Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `npx vitest run scripts/validate_w02_cp_truth_baseline_packet.test.ts scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_w02_cp_truth_checks.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
 
 ## Completion Gate
 
