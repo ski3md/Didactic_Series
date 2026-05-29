@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-18T19:20:49.619Z",
+  "generatedAt": "2026-05-29T04:36:39.946Z",
   "rule": "Tutorials are scored against ABPath AP and CP content specification topic/subtopic nodes using track-aware token, phrase, root, and acronym evidence. Every tutorial must have at least one primary mapping.",
   "sources": {
     "ap": "src/content/syllabus/parsed_topics_v3.raw.json",
@@ -11510,35 +11510,57 @@
         "title": "Anemia in Oncology Patients",
         "sourceRepo": "board_prep",
         "sourcePath": "src/content/tutorials/board_prep_tutorials.raw.json",
-        "track": "surgical-path",
-        "trackLabel": "Surgical Pathology",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
         "lane": "board-prep"
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-bone-marrow",
+        "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-other-hemolytic-anemias-immune",
         "domain": "CP",
         "root": "Hematopathology for Clinical Pathology",
         "path": [
           "Hematopathology for Clinical Pathology",
-          "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
-          "Bone Marrow"
+          "Non-Neoplastic Disorders of Erythrocytes",
+          "Other Hemolytic Anemias",
+          "Immune"
         ],
-        "title": "Bone Marrow",
+        "title": "Immune",
         "difficulty": "C",
-        "level": 3,
-        "score": 1.24,
+        "level": 5,
+        "score": 1.02,
         "confidence": "high",
         "evidenceTerms": [
-          "bone",
-          "marrow",
-          "normal"
+          "non",
+          "anemia"
         ],
-        "sourceLine": 2365
+        "sourceLine": 2387
       },
       "alternateMappings": [
         {
           "rank": 2,
+          "specId": "cp-hp-normal-anatomy-histology-hematopoiesis-and-hemostasis-bone-marrow",
+          "domain": "CP",
+          "root": "Hematopathology for Clinical Pathology",
+          "path": [
+            "Hematopathology for Clinical Pathology",
+            "Normal Anatomy, Histology, Hematopoiesis and Hemostasis",
+            "Bone Marrow"
+          ],
+          "title": "Bone Marrow",
+          "difficulty": "C",
+          "level": 3,
+          "score": 1.44,
+          "confidence": "high",
+          "evidenceTerms": [
+            "bone",
+            "marrow",
+            "normal"
+          ],
+          "sourceLine": 2365
+        },
+        {
+          "rank": 3,
           "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-iron-deficiency-and-related-disorders",
           "domain": "CP",
           "root": "Hematopathology for Clinical Pathology",
@@ -11550,7 +11572,7 @@
           "title": "Iron Deficiency and Related Disorders",
           "difficulty": "C",
           "level": 3,
-          "score": 1.1371,
+          "score": 1.3371,
           "confidence": "high",
           "evidenceTerms": [
             "iron",
@@ -11561,7 +11583,7 @@
           "sourceLine": 2374
         },
         {
-          "rank": 3,
+          "rank": 4,
           "specId": "cp-hp-testing-in-hematology-and-hematopathology-fluid-review-bone-marrow-review",
           "domain": "CP",
           "root": "Hematopathology for Clinical Pathology",
@@ -11574,7 +11596,7 @@
           "title": "Bone Marrow Review",
           "difficulty": "C",
           "level": 4,
-          "score": 1.0836,
+          "score": 1.2836,
           "confidence": "high",
           "evidenceTerms": [
             "bone",
@@ -11584,7 +11606,7 @@
           "sourceLine": 2316
         },
         {
-          "rank": 4,
+          "rank": 5,
           "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-iron-deficiency-and-related-disorders-sideroblastic-ane",
           "domain": "CP",
           "root": "Hematopathology for Clinical Pathology",
@@ -11598,7 +11620,7 @@
           "title": "Inherited",
           "difficulty": "F",
           "level": 5,
-          "score": 1.0374,
+          "score": 1.2374,
           "confidence": "high",
           "evidenceTerms": [
             "non",
@@ -11610,7 +11632,7 @@
           "sourceLine": 2377
         },
         {
-          "rank": 5,
+          "rank": 6,
           "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-other-hemolytic-anemias-anemia-related-to-chronic-disea",
           "domain": "CP",
           "root": "Hematopathology for Clinical Pathology",
@@ -11623,7 +11645,7 @@
           "title": "Anemia Related to Chronic Disease & Other Disorders",
           "difficulty": "C",
           "level": 4,
-          "score": 1.0178,
+          "score": 1.2178,
           "confidence": "high",
           "evidenceTerms": [
             "anemia",
@@ -11632,31 +11654,6 @@
             "non"
           ],
           "sourceLine": 2392
-        },
-        {
-          "rank": 6,
-          "specId": "cp-hp-non-neoplastic-disorders-of-erythrocytes-iron-deficiency-and-related-disorders-erythrocyte-enzym",
-          "domain": "CP",
-          "root": "Hematopathology for Clinical Pathology",
-          "path": [
-            "Hematopathology for Clinical Pathology",
-            "Non-Neoplastic Disorders of Erythrocytes",
-            "Iron Deficiency and Related Disorders",
-            "Erythrocyte Enzyme Disorders",
-            "Other Erythrocyte Enzyme Disorders"
-          ],
-          "title": "Other Erythrocyte Enzyme Disorders",
-          "difficulty": "AR",
-          "level": 5,
-          "score": 1.0169,
-          "confidence": "high",
-          "evidenceTerms": [
-            "non",
-            "iron",
-            "deficiency",
-            "related"
-          ],
-          "sourceLine": 2385
         }
       ],
       "status": "mapped"
@@ -13899,66 +13896,41 @@
         "title": "HLA Antigens and Alleles",
         "sourceRepo": "board_prep",
         "sourcePath": "src/content/tutorials/board_prep_tutorials.raw.json",
-        "track": "surgical-path",
-        "trackLabel": "Surgical Pathology",
+        "track": "clinical-path",
+        "trackLabel": "Clinical Pathology",
         "lane": "board-prep"
       },
       "primaryMapping": {
         "rank": 1,
-        "specId": "ap-ap_gu-6295b8a0-223f-428a-8137-e02a9de28210",
-        "domain": "AP",
-        "root": "Genitourinary",
+        "specId": "cp-bb-cell-and-tissue-therapy-hla-antigens-and-alleles",
+        "domain": "CP",
+        "root": "Blood Banking/Transfusion Medicine",
         "path": [
-          "The Genitourinary System",
-          "Kidney",
-          "Medical Kidney Disease",
-          "End Stage Renal Disease"
+          "Blood Banking/Transfusion Medicine",
+          "Cell and Tissue Therapy",
+          "HLA Antigens and Alleles"
         ],
-        "title": "End Stage Renal Disease",
-        "difficulty": "C",
+        "title": "HLA Antigens and Alleles",
+        "difficulty": "",
         "level": 3,
-        "score": 1.2977,
+        "score": 1.02,
         "confidence": "high",
         "evidenceTerms": [
-          "end",
-          "stage",
-          "renal",
-          "system",
-          "kidney"
+          "hla",
+          "human",
+          "leukocyte",
+          "antigen",
+          "allele",
+          "blood",
+          "banking",
+          "transfusion",
+          "cell"
         ],
-        "sourceLine": 653
+        "sourceLine": 296
       },
       "alternateMappings": [
         {
           "rank": 2,
-          "specId": "cp-bb-cell-and-tissue-therapy-hla-antigens-and-alleles",
-          "domain": "CP",
-          "root": "Blood Banking/Transfusion Medicine",
-          "path": [
-            "Blood Banking/Transfusion Medicine",
-            "Cell and Tissue Therapy",
-            "HLA Antigens and Alleles"
-          ],
-          "title": "HLA Antigens and Alleles",
-          "difficulty": "",
-          "level": 3,
-          "score": 1.254,
-          "confidence": "high",
-          "evidenceTerms": [
-            "hla",
-            "human",
-            "leukocyte",
-            "antigen",
-            "allele",
-            "blood",
-            "banking",
-            "transfusion",
-            "cell"
-          ],
-          "sourceLine": 296
-        },
-        {
-          "rank": 3,
           "specId": "cp-cp-kidney-disease-chronic-kidney-disease-end-stage-renal-disease",
           "domain": "CP",
           "root": "Chemical Pathology",
@@ -13971,7 +13943,7 @@
           "title": "End-Stage Renal Disease",
           "difficulty": "C",
           "level": 4,
-          "score": 1.2444,
+          "score": 1.4444,
           "confidence": "high",
           "evidenceTerms": [
             "end",
@@ -13983,7 +13955,7 @@
           "sourceLine": 1924
         },
         {
-          "rank": 4,
+          "rank": 3,
           "specId": "cp-bb-cell-and-tissue-therapy-major-histocompatibility-complex-identification-of-hla-antigens-antibodi",
           "domain": "CP",
           "root": "Blood Banking/Transfusion Medicine",
@@ -13997,7 +13969,7 @@
           "title": "Crossmatching",
           "difficulty": "F",
           "level": 5,
-          "score": 1.1626,
+          "score": 1.3626,
           "confidence": "high",
           "evidenceTerms": [
             "crossmatching",
@@ -14017,7 +13989,7 @@
           "sourceLine": 304
         },
         {
-          "rank": 5,
+          "rank": 4,
           "specId": "cp-cp-kidney-disease-acute-kidney-injury-polycystic-kidney-disease",
           "domain": "CP",
           "root": "Chemical Pathology",
@@ -14030,7 +14002,7 @@
           "title": "Polycystic Kidney Disease",
           "difficulty": "C",
           "level": 4,
-          "score": 1.0015,
+          "score": 1.2015,
           "confidence": "high",
           "evidenceTerms": [
             "polycystic",
@@ -14040,30 +14012,61 @@
           "sourceLine": 1928
         },
         {
-          "rank": 6,
-          "specId": "ap-ap_gu-8bf99687-6803-4ed6-874d-3dd273eb0a0e",
-          "domain": "AP",
-          "root": "Genitourinary",
+          "rank": 5,
+          "specId": "cp-bb-surgery-patients-organ-procurement-and-transplants-transfusion-therapy-kidney",
+          "domain": "CP",
+          "root": "Blood Banking/Transfusion Medicine",
           "path": [
-            "The Genitourinary System",
-            "Kidney",
-            "Medical Kidney Disease",
-            "Renal transplantation, donor assessment"
+            "Blood Banking/Transfusion Medicine",
+            "Surgery Patients",
+            "Organ Procurement and Transplants",
+            "Transfusion Therapy",
+            "Kidney"
           ],
-          "title": "Renal transplantation, donor assessment",
+          "title": "Kidney",
           "difficulty": "AR",
-          "level": 3,
-          "score": 0.9978,
+          "level": 6,
+          "score": 1.1159,
           "confidence": "high",
           "evidenceTerms": [
-            "renal",
-            "transplantation",
-            "donor",
-            "assessment",
-            "system",
-            "kidney"
+            "kidney",
+            "blood",
+            "banking",
+            "transfusion",
+            "organ",
+            "transplant"
           ],
-          "sourceLine": 655
+          "sourceLine": 1099
+        },
+        {
+          "rank": 6,
+          "specId": "cp-bb-clinical-practice-immune-thrombocytopenia-alloimmune-thrombocytopenia-transplantation-associated",
+          "domain": "CP",
+          "root": "Blood Banking/Transfusion Medicine",
+          "path": [
+            "Blood Banking/Transfusion Medicine",
+            "Clinical Practice",
+            "Immune Thrombocytopenia",
+            "Alloimmune Thrombocytopenia",
+            "Transplantation-Associated Alloimmune Thrombocytopenia",
+            "Solid Organ Transplantation"
+          ],
+          "title": "Solid Organ Transplantation",
+          "difficulty": "F",
+          "level": 6,
+          "score": 1.1038,
+          "confidence": "high",
+          "evidenceTerms": [
+            "solid",
+            "organ",
+            "transplantation",
+            "blood",
+            "banking",
+            "transfusion",
+            "practice",
+            "immune"
+          ],
+          "sourceLine": 240
         }
       ],
       "status": "mapped"
@@ -73132,7 +73135,7 @@
         "title": "Immune",
         "difficulty": "C",
         "level": 5,
-        "score": 1.4616,
+        "score": 1.02,
         "confidence": "high",
         "evidenceTerms": [
           "non",
@@ -75344,7 +75347,7 @@
         "title": "HLA Antigens and Alleles",
         "difficulty": "",
         "level": 3,
-        "score": 1.511,
+        "score": 1.02,
         "confidence": "high",
         "evidenceTerms": [
           "hla",

@@ -20,6 +20,20 @@ const OUT_REPORT = path.join(REPO_ROOT, "reports/tutorial_abpath_spec_crosswalk.
 const OUT_CSV = path.join(REPO_ROOT, "reports/tutorial_abpath_spec_crosswalk.csv");
 const OUT_COVERAGE = path.join(REPO_ROOT, "reports/tutorial_abpath_spec_coverage.json");
 
+const MANUAL_SOURCE_MAP_OVERRIDES = {
+  "anemia-in-oncology-patients": {
+    track: "clinical-path",
+    domain: "CP",
+    primaryPath:
+      "Hematopathology for Clinical Pathology > Non-Neoplastic Disorders of Erythrocytes > Other Hemolytic Anemias > Immune",
+  },
+  "hla-antigens-and-alleles": {
+    track: "clinical-path",
+    domain: "CP",
+    primaryPath: "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > HLA Antigens and Alleles",
+  },
+};
+
 const STOPWORDS = new Set([
   "a", "an", "and", "are", "as", "at", "be", "by", "case", "cases", "clinical",
   "content", "disease", "diseases", "disorder", "disorders", "for", "from", "general",
@@ -168,6 +182,7 @@ function loadTutorials() {
     const relative = path.relative(REPO_ROOT, filePath);
     for (const tutorial of readJson(filePath)) {
       const label = labelsByKey.get(`${relative}::${tutorial.id}`) || labelsByKey.get(tutorial.id) || {};
+      const sourceMapOverride = MANUAL_SOURCE_MAP_OVERRIDES[tutorial.id];
       const body = String(tutorial.body || "").slice(0, 9000);
       const tutorialRecord = {
         key: `${relative}::${tutorial.id}`,
@@ -180,8 +195,8 @@ function loadTutorials() {
         tags: tutorial.tags || [],
         sourceRepo: tutorial.sourceRepo || "",
         sourcePath: tutorial.sourcePath || "",
-        track: label.track || inferTrack(tutorial),
-        trackLabel: label.trackLabel || inferTrackLabel(tutorial),
+        track: sourceMapOverride?.track || label.track || inferTrack(tutorial),
+        trackLabel: sourceMapOverride?.track === "clinical-path" ? "Clinical Pathology" : label.trackLabel || inferTrackLabel(tutorial),
         lane: label.lane || "",
         labelConfidence: label.confidence || "",
         labelEvidenceTerms: label.evidenceTerms || [],
@@ -544,6 +559,28 @@ function findGovernedSpecMatches(tutorial, specNodes) {
   return results;
 }
 
+function findManualSourceMapMatch(tutorial, specNodes) {
+  const override = MANUAL_SOURCE_MAP_OVERRIDES[tutorial.id];
+  if (!override) return [];
+
+  const desiredPath = normalizeSpecPath(override.primaryPath);
+  const node = specNodes.find(
+    (candidate) => candidate.domain === override.domain && candidate.normalizedPath === desiredPath,
+  );
+  if (!node) {
+    throw new Error(`Manual source-map override for ${tutorial.id} did not match a spec node: ${override.primaryPath}`);
+  }
+
+  return [
+    {
+      node,
+      score: 1.02,
+      sharedTokens: node.tokenArray.filter((token) => tutorial.scoringTokens.has(token)).slice(0, 14),
+      governed: true,
+    },
+  ];
+}
+
 function mapTutorials(tutorials, specNodes) {
   const idf = buildIdf(specNodes);
   for (const node of specNodes) {
@@ -581,7 +618,10 @@ function mapTutorials(tutorials, specNodes) {
       })
       .filter((candidate) => candidate.score > 0.08 || candidate.sharedTokens.length >= 2)
       .sort((a, b) => b.score - a.score);
-    const governedMatches = findGovernedSpecMatches(tutorial, specNodes);
+    const governedMatches = [
+      ...findManualSourceMapMatch(tutorial, specNodes),
+      ...findGovernedSpecMatches(tutorial, specNodes),
+    ];
     const governedIds = new Set(governedMatches.map((candidate) => candidate.node.id));
     const mergedScored = [
       ...governedMatches,

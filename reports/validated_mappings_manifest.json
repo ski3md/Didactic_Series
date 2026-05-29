@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-20T18:43:30.395Z",
-  "sourceFingerprint": "455060886684ee2f71fffb4233140d4cc2331aabab59d56ab415a546d1139930",
+  "generatedAt": "2026-05-29T04:37:01.992Z",
+  "sourceFingerprint": "d3933b484d29247ea2d23a0f28c1bb25760c89c76dec31353dd4cd4c214fbb24",
   "source": {
     "crosswalk": "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
     "cpGovernanceReport": "reports/cp_precision_governance_report.json",
@@ -18,7 +18,7 @@
     "cpDomainValidatedCount": 285
   },
   "baselineSnapshot": {
-    "sourceFingerprint": "455060886684ee2f71fffb4233140d4cc2331aabab59d56ab415a546d1139930",
+    "sourceFingerprint": "d3933b484d29247ea2d23a0f28c1bb25760c89c76dec31353dd4cd4c214fbb24",
     "crosswalkTutorialCount": 493,
     "crosswalkMappedCount": 493,
     "cpGovernedTutorialCount": 13,
@@ -2575,8 +2575,8 @@
       "id": "anemia-in-oncology-patients",
       "title": "Anemia in Oncology Patients",
       "file": "src/content/tutorials/tutorials.normalized.json",
-      "track": "surgical-path",
-      "sourceType": "crosswalk",
+      "track": "clinical-path",
+      "sourceType": "cp-governance",
       "abpathDomain": "CP",
       "sourceAnchorExists": true,
       "validatedForPromotion": false,
@@ -2585,10 +2585,19 @@
       "canonicalForId": false,
       "canonicalSourceKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::anemia-in-oncology-patients",
       "abpathRoot": "Hematopathology for Clinical Pathology",
-      "abpathPrimaryPath": "Hematopathology for Clinical Pathology > Normal Anatomy, Histology, Hematopoiesis and Hemostasis > Bone Marrow",
+      "abpathPrimaryPath": "Hematopathology for Clinical Pathology > Non-Neoplastic Disorders of Erythrocytes > Other Hemolytic Anemias > Immune",
+      "abpathSpecVersion": "CP_2026_04_10",
+      "abpathPrecisionMode": "literal",
       "abpathAnchorConfidence": "high",
+      "abpathReviewStatus": "confirmed",
+      "abpathExamRisk": "high-yield",
+      "abpathTestableTask": [
+        "recognize",
+        "interpret",
+        "select-next-test"
+      ],
       "reviewOwner": "Didactics governance review",
-      "reviewAction": "Confirm the ABPath anchor before promoting this route.",
+      "reviewAction": "Keep oncology anemia teaching under the validated CP erythrocyte-disorder anchor across duplicate source rows.",
       "conflictFlags": [
         "duplicate-shadowed-by-canonical-source"
       ]
@@ -2873,20 +2882,29 @@
       "id": "hla-antigens-and-alleles",
       "title": "HLA Antigens and Alleles",
       "file": "src/content/tutorials/tutorials.normalized.json",
-      "track": "surgical-path",
-      "sourceType": "crosswalk",
-      "abpathDomain": "AP",
+      "track": "clinical-path",
+      "sourceType": "cp-governance",
+      "abpathDomain": "CP",
       "sourceAnchorExists": true,
       "validatedForPromotion": false,
       "governancePending": false,
       "promotionStatus": "excluded",
       "canonicalForId": false,
       "canonicalSourceKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::hla-antigens-and-alleles",
-      "abpathRoot": "Genitourinary",
-      "abpathPrimaryPath": "The Genitourinary System > Kidney > Medical Kidney Disease > End Stage Renal Disease",
+      "abpathRoot": "Blood Banking/Transfusion Medicine",
+      "abpathPrimaryPath": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > HLA Antigens and Alleles",
+      "abpathSpecVersion": "CP_2026_04_10",
+      "abpathPrecisionMode": "literal",
       "abpathAnchorConfidence": "high",
+      "abpathReviewStatus": "confirmed",
+      "abpathExamRisk": "high-yield",
+      "abpathTestableTask": [
+        "recognize",
+        "interpret",
+        "select-next-test"
+      ],
       "reviewOwner": "Didactics governance review",
-      "reviewAction": "Confirm the ABPath anchor before promoting this route.",
+      "reviewAction": "Keep HLA teaching under the validated CP transfusion-medicine cell-and-tissue-therapy anchor across duplicate source rows.",
       "conflictFlags": [
         "duplicate-shadowed-by-canonical-source"
       ]
@@ -10765,7 +10783,7 @@
       "title": "Anemia in Oncology Patients",
       "file": "src/content/downloads_imports/normalized/tutorials.normalized.json",
       "track": "clinical-path",
-      "sourceType": "crosswalk",
+      "sourceType": "cp-governance",
       "abpathDomain": "CP",
       "sourceAnchorExists": true,
       "validatedForPromotion": true,
@@ -10775,9 +10793,18 @@
       "canonicalSourceKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::anemia-in-oncology-patients",
       "abpathRoot": "Hematopathology for Clinical Pathology",
       "abpathPrimaryPath": "Hematopathology for Clinical Pathology > Non-Neoplastic Disorders of Erythrocytes > Other Hemolytic Anemias > Immune",
+      "abpathSpecVersion": "CP_2026_04_10",
+      "abpathPrecisionMode": "literal",
       "abpathAnchorConfidence": "high",
+      "abpathReviewStatus": "confirmed",
+      "abpathExamRisk": "high-yield",
+      "abpathTestableTask": [
+        "recognize",
+        "interpret",
+        "select-next-test"
+      ],
       "reviewOwner": "Didactics governance review",
-      "reviewAction": "Confirm the ABPath anchor before promoting this route.",
+      "reviewAction": "Keep oncology anemia teaching under the validated CP erythrocyte-disorder anchor across duplicate source rows.",
       "conflictFlags": []
     },
     {
@@ -11038,7 +11065,7 @@
       "title": "HLA Antigens and Alleles",
       "file": "src/content/downloads_imports/normalized/tutorials.normalized.json",
       "track": "clinical-path",
-      "sourceType": "crosswalk",
+      "sourceType": "cp-governance",
       "abpathDomain": "CP",
       "sourceAnchorExists": true,
       "validatedForPromotion": true,
@@ -11048,9 +11075,18 @@
       "canonicalSourceKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::hla-antigens-and-alleles",
       "abpathRoot": "Blood Banking/Transfusion Medicine",
       "abpathPrimaryPath": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > HLA Antigens and Alleles",
+      "abpathSpecVersion": "CP_2026_04_10",
+      "abpathPrecisionMode": "literal",
       "abpathAnchorConfidence": "high",
+      "abpathReviewStatus": "confirmed",
+      "abpathExamRisk": "high-yield",
+      "abpathTestableTask": [
+        "recognize",
+        "interpret",
+        "select-next-test"
+      ],
       "reviewOwner": "Didactics governance review",
-      "reviewAction": "Confirm the ABPath anchor before promoting this route.",
+      "reviewAction": "Keep HLA teaching under the validated CP transfusion-medicine cell-and-tissue-therapy anchor across duplicate source rows.",
       "conflictFlags": []
     },
     {

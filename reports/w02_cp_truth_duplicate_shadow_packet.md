@@ -1,6 +1,6 @@
 # W02 CP Truth Duplicate Shadow Packet
 
-Generated: 2026-05-20T18:43:55.574Z
+Generated: 2026-05-29T04:37:12.511Z
 
 Tranche: T06 W02 CP Truth
 
@@ -8,13 +8,13 @@ Tranche: T06 W02 CP Truth
 
 - Duplicate-shadow rows: 6
 - Canonical validated pairs: 6
-- Source-map review required: 2
+- Source-map review required: 0
 - All duplicates have canonical validated pairs: yes
 
 ## Action Buckets
 
-- Safe duplicate exclusions: blood-banking-transfusion-medicine, clinical-practice, paroxysmal-nocturnal-hemoglobinuria, cell-and-tissue-therapy
-- Source-map review required: anemia-in-oncology-patients, hla-antigens-and-alleles
+- Safe duplicate exclusions: blood-banking-transfusion-medicine, clinical-practice, paroxysmal-nocturnal-hemoglobinuria, anemia-in-oncology-patients, cell-and-tissue-therapy, hla-antigens-and-alleles
+- Source-map review required: none
 
 ## Duplicate Pairs
 
@@ -36,8 +36,8 @@ Tranche: T06 W02 CP Truth
 - anemia-in-oncology-patients
   - shadow: src/content/tutorials/tutorials.normalized.json::anemia-in-oncology-patients
   - canonical: src/content/downloads_imports/normalized/tutorials.normalized.json::anemia-in-oncology-patients
-  - review required: yes
-  - mismatch notes: track surgical-path -> clinical-path; path changed
+  - review required: no
+  - mismatch notes: none
 - cell-and-tissue-therapy
   - shadow: src/content/tutorials/tutorials.normalized.json::cell-and-tissue-therapy
   - canonical: src/content/downloads_imports/normalized/tutorials.normalized.json::cell-and-tissue-therapy
@@ -46,12 +46,12 @@ Tranche: T06 W02 CP Truth
 - hla-antigens-and-alleles
   - shadow: src/content/tutorials/tutorials.normalized.json::hla-antigens-and-alleles
   - canonical: src/content/downloads_imports/normalized/tutorials.normalized.json::hla-antigens-and-alleles
-  - review required: yes
-  - mismatch notes: track surgical-path -> clinical-path; domain AP -> CP; root Genitourinary -> Blood Banking/Transfusion Medicine; path changed
+  - review required: no
+  - mismatch notes: none
 
 ## Execution
 
-- Completed step ids: W02-L1_CP_TRUTH-C01, W02-L1_CP_TRUTH-C02
+- Completed step ids: W02-L1_CP_TRUTH-C01, W02-L1_CP_TRUTH-C02, W02-L1_CP_TRUTH-C03
 - Proof commands: `npm run cp:precision:validate`, `node scripts/validate_validated_mappings_manifest.cjs`, `npx vitest run scripts/validate_w02_cp_truth_duplicate_shadow_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
 
 ## Completion Gate

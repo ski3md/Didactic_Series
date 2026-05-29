@@ -86,8 +86,9 @@ describe('full 1000 execution ledger assets', () => {
     expect(t06?.completionEvidence.completedStepIds).toEqual([
       'W02-L1_CP_TRUTH-C01',
       'W02-L1_CP_TRUTH-C02',
+      'W02-L1_CP_TRUTH-C03',
     ]);
-    expect(t06?.completionEvidence.remainingStepIds).toHaveLength(8);
+    expect(t06?.completionEvidence.remainingStepIds).toHaveLength(7);
   });
 
   it('renders the required ledger sections and immediate next sequence', () => {
@@ -97,10 +98,13 @@ describe('full 1000 execution ledger assets', () => {
     expect(markdown).toContain('## Immediate Next Sequence');
     expect(markdown).toContain('### T01 W01 CP Truth');
     expect(markdown).toContain('### T05 W01 Contracts and Proof');
-    expect(ledger.immediateNextSequence).toHaveLength(2);
+    expect(ledger.immediateNextSequence).toHaveLength(3);
     expect(ledger.immediateNextSequence[0]).toBe('Freeze the W02 CP reviewed-versus-raw baseline.');
     expect(ledger.immediateNextSequence[1]).toBe(
-      'Correct the two remaining duplicate-shadow source-map mismatches in T06 W02 CP Truth.',
+      'Correct the duplicate-shadow source-map mismatches in T06 W02 CP Truth.',
+    );
+    expect(ledger.immediateNextSequence[2]).toBe(
+      'Continue T06 W02 CP Truth with public truth wording and review-rule proof before moving to W02 content parity.',
     );
   });
 });

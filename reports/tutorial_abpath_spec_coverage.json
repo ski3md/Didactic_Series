@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-18T19:20:49.619Z",
+  "generatedAt": "2026-05-29T04:36:39.946Z",
   "rule": "Tutorials are scored against ABPath AP and CP content specification topic/subtopic nodes using track-aware token, phrase, root, and acronym evidence. Every tutorial must have at least one primary mapping.",
   "sources": {
     "ap": "src/content/syllabus/parsed_topics_v3.raw.json",
@@ -84,7 +84,7 @@
         "root": "Genitourinary",
         "specNodeCount": 30,
         "coveredNodeCount": 19,
-        "primaryTutorialCount": 17
+        "primaryTutorialCount": 16
       },
       {
         "domain": "AP",
@@ -133,7 +133,7 @@
         "root": "Blood Banking/Transfusion Medicine",
         "specNodeCount": 816,
         "coveredNodeCount": 201,
-        "primaryTutorialCount": 127
+        "primaryTutorialCount": 128
       },
       {
         "domain": "CP",
@@ -146,7 +146,7 @@
         "domain": "CP",
         "root": "Hematopathology for Clinical Pathology",
         "specNodeCount": 282,
-        "coveredNodeCount": 76,
+        "coveredNodeCount": 75,
         "primaryTutorialCount": 37
       },
       {

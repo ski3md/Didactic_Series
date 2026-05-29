@@ -154,6 +154,37 @@ const MANUAL_TUTORIAL_OVERRIDES = {
     reviewOwner: 'Didactics governance review',
     reviewAction: 'Treat this import as AP fundamentals until the upstream normalized track metadata is corrected.',
   },
+  'anemia-in-oncology-patients': {
+    track: 'clinical-path',
+    abpathDomain: 'CP',
+    abpathRoot: 'Hematopathology for Clinical Pathology',
+    abpathPrimaryPath:
+      'Hematopathology for Clinical Pathology > Non-Neoplastic Disorders of Erythrocytes > Other Hemolytic Anemias > Immune',
+    abpathSpecVersion: 'CP_2026_04_10',
+    abpathPrecisionMode: 'literal',
+    abpathAnchorConfidence: 'high',
+    abpathReviewStatus: 'confirmed',
+    abpathExamRisk: 'high-yield',
+    abpathTestableTask: ['recognize', 'interpret', 'select-next-test'],
+    reviewOwner: 'Didactics governance review',
+    reviewAction:
+      'Keep oncology anemia teaching under the validated CP erythrocyte-disorder anchor across duplicate source rows.',
+  },
+  'hla-antigens-and-alleles': {
+    track: 'clinical-path',
+    abpathDomain: 'CP',
+    abpathRoot: 'Blood Banking/Transfusion Medicine',
+    abpathPrimaryPath: 'Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > HLA Antigens and Alleles',
+    abpathSpecVersion: 'CP_2026_04_10',
+    abpathPrecisionMode: 'literal',
+    abpathAnchorConfidence: 'high',
+    abpathReviewStatus: 'confirmed',
+    abpathExamRisk: 'high-yield',
+    abpathTestableTask: ['recognize', 'interpret', 'select-next-test'],
+    reviewOwner: 'Didactics governance review',
+    reviewAction:
+      'Keep HLA teaching under the validated CP transfusion-medicine cell-and-tissue-therapy anchor across duplicate source rows.',
+  },
 };
 
 const splitGovernanceTasks = (value) =>

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T18:43:55.574Z",
+  "generatedAt": "2026-05-29T04:37:12.511Z",
   "tranche": "T06 W02 CP Truth",
   "source": {
     "validatedManifest": "reports/validated_mappings_manifest.json",
@@ -8,7 +8,7 @@
   "summary": {
     "duplicateShadowCount": 6,
     "canonicalValidatedCount": 6,
-    "sourceMapReviewCount": 2,
+    "sourceMapReviewCount": 0,
     "allDuplicatesHaveCanonicalValidatedPair": true
   },
   "actionBuckets": {
@@ -16,12 +16,11 @@
       "blood-banking-transfusion-medicine",
       "clinical-practice",
       "paroxysmal-nocturnal-hemoglobinuria",
-      "cell-and-tissue-therapy"
-    ],
-    "sourceMapReviewRequired": [
       "anemia-in-oncology-patients",
+      "cell-and-tissue-therapy",
       "hla-antigens-and-alleles"
-    ]
+    ],
+    "sourceMapReviewRequired": []
   },
   "duplicatePairs": [
     {
@@ -81,19 +80,16 @@
       "canonicalKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::anemia-in-oncology-patients",
       "shadowFile": "src/content/tutorials/tutorials.normalized.json",
       "canonicalFile": "src/content/downloads_imports/normalized/tutorials.normalized.json",
-      "shadowTrack": "surgical-path",
+      "shadowTrack": "clinical-path",
       "canonicalTrack": "clinical-path",
       "shadowDomain": "CP",
       "canonicalDomain": "CP",
-      "shadowPath": "Hematopathology for Clinical Pathology > Normal Anatomy, Histology, Hematopoiesis and Hemostasis > Bone Marrow",
+      "shadowPath": "Hematopathology for Clinical Pathology > Non-Neoplastic Disorders of Erythrocytes > Other Hemolytic Anemias > Immune",
       "canonicalPath": "Hematopathology for Clinical Pathology > Non-Neoplastic Disorders of Erythrocytes > Other Hemolytic Anemias > Immune",
       "shadowValidated": false,
       "canonicalValidated": true,
-      "requiresSourceMapReview": true,
-      "mismatchNotes": [
-        "track surgical-path -> clinical-path",
-        "path changed"
-      ]
+      "requiresSourceMapReview": false,
+      "mismatchNotes": []
     },
     {
       "id": "cell-and-tissue-therapy",
@@ -118,27 +114,23 @@
       "canonicalKey": "src/content/downloads_imports/normalized/tutorials.normalized.json::hla-antigens-and-alleles",
       "shadowFile": "src/content/tutorials/tutorials.normalized.json",
       "canonicalFile": "src/content/downloads_imports/normalized/tutorials.normalized.json",
-      "shadowTrack": "surgical-path",
+      "shadowTrack": "clinical-path",
       "canonicalTrack": "clinical-path",
-      "shadowDomain": "AP",
+      "shadowDomain": "CP",
       "canonicalDomain": "CP",
-      "shadowPath": "The Genitourinary System > Kidney > Medical Kidney Disease > End Stage Renal Disease",
+      "shadowPath": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > HLA Antigens and Alleles",
       "canonicalPath": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > HLA Antigens and Alleles",
       "shadowValidated": false,
       "canonicalValidated": true,
-      "requiresSourceMapReview": true,
-      "mismatchNotes": [
-        "track surgical-path -> clinical-path",
-        "domain AP -> CP",
-        "root Genitourinary -> Blood Banking/Transfusion Medicine",
-        "path changed"
-      ]
+      "requiresSourceMapReview": false,
+      "mismatchNotes": []
     }
   ],
   "execution": {
     "completedStepIds": [
       "W02-L1_CP_TRUTH-C01",
-      "W02-L1_CP_TRUTH-C02"
+      "W02-L1_CP_TRUTH-C02",
+      "W02-L1_CP_TRUTH-C03"
     ],
     "proofCommands": [
       "npm run cp:precision:validate",

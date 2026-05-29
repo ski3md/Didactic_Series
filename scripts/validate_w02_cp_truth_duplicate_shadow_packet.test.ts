@@ -12,24 +12,24 @@ describe('W02 CP truth duplicate shadow packet', () => {
     expect(packet.tranche).toBe('T06 W02 CP Truth');
     expect(packet.summary.duplicateShadowCount).toBe(6);
     expect(packet.summary.canonicalValidatedCount).toBe(6);
-    expect(packet.summary.sourceMapReviewCount).toBe(2);
+    expect(packet.summary.sourceMapReviewCount).toBe(0);
     expect(packet.summary.allDuplicatesHaveCanonicalValidatedPair).toBe(true);
     expect(packet.actionBuckets.safeDuplicateExclusions).toEqual([
       'blood-banking-transfusion-medicine',
       'clinical-practice',
       'paroxysmal-nocturnal-hemoglobinuria',
-      'cell-and-tissue-therapy',
-    ]);
-    expect(packet.actionBuckets.sourceMapReviewRequired).toEqual([
       'anemia-in-oncology-patients',
+      'cell-and-tissue-therapy',
       'hla-antigens-and-alleles',
     ]);
+    expect(packet.actionBuckets.sourceMapReviewRequired).toEqual([]);
   });
 
   it('keeps the proof bundle and step state aligned to T06', () => {
     expect(packet.execution.completedStepIds).toEqual([
       'W02-L1_CP_TRUTH-C01',
       'W02-L1_CP_TRUTH-C02',
+      'W02-L1_CP_TRUTH-C03',
     ]);
     expect(packet.execution.proofCommands).toEqual([
       'npm run cp:precision:validate',

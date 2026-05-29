@@ -50,6 +50,7 @@ describe('W02 CP truth baseline packet', () => {
     expect(packet.execution.completedStepIds).toEqual([
       'W02-L1_CP_TRUTH-C01',
       'W02-L1_CP_TRUTH-C02',
+      'W02-L1_CP_TRUTH-C03',
     ]);
     expect(packet.execution.proofCommands).toEqual([
       'npm run cp:precision:validate',
