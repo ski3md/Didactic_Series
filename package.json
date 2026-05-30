@@ -12,6 +12,7 @@
     "serve:didactics-tunnel-origin": "node scripts/serve_didactics_tunnel_origin.cjs",
     "test": "vitest run",
     "test:watch": "vitest",
+    "quality:coordination-wrappers": "node scripts/validate_coordination_wrappers.cjs",
     "security:scan-scripts": "node scripts/security/scan-third-party-scripts.cjs",
     "security:header-audit": "node scripts/security/validate-frontend-headers.cjs",
     "security:deps": "npm audit --omit=dev --audit-level=high",
