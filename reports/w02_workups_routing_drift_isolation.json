@@ -1,0 +1,111 @@
+{
+  "generatedAt": "2026-05-30T04:16:29.363Z",
+  "tranche": "T09 W02 Workups and Routing",
+  "stepId": "W02-L4_WORKUPS_ROUTING-C09",
+  "status": "isolated",
+  "source": {
+    "baselinePacket": "reports/w02_workups_routing_baseline_packet.json",
+    "routeCoverageTest": "src/utils/algorithmCatalog.test.ts"
+  },
+  "baselineAuthority": {
+    "sourceLinkNormalizationGroups": 7,
+    "visibleClusterCount": 7,
+    "cpRootCount": 6,
+    "unsupportedRouteGuard": "Unimplemented CP topics must not fall back heuristically to unrelated algorithm routes.",
+    "workupsRuleLocked": true
+  },
+  "guardrails": {
+    "doNotTouch": [
+      "CP source-link normalization",
+      "CP root counts",
+      "source-truth mappings",
+      "the executable Workups routing rule"
+    ],
+    "unsupportedCpTopicsMustNotRouteHeuristically": true,
+    "workupsLabelCannotBecomeGenericCta": true,
+    "cpSourceLinkAndRootCountsRemainUntouched": true,
+    "sourceTruthMappingsRemainReadOnly": true
+  },
+  "riskRegister": [
+    {
+      "id": "W02-WR-C09-R01_UNSUPPORTED_CP_TOPIC_HEURISTIC",
+      "title": "Unsupported Clinical Pathology topics must not route heuristically",
+      "driftSignal": "An unimplemented CP topic resolves to the nearest live algorithm through partial-token matching instead of returning null.",
+      "isolationRule": "Keep unsupported CP topics unrouted until an owned algorithm record or exact guarded alias is added with proof.",
+      "guardedFiles": [
+        "src/utils/algorithmCatalog.ts",
+        "src/utils/algorithmCatalog.test.ts",
+        "src/content/algorithms/algorithms.normalized.json"
+      ],
+      "targetedProofCommands": [
+        "npm run test -- src/utils/algorithmCatalog.test.ts",
+        "npx vitest run scripts/validate_w02_workups_routing_drift_isolation.test.ts"
+      ]
+    },
+    {
+      "id": "W02-WR-C09-R02_WORKUPS_LABEL_GENERIC_CTA",
+      "title": "Workups label cannot become a generic CTA",
+      "driftSignal": "`Workups` appears as generic launch, teaser, fallback, or marketing copy rather than the governed diagnostic-workup lane label.",
+      "isolationRule": "Use `Workups` only when it truthfully names the active diagnostic-workup workspace and bench-facing routing rule.",
+      "guardedFiles": [
+        "src/components/AlgorithmNavigator.tsx",
+        "docs/contracts/PTHFNDR_DIDACTICS_LEARNING_UX_CONTRACT.md",
+        "src/content/contracts/pthfndrDidacticsLearningUxContract.json",
+        "scripts/validate_didactics_learning_ux.cjs"
+      ],
+      "targetedProofCommands": [
+        "npm run didactics:ux:validate",
+        "npx vitest run scripts/validate_w02_workups_routing_drift_isolation.test.ts"
+      ]
+    },
+    {
+      "id": "W02-WR-C09-R03_CP_SOURCE_LINK_ROOT_COUNT_DRIFT",
+      "title": "CP source-link and root-count proof must remain untouched",
+      "driftSignal": "The T07/T08 source-link normalization groups, visible cluster count, or CP root count change during T09 route work.",
+      "isolationRule": "Do not alter CP source-link normalization, learner source-link wording, visible cluster count, or CP root count inside T09.",
+      "guardedFiles": [
+        "reports/w02_workups_routing_baseline_packet.json",
+        "reports/w02_learner_ux_closeout_packet.json",
+        "reports/w02_content_parity_closeout_packet.json"
+      ],
+      "expectedBaseline": {
+        "sourceLinkNormalizationGroups": 7,
+        "visibleClusterCount": 7,
+        "cpRootCount": 6
+      },
+      "targetedProofCommands": [
+        "npx vitest run scripts/validate_w02_workups_routing_baseline_packet.test.ts",
+        "npx vitest run scripts/validate_w02_workups_routing_drift_isolation.test.ts"
+      ]
+    },
+    {
+      "id": "W02-WR-C09-R04_SOURCE_TRUTH_MAPPING_MUTATION",
+      "title": "Source-truth mappings stay outside this route drift tranche",
+      "driftSignal": "Validated mappings, mapping validators, or normalized algorithm source truth change while isolating route drift.",
+      "isolationRule": "Treat mapping/source-truth files as read-only for T09 C09; regenerate upstream proof before any intentional change.",
+      "guardedFiles": [
+        "src/content/tutorials/validatedMappingsManifest.json",
+        "scripts/validate_validated_mappings_manifest.cjs",
+        "src/content/algorithms/algorithms.normalized.json"
+      ],
+      "targetedProofCommands": [
+        "node scripts/validate_validated_mappings_manifest.cjs",
+        "npx vitest run scripts/validate_w02_workups_routing_drift_isolation.test.ts"
+      ]
+    }
+  ],
+  "targetedProofCommands": [
+    "node scripts/generate_w02_workups_routing_drift_isolation.cjs",
+    "npx vitest run scripts/validate_w02_workups_routing_drift_isolation.test.ts",
+    "git diff --check"
+  ],
+  "completionGate": {
+    "isolatedRiskIds": [
+      "W02-WR-C09-R01_UNSUPPORTED_CP_TOPIC_HEURISTIC",
+      "W02-WR-C09-R02_WORKUPS_LABEL_GENERIC_CTA",
+      "W02-WR-C09-R03_CP_SOURCE_LINK_ROOT_COUNT_DRIFT",
+      "W02-WR-C09-R04_SOURCE_TRUTH_MAPPING_MUTATION"
+    ],
+    "readyForC10When": "C09 packet exists, its focused validation passes, and no guarded source-truth or CP count files were edited."
+  }
+}

@@ -420,10 +420,10 @@ const TRANCHE_OVERRIDES = {
         'W02-L4_WORKUPS_ROUTING-C05',
         'W02-L4_WORKUPS_ROUTING-C06',
         'W02-L4_WORKUPS_ROUTING-C07',
-      ],
-      remainingStepIds: [
         'W02-L4_WORKUPS_ROUTING-C08',
         'W02-L4_WORKUPS_ROUTING-C09',
+      ],
+      remainingStepIds: [
         'W02-L4_WORKUPS_ROUTING-C10',
       ],
     },
@@ -431,12 +431,14 @@ const TRANCHE_OVERRIDES = {
       'reports/w02_learner_ux_closeout_packet.json',
       'reports/didactics_learning_ux_report.json',
       'reports/w02_workups_routing_baseline_packet.json',
+      'reports/w02_workups_routing_diagnostic_map.json',
+      'reports/w02_workups_routing_drift_isolation.json',
     ],
     proofCommands: [
       'npm run didactics:ux:validate',
       'npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts',
       'npx vitest run scripts/validate_didactics_learning_ux.test.ts',
-      'npx vitest run scripts/validate_w02_workups_routing_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
+      'npx vitest run scripts/validate_w02_workups_routing_diagnostic_map.test.ts scripts/validate_w02_workups_routing_drift_isolation.test.ts scripts/validate_w02_workups_routing_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts',
       'git diff --check',
     ],
     supportingProgress: [
@@ -447,9 +449,11 @@ const TRANCHE_OVERRIDES = {
       'The UX contract, machine-readable contract, and validator now lock the bench-facing Clinical Pathology workup routing rule.',
       'The W02 workups routing packet now carries repeatable checks for bench-facing copy, contract alignment, machine contract alignment, and validator coverage.',
       'A route matrix test now proves all 12 W02 Clinical Pathology workup families resolve from representative bench-facing aliases.',
+      'A reusable diagnostic map now groups 12 CP workup routes and 36 aliases into four bench-facing decision families.',
+      'A route drift isolation packet now freezes unsupported-topic, Workups-label, CP-count, and source-truth mutation risks before closeout.',
     ],
     summary:
-      'W02 workups and routing is open with a CP algorithm routing baseline tied to the closed T08 learner-UX guard; workup wording, route rules, proof checks, and route test coverage are now repeatable, while reusable output, drift isolation, and closeout proof remain bounded inside T09.',
+      'W02 workups and routing is ready for closeout with CP routing baseline, public-facing workup wording, route rules, proof checks, route test coverage, reusable diagnostic map output, and drift isolation all bounded inside T09.',
   },
 };
 

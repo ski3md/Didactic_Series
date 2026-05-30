@@ -148,8 +148,16 @@ describe('full 1000 execution ledger assets', () => {
       'W02-L4_WORKUPS_ROUTING-C05',
       'W02-L4_WORKUPS_ROUTING-C06',
       'W02-L4_WORKUPS_ROUTING-C07',
+      'W02-L4_WORKUPS_ROUTING-C08',
+      'W02-L4_WORKUPS_ROUTING-C09',
     ]);
-    expect(t09?.completionEvidence.remainingStepIds).toHaveLength(3);
+    expect(t09?.completionEvidence.remainingStepIds).toEqual(['W02-L4_WORKUPS_ROUTING-C10']);
+    expect(t09?.evidenceArtifacts).toEqual(
+      expect.arrayContaining([
+        'reports/w02_workups_routing_diagnostic_map.json',
+        'reports/w02_workups_routing_drift_isolation.json',
+      ]),
+    );
   });
 
   it('renders the required ledger sections and immediate next sequence', () => {

@@ -1,0 +1,237 @@
+{
+  "generatedAt": "2026-05-30T04:16:29.231Z",
+  "tranche": "T09 W02 Workups and Routing",
+  "step": "W02-L4_WORKUPS_ROUTING-C08",
+  "status": "reusable_diagnostic_map",
+  "source": {
+    "baselinePacket": "reports/w02_workups_routing_baseline_packet.json",
+    "algorithms": "src/content/algorithms/algorithms.normalized.json"
+  },
+  "guardrails": {
+    "cpSourceLinkNormalizationUntouched": true,
+    "cpRootCountsUntouched": true,
+    "sourceTruthMappingsUntouched": true,
+    "executableWorkupsRulePreserved": true
+  },
+  "totals": {
+    "cpRoutes": 12,
+    "routeAliases": 36,
+    "groups": 4
+  },
+  "baselineExpectation": {
+    "cpRoutes": 12,
+    "routeAliases": 36,
+    "managementAndInformaticsRoutes": 4,
+    "foundationsRoutes": 3,
+    "transfusionRoutes": 2,
+    "microbiologyRoutes": 3
+  },
+  "groups": [
+    {
+      "id": "management_and_informatics",
+      "label": "Management and Informatics",
+      "routeCount": 4,
+      "aliasCount": 12,
+      "benchFacingDecisionCue": "Protect patient reporting, choose the oversight or workflow path, and keep operational consequences visible.",
+      "routes": [
+        "cp-mi-finance-aware-assay-planning",
+        "cp-mi-lis-workflow-redesign",
+        "cp-mi-qc-failure-response",
+        "cp-mi-validation-verification-triage"
+      ]
+    },
+    {
+      "id": "foundations",
+      "label": "Foundations",
+      "routeCount": 3,
+      "aliasCount": 9,
+      "benchFacingDecisionCue": "Start from specimen or patient context, select the safest bench check, and route the result without skipping safeguards.",
+      "routes": [
+        "cp-foundations-anemia-workup",
+        "cp-foundations-bleeding-diatathesis-triage",
+        "cp-foundations-specimen-to-result-workflow"
+      ]
+    },
+    {
+      "id": "transfusion",
+      "label": "Transfusion",
+      "routeCount": 2,
+      "aliasCount": 6,
+      "benchFacingDecisionCue": "Stabilize transfusion safety first, reconcile identity and compatibility, then decide escalation or safe unit selection.",
+      "routes": [
+        "cp-transfusion-crossmatch-workup",
+        "cp-transfusion-reaction-triage"
+      ]
+    },
+    {
+      "id": "microbiology",
+      "label": "Microbiology",
+      "routeCount": 3,
+      "aliasCount": 9,
+      "benchFacingDecisionCue": "Anchor organism or specimen quality to source context before reporting identification, susceptibility, or recollection decisions.",
+      "routes": [
+        "cp-micro-ast-interpretation",
+        "cp-micro-specimen-quality-triage",
+        "cp-micro-organism-identification-workflow"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "cp-foundations-anemia-workup",
+      "title": "Anemia Workup and Hemolysis Triage",
+      "groupId": "foundations",
+      "groupLabel": "Foundations",
+      "representativeAliases": [
+        "anemia workup",
+        "hemolysis triage",
+        "red cell triage"
+      ],
+      "benchFacingDecisionCue": "Separate increased red-cell loss from impaired production and from patterns that need urgent marrow-level escalation.",
+      "summary": "Use CBC indices, reticulocyte response, and hemolysis cues to decide whether anemia reflects blood loss or hemolysis, reduced production, or urgent marrow pathology."
+    },
+    {
+      "id": "cp-foundations-bleeding-diatathesis-triage",
+      "title": "Bleeding Diathesis and Coagulation Test Interpretation",
+      "groupId": "foundations",
+      "groupLabel": "Foundations",
+      "representativeAliases": [
+        "bleeding diathesis triage",
+        "coagulation test interpretation",
+        "hemostasis triage"
+      ],
+      "benchFacingDecisionCue": "Distinguish platelet or von Willebrand-type bleeding from factor pathway problems and unstable systemic coagulopathy.",
+      "summary": "Use bleeding pattern, platelet data, and coagulation screening tests to decide whether the problem is primary hemostasis, factor pathway dysfunction, or unstable systemic coagulopathy."
+    },
+    {
+      "id": "cp-foundations-specimen-to-result-workflow",
+      "title": "Specimen-to-Result CP Workflow",
+      "groupId": "foundations",
+      "groupLabel": "Foundations",
+      "representativeAliases": [
+        "specimen to result workflow",
+        "critical reporting workflow",
+        "bench selection workflow"
+      ],
+      "benchFacingDecisionCue": "A flawed specimen should redirect the workflow before deeper bench reasoning begins.",
+      "summary": "Move a Clinical Pathology request from specimen quality triage and specimen integrity through bench selection, result interpretation, and safe reporting without skipping preanalytic or postanalytic safeguards."
+    },
+    {
+      "id": "cp-mi-finance-aware-assay-planning",
+      "title": "Finance-Aware Assay Planning",
+      "groupId": "management_and_informatics",
+      "groupLabel": "Management and Informatics",
+      "representativeAliases": [
+        "assay planning",
+        "reagent rental",
+        "break even analysis"
+      ],
+      "benchFacingDecisionCue": "Pick the operational bottleneck before committing to in-house rollout or a platform contract.",
+      "summary": "Plan an assay rollout by balancing break-even logic, acquisition structure, and operational burden before bringing testing in-house."
+    },
+    {
+      "id": "cp-mi-lis-workflow-redesign",
+      "title": "LIS Workflow Redesign",
+      "groupId": "management_and_informatics",
+      "groupLabel": "Management and Informatics",
+      "representativeAliases": [
+        "lis interfacing",
+        "workflow redesign",
+        "lab information system workflow"
+      ],
+      "benchFacingDecisionCue": "Choose the intervention by matching it to the dominant risk rather than defaulting to a favorite informatics tool.",
+      "summary": "Redesign an unsafe reporting workflow by deciding whether interfacing, middleware, or process redesign is the highest-yield safety intervention."
+    },
+    {
+      "id": "cp-mi-qc-failure-response",
+      "title": "QC Failure Response",
+      "groupId": "management_and_informatics",
+      "groupLabel": "Management and Informatics",
+      "representativeAliases": [
+        "qc failure",
+        "quality control failure",
+        "qc troubleshooting"
+      ],
+      "benchFacingDecisionCue": "Separate isolated random-error patterns from systematic failure and post-change instability.",
+      "summary": "Operational triage for a QC failure: characterize the control pattern, protect patient reporting, and choose the next corrective action."
+    },
+    {
+      "id": "cp-mi-validation-verification-triage",
+      "title": "Validation-Versus-Verification Triage",
+      "groupId": "management_and_informatics",
+      "groupLabel": "Management and Informatics",
+      "representativeAliases": [
+        "validation vs verification",
+        "validation verification triage",
+        "verification pathway"
+      ],
+      "benchFacingDecisionCue": "Separate truly new or materially altered claims from local confirmation of expected performance.",
+      "summary": "Choose the right oversight path when a lab is bringing on a test, modifying an assay, or restarting a changed method."
+    },
+    {
+      "id": "cp-micro-ast-interpretation",
+      "title": "AST Interpretation",
+      "groupId": "microbiology",
+      "groupLabel": "Microbiology",
+      "representativeAliases": [
+        "antimicrobial susceptibility testing",
+        "susceptibility interpretation",
+        "ast stewardship"
+      ],
+      "benchFacingDecisionCue": "Susceptibility categories are only meaningful when the isolate itself is clinically relevant and the specimen source supports treatment-level interpretation.",
+      "summary": "Interpret antimicrobial susceptibility results only after organism identity, source context, and reporting consequences are aligned, then decide when to suppress, escalate, or communicate a high-risk result."
+    },
+    {
+      "id": "cp-micro-specimen-quality-triage",
+      "title": "Clinical Microbiology Specimen Quality Triage",
+      "groupId": "microbiology",
+      "groupLabel": "Microbiology",
+      "representativeAliases": [
+        "specimen quality triage",
+        "clinical microbiology specimen quality",
+        "gram stain specimen triage"
+      ],
+      "benchFacingDecisionCue": "Use specimen source, contamination risk, transport delay, and adequacy to decide whether the sample should be worked up, cautiously limited, or rejected.",
+      "summary": "Decide whether a microbiology specimen is acceptable for culture or molecular workup, when recollection is safer, and when a limited bench path can still yield a trustworthy result."
+    },
+    {
+      "id": "cp-micro-organism-identification-workflow",
+      "title": "Organism Identification Workflow",
+      "groupId": "microbiology",
+      "groupLabel": "Microbiology",
+      "representativeAliases": [
+        "microbiology organism identification",
+        "maldi tof workflow",
+        "gram stain identification"
+      ],
+      "benchFacingDecisionCue": "Use Gram stain, colony pattern, growth conditions, or rapid platform fit to determine the next identification branch instead of reflexively applying every method.",
+      "summary": "Choose the next safest organism-identification path by combining Gram stain, growth pattern, source context, and bench method selection before attaching clinical meaning or susceptibility consequences."
+    },
+    {
+      "id": "cp-transfusion-crossmatch-workup",
+      "title": "Crossmatch Workup",
+      "groupId": "transfusion",
+      "groupLabel": "Transfusion",
+      "representativeAliases": [
+        "compatibility workup",
+        "alloantibody workup",
+        "transfusion compatibility"
+      ],
+      "benchFacingDecisionCue": "Decide whether this is a routine compatibility issue or an acute transfusion-safety event requiring immediate reaction workflow.",
+      "summary": "Stepwise blood-bank algorithm for crossmatch incompatibility, specimen identification checks, antibody-screen correlation, and safe unit-selection escalation."
+    },
+    {
+      "id": "cp-transfusion-reaction-triage",
+      "title": "Transfusion Reaction Triage",
+      "groupId": "transfusion",
+      "groupLabel": "Transfusion",
+      "representativeAliases": [
+        "transfusion reaction workup",
+        "hemolytic transfusion reaction",
+        "trali taco transfusion reactions"
+      ],
+      "benchFacingDecisionCue": "Treat fever, chills, dyspnea, hypotension, flank pain, dark urine, urticaria, or rapid cardiopulmonary change during or after transfusion as a true reaction pathway until proven otherwise.",
+      "summary": "Use immediate symptom pattern, transfusion-safety steps, and blood-bank reasoning to separate hemolytic, febrile or allergic, and pulmonary or volume-overload transfusion reactions."
+    }
+  ]
+}

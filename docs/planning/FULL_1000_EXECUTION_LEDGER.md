@@ -5,7 +5,7 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 ## Current State
 
 - Branch: `main`
-- HEAD: `8cb137b9`
+- HEAD: `37203a41`
 - Sync: `0/0 vs origin/main`
 - Repo state: `clean_synced`
 - First open wave: `W02`
@@ -185,13 +185,13 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
 - Status: `in_progress`
 - Status basis: `routing_baseline_packet`
 - Goal: This lane keeps workups and route behavior dependable for reconcile raw mappings with reviewed mappings.
-- Completed steps: 7
-- Remaining steps: 3
+- Completed steps: 9
+- Remaining steps: 1
 - Evidence commits: none
-- Evidence artifacts: `reports/w02_learner_ux_closeout_packet.json`, `reports/didactics_learning_ux_report.json`, `reports/w02_workups_routing_baseline_packet.json`
+- Evidence artifacts: `reports/w02_learner_ux_closeout_packet.json`, `reports/didactics_learning_ux_report.json`, `reports/w02_workups_routing_baseline_packet.json`, `reports/w02_workups_routing_diagnostic_map.json`, `reports/w02_workups_routing_drift_isolation.json`
 - Remaining owned files: none
-- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts`, `npx vitest run scripts/validate_w02_workups_routing_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
-- Summary: W02 workups and routing is open with a CP algorithm routing baseline tied to the closed T08 learner-UX guard; workup wording, route rules, proof checks, and route test coverage are now repeatable, while reusable output, drift isolation, and closeout proof remain bounded inside T09.
+- Proof commands: `npm run didactics:ux:validate`, `npm run test -- src/utils/algorithmCatalog.test.ts src/utils/studyDestinationResolver.test.ts`, `npx vitest run scripts/validate_didactics_learning_ux.test.ts`, `npx vitest run scripts/validate_w02_workups_routing_diagnostic_map.test.ts scripts/validate_w02_workups_routing_drift_isolation.test.ts scripts/validate_w02_workups_routing_baseline_packet.test.ts scripts/validate_full_1000_execution_ledger.test.ts`, `git diff --check`
+- Summary: W02 workups and routing is ready for closeout with CP routing baseline, public-facing workup wording, route rules, proof checks, route test coverage, reusable diagnostic map output, and drift isolation all bounded inside T09.
 
   - T09 now opens from the closed T08 learner-UX handoff instead of changing routing before learner-source-link wording is protected.
   - The routing baseline freezes 12 Clinical Pathology algorithm routes and their aliases while preserving the seven CP learner clusters over six reviewed CP roots.
@@ -200,6 +200,8 @@ A repo-native tranche ledger that reconciles the current live Didactic Series st
   - The UX contract, machine-readable contract, and validator now lock the bench-facing Clinical Pathology workup routing rule.
   - The W02 workups routing packet now carries repeatable checks for bench-facing copy, contract alignment, machine contract alignment, and validator coverage.
   - A route matrix test now proves all 12 W02 Clinical Pathology workup families resolve from representative bench-facing aliases.
+  - A reusable diagnostic map now groups 12 CP workup routes and 36 aliases into four bench-facing decision families.
+  - A route drift isolation packet now freezes unsupported-topic, Workups-label, CP-count, and source-truth mutation risks before closeout.
 
 ### T10 W02 Contracts and Proof
 
