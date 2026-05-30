@@ -54,6 +54,8 @@
     "ap:gaps:enrich-cards": "node scripts/enrich_ap_p0_cards.cjs",
     "ap:gaps:content-ready": "npm run ap:gaps:enrich-cards && npm run ap:gaps:validate-cards && npm run ap:gaps:validate-batches && npm run ap:gaps:status && npm run ap:gaps:promotion-queue",
     "ap:gaps:verify": "npm run ap:gaps:validate-cards && npm run ap:gaps:validate-batches && npm run ap:gaps:status && npm run ap:gaps:promotion-queue",
+    "materials:abpath:queue": "node scripts/generate_abpath_material_expansion_queue.cjs",
+    "materials:abpath:queue:validate": "vitest run scripts/validate_abpath_material_expansion_queue.test.ts",
     "lectures:contracts": "node scripts/generate_lecture_abpath_contracts.cjs",
     "lectures:contracts:validate": "node scripts/validate_lecture_abpath_contracts.cjs",
     "resource:contracts": "node scripts/generate_world_class_resource_contracts.cjs",
