@@ -1,0 +1,494 @@
+{
+  "version": "abpath-cp-material-batch.v1",
+  "batchId": "abpath-cp-material-batch-001",
+  "generatedAt": "2026-05-30T04:38:42.861Z",
+  "purpose": "First bounded CP bench-facing materialization slice from the ABPath material expansion queue.",
+  "selection": {
+    "sourceQueuePath": "src/content/materials/abpathMaterialExpansionQueue.json",
+    "sourceQueueVersion": "abpath-material-expansion-queue.v1",
+    "domain": "CP",
+    "subject": "Blood Banking/Transfusion Medicine",
+    "pathPrefix": [
+      "Blood Banking/Transfusion Medicine",
+      "RBCs and RBC Components"
+    ],
+    "selectionRationale": "Bounded RBC component and compatibility-testing slice with clear bench-facing artifacts and safety decisions.",
+    "sourceTopicIds": [
+      "bb-3",
+      "bb-3-d",
+      "bb-3-e",
+      "bb-3-f",
+      "bb-3-g",
+      "bb-3-h",
+      "bb-3-i",
+      "bb-3-j",
+      "bb-3-k"
+    ]
+  },
+  "totals": {
+    "rows": 9,
+    "reviewStatus": {
+      "unreviewed": 9
+    },
+    "promotionStatus": {
+      "review-queue": 9
+    }
+  },
+  "promotionGuardrails": [
+    "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+    "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, or shared validators from this batch.",
+    "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+    "A generated bench artifact must show the clinical question, next lab check, interpretation path, and safety stop before promotion."
+  ],
+  "rows": [
+    {
+      "batchRowId": "abpath-cp-material-batch-001-row-01",
+      "queueEntryId": "cp-bb-bb-3-rbcs-and-rbc-components-fb04dac762",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "RBCs and RBC Components",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > RBCs and RBC Components",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-3",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use an RBC component selection or compatibility workflow card tied to transfusion-service action."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, and safety stop before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-001-row-02",
+      "queueEntryId": "cp-bb-bb-3-d-red-cell-immunology-and-compatibility-testing-4bb71d6db0",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Red Cell Immunology and Compatibility Testing",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Red Cell Immunology and Compatibility Testing"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > RBCs and RBC Components > Red Cell Immunology and Compatibility Testing",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-3-d",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use an antibody screen, crossmatch, or compatibility-testing worksheet with the safest next check marked."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, and safety stop before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-001-row-03",
+      "queueEntryId": "cp-bb-bb-3-e-carbohydrate-blood-groups-abh-cde0744879",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Carbohydrate Blood Groups (ABH)",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Carbohydrate Blood Groups (ABH)"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > RBCs and RBC Components > Carbohydrate Blood Groups (ABH)",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-3-e",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use a blood-group antigen/antibody interpretation table tied to component selection or escalation."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, and safety stop before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-001-row-04",
+      "queueEntryId": "cp-bb-bb-3-f-rh-and-lw-blood-group-systems-79ecf0efea",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Rh and LW Blood Group Systems",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Rh and LW Blood Group Systems"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > RBCs and RBC Components > Rh and LW Blood Group Systems",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-3-f",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use a blood-group antigen/antibody interpretation table tied to component selection or escalation."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, and safety stop before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-001-row-05",
+      "queueEntryId": "cp-bb-bb-3-g-other-protein-blood-group-systems-kell-duffy-kidd-bd41b43cf4",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Other Protein Blood Group Systems (Kell, Duffy, Kidd)",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Other Protein Blood Group Systems (Kell, Duffy, Kidd)"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > RBCs and RBC Components > Other Protein Blood Group Systems (Kell, Duffy, Kidd)",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-3-g",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use a blood-group antigen/antibody interpretation table tied to component selection or escalation."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, and safety stop before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-001-row-06",
+      "queueEntryId": "cp-bb-bb-3-h-high-incidence-antibodies-24c3a3c53a",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "High-Incidence Antibodies",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "High-Incidence Antibodies"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > RBCs and RBC Components > High-Incidence Antibodies",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-3-h",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use a blood-group antigen/antibody interpretation table tied to component selection or escalation."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, and safety stop before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-001-row-07",
+      "queueEntryId": "cp-bb-bb-3-i-cold-reactive-autoantibodies-fe7dec9505",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Cold Reactive Autoantibodies",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Cold Reactive Autoantibodies"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > RBCs and RBC Components > Cold Reactive Autoantibodies",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-3-i",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use a blood-group antigen/antibody interpretation table tied to component selection or escalation."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, and safety stop before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-001-row-08",
+      "queueEntryId": "cp-bb-bb-3-j-red-cell-genotyping-49fbf0981c",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Red Cell Genotyping",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Red Cell Genotyping"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > RBCs and RBC Components > Red Cell Genotyping",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-3-j",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use an RBC genotype-to-antigen phenotype interpretation card with transfusion-service consequence."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, and safety stop before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-001-row-09",
+      "queueEntryId": "cp-bb-bb-3-k-p1-antigen-a2de789811",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "P1 Antigen",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "P1 Antigen"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > RBCs and RBC Components > P1 Antigen",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-3-k",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use a blood-group antigen/antibody interpretation table tied to component selection or escalation."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, and safety stop before promotion."
+      ]
+    }
+  ]
+}

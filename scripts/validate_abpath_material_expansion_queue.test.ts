@@ -91,6 +91,11 @@ describe('ABPath material expansion queue', () => {
     expect(requiredSetLabels).toContain('faculty review checklist');
   });
 
+  it('uses collision-safe queue entry identifiers', () => {
+    const ids = queue.entries.map((entry) => entry.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
   it('keeps generated material unreviewed until explicit promotion', () => {
     expect(queue.totals.reviewStatus.unreviewed).toBe(queue.entries.length);
     expect(queue.totals.promotionStatus['generation-queue']).toBe(queue.entries.length);

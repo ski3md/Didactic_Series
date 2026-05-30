@@ -1,0 +1,581 @@
+{
+  "version": "abpath-ap-material-batch.v1",
+  "batchId": "abpath-ap-material-batch-001",
+  "generatedAt": "2026-05-30T04:38:42.655Z",
+  "sourceQueue": "src/content/materials/abpathMaterialExpansionQueue.json",
+  "purpose": "First bounded AP core-resident materialization batch from the ABPath expansion queue; review-queue only, not promoted teaching truth.",
+  "selectionCriteria": {
+    "domain": "AP",
+    "priority": "P0 core board/sign-out gap",
+    "phase": "Phase 1: core resident coverage",
+    "reviewStatus": "unreviewed",
+    "batchSize": 12,
+    "ordering": "existing expansion queue order"
+  },
+  "guardrails": [
+    "Every row remains unreviewed until faculty or owner review is attached.",
+    "Batch rows are review-queue materialization candidates, not promoted curriculum.",
+    "Do not overwrite source-truth mappings, CP files, reviewed curriculum, or shared validators from this batch.",
+    "Promotion requires source path, path hierarchy, required material set completion, local/licensed image evidence or explicit no-image rationale, and reviewer evidence.",
+    "Any downstream learner-facing promotion must preserve queueId, sourceTopicId, sourcePath, review status, and promotion decision."
+  ],
+  "totals": {
+    "rows": 12,
+    "reviewStatus": {
+      "unreviewed": 12
+    },
+    "promotionStatus": {
+      "review-queue": 12
+    },
+    "subjects": {
+      "Breast": 5,
+      "Genitourinary": 5,
+      "Male Reproductive": 2
+    },
+    "materialKinds": {
+      "topic": 11,
+      "subheader": 1
+    },
+    "requiredMaterialSetItems": 7
+  },
+  "rows": [
+    {
+      "batchRow": 1,
+      "queueId": "ap-ap-breast-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109-cysts-29b5bc23a6",
+      "domain": "AP",
+      "subject": "Breast",
+      "categoryId": "ap_breast",
+      "materialKind": "topic",
+      "title": "Cysts",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Breast",
+        "Normal Anatomy and Histology",
+        "Diabetic mastopathy",
+        "Cysts"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "b82b09fd-c24e-4aec-9ac7-a08c7ab5c109",
+        "sourceLine": 324
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 2,
+      "queueId": "ap-ap-breast-2605228a-e2fd-4c25-a6e0-d3ee3ca6e074-adenosis-ffc6b340f1",
+      "domain": "AP",
+      "subject": "Breast",
+      "categoryId": "ap_breast",
+      "materialKind": "topic",
+      "title": "Adenosis",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Breast",
+        "Normal Anatomy and Histology",
+        "Diabetic mastopathy",
+        "Adenosis"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "2605228a-e2fd-4c25-a6e0-d3ee3ca6e074",
+        "sourceLine": 325
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 3,
+      "queueId": "ap-ap-breast-2a8fcd9a-2b21-4c2c-90de-aed238adba69-hemangioma-2028805d6e",
+      "domain": "AP",
+      "subject": "Breast",
+      "categoryId": "ap_breast",
+      "materialKind": "topic",
+      "title": "Hemangioma",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Breast",
+        "Normal Anatomy and Histology",
+        "Diabetic mastopathy",
+        "Hemangioma"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "2a8fcd9a-2b21-4c2c-90de-aed238adba69",
+        "sourceLine": 332
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 4,
+      "queueId": "ap-ap-breast-a932fcfa-fe27-4db4-8180-ca7b7289715f-leiomyoma-41b8c7ca8f",
+      "domain": "AP",
+      "subject": "Breast",
+      "categoryId": "ap_breast",
+      "materialKind": "topic",
+      "title": "Leiomyoma",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Breast",
+        "Normal Anatomy and Histology",
+        "Diabetic mastopathy",
+        "Leiomyoma"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "a932fcfa-fe27-4db4-8180-ca7b7289715f",
+        "sourceLine": 333
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 5,
+      "queueId": "ap-ap-breast-ba5f6b06-f921-4a8e-9e91-24f117a6bf82-therapy-induced-changes-0cc3333ccd",
+      "domain": "AP",
+      "subject": "Breast",
+      "categoryId": "ap_breast",
+      "materialKind": "subheader",
+      "title": "Therapy induced changes",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Breast",
+        "Therapy induced changes"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "ba5f6b06-f921-4a8e-9e91-24f117a6bf82",
+        "sourceLine": 470
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 6,
+      "queueId": "ap-ap-gu-59e217f3-550d-40fb-ba59-d900d6d5a5af-non-proliferative-glomerulonephropathies-9704aad48b",
+      "domain": "AP",
+      "subject": "Genitourinary",
+      "categoryId": "ap_gu",
+      "materialKind": "topic",
+      "title": "Non-proliferative glomerulonephropathies",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Genitourinary System",
+        "Kidney",
+        "Medical Kidney Disease",
+        "Non-proliferative glomerulonephropathies"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "59e217f3-550d-40fb-ba59-d900d6d5a5af",
+        "sourceLine": 576
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 7,
+      "queueId": "ap-ap-gu-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0-diseases-associated-with-acellular-closure-of-glomerular-capillaries-d8a6af8327",
+      "domain": "AP",
+      "subject": "Genitourinary",
+      "categoryId": "ap_gu",
+      "materialKind": "topic",
+      "title": "Diseases associated with acellular closure of glomerular capillaries",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Genitourinary System",
+        "Kidney",
+        "Medical Kidney Disease",
+        "Diseases associated with acellular closure of glomerular capillaries"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0",
+        "sourceLine": 608
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 8,
+      "queueId": "ap-ap-gu-bc90e1cf-b575-4be6-95e0-95b105b8efaa-diverticula-99dc55205b",
+      "domain": "AP",
+      "subject": "Genitourinary",
+      "categoryId": "ap_gu",
+      "materialKind": "topic",
+      "title": "Diverticula",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Genitourinary System",
+        "The Urothelial Tract and Bladder",
+        "Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+        "Diverticula"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "bc90e1cf-b575-4be6-95e0-95b105b8efaa",
+        "sourceLine": 757
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 9,
+      "queueId": "ap-ap-gu-2acaf2ec-9515-4398-a7b4-6c624aa84638-urethral-polyp-732cbf08b9",
+      "domain": "AP",
+      "subject": "Genitourinary",
+      "categoryId": "ap_gu",
+      "materialKind": "topic",
+      "title": "Urethral polyp",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Genitourinary System",
+        "The Urothelial Tract and Bladder",
+        "Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+        "Urethral polyp"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "2acaf2ec-9515-4398-a7b4-6c624aa84638",
+        "sourceLine": 761
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 10,
+      "queueId": "ap-ap-gu-c7c74b2a-9d75-4b81-b78b-fdbf4e85c76d-bcg-effects-036ae6d474",
+      "domain": "AP",
+      "subject": "Genitourinary",
+      "categoryId": "ap_gu",
+      "materialKind": "topic",
+      "title": "BCG effects",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Genitourinary System",
+        "The Urothelial Tract and Bladder",
+        "Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+        "BCG effects"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "c7c74b2a-9d75-4b81-b78b-fdbf4e85c76d",
+        "sourceLine": 762
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 11,
+      "queueId": "ap-ap-male-repro-cd232d7a-75c4-462f-8db3-45e5dd5fae86-amyloid-5c9681f003",
+      "domain": "AP",
+      "subject": "Male Reproductive",
+      "categoryId": "ap_male_repro",
+      "materialKind": "topic",
+      "title": "Amyloid",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Male Reproductive System",
+        "Prostate and Seminal Vesicles",
+        "Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+        "Amyloid"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "cd232d7a-75c4-462f-8db3-45e5dd5fae86",
+        "sourceLine": 897
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 12,
+      "queueId": "ap-ap-male-repro-bcadc6fc-94e8-4484-aa77-31ac0e5b95a5-extraprostatic-extension-36889d833f",
+      "domain": "AP",
+      "subject": "Male Reproductive",
+      "categoryId": "ap_male_repro",
+      "materialKind": "topic",
+      "title": "Extraprostatic extension",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Male Reproductive System",
+        "Prostate and Seminal Vesicles",
+        "Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+        "Extraprostatic extension"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "bcadc6fc-94e8-4484-aa77-31ac0e5b95a5",
+        "sourceLine": 928
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    }
+  ]
+}

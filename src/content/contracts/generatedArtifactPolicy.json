@@ -26,6 +26,13 @@
       ]
     },
     {
+      "label": "tracked material manifests",
+      "prefix": "src/content/materials/",
+      "extensions": [
+        ".json"
+      ]
+    },
+    {
       "label": "public reference image manifests",
       "prefix": "public/reference-images/",
       "extensions": [
@@ -219,9 +226,24 @@
       "futureDisposition": "archive-or-release-bundle"
     },
     {
+      "prefix": "reports/abpath_",
+      "class": "generated-tracked-artifact",
+      "futureDisposition": "reviewer-proof-bundle"
+    },
+    {
+      "prefix": "src/content/materials/",
+      "class": "generated-tracked-artifact",
+      "futureDisposition": "reviewer-queue-control-plane"
+    },
+    {
       "prefix": "reports/security/",
       "class": "generated-tracked-artifact",
       "futureDisposition": "local-only-or-ci-release-candidate"
+    },
+    {
+      "prefix": "reports/",
+      "class": "generated-tracked-artifact",
+      "futureDisposition": "governed-report-default"
     }
   ]
 }

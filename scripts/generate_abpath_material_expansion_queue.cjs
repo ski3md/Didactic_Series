@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
@@ -59,6 +60,18 @@ function slugify(value) {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
     .slice(0, 120);
+}
+
+function stableHash(value) {
+  return crypto.createHash('sha256').update(String(value || '')).digest('hex').slice(0, 10);
+}
+
+function entryId(domain, sourceTopicId, categoryId, pathContext) {
+  const compactSourceId = slugify(sourceTopicId);
+  const compactCategory = slugify(categoryId);
+  const compactTitle = slugify(pathContext.at(-1));
+  const pathHash = stableHash(pathContext.join(' > '));
+  return `${domain.toLowerCase()}-${compactCategory}-${compactSourceId}-${compactTitle}-${pathHash}`;
 }
 
 function unique(values) {
@@ -128,7 +141,7 @@ function buildApEntries(apTopics, gapPlan) {
     const gapRow = gapByTopicId.get(provenance.topic_id);
 
     entries.push({
-      id: `ap-${slugify(`${categoryId}-${pathContext.join('-')}-${provenance.topic_id || title}`)}`,
+      id: entryId('AP', provenance.topic_id || topic.id || title, categoryId, pathContext),
       domain: 'AP',
       materialKind: materialKind(depth),
       title,
@@ -183,7 +196,7 @@ function buildCpEntries(cpSpec) {
   return flattenCpSpec(cpSpec.SYLLABUS_DATA || []).map((topic) => {
     const profile = cpGeneratorProfile(topic);
     return {
-      id: `cp-${slugify(`${topic.id}-${topic.path.join('-')}`)}`,
+      id: entryId('CP', topic.id, CP_DOMAIN_IDS[topic.root] || topic.root, topic.path),
       domain: 'CP',
       materialKind: materialKind(topic.path.length),
       title: topic.title,
