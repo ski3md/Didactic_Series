@@ -4,10 +4,12 @@ const STORAGE_KEY = 'didactic_series_learning_preferences';
 
 export interface LearningPreferences {
   focusMode: boolean;
+  visualTheme: 'day' | 'night';
 }
 
 const DEFAULT_PREFERENCES: LearningPreferences = {
   focusMode: true,
+  visualTheme: 'day',
 };
 
 const readStoredPreferences = (): LearningPreferences => {
@@ -46,6 +48,12 @@ export const useLearningPreferences = () => {
       preferences,
       toggleFocusMode: () => {
         setPreferences((current) => ({ ...current, focusMode: !current.focusMode }));
+      },
+      toggleVisualTheme: () => {
+        setPreferences((current) => ({
+          ...current,
+          visualTheme: current.visualTheme === 'night' ? 'day' : 'night',
+        }));
       },
       setPreferences,
     }),

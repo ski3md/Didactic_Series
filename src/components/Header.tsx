@@ -10,6 +10,7 @@ interface HeaderProps {
   currentSection: Section;
   preferences: LearningPreferences;
   onToggleFocusMode: () => void;
+  onToggleVisualTheme: () => void;
   navigation?: SectionNavigationController;
 }
 
@@ -36,6 +37,7 @@ const Header: React.FC<HeaderProps> = ({
   currentSection,
   preferences,
   onToggleFocusMode,
+  onToggleVisualTheme,
   navigation,
 }) => {
   const { toggleSidebar } = useUIState();
@@ -82,6 +84,19 @@ const Header: React.FC<HeaderProps> = ({
           <h1 className="truncate text-sm font-semibold text-slate-900 md:text-base">{headerTitle}</h1>
         </div>
         <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={onToggleVisualTheme}
+            className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+              preferences.visualTheme === 'night'
+                ? 'border-cyan-400/70 bg-slate-900 text-cyan-100'
+                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
+            }`}
+            aria-pressed={preferences.visualTheme === 'night'}
+            aria-label="Toggle night mode"
+          >
+            {preferences.visualTheme === 'night' ? 'Night Mode' : 'Day Mode'}
+          </button>
           <button
             type="button"
             onClick={onToggleFocusMode}

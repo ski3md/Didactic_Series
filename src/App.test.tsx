@@ -72,8 +72,9 @@ describe('App routing', () => {
     pushSection: vi.fn(),
   };
   const preferencesApi = {
-    preferences: { focusMode: true },
+    preferences: { focusMode: true, visualTheme: 'day' as const },
     toggleFocusMode: vi.fn(),
+    toggleVisualTheme: vi.fn(),
   };
 
   beforeEach(() => {
@@ -150,5 +151,14 @@ describe('App routing', () => {
 
     expect(handleSectionChange).toHaveBeenCalledWith(Section.PATHOLOGY_CURRICULUM);
     expect(mocks.trackSectionVisit).toHaveBeenCalledWith('resident', Section.PATHOLOGY_CURRICULUM);
+  });
+
+  it('exposes a persisted night-mode toggle through the header', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(await screen.findByRole('button', { name: /toggle night mode/i }));
+
+    expect(preferencesApi.toggleVisualTheme).toHaveBeenCalledTimes(1);
   });
 });

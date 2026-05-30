@@ -41,7 +41,7 @@ const AppContent: React.FC<{
 }> = ({ user, onLogout }) => {
   const { currentSection, handleSectionChange, navigation } = useUserProgress(user?.username);
   const { isSidebarOpen, setSidebarOpen, toggleSidebar } = useUIState();
-  const { preferences, toggleFocusMode } = useLearningPreferences();
+  const { preferences, toggleFocusMode, toggleVisualTheme } = useLearningPreferences();
   const displayedSection =
     currentSection === Section.BREAST_SIGNOUT_MASTERCLASS
       ? Section.SIGN_OUT_SIMULATOR
@@ -81,6 +81,12 @@ const AppContent: React.FC<{
       onSectionSelect(Section.DIDACTIC_LECTURES);
     }
   }, [currentSection, onSectionSelect, user]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle('theme-night', preferences.visualTheme === 'night');
+    root.style.colorScheme = preferences.visualTheme === 'night' ? 'dark' : 'light';
+  }, [preferences.visualTheme]);
 
   const renderSection = () => {
     switch (currentSection) {
@@ -130,6 +136,7 @@ const AppContent: React.FC<{
           currentSection={displayedSection}
           preferences={preferences}
           onToggleFocusMode={toggleFocusMode}
+          onToggleVisualTheme={toggleVisualTheme}
           navigation={navigation}
         />
         <main

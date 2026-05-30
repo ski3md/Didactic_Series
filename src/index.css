@@ -18,6 +18,92 @@ body {
   @apply font-sans antialiased;
 }
 
+.theme-night body {
+  background:
+    radial-gradient(circle at top left, rgba(14, 165, 233, 0.16), transparent 34rem),
+    radial-gradient(circle at bottom right, rgba(20, 184, 166, 0.12), transparent 32rem),
+    #07111f;
+  color: #dbeafe;
+}
+
+.theme-night #root {
+  background: transparent;
+}
+
+.theme-night .bg-white,
+.theme-night .bg-slate-50,
+.theme-night .bg-slate-100 {
+  background-color: rgba(15, 23, 42, 0.92) !important;
+}
+
+.theme-night .bg-sky-50,
+.theme-night .bg-cyan-50,
+.theme-night .bg-indigo-50,
+.theme-night .bg-violet-50 {
+  background-color: rgba(8, 47, 73, 0.72) !important;
+}
+
+.theme-night .bg-emerald-50,
+.theme-night .bg-teal-50 {
+  background-color: rgba(6, 78, 59, 0.62) !important;
+}
+
+.theme-night .bg-amber-50,
+.theme-night .bg-orange-50 {
+  background-color: rgba(120, 53, 15, 0.5) !important;
+}
+
+.theme-night .bg-rose-50,
+.theme-night .bg-red-50 {
+  background-color: rgba(127, 29, 29, 0.52) !important;
+}
+
+.theme-night .border-slate-100,
+.theme-night .border-slate-200,
+.theme-night .border-gray-200 {
+  border-color: rgba(148, 163, 184, 0.28) !important;
+}
+
+.theme-night .border-sky-100,
+.theme-night .border-sky-200,
+.theme-night .border-sky-300 {
+  border-color: rgba(56, 189, 248, 0.42) !important;
+}
+
+.theme-night .text-slate-900,
+.theme-night .text-gray-900 {
+  color: #e2e8f0 !important;
+}
+
+.theme-night .text-slate-800,
+.theme-night .text-gray-800,
+.theme-night .text-slate-700,
+.theme-night .text-gray-700 {
+  color: #cbd5e1 !important;
+}
+
+.theme-night .text-slate-600,
+.theme-night .text-gray-600,
+.theme-night .text-slate-500,
+.theme-night .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+.theme-night .text-sky-900,
+.theme-night .text-sky-800,
+.theme-night .text-sky-700,
+.theme-night .text-cyan-900,
+.theme-night .text-indigo-900,
+.theme-night .text-violet-900 {
+  color: #bae6fd !important;
+}
+
+.theme-night .shadow-lg,
+.theme-night .shadow-sm,
+.theme-night .shadow {
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28) !important;
+}
+
 /* Custom scrollbar for a modern look */
 ::-webkit-scrollbar {
   width: 8px;
@@ -32,6 +118,18 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #64748b; /* slate-500 */
+}
+
+.theme-night ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+.theme-night ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.theme-night ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
 }
 
 /* Styles for Lecture Component */
