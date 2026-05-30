@@ -114,6 +114,31 @@ describe('algorithm catalog Clinical Pathology surfacing', () => {
     ]);
   });
 
+  it('resolves every W02 Clinical Pathology route family through representative bench-facing aliases', () => {
+    const routeMatrix = [
+      ['qc troubleshooting', 'cp-mi-qc-failure-response', 'QC Failure Response'],
+      ['verification pathway', 'cp-mi-validation-verification-triage', 'Validation vs Verification'],
+      ['lab information system workflow', 'cp-mi-lis-workflow-redesign', 'LIS and Workflow Safety'],
+      ['reagent rental', 'cp-mi-finance-aware-assay-planning', 'Assay Planning and Finance'],
+      ['red cell triage', 'cp-foundations-anemia-workup', 'Anemia and Red Cell Triage'],
+      ['hemostasis triage', 'cp-foundations-bleeding-diatathesis-triage', 'Bleeding and Coagulation Triage'],
+      ['bench selection workflow', 'cp-foundations-specimen-to-result-workflow', 'Specimen and Result Workflow'],
+      ['hemolytic transfusion reaction', 'cp-transfusion-reaction-triage', 'Transfusion Reaction Triage'],
+      ['compatibility workup', 'cp-transfusion-crossmatch-workup', 'Transfusion Compatibility and Crossmatch'],
+      ['gram stain specimen triage', 'cp-micro-specimen-quality-triage', 'Microbiology Specimen Quality'],
+      ['ast stewardship', 'cp-micro-ast-interpretation', 'AST Interpretation and Stewardship'],
+      ['maldi tof workflow', 'cp-micro-organism-identification-workflow', 'Organism Identification Workflow'],
+    ] as const;
+
+    routeMatrix.forEach(([query, selectedId, patternFamily]) => {
+      expect(resolveDidacticAlgorithmIntent(query, 'Clinical Pathology')).toMatchObject({
+        selectedId,
+        category: 'Clinical Pathology',
+        patternFamily,
+      });
+    });
+  });
+
   it('does not heuristically misroute unimplemented Clinical Pathology topics', () => {
     expect(resolveDidacticAlgorithmIntent('critical chemistry result triage', 'Clinical Pathology')).toBeNull();
     expect(resolveDidacticAlgorithmIntent('endocrine-metabolic interpretation', 'Clinical Pathology')).toBeNull();

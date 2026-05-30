@@ -419,9 +419,9 @@ const TRANCHE_OVERRIDES = {
         'W02-L4_WORKUPS_ROUTING-C04',
         'W02-L4_WORKUPS_ROUTING-C05',
         'W02-L4_WORKUPS_ROUTING-C06',
+        'W02-L4_WORKUPS_ROUTING-C07',
       ],
       remainingStepIds: [
-        'W02-L4_WORKUPS_ROUTING-C07',
         'W02-L4_WORKUPS_ROUTING-C08',
         'W02-L4_WORKUPS_ROUTING-C09',
         'W02-L4_WORKUPS_ROUTING-C10',
@@ -446,9 +446,10 @@ const TRANCHE_OVERRIDES = {
       'Workup topic and group overview copy now explains CP routing as bench-facing problem solving instead of abstract area navigation.',
       'The UX contract, machine-readable contract, and validator now lock the bench-facing Clinical Pathology workup routing rule.',
       'The W02 workups routing packet now carries repeatable checks for bench-facing copy, contract alignment, machine contract alignment, and validator coverage.',
+      'A route matrix test now proves all 12 W02 Clinical Pathology workup families resolve from representative bench-facing aliases.',
     ],
     summary:
-      'W02 workups and routing is open with a CP algorithm routing baseline tied to the closed T08 learner-UX guard; workup wording, route rules, and proof checks are now public-facing and repeatable, while reusable output, drift isolation, and closeout proof remain bounded inside T09.',
+      'W02 workups and routing is open with a CP algorithm routing baseline tied to the closed T08 learner-UX guard; workup wording, route rules, proof checks, and route test coverage are now repeatable, while reusable output, drift isolation, and closeout proof remain bounded inside T09.',
   },
 };
 
