@@ -1,0 +1,99 @@
+{
+  "version": "abpath-material-admin-summary.v1",
+  "generatedAt": "2026-05-30T04:52:08.331Z",
+  "source": {
+    "queue": "src/content/materials/abpathMaterialExpansionQueue.json",
+    "apBatch": "src/content/materials/abpathApMaterialBatch001.json",
+    "cpBatch": "src/content/materials/abpathCpMaterialBatch001.json"
+  },
+  "totals": {
+    "queueEntries": 3946,
+    "apQueueItems": 3863,
+    "cpQueueItems": 83,
+    "requiredMaterialSetItems": 12,
+    "batchRows": 21,
+    "unreviewedQueueEntries": 3946,
+    "generationQueueEntries": 3946
+  },
+  "statusLabels": {
+    "review": [
+      {
+        "status": "unreviewed",
+        "label": "Unreviewed",
+        "count": 3946
+      }
+    ],
+    "promotion": [
+      {
+        "status": "generation-queue",
+        "label": "Generation Queue",
+        "count": 3946
+      }
+    ]
+  },
+  "materialKindPreview": [
+    {
+      "status": "subheader",
+      "label": "Subheader",
+      "count": 74
+    },
+    {
+      "status": "subject",
+      "label": "Subject",
+      "count": 1180
+    },
+    {
+      "status": "topic",
+      "label": "Topic",
+      "count": 2281
+    },
+    {
+      "status": "subtopic",
+      "label": "Subtopic",
+      "count": 407
+    },
+    {
+      "status": "header",
+      "label": "Header",
+      "count": 4
+    }
+  ],
+  "guardrails": {
+    "visible": [
+      "Generated rows are unreviewed generation-queue items, not authoritative teaching truth.",
+      "Do not overwrite reviewed curriculum, source-truth mappings, or validated CP anchors from this queue.",
+      "Every promoted item must retain source path, ABPath path, review status, and faculty/owner evidence.",
+      "AP image-bearing material requires local/licensed image evidence or explicit no-image rationale.",
+      "CP material requires bench-facing artifact evidence where an image is not the correct learning object."
+    ],
+    "total": 5,
+    "hidden": 0
+  },
+  "batches": [
+    {
+      "batchId": "abpath-ap-material-batch-001",
+      "domain": "AP",
+      "rowCount": 12,
+      "unreviewedRows": 12,
+      "reviewQueueRows": 12,
+      "reviewerRequiredRows": 12,
+      "promotionBlockedRows": 12
+    },
+    {
+      "batchId": "abpath-cp-material-batch-001",
+      "domain": "CP",
+      "rowCount": 9,
+      "unreviewedRows": 9,
+      "reviewQueueRows": 9,
+      "reviewerRequiredRows": 9,
+      "promotionBlockedRows": 9
+    }
+  ],
+  "gates": {
+    "allQueueEntriesUnreviewed": true,
+    "allQueueEntriesInGenerationQueue": true,
+    "allBatchRowsUnreviewed": true,
+    "allBatchRowsReviewQueued": true,
+    "promotionAllowedRows": 0
+  }
+}

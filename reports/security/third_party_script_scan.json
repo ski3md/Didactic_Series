@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-05-30T04:39:51.665Z",
+  "scannedAt": "2026-05-30T04:53:37.997Z",
   "summary": {
     "allowedDomains": [
       "images.ctfassets.net",
@@ -27,7 +27,7 @@
       "public/cp-studios/management-informatics-command-center.html",
       "public/cp-studios/microbiology-case-dashboard.html"
     ],
-    "totalFiles": 264
+    "totalFiles": 267
   },
   "allowed": [
     {

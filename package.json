@@ -62,6 +62,7 @@
     "materials:abpath:batch:ap:validate": "vitest run scripts/validate_abpath_ap_material_batch.test.ts",
     "materials:abpath:batch:cp": "node scripts/generate_abpath_cp_material_batch.cjs",
     "materials:abpath:batch:cp:validate": "vitest run scripts/validate_abpath_cp_material_batch.test.ts",
+    "materials:abpath:admin-summary": "node scripts/generate_abpath_material_admin_summary.cjs",
     "materials:abpath:validate": "npm run materials:abpath:queue:validate && npm run materials:abpath:proof:validate && npm run materials:abpath:batch:ap:validate && npm run materials:abpath:batch:cp:validate",
     "lectures:contracts": "node scripts/generate_lecture_abpath_contracts.cjs",
     "lectures:contracts:validate": "node scripts/validate_lecture_abpath_contracts.cjs",

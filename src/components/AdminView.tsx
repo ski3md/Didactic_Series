@@ -5,6 +5,7 @@ import { getAllUserData } from '../utils/tracking.ts';
 import { UserActivity, QuizAnswer, SignOutLog, StoredUser, LoginHistory } from '../types.ts';
 import { CheckCircleIcon, XCircleIcon, UserCircleIcon, ClockIcon } from './icons.tsx';
 import { apiGetAllUsers, apiGetLoginHistory } from '../api/mockApi.ts';
+import abpathMaterialAdminSummary from '../content/materials/abpathMaterialAdminSummary.json';
 
 interface AdminUserData {
     activity: UserActivity;
@@ -84,6 +85,8 @@ const AdminView: React.FC = () => {
                 subtitle="Manage module data and user activity."
             />
 
+            <AbpathMaterialExpansionQueueCard />
+
             <Card>
                  <h2 className="text-xl font-semibold font-serif text-slate-900 mb-4">User Activity & Analytics</h2>
                 {isLoadingData ? (
@@ -140,6 +143,93 @@ const AdminView: React.FC = () => {
         </div>
     );
 };
+
+const AbpathMaterialExpansionQueueCard: React.FC = () => (
+    <Card>
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between mb-5">
+            <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Admin-only material governance</p>
+                <h2 className="text-xl font-semibold font-serif text-slate-900">ABPath Material Expansion Queue</h2>
+                <p className="text-sm text-slate-600 mt-1">
+                    Read-only summary of unreviewed AP/CP generation-queue material. No promotion controls are exposed here.
+                </p>
+            </div>
+            <span className="self-start rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">
+                Review required
+            </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+            <QueueMetric label="Queue total" value={abpathMaterialAdminSummary.totals.queueEntries} />
+            <QueueMetric label="AP queue items" value={abpathMaterialAdminSummary.totals.apQueueItems} />
+            <QueueMetric label="CP queue items" value={abpathMaterialAdminSummary.totals.cpQueueItems} />
+            <QueueMetric label="Required material-set items" value={abpathMaterialAdminSummary.totals.requiredMaterialSetItems} />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="rounded-lg border border-slate-200 bg-slate-50/70 p-4">
+                <h3 className="text-sm font-semibold text-slate-900 mb-3">Review / Promotion Status</h3>
+                <dl className="space-y-2 text-sm">
+                    {abpathMaterialAdminSummary.statusLabels.review.map(({ status, label, count }) => (
+                        <div key={status} className="flex justify-between gap-4">
+                            <dt className="text-slate-600">{label}</dt>
+                            <dd className="font-semibold text-slate-900">{count.toLocaleString()}</dd>
+                        </div>
+                    ))}
+                    {abpathMaterialAdminSummary.statusLabels.promotion.map(({ status, label, count }) => (
+                        <div key={status} className="flex justify-between gap-4">
+                            <dt className="text-slate-600">{label}</dt>
+                            <dd className="font-semibold text-slate-900">{count.toLocaleString()}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </div>
+
+            <div className="rounded-lg border border-slate-200 bg-slate-50/70 p-4">
+                <h3 className="text-sm font-semibold text-slate-900 mb-3">Material Kinds</h3>
+                <dl className="space-y-2 text-sm">
+                    {abpathMaterialAdminSummary.materialKindPreview.map(({ status, label, count }) => (
+                        <div key={status} className="flex justify-between gap-4">
+                            <dt className="text-slate-600">{label}</dt>
+                            <dd className="font-semibold text-slate-900">{count.toLocaleString()}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </div>
+
+            <div className="rounded-lg border border-slate-200 bg-slate-50/70 p-4">
+                <h3 className="text-sm font-semibold text-slate-900 mb-3">Batch 001 Review Rows</h3>
+                <dl className="space-y-2 text-sm">
+                    {abpathMaterialAdminSummary.batches.map((batch) => (
+                        <div key={batch.batchId} className="flex justify-between gap-4">
+                            <dt className="text-slate-600">{batch.domain} batch 001</dt>
+                            <dd className="font-semibold text-slate-900">{batch.rowCount.toLocaleString()}</dd>
+                        </div>
+                    ))}
+                </dl>
+                <p className="text-xs text-slate-500 mt-3">
+                    Both batches remain review-queue materialization candidates, not learner-facing promoted curriculum.
+                </p>
+            </div>
+        </div>
+
+        <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50/80 p-4">
+            <h3 className="text-sm font-semibold text-amber-900 mb-2">Guardrails</h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-amber-950">
+                {abpathMaterialAdminSummary.guardrails.visible.map((guardrail) => (
+                    <li key={guardrail}>{guardrail}</li>
+                ))}
+            </ul>
+        </div>
+    </Card>
+);
+
+const QueueMetric: React.FC<{ label: string; value: number }> = ({ label, value }) => (
+    <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{label}</p>
+        <p className="mt-2 text-2xl font-semibold text-slate-900">{value.toLocaleString()}</p>
+    </div>
+);
 
 const UserDetails: React.FC<{ data: AdminUserData }> = ({ data }) => {
     return (
