@@ -1,0 +1,861 @@
+{
+  "version": "abpath-ap-material-batch.v1",
+  "batchId": "abpath-ap-material-batch-003",
+  "generatedAt": "2026-06-01T23:41:21.912Z",
+  "sourceQueue": "src/content/materials/abpathMaterialExpansionQueue.json",
+  "sourceMap": {
+    "path": "reports/curriculum/ap_local_source_map_v1.json",
+    "contractVersion": "corpus-realization-contract.v1.ap-local-source-map",
+    "topicSpecificRows": 48,
+    "categoryOnlyRows": 231
+  },
+  "priorBatches": [
+    {
+      "batchId": "abpath-ap-material-batch-001",
+      "path": "src/content/materials/abpathApMaterialBatch001.json",
+      "excludedQueueIds": [
+        "ap-ap-breast-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109-cysts-29b5bc23a6",
+        "ap-ap-breast-2605228a-e2fd-4c25-a6e0-d3ee3ca6e074-adenosis-ffc6b340f1",
+        "ap-ap-breast-2a8fcd9a-2b21-4c2c-90de-aed238adba69-hemangioma-2028805d6e",
+        "ap-ap-breast-a932fcfa-fe27-4db4-8180-ca7b7289715f-leiomyoma-41b8c7ca8f",
+        "ap-ap-breast-ba5f6b06-f921-4a8e-9e91-24f117a6bf82-therapy-induced-changes-0cc3333ccd",
+        "ap-ap-gu-59e217f3-550d-40fb-ba59-d900d6d5a5af-non-proliferative-glomerulonephropathies-9704aad48b",
+        "ap-ap-gu-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0-diseases-associated-with-acellular-closure-of-glomerular-capillaries-d8a6af8327",
+        "ap-ap-gu-bc90e1cf-b575-4be6-95e0-95b105b8efaa-diverticula-99dc55205b",
+        "ap-ap-gu-2acaf2ec-9515-4398-a7b4-6c624aa84638-urethral-polyp-732cbf08b9",
+        "ap-ap-gu-c7c74b2a-9d75-4b81-b78b-fdbf4e85c76d-bcg-effects-036ae6d474",
+        "ap-ap-male-repro-cd232d7a-75c4-462f-8db3-45e5dd5fae86-amyloid-5c9681f003",
+        "ap-ap-male-repro-bcadc6fc-94e8-4484-aa77-31ac0e5b95a5-extraprostatic-extension-36889d833f"
+      ]
+    },
+    {
+      "batchId": "abpath-ap-material-batch-002",
+      "path": "src/content/materials/abpathApMaterialBatch002.json",
+      "excludedQueueIds": [
+        "ap-ap-male-repro-416e8c98-54de-4305-a1ff-aaf044a4a7bd-cryptorchidism-cdb6aa55d8",
+        "ap-ap-male-repro-ae24d27b-2eda-417d-b7ee-fa4393f3f2b2-bowenoid-papulosis-f6716eaa51",
+        "ap-ap-cv-61be0cb0-c511-4759-9e7a-0b40b4b90d1e-medial-calcification-e-g-monckeberg-3d2b14bc6d",
+        "ap-ap-cv-23a7bf9b-0c22-4d6b-9183-4e2c06cdef6b-atherosclerosis-69a8ec4ba1",
+        "ap-ap-cv-a639b4ae-c0d4-4906-99c7-8f24e6dbe373-primary-cardiomyopathy-2bc85a9b4c",
+        "ap-ap-cv-facf68e3-1ae4-428f-95a2-28ad00ee0a2c-dilated-cardiomyopathy-c8e9aa7847",
+        "ap-ap-cv-2d32a809-446a-452e-9321-787efb2a478f-ehlers-danlos-syndrome-404b9bf346",
+        "ap-ap-cv-f4326c88-31a3-4d1e-a886-80e66507a039-primary-cardiomyopathy-2bc85a9b4c",
+        "ap-ap-cv-c47df9a9-4bd1-45a5-a431-2bbf77a24058-vasculitis-ace07d8428",
+        "ap-ap-cv-c2e622de-f2eb-4d9c-82b1-9e8ccd98bd9e-buerger-disease-a87b9cb6bc",
+        "ap-ap-cv-49fc4c22-9c00-40c5-806e-d6defdaf5840-lymphocytic-myocarditis-8712a3bf80",
+        "ap-ap-hn-c3f3808b-3521-47c4-b450-f4bc59895f28-nasal-polyps-d9ecaeea43"
+      ]
+    }
+  ],
+  "purpose": "Third bounded AP core-resident materialization batch from topic-specific local source-map rows; review-queue only, not promoted teaching truth.",
+  "selectionCriteria": {
+    "domain": "AP",
+    "priority": "P0 core board/sign-out gap",
+    "phase": "Phase 1: core resident coverage",
+    "reviewStatus": "unreviewed",
+    "batchSize": 12,
+    "ordering": "AP local source map order after excluding AP material batches 001 and 002",
+    "specificity": "topic_specific",
+    "duplicatePolicy": "exclude queue IDs already present in prior AP material batches"
+  },
+  "guardrails": [
+    "Every row remains unreviewed until faculty or owner review is attached.",
+    "Batch rows are review-queue materialization candidates, not promoted curriculum.",
+    "Batch 003 may use only topic-specific local source-map rows.",
+    "Category-only source-map rows are intentionally excluded from this batch.",
+    "Do not overwrite source-truth mappings, CP files, reviewed curriculum, UI files, or shared generators from this batch.",
+    "Promotion requires source path, source-map evidence, local/licensed image evidence or explicit no-image rationale, and reviewer evidence.",
+    "Any downstream learner-facing promotion must preserve queueId, sourceTopicId, sourcePath, sourceMapId, review status, and promotion decision."
+  ],
+  "totals": {
+    "rows": 12,
+    "reviewStatus": {
+      "unreviewed": 12
+    },
+    "promotionStatus": {
+      "review-queue": 12
+    },
+    "subjects": {
+      "Gastrointestinal": 3,
+      "Endocrine": 2,
+      "Placenta": 2,
+      "Bone and Soft Tissue": 3,
+      "Dermatopathology": 2
+    },
+    "materialKinds": {
+      "topic": 10,
+      "subject": 2
+    },
+    "sourceMapSpecificity": {
+      "topic_specific": 12
+    },
+    "requiredMaterialSetItems": 7
+  },
+  "rows": [
+    {
+      "batchRow": 1,
+      "queueId": "ap-ap-gi-7ede8c2a-b226-4493-8dc4-2e90988f6410-infections-eb9311a052",
+      "sourceMapId": "ap_gi-7ede8c2a-b226-4493-8dc4-2e90988f6410",
+      "domain": "AP",
+      "subject": "Gastrointestinal",
+      "categoryId": "ap_gi",
+      "materialKind": "topic",
+      "title": "Infections",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Digestive System",
+        "The Gastrointestinal Tract",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Infections"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "7ede8c2a-b226-4493-8dc4-2e90988f6410",
+        "sourceLine": 1932
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 24,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0GiCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): infections.",
+        "matchReasons": [
+          "organ_match:gastrointestinal",
+          "title_tokens:infections",
+          "path_tokens:infections,digestive,gastrointestinal,tract",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 2,
+      "queueId": "ap-ap-gi-d80867cc-a1f7-4a7f-9b67-06ccb36915e6-other-infections-of-the-anal-canal-b626d7e980",
+      "sourceMapId": "ap_gi-d80867cc-a1f7-4a7f-9b67-06ccb36915e6",
+      "domain": "AP",
+      "subject": "Gastrointestinal",
+      "categoryId": "ap_gi",
+      "materialKind": "topic",
+      "title": "Other infections of the anal canal",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Digestive System",
+        "The Gastrointestinal Tract",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Other infections of the anal canal"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "d80867cc-a1f7-4a7f-9b67-06ccb36915e6",
+        "sourceLine": 2266
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 24,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0GiCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): infections.",
+        "matchReasons": [
+          "organ_match:gastrointestinal",
+          "title_tokens:infections",
+          "path_tokens:infections,digestive,gastrointestinal,tract",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 3,
+      "queueId": "ap-ap-gi-76076f02-721a-4cff-94c4-1040aa7bf872-nash-non-alcoholic-steatohepatitis-e018332fb0",
+      "sourceMapId": "ap_gi-76076f02-721a-4cff-94c4-1040aa7bf872",
+      "domain": "AP",
+      "subject": "Gastrointestinal",
+      "categoryId": "ap_gi",
+      "materialKind": "topic",
+      "title": "NASH (Non-alcoholic steatohepatitis)",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Digestive System",
+        "The Liver and Biliary Tract",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "NASH (Non-alcoholic steatohepatitis)"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "76076f02-721a-4cff-94c4-1040aa7bf872",
+        "sourceLine": 2387
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 18,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): steatohepatitis.",
+        "matchReasons": [
+          "organ_match:gi",
+          "title_tokens:steatohepatitis",
+          "path_tokens:steatohepatitis,biliary,metabolic",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 4,
+      "queueId": "ap-ap-endo-61efa0c2-4270-480b-bcc6-51a679803757-infections-643020af26",
+      "sourceMapId": "ap_endo-61efa0c2-4270-480b-bcc6-51a679803757",
+      "domain": "AP",
+      "subject": "Endocrine",
+      "categoryId": "ap_endo",
+      "materialKind": "topic",
+      "title": "Infections",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Endocrine System",
+        "The Thyroid",
+        "Inflammatory, Metabolic, Non-Infectious & Infectious",
+        "Infections"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "61efa0c2-4270-480b-bcc6-51a679803757",
+        "sourceLine": 2696
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 22,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0EndocrineCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): infections.",
+        "matchReasons": [
+          "organ_match:endocrine",
+          "title_tokens:infections",
+          "path_tokens:infections,endocrine,thyroid,inflammatory",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 5,
+      "queueId": "ap-ap-endo-9e46dcae-ae3f-481e-bc7b-f506594e098e-infections-07bd52eb59",
+      "sourceMapId": "ap_endo-9e46dcae-ae3f-481e-bc7b-f506594e098e",
+      "domain": "AP",
+      "subject": "Endocrine",
+      "categoryId": "ap_endo",
+      "materialKind": "topic",
+      "title": "Infections",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Endocrine System",
+        "The Adrenal Glands",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Infections"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "9e46dcae-ae3f-481e-bc7b-f506594e098e",
+        "sourceLine": 2816
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 18,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0EndocrineCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): infections.",
+        "matchReasons": [
+          "organ_match:endocrine",
+          "title_tokens:infections",
+          "path_tokens:infections,endocrine,metabolic",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 6,
+      "queueId": "ap-ap-placenta-258e3696-8b48-4e97-a509-e7c209aeaa4c-fetal-membrane-abnormalities-2a2c126a70",
+      "sourceMapId": "ap_placenta-258e3696-8b48-4e97-a509-e7c209aeaa4c",
+      "domain": "AP",
+      "subject": "Placenta",
+      "categoryId": "ap_placenta",
+      "materialKind": "subject",
+      "title": "Fetal Membrane Abnormalities",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Placenta",
+        "Normal Anatomy and Histology",
+        "Fetal Membrane Abnormalities"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "258e3696-8b48-4e97-a509-e7c209aeaa4c",
+        "sourceLine": 3400
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 17,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0PediatricCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): fetal.",
+        "matchReasons": [
+          "organ_match:placenta",
+          "title_tokens:fetal",
+          "path_tokens:fetal,placenta",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 7,
+      "queueId": "ap-ap-placenta-146a6aef-b3a9-42c3-90ff-7786f0e19599-other-fetal-membrane-abnormalities-271e18dc6c",
+      "sourceMapId": "ap_placenta-146a6aef-b3a9-42c3-90ff-7786f0e19599",
+      "domain": "AP",
+      "subject": "Placenta",
+      "categoryId": "ap_placenta",
+      "materialKind": "topic",
+      "title": "Other fetal membrane abnormalities",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Placenta",
+        "Normal Anatomy and Histology",
+        "Fetal Membrane Abnormalities",
+        "Other fetal membrane abnormalities"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "146a6aef-b3a9-42c3-90ff-7786f0e19599",
+        "sourceLine": 3403
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 17,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0PediatricCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): fetal.",
+        "matchReasons": [
+          "organ_match:placenta",
+          "title_tokens:fetal",
+          "path_tokens:fetal,placenta",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 8,
+      "queueId": "ap-ap-soft-9da68ebb-22a9-4b26-a195-a85da09953fd-lipoma-and-variants-2d1fbf06e2",
+      "sourceMapId": "ap_soft-9da68ebb-22a9-4b26-a195-a85da09953fd",
+      "domain": "AP",
+      "subject": "Bone and Soft Tissue",
+      "categoryId": "ap_soft",
+      "materialKind": "topic",
+      "title": "Lipoma and variants",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Soft Tissue, Bones, and Joints",
+        "Soft Tissue",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Lipoma and variants"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "9da68ebb-22a9-4b26-a195-a85da09953fd",
+        "sourceLine": 3786
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 30,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0SmallDomainsCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): lipoma, variants.",
+        "matchReasons": [
+          "organ_match:soft",
+          "title_tokens:lipoma,variants",
+          "path_tokens:lipoma,variants,soft,tissue",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 9,
+      "queueId": "ap-ap-soft-349db67c-9739-4659-88f8-473c8d2d7a8d-leiomyoma-and-variants-1a235ea501",
+      "sourceMapId": "ap_soft-349db67c-9739-4659-88f8-473c8d2d7a8d",
+      "domain": "AP",
+      "subject": "Bone and Soft Tissue",
+      "categoryId": "ap_soft",
+      "materialKind": "topic",
+      "title": "Leiomyoma and variants",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Soft Tissue, Bones, and Joints",
+        "Soft Tissue",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Leiomyoma and variants"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "349db67c-9739-4659-88f8-473c8d2d7a8d",
+        "sourceLine": 3787
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 25,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0SmallDomainsCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): variants.",
+        "matchReasons": [
+          "organ_match:soft",
+          "title_tokens:variants",
+          "path_tokens:variants,soft,tissue,bones",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 10,
+      "queueId": "ap-ap-soft-5cb225bd-0f31-4171-a134-f67978a70843-other-metabolic-disorders-0391b1eaad",
+      "sourceMapId": "ap_soft-5cb225bd-0f31-4171-a134-f67978a70843",
+      "domain": "AP",
+      "subject": "Bone and Soft Tissue",
+      "categoryId": "ap_soft",
+      "materialKind": "topic",
+      "title": "Other Metabolic disorders",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Soft Tissue, Bones, and Joints",
+        "Joints",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Other Metabolic disorders"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "5cb225bd-0f31-4171-a134-f67978a70843",
+        "sourceLine": 3924
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 24,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0SmallDomainsCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): metabolic.",
+        "matchReasons": [
+          "organ_match:soft",
+          "title_tokens:metabolic",
+          "path_tokens:metabolic,soft,tissue,bones",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 11,
+      "queueId": "ap-ap-dermpath-6b3da8c6-8a13-49c1-ad80-0a1207f265e0-vesiculobullous-reaction-pattern-cca80c66de",
+      "sourceMapId": "ap_dermpath-6b3da8c6-8a13-49c1-ad80-0a1207f265e0",
+      "domain": "AP",
+      "subject": "Dermatopathology",
+      "categoryId": "ap_dermpath",
+      "materialKind": "topic",
+      "title": "Vesiculobullous Reaction Pattern",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Dermatopathology Topics for Anatomic Pathology Residents",
+        "Inflammatory Reaction Patterns",
+        "Poikiloderma of Civatte",
+        "Vesiculobullous Reaction Pattern"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "6b3da8c6-8a13-49c1-ad80-0a1207f265e0",
+        "sourceLine": 6515
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 34,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0DermpathCardBatch.ts",
+        "primaryCandidateReuseTarget": "lecture",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): vesiculobullous, reaction, pattern.",
+        "matchReasons": [
+          "organ_match:dermpath",
+          "title_tokens:vesiculobullous,reaction,pattern",
+          "path_tokens:vesiculobullous,reaction,pattern,dermatopathology",
+          "reuse_target:lecture",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 12,
+      "queueId": "ap-ap-dermpath-f52003b9-78a3-4eae-bf42-afd44ef095b7-human-immunodeficiency-virus-hiv-80809fc8fa",
+      "sourceMapId": "ap_dermpath-f52003b9-78a3-4eae-bf42-afd44ef095b7",
+      "domain": "AP",
+      "subject": "Dermatopathology",
+      "categoryId": "ap_dermpath",
+      "materialKind": "subject",
+      "title": "Human Immunodeficiency Virus (HIV)",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Dermatopathology Topics for Anatomic Pathology Residents",
+        "Inflammatory Reaction Patterns",
+        "Human Immunodeficiency Virus (HIV)"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "f52003b9-78a3-4eae-bf42-afd44ef095b7",
+        "sourceLine": 7971
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 20,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "Human_Herpesviruses_(HHVs)__Diverse_Pathologies_and_Clinical_Associations_Interactive.html",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): human, virus.",
+        "matchReasons": [
+          "organ_match:skin",
+          "title_tokens:human,virus",
+          "path_tokens:human,virus",
+          "reuse_target:image_atlas",
+          "status:mapped"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "ancillary-correlation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    }
+  ]
+}
