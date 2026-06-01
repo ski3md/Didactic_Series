@@ -1,0 +1,386 @@
+{
+  "contract_version": "corpus-realization-contract.v1.local-infrastructure",
+  "generated_at": "2026-06-01T00:00:00-05:00",
+  "source_order": [
+    "Existing curriculum",
+    "Local corpus",
+    "Local KB",
+    "Ontology",
+    "Open-access online later only",
+    "Licensed sources later only",
+    "Human escalation"
+  ],
+  "inventory_scope": {
+    "mode": "machine_readable_gap_inventory_only",
+    "internet_crawling": false,
+    "new_source_ingestion": false,
+    "teaching_content_generation": false,
+    "paths_reviewed": [
+      "docs/contracts/CORPUS_REALIZATION_CONTRACT.md",
+      "docs/active-app/CURRICULUM_ARCHITECTURE.md",
+      "docs/analysis/COMPETENCY_TRACEABILITY_MATRIX.md",
+      "reports/ap_gap_closure_plan.json",
+      "reports/ap_spec_active_coverage_gap.json",
+      "reports/tutorial_abpath_spec_coverage.json",
+      "reports/abpath_material_expansion_queue.md",
+      "reports/validated_mappings_manifest.json",
+      "src/content/lectures/lectureAbpathContracts.json",
+      "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
+      "src/content/tutorials/validatedMappingsManifest.json",
+      "src/content/curriculum/activeCurriculum.ts",
+      "public/reference-images/apcpboards_reference_images.json",
+      "src/assets/data/image_manifest.json"
+    ],
+    "limitations": [
+      "This is a machine inventory, not an educational content artifact.",
+      "No source documents were mutated.",
+      "No internet crawl or new source ingestion was performed.",
+      "Evidence references identify local artifacts only; content claims require later review."
+    ]
+  },
+  "coverage_items": [
+    {
+      "coverage_id": "COV-AP-GAP-PLAN-LOCAL",
+      "discipline": "AP",
+      "topic": "AP gap closure planning surface",
+      "status": "local planning artifacts present",
+      "evidence_refs": [
+        {
+          "path": "reports/ap_gap_closure_plan.json",
+          "basis": "local gap closure plan exists"
+        },
+        {
+          "path": "reports/ap_spec_active_coverage_gap.json",
+          "basis": "active AP coverage gap report exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "coverage_id": "COV-CP-TUTORIAL-CROSSWALK-LOCAL",
+      "discipline": "CP",
+      "topic": "CP tutorial and ABPath crosswalk surface",
+      "status": "local crosswalk artifacts present",
+      "evidence_refs": [
+        {
+          "path": "reports/tutorial_abpath_spec_coverage.json",
+          "basis": "tutorial ABPath coverage report exists"
+        },
+        {
+          "path": "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
+          "basis": "tutorial crosswalk exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "coverage_id": "COV-IMAGE-REFERENCE-LOCAL",
+      "discipline": "AP",
+      "topic": "Reference image inventory surface",
+      "status": "local image manifests present",
+      "evidence_refs": [
+        {
+          "path": "public/reference-images/apcpboards_reference_images.json",
+          "basis": "reference image manifest exists"
+        },
+        {
+          "path": "src/assets/data/image_manifest.json",
+          "basis": "app image manifest exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    }
+  ],
+  "gap_items": [
+    {
+      "gap_id": "GAP-AP-LOCAL-MAPPING-001",
+      "discipline": "AP",
+      "topic": "AP active coverage gaps need local source mapping",
+      "expected_coverage": "Every AP active coverage gap should map to local curriculum, image, question, or escalation evidence.",
+      "observed_coverage": "Gap reports exist, but this inventory has not yet mapped each gap to local source candidates.",
+      "gap_type": "unclear_mapping",
+      "severity": "high",
+      "source_priority": "existing curriculum, local corpus, local KB",
+      "recommended_next_action": "Run a local source mapping tranche against reports/ap_spec_active_coverage_gap.json and reports/ap_gap_closure_plan.json.",
+      "internet_required_later": false,
+      "licensed_source_required_later": false,
+      "human_review_required": true,
+      "evidence_refs": [
+        {
+          "path": "reports/ap_spec_active_coverage_gap.json",
+          "basis": "local AP gap report exists"
+        },
+        {
+          "path": "reports/ap_gap_closure_plan.json",
+          "basis": "local AP closure plan exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "gap_id": "GAP-CP-WORKED-EXAMPLES-001",
+      "discipline": "CP",
+      "topic": "CP worked-example coverage",
+      "expected_coverage": "Clinical chemistry, coagulation, statistics, informatics, molecular diagnostics, transfusion medicine, lab management, physiology, and biochemistry should have worked-example coverage.",
+      "observed_coverage": "CP tutorial and curriculum surfaces exist, but worked-example parity has not been inventoried topic by topic.",
+      "gap_type": "missing_worked_examples",
+      "severity": "high",
+      "source_priority": "existing curriculum, local KB, ontology",
+      "recommended_next_action": "Map CP tutorial and curriculum artifacts to required worked-example domains before generating examples.",
+      "internet_required_later": false,
+      "licensed_source_required_later": false,
+      "human_review_required": true,
+      "evidence_refs": [
+        {
+          "path": "reports/tutorial_abpath_spec_coverage.json",
+          "basis": "local CP/tutorial coverage report exists"
+        },
+        {
+          "path": "src/content/curriculum/activeCurriculum.ts",
+          "basis": "active curriculum declaration exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "gap_id": "GAP-ASSESSMENT-MCQ-001",
+      "discipline": "AP/CP",
+      "topic": "Board-style MCQ density by topic",
+      "expected_coverage": "Each topic should have at least five board-style questions when source evidence supports it.",
+      "observed_coverage": "Local tutorial and lecture surfaces include question support, but topic-level MCQ density is not proven for every ABPath topic.",
+      "gap_type": "missing_questions",
+      "severity": "medium",
+      "source_priority": "existing curriculum, local KB",
+      "recommended_next_action": "Compute topic-level MCQ counts from local lecture/tutorial manifests and mark zero-count topics.",
+      "internet_required_later": false,
+      "licensed_source_required_later": false,
+      "human_review_required": false,
+      "evidence_refs": [
+        {
+          "path": "src/content/tutorials/tutorials.normalized.json",
+          "basis": "local tutorial content index exists"
+        },
+        {
+          "path": "src/content/lectures/lectures.normalized.json",
+          "basis": "local lecture content index exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "gap_id": "GAP-IMAGE-MAPPING-001",
+      "discipline": "AP",
+      "topic": "Required image coverage by topic",
+      "expected_coverage": "Each image module should declare gross, low power, medium power, and high power coverage when applicable.",
+      "observed_coverage": "Reference image manifests exist, but image-to-topic requirement coverage is not yet normalized in this inventory.",
+      "gap_type": "missing_images",
+      "severity": "medium",
+      "source_priority": "local corpus, local KB",
+      "recommended_next_action": "Map local image manifests to AP topics and mark missing magnification classes.",
+      "internet_required_later": false,
+      "licensed_source_required_later": false,
+      "human_review_required": true,
+      "evidence_refs": [
+        {
+          "path": "public/reference-images/apcpboards_reference_images.json",
+          "basis": "local reference image manifest exists"
+        },
+        {
+          "path": "src/content/ap_signout/ap_signout_image_requirements.json",
+          "basis": "local image requirement artifact exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "gap_id": "GAP-MOLECULAR-INTEGRATION-001",
+      "discipline": "AP/CP",
+      "topic": "Molecular integration coverage",
+      "expected_coverage": "Relevant AP and CP entities should expose molecular testing, interpretation, and report consequence where applicable.",
+      "observed_coverage": "Molecular concepts are present in local surfaces, but topic-level completeness is not proven.",
+      "gap_type": "missing_molecular",
+      "severity": "medium",
+      "source_priority": "existing curriculum, ontology, local KB",
+      "recommended_next_action": "Create a local-only molecular coverage crosswalk from lecture contracts, tutorial crosswalks, and active curriculum declarations.",
+      "internet_required_later": true,
+      "licensed_source_required_later": false,
+      "human_review_required": true,
+      "evidence_refs": [
+        {
+          "path": "src/content/lectures/lectureAbpathContracts.json",
+          "basis": "local lecture contract artifact exists"
+        },
+        {
+          "path": "src/content/tutorials/tutorialAbpathSpecCrosswalk.json",
+          "basis": "local tutorial crosswalk exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "gap_id": "GAP-MANAGEMENT-IMPLICATIONS-001",
+      "discipline": "AP/CP",
+      "topic": "Management and reporting implication coverage",
+      "expected_coverage": "Curriculum entries should connect diagnosis, ancillary studies, reporting consequence, and management implications when relevant.",
+      "observed_coverage": "Management/informatics and sign-out artifacts exist, but complete cross-topic implication coverage is not proven.",
+      "gap_type": "missing_management_implications",
+      "severity": "medium",
+      "source_priority": "existing curriculum, local KB",
+      "recommended_next_action": "Map local sign-out, tutorial, and curriculum artifacts to management/reporting implication fields.",
+      "internet_required_later": false,
+      "licensed_source_required_later": false,
+      "human_review_required": true,
+      "evidence_refs": [
+        {
+          "path": "docs/analysis/COMPETENCY_TRACEABILITY_MATRIX.md",
+          "basis": "local competency traceability artifact exists"
+        },
+        {
+          "path": "src/content/ap_signout/ap_signout_masterclass_contract.json",
+          "basis": "local sign-out contract artifact exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    }
+  ],
+  "weak_items": [
+    {
+      "gap_id": "WEAK-DIFFERENTIAL-001",
+      "discipline": "AP",
+      "topic": "Differential diagnosis depth by entity",
+      "expected_coverage": "Each diagnostic entity should expose differential diagnosis and discriminating features.",
+      "observed_coverage": "Differential diagnosis appears in app surfaces, but entity-level breadth and depth are not yet measured.",
+      "gap_type": "missing_differential",
+      "severity": "medium",
+      "source_priority": "existing curriculum, local KB",
+      "recommended_next_action": "Extract local entity-level differential fields into a coverage matrix before content generation.",
+      "internet_required_later": false,
+      "licensed_source_required_later": false,
+      "human_review_required": false,
+      "evidence_refs": [
+        {
+          "path": "src/utils/pathologyCognition.ts",
+          "basis": "local cognition utility exists"
+        },
+        {
+          "path": "components/DiagnosticPathway.tsx",
+          "basis": "local diagnostic pathway component exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "gap_id": "WEAK-REFERENCES-001",
+      "discipline": "AP/CP",
+      "topic": "Source reference completeness",
+      "expected_coverage": "Each promoted curriculum artifact should retain source path, provenance, and review status.",
+      "observed_coverage": "Source/reference artifacts exist, but provenance completeness is not yet checked across all curriculum surfaces.",
+      "gap_type": "missing_references",
+      "severity": "medium",
+      "source_priority": "local KB, existing curriculum",
+      "recommended_next_action": "Run a local provenance completeness pass over lecture, tutorial, image, and report manifests.",
+      "internet_required_later": false,
+      "licensed_source_required_later": false,
+      "human_review_required": true,
+      "evidence_refs": [
+        {
+          "path": "reports/validated_mappings_manifest.json",
+          "basis": "validated mappings manifest exists"
+        },
+        {
+          "path": "src/content/tutorials/validatedMappingsManifest.json",
+          "basis": "tutorial validated mappings manifest exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    }
+  ],
+  "duplicate_items": [
+    {
+      "gap_id": "DUP-REFERENCE-LIBRARY-001",
+      "discipline": "AP",
+      "topic": "Reference library duplicate or conflicting coverage",
+      "expected_coverage": "Reference image/content routes should avoid conflicting duplicate topic mappings.",
+      "observed_coverage": "Multiple local reference-library surfaces exist; duplicate-topic reconciliation has not been proven.",
+      "gap_type": "duplicate_or_conflicting_coverage",
+      "severity": "low",
+      "source_priority": "local corpus, local KB",
+      "recommended_next_action": "Compare local reference-library manifests and validated mappings before adding new images or routes.",
+      "internet_required_later": false,
+      "licensed_source_required_later": false,
+      "human_review_required": false,
+      "evidence_refs": [
+        {
+          "path": "src/components/ReferenceLibrary.tsx",
+          "basis": "reference library component exists"
+        },
+        {
+          "path": "public/reference-images/apcpboards_reference_images.json",
+          "basis": "reference image manifest exists"
+        }
+      ],
+      "review_status": "machine_inventory_only"
+    }
+  ],
+  "source_candidates": [
+    {
+      "candidate_id": "SRC-LOCAL-REPORTS-001",
+      "source_tier": "existing curriculum",
+      "path": "reports/",
+      "use": "Map existing AP, CP, tutorial, and material-expansion reports before generating new material.",
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "candidate_id": "SRC-LOCAL-LECTURES-001",
+      "source_tier": "existing curriculum",
+      "path": "src/content/lectures/",
+      "use": "Map lecture contracts and normalized lecture content to expected ABPath topics.",
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "candidate_id": "SRC-LOCAL-TUTORIALS-001",
+      "source_tier": "existing curriculum",
+      "path": "src/content/tutorials/",
+      "use": "Map tutorial crosswalks, MCQs, flashcards, and validated mappings to gap items.",
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "candidate_id": "SRC-LOCAL-IMAGES-001",
+      "source_tier": "local corpus",
+      "path": "public/reference-images/",
+      "use": "Map image manifests to topic/image requirement gaps without importing new files.",
+      "review_status": "machine_inventory_only"
+    },
+    {
+      "candidate_id": "SRC-SYSTEM-INVENTORY-001",
+      "source_tier": "local infrastructure",
+      "path": "/Users/ski_mini/SystemArchitectureInventory",
+      "use": "Resolve local storage and repo roots before searching external drives or network mounts.",
+      "review_status": "machine_inventory_only"
+    }
+  ],
+  "human_escalations": [
+    {
+      "escalation_id": "ESC-AP-LOCAL-MAPPING-001",
+      "topic": "AP gap mapping acceptance",
+      "reason": "Human reviewer should confirm whether machine-mapped AP gaps are true gaps before gap closure planning.",
+      "recommended_reviewer": "pathology faculty or designated curriculum owner",
+      "review_status": "needs_human_review"
+    },
+    {
+      "escalation_id": "ESC-CP-WORKED-EXAMPLES-001",
+      "topic": "CP worked-example priority",
+      "reason": "Human reviewer should prioritize which CP worked-example domains matter first for resident workflow.",
+      "recommended_reviewer": "clinical pathology educator",
+      "review_status": "needs_human_review"
+    },
+    {
+      "escalation_id": "ESC-IMAGE-PROVENANCE-001",
+      "topic": "Image provenance and teaching promotion",
+      "reason": "Human reviewer should approve image provenance and route mappings before any image is promoted as teaching truth.",
+      "recommended_reviewer": "image library owner",
+      "review_status": "needs_human_review"
+    }
+  ],
+  "review_status": "machine_inventory_only"
+}

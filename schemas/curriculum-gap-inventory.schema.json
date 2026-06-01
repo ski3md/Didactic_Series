@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://didactic-series.local/schemas/curriculum-gap-inventory.schema.json",
+  "title": "Curriculum Gap Inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "generated_at",
+    "source_order",
+    "inventory_scope",
+    "coverage_items",
+    "gap_items",
+    "weak_items",
+    "duplicate_items",
+    "source_candidates",
+    "human_escalations",
+    "review_status"
+  ],
+  "properties": {
+    "contract_version": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "source_order": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "inventory_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "internet_crawling",
+        "new_source_ingestion",
+        "teaching_content_generation",
+        "paths_reviewed",
+        "limitations"
+      ],
+      "properties": {
+        "mode": { "type": "string", "const": "machine_readable_gap_inventory_only" },
+        "internet_crawling": { "type": "boolean", "const": false },
+        "new_source_ingestion": { "type": "boolean", "const": false },
+        "teaching_content_generation": { "type": "boolean", "const": false },
+        "paths_reviewed": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "limitations": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "coverage_items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/coverage_item" }
+    },
+    "gap_items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/gap_item" }
+    },
+    "weak_items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/gap_item" }
+    },
+    "duplicate_items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/gap_item" }
+    },
+    "source_candidates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source_candidate" }
+    },
+    "human_escalations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/human_escalation" }
+    },
+    "review_status": { "$ref": "#/$defs/review_status" }
+  },
+  "$defs": {
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "machine_inventory_only",
+        "needs_human_review",
+        "approved_for_gap_closure_planning"
+      ]
+    },
+    "gap_type": {
+      "type": "string",
+      "enum": [
+        "missing_topic",
+        "thin_topic",
+        "missing_images",
+        "missing_worked_examples",
+        "missing_questions",
+        "missing_differential",
+        "missing_molecular",
+        "missing_management_implications",
+        "missing_references",
+        "unclear_mapping",
+        "duplicate_or_conflicting_coverage"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["blocker", "high", "medium", "low", "informational"]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "basis"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "basis": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "coverage_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coverage_id", "discipline", "topic", "status", "evidence_refs", "review_status"],
+      "properties": {
+        "coverage_id": { "type": "string", "minLength": 1 },
+        "discipline": { "type": "string", "minLength": 1 },
+        "topic": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "minLength": 1 },
+        "evidence_refs": { "$ref": "#/$defs/evidence_refs" },
+        "review_status": { "$ref": "#/$defs/review_status" }
+      }
+    },
+    "gap_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gap_id",
+        "discipline",
+        "topic",
+        "expected_coverage",
+        "observed_coverage",
+        "gap_type",
+        "severity",
+        "source_priority",
+        "recommended_next_action",
+        "internet_required_later",
+        "licensed_source_required_later",
+        "human_review_required",
+        "evidence_refs",
+        "review_status"
+      ],
+      "properties": {
+        "gap_id": { "type": "string", "minLength": 1 },
+        "discipline": { "type": "string", "minLength": 1 },
+        "topic": { "type": "string", "minLength": 1 },
+        "expected_coverage": { "type": "string", "minLength": 1 },
+        "observed_coverage": { "type": "string", "minLength": 1 },
+        "gap_type": { "$ref": "#/$defs/gap_type" },
+        "severity": { "$ref": "#/$defs/severity" },
+        "source_priority": { "type": "string", "minLength": 1 },
+        "recommended_next_action": { "type": "string", "minLength": 1 },
+        "internet_required_later": { "type": "boolean" },
+        "licensed_source_required_later": { "type": "boolean" },
+        "human_review_required": { "type": "boolean" },
+        "evidence_refs": { "$ref": "#/$defs/evidence_refs" },
+        "review_status": { "$ref": "#/$defs/review_status" }
+      }
+    },
+    "source_candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_id", "source_tier", "path", "use", "review_status"],
+      "properties": {
+        "candidate_id": { "type": "string", "minLength": 1 },
+        "source_tier": { "type": "string", "minLength": 1 },
+        "path": { "type": "string", "minLength": 1 },
+        "use": { "type": "string", "minLength": 1 },
+        "review_status": { "$ref": "#/$defs/review_status" }
+      }
+    },
+    "human_escalation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["escalation_id", "topic", "reason", "recommended_reviewer", "review_status"],
+      "properties": {
+        "escalation_id": { "type": "string", "minLength": 1 },
+        "topic": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 },
+        "recommended_reviewer": { "type": "string", "minLength": 1 },
+        "review_status": { "$ref": "#/$defs/review_status" }
+      }
+    }
+  }
+}
