@@ -1,0 +1,312 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "didactic-series/ap-local-source-map.schema.json",
+  "title": "AP Local Source Map",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "generated_at",
+    "source_inventory_ref",
+    "source_inputs",
+    "mapping_scope",
+    "local_infrastructure_search",
+    "summary",
+    "category_summary",
+    "candidate_rows",
+    "review_status"
+  ],
+  "properties": {
+    "contract_version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "source_inventory_ref": {
+      "type": "object",
+      "required": ["system_source_of_truth", "system_inventory_json"],
+      "properties": {
+        "system_source_of_truth": {
+          "type": "string"
+        },
+        "system_inventory_json": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "source_inputs": {
+      "type": "object",
+      "required": ["gap_report", "closure_plan", "workstation_corpus_index", "corpus_manifest"],
+      "properties": {
+        "gap_report": {
+          "type": "string"
+        },
+        "closure_plan": {
+          "type": "string"
+        },
+        "workstation_corpus_index": {
+          "type": "string"
+        },
+        "corpus_manifest": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "mapping_scope": {
+      "type": "object",
+      "required": ["discipline", "priority_band", "selection_rule", "row_count"],
+      "properties": {
+        "discipline": {
+          "const": "AP"
+        },
+        "priority_band": {
+          "const": "P0"
+        },
+        "selection_rule": {
+          "type": "string"
+        },
+        "row_count": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "local_infrastructure_search": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/infrastructure_search_entry"
+      },
+      "minItems": 1
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "candidate_rows",
+        "rows_with_candidates",
+        "rows_without_candidates",
+        "rows_with_strong_candidates",
+        "rows_with_topic_specific_best_candidate",
+        "rows_with_category_only_best_candidate",
+        "rows_with_weak_best_candidate",
+        "max_candidates_per_row"
+      ],
+      "properties": {
+        "candidate_rows": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rows_with_candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rows_without_candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rows_with_strong_candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rows_with_topic_specific_best_candidate": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rows_with_category_only_best_candidate": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rows_with_weak_best_candidate": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_candidates_per_row": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "category_summary": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["category", "rows", "rows_with_candidates", "rows_without_candidates"],
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "rows_with_candidates": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "rows_without_candidates": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "candidate_rows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/candidate_row"
+      },
+      "minItems": 1
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["machine_mapped_local_only", "human_review_required"]
+    }
+  },
+  "$defs": {
+    "infrastructure_search_entry": {
+      "type": "object",
+      "required": [
+        "infrastructure_tier_attempted",
+        "path_checked",
+        "mounted",
+        "result_count",
+        "gap_status",
+        "skip_rationale"
+      ],
+      "properties": {
+        "infrastructure_tier_attempted": {
+          "type": "string"
+        },
+        "path_checked": {
+          "type": "string"
+        },
+        "mounted": {
+          "type": "boolean"
+        },
+        "result_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "gap_status": {
+          "type": "string"
+        },
+        "skip_rationale": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "candidate": {
+      "type": "object",
+      "required": [
+        "file_path",
+        "title_guess",
+        "reuse_target",
+        "organ_system",
+        "status",
+        "score",
+        "match_reasons",
+        "specificity_class",
+        "specificity_rationale"
+      ],
+      "properties": {
+        "file_path": {
+          "type": "string"
+        },
+        "title_guess": {
+          "type": "string"
+        },
+        "reuse_target": {
+          "type": "string"
+        },
+        "organ_system": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "score": {
+          "type": "number"
+        },
+        "match_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "specificity_class": {
+          "type": "string",
+          "enum": ["topic_specific", "category_only", "weak_match"]
+        },
+        "specificity_rationale": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "candidate_row": {
+      "type": "object",
+      "required": [
+        "id",
+        "categoryId",
+        "category",
+        "title",
+        "path",
+        "priority",
+        "mapping_status",
+        "local_candidate_count",
+        "best_candidate_specificity",
+        "recommended_next_action",
+        "local_candidates"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "mapping_status": {
+          "type": "string",
+          "enum": ["mapped_local_candidates", "needs_external_local_search"]
+        },
+        "local_candidate_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "best_candidate_specificity": {
+          "type": "string",
+          "enum": ["topic_specific", "category_only", "weak_match"]
+        },
+        "recommended_next_action": {
+          "type": "string"
+        },
+        "local_candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/candidate"
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
