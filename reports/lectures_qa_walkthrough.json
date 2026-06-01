@@ -1,0 +1,509 @@
+{
+  "version": "lectures-qa-walkthrough.v1",
+  "generatedAt": "2026-06-01T22:02:24.782Z",
+  "mode": "reviewer-readable QA artifact; runtime components and content are read-only for this tranche",
+  "sources": {
+    "data": [
+      "src/content/lectures/lectures.normalized.json",
+      "src/content/lectures/customLectures.ts",
+      "src/content/lectures/gu_who_complete_lectures.normalized.json",
+      "src/content/downloads_imports/normalized/lectures.normalized.json",
+      "src/content/lectures/lectureAbpathContracts.json"
+    ],
+    "navigation": [
+      "src/components/DidacticLectures.tsx",
+      "src/utils/lectureLibraryCatalog.ts",
+      "src/utils/lectureLibraryNavigation.ts",
+      "src/utils/interactiveLectureCatalog.ts",
+      "src/utils/studyCatalogScopes.ts",
+      "reports/didactics_learning_ux_report.json"
+    ]
+  },
+  "lectureCounts": {
+    "promotedTotal": 14,
+    "bySource": {
+      "curatedNormalized": 2,
+      "customLocal": 1,
+      "guWhoComplete": 2,
+      "corePrinciplesImport": 9
+    },
+    "byTrack": {
+      "curated": 5,
+      "corePrinciples": 9
+    },
+    "byCategory": {
+      "Genitourinary Pathology": 6,
+      "Breast Pathology": 1,
+      "Endocrine Pathology": 1,
+      "Gynecologic Pathology": 1,
+      "Head and Neck Pathology": 1,
+      "Hepatobiliary Pathology": 1,
+      "Neuropathology": 1,
+      "Pancreatic Pathology": 1,
+      "Thoracic Pathology": 1
+    },
+    "rawContentGaps": {
+      "lecturesWithNoRawObjectives": 12,
+      "lecturesWithNoRawSlides": 9,
+      "lecturesWithNoRawQuestions": 11
+    }
+  },
+  "abpathCoverage": {
+    "version": "lecture-abpath-contract.v1",
+    "requiredTabs": [
+      "overview",
+      "diagnosticApproach",
+      "microscopy",
+      "diagnosticCriteria",
+      "questions",
+      "fullText"
+    ],
+    "globalMinimums": {
+      "objectives": 5,
+      "abpathAnchors": 5,
+      "algorithmNodes": 4,
+      "microscopyChecklistSteps": 5,
+      "entityCards": 5,
+      "quickChecks": 2,
+      "mcqs": 2,
+      "flashcards": 3
+    },
+    "contractLectures": 14,
+    "promotedLectureCount": 14,
+    "lecturesWithContracts": 14,
+    "contractsWithoutPromotedLecture": [],
+    "promotedLecturesWithoutContract": [],
+    "lecturesMeetingAnchorMinimum": 14,
+    "lecturesMeetingTabContract": 14,
+    "warningCount": 3,
+    "warnings": [
+      {
+        "lectureId": "renal_mass_eval",
+        "title": "Renal Mass Evaluation",
+        "warnings": [
+          "The normalized AP seed currently has stronger medical-kidney/process anchors than renal neoplasm anchors; renal tumor-specific anchors should be added when the source specification is expanded."
+        ]
+      },
+      {
+        "lectureId": "ioc-overview-gynecologic-oncology",
+        "title": "Gynecologic Pathology: Core Principles",
+        "warnings": [
+          "The normalized AP source does not currently expose a clean ap_gyn category; this contract is governed by gynecologic path-context filtering and the scope boundary."
+        ]
+      },
+      {
+        "lectureId": "ioc-overview-urologic-oncology",
+        "title": "Renal Pathology: Core Principles",
+        "warnings": [
+          "The normalized AP seed blends kidney and urothelial/bladder anchors; the lecture contract keeps renal/urologic oncology as the teaching endpoint."
+        ]
+      }
+    ],
+    "byTrack": {
+      "curated": 5,
+      "core-principles": 9
+    },
+    "bySourceLabel": {
+      "P@thfndr Local": 3,
+      "Curated GU Imports": 2,
+      "Core Principles Series": 9
+    },
+    "perLecture": [
+      {
+        "lectureId": "renal_mass_eval",
+        "title": "Renal Mass Evaluation",
+        "track": "curated",
+        "contentArea": "Genitourinary: kidney/renal pathology evaluation",
+        "sourceLabel": "P@thfndr Local",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 1,
+        "warnings": [
+          "The normalized AP seed currently has stronger medical-kidney/process anchors than renal neoplasm anchors; renal tumor-specific anchors should be added when the source specification is expanded."
+        ],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "testicular_mass_eval",
+        "title": "Testicular Mass Evaluation",
+        "track": "curated",
+        "contentArea": "Genitourinary: testis and paratesticular masses",
+        "sourceLabel": "P@thfndr Local",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 0,
+        "warnings": [],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "bladder_path_core_principles",
+        "title": "Bladder Pathology: Core Principles",
+        "track": "curated",
+        "contentArea": "Genitourinary: bladder and urothelial tract",
+        "sourceLabel": "P@thfndr Local",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 0,
+        "warnings": [],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "penile_who_complete_pathology",
+        "title": "Penile Pathology: WHO-Complete Sign-Out Lecture",
+        "track": "curated",
+        "contentArea": "Genitourinary: penis",
+        "sourceLabel": "Curated GU Imports",
+        "anchorCount": 6,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 0,
+        "warnings": [],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "testicular_who_complete_pathology",
+        "title": "Testicular and Paratesticular Pathology",
+        "track": "curated",
+        "contentArea": "Genitourinary: testis/paratestis WHO classification",
+        "sourceLabel": "Curated GU Imports",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 0,
+        "warnings": [],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "ioc-overview-breast-surgery",
+        "title": "Breast Pathology: Core Principles",
+        "track": "core-principles",
+        "contentArea": "Breast surgical pathology",
+        "sourceLabel": "Core Principles Series",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 0,
+        "warnings": [],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "ioc-overview-endocrine-surgery",
+        "title": "Thyroid Pathology: Core Principles",
+        "track": "core-principles",
+        "contentArea": "Endocrine: thyroid",
+        "sourceLabel": "Core Principles Series",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 0,
+        "warnings": [],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "ioc-overview-gynecologic-oncology",
+        "title": "Gynecologic Pathology: Core Principles",
+        "track": "core-principles",
+        "contentArea": "Gynecologic surgical pathology",
+        "sourceLabel": "Core Principles Series",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 1,
+        "warnings": [
+          "The normalized AP source does not currently expose a clean ap_gyn category; this contract is governed by gynecologic path-context filtering and the scope boundary."
+        ],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "ioc-overview-head-neck-surgery",
+        "title": "Head & Neck Pathology: Core Principles",
+        "track": "core-principles",
+        "contentArea": "Head and neck pathology",
+        "sourceLabel": "Core Principles Series",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 0,
+        "warnings": [],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "ioc-overview-hepatobiliary-surgery",
+        "title": "Liver/Biliary Pathology: Core Principles",
+        "track": "core-principles",
+        "contentArea": "Hepatobiliary pathology",
+        "sourceLabel": "Core Principles Series",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 0,
+        "warnings": [],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "ioc-overview-neuropathology",
+        "title": "Neuropathology: Core Principles",
+        "track": "core-principles",
+        "contentArea": "Neuropathology",
+        "sourceLabel": "Core Principles Series",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 0,
+        "warnings": [],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "ioc-overview-pancreatic-surgery",
+        "title": "Pancreas Pathology: Core Principles",
+        "track": "core-principles",
+        "contentArea": "Pancreatic pathology",
+        "sourceLabel": "Core Principles Series",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 0,
+        "warnings": [],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "ioc-overview-thoracic-surgery",
+        "title": "Lung Pathology: Core Principles",
+        "track": "core-principles",
+        "contentArea": "Thoracic/lung pathology",
+        "sourceLabel": "Core Principles Series",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 0,
+        "warnings": [],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      },
+      {
+        "lectureId": "ioc-overview-urologic-oncology",
+        "title": "Renal Pathology: Core Principles",
+        "track": "core-principles",
+        "contentArea": "Genitourinary: renal/urologic oncology overview",
+        "sourceLabel": "Core Principles Series",
+        "anchorCount": 10,
+        "requiredTabCount": 6,
+        "missingTabs": [],
+        "promotionGate": "Promote only when all six top tabs render, the content-area boundary is explicit, ABPath anchors are visible, and learner assessment ties back to report-level consequence.",
+        "warningCount": 1,
+        "warnings": [
+          "The normalized AP seed blends kidney and urothelial/bladder anchors; the lecture contract keeps renal/urologic oncology as the teaching endpoint."
+        ],
+        "meetsAnchorMinimum": true,
+        "meetsTabContract": true,
+        "meetsObjectiveMinimum": true
+      }
+    ]
+  },
+  "navigationSignals": {
+    "checkedSources": [
+      "src/components/DidacticLectures.tsx",
+      "src/utils/lectureLibraryCatalog.ts",
+      "src/utils/lectureLibraryNavigation.ts",
+      "src/utils/interactiveLectureCatalog.ts",
+      "src/utils/studyCatalogScopes.ts",
+      "reports/didactics_learning_ux_report.json"
+    ],
+    "positiveSignals": [
+      "promotedLectures imported by DidacticLectures",
+      "lecture selection writes study destination",
+      "lecture workspace consumes query/session intent",
+      "lecture workspace restores destination state",
+      "lecture workspace resolves destination for render",
+      "lecture study tree groups by public category",
+      "lecture navigation stores selectedId/query/track intent",
+      "interactive lecture augmentation is the fallback enrichment path",
+      "landing copy exposes Current review and Next action",
+      "didactics UX validator reports lecture route passes"
+    ],
+    "missingSignals": [],
+    "currentUxReportFailures": []
+  },
+  "brokenMissingRisks": [
+    {
+      "severity": "medium",
+      "category": "fallback-scaffold-dependence",
+      "signal": "9 promoted lectures have no raw slide records before interactive ABPath augmentation.",
+      "affectedLectures": [
+        "ioc-overview-breast-surgery",
+        "ioc-overview-endocrine-surgery",
+        "ioc-overview-gynecologic-oncology",
+        "ioc-overview-head-neck-surgery",
+        "ioc-overview-hepatobiliary-surgery",
+        "ioc-overview-neuropathology",
+        "ioc-overview-pancreatic-surgery",
+        "ioc-overview-thoracic-surgery",
+        "ioc-overview-urologic-oncology"
+      ],
+      "reviewerInterpretation": "The app can still fill these through augmentation, but faculty review should verify they read as complete lectures rather than scaffold cards."
+    },
+    {
+      "severity": "medium",
+      "category": "objective-source-gap",
+      "signal": "12 promoted lectures have no source learning-objective array before augmentation.",
+      "affectedLectures": [
+        "renal_mass_eval",
+        "testicular_mass_eval",
+        "bladder_path_core_principles",
+        "ioc-overview-breast-surgery",
+        "ioc-overview-endocrine-surgery",
+        "ioc-overview-gynecologic-oncology",
+        "ioc-overview-head-neck-surgery",
+        "ioc-overview-hepatobiliary-surgery",
+        "ioc-overview-neuropathology",
+        "ioc-overview-pancreatic-surgery",
+        "ioc-overview-thoracic-surgery",
+        "ioc-overview-urologic-oncology"
+      ],
+      "reviewerInterpretation": "ABPath augmentation supplies objectives, but the source lecture payload itself does not carry objective parity."
+    },
+    {
+      "severity": "medium",
+      "category": "retrieval-practice-source-gap",
+      "signal": "11 promoted lectures have no source MCQ/flashcard records before augmentation.",
+      "affectedLectures": [
+        "renal_mass_eval",
+        "testicular_mass_eval",
+        "ioc-overview-breast-surgery",
+        "ioc-overview-endocrine-surgery",
+        "ioc-overview-gynecologic-oncology",
+        "ioc-overview-head-neck-surgery",
+        "ioc-overview-hepatobiliary-surgery",
+        "ioc-overview-neuropathology",
+        "ioc-overview-pancreatic-surgery",
+        "ioc-overview-thoracic-surgery",
+        "ioc-overview-urologic-oncology"
+      ],
+      "reviewerInterpretation": "Question tabs rely on generated ABPath augmentation unless richer reviewed questions are attached."
+    },
+    {
+      "severity": "medium",
+      "category": "contract-warning",
+      "signal": "Renal Mass Evaluation carries ABPath contract warning(s).",
+      "affectedLectures": [
+        "renal_mass_eval"
+      ],
+      "reviewerInterpretation": "The normalized AP seed currently has stronger medical-kidney/process anchors than renal neoplasm anchors; renal tumor-specific anchors should be added when the source specification is expanded."
+    },
+    {
+      "severity": "medium",
+      "category": "contract-warning",
+      "signal": "Gynecologic Pathology: Core Principles carries ABPath contract warning(s).",
+      "affectedLectures": [
+        "ioc-overview-gynecologic-oncology"
+      ],
+      "reviewerInterpretation": "The normalized AP source does not currently expose a clean ap_gyn category; this contract is governed by gynecologic path-context filtering and the scope boundary."
+    },
+    {
+      "severity": "medium",
+      "category": "contract-warning",
+      "signal": "Renal Pathology: Core Principles carries ABPath contract warning(s).",
+      "affectedLectures": [
+        "ioc-overview-urologic-oncology"
+      ],
+      "reviewerInterpretation": "The normalized AP seed blends kidney and urothelial/bladder anchors; the lecture contract keeps renal/urologic oncology as the teaching endpoint."
+    }
+  ],
+  "learnerWordingRoutingRisks": [
+    {
+      "severity": "medium",
+      "category": "learner-contract-wording-risk",
+      "signal": "Renal Mass Evaluation is contract-covered but warning notes kidney medical-process anchors are stronger than renal neoplasm anchors.",
+      "correction": "Add renal tumor-specific ABPath anchors or visible caveat language before presenting the lecture as a fully tumor-specific board map."
+    },
+    {
+      "severity": "medium",
+      "category": "routing-label-scope-risk",
+      "signal": "Renal Pathology: Core Principles carries a warning that kidney and urothelial/bladder anchors are blended.",
+      "correction": "Separate renal-oncology versus urothelial/bladder routing or make the scope boundary visible in the lecture card."
+    },
+    {
+      "severity": "medium",
+      "category": "taxonomy-contract-risk",
+      "signal": "Gynecologic Pathology contract is governed by path-context filtering because the normalized AP source lacks a clean ap_gyn category.",
+      "correction": "Normalize gynecologic AP taxonomy so learner labels and contract source categories agree."
+    }
+  ],
+  "topNextCorrections": [
+    {
+      "priority": 1,
+      "action": "Resolve the three ABPath contract warnings before promotion language says these lectures are fully source-clean.",
+      "source": "src/content/lectures/lectureAbpathContracts.json"
+    },
+    {
+      "priority": 2,
+      "action": "Review the nine core-principles lectures with zero raw slides/objectives/questions and decide which should get authored content versus explicit scaffold status.",
+      "source": "src/content/downloads_imports/normalized/lectures.normalized.json"
+    },
+    {
+      "priority": 3,
+      "action": "Keep route labels, card subtitles, and lecture scope boundaries aligned for renal/urologic and gynecologic topics.",
+      "source": "src/components/DidacticLectures.tsx"
+    },
+    {
+      "priority": 4,
+      "action": "Add reviewer-approved image assets where tissue-layer scaffolds are empty or checklist-only.",
+      "source": "src/utils/lectureAbpathAugmentation.ts"
+    }
+  ],
+  "reviewBoundary": {
+    "workerLane": "Worker A",
+    "allowedWriteScope": [
+      "reports/lectures_qa_walkthrough.json",
+      "reports/lectures_qa_walkthrough.md",
+      "scripts/generate_lectures_qa_walkthrough.cjs",
+      "scripts/validate_lectures_qa_walkthrough.test.ts"
+    ],
+    "guardrails": [
+      "This report does not mutate runtime components or lecture content.",
+      "Generated mappings and scaffolds remain reviewer evidence, not automatically promoted teaching truth.",
+      "Navigation signals are source-level QA signals; browser-visible proof remains separate unless a browser walkthrough is explicitly run."
+    ]
+  }
+}

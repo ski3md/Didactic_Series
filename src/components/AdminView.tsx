@@ -32,6 +32,11 @@ const parseUserAgent = (ua: string) => {
     return { browser, os };
 };
 
+const materialBatchLabel = (batch: { batchId: string; domain: string }) => {
+    const suffix = batch.batchId.match(/-(\d{3})$/)?.[1] ?? 'unknown';
+    return `${batch.domain} batch ${suffix}`;
+};
+
 const AdminView: React.FC = () => {
     const [allData, setAllData] = useState<Record<string, AdminUserData>>({});
     const [isLoadingData, setIsLoadingData] = useState(true);
@@ -198,11 +203,11 @@ const AbpathMaterialExpansionQueueCard: React.FC = () => (
             </div>
 
             <div className="rounded-lg border border-slate-200 bg-slate-50/70 p-4">
-                <h3 className="text-sm font-semibold text-slate-900 mb-3">Batch 001 Review Rows</h3>
+                <h3 className="text-sm font-semibold text-slate-900 mb-3">Batch Review Rows</h3>
                 <dl className="space-y-2 text-sm">
                     {abpathMaterialAdminSummary.batches.map((batch) => (
                         <div key={batch.batchId} className="flex justify-between gap-4">
-                            <dt className="text-slate-600">{batch.domain} batch 001</dt>
+                            <dt className="text-slate-600">{materialBatchLabel(batch)}</dt>
                             <dd className="font-semibold text-slate-900">{batch.rowCount.toLocaleString()}</dd>
                         </div>
                     ))}

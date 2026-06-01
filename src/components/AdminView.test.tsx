@@ -70,16 +70,17 @@ describe('AdminView ABPath material expansion queue', () => {
       screen.getByText('Generated rows are unreviewed generation-queue items, not authoritative teaching truth.')
     ).toBeInTheDocument();
 
-    const batchCard = screen.getByText('Batch 001 Review Rows').closest('div');
+    const batchCard = screen.getByText('Batch Review Rows').closest('div');
     expect(batchCard).not.toBeNull();
     if (!batchCard) {
-      throw new Error('Expected Batch 001 Review Rows card');
+      throw new Error('Expected Batch Review Rows card');
     }
 
-    expect(within(batchCard).getByText('AP batch 001')).toBeInTheDocument();
-    expect(within(batchCard).getByText(abpathMaterialAdminSummary.batches[0].rowCount.toLocaleString())).toBeInTheDocument();
-    expect(within(batchCard).getByText('CP batch 001')).toBeInTheDocument();
-    expect(within(batchCard).getByText(abpathMaterialAdminSummary.batches[1].rowCount.toLocaleString())).toBeInTheDocument();
+    for (const batch of abpathMaterialAdminSummary.batches) {
+      const suffix = batch.batchId.match(/-(\d{3})$/)?.[1] ?? 'unknown';
+      expect(within(batchCard).getByText(`${batch.domain} batch ${suffix}`)).toBeInTheDocument();
+      expect(within(batchCard).getAllByText(batch.rowCount.toLocaleString()).length).toBeGreaterThan(0);
+    }
 
     expect(screen.getByRole('heading', { name: 'User Activity & Analytics' })).toBeInTheDocument();
     expect(await screen.findByText('Found 1 registered user(s). Click on a user to expand their activity log.')).toBeInTheDocument();

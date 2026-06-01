@@ -1,0 +1,240 @@
+{
+  "version": "abpath-cp-material-batch.v1",
+  "batchId": "abpath-cp-material-batch-002",
+  "generatedAt": "2026-06-01T22:01:01.732Z",
+  "purpose": "Second bounded CP bench-facing materialization slice from the ABPath material expansion queue.",
+  "selection": {
+    "sourceQueuePath": "src/content/materials/abpathMaterialExpansionQueue.json",
+    "sourceQueueVersion": "abpath-material-expansion-queue.v1",
+    "domain": "CP",
+    "subject": "Blood Banking/Transfusion Medicine",
+    "pathPrefix": [
+      "Blood Banking/Transfusion Medicine"
+    ],
+    "selectionRationale": "Next sequential CP blood-bank slice after RBC/components batch 001: anemia/RBC transfusion plus adjacent apheresis consult and post-TPE bench decisions.",
+    "sourceTopicIds": [
+      "bb-4",
+      "bb-5",
+      "bb-5-a",
+      "bb-5-b"
+    ],
+    "excludedPriorBatchIds": [
+      "abpath-cp-material-batch-001"
+    ]
+  },
+  "totals": {
+    "rows": 4,
+    "reviewStatus": {
+      "unreviewed": 4
+    },
+    "promotionStatus": {
+      "review-queue": 4
+    }
+  },
+  "promotionGuardrails": [
+    "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+    "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, batch 001 files, queue generators, or shared validators from this batch.",
+    "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+    "A generated bench artifact must show the clinical question, next lab check, interpretation path, operational handoff, and safety stop before promotion."
+  ],
+  "rows": [
+    {
+      "batchRowId": "abpath-cp-material-batch-002-row-01",
+      "queueEntryId": "cp-bb-bb-4-anemia-and-red-blood-cell-transfusion-8fba1387d4",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Anemia and Red Blood Cell Transfusion",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Anemia and Red Blood Cell Transfusion"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Anemia and Red Blood Cell Transfusion",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-4",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use a transfusion-threshold and product-selection worksheet tied to symptoms, hemoglobin trend, and active bleeding risk."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, batch 001 files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, operational handoff, and safety stop before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-002-row-02",
+      "queueEntryId": "cp-bb-bb-5-apheresis-a35b4b338e",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Apheresis",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Apheresis"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Apheresis",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-5",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use an apheresis consult triage card that links indication, urgency, access/anticoagulation checks, and escalation path."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, batch 001 files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, operational handoff, and safety stop before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-002-row-03",
+      "queueEntryId": "cp-bb-bb-5-a-plasma-exchange-for-igm-removal-072dd9a734",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Plasma Exchange for IgM Removal",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Apheresis",
+        "Plasma Exchange for IgM Removal"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Apheresis > Plasma Exchange for IgM Removal",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-5-a",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use a therapeutic plasma exchange order-review card showing indication, replacement-fluid choice, and handoff trigger."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, batch 001 files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, operational handoff, and safety stop before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-002-row-04",
+      "queueEntryId": "cp-bb-bb-5-b-coagulation-factor-return-post-tpe-0fe176a66a",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Coagulation Factor Return Post-TPE",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Apheresis",
+        "Coagulation Factor Return Post-TPE"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Apheresis > Coagulation Factor Return Post-TPE",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-5-b",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "benchFacingArtifactRequirements": [
+        "Start with a bench-facing clinical question, not an encyclopedic topic summary.",
+        "Include a representative laboratory artifact that a resident could inspect at signout or on call.",
+        "Show the next-test or interpretation pathway and the decision point it resolves.",
+        "Make the critical-result, incompatibility, or patient-safety stop visible when applicable.",
+        "Use a post-TPE coagulation recovery checklist with fibrinogen/PT/PTT interpretation and bleeding-risk escalation."
+      ],
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, batch 001 files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, bench-facing artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated bench artifact must show the clinical question, next lab check, interpretation path, operational handoff, and safety stop before promotion."
+      ]
+    }
+  ]
+}

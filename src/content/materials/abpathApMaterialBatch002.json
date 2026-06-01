@@ -1,0 +1,604 @@
+{
+  "version": "abpath-ap-material-batch.v1",
+  "batchId": "abpath-ap-material-batch-002",
+  "generatedAt": "2026-06-01T22:01:12.182Z",
+  "sourceQueue": "src/content/materials/abpathMaterialExpansionQueue.json",
+  "priorBatch": {
+    "batchId": "abpath-ap-material-batch-001",
+    "path": "src/content/materials/abpathApMaterialBatch001.json",
+    "excludedQueueIds": [
+      "ap-ap-breast-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109-cysts-29b5bc23a6",
+      "ap-ap-breast-2605228a-e2fd-4c25-a6e0-d3ee3ca6e074-adenosis-ffc6b340f1",
+      "ap-ap-breast-2a8fcd9a-2b21-4c2c-90de-aed238adba69-hemangioma-2028805d6e",
+      "ap-ap-breast-a932fcfa-fe27-4db4-8180-ca7b7289715f-leiomyoma-41b8c7ca8f",
+      "ap-ap-breast-ba5f6b06-f921-4a8e-9e91-24f117a6bf82-therapy-induced-changes-0cc3333ccd",
+      "ap-ap-gu-59e217f3-550d-40fb-ba59-d900d6d5a5af-non-proliferative-glomerulonephropathies-9704aad48b",
+      "ap-ap-gu-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0-diseases-associated-with-acellular-closure-of-glomerular-capillaries-d8a6af8327",
+      "ap-ap-gu-bc90e1cf-b575-4be6-95e0-95b105b8efaa-diverticula-99dc55205b",
+      "ap-ap-gu-2acaf2ec-9515-4398-a7b4-6c624aa84638-urethral-polyp-732cbf08b9",
+      "ap-ap-gu-c7c74b2a-9d75-4b81-b78b-fdbf4e85c76d-bcg-effects-036ae6d474",
+      "ap-ap-male-repro-cd232d7a-75c4-462f-8db3-45e5dd5fae86-amyloid-5c9681f003",
+      "ap-ap-male-repro-bcadc6fc-94e8-4484-aa77-31ac0e5b95a5-extraprostatic-extension-36889d833f"
+    ]
+  },
+  "purpose": "Second bounded AP core-resident materialization batch from the ABPath expansion queue; review-queue only, not promoted teaching truth.",
+  "selectionCriteria": {
+    "domain": "AP",
+    "priority": "P0 core board/sign-out gap",
+    "phase": "Phase 1: core resident coverage",
+    "reviewStatus": "unreviewed",
+    "batchSize": 12,
+    "ordering": "existing expansion queue order after excluding prior AP batch 001 queue IDs",
+    "duplicatePolicy": "exclude queue IDs already present in AP material batch 001"
+  },
+  "guardrails": [
+    "Every row remains unreviewed until faculty or owner review is attached.",
+    "Batch rows are review-queue materialization candidates, not promoted curriculum.",
+    "Do not overwrite source-truth mappings, CP files, reviewed curriculum, UI files, or shared generators from this batch.",
+    "Promotion requires source path, path hierarchy, required material set completion, local/licensed image evidence or explicit no-image rationale, and reviewer evidence.",
+    "Any downstream learner-facing promotion must preserve queueId, sourceTopicId, sourcePath, review status, and promotion decision.",
+    "Batch 002 must not duplicate any queueId from AP material batch 001."
+  ],
+  "totals": {
+    "rows": 12,
+    "reviewStatus": {
+      "unreviewed": 12
+    },
+    "promotionStatus": {
+      "review-queue": 12
+    },
+    "subjects": {
+      "Male Reproductive": 2,
+      "Cardiovascular / Autopsy-adjacent": 9,
+      "Head and Neck": 1
+    },
+    "materialKinds": {
+      "subject": 1,
+      "topic": 10,
+      "subtopic": 1
+    },
+    "requiredMaterialSetItems": 7
+  },
+  "rows": [
+    {
+      "batchRow": 1,
+      "queueId": "ap-ap-male-repro-416e8c98-54de-4305-a1ff-aaf044a4a7bd-cryptorchidism-cdb6aa55d8",
+      "domain": "AP",
+      "subject": "Male Reproductive",
+      "categoryId": "ap_male_repro",
+      "materialKind": "subject",
+      "title": "Cryptorchidism",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Male Reproductive System",
+        "Testis",
+        "Cryptorchidism"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "416e8c98-54de-4305-a1ff-aaf044a4a7bd",
+        "sourceLine": 982
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 2,
+      "queueId": "ap-ap-male-repro-ae24d27b-2eda-417d-b7ee-fa4393f3f2b2-bowenoid-papulosis-f6716eaa51",
+      "domain": "AP",
+      "subject": "Male Reproductive",
+      "categoryId": "ap_male_repro",
+      "materialKind": "topic",
+      "title": "Bowenoid papulosis",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Male Reproductive System",
+        "Penis",
+        "Lichen schlerosis",
+        "Bowenoid papulosis"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "ae24d27b-2eda-417d-b7ee-fa4393f3f2b2",
+        "sourceLine": 1196
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 3,
+      "queueId": "ap-ap-cv-61be0cb0-c511-4759-9e7a-0b40b4b90d1e-medial-calcification-e-g-monckeberg-3d2b14bc6d",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Medial calcification (e.g., Monckeberg)",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Anatomy and Histology",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Medial calcification (e.g., Monckeberg)"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "61be0cb0-c511-4759-9e7a-0b40b4b90d1e",
+        "sourceLine": 1215
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 4,
+      "queueId": "ap-ap-cv-23a7bf9b-0c22-4d6b-9183-4e2c06cdef6b-atherosclerosis-69a8ec4ba1",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Atherosclerosis",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Anatomy and Histology",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Atherosclerosis"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "23a7bf9b-0c22-4d6b-9183-4e2c06cdef6b",
+        "sourceLine": 1216
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 5,
+      "queueId": "ap-ap-cv-a639b4ae-c0d4-4906-99c7-8f24e6dbe373-primary-cardiomyopathy-2bc85a9b4c",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Primary cardiomyopathy",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Anatomy and Histology",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Primary cardiomyopathy"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "a639b4ae-c0d4-4906-99c7-8f24e6dbe373",
+        "sourceLine": 1219
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 6,
+      "queueId": "ap-ap-cv-facf68e3-1ae4-428f-95a2-28ad00ee0a2c-dilated-cardiomyopathy-c8e9aa7847",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Dilated cardiomyopathy",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Anatomy and Histology",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Dilated cardiomyopathy"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "facf68e3-1ae4-428f-95a2-28ad00ee0a2c",
+        "sourceLine": 1220
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 7,
+      "queueId": "ap-ap-cv-2d32a809-446a-452e-9321-787efb2a478f-ehlers-danlos-syndrome-404b9bf346",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "subtopic",
+      "title": "Ehlers-Danlos syndrome",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Anatomy and Histology",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Non-Marfan familial aortic dissection",
+        "Ehlers-Danlos syndrome"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "2d32a809-446a-452e-9321-787efb2a478f",
+        "sourceLine": 1243
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 8,
+      "queueId": "ap-ap-cv-f4326c88-31a3-4d1e-a886-80e66507a039-primary-cardiomyopathy-2bc85a9b4c",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Primary cardiomyopathy",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Anatomy and Histology",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Primary cardiomyopathy"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "f4326c88-31a3-4d1e-a886-80e66507a039",
+        "sourceLine": 1245
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 9,
+      "queueId": "ap-ap-cv-c47df9a9-4bd1-45a5-a431-2bbf77a24058-vasculitis-ace07d8428",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Vasculitis",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Anatomy and Histology",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Vasculitis"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "c47df9a9-4bd1-45a5-a431-2bbf77a24058",
+        "sourceLine": 1319
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 10,
+      "queueId": "ap-ap-cv-c2e622de-f2eb-4d9c-82b1-9e8ccd98bd9e-buerger-disease-a87b9cb6bc",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Buerger disease",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Anatomy and Histology",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Buerger disease"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "c2e622de-f2eb-4d9c-82b1-9e8ccd98bd9e",
+        "sourceLine": 1328
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 11,
+      "queueId": "ap-ap-cv-49fc4c22-9c00-40c5-806e-d6defdaf5840-lymphocytic-myocarditis-8712a3bf80",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Lymphocytic myocarditis",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Anatomy and Histology",
+        "Physiologic Changes, Metabolic Conditions, & Trauma/Infarct",
+        "Lymphocytic myocarditis"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "49fc4c22-9c00-40c5-806e-d6defdaf5840",
+        "sourceLine": 1332
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 12,
+      "queueId": "ap-ap-hn-c3f3808b-3521-47c4-b450-f4bc59895f28-nasal-polyps-d9ecaeea43",
+      "domain": "AP",
+      "subject": "Head and Neck",
+      "categoryId": "ap_hn",
+      "materialKind": "topic",
+      "title": "Nasal polyps",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Head and Neck",
+        "Larynx",
+        "Physiologic Changes, Metabolic Conditions & Trauma/Infarct",
+        "Nasal polyps"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "c3f3808b-3521-47c4-b450-f4bc59895f28",
+        "sourceLine": 1647
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    }
+  ]
+}

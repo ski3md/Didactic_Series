@@ -5,8 +5,12 @@ const path = require('path');
 
 const repoRoot = path.resolve(__dirname, '..');
 const queuePath = path.join(repoRoot, 'src/content/materials/abpathMaterialExpansionQueue.json');
-const apBatchPath = path.join(repoRoot, 'src/content/materials/abpathApMaterialBatch001.json');
-const cpBatchPath = path.join(repoRoot, 'src/content/materials/abpathCpMaterialBatch001.json');
+const batchPaths = [
+  'src/content/materials/abpathApMaterialBatch001.json',
+  'src/content/materials/abpathCpMaterialBatch001.json',
+  'src/content/materials/abpathApMaterialBatch002.json',
+  'src/content/materials/abpathCpMaterialBatch002.json',
+];
 const outPath = path.join(repoRoot, 'src/content/materials/abpathMaterialAdminSummary.json');
 
 const readJson = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -36,11 +40,22 @@ const batchSummary = (batch) => ({
   promotionBlockedRows: (batch.rows || []).filter((row) => row.review?.promotionAllowed !== true).length,
 });
 
+const loadExistingBatchRecords = () =>
+  batchPaths
+    .map((relativePath) => ({
+      relativePath,
+      absolutePath: path.join(repoRoot, relativePath),
+    }))
+    .filter(({ absolutePath }) => fs.existsSync(absolutePath))
+    .map(({ relativePath, absolutePath }) => ({
+      relativePath,
+      batch: readJson(absolutePath),
+    }));
+
 const main = () => {
   const queue = readJson(queuePath);
-  const apBatch = readJson(apBatchPath);
-  const cpBatch = readJson(cpBatchPath);
-  const batches = [batchSummary(apBatch), batchSummary(cpBatch)];
+  const batchRecords = loadExistingBatchRecords();
+  const batches = batchRecords.map(({ batch }) => batchSummary(batch));
   const batchRows = batches.reduce((sum, batch) => sum + batch.rowCount, 0);
   const unreviewedBatchRows = batches.reduce((sum, batch) => sum + batch.unreviewedRows, 0);
   const reviewQueueBatchRows = batches.reduce((sum, batch) => sum + batch.reviewQueueRows, 0);
@@ -52,6 +67,7 @@ const main = () => {
       queue: 'src/content/materials/abpathMaterialExpansionQueue.json',
       apBatch: 'src/content/materials/abpathApMaterialBatch001.json',
       cpBatch: 'src/content/materials/abpathCpMaterialBatch001.json',
+      batches: batchRecords.map(({ relativePath }) => relativePath),
     },
     totals: {
       queueEntries: queue.totals.entries,

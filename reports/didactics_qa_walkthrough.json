@@ -1,0 +1,179 @@
+{
+  "version": "didactics-qa-walkthrough.v1",
+  "generatedAt": "2026-06-01T22:02:17.337Z",
+  "reviewerScope": {
+    "workerLane": "Worker B",
+    "mode": "non-mutating QA artifact generation",
+    "inspectedSurfaces": [
+      "tutorials",
+      "reference library",
+      "workups",
+      "curriculum",
+      "existing didactics validators",
+      "ABPath material admin summary",
+      "image/media manifests"
+    ],
+    "writeScope": [
+      "scripts/generate_didactics_qa_walkthrough.cjs",
+      "scripts/validate_didactics_qa_walkthrough.test.ts",
+      "reports/didactics_qa_walkthrough.json",
+      "reports/didactics_qa_walkthrough.md"
+    ]
+  },
+  "routeCoverage": [
+    {
+      "key": "curriculum",
+      "route": "/didactics/?workspace=curriculum",
+      "section": "Section.PATHOLOGY_CURRICULUM",
+      "component": "PathologyCurriculum",
+      "publicLabel": "Curriculum",
+      "appSwitchPresent": true,
+      "headerPublicLabelPresent": true,
+      "sidebarMentionsLabel": true,
+      "existingValidatorSignal": true
+    },
+    {
+      "key": "tutorials",
+      "route": "/didactics/?workspace=tutorials",
+      "section": "Section.DIDACTIC_TUTORIALS",
+      "component": "DidacticTutorials",
+      "publicLabel": "Tutorials",
+      "appSwitchPresent": true,
+      "headerPublicLabelPresent": true,
+      "sidebarMentionsLabel": true,
+      "existingValidatorSignal": true
+    },
+    {
+      "key": "workups",
+      "route": "/didactics/?workspace=algorithms",
+      "section": "Section.DIDACTIC_ALGORITHMS",
+      "component": "AlgorithmNavigator",
+      "publicLabel": "Workups",
+      "appSwitchPresent": true,
+      "headerPublicLabelPresent": true,
+      "sidebarMentionsLabel": false,
+      "existingValidatorSignal": true
+    },
+    {
+      "key": "reference",
+      "route": "/didactics/?workspace=reference",
+      "section": "Section.REFERENCE_LIBRARY",
+      "component": "ReferenceLibrary",
+      "publicLabel": "Reference Library",
+      "appSwitchPresent": true,
+      "headerPublicLabelPresent": true,
+      "sidebarMentionsLabel": true,
+      "existingValidatorSignal": true
+    }
+  ],
+  "surfaceInventory": {
+    "appRoutesInspected": 18,
+    "clinicalPathInteractiveTutorials": 13,
+    "normalizedTutorials": 190,
+    "importedNormalizedTutorials": 290,
+    "validatedMappingRows": 493,
+    "validatedMappingValidatedRows": 487,
+    "curriculumModules": 26,
+    "didacticAlgorithms": 14,
+    "didacticsUxPasses": 120,
+    "didacticsUxFailures": 0,
+    "workupsClinicalPathAlgorithms": 12
+  },
+  "publicLabelRisk": {
+    "riskLevel": "review",
+    "forbiddenPublicLabelHits": [
+      {
+        "phrase": "Start practice",
+        "hits": [
+          "PathologyCurriculum"
+        ]
+      }
+    ],
+    "uxValidatorFailures": [],
+    "governedWorkupsLabelSignal": true,
+    "riskSummary": "Public-label review needed before promotion."
+  },
+  "imageMediaRisk": {
+    "riskLevel": "low",
+    "supplementalReferenceImages": 679,
+    "supplementalLocalImages": 679,
+    "supplementalSourceServedImages": 0,
+    "supplementalSpecialtyCounts": {
+      "bone-soft-tissue": 90,
+      "breast": 5,
+      "cytopathology": 9,
+      "dermatopathology": 61,
+      "gastrointestinal": 2,
+      "general": 250,
+      "genitourinary": 140,
+      "gynecologic": 47,
+      "head-neck": 3,
+      "hematopathology": 10,
+      "hepatobiliary-pancreas": 10,
+      "neuropathology": 12,
+      "thoracic": 40
+    },
+    "sampledMissingSupplementalLocalPaths": [],
+    "signoutImages": 72,
+    "signoutPresentImages": 72,
+    "signoutMissingImages": 0,
+    "riskSummary": "Current sampled media manifests are locally resolvable or intentionally source-served."
+  },
+  "adminCardRisk": {
+    "riskLevel": "controlled",
+    "routeGuardedForAdmins": true,
+    "lazyAdminView": true,
+    "importsSummaryOnly": true,
+    "fullQueueImportDetected": false,
+    "noPromotionControlsCopyPresent": true,
+    "queueEntriesSummarized": 3946,
+    "unreviewedQueueEntries": 3946,
+    "generationQueueEntries": 3946,
+    "batchRows": 21,
+    "gates": {
+      "allQueueEntriesUnreviewed": true,
+      "allQueueEntriesInGenerationQueue": true,
+      "allBatchRowsUnreviewed": true,
+      "allBatchRowsReviewQueued": true,
+      "promotionAllowedRows": 0
+    },
+    "riskSummary": "Admin card is currently controlled: lazy admin route, summary-only import, unreviewed/generation-queue state, and no promotion controls."
+  },
+  "topNextCorrections": [
+    {
+      "priority": "P1",
+      "area": "browser proof",
+      "correction": "Run a fresh rendered walkthrough for /didactics/?workspace=reference, /tutorials, /algorithms, and /curriculum before calling this browser-validated."
+    },
+    {
+      "priority": "P1",
+      "area": "image/media",
+      "correction": "Run images:validate-local and images:validate-rendered after any media manifest change; this artifact only samples manifest resolvability."
+    },
+    {
+      "priority": "P1",
+      "area": "ABPath admin",
+      "correction": "Keep AdminView summary-only and reviewer-only; block any full queue import or promotion controls from public bundles."
+    },
+    {
+      "priority": "P2",
+      "area": "public labels",
+      "correction": "Preserve Curriculum, Tutorials, Workups, and Reference Library labels; do not reintroduce internal Didactic Algorithms/Tutorials labels in public chrome."
+    },
+    {
+      "priority": "P2",
+      "area": "workups copy",
+      "correction": "Maintain CP Workups as bench-facing decision work: live lab question, safest next check, and result decision before optional support links."
+    }
+  ],
+  "validationBasis": {
+    "existingReports": [
+      "reports/didactics_learning_ux_report.json",
+      "reports/workups_routing_tranche_closeout_packet.json"
+    ],
+    "notClaimed": [
+      "No browser-rendered PASS claimed by this generator.",
+      "No runtime source/content mutation performed by this lane."
+    ]
+  }
+}
