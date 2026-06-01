@@ -21,6 +21,38 @@ Online search is a gap-filler only when:
 - the topic requires an updated external standard
 - all cheaper/local acquisition tiers have been attempted or intentionally skipped with written rationale
 
+## Local Data Infrastructure Registry
+
+Before creating new curriculum material, rebuilding a corpus from scratch, or searching online, the agent must check the local data infrastructure that is already attached to this workstation.
+
+Authoritative local lookup order:
+
+1. System architecture inventory: `/Users/ski_mini/SystemArchitectureInventory`.
+   - Use the latest `SYSTEM_SOURCE_OF_TRUTH.md` and `system_inventory.json` as the machine-level map for storage, GitHub roots, local tools, Ollama, Python, and repo inventory before manually rediscovering paths.
+2. Didactic Series repo-local content: checked-in curriculum, generated manifests, asset registries, topic maps, contract outputs, and review queues.
+3. Primary external HD: `/Volumes/DB_External`.
+   - High-value subroots include `/Volumes/DB_External/Runtime`, `/Volumes/DB_External/Knowledge`, `/Volumes/DB_External/Datasets`, `/Volumes/DB_External/ExternalOffice`, `/Volumes/DB_External/ProjectArtifacts`, `/Volumes/DB_External/Archives`, and `/Volumes/DB_External/Ollama`.
+4. Secondary external HD / cold corpus: `/Volumes/Elements`.
+   - High-value subroots include `/Volumes/Elements/Projects`, `/Volumes/Elements/Archive`, `/Volumes/Elements/Backups`, `/Volumes/Elements/Incoming_Unsorted`, `/Volumes/Elements/To_Classify`, `/Volumes/Elements/Cold_Repos`, and `/Volumes/Elements/Ontology_Theory`.
+5. NAS/network mounts: discover from the system architecture inventory and currently mounted volumes with `/Volumes`, `mount`, or `df`; use an operator-provided NAS path when supplied.
+   - Do not assume a NAS path.
+   - Do not mount, unmount, sync, delete, or reorganize NAS content without explicit operator approval.
+   - If no NAS is visible, record `nas_unavailable` and continue with repo-local and external-HD tiers.
+6. Previously indexed local knowledge base: SKI-CORTEX manifests, local indexes, semantic-governance reports, reasoning ledgers, topic graphs, flashcard repositories, prior generated content, and governed capsules.
+
+Every realization, gap-closure, or enrichment run must record local infrastructure search evidence before new generation or web acquisition.
+
+Minimum evidence fields:
+
+- `infrastructure_tier_attempted`
+- `path_checked`
+- `mounted`
+- `result_count`
+- `gap_status`
+- `skip_rationale`
+
+If an existing local evidence packet, manifest, checkpoint, capsule, image inventory, or topic map already answers the need, the agent must reference it instead of recreating it.
+
 ## Knowledge Acquisition Hierarchy
 
 Every coverage, gap-closure, crawler, generator, or enrichment run must follow this source order:

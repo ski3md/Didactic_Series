@@ -48,6 +48,43 @@ ensure(
   'local curriculum/corpus tiers must precede open-access online sources'
 );
 
+const infrastructureTerms = [
+  'Local Data Infrastructure Registry',
+  'System architecture inventory: `/Users/ski_mini/SystemArchitectureInventory`',
+  '`SYSTEM_SOURCE_OF_TRUTH.md`',
+  '`system_inventory.json`',
+  'Primary external HD: `/Volumes/DB_External`',
+  'Secondary external HD / cold corpus: `/Volumes/Elements`',
+  'NAS/network mounts',
+  'Do not assume a NAS path.',
+  '`nas_unavailable`',
+  '`infrastructure_tier_attempted`',
+  '`path_checked`',
+  '`mounted`',
+  '`result_count`',
+  '`gap_status`',
+  '`skip_rationale`',
+];
+ensure(
+  includesAll(infrastructureTerms),
+  'local data infrastructure registry is explicit and machine-checkable',
+  `contract is missing local data infrastructure requirements: ${infrastructureTerms
+    .filter((term) => !contract.includes(term))
+    .join(', ')}`
+);
+
+ensure(
+  contract.indexOf('Local Data Infrastructure Registry') < contract.indexOf('Open-access online sources'),
+  'local infrastructure registry precedes online acquisition',
+  'local data infrastructure registry must precede open-access online sources'
+);
+
+ensure(
+  contract.includes('the agent must reference it instead of recreating it'),
+  'contract forbids redundant reconstruction when local evidence already exists',
+  'contract must require referencing existing local evidence before recreating assets'
+);
+
 const gapInventoryFields = [
   '`gap_id`',
   '`abpath_section`',
