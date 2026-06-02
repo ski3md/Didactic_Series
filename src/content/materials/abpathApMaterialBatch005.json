@@ -1,0 +1,900 @@
+{
+  "version": "abpath-ap-material-batch.v1",
+  "batchId": "abpath-ap-material-batch-005",
+  "generatedAt": "2026-06-02T00:36:30.884Z",
+  "sourceQueue": "src/content/materials/abpathMaterialExpansionQueue.json",
+  "sourceMap": {
+    "path": "reports/curriculum/ap_local_source_map_v1.json",
+    "contractVersion": "corpus-realization-contract.v1.ap-local-source-map",
+    "topicSpecificRows": 48,
+    "categoryOnlyRows": 231
+  },
+  "priorBatches": [
+    {
+      "batchId": "abpath-ap-material-batch-001",
+      "path": "src/content/materials/abpathApMaterialBatch001.json",
+      "excludedQueueIds": [
+        "ap-ap-breast-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109-cysts-29b5bc23a6",
+        "ap-ap-breast-2605228a-e2fd-4c25-a6e0-d3ee3ca6e074-adenosis-ffc6b340f1",
+        "ap-ap-breast-2a8fcd9a-2b21-4c2c-90de-aed238adba69-hemangioma-2028805d6e",
+        "ap-ap-breast-a932fcfa-fe27-4db4-8180-ca7b7289715f-leiomyoma-41b8c7ca8f",
+        "ap-ap-breast-ba5f6b06-f921-4a8e-9e91-24f117a6bf82-therapy-induced-changes-0cc3333ccd",
+        "ap-ap-gu-59e217f3-550d-40fb-ba59-d900d6d5a5af-non-proliferative-glomerulonephropathies-9704aad48b",
+        "ap-ap-gu-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0-diseases-associated-with-acellular-closure-of-glomerular-capillaries-d8a6af8327",
+        "ap-ap-gu-bc90e1cf-b575-4be6-95e0-95b105b8efaa-diverticula-99dc55205b",
+        "ap-ap-gu-2acaf2ec-9515-4398-a7b4-6c624aa84638-urethral-polyp-732cbf08b9",
+        "ap-ap-gu-c7c74b2a-9d75-4b81-b78b-fdbf4e85c76d-bcg-effects-036ae6d474",
+        "ap-ap-male-repro-cd232d7a-75c4-462f-8db3-45e5dd5fae86-amyloid-5c9681f003",
+        "ap-ap-male-repro-bcadc6fc-94e8-4484-aa77-31ac0e5b95a5-extraprostatic-extension-36889d833f"
+      ]
+    },
+    {
+      "batchId": "abpath-ap-material-batch-002",
+      "path": "src/content/materials/abpathApMaterialBatch002.json",
+      "excludedQueueIds": [
+        "ap-ap-male-repro-416e8c98-54de-4305-a1ff-aaf044a4a7bd-cryptorchidism-cdb6aa55d8",
+        "ap-ap-male-repro-ae24d27b-2eda-417d-b7ee-fa4393f3f2b2-bowenoid-papulosis-f6716eaa51",
+        "ap-ap-cv-61be0cb0-c511-4759-9e7a-0b40b4b90d1e-medial-calcification-e-g-monckeberg-3d2b14bc6d",
+        "ap-ap-cv-23a7bf9b-0c22-4d6b-9183-4e2c06cdef6b-atherosclerosis-69a8ec4ba1",
+        "ap-ap-cv-a639b4ae-c0d4-4906-99c7-8f24e6dbe373-primary-cardiomyopathy-2bc85a9b4c",
+        "ap-ap-cv-facf68e3-1ae4-428f-95a2-28ad00ee0a2c-dilated-cardiomyopathy-c8e9aa7847",
+        "ap-ap-cv-2d32a809-446a-452e-9321-787efb2a478f-ehlers-danlos-syndrome-404b9bf346",
+        "ap-ap-cv-f4326c88-31a3-4d1e-a886-80e66507a039-primary-cardiomyopathy-2bc85a9b4c",
+        "ap-ap-cv-c47df9a9-4bd1-45a5-a431-2bbf77a24058-vasculitis-ace07d8428",
+        "ap-ap-cv-c2e622de-f2eb-4d9c-82b1-9e8ccd98bd9e-buerger-disease-a87b9cb6bc",
+        "ap-ap-cv-49fc4c22-9c00-40c5-806e-d6defdaf5840-lymphocytic-myocarditis-8712a3bf80",
+        "ap-ap-hn-c3f3808b-3521-47c4-b450-f4bc59895f28-nasal-polyps-d9ecaeea43"
+      ]
+    },
+    {
+      "batchId": "abpath-ap-material-batch-003",
+      "path": "src/content/materials/abpathApMaterialBatch003.json",
+      "excludedQueueIds": [
+        "ap-ap-gi-7ede8c2a-b226-4493-8dc4-2e90988f6410-infections-eb9311a052",
+        "ap-ap-gi-d80867cc-a1f7-4a7f-9b67-06ccb36915e6-other-infections-of-the-anal-canal-b626d7e980",
+        "ap-ap-gi-76076f02-721a-4cff-94c4-1040aa7bf872-nash-non-alcoholic-steatohepatitis-e018332fb0",
+        "ap-ap-endo-61efa0c2-4270-480b-bcc6-51a679803757-infections-643020af26",
+        "ap-ap-endo-9e46dcae-ae3f-481e-bc7b-f506594e098e-infections-07bd52eb59",
+        "ap-ap-placenta-258e3696-8b48-4e97-a509-e7c209aeaa4c-fetal-membrane-abnormalities-2a2c126a70",
+        "ap-ap-placenta-146a6aef-b3a9-42c3-90ff-7786f0e19599-other-fetal-membrane-abnormalities-271e18dc6c",
+        "ap-ap-soft-9da68ebb-22a9-4b26-a195-a85da09953fd-lipoma-and-variants-2d1fbf06e2",
+        "ap-ap-soft-349db67c-9739-4659-88f8-473c8d2d7a8d-leiomyoma-and-variants-1a235ea501",
+        "ap-ap-soft-5cb225bd-0f31-4171-a134-f67978a70843-other-metabolic-disorders-0391b1eaad",
+        "ap-ap-dermpath-6b3da8c6-8a13-49c1-ad80-0a1207f265e0-vesiculobullous-reaction-pattern-cca80c66de",
+        "ap-ap-dermpath-f52003b9-78a3-4eae-bf42-afd44ef095b7-human-immunodeficiency-virus-hiv-80809fc8fa"
+      ]
+    },
+    {
+      "batchId": "abpath-ap-material-batch-004",
+      "path": "src/content/materials/abpathApMaterialBatch004.json",
+      "excludedQueueIds": [
+        "ap-ap-dermpath-79744982-840b-491a-b2cc-c942ce9da782-tumors-of-bone-084d431cf7",
+        "ap-ap-forensic-949cbfff-a3c0-48cd-96af-50f24385a6fc-pediatric-deaths-dec7d4ae2e",
+        "ap-ap-forensic-50bd00f5-aa7f-446c-aef1-f097bc278795-congenital-anomalies-common-575a17dead",
+        "ap-ap-cv-d5d467ac-c123-47d3-80d0-bccd1da5813f-steatosis-913f6c3325",
+        "ap-ap-endo-c04f5458-8c84-4836-b52e-202c1ac7800a-the-skin-and-nails-5b18a277f6",
+        "ap-ap-endo-6aec223f-7362-43e3-a768-6da07042deb5-algor-mortis-4734823c4f",
+        "ap-ap-endo-a3d6e1bf-13aa-4131-8bd3-bbb4f3be0820-pediatric-issues-including-fetal-hematopoiesis-e49da6fee3",
+        "ap-ap-endo-3a2e7a86-75d7-47e6-988c-ddac4208b006-immune-55526c26cf",
+        "ap-ap-endo-29ccdc24-a32b-4bb5-817e-380c55115fb1-non-immune-e-g-thermal-injury-e03059ea62",
+        "ap-ap-endo-0b7ce8a1-90dc-4a87-8f98-cf14a51e7f50-leucocyte-infections-dee826f1c0",
+        "ap-ap-endo-df7e7e54-569a-424c-9341-d0135dcd8d31-immune-55526c26cf",
+        "ap-ap-pediatric-53c3d45f-e918-4719-ba20-8bd2a2df8c33-amniotic-fluid-2c87eef9fa"
+      ]
+    }
+  ],
+  "purpose": "Fifth bounded AP core-resident materialization batch from remaining topic-specific local source-map rows; review-queue only, not promoted teaching truth.",
+  "selectionCriteria": {
+    "domain": "AP",
+    "priority": "P0 core board/sign-out gap",
+    "phase": "Phase 1: core resident coverage",
+    "reviewStatus": "unreviewed",
+    "batchSize": 12,
+    "ordering": "AP local source map order after excluding AP material batches 001, 002, 003, and 004",
+    "specificity": "topic_specific",
+    "duplicatePolicy": "exclude queue IDs already present in prior AP material batches"
+  },
+  "guardrails": [
+    "Every row remains unreviewed until faculty or owner review is attached.",
+    "Batch rows are review-queue materialization candidates, not promoted curriculum.",
+    "Batch 005 may use only remaining topic-specific local source-map rows.",
+    "Category-only source-map rows are intentionally excluded from this batch.",
+    "Do not overwrite source-truth mappings, CP files, reviewed curriculum, UI files, or shared generators from this batch.",
+    "Promotion requires source path, source-map evidence, local/licensed image evidence or explicit no-image rationale, and reviewer evidence.",
+    "Any downstream learner-facing promotion must preserve queueId, sourceTopicId, sourcePath, sourceMapId, review status, and promotion decision."
+  ],
+  "totals": {
+    "rows": 12,
+    "reviewStatus": {
+      "unreviewed": 12
+    },
+    "promotionStatus": {
+      "review-queue": 12
+    },
+    "subjects": {
+      "Pediatric": 4,
+      "Cardiovascular / Autopsy-adjacent": 8
+    },
+    "materialKinds": {
+      "topic": 6,
+      "subtopic": 4,
+      "subheader": 1,
+      "subject": 1
+    },
+    "sourceMapSpecificity": {
+      "topic_specific": 12
+    },
+    "requiredMaterialSetItems": 7
+  },
+  "rows": [
+    {
+      "batchRow": 1,
+      "queueId": "ap-ap-pediatric-035f141c-2ee9-4fda-b8b6-19882e524879-intragestational-fetal-loss-6bbfd7c08a",
+      "sourceMapId": "ap_pediatric-035f141c-2ee9-4fda-b8b6-19882e524879",
+      "domain": "AP",
+      "subject": "Pediatric",
+      "categoryId": "ap_pediatric",
+      "materialKind": "topic",
+      "title": "Intragestational Fetal Loss",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Pediatric Pathology Topics for Anatomic Pathology Residents",
+        "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+        "Placental Tumors",
+        "Intragestational Fetal Loss"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "035f141c-2ee9-4fda-b8b6-19882e524879",
+        "sourceLine": 15355
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 25,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0PediatricCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): fetal.",
+        "matchReasons": [
+          "organ_match:pediatric",
+          "title_tokens:fetal",
+          "path_tokens:fetal,pediatric,topics,anatomic",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "entity-differential-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 2,
+      "queueId": "ap-ap-pediatric-c0206ff1-a17f-4ea8-8e1a-21ce0d37acc5-changes-in-fetal-tissues-after-fetal-death-cde3ea1a4b",
+      "sourceMapId": "ap_pediatric-c0206ff1-a17f-4ea8-8e1a-21ce0d37acc5",
+      "domain": "AP",
+      "subject": "Pediatric",
+      "categoryId": "ap_pediatric",
+      "materialKind": "subtopic",
+      "title": "Changes in Fetal Tissues after Fetal Death",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Pediatric Pathology Topics for Anatomic Pathology Residents",
+        "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+        "Perinatal Pathology: Fetal/Neonatal Pathophysiology",
+        "Late (Second and Third Trimester) Post-Term Pregnancy",
+        "Changes in Fetal Tissues after Fetal Death"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "c0206ff1-a17f-4ea8-8e1a-21ce0d37acc5",
+        "sourceLine": 15426
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 25,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0PediatricCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): fetal.",
+        "matchReasons": [
+          "organ_match:pediatric",
+          "title_tokens:fetal",
+          "path_tokens:fetal,pediatric,topics,anatomic",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "scenario-reasoning-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 3,
+      "queueId": "ap-ap-pediatric-9114a7c7-1376-4885-a413-d49b7739bd07-fetal-growth-and-development-1853ad3468",
+      "sourceMapId": "ap_pediatric-9114a7c7-1376-4885-a413-d49b7739bd07",
+      "domain": "AP",
+      "subject": "Pediatric",
+      "categoryId": "ap_pediatric",
+      "materialKind": "topic",
+      "title": "Fetal Growth and Development",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Pediatric Pathology Topics for Anatomic Pathology Residents",
+        "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+        "Perinatal Pathology: Fetal/Neonatal Pathophysiology",
+        "Fetal Growth and Development"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "9114a7c7-1376-4885-a413-d49b7739bd07",
+        "sourceLine": 15427
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 25,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0PediatricCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): fetal.",
+        "matchReasons": [
+          "organ_match:pediatric",
+          "title_tokens:fetal",
+          "path_tokens:fetal,pediatric,topics,anatomic",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 4,
+      "queueId": "ap-ap-pediatric-f10901f9-ebaa-4127-bb2a-21acbd029242-large-for-gestation-age-22dd94b92c",
+      "sourceMapId": "ap_pediatric-f10901f9-ebaa-4127-bb2a-21acbd029242",
+      "domain": "AP",
+      "subject": "Pediatric",
+      "categoryId": "ap_pediatric",
+      "materialKind": "subtopic",
+      "title": "Large for Gestation Age",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Pediatric Pathology Topics for Anatomic Pathology Residents",
+        "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+        "Perinatal Pathology: Fetal/Neonatal Pathophysiology",
+        "Intrauterine Growth Restriction",
+        "Large for Gestation Age"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "f10901f9-ebaa-4127-bb2a-21acbd029242",
+        "sourceLine": 15484
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 26,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0PediatricCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): age.",
+        "matchReasons": [
+          "organ_match:pediatric",
+          "title_tokens:age",
+          "path_tokens:age,pediatric,topics,anatomic",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 5,
+      "queueId": "ap-ap-cv-ad743560-db38-4e8e-9261-ce4de9f68462-normal-development-structure-and-function-3130b3a904",
+      "sourceMapId": "ap_cv-ad743560-db38-4e8e-9261-ce4de9f68462",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "subheader",
+      "title": "Normal Development, Structure, and Function",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Development, Structure, and Function"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "ad743560-db38-4e8e-9261-ce4de9f68462",
+        "sourceLine": 15679
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 27,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): development, structure, function.",
+        "matchReasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:development,structure,function",
+          "path_tokens:development,structure,function,cardiovascular",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 6,
+      "queueId": "ap-ap-cv-2164f3cc-8111-4e0e-bae3-040218ccb2e0-williams-beuren-syndrome-07b1edda9d",
+      "sourceMapId": "ap_cv-2164f3cc-8111-4e0e-bae3-040218ccb2e0",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "subtopic",
+      "title": "Williams-Beuren Syndrome",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Development, Structure, and Function",
+        "Normal Circulation of the Embryo and Fetus",
+        "Trisomy 13",
+        "Williams-Beuren Syndrome"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "2164f3cc-8111-4e0e-bae3-040218ccb2e0",
+        "sourceLine": 15689
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 20,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): syndrome.",
+        "matchReasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:syndrome",
+          "path_tokens:syndrome,cardiovascular,development,structure",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 7,
+      "queueId": "ap-ap-cv-e3e1e0a5-4ad6-4129-80ae-e1e18f275adb-mitochondrial-cardiomyopathy-41c76630d9",
+      "sourceMapId": "ap_cv-e3e1e0a5-4ad6-4129-80ae-e1e18f275adb",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Mitochondrial Cardiomyopathy",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Development, Structure, and Function",
+        "Normal Circulation of the Embryo and Fetus",
+        "Mitochondrial Cardiomyopathy"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "e3e1e0a5-4ad6-4129-80ae-e1e18f275adb",
+        "sourceLine": 15772
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 17,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): cardiomyopathy.",
+        "matchReasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:cardiomyopathy",
+          "path_tokens:cardiomyopathy,cardiovascular",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 8,
+      "queueId": "ap-ap-cv-5649e5b0-3f79-42cd-9c60-de1da4aae56e-storage-disorder-cardiomyopathy-04f1f21a5b",
+      "sourceMapId": "ap_cv-5649e5b0-3f79-42cd-9c60-de1da4aae56e",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "subtopic",
+      "title": "Storage Disorder Cardiomyopathy",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Development, Structure, and Function",
+        "Normal Circulation of the Embryo and Fetus",
+        "Mitochondrial Cardiomyopathy",
+        "Storage Disorder Cardiomyopathy"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "5649e5b0-3f79-42cd-9c60-de1da4aae56e",
+        "sourceLine": 15773
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 17,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): cardiomyopathy.",
+        "matchReasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:cardiomyopathy",
+          "path_tokens:cardiomyopathy,cardiovascular",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 9,
+      "queueId": "ap-ap-cv-4bf99bfb-029c-42f3-ba51-10938df02ccd-normal-development-structure-and-function-28e08401f5",
+      "sourceMapId": "ap_cv-4bf99bfb-029c-42f3-ba51-10938df02ccd",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Normal Development, Structure, and Function",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Development, Structure, and Function",
+        "The Respiratory System and Mediastinum",
+        "Normal Development, Structure, and Function"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "4bf99bfb-029c-42f3-ba51-10938df02ccd",
+        "sourceLine": 15836
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 27,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): development, structure, function.",
+        "matchReasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:development,structure,function",
+          "path_tokens:development,structure,function,cardiovascular",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 10,
+      "queueId": "ap-ap-cv-7b0a0cf1-16b2-4b28-b430-dea6eff5dd93-metabolic-nutritional-degenerative-and-toxic-disorders-8ef3b32770",
+      "sourceMapId": "ap_cv-7b0a0cf1-16b2-4b28-b430-dea6eff5dd93",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Metabolic, Nutritional, Degenerative, and Toxic Disorders",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Development, Structure, and Function",
+        "The Skin",
+        "Metabolic, Nutritional, Degenerative, and Toxic Disorders"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "7b0a0cf1-16b2-4b28-b430-dea6eff5dd93",
+        "sourceLine": 16171
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 20,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): metabolic.",
+        "matchReasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:metabolic",
+          "path_tokens:metabolic,cardiovascular,development,structure",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "ancillary-correlation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 11,
+      "queueId": "ap-ap-cv-88f1267c-e3d0-4293-b1f7-dc0b6de0b3b5-the-special-senses-eye-and-ear-2d37b4e4d0",
+      "sourceMapId": "ap_cv-88f1267c-e3d0-4293-b1f7-dc0b6de0b3b5",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "subject",
+      "title": "The Special Senses – Eye and Ear",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Development, Structure, and Function",
+        "The Special Senses – Eye and Ear"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "88f1267c-e3d0-4293-b1f7-dc0b6de0b3b5",
+        "sourceLine": 16231
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 35,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0CvAutopsyCardBatch3.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): special, senses, eye, ear.",
+        "matchReasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:special,senses,eye,ear",
+          "path_tokens:special,senses,eye,ear",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 12,
+      "queueId": "ap-ap-cv-b499f6e9-d871-468e-8303-28a3947813a3-metabolic-syndromic-disorders-de19c1f822",
+      "sourceMapId": "ap_cv-b499f6e9-d871-468e-8303-28a3947813a3",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Metabolic / Syndromic Disorders",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Development, Structure, and Function",
+        "The Alimentary Tract",
+        "Metabolic / Syndromic Disorders"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "b499f6e9-d871-468e-8303-28a3947813a3",
+        "sourceLine": 16318
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 20,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): metabolic.",
+        "matchReasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:metabolic",
+          "path_tokens:metabolic,cardiovascular,development,structure",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    }
+  ]
+}
