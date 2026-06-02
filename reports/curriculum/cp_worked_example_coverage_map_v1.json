@@ -1,6 +1,6 @@
 {
   "contract_version": "cp-worked-example-coverage-map.v1",
-  "generated_at": "2026-06-02T03:58:01.890Z",
+  "generated_at": "2026-06-02T11:24:12.464Z",
   "source_order": [
     "Existing curriculum",
     "Local hard-drive corpus",
@@ -18,7 +18,8 @@
       "src/content/materials/abpathCpMaterialBatch001.json",
       "src/content/materials/abpathCpMaterialBatch002.json",
       "src/content/materials/abpathCpMaterialBatch003.json",
-      "src/content/materials/abpathCpMaterialBatch004.json"
+      "src/content/materials/abpathCpMaterialBatch004.json",
+      "src/content/materials/abpathCpMaterialBatch005.json"
     ]
   },
   "coverage_scope": {
@@ -32,8 +33,8 @@
   "summary": {
     "rows": 83,
     "worked_example_required_rows": 83,
-    "materialized_review_queue_rows": 33,
-    "unmaterialized_generation_queue_rows": 50,
+    "materialized_review_queue_rows": 43,
+    "unmaterialized_generation_queue_rows": 40,
     "subjects": {
       "Blood Banking/Transfusion Medicine": 64,
       "Hematopathology": 5,
@@ -48,8 +49,8 @@
       "clinical_chemistry_quality_statistics": 5
     },
     "coverage_statuses": {
-      "materialized-review-queue": 33,
-      "unmaterialized-generation-queue": 50
+      "materialized-review-queue": 43,
+      "unmaterialized-generation-queue": 40
     }
   },
   "guardrails": [
@@ -1469,13 +1470,18 @@
         "compatibility or indication check",
         "handoff trigger"
       ],
-      "currentCoverageStatus": "unmaterialized-generation-queue",
-      "existingBatchRef": null,
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-005",
+        "path": "src/content/materials/abpathCpMaterialBatch005.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
       "promotion": {
         "allowed": false,
         "reason": "Coverage mapping does not generate or promote worked examples."
       },
-      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
     },
     {
       "mapRow": 35,
@@ -1506,13 +1512,18 @@
         "compatibility or indication check",
         "handoff trigger"
       ],
-      "currentCoverageStatus": "unmaterialized-generation-queue",
-      "existingBatchRef": null,
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-005",
+        "path": "src/content/materials/abpathCpMaterialBatch005.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
       "promotion": {
         "allowed": false,
         "reason": "Coverage mapping does not generate or promote worked examples."
       },
-      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
     },
     {
       "mapRow": 36,
@@ -1543,13 +1554,18 @@
         "compatibility or indication check",
         "handoff trigger"
       ],
-      "currentCoverageStatus": "unmaterialized-generation-queue",
-      "existingBatchRef": null,
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-005",
+        "path": "src/content/materials/abpathCpMaterialBatch005.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
       "promotion": {
         "allowed": false,
         "reason": "Coverage mapping does not generate or promote worked examples."
       },
-      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
     },
     {
       "mapRow": 37,
@@ -1580,13 +1596,18 @@
         "compatibility or indication check",
         "handoff trigger"
       ],
-      "currentCoverageStatus": "unmaterialized-generation-queue",
-      "existingBatchRef": null,
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-005",
+        "path": "src/content/materials/abpathCpMaterialBatch005.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
       "promotion": {
         "allowed": false,
         "reason": "Coverage mapping does not generate or promote worked examples."
       },
-      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
     },
     {
       "mapRow": 38,
@@ -1617,13 +1638,18 @@
         "compatibility or indication check",
         "handoff trigger"
       ],
-      "currentCoverageStatus": "unmaterialized-generation-queue",
-      "existingBatchRef": null,
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-005",
+        "path": "src/content/materials/abpathCpMaterialBatch005.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
       "promotion": {
         "allowed": false,
         "reason": "Coverage mapping does not generate or promote worked examples."
       },
-      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
     },
     {
       "mapRow": 39,
@@ -1654,13 +1680,18 @@
         "compatibility or indication check",
         "handoff trigger"
       ],
-      "currentCoverageStatus": "unmaterialized-generation-queue",
-      "existingBatchRef": null,
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-005",
+        "path": "src/content/materials/abpathCpMaterialBatch005.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
       "promotion": {
         "allowed": false,
         "reason": "Coverage mapping does not generate or promote worked examples."
       },
-      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
     },
     {
       "mapRow": 40,
@@ -1690,13 +1721,18 @@
         "compatibility or indication check",
         "handoff trigger"
       ],
-      "currentCoverageStatus": "unmaterialized-generation-queue",
-      "existingBatchRef": null,
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-005",
+        "path": "src/content/materials/abpathCpMaterialBatch005.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
       "promotion": {
         "allowed": false,
         "reason": "Coverage mapping does not generate or promote worked examples."
       },
-      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
     },
     {
       "mapRow": 41,
@@ -1727,13 +1763,18 @@
         "compatibility or indication check",
         "handoff trigger"
       ],
-      "currentCoverageStatus": "unmaterialized-generation-queue",
-      "existingBatchRef": null,
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-005",
+        "path": "src/content/materials/abpathCpMaterialBatch005.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
       "promotion": {
         "allowed": false,
         "reason": "Coverage mapping does not generate or promote worked examples."
       },
-      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
     },
     {
       "mapRow": 42,
@@ -1764,13 +1805,18 @@
         "compatibility or indication check",
         "handoff trigger"
       ],
-      "currentCoverageStatus": "unmaterialized-generation-queue",
-      "existingBatchRef": null,
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-005",
+        "path": "src/content/materials/abpathCpMaterialBatch005.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
       "promotion": {
         "allowed": false,
         "reason": "Coverage mapping does not generate or promote worked examples."
       },
-      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
     },
     {
       "mapRow": 43,
@@ -1800,13 +1846,18 @@
         "compatibility or indication check",
         "handoff trigger"
       ],
-      "currentCoverageStatus": "unmaterialized-generation-queue",
-      "existingBatchRef": null,
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-005",
+        "path": "src/content/materials/abpathCpMaterialBatch005.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
       "promotion": {
         "allowed": false,
         "reason": "Coverage mapping does not generate or promote worked examples."
       },
-      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
     },
     {
       "mapRow": 44,

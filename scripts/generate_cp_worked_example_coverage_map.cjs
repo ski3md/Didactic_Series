@@ -13,6 +13,7 @@ const cpBatchPaths = [
   'src/content/materials/abpathCpMaterialBatch002.json',
   'src/content/materials/abpathCpMaterialBatch003.json',
   'src/content/materials/abpathCpMaterialBatch004.json',
+  'src/content/materials/abpathCpMaterialBatch005.json',
 ];
 
 const readJson = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));

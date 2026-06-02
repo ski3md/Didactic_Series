@@ -1,6 +1,6 @@
 # CP Worked-Example Coverage Map
 
-Generated: 2026-06-02T03:58:01.890Z
+Generated: 2026-06-02T11:24:12.464Z
 
 ## Scope
 
@@ -15,8 +15,8 @@ Generated: 2026-06-02T03:58:01.890Z
 
 - CP rows: 83
 - Worked-example required rows: 83
-- Materialized review-queue rows: 33
-- Unmaterialized generation-queue rows: 50
+- Materialized review-queue rows: 43
+- Unmaterialized generation-queue rows: 40
 
 ## Worked-Example Domains
 

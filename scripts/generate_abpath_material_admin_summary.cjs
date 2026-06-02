@@ -16,6 +16,7 @@ const batchPaths = [
   'src/content/materials/abpathApMaterialBatch006.json',
   'src/content/materials/abpathCpMaterialBatch003.json',
   'src/content/materials/abpathCpMaterialBatch004.json',
+  'src/content/materials/abpathCpMaterialBatch005.json',
 ];
 const outPath = path.join(repoRoot, 'src/content/materials/abpathMaterialAdminSummary.json');
 

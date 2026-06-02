@@ -1,0 +1,649 @@
+{
+  "version": "abpath-cp-material-batch.v1",
+  "batchId": "abpath-cp-material-batch-005",
+  "generatedAt": "2026-06-02T11:24:12.806Z",
+  "purpose": "Fifth bounded CP materialization slice from the worked-example coverage map; review-queue only, not promoted teaching truth.",
+  "selection": {
+    "sourceQueuePath": "src/content/materials/abpathMaterialExpansionQueue.json",
+    "sourceCoverageMapPath": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+    "sourceQueueVersion": "abpath-material-expansion-queue.v1",
+    "domain": "CP",
+    "selectionRationale": "Next ten unmaterialized CP worked-example coverage rows after CP batch 004.",
+    "queueEntryIds": [
+      "cp-bb-bb-6-a-hemolytic-transfusion-reactions-996f19c838",
+      "cp-bb-bb-6-b-febrile-allergic-and-non-immune-transfusion-reactions-cb4a881404",
+      "cp-bb-bb-6-c-transfusion-associated-graft-versus-host-disease-333ee3be6d",
+      "cp-bb-bb-6-d-transfusion-induced-iron-overload-95f7d58c4d",
+      "cp-bb-bb-6-e-transfusion-related-acute-lung-injury-trali-162a4f5ae0",
+      "cp-bb-bb-6-f-vasovagal-and-hypovolemic-reactions-5feb473467",
+      "cp-bb-bb-8-infectious-hazards-of-transfusion-9d1cb8c135",
+      "cp-bb-bb-8-a-septic-transfusion-reactions-7fd750f6a3",
+      "cp-bb-bb-8-b-prion-disease-transmission-cjd-b3ccbfdb39",
+      "cp-bb-bb-10-surgery-patients-04ac9abf8f"
+    ],
+    "excludedPriorBatchIds": [
+      "abpath-cp-material-batch-001",
+      "abpath-cp-material-batch-002",
+      "abpath-cp-material-batch-003",
+      "abpath-cp-material-batch-004"
+    ]
+  },
+  "totals": {
+    "rows": 10,
+    "reviewStatus": {
+      "unreviewed": 10
+    },
+    "promotionStatus": {
+      "review-queue": 10
+    },
+    "workedExampleDomains": {
+      "transfusion_medicine": 10
+    }
+  },
+  "promotionGuardrails": [
+    "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+    "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+    "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+    "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+  ],
+  "rows": [
+    {
+      "batchRowId": "abpath-cp-material-batch-005-row-01",
+      "queueEntryId": "cp-bb-bb-6-a-hemolytic-transfusion-reactions-996f19c838",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Hemolytic Transfusion Reactions",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Hemolytic Transfusion Reactions"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Hazards of Transfusion: Specific Adverse Events > Hemolytic Transfusion Reactions",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-6-a",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-005-row-02",
+      "queueEntryId": "cp-bb-bb-6-b-febrile-allergic-and-non-immune-transfusion-reactions-cb4a881404",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Febrile, Allergic, and Non-Immune Transfusion Reactions",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Febrile, Allergic, and Non-Immune Transfusion Reactions"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Hazards of Transfusion: Specific Adverse Events > Febrile, Allergic, and Non-Immune Transfusion Reactions",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-6-b",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-005-row-03",
+      "queueEntryId": "cp-bb-bb-6-c-transfusion-associated-graft-versus-host-disease-333ee3be6d",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Transfusion-Associated Graft-Versus-Host Disease",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Transfusion-Associated Graft-Versus-Host Disease"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Hazards of Transfusion: Specific Adverse Events > Transfusion-Associated Graft-Versus-Host Disease",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-6-c",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-005-row-04",
+      "queueEntryId": "cp-bb-bb-6-d-transfusion-induced-iron-overload-95f7d58c4d",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Transfusion-Induced Iron Overload",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Transfusion-Induced Iron Overload"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Hazards of Transfusion: Specific Adverse Events > Transfusion-Induced Iron Overload",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-6-d",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-005-row-05",
+      "queueEntryId": "cp-bb-bb-6-e-transfusion-related-acute-lung-injury-trali-162a4f5ae0",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Transfusion-Related Acute Lung Injury (TRALI)",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Transfusion-Related Acute Lung Injury (TRALI)"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Hazards of Transfusion: Specific Adverse Events > Transfusion-Related Acute Lung Injury (TRALI)",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-6-e",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-005-row-06",
+      "queueEntryId": "cp-bb-bb-6-f-vasovagal-and-hypovolemic-reactions-5feb473467",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Vasovagal and Hypovolemic Reactions",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Vasovagal and Hypovolemic Reactions"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Hazards of Transfusion: Specific Adverse Events > Vasovagal and Hypovolemic Reactions",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-6-f",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-005-row-07",
+      "queueEntryId": "cp-bb-bb-8-infectious-hazards-of-transfusion-9d1cb8c135",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Infectious Hazards of Transfusion",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Infectious Hazards of Transfusion"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Infectious Hazards of Transfusion",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-8",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-005-row-08",
+      "queueEntryId": "cp-bb-bb-8-a-septic-transfusion-reactions-7fd750f6a3",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Septic Transfusion Reactions",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Infectious Hazards of Transfusion",
+        "Septic Transfusion Reactions"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Infectious Hazards of Transfusion > Septic Transfusion Reactions",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-8-a",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-005-row-09",
+      "queueEntryId": "cp-bb-bb-8-b-prion-disease-transmission-cjd-b3ccbfdb39",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Prion Disease Transmission (CJD)",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Infectious Hazards of Transfusion",
+        "Prion Disease Transmission (CJD)"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Infectious Hazards of Transfusion > Prion Disease Transmission (CJD)",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-8-b",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-005-row-10",
+      "queueEntryId": "cp-bb-bb-10-surgery-patients-04ac9abf8f",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Surgery Patients",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Surgery Patients"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Surgery Patients",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-10",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    }
+  ]
+}
