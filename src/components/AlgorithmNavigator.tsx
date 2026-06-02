@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import Card from './ui/Card.tsx';
 import { SparklesIcon } from './icons.tsx';
 import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
-import { type ActiveStudyDestination, Section } from '../types.ts';
+import { type ActiveStudyDestination, type LectureAlgorithmNode, type LectureAlgorithmRecord, Section } from '../types.ts';
 import { getInteractivePromotedLecture } from '../utils/interactiveLectureCatalog.ts';
 import LectureAlgorithmPlayer from './lectures/LectureAlgorithmPlayer.tsx';
 import { setLectureLibraryIntent } from '../utils/lectureLibraryNavigation.ts';
@@ -91,6 +91,62 @@ const scrollToTopIfAvailable = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 };
+
+const getFirstDecisionNode = (algorithm: LectureAlgorithmRecord | undefined): LectureAlgorithmNode | null => {
+  if (!algorithm) {
+    return null;
+  }
+
+  const startNode = algorithm.nodes[algorithm.startNodeId];
+  const firstLinkedNodeId = startNode?.options?.[0]?.nextNodeId;
+  const firstLinkedNode = firstLinkedNodeId ? algorithm.nodes[firstLinkedNodeId] : null;
+  if (firstLinkedNode?.type === 'decision') {
+    return firstLinkedNode;
+  }
+
+  return Object.values(algorithm.nodes).find((node) => node.type === 'decision') ?? null;
+};
+
+const getCpFirstDecisionNode = (entry: (typeof didacticAlgorithms)[number] | undefined): LectureAlgorithmNode | null => {
+  if (entry?.subspecialtyLabel !== 'Clinical Pathology') {
+    return null;
+  }
+  return getFirstDecisionNode(entry.algorithm);
+};
+
+const CpFirstDecisionPreview = ({
+  decisionNode,
+  compact = false,
+}: {
+  decisionNode: LectureAlgorithmNode;
+  compact?: boolean;
+}) => (
+  <div className={compact ? 'mt-3 rounded-lg border border-sky-100 bg-sky-50 px-3 py-2' : 'rounded-2xl border border-sky-100 bg-sky-50 p-4'}>
+    <div className="text-[11px] font-semibold uppercase tracking-wide text-sky-700">First bench decision</div>
+    <div className={compact ? 'mt-1 text-sm font-semibold text-slate-900' : 'mt-2 text-lg font-semibold text-slate-950'}>
+      {decisionNode.title.replace(/^Decision:\s*/i, '')}
+    </div>
+    <p className={compact ? 'mt-1 text-xs leading-5 text-slate-600' : 'mt-2 text-sm leading-6 text-slate-700'}>
+      {decisionNode.description}
+    </p>
+    {decisionNode.options && decisionNode.options.length > 0 && (
+      <div className={compact ? 'mt-2 flex flex-wrap gap-1.5' : 'mt-3 grid gap-2 md:grid-cols-3'}>
+        {decisionNode.options.slice(0, 3).map((option) => (
+          <span
+            key={`${decisionNode.id}-${option.label}`}
+            className={
+              compact
+                ? 'rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold text-slate-700'
+                : 'rounded-xl border border-white bg-white px-3 py-2 text-sm font-semibold leading-5 text-slate-800'
+            }
+          >
+            {option.label}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+);
 
 const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, onSectionChange }) => {
   const entries = didacticAlgorithms;
@@ -260,6 +316,7 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
   const activeNodeCount = selectedAlgorithm ? Object.keys(selectedAlgorithm.nodes).length : 0;
   const activePitfalls = selectedAlgorithm ? collectAlgorithmPitfalls(selectedAlgorithm) : [];
   const commonTrap = activePitfalls[0] ?? selectedEntry?.summary;
+  const selectedCpFirstDecisionNode = getCpFirstDecisionNode(selectedEntry);
   const launchRequestedTopic = launchContext?.sourceRequestedTopic;
   const familyLeadEntry = activeSubtopicEntries[0];
   const imageSupportTerms = mergeSupportTerms(selectedEntry?.imageReviewTerms, selectedEntry?.focusTerms).slice(0, 8);
@@ -631,20 +688,24 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                     </Card>
                   ) : (
                     <div className="space-y-4">
-                      {filteredEntries.map((entry, index) => (
-                        <button
-                          key={entry.id}
-                          type="button"
-                          onClick={() => openAlgorithmDetail(entry.id)}
-                        className="w-full rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
-                      >
-                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                            {index === 0 ? 'Start here' : 'Study path'}
-                          </div>
-                          <h3 className="mt-2 font-serif text-lg font-semibold text-slate-900">{entry.title}</h3>
-                          <p className="mt-2 text-sm text-slate-600">{entry.summary}</p>
-                        </button>
-                      ))}
+                      {filteredEntries.map((entry, index) => {
+                        const firstDecisionNode = getCpFirstDecisionNode(entry);
+                        return (
+                          <button
+                            key={entry.id}
+                            type="button"
+                            onClick={() => openAlgorithmDetail(entry.id)}
+                            className="w-full rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
+                          >
+                            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                              {index === 0 ? 'Start here' : 'Study path'}
+                            </div>
+                            <h3 className="mt-2 font-serif text-lg font-semibold text-slate-900">{entry.title}</h3>
+                            <p className="mt-2 text-sm text-slate-600">{entry.summary}</p>
+                            {firstDecisionNode && <CpFirstDecisionPreview decisionNode={firstDecisionNode} compact />}
+                          </button>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
@@ -687,24 +748,31 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
                   <div className="mt-2 text-sm font-semibold text-slate-900">{activeSubtopicEntries[0]?.title ?? 'Open a workup'}</div>
                   <div className="mt-1 text-sm text-slate-600">Open the main study path.</div>
                   <div className="mt-2 text-xs text-slate-500">Follow the workup first; supporting lectures and references stay optional.</div>
+                  {getCpFirstDecisionNode(activeSubtopicEntries[0]) && (
+                    <CpFirstDecisionPreview decisionNode={getCpFirstDecisionNode(activeSubtopicEntries[0])!} compact />
+                  )}
                 </div>
               </div>
             </Card>
             <div className="space-y-4">
-              {activeSubtopicEntries.map((entry, index) => (
-                <button
-                  key={entry.id}
-                  type="button"
-                  onClick={() => openAlgorithmDetail(entry.id)}
-                  className="w-full rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
-                >
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    {index === 0 ? 'Start here' : 'Study path'}
-                  </div>
-                  <h3 className="mt-3 font-serif text-xl font-semibold text-slate-900">{entry.title}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{entry.summary}</p>
-                </button>
-              ))}
+              {activeSubtopicEntries.map((entry, index) => {
+                const firstDecisionNode = getCpFirstDecisionNode(entry);
+                return (
+                  <button
+                    key={entry.id}
+                    type="button"
+                    onClick={() => openAlgorithmDetail(entry.id)}
+                    className="w-full rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
+                  >
+                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      {index === 0 ? 'Start here' : 'Study path'}
+                    </div>
+                    <h3 className="mt-3 font-serif text-xl font-semibold text-slate-900">{entry.title}</h3>
+                    <p className="mt-2 text-sm text-slate-600">{entry.summary}</p>
+                    {firstDecisionNode && <CpFirstDecisionPreview decisionNode={firstDecisionNode} compact />}
+                  </button>
+                );
+              })}
             </div>
           </>
         )}
@@ -784,6 +852,19 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
           </div>
         </div>
       </div>
+
+      {selectedCpFirstDecisionNode && (
+        <Card>
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
+            <CpFirstDecisionPreview decisionNode={selectedCpFirstDecisionNode} />
+            <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Workflow cue</div>
+              <div className="mt-2 font-semibold text-slate-900">Open the first decision before using lectures.</div>
+              <div className="mt-1">Supporting review stays secondary to the bench-facing workup.</div>
+            </div>
+          </div>
+        </Card>
+      )}
 
       <LectureAlgorithmPlayer
         algorithm={selectedAlgorithm}

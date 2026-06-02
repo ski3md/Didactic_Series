@@ -1,7 +1,7 @@
 # Third-Party Script Scan
 
-Scanned at: 2026-06-02T11:50:22.833Z
-Files scanned: 279
+Scanned at: 2026-06-02T12:16:05.120Z
+Files scanned: 280
 
 ## Findings
 
