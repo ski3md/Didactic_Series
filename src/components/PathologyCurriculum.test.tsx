@@ -76,7 +76,8 @@ describe('PathologyCurriculum', () => {
 
   it('opens morphology-first gateways into pattern curriculum modules', async () => {
     const user = userEvent.setup();
-    render(<PathologyCurriculum onSectionChange={vi.fn()} preferences={preferences} />);
+    const onSectionChange = vi.fn();
+    render(<PathologyCurriculum onSectionChange={onSectionChange} preferences={preferences} />);
 
     expect(screen.getByText('Morphology-first curriculum')).toBeInTheDocument();
     expect(screen.getAllByText('PAX8').length).toBeGreaterThan(0);
@@ -90,6 +91,17 @@ describe('PathologyCurriculum', () => {
     expect(screen.getByText('small round blue cell')).toBeInTheDocument();
     expect(screen.getByText(/Sort the small round blue cell differential by lineage/i)).toBeInTheDocument();
     expect(screen.getByText('NKX2.2')).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: /Review small round blue cell morphology/i }));
+
+    expect(mocks.setReferenceLibraryIntent).toHaveBeenCalledWith(
+      expect.objectContaining({
+        moduleId: 'small-round-blue-cell-differential',
+        morphologyTag: 'small round blue cell',
+        focusTerms: expect.arrayContaining(['small round blue cell']),
+      })
+    );
+    expect(onSectionChange).toHaveBeenCalledWith(Section.REFERENCE_LIBRARY);
   });
 
   it('routes a canonical module into its linked lecture', async () => {

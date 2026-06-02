@@ -3,6 +3,7 @@ export interface ReferenceLibraryIntent {
   lectureId?: string;
   title?: string;
   summary?: string;
+  morphologyTag?: string;
   focusTerms?: string[];
   tutorialTopics?: string[];
   syllabusTopics?: string[];
@@ -11,6 +12,7 @@ export interface ReferenceLibraryIntent {
 }
 
 const STORAGE_KEY = 'didactic_series_reference_library_intent';
+const canonicalDidacticsPathPattern = /\/didactics(?:\/|$)/i;
 
 export const setReferenceLibraryIntent = (intent: ReferenceLibraryIntent) => {
   if (typeof window === 'undefined') {
@@ -27,10 +29,14 @@ export const consumeReferenceLibraryIntent = (): ReferenceLibraryIntent | null =
   if (!raw) {
     return null;
   }
-  window.sessionStorage.removeItem(STORAGE_KEY);
   try {
-    return JSON.parse(raw) as ReferenceLibraryIntent;
+    const intent = JSON.parse(raw) as ReferenceLibraryIntent;
+    if (canonicalDidacticsPathPattern.test(window.location.pathname)) {
+      window.sessionStorage.removeItem(STORAGE_KEY);
+    }
+    return intent;
   } catch {
+    window.sessionStorage.removeItem(STORAGE_KEY);
     return null;
   }
 };

@@ -152,6 +152,22 @@ describe('ReferenceLibrary', () => {
     expect(screen.getAllByText('small blue cell').length).toBeGreaterThan(0);
   });
 
+  it('lands curriculum morphology intent on matched Reference Library images', async () => {
+    mocks.consumeReferenceLibraryIntent.mockReturnValue({
+      title: 'Clear cell morphology',
+      summary: 'Review clear cell morphology from the curriculum.',
+      morphologyTag: 'clear cell',
+      focusTerms: ['clear cell'],
+    });
+
+    render(<ReferenceLibrary user={null} />);
+
+    expect(await screen.findByText('Matched morphology images')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Clear Cell landing set/i })).toBeInTheDocument();
+    expect(screen.getAllByText('Clear Cell Breast Lesion PAX8 20x').length).toBeGreaterThan(0);
+    expect(await screen.findByDisplayValue('clear cell')).toBeInTheDocument();
+  });
+
   it('falls back to a morphology-ready specialty when the cold default has no morphology tags', async () => {
     vi.stubGlobal(
       'fetch',

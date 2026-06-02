@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { LearnerLevel, User } from '../types.ts';
 import SectionHeader from './ui/SectionHeader.tsx';
 import Card from './ui/Card.tsx';
@@ -205,6 +205,23 @@ const specialtyHasMorphologyTags = (images: SupplementalReferenceImage[], specia
       inferMorphologyTags(image.title, image.caption, image.sourceDocument).length > 0
   );
 
+const imageHasMorphologyTag = (image: SupplementalReferenceImage, tag: string) =>
+  inferMorphologyTags(image.title, image.caption, image.sourceDocument).some(
+    (morphologyTag) => morphologyTag.toLowerCase() === tag.toLowerCase()
+  );
+
+const getSpecialtyForMorphologyTag = (images: SupplementalReferenceImage[], tag: string, currentSpecialty: string) => {
+  const trimmedTag = tag.trim();
+  if (!trimmedTag) {
+    return currentSpecialty;
+  }
+  const currentHasTag = images.some((image) => image.specialty === currentSpecialty && imageHasMorphologyTag(image, trimmedTag));
+  if (currentHasTag) {
+    return currentSpecialty;
+  }
+  return images.find((image) => imageHasMorphologyTag(image, trimmedTag))?.specialty ?? currentSpecialty;
+};
+
 const getMorphologyReadySpecialty = (images: SupplementalReferenceImage[], currentSpecialty: string) => {
   if (specialtyHasMorphologyTags(images, currentSpecialty)) {
     return currentSpecialty;
@@ -274,6 +291,7 @@ const collectionPresetMap: Record<
 };
 
 const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
+  const appliedInitialIntentRef = useRef(false);
   const [focusIntent, setFocusIntent] = useState<ReferenceLibraryIntent | null>(null);
   const [selectedSignoutSpecialty, setSelectedSignoutSpecialty] = useState('Genitourinary Pathology Sign-Out Simulations');
   const [selectedSupplementalSpecialty, setSelectedSupplementalSpecialty] = useState(DEFAULT_SUPPLEMENTAL_SPECIALTY);
@@ -326,7 +344,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
     () =>
       selectedMorphologyTag
         ? filteredSupplementalImages.filter((image) =>
-            inferMorphologyTags(image.title, image.caption, image.sourceDocument).includes(selectedMorphologyTag)
+            imageHasMorphologyTag(image, selectedMorphologyTag)
           )
         : filteredSupplementalImages,
     [filteredSupplementalImages, selectedMorphologyTag]
@@ -335,7 +353,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
     () =>
       supplementalMorphologyOptions.slice(0, 8).map((tag) => {
         const previewImages = filteredSupplementalImages
-          .filter((image) => inferMorphologyTags(image.title, image.caption, image.sourceDocument).includes(tag))
+          .filter((image) => imageHasMorphologyTag(image, tag))
           .slice(0, 3);
         const cognition = getPathologyCognition(
           tag,
@@ -361,7 +379,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
       }),
     [filteredSupplementalImages, supplementalMorphologyOptions]
   );
-  const supplementalPageCount = Math.max(1, Math.ceil(filteredSupplementalImages.length / SUPPLEMENTAL_PAGE_SIZE));
+  const supplementalPageCount = Math.max(1, Math.ceil(filteredSupplementalImagesWithMorphology.length / SUPPLEMENTAL_PAGE_SIZE));
   const visibleSupplementalImages = useMemo(
     () =>
       filteredSupplementalImagesWithMorphology.slice(
@@ -380,12 +398,30 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
   const competencyGuidance = levelModeGuidance[selectedCompetencyLevel];
   const diagnosticFocusText = competencyGuidance.intent;
   const recognitionTargetText = competencyGuidance.expectedEvidence;
+  const activeMorphologyIntentTag = focusIntent?.morphologyTag?.trim() ?? '';
+  const matchedMorphologyIntentImages = useMemo(
+    () => (activeMorphologyIntentTag ? filteredSupplementalImagesWithMorphology.slice(0, 4) : []),
+    [activeMorphologyIntentTag, filteredSupplementalImagesWithMorphology]
+  );
 
   useEffect(() => {
     const intent = consumeReferenceLibraryIntent();
     const storedView = readSessionState<ReferenceLibraryViewState>(REFERENCE_LIBRARY_VIEW_STATE_KEY);
-    setFocusIntent(intent);
-    if (!intent && storedView) {
+    if (intent) {
+      appliedInitialIntentRef.current = true;
+      setFocusIntent(intent);
+      if (intent.morphologyTag) {
+        setSelectedMorphologyTag(intent.morphologyTag);
+        setSupplementalSearch(intent.morphologyTag);
+        setSupplementalPage(1);
+        setHasStoredSupplementalSelection(false);
+      }
+      return;
+    }
+    if (appliedInitialIntentRef.current) {
+      return;
+    }
+    if (storedView) {
       setSelectedSignoutSpecialty(storedView.selectedSignoutSpecialty);
       setSelectedSupplementalSpecialty(storedView.selectedSupplementalSpecialty);
       setSupplementalSearch(storedView.supplementalSearch);
@@ -439,6 +475,18 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
       return;
     }
 
+    if (focusIntent?.morphologyTag) {
+      const morphologySpecialty = getSpecialtyForMorphologyTag(
+        supplementalImages,
+        focusIntent.morphologyTag,
+        selectedSupplementalSpecialty
+      );
+      if (morphologySpecialty !== selectedSupplementalSpecialty) {
+        setSelectedSupplementalSpecialty(morphologySpecialty);
+      }
+      return;
+    }
+
     const availableSpecialties = new Set(supplementalImages.map((image) => image.specialty));
     if (hasStoredSupplementalSelection && availableSpecialties.has(selectedSupplementalSpecialty)) {
       return;
@@ -448,7 +496,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
     if (morphologyReadySpecialty !== selectedSupplementalSpecialty) {
       setSelectedSupplementalSpecialty(morphologyReadySpecialty);
     }
-  }, [hasStoredSupplementalSelection, selectedSupplementalSpecialty, supplementalImages]);
+  }, [focusIntent?.morphologyTag, hasStoredSupplementalSelection, selectedSupplementalSpecialty, supplementalImages]);
 
   useEffect(() => {
     setSupplementalPage(1);
@@ -601,10 +649,11 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
     },
   ];
 
-  const applyPreset = (preset: { title: string; description: string; focusTerms: string[] }) => {
+  const applyPreset = (preset: { title: string; description: string; focusTerms: string[]; morphologyTag?: string }) => {
     setFocusIntent({
       title: preset.title,
       summary: preset.description,
+      morphologyTag: preset.morphologyTag,
       focusTerms: preset.focusTerms,
       tutorialTopics: focusIntent?.tutorialTopics,
       syllabusTopics: focusIntent?.syllabusTopics,
@@ -646,6 +695,55 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
           )}
         </div>
       </Card>
+      {activeMorphologyIntentTag && (
+        <Card className="border-sky-200 bg-white">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Matched morphology images</p>
+                <h2 className="mt-1 text-xl font-semibold font-serif text-slate-950">{titleCase(activeMorphologyIntentTag)} landing set</h2>
+                <p className="mt-2 text-sm leading-6 text-slate-700">
+                  This Reference Library handoff is filtered to the morphology pattern requested from the curriculum.
+                </p>
+              </div>
+              <div className="rounded-xl border border-sky-100 bg-sky-50 px-4 py-3 text-right">
+                <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Matches</div>
+                <div className="text-2xl font-semibold text-sky-950">{filteredSupplementalImagesWithMorphology.length.toLocaleString()}</div>
+              </div>
+            </div>
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              {matchedMorphologyIntentImages.length > 0 ? (
+                matchedMorphologyIntentImages.map((image) => (
+                  <article key={`intent-${image.id}`} className="overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
+                    <img
+                      src={supplementalImageSrc(image)}
+                      alt={supplementalCaption(image)}
+                      className="h-36 w-full bg-slate-950 object-contain"
+                      loading="lazy"
+                    />
+                    <div className="space-y-2 p-3">
+                      <div className="text-sm font-semibold leading-5 text-slate-950">{normalizePathologyTitle(image.title)}</div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {[inferStain(image.title, image.caption, image.sourceDocument), inferMagnification(image.title, image.caption, image.sourceDocument), inferOrganSystem(image.specialty)]
+                          .filter(Boolean)
+                          .map((chip) => (
+                            <span key={`intent-${image.id}-${chip}`} className="rounded-md bg-white px-2 py-0.5 text-[11px] font-semibold text-slate-700">
+                              {chip}
+                            </span>
+                          ))}
+                      </div>
+                    </div>
+                  </article>
+                ))
+              ) : (
+                <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-5 text-sm text-slate-600 md:col-span-2 xl:col-span-4">
+                  Loading matched images for {activeMorphologyIntentTag}.
+                </div>
+              )}
+            </div>
+          </div>
+        </Card>
+      )}
       <Card>
         <div className="flex flex-col gap-5">
           <div>
@@ -692,6 +790,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                     applyPreset({
                       title: `${card.title} differential`,
                       description: card.description,
+                      morphologyTag: card.tag,
                       focusTerms: card.focusTerms,
                     });
                   }}
@@ -1181,7 +1280,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
         )}
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600">
           <div>
-            Showing page {supplementalPage} of {Math.max(1, Math.ceil(filteredSupplementalImagesWithMorphology.length / SUPPLEMENTAL_PAGE_SIZE))} ({visibleSupplementalImages.length.toLocaleString()} images)
+            Showing page {supplementalPage} of {supplementalPageCount} ({visibleSupplementalImages.length.toLocaleString()} images)
           </div>
           <div className="flex gap-2">
             <button
@@ -1194,8 +1293,8 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
             </button>
             <button
               type="button"
-              onClick={() => setSupplementalPage((page) => Math.min(Math.max(1, Math.ceil(filteredSupplementalImagesWithMorphology.length / SUPPLEMENTAL_PAGE_SIZE)), page + 1))}
-              disabled={supplementalPage === Math.max(1, Math.ceil(filteredSupplementalImagesWithMorphology.length / SUPPLEMENTAL_PAGE_SIZE))}
+              onClick={() => setSupplementalPage((page) => Math.min(supplementalPageCount, page + 1))}
+              disabled={supplementalPage === supplementalPageCount}
               className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 transition hover:border-slate-300 disabled:cursor-not-allowed disabled:opacity-50"
             >
               Next

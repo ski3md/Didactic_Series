@@ -336,6 +336,7 @@ const PathologyCurriculum: React.FC<PathologyCurriculumProps> = ({ onSectionChan
       moduleId: module.moduleId,
       title: module.title,
       summary: module.summary,
+      morphologyTag: module.patternFamilies[0],
       focusTerms: inflammatoryMimicTerms,
       tutorialTopics: module.tutorialTopics,
       syllabusTopics: module.syllabusTopics,
