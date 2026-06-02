@@ -1,0 +1,3170 @@
+{
+  "contract_version": "cp-worked-example-coverage-map.v1",
+  "generated_at": "2026-06-02T03:46:25.848Z",
+  "source_order": [
+    "Existing curriculum",
+    "Local hard-drive corpus",
+    "Previously indexed local knowledge base",
+    "Internal ontology/library",
+    "Open-access online sources later only",
+    "Licensed sources later only if available",
+    "Human escalation"
+  ],
+  "source_refs": {
+    "queue": "src/content/materials/abpathMaterialExpansionQueue.json",
+    "gap_inventory": "reports/curriculum/gap_inventory_v1.json",
+    "gap_id": "GAP-CP-WORKED-EXAMPLES-001",
+    "cp_batches": [
+      "src/content/materials/abpathCpMaterialBatch001.json",
+      "src/content/materials/abpathCpMaterialBatch002.json"
+    ]
+  },
+  "coverage_scope": {
+    "discipline": "CP",
+    "mode": "worked_example_coverage_mapping_only",
+    "internet_crawling": false,
+    "source_ingestion": false,
+    "teaching_content_generation": false,
+    "promotion_allowed": false
+  },
+  "summary": {
+    "rows": 83,
+    "worked_example_required_rows": 83,
+    "materialized_review_queue_rows": 13,
+    "unmaterialized_generation_queue_rows": 70,
+    "subjects": {
+      "Blood Banking/Transfusion Medicine": 64,
+      "Hematopathology": 5,
+      "Microbiology": 5,
+      "Chemical Pathology": 9
+    },
+    "worked_example_domains": {
+      "transfusion_medicine": 68,
+      "hematopathology_lab_interpretation": 1,
+      "microbiology_lab_interpretation": 5,
+      "clinical_chemistry": 4,
+      "clinical_chemistry_quality_statistics": 5
+    },
+    "coverage_statuses": {
+      "unmaterialized-generation-queue": 70,
+      "materialized-review-queue": 13
+    }
+  },
+  "guardrails": [
+    "This artifact maps CP worked-example need; it does not generate teaching content.",
+    "Every row remains blocked from promotion until a reviewer approves a worked example artifact.",
+    "No online search is allowed before local curriculum, local corpus, local KB, and ontology tiers are exhausted.",
+    "Future CP batches must preserve queueEntryId, sourceTopicId, sourcePath, review status, and promotion decision."
+  ],
+  "review_status": "machine_inventory_only",
+  "rows": [
+    {
+      "mapRow": 1,
+      "queueEntryId": "cp-bb-bb-blood-banking-transfusion-medicine-dbf7f42282",
+      "sourceTopicId": "bb",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "header",
+      "title": "Blood Banking/Transfusion Medicine",
+      "path": [
+        "Blood Banking/Transfusion Medicine"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 2,
+      "queueEntryId": "cp-bb-bb-1-clinical-practice-dafc3e1149",
+      "sourceTopicId": "bb-1",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Clinical Practice",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 3,
+      "queueEntryId": "cp-bb-bb-1-a-autoimmune-hemolytic-anemia-2b8fb5c258",
+      "sourceTopicId": "bb-1-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Autoimmune Hemolytic Anemia",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Autoimmune Hemolytic Anemia"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 4,
+      "queueEntryId": "cp-bb-bb-1-b-paroxysmal-nocturnal-hemoglobinuria-2adfcdef45",
+      "sourceTopicId": "bb-1-b",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Paroxysmal Nocturnal Hemoglobinuria",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Paroxysmal Nocturnal Hemoglobinuria"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 5,
+      "queueEntryId": "cp-bb-bb-1-c-anemia-in-oncology-patients-9bea48a011",
+      "sourceTopicId": "bb-1-c",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Anemia in Oncology Patients",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Anemia in Oncology Patients"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 6,
+      "queueEntryId": "cp-bb-bb-1-d-immune-thrombocytopenia-1d2da677f2",
+      "sourceTopicId": "bb-1-d",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Immune Thrombocytopenia",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Immune Thrombocytopenia"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 7,
+      "queueEntryId": "cp-bb-bb-1-e-bleeding-from-coagulation-defects-d99172de51",
+      "sourceTopicId": "bb-1-e",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Bleeding from Coagulation Defects",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Bleeding from Coagulation Defects"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 8,
+      "queueEntryId": "cp-bb-bb-1-e-i-cirrhosis-coagulopathy-b46e5d074b",
+      "sourceTopicId": "bb-1-e-i",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "topic",
+      "title": "Cirrhosis Coagulopathy",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Bleeding from Coagulation Defects",
+        "Cirrhosis Coagulopathy"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 9,
+      "queueEntryId": "cp-bb-bb-1-e-ii-drug-induced-hemolytic-anemia-2406b71689",
+      "sourceTopicId": "bb-1-e-ii",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "topic",
+      "title": "Drug-Induced Hemolytic Anemia",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Bleeding from Coagulation Defects",
+        "Drug-Induced Hemolytic Anemia"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 10,
+      "queueEntryId": "cp-bb-bb-1-e-iv-acquired-coagulation-factor-inhibitors-20a4348423",
+      "sourceTopicId": "bb-1-e-iv",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Acquired Coagulation Factor Inhibitors",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Acquired Coagulation Factor Inhibitors"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 11,
+      "queueEntryId": "cp-bb-bb-1-e-v-acquired-platelet-function-disorders-7f163a34ee",
+      "sourceTopicId": "bb-1-e-v",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Acquired Platelet Function Disorders",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Acquired Platelet Function Disorders"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 12,
+      "queueEntryId": "cp-bb-bb-1-e-vi-antithrombotic-therapy-e7673d0d95",
+      "sourceTopicId": "bb-1-e-vi",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Antithrombotic Therapy",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Antithrombotic Therapy"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 13,
+      "queueEntryId": "cp-bb-bb-1-e-vii-congenital-coagulopathies-thrombophilias-cba4629c0d",
+      "sourceTopicId": "bb-1-e-vii",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Congenital Coagulopathies/Thrombophilias",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Congenital Coagulopathies/Thrombophilias"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 14,
+      "queueEntryId": "cp-bb-bb-1-f-perioperative-blood-management-56a68d92c9",
+      "sourceTopicId": "bb-1-f",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Perioperative Blood Management",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Perioperative Blood Management"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 15,
+      "queueEntryId": "cp-bb-bb-2-cell-and-tissue-therapy-dcfd64ffa7",
+      "sourceTopicId": "bb-2",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Cell and Tissue Therapy",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Cell and Tissue Therapy"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 16,
+      "queueEntryId": "cp-bb-bb-2-a-hla-antigens-and-alleles-aa9457c626",
+      "sourceTopicId": "bb-2-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "HLA Antigens and Alleles",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Cell and Tissue Therapy",
+        "HLA Antigens and Alleles"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 17,
+      "queueEntryId": "cp-bb-bb-2-b-tissue-banking-696bfe48e4",
+      "sourceTopicId": "bb-2-b",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Tissue Banking",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Cell and Tissue Therapy",
+        "Tissue Banking"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 18,
+      "queueEntryId": "cp-bb-bb-2-c-adoptive-immunotherapy-e576d8bfdc",
+      "sourceTopicId": "bb-2-c",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Adoptive Immunotherapy",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Cell and Tissue Therapy",
+        "Adoptive Immunotherapy"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 19,
+      "queueEntryId": "cp-bb-bb-2-d-gene-therapy-in-transfusion-medicine-ccbc171aad",
+      "sourceTopicId": "bb-2-d",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Gene Therapy in Transfusion Medicine",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Cell and Tissue Therapy",
+        "Gene Therapy in Transfusion Medicine"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 20,
+      "queueEntryId": "cp-bb-bb-3-rbcs-and-rbc-components-fb04dac762",
+      "sourceTopicId": "bb-3",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "RBCs and RBC Components",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-001",
+        "path": "src/content/materials/abpathCpMaterialBatch001.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 21,
+      "queueEntryId": "cp-bb-bb-3-d-red-cell-immunology-and-compatibility-testing-4bb71d6db0",
+      "sourceTopicId": "bb-3-d",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Red Cell Immunology and Compatibility Testing",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Red Cell Immunology and Compatibility Testing"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-001",
+        "path": "src/content/materials/abpathCpMaterialBatch001.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 22,
+      "queueEntryId": "cp-bb-bb-3-e-carbohydrate-blood-groups-abh-cde0744879",
+      "sourceTopicId": "bb-3-e",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Carbohydrate Blood Groups (ABH)",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Carbohydrate Blood Groups (ABH)"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-001",
+        "path": "src/content/materials/abpathCpMaterialBatch001.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 23,
+      "queueEntryId": "cp-bb-bb-3-f-rh-and-lw-blood-group-systems-79ecf0efea",
+      "sourceTopicId": "bb-3-f",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Rh and LW Blood Group Systems",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Rh and LW Blood Group Systems"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-001",
+        "path": "src/content/materials/abpathCpMaterialBatch001.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 24,
+      "queueEntryId": "cp-bb-bb-3-g-other-protein-blood-group-systems-kell-duffy-kidd-bd41b43cf4",
+      "sourceTopicId": "bb-3-g",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Other Protein Blood Group Systems (Kell, Duffy, Kidd)",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Other Protein Blood Group Systems (Kell, Duffy, Kidd)"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-001",
+        "path": "src/content/materials/abpathCpMaterialBatch001.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 25,
+      "queueEntryId": "cp-bb-bb-3-h-high-incidence-antibodies-24c3a3c53a",
+      "sourceTopicId": "bb-3-h",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "High-Incidence Antibodies",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "High-Incidence Antibodies"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-001",
+        "path": "src/content/materials/abpathCpMaterialBatch001.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 26,
+      "queueEntryId": "cp-bb-bb-3-i-cold-reactive-autoantibodies-fe7dec9505",
+      "sourceTopicId": "bb-3-i",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Cold Reactive Autoantibodies",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Cold Reactive Autoantibodies"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-001",
+        "path": "src/content/materials/abpathCpMaterialBatch001.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 27,
+      "queueEntryId": "cp-bb-bb-3-j-red-cell-genotyping-49fbf0981c",
+      "sourceTopicId": "bb-3-j",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Red Cell Genotyping",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "Red Cell Genotyping"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-001",
+        "path": "src/content/materials/abpathCpMaterialBatch001.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 28,
+      "queueEntryId": "cp-bb-bb-3-k-p1-antigen-a2de789811",
+      "sourceTopicId": "bb-3-k",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "P1 Antigen",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "RBCs and RBC Components",
+        "P1 Antigen"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-001",
+        "path": "src/content/materials/abpathCpMaterialBatch001.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 29,
+      "queueEntryId": "cp-bb-bb-4-anemia-and-red-blood-cell-transfusion-8fba1387d4",
+      "sourceTopicId": "bb-4",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Anemia and Red Blood Cell Transfusion",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Anemia and Red Blood Cell Transfusion"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-002",
+        "path": "src/content/materials/abpathCpMaterialBatch002.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 30,
+      "queueEntryId": "cp-bb-bb-5-apheresis-a35b4b338e",
+      "sourceTopicId": "bb-5",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Apheresis",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Apheresis"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-002",
+        "path": "src/content/materials/abpathCpMaterialBatch002.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 31,
+      "queueEntryId": "cp-bb-bb-5-a-plasma-exchange-for-igm-removal-072dd9a734",
+      "sourceTopicId": "bb-5-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Plasma Exchange for IgM Removal",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Apheresis",
+        "Plasma Exchange for IgM Removal"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-002",
+        "path": "src/content/materials/abpathCpMaterialBatch002.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 32,
+      "queueEntryId": "cp-bb-bb-5-b-coagulation-factor-return-post-tpe-0fe176a66a",
+      "sourceTopicId": "bb-5-b",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Coagulation Factor Return Post-TPE",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Apheresis",
+        "Coagulation Factor Return Post-TPE"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "materialized-review-queue",
+      "existingBatchRef": {
+        "batchId": "abpath-cp-material-batch-002",
+        "path": "src/content/materials/abpathCpMaterialBatch002.json",
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue"
+      },
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Review existing CP material batch row and attach faculty evidence before promotion."
+    },
+    {
+      "mapRow": 33,
+      "queueEntryId": "cp-bb-bb-6-hazards-of-transfusion-specific-adverse-events-8a05454610",
+      "sourceTopicId": "bb-6",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Hazards of Transfusion: Specific Adverse Events",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 34,
+      "queueEntryId": "cp-bb-bb-6-a-hemolytic-transfusion-reactions-996f19c838",
+      "sourceTopicId": "bb-6-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Hemolytic Transfusion Reactions",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Hemolytic Transfusion Reactions"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 35,
+      "queueEntryId": "cp-bb-bb-6-b-febrile-allergic-and-non-immune-transfusion-reactions-cb4a881404",
+      "sourceTopicId": "bb-6-b",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Febrile, Allergic, and Non-Immune Transfusion Reactions",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Febrile, Allergic, and Non-Immune Transfusion Reactions"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 36,
+      "queueEntryId": "cp-bb-bb-6-c-transfusion-associated-graft-versus-host-disease-333ee3be6d",
+      "sourceTopicId": "bb-6-c",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Transfusion-Associated Graft-Versus-Host Disease",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Transfusion-Associated Graft-Versus-Host Disease"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 37,
+      "queueEntryId": "cp-bb-bb-6-d-transfusion-induced-iron-overload-95f7d58c4d",
+      "sourceTopicId": "bb-6-d",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Transfusion-Induced Iron Overload",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Transfusion-Induced Iron Overload"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 38,
+      "queueEntryId": "cp-bb-bb-6-e-transfusion-related-acute-lung-injury-trali-162a4f5ae0",
+      "sourceTopicId": "bb-6-e",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Transfusion-Related Acute Lung Injury (TRALI)",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Transfusion-Related Acute Lung Injury (TRALI)"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 39,
+      "queueEntryId": "cp-bb-bb-6-f-vasovagal-and-hypovolemic-reactions-5feb473467",
+      "sourceTopicId": "bb-6-f",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Vasovagal and Hypovolemic Reactions",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events",
+        "Vasovagal and Hypovolemic Reactions"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 40,
+      "queueEntryId": "cp-bb-bb-8-infectious-hazards-of-transfusion-9d1cb8c135",
+      "sourceTopicId": "bb-8",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Infectious Hazards of Transfusion",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Infectious Hazards of Transfusion"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 41,
+      "queueEntryId": "cp-bb-bb-8-a-septic-transfusion-reactions-7fd750f6a3",
+      "sourceTopicId": "bb-8-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Septic Transfusion Reactions",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Infectious Hazards of Transfusion",
+        "Septic Transfusion Reactions"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 42,
+      "queueEntryId": "cp-bb-bb-8-b-prion-disease-transmission-cjd-b3ccbfdb39",
+      "sourceTopicId": "bb-8-b",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Prion Disease Transmission (CJD)",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Infectious Hazards of Transfusion",
+        "Prion Disease Transmission (CJD)"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 43,
+      "queueEntryId": "cp-bb-bb-10-surgery-patients-04ac9abf8f",
+      "sourceTopicId": "bb-10",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Surgery Patients",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Surgery Patients"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 44,
+      "queueEntryId": "cp-bb-bb-11-biovigilance-and-transfusion-related-immunomodulation-75a57b6da2",
+      "sourceTopicId": "bb-11",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Biovigilance and Transfusion-Related Immunomodulation",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Biovigilance and Transfusion-Related Immunomodulation"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 45,
+      "queueEntryId": "cp-bb-bb-12-platelets-6eb95f7256",
+      "sourceTopicId": "bb-12",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Platelets",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Platelets"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 46,
+      "queueEntryId": "cp-bb-bb-12-a-platelet-alloimmunization-0645469de1",
+      "sourceTopicId": "bb-12-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Platelet Alloimmunization",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Platelets",
+        "Platelet Alloimmunization"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 47,
+      "queueEntryId": "cp-bb-bb-12-b-platelet-transfusion-indications-and-dosing-02f1c53b8d",
+      "sourceTopicId": "bb-12-b",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Platelet Transfusion Indications and Dosing",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Platelets",
+        "Platelet Transfusion Indications and Dosing"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 48,
+      "queueEntryId": "cp-bb-bb-12-c-platelet-product-choice-in-leukemia-98bbd40931",
+      "sourceTopicId": "bb-12-c",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Platelet Product Choice in Leukemia",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Platelets",
+        "Platelet Product Choice in Leukemia"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 49,
+      "queueEntryId": "cp-bb-bb-12-d-corrected-platelet-count-increment-cci-e679dad38b",
+      "sourceTopicId": "bb-12-d",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Corrected Platelet Count Increment (CCI)",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Platelets",
+        "Corrected Platelet Count Increment (CCI)"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 50,
+      "queueEntryId": "cp-bb-bb-13-neutrophils-e726ad9125",
+      "sourceTopicId": "bb-13",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Neutrophils",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Neutrophils"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 51,
+      "queueEntryId": "cp-bb-bb-14-donors-and-donations-b4d31f816a",
+      "sourceTopicId": "bb-14",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Donors and Donations",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Donors and Donations"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 52,
+      "queueEntryId": "cp-bb-bb-14-a-donor-deferrals-incarceration-cjd-f5adb28504",
+      "sourceTopicId": "bb-14-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Donor Deferrals (Incarceration, CJD)",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Donors and Donations",
+        "Donor Deferrals (Incarceration, CJD)"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 53,
+      "queueEntryId": "cp-bb-bb-14-b-donation-frequency-and-volume-limits-570c31a122",
+      "sourceTopicId": "bb-14-b",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Donation Frequency and Volume Limits",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Donors and Donations",
+        "Donation Frequency and Volume Limits"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 54,
+      "queueEntryId": "cp-bb-bb-14-c-therapeutic-phlebotomy-use-48b742cd11",
+      "sourceTopicId": "bb-14-c",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Therapeutic Phlebotomy Use",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Donors and Donations",
+        "Therapeutic Phlebotomy Use"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 55,
+      "queueEntryId": "cp-bb-bb-15-obstetric-and-pediatric-patients-e5f4fc1e2e",
+      "sourceTopicId": "bb-15",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Obstetric and Pediatric Patients",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Obstetric and Pediatric Patients"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 56,
+      "queueEntryId": "cp-bb-bb-15-a-neonatal-alloimmune-thrombocytopenia-nait-cd1962658c",
+      "sourceTopicId": "bb-15-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Neonatal Alloimmune Thrombocytopenia (NAIT)",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Obstetric and Pediatric Patients",
+        "Neonatal Alloimmune Thrombocytopenia (NAIT)"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 57,
+      "queueEntryId": "cp-bb-bb-15-b-rh-immune-globulin-dosing-0903107b7f",
+      "sourceTopicId": "bb-15-b",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Rh Immune Globulin Dosing",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Obstetric and Pediatric Patients",
+        "Rh Immune Globulin Dosing"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 58,
+      "queueEntryId": "cp-bb-bb-16-hematopoietic-progenitor-cell-hpc-transplantation-316ed06d64",
+      "sourceTopicId": "bb-16",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Hematopoietic Progenitor Cell (HPC) Transplantation",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hematopoietic Progenitor Cell (HPC) Transplantation"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 59,
+      "queueEntryId": "cp-bb-bb-17-plasma-and-cryoprecipitate-31a7ed6395",
+      "sourceTopicId": "bb-17",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Plasma and Cryoprecipitate",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Plasma and Cryoprecipitate"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 60,
+      "queueEntryId": "cp-bb-bb-17-a-plasma-transfusion-guidelines-0401dab85e",
+      "sourceTopicId": "bb-17-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Plasma Transfusion Guidelines",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Plasma and Cryoprecipitate",
+        "Plasma Transfusion Guidelines"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 61,
+      "queueEntryId": "cp-bb-bb-17-b-cryoprecipitate-preparation-and-indications-3728a50527",
+      "sourceTopicId": "bb-17-b",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Cryoprecipitate Preparation and Indications",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Plasma and Cryoprecipitate",
+        "Cryoprecipitate Preparation and Indications"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 62,
+      "queueEntryId": "cp-bb-bb-17-c-fibrinogen-deficiency-treatment-0eb9d94b23",
+      "sourceTopicId": "bb-17-c",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Fibrinogen Deficiency Treatment",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Plasma and Cryoprecipitate",
+        "Fibrinogen Deficiency Treatment"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 63,
+      "queueEntryId": "cp-bb-bb-18-coagulation-factor-concentrates-dbb725a89a",
+      "sourceTopicId": "bb-18",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Coagulation Factor Concentrates",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Coagulation Factor Concentrates"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 64,
+      "queueEntryId": "cp-bb-bb-18-a-prothrombin-complex-concentrate-pcc-882603a34c",
+      "sourceTopicId": "bb-18-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Prothrombin Complex Concentrate (PCC)",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Coagulation Factor Concentrates",
+        "Prothrombin Complex Concentrate (PCC)"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 65,
+      "queueEntryId": "cp-hp-hp-hematopathology-e31b613d34",
+      "sourceTopicId": "hp",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Hematopathology",
+      "categoryId": "hp",
+      "materialKind": "header",
+      "title": "Hematopathology",
+      "path": [
+        "Hematopathology"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "hematopathology_lab_interpretation",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "hemoglobin or smear result pattern",
+        "confirmatory test decision",
+        "clinical correlation"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 66,
+      "queueEntryId": "cp-hp-hp-3-red-blood-cell-disorders-c1223790b8",
+      "sourceTopicId": "hp-3",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Hematopathology",
+      "categoryId": "hp",
+      "materialKind": "subheader",
+      "title": "Red Blood Cell Disorders",
+      "path": [
+        "Hematopathology",
+        "Red Blood Cell Disorders"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 67,
+      "queueEntryId": "cp-hp-hp-3-a-hemoglobinopathy-analysis-2aa79c6b33",
+      "sourceTopicId": "hp-3-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Hematopathology",
+      "categoryId": "hp",
+      "materialKind": "subject",
+      "title": "Hemoglobinopathy Analysis",
+      "path": [
+        "Hematopathology",
+        "Red Blood Cell Disorders",
+        "Hemoglobinopathy Analysis"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 68,
+      "queueEntryId": "cp-hp-hp-3-a-i-hemoglobin-variants-and-chains-253f31af72",
+      "sourceTopicId": "hp-3-a-i",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Hematopathology",
+      "categoryId": "hp",
+      "materialKind": "topic",
+      "title": "Hemoglobin Variants and Chains",
+      "path": [
+        "Hematopathology",
+        "Red Blood Cell Disorders",
+        "Hemoglobinopathy Analysis",
+        "Hemoglobin Variants and Chains"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 69,
+      "queueEntryId": "cp-hp-hp-3-a-x-sickle-cell-and-other-hemoglobinopathies-4c949065ea",
+      "sourceTopicId": "hp-3-a-x",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Hematopathology",
+      "categoryId": "hp",
+      "materialKind": "topic",
+      "title": "Sickle Cell & Other Hemoglobinopathies",
+      "path": [
+        "Hematopathology",
+        "Red Blood Cell Disorders",
+        "Hemoglobinopathy Analysis",
+        "Sickle Cell & Other Hemoglobinopathies"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "transfusion_medicine",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "product or procedure decision",
+        "compatibility or indication check",
+        "handoff trigger"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 70,
+      "queueEntryId": "cp-mb-mb-microbiology-80eae88525",
+      "sourceTopicId": "mb",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Microbiology",
+      "categoryId": "mb",
+      "materialKind": "header",
+      "title": "Microbiology",
+      "path": [
+        "Microbiology"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "microbiology_lab_interpretation",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "organism or syndrome branch",
+        "test selection decision",
+        "reporting consequence"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 71,
+      "queueEntryId": "cp-mb-mb-1-parasitology-e571f97bb6",
+      "sourceTopicId": "mb-1",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Microbiology",
+      "categoryId": "mb",
+      "materialKind": "subheader",
+      "title": "Parasitology",
+      "path": [
+        "Microbiology",
+        "Parasitology"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "microbiology_lab_interpretation",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "organism or syndrome branch",
+        "test selection decision",
+        "reporting consequence"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 72,
+      "queueEntryId": "cp-mb-mb-2-bacteriology-5725a2ba3c",
+      "sourceTopicId": "mb-2",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Microbiology",
+      "categoryId": "mb",
+      "materialKind": "subheader",
+      "title": "Bacteriology",
+      "path": [
+        "Microbiology",
+        "Bacteriology"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "microbiology_lab_interpretation",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "organism or syndrome branch",
+        "test selection decision",
+        "reporting consequence"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 73,
+      "queueEntryId": "cp-mb-mb-3-mycology-5cec6e9661",
+      "sourceTopicId": "mb-3",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Microbiology",
+      "categoryId": "mb",
+      "materialKind": "subheader",
+      "title": "Mycology",
+      "path": [
+        "Microbiology",
+        "Mycology"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "microbiology_lab_interpretation",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "organism or syndrome branch",
+        "test selection decision",
+        "reporting consequence"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 74,
+      "queueEntryId": "cp-mb-mb-4-virology-06af05c617",
+      "sourceTopicId": "mb-4",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Microbiology",
+      "categoryId": "mb",
+      "materialKind": "subheader",
+      "title": "Virology",
+      "path": [
+        "Microbiology",
+        "Virology"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "microbiology_lab_interpretation",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "organism or syndrome branch",
+        "test selection decision",
+        "reporting consequence"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 75,
+      "queueEntryId": "cp-cp-cp-chemical-pathology-52cbbf0dcc",
+      "sourceTopicId": "cp",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Chemical Pathology",
+      "categoryId": "cp",
+      "materialKind": "header",
+      "title": "Chemical Pathology",
+      "path": [
+        "Chemical Pathology"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "clinical_chemistry",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "method or analyte context",
+        "preanalytic variable",
+        "interpretive caveat"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 76,
+      "queueEntryId": "cp-cp-cp-1-analytical-techniques-and-safety-48fb4d25a2",
+      "sourceTopicId": "cp-1",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Chemical Pathology",
+      "categoryId": "cp",
+      "materialKind": "subheader",
+      "title": "Analytical Techniques and Safety",
+      "path": [
+        "Chemical Pathology",
+        "Analytical Techniques and Safety"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "clinical_chemistry",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "method or analyte context",
+        "preanalytic variable",
+        "interpretive caveat"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 77,
+      "queueEntryId": "cp-cp-cp-1-a-nephelometry-methods-076cbff60d",
+      "sourceTopicId": "cp-1-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Chemical Pathology",
+      "categoryId": "cp",
+      "materialKind": "subject",
+      "title": "Nephelometry Methods",
+      "path": [
+        "Chemical Pathology",
+        "Analytical Techniques and Safety",
+        "Nephelometry Methods"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "clinical_chemistry",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "method or analyte context",
+        "preanalytic variable",
+        "interpretive caveat"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 78,
+      "queueEntryId": "cp-cp-cp-2-specimen-collection-and-processing-aa00f26271",
+      "sourceTopicId": "cp-2",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Chemical Pathology",
+      "categoryId": "cp",
+      "materialKind": "subheader",
+      "title": "Specimen Collection and Processing",
+      "path": [
+        "Chemical Pathology",
+        "Specimen Collection and Processing"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "clinical_chemistry",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "method or analyte context",
+        "preanalytic variable",
+        "interpretive caveat"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 79,
+      "queueEntryId": "cp-cp-cp-3-method-validation-and-qc-566e6e2e82",
+      "sourceTopicId": "cp-3",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Chemical Pathology",
+      "categoryId": "cp",
+      "materialKind": "subheader",
+      "title": "Method Validation & QC",
+      "path": [
+        "Chemical Pathology",
+        "Method Validation & QC"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "clinical_chemistry_quality_statistics",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "formula or measurement rule",
+        "variables with units",
+        "acceptance or rejection decision"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 80,
+      "queueEntryId": "cp-cp-cp-3-a-analytical-measurement-range-amr-0361740d59",
+      "sourceTopicId": "cp-3-a",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Chemical Pathology",
+      "categoryId": "cp",
+      "materialKind": "subject",
+      "title": "Analytical Measurement Range (AMR)",
+      "path": [
+        "Chemical Pathology",
+        "Method Validation & QC",
+        "Analytical Measurement Range (AMR)"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "clinical_chemistry_quality_statistics",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "formula or measurement rule",
+        "variables with units",
+        "acceptance or rejection decision"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 81,
+      "queueEntryId": "cp-cp-cp-3-b-carryover-83e3941e7f",
+      "sourceTopicId": "cp-3-b",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Chemical Pathology",
+      "categoryId": "cp",
+      "materialKind": "subject",
+      "title": "Carryover",
+      "path": [
+        "Chemical Pathology",
+        "Method Validation & QC",
+        "Carryover"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "clinical_chemistry_quality_statistics",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "formula or measurement rule",
+        "variables with units",
+        "acceptance or rejection decision"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 82,
+      "queueEntryId": "cp-cp-cp-3-c-coefficient-of-variation-cv-cc7655fd76",
+      "sourceTopicId": "cp-3-c",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Chemical Pathology",
+      "categoryId": "cp",
+      "materialKind": "subject",
+      "title": "Coefficient of Variation (CV)",
+      "path": [
+        "Chemical Pathology",
+        "Method Validation & QC",
+        "Coefficient of Variation (CV)"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "clinical_chemistry_quality_statistics",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "formula or measurement rule",
+        "variables with units",
+        "acceptance or rejection decision"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    },
+    {
+      "mapRow": 83,
+      "queueEntryId": "cp-cp-cp-3-d-linearity-3487bed084",
+      "sourceTopicId": "cp-3-d",
+      "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+      "subject": "Chemical Pathology",
+      "categoryId": "cp",
+      "materialKind": "subject",
+      "title": "Linearity",
+      "path": [
+        "Chemical Pathology",
+        "Method Validation & QC",
+        "Linearity"
+      ],
+      "priority": "unprioritized-cp-queue",
+      "queueReviewStatus": "unreviewed",
+      "queuePromotionStatus": "generation-queue",
+      "workedExampleDomain": "clinical_chemistry_quality_statistics",
+      "workedExampleRequired": true,
+      "requiredExampleShape": [
+        "bench-facing clinical question",
+        "representative laboratory artifact",
+        "stepwise interpretation path",
+        "safety or escalation stop",
+        "faculty review checklist",
+        "formula or measurement rule",
+        "variables with units",
+        "acceptance or rejection decision"
+      ],
+      "currentCoverageStatus": "unmaterialized-generation-queue",
+      "existingBatchRef": null,
+      "promotion": {
+        "allowed": false,
+        "reason": "Coverage mapping does not generate or promote worked examples."
+      },
+      "recommendedNextAction": "Create a bounded CP material batch row with a bench-facing worked example requirement."
+    }
+  ]
+}
