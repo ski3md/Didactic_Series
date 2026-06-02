@@ -1,0 +1,18 @@
+{
+  "route": "http://127.0.0.1:5178/Didactic_Series/didactics/?workspace=tutorials",
+  "captured_at": "2026-06-02T12:25:23.273Z",
+  "viewport": {
+    "width": 1440,
+    "height": 1200
+  },
+  "visible_major_topics": true,
+  "visible_clinical_task_label": true,
+  "visible_tutorial_count_metadata": true,
+  "card_text_samples": [
+    "START HERE\nBlood Banking / Transfusion Medicine\n\nBegin with the recommended topic and move into the first diagnostic focus.",
+    "START HERE\nHematopoietic Progenitor Cell (HPC) Transplantation\n\nHematopoietic Progenitor Cell (HPC) Transplantation\n\nBlood Banking / Transfusion Medicine\n123 tutorials",
+    "CLINICAL TASK\nSoft Tissue\n\nSoft Tissue\n\nBone and Soft Tissue\n17 tutorials",
+    "CLINICAL TASK\nNormal Anatomy and Histology\n\nDuctal carcinoma in situ (DCIS)\n\nBreast\n16 tutorials"
+  ],
+  "screenshot": "/Volumes/DB_External/ExternalOffice/SyncedSources/Documents/GitHub/Didactic_Series/reports/ui_walkthroughs/2026-06-02-didactic-tutorials/01-task-first-tutorial-cards.png"
+}

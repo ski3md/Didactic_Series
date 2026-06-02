@@ -241,6 +241,35 @@ const summarizeTutorialPitfall = (tutorial: DidacticTutorialRecord | null) => {
   );
 };
 
+const summarizeTutorialTask = (tutorial: DidacticTutorialRecord | null, fallback?: string) => {
+  if (!tutorial) {
+    return normalizePublicStudyLabel(fallback ?? 'Choose a diagnostic task');
+  }
+
+  return normalizePublicStudyLabel(
+    tutorial.cpGovernance?.abpathTestableTask?.[0] ??
+      tutorial.cpGovernance?.boardMasteryFocusTitle ??
+      deriveTutorialSubtopic(tutorial)?.label ??
+      tutorial.abpathScope?.topic ??
+      tutorial.title
+  );
+};
+
+const summarizeTutorialTaskCue = (tutorial: DidacticTutorialRecord | null) => {
+  if (!tutorial) {
+    return 'Open this task, then choose the strongest reviewed lesson.';
+  }
+
+  return (
+    tutorial.cpGovernance?.mustKnowConcepts?.[0] ??
+    tutorial.cpGovernance?.mustNotMissPitfalls?.[0] ??
+    tutorial.abpathScope?.title ??
+    tutorial.summary
+  );
+};
+
+const formatTutorialCount = (count: number) => `${count} tutorial${count === 1 ? '' : 's'}`;
+
 const findLastVisitedTutorialId = (entry?: ActiveStudyDestination | null): string | null => {
   if (!entry) {
     return null;
@@ -1112,25 +1141,33 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                   </button>
                 </div>
                 <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                  {tutorialRoots.slice(0, preferences.focusMode ? 3 : 4).map((root, index) => (
-                    <button
-                      key={root}
-                      type="button"
-                      onClick={() => openTopicOverview(root)}
-                      className="rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
-                    >
-                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        {index === 0 ? 'Start here' : 'Major topic'}
-                      </div>
-                      <div className="font-semibold text-slate-900">{normalizePublicStudyLabel(root)}</div>
-                      <div className="mt-2 text-sm text-slate-600">{(tutorialsByRoot[root] ?? []).length} tutorial{(tutorialsByRoot[root] ?? []).length === 1 ? '' : 's'}</div>
-                      <div className="mt-2 text-sm text-slate-600">
-                        {(subtopicsByRoot[root] ?? []).length > 0
-                          ? `${normalizePublicStudyLabel((subtopicsByRoot[root] ?? [])[0]?.label ?? 'First diagnostic focus')} is ready first.`
-                          : summarizeTutorialScope((tutorialsByRoot[root] ?? [])[0] ?? null)}
-                      </div>
-                    </button>
-                  ))}
+                  {tutorialRoots.slice(0, preferences.focusMode ? 3 : 4).map((root, index) => {
+                    const rootTutorials = tutorialsByRoot[root] ?? [];
+                    const firstSubtopic = (subtopicsByRoot[root] ?? [])[0] ?? null;
+                    const leadTutorial = firstSubtopic?.tutorials[0] ?? rootTutorials[0] ?? null;
+                    return (
+                      <button
+                        key={root}
+                        type="button"
+                        onClick={() => openTopicOverview(root)}
+                        className="rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
+                      >
+                        <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">
+                          {index === 0 ? 'Start here' : 'Clinical task'}
+                        </div>
+                        <div className="mt-2 font-serif text-lg font-semibold leading-snug text-slate-900">
+                          {summarizeTutorialTask(leadTutorial, firstSubtopic?.label ?? root)}
+                        </div>
+                        <p className="mt-2 text-sm leading-6 text-slate-600">
+                          {summarizeTutorialTaskCue(leadTutorial)}
+                        </p>
+                        <div className="mt-3 flex flex-wrap gap-2 text-xs font-medium text-slate-600">
+                          <span className="rounded-full bg-slate-100 px-2.5 py-1">{normalizePublicStudyLabel(root)}</span>
+                          <span className="rounded-full bg-slate-100 px-2.5 py-1">{formatTutorialCount(rootTutorials.length)}</span>
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
               </Card>
             </>
@@ -1183,25 +1220,34 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
               </Card>
               <div className="grid gap-4 lg:grid-cols-2">
                 {activeSubtopics.length > 0 ? (
-                  activeSubtopics.map((scope, index) => (
-                    <button
-                      key={scope.id}
-                      type="button"
-                      onClick={() => openSubtopicOverview(activeRoot, scope.id)}
-                      className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
-                    >
-                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        {index === 0 ? 'Start here' : 'Diagnostic focus'}
-                      </div>
-                      <div className="mt-3 font-serif text-xl font-semibold text-slate-900">{normalizePublicStudyLabel(scope.label)}</div>
-                      <p className="mt-2 text-sm text-slate-600">
-                        {scope.tutorials.length} tutorial{scope.tutorials.length === 1 ? '' : 's'} in this area.
-                      </p>
-                      {index === 0 && (
-                        <div className="mt-3 text-sm font-semibold text-sky-700">Open first diagnostic focus</div>
-                      )}
-                    </button>
-                  ))
+                  activeSubtopics.map((scope, index) => {
+                    const leadTutorial = scope.tutorials[0] ?? null;
+                    return (
+                      <button
+                        key={scope.id}
+                        type="button"
+                        onClick={() => openSubtopicOverview(activeRoot, scope.id)}
+                        className="rounded-xl border border-slate-200 bg-white p-5 text-left transition hover:border-sky-300"
+                      >
+                        <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">
+                          {index === 0 ? 'Start here' : 'Clinical task'}
+                        </div>
+                        <div className="mt-3 font-serif text-xl font-semibold leading-snug text-slate-900">
+                          {summarizeTutorialTask(leadTutorial, scope.label)}
+                        </div>
+                        <p className="mt-2 text-sm leading-6 text-slate-600">
+                          {summarizeTutorialTaskCue(leadTutorial)}
+                        </p>
+                        <div className="mt-3 flex flex-wrap gap-2 text-xs font-medium text-slate-600">
+                          <span className="rounded-full bg-slate-100 px-2.5 py-1">{normalizePublicStudyLabel(scope.label)}</span>
+                          <span className="rounded-full bg-slate-100 px-2.5 py-1">{formatTutorialCount(scope.tutorials.length)}</span>
+                        </div>
+                        {index === 0 && (
+                          <div className="mt-3 text-sm font-semibold text-sky-700">Open first diagnostic focus</div>
+                        )}
+                      </button>
+                    );
+                  })
                 ) : (
                   <div className="lg:col-span-2 space-y-4">
                     <Card>
@@ -1222,11 +1268,12 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                             onClick={() => openTutorial(tutorial.id)}
                           className="w-full rounded-xl border border-slate-200 bg-white p-4 text-left transition hover:border-sky-300"
                         >
-                            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                              {index === 0 ? 'Start here' : 'Lesson'}
+                            <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">
+                              {index === 0 ? 'Start here' : 'Clinical task'}
                             </div>
-                            <h3 className="mt-2 font-serif text-lg font-semibold text-slate-900">{tutorial.title}</h3>
-                            <p className="mt-2 text-sm text-slate-600">{tutorial.summary}</p>
+                            <h3 className="mt-2 font-serif text-lg font-semibold leading-snug text-slate-900">{summarizeTutorialTask(tutorial)}</h3>
+                            <p className="mt-2 text-sm leading-6 text-slate-600">{summarizeTutorialTaskCue(tutorial)}</p>
+                            <div className="mt-3 text-xs font-medium text-slate-500">{tutorial.title}</div>
                           </button>
                         ))}
                       </div>
@@ -1284,11 +1331,12 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="min-w-0">
-                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                          {index === 0 ? 'Start here' : 'Lesson'}
+                        <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">
+                          {index === 0 ? 'Start here' : 'Clinical task'}
                         </div>
-                        <h3 className="mt-2 font-serif text-lg font-semibold text-slate-900">{tutorial.title}</h3>
-                        <p className="mt-2 text-sm text-slate-600">{normalizePublicStudyPath(tutorial.abpathScope?.primaryPath) || tutorial.summary}</p>
+                        <h3 className="mt-2 font-serif text-lg font-semibold leading-snug text-slate-900">{summarizeTutorialTask(tutorial)}</h3>
+                        <p className="mt-2 text-sm leading-6 text-slate-600">{summarizeTutorialTaskCue(tutorial)}</p>
+                        <p className="mt-2 text-xs font-medium text-slate-500">{normalizePublicStudyPath(tutorial.abpathScope?.primaryPath) || tutorial.title}</p>
                         {!preferences.focusMode && <p className="mt-3 text-sm text-slate-600">{tutorial.summary}</p>}
                       </div>
                       <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
