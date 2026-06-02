@@ -403,6 +403,10 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
     () => (activeMorphologyIntentTag ? filteredSupplementalImagesWithMorphology.slice(0, 4) : []),
     [activeMorphologyIntentTag, filteredSupplementalImagesWithMorphology]
   );
+  const morphologyGatewayGridClass =
+    morphologyGatewayCards.length < 3
+      ? 'grid gap-3 lg:grid-cols-2'
+      : 'grid gap-3 md:grid-cols-2 xl:grid-cols-4';
 
   useEffect(() => {
     const intent = consumeReferenceLibraryIntent();
@@ -779,67 +783,99 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                 Choose a morphology pattern and jump directly into example images, differential thinking, and the most relevant review context.
               </p>
             </div>
-            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            <div className={morphologyGatewayGridClass}>
               {morphologyGatewayCards.map((card) => (
-                <button
+                <article
                   key={card.tag}
-                  type="button"
-                  onClick={() => {
-                    setSelectedMorphologyTag(card.tag);
-                    setSupplementalSearch(card.tag);
-                    applyPreset({
-                      title: `${card.title} differential`,
-                      description: card.description,
-                      morphologyTag: card.tag,
-                      focusTerms: card.focusTerms,
-                    });
-                  }}
-                  className="overflow-hidden rounded-2xl border border-slate-200 bg-white text-left transition hover:border-slate-300 hover:shadow-sm"
+                  aria-label={`${card.title} morphology gateway`}
+                  className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm"
                 >
-                  <div className="grid grid-cols-3 gap-1 bg-slate-950 p-1">
-                    {card.previewImages.length > 0 ? (
-                      card.previewImages.map((image) => (
-                        <img
-                          key={image.id}
-                          src={supplementalImageSrc(image)}
-                          alt={normalizePathologyTitle(image.title)}
-                          className="h-24 w-full bg-slate-900 object-contain"
-                          loading="lazy"
-                        />
-                      ))
-                    ) : (
-                      <div className="col-span-3 flex h-24 items-center justify-center text-xs font-semibold uppercase tracking-wide text-slate-300">
-                        Preview pending
-                      </div>
-                    )}
-                  </div>
-                  <div className="space-y-2 p-4">
-                    <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">Diagnostic approach</div>
-                    <div className="text-lg font-semibold capitalize text-slate-950">{card.title}</div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {[card.uncertainty, card.operationalState].map((signal) => (
-                        <span
-                          key={`${card.tag}-${signal.label}`}
-                          className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${signal.tone}`}
-                        >
-                          {signal.label}
-                        </span>
-                      ))}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedMorphologyTag(card.tag);
+                      setSupplementalSearch(card.tag);
+                      applyPreset({
+                        title: `${card.title} differential`,
+                        description: card.description,
+                        morphologyTag: card.tag,
+                        focusTerms: card.focusTerms,
+                      });
+                    }}
+                    className="block w-full text-left transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                  >
+                    <div className="grid grid-cols-3 gap-1 bg-slate-950 p-1">
+                      {card.previewImages.length > 0 ? (
+                        card.previewImages.map((image) => (
+                          <img
+                            key={image.id}
+                            src={supplementalImageSrc(image)}
+                            alt={normalizePathologyTitle(image.title)}
+                            className="h-20 w-full bg-slate-900 object-contain"
+                            loading="lazy"
+                          />
+                        ))
+                      ) : (
+                        <div className="col-span-3 flex h-20 items-center justify-center text-xs font-semibold uppercase tracking-wide text-slate-300">
+                          Preview pending
+                        </div>
+                      )}
                     </div>
-                    <p className="text-sm leading-6 text-slate-700">{card.description}</p>
-                    <div className="grid gap-2 sm:grid-cols-2">
-                      <div className="rounded-xl bg-slate-50 px-3 py-2">
+                    <div className="space-y-2 p-3">
+                      <div className="text-[11px] font-semibold uppercase tracking-wide text-sky-700">Diagnostic approach</div>
+                      <div className="text-base font-semibold capitalize text-slate-950">{card.title}</div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {[card.uncertainty, card.operationalState].map((signal) => (
+                          <span
+                            key={`${card.tag}-${signal.label}`}
+                            className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${signal.tone}`}
+                          >
+                            {signal.label}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-xs leading-5 text-slate-700">{card.description}</p>
+                      {card.immunophenotype && (
+                        <div className="flex flex-wrap gap-1.5">
+                          {card.immunophenotype.markers.slice(0, 4).map((marker) => (
+                            <span
+                              key={`${card.tag}-${marker}-compact`}
+                              className="rounded-full border border-sky-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-sky-900"
+                            >
+                              {marker}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      <div className="flex flex-wrap gap-1.5">
+                        {card.focusTerms.slice(0, 3).map((term) => (
+                          <span
+                            key={`${card.tag}-${term}`}
+                            className="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-700"
+                          >
+                            {term}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </button>
+                  <details className="border-t border-slate-100 bg-slate-50 px-3 py-2">
+                    <summary className="cursor-pointer text-[11px] font-semibold uppercase tracking-wide text-slate-600">
+                      Reasoning details
+                    </summary>
+                    <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                      <div className="rounded-lg bg-white px-3 py-2">
                         <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Uncertainty state</div>
                         <div className="mt-1 text-sm font-semibold text-slate-900">{card.uncertainty.label}</div>
                         <div className="text-xs text-slate-600">{card.uncertainty.cue}</div>
                       </div>
-                      <div className="rounded-xl bg-slate-50 px-3 py-2">
+                      <div className="rounded-lg bg-white px-3 py-2">
                         <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Operational state</div>
                         <div className="mt-1 text-sm font-semibold text-slate-900">{card.operationalState.label}</div>
                         <div className="text-xs text-slate-600">{card.operationalState.cue}</div>
                       </div>
                     </div>
-                    <div className="rounded-xl border border-slate-200 bg-white px-3 py-3">
+                    <div className="mt-3 rounded-lg border border-slate-200 bg-white px-3 py-3">
                       <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Reasoning progression</div>
                       <div className="mt-3 grid gap-2">
                         {card.reasoningProgression.map((step, index) => (
@@ -856,7 +892,7 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                       </div>
                     </div>
                     {card.immunophenotype && (
-                      <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-3">
+                      <div className="mt-3 rounded-lg border border-slate-200 bg-white px-3 py-3">
                         <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{card.immunophenotype.title}</div>
                         <div className="mt-1 text-xs leading-5 text-slate-700">{card.immunophenotype.description}</div>
                         <div className="mt-2 flex flex-wrap gap-1.5">
@@ -871,18 +907,8 @@ const ReferenceLibrary: React.FC<ReferenceLibraryProps> = ({ user }) => {
                         </div>
                       </div>
                     )}
-                    <div className="flex flex-wrap gap-1.5">
-                      {card.focusTerms.slice(0, 3).map((term) => (
-                        <span
-                          key={`${card.tag}-${term}`}
-                          className="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-700"
-                        >
-                          {term}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </button>
+                  </details>
+                </article>
               ))}
             </div>
           </div>

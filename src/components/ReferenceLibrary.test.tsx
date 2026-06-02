@@ -88,20 +88,22 @@ describe('ReferenceLibrary', () => {
     expect(await screen.findByText('Morphology-first review')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /start with the closest pattern/i })).toBeInTheDocument();
     const gatewayButton = (await screen.findAllByRole('button', { name: /small blue cell/i }))[0];
-    expect(within(gatewayButton).getByText('Immunophenotype branch')).toBeInTheDocument();
-    expect(
-      within(gatewayButton).getByText('Sort the small round blue cell differential by lineage before naming a tumor.')
-    ).toBeInTheDocument();
-    expect(within(gatewayButton).getAllByText('Differential only').length).toBeGreaterThan(0);
-    expect(within(gatewayButton).getAllByText('Ancillary pending').length).toBeGreaterThan(0);
-    expect(within(gatewayButton).getByText('Reasoning progression')).toBeInTheDocument();
-    expect(within(gatewayButton).getByText('pattern')).toBeInTheDocument();
-    expect(within(gatewayButton).getByText('compartment')).toBeInTheDocument();
-    expect(within(gatewayButton).getByText('differential')).toBeInTheDocument();
-    expect(within(gatewayButton).getByText('ancillary')).toBeInTheDocument();
-    expect(within(gatewayButton).getByText('wording')).toBeInTheDocument();
     expect(within(gatewayButton).getByText('CD99')).toBeInTheDocument();
-    expect(within(gatewayButton).getByText('NKX2.2')).toBeInTheDocument();
+    const gatewayArticle = screen.getByRole('article', { name: /small blue cell morphology gateway/i });
+    expect(within(gatewayArticle).getByText('Reasoning details')).toBeInTheDocument();
+    expect(within(gatewayArticle).getByText('Immunophenotype branch')).toBeInTheDocument();
+    expect(within(gatewayArticle).getByText('NKX2.2')).toBeInTheDocument();
+    expect(
+      within(gatewayArticle).getByText('Sort the small round blue cell differential by lineage before naming a tumor.')
+    ).toBeInTheDocument();
+    expect(within(gatewayArticle).getAllByText('Differential only').length).toBeGreaterThan(0);
+    expect(within(gatewayArticle).getAllByText('Ancillary pending').length).toBeGreaterThan(0);
+    expect(within(gatewayArticle).getByText('Reasoning progression')).toBeInTheDocument();
+    expect(within(gatewayArticle).getByText('pattern')).toBeInTheDocument();
+    expect(within(gatewayArticle).getByText('compartment')).toBeInTheDocument();
+    expect(within(gatewayArticle).getByText('differential')).toBeInTheDocument();
+    expect(within(gatewayArticle).getByText('ancillary')).toBeInTheDocument();
+    expect(within(gatewayArticle).getByText('wording')).toBeInTheDocument();
   });
 
   it('shows reasoning progression on image cards and updates the review context from morphology-first selection', async () => {
