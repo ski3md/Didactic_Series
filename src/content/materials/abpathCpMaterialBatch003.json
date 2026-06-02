@@ -1,0 +1,648 @@
+{
+  "version": "abpath-cp-material-batch.v1",
+  "batchId": "abpath-cp-material-batch-003",
+  "generatedAt": "2026-06-02T03:52:58.302Z",
+  "purpose": "Third bounded CP materialization slice from the worked-example coverage map; review-queue only, not promoted teaching truth.",
+  "selection": {
+    "sourceQueuePath": "src/content/materials/abpathMaterialExpansionQueue.json",
+    "sourceCoverageMapPath": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+    "sourceQueueVersion": "abpath-material-expansion-queue.v1",
+    "domain": "CP",
+    "selectionRationale": "First ten unmaterialized CP worked-example coverage rows after CP batches 001 and 002.",
+    "queueEntryIds": [
+      "cp-bb-bb-blood-banking-transfusion-medicine-dbf7f42282",
+      "cp-bb-bb-1-clinical-practice-dafc3e1149",
+      "cp-bb-bb-1-a-autoimmune-hemolytic-anemia-2b8fb5c258",
+      "cp-bb-bb-1-b-paroxysmal-nocturnal-hemoglobinuria-2adfcdef45",
+      "cp-bb-bb-1-c-anemia-in-oncology-patients-9bea48a011",
+      "cp-bb-bb-1-d-immune-thrombocytopenia-1d2da677f2",
+      "cp-bb-bb-1-e-bleeding-from-coagulation-defects-d99172de51",
+      "cp-bb-bb-1-e-i-cirrhosis-coagulopathy-b46e5d074b",
+      "cp-bb-bb-1-e-ii-drug-induced-hemolytic-anemia-2406b71689",
+      "cp-bb-bb-1-e-iv-acquired-coagulation-factor-inhibitors-20a4348423"
+    ],
+    "excludedPriorBatchIds": [
+      "abpath-cp-material-batch-001",
+      "abpath-cp-material-batch-002"
+    ]
+  },
+  "totals": {
+    "rows": 10,
+    "reviewStatus": {
+      "unreviewed": 10
+    },
+    "promotionStatus": {
+      "review-queue": 10
+    },
+    "workedExampleDomains": {
+      "transfusion_medicine": 10
+    }
+  },
+  "promotionGuardrails": [
+    "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+    "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+    "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+    "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+  ],
+  "rows": [
+    {
+      "batchRowId": "abpath-cp-material-batch-003-row-01",
+      "queueEntryId": "cp-bb-bb-blood-banking-transfusion-medicine-dbf7f42282",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "header",
+      "title": "Blood Banking/Transfusion Medicine",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-003-row-02",
+      "queueEntryId": "cp-bb-bb-1-clinical-practice-dafc3e1149",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Clinical Practice",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-003-row-03",
+      "queueEntryId": "cp-bb-bb-1-a-autoimmune-hemolytic-anemia-2b8fb5c258",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Autoimmune Hemolytic Anemia",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Autoimmune Hemolytic Anemia"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Autoimmune Hemolytic Anemia",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-a",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-003-row-04",
+      "queueEntryId": "cp-bb-bb-1-b-paroxysmal-nocturnal-hemoglobinuria-2adfcdef45",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Paroxysmal Nocturnal Hemoglobinuria",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Paroxysmal Nocturnal Hemoglobinuria"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Paroxysmal Nocturnal Hemoglobinuria",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-b",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-003-row-05",
+      "queueEntryId": "cp-bb-bb-1-c-anemia-in-oncology-patients-9bea48a011",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Anemia in Oncology Patients",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Anemia in Oncology Patients"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Anemia in Oncology Patients",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-c",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-003-row-06",
+      "queueEntryId": "cp-bb-bb-1-d-immune-thrombocytopenia-1d2da677f2",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Immune Thrombocytopenia",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Immune Thrombocytopenia"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Immune Thrombocytopenia",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-d",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-003-row-07",
+      "queueEntryId": "cp-bb-bb-1-e-bleeding-from-coagulation-defects-d99172de51",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Bleeding from Coagulation Defects",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Bleeding from Coagulation Defects"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Bleeding from Coagulation Defects",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-e",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-003-row-08",
+      "queueEntryId": "cp-bb-bb-1-e-i-cirrhosis-coagulopathy-b46e5d074b",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "topic",
+      "title": "Cirrhosis Coagulopathy",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Bleeding from Coagulation Defects",
+        "Cirrhosis Coagulopathy"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Bleeding from Coagulation Defects > Cirrhosis Coagulopathy",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-e-i",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-003-row-09",
+      "queueEntryId": "cp-bb-bb-1-e-ii-drug-induced-hemolytic-anemia-2406b71689",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "topic",
+      "title": "Drug-Induced Hemolytic Anemia",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Bleeding from Coagulation Defects",
+        "Drug-Induced Hemolytic Anemia"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Bleeding from Coagulation Defects > Drug-Induced Hemolytic Anemia",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-e-ii",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-003-row-10",
+      "queueEntryId": "cp-bb-bb-1-e-iv-acquired-coagulation-factor-inhibitors-20a4348423",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Acquired Coagulation Factor Inhibitors",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Acquired Coagulation Factor Inhibitors"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Acquired Coagulation Factor Inhibitors",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-e-iv",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    }
+  ]
+}

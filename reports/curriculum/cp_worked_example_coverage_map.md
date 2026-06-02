@@ -1,6 +1,6 @@
 # CP Worked-Example Coverage Map
 
-Generated: 2026-06-02T03:46:25.848Z
+Generated: 2026-06-02T03:52:57.970Z
 
 ## Scope
 
@@ -15,8 +15,8 @@ Generated: 2026-06-02T03:46:25.848Z
 
 - CP rows: 83
 - Worked-example required rows: 83
-- Materialized review-queue rows: 13
-- Unmaterialized generation-queue rows: 70
+- Materialized review-queue rows: 23
+- Unmaterialized generation-queue rows: 60
 
 ## Worked-Example Domains
 
@@ -39,16 +39,16 @@ Generated: 2026-06-02T03:46:25.848Z
 
 | # | Queue ID | Subject | Title | Domain | Coverage | Next action |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | cp-bb-bb-blood-banking-transfusion-medicine-dbf7f42282 | Blood Banking/Transfusion Medicine | Blood Banking/Transfusion Medicine | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
-| 2 | cp-bb-bb-1-clinical-practice-dafc3e1149 | Blood Banking/Transfusion Medicine | Clinical Practice | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
-| 3 | cp-bb-bb-1-a-autoimmune-hemolytic-anemia-2b8fb5c258 | Blood Banking/Transfusion Medicine | Autoimmune Hemolytic Anemia | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
-| 4 | cp-bb-bb-1-b-paroxysmal-nocturnal-hemoglobinuria-2adfcdef45 | Blood Banking/Transfusion Medicine | Paroxysmal Nocturnal Hemoglobinuria | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
-| 5 | cp-bb-bb-1-c-anemia-in-oncology-patients-9bea48a011 | Blood Banking/Transfusion Medicine | Anemia in Oncology Patients | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
-| 6 | cp-bb-bb-1-d-immune-thrombocytopenia-1d2da677f2 | Blood Banking/Transfusion Medicine | Immune Thrombocytopenia | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
-| 7 | cp-bb-bb-1-e-bleeding-from-coagulation-defects-d99172de51 | Blood Banking/Transfusion Medicine | Bleeding from Coagulation Defects | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
-| 8 | cp-bb-bb-1-e-i-cirrhosis-coagulopathy-b46e5d074b | Blood Banking/Transfusion Medicine | Cirrhosis Coagulopathy | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
-| 9 | cp-bb-bb-1-e-ii-drug-induced-hemolytic-anemia-2406b71689 | Blood Banking/Transfusion Medicine | Drug-Induced Hemolytic Anemia | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
-| 10 | cp-bb-bb-1-e-iv-acquired-coagulation-factor-inhibitors-20a4348423 | Blood Banking/Transfusion Medicine | Acquired Coagulation Factor Inhibitors | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
+| 1 | cp-bb-bb-blood-banking-transfusion-medicine-dbf7f42282 | Blood Banking/Transfusion Medicine | Blood Banking/Transfusion Medicine | transfusion_medicine | materialized-review-queue | Review existing CP material batch row and attach faculty evidence before promotion. |
+| 2 | cp-bb-bb-1-clinical-practice-dafc3e1149 | Blood Banking/Transfusion Medicine | Clinical Practice | transfusion_medicine | materialized-review-queue | Review existing CP material batch row and attach faculty evidence before promotion. |
+| 3 | cp-bb-bb-1-a-autoimmune-hemolytic-anemia-2b8fb5c258 | Blood Banking/Transfusion Medicine | Autoimmune Hemolytic Anemia | transfusion_medicine | materialized-review-queue | Review existing CP material batch row and attach faculty evidence before promotion. |
+| 4 | cp-bb-bb-1-b-paroxysmal-nocturnal-hemoglobinuria-2adfcdef45 | Blood Banking/Transfusion Medicine | Paroxysmal Nocturnal Hemoglobinuria | transfusion_medicine | materialized-review-queue | Review existing CP material batch row and attach faculty evidence before promotion. |
+| 5 | cp-bb-bb-1-c-anemia-in-oncology-patients-9bea48a011 | Blood Banking/Transfusion Medicine | Anemia in Oncology Patients | transfusion_medicine | materialized-review-queue | Review existing CP material batch row and attach faculty evidence before promotion. |
+| 6 | cp-bb-bb-1-d-immune-thrombocytopenia-1d2da677f2 | Blood Banking/Transfusion Medicine | Immune Thrombocytopenia | transfusion_medicine | materialized-review-queue | Review existing CP material batch row and attach faculty evidence before promotion. |
+| 7 | cp-bb-bb-1-e-bleeding-from-coagulation-defects-d99172de51 | Blood Banking/Transfusion Medicine | Bleeding from Coagulation Defects | transfusion_medicine | materialized-review-queue | Review existing CP material batch row and attach faculty evidence before promotion. |
+| 8 | cp-bb-bb-1-e-i-cirrhosis-coagulopathy-b46e5d074b | Blood Banking/Transfusion Medicine | Cirrhosis Coagulopathy | transfusion_medicine | materialized-review-queue | Review existing CP material batch row and attach faculty evidence before promotion. |
+| 9 | cp-bb-bb-1-e-ii-drug-induced-hemolytic-anemia-2406b71689 | Blood Banking/Transfusion Medicine | Drug-Induced Hemolytic Anemia | transfusion_medicine | materialized-review-queue | Review existing CP material batch row and attach faculty evidence before promotion. |
+| 10 | cp-bb-bb-1-e-iv-acquired-coagulation-factor-inhibitors-20a4348423 | Blood Banking/Transfusion Medicine | Acquired Coagulation Factor Inhibitors | transfusion_medicine | materialized-review-queue | Review existing CP material batch row and attach faculty evidence before promotion. |
 | 11 | cp-bb-bb-1-e-v-acquired-platelet-function-disorders-7f163a34ee | Blood Banking/Transfusion Medicine | Acquired Platelet Function Disorders | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
 | 12 | cp-bb-bb-1-e-vi-antithrombotic-therapy-e7673d0d95 | Blood Banking/Transfusion Medicine | Antithrombotic Therapy | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |
 | 13 | cp-bb-bb-1-e-vii-congenital-coagulopathies-thrombophilias-cba4629c0d | Blood Banking/Transfusion Medicine | Congenital Coagulopathies/Thrombophilias | transfusion_medicine | unmaterialized-generation-queue | Create a bounded CP material batch row with a bench-facing worked example requirement. |

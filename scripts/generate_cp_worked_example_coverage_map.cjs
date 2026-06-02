@@ -11,6 +11,7 @@ const outReportPath = path.join(root, 'reports/curriculum/cp_worked_example_cove
 const cpBatchPaths = [
   'src/content/materials/abpathCpMaterialBatch001.json',
   'src/content/materials/abpathCpMaterialBatch002.json',
+  'src/content/materials/abpathCpMaterialBatch003.json',
 ];
 
 const readJson = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));
