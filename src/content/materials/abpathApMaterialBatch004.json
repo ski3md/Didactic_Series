@@ -1,0 +1,873 @@
+{
+  "version": "abpath-ap-material-batch.v1",
+  "batchId": "abpath-ap-material-batch-004",
+  "generatedAt": "2026-06-02T00:04:00.312Z",
+  "sourceQueue": "src/content/materials/abpathMaterialExpansionQueue.json",
+  "sourceMap": {
+    "path": "reports/curriculum/ap_local_source_map_v1.json",
+    "contractVersion": "corpus-realization-contract.v1.ap-local-source-map",
+    "topicSpecificRows": 48,
+    "categoryOnlyRows": 231
+  },
+  "priorBatches": [
+    {
+      "batchId": "abpath-ap-material-batch-001",
+      "path": "src/content/materials/abpathApMaterialBatch001.json",
+      "excludedQueueIds": [
+        "ap-ap-breast-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109-cysts-29b5bc23a6",
+        "ap-ap-breast-2605228a-e2fd-4c25-a6e0-d3ee3ca6e074-adenosis-ffc6b340f1",
+        "ap-ap-breast-2a8fcd9a-2b21-4c2c-90de-aed238adba69-hemangioma-2028805d6e",
+        "ap-ap-breast-a932fcfa-fe27-4db4-8180-ca7b7289715f-leiomyoma-41b8c7ca8f",
+        "ap-ap-breast-ba5f6b06-f921-4a8e-9e91-24f117a6bf82-therapy-induced-changes-0cc3333ccd",
+        "ap-ap-gu-59e217f3-550d-40fb-ba59-d900d6d5a5af-non-proliferative-glomerulonephropathies-9704aad48b",
+        "ap-ap-gu-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0-diseases-associated-with-acellular-closure-of-glomerular-capillaries-d8a6af8327",
+        "ap-ap-gu-bc90e1cf-b575-4be6-95e0-95b105b8efaa-diverticula-99dc55205b",
+        "ap-ap-gu-2acaf2ec-9515-4398-a7b4-6c624aa84638-urethral-polyp-732cbf08b9",
+        "ap-ap-gu-c7c74b2a-9d75-4b81-b78b-fdbf4e85c76d-bcg-effects-036ae6d474",
+        "ap-ap-male-repro-cd232d7a-75c4-462f-8db3-45e5dd5fae86-amyloid-5c9681f003",
+        "ap-ap-male-repro-bcadc6fc-94e8-4484-aa77-31ac0e5b95a5-extraprostatic-extension-36889d833f"
+      ]
+    },
+    {
+      "batchId": "abpath-ap-material-batch-002",
+      "path": "src/content/materials/abpathApMaterialBatch002.json",
+      "excludedQueueIds": [
+        "ap-ap-male-repro-416e8c98-54de-4305-a1ff-aaf044a4a7bd-cryptorchidism-cdb6aa55d8",
+        "ap-ap-male-repro-ae24d27b-2eda-417d-b7ee-fa4393f3f2b2-bowenoid-papulosis-f6716eaa51",
+        "ap-ap-cv-61be0cb0-c511-4759-9e7a-0b40b4b90d1e-medial-calcification-e-g-monckeberg-3d2b14bc6d",
+        "ap-ap-cv-23a7bf9b-0c22-4d6b-9183-4e2c06cdef6b-atherosclerosis-69a8ec4ba1",
+        "ap-ap-cv-a639b4ae-c0d4-4906-99c7-8f24e6dbe373-primary-cardiomyopathy-2bc85a9b4c",
+        "ap-ap-cv-facf68e3-1ae4-428f-95a2-28ad00ee0a2c-dilated-cardiomyopathy-c8e9aa7847",
+        "ap-ap-cv-2d32a809-446a-452e-9321-787efb2a478f-ehlers-danlos-syndrome-404b9bf346",
+        "ap-ap-cv-f4326c88-31a3-4d1e-a886-80e66507a039-primary-cardiomyopathy-2bc85a9b4c",
+        "ap-ap-cv-c47df9a9-4bd1-45a5-a431-2bbf77a24058-vasculitis-ace07d8428",
+        "ap-ap-cv-c2e622de-f2eb-4d9c-82b1-9e8ccd98bd9e-buerger-disease-a87b9cb6bc",
+        "ap-ap-cv-49fc4c22-9c00-40c5-806e-d6defdaf5840-lymphocytic-myocarditis-8712a3bf80",
+        "ap-ap-hn-c3f3808b-3521-47c4-b450-f4bc59895f28-nasal-polyps-d9ecaeea43"
+      ]
+    },
+    {
+      "batchId": "abpath-ap-material-batch-003",
+      "path": "src/content/materials/abpathApMaterialBatch003.json",
+      "excludedQueueIds": [
+        "ap-ap-gi-7ede8c2a-b226-4493-8dc4-2e90988f6410-infections-eb9311a052",
+        "ap-ap-gi-d80867cc-a1f7-4a7f-9b67-06ccb36915e6-other-infections-of-the-anal-canal-b626d7e980",
+        "ap-ap-gi-76076f02-721a-4cff-94c4-1040aa7bf872-nash-non-alcoholic-steatohepatitis-e018332fb0",
+        "ap-ap-endo-61efa0c2-4270-480b-bcc6-51a679803757-infections-643020af26",
+        "ap-ap-endo-9e46dcae-ae3f-481e-bc7b-f506594e098e-infections-07bd52eb59",
+        "ap-ap-placenta-258e3696-8b48-4e97-a509-e7c209aeaa4c-fetal-membrane-abnormalities-2a2c126a70",
+        "ap-ap-placenta-146a6aef-b3a9-42c3-90ff-7786f0e19599-other-fetal-membrane-abnormalities-271e18dc6c",
+        "ap-ap-soft-9da68ebb-22a9-4b26-a195-a85da09953fd-lipoma-and-variants-2d1fbf06e2",
+        "ap-ap-soft-349db67c-9739-4659-88f8-473c8d2d7a8d-leiomyoma-and-variants-1a235ea501",
+        "ap-ap-soft-5cb225bd-0f31-4171-a134-f67978a70843-other-metabolic-disorders-0391b1eaad",
+        "ap-ap-dermpath-6b3da8c6-8a13-49c1-ad80-0a1207f265e0-vesiculobullous-reaction-pattern-cca80c66de",
+        "ap-ap-dermpath-f52003b9-78a3-4eae-bf42-afd44ef095b7-human-immunodeficiency-virus-hiv-80809fc8fa"
+      ]
+    }
+  ],
+  "purpose": "Fourth bounded AP core-resident materialization batch from remaining topic-specific local source-map rows; review-queue only, not promoted teaching truth.",
+  "selectionCriteria": {
+    "domain": "AP",
+    "priority": "P0 core board/sign-out gap",
+    "phase": "Phase 1: core resident coverage",
+    "reviewStatus": "unreviewed",
+    "batchSize": 12,
+    "ordering": "AP local source map order after excluding AP material batches 001, 002, and 003",
+    "specificity": "topic_specific",
+    "duplicatePolicy": "exclude queue IDs already present in prior AP material batches"
+  },
+  "guardrails": [
+    "Every row remains unreviewed until faculty or owner review is attached.",
+    "Batch rows are review-queue materialization candidates, not promoted curriculum.",
+    "Batch 004 may use only remaining topic-specific local source-map rows.",
+    "Category-only source-map rows are intentionally excluded from this batch.",
+    "Do not overwrite source-truth mappings, CP files, reviewed curriculum, UI files, or shared generators from this batch.",
+    "Promotion requires source path, source-map evidence, local/licensed image evidence or explicit no-image rationale, and reviewer evidence.",
+    "Any downstream learner-facing promotion must preserve queueId, sourceTopicId, sourcePath, sourceMapId, review status, and promotion decision."
+  ],
+  "totals": {
+    "rows": 12,
+    "reviewStatus": {
+      "unreviewed": 12
+    },
+    "promotionStatus": {
+      "review-queue": 12
+    },
+    "subjects": {
+      "Dermatopathology": 1,
+      "Forensic": 2,
+      "Cardiovascular / Autopsy-adjacent": 1,
+      "Endocrine": 7,
+      "Pediatric": 1
+    },
+    "materialKinds": {
+      "topic": 7,
+      "subject": 4,
+      "subheader": 1
+    },
+    "sourceMapSpecificity": {
+      "topic_specific": 12
+    },
+    "requiredMaterialSetItems": 7
+  },
+  "rows": [
+    {
+      "batchRow": 1,
+      "queueId": "ap-ap-dermpath-79744982-840b-491a-b2cc-c942ce9da782-tumors-of-bone-084d431cf7",
+      "sourceMapId": "ap_dermpath-79744982-840b-491a-b2cc-c942ce9da782",
+      "domain": "AP",
+      "subject": "Dermatopathology",
+      "categoryId": "ap_dermpath",
+      "materialKind": "topic",
+      "title": "Tumors of Bone",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Dermatopathology Topics for Anatomic Pathology Residents",
+        "Inflammatory Reaction Patterns",
+        "Subungual Osteochondroma",
+        "Tumors of Bone"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "79744982-840b-491a-b2cc-c942ce9da782",
+        "sourceLine": 8875
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 21,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/signout_sims/bone_soft_tissue_signout_sims.json",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): bone.",
+        "matchReasons": [
+          "organ_match:skin",
+          "title_tokens:bone",
+          "path_tokens:bone",
+          "coverage_source_match",
+          "reuse_target:image_atlas",
+          "status:mapped"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "entity-differential-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 2,
+      "queueId": "ap-ap-forensic-949cbfff-a3c0-48cd-96af-50f24385a6fc-pediatric-deaths-dec7d4ae2e",
+      "sourceMapId": "ap_forensic-949cbfff-a3c0-48cd-96af-50f24385a6fc",
+      "domain": "AP",
+      "subject": "Forensic",
+      "categoryId": "ap_forensic",
+      "materialKind": "subject",
+      "title": "Pediatric Deaths",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Forensic Pathology Topics for Anatomic Pathology Residents",
+        "Natural Deaths",
+        "Pediatric Deaths"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "949cbfff-a3c0-48cd-96af-50f24385a6fc",
+        "sourceLine": 9867
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 14,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0PediatricCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): pediatric.",
+        "matchReasons": [
+          "title_tokens:pediatric",
+          "path_tokens:pediatric,topics,anatomic,residents",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "scenario-reasoning-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 3,
+      "queueId": "ap-ap-forensic-50bd00f5-aa7f-446c-aef1-f097bc278795-congenital-anomalies-common-575a17dead",
+      "sourceMapId": "ap_forensic-50bd00f5-aa7f-446c-aef1-f097bc278795",
+      "domain": "AP",
+      "subject": "Forensic",
+      "categoryId": "ap_forensic",
+      "materialKind": "topic",
+      "title": "Congenital Anomalies, Common",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Forensic Pathology Topics for Anatomic Pathology Residents",
+        "Natural Deaths",
+        "Pediatric Deaths",
+        "Congenital Anomalies, Common"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "50bd00f5-aa7f-446c-aef1-f097bc278795",
+        "sourceLine": 9869
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 17,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/images/acquiredLectureImages.json",
+        "primaryCandidateReuseTarget": "lecture",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): common.",
+        "matchReasons": [
+          "title_tokens:common",
+          "path_tokens:common",
+          "coverage_source_match",
+          "reuse_target:lecture",
+          "status:promoted"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "scenario-reasoning-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 4,
+      "queueId": "ap-ap-cv-d5d467ac-c123-47d3-80d0-bccd1da5813f-steatosis-913f6c3325",
+      "sourceMapId": "ap_cv-d5d467ac-c123-47d3-80d0-bccd1da5813f",
+      "domain": "AP",
+      "subject": "Cardiovascular / Autopsy-adjacent",
+      "categoryId": "ap_cv",
+      "materialKind": "topic",
+      "title": "Steatosis",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Cardiovascular",
+        "Normal Anatomy",
+        "Chronic Alcoholism",
+        "Steatosis"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "d5d467ac-c123-47d3-80d0-bccd1da5813f",
+        "sourceLine": 10044
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 17,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): steatosis.",
+        "matchReasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:steatosis",
+          "path_tokens:steatosis,cardiovascular",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 5,
+      "queueId": "ap-ap-endo-c04f5458-8c84-4836-b52e-202c1ac7800a-the-skin-and-nails-5b18a277f6",
+      "sourceMapId": "ap_endo-c04f5458-8c84-4836-b52e-202c1ac7800a",
+      "domain": "AP",
+      "subject": "Endocrine",
+      "categoryId": "ap_endo",
+      "materialKind": "subheader",
+      "title": "The Skin and Nails",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Endocrine System",
+        "The Skin and Nails"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "c04f5458-8c84-4836-b52e-202c1ac7800a",
+        "sourceLine": 10347
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 22,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0EndocrineCardBatch2.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): skin, nails.",
+        "matchReasons": [
+          "organ_match:endocrine",
+          "title_tokens:skin,nails",
+          "path_tokens:skin,nails,endocrine",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 6,
+      "queueId": "ap-ap-endo-6aec223f-7362-43e3-a768-6da07042deb5-algor-mortis-4734823c4f",
+      "sourceMapId": "ap_endo-6aec223f-7362-43e3-a768-6da07042deb5",
+      "domain": "AP",
+      "subject": "Endocrine",
+      "categoryId": "ap_endo",
+      "materialKind": "topic",
+      "title": "Algor Mortis",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Endocrine System",
+        "The Skin and Nails",
+        "Asphyxia",
+        "Algor Mortis"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "6aec223f-7362-43e3-a768-6da07042deb5",
+        "sourceLine": 11076
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 17,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/algorithms/algorithms.normalized.json",
+        "primaryCandidateReuseTarget": "lecture",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): algor.",
+        "matchReasons": [
+          "title_tokens:algor",
+          "path_tokens:algor",
+          "coverage_source_match",
+          "reuse_target:lecture",
+          "status:promoted"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 7,
+      "queueId": "ap-ap-endo-a3d6e1bf-13aa-4131-8bd3-bbb4f3be0820-pediatric-issues-including-fetal-hematopoiesis-e49da6fee3",
+      "sourceMapId": "ap_endo-a3d6e1bf-13aa-4131-8bd3-bbb4f3be0820",
+      "domain": "AP",
+      "subject": "Endocrine",
+      "categoryId": "ap_endo",
+      "materialKind": "topic",
+      "title": "Pediatric Issues, Including Fetal Hematopoiesis",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Endocrine System",
+        "The Skin and Nails",
+        "Other Lymphoid Cells",
+        "Pediatric Issues, Including Fetal Hematopoiesis"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "a3d6e1bf-13aa-4131-8bd3-bbb4f3be0820",
+        "sourceLine": 11895
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 16,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0PediatricCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): pediatric, fetal.",
+        "matchReasons": [
+          "title_tokens:pediatric,fetal",
+          "path_tokens:pediatric,fetal",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 8,
+      "queueId": "ap-ap-endo-3a2e7a86-75d7-47e6-988c-ddac4208b006-immune-55526c26cf",
+      "sourceMapId": "ap_endo-3a2e7a86-75d7-47e6-988c-ddac4208b006",
+      "domain": "AP",
+      "subject": "Endocrine",
+      "categoryId": "ap_endo",
+      "materialKind": "subject",
+      "title": "Immune",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Endocrine System",
+        "The Skin and Nails",
+        "Immune"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "3a2e7a86-75d7-47e6-988c-ddac4208b006",
+        "sourceLine": 11940
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 19,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0EndocrineCardBatch2.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): immune.",
+        "matchReasons": [
+          "organ_match:endocrine",
+          "title_tokens:immune",
+          "path_tokens:immune,endocrine,skin,nails",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 9,
+      "queueId": "ap-ap-endo-29ccdc24-a32b-4bb5-817e-380c55115fb1-non-immune-e-g-thermal-injury-e03059ea62",
+      "sourceMapId": "ap_endo-29ccdc24-a32b-4bb5-817e-380c55115fb1",
+      "domain": "AP",
+      "subject": "Endocrine",
+      "categoryId": "ap_endo",
+      "materialKind": "subject",
+      "title": "Non-Immune (e.g., Thermal Injury)",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Endocrine System",
+        "The Skin and Nails",
+        "Non-Immune (e.g., Thermal Injury)"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "29ccdc24-a32b-4bb5-817e-380c55115fb1",
+        "sourceLine": 11941
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 34,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0EndocrineCardBatch2.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): non, immune, thermal, injury.",
+        "matchReasons": [
+          "organ_match:endocrine",
+          "title_tokens:non,immune,thermal,injury",
+          "path_tokens:non,immune,thermal,injury",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 10,
+      "queueId": "ap-ap-endo-0b7ce8a1-90dc-4a87-8f98-cf14a51e7f50-leucocyte-infections-dee826f1c0",
+      "sourceMapId": "ap_endo-0b7ce8a1-90dc-4a87-8f98-cf14a51e7f50",
+      "domain": "AP",
+      "subject": "Endocrine",
+      "categoryId": "ap_endo",
+      "materialKind": "topic",
+      "title": "Leucocyte Infections",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Endocrine System",
+        "The Skin and Nails",
+        "Infections with Manifestation in the Peripheral Blood",
+        "Leucocyte Infections"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "0b7ce8a1-90dc-4a87-8f98-cf14a51e7f50",
+        "sourceLine": 12103
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 17,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0EndocrineCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): infections.",
+        "matchReasons": [
+          "organ_match:endocrine",
+          "title_tokens:infections",
+          "path_tokens:infections,endocrine",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 11,
+      "queueId": "ap-ap-endo-df7e7e54-569a-424c-9341-d0135dcd8d31-immune-55526c26cf",
+      "sourceMapId": "ap_endo-df7e7e54-569a-424c-9341-d0135dcd8d31",
+      "domain": "AP",
+      "subject": "Endocrine",
+      "categoryId": "ap_endo",
+      "materialKind": "subject",
+      "title": "Immune",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "The Endocrine System",
+        "The Skin and Nails",
+        "Immune"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "df7e7e54-569a-424c-9341-d0135dcd8d31",
+        "sourceLine": 12335
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 19,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0EndocrineCardBatch2.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): immune.",
+        "matchReasons": [
+          "organ_match:endocrine",
+          "title_tokens:immune",
+          "path_tokens:immune,endocrine,skin,nails",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    },
+    {
+      "batchRow": 12,
+      "queueId": "ap-ap-pediatric-53c3d45f-e918-4719-ba20-8bd2a2df8c33-amniotic-fluid-2c87eef9fa",
+      "sourceMapId": "ap_pediatric-53c3d45f-e918-4719-ba20-8bd2a2df8c33",
+      "domain": "AP",
+      "subject": "Pediatric",
+      "categoryId": "ap_pediatric",
+      "materialKind": "topic",
+      "title": "Amniotic Fluid",
+      "difficulty": "C",
+      "learnerLevel": "PGY1-PGY2 core resident",
+      "pathHierarchy": [
+        "Pediatric Pathology Topics for Anatomic Pathology Residents",
+        "Perinatal Pathology: Placental-Maternal-Fetal Relationships in Pregnancy",
+        "Conception",
+        "Amniotic Fluid"
+      ],
+      "source": {
+        "sourcePath": "src/content/syllabus/syllabus.normalized.json",
+        "rawSourcePath": "src/content/syllabus/parsed_topics_v3.raw.json",
+        "sourceTopicId": "53c3d45f-e918-4719-ba20-8bd2a2df8c33",
+        "sourceLine": 15156
+      },
+      "sourceMapEvidence": {
+        "sourceMapReport": "reports/curriculum/ap_local_source_map_v1.json",
+        "bestCandidateSpecificity": "topic_specific",
+        "bestCandidateScore": 32,
+        "localCandidateCount": 5,
+        "primaryCandidatePath": "src/content/competency/apP0PediatricCardBatch.ts",
+        "primaryCandidateReuseTarget": "image_atlas",
+        "primaryCandidateSpecificity": "topic_specific",
+        "primaryCandidateRationale": "Matched topic title token(s): amniotic, fluid.",
+        "matchReasons": [
+          "organ_match:pediatric",
+          "title_tokens:amniotic,fluid",
+          "path_tokens:amniotic,fluid,pediatric,topics",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ]
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "image or explicit no-image rationale",
+        "morphology-first teaching card",
+        "differential diagnosis contrast",
+        "ancillary/reporting consequence",
+        "retrieval prompt",
+        "faculty review checklist"
+      ],
+      "generatorProfile": "morphology-foundation-set",
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "sourceQueueStatus": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "generation-queue",
+        "gapPlanPriority": "P0 core board/sign-out gap",
+        "gapPlanPhase": "Phase 1: core resident coverage"
+      }
+    }
+  ]
+}
