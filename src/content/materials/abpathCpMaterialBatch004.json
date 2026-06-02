@@ -1,0 +1,648 @@
+{
+  "version": "abpath-cp-material-batch.v1",
+  "batchId": "abpath-cp-material-batch-004",
+  "generatedAt": "2026-06-02T03:58:02.218Z",
+  "purpose": "Fourth bounded CP materialization slice from the worked-example coverage map; review-queue only, not promoted teaching truth.",
+  "selection": {
+    "sourceQueuePath": "src/content/materials/abpathMaterialExpansionQueue.json",
+    "sourceCoverageMapPath": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+    "sourceQueueVersion": "abpath-material-expansion-queue.v1",
+    "domain": "CP",
+    "selectionRationale": "Next ten unmaterialized CP worked-example coverage rows after CP batch 003.",
+    "queueEntryIds": [
+      "cp-bb-bb-1-e-v-acquired-platelet-function-disorders-7f163a34ee",
+      "cp-bb-bb-1-e-vi-antithrombotic-therapy-e7673d0d95",
+      "cp-bb-bb-1-e-vii-congenital-coagulopathies-thrombophilias-cba4629c0d",
+      "cp-bb-bb-1-f-perioperative-blood-management-56a68d92c9",
+      "cp-bb-bb-2-cell-and-tissue-therapy-dcfd64ffa7",
+      "cp-bb-bb-2-a-hla-antigens-and-alleles-aa9457c626",
+      "cp-bb-bb-2-b-tissue-banking-696bfe48e4",
+      "cp-bb-bb-2-c-adoptive-immunotherapy-e576d8bfdc",
+      "cp-bb-bb-2-d-gene-therapy-in-transfusion-medicine-ccbc171aad",
+      "cp-bb-bb-6-hazards-of-transfusion-specific-adverse-events-8a05454610"
+    ],
+    "excludedPriorBatchIds": [
+      "abpath-cp-material-batch-001",
+      "abpath-cp-material-batch-002",
+      "abpath-cp-material-batch-003"
+    ]
+  },
+  "totals": {
+    "rows": 10,
+    "reviewStatus": {
+      "unreviewed": 10
+    },
+    "promotionStatus": {
+      "review-queue": 10
+    },
+    "workedExampleDomains": {
+      "transfusion_medicine": 10
+    }
+  },
+  "promotionGuardrails": [
+    "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+    "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+    "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+    "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+  ],
+  "rows": [
+    {
+      "batchRowId": "abpath-cp-material-batch-004-row-01",
+      "queueEntryId": "cp-bb-bb-1-e-v-acquired-platelet-function-disorders-7f163a34ee",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Acquired Platelet Function Disorders",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Acquired Platelet Function Disorders"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Acquired Platelet Function Disorders",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-e-v",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-004-row-02",
+      "queueEntryId": "cp-bb-bb-1-e-vi-antithrombotic-therapy-e7673d0d95",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Antithrombotic Therapy",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Antithrombotic Therapy"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Antithrombotic Therapy",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-e-vi",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-004-row-03",
+      "queueEntryId": "cp-bb-bb-1-e-vii-congenital-coagulopathies-thrombophilias-cba4629c0d",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Congenital Coagulopathies/Thrombophilias",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Congenital Coagulopathies/Thrombophilias"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Congenital Coagulopathies/Thrombophilias",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-e-vii",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-004-row-04",
+      "queueEntryId": "cp-bb-bb-1-f-perioperative-blood-management-56a68d92c9",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Perioperative Blood Management",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Clinical Practice",
+        "Perioperative Blood Management"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Clinical Practice > Perioperative Blood Management",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-1-f",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "regulatory or quality-control artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-004-row-05",
+      "queueEntryId": "cp-bb-bb-2-cell-and-tissue-therapy-dcfd64ffa7",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Cell and Tissue Therapy",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Cell and Tissue Therapy"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-2",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-004-row-06",
+      "queueEntryId": "cp-bb-bb-2-a-hla-antigens-and-alleles-aa9457c626",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "HLA Antigens and Alleles",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Cell and Tissue Therapy",
+        "HLA Antigens and Alleles"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > HLA Antigens and Alleles",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-2-a",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-004-row-07",
+      "queueEntryId": "cp-bb-bb-2-b-tissue-banking-696bfe48e4",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Tissue Banking",
+      "difficulty": "F",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Cell and Tissue Therapy",
+        "Tissue Banking"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > Tissue Banking",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-2-b",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-004-row-08",
+      "queueEntryId": "cp-bb-bb-2-c-adoptive-immunotherapy-e576d8bfdc",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Adoptive Immunotherapy",
+      "difficulty": "AR",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Cell and Tissue Therapy",
+        "Adoptive Immunotherapy"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > Adoptive Immunotherapy",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-2-c",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-004-row-09",
+      "queueEntryId": "cp-bb-bb-2-d-gene-therapy-in-transfusion-medicine-ccbc171aad",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subject",
+      "title": "Gene Therapy in Transfusion Medicine",
+      "difficulty": "F",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Cell and Tissue Therapy",
+        "Gene Therapy in Transfusion Medicine"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Cell and Tissue Therapy > Gene Therapy in Transfusion Medicine",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-2-d",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    },
+    {
+      "batchRowId": "abpath-cp-material-batch-004-row-10",
+      "queueEntryId": "cp-bb-bb-6-hazards-of-transfusion-specific-adverse-events-8a05454610",
+      "domain": "CP",
+      "subject": "Blood Banking/Transfusion Medicine",
+      "categoryId": "bb",
+      "materialKind": "subheader",
+      "title": "Hazards of Transfusion: Specific Adverse Events",
+      "difficulty": "C",
+      "path": [
+        "Blood Banking/Transfusion Medicine",
+        "Hazards of Transfusion: Specific Adverse Events"
+      ],
+      "pathHierarchy": "Blood Banking/Transfusion Medicine > Hazards of Transfusion: Specific Adverse Events",
+      "source": {
+        "sourcePath": "src/content/downloads_imports/raw/cp_content_specification_11_11_25.raw.json",
+        "rawSourcePath": "src/content/syllabus/cp_spec.raw.txt",
+        "sourceTopicId": "bb-6",
+        "sourceLine": null
+      },
+      "requiredMaterialSet": [
+        "plain-language objective",
+        "bench-facing clinical question",
+        "next-test or interpretation pathway",
+        "critical-result or safety check",
+        "retrieval prompt",
+        "faculty review checklist",
+        "representative laboratory artifact"
+      ],
+      "workedExampleCoverage": {
+        "coverageMap": "reports/curriculum/cp_worked_example_coverage_map_v1.json",
+        "workedExampleDomain": "transfusion_medicine",
+        "workedExampleRequired": true,
+        "requiredExampleShape": [
+          "bench-facing clinical question",
+          "representative laboratory artifact",
+          "stepwise interpretation path",
+          "safety or escalation stop",
+          "faculty review checklist",
+          "product or procedure decision",
+          "compatibility or indication check",
+          "handoff trigger"
+        ],
+        "currentCoverageStatus": "materialized-review-queue"
+      },
+      "review": {
+        "reviewStatus": "unreviewed",
+        "promotionStatus": "review-queue",
+        "sourceQueuePromotionStatus": "generation-queue",
+        "reviewerRequired": true,
+        "promotionAllowed": false
+      },
+      "batchPromotionGuardrails": [
+        "Rows in this batch are unreviewed review-queue items, not authoritative teaching truth.",
+        "Do not overwrite source-truth mappings, reviewed CP anchors, AP files, prior CP batch files, queue generators, or shared validators from this batch.",
+        "Promotion requires source path retention, worked-example artifact evidence, faculty review, and explicit reviewer action.",
+        "A generated worked example must show the clinical question, representative lab artifact, interpretation path, safety stop, and review checklist before promotion."
+      ]
+    }
+  ]
+}

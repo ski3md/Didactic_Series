@@ -1,6 +1,6 @@
 {
   "version": "abpath-material-admin-summary.v1",
-  "generatedAt": "2026-06-02T03:52:58.620Z",
+  "generatedAt": "2026-06-02T03:58:02.536Z",
   "source": {
     "queue": "src/content/materials/abpathMaterialExpansionQueue.json",
     "apBatch": "src/content/materials/abpathApMaterialBatch001.json",
@@ -14,7 +14,8 @@
       "src/content/materials/abpathApMaterialBatch004.json",
       "src/content/materials/abpathApMaterialBatch005.json",
       "src/content/materials/abpathApMaterialBatch006.json",
-      "src/content/materials/abpathCpMaterialBatch003.json"
+      "src/content/materials/abpathCpMaterialBatch003.json",
+      "src/content/materials/abpathCpMaterialBatch004.json"
     ]
   },
   "totals": {
@@ -22,7 +23,7 @@
     "apQueueItems": 3863,
     "cpQueueItems": 83,
     "requiredMaterialSetItems": 12,
-    "batchRows": 87,
+    "batchRows": 97,
     "unreviewedQueueEntries": 3946,
     "generationQueueEntries": 3946
   },
@@ -155,6 +156,15 @@
     },
     {
       "batchId": "abpath-cp-material-batch-003",
+      "domain": "CP",
+      "rowCount": 10,
+      "unreviewedRows": 10,
+      "reviewQueueRows": 10,
+      "reviewerRequiredRows": 10,
+      "promotionBlockedRows": 10
+    },
+    {
+      "batchId": "abpath-cp-material-batch-004",
       "domain": "CP",
       "rowCount": 10,
       "unreviewedRows": 10,
