@@ -1439,8 +1439,12 @@ const DidacticLectures: React.FC<DidacticLecturesProps> = ({ preferences, onSect
     if (!selectedLecture) {
       return;
     }
+    const tutorialQueries = queryText
+      ? [queryText]
+      : selectedLecture.enhancement?.relatedTutorialQueries;
     setTutorialLibraryIntent({
-      query: queryText ?? selectedLecture.enhancement?.relatedTutorialQueries[0] ?? selectedLecture.title,
+      query: tutorialQueries?.[0] ?? selectedLecture.title,
+      queries: tutorialQueries,
       lane: 'all',
       track: 'surgical-path',
     });

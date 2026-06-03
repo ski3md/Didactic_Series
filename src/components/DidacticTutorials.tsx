@@ -391,14 +391,15 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
         }
       }
 
-      if (intent?.query) {
+      const queryTerms = [intent?.query, ...(intent?.queries ?? [])].filter((term): term is string => Boolean(term));
+      if (queryTerms.length > 0) {
         const queryScope = loadedTutorials.filter(
           (tutorial) =>
             (resolvedTrackFilter === 'all' || tutorial.track === resolvedTrackFilter) &&
             (resolvedLaneFilter === 'all' || tutorial.lane === resolvedLaneFilter)
         );
         const matchedTutorial =
-          findBestTutorialMatch(queryScope.length > 0 ? queryScope : loadedTutorials, [intent.query]);
+          findBestTutorialMatch(queryScope.length > 0 ? queryScope : loadedTutorials, queryTerms);
         if (matchedTutorial) {
           const nextDestination: ActiveStudyDestination = {
             workspace: 'tutorials',

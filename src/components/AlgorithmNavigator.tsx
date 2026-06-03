@@ -390,8 +390,12 @@ const AlgorithmNavigator: React.FC<AlgorithmNavigatorProps> = ({ preferences, on
   };
 
   const openTutorials = (queryText?: string) => {
+    const tutorialQueries = queryText
+      ? [queryText]
+      : selectedEntry?.tutorialQueries;
     setTutorialLibraryIntent({
-      query: queryText ?? selectedEntry?.tutorialQueries[0] ?? selectedEntry?.title,
+      query: tutorialQueries?.[0] ?? selectedEntry?.title,
+      queries: tutorialQueries,
       lane: 'all',
       track: selectedEntry?.subspecialtyLabel === 'Clinical Pathology' ? 'clinical-path' : 'surgical-path',
     });

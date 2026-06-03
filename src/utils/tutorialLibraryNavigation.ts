@@ -3,6 +3,7 @@ import { TutorialLane, TutorialTrack } from './tutorialLibraryCatalog.ts';
 export interface TutorialLibraryIntent {
   selectedId?: string;
   query?: string;
+  queries?: string[];
   lane?: 'all' | TutorialLane;
   track?: 'all' | TutorialTrack;
 }

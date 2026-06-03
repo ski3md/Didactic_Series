@@ -761,8 +761,8 @@ const evaluateWorkspaceRoutingSemantics = ({
     }
   }
 
-  if (/if\s*\(intent\?\.query\)/.test(tutorialsTsx) && /findBestTutorialMatch\(/.test(tutorialsTsx)) {
-    passes.push('Tutorials resolves query-routed intents into visible destination views.');
+  if (/queryTerms\s*=\s*\[intent\?\.query,[\s\S]*intent\?\.queries/.test(tutorialsTsx) && /if\s*\(queryTerms\.length > 0\)/.test(tutorialsTsx) && /findBestTutorialMatch\(/.test(tutorialsTsx)) {
+    passes.push('Tutorials resolves multi-query routed intents into visible destination views.');
   } else {
     issues.push('Tutorials does not clearly resolve query-routed intents into visible destination views.');
   }

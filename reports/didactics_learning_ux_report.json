@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-02T12:25:50.009Z",
+  "generatedAt": "2026-06-03T01:18:40.967Z",
   "contractVersion": "pthfndr-didactics-learning-ux-contract.v1",
   "passes": [
     "Contract targets /didactics.",
@@ -74,7 +74,7 @@
     "Workups persists its active workspace state after routing.",
     "Workups filters destination-change events to its own workspace.",
     "Workups intent surface preserves query-routed launch semantics.",
-    "Tutorials resolves query-routed intents into visible destination views.",
+    "Tutorials resolves multi-query routed intents into visible destination views.",
     "Lectures resolves routed intents into a lecture workspace overview before detail.",
     "Workups resolves routed intents into governed algorithm topic or subtopic views.",
     "Sidebar resets each didactics workspace to a fresh landing state before cross-workspace navigation.",

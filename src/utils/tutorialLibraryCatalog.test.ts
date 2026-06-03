@@ -238,4 +238,44 @@ describe('getTutorialMappedImageSupport', () => {
 
     expect(match?.id).toBe('clinical-niftp');
   });
+
+  it('fails closed instead of linking an unrelated first tutorial when no query terms match', () => {
+    const firstTutorial = buildMiniTutorial({
+      id: 'first-tutorial',
+      title: 'Papillary thyroid carcinoma review',
+      summary: 'Thyroid surgical pathology teaching.',
+    });
+    const secondTutorial = buildMiniTutorial({
+      id: 'second-tutorial',
+      title: 'Direct antiglobulin test studio',
+      summary: 'Transfusion medicine teaching.',
+      track: 'clinical-path',
+      trackLabel: 'Clinical Pathology',
+    });
+
+    const match = findBestTutorialMatch([firstTutorial, secondTutorial], ['renal transplant flow cytometry']);
+
+    expect(match).toBeUndefined();
+  });
+
+  it('can resolve a related tutorial from a later query term when the first term is broad', () => {
+    const thyroidTutorial = buildMiniTutorial({
+      id: 'thyroid-review',
+      title: 'Papillary thyroid carcinoma review',
+      summary: 'Thyroid surgical pathology teaching.',
+    });
+    const datTutorial = buildMiniTutorial({
+      id: 'dat-studio',
+      title: 'DAT and Hemolytic Transfusion Reaction Studio',
+      summary: 'Transfusion medicine teaching.',
+      track: 'clinical-path',
+      trackLabel: 'Clinical Pathology',
+    });
+
+    const match = findBestTutorialMatch([thyroidTutorial, datTutorial], ['bench workflow', 'DAT and Hemolytic Transfusion Reaction Studio'], {
+      track: 'clinical-path',
+    });
+
+    expect(match?.id).toBe('dat-studio');
+  });
 });

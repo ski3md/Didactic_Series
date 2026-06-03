@@ -751,7 +751,7 @@ export const findBestTutorialMatch = (
   tutorials: DidacticTutorialRecord[],
   terms: string[],
   filters: TutorialMatchFilters = {}
-) => {
+): DidacticTutorialRecord | undefined => {
   const trackFilter = filters.track ?? 'all';
   const laneFilter = filters.lane ?? 'all';
   const filterScope = tutorials.filter(
@@ -767,7 +767,7 @@ export const findBestTutorialMatch = (
     return searchableTutorials[0];
   }
 
-  let bestMatch = searchableTutorials[0];
+  let bestMatch: DidacticTutorialRecord | undefined;
   let bestScore = -1;
 
   for (const tutorial of searchableTutorials) {
@@ -816,7 +816,7 @@ export const findBestTutorialMatch = (
     }
   }
 
-  return bestMatch;
+  return bestScore > 0 ? bestMatch : undefined;
 };
 
 export const summarizeTutorialLibraryParityBaseline = (
