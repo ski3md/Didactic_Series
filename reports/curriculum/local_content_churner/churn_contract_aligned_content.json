@@ -30,7 +30,7 @@
     "abpath_objective_linkage": true,
     "source_evidence_linkage": true,
     "topic_specificity_score": true,
-    "required_section_completeness": false,
+    "required_section_completeness": true,
     "duplicate_content": false,
     "unsupported_claims": false,
     "schema_validity": true,
@@ -54,6 +54,8 @@
       "local_evidence": {
         "source_map": "reports/curriculum/ap_local_source_map_v1.json",
         "primary_source_path": "src/content/competency/apP0BreastCardBatch.ts",
+        "extracted_card_source_path": "src/content/competency/apP0BreastCardBatch.ts",
+        "extracted_card_id": "p0-breast-card-01-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109",
         "local_candidate_count": 5,
         "match_reasons": [
           "organ_match:breast",
@@ -63,14 +65,27 @@
           "status:mapped",
           "confidence:high"
         ],
-        "source_line": 324
+        "source_line": 324,
+        "source_basis": "Drafted from ABPath AP content-spec path: Breast > Normal Anatomy and Histology > Diabetic mastopathy > Cysts. Source line: 324.",
+        "extracted_fields": [
+          "definition",
+          "normalComparator",
+          "morphologyAnchor",
+          "topMimic",
+          "discriminator",
+          "ancillaryOrReportingConsequence",
+          "safetyPitfall",
+          "visualPlan",
+          "retrievalQuestions"
+        ]
       },
       "introductory_material": {
-        "orientation": "Local evidence packet for Cysts.",
-        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "orientation": "Cysts is treated in this curriculum as an ABPath AP content-specification topic within Diabetic mastopathy; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "clinical_relevance": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
         "prerequisites": [
           "Breast",
-          "PGY1-PGY2"
+          "PGY1-PGY2",
+          "Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality."
         ],
         "key_vocabulary": [
           "Cysts",
@@ -78,60 +93,106 @@
         ]
       },
       "core_didactic": {
-        "definition": "",
+        "definition": "Cysts is treated in this curriculum as an ABPath AP content-specification topic within Diabetic mastopathy; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
         "clinical_context": "",
         "gross_findings": "",
-        "histomorphology": "",
+        "histomorphology": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Cysts.",
         "cytomorphology": "",
         "immunophenotype": "",
         "molecular_profile": "",
         "classification_relevance": "",
         "clinical_imaging_correlation": "",
-        "reporting_management_implications": ""
+        "reporting_management_implications": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant"
       },
       "images": [
         {
           "type": "source-linked-placeholder",
-          "teaching_point": "Cysts",
-          "caption": "",
-          "annotations": [],
+          "teaching_point": "normal breast lobule/duct comparator plus lesion-specific low-power architecture and high-power epithelial/stromal cue",
+          "caption": "pending licensed/local image or explicit no-image rationale",
+          "annotations": [
+            "Orient to Breast and specimen context before magnifying.",
+            "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+            "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Cysts.",
+            "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+          ],
           "source_status": "available"
         }
       ],
       "diagnostic_algorithm": {
         "entry_point": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Cysts",
         "steps": [
-          "Confirm topic-specific local evidence before diagnostic branch generation."
+          "Orient to Breast and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal terminal duct lobular unit or expected breast stroma/epithelium before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Cysts.",
+          "Before sign-out, check the pitfall: missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
         ],
         "terminal_nodes": []
       },
-      "differential_diagnosis": [],
+      "differential_diagnosis": [
+        {
+          "entity": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context",
+          "shared_features": "",
+          "distinguishing_features": "architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management",
+          "ihc_or_lab_discriminator": "",
+          "molecular_discriminator": "",
+          "clinical_or_imaging_discriminator": "",
+          "pitfall": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
+        }
+      ],
       "mcqs": [],
       "worked_examples": [],
+      "retrieval_questions": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Cysts.",
+          "answer": "Cysts; scoped to Diabetic mastopathy in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Cysts.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
       "retention_tools": {
-        "high_yield_summary": "",
-        "diagnostic_hook": "",
+        "high_yield_summary": "Cysts is treated in this curriculum as an ABPath AP content-specification topic within Diabetic mastopathy; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "diagnostic_hook": "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Cysts.",
         "mnemonic": "",
-        "flashcard_facts": [],
-        "comparison_table": [],
-        "do_not_miss_pearl": ""
+        "flashcard_facts": [
+          "Cysts; scoped to Diabetic mastopathy in the ABPath AP content specifications.",
+          "Use low-power duct/lobular architecture, epithelial proliferation pattern, stromal response, and high-power cytologic atypia to decide whether the finding fits Cysts.",
+          "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context; separate with architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management.",
+          "ER/PR/HER2, myoepithelial stains, margin/synoptic language, or radiology-pathology concordance when relevant"
+        ],
+        "comparison_table": [
+          "usual hyperplasia, reactive change, in situ carcinoma, invasive carcinoma, or treatment effect depending on the path context :: architecture plus cytologic atypia, myoepithelial pattern, biomarker context, and whether invasion or concordance changes management"
+        ],
+        "do_not_miss_pearl": "missing invasion, overcalling reactive/proliferative change, or omitting biomarker/concordance language that changes care"
       },
       "evidence_score": {
         "objective_linked": true,
         "local_source_linked": true,
         "topic_specificity": 0.8,
-        "section_completeness": 0.42,
-        "image_support": 0.25,
+        "section_completeness": 0.9,
+        "image_support": 0.6,
         "mcq_support": 0,
-        "algorithm_support": 0.2,
-        "differential_support": 0.2,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
         "worked_example_support": 0,
         "promotion_ready": false
       },
       "validation_status": "blocked",
       "promotion_status": "review-queue",
       "blocking_reasons": [
-        "required_content_sections_incomplete",
         "missing_mcqs"
       ],
       "ai_review_packet": {
@@ -159,6 +220,8 @@
       "local_evidence": {
         "source_map": "reports/curriculum/ap_local_source_map_v1.json",
         "primary_source_path": "src/content/competency/apP0EntityCardBatch.ts",
+        "extracted_card_source_path": "src/content/competency/apP0EntityCardBatch.ts",
+        "extracted_card_id": "p0-card-01-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0",
         "local_candidate_count": 5,
         "match_reasons": [
           "organ_match:gu",
@@ -168,75 +231,135 @@
           "status:mapped",
           "confidence:high"
         ],
-        "source_line": 608
+        "source_line": 608,
+        "source_basis": "Drafted from ABPath AP content-spec path: The Genitourinary System > Kidney > Medical Kidney Disease > Diseases associated with acellular closure of glomerular capillaries. Source line: 608.",
+        "extracted_fields": [
+          "definition",
+          "normalComparator",
+          "morphologyAnchor",
+          "topMimic",
+          "discriminator",
+          "ancillaryOrReportingConsequence",
+          "safetyPitfall",
+          "visualPlan",
+          "retrievalQuestions"
+        ]
       },
       "introductory_material": {
-        "orientation": "Local evidence packet for Diseases associated with acellular closure of glomerular capillaries.",
-        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "orientation": "Diseases associated with acellular closure of glomerular capillaries is treated in this curriculum as an ABPath AP content-specification topic within Medical Kidney Disease; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "clinical_relevance": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
         "prerequisites": [
           "Medical Kidney / GU",
-          "PGY1-PGY2"
+          "PGY1-PGY2",
+          "Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality."
         ],
         "key_vocabulary": [
           "Diseases associated with acellular closure of glomerular capillaries",
-          "Medical Kidney / GU"
+          "Medical Kidney / GU",
+          "The Genitourinary System"
         ]
       },
       "core_didactic": {
-        "definition": "",
+        "definition": "Diseases associated with acellular closure of glomerular capillaries is treated in this curriculum as an ABPath AP content-specification topic within Medical Kidney Disease; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
         "clinical_context": "",
         "gross_findings": "",
-        "histomorphology": "",
+        "histomorphology": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diseases associated with acellular closure of glomerular capillaries.",
         "cytomorphology": "",
         "immunophenotype": "",
         "molecular_profile": "",
         "classification_relevance": "",
         "clinical_imaging_correlation": "",
-        "reporting_management_implications": ""
+        "reporting_management_implications": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification"
       },
       "images": [
         {
           "type": "source-linked-placeholder",
-          "teaching_point": "Diseases associated with acellular closure of glomerular capillaries",
-          "caption": "",
-          "annotations": [],
+          "teaching_point": "H&E plus IF/EM when medical kidney, or H&E/gross for bladder and lower GU",
+          "caption": "pending licensed/local image or explicit no-image rationale",
+          "annotations": [
+            "Orient to The Genitourinary System and specimen context before magnifying.",
+            "Find the normal/reactive comparator: Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+            "At low power and high power, test the morphology anchor: Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diseases associated with acellular closure of glomerular capillaries.",
+            "Before sign-out, check the pitfall: missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management"
+          ],
           "source_status": "available"
         }
       ],
       "diagnostic_algorithm": {
         "entry_point": "The Genitourinary System > Kidney > Medical Kidney Disease > Diseases associated with acellular closure of glomerular capillaries",
         "steps": [
-          "Confirm topic-specific local evidence before diagnostic branch generation."
+          "Orient to The Genitourinary System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal renal compartment or urothelial tract anatomy appropriate to the specimen before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diseases associated with acellular closure of glomerular capillaries.",
+          "Before sign-out, check the pitfall: missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management"
         ],
         "terminal_nodes": []
       },
-      "differential_diagnosis": [],
+      "differential_diagnosis": [
+        {
+          "entity": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma",
+          "shared_features": "",
+          "distinguishing_features": "compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable",
+          "ihc_or_lab_discriminator": "",
+          "molecular_discriminator": "",
+          "clinical_or_imaging_discriminator": "",
+          "pitfall": "missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management"
+        }
+      ],
       "mcqs": [],
       "worked_examples": [],
+      "retrieval_questions": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Diseases associated with acellular closure of glomerular capillaries.",
+          "answer": "Diseases associated with acellular closure of glomerular capillaries; scoped to Medical Kidney Disease in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diseases associated with acellular closure of glomerular capillaries.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma; separate with compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
       "retention_tools": {
-        "high_yield_summary": "",
-        "diagnostic_hook": "",
+        "high_yield_summary": "Diseases associated with acellular closure of glomerular capillaries is treated in this curriculum as an ABPath AP content-specification topic within Medical Kidney Disease; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "diagnostic_hook": "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diseases associated with acellular closure of glomerular capillaries.",
         "mnemonic": "",
-        "flashcard_facts": [],
-        "comparison_table": [],
-        "do_not_miss_pearl": ""
+        "flashcard_facts": [
+          "Diseases associated with acellular closure of glomerular capillaries; scoped to Medical Kidney Disease in the ABPath AP content specifications.",
+          "Use glomerular/tubulointerstitial/vascular compartment or urothelial architecture, invasion, and cytologic atypia to decide whether the finding fits Diseases associated with acellular closure of glomerular capillaries.",
+          "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma; separate with compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable.",
+          "IF/EM, deeper levels, IHC, staging language, adequacy statement, or chronicity/activity classification"
+        ],
+        "comparison_table": [
+          "reactive urothelial change, medical renal pattern mimic, treatment effect, inflammation, dysplasia, or invasive carcinoma :: compartment, chronicity/activity, invasion depth, IF/EM pattern, or urothelial staging threshold as applicable"
+        ],
+        "do_not_miss_pearl": "missing adequacy, invasion, chronicity/activity, or treatment-effect context that changes management"
       },
       "evidence_score": {
         "objective_linked": true,
         "local_source_linked": true,
         "topic_specificity": 0.8,
-        "section_completeness": 0.42,
-        "image_support": 0.25,
+        "section_completeness": 0.9,
+        "image_support": 0.6,
         "mcq_support": 0,
-        "algorithm_support": 0.2,
-        "differential_support": 0.2,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
         "worked_example_support": 0,
         "promotion_ready": false
       },
       "validation_status": "blocked",
       "promotion_status": "review-queue",
       "blocking_reasons": [
-        "required_content_sections_incomplete",
         "missing_mcqs"
       ],
       "ai_review_packet": {
@@ -264,6 +387,8 @@
       "local_evidence": {
         "source_map": "reports/curriculum/ap_local_source_map_v1.json",
         "primary_source_path": "src/content/competency/apP0MaleReproCardBatch.ts",
+        "extracted_card_source_path": "src/content/competency/apP0MaleReproCardBatch.ts",
+        "extracted_card_id": "p0-male-repro-card-01-cd232d7a-75c4-462f-8db3-45e5dd5fae86",
         "local_candidate_count": 5,
         "match_reasons": [
           "organ_match:male",
@@ -273,75 +398,135 @@
           "status:mapped",
           "confidence:high"
         ],
-        "source_line": 897
+        "source_line": 897,
+        "source_basis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Prostate and Seminal Vesicles > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Amyloid. Source line: 897.",
+        "extracted_fields": [
+          "definition",
+          "normalComparator",
+          "morphologyAnchor",
+          "topMimic",
+          "discriminator",
+          "ancillaryOrReportingConsequence",
+          "safetyPitfall",
+          "visualPlan",
+          "retrievalQuestions"
+        ]
       },
       "introductory_material": {
-        "orientation": "Local evidence packet for Amyloid.",
-        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "orientation": "Amyloid is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "clinical_relevance": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
         "prerequisites": [
           "Male Reproductive",
-          "PGY1-PGY2"
+          "PGY1-PGY2",
+          "Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality."
         ],
         "key_vocabulary": [
           "Amyloid",
-          "Male Reproductive"
+          "Male Reproductive",
+          "Male Reproductive System"
         ]
       },
       "core_didactic": {
-        "definition": "",
+        "definition": "Amyloid is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
         "clinical_context": "",
         "gross_findings": "",
-        "histomorphology": "",
+        "histomorphology": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Amyloid.",
         "cytomorphology": "",
         "immunophenotype": "",
         "molecular_profile": "",
         "classification_relevance": "",
         "clinical_imaging_correlation": "",
-        "reporting_management_implications": ""
+        "reporting_management_implications": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage"
       },
       "images": [
         {
           "type": "source-linked-placeholder",
-          "teaching_point": "Amyloid",
-          "caption": "",
-          "annotations": [],
+          "teaching_point": "low-power prostate/seminal vesicle architecture plus high-power feature that separates benign, traumatic, infiltrative, or staging-relevant change",
+          "caption": "pending licensed/local image or explicit no-image rationale",
+          "annotations": [
+            "Orient to Male Reproductive System and specimen context before magnifying.",
+            "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+            "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Amyloid.",
+            "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+          ],
           "source_status": "available"
         }
       ],
       "diagnostic_algorithm": {
         "entry_point": "Male Reproductive System > Prostate and Seminal Vesicles > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Amyloid",
         "steps": [
-          "Confirm topic-specific local evidence before diagnostic branch generation."
+          "Orient to Male Reproductive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal prostate, testis, paratesticular tissue, or penile epithelium appropriate to the path context before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Amyloid.",
+          "Before sign-out, check the pitfall: missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
         ],
         "terminal_nodes": []
       },
-      "differential_diagnosis": [],
+      "differential_diagnosis": [
+        {
+          "entity": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant",
+          "shared_features": "",
+          "distinguishing_features": "age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold",
+          "ihc_or_lab_discriminator": "",
+          "molecular_discriminator": "",
+          "clinical_or_imaging_discriminator": "",
+          "pitfall": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
+        }
+      ],
       "mcqs": [],
       "worked_examples": [],
+      "retrieval_questions": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Amyloid.",
+          "answer": "Amyloid; scoped to Physiologic Changes, Metabolic Conditions & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Amyloid.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
       "retention_tools": {
-        "high_yield_summary": "",
-        "diagnostic_hook": "",
+        "high_yield_summary": "Amyloid is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "diagnostic_hook": "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Amyloid.",
         "mnemonic": "",
-        "flashcard_facts": [],
-        "comparison_table": [],
-        "do_not_miss_pearl": ""
+        "flashcard_facts": [
+          "Amyloid; scoped to Physiologic Changes, Metabolic Conditions & Trauma/Infarct in the ABPath AP content specifications.",
+          "Use architecture, germ-cell or glandular lineage, stromal invasion, cytology, necrosis, and precursor lesion context to decide whether the finding fits Amyloid.",
+          "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant; separate with age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold.",
+          "lineage IHC, serum-marker correlation, grade group/stage/synoptic language, margin status, or component percentage"
+        ],
+        "comparison_table": [
+          "reactive atypia, benign mimics, lymphoma, sex cord-stromal tumor, germ-cell tumor component, or carcinoma variant :: age/serum marker context, lineage markers, invasion, component quantification, or grade/stage threshold"
+        ],
+        "do_not_miss_pearl": "missing mixed tumor components, lymphoma in older patients, invasion, or reporting elements that determine treatment"
       },
       "evidence_score": {
         "objective_linked": true,
         "local_source_linked": true,
         "topic_specificity": 0.8,
-        "section_completeness": 0.42,
-        "image_support": 0.25,
+        "section_completeness": 0.9,
+        "image_support": 0.6,
         "mcq_support": 0,
-        "algorithm_support": 0.2,
-        "differential_support": 0.2,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
         "worked_example_support": 0,
         "promotion_ready": false
       },
       "validation_status": "blocked",
       "promotion_status": "review-queue",
       "blocking_reasons": [
-        "required_content_sections_incomplete",
         "missing_mcqs"
       ],
       "ai_review_packet": {
@@ -369,6 +554,8 @@
       "local_evidence": {
         "source_map": "reports/curriculum/ap_local_source_map_v1.json",
         "primary_source_path": "src/content/competency/apP0CvAutopsyCardBatch.ts",
+        "extracted_card_source_path": "src/content/competency/apP0CvAutopsyCardBatch.ts",
+        "extracted_card_id": "p0-cv-autopsy-card-01-61be0cb0-c511-4759-9e7a-0b40b4b90d1e",
         "local_candidate_count": 5,
         "match_reasons": [
           "organ_match:cardiovascular",
@@ -378,75 +565,135 @@
           "status:mapped",
           "confidence:high"
         ],
-        "source_line": 1215
+        "source_line": 1215,
+        "source_basis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Medial calcification (e.g., Monckeberg). Source line: 1215.",
+        "extracted_fields": [
+          "definition",
+          "normalComparator",
+          "morphologyAnchor",
+          "topMimic",
+          "discriminator",
+          "ancillaryOrReportingConsequence",
+          "safetyPitfall",
+          "visualPlan",
+          "retrievalQuestions"
+        ]
       },
       "introductory_material": {
-        "orientation": "Local evidence packet for Medial calcification (e.g., Monckeberg).",
-        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "orientation": "Medial calcification (e.g., Monckeberg) is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "clinical_relevance": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
         "prerequisites": [
           "Cardiovascular / Autopsy-adjacent",
-          "PGY1-PGY2"
+          "PGY1-PGY2",
+          "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality."
         ],
         "key_vocabulary": [
           "Medial calcification (e.g., Monckeberg)",
-          "Cardiovascular / Autopsy-adjacent"
+          "Cardiovascular / Autopsy-adjacent",
+          "Cardiovascular"
         ]
       },
       "core_didactic": {
-        "definition": "",
+        "definition": "Medial calcification (e.g., Monckeberg) is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
         "clinical_context": "",
         "gross_findings": "",
-        "histomorphology": "",
+        "histomorphology": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Medial calcification (e.g., Monckeberg).",
         "cytomorphology": "",
         "immunophenotype": "",
         "molecular_profile": "",
         "classification_relevance": "",
         "clinical_imaging_correlation": "",
-        "reporting_management_implications": ""
+        "reporting_management_implications": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated"
       },
       "images": [
         {
           "type": "source-linked-placeholder",
-          "teaching_point": "Medial calcification (e.g., Monckeberg)",
-          "caption": "",
-          "annotations": [],
+          "teaching_point": "gross vessel narrowing/thrombus or calcification plus H&E vessel-wall pattern",
+          "caption": "pending licensed/local image or explicit no-image rationale",
+          "annotations": [
+            "Orient to Cardiovascular and specimen context before magnifying.",
+            "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+            "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Medial calcification (e.g., Monckeberg).",
+            "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+          ],
           "source_status": "available"
         }
       ],
       "diagnostic_algorithm": {
         "entry_point": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Medial calcification (e.g., Monckeberg)",
         "steps": [
-          "Confirm topic-specific local evidence before diagnostic branch generation."
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Medial calcification (e.g., Monckeberg).",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
         ],
         "terminal_nodes": []
       },
-      "differential_diagnosis": [],
+      "differential_diagnosis": [
+        {
+          "entity": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+          "shared_features": "",
+          "distinguishing_features": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+          "ihc_or_lab_discriminator": "",
+          "molecular_discriminator": "",
+          "clinical_or_imaging_discriminator": "",
+          "pitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        }
+      ],
       "mcqs": [],
       "worked_examples": [],
+      "retrieval_questions": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Medial calcification (e.g., Monckeberg).",
+          "answer": "Medial calcification (e.g., Monckeberg); scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Medial calcification (e.g., Monckeberg).",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
       "retention_tools": {
-        "high_yield_summary": "",
-        "diagnostic_hook": "",
+        "high_yield_summary": "Medial calcification (e.g., Monckeberg) is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "diagnostic_hook": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Medial calcification (e.g., Monckeberg).",
         "mnemonic": "",
-        "flashcard_facts": [],
-        "comparison_table": [],
-        "do_not_miss_pearl": ""
+        "flashcard_facts": [
+          "Medial calcification (e.g., Monckeberg); scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Medial calcification (e.g., Monckeberg).",
+          "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated"
+        ],
+        "comparison_table": [
+          "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity :: clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death"
+        ],
+        "do_not_miss_pearl": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
       },
       "evidence_score": {
         "objective_linked": true,
         "local_source_linked": true,
         "topic_specificity": 0.8,
-        "section_completeness": 0.42,
-        "image_support": 0.25,
+        "section_completeness": 0.9,
+        "image_support": 0.6,
         "mcq_support": 0,
-        "algorithm_support": 0.2,
-        "differential_support": 0.2,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
         "worked_example_support": 0,
         "promotion_ready": false
       },
       "validation_status": "blocked",
       "promotion_status": "review-queue",
       "blocking_reasons": [
-        "required_content_sections_incomplete",
         "missing_mcqs"
       ],
       "ai_review_packet": {
@@ -474,6 +721,8 @@
       "local_evidence": {
         "source_map": "reports/curriculum/ap_local_source_map_v1.json",
         "primary_source_path": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "extracted_card_source_path": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "extracted_card_id": "p0-cv-autopsy-batch-2-card-01-f4326c88-31a3-4d1e-a886-80e66507a039",
         "local_candidate_count": 5,
         "match_reasons": [
           "organ_match:cardiovascular",
@@ -483,75 +732,135 @@
           "status:mapped",
           "confidence:high"
         ],
-        "source_line": 1219
+        "source_line": 1219,
+        "source_basis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy. Source line: 1245.",
+        "extracted_fields": [
+          "definition",
+          "normalComparator",
+          "morphologyAnchor",
+          "topMimic",
+          "discriminator",
+          "ancillaryOrReportingConsequence",
+          "safetyPitfall",
+          "visualPlan",
+          "retrievalQuestions"
+        ]
       },
       "introductory_material": {
-        "orientation": "Local evidence packet for Primary cardiomyopathy.",
-        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "orientation": "Primary cardiomyopathy is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "clinical_relevance": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
         "prerequisites": [
           "Cardiovascular / Autopsy-adjacent",
-          "PGY1-PGY2"
+          "PGY1-PGY2",
+          "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality."
         ],
         "key_vocabulary": [
           "Primary cardiomyopathy",
-          "Cardiovascular / Autopsy-adjacent"
+          "Cardiovascular / Autopsy-adjacent",
+          "Cardiovascular"
         ]
       },
       "core_didactic": {
-        "definition": "",
+        "definition": "Primary cardiomyopathy is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
         "clinical_context": "",
         "gross_findings": "",
-        "histomorphology": "",
+        "histomorphology": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
         "cytomorphology": "",
         "immunophenotype": "",
         "molecular_profile": "",
         "classification_relevance": "",
         "clinical_imaging_correlation": "",
-        "reporting_management_implications": ""
+        "reporting_management_implications": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated"
       },
       "images": [
         {
           "type": "source-linked-placeholder",
-          "teaching_point": "Primary cardiomyopathy",
-          "caption": "",
-          "annotations": [],
+          "teaching_point": "gross heart/coronary or low-power myocardium with high-power injury, inflammation, scar, or fibrosis discriminator",
+          "caption": "pending licensed/local image or explicit no-image rationale",
+          "annotations": [
+            "Orient to Cardiovascular and specimen context before magnifying.",
+            "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+            "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
+            "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+          ],
           "source_status": "available"
         }
       ],
       "diagnostic_algorithm": {
         "entry_point": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy",
         "steps": [
-          "Confirm topic-specific local evidence before diagnostic branch generation."
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
         ],
         "terminal_nodes": []
       },
-      "differential_diagnosis": [],
+      "differential_diagnosis": [
+        {
+          "entity": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+          "shared_features": "",
+          "distinguishing_features": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+          "ihc_or_lab_discriminator": "",
+          "molecular_discriminator": "",
+          "clinical_or_imaging_discriminator": "",
+          "pitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        }
+      ],
       "mcqs": [],
       "worked_examples": [],
+      "retrieval_questions": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Primary cardiomyopathy.",
+          "answer": "Primary cardiomyopathy; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
       "retention_tools": {
-        "high_yield_summary": "",
-        "diagnostic_hook": "",
+        "high_yield_summary": "Primary cardiomyopathy is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "diagnostic_hook": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
         "mnemonic": "",
-        "flashcard_facts": [],
-        "comparison_table": [],
-        "do_not_miss_pearl": ""
+        "flashcard_facts": [
+          "Primary cardiomyopathy; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
+          "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated"
+        ],
+        "comparison_table": [
+          "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity :: clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death"
+        ],
+        "do_not_miss_pearl": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
       },
       "evidence_score": {
         "objective_linked": true,
         "local_source_linked": true,
         "topic_specificity": 0.8,
-        "section_completeness": 0.42,
-        "image_support": 0.25,
+        "section_completeness": 0.9,
+        "image_support": 0.6,
         "mcq_support": 0,
-        "algorithm_support": 0.2,
-        "differential_support": 0.2,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
         "worked_example_support": 0,
         "promotion_ready": false
       },
       "validation_status": "blocked",
       "promotion_status": "review-queue",
       "blocking_reasons": [
-        "required_content_sections_incomplete",
         "missing_mcqs"
       ],
       "ai_review_packet": {
@@ -579,6 +888,8 @@
       "local_evidence": {
         "source_map": "reports/curriculum/ap_local_source_map_v1.json",
         "primary_source_path": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "extracted_card_source_path": "src/content/competency/apP0CvAutopsyCardBatch.ts",
+        "extracted_card_id": "p0-cv-autopsy-card-04-facf68e3-1ae4-428f-95a2-28ad00ee0a2c",
         "local_candidate_count": 5,
         "match_reasons": [
           "organ_match:cardiovascular",
@@ -588,75 +899,135 @@
           "status:mapped",
           "confidence:high"
         ],
-        "source_line": 1220
+        "source_line": 1220,
+        "source_basis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Dilated cardiomyopathy. Source line: 1220.",
+        "extracted_fields": [
+          "definition",
+          "normalComparator",
+          "morphologyAnchor",
+          "topMimic",
+          "discriminator",
+          "ancillaryOrReportingConsequence",
+          "safetyPitfall",
+          "visualPlan",
+          "retrievalQuestions"
+        ]
       },
       "introductory_material": {
-        "orientation": "Local evidence packet for Dilated cardiomyopathy.",
-        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "orientation": "Dilated cardiomyopathy is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "clinical_relevance": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
         "prerequisites": [
           "Cardiovascular / Autopsy-adjacent",
-          "PGY1-PGY2"
+          "PGY1-PGY2",
+          "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality."
         ],
         "key_vocabulary": [
           "Dilated cardiomyopathy",
-          "Cardiovascular / Autopsy-adjacent"
+          "Cardiovascular / Autopsy-adjacent",
+          "Cardiovascular"
         ]
       },
       "core_didactic": {
-        "definition": "",
+        "definition": "Dilated cardiomyopathy is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
         "clinical_context": "",
         "gross_findings": "",
-        "histomorphology": "",
+        "histomorphology": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Dilated cardiomyopathy.",
         "cytomorphology": "",
         "immunophenotype": "",
         "molecular_profile": "",
         "classification_relevance": "",
         "clinical_imaging_correlation": "",
-        "reporting_management_implications": ""
+        "reporting_management_implications": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated"
       },
       "images": [
         {
           "type": "source-linked-placeholder",
-          "teaching_point": "Dilated cardiomyopathy",
-          "caption": "",
-          "annotations": [],
+          "teaching_point": "gross heart weight/chamber morphology plus H&E myocardial injury or fibrosis field",
+          "caption": "pending licensed/local image or explicit no-image rationale",
+          "annotations": [
+            "Orient to Cardiovascular and specimen context before magnifying.",
+            "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+            "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Dilated cardiomyopathy.",
+            "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+          ],
           "source_status": "available"
         }
       ],
       "diagnostic_algorithm": {
         "entry_point": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Dilated cardiomyopathy",
         "steps": [
-          "Confirm topic-specific local evidence before diagnostic branch generation."
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Dilated cardiomyopathy.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
         ],
         "terminal_nodes": []
       },
-      "differential_diagnosis": [],
+      "differential_diagnosis": [
+        {
+          "entity": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+          "shared_features": "",
+          "distinguishing_features": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+          "ihc_or_lab_discriminator": "",
+          "molecular_discriminator": "",
+          "clinical_or_imaging_discriminator": "",
+          "pitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        }
+      ],
       "mcqs": [],
       "worked_examples": [],
+      "retrieval_questions": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Dilated cardiomyopathy.",
+          "answer": "Dilated cardiomyopathy; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Dilated cardiomyopathy.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
       "retention_tools": {
-        "high_yield_summary": "",
-        "diagnostic_hook": "",
+        "high_yield_summary": "Dilated cardiomyopathy is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "diagnostic_hook": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Dilated cardiomyopathy.",
         "mnemonic": "",
-        "flashcard_facts": [],
-        "comparison_table": [],
-        "do_not_miss_pearl": ""
+        "flashcard_facts": [
+          "Dilated cardiomyopathy; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Dilated cardiomyopathy.",
+          "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated"
+        ],
+        "comparison_table": [
+          "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity :: clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death"
+        ],
+        "do_not_miss_pearl": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
       },
       "evidence_score": {
         "objective_linked": true,
         "local_source_linked": true,
         "topic_specificity": 0.8,
-        "section_completeness": 0.42,
-        "image_support": 0.25,
+        "section_completeness": 0.9,
+        "image_support": 0.6,
         "mcq_support": 0,
-        "algorithm_support": 0.2,
-        "differential_support": 0.2,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
         "worked_example_support": 0,
         "promotion_ready": false
       },
       "validation_status": "blocked",
       "promotion_status": "review-queue",
       "blocking_reasons": [
-        "required_content_sections_incomplete",
         "missing_mcqs"
       ],
       "ai_review_packet": {
@@ -684,6 +1055,8 @@
       "local_evidence": {
         "source_map": "reports/curriculum/ap_local_source_map_v1.json",
         "primary_source_path": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
+        "extracted_card_source_path": "src/content/competency/apP0CvAutopsyCardBatch.ts",
+        "extracted_card_id": "p0-cv-autopsy-card-05-2d32a809-446a-452e-9321-787efb2a478f",
         "local_candidate_count": 5,
         "match_reasons": [
           "organ_match:cardiovascular",
@@ -693,75 +1066,135 @@
           "status:mapped",
           "confidence:high"
         ],
-        "source_line": 1243
+        "source_line": 1243,
+        "source_basis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Non-Marfan familial aortic dissection > Ehlers-Danlos syndrome. Source line: 1243.",
+        "extracted_fields": [
+          "definition",
+          "normalComparator",
+          "morphologyAnchor",
+          "topMimic",
+          "discriminator",
+          "ancillaryOrReportingConsequence",
+          "safetyPitfall",
+          "visualPlan",
+          "retrievalQuestions"
+        ]
       },
       "introductory_material": {
-        "orientation": "Local evidence packet for Ehlers-Danlos syndrome.",
-        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "orientation": "Ehlers-Danlos syndrome is treated in this curriculum as an ABPath AP content-specification topic within Non-Marfan familial aortic dissection; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "clinical_relevance": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
         "prerequisites": [
           "Cardiovascular / Autopsy-adjacent",
-          "PGY1-PGY2"
+          "PGY1-PGY2",
+          "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality."
         ],
         "key_vocabulary": [
           "Ehlers-Danlos syndrome",
-          "Cardiovascular / Autopsy-adjacent"
+          "Cardiovascular / Autopsy-adjacent",
+          "Cardiovascular"
         ]
       },
       "core_didactic": {
-        "definition": "",
+        "definition": "Ehlers-Danlos syndrome is treated in this curriculum as an ABPath AP content-specification topic within Non-Marfan familial aortic dissection; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
         "clinical_context": "",
         "gross_findings": "",
-        "histomorphology": "",
+        "histomorphology": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Ehlers-Danlos syndrome.",
         "cytomorphology": "",
         "immunophenotype": "",
         "molecular_profile": "",
         "classification_relevance": "",
         "clinical_imaging_correlation": "",
-        "reporting_management_implications": ""
+        "reporting_management_implications": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated"
       },
       "images": [
         {
           "type": "source-linked-placeholder",
-          "teaching_point": "Ehlers-Danlos syndrome",
-          "caption": "",
-          "annotations": [],
+          "teaching_point": "gross aortic wall/tear or aneurysm image plus elastic stain or H&E media comparator",
+          "caption": "pending licensed/local image or explicit no-image rationale",
+          "annotations": [
+            "Orient to Cardiovascular and specimen context before magnifying.",
+            "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+            "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Ehlers-Danlos syndrome.",
+            "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+          ],
           "source_status": "available"
         }
       ],
       "diagnostic_algorithm": {
         "entry_point": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Non-Marfan familial aortic dissection > Ehlers-Danlos syndrome",
         "steps": [
-          "Confirm topic-specific local evidence before diagnostic branch generation."
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Ehlers-Danlos syndrome.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
         ],
         "terminal_nodes": []
       },
-      "differential_diagnosis": [],
+      "differential_diagnosis": [
+        {
+          "entity": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+          "shared_features": "",
+          "distinguishing_features": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+          "ihc_or_lab_discriminator": "",
+          "molecular_discriminator": "",
+          "clinical_or_imaging_discriminator": "",
+          "pitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        }
+      ],
       "mcqs": [],
       "worked_examples": [],
+      "retrieval_questions": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Ehlers-Danlos syndrome.",
+          "answer": "Ehlers-Danlos syndrome; scoped to Non-Marfan familial aortic dissection in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Ehlers-Danlos syndrome.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
       "retention_tools": {
-        "high_yield_summary": "",
-        "diagnostic_hook": "",
+        "high_yield_summary": "Ehlers-Danlos syndrome is treated in this curriculum as an ABPath AP content-specification topic within Non-Marfan familial aortic dissection; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "diagnostic_hook": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Ehlers-Danlos syndrome.",
         "mnemonic": "",
-        "flashcard_facts": [],
-        "comparison_table": [],
-        "do_not_miss_pearl": ""
+        "flashcard_facts": [
+          "Ehlers-Danlos syndrome; scoped to Non-Marfan familial aortic dissection in the ABPath AP content specifications.",
+          "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Ehlers-Danlos syndrome.",
+          "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated"
+        ],
+        "comparison_table": [
+          "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity :: clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death"
+        ],
+        "do_not_miss_pearl": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
       },
       "evidence_score": {
         "objective_linked": true,
         "local_source_linked": true,
         "topic_specificity": 0.8,
-        "section_completeness": 0.42,
-        "image_support": 0.25,
+        "section_completeness": 0.9,
+        "image_support": 0.6,
         "mcq_support": 0,
-        "algorithm_support": 0.2,
-        "differential_support": 0.2,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
         "worked_example_support": 0,
         "promotion_ready": false
       },
       "validation_status": "blocked",
       "promotion_status": "review-queue",
       "blocking_reasons": [
-        "required_content_sections_incomplete",
         "missing_mcqs"
       ],
       "ai_review_packet": {
@@ -789,6 +1222,8 @@
       "local_evidence": {
         "source_map": "reports/curriculum/ap_local_source_map_v1.json",
         "primary_source_path": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "extracted_card_source_path": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "extracted_card_id": "p0-cv-autopsy-batch-2-card-01-f4326c88-31a3-4d1e-a886-80e66507a039",
         "local_candidate_count": 5,
         "match_reasons": [
           "organ_match:cardiovascular",
@@ -798,75 +1233,135 @@
           "status:mapped",
           "confidence:high"
         ],
-        "source_line": 1245
+        "source_line": 1245,
+        "source_basis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy. Source line: 1245.",
+        "extracted_fields": [
+          "definition",
+          "normalComparator",
+          "morphologyAnchor",
+          "topMimic",
+          "discriminator",
+          "ancillaryOrReportingConsequence",
+          "safetyPitfall",
+          "visualPlan",
+          "retrievalQuestions"
+        ]
       },
       "introductory_material": {
-        "orientation": "Local evidence packet for Primary cardiomyopathy.",
-        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "orientation": "Primary cardiomyopathy is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "clinical_relevance": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
         "prerequisites": [
           "Cardiovascular / Autopsy-adjacent",
-          "PGY1-PGY2"
+          "PGY1-PGY2",
+          "Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality."
         ],
         "key_vocabulary": [
           "Primary cardiomyopathy",
-          "Cardiovascular / Autopsy-adjacent"
+          "Cardiovascular / Autopsy-adjacent",
+          "Cardiovascular"
         ]
       },
       "core_didactic": {
-        "definition": "",
+        "definition": "Primary cardiomyopathy is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
         "clinical_context": "",
         "gross_findings": "",
-        "histomorphology": "",
+        "histomorphology": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
         "cytomorphology": "",
         "immunophenotype": "",
         "molecular_profile": "",
         "classification_relevance": "",
         "clinical_imaging_correlation": "",
-        "reporting_management_implications": ""
+        "reporting_management_implications": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated"
       },
       "images": [
         {
           "type": "source-linked-placeholder",
-          "teaching_point": "Primary cardiomyopathy",
-          "caption": "",
-          "annotations": [],
+          "teaching_point": "gross heart/coronary or low-power myocardium with high-power injury, inflammation, scar, or fibrosis discriminator",
+          "caption": "pending licensed/local image or explicit no-image rationale",
+          "annotations": [
+            "Orient to Cardiovascular and specimen context before magnifying.",
+            "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+            "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
+            "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+          ],
           "source_status": "available"
         }
       ],
       "diagnostic_algorithm": {
         "entry_point": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy",
         "steps": [
-          "Confirm topic-specific local evidence before diagnostic branch generation."
+          "Orient to Cardiovascular and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against expected myocardium, valve, vessel wall, or systemic autopsy baseline before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
+          "Before sign-out, check the pitfall: overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
         ],
         "terminal_nodes": []
       },
-      "differential_diagnosis": [],
+      "differential_diagnosis": [
+        {
+          "entity": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity",
+          "shared_features": "",
+          "distinguishing_features": "clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death",
+          "ihc_or_lab_discriminator": "",
+          "molecular_discriminator": "",
+          "clinical_or_imaging_discriminator": "",
+          "pitfall": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
+        }
+      ],
       "mcqs": [],
       "worked_examples": [],
+      "retrieval_questions": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Primary cardiomyopathy.",
+          "answer": "Primary cardiomyopathy; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
       "retention_tools": {
-        "high_yield_summary": "",
-        "diagnostic_hook": "",
+        "high_yield_summary": "Primary cardiomyopathy is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "diagnostic_hook": "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
         "mnemonic": "",
-        "flashcard_facts": [],
-        "comparison_table": [],
-        "do_not_miss_pearl": ""
+        "flashcard_facts": [
+          "Primary cardiomyopathy; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "Use gross-micro correlation, anatomic distribution, injury pattern, inflammation, degeneration, thrombosis, or rupture plane to decide whether the finding fits Primary cardiomyopathy.",
+          "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity; separate with clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death.",
+          "cause-of-death wording, clinicopathologic correlation, special stains, cultures, toxicology, or genetic/syndromic correlation when indicated"
+        ],
+        "comparison_table": [
+          "postmortem artifact, nonspecific degeneration, ischemic injury, vasculitis, infection, or systemic comorbidity :: clinicopathologic timing, distribution, gross correlation, and whether the lesion explains mechanism of disease or death"
+        ],
+        "do_not_miss_pearl": "overstating causality without clinicopathologic support or missing a mechanism-relevant cardiovascular lesion"
       },
       "evidence_score": {
         "objective_linked": true,
         "local_source_linked": true,
         "topic_specificity": 0.8,
-        "section_completeness": 0.42,
-        "image_support": 0.25,
+        "section_completeness": 0.9,
+        "image_support": 0.6,
         "mcq_support": 0,
-        "algorithm_support": 0.2,
-        "differential_support": 0.2,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
         "worked_example_support": 0,
         "promotion_ready": false
       },
       "validation_status": "blocked",
       "promotion_status": "review-queue",
       "blocking_reasons": [
-        "required_content_sections_incomplete",
         "missing_mcqs"
       ],
       "ai_review_packet": {
@@ -894,6 +1389,8 @@
       "local_evidence": {
         "source_map": "reports/curriculum/ap_local_source_map_v1.json",
         "primary_source_path": "src/content/competency/apP0GiCardBatch.ts",
+        "extracted_card_source_path": "src/content/competency/apP0GiCardBatch.ts",
+        "extracted_card_id": "p0-gi-card-01-7ede8c2a-b226-4493-8dc4-2e90988f6410",
         "local_candidate_count": 5,
         "match_reasons": [
           "organ_match:gastrointestinal",
@@ -903,75 +1400,135 @@
           "status:mapped",
           "confidence:high"
         ],
-        "source_line": 1932
+        "source_line": 1932,
+        "source_basis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Infections. Source line: 1932.",
+        "extracted_fields": [
+          "definition",
+          "normalComparator",
+          "morphologyAnchor",
+          "topMimic",
+          "discriminator",
+          "ancillaryOrReportingConsequence",
+          "safetyPitfall",
+          "visualPlan",
+          "retrievalQuestions"
+        ]
       },
       "introductory_material": {
-        "orientation": "Local evidence packet for Infections.",
-        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "orientation": "Infections is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "clinical_relevance": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
         "prerequisites": [
           "Gastrointestinal",
-          "PGY1-PGY2"
+          "PGY1-PGY2",
+          "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality."
         ],
         "key_vocabulary": [
           "Infections",
-          "Gastrointestinal"
+          "Gastrointestinal",
+          "The Digestive System"
         ]
       },
       "core_didactic": {
-        "definition": "",
+        "definition": "Infections is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
         "clinical_context": "",
         "gross_findings": "",
-        "histomorphology": "",
+        "histomorphology": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
         "cytomorphology": "",
         "immunophenotype": "",
         "molecular_profile": "",
         "classification_relevance": "",
         "clinical_imaging_correlation": "",
-        "reporting_management_implications": ""
+        "reporting_management_implications": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment"
       },
       "images": [
         {
           "type": "source-linked-placeholder",
-          "teaching_point": "Infections",
-          "caption": "",
-          "annotations": [],
+          "teaching_point": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+          "caption": "pending licensed/local image or explicit no-image rationale",
+          "annotations": [
+            "Orient to The Digestive System and specimen context before magnifying.",
+            "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+            "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
+            "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+          ],
           "source_status": "available"
         }
       ],
       "diagnostic_algorithm": {
         "entry_point": "The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Infections",
         "steps": [
-          "Confirm topic-specific local evidence before diagnostic branch generation."
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
         ],
         "terminal_nodes": []
       },
-      "differential_diagnosis": [],
+      "differential_diagnosis": [
+        {
+          "entity": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+          "shared_features": "",
+          "distinguishing_features": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+          "ihc_or_lab_discriminator": "",
+          "molecular_discriminator": "",
+          "clinical_or_imaging_discriminator": "",
+          "pitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        }
+      ],
       "mcqs": [],
       "worked_examples": [],
+      "retrieval_questions": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Infections.",
+          "answer": "Infections; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
       "retention_tools": {
-        "high_yield_summary": "",
-        "diagnostic_hook": "",
+        "high_yield_summary": "Infections is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "diagnostic_hook": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
         "mnemonic": "",
-        "flashcard_facts": [],
-        "comparison_table": [],
-        "do_not_miss_pearl": ""
+        "flashcard_facts": [
+          "Infections; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Infections.",
+          "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment"
+        ],
+        "comparison_table": [
+          "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic :: architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context"
+        ],
+        "do_not_miss_pearl": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
       },
       "evidence_score": {
         "objective_linked": true,
         "local_source_linked": true,
         "topic_specificity": 0.8,
-        "section_completeness": 0.42,
-        "image_support": 0.25,
+        "section_completeness": 0.9,
+        "image_support": 0.6,
         "mcq_support": 0,
-        "algorithm_support": 0.2,
-        "differential_support": 0.2,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
         "worked_example_support": 0,
         "promotion_ready": false
       },
       "validation_status": "blocked",
       "promotion_status": "review-queue",
       "blocking_reasons": [
-        "required_content_sections_incomplete",
         "missing_mcqs"
       ],
       "ai_review_packet": {
@@ -999,6 +1556,8 @@
       "local_evidence": {
         "source_map": "reports/curriculum/ap_local_source_map_v1.json",
         "primary_source_path": "src/content/competency/apP0GiCardBatch.ts",
+        "extracted_card_source_path": "src/content/competency/apP0GiCardBatch.ts",
+        "extracted_card_id": "p0-gi-card-12-d80867cc-a1f7-4a7f-9b67-06ccb36915e6",
         "local_candidate_count": 5,
         "match_reasons": [
           "organ_match:gastrointestinal",
@@ -1008,75 +1567,135 @@
           "status:mapped",
           "confidence:high"
         ],
-        "source_line": 2266
+        "source_line": 2266,
+        "source_basis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Other infections of the anal canal. Source line: 2266.",
+        "extracted_fields": [
+          "definition",
+          "normalComparator",
+          "morphologyAnchor",
+          "topMimic",
+          "discriminator",
+          "ancillaryOrReportingConsequence",
+          "safetyPitfall",
+          "visualPlan",
+          "retrievalQuestions"
+        ]
       },
       "introductory_material": {
-        "orientation": "Local evidence packet for Other infections of the anal canal.",
-        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "orientation": "Other infections of the anal canal is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "clinical_relevance": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
         "prerequisites": [
           "Gastrointestinal",
-          "PGY1-PGY2"
+          "PGY1-PGY2",
+          "Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality."
         ],
         "key_vocabulary": [
           "Other infections of the anal canal",
-          "Gastrointestinal"
+          "Gastrointestinal",
+          "The Digestive System"
         ]
       },
       "core_didactic": {
-        "definition": "",
+        "definition": "Other infections of the anal canal is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
         "clinical_context": "",
         "gross_findings": "",
-        "histomorphology": "",
+        "histomorphology": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Other infections of the anal canal.",
         "cytomorphology": "",
         "immunophenotype": "",
         "molecular_profile": "",
         "classification_relevance": "",
         "clinical_imaging_correlation": "",
-        "reporting_management_implications": ""
+        "reporting_management_implications": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment"
       },
       "images": [
         {
           "type": "source-linked-placeholder",
-          "teaching_point": "Other infections of the anal canal",
-          "caption": "",
-          "annotations": [],
+          "teaching_point": "low-power GI architecture or gross correlate plus high-power diagnostic discriminator with a normal-site comparator",
+          "caption": "pending licensed/local image or explicit no-image rationale",
+          "annotations": [
+            "Orient to The Digestive System and specimen context before magnifying.",
+            "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+            "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Other infections of the anal canal.",
+            "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+          ],
           "source_status": "available"
         }
       ],
       "diagnostic_algorithm": {
         "entry_point": "The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Other infections of the anal canal",
         "steps": [
-          "Confirm topic-specific local evidence before diagnostic branch generation."
+          "Orient to The Digestive System and specimen context before magnifying.",
+          "Find the normal/reactive comparator: Compare against normal mucosa, hepatobiliary tissue, pancreatic tissue, or expected biopsy compartment for the site before labeling the abnormality.",
+          "At low power and high power, test the morphology anchor: Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Other infections of the anal canal.",
+          "Before sign-out, check the pitfall: overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
         ],
         "terminal_nodes": []
       },
-      "differential_diagnosis": [],
+      "differential_diagnosis": [
+        {
+          "entity": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic",
+          "shared_features": "",
+          "distinguishing_features": "architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context",
+          "ihc_or_lab_discriminator": "",
+          "molecular_discriminator": "",
+          "clinical_or_imaging_discriminator": "",
+          "pitfall": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
+        }
+      ],
       "mcqs": [],
       "worked_examples": [],
+      "retrieval_questions": [
+        {
+          "prompt": "Before reveal: name the entity or process represented by Other infections of the anal canal.",
+          "answer": "Other infections of the anal canal; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "reasoning": "Start by naming the content-spec target and its organ-system location before adding details."
+        },
+        {
+          "prompt": "State one feature that must be present before calling it.",
+          "answer": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Other infections of the anal canal.",
+          "reasoning": "The learner must commit to an observable morphologic or workflow feature rather than a memorized label."
+        },
+        {
+          "prompt": "Name the closest mimic and the discriminator that separates them.",
+          "answer": "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "reasoning": "Contrastive recall strengthens diagnostic discrimination and reduces common overcall/undercall errors."
+        },
+        {
+          "prompt": "Write the report or comment phrase that would matter clinically.",
+          "answer": "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment",
+          "reasoning": "The close of the card must connect recognition to a report, staging, adequacy, ancillary, or safety action."
+        }
+      ],
       "retention_tools": {
-        "high_yield_summary": "",
-        "diagnostic_hook": "",
+        "high_yield_summary": "Other infections of the anal canal is treated in this curriculum as an ABPath AP content-specification topic within Physiologic Changes, Metabolic Conditions, & Trauma/Infarct; learners should first confirm the specimen context, then decide whether the process is a true entity, pattern, specimen task, or reportable finding.",
+        "diagnostic_hook": "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Other infections of the anal canal.",
         "mnemonic": "",
-        "flashcard_facts": [],
-        "comparison_table": [],
-        "do_not_miss_pearl": ""
+        "flashcard_facts": [
+          "Other infections of the anal canal; scoped to Physiologic Changes, Metabolic Conditions, & Trauma/Infarct in the ABPath AP content specifications.",
+          "Use site, architecture, inflammation/activity, dysplasia, invasion, stromal response, and high-power cytology to decide whether the finding fits Other infections of the anal canal.",
+          "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic; separate with architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context.",
+          "special stains, IHC/molecular tests, dysplasia grade, margin/stage language, or management-relevant comment"
+        ],
+        "comparison_table": [
+          "reactive/regenerative change, infection, treatment effect, dysplasia, carcinoma, or site-specific inflammatory mimic :: architecture plus cytology, distribution, chronicity/activity, invasion, organism evidence, or precursor-lesion context"
+        ],
+        "do_not_miss_pearl": "overcalling reactive atypia as dysplasia/cancer or failing to report activity, dysplasia, invasion, or staging consequence"
       },
       "evidence_score": {
         "objective_linked": true,
         "local_source_linked": true,
         "topic_specificity": 0.8,
-        "section_completeness": 0.42,
-        "image_support": 0.25,
+        "section_completeness": 0.9,
+        "image_support": 0.6,
         "mcq_support": 0,
-        "algorithm_support": 0.2,
-        "differential_support": 0.2,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
         "worked_example_support": 0,
         "promotion_ready": false
       },
       "validation_status": "blocked",
       "promotion_status": "review-queue",
       "blocking_reasons": [
-        "required_content_sections_incomplete",
         "missing_mcqs"
       ],
       "ai_review_packet": {

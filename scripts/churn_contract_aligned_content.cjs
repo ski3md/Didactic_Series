@@ -68,6 +68,110 @@ const ensureDir = (filePath) => fs.mkdirSync(path.dirname(filePath), { recursive
 const normalizeText = (value) => String(value || '').replace(/\s+/g, ' ').trim();
 
 const unique = (entries) => [...new Set(entries.filter(Boolean))];
+const roundScore = (value) => Math.round(value * 100) / 100;
+
+const parsedSourceCache = new Map();
+
+const localCompetencySourcePaths = () =>
+  fs
+    .readdirSync(path.join(repoRoot, 'src/content/competency'))
+    .filter((fileName) => /^apP0.*CardBatch.*\.ts$/.test(fileName))
+    .map((fileName) => `src/content/competency/${fileName}`)
+    .sort();
+
+const parseGeneratedObject = (relativePath) => {
+  if (!relativePath || !relativePath.endsWith('.ts')) return null;
+  if (parsedSourceCache.has(relativePath)) return parsedSourceCache.get(relativePath);
+  const filePath = path.join(repoRoot, relativePath);
+  if (!fs.existsSync(filePath)) {
+    parsedSourceCache.set(relativePath, null);
+    return null;
+  }
+  const source = fs.readFileSync(filePath, 'utf8');
+  const start = source.indexOf('{');
+  const end = source.lastIndexOf('}');
+  if (start === -1 || end === -1 || end <= start) {
+    parsedSourceCache.set(relativePath, null);
+    return null;
+  }
+  try {
+    const parsed = JSON.parse(source.slice(start, end + 1));
+    parsedSourceCache.set(relativePath, parsed);
+    return parsed;
+  } catch {
+    parsedSourceCache.set(relativePath, null);
+    return null;
+  }
+};
+
+const cardMatchesRow = (card, row) => {
+  if (!card || card.title !== row.title) return false;
+  if (row.sourceLine && card.sourceLine === row.sourceLine) return true;
+  if (card.apSpecPath && card.apSpecPath === row.path) return true;
+  return false;
+};
+
+const findEvidenceCard = (row) => {
+  const candidatePaths = unique([
+    ...(row.local_candidates || []).map((candidate) => candidate.file_path),
+    ...localCompetencySourcePaths(),
+  ]);
+
+  for (const relativePath of candidatePaths) {
+    const parsed = parseGeneratedObject(relativePath);
+    const card = parsed?.cards?.find((candidateCard) => cardMatchesRow(candidateCard, row));
+    if (card) {
+      return {
+        sourcePath: relativePath,
+        card,
+      };
+    }
+  }
+
+  return null;
+};
+
+const sourceBackedSections = (card) => {
+  if (!card) return {};
+  const draft = card.entityCardDraft || {};
+  const visual = card.visualAnchorDraft || {};
+  const retrieval = Array.isArray(card.retrievalAnswerKey) ? card.retrievalAnswerKey : [];
+  return {
+    definition: normalizeText(draft.definition),
+    normalComparator: normalizeText(draft.normalComparator),
+    morphologyAnchor: normalizeText(draft.morphologyAnchor),
+    topMimic: normalizeText(draft.topMimic),
+    discriminator: normalizeText(draft.discriminator),
+    ancillaryOrReportingConsequence: normalizeText(draft.ancillaryOrReportingConsequence),
+    safetyPitfall: normalizeText(draft.safetyPitfall),
+    sourceBasis: normalizeText(draft.sourceBasis),
+    scopedDomain: normalizeText(draft.scopedDomain),
+    visualPlan: normalizeText(visual.plan),
+    inspectionSequence: Array.isArray(visual.inspectionSequence) ? visual.inspectionSequence.map(normalizeText).filter(Boolean) : [],
+    assetStatus: normalizeText(visual.assetStatus),
+    retrievalQuestions: retrieval.map((entry) => ({
+      prompt: normalizeText(entry.prompt),
+      answer: normalizeText(entry.answer),
+      reasoning: normalizeText(entry.reasoning),
+    })),
+  };
+};
+
+const scoreSectionCompleteness = (sections, hasEvidenceCard) => {
+  const checks = [
+    Boolean(sections.definition),
+    Boolean(sections.morphologyAnchor),
+    Boolean(sections.normalComparator),
+    Boolean(sections.topMimic && sections.discriminator),
+    Boolean(sections.ancillaryOrReportingConsequence),
+    Boolean(sections.safetyPitfall),
+    Boolean(sections.visualPlan || sections.inspectionSequence?.length),
+    sections.retrievalQuestions?.length >= 4,
+    hasEvidenceCard,
+    false,
+  ];
+  return roundScore(checks.filter(Boolean).length / checks.length);
+};
 
 const selectRows = (sourceMap, limit, requireTopicSpecificEvidence) =>
   sourceMap.candidate_rows
@@ -83,18 +187,20 @@ const topicSpecificityScore = (row) => {
 
 const buildPacket = (row, index) => {
   const primary = row.local_candidates[0] || {};
+  const evidenceCard = findEvidenceCard(row);
+  const sections = sourceBackedSections(evidenceCard?.card);
   const objectiveLinked = Boolean(row.id && row.category && row.path);
   const localSourceLinked = Boolean(primary.file_path);
-  const sectionCompleteness = 0.42;
+  const sectionCompleteness = scoreSectionCompleteness(sections, Boolean(evidenceCard));
   const evidenceScore = {
     objective_linked: objectiveLinked,
-    local_source_linked: localSourceLinked,
+    local_source_linked: localSourceLinked && Boolean(evidenceCard),
     topic_specificity: topicSpecificityScore(row),
     section_completeness: sectionCompleteness,
-    image_support: primary.reuse_target === 'image_atlas' ? 0.25 : 0,
+    image_support: sections.visualPlan || sections.inspectionSequence?.length ? 0.6 : primary.reuse_target === 'image_atlas' ? 0.25 : 0,
     mcq_support: 0,
-    algorithm_support: 0.2,
-    differential_support: 0.2,
+    algorithm_support: sections.inspectionSequence?.length ? 0.6 : 0.2,
+    differential_support: sections.topMimic && sections.discriminator ? 0.45 : 0.2,
     worked_example_support: 0,
     promotion_ready: false,
   };
@@ -117,52 +223,87 @@ const buildPacket = (row, index) => {
     local_evidence: {
       source_map: 'reports/curriculum/ap_local_source_map_v1.json',
       primary_source_path: primary.file_path || null,
+      extracted_card_source_path: evidenceCard?.sourcePath || null,
+      extracted_card_id: evidenceCard?.card?.id || null,
       local_candidate_count: row.local_candidate_count,
       match_reasons: primary.match_reasons || [],
       source_line: row.sourceLine || null,
+      source_basis: sections.sourceBasis || null,
+      extracted_fields: Object.entries({
+        definition: sections.definition,
+        normalComparator: sections.normalComparator,
+        morphologyAnchor: sections.morphologyAnchor,
+        topMimic: sections.topMimic,
+        discriminator: sections.discriminator,
+        ancillaryOrReportingConsequence: sections.ancillaryOrReportingConsequence,
+        safetyPitfall: sections.safetyPitfall,
+        visualPlan: sections.visualPlan,
+        retrievalQuestions: sections.retrievalQuestions?.length ? 'present' : '',
+      })
+        .filter(([, value]) => Boolean(value))
+        .map(([key]) => key),
     },
     introductory_material: {
-      orientation: `Local evidence packet for ${normalizeText(row.title)}.`,
-      clinical_relevance: 'Blocked from promotion until deterministic local sources support full teaching claims.',
-      prerequisites: unique([row.category, row.learnerLevel]),
-      key_vocabulary: unique([row.title, row.category]),
+      orientation: sections.definition || `Local evidence packet for ${normalizeText(row.title)}.`,
+      clinical_relevance:
+        sections.ancillaryOrReportingConsequence ||
+        'Blocked from promotion until deterministic local sources support full teaching claims.',
+      prerequisites: unique([row.category, row.learnerLevel, sections.normalComparator]),
+      key_vocabulary: unique([row.title, row.category, sections.scopedDomain]),
     },
     core_didactic: {
-      definition: '',
+      definition: sections.definition || '',
       clinical_context: '',
       gross_findings: '',
-      histomorphology: '',
+      histomorphology: sections.morphologyAnchor || '',
       cytomorphology: '',
       immunophenotype: '',
       molecular_profile: '',
       classification_relevance: '',
       clinical_imaging_correlation: '',
-      reporting_management_implications: '',
+      reporting_management_implications: sections.ancillaryOrReportingConsequence || '',
     },
     images: [
       {
         type: primary.reuse_target === 'image_atlas' ? 'source-linked-placeholder' : 'needs_source',
-        teaching_point: normalizeText(row.title),
-        caption: '',
-        annotations: [],
-        source_status: primary.file_path ? 'available' : 'needs_source',
+        teaching_point: sections.visualPlan || normalizeText(row.title),
+        caption: sections.assetStatus || '',
+        annotations: sections.inspectionSequence || [],
+        source_status: evidenceCard ? 'available' : 'needs_source',
       },
     ],
     diagnostic_algorithm: {
       entry_point: normalizeText(row.path),
-      steps: ['Confirm topic-specific local evidence before diagnostic branch generation.'],
+      steps:
+        sections.inspectionSequence?.length > 0
+          ? sections.inspectionSequence
+          : ['Confirm topic-specific local evidence before diagnostic branch generation.'],
       terminal_nodes: [],
     },
-    differential_diagnosis: [],
+    differential_diagnosis:
+      sections.topMimic && sections.discriminator
+        ? [
+            {
+              entity: sections.topMimic,
+              shared_features: '',
+              distinguishing_features: sections.discriminator,
+              ihc_or_lab_discriminator: '',
+              molecular_discriminator: '',
+              clinical_or_imaging_discriminator: '',
+              pitfall: sections.safetyPitfall || '',
+            },
+          ]
+        : [],
     mcqs: [],
     worked_examples: [],
+    retrieval_questions: sections.retrievalQuestions || [],
     retention_tools: {
-      high_yield_summary: '',
-      diagnostic_hook: '',
+      high_yield_summary: sections.definition || '',
+      diagnostic_hook: sections.morphologyAnchor || '',
       mnemonic: '',
-      flashcard_facts: [],
-      comparison_table: [],
-      do_not_miss_pearl: '',
+      flashcard_facts: unique((sections.retrievalQuestions || []).map((entry) => entry.answer)),
+      comparison_table: sections.topMimic && sections.discriminator ? [`${sections.topMimic} :: ${sections.discriminator}`] : [],
+      do_not_miss_pearl: sections.safetyPitfall || '',
     },
     evidence_score: evidenceScore,
     validation_status: blockingReasons.length === 0 ? 'pass' : 'blocked',
@@ -261,10 +402,10 @@ const renderMarkdown = (payload) => [
   '',
   '## Packets',
   '',
-  '| Packet | Topic | Specificity | Promotion | Blockers |',
-  '| --- | --- | --- | --- | --- |',
+  '| Packet | Topic | Source | Section completeness | Extracted fields | Promotion | Blockers |',
+  '| --- | --- | --- | --- | --- | --- | --- |',
   ...payload.packets.map((packet) =>
-    `| ${packet.packet_id} | ${normalizeText(packet.abpath_topic)} | ${packet.source_specificity} | ${packet.evidence_score.promotion_ready ? 'ready' : 'blocked'} | ${packet.blocking_reasons.join(', ')} |`
+    `| ${packet.packet_id} | ${normalizeText(packet.abpath_topic)} | ${packet.local_evidence.extracted_card_source_path || packet.local_evidence.primary_source_path || 'missing'} | ${packet.evidence_score.section_completeness.toFixed(2)} | ${packet.local_evidence.extracted_fields.join(', ')} | ${packet.evidence_score.promotion_ready ? 'ready' : 'blocked'} | ${packet.blocking_reasons.join(', ')} |`
   ),
   '',
 ].join('\n');
