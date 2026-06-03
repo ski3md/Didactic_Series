@@ -1,0 +1,212 @@
+{
+  "packet_version": "local-content-churner-promotion-state.v1",
+  "runtime": {
+    "ai_dependency": "NONE",
+    "network_access": "NONE",
+    "source_mode": "LOCAL_ONLY",
+    "allow_ai_review": false,
+    "deterministic_generation": true
+  },
+  "source_packets": {
+    "churn_packet": "reports/curriculum/local_content_churner/churn_contract_aligned_content.json",
+    "faculty_review_packet": "reports/curriculum/local_content_churner/churn_faculty_review_packet.json"
+  },
+  "promotion_policy": {
+    "promotion_requires_completed_faculty_signoff": true,
+    "pending_decisions_remain_blocked": true,
+    "advisory_ai_review_can_promote": false
+  },
+  "summary": {
+    "total_items": 10,
+    "promotion_ready": 0,
+    "blocked": 10,
+    "by_applied_status": {
+      "review-queue": 10
+    },
+    "by_decision": {
+      "pending": 10
+    }
+  },
+  "applied_items": [
+    {
+      "packet_id": "local-content-churn-001",
+      "abpath_topic": "Cysts",
+      "source_map_id": "ap_breast-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109",
+      "decision": "pending",
+      "completed_signoff": false,
+      "reviewer_name": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "notes": "",
+      "original_promotion_status": "review-queue",
+      "applied_status": "review-queue",
+      "promotion_ready": false,
+      "blocking_reasons": [
+        "faculty_review_required_before_promotion"
+      ],
+      "next_action": "Collect completed faculty signoff before promotion."
+    },
+    {
+      "packet_id": "local-content-churn-002",
+      "abpath_topic": "Diseases associated with acellular closure of glomerular capillaries",
+      "source_map_id": "ap_gu-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0",
+      "decision": "pending",
+      "completed_signoff": false,
+      "reviewer_name": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "notes": "",
+      "original_promotion_status": "review-queue",
+      "applied_status": "review-queue",
+      "promotion_ready": false,
+      "blocking_reasons": [
+        "faculty_review_required_before_promotion"
+      ],
+      "next_action": "Collect completed faculty signoff before promotion."
+    },
+    {
+      "packet_id": "local-content-churn-003",
+      "abpath_topic": "Amyloid",
+      "source_map_id": "ap_male_repro-cd232d7a-75c4-462f-8db3-45e5dd5fae86",
+      "decision": "pending",
+      "completed_signoff": false,
+      "reviewer_name": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "notes": "",
+      "original_promotion_status": "review-queue",
+      "applied_status": "review-queue",
+      "promotion_ready": false,
+      "blocking_reasons": [
+        "faculty_review_required_before_promotion"
+      ],
+      "next_action": "Collect completed faculty signoff before promotion."
+    },
+    {
+      "packet_id": "local-content-churn-004",
+      "abpath_topic": "Medial calcification (e.g., Monckeberg)",
+      "source_map_id": "ap_cv-61be0cb0-c511-4759-9e7a-0b40b4b90d1e",
+      "decision": "pending",
+      "completed_signoff": false,
+      "reviewer_name": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "notes": "",
+      "original_promotion_status": "review-queue",
+      "applied_status": "review-queue",
+      "promotion_ready": false,
+      "blocking_reasons": [
+        "faculty_review_required_before_promotion"
+      ],
+      "next_action": "Collect completed faculty signoff before promotion."
+    },
+    {
+      "packet_id": "local-content-churn-005",
+      "abpath_topic": "Primary cardiomyopathy",
+      "source_map_id": "ap_cv-a639b4ae-c0d4-4906-99c7-8f24e6dbe373",
+      "decision": "pending",
+      "completed_signoff": false,
+      "reviewer_name": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "notes": "",
+      "original_promotion_status": "review-queue",
+      "applied_status": "review-queue",
+      "promotion_ready": false,
+      "blocking_reasons": [
+        "faculty_review_required_before_promotion"
+      ],
+      "next_action": "Collect completed faculty signoff before promotion."
+    },
+    {
+      "packet_id": "local-content-churn-006",
+      "abpath_topic": "Dilated cardiomyopathy",
+      "source_map_id": "ap_cv-facf68e3-1ae4-428f-95a2-28ad00ee0a2c",
+      "decision": "pending",
+      "completed_signoff": false,
+      "reviewer_name": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "notes": "",
+      "original_promotion_status": "review-queue",
+      "applied_status": "review-queue",
+      "promotion_ready": false,
+      "blocking_reasons": [
+        "faculty_review_required_before_promotion"
+      ],
+      "next_action": "Collect completed faculty signoff before promotion."
+    },
+    {
+      "packet_id": "local-content-churn-007",
+      "abpath_topic": "Ehlers-Danlos syndrome",
+      "source_map_id": "ap_cv-2d32a809-446a-452e-9321-787efb2a478f",
+      "decision": "pending",
+      "completed_signoff": false,
+      "reviewer_name": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "notes": "",
+      "original_promotion_status": "review-queue",
+      "applied_status": "review-queue",
+      "promotion_ready": false,
+      "blocking_reasons": [
+        "faculty_review_required_before_promotion"
+      ],
+      "next_action": "Collect completed faculty signoff before promotion."
+    },
+    {
+      "packet_id": "local-content-churn-008",
+      "abpath_topic": "Primary cardiomyopathy",
+      "source_map_id": "ap_cv-f4326c88-31a3-4d1e-a886-80e66507a039",
+      "decision": "pending",
+      "completed_signoff": false,
+      "reviewer_name": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "notes": "",
+      "original_promotion_status": "review-queue",
+      "applied_status": "review-queue",
+      "promotion_ready": false,
+      "blocking_reasons": [
+        "faculty_review_required_before_promotion"
+      ],
+      "next_action": "Collect completed faculty signoff before promotion."
+    },
+    {
+      "packet_id": "local-content-churn-009",
+      "abpath_topic": "Infections",
+      "source_map_id": "ap_gi-7ede8c2a-b226-4493-8dc4-2e90988f6410",
+      "decision": "pending",
+      "completed_signoff": false,
+      "reviewer_name": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "notes": "",
+      "original_promotion_status": "review-queue",
+      "applied_status": "review-queue",
+      "promotion_ready": false,
+      "blocking_reasons": [
+        "faculty_review_required_before_promotion"
+      ],
+      "next_action": "Collect completed faculty signoff before promotion."
+    },
+    {
+      "packet_id": "local-content-churn-010",
+      "abpath_topic": "Other infections of the anal canal",
+      "source_map_id": "ap_gi-d80867cc-a1f7-4a7f-9b67-06ccb36915e6",
+      "decision": "pending",
+      "completed_signoff": false,
+      "reviewer_name": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "notes": "",
+      "original_promotion_status": "review-queue",
+      "applied_status": "review-queue",
+      "promotion_ready": false,
+      "blocking_reasons": [
+        "faculty_review_required_before_promotion"
+      ],
+      "next_action": "Collect completed faculty signoff before promotion."
+    }
+  ]
+}
