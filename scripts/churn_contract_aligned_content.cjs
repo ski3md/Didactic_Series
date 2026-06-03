@@ -9,6 +9,8 @@ const sourceMapPath = path.join(repoRoot, 'reports/curriculum/ap_local_source_ma
 const gapInventoryPath = path.join(repoRoot, 'reports/curriculum/gap_inventory_v1.json');
 const outputJsonPath = path.join(repoRoot, 'reports/curriculum/local_content_churner/churn_contract_aligned_content.json');
 const outputMdPath = path.join(repoRoot, 'reports/curriculum/local_content_churner/churn_contract_aligned_content.md');
+const facultyReviewJsonPath = path.join(repoRoot, 'reports/curriculum/local_content_churner/churn_faculty_review_packet.json');
+const facultyReviewMdPath = path.join(repoRoot, 'reports/curriculum/local_content_churner/churn_faculty_review_packet.md');
 
 const REQUIRED_SECTIONS = [
   'introductory_material',
@@ -136,6 +138,7 @@ const sourceBackedSections = (card) => {
   const draft = card.entityCardDraft || {};
   const visual = card.visualAnchorDraft || {};
   const retrieval = Array.isArray(card.retrievalAnswerKey) ? card.retrievalAnswerKey : [];
+  const gateStatuses = Array.isArray(card.gateStatuses) ? card.gateStatuses : [];
   return {
     definition: normalizeText(draft.definition),
     normalComparator: normalizeText(draft.normalComparator),
@@ -154,6 +157,17 @@ const sourceBackedSections = (card) => {
       answer: normalizeText(entry.answer),
       reasoning: normalizeText(entry.reasoning),
     })),
+    facultyReviewChecklist: Array.isArray(card.facultyReviewChecklist)
+      ? card.facultyReviewChecklist.map(normalizeText).filter(Boolean)
+      : [],
+    completionGate: normalizeText(card.completionGate),
+    missingGates: gateStatuses
+      .filter((gate) => gate.status === 'missing')
+      .map((gate) => ({
+        id: normalizeText(gate.id),
+        label: normalizeText(gate.label),
+        evidence: normalizeText(gate.evidence),
+      })),
   };
 };
 
@@ -296,6 +310,7 @@ const buildPacket = (row, index) => {
         safetyPitfall: sections.safetyPitfall,
         visualPlan: sections.visualPlan,
         retrievalQuestions: sections.retrievalQuestions?.length ? 'present' : '',
+        facultyReviewChecklist: sections.facultyReviewChecklist?.length ? 'present' : '',
       })
         .filter(([, value]) => Boolean(value))
         .map(([key]) => key),
@@ -384,6 +399,50 @@ const buildPacket = (row, index) => {
   };
 };
 
+const buildFacultyReviewPacket = (payload) => ({
+  packet_version: 'local-content-churner-faculty-review.v1',
+  runtime: payload.runtime,
+  source_inputs: payload.source_inputs,
+  scope: {
+    packet_count: payload.packets.length,
+    promotion_ready_packets: payload.summary.promotion_ready_packets,
+    blocked_packets: payload.summary.blocked_packets,
+    review_policy: 'Faculty review is required before any deterministic packet can be promoted.',
+  },
+  review_items: payload.packets.map((packet) => ({
+    packet_id: packet.packet_id,
+    abpath_topic: packet.abpath_topic,
+    path: packet.path,
+    source: {
+      source_map_id: packet.source_map_id,
+      extracted_card_source_path: packet.local_evidence.extracted_card_source_path,
+      extracted_card_id: packet.local_evidence.extracted_card_id,
+      source_basis: packet.local_evidence.source_basis,
+    },
+    evidence_score: packet.evidence_score,
+    review_status: {
+      promotion_status: packet.promotion_status,
+      blocking_reasons: packet.blocking_reasons,
+      faculty_review_required: packet.blocking_reasons.includes('faculty_review_required_before_promotion'),
+    },
+    review_questions: [
+      'Does the local source basis correctly link this packet to the ABPath objective path?',
+      'Are definition, morphology anchor, comparator, mimic/discriminator, visual plan, and reporting consequence accurate enough for learner use?',
+      'Are the five source-backed MCQ-style items acceptable as draft board-prep questions?',
+      'Are image placeholders and visual-anchor instructions sufficient, or is a licensed/local image required before promotion?',
+      'Should this packet remain in its current AP topic path, be reassigned, or be retired as a parser/taxonomy artifact?',
+    ],
+    required_signoff_fields: {
+      reviewer_name: '',
+      reviewer_role: '',
+      review_date: '',
+      decision: 'pending',
+      decision_options: ['approve_for_promotion', 'revise_with_local_evidence', 'reassign_topic', 'retire_or_supersede'],
+      notes: '',
+    },
+  })),
+});
+
 const buildPayload = (options) => {
   const sourceMap = readJson(sourceMapPath);
   const gapInventory = readJson(gapInventoryPath);
@@ -467,6 +526,29 @@ const renderMarkdown = (payload) => [
   '',
 ].join('\n');
 
+const renderFacultyReviewMarkdown = (reviewPacket) => [
+  '# Local Content Churner Faculty Review Packet',
+  '',
+  `AI_DEPENDENCY: ${reviewPacket.runtime.ai_dependency}`,
+  `NETWORK_ACCESS: ${reviewPacket.runtime.network_access}`,
+  `SOURCE_MODE: ${reviewPacket.runtime.source_mode}`,
+  `PROMOTION_READY_PACKETS: ${reviewPacket.scope.promotion_ready_packets}`,
+  `BLOCKED_PACKETS: ${reviewPacket.scope.blocked_packets}`,
+  '',
+  '## Review Items',
+  '',
+  '| Packet | Topic | Source | MCQs | Decision | Required action |',
+  '| --- | --- | --- | --- | --- | --- |',
+  ...reviewPacket.review_items.map((item) =>
+    `| ${item.packet_id} | ${normalizeText(item.abpath_topic)} | ${item.source.extracted_card_source_path || 'missing'} | ${item.evidence_score.mcq_support >= 1 ? '5 source-backed' : 'incomplete'} | pending | ${item.review_status.blocking_reasons.join(', ')} |`
+  ),
+  '',
+  '## Reviewer Signoff Template',
+  '',
+  'For each packet, record reviewer name, role, review date, decision, and notes in the JSON packet before promotion.',
+  '',
+].join('\n');
+
 const validatePayload = (payload) => {
   const failures = [];
   if (payload.runtime.ai_dependency !== 'NONE') failures.push('AI dependency is not NONE');
@@ -514,19 +596,30 @@ const main = () => {
   }
 
   const markdown = renderMarkdown(firstPayload);
+  const facultyReviewPacket = buildFacultyReviewPacket(firstPayload);
+  const facultyReviewJson = stableJson(facultyReviewPacket);
+  const facultyReviewMarkdown = renderFacultyReviewMarkdown(facultyReviewPacket);
   if (options.mode === 'draft') {
     ensureDir(outputJsonPath);
     fs.writeFileSync(outputJsonPath, firstJson);
     fs.writeFileSync(outputMdPath, markdown);
+    fs.writeFileSync(facultyReviewJsonPath, facultyReviewJson);
+    fs.writeFileSync(facultyReviewMdPath, facultyReviewMarkdown);
   } else {
-    if (!fs.existsSync(outputJsonPath) || !fs.existsSync(outputMdPath)) {
-      throw new Error('Validation requires existing deterministic churn JSON and Markdown reports. Run draft mode first.');
+    if (!fs.existsSync(outputJsonPath) || !fs.existsSync(outputMdPath) || !fs.existsSync(facultyReviewJsonPath) || !fs.existsSync(facultyReviewMdPath)) {
+      throw new Error('Validation requires existing deterministic churn and faculty-review reports. Run draft mode first.');
     }
     if (fs.readFileSync(outputJsonPath, 'utf8') !== firstJson) {
       throw new Error('Stored churn JSON does not match deterministic regeneration.');
     }
     if (fs.readFileSync(outputMdPath, 'utf8') !== markdown) {
       throw new Error('Stored churn Markdown does not match deterministic regeneration.');
+    }
+    if (fs.readFileSync(facultyReviewJsonPath, 'utf8') !== facultyReviewJson) {
+      throw new Error('Stored faculty-review JSON does not match deterministic regeneration.');
+    }
+    if (fs.readFileSync(facultyReviewMdPath, 'utf8') !== facultyReviewMarkdown) {
+      throw new Error('Stored faculty-review Markdown does not match deterministic regeneration.');
     }
   }
 

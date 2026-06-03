@@ -1,0 +1,528 @@
+{
+  "packet_version": "local-content-churner-faculty-review.v1",
+  "runtime": {
+    "ai_dependency": "NONE",
+    "network_access": "NONE",
+    "source_mode": "LOCAL_ONLY",
+    "allow_ai_review": false,
+    "deterministic_generation": true
+  },
+  "source_inputs": [
+    {
+      "path": "reports/curriculum/ap_local_source_map_v1.json",
+      "sha256": "8e4d76d5bcee552b18c9deab251f24c83acb336235f43be293b920dd6db2c32b"
+    },
+    {
+      "path": "reports/curriculum/gap_inventory_v1.json",
+      "sha256": "a2df92c17047b90daf606f4b48c429a7e58c8dea2e2ab5bcbc8f169e2aa0576a"
+    }
+  ],
+  "scope": {
+    "packet_count": 10,
+    "promotion_ready_packets": 0,
+    "blocked_packets": 10,
+    "review_policy": "Faculty review is required before any deterministic packet can be promoted."
+  },
+  "review_items": [
+    {
+      "packet_id": "local-content-churn-001",
+      "abpath_topic": "Cysts",
+      "path": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Cysts",
+      "source": {
+        "source_map_id": "ap_breast-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109",
+        "extracted_card_source_path": "src/content/competency/apP0BreastCardBatch.ts",
+        "extracted_card_id": "p0-breast-card-01-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109",
+        "source_basis": "Drafted from ABPath AP content-spec path: Breast > Normal Anatomy and Histology > Diabetic mastopathy > Cysts. Source line: 324."
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 1,
+        "image_support": 0.6,
+        "mcq_support": 1,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "review_status": {
+        "promotion_status": "review-queue",
+        "blocking_reasons": [
+          "faculty_review_required_before_promotion"
+        ],
+        "faculty_review_required": true
+      },
+      "review_questions": [
+        "Does the local source basis correctly link this packet to the ABPath objective path?",
+        "Are definition, morphology anchor, comparator, mimic/discriminator, visual plan, and reporting consequence accurate enough for learner use?",
+        "Are the five source-backed MCQ-style items acceptable as draft board-prep questions?",
+        "Are image placeholders and visual-anchor instructions sufficient, or is a licensed/local image required before promotion?",
+        "Should this packet remain in its current AP topic path, be reassigned, or be retired as a parser/taxonomy artifact?"
+      ],
+      "required_signoff_fields": {
+        "reviewer_name": "",
+        "reviewer_role": "",
+        "review_date": "",
+        "decision": "pending",
+        "decision_options": [
+          "approve_for_promotion",
+          "revise_with_local_evidence",
+          "reassign_topic",
+          "retire_or_supersede"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "packet_id": "local-content-churn-002",
+      "abpath_topic": "Diseases associated with acellular closure of glomerular capillaries",
+      "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Diseases associated with acellular closure of glomerular capillaries",
+      "source": {
+        "source_map_id": "ap_gu-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0",
+        "extracted_card_source_path": "src/content/competency/apP0EntityCardBatch.ts",
+        "extracted_card_id": "p0-card-01-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0",
+        "source_basis": "Drafted from ABPath AP content-spec path: The Genitourinary System > Kidney > Medical Kidney Disease > Diseases associated with acellular closure of glomerular capillaries. Source line: 608."
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 1,
+        "image_support": 0.6,
+        "mcq_support": 1,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "review_status": {
+        "promotion_status": "review-queue",
+        "blocking_reasons": [
+          "faculty_review_required_before_promotion"
+        ],
+        "faculty_review_required": true
+      },
+      "review_questions": [
+        "Does the local source basis correctly link this packet to the ABPath objective path?",
+        "Are definition, morphology anchor, comparator, mimic/discriminator, visual plan, and reporting consequence accurate enough for learner use?",
+        "Are the five source-backed MCQ-style items acceptable as draft board-prep questions?",
+        "Are image placeholders and visual-anchor instructions sufficient, or is a licensed/local image required before promotion?",
+        "Should this packet remain in its current AP topic path, be reassigned, or be retired as a parser/taxonomy artifact?"
+      ],
+      "required_signoff_fields": {
+        "reviewer_name": "",
+        "reviewer_role": "",
+        "review_date": "",
+        "decision": "pending",
+        "decision_options": [
+          "approve_for_promotion",
+          "revise_with_local_evidence",
+          "reassign_topic",
+          "retire_or_supersede"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "packet_id": "local-content-churn-003",
+      "abpath_topic": "Amyloid",
+      "path": "Male Reproductive System > Prostate and Seminal Vesicles > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Amyloid",
+      "source": {
+        "source_map_id": "ap_male_repro-cd232d7a-75c4-462f-8db3-45e5dd5fae86",
+        "extracted_card_source_path": "src/content/competency/apP0MaleReproCardBatch.ts",
+        "extracted_card_id": "p0-male-repro-card-01-cd232d7a-75c4-462f-8db3-45e5dd5fae86",
+        "source_basis": "Drafted from ABPath AP content-spec path: Male Reproductive System > Prostate and Seminal Vesicles > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Amyloid. Source line: 897."
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 1,
+        "image_support": 0.6,
+        "mcq_support": 1,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "review_status": {
+        "promotion_status": "review-queue",
+        "blocking_reasons": [
+          "faculty_review_required_before_promotion"
+        ],
+        "faculty_review_required": true
+      },
+      "review_questions": [
+        "Does the local source basis correctly link this packet to the ABPath objective path?",
+        "Are definition, morphology anchor, comparator, mimic/discriminator, visual plan, and reporting consequence accurate enough for learner use?",
+        "Are the five source-backed MCQ-style items acceptable as draft board-prep questions?",
+        "Are image placeholders and visual-anchor instructions sufficient, or is a licensed/local image required before promotion?",
+        "Should this packet remain in its current AP topic path, be reassigned, or be retired as a parser/taxonomy artifact?"
+      ],
+      "required_signoff_fields": {
+        "reviewer_name": "",
+        "reviewer_role": "",
+        "review_date": "",
+        "decision": "pending",
+        "decision_options": [
+          "approve_for_promotion",
+          "revise_with_local_evidence",
+          "reassign_topic",
+          "retire_or_supersede"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "packet_id": "local-content-churn-004",
+      "abpath_topic": "Medial calcification (e.g., Monckeberg)",
+      "path": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Medial calcification (e.g., Monckeberg)",
+      "source": {
+        "source_map_id": "ap_cv-61be0cb0-c511-4759-9e7a-0b40b4b90d1e",
+        "extracted_card_source_path": "src/content/competency/apP0CvAutopsyCardBatch.ts",
+        "extracted_card_id": "p0-cv-autopsy-card-01-61be0cb0-c511-4759-9e7a-0b40b4b90d1e",
+        "source_basis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Medial calcification (e.g., Monckeberg). Source line: 1215."
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 1,
+        "image_support": 0.6,
+        "mcq_support": 1,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "review_status": {
+        "promotion_status": "review-queue",
+        "blocking_reasons": [
+          "faculty_review_required_before_promotion"
+        ],
+        "faculty_review_required": true
+      },
+      "review_questions": [
+        "Does the local source basis correctly link this packet to the ABPath objective path?",
+        "Are definition, morphology anchor, comparator, mimic/discriminator, visual plan, and reporting consequence accurate enough for learner use?",
+        "Are the five source-backed MCQ-style items acceptable as draft board-prep questions?",
+        "Are image placeholders and visual-anchor instructions sufficient, or is a licensed/local image required before promotion?",
+        "Should this packet remain in its current AP topic path, be reassigned, or be retired as a parser/taxonomy artifact?"
+      ],
+      "required_signoff_fields": {
+        "reviewer_name": "",
+        "reviewer_role": "",
+        "review_date": "",
+        "decision": "pending",
+        "decision_options": [
+          "approve_for_promotion",
+          "revise_with_local_evidence",
+          "reassign_topic",
+          "retire_or_supersede"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "packet_id": "local-content-churn-005",
+      "abpath_topic": "Primary cardiomyopathy",
+      "path": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy",
+      "source": {
+        "source_map_id": "ap_cv-a639b4ae-c0d4-4906-99c7-8f24e6dbe373",
+        "extracted_card_source_path": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "extracted_card_id": "p0-cv-autopsy-batch-2-card-01-f4326c88-31a3-4d1e-a886-80e66507a039",
+        "source_basis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy. Source line: 1245."
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 1,
+        "image_support": 0.6,
+        "mcq_support": 1,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "review_status": {
+        "promotion_status": "review-queue",
+        "blocking_reasons": [
+          "faculty_review_required_before_promotion"
+        ],
+        "faculty_review_required": true
+      },
+      "review_questions": [
+        "Does the local source basis correctly link this packet to the ABPath objective path?",
+        "Are definition, morphology anchor, comparator, mimic/discriminator, visual plan, and reporting consequence accurate enough for learner use?",
+        "Are the five source-backed MCQ-style items acceptable as draft board-prep questions?",
+        "Are image placeholders and visual-anchor instructions sufficient, or is a licensed/local image required before promotion?",
+        "Should this packet remain in its current AP topic path, be reassigned, or be retired as a parser/taxonomy artifact?"
+      ],
+      "required_signoff_fields": {
+        "reviewer_name": "",
+        "reviewer_role": "",
+        "review_date": "",
+        "decision": "pending",
+        "decision_options": [
+          "approve_for_promotion",
+          "revise_with_local_evidence",
+          "reassign_topic",
+          "retire_or_supersede"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "packet_id": "local-content-churn-006",
+      "abpath_topic": "Dilated cardiomyopathy",
+      "path": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Dilated cardiomyopathy",
+      "source": {
+        "source_map_id": "ap_cv-facf68e3-1ae4-428f-95a2-28ad00ee0a2c",
+        "extracted_card_source_path": "src/content/competency/apP0CvAutopsyCardBatch.ts",
+        "extracted_card_id": "p0-cv-autopsy-card-04-facf68e3-1ae4-428f-95a2-28ad00ee0a2c",
+        "source_basis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Dilated cardiomyopathy. Source line: 1220."
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 1,
+        "image_support": 0.6,
+        "mcq_support": 1,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "review_status": {
+        "promotion_status": "review-queue",
+        "blocking_reasons": [
+          "faculty_review_required_before_promotion"
+        ],
+        "faculty_review_required": true
+      },
+      "review_questions": [
+        "Does the local source basis correctly link this packet to the ABPath objective path?",
+        "Are definition, morphology anchor, comparator, mimic/discriminator, visual plan, and reporting consequence accurate enough for learner use?",
+        "Are the five source-backed MCQ-style items acceptable as draft board-prep questions?",
+        "Are image placeholders and visual-anchor instructions sufficient, or is a licensed/local image required before promotion?",
+        "Should this packet remain in its current AP topic path, be reassigned, or be retired as a parser/taxonomy artifact?"
+      ],
+      "required_signoff_fields": {
+        "reviewer_name": "",
+        "reviewer_role": "",
+        "review_date": "",
+        "decision": "pending",
+        "decision_options": [
+          "approve_for_promotion",
+          "revise_with_local_evidence",
+          "reassign_topic",
+          "retire_or_supersede"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "packet_id": "local-content-churn-007",
+      "abpath_topic": "Ehlers-Danlos syndrome",
+      "path": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Non-Marfan familial aortic dissection > Ehlers-Danlos syndrome",
+      "source": {
+        "source_map_id": "ap_cv-2d32a809-446a-452e-9321-787efb2a478f",
+        "extracted_card_source_path": "src/content/competency/apP0CvAutopsyCardBatch.ts",
+        "extracted_card_id": "p0-cv-autopsy-card-05-2d32a809-446a-452e-9321-787efb2a478f",
+        "source_basis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Non-Marfan familial aortic dissection > Ehlers-Danlos syndrome. Source line: 1243."
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 1,
+        "image_support": 0.6,
+        "mcq_support": 1,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "review_status": {
+        "promotion_status": "review-queue",
+        "blocking_reasons": [
+          "faculty_review_required_before_promotion"
+        ],
+        "faculty_review_required": true
+      },
+      "review_questions": [
+        "Does the local source basis correctly link this packet to the ABPath objective path?",
+        "Are definition, morphology anchor, comparator, mimic/discriminator, visual plan, and reporting consequence accurate enough for learner use?",
+        "Are the five source-backed MCQ-style items acceptable as draft board-prep questions?",
+        "Are image placeholders and visual-anchor instructions sufficient, or is a licensed/local image required before promotion?",
+        "Should this packet remain in its current AP topic path, be reassigned, or be retired as a parser/taxonomy artifact?"
+      ],
+      "required_signoff_fields": {
+        "reviewer_name": "",
+        "reviewer_role": "",
+        "review_date": "",
+        "decision": "pending",
+        "decision_options": [
+          "approve_for_promotion",
+          "revise_with_local_evidence",
+          "reassign_topic",
+          "retire_or_supersede"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "packet_id": "local-content-churn-008",
+      "abpath_topic": "Primary cardiomyopathy",
+      "path": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy",
+      "source": {
+        "source_map_id": "ap_cv-f4326c88-31a3-4d1e-a886-80e66507a039",
+        "extracted_card_source_path": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "extracted_card_id": "p0-cv-autopsy-batch-2-card-01-f4326c88-31a3-4d1e-a886-80e66507a039",
+        "source_basis": "Drafted from ABPath AP content-spec path: Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy. Source line: 1245."
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 1,
+        "image_support": 0.6,
+        "mcq_support": 1,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "review_status": {
+        "promotion_status": "review-queue",
+        "blocking_reasons": [
+          "faculty_review_required_before_promotion"
+        ],
+        "faculty_review_required": true
+      },
+      "review_questions": [
+        "Does the local source basis correctly link this packet to the ABPath objective path?",
+        "Are definition, morphology anchor, comparator, mimic/discriminator, visual plan, and reporting consequence accurate enough for learner use?",
+        "Are the five source-backed MCQ-style items acceptable as draft board-prep questions?",
+        "Are image placeholders and visual-anchor instructions sufficient, or is a licensed/local image required before promotion?",
+        "Should this packet remain in its current AP topic path, be reassigned, or be retired as a parser/taxonomy artifact?"
+      ],
+      "required_signoff_fields": {
+        "reviewer_name": "",
+        "reviewer_role": "",
+        "review_date": "",
+        "decision": "pending",
+        "decision_options": [
+          "approve_for_promotion",
+          "revise_with_local_evidence",
+          "reassign_topic",
+          "retire_or_supersede"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "packet_id": "local-content-churn-009",
+      "abpath_topic": "Infections",
+      "path": "The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Infections",
+      "source": {
+        "source_map_id": "ap_gi-7ede8c2a-b226-4493-8dc4-2e90988f6410",
+        "extracted_card_source_path": "src/content/competency/apP0GiCardBatch.ts",
+        "extracted_card_id": "p0-gi-card-01-7ede8c2a-b226-4493-8dc4-2e90988f6410",
+        "source_basis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Infections. Source line: 1932."
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 1,
+        "image_support": 0.6,
+        "mcq_support": 1,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "review_status": {
+        "promotion_status": "review-queue",
+        "blocking_reasons": [
+          "faculty_review_required_before_promotion"
+        ],
+        "faculty_review_required": true
+      },
+      "review_questions": [
+        "Does the local source basis correctly link this packet to the ABPath objective path?",
+        "Are definition, morphology anchor, comparator, mimic/discriminator, visual plan, and reporting consequence accurate enough for learner use?",
+        "Are the five source-backed MCQ-style items acceptable as draft board-prep questions?",
+        "Are image placeholders and visual-anchor instructions sufficient, or is a licensed/local image required before promotion?",
+        "Should this packet remain in its current AP topic path, be reassigned, or be retired as a parser/taxonomy artifact?"
+      ],
+      "required_signoff_fields": {
+        "reviewer_name": "",
+        "reviewer_role": "",
+        "review_date": "",
+        "decision": "pending",
+        "decision_options": [
+          "approve_for_promotion",
+          "revise_with_local_evidence",
+          "reassign_topic",
+          "retire_or_supersede"
+        ],
+        "notes": ""
+      }
+    },
+    {
+      "packet_id": "local-content-churn-010",
+      "abpath_topic": "Other infections of the anal canal",
+      "path": "The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Other infections of the anal canal",
+      "source": {
+        "source_map_id": "ap_gi-d80867cc-a1f7-4a7f-9b67-06ccb36915e6",
+        "extracted_card_source_path": "src/content/competency/apP0GiCardBatch.ts",
+        "extracted_card_id": "p0-gi-card-12-d80867cc-a1f7-4a7f-9b67-06ccb36915e6",
+        "source_basis": "Drafted from ABPath AP content-spec path: The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Other infections of the anal canal. Source line: 2266."
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 1,
+        "image_support": 0.6,
+        "mcq_support": 1,
+        "algorithm_support": 0.6,
+        "differential_support": 0.45,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "review_status": {
+        "promotion_status": "review-queue",
+        "blocking_reasons": [
+          "faculty_review_required_before_promotion"
+        ],
+        "faculty_review_required": true
+      },
+      "review_questions": [
+        "Does the local source basis correctly link this packet to the ABPath objective path?",
+        "Are definition, morphology anchor, comparator, mimic/discriminator, visual plan, and reporting consequence accurate enough for learner use?",
+        "Are the five source-backed MCQ-style items acceptable as draft board-prep questions?",
+        "Are image placeholders and visual-anchor instructions sufficient, or is a licensed/local image required before promotion?",
+        "Should this packet remain in its current AP topic path, be reassigned, or be retired as a parser/taxonomy artifact?"
+      ],
+      "required_signoff_fields": {
+        "reviewer_name": "",
+        "reviewer_role": "",
+        "review_date": "",
+        "decision": "pending",
+        "decision_options": [
+          "approve_for_promotion",
+          "revise_with_local_evidence",
+          "reassign_topic",
+          "retire_or_supersede"
+        ],
+        "notes": ""
+      }
+    }
+  ]
+}
