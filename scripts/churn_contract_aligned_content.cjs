@@ -158,6 +158,7 @@ const sourceBackedSections = (card) => {
 };
 
 const scoreSectionCompleteness = (sections, hasEvidenceCard) => {
+  const mcqs = buildSourceBackedMcqs(sections);
   const checks = [
     Boolean(sections.definition),
     Boolean(sections.morphologyAnchor),
@@ -168,9 +169,63 @@ const scoreSectionCompleteness = (sections, hasEvidenceCard) => {
     Boolean(sections.visualPlan || sections.inspectionSequence?.length),
     sections.retrievalQuestions?.length >= 4,
     hasEvidenceCard,
-    false,
+    mcqs.length >= 5,
   ];
   return roundScore(checks.filter(Boolean).length / checks.length);
+};
+
+const sourceBackedChoiceSet = (correctAnswer, sections) => {
+  const choices = unique([
+    correctAnswer,
+    sections.normalComparator,
+    sections.topMimic,
+    sections.discriminator,
+    sections.ancillaryOrReportingConsequence,
+    sections.safetyPitfall,
+    sections.morphologyAnchor,
+  ]).slice(0, 5);
+
+  while (choices.length < 5) choices.push(`Source-backed option ${choices.length + 1} unavailable`);
+  return choices;
+};
+
+const buildSourceBackedMcqs = (sections) => {
+  if (!sections.definition || !sections.morphologyAnchor || !sections.retrievalQuestions?.length) return [];
+  const retrievalMcqs = sections.retrievalQuestions.slice(0, 4).map((entry, index) => ({
+    id: `source-backed-retrieval-${index + 1}`,
+    source: 'retrievalAnswerKey',
+    stem: entry.prompt,
+    choices: sourceBackedChoiceSet(entry.answer, sections),
+    correct_answer: entry.answer,
+    explanation: entry.reasoning || sections.sourceBasis,
+    incorrect_explanations: Object.fromEntries(
+      sourceBackedChoiceSet(entry.answer, sections)
+        .filter((choice) => choice !== entry.answer)
+        .map((choice) => [choice, 'Local source-backed distractor; verify against the cited answer key before learner promotion.'])
+    ),
+    abpath_objective_link: sections.sourceBasis,
+    difficulty: index === 0 ? 'basic' : 'intermediate',
+  }));
+
+  const visualAnswer = sections.visualPlan || sections.inspectionSequence?.[0] || sections.morphologyAnchor;
+  return [
+    ...retrievalMcqs,
+    {
+      id: 'source-backed-visual-anchor-5',
+      source: 'visualAnchorDraft',
+      stem: `Which local visual-anchor plan should guide image review for this packet?`,
+      choices: sourceBackedChoiceSet(visualAnswer, sections),
+      correct_answer: visualAnswer,
+      explanation: sections.inspectionSequence?.join(' ') || sections.sourceBasis,
+      incorrect_explanations: Object.fromEntries(
+        sourceBackedChoiceSet(visualAnswer, sections)
+          .filter((choice) => choice !== visualAnswer)
+          .map((choice) => [choice, 'Local source-backed distractor; verify against the cited visual anchor before learner promotion.'])
+      ),
+      abpath_objective_link: sections.sourceBasis,
+      difficulty: 'board-level',
+    },
+  ];
 };
 
 const selectRows = (sourceMap, limit, requireTopicSpecificEvidence) =>
@@ -189,6 +244,7 @@ const buildPacket = (row, index) => {
   const primary = row.local_candidates[0] || {};
   const evidenceCard = findEvidenceCard(row);
   const sections = sourceBackedSections(evidenceCard?.card);
+  const mcqs = buildSourceBackedMcqs(sections);
   const objectiveLinked = Boolean(row.id && row.category && row.path);
   const localSourceLinked = Boolean(primary.file_path);
   const sectionCompleteness = scoreSectionCompleteness(sections, Boolean(evidenceCard));
@@ -198,7 +254,7 @@ const buildPacket = (row, index) => {
     topic_specificity: topicSpecificityScore(row),
     section_completeness: sectionCompleteness,
     image_support: sections.visualPlan || sections.inspectionSequence?.length ? 0.6 : primary.reuse_target === 'image_atlas' ? 0.25 : 0,
-    mcq_support: 0,
+    mcq_support: mcqs.length >= 5 ? 1 : roundScore(mcqs.length / 5),
     algorithm_support: sections.inspectionSequence?.length ? 0.6 : 0.2,
     differential_support: sections.topMimic && sections.discriminator ? 0.45 : 0.2,
     worked_example_support: 0,
@@ -209,8 +265,9 @@ const buildPacket = (row, index) => {
   if (!localSourceLinked) blockingReasons.push('missing_local_source_evidence');
   if (evidenceScore.topic_specificity < 0.75) blockingReasons.push('topic_specificity_below_threshold');
   if (evidenceScore.section_completeness < 0.9) blockingReasons.push('required_content_sections_incomplete');
-  if (evidenceScore.mcq_support === 0) blockingReasons.push('missing_mcqs');
+  if (evidenceScore.mcq_support < 1) blockingReasons.push('missing_mcqs');
   if (evidenceScore.image_support === 0) blockingReasons.push('missing_images_or_image_placeholders');
+  if (!evidenceScore.promotion_ready) blockingReasons.push('faculty_review_required_before_promotion');
 
   return {
     packet_id: `local-content-churn-${String(index + 1).padStart(3, '0')}`,
@@ -294,7 +351,7 @@ const buildPacket = (row, index) => {
             },
           ]
         : [],
-    mcqs: [],
+    mcqs,
     worked_examples: [],
     retrieval_questions: sections.retrievalQuestions || [],
     retention_tools: {
@@ -402,10 +459,10 @@ const renderMarkdown = (payload) => [
   '',
   '## Packets',
   '',
-  '| Packet | Topic | Source | Section completeness | Extracted fields | Promotion | Blockers |',
-  '| --- | --- | --- | --- | --- | --- | --- |',
+  '| Packet | Topic | Source | Section completeness | MCQs | Extracted fields | Promotion | Blockers |',
+  '| --- | --- | --- | --- | --- | --- | --- | --- |',
   ...payload.packets.map((packet) =>
-    `| ${packet.packet_id} | ${normalizeText(packet.abpath_topic)} | ${packet.local_evidence.extracted_card_source_path || packet.local_evidence.primary_source_path || 'missing'} | ${packet.evidence_score.section_completeness.toFixed(2)} | ${packet.local_evidence.extracted_fields.join(', ')} | ${packet.evidence_score.promotion_ready ? 'ready' : 'blocked'} | ${packet.blocking_reasons.join(', ')} |`
+    `| ${packet.packet_id} | ${normalizeText(packet.abpath_topic)} | ${packet.local_evidence.extracted_card_source_path || packet.local_evidence.primary_source_path || 'missing'} | ${packet.evidence_score.section_completeness.toFixed(2)} | ${packet.mcqs.length} | ${packet.local_evidence.extracted_fields.join(', ')} | ${packet.evidence_score.promotion_ready ? 'ready' : 'blocked'} | ${packet.blocking_reasons.join(', ')} |`
   ),
   '',
 ].join('\n');
