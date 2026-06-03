@@ -111,6 +111,9 @@ const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
       </div>
+      <p className="mt-2 border-t border-slate-100 pt-2 text-center text-xs font-medium italic tracking-wide text-slate-500">
+        &ldquo;Persistence guarantees that results are inevitable.&rdquo; &ndash; Robbins
+      </p>
     </header>
   );
 };
