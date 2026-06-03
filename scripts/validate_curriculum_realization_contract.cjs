@@ -85,6 +85,78 @@ ensure(
   'contract must require referencing existing local evidence before recreating assets'
 );
 
+const churnAddendumTerms = [
+  'Contract Addendum: AI-Independent Local Content Churner',
+  'deterministic and AI-independent at runtime',
+  'must not require an LLM, API key, cloud model, agent, or network connection',
+  'AI only as an optional downstream reviewer, never as a dependency',
+  'Fail closed when evidence is missing, weak, or non-specific',
+  'Avoid online crawling unless a separate, explicitly approved ingestion contract is invoked',
+  'Existing ABPath objective/specification artifacts',
+  'Existing AP/CP source maps',
+  'Existing local corpus chunks',
+  'Existing local image/image-metadata folders',
+  'Existing tutorial-card/content artifacts',
+  'Uploaded local seed files',
+  'Manually approved external-ingestion outputs',
+  '"ai_review_packet"',
+  '"optional_quality_review_only"',
+  '"primary content generation"',
+  '"promotion gate bypass"',
+  'OpenAI API',
+  'Claude API',
+  'Gemini API',
+  'local Ollama model',
+  'remote crawler',
+  'browser automation',
+  'network fetch',
+  '--allow-ai-review true',
+  'advisory review only',
+  'ABPath objective linkage',
+  'Source evidence linkage',
+  'Topic-specificity score',
+  'Required section completeness',
+  'Duplicate content',
+  'Unsupported claims',
+  'Missing images or image placeholders',
+  'Missing MCQs',
+  'Missing diagnostic algorithms',
+  'Missing differential diagnosis',
+  'Missing worked examples for quantitative topics',
+  '"evidence_score"',
+  '"topic_specificity"',
+  '"section_completeness"',
+  '"promotion_ready"',
+  'topic_specificity >= 0.75',
+  'section_completeness >= 0.90',
+  'node scripts/churn_contract_aligned_content.cjs',
+  '"curriculum:churn"',
+  '"curriculum:churn:validate"',
+  'The script attempts network access.',
+  'AI output is used as primary content.',
+  'The packet cannot be regenerated deterministically.',
+  'Promotion depends on advisory AI review.',
+  '`AI_DEPENDENCY: NONE`',
+  '`NETWORK_ACCESS: NONE`',
+  '`SOURCE_MODE: LOCAL_ONLY`',
+  '`DETERMINISTIC_REGENERATION: PASS/FAIL`',
+  '`PROMOTION_READY_PACKETS: N`',
+  '`BLOCKED_PACKETS: N`',
+];
+ensure(
+  includesAll(churnAddendumTerms),
+  'AI-independent local content churner addendum is complete',
+  `contract is missing AI-independent churner requirements: ${churnAddendumTerms
+    .filter((term) => !contract.includes(term))
+    .join(', ')}`
+);
+
+ensure(
+  contract.indexOf('Existing ABPath objective/specification artifacts') < contract.indexOf('Manually approved external-ingestion outputs'),
+  'local-first churner source order precedes approved external-ingestion outputs',
+  'local-first churner source order must precede approved external-ingestion outputs'
+);
+
 const gapInventoryFields = [
   '`gap_id`',
   '`abpath_section`',

@@ -21,6 +21,164 @@ Online search is a gap-filler only when:
 - the topic requires an updated external standard
 - all cheaper/local acquisition tiers have been attempted or intentionally skipped with written rationale
 
+## Contract Addendum: AI-Independent Local Content Churner
+
+### Core Rule
+The churn script must be deterministic and AI-independent at runtime.
+
+It may create referential packets for optional later LLM review, but it must not require an LLM, API key, cloud model, agent, or network connection to generate, validate, or promote local content packets.
+
+### Required Runtime Behavior
+The script must:
+
+1. Consume material from local repo files and local mounted source directories only.
+2. Use deterministic extraction, scoring, validation, and templating.
+3. Generate content packets from local evidence.
+4. Use AI only as an optional downstream reviewer, never as a dependency.
+5. Fail closed when evidence is missing, weak, or non-specific.
+6. Write reproducible JSON/Markdown reports.
+7. Avoid online crawling unless a separate, explicitly approved ingestion contract is invoked.
+
+### Local-First Source Order
+The script must search in this order:
+
+1. Existing ABPath objective/specification artifacts
+2. Existing AP/CP source maps
+3. Existing local corpus chunks
+4. Existing local image/image-metadata folders
+5. Existing tutorial-card/content artifacts
+6. Uploaded local seed files
+7. Manually approved external-ingestion outputs
+
+### AI-Referential, Not AI-Dependent
+The script may emit:
+
+```json
+{
+  "ai_review_packet": {
+    "enabled": false,
+    "purpose": "optional_quality_review_only",
+    "prompt": "",
+    "local_evidence_summary": "",
+    "questions_for_reviewer": [],
+    "forbidden_use": [
+      "primary content generation",
+      "unstable factual invention",
+      "unsourced expansion",
+      "promotion gate bypass"
+    ]
+  }
+}
+```
+
+The script must not call:
+
+- OpenAI API
+- Claude API
+- Gemini API
+- local Ollama model
+- remote crawler
+- browser automation
+- network fetch
+
+unless a separate explicit flag is passed:
+
+```bash
+--allow-ai-review true
+```
+
+Even then, AI output must be stored as advisory review only and must not overwrite deterministic content.
+
+### Deterministic QA Checks
+The script must perform local checks for:
+
+- ABPath objective linkage.
+- Source evidence linkage.
+- Topic-specificity score.
+- Required section completeness.
+- Duplicate content.
+- Empty or placeholder-heavy content.
+- Unsupported claims.
+- Missing images or image placeholders.
+- Missing MCQs.
+- Missing diagnostic algorithms.
+- Missing differential diagnosis.
+- Missing worked examples for quantitative topics.
+- Broken internal references.
+- Schema validity.
+
+### Evidence Scoring
+Each content packet must receive:
+
+```json
+{
+  "evidence_score": {
+    "objective_linked": true,
+    "local_source_linked": true,
+    "topic_specificity": 0.0,
+    "section_completeness": 0.0,
+    "image_support": 0.0,
+    "mcq_support": 0.0,
+    "algorithm_support": 0.0,
+    "differential_support": 0.0,
+    "worked_example_support": 0.0,
+    "promotion_ready": false
+  }
+}
+```
+
+Promotion requires:
+
+- `topic_specificity >= 0.75`
+- `section_completeness >= 0.90`
+- `local_source_linked == true`
+- `objective_linked == true`
+- `promotion_ready == true`
+
+### New CLI Contract
+
+```bash
+node scripts/churn_contract_aligned_content.cjs \
+  --limit 10 \
+  --mode draft \
+  --source local-only \
+  --allow-ai-review false \
+  --require-topic-specific-evidence true
+```
+
+Package scripts:
+
+```json
+{
+  "curriculum:churn": "node scripts/churn_contract_aligned_content.cjs --limit 10 --mode draft --source local-only --allow-ai-review false",
+  "curriculum:churn:validate": "node scripts/churn_contract_aligned_content.cjs --limit 10 --mode validate --source local-only --allow-ai-review false"
+}
+```
+
+### Hard Failures
+The validator must fail if:
+
+- The script attempts network access.
+- An AI call is made without `--allow-ai-review true`.
+- AI output is used as primary content.
+- Local source evidence is absent.
+- ABPath objective linkage is absent.
+- Required content sections are incomplete.
+- The packet cannot be regenerated deterministically.
+- The output changes between two identical local runs without source-file changes.
+- Promotion depends on advisory AI review.
+
+### Closeout Requirement
+Closeout must state:
+
+- `AI_DEPENDENCY: NONE`
+- `NETWORK_ACCESS: NONE`
+- `SOURCE_MODE: LOCAL_ONLY`
+- `DETERMINISTIC_REGENERATION: PASS/FAIL`
+- `PROMOTION_READY_PACKETS: N`
+- `BLOCKED_PACKETS: N`
+- `NEXT_SAFE_ACTION: ...`
+
 ## Local Data Infrastructure Registry
 
 Before creating new curriculum material, rebuilding a corpus from scratch, or searching online, the agent must check the local data infrastructure that is already attached to this workstation.

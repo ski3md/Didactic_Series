@@ -1,0 +1,1103 @@
+{
+  "contract_version": "ai-independent-local-content-churner.v1",
+  "runtime": {
+    "ai_dependency": "NONE",
+    "network_access": "NONE",
+    "source_mode": "LOCAL_ONLY",
+    "allow_ai_review": false,
+    "deterministic_generation": true
+  },
+  "source_inputs": [
+    {
+      "path": "reports/curriculum/ap_local_source_map_v1.json",
+      "sha256": "8e4d76d5bcee552b18c9deab251f24c83acb336235f43be293b920dd6db2c32b"
+    },
+    {
+      "path": "reports/curriculum/gap_inventory_v1.json",
+      "sha256": "a2df92c17047b90daf606f4b48c429a7e58c8dea2e2ab5bcbc8f169e2aa0576a"
+    }
+  ],
+  "local_first_source_order": [
+    "Existing ABPath objective/specification artifacts",
+    "Existing AP/CP source maps",
+    "Existing local corpus chunks",
+    "Existing local image/image-metadata folders",
+    "Existing tutorial-card/content artifacts",
+    "Uploaded local seed files",
+    "Manually approved external-ingestion outputs"
+  ],
+  "qa_checks": {
+    "abpath_objective_linkage": true,
+    "source_evidence_linkage": true,
+    "topic_specificity_score": true,
+    "required_section_completeness": false,
+    "duplicate_content": false,
+    "unsupported_claims": false,
+    "schema_validity": true,
+    "promotion_depends_on_ai_review": false
+  },
+  "source_context": {
+    "gap_inventory_contract_version": "corpus-realization-contract.v1.local-infrastructure",
+    "source_map_contract_version": "corpus-realization-contract.v1.ap-local-source-map",
+    "selected_rows": 10,
+    "require_topic_specific_evidence": true
+  },
+  "packets": [
+    {
+      "packet_id": "local-content-churn-001",
+      "source_map_id": "ap_breast-b82b09fd-c24e-4aec-9ac7-a08c7ab5c109",
+      "topic_id": "b82b09fd-c24e-4aec-9ac7-a08c7ab5c109",
+      "abpath_domain": "AP",
+      "abpath_topic": "Cysts",
+      "path": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Cysts",
+      "source_specificity": "topic_specific",
+      "local_evidence": {
+        "source_map": "reports/curriculum/ap_local_source_map_v1.json",
+        "primary_source_path": "src/content/competency/apP0BreastCardBatch.ts",
+        "local_candidate_count": 5,
+        "match_reasons": [
+          "organ_match:breast",
+          "title_tokens:cysts",
+          "path_tokens:cysts,breast,diabetic,mastopathy",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ],
+        "source_line": 324
+      },
+      "introductory_material": {
+        "orientation": "Local evidence packet for Cysts.",
+        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "prerequisites": [
+          "Breast",
+          "PGY1-PGY2"
+        ],
+        "key_vocabulary": [
+          "Cysts",
+          "Breast"
+        ]
+      },
+      "core_didactic": {
+        "definition": "",
+        "clinical_context": "",
+        "gross_findings": "",
+        "histomorphology": "",
+        "cytomorphology": "",
+        "immunophenotype": "",
+        "molecular_profile": "",
+        "classification_relevance": "",
+        "clinical_imaging_correlation": "",
+        "reporting_management_implications": ""
+      },
+      "images": [
+        {
+          "type": "source-linked-placeholder",
+          "teaching_point": "Cysts",
+          "caption": "",
+          "annotations": [],
+          "source_status": "available"
+        }
+      ],
+      "diagnostic_algorithm": {
+        "entry_point": "Breast > Normal Anatomy and Histology > Diabetic mastopathy > Cysts",
+        "steps": [
+          "Confirm topic-specific local evidence before diagnostic branch generation."
+        ],
+        "terminal_nodes": []
+      },
+      "differential_diagnosis": [],
+      "mcqs": [],
+      "worked_examples": [],
+      "retention_tools": {
+        "high_yield_summary": "",
+        "diagnostic_hook": "",
+        "mnemonic": "",
+        "flashcard_facts": [],
+        "comparison_table": [],
+        "do_not_miss_pearl": ""
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 0.42,
+        "image_support": 0.25,
+        "mcq_support": 0,
+        "algorithm_support": 0.2,
+        "differential_support": 0.2,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "validation_status": "blocked",
+      "promotion_status": "review-queue",
+      "blocking_reasons": [
+        "required_content_sections_incomplete",
+        "missing_mcqs"
+      ],
+      "ai_review_packet": {
+        "enabled": false,
+        "purpose": "optional_quality_review_only",
+        "prompt": "",
+        "local_evidence_summary": "Primary local evidence: src/content/competency/apP0BreastCardBatch.ts; specificity=topic_specific.",
+        "questions_for_reviewer": [],
+        "forbidden_use": [
+          "primary content generation",
+          "unstable factual invention",
+          "unsourced expansion",
+          "promotion gate bypass"
+        ]
+      }
+    },
+    {
+      "packet_id": "local-content-churn-002",
+      "source_map_id": "ap_gu-d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0",
+      "topic_id": "d3176b1f-e18d-49eb-b9b0-5eeeb00fadc0",
+      "abpath_domain": "AP",
+      "abpath_topic": "Diseases associated with acellular closure of glomerular capillaries",
+      "path": "The Genitourinary System > Kidney > Medical Kidney Disease > Diseases associated with acellular closure of glomerular capillaries",
+      "source_specificity": "topic_specific",
+      "local_evidence": {
+        "source_map": "reports/curriculum/ap_local_source_map_v1.json",
+        "primary_source_path": "src/content/competency/apP0EntityCardBatch.ts",
+        "local_candidate_count": 5,
+        "match_reasons": [
+          "organ_match:gu",
+          "title_tokens:diseases,associated,acellular,closure",
+          "path_tokens:diseases,associated,acellular,closure",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ],
+        "source_line": 608
+      },
+      "introductory_material": {
+        "orientation": "Local evidence packet for Diseases associated with acellular closure of glomerular capillaries.",
+        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "prerequisites": [
+          "Medical Kidney / GU",
+          "PGY1-PGY2"
+        ],
+        "key_vocabulary": [
+          "Diseases associated with acellular closure of glomerular capillaries",
+          "Medical Kidney / GU"
+        ]
+      },
+      "core_didactic": {
+        "definition": "",
+        "clinical_context": "",
+        "gross_findings": "",
+        "histomorphology": "",
+        "cytomorphology": "",
+        "immunophenotype": "",
+        "molecular_profile": "",
+        "classification_relevance": "",
+        "clinical_imaging_correlation": "",
+        "reporting_management_implications": ""
+      },
+      "images": [
+        {
+          "type": "source-linked-placeholder",
+          "teaching_point": "Diseases associated with acellular closure of glomerular capillaries",
+          "caption": "",
+          "annotations": [],
+          "source_status": "available"
+        }
+      ],
+      "diagnostic_algorithm": {
+        "entry_point": "The Genitourinary System > Kidney > Medical Kidney Disease > Diseases associated with acellular closure of glomerular capillaries",
+        "steps": [
+          "Confirm topic-specific local evidence before diagnostic branch generation."
+        ],
+        "terminal_nodes": []
+      },
+      "differential_diagnosis": [],
+      "mcqs": [],
+      "worked_examples": [],
+      "retention_tools": {
+        "high_yield_summary": "",
+        "diagnostic_hook": "",
+        "mnemonic": "",
+        "flashcard_facts": [],
+        "comparison_table": [],
+        "do_not_miss_pearl": ""
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 0.42,
+        "image_support": 0.25,
+        "mcq_support": 0,
+        "algorithm_support": 0.2,
+        "differential_support": 0.2,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "validation_status": "blocked",
+      "promotion_status": "review-queue",
+      "blocking_reasons": [
+        "required_content_sections_incomplete",
+        "missing_mcqs"
+      ],
+      "ai_review_packet": {
+        "enabled": false,
+        "purpose": "optional_quality_review_only",
+        "prompt": "",
+        "local_evidence_summary": "Primary local evidence: src/content/competency/apP0EntityCardBatch.ts; specificity=topic_specific.",
+        "questions_for_reviewer": [],
+        "forbidden_use": [
+          "primary content generation",
+          "unstable factual invention",
+          "unsourced expansion",
+          "promotion gate bypass"
+        ]
+      }
+    },
+    {
+      "packet_id": "local-content-churn-003",
+      "source_map_id": "ap_male_repro-cd232d7a-75c4-462f-8db3-45e5dd5fae86",
+      "topic_id": "cd232d7a-75c4-462f-8db3-45e5dd5fae86",
+      "abpath_domain": "AP",
+      "abpath_topic": "Amyloid",
+      "path": "Male Reproductive System > Prostate and Seminal Vesicles > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Amyloid",
+      "source_specificity": "topic_specific",
+      "local_evidence": {
+        "source_map": "reports/curriculum/ap_local_source_map_v1.json",
+        "primary_source_path": "src/content/competency/apP0MaleReproCardBatch.ts",
+        "local_candidate_count": 5,
+        "match_reasons": [
+          "organ_match:male",
+          "title_tokens:amyloid",
+          "path_tokens:amyloid,male,reproductive,prostate",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ],
+        "source_line": 897
+      },
+      "introductory_material": {
+        "orientation": "Local evidence packet for Amyloid.",
+        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "prerequisites": [
+          "Male Reproductive",
+          "PGY1-PGY2"
+        ],
+        "key_vocabulary": [
+          "Amyloid",
+          "Male Reproductive"
+        ]
+      },
+      "core_didactic": {
+        "definition": "",
+        "clinical_context": "",
+        "gross_findings": "",
+        "histomorphology": "",
+        "cytomorphology": "",
+        "immunophenotype": "",
+        "molecular_profile": "",
+        "classification_relevance": "",
+        "clinical_imaging_correlation": "",
+        "reporting_management_implications": ""
+      },
+      "images": [
+        {
+          "type": "source-linked-placeholder",
+          "teaching_point": "Amyloid",
+          "caption": "",
+          "annotations": [],
+          "source_status": "available"
+        }
+      ],
+      "diagnostic_algorithm": {
+        "entry_point": "Male Reproductive System > Prostate and Seminal Vesicles > Physiologic Changes, Metabolic Conditions & Trauma/Infarct > Amyloid",
+        "steps": [
+          "Confirm topic-specific local evidence before diagnostic branch generation."
+        ],
+        "terminal_nodes": []
+      },
+      "differential_diagnosis": [],
+      "mcqs": [],
+      "worked_examples": [],
+      "retention_tools": {
+        "high_yield_summary": "",
+        "diagnostic_hook": "",
+        "mnemonic": "",
+        "flashcard_facts": [],
+        "comparison_table": [],
+        "do_not_miss_pearl": ""
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 0.42,
+        "image_support": 0.25,
+        "mcq_support": 0,
+        "algorithm_support": 0.2,
+        "differential_support": 0.2,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "validation_status": "blocked",
+      "promotion_status": "review-queue",
+      "blocking_reasons": [
+        "required_content_sections_incomplete",
+        "missing_mcqs"
+      ],
+      "ai_review_packet": {
+        "enabled": false,
+        "purpose": "optional_quality_review_only",
+        "prompt": "",
+        "local_evidence_summary": "Primary local evidence: src/content/competency/apP0MaleReproCardBatch.ts; specificity=topic_specific.",
+        "questions_for_reviewer": [],
+        "forbidden_use": [
+          "primary content generation",
+          "unstable factual invention",
+          "unsourced expansion",
+          "promotion gate bypass"
+        ]
+      }
+    },
+    {
+      "packet_id": "local-content-churn-004",
+      "source_map_id": "ap_cv-61be0cb0-c511-4759-9e7a-0b40b4b90d1e",
+      "topic_id": "61be0cb0-c511-4759-9e7a-0b40b4b90d1e",
+      "abpath_domain": "AP",
+      "abpath_topic": "Medial calcification (e.g., Monckeberg)",
+      "path": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Medial calcification (e.g., Monckeberg)",
+      "source_specificity": "topic_specific",
+      "local_evidence": {
+        "source_map": "reports/curriculum/ap_local_source_map_v1.json",
+        "primary_source_path": "src/content/competency/apP0CvAutopsyCardBatch.ts",
+        "local_candidate_count": 5,
+        "match_reasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:medial,calcification,monckeberg",
+          "path_tokens:medial,calcification,monckeberg,cardiovascular",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ],
+        "source_line": 1215
+      },
+      "introductory_material": {
+        "orientation": "Local evidence packet for Medial calcification (e.g., Monckeberg).",
+        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "prerequisites": [
+          "Cardiovascular / Autopsy-adjacent",
+          "PGY1-PGY2"
+        ],
+        "key_vocabulary": [
+          "Medial calcification (e.g., Monckeberg)",
+          "Cardiovascular / Autopsy-adjacent"
+        ]
+      },
+      "core_didactic": {
+        "definition": "",
+        "clinical_context": "",
+        "gross_findings": "",
+        "histomorphology": "",
+        "cytomorphology": "",
+        "immunophenotype": "",
+        "molecular_profile": "",
+        "classification_relevance": "",
+        "clinical_imaging_correlation": "",
+        "reporting_management_implications": ""
+      },
+      "images": [
+        {
+          "type": "source-linked-placeholder",
+          "teaching_point": "Medial calcification (e.g., Monckeberg)",
+          "caption": "",
+          "annotations": [],
+          "source_status": "available"
+        }
+      ],
+      "diagnostic_algorithm": {
+        "entry_point": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Medial calcification (e.g., Monckeberg)",
+        "steps": [
+          "Confirm topic-specific local evidence before diagnostic branch generation."
+        ],
+        "terminal_nodes": []
+      },
+      "differential_diagnosis": [],
+      "mcqs": [],
+      "worked_examples": [],
+      "retention_tools": {
+        "high_yield_summary": "",
+        "diagnostic_hook": "",
+        "mnemonic": "",
+        "flashcard_facts": [],
+        "comparison_table": [],
+        "do_not_miss_pearl": ""
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 0.42,
+        "image_support": 0.25,
+        "mcq_support": 0,
+        "algorithm_support": 0.2,
+        "differential_support": 0.2,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "validation_status": "blocked",
+      "promotion_status": "review-queue",
+      "blocking_reasons": [
+        "required_content_sections_incomplete",
+        "missing_mcqs"
+      ],
+      "ai_review_packet": {
+        "enabled": false,
+        "purpose": "optional_quality_review_only",
+        "prompt": "",
+        "local_evidence_summary": "Primary local evidence: src/content/competency/apP0CvAutopsyCardBatch.ts; specificity=topic_specific.",
+        "questions_for_reviewer": [],
+        "forbidden_use": [
+          "primary content generation",
+          "unstable factual invention",
+          "unsourced expansion",
+          "promotion gate bypass"
+        ]
+      }
+    },
+    {
+      "packet_id": "local-content-churn-005",
+      "source_map_id": "ap_cv-a639b4ae-c0d4-4906-99c7-8f24e6dbe373",
+      "topic_id": "a639b4ae-c0d4-4906-99c7-8f24e6dbe373",
+      "abpath_domain": "AP",
+      "abpath_topic": "Primary cardiomyopathy",
+      "path": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy",
+      "source_specificity": "topic_specific",
+      "local_evidence": {
+        "source_map": "reports/curriculum/ap_local_source_map_v1.json",
+        "primary_source_path": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "local_candidate_count": 5,
+        "match_reasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:primary,cardiomyopathy",
+          "path_tokens:primary,cardiomyopathy,cardiovascular,physiologic",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ],
+        "source_line": 1219
+      },
+      "introductory_material": {
+        "orientation": "Local evidence packet for Primary cardiomyopathy.",
+        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "prerequisites": [
+          "Cardiovascular / Autopsy-adjacent",
+          "PGY1-PGY2"
+        ],
+        "key_vocabulary": [
+          "Primary cardiomyopathy",
+          "Cardiovascular / Autopsy-adjacent"
+        ]
+      },
+      "core_didactic": {
+        "definition": "",
+        "clinical_context": "",
+        "gross_findings": "",
+        "histomorphology": "",
+        "cytomorphology": "",
+        "immunophenotype": "",
+        "molecular_profile": "",
+        "classification_relevance": "",
+        "clinical_imaging_correlation": "",
+        "reporting_management_implications": ""
+      },
+      "images": [
+        {
+          "type": "source-linked-placeholder",
+          "teaching_point": "Primary cardiomyopathy",
+          "caption": "",
+          "annotations": [],
+          "source_status": "available"
+        }
+      ],
+      "diagnostic_algorithm": {
+        "entry_point": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy",
+        "steps": [
+          "Confirm topic-specific local evidence before diagnostic branch generation."
+        ],
+        "terminal_nodes": []
+      },
+      "differential_diagnosis": [],
+      "mcqs": [],
+      "worked_examples": [],
+      "retention_tools": {
+        "high_yield_summary": "",
+        "diagnostic_hook": "",
+        "mnemonic": "",
+        "flashcard_facts": [],
+        "comparison_table": [],
+        "do_not_miss_pearl": ""
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 0.42,
+        "image_support": 0.25,
+        "mcq_support": 0,
+        "algorithm_support": 0.2,
+        "differential_support": 0.2,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "validation_status": "blocked",
+      "promotion_status": "review-queue",
+      "blocking_reasons": [
+        "required_content_sections_incomplete",
+        "missing_mcqs"
+      ],
+      "ai_review_packet": {
+        "enabled": false,
+        "purpose": "optional_quality_review_only",
+        "prompt": "",
+        "local_evidence_summary": "Primary local evidence: src/content/competency/apP0CvAutopsyCardBatch2.ts; specificity=topic_specific.",
+        "questions_for_reviewer": [],
+        "forbidden_use": [
+          "primary content generation",
+          "unstable factual invention",
+          "unsourced expansion",
+          "promotion gate bypass"
+        ]
+      }
+    },
+    {
+      "packet_id": "local-content-churn-006",
+      "source_map_id": "ap_cv-facf68e3-1ae4-428f-95a2-28ad00ee0a2c",
+      "topic_id": "facf68e3-1ae4-428f-95a2-28ad00ee0a2c",
+      "abpath_domain": "AP",
+      "abpath_topic": "Dilated cardiomyopathy",
+      "path": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Dilated cardiomyopathy",
+      "source_specificity": "topic_specific",
+      "local_evidence": {
+        "source_map": "reports/curriculum/ap_local_source_map_v1.json",
+        "primary_source_path": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "local_candidate_count": 5,
+        "match_reasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:cardiomyopathy",
+          "path_tokens:cardiomyopathy,cardiovascular,physiologic,metabolic",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ],
+        "source_line": 1220
+      },
+      "introductory_material": {
+        "orientation": "Local evidence packet for Dilated cardiomyopathy.",
+        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "prerequisites": [
+          "Cardiovascular / Autopsy-adjacent",
+          "PGY1-PGY2"
+        ],
+        "key_vocabulary": [
+          "Dilated cardiomyopathy",
+          "Cardiovascular / Autopsy-adjacent"
+        ]
+      },
+      "core_didactic": {
+        "definition": "",
+        "clinical_context": "",
+        "gross_findings": "",
+        "histomorphology": "",
+        "cytomorphology": "",
+        "immunophenotype": "",
+        "molecular_profile": "",
+        "classification_relevance": "",
+        "clinical_imaging_correlation": "",
+        "reporting_management_implications": ""
+      },
+      "images": [
+        {
+          "type": "source-linked-placeholder",
+          "teaching_point": "Dilated cardiomyopathy",
+          "caption": "",
+          "annotations": [],
+          "source_status": "available"
+        }
+      ],
+      "diagnostic_algorithm": {
+        "entry_point": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Dilated cardiomyopathy",
+        "steps": [
+          "Confirm topic-specific local evidence before diagnostic branch generation."
+        ],
+        "terminal_nodes": []
+      },
+      "differential_diagnosis": [],
+      "mcqs": [],
+      "worked_examples": [],
+      "retention_tools": {
+        "high_yield_summary": "",
+        "diagnostic_hook": "",
+        "mnemonic": "",
+        "flashcard_facts": [],
+        "comparison_table": [],
+        "do_not_miss_pearl": ""
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 0.42,
+        "image_support": 0.25,
+        "mcq_support": 0,
+        "algorithm_support": 0.2,
+        "differential_support": 0.2,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "validation_status": "blocked",
+      "promotion_status": "review-queue",
+      "blocking_reasons": [
+        "required_content_sections_incomplete",
+        "missing_mcqs"
+      ],
+      "ai_review_packet": {
+        "enabled": false,
+        "purpose": "optional_quality_review_only",
+        "prompt": "",
+        "local_evidence_summary": "Primary local evidence: src/content/competency/apP0CvAutopsyCardBatch2.ts; specificity=topic_specific.",
+        "questions_for_reviewer": [],
+        "forbidden_use": [
+          "primary content generation",
+          "unstable factual invention",
+          "unsourced expansion",
+          "promotion gate bypass"
+        ]
+      }
+    },
+    {
+      "packet_id": "local-content-churn-007",
+      "source_map_id": "ap_cv-2d32a809-446a-452e-9321-787efb2a478f",
+      "topic_id": "2d32a809-446a-452e-9321-787efb2a478f",
+      "abpath_domain": "AP",
+      "abpath_topic": "Ehlers-Danlos syndrome",
+      "path": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Non-Marfan familial aortic dissection > Ehlers-Danlos syndrome",
+      "source_specificity": "topic_specific",
+      "local_evidence": {
+        "source_map": "reports/curriculum/ap_local_source_map_v1.json",
+        "primary_source_path": "src/content/competency/apP0CvTaxonomyReviewCardBatch.ts",
+        "local_candidate_count": 5,
+        "match_reasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:syndrome",
+          "path_tokens:syndrome,cardiovascular,metabolic",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ],
+        "source_line": 1243
+      },
+      "introductory_material": {
+        "orientation": "Local evidence packet for Ehlers-Danlos syndrome.",
+        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "prerequisites": [
+          "Cardiovascular / Autopsy-adjacent",
+          "PGY1-PGY2"
+        ],
+        "key_vocabulary": [
+          "Ehlers-Danlos syndrome",
+          "Cardiovascular / Autopsy-adjacent"
+        ]
+      },
+      "core_didactic": {
+        "definition": "",
+        "clinical_context": "",
+        "gross_findings": "",
+        "histomorphology": "",
+        "cytomorphology": "",
+        "immunophenotype": "",
+        "molecular_profile": "",
+        "classification_relevance": "",
+        "clinical_imaging_correlation": "",
+        "reporting_management_implications": ""
+      },
+      "images": [
+        {
+          "type": "source-linked-placeholder",
+          "teaching_point": "Ehlers-Danlos syndrome",
+          "caption": "",
+          "annotations": [],
+          "source_status": "available"
+        }
+      ],
+      "diagnostic_algorithm": {
+        "entry_point": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Non-Marfan familial aortic dissection > Ehlers-Danlos syndrome",
+        "steps": [
+          "Confirm topic-specific local evidence before diagnostic branch generation."
+        ],
+        "terminal_nodes": []
+      },
+      "differential_diagnosis": [],
+      "mcqs": [],
+      "worked_examples": [],
+      "retention_tools": {
+        "high_yield_summary": "",
+        "diagnostic_hook": "",
+        "mnemonic": "",
+        "flashcard_facts": [],
+        "comparison_table": [],
+        "do_not_miss_pearl": ""
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 0.42,
+        "image_support": 0.25,
+        "mcq_support": 0,
+        "algorithm_support": 0.2,
+        "differential_support": 0.2,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "validation_status": "blocked",
+      "promotion_status": "review-queue",
+      "blocking_reasons": [
+        "required_content_sections_incomplete",
+        "missing_mcqs"
+      ],
+      "ai_review_packet": {
+        "enabled": false,
+        "purpose": "optional_quality_review_only",
+        "prompt": "",
+        "local_evidence_summary": "Primary local evidence: src/content/competency/apP0CvTaxonomyReviewCardBatch.ts; specificity=topic_specific.",
+        "questions_for_reviewer": [],
+        "forbidden_use": [
+          "primary content generation",
+          "unstable factual invention",
+          "unsourced expansion",
+          "promotion gate bypass"
+        ]
+      }
+    },
+    {
+      "packet_id": "local-content-churn-008",
+      "source_map_id": "ap_cv-f4326c88-31a3-4d1e-a886-80e66507a039",
+      "topic_id": "f4326c88-31a3-4d1e-a886-80e66507a039",
+      "abpath_domain": "AP",
+      "abpath_topic": "Primary cardiomyopathy",
+      "path": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy",
+      "source_specificity": "topic_specific",
+      "local_evidence": {
+        "source_map": "reports/curriculum/ap_local_source_map_v1.json",
+        "primary_source_path": "src/content/competency/apP0CvAutopsyCardBatch2.ts",
+        "local_candidate_count": 5,
+        "match_reasons": [
+          "organ_match:cardiovascular",
+          "title_tokens:primary,cardiomyopathy",
+          "path_tokens:primary,cardiomyopathy,cardiovascular,physiologic",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ],
+        "source_line": 1245
+      },
+      "introductory_material": {
+        "orientation": "Local evidence packet for Primary cardiomyopathy.",
+        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "prerequisites": [
+          "Cardiovascular / Autopsy-adjacent",
+          "PGY1-PGY2"
+        ],
+        "key_vocabulary": [
+          "Primary cardiomyopathy",
+          "Cardiovascular / Autopsy-adjacent"
+        ]
+      },
+      "core_didactic": {
+        "definition": "",
+        "clinical_context": "",
+        "gross_findings": "",
+        "histomorphology": "",
+        "cytomorphology": "",
+        "immunophenotype": "",
+        "molecular_profile": "",
+        "classification_relevance": "",
+        "clinical_imaging_correlation": "",
+        "reporting_management_implications": ""
+      },
+      "images": [
+        {
+          "type": "source-linked-placeholder",
+          "teaching_point": "Primary cardiomyopathy",
+          "caption": "",
+          "annotations": [],
+          "source_status": "available"
+        }
+      ],
+      "diagnostic_algorithm": {
+        "entry_point": "Cardiovascular > Normal Anatomy and Histology > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Primary cardiomyopathy",
+        "steps": [
+          "Confirm topic-specific local evidence before diagnostic branch generation."
+        ],
+        "terminal_nodes": []
+      },
+      "differential_diagnosis": [],
+      "mcqs": [],
+      "worked_examples": [],
+      "retention_tools": {
+        "high_yield_summary": "",
+        "diagnostic_hook": "",
+        "mnemonic": "",
+        "flashcard_facts": [],
+        "comparison_table": [],
+        "do_not_miss_pearl": ""
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 0.42,
+        "image_support": 0.25,
+        "mcq_support": 0,
+        "algorithm_support": 0.2,
+        "differential_support": 0.2,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "validation_status": "blocked",
+      "promotion_status": "review-queue",
+      "blocking_reasons": [
+        "required_content_sections_incomplete",
+        "missing_mcqs"
+      ],
+      "ai_review_packet": {
+        "enabled": false,
+        "purpose": "optional_quality_review_only",
+        "prompt": "",
+        "local_evidence_summary": "Primary local evidence: src/content/competency/apP0CvAutopsyCardBatch2.ts; specificity=topic_specific.",
+        "questions_for_reviewer": [],
+        "forbidden_use": [
+          "primary content generation",
+          "unstable factual invention",
+          "unsourced expansion",
+          "promotion gate bypass"
+        ]
+      }
+    },
+    {
+      "packet_id": "local-content-churn-009",
+      "source_map_id": "ap_gi-7ede8c2a-b226-4493-8dc4-2e90988f6410",
+      "topic_id": "7ede8c2a-b226-4493-8dc4-2e90988f6410",
+      "abpath_domain": "AP",
+      "abpath_topic": "Infections",
+      "path": "The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Infections",
+      "source_specificity": "topic_specific",
+      "local_evidence": {
+        "source_map": "reports/curriculum/ap_local_source_map_v1.json",
+        "primary_source_path": "src/content/competency/apP0GiCardBatch.ts",
+        "local_candidate_count": 5,
+        "match_reasons": [
+          "organ_match:gastrointestinal",
+          "title_tokens:infections",
+          "path_tokens:infections,digestive,gastrointestinal,tract",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ],
+        "source_line": 1932
+      },
+      "introductory_material": {
+        "orientation": "Local evidence packet for Infections.",
+        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "prerequisites": [
+          "Gastrointestinal",
+          "PGY1-PGY2"
+        ],
+        "key_vocabulary": [
+          "Infections",
+          "Gastrointestinal"
+        ]
+      },
+      "core_didactic": {
+        "definition": "",
+        "clinical_context": "",
+        "gross_findings": "",
+        "histomorphology": "",
+        "cytomorphology": "",
+        "immunophenotype": "",
+        "molecular_profile": "",
+        "classification_relevance": "",
+        "clinical_imaging_correlation": "",
+        "reporting_management_implications": ""
+      },
+      "images": [
+        {
+          "type": "source-linked-placeholder",
+          "teaching_point": "Infections",
+          "caption": "",
+          "annotations": [],
+          "source_status": "available"
+        }
+      ],
+      "diagnostic_algorithm": {
+        "entry_point": "The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Infections",
+        "steps": [
+          "Confirm topic-specific local evidence before diagnostic branch generation."
+        ],
+        "terminal_nodes": []
+      },
+      "differential_diagnosis": [],
+      "mcqs": [],
+      "worked_examples": [],
+      "retention_tools": {
+        "high_yield_summary": "",
+        "diagnostic_hook": "",
+        "mnemonic": "",
+        "flashcard_facts": [],
+        "comparison_table": [],
+        "do_not_miss_pearl": ""
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 0.42,
+        "image_support": 0.25,
+        "mcq_support": 0,
+        "algorithm_support": 0.2,
+        "differential_support": 0.2,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "validation_status": "blocked",
+      "promotion_status": "review-queue",
+      "blocking_reasons": [
+        "required_content_sections_incomplete",
+        "missing_mcqs"
+      ],
+      "ai_review_packet": {
+        "enabled": false,
+        "purpose": "optional_quality_review_only",
+        "prompt": "",
+        "local_evidence_summary": "Primary local evidence: src/content/competency/apP0GiCardBatch.ts; specificity=topic_specific.",
+        "questions_for_reviewer": [],
+        "forbidden_use": [
+          "primary content generation",
+          "unstable factual invention",
+          "unsourced expansion",
+          "promotion gate bypass"
+        ]
+      }
+    },
+    {
+      "packet_id": "local-content-churn-010",
+      "source_map_id": "ap_gi-d80867cc-a1f7-4a7f-9b67-06ccb36915e6",
+      "topic_id": "d80867cc-a1f7-4a7f-9b67-06ccb36915e6",
+      "abpath_domain": "AP",
+      "abpath_topic": "Other infections of the anal canal",
+      "path": "The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Other infections of the anal canal",
+      "source_specificity": "topic_specific",
+      "local_evidence": {
+        "source_map": "reports/curriculum/ap_local_source_map_v1.json",
+        "primary_source_path": "src/content/competency/apP0GiCardBatch.ts",
+        "local_candidate_count": 5,
+        "match_reasons": [
+          "organ_match:gastrointestinal",
+          "title_tokens:infections",
+          "path_tokens:infections,digestive,gastrointestinal,tract",
+          "reuse_target:image_atlas",
+          "status:mapped",
+          "confidence:high"
+        ],
+        "source_line": 2266
+      },
+      "introductory_material": {
+        "orientation": "Local evidence packet for Other infections of the anal canal.",
+        "clinical_relevance": "Blocked from promotion until deterministic local sources support full teaching claims.",
+        "prerequisites": [
+          "Gastrointestinal",
+          "PGY1-PGY2"
+        ],
+        "key_vocabulary": [
+          "Other infections of the anal canal",
+          "Gastrointestinal"
+        ]
+      },
+      "core_didactic": {
+        "definition": "",
+        "clinical_context": "",
+        "gross_findings": "",
+        "histomorphology": "",
+        "cytomorphology": "",
+        "immunophenotype": "",
+        "molecular_profile": "",
+        "classification_relevance": "",
+        "clinical_imaging_correlation": "",
+        "reporting_management_implications": ""
+      },
+      "images": [
+        {
+          "type": "source-linked-placeholder",
+          "teaching_point": "Other infections of the anal canal",
+          "caption": "",
+          "annotations": [],
+          "source_status": "available"
+        }
+      ],
+      "diagnostic_algorithm": {
+        "entry_point": "The Digestive System > The Gastrointestinal Tract > Physiologic Changes, Metabolic Conditions, & Trauma/Infarct > Other infections of the anal canal",
+        "steps": [
+          "Confirm topic-specific local evidence before diagnostic branch generation."
+        ],
+        "terminal_nodes": []
+      },
+      "differential_diagnosis": [],
+      "mcqs": [],
+      "worked_examples": [],
+      "retention_tools": {
+        "high_yield_summary": "",
+        "diagnostic_hook": "",
+        "mnemonic": "",
+        "flashcard_facts": [],
+        "comparison_table": [],
+        "do_not_miss_pearl": ""
+      },
+      "evidence_score": {
+        "objective_linked": true,
+        "local_source_linked": true,
+        "topic_specificity": 0.8,
+        "section_completeness": 0.42,
+        "image_support": 0.25,
+        "mcq_support": 0,
+        "algorithm_support": 0.2,
+        "differential_support": 0.2,
+        "worked_example_support": 0,
+        "promotion_ready": false
+      },
+      "validation_status": "blocked",
+      "promotion_status": "review-queue",
+      "blocking_reasons": [
+        "required_content_sections_incomplete",
+        "missing_mcqs"
+      ],
+      "ai_review_packet": {
+        "enabled": false,
+        "purpose": "optional_quality_review_only",
+        "prompt": "",
+        "local_evidence_summary": "Primary local evidence: src/content/competency/apP0GiCardBatch.ts; specificity=topic_specific.",
+        "questions_for_reviewer": [],
+        "forbidden_use": [
+          "primary content generation",
+          "unstable factual invention",
+          "unsourced expansion",
+          "promotion gate bypass"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "packet_count": 10,
+    "promotion_ready_packets": 0,
+    "blocked_packets": 10,
+    "next_safe_action": "Review blocked packets for stronger local source extraction before promotion."
+  }
+}
