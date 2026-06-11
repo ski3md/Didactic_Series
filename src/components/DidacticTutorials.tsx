@@ -14,6 +14,8 @@ import {
 } from '../utils/tutorialLibraryCatalog.ts';
 import { consumeTutorialLibraryIntent } from '../utils/tutorialLibraryNavigation.ts';
 import { setReferenceLibraryIntent } from '../utils/referenceLibraryNavigation.ts';
+import { setSyllabusIntent } from '../utils/syllabusNavigation.ts';
+import { buildTutorialSyllabusIntent } from '../utils/tutorialSyllabusNavigation.ts';
 import { getAnswerChoiceReasoning } from '../utils/answerChoiceReasoning.ts';
 import { LearningPreferences } from '../hooks/useLearningPreferences.ts';
 import {
@@ -795,6 +797,18 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
     onSectionChange(Section.REFERENCE_LIBRARY);
   };
 
+  const openSyllabusReview = () => {
+    if (!activeTutorial) {
+      return;
+    }
+    const syllabusIntent = buildTutorialSyllabusIntent(activeTutorial);
+    if (!syllabusIntent) {
+      return;
+    }
+    setSyllabusIntent(syllabusIntent);
+    onSectionChange(Section.SYLLABUS_EXPLORER);
+  };
+
   const returnToTutorialLibrary = () => {
     const previousDestination = effectiveDestination.previous ?? getDefaultStudyDestination('tutorials');
     replaceStudyDestination(previousDestination);
@@ -1004,6 +1018,15 @@ const DidacticTutorials: React.FC<DidacticTutorialsProps> = ({ preferences, onSe
                       <p className="mt-2 text-sm leading-6 text-slate-700">{activeTutorial.sourceTruth.reviewRule}</p>
                       <p className="mt-2 text-xs font-medium text-slate-500">Owner: {activeTutorial.sourceTruth.reviewer}</p>
                     </div>
+                  )}
+                  {buildTutorialSyllabusIntent(activeTutorial) && (
+                    <button
+                      type="button"
+                      onClick={openSyllabusReview}
+                      className="mt-4 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-sky-300 hover:text-sky-800"
+                    >
+                      Open syllabus topic
+                    </button>
                   )}
                 </div>
               )}
