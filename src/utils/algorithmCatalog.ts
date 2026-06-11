@@ -4,8 +4,9 @@ import { activeCurriculumModules } from '../content/curriculum/activeCurriculum.
 import { LectureAlgorithmRecord } from '../types.ts';
 import { promotedLectures } from './lectureLibraryCatalog.ts';
 import { getInteractivePromotedLecture } from './interactiveLectureCatalog.ts';
+import { getContentNamespaceLabel, type ContentNamespace } from './contentNamespaces.ts';
 
-export type AlgorithmPromotionState = 'canonical' | 'staged';
+export type AlgorithmPromotionState = ContentNamespace;
 
 export interface DidacticAlgorithmRecord {
   id: string;
@@ -52,8 +53,8 @@ interface RawNormalizedAlgorithmRecord {
 }
 
 const algorithmPromotionLabels: Record<AlgorithmPromotionState, string> = {
-  canonical: 'Canonical',
-  staged: 'Canonical',
+  canonical: getContentNamespaceLabel('canonical'),
+  staged: getContentNamespaceLabel('staged'),
 };
 
 const unique = (values: Array<string | undefined>) =>

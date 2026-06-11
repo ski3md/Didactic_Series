@@ -14,10 +14,11 @@ import { resolveExactClinicalPathScope } from './clinicalPathAbpathScope.ts';
 import { surgicalPathCurriculumModules } from '../content/curriculum/surgicalPathCurriculum.ts';
 import { getCuratedAtlasImages } from '../../utils/curatedHistologyAtlas.ts';
 import { getPromotedGranulomatousAtlasImages } from '../../utils/promotedGranulomatousAtlas.ts';
+import { getContentNamespaceLabel, type ContentNamespace } from './contentNamespaces.ts';
 
 export type TutorialLane = 'board-prep' | 'core-patterns' | 'granuloma' | 'lab-studio' | 'mixed';
 export type TutorialTrack = 'surgical-path' | 'clinical-path' | 'cross-cutting';
-export type TutorialPromotionState = 'canonical' | 'staged';
+export type TutorialPromotionState = ContentNamespace;
 
 export interface TutorialMCQ {
   question: string;
@@ -180,8 +181,8 @@ const trackConfig: Record<TutorialTrack, { label: string }> = {
 };
 
 const promotionConfig: Record<TutorialPromotionState, { label: string }> = {
-  canonical: { label: 'Canonical' },
-  staged: { label: 'Canonical' },
+  canonical: { label: getContentNamespaceLabel('canonical') },
+  staged: { label: getContentNamespaceLabel('staged') },
 };
 
 const atlasImagesById = new Map(
