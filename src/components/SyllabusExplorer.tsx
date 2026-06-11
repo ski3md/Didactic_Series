@@ -5,8 +5,15 @@ import MarkdownContent from './ui/MarkdownContent.tsx';
 import { AcademicCapIcon, DocumentTextIcon } from './icons.tsx';
 import { getSyllabusCategories, loadSyllabusTopics, type SyllabusTopicRecord } from '../utils/syllabusCatalog.ts';
 import { consumeSyllabusIntent } from '../utils/syllabusNavigation.ts';
+import { setTutorialLibraryIntent } from '../utils/tutorialLibraryNavigation.ts';
+import { setReferenceLibraryIntent } from '../utils/referenceLibraryNavigation.ts';
+import { Section } from '../types.ts';
 
-const SyllabusExplorer: React.FC = () => {
+interface SyllabusExplorerProps {
+  onSectionChange: (section: Section) => void;
+}
+
+const SyllabusExplorer: React.FC<SyllabusExplorerProps> = ({ onSectionChange }) => {
   const [topics, setTopics] = useState<SyllabusTopicRecord[]>([]);
   const [selectedId, setSelectedId] = useState<string>('');
   const [query, setQuery] = useState('');
@@ -56,9 +63,39 @@ const SyllabusExplorer: React.FC = () => {
       [topic.title, topic.summary, topic.categoryLabel, ...topic.tags]
         .some((value) => value.toLowerCase().includes(lowered))
     );
-  }, [categoryFilter, query]);
+  }, [categoryFilter, query, topics]);
 
   const selectedTopic = filteredTopics.find((topic) => topic.id === selectedId) ?? filteredTopics[0];
+  const selectedTopicTerms = selectedTopic
+    ? [selectedTopic.title, selectedTopic.summary, selectedTopic.categoryLabel, ...selectedTopic.tags].filter(Boolean)
+    : [];
+
+  const openRelatedTutorial = () => {
+    if (!selectedTopic) {
+      return;
+    }
+    setTutorialLibraryIntent({
+      query: selectedTopic.title,
+      queries: selectedTopicTerms,
+      lane: 'all',
+      track: 'all',
+    });
+    onSectionChange(Section.DIDACTIC_TUTORIALS);
+  };
+
+  const openAtlasReview = () => {
+    if (!selectedTopic) {
+      return;
+    }
+    setReferenceLibraryIntent({
+      title: selectedTopic.title,
+      summary: `Atlas and reference review launched from syllabus topic: ${selectedTopic.title}.`,
+      focusTerms: selectedTopicTerms,
+      syllabusTopics: [selectedTopic.title],
+      tutorialTopics: selectedTopic.tags,
+    });
+    onSectionChange(Section.REFERENCE_LIBRARY);
+  };
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -151,6 +188,22 @@ const SyllabusExplorer: React.FC = () => {
                   ))}
                 </div>
               )}
+              <div className="mt-5 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={openRelatedTutorial}
+                  className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-sky-300 hover:text-sky-800"
+                >
+                  Open related tutorial
+                </button>
+                <button
+                  type="button"
+                  onClick={openAtlasReview}
+                  className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-sky-300 hover:text-sky-800"
+                >
+                  Open atlas review
+                </button>
+              </div>
             </Card>
 
             <Card>

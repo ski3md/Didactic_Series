@@ -96,7 +96,7 @@ const AppContent: React.FC<{
       case Section.DIDACTIC_TUTORIALS: return <DidacticTutorials preferences={preferences} onSectionChange={onSectionSelect} />;
       case Section.BREAST_SIGNOUT_MASTERCLASS: return <SignOutSimulator user={user} onSectionChange={onSectionSelect} />;
       case Section.COMPETENCY_MATRIX: return <CompetencyMatrix onSectionChange={onSectionSelect} />;
-      case Section.SYLLABUS_EXPLORER: return <SyllabusExplorer />;
+      case Section.SYLLABUS_EXPLORER: return <SyllabusExplorer onSectionChange={onSectionSelect} />;
       case Section.PATHOLOGY_CURRICULUM: return <PathologyCurriculum onSectionChange={onSectionSelect} preferences={preferences} />;
       case Section.HOME: return <Home onSectionChange={onSectionSelect} user={user} preferences={preferences} />;
       case Section.REFERENCE_LIBRARY: return <ReferenceLibrary user={user} />;
